@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -8,8 +7,8 @@ import { analytics } from 'libs/analytics'
 import { CITIES_API_URL } from 'libs/place'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse } from 'libs/place/useCities'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const POSTAL_CODE = '83570'
@@ -107,9 +106,5 @@ function renderSetCity() {
 }
 
 function mockCitiesApiCall(response: CitiesResponse) {
-  server.use(
-    rest.get<CitiesResponse>(CITIES_API_URL, (_req, res, ctx) =>
-      res(ctx.status(200), ctx.json(response))
-    )
-  )
+  mockServer.universalGet<CitiesResponse>(CITIES_API_URL, response)
 }

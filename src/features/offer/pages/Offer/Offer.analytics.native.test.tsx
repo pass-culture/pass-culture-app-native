@@ -1,26 +1,10 @@
-import { rest } from 'msw'
-
 import { SubcategoryIdEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 import { act, bottomScrollEvent, fireEvent, middleScrollEvent, screen } from 'tests/utils'
-
-server.use(
-  rest.get(
-    `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
-    (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          hits: [],
-        })
-      )
-    }
-  )
-)
 
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
@@ -37,6 +21,15 @@ describe('<Offer /> - Analytics', () => {
     contentOffset: { y: 900 },
     contentSize: { height: 1600 },
   }
+
+  beforeEach(() => {
+    mockServer.universalGet(
+      `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
+      {
+        hits: [],
+      }
+    )
+  })
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
     renderOfferPage()

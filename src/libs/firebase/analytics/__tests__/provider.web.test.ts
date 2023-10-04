@@ -1,22 +1,17 @@
-import { rest } from 'msw'
-
 import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 
 jest.unmock('libs/firebase/analytics/analytics')
 jest.unmock('libs/firebase/analytics/provider')
 
-server.use(
-  rest.get(
-    `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json({}))
-  )
-)
-
 describe('analytics - getAppInstanceId', () => {
   it('should be null', async () => {
+    mockServer.universalGet(
+      `https://firebase.googleapis.com/v1alpha/projects/-/apps/${env.FIREBASE_APPID}/webConfig`,
+      {}
+    )
     expect(await firebaseAnalytics.getAppInstanceId()).toBeNull()
   })
 })

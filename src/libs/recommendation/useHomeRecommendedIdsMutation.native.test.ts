@@ -1,26 +1,19 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
-import { rest } from 'msw'
 
 import { eventMonitoring } from 'libs/monitoring'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
 
-server.use(
-  rest.post('http://passculture.reco', (_req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        playlist_recommended_offers: [1234, 5678],
-      })
-    )
-  })
-)
-
 describe('useHomeRecommendedIdsMutation', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
+  beforeEach(() => {
+    mockServer.universalPost('http://passculture.reco', {
+      playlist_recommended_offers: [1234, 5678],
+    })
+  })
 
   it('should capture an exception when fetch call fails', async () => {
     mockFetch.mockRejectedValueOnce('some error')

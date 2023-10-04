@@ -1,5 +1,4 @@
 import { SearchResponse } from '@algolia/client-search'
-import { rest } from 'msw'
 
 import { VenueResponse } from 'api/gen'
 import {
@@ -12,15 +11,13 @@ import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/content
 import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Offer } from 'shared/offer/types'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 
 describe('GTL Playlist API', () => {
   describe('fetchGTLPlaylists', () => {
-    server.use(
-      rest.get(`${BASE_URL}/entries`, (req, res, context) => {
-        return res(context.status(200), context.json(contentfulGtlPlaylistSnap))
-      })
-    )
+    beforeEach(() => {
+      mockServer.universalGet(`${BASE_URL}/entries`, contentfulGtlPlaylistSnap)
+    })
 
     it('should return correct data', async () => {
       const result = await fetchGTLPlaylists({

@@ -1,8 +1,6 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
@@ -25,8 +23,8 @@ import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
@@ -102,11 +100,7 @@ const defaultDataVenues: ModuleData = {
 
 describe('<HomeModule />', () => {
   it('should display old exclusivity module when feature flag is false', async () => {
-    server.use(
-      rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/123456789`, (_req, res, ctx) =>
-        res.once(ctx.status(200), ctx.json(offerResponseSnap))
-      )
-    )
+    mockServer.getAPIV1('/native/v1/offer/123456789', offerResponseSnap)
     useFeatureFlagSpy.mockReturnValueOnce(false)
     renderHomeModule(formattedExclusivityModule)
 
@@ -171,12 +165,9 @@ describe('<HomeModule />', () => {
       },
       results: ['102280', '102272'],
     }
-
-    server.use(
-      rest.post(
-        env.RECOMMENDATION_ENDPOINT + '/playlist_recommendation/1234',
-        async (_, res, ctx) => res.once(ctx.status(200), ctx.json(recommendedOffers))
-      )
+    mockServer.universalGet(
+      env.RECOMMENDATION_ENDPOINT + '/playlist_recommendation/1234',
+      recommendedOffers
     )
 
     renderHomeModule(formattedRecommendedOffersModule)
