@@ -6,6 +6,7 @@ appId: app.passculture.staging
 - assertVisible: "300\_€"
 - assertVisible: "à 18 ans"
 - assertVisible: "Tu auras 2 ans pour utiliser tes 300\_€"
+#- TODO comprendre pourquoi le wording n'est pas capté par maestro
 #- assertVisible: "pour les plus jeunes"
 - assertVisible:
       text: "passé"
@@ -17,7 +18,6 @@ appId: app.passculture.staging
       index: 1
 - assertVisible:
       text: "30\_€"
-      #text: "+ 30\_€"
       index: 0
 - assertVisible: "à 16 ans"
 - assertVisible:
@@ -25,7 +25,6 @@ appId: app.passculture.staging
       index: 2
 - assertVisible:
       text: "30\_€"
-      #text: "+ 30\_€"
       index: 1
 - assertVisible: "à 17 ans"
 - assertVisible:
