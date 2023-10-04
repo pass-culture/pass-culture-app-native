@@ -242,14 +242,14 @@ export const SearchResults: React.FC = () => {
               </StyledLi>
             )}
 
-            <StyledLi>
+            <StyledLastLi>
               <SingleFilterButton
                 label="Dates & heures"
                 testID="datesHoursButton"
                 onPress={showDatesHoursModal}
                 isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
               />
-            </StyledLi>
+            </StyledLastLi>
           </Ul>
           <Spacer.Row numberOfSpaces={5} />
         </ScrollView>
@@ -347,7 +347,13 @@ const Separator = styled.View(({ theme }) => ({
 }))
 
 const StyledLi = styled(Li)({
-  margin: getSpacing(1),
+  marginLeft: getSpacing(1),
+  marginTop: getSpacing(1),
+  marginBottom: getSpacing(1),
+})
+
+const StyledLastLi = styled(StyledLi)({
+  marginRight: getSpacing(1),
 })
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({
