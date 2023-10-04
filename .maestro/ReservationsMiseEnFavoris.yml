@@ -54,11 +54,9 @@ appId: app.passculture.staging
 - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
 - assertVisible: "Tu n’as pas encore de favori\_?\nExplore le catalogue pass Culture\
     \ et ajoute les offres en favori pour les retrouver facilement\_!"
-- assertVisible:
-    id: "Découvrir le catalogue"
-- tapOn:
-    id: "Découvrir le catalogue"
+- assertVisible: "Découvrir le catalogue"
 
+- tapOn: "Découvrir le catalogue"
 - assertVisible: "Rechercher des offres"
 
 # Stop App
