@@ -250,45 +250,65 @@ export class MswMockServer
     )
   }
 
+  universalGet<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    if (this.isMockOptions(options)) {
+      const handler = rest.get(url, this.generateMockHandler(url, options, 'GET'))
+      this.mswServer.use(handler)
+    } else {
+      const handler = rest.get(
+        url,
+        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'GET')
+      )
+      this.mswServer.use(handler)
+    }
+  }
   getAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
+    this.universalGet(fullUrl, options)
+  }
+
+  universalPost<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
     if (this.isMockOptions(options)) {
-      const handler = rest.get(fullUrl, this.generateMockHandler(fullUrl, options, 'GET'))
+      const handler = rest.post(url, this.generateMockHandler(url, options, 'POST'))
       this.mswServer.use(handler)
     } else {
-      const handler = rest.get(
-        fullUrl,
-        this.generateMockHandler(
-          fullUrl,
-          { responseOptions: { data: options as TResponse } },
-          'GET'
-        )
+      const handler = rest.post(
+        url,
+        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'POST')
       )
       this.mswServer.use(handler)
     }
   }
-
   postAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
+    this.universalPost(fullUrl, options)
+  }
+
+  universalDelete<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
     if (this.isMockOptions(options)) {
-      const handler = rest.post(fullUrl, this.generateMockHandler(fullUrl, options, 'POST'))
+      const handler = rest.delete(url, this.generateMockHandler(url, options, 'DELETE'))
       this.mswServer.use(handler)
     } else {
-      const handler = rest.post(
-        fullUrl,
-        this.generateMockHandler(
-          fullUrl,
-          { responseOptions: { data: options as TResponse } },
-          'POST'
-        )
+      const handler = rest.delete(
+        url,
+        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'DELETE')
       )
       this.mswServer.use(handler)
     }
@@ -298,41 +318,32 @@ export class MswMockServer
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
+
+    this.universalDelete(fullUrl, options)
+  }
+
+  universalPut<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
     if (this.isMockOptions(options)) {
-      const handler = rest.delete(fullUrl, this.generateMockHandler(fullUrl, options, 'DELETE'))
+      const handler = rest.put(url, this.generateMockHandler(url, options, 'PUT'))
       this.mswServer.use(handler)
     } else {
-      const handler = rest.delete(
-        fullUrl,
-        this.generateMockHandler(
-          fullUrl,
-          { responseOptions: { data: options as TResponse } },
-          'DELETE'
-        )
+      const handler = rest.put(
+        url,
+        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'PUT')
       )
       this.mswServer.use(handler)
     }
   }
-
   putAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
-    if (this.isMockOptions(options)) {
-      const handler = rest.put(fullUrl, this.generateMockHandler(fullUrl, options, 'PUT'))
-      this.mswServer.use(handler)
-    } else {
-      const handler = rest.put(
-        fullUrl,
-        this.generateMockHandler(
-          fullUrl,
-          { responseOptions: { data: options as TResponse } },
-          'PUT'
-        )
-      )
-      this.mswServer.use(handler)
-    }
+
+    this.universalPut(fullUrl, options)
   }
 }
 

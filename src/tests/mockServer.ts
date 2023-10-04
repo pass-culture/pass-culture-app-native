@@ -2,7 +2,15 @@ export interface MockServerInterface<BodyType, HeadersType, RequestBody> {
   baseUrl: string
   mode: MockServerMode
   delay: number
+  universalGet<TResponse extends BodyType>(
+    url: string,
+    options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
+  ): MockReturnType
   getAPIV1<TResponse extends BodyType>(
+    url: string,
+    options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
+  ): MockReturnType
+  universalPost<TResponse extends BodyType>(
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType
@@ -10,7 +18,15 @@ export interface MockServerInterface<BodyType, HeadersType, RequestBody> {
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType
+  universalDelete<TResponse extends BodyType>(
+    url: string,
+    options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
+  ): MockReturnType
   deleteAPIV1<TResponse extends BodyType>(
+    url: string,
+    options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
+  ): MockReturnType
+  universalPut<TResponse extends BodyType>(
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType
