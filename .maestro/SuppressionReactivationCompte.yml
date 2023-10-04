@@ -1,10 +1,5 @@
 appId: app.passculture.staging
 ---
-#AffichageBoutonSupprimerSectionInfosPerso
-#AffichagePageConfirmationClicBoutonSupprimerSectionInfosPerso
-#ReactivationPossibleCompteSupprimeMoins60Jours
-#ConnexionAutomatiqueSuiteReactivationCompte
-#DeconnexionUtilisateurApresConfirmationSuppressionCompte
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
@@ -60,6 +55,6 @@ appId: app.passculture.staging
 - assertVisible: "Bonjour Nicolas"
 - assertVisible: "Tu as 300\_€ sur ton pass"
 
-#- tapOn: "Découvrir le catalogue"
+- tapOn: "Découvrir le catalogue"
 # Stop App
-#- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml
