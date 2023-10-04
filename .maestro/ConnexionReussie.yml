@@ -14,8 +14,7 @@ appId: app.passculture.staging
     id: "Se connecter"
 
 - tapOn: "Plus tard"
-- tapOn:
-    id: "Mon profil"
+- tapOn: "Mon profil"
 
 - scrollUntilVisible:
     element: "Version\_1.256.0"

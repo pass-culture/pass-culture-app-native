@@ -20,8 +20,7 @@ appId: app.passculture.staging
 - tapOn: "Ne pas autoriser"
 - tapOn: "Retour"
 - tapOn: "Retour"
-- tapOn:
-        id: "Mon profil"
+- tapOn: "Mon profil"
 - tapOn:
         id: "Interrupteur Partager ma position"
 - tapOn: "Activer la géolocalisation"

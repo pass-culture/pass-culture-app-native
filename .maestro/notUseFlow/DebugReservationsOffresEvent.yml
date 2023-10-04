@@ -4,8 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
 - runFlow: src/features/identityCheck/FirstLaunch.yml
-- tapOn:
-    id: "Mon profil"
+- tapOn: "Mon profil"
 - runFlow: src/features/auth/ToLogin.yml
 
 - tapOn: "Se connecter"
