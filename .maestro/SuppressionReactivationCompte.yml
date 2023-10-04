@@ -43,8 +43,7 @@ appId: app.passculture.staging
 
 #Page de réactivation
 - runFlow: src/features/auth/AccountReactivationPage.yml
-- tapOn:
-    id: "Découvrir le catalogue"
+- tapOn: "Découvrir le catalogue"
 
 - assertVisible: "Bonjour Nicolas"
 - assertVisible: "Tu as 300\_€ sur ton pass"
