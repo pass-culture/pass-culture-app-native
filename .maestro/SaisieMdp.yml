@@ -19,7 +19,6 @@ appId: app.passculture.staging
 - inputText: ${PASSWORD}
 - tapOn:
       point: "50%,40%"
-#- tapOn: "Retour"
 - tapOn: "Continuer vers l’étape Date de naissance"
 
 # Stop App
