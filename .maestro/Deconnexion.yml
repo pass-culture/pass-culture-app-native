@@ -7,6 +7,7 @@ appId: app.passculture.staging
 - tapOn: "Mon profil"
 # Se connecter
 - runFlow: src/features/auth/ToLogin.yml
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "91%,89%"
 - tapOn: "Plus tard"

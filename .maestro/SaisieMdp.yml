@@ -17,6 +17,7 @@ appId: app.passculture.staging
       es du pass Culture."
 - tapOn: "Continuer vers l’étape Mot de passe"
 - inputText: ${PASSWORD}
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
       point: "50%,40%"
 - tapOn: "Continuer vers l’étape Date de naissance"

@@ -7,10 +7,11 @@ appId: app.passculture.staging
 
 - tapOn:
       id: "Rechercher des offres"
-#- tapOn:
-#    id: "Revenir en arrière"
+- tapOn:
+    id: "Revenir en arrière"
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "50%,71%"
 #Mise en favoris
@@ -28,6 +29,7 @@ appId: app.passculture.staging
 - tapOn: "Catégories\_: Filtre sélectionné"
 - tapOn: "Films, séries, cinéma"
 - tapOn: "Rechercher"
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "49%,69%"
 - tapOn:

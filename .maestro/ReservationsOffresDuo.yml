@@ -11,6 +11,7 @@ appId: app.passculture.staging
 #    id: "Revenir en arrière"
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
       point: "50%,71%"
 - tapOn:
@@ -39,7 +40,7 @@ appId: app.passculture.staging
       id: "Interrupteur limitDuoOfferSearch"
 - tapOn: "Rechercher"
 
-
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "49%,84%"
 - tapOn:
@@ -48,15 +49,15 @@ appId: app.passculture.staging
     id: "Voir les disponibilités"
 - tapOn:
     id: "Voir les disponibilités"
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "37%,72%"
-#- tapOn:
-#    point: "76%,65%"
 - assertVisible:
     id: "Valider la date"
 - tapOn: "Valider la date"
 - assertVisible: "Choix des options"
 - assertVisible: "Horaire"
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "50%,75%"
 - assertVisible: "Valider lʼhoraire"
@@ -65,6 +66,7 @@ appId: app.passculture.staging
 - tapOn: "Nombre de places"
 - assertVisible: "Solo"
 - assertVisible: "Duo"
+#- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "53%,72%"
 - assertVisible: "Finaliser ma réservation"
