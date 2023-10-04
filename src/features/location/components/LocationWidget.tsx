@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { Animated, LayoutChangeEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { ScreenOrigin } from 'features/location/enums'
 import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -20,14 +20,15 @@ const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
 interface LocationWidgetProps {
-  enableTooltip: boolean
+  screenOrigin: ScreenOrigin
 }
 
-export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
+export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const touchableRef = React.useRef<HTMLButtonElement>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { isSplashScreenHidden } = useSplashScreenContext()
+  const enableTooltip = screenOrigin === ScreenOrigin.HOME
 
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
   const getLocationTitle = useCallback(() => {
