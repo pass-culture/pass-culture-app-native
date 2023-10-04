@@ -2,7 +2,9 @@
 
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { Homepage } from 'features/home/types'
+import { BASE_URL } from 'libs/contentful/fetchHomepageNatifContent'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -19,6 +21,7 @@ const homepageEntryIds = [
 
 describe('useHomepageModules', () => {
   it('calls the API and returns the data', async () => {
+    mockServer.universalGet(BASE_URL + '/entries', homepageEntriesAPIResponse)
     const { result } = renderHook(useHomepageData, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -31,6 +34,7 @@ describe('useHomepageModules', () => {
   })
 
   it('calls the API and returns the data of a thematic home page', async () => {
+    mockServer.universalGet(BASE_URL + '/entries', homepageEntriesAPIResponse)
     const entryId = homepageEntryIds[1]
     const { result } = renderHook(() => useHomepageData(entryId), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
