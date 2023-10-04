@@ -12,6 +12,7 @@ appId: app.passculture.staging
 - tapOn: "Mot de passe oublié\_?"
 - assertVisible: "Mot de passe oublié\_?"
 - tapOn: "Mot de passe oublié\_?"
+#- TODO : comprendre pourquoi le wording n'est pas capté par maestro 
 #- assertVisible: "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 - assertVisible: "Adresse e-mail"
 
