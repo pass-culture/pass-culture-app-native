@@ -108,7 +108,7 @@ appId: app.passculture.staging
 
 - tapOn: "Confirmer la réservation"
 #BookingConfirmationPage
-- runFlow: reusableFlows/BookingConfirmationPage.yml
+- runFlow: src/features/bookOffer/BookingConfirmationPage.yml
 - tapOn: "Voir ma réservation"
 - assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
     \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
