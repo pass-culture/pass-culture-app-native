@@ -7,17 +7,17 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml
 
 # First Launch
-- runFlow: reusableFlows/FirstLaunch.yml
+- runFlow: src/features/identityCheck/FirstLaunch.yml
 
 - tapOn: "Mes favoris"
 # Creation Page
-- runFlow: reusableFlows/AccountCreationPage.yml
+- runFlow: src/features/profile/AccountCreationPage.yml
 
 # Cgu Page
-- runFlow: reusableFlows/CguPage.yml
+- runFlow: src/features/auth/CguPage.yml
 
 # ConfirmationEmail Page
-- runFlow: reusableFlows/ConfirmationEmailPage.yml
+- runFlow: src/features/auth/ConfirmationEmailPage.yml
 
 # Stop App
 #- runFlow: reusableFlows/StopApp.yml
@@ -42,12 +42,12 @@ appId: app.passculture.staging
 - tapOn: "Confirmer mon adresse email"
 
 # IdCheck Page
-- runFlow: reusableFlows/IdCheckPage.yml
+- runFlow: src/features/auth/IdCheckPage.yml
 
 # Stepper Page
-- runFlow: reusableFlows/StepperPage.yml
+- runFlow: src/features/identityCheck/StepperPage.yml
 
 #Number Phone
-- runFlow: reusableFlows/NumberPhone.yml
+- runFlow: src/features/identityCheck/NumberPhone.yml
 
 #ValidationCodePhone

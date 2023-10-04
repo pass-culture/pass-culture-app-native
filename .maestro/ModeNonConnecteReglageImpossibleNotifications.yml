@@ -3,13 +3,13 @@ appId: app.passculture.staging
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
-- runFlow: reusableFlows/FirstLaunch.yml
+- runFlow: src/features/identityCheck/FirstLaunch.yml
 
 - tapOn: "Mon profil"
 - tapOn:
     id: "Notifications"
 # Launch App
-- runFlow: reusableFlows/PageProfilNotifications.yml
+- runFlow: src/features/profile/PageProfilNotifications.yml
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

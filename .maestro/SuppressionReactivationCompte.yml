@@ -12,7 +12,7 @@ appId: app.passculture.staging
 - tapOn:
       id: "Mon profil"
 # Se connecter
-- runFlow: reusableFlows/ToLogin.yml
+- runFlow: src/features/auth/ToLogin.yml
 
 - tapOn: "Se connecter"
 #pour sortir de la saisie
@@ -32,28 +32,28 @@ appId: app.passculture.staging
     id: "Supprimer mon compte"
 
 # AccountDeletionConfirmationPage
-- runFlow: reusableFlows/AccountDeletionConfirmationPage.yml
+- runFlow: src/features/Profile/AccountDeletionConfirmationPage.yml
 
 - tapOn: "Supprimer mon compte"
 
 #Page de suppression AccountDeletionPage
-- runFlow: reusableFlows/AccountDeletionPage.yml
+- runFlow: src/features/Profile/AccountDeletionPage.yml
 
 - tapOn: "Retourner à l’accueil"
 - tapOn: "Mon profil"
 - assertVisible: "Se connecter"
 
 # Se connecter
-- runFlow: reusableFlows/ToLogin.yml
+- runFlow: src/features/auth/ToLogin.yml
 - tapOn: "Se connecter"
 - tapOn: "Se connecter"
 
 #Page de désactivation
-- runFlow: reusableFlows/AccountDeactivationPage.yml
+- runFlow: src/features/auth/AccountDeactivationPage.yml
 - tapOn: "Réactiver mon compte"
 
 #Page de réactivation
-- runFlow: reusableFlows/AccountReactivationPage.yml
+- runFlow: src/features/auth/AccountReactivationPage.yml
 - tapOn:
     id: "Découvrir le catalogue"
 

@@ -16,7 +16,7 @@ appId: app.passculture.staging
 - tapOn:
     id: "Réserver l’offre"
 # Se connecter
-- runFlow: reusableFlows/ToLogin.yml
+- runFlow: src/features/auth/ToLogin.yml
 
 - tapOn: "Se connecter"
 #pour sortir de la saisie
@@ -107,7 +107,7 @@ appId: app.passculture.staging
 #      point: "50%,34%"
 #- tapOn: "Réserver l’offre"
 ##PreBookingReservation
-#- runFlow: reusableFlows/PreBookingPage.yml
+#- runFlow: src/features/bookOffer/PreBookingPage.yml
 #
 #- tapOn: "Confirmer la réservation"
 ##BookingConfirmationPage
@@ -133,7 +133,7 @@ appId: app.passculture.staging
 
 - tapOn: "Annuler ma réservation"
 ##BookingCancellationPage
-- runFlow: reusableFlows/BookingCancellationPage.yml
+- runFlow: src/features/bookings/BookingCancellationPage.yml
 #
 - tapOn: "Annuler ma réservation"
 - assertVisible: "Réservations terminées"

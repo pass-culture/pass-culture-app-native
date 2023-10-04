@@ -12,13 +12,13 @@ appId: 'app.passculture.staging'
 #    point: '16%,94%'
 #
 ## Cookies consent
-#- runFlow: reusableFlows/CookiesConsent.yml
+#- runFlow: src/features/cookies/CookiesConsent.yml
 #
 ## Onboarding
-#- runFlow: reusableFlows/Onboarding.yml
+#- runFlow: src/features/tutorial/Onboarding.yml
 #
 ## SignIn
-#- runFlow: reusableFlows/SignIn.yml
+#- runFlow: src/features/auth/SignIn.yml
 #
 ## TODO: Trouver un moyen de valider l'inscription depuis l'email > En testing pas de redirection
 #- tapOn: 'Abandonner l’inscription'

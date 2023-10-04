@@ -17,7 +17,7 @@ appId: app.passculture.staging
 - tapOn:
     id: "animated-icon-favorite"
 # Se connecter
-- runFlow: reusableFlows/ToLogin.yml
+- runFlow: src/features/auth/ToLogin.yml
 - tapOn: "Se connecter"
 #pour sortir de la saisie
 - tapOn:
