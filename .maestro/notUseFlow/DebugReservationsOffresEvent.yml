@@ -10,10 +10,8 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
-- tapOn: "Dates & heures"
-- tapOn:
-    id: "Interrupteur date"
-
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonDateAndHour.yml
+- runFlow: reusableFlows/ui/components/Idbuttons/SimpleActionButtonSwitchDate.yml
 - tapOn: "Cette semaine"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
 #- TODO trouver une solution pour cliquer sans passer par la position.

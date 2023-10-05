@@ -11,20 +11,8 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
-- tapOn: "Dates & heures"
-- tapOn: "Interrupteur date"
-- assertVisible: "Date"
-- assertVisible:
-    text: "Seules les sorties seront affichées"
-    index: 0
-- assertVisible: "Aujourd’hui"
-- assertVisible: "Cette semaine"
-- assertVisible: "Ce week-end"
-- assertVisible: "Date précise"
-- assertVisible: "Heure"
-- assertVisible:
-    text: "Seules les sorties seront affichées"
-    index: 1
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonDateAndHour.yml
+- runFlow: reusableFlows/ui/components/IdButtons/SimpleActionButtonSwitchDate.yml
 - tapOn: "Cette semaine"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
 - tapOn:
