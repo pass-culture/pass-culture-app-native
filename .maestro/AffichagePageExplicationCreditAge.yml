@@ -1,8 +1,7 @@
 appId: app.passculture.staging
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-
-- tapOn: "Tout accepter"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - tapOn: "C’est parti\_!"
 - tapOn: "Passer"
 - tapOn:

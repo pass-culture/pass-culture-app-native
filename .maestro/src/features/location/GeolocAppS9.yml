@@ -7,7 +7,7 @@ appId: app.passculture.staging
 
 - tapOn:
         id: "j’ai 18 ans"
-- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
+- tapOn: "Plus tard"
 - tapOn: "Mon profil"
 - tapOn:
         id: "Interrupteur Partager ma position"

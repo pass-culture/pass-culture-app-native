@@ -1,8 +1,7 @@
 appId: app.passculture.staging
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-
-- tapOn: "Tout accepter"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - tapOn: "C’est parti\_!"
 - tapOn: "Passer"
 - tapOn: "j’ai 15 ans"
@@ -15,5 +14,4 @@ appId: app.passculture.staging
 - tapOn: "j’ai 18 ans"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
-
 - runFlow: reusableFlows/StopApp.yml # Stop App
