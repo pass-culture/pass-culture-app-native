@@ -1009,7 +1009,39 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
       }
     />
     <View
-      accessibilityLabel="Pourquoi cette limite ?"
+      numberOfSpaces={3}
+      style={
+        [
+          {
+            "height": 12,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
       accessibilityState={
         {
           "busy": undefined,
@@ -1057,7 +1089,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
           "width": "100%",
         }
       }
-      testID="Pourquoi cette limite ?"
+      testID="Comment ça marche ?"
     >
       <View
         style={
@@ -1095,7 +1127,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
           ]
         }
       >
-        Pourquoi cette limite ?
+        Comment ça marche ?
       </Text>
     </View>
   </View>,
@@ -1406,7 +1438,39 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
       }
     />
     <View
-      accessibilityLabel="Pourquoi cette limite ?"
+      numberOfSpaces={3}
+      style={
+        [
+          {
+            "height": 12,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
       accessibilityState={
         {
           "busy": undefined,
@@ -1454,7 +1518,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
           "width": "100%",
         }
       }
-      testID="Pourquoi cette limite ?"
+      testID="Comment ça marche ?"
     >
       <View
         style={
@@ -1492,7 +1556,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
           ]
         }
       >
-        Pourquoi cette limite ?
+        Comment ça marche ?
       </Text>
     </View>
   </View>,

@@ -66,9 +66,9 @@ describe('CreditHeader', () => {
       expect(creditInfo).toBeOnTheScreen()
     })
 
-    it('should display explanation button', () => {
+    it('should display tutorial button', () => {
       const { queryByTestId } = renderCreditHeader()
-      const explanationButton = queryByTestId('Pourquoi cette limite ?')
+      const explanationButton = queryByTestId('Comment ça marche ?')
       expect(explanationButton).toBeOnTheScreen()
     })
 

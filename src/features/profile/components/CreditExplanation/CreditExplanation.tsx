@@ -1,15 +1,17 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
-import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
-import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
+import { Separator } from 'ui/components/Separator'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Question } from 'ui/svg/icons/Question'
+import { Spacer } from 'ui/theme'
 
 interface Props {
   domainsCredit: DomainsCredit
@@ -21,7 +23,6 @@ export const CreditExplanation: FunctionComponent<Props> = ({
   isDepositExpired,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
-  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   if (isDepositExpired) {
     const onPressExplanationButton = () => {
@@ -55,28 +56,19 @@ export const CreditExplanation: FunctionComponent<Props> = ({
       </React.Fragment>
     )
   }
-  if (!isUserUnderageBeneficiary) {
-    const onPressExplanationButton = () => {
-      showModal()
-      analytics.logConsultModalBeneficiaryCeilings()
-    }
-    return (
-      <React.Fragment>
-        <StyledButtonQuaternaryBlack
-          icon={Question}
-          wording={'Pourquoi cette limite\u00a0?'}
-          onPress={onPressExplanationButton}
-        />
-        <CreditCeilingsModal
-          visible={visible}
-          hideModal={hideModal}
-          domainsCredit={domainsCredit}
-        />
-      </React.Fragment>
-    )
-  }
-
-  return null
+  return (
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={3} />
+      <GreySeparator />
+      <Spacer.Column numberOfSpaces={4} />
+      <InternalTouchableLink
+        as={StyledButtonQuaternaryBlack}
+        icon={Question}
+        wording={'Comment ça marche\u00a0?'}
+        navigateTo={{ screen: 'ProfileTutorialAgeInformation', params: { age: 18 } }}
+      />
+    </React.Fragment>
+  )
 }
 
 const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
@@ -85,3 +77,7 @@ const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
 })({
   textAlign: 'left',
 })
+
+const GreySeparator = styled(Separator).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))``
