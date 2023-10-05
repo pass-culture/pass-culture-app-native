@@ -61,6 +61,13 @@ const OnlineProfile: React.FC = () => {
     permissionState === GeolocPermissionState.GRANTED
   )
 
+  const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
+  const isDepositExpired = user?.depositExpirationDate
+    ? new Date(user?.depositExpirationDate) < new Date()
+    : false
+
+  const shouldDisplayTutorial = !user?.isBeneficiary || isCreditEmpty || isDepositExpired
+
   const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
     userAge && userAge < 19 && userAge > 14
       ? { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
@@ -177,15 +184,17 @@ const OnlineProfile: React.FC = () => {
           </Section>
           <Section title="Aides">
             <VerticalUl>
-              <Li>
-                <Row
-                  title="Comment ça marche&nbsp;?"
-                  type="navigable"
-                  navigateTo={tutorialNavigateTo}
-                  onPress={() => analytics.logConsultTutorial('profile')}
-                  icon={LifeBuoy}
-                />
-              </Li>
+              {!!shouldDisplayTutorial && (
+                <Li>
+                  <Row
+                    title="Comment ça marche&nbsp;?"
+                    type="navigable"
+                    navigateTo={tutorialNavigateTo}
+                    onPress={() => analytics.logConsultTutorial('profile')}
+                    icon={LifeBuoy}
+                  />
+                </Li>
+              )}
               <Li>
                 <Row
                   title="Centre d’aide"
