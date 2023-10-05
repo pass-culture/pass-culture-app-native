@@ -1,11 +1,9 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
-
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
 - assertVisible: "Cela permet de savoir si tu peux bénéficier du pass Culture."
 - assertVisible:

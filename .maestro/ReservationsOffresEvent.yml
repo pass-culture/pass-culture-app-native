@@ -11,7 +11,6 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
-
 - tapOn: "Dates & heures"
 - tapOn: "Interrupteur date"
 - assertVisible: "Date"
@@ -101,7 +100,6 @@ appId: app.passculture.staging
 - scrollUntilVisible:
       element: "Annuler ma réservation"
       direction: DOWN
-
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCancelMyReservation.yml
 - runFlow: src/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCancelMyReservation.yml

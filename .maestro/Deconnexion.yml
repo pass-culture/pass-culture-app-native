@@ -8,8 +8,7 @@ appId: app.passculture.staging
 - tapOn:
     point: "91%,89%"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
-- tapOn: Mon profil
-
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 #- TODO Mettre en variable la version testée
 - scrollUntilVisible:
     element: "Version\_1.256.0"
@@ -22,5 +21,4 @@ appId: app.passculture.staging
 - tapOn:
     text: "Déconnexion"
     index: 1
-
 - runFlow: reusableFlows/StopApp.yml # Stop App

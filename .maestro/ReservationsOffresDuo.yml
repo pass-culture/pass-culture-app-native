@@ -14,7 +14,6 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
-
 - tapOn: "Duo" # Filtre offre Duo
 - assertVisible: "Uniquement les offres duo"
 - assertVisible: "Seules les sorties seront affichées"
@@ -75,7 +74,5 @@ appId: app.passculture.staging
 #- TODO : comprendre pourauoi le wording n'est pas détecté par MAESTRO
 #- assertVisible:
 #    id: "cancel-annulation-message"
-
 - assertVisible: "Réservations terminées"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App

@@ -1,6 +1,5 @@
 appId: app.passculture.staging
 ---
-
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
@@ -25,7 +24,6 @@ appId: app.passculture.staging
     point: "49%,69%"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: src/features/bookOffer/PreBookingPage.yml # PreBookingReservation
-
 - tapOn: "Confirmer la réservation"
 - runFlow: src/features/bookOffer/BookingConfirmationPage.yml # BookingConfirmationPage
 - tapOn: "Voir ma réservation"
@@ -45,10 +43,8 @@ appId: app.passculture.staging
 - scrollUntilVisible:
       element: "Annuler ma réservation"
       direction: DOWN
-
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCancelMyReservation.yml
 - runFlow: src/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCancelMyReservation.yml
 - assertVisible: "Réservations terminées"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App

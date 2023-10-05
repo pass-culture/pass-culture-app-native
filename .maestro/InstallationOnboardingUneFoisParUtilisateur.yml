@@ -1,9 +1,6 @@
 appId: app.passculture.staging
 ---
-
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
 - tapOn: "Tout refuser"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
@@ -12,11 +9,9 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - tapOn: "Applications récentes"
 - tapOn: "Tout fermer"
-
 - launchApp:
       appId: 'app.passculture.staging'
       clearState: false
 - assertVisible: "Bienvenue\_!"
 - assertVisible: "Débloque ton crédit"
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

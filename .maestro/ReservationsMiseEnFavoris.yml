@@ -1,6 +1,5 @@
 appId: app.passculture.staging
 ---
-
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
@@ -45,8 +44,6 @@ appId: app.passculture.staging
 - assertVisible: "Tu n’as pas encore de favori\_?\nExplore le catalogue pass Culture\
     \ et ajoute les offres en favori pour les retrouver facilement\_!"
 - assertVisible: "Découvrir le catalogue"
-
 - tapOn: "Découvrir le catalogue"
 - assertVisible: "Rechercher des offres"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App

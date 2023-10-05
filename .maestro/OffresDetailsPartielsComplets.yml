@@ -27,12 +27,10 @@ appId: app.passculture.staging
     index: 1
 - tapOn: "Cette semaine"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
-
 - tapOn:
     point: "49%,84%"
 - tapOn:
     point: "49%,84%"
-
 - assertVisible: "Visite de la Maison-Atelier Foujita"
 - assertVisible: "Visite"
 - assertVisible: "À deux\_!"
@@ -77,5 +75,4 @@ appId: app.passculture.staging
       id: "final-animated-icon-back"
 - tapOn:
       id: "icon-back"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App

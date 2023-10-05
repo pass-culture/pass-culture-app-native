@@ -8,5 +8,4 @@ appId: app.passculture.staging
 - tapOn: "Interrupteur Enregistrer des statistiques de navigation"
 - tapOn: "Interrupteur Mesurer l’efficacité de nos publicités"
 - tapOn: "Enregistrer mes choix"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App
