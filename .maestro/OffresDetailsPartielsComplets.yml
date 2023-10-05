@@ -57,10 +57,8 @@ appId: app.passculture.staging
     \ à travers des expositions temporaires."
 - assertVisible: "Crédit photo"
 - assertVisible: "© Henri Perrot"
-- tapOn:
-      id: "icon-back"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonIconBack.yml
 - tapOn:
       id: "final-animated-icon-back"
-- tapOn:
-      id: "icon-back"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonIconBack.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App
