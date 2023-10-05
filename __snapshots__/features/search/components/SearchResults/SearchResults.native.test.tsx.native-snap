@@ -47,7 +47,135 @@ exports[`SearchResults component should render correctly 1`] = `
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
-                  "marginRight": 4,
+                  "marginTop": 4,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Voir tous les filtres : 1 filtre actif"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "display": "flex",
+                  "height": 32,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                  "width": 32,
+                }
+              }
+              testID="Voir tous les filtres : 1 filtre actif"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 16,
+                      "borderWidth": 1,
+                      "height": 32,
+                      "justifyContent": "center",
+                      "width": 32,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={16}
+                  width={16}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignSelf": "center",
+                      "backgroundColor": "#eb0055",
+                      "borderColor": "#ffffff",
+                      "borderRadius": 12,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                    },
+                    {
+                      "backgroundColor": "#161617",
+                      "bottom": 0,
+                      "position": "absolute",
+                      "right": 0,
+                    },
+                  ]
+                }
+                testID="searchFilterBadge"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "height": 16,
+                        "minWidth": 16,
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    1
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "marginBottom": 4,
+                  "marginLeft": 4,
                   "marginTop": 4,
                 },
               ]
@@ -86,9 +214,10 @@ exports[`SearchResults component should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "borderColor": "#eb0055",
+                  "backgroundColor": "#F1F1F4",
+                  "borderColor": "#161617",
                   "borderRadius": 24,
-                  "borderWidth": 1,
+                  "borderWidth": 2,
                   "boxSizing": "border-box",
                   "flexDirection": "row-reverse",
                   "height": 32,
@@ -104,11 +233,10 @@ exports[`SearchResults component should render correctly 1`] = `
               testID="Partout : Filtre sélectionné"
             >
               <Text
-                isSelected={true}
                 style={
                   [
                     {
-                      "color": "#eb0055",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -149,7 +277,6 @@ exports[`SearchResults component should render correctly 1`] = `
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
-                  "marginRight": 4,
                   "marginTop": 4,
                 },
               ]
@@ -188,6 +315,7 @@ exports[`SearchResults component should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 24,
                   "borderWidth": 1,
@@ -206,7 +334,6 @@ exports[`SearchResults component should render correctly 1`] = `
               testID="Catégories"
             >
               <Text
-                isSelected={false}
                 style={
                   [
                     {
@@ -231,7 +358,6 @@ exports[`SearchResults component should render correctly 1`] = `
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
-                  "marginRight": 4,
                   "marginTop": 4,
                 },
               ]
@@ -270,6 +396,7 @@ exports[`SearchResults component should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 24,
                   "borderWidth": 1,
@@ -288,7 +415,6 @@ exports[`SearchResults component should render correctly 1`] = `
               testID="Prix"
             >
               <Text
-                isSelected={false}
                 style={
                   [
                     {
@@ -313,7 +439,6 @@ exports[`SearchResults component should render correctly 1`] = `
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
-                  "marginRight": 4,
                   "marginTop": 4,
                 },
               ]
@@ -352,6 +477,7 @@ exports[`SearchResults component should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 24,
                   "borderWidth": 1,
@@ -370,7 +496,6 @@ exports[`SearchResults component should render correctly 1`] = `
               testID="Duo"
             >
               <Text
-                isSelected={false}
                 style={
                   [
                     {
@@ -434,6 +559,7 @@ exports[`SearchResults component should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 24,
                   "borderWidth": 1,
@@ -452,7 +578,6 @@ exports[`SearchResults component should render correctly 1`] = `
               testID="Dates & heures"
             >
               <Text
-                isSelected={false}
                 style={
                   [
                     {

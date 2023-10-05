@@ -18,14 +18,12 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Buttons/HiddenNavigateToSuggestionsButton'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
 import { getIsSearchPreviousRoute } from 'features/search/helpers/getIsSearchPreviousRoute/getIsSearchPreviousRoute'
-import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
@@ -94,7 +92,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   const hasEditableSearchInput =
     params?.view === SearchView.Suggestions || params?.view === SearchView.Results
-  const activeFilters = useFilterCount(searchState)
 
   const hasPosition = useHasPosition()
 
@@ -264,7 +261,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             />
           </FlexView>
         </SearchInputA11yContainer>
-        {params?.view === SearchView.Results && <FilterButton activeFilters={activeFilters} />}
       </SearchInputContainer>
       <HiddenAccessibleText nativeID={accessibilityDescribedBy}>
         Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
