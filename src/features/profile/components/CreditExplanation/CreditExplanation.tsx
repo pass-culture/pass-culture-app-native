@@ -1,7 +1,11 @@
 import React, { FunctionComponent } from 'react'
 
 import { DomainsCredit } from 'api/gen'
-import { useGetCreditModal } from 'features/profile/components/CreditExplanation/useGetCreditModal'
+import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
+import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
+import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
+import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
+import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
@@ -12,29 +16,67 @@ interface Props {
   isDepositExpired: boolean
 }
 
-export const CreditExplanation: FunctionComponent<Props> = (props) => {
+export const CreditExplanation: FunctionComponent<Props> = ({
+  domainsCredit,
+  isDepositExpired,
+}) => {
   const { visible, showModal, hideModal } = useModal(false)
-  const { buttonTitle, creditModal: CreditModal, analytics } = useGetCreditModal(props)
+  const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
-  if (!buttonTitle || !CreditModal) {
-    return null
+  if (isDepositExpired) {
+    const onPressExplanationButton = () => {
+      showModal()
+      analytics.logConsultModalExpiredGrant()
+    }
+    return (
+      <React.Fragment>
+        <StyledButtonQuaternaryBlack
+          icon={Question}
+          wording={'Mon crédit est expiré, que\u00a0faire\u00a0?'}
+          onPress={onPressExplanationButton}
+        />
+        <ExpiredCreditModal visible={visible} hideModal={hideModal} />
+      </React.Fragment>
+    )
+  }
+  if (domainsCredit.all.remaining === 0) {
+    const onPressExplanationButton = () => {
+      showModal()
+      analytics.logConsultModalNoMoreCredit()
+    }
+    return (
+      <React.Fragment>
+        <StyledButtonQuaternaryBlack
+          icon={Question}
+          wording={'J’ai dépensé tout mon crédit, que\u00a0faire\u00a0?'}
+          onPress={onPressExplanationButton}
+        />
+        <ExhaustedCreditModal visible={visible} hideModal={hideModal} />
+      </React.Fragment>
+    )
+  }
+  if (!isUserUnderageBeneficiary) {
+    const onPressExplanationButton = () => {
+      showModal()
+      analytics.logConsultModalBeneficiaryCeilings()
+    }
+    return (
+      <React.Fragment>
+        <StyledButtonQuaternaryBlack
+          icon={Question}
+          wording={'Pourquoi cette limite\u00a0?'}
+          onPress={onPressExplanationButton}
+        />
+        <CreditCeilingsModal
+          visible={visible}
+          hideModal={hideModal}
+          domainsCredit={domainsCredit}
+        />
+      </React.Fragment>
+    )
   }
 
-  const onPressExplanationButton = () => {
-    analytics()
-    showModal()
-  }
-
-  return (
-    <React.Fragment>
-      <StyledButtonQuaternaryBlack
-        icon={Question}
-        wording={buttonTitle}
-        onPress={onPressExplanationButton}
-      />
-      <CreditModal visible={visible} hideModal={hideModal} domainsCredit={props.domainsCredit} />
-    </React.Fragment>
-  )
+  return null
 }
 
 const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
