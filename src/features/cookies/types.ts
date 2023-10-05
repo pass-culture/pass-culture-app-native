@@ -48,6 +48,8 @@ export interface CookiesChoiceSettings {
 export type UTMParams = {
   params?: {
     utm_campaign: string
+    utm_content: string
+    utm_gen: string
     utm_medium: string
     utm_source: string
     campaign_date: string
