@@ -6,7 +6,7 @@ appId: app.passculture.staging
 - tapOn: "Films, séries, cinéma"
 - tapOn:
     point: "50%,71%"
-- tapOn: "Réserver l’offre"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
@@ -80,8 +80,7 @@ appId: app.passculture.staging
       point: "49%,32%"
 - tapOn:
       point: "50%,34%"
-- tapOn: "Réserver l’offre"
-
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: src/features/bookOffer/PreBookingPage.yml #PreBookingReservation
 - tapOn: "Confirmer la réservation"
 - runFlow: src/features/bookOffer/BookingConfirmationPage.yml #BookingConfirmationPage

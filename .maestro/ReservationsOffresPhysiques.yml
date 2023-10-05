@@ -10,7 +10,7 @@ appId: app.passculture.staging
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "50%,71%"
-- tapOn: "Réserver l’offre"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
@@ -23,7 +23,7 @@ appId: app.passculture.staging
     point: "49%,69%"
 - tapOn:
     point: "49%,69%"
-- tapOn: "Réserver l’offre"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: src/features/bookOffer/PreBookingPage.yml # PreBookingReservation
 
 - tapOn: "Confirmer la réservation"
