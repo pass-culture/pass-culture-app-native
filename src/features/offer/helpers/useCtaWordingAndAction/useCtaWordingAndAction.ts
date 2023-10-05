@@ -105,7 +105,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
+  if (userStatus?.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: 'Réserver l’offre',
       bottomBannerText:
@@ -123,7 +123,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus.statusType === YoungStatusType.eligible) {
+  if (userStatus?.statusType === YoungStatusType.eligible) {
     const common = {
       wording: 'Réserver l’offre',
       isDisabled: false,
