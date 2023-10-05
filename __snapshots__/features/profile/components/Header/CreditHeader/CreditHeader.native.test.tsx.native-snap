@@ -964,7 +964,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         200 €
       </Text>
        
-      en offres numériques
+      en offres numériques.
     </Text>
     <Text
       style={
@@ -996,7 +996,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         100 €
       </Text>
        
-      en offres physiques
+      en offres physiques.
     </Text>
     <View
       numberOfSpaces={1}
