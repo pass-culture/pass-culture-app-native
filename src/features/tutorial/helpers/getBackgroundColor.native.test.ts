@@ -1,19 +1,19 @@
 import colorAlpha from 'color-alpha'
 
+import { CreditStatus } from 'features/tutorial/enums'
 import { getBackgroundColor } from 'features/tutorial/helpers/getBackgroundColor'
-import { CreditStatus } from 'features/tutorial/types'
-import { theme } from 'theme'
+import { computedTheme } from 'tests/computedTheme'
 
 describe('getBackgroundColor', () => {
   it.each`
     status                  | expectedBackgroundColor
-    ${CreditStatus.GONE}    | ${colorAlpha(theme.colors.greyLight, 0.5)}
-    ${CreditStatus.COMING}  | ${theme.colors.greyLight}
-    ${CreditStatus.ONGOING} | ${theme.colors.white}
+    ${CreditStatus.GONE}    | ${colorAlpha(computedTheme.colors.greyLight, 0.5)}
+    ${CreditStatus.COMING}  | ${computedTheme.colors.greyLight}
+    ${CreditStatus.ONGOING} | ${computedTheme.colors.white}
   `(
     'should return $expectedBackgroundColor for $status status',
     ({ status, expectedBackgroundColor }) => {
-      expect(getBackgroundColor(theme, status)).toEqual(expectedBackgroundColor)
+      expect(getBackgroundColor(computedTheme, status)).toEqual(expectedBackgroundColor)
     }
   )
 })

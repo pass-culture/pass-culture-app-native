@@ -1,25 +1,31 @@
 import React from 'react'
 import {
   NativeSyntheticEvent,
+  Platform,
   TargetedEvent,
   // eslint-disable-next-line no-restricted-imports
   TouchableOpacity as RNTouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native'
+import { TouchableOpacity as GestureTouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
+type Props = TouchableOpacityProps & { shouldUseGestureHandler?: boolean }
+type StyledProps = { unselectable?: boolean; isFocus?: boolean }
+
 export function TouchableOpacity({
+  shouldUseGestureHandler = false,
   onFocus,
   onBlur,
   children,
   accessibilityLabel,
   testID,
   ...props
-}: TouchableOpacityProps) {
+}: Props) {
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
 
   const onStyledFocus = (e: NativeSyntheticEvent<TargetedEvent>) => {
@@ -31,24 +37,39 @@ export function TouchableOpacity({
     onBlur?.(e)
   }
 
+  // only available on iOS because:
+  // - on Android, onPress doesn't work
+  // - on web, the a11y is broken
+  const isGestureHandlerAvailable = Platform.select({
+    ios: true,
+    default: false,
+  })
+  const InternalTouchableOpacity: React.FC<TouchableOpacityProps & StyledProps> =
+    shouldUseGestureHandler && isGestureHandlerAvailable
+      ? StyledGestureTouchableOpacity
+      : StyledRNTouchableOpacity
+
   return (
-    <StyledTouchableOpacity
+    <InternalTouchableOpacity
       isFocus={isFocus}
       onFocus={onStyledFocus}
       onBlur={onStyledBlur}
       {...props}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
-    </StyledTouchableOpacity>
+    </InternalTouchableOpacity>
   )
 }
 
-const StyledTouchableOpacity = styled(RNTouchableOpacity).attrs(({ activeOpacity, theme }) => ({
-  activeOpacity: activeOpacity ?? theme.activeOpacity,
-}))<{ unselectable?: boolean; isFocus?: boolean }>(({ theme, unselectable, isFocus }) => ({
-  userSelect: unselectable ? 'none' : 'auto',
-  ...touchableFocusOutline(theme, isFocus),
-}))
+const addStyled = (Component: typeof RNTouchableOpacity | typeof GestureTouchableOpacity) =>
+  styled(Component).attrs(({ activeOpacity, theme }) => ({
+    activeOpacity: activeOpacity ?? theme.activeOpacity,
+  }))<StyledProps>(({ theme, unselectable, isFocus }) => ({
+    userSelect: unselectable ? 'none' : 'auto',
+    ...touchableFocusOutline(theme, isFocus),
+  }))
+const StyledRNTouchableOpacity = addStyled(RNTouchableOpacity)
+const StyledGestureTouchableOpacity = addStyled(GestureTouchableOpacity)
 
 // eslint-disable-next-line no-restricted-imports
 export { TouchableOpacity as RNTouchableOpacity } from 'react-native'

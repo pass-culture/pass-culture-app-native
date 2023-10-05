@@ -49,6 +49,23 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -95,7 +112,20 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -272,6 +302,25 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -391,11 +440,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -510,6 +559,25 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -624,11 +692,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -743,6 +811,25 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -857,11 +944,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -975,6 +1062,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <Text
                 style={
                   [
@@ -993,11 +1090,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 Remise à 0 du crédit
               </Text>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -1103,6 +1200,25 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -1241,11 +1357,11 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -1278,7 +1394,19 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       accessibilityRole="link"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -1361,6 +1489,23 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
     />
     <View
       accessibilityLabel="Plus tard"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -1492,6 +1637,23 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -1538,7 +1700,20 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -1713,6 +1888,25 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -1827,11 +2021,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -1935,6 +2129,25 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2054,11 +2267,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -2173,6 +2386,25 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -2287,11 +2519,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -2405,6 +2637,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <Text
                 style={
                   [
@@ -2423,11 +2665,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 Remise à 0 du crédit
               </Text>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -2533,6 +2775,25 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -2671,11 +2932,11 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -2708,7 +2969,19 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       accessibilityRole="link"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -2791,6 +3064,23 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
     />
     <View
       accessibilityLabel="Plus tard"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -2922,6 +3212,23 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -2968,7 +3275,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -3143,6 +3463,25 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -3257,11 +3596,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -3363,6 +3702,25 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -3477,11 +3835,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -3585,6 +3943,25 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -3704,11 +4081,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -3822,6 +4199,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <Text
                 style={
                   [
@@ -3840,11 +4227,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 Remise à 0 du crédit
               </Text>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -3950,6 +4337,25 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -4088,11 +4494,11 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -4125,7 +4531,19 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       accessibilityRole="link"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -4208,6 +4626,23 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     />
     <View
       accessibilityLabel="Plus tard"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -4339,6 +4774,23 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -4385,7 +4837,20 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -4560,6 +5025,25 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -4674,11 +5158,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -4780,6 +5264,25 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -4894,11 +5397,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -5000,6 +5503,25 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -5114,11 +5636,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -5213,6 +5735,25 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -5356,11 +5897,11 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "height": 8,
+                      "height": 4,
                     },
                   ]
                 }
@@ -5393,7 +5934,19 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       accessibilityRole="link"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -5476,6 +6029,23 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     />
     <View
       accessibilityLabel="Plus tard"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

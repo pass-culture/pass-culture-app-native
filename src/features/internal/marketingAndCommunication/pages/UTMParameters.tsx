@@ -7,13 +7,17 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const UTMParameters = () => {
-  const { campaign, source, medium, campaignDate } = useUtmParams()
+  const { gen, campaign, source, medium, campaignDate } = useUtmParams()
 
   return (
     <React.Fragment>
       <PageHeaderSecondary title="UTM parameters" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
+        <AlignedText>
+          <Text>traffic_gen: {gen}</Text>
+        </AlignedText>
+        <Spacer.Column numberOfSpaces={2} />
         <AlignedText>
           <Text>traffic_campaign: {campaign}</Text>
         </AlignedText>

@@ -12,6 +12,7 @@ import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
+import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'
@@ -46,6 +47,12 @@ export function Navigation(): React.JSX.Element {
     visible: fakeDoorListFavoritesVisible,
     showModal: showFakeDoorListFavoritesVisible,
     hideModal: hideFakeDoorListFavoritesVisible,
+  } = useModal(false)
+
+  const {
+    visible: venueModalVisible,
+    showModal: showVenueModal,
+    hideModal: hideVenueModal,
   } = useModal(false)
 
   if (screenError) {
@@ -200,6 +207,10 @@ export function Navigation(): React.JSX.Element {
               wording="Notification rechargement crédit"
               onPress={() => navigate('RecreditBirthdayNotification')}
             />
+          </Row>
+          <Row half>
+            <ButtonPrimary wording="Filtre point de vente" onPress={showVenueModal} />
+            <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
           </Row>
         </StyledContainer>
         <Spacer.BottomScreen />

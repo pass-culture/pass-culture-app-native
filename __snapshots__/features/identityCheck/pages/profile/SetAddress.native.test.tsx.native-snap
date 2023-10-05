@@ -74,6 +74,23 @@ exports[`<SetAddress/> should render correctly 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -347,16 +364,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 }
                 testID="styled-input-container"
               >
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
                   accessibilityHidden={false}
@@ -441,7 +448,19 @@ exports[`<SetAddress/> should render correctly 1`] = `
             accessibilityLabel="Continuer vers l’étape suivante"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}

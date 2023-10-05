@@ -15,7 +15,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   venueId: number
 }
@@ -28,7 +28,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
   const { headerTransition, title, venueId } = props
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
 
-  const { share: shareVenue, shareContent } = useShareVenue(venueId)
+  const { share: shareVenue, shareContent } = useShareVenue(venueId, 'header')
   const {
     visible: shareVenueModalVisible,
     showModal: showShareVenueModal,
@@ -36,7 +36,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
   } = useModal(false)
 
   const onSharePress = () => {
-    analytics.logShare({ type: 'Venue', from: 'venue', id: venueId })
+    analytics.logShare({ type: 'Venue', from: 'venue', venue_id: venueId })
     shareVenue()
     showShareVenueModal()
   }

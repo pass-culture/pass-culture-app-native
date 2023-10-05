@@ -87,6 +87,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             <View
               accessibilityLabel="Revenir en arrière"
               accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -256,7 +273,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": true,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -382,7 +411,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -426,6 +467,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -438,6 +481,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -511,7 +556,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -555,6 +612,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -567,6 +626,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -640,7 +701,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -684,6 +757,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -696,6 +771,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#eb0055",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -769,7 +846,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -813,6 +902,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -825,6 +916,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -898,7 +991,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -942,6 +1047,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -954,6 +1061,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -1027,7 +1136,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1071,6 +1192,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -1083,6 +1206,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -1156,7 +1281,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1200,6 +1337,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -1212,6 +1351,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -1285,7 +1426,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1329,6 +1482,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
@@ -1341,6 +1496,8 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                         [
                           {
                             "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
@@ -1415,7 +1572,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": true,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -1660,7 +1829,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": true,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -2243,6 +2424,125 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   ]
                 }
               />
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949D",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 0,
+                        "paddingLeft": 17,
+                        "paddingRight": 17,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    defaultValue="marketing"
+                    editable={true}
+                    isEmpty={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="utm_gen (*)"
+                    placeholderTextColor="#696A6F"
+                    returnKeyType="next"
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Italic",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                    testID="Champ de texte"
+                  />
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 20,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#CBCDD2",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Type de campagne : marketing ou product.
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
             </View>
           </View>
           <View
@@ -2259,7 +2559,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -2551,7 +2863,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           accessibilityLabel="Générer le lien"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -2826,6 +3150,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           }
         >
           <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={false}
@@ -2852,7 +3193,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="checkbox"
               accessibilityState={
                 {
+                  "busy": undefined,
                   "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

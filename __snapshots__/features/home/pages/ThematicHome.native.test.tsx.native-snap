@@ -42,8 +42,8 @@ exports[`ThematicHome should render correctly 1`] = `
           />
         }
         ListHeaderComponent={
-          <SubHeader
-            headerTransition={0}
+          <ThematicHeaderWithGeolocBanner
+            isLocated={true}
             thematicHeader={
               {
                 "subtitle": "HeaderSubtitle",
@@ -222,6 +222,7 @@ exports[`ThematicHome should render correctly 1`] = `
             </View>
           </View>
           <View
+            onFocusCapture={[Function]}
             onLayout={[Function]}
             style={null}
           />
@@ -267,7 +268,19 @@ exports[`ThematicHome should render correctly 1`] = `
             accessibilityRole="button"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}
@@ -458,6 +471,23 @@ exports[`ThematicHome should render correctly 1`] = `
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

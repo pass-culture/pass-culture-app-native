@@ -13,6 +13,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -20,7 +21,10 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-const useSimilarOffersSpy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementation()
+const useSimilarOffersSpy = jest
+  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .mockImplementation()
+  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 let mockShouldUseAlgoliaRecommend = false
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
@@ -40,6 +44,16 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
+const apiRecoParams: RecommendationApiParams = {
+  call_id: '1',
+  filtered: true,
+  geo_located: false,
+  model_endpoint: 'default',
+  model_name: 'similar_offers_default_prod',
+  model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+  reco_origin: 'default',
+}
 
 const offerDigitalAndFree = {
   isDigital: true,
@@ -139,8 +153,14 @@ describe('<Offer />', () => {
     })
 
     it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
 
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
@@ -150,12 +170,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -164,8 +186,8 @@ describe('<Offer />', () => {
     })
 
     it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce([])
-      useSimilarOffersSpy.mockReturnValueOnce([])
+      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
+      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
@@ -175,12 +197,14 @@ describe('<Offer />', () => {
 
       await waitFor(() => {
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           shouldUseAlgoliaRecommend: false,
         })
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -191,8 +215,11 @@ describe('<Offer />', () => {
 
     describe('When there is only same category similar offers playlist', () => {
       beforeAll(() => {
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-        useSimilarOffersSpy.mockReturnValueOnce([])
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       })
 
       it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
@@ -204,6 +231,7 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -230,8 +258,11 @@ describe('<Offer />', () => {
 
     describe('When there is only other categories similar offers playlist', () => {
       beforeAll(() => {
-        useSimilarOffersSpy.mockReturnValueOnce([])
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
       })
 
       it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
@@ -243,6 +274,7 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -268,8 +300,14 @@ describe('<Offer />', () => {
     })
 
     it('should not log logPlaylistVerticalScroll event when scrolling vertical and not reaching the bottom', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
       renderOfferPage()
       const scrollView = screen.getByTestId('offer-container')
 
@@ -278,12 +316,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -292,8 +332,14 @@ describe('<Offer />', () => {
     })
 
     it('should log logPlaylistVerticalScroll with the event param fromOfferId & offerId', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
       const fromOfferId = 1
       const offerId = 116656
       renderOfferPage(fromOfferId)
@@ -304,12 +350,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+        ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -322,8 +370,14 @@ describe('<Offer />', () => {
         mockShouldUseAlgoliaRecommend = true
       })
       it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
@@ -332,12 +386,14 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           shouldUseAlgoliaRecommend: true,
         })
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -460,7 +516,7 @@ describe('<Offer />', () => {
         expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
       })
 
-      it('should not display an error message when pressing button to book the offer', async () => {
+      it('should log BookingConfirmation when pressing button to book the offer', async () => {
         server.use(
           rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
             res(ctx.status(200), ctx.json(expectedResponse))
@@ -472,7 +528,32 @@ describe('<Offer />', () => {
             res(ctx.status(200), ctx.json({ bookingId: 123 }))
           )
         )
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
 
+        renderOfferPage(undefined, offerDigitalAndFree)
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        })
+
+        expect(analytics.logBookingConfirmation).toHaveBeenNthCalledWith(1, {
+          bookingId: 123,
+          offerId: 116656,
+        })
+      })
+
+      it('should not display an error message when pressing button to book the offer', async () => {
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -532,7 +613,7 @@ describe('<Offer />', () => {
         expect(mockedOpenUrl).not.toHaveBeenCalled()
       })
 
-      it('should display an error message when pressing button to book the offer', async () => {
+      it('should not log BookingConfirmation when pressing button to book the offer', async () => {
         server.use(
           rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
             res(ctx.status(200), ctx.json(expectedResponse))
@@ -564,36 +645,19 @@ describe('<Offer />', () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
         })
 
-        expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-          message: 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        expect(analytics.logBookingConfirmation).not.toHaveBeenCalled()
       })
     })
-  })
 
-  describe('When offer is digital and free and already booked', () => {
-    const expectedResponse: BookingsResponse = {
-      ended_bookings: [],
-      hasBookingsAfter18: false,
-      ongoing_bookings: [
-        {
-          ...mockedBookingApi,
-          stock: {
-            ...mockedBookingApi.stock,
-            offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
-          },
-          dateUsed: '2023-02-14T10:10:08.800599Z',
-          completedUrl: 'https://www.google.fr/',
-        },
-      ],
-    }
-
-    it('should directly redirect to the offer when pressing offer access button', async () => {
+    it('should display an error message when pressing button to book the offer', async () => {
       server.use(
         rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
           res(ctx.status(200), ctx.json(expectedResponse))
         )
+      )
+
+      server.use(
+        rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(400)))
       )
 
       // Multiple renders force us to mock auth context as loggedIn user in this test
@@ -603,7 +667,7 @@ describe('<Offer />', () => {
         setIsLoggedIn: jest.fn(),
         isUserLoading: false,
         refetchUser: jest.fn(),
-        user: { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
+        user: beneficiaryUser,
       }
       // Multiple renders force us to mock auth context as loggedIn user in this test
       // eslint-disable-next-line local-rules/independent-mocks
@@ -615,8 +679,58 @@ describe('<Offer />', () => {
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
       })
 
-      expect(mockedOpenUrl).toHaveBeenCalledTimes(1)
+      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
+        message: 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
+  })
+})
+
+describe('When offer is digital and free and already booked', () => {
+  const expectedResponse: BookingsResponse = {
+    ended_bookings: [],
+    hasBookingsAfter18: false,
+    ongoing_bookings: [
+      {
+        ...mockedBookingApi,
+        stock: {
+          ...mockedBookingApi.stock,
+          offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
+        },
+        dateUsed: '2023-02-14T10:10:08.800599Z',
+        completedUrl: 'https://www.google.fr/',
+      },
+    ],
+  }
+
+  it('should directly redirect to the offer when pressing offer access button', async () => {
+    server.use(
+      rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
+        res(ctx.status(200), ctx.json(expectedResponse))
+      )
+    )
+
+    // Multiple renders force us to mock auth context as loggedIn user in this test
+    // eslint-disable-next-line local-rules/independent-mocks
+    const newLocal = {
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+      user: { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
+    }
+    // Multiple renders force us to mock auth context as loggedIn user in this test
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseAuthContext.mockReturnValue(newLocal)
+
+    renderOfferPage(undefined, offerDigitalAndFree)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+    })
+
+    expect(mockedOpenUrl).toHaveBeenCalledTimes(1)
   })
 })
 

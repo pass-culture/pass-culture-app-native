@@ -56,8 +56,8 @@ jest.mock('libs/geolocation/LocationWrapper', () => ({
   }),
 }))
 
-jest.mock('features/home/api/useAlgoliaRecommendedHits', () => ({
-  useAlgoliaRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
+jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
+  useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 
 const defaultData: ModuleData = {

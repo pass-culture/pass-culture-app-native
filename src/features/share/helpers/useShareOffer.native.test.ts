@@ -25,13 +25,18 @@ const shareMessage =
 
 const shareContentIos = {
   message: shareMessage,
-  url: `${WEBAPP_V2_URL}/offre/146112`,
+  messageWithoutLink: shareMessage,
+  url: `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
   title: shareTitle,
 }
 
 const shareContentAndroid = {
-  message: shareMessage + DOUBLE_LINE_BREAK + `${WEBAPP_V2_URL}/offre/146112`,
-  url: `${WEBAPP_V2_URL}/offre/146112`,
+  message:
+    shareMessage +
+    DOUBLE_LINE_BREAK +
+    `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
+  messageWithoutLink: shareMessage,
+  url: `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
   title: shareTitle,
 }
 
@@ -41,7 +46,7 @@ describe('useShareOffer', () => {
 
     it('for ios', async () => {
       Platform.OS = 'ios'
-      const { result } = renderHook(() => useShareOffer(offer.id))
+      const { result } = renderHook(() => useShareOffer(offer.id, 'utm_medium'))
 
       const { share } = result.current
       await act(async () => share())
@@ -51,7 +56,7 @@ describe('useShareOffer', () => {
 
     it('for android', async () => {
       Platform.OS = 'android'
-      const { result } = renderHook(() => useShareOffer(offer.id))
+      const { result } = renderHook(() => useShareOffer(offer.id, 'utm_medium'))
 
       const { share } = result.current
       await act(async () => share())
@@ -68,6 +73,7 @@ describe('getShareOffer', () => {
         offerId: undefined,
         offerName: 'Donjons & Dragons : L’Honneur des voleurs - VO',
         venueName: 'L’Orange Bleue*',
+        utmMedium: 'utm_medium',
       })
 
       await act(async () => share())
@@ -80,6 +86,7 @@ describe('getShareOffer', () => {
         offerId: 146112,
         offerName: undefined,
         venueName: 'L’Orange Bleue*',
+        utmMedium: 'utm_medium',
       })
 
       await act(async () => share())
@@ -92,6 +99,7 @@ describe('getShareOffer', () => {
         offerId: 146112,
         offerName: 'Donjons & Dragons : L’Honneur des voleurs - VO',
         venueName: undefined,
+        utmMedium: 'utm_medium',
       })
 
       expect(shareContent).toBeUndefined()
@@ -105,6 +113,7 @@ describe('getShareOffer', () => {
         offerId: 146112,
         offerName: 'Donjons & Dragons : L’Honneur des voleurs - VO',
         venueName: 'L’Orange Bleue*',
+        utmMedium: 'utm_medium',
       })
 
       await act(async () => share())
@@ -115,7 +124,9 @@ describe('getShareOffer', () => {
         {
           message:
             'Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture',
-          url: `${WEBAPP_V2_URL}/offre/146112`,
+          messageWithoutLink:
+            'Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture',
+          url: `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
           title: shareTitle,
         },
         {
@@ -131,6 +142,7 @@ describe('getShareOffer', () => {
         offerId: 146112,
         offerName: 'Donjons & Dragons : L’Honneur des voleurs - VO',
         venueName: 'L’Orange Bleue*',
+        utmMedium: 'utm_medium',
       })
 
       await act(async () => share())
@@ -138,8 +150,10 @@ describe('getShareOffer', () => {
       expect(mockShare).toHaveBeenNthCalledWith(
         1,
         {
-          message: `Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture\n\n${WEBAPP_V2_URL}/offre/146112`,
-          url: `${WEBAPP_V2_URL}/offre/146112`,
+          message: `Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture\n\n${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
+          messageWithoutLink:
+            'Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture',
+          url: `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
           title: shareTitle,
         },
         {

@@ -441,7 +441,19 @@ exports[`<Venue /> should match snapshot 1`] = `
           accessibilityRole="button"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -952,9 +964,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "dataFooter": true,
                       },
                     ],
-                    "_firstIndexToProcess": 0,
+                    "_firstIndexToProcess": 3,
                     "_hasStableIds": true,
-                    "_requiresDataChangeHandling": false,
+                    "_requiresDataChangeHandling": true,
                     "_size": 4,
                     "getStableId": [Function],
                     "rowHasChanged": [Function],
@@ -1341,6 +1353,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                               accessibilityRole="link"
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
                               accessible={true}
                               focusable={true}
                               onClick={[Function]}
@@ -1616,6 +1636,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                               accessibilityRole="link"
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
                               accessible={true}
                               focusable={true}
                               onClick={[Function]}
@@ -1869,6 +1897,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                               accessibilityRole="link"
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
                               accessible={true}
                               focusable={true}
                               onClick={[Function]}
@@ -2167,6 +2203,23 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               accessibilityLabel="En voir plus"
                               accessibilityRole="link"
+                              accessibilityState={
+                                {
+                                  "busy": undefined,
+                                  "checked": undefined,
+                                  "disabled": undefined,
+                                  "expanded": undefined,
+                                  "selected": undefined,
+                                }
+                              }
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
                               accessible={true}
                               collapsable={false}
                               focusable={true}
@@ -2328,6 +2381,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                         <View
                           accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           accessibilityRole="link"
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
                           accessible={true}
                           focusable={true}
                           onClick={[Function]}
@@ -2534,7 +2595,19 @@ exports[`<Venue /> should match snapshot 1`] = `
             accessibilityRole="link"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}
@@ -2751,6 +2824,23 @@ exports[`<Venue /> should match snapshot 1`] = `
           >
             <View
               accessibilityLabel="Voir l’itinéraire"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -2917,6 +3007,23 @@ exports[`<Venue /> should match snapshot 1`] = `
               >
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -3020,6 +3127,23 @@ Instagram
               >
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -3123,6 +3247,23 @@ WhatsApp
               >
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -3226,6 +3367,23 @@ iMessage
               >
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -3367,7 +3525,19 @@ d’options
             accessibilityRole="button"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
                 "expanded": false,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={false}
@@ -3562,7 +3732,19 @@ d’options
             accessibilityRole="button"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
                 "expanded": false,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={false}
@@ -4281,7 +4463,19 @@ d’options
             accessibilityRole="button"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
                 "expanded": false,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={false}
@@ -4403,6 +4597,23 @@ d’options
             >
               <View
                 accessibilityLabel="E-mail"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -4460,6 +4671,23 @@ d’options
               </View>
               <View
                 accessibilityLabel="Téléphone"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -4517,6 +4745,23 @@ d’options
               </View>
               <View
                 accessibilityLabel="Site internet"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -4572,6 +4817,821 @@ d’options
                 >
                   Site internet
                 </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "paddingTop": 24,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "paddingBottom": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "maxHeight": 68,
+                    "overflow": "hidden",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "marginHorizontal": 24,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                      },
+                    ]
+                  }
+                  testID="playlistTitle"
+                >
+                  Test
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                style={{}}
+              >
+                <RCTScrollView
+                  ItemSeparatorComponent={
+                    {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": [],
+                      "inlineStyle": InlineStyle {
+                        "rules": [
+                          "width: 16px;",
+                        ],
+                      },
+                      "render": [Function],
+                      "shouldForwardProp": undefined,
+                      "styledComponentId": "StyledNativeComponent",
+                      "target": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  ListFooterComponent={
+                    {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": [],
+                      "inlineStyle": InlineStyle {
+                        "rules": [
+                          "width: 24px;",
+                        ],
+                      },
+                      "render": [Function],
+                      "shouldForwardProp": undefined,
+                      "styledComponentId": "StyledNativeComponent",
+                      "target": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  ListHeaderComponent={
+                    {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": [],
+                      "inlineStyle": InlineStyle {
+                        "rules": [
+                          "width: 24px;",
+                        ],
+                      },
+                      "render": [Function],
+                      "shouldForwardProp": undefined,
+                      "styledComponentId": "StyledNativeComponent",
+                      "target": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  applyWindowCorrection={[Function]}
+                  canChangeSize={true}
+                  contentContainerStyle={
+                    {
+                      "backgroundColor": undefined,
+                      "minHeight": 1,
+                      "minWidth": 1,
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                    }
+                  }
+                  contentHeight={250}
+                  contentWidth={192}
+                  data={
+                    [
+                      {
+                        "_geoloc": {
+                          "lat": 2,
+                          "lng": 2,
+                        },
+                        "objectID": "12",
+                        "offer": {
+                          "name": "Test",
+                          "subcategoryId": "ABO_BIBLIOTHEQUE",
+                        },
+                        "venue": {
+                          "address": "Avenue des Tests",
+                          "city": "Jest",
+                        },
+                      },
+                    ]
+                  }
+                  dataProvider={
+                    DataProvider {
+                      "_data": [
+                        {
+                          "_geoloc": {
+                            "lat": 2,
+                            "lng": 2,
+                          },
+                          "objectID": "12",
+                          "offer": {
+                            "name": "Test",
+                            "subcategoryId": "ABO_BIBLIOTHEQUE",
+                          },
+                          "venue": {
+                            "address": "Avenue des Tests",
+                            "city": "Jest",
+                          },
+                        },
+                      ],
+                      "_firstIndexToProcess": 0,
+                      "_hasStableIds": true,
+                      "_requiresDataChangeHandling": false,
+                      "_size": 1,
+                      "getStableId": [Function],
+                      "rowHasChanged": [Function],
+                    }
+                  }
+                  disableRecycling={false}
+                  estimatedItemSize={192}
+                  extendedState={{}}
+                  externalScrollView={[Function]}
+                  finalRenderAheadOffset={187.5}
+                  forceNonDeterministicRendering={true}
+                  getItemLayout={[Function]}
+                  horizontal={true}
+                  initialOffset={0}
+                  initialRenderIndex={0}
+                  isHorizontal={true}
+                  keyExtractor={[Function]}
+                  layoutProvider={
+                    GridLayoutProviderWithProps {
+                      "_acceptableRelayoutDelta": 1,
+                      "_getHeightOrWidth": [Function],
+                      "_getLayoutTypeForIndex": [Function],
+                      "_getSpan": [Function],
+                      "_hasExpired": false,
+                      "_isHorizontal": true,
+                      "_lastLayoutManager": GridLayoutManager {
+                        "_acceptableRelayoutDelta": 1,
+                        "_getSpan": [Function],
+                        "_isGridHorizontal": true,
+                        "_isHorizontal": true,
+                        "_layoutProvider": [Circular],
+                        "_layouts": [
+                          {
+                            "height": 250,
+                            "type": 0,
+                            "width": 192,
+                            "x": 0,
+                            "y": 0,
+                          },
+                        ],
+                        "_maxSpan": 1,
+                        "_renderWindowSize": {
+                          "height": 250,
+                          "width": 800,
+                        },
+                        "_totalHeight": 250,
+                        "_totalWidth": 192,
+                        "_window": {
+                          "height": 250,
+                          "width": 800,
+                        },
+                      },
+                      "_maxSpan": 1,
+                      "_renderWindowSize": {
+                        "height": 250,
+                        "width": 800,
+                      },
+                      "_setLayoutForType": [Function],
+                      "_tempDim": {
+                        "height": 0,
+                        "width": 0,
+                      },
+                      "averageWindow": AverageWindow {
+                        "currentAverage": 192,
+                        "currentCount": 1,
+                        "inputValues": [
+                          192,
+                          ,
+                          ,
+                          ,
+                          ,
+                          ,
+                          ,
+                          ,
+                        ],
+                        "nextIndex": 1,
+                      },
+                      "defaultEstimatedItemSize": 100,
+                      "layoutObject": {
+                        "size": undefined,
+                        "span": undefined,
+                      },
+                      "props": {
+                        "ItemSeparatorComponent": {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [],
+                          "inlineStyle": InlineStyle {
+                            "rules": [
+                              "width: 16px;",
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
+                        },
+                        "ListFooterComponent": {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [],
+                          "inlineStyle": InlineStyle {
+                            "rules": [
+                              "width: 24px;",
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
+                        },
+                        "ListHeaderComponent": {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [],
+                          "inlineStyle": InlineStyle {
+                            "rules": [
+                              "width: 24px;",
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
+                        },
+                        "data": [
+                          {
+                            "_geoloc": {
+                              "lat": 2,
+                              "lng": 2,
+                            },
+                            "objectID": "12",
+                            "offer": {
+                              "name": "Test",
+                              "subcategoryId": "ABO_BIBLIOTHEQUE",
+                            },
+                            "venue": {
+                              "address": "Avenue des Tests",
+                              "city": "Jest",
+                            },
+                          },
+                        ],
+                        "drawDistance": 187.5,
+                        "estimatedItemSize": 192,
+                        "getItemLayout": [Function],
+                        "horizontal": true,
+                        "keyExtractor": [Function],
+                        "numColumns": 1,
+                        "onEndReached": undefined,
+                        "onEndReachedThreshold": 0.2,
+                        "onLayout": [Function],
+                        "renderItem": [Function],
+                        "scrollEnabled": true,
+                        "scrollEventThrottle": 200,
+                        "showsHorizontalScrollIndicator": false,
+                        "testID": "offersModuleList",
+                      },
+                      "renderWindowInsets": {
+                        "height": 0,
+                        "width": 0,
+                      },
+                      "shouldRefreshWithAnchoring": true,
+                    }
+                  }
+                  maxRenderAhead={562.5}
+                  numColumns={1}
+                  onEndReached={[Function]}
+                  onEndReachedThreshold={0}
+                  onEndReachedThresholdRelative={0.2}
+                  onItemLayout={[Function]}
+                  onLayout={[Function]}
+                  onScroll={[Function]}
+                  onScrollBeginDrag={[Function]}
+                  onSizeChanged={[Function]}
+                  onVisibleIndicesChanged={[Function]}
+                  removeClippedSubviews={false}
+                  renderAheadOffset={0}
+                  renderAheadStep={187.5}
+                  renderContentContainer={[Function]}
+                  renderItem={[Function]}
+                  renderItemContainer={[Function]}
+                  rowRenderer={[Function]}
+                  scrollEnabled={true}
+                  scrollEventThrottle={200}
+                  scrollThrottle={16}
+                  scrollViewProps={
+                    {
+                      "contentContainerStyle": {
+                        "backgroundColor": undefined,
+                        "minHeight": 1,
+                        "minWidth": 1,
+                        "paddingBottom": 0,
+                        "paddingTop": 0,
+                      },
+                      "onLayout": [Function],
+                      "onScrollBeginDrag": [Function],
+                      "refreshControl": undefined,
+                      "style": {
+                        "minHeight": 1,
+                        "minWidth": 1,
+                      },
+                    }
+                  }
+                  showsHorizontalScrollIndicator={false}
+                  style={
+                    {
+                      "minHeight": 1,
+                      "minWidth": 1,
+                    }
+                  }
+                  suppressBoundedSizeException={true}
+                  testID="offersModuleList"
+                  windowCorrectionConfig={
+                    {
+                      "applyToInitialOffset": true,
+                      "applyToItemScroll": true,
+                      "value": {
+                        "endCorrection": 0,
+                        "startCorrection": 0,
+                        "windowShift": -1,
+                      },
+                    }
+                  }
+                >
+                  <View>
+                    <View
+                      style={
+                        {
+                          "flexDirection": "row",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          {
+                            "paddingLeft": 0,
+                            "paddingTop": 0,
+                          }
+                        }
+                      />
+                      <View
+                        style={
+                          [
+                            undefined,
+                            undefined,
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "width": 24,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <AutoLayoutView
+                        enableInstrumentation={false}
+                        horizontal={true}
+                        onBlankAreaEvent={[Function]}
+                        onLayout={[Function]}
+                        renderAheadOffset={0}
+                        scrollOffset={0}
+                        style={
+                          {
+                            "height": 250,
+                            "width": 192,
+                          }
+                        }
+                        windowSize={800}
+                      >
+                        <CellContainer
+                          index={0}
+                          onLayout={[Function]}
+                          style={
+                            {
+                              "alignItems": "stretch",
+                              "flexDirection": "row",
+                              "height": 250,
+                              "left": 0,
+                              "position": "absolute",
+                              "top": 0,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "flexDirection": "column",
+                              }
+                            }
+                          >
+                            <View>
+                              <View
+                                accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
+                                accessibilityRole="link"
+                                accessibilityValue={
+                                  {
+                                    "max": undefined,
+                                    "min": undefined,
+                                    "now": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  [
+                                    {
+                                      "textDecorationColor": "black",
+                                      "textDecorationLine": "none",
+                                      "textDecorationStyle": "solid",
+                                    },
+                                    {
+                                      "borderRadius": 8,
+                                      "height": 360,
+                                      "marginVertical": 4,
+                                    },
+                                  ]
+                                }
+                                testID="Offre Test de la catégorie Livre,   prix . "
+                              >
+                                <View
+                                  style={
+                                    [
+                                      {
+                                        "flexDirection": "column-reverse",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    imageWidth={192}
+                                    style={
+                                      [
+                                        {
+                                          "marginTop": 8,
+                                          "maxWidth": 192,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 16,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Test
+                                    </Text>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696A6F",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 16,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    />
+                                  </View>
+                                  <View>
+                                    <View
+                                      height={24}
+                                      style={
+                                        [
+                                          {
+                                            "alignItems": "center",
+                                            "backgroundColor": "#161617",
+                                            "borderBottomLeftRadius": 8,
+                                            "borderBottomRightRadius": 8,
+                                            "flexDirection": "row",
+                                            "height": 24,
+                                            "width": 192,
+                                          },
+                                        ]
+                                      }
+                                      width={192}
+                                    >
+                                      <View
+                                        style={
+                                          [
+                                            {
+                                              "alignItems": "center",
+                                              "flexBasis": 0,
+                                              "flexGrow": 1,
+                                              "flexShrink": 1,
+                                              "justifyContent": "center",
+                                              "paddingHorizontal": 2,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          numberOfLines={1}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#ffffff",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 16,
+                                              },
+                                            ]
+                                          }
+                                          testID="categoryImageCaption"
+                                        >
+                                          Livre
+                                        </Text>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </CellContainer>
+                      </AutoLayoutView>
+                      <CellContainer
+                        index={-1}
+                        style={
+                          [
+                            undefined,
+                            undefined,
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "width": 24,
+                              },
+                            ]
+                          }
+                        />
+                      </CellContainer>
+                      <View
+                        style={
+                          {
+                            "paddingBottom": 0,
+                            "paddingRight": 0,
+                          }
+                        }
+                      />
+                      <View
+                        pointerEvents="none"
+                        style={
+                          {
+                            "opacity": 0,
+                          }
+                        }
+                      >
+                        <View>
+                          <View
+                            accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
+                            accessibilityRole="link"
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
+                            style={
+                              [
+                                {
+                                  "textDecorationColor": "black",
+                                  "textDecorationLine": "none",
+                                  "textDecorationStyle": "solid",
+                                },
+                                {
+                                  "borderRadius": 8,
+                                  "height": 360,
+                                  "marginVertical": 4,
+                                },
+                              ]
+                            }
+                            testID="Offre Test de la catégorie Livre,   prix . "
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "flexDirection": "column-reverse",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                imageWidth={192}
+                                style={
+                                  [
+                                    {
+                                      "marginTop": 8,
+                                      "maxWidth": 192,
+                                    },
+                                  ]
+                                }
+                              >
+                                <Text
+                                  numberOfLines={2}
+                                  style={
+                                    [
+                                      {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 12,
+                                        "lineHeight": 16,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Test
+                                </Text>
+                                <Text
+                                  style={
+                                    [
+                                      {
+                                        "color": "#696A6F",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 12,
+                                        "lineHeight": 16,
+                                      },
+                                    ]
+                                  }
+                                  testID="priceIsDuo"
+                                />
+                              </View>
+                              <View>
+                                <View
+                                  height={24}
+                                  style={
+                                    [
+                                      {
+                                        "alignItems": "center",
+                                        "backgroundColor": "#161617",
+                                        "borderBottomLeftRadius": 8,
+                                        "borderBottomRightRadius": 8,
+                                        "flexDirection": "row",
+                                        "height": 24,
+                                        "width": 192,
+                                      },
+                                    ]
+                                  }
+                                  width={192}
+                                >
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "alignItems": "center",
+                                          "flexBasis": 0,
+                                          "flexGrow": 1,
+                                          "flexShrink": 1,
+                                          "justifyContent": "center",
+                                          "paddingHorizontal": 2,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#ffffff",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 16,
+                                          },
+                                        ]
+                                      }
+                                      testID="categoryImageCaption"
+                                    >
+                                      Livre
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </RCTScrollView>
               </View>
             </View>
           </View>
@@ -4700,6 +5760,23 @@ d’options
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -4845,6 +5922,23 @@ d’options
       <View
         accessibilityLabel="Partager"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

@@ -28,7 +28,7 @@ jest.mock('features/navigation/helpers')
 jest.mock('react-query')
 
 const emailUpdateCancelSpy = jest
-  .spyOn(API.api, 'postnativev1profileemailUpdatecancel')
+  .spyOn(API.api, 'postNativeV1ProfileEmailUpdateCancel')
   .mockImplementation()
 
 const mockShowErrorSnackbar = jest.fn()

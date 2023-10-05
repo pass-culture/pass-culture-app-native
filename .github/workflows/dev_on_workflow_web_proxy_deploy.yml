@@ -6,11 +6,17 @@ on:
       ENV:
         type: string
         required: true
+      CACHE_BUCKET_NAME:
+        type: string
+        required: true
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
+      GCP_PROD_SERVICE_ACCOUNT:
+      GCP_PROD_WORKLOAD_IDENTITY_PROVIDER:
+
 
 jobs:
   web_proxy_deploy:
@@ -23,33 +29,41 @@ jobs:
           version: '>= 416.0.0'
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - uses: actions/cache@v3
-        id: yarn-modules-cache
-        with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install
-      - name: Install package for proxy
-        run: yarn install --immutable --cwd server
-      - name: Authentification to Google
+          node-version-file: 'server/.nvmrc'
+      - name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Cache the proxy node_modules
+        id: yarn-modules-cache-proxy
+        uses: mansagroup/gcs-cache-action@867797f1a78d69e008ad0a321c1459ddd619e9fd
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install
+      - name: Install package for proxy
+        run: yarn install --immutable --cwd server
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+      - name: Switch to google prod account for prod
+        if: ${{ inputs.ENV == 'production' }}
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
       - name: 'Push proxy for input env'
-        run: |
-          yarn --cwd server deploy:${{ inputs.ENV }}
+        run: yarn --cwd server deploy:${{ inputs.ENV }}
+
       - name: 'Clear unused apps'
         run: |
           gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --format="table[no-heading](id)" \

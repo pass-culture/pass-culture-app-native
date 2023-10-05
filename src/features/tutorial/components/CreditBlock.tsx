@@ -1,18 +1,18 @@
-import React, { FunctionComponent } from 'react'
-import { View, TouchableWithoutFeedback } from 'react-native'
+import React from 'react'
+import { TouchableWithoutFeedback, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CreditStatusTag } from 'features/tutorial/components/CreditStatusTag'
+import { CreditStatus } from 'features/tutorial/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { getBackgroundColor } from 'features/tutorial/helpers/getBackgroundColor'
-import { CreditStatus } from 'features/tutorial/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
-  age: number
   creditStatus: CreditStatus
-  onPress: () => void
+  animated?: boolean
+  onPress?: () => void
   children?: React.ReactNode
 }
 
@@ -25,13 +25,9 @@ const containerAnimation = {
   },
 }
 
-export const CreditBlock: FunctionComponent<Props> = ({ age, creditStatus, onPress, children }) => {
-  const AgeText = creditStatus === CreditStatus.ONGOING ? BodySecondary : Typo.CaptionNeutralInfo
-
-  const statusIsOngoing = creditStatus === CreditStatus.ONGOING
-
-  const ViewComponent = statusIsOngoing ? AnimatedView : View
-  const viewProps = statusIsOngoing
+export const CreditBlock = ({ creditStatus, animated, onPress, children }: Props) => {
+  const ViewComponent = animated ? AnimatedView : View
+  const viewProps = animated
     ? {
         duration: DURATION_IN_MS,
         animation: containerAnimation,
@@ -39,15 +35,10 @@ export const CreditBlock: FunctionComponent<Props> = ({ age, creditStatus, onPre
         easing: customEaseInOut,
       }
     : {}
-
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <Container as={ViewComponent} status={creditStatus} {...viewProps}>
-        <View>
-          <AgeText>{`à ${age} ans`}</AgeText>
-          <Spacer.Column numberOfSpaces={1} />
-          {children}
-        </View>
+        <View>{children}</View>
         <TagContainer>
           <CreditStatusTag status={creditStatus} />
         </TagContainer>
@@ -55,10 +46,6 @@ export const CreditBlock: FunctionComponent<Props> = ({ age, creditStatus, onPre
     </TouchableWithoutFeedback>
   )
 }
-
-const BodySecondary = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
-}))
 
 const Container = styled.View<{
   status: CreditStatus

@@ -31,16 +31,18 @@ export const MessagingAppButton = ({
 
   // Message has to be concatenated with url if url option is not supported, and in web
   const message = supportsURL && !isWeb ? shareMessage : shareMessage + '\n' + shareUrl
+  const encodedMessage = encodeURIComponent(message)
 
   const onPress = async () => {
     try {
       onPressAnalytics(options.social)
-      if (isWeb && webUrl) await Linking.openURL(webUrl + encodeURIComponent(message))
-      else if (isNative && options.url) await Linking.openURL(options.url + message)
+      if (isWeb && webUrl) await Linking.openURL(webUrl + encodedMessage)
+      else if (isNative && options.url) await Linking.openURL(options.url + encodedMessage)
       else {
+        const url = shouldEncodeURI ? encodeURIComponent(shareUrl) : shareUrl
         await Share.shareSingle({
-          message: shouldEncodeURI ? encodeURI(message) : message,
-          url: supportsURL ? shareUrl : undefined,
+          message: shouldEncodeURI ? encodedMessage : message,
+          url: supportsURL ? url : undefined,
           ...options,
         })
       }
@@ -71,7 +73,7 @@ const mapNetworkToSocial: Record<
     shouldEncodeURI: Platform.OS === 'ios',
     type: 'text',
   },
-  [Network.messenger]: { social: Social.Messenger },
+  [Network.messenger]: { social: Social.Messenger, shouldEncodeURI: Platform.OS === 'ios' },
   [Network.snapchat]: { social: Social.Snapchat },
   [Network.googleMessages]: {
     social: Social.Sms,
@@ -84,6 +86,7 @@ const mapNetworkToSocial: Record<
   [Network.telegram]: {
     social: Social.Telegram,
     webUrl: 'https://telegram.me/share/msg?url=',
+    supportsURL: false,
   },
   [Network.viber]: {
     social: Social.Viber,

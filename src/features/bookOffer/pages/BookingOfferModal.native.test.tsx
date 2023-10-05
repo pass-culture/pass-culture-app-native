@@ -10,12 +10,14 @@ import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -118,6 +120,16 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
     isFetching: false,
   }),
 }))
+
+const apiRecoParams: RecommendationApiParams = {
+  call_id: '1',
+  filtered: true,
+  geo_located: false,
+  model_endpoint: 'default',
+  model_name: 'similar_offers_default_prod',
+  model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+  reco_origin: 'default',
+}
 
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', () => {
@@ -288,17 +300,29 @@ describe('<BookingOfferModalComponent />', () => {
 
       it('should log confirmation booking when offer booked from a similar offer', () => {
         useRoute.mockReturnValueOnce({
-          params: { fromOfferId: 1, fromMultivenueOfferId: 1 },
+          params: {
+            fromOfferId: 1,
+            fromMultivenueOfferId: 1,
+            apiRecoParams: JSON.stringify(apiRecoParams),
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          },
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(20, 1, 1, 1)
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
+          ...apiRecoParams,
+          bookingId: 1,
+          fromMultivenueOfferId: 1,
+          fromOfferId: undefined,
+          offerId: 20,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        })
       })
 
       it('should log confirmation booking when offer not booked from a similar offer', () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(20, 1, undefined, undefined)
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({ bookingId: 1, offerId: 20 })
       })
 
       it('should log conversion booking when is from search', () => {
@@ -394,11 +418,12 @@ describe('<BookingOfferModalComponent />', () => {
       })
 
       it.each`
-        code                     | message
-        ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
-        ${'INSUFFICIENT_CREDIT'} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
-        ${'ALREADY_BOOKED'}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
-        ${'STOCK_NOT_BOOKABLE'}  | ${'Oups, cette offre n’est plus disponible\u00a0!'}
+        code                         | message
+        ${undefined}                 | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
+        ${'INSUFFICIENT_CREDIT'}     | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
+        ${'ALREADY_BOOKED'}          | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
+        ${'STOCK_NOT_BOOKABLE'}      | ${'Oups, cette offre n’est plus disponible\u00a0!'}
+        ${'PROVIDER_STOCK_SOLD_OUT'} | ${'Oups, cette offre n’est plus disponible\u00a0!'}
       `(
         'should show the error snackbar with message="$message" for errorCode="code" if booking an offer fails',
         ({ code, message }: { code: string | undefined; message: string }) => {

@@ -2,6 +2,7 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 import { SignupForm } from './SignupForm'
@@ -22,11 +23,9 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 describe('<SignupForm/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for SetEmail', async () => {
-      const { container } = render(
-        <SafeAreaProvider>
-          <SignupForm />
-        </SafeAreaProvider>
-      )
+      const { container } = renderSignupForm()
+      await act(async () => {})
+
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
       })
@@ -37,19 +36,14 @@ describe('<SignupForm/>', () => {
 
     it.each`
       stepIndex | component
-      ${1}      | ${'SetEmail'}
-      ${2}      | ${'SetPassword'}
-      ${3}      | ${'SetBirthday'}
-      ${4}      | ${'AcceptCgu'}
+      ${1}      | ${'SetPassword'}
+      ${2}      | ${'SetBirthday'}
+      ${3}      | ${'AcceptCgu'}
     `('should not have basic accessibility issues for $component', async ({ stepIndex }) => {
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
 
-      const { container } = render(
-        <SafeAreaProvider>
-          <SignupForm />
-        </SafeAreaProvider>
-      )
+      const { container } = renderSignupForm()
       await act(async () => {})
 
       const results = await checkAccessibilityFor(container)
@@ -57,3 +51,13 @@ describe('<SignupForm/>', () => {
     })
   })
 })
+
+const renderSignupForm = () =>
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <SafeAreaProvider>
+        <SignupForm />
+      </SafeAreaProvider>
+    )
+  )

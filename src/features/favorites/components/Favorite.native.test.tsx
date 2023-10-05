@@ -4,7 +4,7 @@ import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { ExpenseDomain, FavoriteResponse, UserProfileResponse } from 'api/gen'
+import { ExpenseDomain, FavoriteResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
@@ -32,6 +32,9 @@ const user: UserProfileResponse = {
   isBeneficiary: true,
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
+  status: {
+    statusType: YoungStatusType.beneficiary,
+  },
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
@@ -46,6 +49,8 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
     favoritesState: mockFavoritesState,
   }),
 }))
+
+const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 describe('<Favorite /> component', () => {
   it('should navigate to the offer when clicking on the favorite', async () => {
@@ -71,7 +76,7 @@ describe('<Favorite /> component', () => {
   })
 
   it('should delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
+    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
     simulateBackend()
     mockDistance = '10 km'
     renderFavorite()
@@ -85,7 +90,7 @@ describe('<Favorite /> component', () => {
   })
 
   it('should fail to delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
+    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
     mockDistance = '10 km'
@@ -105,7 +110,6 @@ describe('<Favorite /> component', () => {
   })
 
   it('should call share when press share icon', async () => {
-    const share = jest.spyOn(Share, 'share')
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
@@ -113,7 +117,7 @@ describe('<Favorite /> component', () => {
       fireEvent.press(shareButton)
     })
 
-    expect(share).toHaveBeenCalledTimes(1)
+    expect(shareSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when press share icon', async () => {
@@ -127,7 +131,7 @@ describe('<Favorite /> component', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'favorites',
-      id: favorite.offer.id,
+      offer_id: favorite.offer.id,
     })
   })
 })

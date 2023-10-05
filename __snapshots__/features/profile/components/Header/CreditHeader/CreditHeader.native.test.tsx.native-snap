@@ -305,6 +305,23 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     />
     <View
       accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -522,6 +539,23 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     />
     <View
       accessibilityLabel="Mon crédit est expiré, que faire ?"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -976,6 +1010,23 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
     />
     <View
       accessibilityLabel="Pourquoi cette limite ?"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -1356,6 +1407,23 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
     />
     <View
       accessibilityLabel="Pourquoi cette limite ?"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

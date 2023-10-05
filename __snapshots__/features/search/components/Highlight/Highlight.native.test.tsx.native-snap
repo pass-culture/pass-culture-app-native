@@ -69,3 +69,21 @@ exports[`Highlight component for a venue suggestion should render Highlight 1`] 
   </Text>,
 ]
 `;
+
+exports[`Highlight component for an history item should render Highlight 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#161617",
+        "fontFamily": "Montserrat-BoldItalic",
+        "fontSize": 15,
+        "lineHeight": 20,
+      },
+    ]
+  }
+  testID="nonHighlightedHistoryItemText"
+>
+  manga
+</Text>
+`;

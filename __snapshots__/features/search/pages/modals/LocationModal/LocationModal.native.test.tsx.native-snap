@@ -33,6 +33,15 @@ exports[`<LocationModal/> should render modal correctly after animation and with
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -267,6 +276,23 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                   <View
                     accessibilityLabel="Fermer"
                     accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -389,7 +415,19 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                     accessibilityRole="radio"
                     accessibilityState={
                       {
+                        "busy": undefined,
                         "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}
@@ -462,6 +500,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         style={
                           [
                             {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                             },
                           ]
@@ -474,6 +514,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                             [
                               {
                                 "color": "#161617",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
@@ -558,7 +600,19 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                     accessibilityRole="radio"
                     accessibilityState={
                       {
+                        "busy": undefined,
                         "checked": false,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}
@@ -630,6 +684,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         style={
                           [
                             {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                             },
                           ]
@@ -642,6 +698,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                             [
                               {
                                 "color": "#161617",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
@@ -726,7 +784,19 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                     accessibilityRole="radio"
                     accessibilityState={
                       {
+                        "busy": undefined,
                         "checked": true,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}
@@ -798,6 +868,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         style={
                           [
                             {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                             },
                           ]
@@ -810,6 +882,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                             [
                               {
                                 "color": "#eb0055",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
@@ -896,6 +970,23 @@ exports[`<LocationModal/> should render modal correctly after animation and with
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -979,7 +1070,19 @@ exports[`<LocationModal/> should render modal correctly after animation and with
               accessibilityLabel="Rechercher"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

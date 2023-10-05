@@ -87,7 +87,7 @@ export function ChangePassword() {
               timeout: SNACK_BAR_TIME_OUT,
             })
             navigate(...getTabNavConfig('Profile'))
-            analytics.logHasChangedPassword('changePassword')
+            analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
             resolve()
           },
           onError(error, { newPassword }) {

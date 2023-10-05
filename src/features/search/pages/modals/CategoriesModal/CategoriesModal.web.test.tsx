@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { FilterBehaviour } from 'features/search/enums'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
@@ -11,6 +12,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     data: mockData,
   }),
 }))
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<CategoriesModal/>', () => {
   it('should display mobile header modal if mobile viewport', () => {

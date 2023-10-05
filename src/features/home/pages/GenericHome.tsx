@@ -14,6 +14,7 @@ import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -21,6 +22,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { usePerformanceCalculation } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -77,7 +79,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
-  const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
+  const logHasSeenAllModules = useFunctionOnce(
+    async () => await analytics.logAllModulesSeen(modules.length)
+  )
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
   )
@@ -87,10 +91,13 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
-  const modulesIntervalId = useRef(0)
+  const modulesIntervalId = useRef<NodeJS.Timeout>()
   const theme = useTheme()
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
+  const { finish } = usePerformanceCalculation()
+  const finishPerfHomeLoadingOnce = useFunctionOnce(() => finish(PERFORMANCE_HOME_LOADING))
+  const finishPerfHomeCreationOnce = useFunctionOnce(() => finish(PERFORMANCE_HOME_CREATION))
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
@@ -137,8 +144,15 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
+    finishPerfHomeCreationOnce()
     return () => clearInterval(modulesIntervalId.current)
-  }, [])
+  }, [finishPerfHomeCreationOnce])
+
+  useEffect(() => {
+    if (!showSkeleton) {
+      finishPerfHomeLoadingOnce()
+    }
+  }, [showSkeleton, finishPerfHomeLoadingOnce])
 
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
@@ -152,7 +166,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
     return () => {
       clearInterval(modulesIntervalId.current)
-      modulesIntervalId.current = 0
+      modulesIntervalId.current = undefined
     }
   }, [modules.length, isLoading, maxIndex])
 

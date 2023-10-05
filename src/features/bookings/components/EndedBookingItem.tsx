@@ -81,10 +81,11 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     offerId: stock.offer.id,
     offerName: stock.offer.name,
     venueName: stock.offer.venue.name,
+    utmMedium: 'ended_booking',
   })
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'endedbookings', id: stock.offer.id })
+    analytics.logShare({ type: 'Offer', from: 'endedbookings', offer_id: stock.offer.id })
     shareOffer()
     showShareOfferModal()
   }, [stock.offer.id, shareOffer, showShareOfferModal])

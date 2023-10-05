@@ -4,6 +4,7 @@ import { Platform } from 'react-native'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
@@ -16,6 +17,15 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
+
+jest.mock('features/home/helpers/useHomePosition')
+const mockUseHomeposition = useHomePosition as jest.Mock
+mockUseHomeposition.mockReturnValue({
+  position: {
+    latitude: 2,
+    longitude: 2,
+  },
+})
 
 const modules = [formattedVenuesModule]
 
@@ -69,6 +79,26 @@ describe('ThematicHome', () => {
 
     expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
     expect(screen.getByTestId('animated-thematic-header')).toBeOnTheScreen()
+  })
+
+  it('should show highlight thematic introduction when provided and platform is iOS', async () => {
+    Platform.OS = 'ios'
+
+    const mockedHighlightHeaderDataWithIntroduction = {
+      ...mockedHighlightHeaderData,
+      thematicHeader: {
+        ...mockedHighlightHeaderData.thematicHeader,
+        introductionTitle: 'IntroductionTitle',
+        introductionParagraph: 'IntroductionParagraph',
+      },
+    }
+    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderDataWithIntroduction)
+
+    renderThematicHome()
+    await act(async () => {})
+
+    expect(screen.getByText('IntroductionTitle')).toBeOnTheScreen()
+    expect(screen.getByText('IntroductionParagraph')).toBeOnTheScreen()
   })
 
   it('should not show highlight animated header when provided and platform is Android', async () => {
@@ -146,6 +176,23 @@ describe('ThematicHome', () => {
       from: 'highlight_thematic_block',
       moduleId: 'moduleId',
     })
+  })
+
+  it('should show geolocation banner when user is not geolocated or located', async () => {
+    mockUseHomeposition.mockReturnValueOnce({
+      position: undefined,
+    })
+    renderThematicHome()
+
+    await act(async () => {})
+    expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
+  })
+
+  it('should not show geolocation banner when user is geolocated or located', async () => {
+    renderThematicHome()
+
+    await act(async () => {})
+    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 })
 

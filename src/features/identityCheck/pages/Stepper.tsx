@@ -1,24 +1,24 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { ErrorBanner } from 'features/identityCheck/components/ErrorBanner'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepButtonState } from 'features/identityCheck/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { StepList } from 'features/profile/components/StepList/StepList'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
+import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { VerticalUl } from 'ui/components/Ul'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -26,6 +26,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const Stepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'Stepper'>>()
 
   const {
     stepsDetails: steps,
@@ -33,6 +34,11 @@ export const Stepper = () => {
     subtitle: stepperSubtitle,
     errorMessage,
   } = useStepperInfo()
+
+  const activeStepIndex = steps.findIndex(
+    (step) => step.stepState === StepButtonState.CURRENT || step.stepState === StepButtonState.RETRY
+  )
+  const stepToComplete = steps[activeStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -76,22 +82,27 @@ export const Stepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
+  useEffect(() => {
+    if (params?.from && stepToComplete?.name) {
+      analytics.logStepperDisplayed(params.from, stepToComplete.name)
+    }
+  }, [params?.from, stepToComplete?.name])
+
   const stepList = (
-    <VerticalUl>
-      {steps.map((step) => (
-        <Li key={step.name}>
-          <StepButtonContainer>
-            <StepButton
-              step={step}
-              navigateTo={{ screen: step.firstScreen }}
-              onPress={() => {
-                analytics.logIdentityCheckStep(step.name)
-              }}
-            />
-          </StepButtonContainer>
-        </Li>
+    <StepList activeStepIndex={activeStepIndex}>
+      {steps.map((step, index) => (
+        <StepButtonContainer key={step.name}>
+          <StepButton
+            step={step}
+            navigateTo={{ screen: step.firstScreen }}
+            onPress={() => {
+              analytics.logIdentityCheckStep(step.name)
+            }}
+          />
+          {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
+        </StepButtonContainer>
       ))}
-    </VerticalUl>
+    </StepList>
   )
 
   return (

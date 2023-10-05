@@ -13,22 +13,25 @@ import {
   SigninResponse,
   UserProfileResponse,
 } from 'api/gen'
+import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { AuthContext } from 'features/auth/context/AuthContext'
+import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
-import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
+import { From } from 'shared/offer/enums'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, act, screen } from 'tests/utils'
+import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { Login } from './Login'
@@ -54,7 +57,7 @@ server.use(
   )
 )
 
-const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
+const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -144,6 +147,16 @@ describe('<Login/>', () => {
       },
       { credentials: 'omit' }
     )
+  })
+
+  it('should not open reCAPTCHA challenge modal when clicking on login button when feature flag is disabled', async () => {
+    renderLogin()
+    const recaptchaWebviewModal = screen.queryByTestId('recaptcha-webview-modal')
+
+    await fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(recaptchaWebviewModal).not.toBeOnTheScreen()
   })
 
   it('should redirect to home WHEN signin is successful', async () => {
@@ -403,6 +416,142 @@ describe('<Login/>', () => {
         id: OFFER_ID,
         openModalOnNavigation: true,
       })
+    })
+  })
+
+  describe('Login with ReCatpcha', () => {
+    beforeAll(() => {
+      return jest
+        .spyOn(SettingsContextAPI, 'useSettingsContext')
+        .mockReturnValue({ data: mockDefaultSettings, isLoading: false })
+    })
+
+    it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {
+      renderLogin()
+      const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+
+      await fillInputs()
+
+      expect(recaptchaWebviewModal.props.visible).toBe(false)
+    })
+
+    it('should open reCAPTCHA challenge modal when clicking on login button', async () => {
+      renderLogin()
+      const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      expect(recaptchaWebviewModal.props.visible).toBe(true)
+    })
+
+    it('should disable login button when starting reCAPTCHA challenge', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      expect(screen.getByText('Se connecter')).toBeDisabled()
+    })
+
+    it('should login user when reCAPTCHA challenge is successful', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(
+        recaptchaWebview,
+        '{ "message": "success", "token": "fakeToken" }'
+      )
+
+      expect(apiSignInSpy).toHaveBeenCalledWith(
+        {
+          identifier: 'email@gmail.com',
+          password: 'user@AZERTY123',
+          token: 'fakeToken',
+          deviceInfo: undefined,
+        },
+        { credentials: 'omit' }
+      )
+    })
+
+    it('should display error message on reCAPTCHA failure', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+
+      expect(screen.queryByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
+    })
+
+    it('should not login user on reCAPTCHA failure', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+
+      expect(apiSignInSpy).not.toHaveBeenCalled()
+    })
+
+    it('should log to Sentry on reCAPTCHA failure', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+        'Login Recaptcha Error: someError',
+        'info'
+      )
+    })
+
+    it('should display error message when reCAPTCHA token has expired', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
+
+      expect(
+        screen.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should not login user when reCAPTCHA token has expired', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
+
+      expect(apiSignInSpy).not.toHaveBeenCalled()
+    })
+
+    it.each(['error', 'expire'])('should enable login button on reCAPTCHA %s', async (reason) => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, `{ "message": "${reason}" }`)
+
+      expect(screen.queryByText('Se connecter')).toBeEnabled()
     })
   })
 })

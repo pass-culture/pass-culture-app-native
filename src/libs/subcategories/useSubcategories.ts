@@ -13,7 +13,7 @@ export const useSubcategories = () => {
   const netInfo = useNetInfoContext()
   return useQuery<SubcategoriesResponseModelv2>(
     [QueryKeys.SUBCATEGORIES],
-    () => api.getnativev1subcategoriesv2(),
+    () => api.getNativeV1SubcategoriesV2(),
     { staleTime: STALE_TIME_SUBCATEGORIES, placeholderData, enabled: !!netInfo.isConnected }
   )
 }

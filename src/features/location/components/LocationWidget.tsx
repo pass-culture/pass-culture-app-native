@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect } from 'react'
-import { Animated, LayoutChangeEvent } from 'react-native'
+import { Animated, LayoutChangeEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
@@ -18,24 +19,47 @@ const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + captio
 const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
-export const LocationWidget: React.FC = () => {
+interface LocationWidgetProps {
+  enableTooltip: boolean
+}
+
+export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
+  const touchableRef = React.useRef<HTMLButtonElement>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
-  const { userPosition } = useLocation()
-  const isGeolocated = !!userPosition
-  const locationTitle = isGeolocated ? 'Ma position' : 'Me localiser'
+  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const getLocationTitle = useCallback(() => {
+    if (place !== null) {
+      return place.label
+    }
+    if (userPosition !== null) {
+      return 'Ma position'
+    }
+    return 'Me localiser'
+  }, [place, userPosition])
+
+  const locationTitle = getLocationTitle()
 
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 
+  // native resizing on layout
   function onWidgetLayout(event: LayoutChangeEvent) {
     const { width } = event.nativeEvent.layout
     setWidgetWidth(width)
   }
 
+  // web resizing on layout
   useEffect(() => {
-    if (!isSplashScreenHidden) return
+    if (Platform.OS === 'web' && touchableRef.current) {
+      const { width } = touchableRef.current.getBoundingClientRect()
+      setWidgetWidth(width)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isSplashScreenHidden || !enableTooltip) return
 
     const displayTooltipIfNeeded = async () => {
       const timesLocationTooltipHasBeenDisplayed = Number(
@@ -63,20 +87,24 @@ export const LocationWidget: React.FC = () => {
     hideModal: hideLocationModal,
   } = useModal()
 
+  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+
   return (
     <React.Fragment>
-      <StyledTooltip
-        label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-        isVisible={isTooltipVisible}
-        onHide={hideTooltip}
-        widgetWidth={widgetWidth}
-      />
+      {enableTooltip ? (
+        <StyledTooltip
+          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+          isVisible={isTooltipVisible}
+          onHide={hideTooltip}
+          widgetWidth={widgetWidth}
+        />
+      ) : null}
       <StyledTouchable
         onPress={showLocationModal}
         accessibilityLabel="Ouvrir la modale de localisation"
-        onLayout={onWidgetLayout}>
-        <IconContainer isActive={isGeolocated}>
-          {isGeolocated ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
+        {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
+        <IconContainer isActive={isWidgetHighlighted}>
+          {isWidgetHighlighted ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
@@ -93,7 +121,7 @@ const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widget
   width: TOOLTIP_WIDTH,
 }))
 
-const StyledTouchable = styled(TouchableOpacity)({
+const StyledTouchable = styledButton(Touchable)({
   alignItems: 'center',
   marginLeft: getSpacing(2),
 })

@@ -34,38 +34,59 @@ exports[`<Search/> should render Search 1`] = `
       ]
     }
   >
-    <View>
-      <Text
-        htmlFor="testUuidV4"
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Black",
-              "fontSize": 26,
-              "lineHeight": 34,
-            },
-          ]
-        }
-      >
-        Rechercher
-      </Text>
-    </View>
-    <Text
+    <View
       style={
         [
           {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-            "marginTop": 4,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
-      Toutes les offres à portée de main
-    </Text>
+      <View
+        style={
+          [
+            {
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
+        <View>
+          <Text
+            htmlFor="testUuidV4"
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 26,
+                  "lineHeight": 34,
+                },
+              ]
+            }
+          >
+            Rechercher
+          </Text>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginTop": 4,
+              },
+            ]
+          }
+        >
+          Toutes les offres à portée de main
+        </Text>
+      </View>
+    </View>
     <View
       numberOfSpaces={4}
       style={
@@ -159,16 +180,6 @@ exports[`<Search/> should render Search 1`] = `
                 testID="styled-input-container"
               >
                 <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
@@ -187,11 +198,11 @@ exports[`<Search/> should render Search 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={1}
+                  numberOfSpaces={2}
                   style={
                     [
                       {
-                        "width": 4,
+                        "width": 8,
                       },
                     ]
                   }
@@ -210,7 +221,7 @@ exports[`<Search/> should render Search 1`] = `
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="Offre, artiste..."
+                  placeholder="Offre, artiste, point de vente..."
                   placeholderTextColor="#696A6F"
                   returnKeyType="search"
                   selectionColor="#696A6F"
@@ -763,6 +774,7 @@ exports[`<Search/> should render Search 1`] = `
           </Text>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -789,6 +801,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Concerts & festivals"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -923,6 +952,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Films, séries, cinéma"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1044,6 +1090,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1070,6 +1117,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Livres"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1204,6 +1268,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1325,6 +1406,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1351,6 +1433,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Arts & loisirs créatifs"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1485,6 +1584,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Spectacles"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1606,6 +1722,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1632,6 +1749,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Musées & visites culturelles"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1766,6 +1900,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Jeux & jeux vidéos"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1887,6 +2038,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1913,6 +2065,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Instruments de musique"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2047,6 +2216,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Médias & presse"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2168,6 +2354,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -2194,6 +2381,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Bibliothèques, Médiathèques"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2328,6 +2532,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Cartes jeunes"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2449,6 +2670,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -2475,6 +2697,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Conférences & rencontres"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2609,6 +2848,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Évènements en ligne"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

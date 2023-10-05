@@ -4,33 +4,59 @@ import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
-import { AnimatedHighlightThematicHomeHeader } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
+import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
+import {
+  AnimatedCategoryThematicHomeHeader,
+  MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
+} from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
+import {
+  AnimatedHighlightThematicHomeHeader,
+  MOBILE_HEADER_HEIGHT as ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT,
+} from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
+import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
-const ANIMATED_HEADER_PLACEHOLDER_HEIGHT = 76
-interface Props {
-  headerTransition: Animated.AnimatedInterpolation
-  thematicHeader?: ThematicHeader
-}
+const MARGIN_TOP_HEADER = 6
 
-const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
-  if (thematicHeader?.type === ThematicHeaderType.Highlight)
+const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
+  if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
-      return <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
-    } else {
-      return <HighlightThematicHomeHeader {...thematicHeader} />
+      return (
+        <React.Fragment>
+          <Spacer.Column
+            numberOfSpaces={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
+          />
+          {!!(thematicHeader.introductionTitle && thematicHeader.introductionParagraph) && (
+            <Introduction
+              title={thematicHeader.introductionTitle}
+              paragraph={thematicHeader.introductionParagraph}
+            />
+          )}
+        </React.Fragment>
+      )
+    }
+    return <HighlightThematicHomeHeader {...thematicHeader} />
+  }
+
+  if (thematicHeader?.type === ThematicHeaderType.Category) {
+    if (Platform.OS === 'ios') {
+      return (
+        <Spacer.Column
+          numberOfSpaces={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
+        />
+      )
     }
 
-  if (thematicHeader?.type === ThematicHeaderType.Category)
     return (
       <CategoryThematicHomeHeader
         title={thematicHeader?.title}
@@ -38,6 +64,7 @@ const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
         imageUrl={thematicHeader?.imageUrl}
       />
     )
+  }
 
   return (
     <ListHeaderContainer>
@@ -49,14 +76,38 @@ const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
   )
 }
 
+const ThematicHeaderWithGeolocBanner: FunctionComponent<{
+  thematicHeader?: ThematicHeader
+  isLocated: boolean
+}> = ({ thematicHeader, isLocated }) => (
+  <React.Fragment>
+    <SubHeader thematicHeader={thematicHeader} />
+    {!isLocated && (
+      <GeolocationBannerContainer>
+        <GeolocationBanner
+          title="Géolocalise-toi"
+          subtitle="pour trouver des offres autour de toi"
+        />
+      </GeolocationBannerContainer>
+    )}
+  </React.Fragment>
+)
+
 export const ThematicHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
+  const { position } = useHomePosition()
+  const isLocated = !!position
 
-  const AnimatedHeader = Animated.createAnimatedComponent(HeaderContainer)
+  const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
-    useOpacityTransition()
+    useOpacityTransition({
+      headerHeight:
+        thematicHeader?.type === ThematicHeaderType.Highlight
+          ? getSpacing(ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT)
+          : getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT),
+    })
 
   useEffect(() => {
     if (id) {
@@ -74,7 +125,9 @@ export const ThematicHome: FunctionComponent = () => {
       <GenericHome
         modules={modules}
         homeId={id}
-        Header={<SubHeader thematicHeader={thematicHeader} headerTransition={headerTransition} />}
+        Header={
+          <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
+        }
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={params.videoModuleId}
@@ -93,13 +146,22 @@ export const ThematicHome: FunctionComponent = () => {
               />
             </AnimatedHeader>
           )}
+          {thematicHeader?.type === ThematicHeaderType.Category && (
+            <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
+              <AnimatedCategoryThematicHomeHeader
+                {...thematicHeader}
+                gradientTranslation={gradientTranslation}
+                imageAnimatedHeight={imageAnimatedHeight}
+              />
+            </AnimatedHeader>
+          )}
         </React.Fragment>
       )}
     </Container>
   )
 }
 
-const HeaderContainer = styled.View({
+const AnimatedHeaderContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -115,3 +177,8 @@ const ListHeaderContainer = styled.View({
   flexGrow: 1,
   flexShrink: 0,
 })
+
+const GeolocationBannerContainer = styled.View(({ theme }) => ({
+  marginHorizontal: getSpacing(6),
+  marginBottom: theme.home.spaceBetweenModules,
+}))

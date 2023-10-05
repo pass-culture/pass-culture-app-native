@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { CreditStatus } from 'features/tutorial/enums'
 import { getTagColor } from 'features/tutorial/helpers/getTagColor'
-import { CreditStatus } from 'features/tutorial/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {

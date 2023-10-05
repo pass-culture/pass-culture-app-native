@@ -172,7 +172,7 @@ const refreshAccessTokenWithRetriesOnError = async (
   }
 
   try {
-    const response = await api.postnativev1refreshAccessToken({
+    const response = await api.postNativeV1RefreshAccessToken({
       headers: {
         Authorization: `Bearer ${refreshToken}`,
       },

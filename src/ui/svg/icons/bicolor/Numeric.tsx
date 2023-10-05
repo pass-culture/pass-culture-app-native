@@ -41,6 +41,14 @@ const NumericSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
+export const BicolorNumeric = React.memo(
+  styled(NumericSvg).attrs(({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+  }))``
+)
+
 export const Numeric = styled(NumericSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,

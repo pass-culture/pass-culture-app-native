@@ -2,17 +2,23 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { fireEvent, render } from 'tests/utils'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 
 describe('ActivationBanner', () => {
-  it('should redirect to stepper on press', async () => {
+  it('should redirect to stepper on press', () => {
     const { getByText } = render(
-      <ActivationBanner title={'Débloque tes 300\u00a0€'} subtitle={'toto'} icon={BicolorUnlock} />
+      <ActivationBanner
+        title={'Débloque tes 300\u00a0€'}
+        subtitle={'toto'}
+        icon={BicolorUnlock}
+        from={StepperOrigin.HOME}
+      />
     )
 
     fireEvent.press(getByText('Débloque tes 300\u00a0€'))
 
-    await waitFor(() => expect(navigate).toHaveBeenCalledWith('Stepper', undefined))
+    expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.HOME })
   })
 })

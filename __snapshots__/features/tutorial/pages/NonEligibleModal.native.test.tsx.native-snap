@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] = `
+exports[`NonEligibleModal should render correctly for onboarding non-eligible over 18  1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
@@ -11,6 +11,23 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={false}
     collapsable={false}
     focusable={true}
@@ -142,6 +159,23 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
         <View
           accessibilityLabel="Fermer la modale"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -208,6 +242,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
         }
       />
       <View
+        fill="none"
         height={156}
         width={200}
       >
@@ -276,7 +311,24 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
         }
       />
       <View
-        accessibilityLabel="Explorer l’application"
+        accessibilityLabel="Explorer le catalogue"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -305,7 +357,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
             "width": "100%",
           }
         }
-        testID="Explorer l’application"
+        testID="Explorer le catalogue"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -323,7 +375,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
             ]
           }
         >
-          Explorer l’application
+          Explorer le catalogue
         </Text>
       </View>
     </View>
@@ -343,7 +395,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
 </Modal>
 `;
 
-exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] = `
+exports[`NonEligibleModal should render correctly for onboarding non-eligible under 15 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
@@ -354,6 +406,23 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={false}
     collapsable={false}
     focusable={true}
@@ -485,6 +554,23 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
         <View
           accessibilityLabel="Fermer la modale"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -595,6 +681,23 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       />
       <View
         accessibilityLabel="comment ça marche ?"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -700,7 +803,24 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
         }
       />
       <View
-        accessibilityLabel="Explorer l’application"
+        accessibilityLabel="Explorer le catalogue"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -729,7 +849,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
             "width": "100%",
           }
         }
-        testID="Explorer l’application"
+        testID="Explorer le catalogue"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -747,7 +867,796 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
             ]
           }
         >
-          Explorer l’application
+          Explorer le catalogue
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;
+
+exports[`NonEligibleModal should render correctly for profile tutorial non-eligible over 18  1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-undefined"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={false}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabelledBy="testUuidV4"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        justifyContent="left"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="modalHeaderTitle"
+        >
+          Tu arrives un peu trop tard
+        </Text>
+      </View>
+      <View
+        justifyContent="right"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Fermer la modale"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        fill="none"
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Après 18 ans, tu n’es malheureusement plus éligible au pass Culture.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu peux toujours explorer le catalogue des offres et découvrir des lieux culturels autour de toi sur l’application.
+      </Text>
+      <View
+        numberOfSpaces={8}
+        style={
+          [
+            {
+              "height": 32,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Explorer le catalogue"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Explorer le catalogue"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Explorer le catalogue
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;
+
+exports[`NonEligibleModal should render correctly for profile tutorial non-eligible under 15  1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-undefined"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={false}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabelledBy="testUuidV4"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        justifyContent="left"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="modalHeaderTitle"
+        >
+          Encore un peu de patience !
+        </Text>
+      </View>
+      <View
+        justifyContent="right"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Fermer la modale"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        En attendant, tu peux explorer le catalogue des offres et découvrir des lieux culturels autour de toi.
+      </Text>
+      <View
+        numberOfSpaces={8}
+        style={
+          [
+            {
+              "height": 32,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Explorer le catalogue"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Explorer le catalogue"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Explorer le catalogue
         </Text>
       </View>
     </View>

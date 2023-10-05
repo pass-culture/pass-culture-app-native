@@ -1,5 +1,5 @@
 import React from 'react'
-import { Animated } from 'react-native'
+import { Animated, Share } from 'react-native'
 
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
@@ -10,6 +10,8 @@ import { act, fireEvent, render } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenue')
 jest.useFakeTimers({ legacyFakeTimers: true })
+
+jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
@@ -47,7 +49,7 @@ describe('<VenueHeader />', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Venue',
       from: 'venue',
-      id: venueResponseSnap.id,
+      venue_id: venueResponseSnap.id,
     })
   })
 })

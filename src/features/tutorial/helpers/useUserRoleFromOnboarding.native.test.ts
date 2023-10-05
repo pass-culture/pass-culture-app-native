@@ -1,5 +1,5 @@
+import { NonEligible, UserOnboardingRole } from 'features/tutorial/enums'
 import { useUserRoleFromOnboarding } from 'features/tutorial/helpers/useUserRoleFromOnboarding'
-import { NonEligible, UserOnboardingRole } from 'features/tutorial/types'
 import { storage } from 'libs/storage'
 import { renderHook, waitFor } from 'tests/utils'
 

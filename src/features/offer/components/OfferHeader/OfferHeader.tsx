@@ -16,7 +16,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   offerId: number
   searchId?: string
@@ -36,7 +36,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { share: shareOffer, shareContent } = useShareOffer(offerId)
+  const { share: shareOffer, shareContent } = useShareOffer(offerId, 'header')
   const { top } = useSafeAreaInsets()
   const headerHeight = theme.appBarHeight + top
 
@@ -49,7 +49,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   )
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', id: offerId })
+    analytics.logShare({ type: 'Offer', from: 'offer', offer_id: offerId })
     shareOffer()
     showShareOfferModal()
   }, [offerId, shareOffer, showShareOfferModal])

@@ -35,7 +35,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
 async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promise<RootScreenNames> {
   if (isLoggedIn) {
     try {
-      const user = await api.getnativev1me()
+      const user = await api.getNativeV1Me()
 
       if (user.recreditAmountToShow) {
         return 'RecreditBirthdayNotification'

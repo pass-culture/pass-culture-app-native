@@ -22,13 +22,18 @@ const shareOptions = {
 
 const shareContentIos = {
   message: shareTitle,
-  url: `${WEBAPP_V2_URL}/lieu/5543`,
+  messageWithoutLink: shareTitle,
+  url: `${WEBAPP_V2_URL}/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=utm_medium`,
   title: shareTitle,
 }
 
 const shareContentAndroid = {
-  message: shareTitle + DOUBLE_LINE_BREAK + `${WEBAPP_V2_URL}/lieu/5543`,
-  url: `${WEBAPP_V2_URL}/lieu/5543`,
+  message:
+    shareTitle +
+    DOUBLE_LINE_BREAK +
+    `${WEBAPP_V2_URL}/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=utm_medium`,
+  messageWithoutLink: shareTitle,
+  url: `${WEBAPP_V2_URL}/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=utm_medium`,
   title: shareTitle,
 }
 
@@ -38,7 +43,7 @@ describe('useShareVenue', () => {
 
     it('for ios', async () => {
       Platform.OS = 'ios'
-      const { result } = renderHook(() => useShareVenue(venue.id))
+      const { result } = renderHook(() => useShareVenue(venue.id, 'utm_medium'))
 
       const { share } = result.current
       await act(async () => share())
@@ -48,7 +53,7 @@ describe('useShareVenue', () => {
 
     it('for android', async () => {
       Platform.OS = 'android'
-      const { result } = renderHook(() => useShareVenue(venue.id))
+      const { result } = renderHook(() => useShareVenue(venue.id, 'utm_medium'))
 
       const { share } = result.current
       await act(async () => share())

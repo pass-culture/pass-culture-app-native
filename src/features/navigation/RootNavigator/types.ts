@@ -3,10 +3,12 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
-import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
+import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
+import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
+import { From } from 'shared/offer/enums'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
@@ -63,15 +65,15 @@ export type CulturalSurveyRootStackParamList = {
 }
 
 export type TutorialRootStackParamList = {
-  AgeSelection: { type: 'onboarding' | 'profileTutorial' }
-  AgeSelectionOther: { type: 'onboarding' | 'profileTutorial' }
+  AgeSelection: TutorialType
+  AgeSelectionOther: TutorialType
   CheatcodeNavigationTutorial: undefined
   CheatcodeNavigationOnboarding: undefined
   CheatcodeNavigationProfileTutorial: undefined
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
-  ProfileTutorialAgeInformation: { selectedAge: 15 | 16 | 17 | 18 }
+  ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
 }
 
 export type TrustedDeviceRootStackParamList = {
@@ -94,6 +96,15 @@ export type TrustedDeviceRootStackParamList = {
   TrustedDeviceInfos: undefined
 }
 
+export enum StepperOrigin {
+  HOME = 'home',
+  FAVORITE = 'favorite',
+  PROFILE = 'profile',
+  DEEPLINK = 'deeplink',
+  OFFER = 'offer',
+  VERIFY_ELIGIBILITY = 'verifyEligibility',
+}
+
 export type SubscriptionRootStackParamList = {
   // Cheatcodes
   NavigationErrors: undefined
@@ -102,7 +113,7 @@ export type SubscriptionRootStackParamList = {
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
   // Stepper
-  Stepper: undefined
+  Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined
@@ -114,7 +125,6 @@ export type SubscriptionRootStackParamList = {
   SetCity: undefined
   SetAddress: undefined
   SetStatus: undefined
-  SetSchoolType: undefined
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }
@@ -203,11 +213,18 @@ export type RootStackParamList = {
     fromMultivenueOfferId?: number
     openModalOnNavigation?: boolean
     searchId?: string
+    apiRecoParams?: string
+    playlistType?: PlaylistType
   }
   OfferDescription: { id: number }
   SuspendAccountConfirmation: { token: string }
   SuspensionScreen: undefined
-  ReinitializePassword: { email: string; token: string; expiration_timestamp: number }
+  ReinitializePassword: {
+    email: string
+    token: string
+    expiration_timestamp: number
+    from?: Referrals
+  }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
@@ -225,7 +242,6 @@ export type RootStackParamList = {
   VerifyEligibility: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
-  FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined

@@ -33,6 +33,15 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -267,6 +276,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     accessibilityLabel="Fermer"
                     accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -368,7 +394,19 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   accessibilityRole="radio"
                   accessibilityState={
                     {
+                      "busy": undefined,
                       "checked": true,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -440,6 +478,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       style={
                         [
                           {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
                             "flexShrink": 1,
                           },
                         ]
@@ -452,6 +492,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           [
                             {
                               "color": "#eb0055",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
                               "lineHeight": 20,
@@ -512,6 +554,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -525,8 +584,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -555,40 +616,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Arts & loisirs créatifs
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Arts & loisirs créatifs
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -632,6 +696,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -645,8 +726,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -676,40 +759,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Bibliothèques, Médiathèques
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Bibliothèques, Médiathèques
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -756,7 +842,19 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   accessibilityRole="radio"
                   accessibilityState={
                     {
+                      "busy": undefined,
                       "checked": false,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -828,6 +926,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       style={
                         [
                           {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
                             "flexShrink": 1,
                           },
                         ]
@@ -840,6 +940,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           [
                             {
                               "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
                               "lineHeight": 20,
@@ -910,6 +1012,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -923,8 +1042,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -953,40 +1074,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      CD, vinyles, musique en ligne
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        CD, vinyles, musique en ligne
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1030,6 +1154,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1043,8 +1184,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1073,40 +1216,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Concerts & festivals
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Concerts & festivals
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1150,6 +1296,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1163,8 +1326,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1193,40 +1358,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Conférences & rencontres
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Conférences & rencontres
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1270,6 +1438,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1283,8 +1468,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1313,40 +1500,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Évènements en ligne
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Évènements en ligne
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1390,6 +1580,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1403,8 +1610,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1433,40 +1642,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Films, séries, cinéma
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Films, séries, cinéma
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1510,6 +1722,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1523,8 +1752,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1553,40 +1784,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Instruments de musique
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Instruments de musique
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1630,6 +1864,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1643,8 +1894,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1673,40 +1926,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Jeux & jeux vidéos
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Jeux & jeux vidéos
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1750,6 +2006,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1763,8 +2036,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1793,40 +2068,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Livres
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Livres
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1870,6 +2148,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -1883,8 +2178,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -1913,40 +2210,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Médias & presse
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Médias & presse
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -1990,6 +2290,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -2003,8 +2320,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -2033,40 +2352,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Musées & visites culturelles
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Musées & visites culturelles
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -2110,6 +2432,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 />
                 <View
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={false}
                   collapsable={false}
                   focusable={true}
@@ -2123,8 +2462,10 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -2153,40 +2494,43 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "flex-start",
-                          "flexDirection": "column",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                          },
-                        ]
-                      }
-                    >
-                      Spectacles
-                    </Text>
-                  </View>
-                  <View
-                    style={
-                      [
-                        {
                           "flexBasis": 0,
+                          "flexDirection": "row",
                           "flexGrow": 1,
                           "flexShrink": 1,
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-start",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Spectacles
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     accessibilityLabel="Affiner la recherche"
                     height={20}
@@ -2245,6 +2589,23 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -2328,7 +2689,19 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               accessibilityLabel="Rechercher"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

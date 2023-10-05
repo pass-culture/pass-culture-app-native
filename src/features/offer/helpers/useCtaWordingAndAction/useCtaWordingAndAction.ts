@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import { UseMutateFunction } from 'react-query'
 
 import { ApiError } from 'api/apiHelpers'
@@ -20,8 +21,7 @@ import {
 } from 'features/bookings/api'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { openUrl } from 'features/navigation/helpers'
-import { Referrals } from 'features/navigation/RootNavigator/types'
-import { OfferModal } from 'features/offer/enums'
+import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -29,6 +29,8 @@ import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
+import { OfferModal } from 'shared/offer/enums'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -103,7 +105,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
+  if (userStatus?.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: 'Réserver l’offre',
       bottomBannerText:
@@ -121,37 +123,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isFreeDigitalOffer) {
-    return {
-      wording: getDigitalOfferBookingWording(subcategoryId),
-      isDisabled: isBookingLoading,
-      onPress() {
-        if (isAlreadyBookedOffer) {
-          openUrl(booking?.completedUrl ?? '')
-          return
-        }
-
-        bookOffer({
-          quantity: 1,
-          stockId: offer.stocks[0].id,
-        })
-      },
-    }
-  }
-
-  if (isAlreadyBookedOffer) {
-    return {
-      wording: 'Voir ma réservation',
-      isDisabled: false,
-      navigateTo: {
-        screen: 'BookingDetails',
-        params: { id: bookedOffers[offer.id] },
-        fromRef: true,
-      },
-    }
-  }
-
-  if (userStatus.statusType === YoungStatusType.eligible) {
+  if (userStatus?.statusType === YoungStatusType.eligible) {
     const common = {
       wording: 'Réserver l’offre',
       isDisabled: false,
@@ -183,6 +155,36 @@ export const getCtaWordingAndAction = ({
             analytics.logConsultErrorApplicationModal(offer.id)
           },
         }
+    }
+  }
+
+  if (isFreeDigitalOffer) {
+    return {
+      wording: getDigitalOfferBookingWording(subcategoryId),
+      isDisabled: isBookingLoading,
+      onPress() {
+        if (isAlreadyBookedOffer) {
+          openUrl(booking?.completedUrl ?? '')
+          return
+        }
+
+        bookOffer({
+          quantity: 1,
+          stockId: offer.stocks[0].id,
+        })
+      },
+    }
+  }
+
+  if (isAlreadyBookedOffer) {
+    return {
+      wording: 'Voir ma réservation',
+      isDisabled: false,
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: bookedOffers[offer.id] },
+        fromRef: true,
+      },
     }
   }
 
@@ -247,6 +249,13 @@ export const useCtaWordingAndAction = (props: {
   const mapping = useSubcategoriesMapping()
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
+  const route = useRoute<UseRouteType<'Offer'>>()
+  const apiRecoParams: RecommendationApiParams = route.params?.apiRecoParams
+    ? JSON.parse(route.params?.apiRecoParams)
+    : undefined
+  const playlistType = route.params?.playlistType
+  const fromOfferId = route.params?.fromOfferId
+  const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
 
   const { refetch: getBookings } = useBookings()
 
@@ -264,6 +273,15 @@ export const useCtaWordingAndAction = (props: {
 
   const { mutate: bookOffer, isLoading: isBookingLoading } = useBookOfferMutation({
     onSuccess(data) {
+      analytics.logBookingConfirmation({
+        ...apiRecoParams,
+        offerId,
+        bookingId: data.bookingId,
+        fromOfferId,
+        fromMultivenueOfferId,
+        playlistType,
+      })
+
       redirectToBookingAction(data)
     },
     onError() {

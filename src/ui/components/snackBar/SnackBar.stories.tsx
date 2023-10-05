@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { FunctionComponent } from 'react'
 import { Button } from 'react-native'
 
-import { theme } from 'theme'
+import { computedTheme } from 'tests/computedTheme'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
@@ -21,28 +21,28 @@ export const Simple = Template.bind({})
 Simple.args = {
   visible: true,
   message: 'Une petite snackbar standard',
-  backgroundColor: theme.colors.primary,
-  progressBarColor: theme.colors.white,
-  color: theme.colors.white,
+  backgroundColor: computedTheme.colors.primary,
+  progressBarColor: computedTheme.colors.white,
+  color: computedTheme.colors.white,
 }
 
 export const Success = Template.bind({})
 Success.args = {
-  ...mapSnackBarTypeToStyle(theme, SnackBarType.SUCCESS),
+  ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.SUCCESS),
   visible: true,
   message: 'Une petite snackbar de succès',
 }
 
 export const Info = Template.bind({})
 Info.args = {
-  ...mapSnackBarTypeToStyle(theme, SnackBarType.INFO),
+  ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.INFO),
   visible: true,
   message: 'Une petite snackbar d’info',
 }
 
 export const InError = Template.bind({})
 InError.args = {
-  ...mapSnackBarTypeToStyle(theme, SnackBarType.ERROR),
+  ...mapSnackBarTypeToStyle(computedTheme, SnackBarType.ERROR),
   visible: true,
   message: 'Une petite snackbar d’erreur',
 }

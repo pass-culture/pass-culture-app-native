@@ -2,6 +2,15 @@ name: Verify code lint and typescript
 
 on:
   workflow_call:
+    inputs:
+      CACHE_BUCKET_NAME:
+        type: string
+        required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 concurrency:
   group: ${{ github.ref }}
@@ -12,14 +21,24 @@ jobs:
     runs-on: [self-hosted, linux, x64]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - uses: actions/setup-node@v3
         with:
+          node-version-file: '.nvmrc'
+      - name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Cache the node_modules
+        uses: mansagroup/gcs-cache-action@867797f1a78d69e008ad0a321c1459ddd619e9fd
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn test:lint
 
   yarn_typescript:
@@ -29,12 +48,20 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - uses: actions/cache@v3
+      - name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
         with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Cache the node_modules
+        id: yarn-modules-cache
+        uses: mansagroup/gcs-cache-action@867797f1a78d69e008ad0a321c1459ddd619e9fd
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn test:types

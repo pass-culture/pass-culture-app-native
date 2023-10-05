@@ -15,23 +15,15 @@ const mockFetchNextPage = jest.fn()
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
-    hits: [],
+    hits: { offers: [], venues: mockedAlgoliaVenueResponse.hits },
     nbHits: 0,
     isFetching: false,
     isLoading: false,
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
-    venues: mockedAlgoliaVenueResponse,
     refetch: jest.fn(),
-  }),
-}))
-
-const mockSearchVenuesState = mockedAlgoliaVenueResponse
-jest.mock('features/search/context/SearchVenuesWrapper', () => ({
-  useSearchVenues: () => ({
-    searchVenuesState: mockSearchVenuesState,
-    dispatch: jest.fn(),
+    venuesUserData: [{ venue_playlist_title: 'test' }],
   }),
 }))
 

@@ -12,7 +12,7 @@ async function getOfferById(offerId: number) {
     throw new OfferNotFoundError(offerId, { Screen: OfferNotFound })
   }
   try {
-    return await api.getnativev1offerofferId(offerId)
+    return await api.getNativeV1OfferofferId(offerId)
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
       throw new OfferNotFoundError(offerId, { Screen: OfferNotFound })

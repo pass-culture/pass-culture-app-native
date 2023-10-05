@@ -61,7 +61,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   return (
     <StyledSearchInput
       ref={ref}
-      placeholder="Offre, artiste..."
+      placeholder="Offre, artiste, point de vente..."
       value={query}
       onChangeText={setQuery}
       onSubmitEditing={onSubmitQuery}

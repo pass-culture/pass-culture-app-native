@@ -17,8 +17,8 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
-import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
-import { SearchState } from 'features/search/types'
+import { SuggestedPlacesOrVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlacesOrVenues'
+import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
@@ -112,6 +112,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useLocation()
+  const isGeolocated = !!position
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
   const { sliderLength } = useGetFullscreenModalSliderLength()
 
@@ -233,6 +234,13 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           break
         }
         case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          // Workaround: When on the search page and applying filters while entering a search query
+          // or selecting an autocomplete item, the filter wasn't being applied correctly.
+          // So, we navigate to the Search page and set the filter state with the location param.
+          if (searchState.view === SearchView.Landing) {
+            navigate(...getTabNavConfig('Search', additionalSearchState))
+            break
+          }
           dispatch({ type: 'SET_STATE', payload: additionalSearchState })
           break
         }
@@ -257,12 +265,12 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
   const onResetPress = useCallback(() => {
     reset({
-      locationChoice: position ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
+      locationChoice: isGeolocated ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
       aroundRadius: MAX_RADIUS,
       searchPlaceOrVenue: '',
       selectedPlaceOrVenue: undefined,
     })
-  }, [position, reset])
+  }, [isGeolocated, reset])
 
   const onSubmit = handleSubmit(search)
 
@@ -438,7 +446,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                           {isSearchInputFocused ? (
                             <React.Fragment>
                               <Spacer.Column numberOfSpaces={4} />
-                              <SuggestedPlaces
+                              <SuggestedPlacesOrVenues
                                 query={debouncedSearchPlaceOrVenue}
                                 setSelectedPlaceOrVenue={handlePlaceOrVenueSelect}
                               />

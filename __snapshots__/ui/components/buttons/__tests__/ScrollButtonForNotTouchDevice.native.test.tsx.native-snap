@@ -2,6 +2,23 @@
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direction 1`] = `
 <View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
   accessible={false}
   collapsable={false}
   focusable={false}
@@ -41,6 +58,23 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direc
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right direction 1`] = `
 <View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
   accessible={false}
   collapsable={false}
   focusable={false}
@@ -80,6 +114,23 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right dire
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top given 1`] = `
 <View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
   accessible={false}
   collapsable={false}
   focusable={false}

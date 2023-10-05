@@ -4,7 +4,7 @@ import { analytics } from 'libs/analytics'
 import { share } from 'libs/share'
 import { waitFor } from 'tests/utils'
 
-const defaultContent = { message: 'Message' }
+const defaultContent = { message: 'Message', messageWithoutLink: 'Message' }
 const defaultOptions = {}
 const shareMockReturnValue = { action: Share.sharedAction, activityType: 'copy' }
 const shareMock = jest.spyOn(Share, 'share').mockResolvedValue(shareMockReturnValue)

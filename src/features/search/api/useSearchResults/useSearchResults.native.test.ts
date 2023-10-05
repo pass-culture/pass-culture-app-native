@@ -1,34 +1,27 @@
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
-import { initialSearchState, initialSearchVenuesState } from 'features/search/context/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import {
   mockedAlgoliaVenueResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import * as fetchAlgoliaOffersAndVenues from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/fetchOffersAndVenues'
+import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
+import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
-const mockSearchVenuesState = initialSearchVenuesState
-const mockDispatch = jest.fn()
-jest.mock('features/search/context/SearchVenuesWrapper', () => ({
-  useSearchVenues: () => ({
-    searchVenuesState: mockSearchVenuesState,
-    dispatch: mockDispatch,
-  }),
-}))
-
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
     const fetchAlgoliaOffersAndVenuesSpy = jest
-      .spyOn(fetchAlgoliaOffersAndVenues, 'fetchOffersAndVenues')
+      .spyOn(fetchSearchResults, 'fetchSearchResults')
       .mockResolvedValue({
         offersResponse: mockedAlgoliaResponse,
         venuesResponse: mockedAlgoliaVenueResponse,
+        facetsResponse: mockedFacets,
       })
 
-    it('should fetch offers and venues', async () => {
+    it('should fetch offers, venues and all facets', async () => {
       renderHook(useSearchInfiniteQuery, {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -38,25 +31,6 @@ describe('useSearchResults', () => {
       await flushAllPromisesWithAct()
 
       expect(fetchAlgoliaOffersAndVenuesSpy).toHaveBeenCalledTimes(1)
-    })
-
-    it('should dispatch useSearchVenues correctly', async () => {
-      renderHook(useSearchInfiniteQuery, {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-        initialProps: initialSearchState,
-      })
-
-      await flushAllPromisesWithAct()
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_VENUES',
-        payload: mockedAlgoliaVenueResponse.hits,
-      })
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_USER_DATA',
-        payload: mockedAlgoliaVenueResponse.userData,
-      })
     })
 
     it('should log perform search when received API result', async () => {

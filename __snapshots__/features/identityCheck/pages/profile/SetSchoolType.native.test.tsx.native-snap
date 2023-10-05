@@ -74,6 +74,23 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -309,7 +326,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -332,7 +361,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -466,7 +494,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={false}
@@ -489,7 +529,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -620,7 +659,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={false}
@@ -643,7 +694,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -774,7 +824,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={false}
@@ -797,7 +859,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -928,7 +989,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={false}
@@ -951,7 +1024,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1083,7 +1155,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1106,7 +1190,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1256,7 +1339,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1279,7 +1374,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1425,7 +1519,19 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
             accessibilityLabel="Choisis ton statut"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}
@@ -1604,6 +1710,23 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -1839,7 +1962,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1862,7 +1997,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1997,7 +2131,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -2020,7 +2166,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -2155,7 +2300,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -2178,7 +2335,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -2339,7 +2495,19 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
             accessibilityLabel="Choisis ton statut"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}

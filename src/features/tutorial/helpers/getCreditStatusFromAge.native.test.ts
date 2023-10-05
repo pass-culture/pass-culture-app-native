@@ -1,5 +1,5 @@
+import { CreditStatus } from 'features/tutorial/enums'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
-import { CreditStatus } from 'features/tutorial/types'
 
 const AGES = [15, 16, 17, 18]
 

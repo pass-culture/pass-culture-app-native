@@ -5,12 +5,11 @@ import { InfiniteQueryObserverOptions, useInfiniteQuery } from 'react-query'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchOfferResponse } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { AlgoliaHit, Geoloc } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
 import { formatDistance } from 'libs/parsers'
@@ -102,7 +101,7 @@ export const useSearchVenueOffers = ({
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
 
-  const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
+  const { data, ...infiniteQuery } = useInfiniteQuery<FetchOffersResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, view: undefined, query }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffers({
@@ -122,11 +121,16 @@ export const useSearchVenueOffers = ({
   )
 
   const venueList = useMemo(() => {
-    const flattenedHits = flatten(data?.pages.map((page) => page.hits.map(transformHits))).filter(
-      (hit) => filterVenueOfferHit({ hit, offerId, venueId })
+    const availablePages = data?.pages ?? []
+    const transformedHitsList = availablePages.map((page) => {
+      const availableHits = page?.hits ?? []
+      return availableHits.map(transformHits)
+    })
+    const filteredHits = flatten(transformedHitsList).filter((hit) =>
+      filterVenueOfferHit({ hit, offerId, venueId })
     ) as Offer[]
 
-    return getVenueList(flattenedHits, geolocation)
+    return getVenueList(filteredHits, geolocation)
   }, [data?.pages, geolocation, offerId, transformHits, venueId])
 
   const nbVenueItems = venueList.length

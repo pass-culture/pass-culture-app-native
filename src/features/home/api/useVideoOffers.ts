@@ -14,6 +14,8 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
+const MAX_NUMBER_OF_OFFERS = 20
+
 const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
   typeof parameter === 'object' && parameter !== null
 
@@ -95,9 +97,9 @@ export const useVideoOffers = (
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!position])
+  }, [position?.latitude, position?.longitude])
 
   const hits = (data?.map(transformHits) as Offer[]) ?? []
 
-  return { offers: hits.slice(0, 10) }
+  return { offers: hits.slice(0, MAX_NUMBER_OF_OFFERS) }
 }

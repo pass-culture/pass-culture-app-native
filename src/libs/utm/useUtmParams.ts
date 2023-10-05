@@ -15,10 +15,16 @@ export const useUtmParams = (): ExtendedUtmParams => {
 
   useEffect(() => {
     storage
-      .readMultiString(['traffic_campaign', 'traffic_source', 'traffic_medium', 'campaign_date'])
-      .then(([[, campaign], [, source], [, medium], [, time]]) => {
+      .readMultiString([
+        'traffic_gen',
+        'traffic_campaign',
+        'traffic_source',
+        'traffic_medium',
+        'campaign_date',
+      ])
+      .then(([[, gen], [, campaign], [, source], [, medium], [, time]]) => {
         const campaignDate = getCampaignDate(time)
-        setUtmParams({ campaign, source, medium, campaignDate })
+        setUtmParams({ gen, campaign, source, medium, campaignDate })
       })
   }, [])
 

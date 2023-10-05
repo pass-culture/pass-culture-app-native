@@ -41,6 +41,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
     testID="styled-input-container"
   >
     <TextInput
+      defaultValue="defaultValue"
       editable={true}
       isEmpty={true}
       nativeID="testUuidV4"

@@ -23,7 +23,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-  const { share: shareOffer, shareContent } = useShareOffer(params.offerId)
+  const { share: shareOffer, shareContent } = useShareOffer(params.offerId, 'post_booking')
   const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
@@ -60,7 +60,7 @@ export function BookingConfirmation() {
   } = useModal(false)
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', id: params.offerId })
+    analytics.logShare({ type: 'Offer', from: 'bookingconfirmation', offer_id: params.offerId })
     shareOffer()
     showShareOfferModal()
   }, [params.offerId, shareOffer, showShareOfferModal])

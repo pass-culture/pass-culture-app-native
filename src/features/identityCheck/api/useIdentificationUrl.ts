@@ -19,7 +19,7 @@ export function useIdentificationUrl() {
     [MutationKeys.IDENTIFICATION_URL],
     async () => {
       try {
-        const data = await api.postnativev1ubbleIdentification({ redirectUrl: REDIRECT_URL_UBBLE })
+        const data = await api.postNativeV1UbbleIdentification({ redirectUrl: REDIRECT_URL_UBBLE })
         setIdentificationUrl(data.identificationUrl)
       } catch (err) {
         const error = (err as ApiError)?.content.code

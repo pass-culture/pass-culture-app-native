@@ -7,7 +7,7 @@ export function useChangePasswordMutation(
   onSuccess?: () => void,
   onError?: (error: unknown) => void
 ) {
-  return useMutation((body: ChangePasswordRequest) => api.postnativev1changePassword(body), {
+  return useMutation((body: ChangePasswordRequest) => api.postNativeV1ChangePassword(body), {
     onSuccess,
     onError,
   })

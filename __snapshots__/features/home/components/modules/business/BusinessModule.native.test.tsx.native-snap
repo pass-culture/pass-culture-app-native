@@ -28,6 +28,14 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
         "disabled": true,
       }
     }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -218,6 +226,14 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     accessibilityState={
       {
         "disabled": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -431,6 +447,14 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     accessibilityState={
       {
         "disabled": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}

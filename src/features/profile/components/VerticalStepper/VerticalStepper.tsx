@@ -27,7 +27,7 @@ type CustomComponentProps = FirstOrLastProps & {
   testID?: string
 }
 
-const IN_PROGRESS_ICON_SIZE = 10
+const IN_PROGRESS_ICON_SIZE = getSpacing(3)
 const DOT_SIZE: DotSize = { width: 2, height: 3 }
 const SPECIAL_DOT_SIZE: DotSize = { width: 2, height: 2.5 }
 

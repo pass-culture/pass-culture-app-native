@@ -74,7 +74,7 @@ export const isDigitalBookingWithoutExpirationDate = (booking: BookingReponse) =
   booking.stock.offer.isDigital && !booking.expirationDate
 
 export const isFreeBookingInSubcategories = (booking: BookingReponse) =>
-  booking.stock.price === 0 &&
+  booking.totalAmount === 0 &&
   FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(booking.stock.offer.subcategoryId)
 
 export const isEligibleBookingsForArchive = (booking: BookingReponse) =>

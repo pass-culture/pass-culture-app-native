@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -19,7 +20,7 @@ export const VerifyEligibility: FunctionComponent = () => {
           key={1}
           as={ButtonPrimary}
           wording="Commencer la vérification"
-          navigateTo={{ screen: 'Stepper' }}
+          navigateTo={{ screen: 'Stepper', params: { from: StepperOrigin.VERIFY_ELIGIBILITY } }}
         />,
         <InternalTouchableLink
           key={2}

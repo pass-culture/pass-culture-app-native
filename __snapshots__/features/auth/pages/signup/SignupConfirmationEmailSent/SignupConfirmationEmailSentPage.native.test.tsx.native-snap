@@ -74,6 +74,23 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -345,6 +362,23 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
       />
       <View
         accessibilityLabel="Consulter notre centre d’aide"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -415,17 +449,121 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         </Text>
       </View>
       <View
-        numberOfSpaces={10}
+        accessibilityLabel="Recevoir un nouveau lien"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Recevoir un nouveau lien"
+      >
+        <View
+          style={
+            [
+              {
+                "flexShrink": 0,
+              },
+            ]
+          }
+        >
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Recevoir un nouveau lien
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={6}
         style={
           [
             {
-              "height": 40,
+              "height": 24,
             },
           ]
         }
       />
       <View
         accessibilityLabel="Consulter mes e-mails"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -494,6 +632,37 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
           Consulter mes e-mails
         </Text>
       </View>
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        accessibilityRole="none"
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
     </View>
   </RCTScrollView>,
   <View

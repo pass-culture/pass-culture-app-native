@@ -28,3 +28,13 @@ export interface Offer {
     city?: string
   }
 }
+
+export interface RecommendationApiParams {
+  call_id?: string
+  filtered?: boolean
+  geo_located?: boolean
+  model_endpoint?: string
+  model_name?: string
+  model_version?: string
+  reco_origin?: string
+}

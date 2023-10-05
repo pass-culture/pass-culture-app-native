@@ -1,8 +1,9 @@
 import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { Configure, Index, InstantSearch } from 'react-instantsearch-hooks'
+import { Configure, Index, InstantSearch } from 'react-instantsearch-core'
 import { Keyboard, StatusBar } from 'react-native'
+import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,11 +12,12 @@ import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
+import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { SearchView } from 'features/search/types'
-import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
+import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -56,6 +58,8 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const { userPosition } = useLocation()
+  const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
+    useSearchHistory()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -84,10 +88,17 @@ export function Search() {
     <React.Fragment>
       <StatusBar barStyle="dark-content" />
       <Form.Flex>
-        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={suggestionsIndex}
+          insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
-          <InsightsMiddleware />
-          <SearchHeader searchInputID={searchInputID} searchView={currentView} />
+          <SearchHeader
+            searchInputID={searchInputID}
+            searchView={currentView}
+            addSearchHistory={addToHistory}
+            searchInHistory={(query: string) => setQueryHistory(query)}
+          />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
               testID="autocompleteScrollView"
@@ -95,7 +106,12 @@ export function Search() {
               onScroll={Keyboard.dismiss}
               scrollEventThrottle={400}>
               <Spacer.Column numberOfSpaces={4} />
-              <AutocompleteOffer />
+              <SearchHistory
+                history={filteredHistory}
+                queryHistory={queryHistory}
+                removeItem={removeFromHistory}
+              />
+              <AutocompleteOffer addSearchHistory={addToHistory} />
               <FeatureFlag
                 featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
                 <Index indexName={currentVenuesIndex}>
@@ -108,6 +124,7 @@ export function Search() {
                   <AutocompleteVenue onItemPress={onVenuePress} />
                 </Index>
               </FeatureFlag>
+              <Spacer.Column numberOfSpaces={3} />
             </StyledScrollView>
           ) : (
             <BodySearch view={params?.view} />
@@ -118,7 +135,9 @@ export function Search() {
   )
 }
 
-const StyledScrollView = styled.ScrollView({
+const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  flex: 1,
   paddingLeft: getSpacing(6),
   paddingRight: getSpacing(6),
-})
+  ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
+}))

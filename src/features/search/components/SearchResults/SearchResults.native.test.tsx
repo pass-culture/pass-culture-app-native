@@ -11,10 +11,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import {
-  mockedAlgoliaResponse,
-  mockedAlgoliaVenueResponse,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -36,14 +33,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const mockSearchVenuesState = mockedAlgoliaVenueResponse
-jest.mock('features/search/context/SearchVenuesWrapper', () => ({
-  useSearchVenues: () => ({
-    searchVenuesState: mockSearchVenuesState,
-    dispatch: jest.fn(),
-  }),
-}))
-
 jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -59,9 +48,11 @@ mockUseAuthContext.mockReturnValue({
 const mockData = {
   pages: [
     {
-      nbHits: 0,
-      hits: [],
-      page: 0,
+      offers: {
+        nbHits: 0,
+        hits: [],
+        page: 0,
+      },
     },
   ],
 }
@@ -82,7 +73,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
     userData: mockUserData,
-    venues: mockedAlgoliaVenueResponse,
     refetch: mockRefetch,
   }),
 }))
@@ -127,6 +117,9 @@ describe('SearchResults component', () => {
   afterEach(() => {
     mockHits = []
     mockNbHits = 0
+    mockSearchState = searchState
+    mockPosition = DEFAULT_POSITION
+    mockUserData = []
   })
 
   it('should render correctly', async () => {
@@ -143,22 +136,30 @@ describe('SearchResults component', () => {
     mockHits = mockedAlgoliaResponse.hits
     mockNbHits = mockedAlgoliaResponse.nbHits
 
+    mockData.pages.push({
+      offers: {
+        nbHits: 0,
+        hits: [],
+        page: 1,
+      },
+    })
+
     render(<SearchResults />)
 
     const flashList = screen.getByTestId('searchResultsFlashlist')
 
-    mockData.pages.push({
-      hits: [],
-      page: 1,
-      nbHits: 0,
-    })
-    await act(async () => {
-      flashList.props.onEndReached()
-    })
+    await act(() => {})
+
     expect(mockFetchNextPage).toHaveBeenCalledTimes(1)
     expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1, searchId)
 
-    mockData.pages.push({ hits: [], page: 2, nbHits: 0 })
+    mockData.pages.push({
+      offers: {
+        nbHits: 0,
+        hits: [],
+        page: 2,
+      },
+    })
     await act(async () => {
       flashList.props.onEndReached()
     })
@@ -199,10 +200,10 @@ describe('SearchResults component', () => {
       expect(categoryButtonIcon).toBeOnTheScreen()
 
       const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
-      expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-      const categoryButtonLabel = screen.getByTestId('categoryButtonLabel')
-      expect(categoryButtonLabel).toHaveStyle({ color: theme.colors.primary })
+      expect(categoryButton).toHaveStyle({
+        borderWidth: 2,
+        backgroundColor: theme.colors.greyLight,
+      })
     })
   })
 
@@ -238,10 +239,7 @@ describe('SearchResults component', () => {
       expect(priceButtonIcon).toBeOnTheScreen()
 
       const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
-      expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-      const priceButtonLabel = screen.getByTestId('priceButtonLabel')
-      expect(priceButtonLabel).toHaveStyle({ color: theme.colors.primary })
+      expect(priceButton).toHaveStyle({ borderWidth: 2, backgroundColor: theme.colors.greyLight })
     })
   })
 
@@ -373,6 +371,8 @@ describe('SearchResults component', () => {
 
   describe('Location filter', () => {
     it('should display location filter button', async () => {
+      mockPosition = null
+
       render(<SearchResults />)
       await act(async () => {})
 
@@ -448,10 +448,10 @@ describe('SearchResults component', () => {
         expect(datesHoursButtonIcon).toBeOnTheScreen()
 
         const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
-        expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-        const datesHoursButtonLabel = screen.getByTestId('datesHoursButtonLabel')
-        expect(datesHoursButtonLabel).toHaveStyle({ color: theme.colors.primary })
+        expect(datesHoursButton).toHaveStyle({
+          borderWidth: 2,
+          backgroundColor: theme.colors.greyLight,
+        })
       }
     )
   })
@@ -554,6 +554,25 @@ describe('SearchResults component', () => {
       await act(async () => {})
 
       expect(screen.queryByText('Offre non disponible sur le pass Culture.')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('Main filter button', () => {
+    it('should display filter button with the number of active filters', async () => {
+      mockSearchState = {
+        ...searchState,
+        priceRange: [5, 300],
+        offerIsDuo: true,
+      }
+
+      render(<SearchResults />)
+      let filterButton
+      await act(async () => {
+        filterButton = screen.getByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
+      })
+
+      expect(filterButton).toBeOnTheScreen()
+      expect(filterButton).toHaveTextContent('2')
     })
   })
 })

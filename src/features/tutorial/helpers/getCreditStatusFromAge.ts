@@ -1,4 +1,4 @@
-import { CreditStatus } from 'features/tutorial/types'
+import { CreditStatus } from 'features/tutorial/enums'
 
 export const getCreditStatusFromAge = (userAge: number, age: number) => {
   if (userAge > age) {

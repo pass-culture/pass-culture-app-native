@@ -132,6 +132,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             <View
               accessibilityLabel="Fermer"
               accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -230,6 +247,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -243,8 +277,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -274,56 +310,59 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "alignItems": "flex-start",
-                    "flexDirection": "column",
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Localisation
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Autour de moi
-              </Text>
-            </View>
-            <View
-              style={
-                [
-                  {
                     "flexBasis": 0,
+                    "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
                 ]
               }
-            />
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Localisation
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Autour de moi
+                </Text>
+              </View>
+            </View>
             <View
               accessibilityLabel="Affiner la recherche"
               height={20}
@@ -413,6 +452,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -426,8 +482,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -456,40 +514,43 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "alignItems": "flex-start",
-                    "flexDirection": "column",
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Catégorie
-              </Text>
-            </View>
-            <View
-              style={
-                [
-                  {
                     "flexBasis": 0,
+                    "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
                 ]
               }
-            />
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Catégorie
+                </Text>
+              </View>
+            </View>
             <View
               accessibilityLabel="Affiner la recherche"
               height={20}
@@ -579,6 +640,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -592,8 +670,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -623,40 +703,43 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "alignItems": "flex-start",
-                    "flexDirection": "column",
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Prix
-              </Text>
-            </View>
-            <View
-              style={
-                [
-                  {
                     "flexBasis": 0,
+                    "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
                 ]
               }
-            />
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Prix
+                </Text>
+              </View>
+            </View>
             <View
               accessibilityLabel="Affiner la recherche"
               height={20}
@@ -727,6 +810,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         >
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -740,8 +840,10 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "opacity": 1,
                 "userSelect": "auto",
               }
@@ -770,40 +872,43 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "alignItems": "flex-start",
-                    "flexDirection": "column",
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Dates & heures
-              </Text>
-            </View>
-            <View
-              style={
-                [
-                  {
                     "flexBasis": 0,
+                    "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
                   },
                 ]
               }
-            />
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Dates & heures
+                </Text>
+              </View>
+            </View>
             <View
               accessibilityLabel="Affiner la recherche"
               height={20}
@@ -865,6 +970,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Réinitialiser"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -946,6 +1068,23 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Rechercher"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

@@ -256,6 +256,23 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     >
       <View
         accessibilityLabel="Commencer la vérification"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -317,6 +334,23 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       />
       <View
         accessibilityLabel="Vérifier mon identité plus tard"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

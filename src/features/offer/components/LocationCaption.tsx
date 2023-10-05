@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
-import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
+import { getOfferLocationName } from 'shared/offer/helpers/getOfferLocationName'
 import { Digital as DefaultDigital } from 'ui/svg/icons/Digital'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'

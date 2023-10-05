@@ -7,6 +7,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { checkAccessibilityFor, render, act } from 'tests/utils/web'
@@ -49,8 +50,8 @@ jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
-jest.mock('react-instantsearch-hooks', () => ({
-  ...jest.requireActual('react-instantsearch-hooks'),
+jest.mock('react-instantsearch-core', () => ({
+  ...jest.requireActual('react-instantsearch-core'),
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,
@@ -73,9 +74,6 @@ jest.mock('react-instantsearch-hooks', () => ({
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
-jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
-  InsightsMiddleware: () => null,
-}))
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
@@ -83,11 +81,16 @@ jest.mock('uuid', () => ({
   v4: jest.fn(mockV4),
 }))
 
+// mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
 describe('<Search/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
       const { container } = render(<Search />)
+
+      await act(async () => {})
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

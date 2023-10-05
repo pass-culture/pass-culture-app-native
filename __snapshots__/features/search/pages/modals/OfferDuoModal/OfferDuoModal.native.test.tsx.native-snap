@@ -33,6 +33,15 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -267,6 +276,23 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   <View
                     accessibilityLabel="Fermer"
                     accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -462,8 +488,19 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
+                        "busy": undefined,
                         "checked": false,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={false}
@@ -572,6 +609,23 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -655,7 +709,19 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               accessibilityLabel="Rechercher"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

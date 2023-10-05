@@ -42,6 +42,23 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   >
     <View
       accessibilityLabel="Revenir en arrière"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -377,7 +394,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -526,7 +555,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -674,7 +715,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -822,7 +875,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -970,7 +1035,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1104,7 +1181,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1238,7 +1327,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1386,7 +1487,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1534,7 +1647,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1682,7 +1807,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1769,7 +1906,19 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       accessibilityLabel="Continuer vers l’étape suivante"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}

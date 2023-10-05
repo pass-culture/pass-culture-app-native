@@ -43,7 +43,7 @@ interface FlexSpacerProps {
 }
 
 const FlexSpacer = styled.View<FlexSpacerProps>(({ flex }) => ({
-  flex: flex ? flex : 1,
+  flex: flex || 1,
 }))
 
 export const Spacer = {

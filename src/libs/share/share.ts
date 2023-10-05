@@ -5,6 +5,7 @@ import { analytics } from 'libs/analytics'
 export type ShareContent = {
   title?: string
   message: string
+  messageWithoutLink: string
   url?: string // Works with IOS only
 }
 

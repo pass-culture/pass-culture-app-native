@@ -8,10 +8,12 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
@@ -43,32 +45,33 @@ export type SearchQueryParameters = {
   date: SelectedDate | null
   endingDatetime?: string
   hitsPerPage: number | null
+  isOnline?: boolean
   locationFilter?: LocationFilter
+  maxPossiblePrice?: string
+  maxPrice?: string
+  minBookingsThreshold?: number
+  minPrice?: string
+  noFocus?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
-  offerNativeCategories?: NativeCategoryIdEnumv2[]
-  offerSubcategories: SubcategoryIdEnumv2[]
+  offerGtlLabel?: string
+  offerGtlLevel?: GTLLevel
   offerIsDuo: boolean
   offerIsFree?: boolean
   offerIsNew: boolean
+  offerNativeCategories?: NativeCategoryIdEnumv2[]
+  offerSubcategories: SubcategoryIdEnumv2[]
   offerTypes: {
     isDigital: boolean
     isEvent: boolean
     isThing: boolean
   }
-  priceRange: Range<number> | null
-  timeRange: Range<number> | null
-  tags: string[]
-  query: string
-  noFocus?: boolean
-  minPrice?: string
-  maxPrice?: string
-  searchId?: string
-  maxPossiblePrice?: string
-  isOnline?: boolean
-  minBookingsThreshold?: number
-
   page?: number
+  priceRange: Range<number> | null
+  query: string
+  searchId?: string
+  tags: string[]
+  timeRange: Range<number> | null
 }
 
 export const transformHit = transformOfferHit
@@ -154,3 +157,21 @@ export interface AlgoliaVenue {
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }
+
+type FacetKeys =
+  | FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE
+  | FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
+  | FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE
+  | FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
+  | FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE
+
+type NativeCategoryFacets = Record<NativeCategoryIdEnumv2, number>
+type GenreTypeFacets = Record<GenreType, number>
+
+export type NativeCategoryFacetData = Record<
+  FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY,
+  NativeCategoryFacets
+>
+export type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
+
+export type FacetData = NativeCategoryFacetData | GenreTypeFacetData

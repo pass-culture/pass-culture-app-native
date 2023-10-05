@@ -290,7 +290,7 @@ describe('useCookies', () => {
           await setUserId(FAKE_USER_ID)
         })
 
-        expect(api.postnativev1cookiesConsent).not.toHaveBeenCalled()
+        expect(api.postNativeV1CookiesConsent).not.toHaveBeenCalled()
       })
 
       it('should overwrite user ID when setting another user ID', async () => {
@@ -342,7 +342,7 @@ describe('useCookies', () => {
         })
       })
 
-      expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
+      expect(api.postNativeV1CookiesConsent).toHaveBeenCalledWith({
         deviceId,
         choiceDatetime: TODAY.toISOString(),
         consent: {
@@ -368,7 +368,7 @@ describe('useCookies', () => {
         await setUserId(FAKE_USER_ID)
       })
 
-      expect(api.postnativev1cookiesConsent).toHaveBeenCalledWith({
+      expect(api.postNativeV1CookiesConsent).toHaveBeenCalledWith({
         userId: FAKE_USER_ID,
         deviceId,
         choiceDatetime: TODAY.toISOString(),
@@ -402,14 +402,14 @@ describe('useCookies', () => {
       const SET_COOKIE_CONSENT = 1
       const SET_USER_ID_AFTERLOGIN = 1
       const API_CALLED_TIMES = SET_COOKIE_CONSENT + SET_USER_ID_AFTERLOGIN
-      expect(api.postnativev1cookiesConsent).toBeCalledTimes(API_CALLED_TIMES)
+      expect(api.postNativeV1CookiesConsent).toBeCalledTimes(API_CALLED_TIMES)
     })
 
     describe('when can not log cookies consent choice', () => {
       beforeEach(() => {
         ;(
-          api.postnativev1cookiesConsent as jest.MockedFunction<
-            typeof api.postnativev1cookiesConsent
+          api.postNativeV1CookiesConsent as jest.MockedFunction<
+            typeof api.postNativeV1CookiesConsent
           >
         ).mockRejectedValueOnce(new Error('unknown network error'))
       })

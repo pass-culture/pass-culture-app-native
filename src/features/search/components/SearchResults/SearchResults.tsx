@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
+import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -17,6 +18,7 @@ import {
   FILTER_TYPES,
   useAppliedFilters,
 } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
+import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
@@ -57,6 +59,8 @@ export const SearchResults: React.FC = () => {
     isFetching,
     isFetchingNextPage,
     userData,
+    venuesUserData,
+    facets,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -99,6 +103,8 @@ export const SearchResults: React.FC = () => {
   } = useModal(false)
   const hasPosition = useHasPosition()
 
+  const activeFilters = useFilterCount(searchState)
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
@@ -127,8 +133,9 @@ export const SearchResults: React.FC = () => {
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
-      if (lastPage.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.page, params?.searchId)
+
+      if (lastPage.offers.page > 0) {
+        analytics.logSearchScrollToPage(lastPage.offers.page, params?.searchId)
       }
       fetchNextPage()
     }
@@ -195,6 +202,9 @@ export const SearchResults: React.FC = () => {
           <Spacer.Row numberOfSpaces={5} />
           <Ul>
             <StyledLi>
+              <FilterButton activeFilters={activeFilters} />
+            </StyledLi>
+            <StyledLi>
               <SingleFilterButton
                 label={hasPosition ? locationLabel : 'Localisation'}
                 testID="locationButton"
@@ -232,14 +242,14 @@ export const SearchResults: React.FC = () => {
               </StyledLi>
             )}
 
-            <StyledLi>
+            <StyledLastLi>
               <SingleFilterButton
                 label="Dates & heures"
                 testID="datesHoursButton"
                 onPress={showDatesHoursModal}
                 isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
               />
-            </StyledLi>
+            </StyledLastLi>
           </Ul>
           <Spacer.Row numberOfSpaces={5} />
         </ScrollView>
@@ -259,6 +269,7 @@ export const SearchResults: React.FC = () => {
           onRefresh={refetch}
           onPress={handlePressFooter}
           userData={userData}
+          venuesUserData={venuesUserData}
         />
       </Container>
       {nbHits > 0 && (
@@ -277,6 +288,7 @@ export const SearchResults: React.FC = () => {
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
         filterBehaviour={FilterBehaviour.SEARCH}
+        facets={facets}
       />
       <PriceModal
         title="Prix"
@@ -335,7 +347,13 @@ const Separator = styled.View(({ theme }) => ({
 }))
 
 const StyledLi = styled(Li)({
-  margin: getSpacing(1),
+  marginLeft: getSpacing(1),
+  marginTop: getSpacing(1),
+  marginBottom: getSpacing(1),
+})
+
+const StyledLastLi = styled(StyledLi)({
+  marginRight: getSpacing(1),
 })
 
 const ScrollToTopContainer = styled.View(({ theme }) => ({

@@ -74,6 +74,23 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -155,6 +172,23 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
         >
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -330,6 +364,23 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
       />
       <View
         accessibilityLabel="Nos conditions générales d’utilisation"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -402,6 +453,23 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
       </View>
       <View
         accessibilityLabel="Notre politique de confidentialité"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -529,6 +597,23 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
       />
       <View
         accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -611,7 +696,19 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
         accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
         accessibilityState={
           {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -787,6 +884,23 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -868,6 +982,23 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
         >
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -1262,7 +1393,19 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
             accessibilityLabel="Continuer vers l’étape CGU & Données"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}
@@ -1440,6 +1583,23 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -1773,7 +1933,19 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
           accessibilityRole="checkbox"
           accessibilityState={
             {
+              "busy": undefined,
               "checked": false,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -1893,6 +2065,23 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
         />
         <View
           accessibilityLabel="Comment gérer tes données personnelles ?"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -1979,7 +2168,19 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
           accessibilityLabel="Continuer vers l’étape Mot de passe"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -2080,6 +2281,23 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
               <View
                 accessibilityLabel="Se connecter"
                 accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2276,6 +2494,23 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -2357,6 +2592,23 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
         >
           <View
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={true}
@@ -2657,6 +2909,23 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
             <View
               accessibilityLabel="Afficher le mot de passe"
               accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -3076,7 +3345,19 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
           accessibilityLabel="Continuer vers l’étape Date de naissance"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}

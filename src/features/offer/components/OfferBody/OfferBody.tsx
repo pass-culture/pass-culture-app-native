@@ -1,27 +1,23 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ReportedOffer, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
-import { useReportedOffers } from 'features/offer/api/useReportedOffers'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
-import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
-import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
@@ -42,19 +38,16 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
-import { Offer } from 'shared/offer/types'
+import { Offer, RecommendationApiParams } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
 import { useModal } from 'ui/components/modals/useModal'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordionOpens'
-import { Flag as DefaultFlag } from 'ui/svg/icons/Flag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -62,7 +55,9 @@ interface Props {
   offerId: number
   onScroll: () => void
   sameCategorySimilarOffers?: Offer[]
+  apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
+  apiRecoParamsOtherCategories?: RecommendationApiParams
   shouldUseAlgoliaRecommend?: boolean
 }
 
@@ -76,7 +71,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   offerId,
   onScroll,
   sameCategorySimilarOffers,
+  apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
+  apiRecoParamsOtherCategories,
   shouldUseAlgoliaRecommend,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -131,10 +128,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     ScrollTo: withdrawalDetailsScrollsTo,
   } = useScrollWhenAccordionItemOpens(scrollViewRef)
 
-  const [isReportOfferModalVisible, setIsReportOfferModalVisible] = useState(false)
-  const showReportOfferDescription = () => setIsReportOfferModalVisible(true)
-  const hideReportOfferDescription = () => setIsReportOfferModalVisible(false)
-
   useTrackOfferSeenDuration(offerId)
 
   const categoryMapping = useCategoryIdMapping()
@@ -150,8 +143,21 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
-  const renderItem: CustomListRenderItem<Offer> = useCallback(
-    ({ item, width, height, playlistType }) => {
+  const renderItem = useCallback(
+    (
+      {
+        item,
+        width,
+        height,
+        playlistType,
+      }: {
+        item: Offer
+        width: number
+        height: number
+        playlistType?: PlaylistType
+      },
+      apiRecoParams?: RecommendationApiParams
+    ) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTile
@@ -171,16 +177,12 @@ export const OfferBody: FunctionComponent<Props> = ({
           fromOfferId={offerId}
           shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
           playlistType={playlistType}
+          apiRecoParams={apiRecoParams}
         />
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [position, labelMapping, categoryMapping, offerId]
-  )
-
-  const { data: reportedOffersResponse } = useReportedOffers()
-  const isOfferAlreadyReported = reportedOffersResponse?.reportedOffers?.find(
-    (reportedOffer: ReportedOffer) => reportedOffer.offerId === offerId
   )
 
   const {
@@ -192,13 +194,19 @@ export const OfferBody: FunctionComponent<Props> = ({
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
       hideChangeVenueModal()
+      analytics.logConsultOffer({
+        offerId: nextOfferId,
+        from: 'offer',
+        fromMultivenueOfferId: offerId,
+        shouldUseAlgoliaRecommend,
+      })
       navigate('Offer', {
         fromOfferId: offerId,
         id: nextOfferId,
         fromMultivenueOfferId: offerId,
       })
     },
-    [hideChangeVenueModal, navigate, offerId]
+    [hideChangeVenueModal, navigate, offerId, shouldUseAlgoliaRecommend]
   )
 
   const handleBeforeNavigateToItinerary = useCallback(() => {
@@ -350,27 +358,6 @@ export const OfferBody: FunctionComponent<Props> = ({
         </AccordionItem>
       </SectionWithDivider>
 
-      <SectionWithDivider
-        visible={!!user && (isUserBeneficiary(user) || isUserExBeneficiary(user))}
-        margin>
-        <SectionReportOffer>
-          <ButtonTertiaryBlack
-            inline
-            wording={isOfferAlreadyReported ? 'Tu as déjà signalé cette offre' : 'Signaler l’offre'}
-            disabled={!!isOfferAlreadyReported}
-            icon={Flag}
-            onPress={showReportOfferDescription}
-            justifyContent="flex-start"
-          />
-        </SectionReportOffer>
-      </SectionWithDivider>
-
-      <ReportOfferModal
-        isVisible={isReportOfferModalVisible}
-        dismissModal={hideReportOfferDescription}
-        offerId={offerId}
-      />
-
       {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
         <SectionWithDivider testID="sameCategorySimilarOffers" visible>
           <Spacer.Column numberOfSpaces={6} />
@@ -378,7 +365,9 @@ export const OfferBody: FunctionComponent<Props> = ({
             data={sameCategorySimilarOffers}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
-            renderItem={renderItem}
+            renderItem={({ item, width, height, playlistType }) =>
+              renderItem({ item, width, height, playlistType }, apiRecoParamsSameCategory)
+            }
             keyExtractor={keyExtractor}
             title="Dans la même catégorie"
             onEndReached={trackingOnHorizontalScroll}
@@ -394,7 +383,9 @@ export const OfferBody: FunctionComponent<Props> = ({
             data={otherCategoriesSimilarOffers}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
-            renderItem={renderItem}
+            renderItem={({ item, width, height, playlistType }) =>
+              renderItem({ item, width, height, playlistType }, apiRecoParamsOtherCategories)
+            }
             keyExtractor={keyExtractor}
             title="Ça peut aussi te plaire"
             onEndReached={trackingOnHorizontalScroll}
@@ -443,15 +434,7 @@ const SectionBody = styled(Typo.Body)({
   marginTop: -getSpacing(2),
   paddingBottom: getSpacing(6),
 })
-const SectionReportOffer = styled.View({
-  paddingVertical: getSpacing(5),
-  alignItems: 'flex-start',
-})
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
 })
-
-const Flag = styled(DefaultFlag).attrs(({ theme }) => ({
-  size: theme.icons.sizes.smaller,
-}))``

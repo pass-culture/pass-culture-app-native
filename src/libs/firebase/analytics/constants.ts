@@ -1,4 +1,4 @@
-import { AgentType } from 'api/gen'
+import { AgentType } from './types'
 
 export const AGENT_TYPE = AgentType.agent_mobile
 

@@ -1,26 +1,31 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/api'
-import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
+import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useElementHeight } from 'ui/hooks/useElementHeight'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -46,6 +51,18 @@ export const Favorite: React.FC<Props> = (props) => {
   const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
   const formattedDate = useFavoriteFormattedDate({ offer })
+  const { modalToDisplay, ...buttonProperties } =
+    getBookingButtonProperties({
+      offer,
+      user: props.user,
+      onInAppBooking: props.onInAppBooking,
+    }) ?? {}
+
+  const { OfferModal: BookOfferModal, showModal: showBookOfferModal } = useBookOfferModal({
+    modalToDisplay,
+    offerId: offer.id,
+    from: StepperOrigin.FAVORITE,
+  })
 
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
     onError: () => {
@@ -117,13 +134,42 @@ export const Favorite: React.FC<Props> = (props) => {
     offerId: offer.id,
     offerName: offer.name,
     venueName: offer.venueName,
+    utmMedium: 'favorite',
   })
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })
+    analytics.logShare({ type: 'Offer', from: 'favorites', offer_id: offer.id })
     shareOffer()
     showShareOfferModal()
   }, [offer.id, shareOffer, showShareOfferModal])
+
+  const BookingButton = useMemo(() => {
+    const { wording, externalNav, disabled, accessibilityLabel } = buttonProperties
+    if (!wording) return
+    if (externalNav)
+      return (
+        <ExternalTouchableLink
+          externalNav={externalNav}
+          wording={wording}
+          accessibilityLabel={accessibilityLabel}
+          as={ButtonPrimary}
+          icon={ExternalSite}
+          buttonHeight="tall"
+        />
+      )
+    const onPressBookingButton = () => {
+      buttonProperties?.onPress?.()
+      showBookOfferModal()
+    }
+    return (
+      <ButtonPrimary
+        wording={wording}
+        disabled={disabled}
+        onPress={onPressBookingButton}
+        buttonHeight="tall"
+      />
+    )
+  }, [buttonProperties, showBookOfferModal])
 
   return (
     <React.Fragment>
@@ -179,9 +225,7 @@ export const Favorite: React.FC<Props> = (props) => {
             />
           </ButtonContainer>
           <Spacer.Row numberOfSpaces={5} />
-          <ButtonContainer>
-            <BookingButton offer={offer} user={props.user} onInAppBooking={props.onInAppBooking} />
-          </ButtonContainer>
+          <ButtonContainer>{BookingButton}</ButtonContainer>
         </FavoriteButtonsContainer>
         <Separator />
       </Animated.View>
@@ -193,6 +237,7 @@ export const Favorite: React.FC<Props> = (props) => {
           dismissModal={hideShareOfferModal}
         />
       )}
+      {BookOfferModal}
     </React.Fragment>
   )
 }

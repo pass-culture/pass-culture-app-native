@@ -30,14 +30,14 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   })),
 }))
 
-const mockPostnativev1sendOfferWebappLinkByEmailofferId = jest.spyOn(
+const mockPostNativeV1SendOfferWebappLinkByEmailofferId = jest.spyOn(
   api,
-  'postnativev1sendOfferWebappLinkByEmailofferId'
+  'postNativeV1SendOfferWebappLinkByEmailofferId'
 )
 
-const mockPostnativev1sendOfferLinkByPushofferId = jest.spyOn(
+const mockPostNativeV1SendOfferLinkByPushofferId = jest.spyOn(
   api,
-  'postnativev1sendOfferLinkByPushofferId'
+  'postNativeV1SendOfferLinkByPushofferId'
 )
 
 describe('<BookingImpossible />', () => {
@@ -126,8 +126,8 @@ describe('<BookingImpossible />', () => {
         fireEvent.press(addToFavoriteButton)
       })
 
-      expect(mockPostnativev1sendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
-      expect(mockPostnativev1sendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
+      expect(mockPostNativeV1SendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
+      expect(mockPostNativeV1SendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
     })
 
     it('should log analytics event when adding to favorites', async () => {

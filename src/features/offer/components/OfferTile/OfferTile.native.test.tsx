@@ -7,6 +7,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -15,6 +16,16 @@ import { OfferTile } from './OfferTile'
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 const searchId = uuidv4()
+
+const apiRecoParams: RecommendationApiParams = {
+  call_id: '1',
+  filtered: true,
+  geo_located: false,
+  model_endpoint: 'default',
+  model_name: 'similar_offers_default_prod',
+  model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+  reco_origin: 'default',
+}
 
 const props = {
   analyticsFrom: 'home' as Referrals,
@@ -71,11 +82,13 @@ describe('OfferTile component', () => {
       fromOfferId: 1,
       shouldUseAlgoliaRecommend: false,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      apiRecoParams,
     }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      ...apiRecoParams,
       offerId,
       from: 'similar_offer',
       moduleName: props.moduleName,
@@ -150,6 +163,7 @@ describe('OfferTile component', () => {
       subcategoryId: offer.subcategoryId,
       venue: { coordinates: {} },
       isEducational: false,
+      metadata: undefined,
     })
   })
 })

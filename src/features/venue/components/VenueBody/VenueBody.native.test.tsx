@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { Linking, Share as NativeShare } from 'react-native'
+import { Linking, Platform, Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
 import { UseQueryResult } from 'react-query'
 
@@ -37,7 +37,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
-const mockNativeShare = jest.spyOn(NativeShare, 'share')
+const mockNativeShare = jest
+  .spyOn(NativeShare, 'share')
+  .mockResolvedValue({ action: NativeShare.sharedAction })
 
 const venueId = venueResponseSnap.id
 
@@ -82,11 +84,37 @@ describe('<VenueBody />', () => {
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
-      message: encodeURI(
-        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543`
+      message: encodeURIComponent(
+        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
       ),
       type: 'text',
       url: undefined,
+    })
+  })
+
+  describe('on Android', () => {
+    beforeAll(() => (Platform.OS = 'android'))
+    afterAll(() => (Platform.OS = 'ios'))
+
+    it('should open social medium on share button press', async () => {
+      // FIXME(PC-21174): This warning comes from android 'Expected style "elevation: 16px" to be unitless' due to shadow style
+      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+      canOpenURLSpy.mockResolvedValueOnce(true)
+      await renderVenueBody(venueId)
+
+      await act(async () => {
+        fireEvent.press(await screen.findByText(`Envoyer sur ${[Network.instagram]}`))
+      })
+
+      expect(mockShareSingle).toHaveBeenCalledWith({
+        social: Social.Instagram,
+        message: encodeURIComponent(
+          `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
+        ),
+        type: 'text',
+        url: undefined,
+      })
     })
   })
 

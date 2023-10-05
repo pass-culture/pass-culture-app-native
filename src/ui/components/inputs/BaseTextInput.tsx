@@ -4,11 +4,16 @@ import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useE2eTestId } from 'libs/e2e/useE2eTestId'
+import { AppThemeType } from 'theme'
 
 import { RNTextInputProps } from './types'
 
-export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function BaseTextInput(
-  { nativeAutoFocus, autoFocus, testID, ...props },
+type Typography = ValueOf<AppThemeType['typography']>
+
+type Props = RNTextInputProps & { textStyle?: Typography }
+
+export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInput(
+  { nativeAutoFocus, autoFocus, testID, defaultValue, ...props },
   forwardedRef
 ) {
   const inputRef = useRef<RNTextInput>(null)
@@ -56,6 +61,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
       isEmpty={!props.value}
       placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
+      defaultValue={defaultValue}
       ref={(ref) => {
         if (ref) {
           /* @ts-expect-error Conflicts between types */
@@ -72,8 +78,14 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.typography.placeholder.color,
-}))<{ isEmpty: boolean }>(({ theme, isEmpty }) => {
-  const inputStyle = isEmpty ? theme.typography.placeholder : theme.typography.body
+}))<{ isEmpty: boolean; textStyle?: Typography }>(({ theme, isEmpty, textStyle }) => {
+  let inputStyle: Typography = theme.typography.body
+  if (isEmpty) {
+    inputStyle = theme.typography.placeholder
+  } else if (textStyle) {
+    inputStyle = textStyle
+  }
+
   return {
     flex: 1,
     padding: 0,

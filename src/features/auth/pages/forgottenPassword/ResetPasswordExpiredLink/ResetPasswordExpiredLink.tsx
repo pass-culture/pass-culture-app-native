@@ -22,7 +22,7 @@ export function ResetPasswordExpiredLink(props: Props) {
     [QueryKeys.RESET_PASSWORD_EXPIRED_LINK],
     () => {
       analytics.logResendEmailResetPasswordExpiredLink()
-      return api.postnativev1requestPasswordReset({ email })
+      return api.postNativeV1RequestPasswordReset({ email })
     },
     {
       onSuccess: () => {
