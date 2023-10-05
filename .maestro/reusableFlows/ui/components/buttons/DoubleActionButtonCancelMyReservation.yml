@@ -1,0 +1,5 @@
+appId: app.passculture.staging
+---
+
+- tapOn: "Annuler ma réservation"
+- tapOn: "Annuler ma réservation"  # pour sortir de la saisie

@@ -71,8 +71,7 @@ appId: app.passculture.staging
 - scrollUntilVisible:
     element: "Annuler ma réservation"
     direction: DOWN
-- tapOn: "Annuler ma réservation"
-- tapOn: "Annuler ma réservation"
+- runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonCancelMyReservation.yml
 #- TODO : comprendre pourauoi le wording n'est pas détecté par MAESTRO
 #- assertVisible:
 #    id: "cancel-annulation-message"

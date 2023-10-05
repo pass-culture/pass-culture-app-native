@@ -103,9 +103,9 @@ appId: app.passculture.staging
       element: "Annuler ma réservation"
       direction: DOWN
 
-- tapOn: "Annuler ma réservation"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerCancelMyReservation.yml
 - runFlow: src/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
-- tapOn: "Annuler ma réservation"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerCancelMyReservation.yml
 - assertVisible: "Réservations terminées"
 
 - runFlow: reusableFlows/StopApp.yml # Stop App
