@@ -2,8 +2,7 @@ appId: app.passculture.staging
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
-
-- tapOn: "Mes favoris"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyFavorite.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCreateAccount.yml
 - inputText: ${USERNAME}
 - tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\

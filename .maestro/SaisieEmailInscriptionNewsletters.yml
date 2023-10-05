@@ -9,7 +9,7 @@ appId: app.passculture.staging
 # First Launch
 - runFlow: src/features/identityCheck/FirstLaunch.yml
 
-- tapOn: "Mes favoris"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyFavorite.yml
 # Creation Page
 - runFlow: src/features/profile/AccountCreationPage.yml
 

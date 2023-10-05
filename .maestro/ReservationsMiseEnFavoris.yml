@@ -35,7 +35,7 @@ appId: app.passculture.staging
     id: "animated-icon-favorite"
 - tapOn:
     id: "animated-icon-back"
-- tapOn: "Mes favoris"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyFavorite.yml
 - assertVisible: "1 favori"
 - assertVisible: "Supprimer"
 - assertVisible: "Réserver"
