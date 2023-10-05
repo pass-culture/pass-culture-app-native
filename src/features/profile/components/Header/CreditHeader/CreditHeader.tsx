@@ -7,7 +7,7 @@ import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -47,6 +47,9 @@ export function CreditHeader({
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
+          {age === 15 && <Typo.Body>À venir pour tes 16 ans&nbsp;: + 30&nbsp;€</Typo.Body>}
+          {age === 16 && <Typo.Body>À venir pour tes 17 ans&nbsp;: + 30&nbsp;€</Typo.Body>}
+          {age === 17 && <Typo.Body>À venir pour tes 18 ans&nbsp;: 300&nbsp;€</Typo.Body>}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation
             isDepositExpired={isDepositExpired}
