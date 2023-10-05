@@ -11,9 +11,9 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 #- TODO Mettre en variable la version testée
 - scrollUntilVisible:
-    element: "Version\_1.256.0"
+    element: "Version\_1.259.2"
     direction: DOWN
-- assertVisible: "Version\_1.256.0"
+- assertVisible: "Version\_1.259.2"
 
 - assertVisible:
     text: "Déconnexion"
