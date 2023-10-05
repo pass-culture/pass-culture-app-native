@@ -5,8 +5,7 @@ appId: app.passculture.staging
 - tapOn: "Mon profil"
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
-
-- tapOn: "Plus tard"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - tapOn: "Mon profil"
 
 - tapOn: "Informations personnelles"

@@ -7,7 +7,7 @@ appId: app.passculture.staging
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "91%,89%"
-- tapOn: "Plus tard"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - tapOn: Mon profil
 
 #- TODO Mettre en variable la version testée
