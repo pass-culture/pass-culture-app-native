@@ -7,7 +7,5 @@ appId: app.passculture.staging
 - tapOn:
     id: "icon-back"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCreateAccount.yml
-- tapOn: "Revenir en arrière"
-
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

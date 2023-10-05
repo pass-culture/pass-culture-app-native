@@ -32,6 +32,5 @@ appId: app.passculture.staging
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"
     index: 0
-- tapOn: "Revenir en arrière"
-
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App

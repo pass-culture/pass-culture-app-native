@@ -8,13 +8,12 @@ appId: app.passculture.staging
     direction: DOWN
 - tapOn: "Accessibilité"
 - tapOn: "Les engagements du pass Culture"
-- tapOn: "Revenir en arrière"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - tapOn: "Parcours recommandés"
-- tapOn: "Revenir en arrière"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - tapOn: "Déclaration d’accessibilité"
-- tapOn: "Revenir en arrière"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - tapOn: "Schéma pluriannuel"
-- tapOn: "Revenir en arrière"
-- tapOn: "Revenir en arrière"
-
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App

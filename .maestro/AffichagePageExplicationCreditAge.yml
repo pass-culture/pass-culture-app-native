@@ -12,16 +12,13 @@ appId: app.passculture.staging
 - tapOn:
     id: "j’ai 16 ans"
 - runFlow: src/features/tutorial/Page16App.yml # Launch App
-
-- tapOn: "Revenir en arrière"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - tapOn:
     id: "j’ai 17 ans"
 - runFlow: src/features/tutorial/Page17App.yml # Launch App
-
-- tapOn: "Revenir en arrière"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - tapOn:
     id: "j’ai 18 ans"
-
 - runFlow: src/features/tutorial/Page18App.yml # Launch App
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml

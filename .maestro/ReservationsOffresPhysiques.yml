@@ -5,7 +5,7 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
 - tapOn: "Rechercher des offres"
-- tapOn: "Revenir en arrière"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 #- TODO trouver une solution pour cliquer sans passer par la position.
