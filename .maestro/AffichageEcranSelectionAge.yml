@@ -14,6 +14,6 @@ appId: app.passculture.staging
 - tapOn: "Revenir en arrière"
 - tapOn: "j’ai 18 ans"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
-- tapOn: "Mon profil"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 
 - runFlow: reusableFlows/StopApp.yml # Stop App

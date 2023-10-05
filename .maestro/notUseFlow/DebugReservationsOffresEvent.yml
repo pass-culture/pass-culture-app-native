@@ -4,7 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
 - runFlow: src/features/identityCheck/FirstLaunch.yml
-- tapOn: "Mon profil"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - runFlow: src/features/auth/ToLogin.yml
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml

@@ -1,14 +1,11 @@
 appId: app.passculture.staging
 ---
-
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
-
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
-
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
-- tapOn: "Mon profil"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 
 - scrollUntilVisible:
     element: "Version\_1.256.0"

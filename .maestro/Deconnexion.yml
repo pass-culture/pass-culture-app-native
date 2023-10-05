@@ -2,7 +2,7 @@ appId: app.passculture.staging
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
-- tapOn: "Mon profil"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
