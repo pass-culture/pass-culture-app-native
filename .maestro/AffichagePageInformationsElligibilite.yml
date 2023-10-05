@@ -3,7 +3,7 @@ appId: app.passculture.staging
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
-- tapOn: "C’est parti\_!"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
 - tapOn: "Passer"
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
