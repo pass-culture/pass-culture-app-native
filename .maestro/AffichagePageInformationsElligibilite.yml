@@ -22,11 +22,11 @@ appId: app.passculture.staging
 - assertVisible: "j’ai moins de 15 ans ou plus de 18 ans"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonIconBack.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
-- tapOn: "j’ai 15 ans"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAge15.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConnect.yml
-- tapOn: "icon-back"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonIconBack.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCreateAccount.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App

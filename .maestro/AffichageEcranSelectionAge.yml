@@ -4,13 +4,13 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
-- tapOn: "j’ai 15 ans"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAge15.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonIconBack.yml
-- tapOn: "j’ai 16 ans"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAge16.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
-- tapOn: "j’ai 17 ans"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAge17.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
-- tapOn: "j’ai 18 ans"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAge18.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App

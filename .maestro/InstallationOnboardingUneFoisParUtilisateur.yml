@@ -4,8 +4,7 @@ appId: app.passculture.staging
 - tapOn: "Tout refuser"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
-- tapOn:
-    id: "j’ai 18 ans"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAge18.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - tapOn: "Applications récentes"
 - tapOn: "Tout fermer"
