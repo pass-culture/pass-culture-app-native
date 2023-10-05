@@ -28,7 +28,6 @@ appId: app.passculture.staging
     index: 1
 - tapOn: "Cette semaine"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
-
 - tapOn:
     point: "49%,84%"
 - tapOn:
@@ -103,9 +102,8 @@ appId: app.passculture.staging
       element: "Annuler ma réservation"
       direction: DOWN
 
-- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerCancelMyReservation.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCancelMyReservation.yml
 - runFlow: src/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
-- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerCancelMyReservation.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCancelMyReservation.yml
 - assertVisible: "Réservations terminées"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App
