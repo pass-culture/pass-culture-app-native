@@ -5,8 +5,7 @@ appId: app.passculture.staging
 # First Launch
 - runFlow: src/features/identityCheck/FirstLaunch.yml
 - tapOn: "Mon profil"
-- tapOn: "Se connecter"
-- assertVisible: "Connecte-toi"
+- runFlow: src/ui/components/buttons/SimpleActionButtonConnect.yml
 - tapOn:
         id: "Entrée pour l’email"
 - inputText: ${USERNAME_UNKNOWN}
@@ -15,10 +14,7 @@ appId: app.passculture.staging
 - inputText: ${PASSWORD}
 
 - tapOn: "Se connecter"
-#pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
-
+- tapOn: "Se connecter" # pour sortir de la saisie
 - assertVisible: "E-mail ou mot de passe incorrect"
 
 # Stop App

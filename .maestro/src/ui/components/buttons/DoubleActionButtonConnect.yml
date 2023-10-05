@@ -1,0 +1,6 @@
+appId: app.passculture.staging
+---
+
+- tapOn: "Se connecter"
+- tapOn: "Se connecter" # pour sortir de la saisie
+- assertVisible: "Connecte-toi"

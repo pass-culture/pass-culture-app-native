@@ -6,8 +6,7 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml
 
 - tapOn: "Mon profil"
-- tapOn: "Se connecter"
-- assertVisible: "Connecte-toi"
+- runFlow: src/ui/components/buttons/SimpleActionButtonConnect.yml
 - tapOn:
     id: "icon-back"
 - tapOn: "Créer un compte"

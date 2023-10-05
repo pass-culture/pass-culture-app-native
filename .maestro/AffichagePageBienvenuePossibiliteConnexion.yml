@@ -10,9 +10,7 @@ appId: app.passculture.staging
 - scrollUntilVisible:
     element: "Se connecter"
     direction: DOWN
-- tapOn: "Se connecter"
-- tapOn: "Se connecter"
-- assertVisible: "Connecte-toi"
+- runFlow: src/ui/components/buttons/DoubleActionButtonConnect.yml
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

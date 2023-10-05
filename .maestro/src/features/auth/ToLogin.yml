@@ -1,7 +1,6 @@
 appId: app.passculture.staging
 ---
-- tapOn: "Se connecter"
-- assertVisible: "Connecte-toi"
+- runFlow: src/ui/components/buttons/SimpleActionButtonConnect.yml
 - tapOn:
         id: "Entrée pour l’email"
 - inputText: ${USERNAME}

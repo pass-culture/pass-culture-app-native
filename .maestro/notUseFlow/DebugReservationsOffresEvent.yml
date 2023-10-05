@@ -6,11 +6,7 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml
 - tapOn: "Mon profil"
 - runFlow: src/features/auth/ToLogin.yml
-
-- tapOn: "Se connecter"
-#pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
+- runFlow: src/ui/components/buttons/DoubleActionButtonConnect.yml
 
 - tapOn: "Plus tard"
 - tapOn:

@@ -14,8 +14,7 @@ appId: app.passculture.staging
 - tapOn: "Réserver l’offre"
 
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
-- tapOn: "Se connecter"
-- tapOn: "Se connecter" # pour sortir de la saisie
+- runFlow: src/ui/components/buttons/DoubleActionButtonConnect.yml
 
 - tapOn: "Plus tard"
 - tapOn: "Rechercher des offres"
