@@ -4,8 +4,6 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - runFlow: src/features/profile/AccountCreationPage.yml # Creation Page
-
 - tapOn: "Quitter"
 - tapOn: "Abandonner l’inscription"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App

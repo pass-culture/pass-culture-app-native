@@ -3,7 +3,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
-- tapOn: "Passer"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
 - tapOn:
     id: "j’ai 15 ans"
 - runFlow: src/features/tutorial/Page15App.yml # Launch App

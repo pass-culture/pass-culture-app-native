@@ -4,7 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
-- tapOn: "Passer"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
 - assertVisible: "Cela permet de savoir si tu peux bénéficier du pass Culture."
@@ -25,7 +25,7 @@ appId: app.passculture.staging
 
 - tapOn:
     id: "icon-back"
-- tapOn: "Passer"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonPass.yml
 - tapOn:
     id: "j’ai 15 ans"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
