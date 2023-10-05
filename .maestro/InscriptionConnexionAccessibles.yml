@@ -9,8 +9,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConnect.yml
 - tapOn:
     id: "icon-back"
-- tapOn: "Créer un compte"
-- assertVisible: "Crée-toi un compte"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCreateAccount.yml
 - tapOn: "Revenir en arrière"
 
 # Stop App

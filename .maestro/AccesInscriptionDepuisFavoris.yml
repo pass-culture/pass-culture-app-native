@@ -4,7 +4,5 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
 - tapOn: "Mes favoris"
-- tapOn: "Créer un compte"
-- assertVisible: "Crée-toi un compte"
-
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonCreateAccount.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App
