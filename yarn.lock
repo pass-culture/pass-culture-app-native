@@ -9701,6 +9701,13 @@ ajv@^8.6.0:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
+algoliasearch-helper@3.14.2:
+  version "3.14.2"
+  resolved "https://registry.yarnpkg.com/algoliasearch-helper/-/algoliasearch-helper-3.14.2.tgz#c34cfe6cefcfecd65c60bcb8bf9b68134472d28c"
+  integrity sha512-FjDSrjvQvJT/SKMW74nPgFpsoPUwZCzGbCqbp8HhBFfSk/OvNFxzCaCmuO0p7AWeLy1gD+muFwQEkBwcl5H4pg==
+  dependencies:
+    "@algolia/events" "^4.0.1"
+
 algoliasearch-helper@^3.11.3:
   version "3.11.3"
   resolved "https://registry.yarnpkg.com/algoliasearch-helper/-/algoliasearch-helper-3.11.3.tgz#6e7af8afe6f9a9e55186abffb7b6cf7ca8de3301"
@@ -16880,7 +16887,26 @@ inspectpack@^4.7.1:
     semver-compare "^1.0.0"
     yargs "^16.2.0"
 
-instantsearch.js@4.52.0, instantsearch.js@^4.52.0:
+instantsearch.js@4.57.0:
+  version "4.57.0"
+  resolved "https://registry.yarnpkg.com/instantsearch.js/-/instantsearch.js-4.57.0.tgz#9165111679fcf5688f08c33078dcb21cd3ef2779"
+  integrity sha512-oaWmX4gUI4U8fcj77FmR3UPHfHOYpJoeHhek+9wM4bZ+VJ8uAQZOV/aBGka7Kmvln8NLZ7rqn+Hm84tDunIBog==
+  dependencies:
+    "@algolia/events" "^4.0.1"
+    "@algolia/ui-components-highlight-vdom" "^1.2.1"
+    "@algolia/ui-components-shared" "^1.2.1"
+    "@types/dom-speech-recognition" "^0.0.1"
+    "@types/google.maps" "^3.45.3"
+    "@types/hogan.js" "^3.0.0"
+    "@types/qs" "^6.5.3"
+    algoliasearch-helper "3.14.2"
+    hogan.js "^3.0.2"
+    htm "^3.0.0"
+    preact "^10.10.0"
+    qs "^6.5.1 < 6.10"
+    search-insights "^2.6.0"
+
+instantsearch.js@^4.52.0:
   version "4.52.0"
   resolved "https://registry.yarnpkg.com/instantsearch.js/-/instantsearch.js-4.52.0.tgz#297294051eb988912046a28bbc3b6520f9526bcb"
   integrity sha512-3GzSiZKmLv51pEoiN1fgRrziYKf/j3PWXQrtWPK3sVJ1DzicFlfy9XMdJ0+ThI0k+aweSGfaesO0WwUuL8i2WQ==
@@ -23017,15 +23043,24 @@ react-inspector@^5.1.0:
     is-dom "^1.0.0"
     prop-types "^15.0.0"
 
-react-instantsearch-hooks@^6.41.0:
-  version "6.41.0"
-  resolved "https://registry.yarnpkg.com/react-instantsearch-hooks/-/react-instantsearch-hooks-6.41.0.tgz#4f717aaac03dfba9ff2020fdeee6b89989b7df01"
-  integrity sha512-s5a0BiII3wCFe+gu5uquK3vVHiTV/+u/lfrg0YoGNvmAvFVFTZTz8OEJqMqoTqW/udRdcrUb4KYXVkZcuVDgyg==
+react-instantsearch-core@7.1.0, react-instantsearch-core@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-instantsearch-core/-/react-instantsearch-core-7.1.0.tgz#bf8ddc34655b5bd383a69f00979425ac5cc73c3f"
+  integrity sha512-f+QZqUhQ1my/c//kw23Tn8jO1LQVqGRh8ObCbHnDzSPyI9Kp5+ETvI0BbXby1I4iObIjE1ApLhugBkli77zsTQ==
   dependencies:
     "@babel/runtime" "^7.1.2"
-    algoliasearch-helper "^3.11.3"
-    instantsearch.js "4.52.0"
+    algoliasearch-helper "3.14.2"
+    instantsearch.js "4.57.0"
     use-sync-external-store "^1.0.0"
+
+react-instantsearch@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/react-instantsearch/-/react-instantsearch-7.1.0.tgz#812bd7c28ccdd08cc4e6087e07c144eb85097dee"
+  integrity sha512-AdOP2+ubNVZCkODi45IXpWo9AklTjEGm9xqFQ227zt6CA6NLVhY5otFGkWPBrQwwbEnSKO5PH563pfNGnCMsRQ==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    instantsearch.js "4.57.0"
+    react-instantsearch-core "7.1.0"
 
 react-is@17.0.2, "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^17.0.1, react-is@^18.0.0, react-is@^18.2.0:
   version "16.13.1"
@@ -24365,10 +24400,15 @@ schema-utils@^3.0.0, schema-utils@^3.1.0, schema-utils@^3.1.1:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
-search-insights@^2.1.0, search-insights@^2.2.1:
+search-insights@^2.1.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/search-insights/-/search-insights-2.2.1.tgz#9c93344fbae5fbf2f88c1a81b46b4b5d888c11f7"
   integrity sha512-JDfVGZbKqTtiKVZjAVbkNw9C9f0ib80yx6Ea17M3z4RvPmuD0GYWXuFwA9++dpbreBEMH4TC3lQ29Zq7O4b5oA==
+
+search-insights@^2.6.0, search-insights@^2.8.3:
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/search-insights/-/search-insights-2.8.3.tgz#651703c8de53a67dd7483c606d2d617d8feb8d7c"
+  integrity sha512-W9rZfQ9XEfF0O6ntgQOTI7Txc8nkZrO4eJ/pTHK0Br6wWND2sPGPoWg+yGhdIW7wMbLqk8dc23IyEtLlNGpeNw==
 
 secure-compare@3.0.1:
   version "3.0.1"

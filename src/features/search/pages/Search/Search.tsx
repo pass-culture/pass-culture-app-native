@@ -1,8 +1,9 @@
 import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { Configure, Index, InstantSearch } from 'react-instantsearch-hooks'
+import { Configure, Index, InstantSearch } from 'react-instantsearch-core'
 import { Keyboard, StatusBar } from 'react-native'
+import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -15,7 +16,6 @@ import { SearchHistory } from 'features/search/components/SearchHistory/SearchHi
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { SearchView } from 'features/search/types'
-import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
@@ -88,9 +88,11 @@ export function Search() {
     <React.Fragment>
       <StatusBar barStyle="dark-content" />
       <Form.Flex>
-        <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={suggestionsIndex}
+          insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
-          <InsightsMiddleware />
           <SearchHeader
             searchInputID={searchInputID}
             searchView={currentView}
