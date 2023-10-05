@@ -1,8 +1,6 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Typo } from 'ui/theme'
 
@@ -47,15 +45,12 @@ export function PriceLine({
   shouldDisabledStyles = false,
   attributes,
 }: PriceLineProps) {
-  const enableAttributesCinemaOffers = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ATTRIBUTES_CINEMA_OFFERS
-  )
   const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
 
-  const shouldDisplayAttributes = attributes?.length && enableAttributesCinemaOffers
+  const shouldDisplayAttributes = attributes?.length
 
   return (
     <Typo.Body>

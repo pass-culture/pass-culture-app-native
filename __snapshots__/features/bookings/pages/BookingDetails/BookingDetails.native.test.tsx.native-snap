@@ -790,6 +790,22 @@ exports[`BookingDetails should render correctly 1`] = `
                        - 
                       Cat 4
                     </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                      testID="price-line__attributes"
+                    >
+                       - 
+                      VOSTFR 3D IMAX
+                    </Text>
                   </Text>
                 </View>
               </View>
