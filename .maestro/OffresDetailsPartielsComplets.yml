@@ -12,8 +12,8 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonDateAndHour.yml
-- runFlow: reusableFlows/ui/components/IdButtons/SimpleActionButtonSwitchDate.yml
-- tapOn: "Cette semaine"
+- runFlow: reusableFlows/ui/components/IdButtons/SimpleIdButtonSwitchDate.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonThisWeek.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
 - tapOn:
     point: "49%,84%"
