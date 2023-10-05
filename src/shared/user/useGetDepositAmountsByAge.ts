@@ -9,8 +9,6 @@ export const useGetDepositAmountsByAge = (birthDate?: string | null): string | u
     eighteenYearsOldDeposit,
   } = useDepositAmountsByAge()
 
-  if (!birthDate) return undefined
-
   const age = getAge(birthDate)
   if (age === 15) return fifteenYearsOldDeposit
   if (age === 16) return sixteenYearsOldDeposit

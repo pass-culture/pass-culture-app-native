@@ -34,7 +34,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       <CreditHeader
         firstName={user.firstName}
         lastName={user.lastName}
-        age={user.birthDate ? getAge(user.birthDate) : undefined}
+        age={getAge(user.birthDate)}
         domainsCredit={user.domainsCredit}
         depositExpirationDate={user.depositExpirationDate ?? undefined}
       />
