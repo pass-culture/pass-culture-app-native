@@ -4,7 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonAllAccept.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLetsGo.yml
-- tapOn: "Utiliser ma position"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonUseMyLocation.yml
 # Geoloc App
 - runFlow:
       when:
