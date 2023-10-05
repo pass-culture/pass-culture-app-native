@@ -16,7 +16,7 @@ appId: app.passculture.staging
     point: "50%,71%"
 - tapOn:
     id: "Réserver l’offre"
-- runFlow: src/ui/components/buttons/SimpleActionButtonConnect.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConnect.yml
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

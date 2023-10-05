@@ -5,7 +5,7 @@ appId: app.passculture.staging
 # First Launch
 - runFlow: src/features/identityCheck/FirstLaunch.yml
 - tapOn: "Mon profil"
-- runFlow: src/ui/components/buttons/SimpleActionButtonConnect.yml
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConnect.yml
 - tapOn:
         id: "Entrée pour l’email"
 - inputText: ${USERNAME_UNKNOWN}

@@ -4,7 +4,7 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - tapOn: "Mon profil"
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
-- runFlow: src/ui/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 
 - tapOn: "Plus tard"
 - tapOn: "Mon profil"
@@ -24,7 +24,7 @@ appId: app.passculture.staging
 - assertVisible: "Se connecter"
 
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
-- runFlow: src/ui/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 
 - runFlow: src/features/auth/AccountDeactivationPage.yml #Page de désactivation
 - tapOn: "Réactiver mon compte"

@@ -10,7 +10,7 @@ appId: app.passculture.staging
     point: "50%,71%"
 - tapOn: "Réserver l’offre"
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
-- runFlow: src/ui/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - tapOn: "Plus tard"
 
 - tapOn: "Rechercher des offres"
