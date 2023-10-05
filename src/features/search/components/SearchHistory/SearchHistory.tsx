@@ -42,9 +42,7 @@ export function SearchHistory({ history, queryHistory, removeItem, onPress }: Pr
         ))}
       </StyledVerticalUl>
     </React.Fragment>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 }
 
 const StyledVerticalUl = styled(VerticalUl)({

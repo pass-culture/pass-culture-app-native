@@ -8,7 +8,7 @@ import { Li } from 'ui/components/Li'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo, getSpacing } from 'ui/theme'
 
-type Props = {
+interface Props {
   item: Highlighted<HistoryItem>
   queryHistory: string
   onPress: (item: Highlighted<HistoryItem>) => void
