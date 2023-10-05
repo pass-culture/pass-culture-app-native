@@ -52,7 +52,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 const mockClear = jest.fn()
-jest.mock('react-instantsearch-hooks', () => ({
+jest.mock('react-instantsearch-core', () => ({
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,

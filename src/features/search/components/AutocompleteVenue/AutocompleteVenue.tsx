@@ -1,5 +1,5 @@
 import React from 'react'
-import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-hooks'
+import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import styled from 'styled-components/native'
 
 import { AutocompleteVenueItem } from 'features/search/components/AutocompleteVenueItem/AutocompleteVenueItem'

@@ -7,7 +7,7 @@ import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { fireEvent, render, screen } from 'tests/utils'
 
 let mockHits: Hit<BaseHit>[] = []
-jest.mock('react-instantsearch-hooks', () => ({
+jest.mock('react-instantsearch-core', () => ({
   useInfiniteHits: () => ({
     hits: mockHits,
   }),
