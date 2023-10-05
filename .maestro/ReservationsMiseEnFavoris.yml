@@ -3,10 +3,9 @@ appId: app.passculture.staging
 
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
-
-- tapOn: "Rechercher des offres"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
-- tapOn: "Rechercher des offres"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
@@ -17,8 +16,7 @@ appId: app.passculture.staging
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
-
-- tapOn: "Rechercher des offres"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
 - tapOn: "Catégories\_: Filtre sélectionné"
 - tapOn: "Films, séries, cinéma"
 - tapOn: "Rechercher"

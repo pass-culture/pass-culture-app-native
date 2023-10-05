@@ -8,9 +8,7 @@ appId: app.passculture.staging
 - runFlow: src/features/auth/ToLogin.yml
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
-- tapOn:
-    id: "Rechercher des offres"
-- tapOn: "Rechercher des offres"
+- runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
 - tapOn: "Dates & heures"
 - tapOn:

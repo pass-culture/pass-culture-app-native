@@ -2,9 +2,7 @@ appId: app.passculture.staging
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
-
-- tapOn: "Rechercher des offres"
-- tapOn: "Rechercher des offres" # pour sortir de la saisie
+- runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
 - tapOn:
     point: "50%,71%"
@@ -12,7 +10,7 @@ appId: app.passculture.staging
 - runFlow: src/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
-- tapOn: "Rechercher des offres"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
 - tapOn: "Dates & heures"
 - tapOn: "Interrupteur date"
 - assertVisible: "Date"

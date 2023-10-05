@@ -7,5 +7,4 @@ appId: app.passculture.staging
 - tapOn: "Afficher le mot de passe"
 - tapOn: "Afficher le mot de passe" # pour sortir de la saisie
 - tapOn: "Cacher le mot de passe"
-
 - runFlow: reusableFlows/StopApp.yml # Stop App
