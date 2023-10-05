@@ -36,17 +36,18 @@ export const ContentHeader = ({
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
-  // There is an issue with the blur on Android: we chose not to render it and use a white background
-  // https://github.com/Kureev/react-native-blur/issues/511
-  if (Platform.OS === 'android') return null
-
   return (
     <HeaderContainer style={containerStyle} height={headerHeight}>
       <Spacer.TopScreen />
-      <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
-        <Blurred blurType="light" blurAmount={8} />
-      </BlurNativeContainer>
-
+      {
+        // There is an issue with the blur on Android: we chose not to render it and use a white background
+        // https://github.com/Kureev/react-native-blur/issues/511
+        Platform.OS !== 'android' && (
+          <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
+            <Blurred blurType="light" blurAmount={8} />
+          </BlurNativeContainer>
+        )
+      }
       <Spacer.Column numberOfSpaces={2} />
       <Row>
         <Spacer.Row numberOfSpaces={6} />
