@@ -42,7 +42,6 @@ appId: app.passculture.staging
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
       point: "61%,16%"
-
 - scrollUntilVisible:
       element: "Annuler ma réservation"
       direction: DOWN
