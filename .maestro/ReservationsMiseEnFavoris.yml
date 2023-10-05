@@ -19,7 +19,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearchOffers.yml
 - tapOn: "Catégories\_: Filtre sélectionné"
 - tapOn: "Films, séries, cinéma"
-- tapOn: "Rechercher"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "49%,69%"

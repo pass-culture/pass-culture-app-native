@@ -27,7 +27,7 @@ appId: app.passculture.staging
     text: "Seules les sorties seront affichées"
     index: 1
 - tapOn: "Cette semaine"
-- tapOn: "Rechercher"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
 
 - tapOn:
     point: "49%,84%"
