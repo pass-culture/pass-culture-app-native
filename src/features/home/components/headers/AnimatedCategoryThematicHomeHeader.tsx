@@ -3,32 +3,21 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
-import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
-import { HighlightThematicHeader } from 'features/home/types'
+import { CategoryThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
+type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
-export const MOBILE_HEADER_HEIGHT = 70
+export const MOBILE_HEADER_HEIGHT = 52
 
-export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
-  HighlightThematicHeaderProps
-> = ({
+export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
-  beginningDate,
-  endingDate,
-  gradientTranslation,
   imageAnimatedHeight,
+  gradientTranslation,
 }) => {
-  const { top } = useCustomSafeInsets()
-
-  const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
-
   const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
   const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
   const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
@@ -36,12 +25,9 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
   return (
     <Container testID="animated-thematic-header">
       <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
-      <DateRangeCaptionContainer statusBarHeight={top}>
-        <DateRangeCaption>{dateRange}</DateRangeCaption>
-      </DateRangeCaptionContainer>
       <TextContainer>
         <AnimatedBlackGradient
-          height={HEADER_BLACK_BACKGROUND_HEIGHT}
+          height={getSpacing(MOBILE_HEADER_HEIGHT)}
           style={{ transform: [{ translateY: gradientTranslation }] }}
         />
         <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
@@ -74,22 +60,6 @@ const StyledImage = styled.Image<{
   left: 0,
   right: 0,
   height: height,
-}))
-
-const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
-  ({ theme, statusBarHeight }) => ({
-    backgroundColor: theme.colors.black,
-    position: 'absolute',
-    top: statusBarHeight + getSpacing(6),
-    right: getSpacing(6),
-    borderRadius: getSpacing(2),
-    paddingVertical: getSpacing(1),
-    paddingHorizontal: getSpacing(2),
-  })
-)
-
-const DateRangeCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.white,
 }))
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
