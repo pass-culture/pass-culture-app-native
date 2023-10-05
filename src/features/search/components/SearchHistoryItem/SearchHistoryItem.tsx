@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -19,9 +19,13 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
     item.nativeCategoryLabel || item.categoryLabel
   )
 
+  const handlePress = useCallback(() => {
+    onPress(item)
+  }, [item, onPress])
+
   return (
     <StyledLi>
-      <HistoryItemTouchable onPress={() => onPress(item)}>
+      <HistoryItemTouchable onPress={handlePress}>
         <ClockIconContainer>
           <ClockFilledIcon />
         </ClockIconContainer>
