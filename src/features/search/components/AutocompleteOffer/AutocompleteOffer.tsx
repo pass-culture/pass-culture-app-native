@@ -20,7 +20,6 @@ export function AutocompleteOffer({ addSearchHistory, ...props }: AutocompleteOf
   return hits.length > 0 ? (
     <React.Fragment>
       <AutocompleteOfferTitleText>Suggestions</AutocompleteOfferTitleText>
-
       <StyledVerticalUl>
         {hits.map((item, index) => (
           <Li key={item.objectID}>
@@ -34,9 +33,7 @@ export function AutocompleteOffer({ addSearchHistory, ...props }: AutocompleteOf
         ))}
       </StyledVerticalUl>
     </React.Fragment>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 }
 
 const StyledVerticalUl = styled(VerticalUl)({
