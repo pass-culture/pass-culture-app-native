@@ -55,7 +55,7 @@ appId: app.passculture.staging
 - assertVisible: "Conditions d’annulation"
 - assertVisible:
     id: "Confirmer la réservation"
-- tapOn: "Confirmer la réservation"
+- tapOn: "Confirmer la réservation
 - assertVisible: "Réservation confirmée\_!"
 - assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
     \ sur l’application."
@@ -80,7 +80,7 @@ appId: app.passculture.staging
       point: "50%,34%"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: src/features/bookOffer/PreBookingPage.yml ##PreBookingReservation
-- tapOn: "Confirmer la réservation"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConfirmReservation.yml
 - runFlow: reusableFlows/BookingConfirmationPage.yml ##BookingConfirmationPage
 - tapOn: "Voir ma réservation"
 - assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\

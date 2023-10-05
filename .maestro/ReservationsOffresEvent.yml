@@ -45,8 +45,7 @@ appId: app.passculture.staging
 - assertVisible: "Informations"
 - assertVisible: "Lieu de l’événement"
 - assertVisible: "Conditions d’annulation"
-- assertVisible: "Confirmer la réservation"
-- tapOn: "Confirmer la réservation"
+- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConfirmReservation.yml
 - assertVisible: "Réservation confirmée\_!"
 - assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
     \ sur l’application."

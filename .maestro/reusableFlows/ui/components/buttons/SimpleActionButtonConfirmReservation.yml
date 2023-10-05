@@ -1,0 +1,4 @@
+appId: app.passculture.staging
+---
+- assertVisible: "Confirmer la réservation"
+- tapOn: "Confirmer la réservation
