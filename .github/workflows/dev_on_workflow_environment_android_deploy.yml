@@ -1,12 +1,9 @@
-name: Install runtime environment and dependencies
+name: Install runtime environment and dependencies Android deploy
 
 on:
   workflow_call:
     inputs:
       ENV:
-        type: string
-        required: true
-      TYPE:
         type: string
         required: true
     secrets:
@@ -48,7 +45,6 @@ jobs:
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
-            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: 'Render Sentry Template'
         id: render_template
@@ -58,28 +54,13 @@ jobs:
           vars: |
             token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
           result_path: .sentryclirc
-      - name: Deploy soft android for ${{ inputs.ENV }}
-        if:  ${{ inputs.TYPE == 'soft' }}
-        run: |
-          bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
-        env:
-          ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
-      - name: Deploy soft ios App for ${{ inputs.ENV }}
-        if:  ${{ inputs.TYPE == 'soft' }}
-        run: |
-          bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
-        env:
-          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
       - name: Create a directory for keystores
-        if: ${{ inputs.TYPE == 'hard'}}
         run: |
           mkdir --parents android/keystores/
       - name: Setup android keystore for ${{ inputs.ENV }} environment
-        if: ${{ inputs.TYPE == 'hard'}}
         run: |
           echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > android/keystores/${{ inputs.ENV }}.keystore
       - name: Setup android keystore properties for ${{ inputs.ENV }} environment
-        if: ${{ inputs.TYPE == 'hard'}}
         uses: chuhlomin/render-template@v1.6
         with:
           template: templates_github_ci/${{ inputs.ENV }}.keystore.properties
@@ -89,19 +70,15 @@ jobs:
             ANDROID_KEYSTORE_KEY_PASSWORD: ${{ steps.secrets.outputs.ANDROID_KEYSTORE_KEY_PASSWORD }}
           result_path: android/keystores/${{ inputs.ENV }}.keystore.properties
       - name: Setup android Google services config
-        if: ${{ inputs.TYPE == 'hard'}}
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
       - name: Setup android Google services config
-        if: ${{ inputs.TYPE == 'hard'}}
         run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
       - name: Deploy hard android for ${{ inputs.ENV }}
-        if: ${{ inputs.TYPE == 'hard'}}
         run: |
           bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
         env:
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - name: Create Sentry sourcemaps
-        if: ${{ inputs.TYPE == 'hard'}}
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
 
   slack_notify:
@@ -120,11 +97,9 @@ jobs:
         with:
           secrets: |-
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
-      - uses: technote-space/workflow-conclusion-action@v3
-        if: ${{ always() }}
       - name: Post to a Slack channel
         id: slack
-        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        if: ${{ steps.sentry_and_deploy.outputs.status == 'failure' }}
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
@@ -134,13 +109,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ steps.sentry_and_deploy.outputs.status == 'failure'] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement sur `${{ inputs.ENV }}` a échoué :boom:"
+                      "text": "Le déploiement android sur `${{ inputs.ENV }}` a ${{ fromJSON('["échoué :boom:", "réussi :rocket:"]')[ steps.sentry_and_deploy.outputs.status == 'failure'] }} :boom:"
                   }
               ],
               "unfurl_links": false,
