@@ -80,7 +80,6 @@ export const Offer: FunctionComponent = () => {
     useSimilarOffers({
       offerId,
       position: offer?.venue.coordinates,
-      shouldUseAlgoliaRecommend,
       categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
@@ -91,7 +90,6 @@ export const Offer: FunctionComponent = () => {
   } = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
-    shouldUseAlgoliaRecommend,
     categoryExcluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
   })
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
