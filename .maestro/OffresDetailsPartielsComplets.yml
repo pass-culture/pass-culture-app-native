@@ -4,6 +4,7 @@ appId: app.passculture.staging
 - runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
+# TODO le tapOn selectionne la première offre présente, il faudrait trouver un moyen de séléctionner une offre pré-définie
 - tapOn:
     point: "50%,71%"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBookerOffer.yml
@@ -15,6 +16,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/IdButtons/SimpleIdButtonSwitchDate.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonThisWeek.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonSearch.yml
+# TODO le tapOn selectionne la première offre présente, il faudrait trouver un moyen de séléctionner une offre pré-définie
 - tapOn:
     point: "49%,84%"
 - tapOn:
