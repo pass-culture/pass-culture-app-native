@@ -168,8 +168,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-testing:
-    needs: [check-server-folder-changes, deploy-web-testing]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    needs: [check-server-folder-changes, yarn-tester]
+    if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: testing

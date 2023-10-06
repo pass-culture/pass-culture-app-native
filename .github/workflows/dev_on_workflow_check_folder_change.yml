@@ -21,7 +21,10 @@ jobs:
         with:
           fetch-depth: 0
       - id: folder-check-changed-files
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v39
         with:
           files: |
             ${{ inputs.folder }}/**
+      - id: dump-folder-check-changed-files
+        name: Dump changed files context
+        run: echo '${{ toJSON(steps.folder-check-changed-files.outputs) }}'

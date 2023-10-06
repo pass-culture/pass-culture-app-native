@@ -1,4 +1,4 @@
-import path from 'path'
+import { dirname, join } from 'path'
 
 import express from 'express'
 
@@ -11,9 +11,10 @@ const options = {
   index: false,
 }
 
-const rootFolder = path.dirname(path.dirname(__dirname))
+const rootFolder = dirname(dirname(__dirname))
+
 // We want to serve static files from the root folder /public
 // https://expressjs.com/en/4x/api.html#express.static
-app.use(express.static(path.join(rootFolder, 'public'), options))
+app.use(express.static(join(rootFolder, 'public'), options))
 
 app.use('*', webAppProxyMiddleware)
