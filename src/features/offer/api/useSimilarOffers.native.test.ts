@@ -115,9 +115,7 @@ describe('useSimilarOffers', () => {
     expect(fetchApiRecoSpy).not.toHaveBeenCalled()
   })
 
-  // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should call similar offers API when offer id provided and shared offer position loaded', async () => {
+  it('should call similar offers API when offer id provided and shared offer position loaded', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
@@ -129,9 +127,7 @@ describe('useSimilarOffers', () => {
     expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
   })
 
-  // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should call similar offers API when offer id provided and shared offer position not loaded ', async () => {
+  it('should call similar offers API when offer id provided and shared offer position not loaded ', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
