@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { LocationMode } from 'features/location/enums'
-import { useCustomLocationModeColor } from 'features/location/helpers/useCustomLocationModeColor'
-import { useGeolocationModeColor } from 'features/location/helpers/useGeolocationModeColor'
 import { useLocation } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 
 export const useLocationModal = (visible: boolean) => {
+  const theme = useTheme()
   const {
     isGeolocated,
     isCustomPosition,
@@ -25,8 +25,15 @@ export const useLocationModal = (visible: boolean) => {
   const [selectedLocationMode, setSelectedLocationMode] =
     useState<LocationMode>(defaultLocationMode)
 
-  const geolocationModeColor = useGeolocationModeColor(selectedLocationMode)
-  const customLocationModeColor = useCustomLocationModeColor(selectedLocationMode)
+  const isCurrentLocationMode = (target: LocationMode) => selectedLocationMode === target
+
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
+    ? theme.colors.primary
+    : theme.colors.black
+
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const onSetSelectedPlace = (place: SuggestedPlace) => {
     setSelectedPlace(place)
@@ -76,5 +83,6 @@ export const useLocationModal = (visible: boolean) => {
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
+    isCurrentLocationMode,
   }
 }

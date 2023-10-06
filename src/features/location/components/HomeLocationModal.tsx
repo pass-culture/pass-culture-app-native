@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationMode } from 'features/location/enums'
-import { isCurrentLocationMode } from 'features/location/helpers/locationHelpers'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -29,7 +28,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    selectedLocationMode,
     setSelectedLocationMode,
     geolocationModeColor,
     customLocationModeColor,
@@ -40,6 +38,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
+    isCurrentLocationMode,
   } = useLocationModal(visible)
 
   const runGeolocationDialogs = useCallback(async () => {
@@ -112,7 +111,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
         title={'Choisir une localisation'}
         subtitle={LOCATION_PLACEHOLDER}
       />
-      {!!isCurrentLocationMode(selectedLocationMode, LocationMode.CUSTOM_POSITION) && (
+      {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
         <LocationSearchInput
           selectedPlace={selectedPlace}
           setSelectedPlace={setSelectedPlace}

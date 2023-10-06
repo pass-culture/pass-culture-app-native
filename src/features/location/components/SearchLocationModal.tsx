@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
-import { isCurrentLocationMode } from 'features/location/helpers/locationHelpers'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -48,6 +47,7 @@ export const SearchLocationModal = ({
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
+    isCurrentLocationMode,
   } = useLocationModal(visible)
 
   const [aroundRadius, setAroundRadius] = useState(100)
@@ -128,7 +128,7 @@ export const SearchLocationModal = ({
         title={'Utiliser ma position actuelle'}
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
-      {!!isCurrentLocationMode(selectedLocationMode, LocationMode.GEOLOCATION) && (
+      {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <LocationSearchFilters
@@ -149,7 +149,7 @@ export const SearchLocationModal = ({
         title={'Choisir une localisation'}
         subtitle={LOCATION_PLACEHOLDER}
       />
-      {!!isCurrentLocationMode(selectedLocationMode, LocationMode.CUSTOM_POSITION) && (
+      {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
         <React.Fragment>
           <LocationSearchInput
             selectedPlace={selectedPlace}
