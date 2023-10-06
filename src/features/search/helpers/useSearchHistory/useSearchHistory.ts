@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
+import { HISTORY_KEY, MAX_HISTORY_RESULTS, MIN_HISTORY_RESULTS } from 'features/search/constants'
 import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
@@ -9,10 +10,6 @@ import { eventMonitoring } from 'libs/monitoring'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-
-export const HISTORY_KEY = 'search_history'
-export const MAX_HISTORY_RESULTS = 20
-export const MIN_HISTORY_RESULTS = 3
 
 export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
@@ -43,12 +40,7 @@ export function useSearchHistory() {
   }, [setHistoryItems])
 
   useEffect(() => {
-    const fetchHistory = async () => {
-      const historyData = await getHistoryFromStorage()
-      setHistory(historyData)
-    }
-
-    fetchHistory()
+    getHistoryFromStorage().then(setHistory)
   }, [getHistoryFromStorage])
 
   const internalRemoveFromHistory = useCallback(
@@ -105,6 +97,8 @@ export function useSearchHistory() {
               category: categoryLabel,
               nativeCategory: nativeCategoryLabel,
             }),
+            categoryLabel,
+            nativeCategoryLabel,
           },
           ...currentHistory,
         ]

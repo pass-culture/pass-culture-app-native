@@ -12,8 +12,6 @@ updates:
       prefix: '(BSR) chore(deps):'
     reviewers:
       - 'Lucasbeneston'
-      - 'bruno-ebstein-pass-culture'
-      - 'pierrecanthelou'
 
   - package-ecosystem: 'bundler'
     directory: '/'
@@ -23,5 +21,3 @@ updates:
       prefix: '(BSR) chore(deps):'
     reviewers:
       - 'Lucasbeneston'
-      - 'bruno-ebstein-pass-culture'
-      - 'pierrecanthelou'

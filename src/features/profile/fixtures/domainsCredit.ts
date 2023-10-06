@@ -22,3 +22,7 @@ export const domains_exhausted_credit_underage = {
 export const domains_credit_underage = {
   all: { initial: 3000, remaining: 1000 },
 }
+
+export const domains_credit_no_numeric_ceiling = {
+  all: { initial: 30000, remaining: 30000 },
+}

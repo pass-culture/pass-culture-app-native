@@ -8,7 +8,7 @@ import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils'
 
 let mockHits: Hit<BaseHit>[] = []
-jest.mock('react-instantsearch-hooks', () => ({
+jest.mock('react-instantsearch-core', () => ({
   useInfiniteHits: () => ({
     hits: mockHits,
   }),

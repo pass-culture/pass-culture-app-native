@@ -1,10 +1,7 @@
 import React from 'react'
 
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
-
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
 
@@ -15,22 +12,24 @@ describe('<PriceLine />', () => {
     expect(screen.getByText('5\u00a0€')).toBeOnTheScreen()
   })
 
-  it('should show price details when wipAttributesCinemaOffers feature flag activated', () => {
-    mockUseFeatureFlag.mockReturnValueOnce(true)
+  it('should show price details', () => {
     render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 
     expect(screen.getByText('10\u00a0€')).toBeOnTheScreen()
     expect(screen.getByText('(5\u00a0€ x 2 places)')).toBeOnTheScreen()
+  })
+
+  it("should show cinema's attributes when offer has attributes", () => {
+    render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
+
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
     expect(screen.getByTestId('price-line__price-detail')).toBeOnTheScreen()
     expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
   })
 
-  it("should not show cinema's attributes when wipAttributesCinemaOffers feature flag deactivated", () => {
-    mockUseFeatureFlag.mockReturnValueOnce(false)
-    render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
+  it("should not show cinema's attributes when offer has not attributes", () => {
+    render(<PriceLine unitPrice={500} quantity={2} attributes={[]} />)
 
-    expect(screen.queryByText('- VOSTFR 3D IMAX')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
   })
 

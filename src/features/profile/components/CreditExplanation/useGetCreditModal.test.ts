@@ -1,6 +1,7 @@
 import {
   domains_credit_v1,
   domains_exhausted_credit_v1,
+  domains_credit_no_numeric_ceiling,
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 
@@ -51,6 +52,15 @@ describe('useGetCreditModal()', () => {
     mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     const { creditModal } = useGetCreditModal({
       domainsCredit: domains_credit_v1,
+      isDepositExpired: false,
+    })
+
+    expect(creditModal).toBeNull()
+  })
+
+  it('should return null for creditModal if beneficiary is over 18 and have no numeric credit limit', async () => {
+    const { creditModal } = useGetCreditModal({
+      domainsCredit: domains_credit_no_numeric_ceiling,
       isDepositExpired: false,
     })
 

@@ -9,7 +9,7 @@ import { BodySearch } from './BodySearch'
 
 jest.mock('react-query')
 
-jest.mock('react-instantsearch-hooks', () => ({
+jest.mock('react-instantsearch-core', () => ({
   useInfiniteHits: () => ({
     hits: mockSuggestionHits,
   }),

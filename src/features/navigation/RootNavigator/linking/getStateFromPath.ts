@@ -34,18 +34,20 @@ async function addLinkAnalytics(...navigateParams: RootNavigateParams) {
 export async function setUtmParameters(queryParams: QueryParams) {
   const { acceptedTrafficCampaign, acceptedTrafficMedium, acceptedTrafficSource } =
     await getUtmParamsConsent()
-  const { utm_campaign, utm_gen, utm_medium, utm_source } = queryParams
+  const { utm_campaign, utm_content, utm_gen, utm_medium, utm_source } = queryParams
 
   const campaign = acceptedTrafficCampaign ? utm_campaign : undefined
+  const content = acceptedTrafficCampaign ? utm_content : undefined
   const gen = acceptedTrafficCampaign ? utm_gen : undefined
   const medium = acceptedTrafficMedium ? utm_medium : undefined
   const source = acceptedTrafficSource ? utm_source : undefined
   // we want to set the marketing parameters right after the user clicked on marketing link
-  if (campaign || gen || medium || source) {
-    await storeUtmParams({ campaign, gen, medium, source })
+  if (campaign || content || gen || medium || source) {
+    await storeUtmParams({ campaign, content, gen, medium, source })
   }
   firebaseAnalytics.setDefaultEventParameters({
     traffic_campaign: campaign,
+    traffic_content: content,
     traffic_gen: gen,
     traffic_medium: medium,
     traffic_source: source,

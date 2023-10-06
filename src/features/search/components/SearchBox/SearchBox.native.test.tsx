@@ -52,7 +52,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 const mockClear = jest.fn()
-jest.mock('react-instantsearch-hooks', () => ({
+jest.mock('react-instantsearch-core', () => ({
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,
@@ -518,21 +518,6 @@ describe('SearchBox component', () => {
     )
   })
 
-  it('should display the search filter button when showing results', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
-    const { queryByTestId } = render(
-      <SearchBox
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />
-    )
-
-    await act(async () => {
-      expect(queryByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')).toBeOnTheScreen()
-    })
-  })
-
   it.each([[SearchView.Landing], [SearchView.Suggestions]])(
     'should hide the search filter button when being on the %s view',
     async (view) => {
@@ -550,24 +535,6 @@ describe('SearchBox component', () => {
       })
     }
   )
-
-  it('should display filter button with the number of active filters', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
-
-    const renderAPI = render(
-      <SearchBox
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />
-    )
-    let filterButton
-    await act(async () => {
-      filterButton = renderAPI.getByTestId('searchFilterBadge')
-    })
-
-    expect(filterButton).toHaveTextContent('3')
-  })
 
   it.each`
     locationType               | locationFilter                                                                   | position            | locationButtonLabel
