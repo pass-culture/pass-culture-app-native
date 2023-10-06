@@ -40,7 +40,7 @@ describe('ExclusivityModule component', () => {
 
   it('should render ExclusivityExternalLink component when url is provided', () => {
     const { getByTestId } = render(
-      <ExclusivityModule {...props} offerId={undefined} url={'http://toto.com'} />
+      <ExclusivityModule {...props} offerId={undefined} url="http://toto.com" />
     )
     expect(getByTestId('Image d’Adèle')).toBeOnTheScreen()
   })

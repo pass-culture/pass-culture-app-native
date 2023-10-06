@@ -113,7 +113,7 @@ export const SearchLocationModal = ({
   return (
     <AppModal
       visible={visible}
-      title={'Localisation'}
+      title="Localisation"
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={onClose}
@@ -125,7 +125,7 @@ export const SearchLocationModal = ({
         onPress={selectLocationMode(LocationMode.GEOLOCATION)}
         icon={PositionFilled}
         color={geolocationModeColor}
-        title={'Utiliser ma position actuelle'}
+        title="Utiliser ma position actuelle"
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
       {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
@@ -146,7 +146,7 @@ export const SearchLocationModal = ({
         onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
         color={customLocationModeColor}
-        title={'Choisir une localisation'}
+        title="Choisir une localisation"
         subtitle={LOCATION_PLACEHOLDER}
       />
       {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
@@ -173,7 +173,7 @@ export const SearchLocationModal = ({
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <ButtonPrimary
-          wording={'Valider la localisation'}
+          wording="Valider la localisation"
           disabled={!selectedPlace && selectedLocationMode !== LocationMode.GEOLOCATION}
           onPress={onSubmit}
         />
@@ -187,7 +187,7 @@ export const SearchLocationModal = ({
         wording="Trouver un point de vente"
         icon={LocationBuildingFilled}
         onPress={onPressShowVenueModal}
-        justifyContent={'flex-start'}
+        justifyContent="flex-start"
       />
     </AppModal>
   )

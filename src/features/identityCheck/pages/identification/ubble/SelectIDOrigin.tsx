@@ -22,7 +22,7 @@ export const SelectIDOrigin: FunctionComponent = () => {
   useEffect(() => {
     analytics.logScreenViewSelectIdOrigin()
   }, [])
-  return <PageWithHeader title={'Identification'} scrollChildren={<SelectIDOriginContent />} />
+  return <PageWithHeader title="Identification" scrollChildren={<SelectIDOriginContent />} />
 }
 
 const SelectIDOriginContent: FunctionComponent = () => {

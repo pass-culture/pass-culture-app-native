@@ -11,7 +11,7 @@ describe('ActivationBanner', () => {
     const { getByText } = render(
       <ActivationBanner
         title={'Débloque tes 300\u00a0€'}
-        subtitle={'toto'}
+        subtitle="toto"
         icon={BicolorUnlock}
         from={StepperOrigin.HOME}
       />

@@ -33,21 +33,21 @@ export function NavigationIdentityCheck(): React.JSX.Element {
       <StyledContainer>
         <LinkToComponent name="Stepper" title="Stepper" />
         <LinkToComponent
-          title={`Too many codes`}
+          title="Too many codes"
           onPress={() => navigate('PhoneValidationTooManyAttempts')}
         />
         <LinkToComponent
-          title={`Too many SMS sent`}
+          title="Too many SMS sent"
           onPress={() => navigate('PhoneValidationTooManySMSSent')}
         />
 
         <LinkToComponent name="SetPhoneNumber" title="new SetPhoneNumber" />
         <LinkToComponent
-          title={'PhoneValidation tips Modal'}
+          title="PhoneValidation tips Modal"
           onPress={() => setPhoneValidationTipsModalVisible(true)}
         />
         <LinkToComponent
-          title={'New SetPhoneValidationCode'}
+          title="New SetPhoneValidationCode"
           onPress={() => navigate('SetPhoneValidationCode')}
         />
         <LinkToComponent name="SetStatus" title="SetStatus" />
@@ -69,29 +69,29 @@ export function NavigationIdentityCheck(): React.JSX.Element {
           }}
         />
         <LinkToComponent
-          title={'UserAgeNotValid Educonnect Error'}
+          title="UserAgeNotValid Educonnect Error"
           onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
         />
         <LinkToComponent
-          title={'UserAgeNotValid18YearsOld Error'}
+          title="UserAgeNotValid18YearsOld Error"
           onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
         />
         <LinkToComponent
-          title={'UserTypeNotStudent Error'}
+          title="UserTypeNotStudent Error"
           onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
         />
         <LinkToComponent
-          title={'DuplicateUser Error'}
+          title="DuplicateUser Error"
           onPress={() => trigger(EduConnectErrorMessageEnum.DuplicateUser)}
         />
 
         <LinkToComponent
-          title={'Generic Error'}
+          title="Generic Error"
           onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
         />
         <Row half>
           <ButtonPrimary
-            wording={'VerifyEligibility'}
+            wording="VerifyEligibility"
             onPress={() => navigate('VerifyEligibility')}
           />
         </Row>

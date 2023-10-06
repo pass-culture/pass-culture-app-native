@@ -9,8 +9,8 @@ describe('CulturalSurveyCheckbox', () => {
     const CulturalSurveyCheckboxComponent = render(
       <CulturalSurveyCheckbox
         icon={culturalSurveyIcons.Museum}
-        title={'Visité un musée,'}
-        subtitle={'un monument, une exposition...'}
+        title="Visité un musée,"
+        subtitle="un monument, une exposition..."
         selected={false}
         onPress={jest.fn()}
       />
@@ -21,8 +21,8 @@ describe('CulturalSurveyCheckbox', () => {
     const CulturalSurveyCheckboxComponent = render(
       <CulturalSurveyCheckbox
         icon={culturalSurveyIcons.Museum}
-        title={'Visité un musée,'}
-        subtitle={'un monument, une exposition...'}
+        title="Visité un musée,"
+        subtitle="un monument, une exposition..."
         selected={false}
         onPress={jest.fn()}
       />
