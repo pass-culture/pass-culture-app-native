@@ -9,6 +9,12 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { Spacer, Typo } from 'ui/theme'
 
+const INCOMING_CREDIT_LABELS_MAP: Record<number, string> = {
+  15: 'À venir pour tes 16 ans\u00a0: + 30\u00a0€',
+  16: 'À venir pour tes 17 ans\u00a0: + 30\u00a0€',
+  17: 'À venir pour tes 18 ans\u00a0: 300\u00a0€',
+}
+
 export type CreditHeaderProps = {
   firstName?: string | null
   lastName?: string | null
@@ -47,9 +53,9 @@ export function CreditHeader({
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
-          {age === 15 && <Typo.Body>À venir pour tes 16 ans&nbsp;: + 30&nbsp;€</Typo.Body>}
-          {age === 16 && <Typo.Body>À venir pour tes 17 ans&nbsp;: + 30&nbsp;€</Typo.Body>}
-          {age === 17 && <Typo.Body>À venir pour tes 18 ans&nbsp;: 300&nbsp;€</Typo.Body>}
+          {!!(age && INCOMING_CREDIT_LABELS_MAP[age]) && (
+            <Typo.Body>{INCOMING_CREDIT_LABELS_MAP[age]}</Typo.Body>
+          )}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation
             isDepositExpired={isDepositExpired}
