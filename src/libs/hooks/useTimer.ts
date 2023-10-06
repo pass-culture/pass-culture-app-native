@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 
+import { useAppStateChange } from 'libs/appState'
+
+let appInBackgroundTime: null | number = null
+
 export const useTimer = (initialValueInSeconds: number) => {
   const [timeLeft, setTimeLeft] = useState(initialValueInSeconds)
 
@@ -13,6 +17,18 @@ export const useTimer = (initialValueInSeconds: number) => {
 
     return () => clearInterval(timerId)
   })
+
+  useAppStateChange(
+    () => {
+      if (appInBackgroundTime) {
+        const elapsedTimeInSeconds = Math.floor((Date.now() - appInBackgroundTime) / 1000)
+        setTimeLeft((timeLeft) => Math.max(timeLeft - elapsedTimeInSeconds, 0))
+      }
+    },
+    () => {
+      appInBackgroundTime = Date.now()
+    }
+  )
 
   return { timeLeft, setTimeLeft }
 }
