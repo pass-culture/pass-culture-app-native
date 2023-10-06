@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
+import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -23,8 +24,6 @@ interface LocationModalProps {
   dismissModal: () => void
   showVenueModal: () => void
 }
-
-const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
 export const SearchLocationModal = ({
   visible,
