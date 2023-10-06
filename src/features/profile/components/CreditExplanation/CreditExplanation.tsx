@@ -41,7 +41,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({
       <React.Fragment>
         <StyledButtonQuaternaryBlack
           icon={Question}
-          wording={'Mon crédit est expiré, que\u00a0faire\u00a0?'}
+          wording="Mon crédit est expiré, que&nbsp;faire&nbsp;?"
           onPress={onPressExplanationButton}
         />
         <ExpiredCreditModal visible={visible} hideModal={hideModal} />
@@ -57,7 +57,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({
       <React.Fragment>
         <StyledButtonQuaternaryBlack
           icon={Question}
-          wording={'J’ai dépensé tout mon crédit, que\u00a0faire\u00a0?'}
+          wording="J’ai dépensé tout mon crédit, que&nbsp;faire&nbsp;?"
           onPress={onPressExplanationButton}
         />
         <ExhaustedCreditModal visible={visible} hideModal={hideModal} />
@@ -72,7 +72,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({
       <InternalTouchableLink
         as={StyledButtonQuaternaryBlack}
         icon={Question}
-        wording={'Comment ça marche\u00a0?'}
+        wording="Comment ça marche&nbsp;?"
         navigateTo={tutorialNavigateTo}
       />
     </React.Fragment>
