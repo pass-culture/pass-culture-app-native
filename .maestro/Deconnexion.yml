@@ -13,11 +13,10 @@ appId: app.passculture.staging
 #- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConnect.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
-#- TODO Mettre en variable la version testée
 - scrollUntilVisible:
-    element: "Version\_1.259.2"
+    element: "République Française - Liberté Égalité Fraternité"
     direction: DOWN
-- assertVisible: "Version\_1.259.2"
+- assertVisible: "République Française - Liberté Égalité Fraternité"
 
 - assertVisible:
     text: "Déconnexion"

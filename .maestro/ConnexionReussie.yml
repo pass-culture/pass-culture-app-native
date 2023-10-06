@@ -8,7 +8,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - scrollUntilVisible:
-    element: "Version\_1.259.2"
-    direction: DOWN
-- assertVisible: "Version\_1.259.2"
+      element: "République Française - Liberté Égalité Fraternité"
+      direction: DOWN
+- assertVisible: "République Française - Liberté Égalité Fraternité"
 - runFlow: reusableFlows/StopApp.yml # Stop App

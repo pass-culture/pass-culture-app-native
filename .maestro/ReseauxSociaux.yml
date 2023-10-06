@@ -17,7 +17,7 @@ appId: app.passculture.staging
 
 - tapOn: "Instagram"
 - tapOn: "Applications récentes"
-  
+
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"
     index: 0

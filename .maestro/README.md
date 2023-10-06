@@ -50,7 +50,10 @@ maestro test .maestro/<nomDuTest.yml>
 
 # Uniquement un test web spécifique ex: .maestro/web/Home.yml
 maestro test .maestro/<nomDuTest.web.yml>
-```
+
+# Lancer les tests avec l'utilisation de variables 
+maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e NEW_USERNAME=${NEW_USERNAME} -e NUMBER_PHONE=${NUMBER_PHONE} -e PASSWORD=${PASSWORD} .maestro/
+
 
 ---
 
