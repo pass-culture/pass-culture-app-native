@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-native'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
 import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
@@ -25,16 +25,16 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 >
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
-describe('LocationModal', () => {
+describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
-    renderLocationModal()
+    renderHomeLocationModal()
     await waitForModalToShow()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should hide modal on close modal button press', async () => {
-    renderLocationModal()
+    renderHomeLocationModal()
     await waitForModalToShow()
 
     fireEvent.press(screen.getByLabelText('Fermer la modale'))
@@ -45,7 +45,7 @@ describe('LocationModal', () => {
   it('should highlight geolocation button if geolocation is enabled', async () => {
     getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
-    renderLocationModal()
+    renderHomeLocationModal()
     await waitForModalToShow()
 
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
@@ -54,7 +54,7 @@ describe('LocationModal', () => {
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
     getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
-    renderLocationModal()
+    renderHomeLocationModal()
     await waitForModalToShow()
 
     expect(screen.queryByText('Géolocalisation désactivée')).toBeNull()
@@ -63,7 +63,7 @@ describe('LocationModal', () => {
   it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
-    renderLocationModal()
+    renderHomeLocationModal()
     await waitForModalToShow()
 
     await act(async () => {
@@ -84,7 +84,7 @@ describe('LocationModal', () => {
       return (
         <LocationWrapper>
           <React.Fragment>
-            <LocationModal visible={visible} dismissModal={hideModalMock} />
+            <HomeLocationModal visible={visible} dismissModal={hideModalMock} />
             <Button title="Close" onPress={() => setVisible(false)} />
           </React.Fragment>
         </LocationWrapper>
@@ -104,10 +104,10 @@ describe('LocationModal', () => {
   })
 })
 
-function renderLocationModal() {
+function renderHomeLocationModal() {
   render(
     <LocationWrapper>
-      <LocationModal visible dismissModal={hideModalMock} />
+      <HomeLocationModal visible dismissModal={hideModalMock} />
     </LocationWrapper>
   )
 }

@@ -2,6 +2,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { ScreenOrigin } from 'features/location/enums'
+
 import { LocationWidget } from './LocationWidget'
 
 const meta: ComponentMeta<typeof LocationWidget> = {
@@ -17,6 +19,8 @@ const meta: ComponentMeta<typeof LocationWidget> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof LocationWidget> = () => <LocationWidget enableTooltip />
+const Template: ComponentStory<typeof LocationWidget> = () => (
+  <LocationWidget screenOrigin={ScreenOrigin.HOME} />
+)
 
 export const Default = Template.bind({})

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LocationModal should render correctly if modal visible 1`] = `
+exports[`HomeLocationModal should render correctly if modal visible 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
