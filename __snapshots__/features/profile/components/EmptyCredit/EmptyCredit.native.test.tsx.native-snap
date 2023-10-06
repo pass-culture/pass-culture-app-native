@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmptyCredit /> should render correctly for 15 yo 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#161617",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": 15,
+        "lineHeight": 20,
+      },
+    ]
+  }
+>
+  Ton prochain crédit de 
+  <Text
+    style={
+      [
+        {
+          "color": "#320096",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    30 €
+  </Text>
+   sera débloqué à 
+  16
+   ans. En attendant…
+</Text>
+`;
+
+exports[`<EmptyCredit /> should render correctly for 16 yo 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#161617",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": 15,
+        "lineHeight": 20,
+      },
+    ]
+  }
+>
+  Ton prochain crédit de 
+  <Text
+    style={
+      [
+        {
+          "color": "#320096",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    30 €
+  </Text>
+   sera débloqué à 
+  17
+   ans. En attendant…
+</Text>
+`;
+
+exports[`<EmptyCredit /> should render correctly for 17 yo 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#161617",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": 15,
+        "lineHeight": 20,
+      },
+    ]
+  }
+>
+  Ton prochain crédit de 
+  <Text
+    style={
+      [
+        {
+          "color": "#320096",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    300 €
+  </Text>
+   sera débloqué à 
+  18
+   ans. En attendant…
+</Text>
+`;
+
+exports[`<EmptyCredit /> should render correctly for 18 yo 1`] = `null`;

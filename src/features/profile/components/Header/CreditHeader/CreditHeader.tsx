@@ -5,6 +5,7 @@ import { DomainsCredit } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
+import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
@@ -59,13 +60,13 @@ export function CreditHeader({
     <HeaderWithGreyContainer title={name} subtitle={<Subtitle {...subtitleProps} />}>
       {!!domainsCredit && (
         <React.Fragment>
-          {!isDepositExpired && (
+          {!(isDepositExpired || isCreditEmpty) && (
             <React.Fragment>
               <CreditInfo totalCredit={domainsCredit.all} />
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
-          {!!(age && incomingCreditLabelsMap[age]) && (
+          {!!(age && incomingCreditLabelsMap[age] && !isCreditEmpty) && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Typo.Body>
@@ -74,6 +75,7 @@ export function CreditHeader({
               </Typo.Body>
             </React.Fragment>
           )}
+          {!!(isCreditEmpty && age) && <EmptyCredit age={age} />}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation
             isDepositExpired={isDepositExpired}
