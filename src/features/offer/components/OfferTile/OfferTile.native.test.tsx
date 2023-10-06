@@ -80,7 +80,6 @@ describe('OfferTile component', () => {
     const propsFromSimilarOffers = {
       ...props,
       fromOfferId: 1,
-      shouldUseAlgoliaRecommend: false,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
       apiRecoParams,
     }
@@ -93,7 +92,6 @@ describe('OfferTile component', () => {
       from: 'similar_offer',
       moduleName: props.moduleName,
       fromOfferId: 1,
-      shouldUseAlgoliaRecommend: false,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
     })
   })

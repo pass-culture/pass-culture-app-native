@@ -216,7 +216,6 @@ export const logEventAnalytics = {
     searchId?: string
     fromOfferId?: number
     fromMultivenueOfferId?: number
-    shouldUseAlgoliaRecommend?: boolean
     playlistType?: PlaylistType
     offer_display_index?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
@@ -475,7 +474,6 @@ export const logEventAnalytics = {
     fromOfferId?: number
     offerId?: number
     playlistType?: PlaylistType
-    shouldUseAlgoliaRecommend?: boolean
   }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),
