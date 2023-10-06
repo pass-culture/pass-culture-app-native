@@ -1,7 +1,10 @@
-import { OFFER_RESPONSE_SNAPSHOT, VENUE_WITH_BANNER_RESPONSE_SNAPSHOT } from '../../../tests/constants'
+import {
+  OFFER_RESPONSE_SNAPSHOT,
+  VENUE_WITH_BANNER_RESPONSE_SNAPSHOT,
+} from '../../../tests/constants'
+import { server } from '../../../tests/server'
 import { apiClient } from '../apiClient'
 import { EntityKeys } from '../entities/types'
-import { server } from '../../../tests/server'
 
 describe('apiClient', () => {
   beforeAll(() => {
@@ -25,14 +28,16 @@ describe('apiClient', () => {
 
   it('should throw error with wrong entity type', async () => {
     const wrongEntityType = 'settings' as EntityKeys
-    await expect(async () => await apiClient(wrongEntityType, 0)).rejects.toThrowError(
+    await expect(apiClient(wrongEntityType, 0)).rejects.toThrowError(
       new Error(`Unknown entity: ${wrongEntityType}`)
     )
   })
 
+  it(`should return 200 and empty object when HTTP status code is 404`, async () => {
+    await expect(apiClient('offre', 0)).resolves.toEqual({})
+  })
+
   it(`should throw error when HTTP status code is not 200`, async () => {
-    await expect(async () => await apiClient('offre', 0)).rejects.toThrowError(
-      new Error(`Wrong status code: 404`)
-    )
+    await expect(apiClient('offre', 502)).rejects.toThrowError(new Error(`Wrong status code: 502`))
   })
 })

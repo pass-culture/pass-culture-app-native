@@ -21,7 +21,7 @@ export async function apiClient(type: EntityKeys, id: number) {
     }),
   })
 
-  if (response.status === 200) {
+  if ([200, 404].includes(response.status)) {
     return response.json()
   }
 

@@ -2,9 +2,12 @@
 
 export const logger = {
   info(...args: any) {
-    console.log(...args)
+    jest.fn(...args)
   },
   warn(...args: any) {
-    console.log(...args)
+    jest.fn(...args)
+  },
+  error(...args: any) {
+    jest.fn(...args)
   },
 }

@@ -123,7 +123,20 @@ export const OFFER_RESPONSE_SNAPSHOT = {
     },
   },
 }
-
+export const OFFER_RESPONSE_SNAPSHOT_WITH_VENUE_NULL_METADATA = {
+  ...OFFER_RESPONSE_SNAPSHOT,
+  id: 1235,
+  metadata: {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    location: {
+      '@type': 'Place',
+      name: null,
+      address: null,
+      geo: null,
+    },
+  },
+}
 export const OFFER_RESPONSE_SNAPSHOT_WITH_DANGEROUS_METADATA = {
   ...OFFER_RESPONSE_SNAPSHOT,
   id: 1234,
