@@ -12,29 +12,36 @@ const interpolationConfig: Animated.InterpolationConfigType = {
   extrapolate: 'clamp',
 }
 
-const viewTranslationInterpolationConfig: Animated.InterpolationConfigType = {
-  inputRange: [0, MOBILE_HEADER_HEIGHT],
-  outputRange: [0, -MOBILE_HEADER_HEIGHT],
+const viewTranslationInterpolationConfig = (
+  height: number = MOBILE_HEADER_HEIGHT
+): Animated.InterpolationConfigType => ({
+  inputRange: [0, height],
+  outputRange: [0, -height],
   extrapolate: 'clamp',
-}
+})
 
-const gradientTranslationInterpolationConfig: Animated.InterpolationConfigType = {
-  inputRange: [-MOBILE_HEADER_HEIGHT, 0],
-  outputRange: [MOBILE_HEADER_HEIGHT, 0],
+const gradientTranslationInterpolationConfig = (
+  height: number = MOBILE_HEADER_HEIGHT
+): Animated.InterpolationConfigType => ({
+  inputRange: [-height, 0],
+  outputRange: [height, 0],
   extrapolate: 'clamp',
-}
+})
 
-const imageHeightInterpolationConfig: Animated.InterpolationConfigType = {
-  inputRange: [-MOBILE_HEADER_HEIGHT, 0],
-  outputRange: [MOBILE_HEADER_HEIGHT * 2, MOBILE_HEADER_HEIGHT],
+const imageHeightInterpolationConfig = (
+  height: number = MOBILE_HEADER_HEIGHT
+): Animated.InterpolationConfigType => ({
+  inputRange: [-height, 0],
+  outputRange: [height * 2, height],
   extrapolate: 'clamp',
-}
+})
 
 interface Props {
   listener?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
+  headerHeight?: number
 }
 
-export const useOpacityTransition = ({ listener }: Props = {}) => {
+export const useOpacityTransition = ({ listener, headerHeight }: Props = {}) => {
   const headerScroll = useRef(new Animated.Value(0)).current
 
   const onScroll = Animated.event([{ nativeEvent: { contentOffset: { y: headerScroll } } }], {
@@ -42,10 +49,14 @@ export const useOpacityTransition = ({ listener }: Props = {}) => {
     listener,
   })
 
+  const height = headerHeight
+
   const headerTransition = headerScroll.interpolate(interpolationConfig)
-  const imageAnimatedHeight = headerScroll.interpolate(imageHeightInterpolationConfig)
-  const gradientTranslation = headerScroll.interpolate(gradientTranslationInterpolationConfig)
-  const viewTranslation = headerScroll.interpolate(viewTranslationInterpolationConfig)
+  const imageAnimatedHeight = headerScroll.interpolate(imageHeightInterpolationConfig(height))
+  const gradientTranslation = headerScroll.interpolate(
+    gradientTranslationInterpolationConfig(height)
+  )
+  const viewTranslation = headerScroll.interpolate(viewTranslationInterpolationConfig(height))
 
   return {
     headerTransition,
@@ -53,5 +64,6 @@ export const useOpacityTransition = ({ listener }: Props = {}) => {
     gradientTranslation,
     viewTranslation,
     onScroll,
+    headerHeight,
   }
 }

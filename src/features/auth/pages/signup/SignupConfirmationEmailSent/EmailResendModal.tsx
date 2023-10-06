@@ -7,6 +7,7 @@ import { useResendEmailValidation } from 'features/auth/api/useResendEmailValida
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { useTimer } from 'libs/hooks/useTimer'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatToHour } from 'libs/parsers'
 import { AlertBanner } from 'ui/components/banners/AlertBanner'
@@ -23,6 +24,7 @@ interface Props {
 
 export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const [errorMessage, setErrorMessage] = React.useState<string>()
+  const { timeLeft, setTimeLeft } = useTimer(0)
 
   const onError = (error: ApiError) => {
     if (error.statusCode === 429) {
@@ -40,9 +42,14 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
       email,
       onError,
     })
+
+  const onResendEmailSuccess = () => {
+    refetchRemainingResends()
+    setTimeLeft(60)
+  }
   const { mutate: resendEmail, isLoading } = useResendEmailValidation({
     onError,
-    onSuccess: refetchRemainingResends,
+    onSuccess: onResendEmailSuccess,
   })
 
   const retryMessage = remainingResendsResponse?.counterResetDatetime
@@ -60,6 +67,12 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const hasAttemptsLeft =
     !!remainingResendsResponse?.remainingResends && remainingResendsResponse.remainingResends > 0
 
+  const isResendCooldownActive = timeLeft > 0
+
+  const resendAttemptText = isResendCooldownActive
+    ? `Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans ${timeLeft}s.`
+    : 'Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander un nouveau.'
+
   return (
     <AppModal
       visible={visible}
@@ -70,10 +83,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
       <ModalContent>
         {hasAttemptsLeft ? (
           <React.Fragment>
-            <StyledBody>
-              Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en
-              demander un nouveau.
-            </StyledBody>
+            <StyledBody>{resendAttemptText}</StyledBody>
             <Spacer.Column numberOfSpaces={6} />
             <EmailAttemptsLeft attemptsLeft={remainingResendsResponse?.remainingResends} />
             <Spacer.Column numberOfSpaces={2} />
@@ -89,7 +99,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
         <ButtonPrimary
           wording="Demander un nouveau lien"
           onPress={onResendPress}
-          disabled={isLoading || !hasAttemptsLeft}
+          disabled={isLoading || !hasAttemptsLeft || isResendCooldownActive}
         />
         {!!errorMessage && (
           <React.Fragment>

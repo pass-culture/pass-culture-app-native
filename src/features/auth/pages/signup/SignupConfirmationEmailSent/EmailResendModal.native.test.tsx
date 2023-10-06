@@ -59,6 +59,21 @@ describe('<EmailResendModal />', () => {
     expect(resendEmailValidationSpy).toHaveBeenCalledTimes(1)
   })
 
+  it('should display timer when resend email button is clicked', async () => {
+    renderEmailResendModal({})
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
+
+    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+
+    expect(
+      screen.getByText(
+        'Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans 60s.'
+      )
+    ).toBeOnTheScreen()
+  })
+
   it('should display error message when email resend fails', async () => {
     renderEmailResendModal({ emailResendErrorCode: 500 })
     await waitFor(() => {

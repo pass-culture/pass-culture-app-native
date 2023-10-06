@@ -34,9 +34,7 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
       isSelected={isSelected}
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}>
-      <Label isSelected={isSelected} testID={filterButtonLabel}>
-        {label}
-      </Label>
+      <Label testID={filterButtonLabel}>{label}</Label>
       {!!isSelected && (
         <React.Fragment>
           <Spacer.Row numberOfSpaces={1} />
@@ -57,18 +55,19 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   paddingTop: getSpacing(1.5),
   paddingBottom: getSpacing(1.5),
   height: getSpacing(8),
-  borderColor: isSelected ? theme.colors.primary : theme.colors.black,
-  borderWidth: getSpacing(0.25),
+  backgroundColor: isSelected ? theme.colors.greyLight : theme.colors.white,
+  borderColor: theme.colors.black,
+  borderWidth: isSelected ? 2 : 1,
   borderRadius: theme.borderRadius.button,
   ...customFocusOutline({ color: theme.colors.accent }),
-  ...getHoverStyle(isSelected ? theme.colors.primary : theme.colors.black),
+  ...getHoverStyle(theme.colors.black),
 }))
 
 const StyledIcon = styled(Check).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.primary,
+  color: theme.colors.black,
 }))``
 
-const Label = styled(Typo.Caption)<IsSelectedProps>(({ theme, isSelected }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
+const Label = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.black,
 }))

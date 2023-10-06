@@ -140,7 +140,17 @@ export type CreateHistoryItem = {
   category?: SearchGroupNameEnumv2
 }
 
+export type Highlighted<TItem> = TItem & {
+  _highlightResult: {
+    query: {
+      value: string
+    }
+  }
+}
+
 export type HistoryItem = CreateHistoryItem & {
   createdAt: number
   label: string
+  nativeCategoryLabel?: string
+  categoryLabel?: string
 }

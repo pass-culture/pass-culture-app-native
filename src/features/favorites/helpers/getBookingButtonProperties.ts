@@ -47,7 +47,7 @@ export const getBookingButtonProperties = (
   }
 
   const userStatus = props.user.status
-  if (userStatus.statusType === YoungStatusType.eligible) {
+  if (userStatus?.statusType === YoungStatusType.eligible) {
     return getEligibleBookingButtonProps(userStatus, props.offer.id)
   }
 

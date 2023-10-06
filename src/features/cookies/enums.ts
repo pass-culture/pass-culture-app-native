@@ -19,6 +19,7 @@ export enum CookieNameEnum {
   SENTRY = 'sentry',
   TIMES_REVIEW_HAS_BEEN_REQUESTED = 'times_review_has_been_requested',
   TRAFFIC_CAMPAIGN = 'traffic_campaign',
+  TRAFFIC_CONTENT = 'traffic_content',
   TRAFFIC_GEN = 'traffic_gen',
   TRAFFIC_MEDIUM = 'traffic_medium',
   TRAFFIC_SOURCE = 'traffic_source',

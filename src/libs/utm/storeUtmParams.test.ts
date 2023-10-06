@@ -9,6 +9,7 @@ const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
 const expectedParams = {
   campaign: 'campaign',
+  content: 'content',
   gen: 'marketing',
   medium: 'medium',
   source: 'source',
@@ -25,6 +26,7 @@ describe('storeUtmParams', () => {
 
     expect(utmParams).toEqual({
       campaign: null,
+      content: null,
       gen: null,
       medium: null,
       source: null,
@@ -41,8 +43,9 @@ describe('storeUtmParams', () => {
 })
 
 const getUtmParamsFromStorage = async () => {
-  const [campaign, gen, medium, source, campaignDate] = await storage.readMultiString([
+  const [campaign, content, gen, medium, source, campaignDate] = await storage.readMultiString([
     CookieNameEnum.TRAFFIC_CAMPAIGN,
+    CookieNameEnum.TRAFFIC_CONTENT,
     CookieNameEnum.TRAFFIC_GEN,
     CookieNameEnum.TRAFFIC_MEDIUM,
     CookieNameEnum.TRAFFIC_SOURCE,
@@ -50,6 +53,7 @@ const getUtmParamsFromStorage = async () => {
   ])
   return {
     campaign: campaign[1],
+    content: content[1],
     gen: gen[1],
     medium: medium[1],
     source: source[1],

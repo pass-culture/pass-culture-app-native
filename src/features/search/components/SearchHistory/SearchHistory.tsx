@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
-import { HistoryItem } from 'features/search/types'
+import { addHighlightedAttribute } from 'features/search/helpers/addHighlightedAttribute/addHighlightedAttribute'
+import { Highlighted, HistoryItem } from 'features/search/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { VerticalUl } from 'ui/components/Ul'
@@ -14,9 +15,10 @@ type Props = {
   history: HistoryItem[]
   queryHistory: string
   removeItem: (item: HistoryItem) => void
+  onPress: (item: Highlighted<HistoryItem>) => void
 }
 
-export function SearchHistory({ history, queryHistory, removeItem }: Props) {
+export function SearchHistory({ history, queryHistory, removeItem, onPress }: Props) {
   return history.length > 0 ? (
     <React.Fragment>
       <SearchHistoryTitleText>Historique de recherche</SearchHistoryTitleText>
@@ -24,7 +26,11 @@ export function SearchHistory({ history, queryHistory, removeItem }: Props) {
       <StyledVerticalUl>
         {history.map((item) => (
           <Container key={item.createdAt} testID="searchHistoryItem">
-            <SearchHistoryItem item={item} />
+            <SearchHistoryItem
+              item={addHighlightedAttribute({ item, query: queryHistory })}
+              queryHistory={queryHistory}
+              onPress={onPress}
+            />
             {queryHistory === '' && (
               <RemoveButton
                 accessibilityLabel={`Supprimer ${item.label} de l’historique`}
@@ -36,9 +42,7 @@ export function SearchHistory({ history, queryHistory, removeItem }: Props) {
         ))}
       </StyledVerticalUl>
     </React.Fragment>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 }
 
 const StyledVerticalUl = styled(VerticalUl)({

@@ -49,8 +49,8 @@ export function App() {
   return (
     <RemoteConfigProvider>
       <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
-        <SupportedBrowsersGate>
-          <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <SupportedBrowsersGate>
             <SafeAreaProvider>
               <ReactQueryClientProvider>
                 <SettingsWrapper>
@@ -85,8 +85,8 @@ export function App() {
                 </SettingsWrapper>
               </ReactQueryClientProvider>
             </SafeAreaProvider>
-          </ThemeProvider>
-        </SupportedBrowsersGate>
+          </SupportedBrowsersGate>
+        </ThemeProvider>
       </ServiceWorkerProvider>
     </RemoteConfigProvider>
   )

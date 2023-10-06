@@ -12,8 +12,8 @@ import { act, measurePerformance } from 'tests/utils'
 
 jest.unmock('features/search/context/SearchWrapper')
 
-jest.mock('react-instantsearch-hooks', () => ({
-  ...jest.requireActual('react-instantsearch-hooks'),
+jest.mock('react-instantsearch-core', () => ({
+  ...jest.requireActual('react-instantsearch-core'),
   // API key used for test does not exist so we need to mock this part
   useInstantSearch: () => ({
     use: jest.fn(),
