@@ -7,7 +7,7 @@ import { CreditExplanation } from 'features/profile/components/CreditExplanation
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
-import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
+import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -43,19 +43,20 @@ export function CreditHeader({
   }
   const name = `${firstName} ${lastName}`
 
-  const displayedExpirationDate = depositExpirationDate
-    ? formatToSlashedFrenchDate(setDateOneDayEarlier(depositExpirationDate))
-    : ''
   const isDepositExpired = depositExpirationDate
     ? new Date(depositExpirationDate) < new Date()
     : false
 
-  const creditText = isDepositExpired ? 'Ton crédit a expiré le' : 'Profite de ton crédit jusqu’au'
+  const isCreditEmpty = domainsCredit?.all.remaining === 0
+
+  const subtitleProps = getHeaderSubtitleProps({
+    isCreditEmpty,
+    isDepositExpired,
+    depositExpirationDate,
+  })
 
   return (
-    <HeaderWithGreyContainer
-      title={name}
-      subtitle={<Subtitle startSubtitle={creditText} boldEndSubtitle={displayedExpirationDate} />}>
+    <HeaderWithGreyContainer title={name} subtitle={<Subtitle {...subtitleProps} />}>
       {!!domainsCredit && (
         <React.Fragment>
           {!isDepositExpired && (
