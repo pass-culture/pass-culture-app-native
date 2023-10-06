@@ -4,25 +4,33 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen'
 import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Question } from 'ui/svg/icons/Question'
 import { Spacer } from 'ui/theme'
 
 interface Props {
+  age?: number
   domainsCredit: DomainsCredit
   isDepositExpired: boolean
 }
 
 export const CreditExplanation: FunctionComponent<Props> = ({
+  age,
   domainsCredit,
   isDepositExpired,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
+  const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
+    age && age < 19 && age > 14
+      ? { screen: 'ProfileTutorialAgeInformation', params: { age } }
+      : { screen: 'AgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
 
   if (isDepositExpired) {
     const onPressExplanationButton = () => {
@@ -65,7 +73,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({
         as={StyledButtonQuaternaryBlack}
         icon={Question}
         wording={'Comment ça marche\u00a0?'}
-        navigateTo={{ screen: 'ProfileTutorialAgeInformation', params: { age: 18 } }}
+        navigateTo={tutorialNavigateTo}
       />
     </React.Fragment>
   )

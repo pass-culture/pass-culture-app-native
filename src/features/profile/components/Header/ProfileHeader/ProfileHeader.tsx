@@ -6,6 +6,7 @@ import { CheatMenuButton } from 'features/internal/cheatcodes/components/CheatMe
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import { getAge } from 'shared/user/getAge'
 
 type ProfileHeaderProps = {
   user?: UserProfileResponse
@@ -33,6 +34,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       <CreditHeader
         firstName={user.firstName}
         lastName={user.lastName}
+        age={user.birthDate ? getAge(user.birthDate) : undefined}
         domainsCredit={user.domainsCredit}
         depositExpirationDate={user.depositExpirationDate ?? undefined}
       />
