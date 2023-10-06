@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationMode } from 'features/location/enums'
+import { isCurrentLocationMode } from 'features/location/helpers/locationHelpers'
+import { useCustomLocationModeColor } from 'features/location/helpers/useCustomLocationModeColor'
+import { useGeolocationModeColor } from 'features/location/helpers/useGeolocationModeColor'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -33,13 +36,14 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     showGeolocPermissionModal,
   } = useLocation()
 
-  const theme = useTheme()
-
   const [placeQuery, setPlaceQuery] = useState('')
   const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null)
   const defaultLocationMode = isGeolocated ? LocationMode.GEOLOCATION : LocationMode.NONE
   const [selectedLocationMode, setSelectedLocationMode] =
     useState<LocationMode>(defaultLocationMode)
+
+  const geolocationModeColor = useGeolocationModeColor(selectedLocationMode)
+  const customLocationModeColor = useCustomLocationModeColor(selectedLocationMode)
 
   const initializeLocationMode = useCallback(() => {
     onModalHideRef.current = undefined
@@ -49,8 +53,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
       setSelectedLocationMode(defaultLocationMode)
     }
   }, [onModalHideRef, isCustomPosition, setSelectedLocationMode, defaultLocationMode])
-
-  const isCurrentLocationMode = (target: LocationMode) => selectedLocationMode === target
 
   useEffect(() => {
     if (visible) {
@@ -63,14 +65,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, initializeLocationMode])
-
-  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
-    ? theme.colors.primary
-    : theme.colors.black
-
-  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
-    ? theme.colors.primary
-    : theme.colors.black
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
@@ -151,7 +145,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
         title={'Choisir une localisation'}
         subtitle={LOCATION_PLACEHOLDER}
       />
-      {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+      {!!isCurrentLocationMode(selectedLocationMode, LocationMode.CUSTOM_POSITION) && (
         <LocationSearchInput
           selectedPlace={selectedPlace}
           setSelectedPlace={setSelectedPlace}
