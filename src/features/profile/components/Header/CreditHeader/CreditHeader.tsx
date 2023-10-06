@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
@@ -9,10 +10,10 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { Spacer, Typo } from 'ui/theme'
 
-const INCOMING_CREDIT_LABELS_MAP: Record<number, string> = {
-  15: 'À venir pour tes 16 ans\u00a0: + 30\u00a0€',
-  16: 'À venir pour tes 17 ans\u00a0: + 30\u00a0€',
-  17: 'À venir pour tes 18 ans\u00a0: 300\u00a0€',
+const INCOMING_CREDIT_LABELS_MAP: Record<number, { label: string; highlightedLabel: string }> = {
+  15: { label: 'À venir pour tes 16 ans\u00a0: ', highlightedLabel: '+ 30\u00a0€' },
+  16: { label: 'À venir pour tes 17 ans\u00a0: ', highlightedLabel: '+ 30\u00a0€' },
+  17: { label: 'À venir pour tes 18 ans\u00a0: ', highlightedLabel: '300\u00a0€' },
 }
 
 export type CreditHeaderProps = {
@@ -54,7 +55,15 @@ export function CreditHeader({
             </React.Fragment>
           )}
           {!!(age && INCOMING_CREDIT_LABELS_MAP[age]) && (
-            <Typo.Body>{INCOMING_CREDIT_LABELS_MAP[age]}</Typo.Body>
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <Typo.Body>
+                {INCOMING_CREDIT_LABELS_MAP[age].label}
+                <HighlightedBody>
+                  {INCOMING_CREDIT_LABELS_MAP[age].highlightedLabel}
+                </HighlightedBody>
+              </Typo.Body>
+            </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation
@@ -67,3 +76,7 @@ export function CreditHeader({
     </HeaderWithGreyContainer>
   )
 }
+
+const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
