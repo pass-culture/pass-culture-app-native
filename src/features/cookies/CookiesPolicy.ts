@@ -6,6 +6,7 @@ export const COOKIES_BY_CATEGORY: Record<CookieCategoriesEnum, Cookies> = {
     CookieNameEnum.BATCH,
     CookieNameEnum.CAMPAIGN_DATE,
     CookieNameEnum.TRAFFIC_CAMPAIGN,
+    CookieNameEnum.TRAFFIC_CONTENT,
     CookieNameEnum.TRAFFIC_GEN,
     CookieNameEnum.TRAFFIC_MEDIUM,
     CookieNameEnum.TRAFFIC_SOURCE,

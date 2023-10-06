@@ -55,19 +55,21 @@ describe('getStateFromPath()', () => {
 
       it('should save utm parameters in storage if available - offers', async () => {
         customGetStateFromPath(
-          'offre/1188?utm_campaign=push_offre_local&utm_gen=marketing&utm_medium=batch&utm_source=push',
+          'offre/1188?utm_campaign=push_offre_local&utm_content=content&utm_gen=marketing&utm_medium=batch&utm_source=push',
           linking.config
         )
 
         await waitFor(() => {
           expect(storeUtmParams).toBeCalledWith({
             campaign: 'push_offre_local',
+            content: 'content',
             gen: 'marketing',
             source: 'push',
             medium: 'batch',
           })
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre_local',
+            traffic_content: 'content',
             traffic_gen: 'marketing',
             traffic_source: 'push',
             traffic_medium: 'batch',
@@ -88,6 +90,7 @@ describe('getStateFromPath()', () => {
           })
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre',
+            traffic_content: undefined,
             traffic_gen: 'marketing',
             traffic_source: undefined,
             traffic_medium: undefined,
@@ -102,6 +105,7 @@ describe('getStateFromPath()', () => {
           expect(storeUtmParams).not.toBeCalled()
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
+            traffic_content: undefined,
             traffic_gen: undefined,
             traffic_source: undefined,
             traffic_medium: undefined,
@@ -131,6 +135,7 @@ describe('getStateFromPath()', () => {
           expect(storeUtmParams).not.toHaveBeenCalled()
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
+            traffic_content: undefined,
             traffic_gen: undefined,
             traffic_source: undefined,
             traffic_medium: undefined,
