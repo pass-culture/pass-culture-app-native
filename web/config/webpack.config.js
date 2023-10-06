@@ -6,6 +6,7 @@ const webpack = require('webpack')
 const resolve = require('resolve')
 const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin')
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
@@ -582,6 +583,16 @@ module.exports = function (webpackEnv) {
               }
             : undefined
         )
+      ),
+      new CspHtmlWebpackPlugin(
+        {
+          'script-src': `'self' https://websdk.appsflyer.com https://www.googletagmanager.com https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ ${process.env.APP_PUBLIC_URL}/static/`,
+        },
+        {
+          hashEnabled: { 'style-src': false },
+          // nonce must be different for each request, we disable this option since we do not handle this: https://content-security-policy.com/nonce/
+          nonceEnabled: { 'script-src': false },
+        }
       ),
       new PreloadWebpackPlugin({
         rel: 'prefetch',

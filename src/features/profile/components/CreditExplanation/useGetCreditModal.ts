@@ -12,6 +12,7 @@ interface Props {
 
 export const useGetCreditModal = ({ domainsCredit, isDepositExpired }: Props) => {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
+  const digitalCeiling = domainsCredit?.digital?.initial
 
   if (isDepositExpired) {
     return {
@@ -27,7 +28,7 @@ export const useGetCreditModal = ({ domainsCredit, isDepositExpired }: Props) =>
       analytics: analytics.logConsultModalNoMoreCredit,
     }
   }
-  if (!isUserUnderageBeneficiary) {
+  if (!isUserUnderageBeneficiary && digitalCeiling != null) {
     return {
       buttonTitle: 'Pourquoi cette limite\u00a0?',
       creditModal: CreditCeilingsModal,

@@ -87,4 +87,5 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyD
 
 const BuildingIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
+  color: theme.colors.greyDark,
 }))``

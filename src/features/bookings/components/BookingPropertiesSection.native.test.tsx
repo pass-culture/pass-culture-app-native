@@ -4,13 +4,11 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<BookingPropertiesSection />', () => {
   beforeAll(() => {
@@ -59,22 +57,24 @@ describe('<BookingPropertiesSection />', () => {
     })
   })
 
-  it('should display price line with price details when wipAttributesCinemaOffers feature flag activated', () => {
-    mockUseFeatureFlag.mockReturnValueOnce(true)
+  it('should display price line with price details', () => {
     renderBookingProperties(booking)
 
     expect(screen.getByText('8\u00a0€')).toBeOnTheScreen()
     expect(screen.getByText('(4\u00a0€ x 2 places)')).toBeOnTheScreen()
+  })
+
+  it("should display cinema's attributes when booked offer has attributes", () => {
+    renderBookingProperties(booking)
+
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
     expect(screen.getByTestId('price-line__price-detail')).toBeOnTheScreen()
     expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
   })
 
-  it("should not show cinema's attributes when wipAttributesCinemaOffers feature flag deactivated", () => {
-    mockUseFeatureFlag.mockReturnValueOnce(false)
-    renderBookingProperties(booking)
+  it("should not show cinema's attributes when booked offer has not attributes", () => {
+    renderBookingProperties({ ...booking, stock: { ...booking.stock, features: [] } })
 
-    expect(screen.queryByText('- VOSTFR 3D IMAX')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
   })
 })

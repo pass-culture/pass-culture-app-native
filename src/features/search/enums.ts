@@ -197,6 +197,10 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.DIGITAL],
     facetFilter: VenueTypeCodeKey.DIGITAL,
   },
+  [VenueTypeCodeKey.DISTRIBUTION_STORE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.DISTRIBUTION_STORE],
+    facetFilter: VenueTypeCodeKey.DISTRIBUTION_STORE,
+  },
   [VenueTypeCodeKey.FESTIVAL]: {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.FESTIVAL],
     facetFilter: VenueTypeCodeKey.FESTIVAL,

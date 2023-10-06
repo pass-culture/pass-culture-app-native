@@ -7,7 +7,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
+import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -36,7 +36,9 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
       onBeforeNavigate={reinitFilters}
       title={accessibilityLabel}
       accessibilityLabel={accessibilityLabel}>
-      <FilterIconDefault size={24} />
+      <RoundContainer>
+        <StyledFilterIcon />
+      </RoundContainer>
       {activeFilters > 0 && <FloatingBadge value={activeFilters} testID="searchFilterBadge" />}
     </StyledTouchableLink>
   )
@@ -44,16 +46,26 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
 
 const StyledTouchableLink = styled(InternalTouchableLink)({
   display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginLeft: getSpacing(2),
-  width: getSpacing(10),
-  height: getSpacing(10),
+  width: getSpacing(8),
+  height: getSpacing(8),
 })
 
-const FloatingBadge = styled(Badge)({
+const RoundContainer = styled.View({
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: getSpacing(8),
+  height: getSpacing(8),
+  borderRadius: getSpacing(4),
+  borderWidth: 1,
+})
+
+const StyledFilterIcon = styled(FilterIcon).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
+
+const FloatingBadge = styled(Badge)(({ theme }) => ({
   position: 'absolute',
   right: 0,
   bottom: 0,
-})
+  backgroundColor: theme.colors.black,
+}))

@@ -12,7 +12,7 @@ import { SearchHeader } from './SearchHeader'
 
 jest.mock('react-query')
 
-jest.mock('react-instantsearch-hooks', () => ({
+jest.mock('react-instantsearch-core', () => ({
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,

@@ -50,8 +50,8 @@ jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
-jest.mock('react-instantsearch-hooks', () => ({
-  ...jest.requireActual('react-instantsearch-hooks'),
+jest.mock('react-instantsearch-core', () => ({
+  ...jest.requireActual('react-instantsearch-core'),
   useSearchBox: () => ({
     query: '',
     refine: jest.fn,
@@ -74,9 +74,6 @@ jest.mock('react-instantsearch-hooks', () => ({
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
-jest.mock('libs/algolia/analytics/InsightsMiddleware', () => ({
-  InsightsMiddleware: () => null,
-}))
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({

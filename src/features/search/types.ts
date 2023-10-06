@@ -151,4 +151,6 @@ export type Highlighted<TItem> = TItem & {
 export type HistoryItem = CreateHistoryItem & {
   createdAt: number
   label: string
+  nativeCategoryLabel?: string
+  categoryLabel?: string
 }

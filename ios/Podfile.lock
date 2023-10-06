@@ -513,10 +513,10 @@ PODS:
     - React
   - react-native-flipper (0.161.0):
     - React-Core
-  - react-native-flipper-performance-plugin (0.3.1):
+  - react-native-flipper-performance-plugin (0.4.0):
     - React-Core
-    - react-native-flipper-performance-plugin/FBDefines (= 0.3.1)
-  - react-native-flipper-performance-plugin/FBDefines (0.3.1):
+    - react-native-flipper-performance-plugin/FBDefines (= 0.4.0)
+  - react-native-flipper-performance-plugin/FBDefines (0.4.0):
     - React-Core
   - react-native-geolocation-service (5.3.1):
     - React
@@ -1067,7 +1067,7 @@ SPEC CHECKSUMS:
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
   react-native-detector: 751696a5534f6bbc11be87515cca3d8d32593d73
   react-native-flipper: ea555c5b21d9d15814999327aecf31b98ac87079
-  react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
+  react-native-flipper-performance-plugin: 42ec5017abd26e7c5a1f527f2db92c14a90cabdb
   react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-in-app-review: db8bb167a5f238e7ceca5c242d6b36ce8c4404a4

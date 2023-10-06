@@ -96,16 +96,17 @@ exports[`SearchResults component should render correctly 1`] = `
   padding-top: 6px;
   padding-bottom: 6px;
   height: 32px;
-  border-color: #eb0055;
-  border-width: 1px;
+  background-color: #F1F1F4;
+  border-color: #161617;
+  border-width: 2px;
   border-radius: 24px;
 }
 
 .c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #eb0055;
-  text-decoration-color: #eb0055;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
 }
 
 .c4:hover:disabled {
@@ -131,6 +132,7 @@ exports[`SearchResults component should render correctly 1`] = `
   padding-top: 6px;
   padding-bottom: 6px;
   height: 32px;
+  background-color: #ffffff;
   border-color: #161617;
   border-width: 1px;
   border-radius: 24px;
@@ -299,7 +301,49 @@ exports[`SearchResults component should render correctly 1`] = `
               role="list"
             >
               <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
+                role="listitem"
+              >
+                <div
+                  aria-label="Voir tous les filtres : 1 filtre actif"
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
+                  data-testid="Voir tous les filtres : 1 filtre actif"
+                  style="transition-duration: 0s;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-borderRadius-1867qdf r-borderWidth-rs99b7 r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-alignSelf-1kihuf0 r-borderColor-11mg6pl r-borderRadius-1q9bdsx r-borderStyle-1phboty r-borderWidth-rs99b7 r-backgroundColor-colhrt r-bottom-1p0dtai r-position-u8s1d r-right-zchlnj"
+                    data-testid="searchFilterBadge"
+                  >
+                    <div
+                      class="css-view-175oi2r r-height-10ptun7 r-minWidth-285fr0 r-paddingHorizontal-1p4rafz"
+                    >
+                      <div
+                        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                        dir="ltr"
+                      >
+                        1
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
                 role="listitem"
               >
                 <button
@@ -311,7 +355,7 @@ exports[`SearchResults component should render correctly 1`] = `
                   type="button"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                     data-testid="locationButtonLabel"
                     dir="ltr"
                   >
@@ -335,7 +379,7 @@ exports[`SearchResults component should render correctly 1`] = `
                 </button>
               </li>
               <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
                 role="listitem"
               >
                 <button
@@ -356,7 +400,7 @@ exports[`SearchResults component should render correctly 1`] = `
                 </button>
               </li>
               <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
                 role="listitem"
               >
                 <button
@@ -596,16 +640,17 @@ exports[`SearchResults component should render correctly 1`] = `
   padding-top: 6px;
   padding-bottom: 6px;
   height: 32px;
-  border-color: #eb0055;
-  border-width: 1px;
+  background-color: #F1F1F4;
+  border-color: #161617;
+  border-width: 2px;
   border-radius: 24px;
 }
 
 .c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #eb0055;
-  text-decoration-color: #eb0055;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
 }
 
 .c4:hover:disabled {
@@ -631,6 +676,7 @@ exports[`SearchResults component should render correctly 1`] = `
   padding-top: 6px;
   padding-bottom: 6px;
   height: 32px;
+  background-color: #ffffff;
   border-color: #161617;
   border-width: 1px;
   border-radius: 24px;
@@ -798,7 +844,49 @@ exports[`SearchResults component should render correctly 1`] = `
             role="list"
           >
             <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
+              role="listitem"
+            >
+              <div
+                aria-label="Voir tous les filtres : 1 filtre actif"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
+                data-testid="Voir tous les filtres : 1 filtre actif"
+                style="transition-duration: 0s;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-borderRadius-1867qdf r-borderWidth-rs99b7 r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-borderColor-11mg6pl r-borderRadius-1q9bdsx r-borderStyle-1phboty r-borderWidth-rs99b7 r-backgroundColor-colhrt r-bottom-1p0dtai r-position-u8s1d r-right-zchlnj"
+                  data-testid="searchFilterBadge"
+                >
+                  <div
+                    class="css-view-175oi2r r-height-10ptun7 r-minWidth-285fr0 r-paddingHorizontal-1p4rafz"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                      dir="ltr"
+                    >
+                      1
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
               role="listitem"
             >
               <button
@@ -810,7 +898,7 @@ exports[`SearchResults component should render correctly 1`] = `
                 type="button"
               >
                 <div
-                  class="css-text-1rynq56 r-color-ntw818 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                   data-testid="locationButtonLabel"
                   dir="ltr"
                 >
@@ -834,7 +922,7 @@ exports[`SearchResults component should render correctly 1`] = `
               </button>
             </li>
             <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
               role="listitem"
             >
               <button
@@ -855,7 +943,7 @@ exports[`SearchResults component should render correctly 1`] = `
               </button>
             </li>
             <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
               role="listitem"
             >
               <button
