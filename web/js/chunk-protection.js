@@ -44,16 +44,13 @@ let isFirstChunkError = false
 
 window.onerror = function (error, source) {
   const hasFailedChunk =
-    error.indexOf("Unexpected token '<'") !== -1 ||
-    error.indexOf("expected expression, got '<' string") !== -1
+    error.includes("Unexpected token '<'") || error.includes("expected expression, got '<' string")
   if (
     !isFirstChunkError &&
     hasFailedChunk &&
     source &&
-    source.indexOf('chunk') !== -1 &&
-    (source.indexOf('passculture') !== -1 ||
-      source.indexOf('localhost') !== -1 ||
-      source.indexOf('127.0.0.1') !== -1)
+    source.includes('chunk') &&
+    (source.includes('passculture') || source.includes('localhost') || source.includes('127.0.0.1'))
   ) {
     if ('serviceWorker' in navigator) {
       const sessionKey = 'retries_passculture_chunks'
