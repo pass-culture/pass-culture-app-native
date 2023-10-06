@@ -380,6 +380,16 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
           </View>
         </View>
         <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
           nativeID="testUuidV4"
           style={
             [
