@@ -53,13 +53,19 @@ const OnlineProfile: React.FC = () => {
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
-  const userAge = user?.birthDate ? getAge(user.birthDate) : undefined
+  const userAge = getAge(user?.birthDate)
 
   const { userPositionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
     useLocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
+
+  const isDepositExpired = user?.depositExpirationDate
+    ? new Date(user?.depositExpirationDate) < new Date()
+    : false
+
+  const shouldDisplayTutorial = !user?.isBeneficiary || isDepositExpired
 
   const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
     userAge && userAge < 19 && userAge > 14
@@ -177,15 +183,17 @@ const OnlineProfile: React.FC = () => {
           </Section>
           <Section title="Aides">
             <VerticalUl>
-              <Li>
-                <Row
-                  title="Comment ça marche&nbsp;?"
-                  type="navigable"
-                  navigateTo={tutorialNavigateTo}
-                  onPress={() => analytics.logConsultTutorial('profile')}
-                  icon={LifeBuoy}
-                />
-              </Li>
+              {!!shouldDisplayTutorial && (
+                <Li>
+                  <Row
+                    title="Comment ça marche&nbsp;?"
+                    type="navigable"
+                    navigateTo={tutorialNavigateTo}
+                    onPress={() => analytics.logConsultTutorial('profile')}
+                    icon={LifeBuoy}
+                  />
+                </Li>
+              )}
               <Li>
                 <Row
                   title="Centre d’aide"

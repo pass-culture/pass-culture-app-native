@@ -136,7 +136,7 @@ function checkValidServiceWorker(
         // No service worker found.
         emit('error', new Error(`Service worker not found at ${swUrl}`))
         unregister(emit)
-      } else if (contentType != null && contentType.indexOf('javascript') === -1) {
+      } else if (contentType != null && !contentType.includes('javascript')) {
         emit(
           'error',
           new Error(

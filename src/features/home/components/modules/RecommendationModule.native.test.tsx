@@ -26,8 +26,8 @@ describe('RecommendationModule', () => {
       <RecommendationModule
         displayParameters={displayParameters}
         index={1}
-        moduleId={'abcd'}
-        homeEntryId={'xyz'}
+        moduleId="abcd"
+        homeEntryId="xyz"
       />
     )
 
@@ -46,8 +46,8 @@ describe('RecommendationModule', () => {
       <RecommendationModule
         displayParameters={{ ...displayParameters, minOffers }}
         index={1}
-        moduleId={'abcd'}
-        homeEntryId={'xyz'}
+        moduleId="abcd"
+        homeEntryId="xyz"
       />
     )
 

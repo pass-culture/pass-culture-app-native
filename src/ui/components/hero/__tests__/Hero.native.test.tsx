@@ -8,7 +8,7 @@ import { Hero } from '../Hero'
 describe('HeroImage', () => {
   it('shows both placeholders when url is empty', () => {
     const { queryByTestId } = render(
-      <Hero imageUrl={''} type="offer" categoryId={CategoryIdEnum.CINEMA} />
+      <Hero imageUrl="" type="offer" categoryId={CategoryIdEnum.CINEMA} />
     )
     expect(queryByTestId('BackgroundPlaceholder')).toBeOnTheScreen()
     expect(queryByTestId('categoryIcon')).toBeOnTheScreen()
@@ -26,11 +26,7 @@ describe('HeroImage', () => {
 
   it('does not show placeholders when an url is defined', () => {
     const { queryByTestId } = render(
-      <Hero
-        imageUrl={'some_url_to_some_resource'}
-        type="offer"
-        categoryId={CategoryIdEnum.CINEMA}
-      />
+      <Hero imageUrl="some_url_to_some_resource" type="offer" categoryId={CategoryIdEnum.CINEMA} />
     )
     expect(queryByTestId('BackgroundPlaceholder')).not.toBeOnTheScreen()
     expect(queryByTestId('categoryIcon')).not.toBeOnTheScreen()

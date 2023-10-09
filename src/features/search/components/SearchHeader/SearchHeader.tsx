@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { ScreenOrigin } from 'features/location/enums'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { CreateHistoryItem, SearchView } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -43,7 +44,7 @@ export const SearchHeader = memo(function SearchHeader({
             </View>
             {!!shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
           </TitleContainer>
-          {!!shouldDisplayLocationWidget && <LocationWidget enableTooltip={false} />}
+          {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />}
         </TitleAndWidgetContainer>
         <Spacer.Column numberOfSpaces={4} />
         <View>

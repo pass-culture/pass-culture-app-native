@@ -10,7 +10,7 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 
@@ -34,7 +34,7 @@ describe('CreditHeader', () => {
     })
 
     it('should render correctly with exhausted credit', () => {
-      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1 })
+      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
       expect(renderAPI).toMatchSnapshot()
     })
 
@@ -66,9 +66,9 @@ describe('CreditHeader', () => {
       expect(creditInfo).toBeOnTheScreen()
     })
 
-    it('should display explanation button', () => {
+    it('should display tutorial button', () => {
       const { queryByTestId } = renderCreditHeader()
-      const explanationButton = queryByTestId('Pourquoi cette limite ?')
+      const explanationButton = queryByTestId('Comment ça marche ?')
       expect(explanationButton).toBeOnTheScreen()
     })
 
@@ -80,6 +80,12 @@ describe('CreditHeader', () => {
       expect(creditInfo).not.toBeOnTheScreen()
       expect(digitalCredit).not.toBeOnTheScreen()
       expect(physicalCredit).not.toBeOnTheScreen()
+    })
+
+    it('should not display coming credit for 18-year-old beneficiary', () => {
+      renderCreditHeader()
+
+      expect(screen.queryByText(/À venir pour tes/)).not.toBeOnTheScreen()
     })
   })
 
@@ -99,6 +105,29 @@ describe('CreditHeader', () => {
       const physicalCredit = queryByTestId('domains-credit-physical')
       expect(digitalCredit).not.toBeOnTheScreen()
       expect(physicalCredit).not.toBeOnTheScreen()
+    })
+
+    it.each([15, 16, 17])('should render correctly with exhausted credit', (age) => {
+      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+      expect(renderAPI).toMatchSnapshot()
+    })
+
+    it('should display coming credit for 17-year-old beneficiary', () => {
+      renderCreditHeader({ age: 17 })
+
+      expect(screen.queryByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
+    })
+
+    it('should display coming credit for 16-year-old beneficiary', () => {
+      renderCreditHeader({ age: 16 })
+
+      expect(screen.queryByText('À venir pour tes 17 ans : + 30 €')).toBeOnTheScreen()
+    })
+
+    it('should display coming credit for 15-year-old beneficiary', () => {
+      renderCreditHeader({ age: 15 })
+
+      expect(screen.queryByText('À venir pour tes 16 ans : + 30 €')).toBeOnTheScreen()
     })
   })
 })

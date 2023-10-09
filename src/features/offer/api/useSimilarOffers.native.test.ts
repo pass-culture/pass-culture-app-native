@@ -1,11 +1,8 @@
-import * as recommendCore from '@algolia/recommend-core'
 import { rest } from 'msw'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import {
-  getAlgoliaFrequentlyBoughtTogether,
-  getAlgoliaRelatedProducts,
   getApiRecoSimilarOffers,
   getCategories,
   getSimilarOffersEndpoint,
@@ -15,7 +12,7 @@ import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { server } from 'tests/server'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 const mockUserId = 1234
 const mockOfferId = 1
@@ -65,12 +62,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 const algoliaSpy = jest
   .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')
   .mockImplementation()
-const getFrequentlyBoughtTogetherSpy = jest
-  .spyOn(recommendCore, 'getFrequentlyBoughtTogether')
-  .mockResolvedValue({ recommendations: [{ objectID: String(mockOfferId) }] })
-const getRelatedProductsSpy = jest
-  .spyOn(recommendCore, 'getRelatedProducts')
-  .mockResolvedValue({ recommendations: [{ objectID: String(mockOfferId) }] })
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
 describe('useSimilarOffers', () => {
@@ -105,182 +96,47 @@ describe('useSimilarOffers', () => {
     expect(algoliaSpy).toHaveBeenCalledWith([], true)
   })
 
-  describe('when Algolia Recommend AB Testing deactivated', () => {
-    it('should not call similar offers API when no offer provided', () => {
-      renderHook(() =>
-        useSimilarOffers({
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: false,
-        })
-      )
-      expect(fetchApiRecoSpy).not.toHaveBeenCalled()
-    })
-
-    it('should not call similair offers API when offer provided and offer position not loaded', () => {
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: false,
-        })
-      )
-      expect(fetchApiRecoSpy).not.toHaveBeenCalled()
-    })
-
-    // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should call similar offers API when offer id provided and shared offer position loaded', async () => {
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: false,
-          position: { latitude: 10, longitude: 15 },
-        })
-      )
-      await act(async () => {})
-      expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
-    })
-
-    // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should call similar offers API when offer id provided and shared offer position not loaded ', async () => {
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: false,
-          position: { latitude: null, longitude: null },
-        })
-      )
-      await act(async () => {})
-      expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
-    })
+  it('should not call similar offers API when no offer provided', () => {
+    renderHook(() =>
+      useSimilarOffers({
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      })
+    )
+    expect(fetchApiRecoSpy).not.toHaveBeenCalled()
   })
 
-  describe('when Algolia Recommend AB Testing activated', () => {
-    describe('should not call related products API', () => {
-      it('when no offer provided', () => {
-        renderHook(() =>
-          useSimilarOffers({
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            shouldUseAlgoliaRecommend: true,
-          })
-        )
-        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+  it('should not call similair offers API when offer provided and offer position not loaded', () => {
+    renderHook(() =>
+      useSimilarOffers({
+        offerId: mockOfferId,
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
+    )
+    expect(fetchApiRecoSpy).not.toHaveBeenCalled()
+  })
 
-      it('when no offer provided and offer position not loaded', () => {
-        renderHook(() =>
-          useSimilarOffers({
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            shouldUseAlgoliaRecommend: true,
-          })
-        )
-        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+  it('should call similar offers API when offer id provided and shared offer position loaded', async () => {
+    renderHook(() =>
+      useSimilarOffers({
+        offerId: mockOfferId,
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        position: { latitude: 10, longitude: 15 },
       })
+    )
+    await act(async () => {})
+    expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
+  })
 
-      it('when offer provided and offer position not loaded', () => {
-        renderHook(() =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            shouldUseAlgoliaRecommend: true,
-          })
-        )
-        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+  it('should call similar offers API when offer id provided and shared offer position not loaded ', async () => {
+    renderHook(() =>
+      useSimilarOffers({
+        offerId: mockOfferId,
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        position: { latitude: null, longitude: null },
       })
-
-      it('when offer and category excluded provided', async () => {
-        renderHook(() =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            shouldUseAlgoliaRecommend: true,
-          })
-        )
-        await act(async () => {})
-        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
-      })
-    })
-
-    describe('should not call frequently bought together API', () => {
-      it(' when no offer provided', () => {
-        renderHook(() =>
-          useSimilarOffers({
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            shouldUseAlgoliaRecommend: true,
-          })
-        )
-        expect(getFrequentlyBoughtTogetherSpy).not.toHaveBeenCalled()
-      })
-
-      it('when offer and category included provided', () => {
-        renderHook(() =>
-          useSimilarOffers({
-            offerId: mockOfferId,
-            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-            shouldUseAlgoliaRecommend: true,
-          })
-        )
-        expect(getFrequentlyBoughtTogetherSpy).not.toHaveBeenCalled()
-      })
-    })
-
-    // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should call related products API when offer and category included provided and shared offer position loaded', () => {
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: true,
-          position: { latitude: 10, longitude: 15 },
-        })
-      )
-      expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
-    })
-
-    // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should call related products API when offer and category included provided and not shared offer position loaded', () => {
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: true,
-          position: { latitude: null, longitude: null },
-        })
-      )
-      expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
-    })
-
-    it('should call frequently bought together API when offer and category excluded provided', async () => {
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          shouldUseAlgoliaRecommend: true,
-        })
-      )
-      await act(async () => {})
-      expect(getFrequentlyBoughtTogetherSpy).toHaveBeenCalledTimes(1)
-    })
-
-    it('should log sentry when frequently bought together API called with an error', async () => {
-      const error = new Error('error')
-      getFrequentlyBoughtTogetherSpy.mockImplementationOnce(() => Promise.reject(error))
-      renderHook(() =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryExcluded: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-          shouldUseAlgoliaRecommend: true,
-        })
-      )
-      await waitFor(() => {
-        expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
-      })
-    })
+    )
+    await act(async () => {})
+    expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
   })
 })
 
@@ -342,58 +198,6 @@ describe('getSimilarOffersEndpoint', () => {
       const endpoint = getSimilarOffersEndpoint(undefined, undefined, undefined, undefined)
       expect(endpoint).toEqual(undefined)
     })
-  })
-})
-
-describe('getAlgoliaRelatedProducts', () => {
-  const getRelatedProductsSpy = jest.spyOn(recommendCore, 'getRelatedProducts').mockImplementation()
-
-  it('should log sentry when related products API called with an error', async () => {
-    const error = new Error('error')
-    getRelatedProductsSpy.mockImplementationOnce(() => Promise.reject(error))
-
-    const relatedProducts = await getAlgoliaRelatedProducts(String(mockOfferId), {}, {})
-
-    expect(relatedProducts).toEqual([])
-  })
-
-  it('should return recommendations when related products API called', async () => {
-    const recommendations = [{ objectID: '102280' }, { objectID: '102281' }]
-    getRelatedProductsSpy.mockReturnValueOnce(Promise.resolve({ recommendations }))
-
-    const relatedProducts = await getAlgoliaRelatedProducts(String(mockOfferId), {}, {})
-
-    expect(relatedProducts).toEqual(['102280', '102281'])
-  })
-})
-
-describe('getAlgoliaFrequentlyBoughtTogether', () => {
-  const getFrequentlyBoughtTogetherSpy = jest
-    .spyOn(recommendCore, 'getFrequentlyBoughtTogether')
-    .mockImplementation()
-
-  it('should log sentry when frequently bought together API called with an error', async () => {
-    const error = new Error('error')
-    getFrequentlyBoughtTogetherSpy.mockImplementationOnce(() => Promise.reject(error))
-
-    const frequentlyBoughtTogether = await getAlgoliaFrequentlyBoughtTogether(
-      String(mockOfferId),
-      {}
-    )
-
-    expect(frequentlyBoughtTogether).toEqual([])
-  })
-
-  it('should return recommendations when frequently bought together API called', async () => {
-    const recommendations = [{ objectID: '102280' }, { objectID: '102281' }]
-    getFrequentlyBoughtTogetherSpy.mockReturnValueOnce(Promise.resolve({ recommendations }))
-
-    const frequentlyBoughtTogether = await getAlgoliaFrequentlyBoughtTogether(
-      String(mockOfferId),
-      {}
-    )
-
-    expect(frequentlyBoughtTogether).toEqual(['102280', '102281'])
   })
 })
 

@@ -11,7 +11,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
-  return <PageWithHeader title={'Identification'} scrollChildren={<SelectPhoneStatusContent />} />
+  return <PageWithHeader title="Identification" scrollChildren={<SelectPhoneStatusContent />} />
 }
 
 const buttonList = [

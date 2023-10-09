@@ -13,15 +13,15 @@ export const ThematicHeaders = () => {
       <Spacer.TopScreen />
       <StyledContainer>
         <LinkToComponent
-          title={'Highlight'}
+          title="Highlight"
           onPress={() => navigate('HighlightThematicHomeHeaderCheatcode')}
         />
         <LinkToComponent
-          title={'Default'}
+          title="Default"
           onPress={() => navigate('DefaultThematicHomeHeaderCheatcode')}
         />
         <LinkToComponent
-          title={'Category'}
+          title="Category"
           onPress={() => navigate('CategoryThematicHomeHeaderCheatcode')}
         />
       </StyledContainer>

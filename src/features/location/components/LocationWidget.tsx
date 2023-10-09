@@ -2,7 +2,10 @@ import React, { useCallback, useEffect } from 'react'
 import { Animated, LayoutChangeEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
+import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { ScreenOrigin } from 'features/location/enums'
+import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -20,14 +23,16 @@ const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
 interface LocationWidgetProps {
-  enableTooltip: boolean
+  screenOrigin: ScreenOrigin
 }
 
-export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
+export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const touchableRef = React.useRef<HTMLButtonElement>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { isSplashScreenHidden } = useSplashScreenContext()
+  const enableTooltip = screenOrigin === ScreenOrigin.HOME
+  const shouldShowHomeLocationModal = enableTooltip
 
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
   const getLocationTitle = useCallback(() => {
@@ -87,6 +92,12 @@ export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
     hideModal: hideLocationModal,
   } = useModal()
 
+  const {
+    visible: venueModalVisible,
+    showModal: showVenueModal,
+    hideModal: hideVenueModal,
+  } = useModal()
+
   const isWidgetHighlighted = isGeolocated || !!isCustomPosition
 
   return (
@@ -108,7 +119,18 @@ export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
-      <LocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      {shouldShowHomeLocationModal ? (
+        <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      ) : (
+        <React.Fragment>
+          <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
+          <SearchLocationModal
+            visible={locationModalVisible}
+            dismissModal={hideLocationModal}
+            showVenueModal={showVenueModal}
+          />
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }

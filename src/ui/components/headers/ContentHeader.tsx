@@ -1,37 +1,33 @@
 import React, { useState } from 'react'
-import { Animated, Platform, ViewStyle } from 'react-native'
+import { Animated, Platform } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Spacer, Typo } from 'ui/theme'
 
-type Props = {
-  height: number
-  blurAmount?: number
-  blurType?: 'dark' | 'light' | 'xlight'
-  style?: Animated.WithAnimatedObject<ViewStyle>
-}
-
 type AnimatedBlurHeaderFullProps = {
-  headerTitle: string
+  headerTitle?: string
   headerTransition: Animated.AnimatedInterpolation<string | number>
   onBackPress: () => void
   titleTestID?: string
-  RightButton?: React.ReactNode
+  RightElement?: React.ReactNode
+  LeftElement?: React.ReactNode
 }
 
-export const AnimatedBlurHeaderTitle = ({
+export const ContentHeader = ({
   headerTitle,
   headerTransition,
   onBackPress,
   titleTestID,
-  RightButton,
+  RightElement,
+  LeftElement,
 }: AnimatedBlurHeaderFullProps) => {
   const theme = useTheme()
-  const headerHeight = useGetHeaderHeight()
+  const { top } = useSafeAreaInsets()
+  const headerHeight = theme.appBarHeight + top
   const { animationState, containerStyle, blurContainerNative } = getAnimationState(
     theme,
     headerTransition
@@ -43,7 +39,15 @@ export const AnimatedBlurHeaderTitle = ({
   return (
     <HeaderContainer style={containerStyle} height={headerHeight}>
       <Spacer.TopScreen />
-      <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
+      {
+        // There is an issue with the blur on Android: we chose not to render it and use a white background
+        // https://github.com/Kureev/react-native-blur/issues/511
+        Platform.OS !== 'android' && (
+          <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
+            <Blurred blurType="light" blurAmount={8} />
+          </BlurNativeContainer>
+        )
+      }
       <Spacer.Column numberOfSpaces={2} />
       <Row>
         <Spacer.Row numberOfSpaces={6} />
@@ -55,7 +59,7 @@ export const AnimatedBlurHeaderTitle = ({
           finalColor={theme.colors.black}
           initialColor={theme.colors.black}
         />
-        <Spacer.Row numberOfSpaces={10} />
+        {LeftElement ? <React.Fragment>{LeftElement}</React.Fragment> : null}
         <Spacer.Flex />
         <Title
           testID={titleTestID}
@@ -64,31 +68,17 @@ export const AnimatedBlurHeaderTitle = ({
           <Body>{headerTitle}</Body>
         </Title>
         <Spacer.Flex />
-        {RightButton ? (
-          <React.Fragment>{RightButton}</React.Fragment>
+        {RightElement ? (
+          <React.Fragment>
+            {RightElement}
+            <Spacer.Row numberOfSpaces={6} />
+          </React.Fragment>
         ) : (
-          <Spacer.Row numberOfSpaces={25} />
+          <Spacer.Row numberOfSpaces={16} />
         )}
       </Row>
       <Spacer.Column numberOfSpaces={2} />
     </HeaderContainer>
-  )
-}
-
-export const AnimatedBlurHeader = ({
-  height,
-  blurAmount = 8,
-  blurType = 'light',
-  style,
-}: Props) => {
-  // There is an issue with the blur on Android: we chose not to render it and use a white background
-  // https://github.com/Kureev/react-native-blur/issues/511
-  if (Platform.OS === 'android') return null
-
-  return (
-    <BlurNativeContainer height={height} style={style}>
-      <Blurred blurType={blurType} blurAmount={blurAmount} />
-    </BlurNativeContainer>
   )
 }
 

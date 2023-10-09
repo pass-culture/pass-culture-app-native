@@ -17,7 +17,11 @@ export const server = setupServer(
   ),
   // 404 offer
   rest.get(`${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/0`, (req, res, ctx) =>
-    res(ctx.status(404))
+    res(ctx.status(200), ctx.json({}))
+  ),
+  // 502 offer
+  rest.get(`${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/502`, (req, res, ctx) =>
+    res(ctx.status(502))
   ),
   // venue
   rest.get(

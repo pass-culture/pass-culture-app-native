@@ -8,6 +8,7 @@ import { ActivationBanner } from 'features/home/components/banners/ActivationBan
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { ScreenOrigin } from 'features/location/enums'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -111,7 +112,7 @@ export const HomeHeader: FunctionComponent = function () {
   return (
     <React.Fragment>
       <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
-        {shouldDisplayLocationWidget ? <LocationWidget enableTooltip /> : null}
+        {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
       <PageContent>
         <Spacer.Column numberOfSpaces={6} />

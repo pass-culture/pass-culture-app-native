@@ -10,8 +10,8 @@ describe('ActivationBanner', () => {
   it('should redirect to stepper on press', () => {
     const { getByText } = render(
       <ActivationBanner
-        title={'Débloque tes 300\u00a0€'}
-        subtitle={'toto'}
+        title="Débloque tes 300&nbsp;€"
+        subtitle="toto"
         icon={BicolorUnlock}
         from={StepperOrigin.HOME}
       />

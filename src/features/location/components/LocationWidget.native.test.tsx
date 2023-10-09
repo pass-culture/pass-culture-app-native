@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { ScreenOrigin } from 'features/location/enums'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
@@ -74,7 +75,7 @@ describe('LocationWidget', () => {
 const renderLocationWidget = () => {
   render(
     <NavigationContainer>
-      <LocationWidget enableTooltip />
+      <LocationWidget screenOrigin={ScreenOrigin.HOME} />
     </NavigationContainer>
   )
 }

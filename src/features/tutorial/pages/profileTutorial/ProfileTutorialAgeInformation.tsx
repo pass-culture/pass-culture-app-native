@@ -21,7 +21,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { AnimatedBlurHeaderTitle } from 'ui/components/headers/AnimatedBlurHeader'
+import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -92,7 +92,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
         ) : null}
         <Spacer.Column numberOfSpaces={8} />
       </StyledScrollView>
-      <AnimatedBlurHeaderTitle
+      <ContentHeader
         headerTitle={headerTitle}
         headerTransition={headerTransition}
         onBackPress={goBack}

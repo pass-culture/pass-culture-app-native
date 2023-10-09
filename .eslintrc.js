@@ -49,7 +49,7 @@ module.exports = {
         minimumDescriptionLength: 5,
       },
     ],
-    'no-unused-vars': 'off', // not ideal, but progamatically necessary sometimes
+    'no-unused-vars': 'off', // not ideal, but programmatically necessary sometimes
 
     '@typescript-eslint/no-unused-vars': [
       'error',
@@ -62,6 +62,7 @@ module.exports = {
     'react/jsx-fragments': ['error', 'element'],
     'react/jsx-boolean-value': ['error', 'never'],
     'react/jsx-no-constructed-context-values': 'error',
+    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'ignore' }],
     'no-restricted-imports': [
       'error',
       {

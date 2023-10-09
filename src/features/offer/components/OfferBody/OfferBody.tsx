@@ -58,7 +58,6 @@ interface Props {
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
   apiRecoParamsOtherCategories?: RecommendationApiParams
-  shouldUseAlgoliaRecommend?: boolean
 }
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -74,7 +73,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
-  shouldUseAlgoliaRecommend,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -175,7 +173,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           height={height}
           analyticsFrom="offer"
           fromOfferId={offerId}
-          shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
           playlistType={playlistType}
           apiRecoParams={apiRecoParams}
         />
@@ -198,7 +195,6 @@ export const OfferBody: FunctionComponent<Props> = ({
         offerId: nextOfferId,
         from: 'offer',
         fromMultivenueOfferId: offerId,
-        shouldUseAlgoliaRecommend,
       })
       navigate('Offer', {
         fromOfferId: offerId,
@@ -206,7 +202,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         fromMultivenueOfferId: offerId,
       })
     },
-    [hideChangeVenueModal, navigate, offerId, shouldUseAlgoliaRecommend]
+    [hideChangeVenueModal, navigate, offerId]
   )
 
   const handleBeforeNavigateToItinerary = useCallback(() => {

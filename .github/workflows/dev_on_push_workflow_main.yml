@@ -60,9 +60,8 @@ jobs:
   soft-deploy-testing:
     needs: yarn-tester
     if: github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
-      TYPE: soft
       ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -70,9 +69,8 @@ jobs:
   soft-deploy-staging:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/hotfix-staging')
-    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
-      TYPE: soft
       ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -80,9 +78,8 @@ jobs:
   soft-deploy-production:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/hotfix-production')
-    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
-      TYPE: soft
       ENV: production
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -90,9 +87,8 @@ jobs:
   hard-deploy-android-testing:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/testing') || startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
-      TYPE: hard
       ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -102,7 +98,6 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/testing') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
-      TYPE: hard
       ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -110,9 +105,8 @@ jobs:
   hard-deploy-android-staging:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
-      TYPE: hard
       ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -122,7 +116,6 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
-      TYPE: hard
       ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -130,9 +123,8 @@ jobs:
   hard-deploy-android-production:
     needs: yarn-tester
     if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
-    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
-      TYPE: hard
       ENV: production
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -142,7 +134,6 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
-      TYPE: hard
       ENV: production
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -168,8 +159,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-testing:
-    needs: [check-server-folder-changes, deploy-web-testing]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    needs: [check-server-folder-changes, yarn-tester]
+    if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: testing

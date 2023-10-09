@@ -95,11 +95,9 @@ jobs:
         with:
           secrets: |-
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
-      - uses: technote-space/workflow-conclusion-action@v3
-        if: ${{ always() }}
       - name: Post to a Slack channel
         id: slack
-        if: ${{ env.WORKFLOW_CONCLUSION == 'failure' }}
+        if: ${{ steps.web_deploy.outputs.status == 'failure' }}
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
@@ -109,13 +107,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ env.WORKFLOW_CONCLUSION == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ steps.web_deploy.outputs.status == 'failure'] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement web sur `${{ inputs.ENV }}` a échoué :boom:"
+                      "text": "Le déploiement web sur `${{ inputs.ENV }}` a ${{ fromJSON('["échoué :boom:", "réussi :rocket:"]')[ steps.web_deploy.outputs.status == 'failure'] }}"
                   }
               ],
               "unfurl_links": false,

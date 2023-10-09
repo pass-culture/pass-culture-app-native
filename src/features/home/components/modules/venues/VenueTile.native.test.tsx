@@ -50,7 +50,7 @@ describe('VenueTile component', () => {
   })
 
   it('should log analytics event ConsultVenue with homeEntryId when provided', () => {
-    render(<VenueTile {...props} homeEntryId={'abcd'} />)
+    render(<VenueTile {...props} homeEntryId="abcd" />)
 
     fireEvent.press(screen.getByTestId(/Lieu/))
 

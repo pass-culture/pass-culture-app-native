@@ -24,7 +24,7 @@ export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
 
-  const age = user?.birthDate ? getAge(user.birthDate) : undefined
+  const age = getAge(user?.birthDate)
 
   const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()

@@ -1,19 +1,13 @@
-import recommend, { RecommendSearchOptions } from '@algolia/recommend'
-import { getFrequentlyBoughtTogether, getRelatedProducts } from '@algolia/recommend-core'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
-import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
 import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-
-const recommendClient = recommend(env.ALGOLIA_APPLICATION_ID, env.ALGOLIA_SEARCH_API_KEY)
-const indexName = env.ALGOLIA_OFFERS_INDEX_NAME
 
 type WithIncludeCategoryProps = {
   categoryIncluded: SearchGroupNameEnumv2
@@ -28,7 +22,6 @@ type WithExcludeCategoryProps = {
 type Props = (WithIncludeCategoryProps | WithExcludeCategoryProps) & {
   offerId?: number
   position?: Coordinates
-  shouldUseAlgoliaRecommend?: boolean
 }
 
 export const getSimilarOffersEndpoint = (
@@ -38,8 +31,10 @@ export const getSimilarOffersEndpoint = (
   categories?: SearchGroupNameEnumv2[]
 ): string | undefined => {
   if (!offerId) return
+
   const endpoint = `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerId}?`
   const urlParams = new URLSearchParams()
+
   urlParams.append('token', env.RECOMMENDATION_TOKEN)
   if (userId) urlParams.append('userId', String(userId))
   if (position?.latitude && position?.longitude) {
@@ -47,55 +42,15 @@ export const getSimilarOffersEndpoint = (
     urlParams.append('latitude', String(position.latitude))
   }
   if (categories) categories.forEach((category) => urlParams.append('categories', category))
+
   return endpoint + urlParams.toString()
-}
-
-export const getAlgoliaRelatedProducts = async (
-  offerId: string,
-  queryParameters: RecommendSearchOptions,
-  fallbackParameters: RecommendSearchOptions
-) => {
-  try {
-    const relatedProducts = await getRelatedProducts({
-      recommendClient,
-      indexName,
-      objectIDs: [String(offerId)],
-      queryParameters,
-      fallbackParameters,
-    })
-    const recommendations = relatedProducts.recommendations
-    const objectIDs = recommendations.map((recommendation) => recommendation.objectID)
-    return typeof objectIDs === 'string' ? [objectIDs] : objectIDs || []
-  } catch (e) {
-    eventMonitoring.captureException(e)
-    return []
-  }
-}
-
-export const getAlgoliaFrequentlyBoughtTogether = async (
-  offerId: string,
-  queryParameters: RecommendSearchOptions
-) => {
-  try {
-    const frequentlyBoughtTogether = await getFrequentlyBoughtTogether({
-      recommendClient,
-      indexName,
-      objectIDs: [String(offerId)],
-      queryParameters,
-    })
-    const recommendations = frequentlyBoughtTogether.recommendations
-    const objectIDs = recommendations.map((recommendation) => recommendation.objectID)
-    return typeof objectIDs === 'string' ? [objectIDs] : objectIDs || []
-  } catch (e) {
-    eventMonitoring.captureException(e)
-    return []
-  }
 }
 
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
   try {
     const similarOffers = await fetch(similarOffersEndpoint)
     const json: SimilarOffersResponse = await similarOffers.json()
+
     return json
   } catch (e) {
     eventMonitoring.captureException(e)
@@ -127,7 +82,6 @@ export const getCategories = (
 export const useSimilarOffers = ({
   offerId,
   position,
-  shouldUseAlgoliaRecommend,
   categoryIncluded,
   categoryExcluded,
 }: Props) => {
@@ -142,41 +96,20 @@ export const useSimilarOffers = ({
   // API called when offer position loaded
   const isLoadedOfferPosition = getIsLoadedOfferPosition(position)
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
-  const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
   const [apiRecoResponse, setApiRecoResponse] = useState<SimilarOffersResponse>()
-
-  const fetchAlgolia = useCallback(async () => {
-    if (!offerId || (categoryIncluded && !isLoadedOfferPosition)) return
-    const { queryParameters, fallbackParameters } = getAlgoliaRecommendParams(position, categories)
-    setSimilarOffersIds(
-      categoryIncluded
-        ? await getAlgoliaRelatedProducts(String(offerId), queryParameters, fallbackParameters)
-        : await getAlgoliaFrequentlyBoughtTogether(String(offerId), queryParameters)
-    )
-  }, [categories, categoryIncluded, isLoadedOfferPosition, offerId, position])
 
   const fetchApiReco = useCallback(async () => {
     if (!similarOffersEndpoint || !isLoadedOfferPosition) return
+
     setApiRecoResponse(await getApiRecoSimilarOffers(similarOffersEndpoint))
   }, [isLoadedOfferPosition, similarOffersEndpoint])
 
   useEffect(() => {
-    const fetchSimilarOffers = async () => {
-      if (shouldUseAlgoliaRecommend) {
-        await fetchAlgolia()
-      } else {
-        await fetchApiReco()
-      }
-    }
-
-    fetchSimilarOffers()
-  }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
+    fetchApiReco()
+  }, [fetchApiReco])
 
   return {
-    similarOffers: useAlgoliaSimilarOffers(
-      (shouldUseAlgoliaRecommend ? similarOffersIds : apiRecoResponse?.results) ?? [],
-      true
-    ),
+    similarOffers: useAlgoliaSimilarOffers(apiRecoResponse?.results ?? [], true),
     apiRecoParams: apiRecoResponse?.params,
   }
 }

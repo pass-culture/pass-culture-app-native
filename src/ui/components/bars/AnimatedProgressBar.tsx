@@ -70,7 +70,7 @@ const AnimatedProgressBarComponent: React.FC<ProgressBarProps> = ({
           testID="animated-progress-bar"
           useNativeDriver
           duration={1000}
-          easing={'ease-in-out'}
+          easing="ease-in-out"
         />
       </ProgressBarContainer>
     </Container>

@@ -16,6 +16,7 @@ export const remoteConfig = {
     const parameters = getAll(firebaseRemoteConfig)
     return {
       test_param: parameters.test_param.asString(),
+      homeEntryIdFreeOffers: parameters.homeEntryIdFreeOffers.asString(),
       homeEntryIdNotConnected: parameters.homeEntryIdNotConnected.asString(),
       homeEntryIdGeneral: parameters.homeEntryIdGeneral.asString(),
       homeEntryIdOnboardingGeneral: parameters.homeEntryIdOnboardingGeneral.asString(),
@@ -25,7 +26,6 @@ export const remoteConfig = {
       homeEntryIdWithoutBooking_15_17: parameters.homeEntryIdWithoutBooking_15_17.asString(),
       homeEntryId_18: parameters.homeEntryId_18.asString(),
       homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
-      shouldUseAlgoliaRecommend: parameters.shouldUseAlgoliaRecommend.asBoolean(),
     }
   },
 }

@@ -6,20 +6,25 @@ import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHom
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 export const DefaultThematicHomeHeaderCheatcode: FunctionComponent = () => {
-  const { headerTransition } = useOpacityTransition()
+  const { headerTransition, onScroll } = useOpacityTransition()
 
   return (
-    <Container>
+    <React.Fragment>
       <ThematicHomeHeader headerTransition={headerTransition} title="Le plein de cinéma" />
-      <DefaultThematicHomeHeader
-        headerTitle="Le plein de cinéma"
-        headerSubtitle="La playlist cinéma"
-      />
-    </Container>
+      <Container onScroll={onScroll} scrollEventThrottle={16}>
+        <DefaultThematicHomeHeader
+          headerTitle="Le plein de cinéma"
+          headerSubtitle="La playlist cinéma"
+        />
+        <MockedContent />
+      </Container>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View({
+const Container = styled.ScrollView({
   width: '100%',
   height: '100%',
 })
+
+const MockedContent = styled.View({ height: 1000 })
