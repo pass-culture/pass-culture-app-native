@@ -8,3 +8,8 @@ export const HorizontalSeparator = styled.View<{ color?: ColorsEnum }>(({ color,
   height: 1,
   backgroundColor: color ?? theme.colors.greyLight,
 }))
+
+export const VerticalSeparator = styled.View<{ color?: ColorsEnum }>(({ color, theme }) => ({
+  width: 1,
+  backgroundColor: color ?? theme.colors.greySemiDark,
+}))
