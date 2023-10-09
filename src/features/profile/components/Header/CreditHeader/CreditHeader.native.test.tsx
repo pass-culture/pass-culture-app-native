@@ -24,18 +24,18 @@ const dateInFuture = '2100-02-09T11:17:14.786670'
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
     it('should render correctly with valid non exhausted credit', () => {
-      const renderAPI = renderCreditHeader({ age: 18 })
-      expect(renderAPI).toMatchSnapshot()
+      renderCreditHeader({ age: 18 })
+      expect(screen).toMatchSnapshot()
     })
 
     it('should render correctly with expired credit', () => {
-      const renderAPI = renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
-      expect(renderAPI).toMatchSnapshot()
+      renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
+      expect(screen).toMatchSnapshot()
     })
 
     it('should render correctly with exhausted credit', () => {
-      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
-      expect(renderAPI).toMatchSnapshot()
+      renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
+      expect(screen).toMatchSnapshot()
     })
 
     it('should display user name', () => {
@@ -95,8 +95,8 @@ describe('CreditHeader', () => {
     })
 
     it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
-      const renderAPI = renderCreditHeader({ age })
-      expect(renderAPI).toMatchSnapshot({})
+      renderCreditHeader({ age })
+      expect(screen).toMatchSnapshot({})
     })
 
     it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
@@ -110,8 +110,8 @@ describe('CreditHeader', () => {
     it.each([15, 16, 17])(
       'should render correctly with exhausted credit for %s year-old',
       (age) => {
-        const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
-        expect(renderAPI).toMatchSnapshot()
+        renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+        expect(screen).toMatchSnapshot()
       }
     )
 
@@ -135,8 +135,8 @@ describe('CreditHeader', () => {
   })
 })
 
-const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
-  return render(
+const renderCreditHeader = (props?: Partial<CreditHeaderProps>) =>
+  render(
     <CreditHeader
       firstName="Rosa"
       lastName="Bonheur"
@@ -145,4 +145,3 @@ const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
       {...props}
     />
   )
-}
