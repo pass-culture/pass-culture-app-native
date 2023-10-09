@@ -10,6 +10,8 @@ import { HeaderWithGreyContainer } from 'features/profile/components/Header/Head
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
+import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
 import { Spacer, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
@@ -57,30 +59,52 @@ export function CreditHeader({
     depositExpirationDate,
   })
 
+  const isExpiredOrCreditEmptyWithNoUpcomingCredit =
+    age >= 18 && (isDepositExpired || isCreditEmpty)
+
   return (
-    <HeaderWithGreyContainer title={name} subtitle={<Subtitle {...subtitleProps} />}>
-      {!(isDepositExpired || isCreditEmpty) && (
+    <HeaderWithGreyContainer
+      title={name}
+      subtitle={<Subtitle {...subtitleProps} />}
+      withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
+      {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (
+        <GenericBanner LeftIcon={BicolorOffers}>
+          <Typo.ButtonText>L’aventure continue&nbsp;!</Typo.ButtonText>
+          <Spacer.Column numberOfSpaces={1} />
+          <StyledBody numberOfLines={3}>
+            Tu peux profiter d’offres gratuites autour de toi.
+          </StyledBody>
+        </GenericBanner>
+      ) : (
         <React.Fragment>
-          <CreditInfo totalCredit={domainsCredit.all} />
-          <BeneficiaryCeilings domainsCredit={domainsCredit} />
+          {!(isDepositExpired || isCreditEmpty) && (
+            <React.Fragment>
+              <CreditInfo totalCredit={domainsCredit.all} />
+              <BeneficiaryCeilings domainsCredit={domainsCredit} />
+            </React.Fragment>
+          )}
+          {!!(incomingCreditLabelsMap[age] && !isCreditEmpty) && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <Typo.Body>
+                {incomingCreditLabelsMap[age].label}
+                <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
+              </Typo.Body>
+            </React.Fragment>
+          )}
+          {!!isCreditEmpty && <EmptyCredit age={age} />}
+          <Spacer.Column numberOfSpaces={1} />
+          <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
         </React.Fragment>
       )}
-      {!!(incomingCreditLabelsMap[age] && !isCreditEmpty) && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={6} />
-          <Typo.Body>
-            {incomingCreditLabelsMap[age].label}
-            <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
-          </Typo.Body>
-        </React.Fragment>
-      )}
-      {!!isCreditEmpty && <EmptyCredit age={age} />}
-      <Spacer.Column numberOfSpaces={1} />
-      <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
     </HeaderWithGreyContainer>
   )
 }
 
 const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
+}))
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

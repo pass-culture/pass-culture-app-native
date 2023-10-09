@@ -189,6 +189,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         },
       ]
     }
+    withGreyContainer={true}
   >
     <Text
       style={
