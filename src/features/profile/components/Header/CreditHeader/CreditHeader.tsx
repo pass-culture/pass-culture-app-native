@@ -12,6 +12,7 @@ import { Spacer } from 'ui/theme'
 export type CreditHeaderProps = {
   firstName?: string | null
   lastName?: string | null
+  age?: number
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
 }
@@ -19,6 +20,7 @@ export type CreditHeaderProps = {
 export function CreditHeader({
   firstName,
   lastName,
+  age,
   domainsCredit,
   depositExpirationDate,
 }: CreditHeaderProps) {
@@ -46,7 +48,11 @@ export function CreditHeader({
             </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={1} />
-          <CreditExplanation isDepositExpired={isDepositExpired} domainsCredit={domainsCredit} />
+          <CreditExplanation
+            isDepositExpired={isDepositExpired}
+            domainsCredit={domainsCredit}
+            age={age}
+          />
         </React.Fragment>
       )}
     </HeaderWithGreyContainer>
