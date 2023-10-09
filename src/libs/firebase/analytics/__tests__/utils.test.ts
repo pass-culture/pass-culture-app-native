@@ -255,6 +255,19 @@ describe('[Analytics utils]', () => {
         searchView: SearchView.Results,
       })
     })
+
+    it('when user press an history item', () => {
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        isFromHistory: true,
+        view: SearchView.Results,
+      })
+      expect(partialSearchState).toEqual({
+        searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
+        searchIsBasedOnHistory: true,
+        searchView: SearchView.Results,
+      })
+    })
   })
 
   describe('buildLocationFilterParam', () => {
