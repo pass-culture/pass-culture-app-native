@@ -16,6 +16,7 @@ export const remoteConfig = {
     const parameters = getAll(firebaseRemoteConfig)
     return {
       test_param: parameters.test_param.asString(),
+      homeEntryIdFreeOffers: parameters.homeEntryIdFreeOffers.asString(),
       homeEntryIdNotConnected: parameters.homeEntryIdNotConnected.asString(),
       homeEntryIdGeneral: parameters.homeEntryIdGeneral.asString(),
       homeEntryIdOnboardingGeneral: parameters.homeEntryIdOnboardingGeneral.asString(),

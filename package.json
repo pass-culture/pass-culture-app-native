@@ -241,7 +241,7 @@
     "@types/webpack": "^4.41.32",
     "@types/webpack-dev-server": "^3.11.3",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "@vue/preload-webpack-plugin": "^2.0.0",
     "@wdio/appium-service": "7.26.0",
     "@wdio/cli": "7.26.0",
