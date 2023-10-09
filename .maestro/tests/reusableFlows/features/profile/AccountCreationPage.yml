@@ -26,7 +26,7 @@ appId: app.passculture.staging
       start: 47%, 52%
       end: 47%, 55%
 # Ajouter un id pour chaque spinner et utiliser scrollUntilVisible
-# https:/maestro.mobile.dev/api-reference/commands/scrolluntilvisible
+# https://maestro.mobile.dev/api-reference/commands/scrolluntilvisible
 - repeat:
       while:
           notVisible: '2006'
