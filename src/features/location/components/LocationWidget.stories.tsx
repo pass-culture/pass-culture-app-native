@@ -7,7 +7,7 @@ import { ScreenOrigin } from 'features/location/enums'
 import { LocationWidget } from './LocationWidget'
 
 const meta: ComponentMeta<typeof LocationWidget> = {
-  title: 'Features/Location/LocationWidget',
+  title: 'Features/location/LocationWidget',
   component: LocationWidget,
   decorators: [
     (Story) => (
