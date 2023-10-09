@@ -12,17 +12,17 @@ appId: app.passculture.staging
     text: "Supprimer mon compte"
     index: 1
 - tapOn: "Supprimer mon compte"
-- runFlow: src/features/Profile/AccountDeletionConfirmationPage.yml # AccountDeletionConfirmationPage
+- runFlow: src/features/Profile/AccountDeletionConfirmationPage.yml
 - tapOn: "Supprimer mon compte"
-- runFlow: src/features/Profile/AccountDeletionPage.yml #Page de suppression AccountDeletionPage
+- runFlow: src/features/Profile/AccountDeletionPage.yml
 - tapOn: "Retourner à l’accueil"
 - runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
 - assertVisible: "Se connecter"
-- runFlow: src/features/auth/ToLogin.yml # Se connecter
+- runFlow: src/features/auth/ToLogin.yml
 - runFlow: reusableFlows/ui/components/buttons/DoubleActionButtonConnect.yml
-- runFlow: src/features/auth/AccountDeactivationPage.yml #Page de désactivation
+- runFlow: src/features/auth/AccountDeactivationPage.yml
 - tapOn: "Réactiver mon compte"
-- runFlow: src/features/auth/AccountReactivationPage.yml #Page de réactivation
+- runFlow: src/features/auth/AccountReactivationPage.yml
 - tapOn: "Découvrir le catalogue"
 - assertVisible: "Bonjour Nicolas"
 - assertVisible: "Tu as 300\_€ sur ton pass"

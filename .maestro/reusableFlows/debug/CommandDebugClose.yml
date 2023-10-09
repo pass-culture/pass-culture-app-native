@@ -1,0 +1,17 @@
+appId: app.passculture.staging
+---
+#Commande pour closeDebug
+#- tapOn:
+#      point: "50%,94%"
+
+- tapOn: ">-
+    ! Function components cannot be given refs. Attempts to access this ref
+    will fail. Did you mean to use React.forwardRef()?
+    
+    
+    Check the render method of `App`. Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s%s 
+    
+    
+    Check the render method of `App`."
+
+- tapOn: "Dismiss"

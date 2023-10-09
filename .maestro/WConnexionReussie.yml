@@ -1,6 +1,5 @@
 appId: app.passculture.staging
 ---
----
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - assertVisible: "! Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 
@@ -9,7 +8,6 @@ appId: app.passculture.staging
 
 
     Check the render method of `App`."
-# TODO : trouver un moyen de cliquer avec maestro sur le bouton de la yellow box
 #- runFlow:
 #    when:
 #      visible: "! Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?

@@ -14,7 +14,6 @@ appId: app.passculture.staging
 - scrollUntilVisible:
         element: "Autorisations"
         direction: DOWN
-#- tapOn: "Autorisations"
 
 - tapOn: "Position"
 - tapOn: "Ne pas autoriser"

@@ -25,6 +25,3 @@ appId: app.passculture.staging
 
 - assertVisible:
         id: "Abandonner"
-# COMMENTAIRE POUR GERER L'ABANDON
-#- tapOn:
-  #      id: "Abandonner"
