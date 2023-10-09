@@ -34,7 +34,7 @@ describe('CreditHeader', () => {
     })
 
     it('should render correctly with exhausted credit', () => {
-      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1 })
+      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
       expect(renderAPI).toMatchSnapshot()
     })
 
@@ -105,6 +105,11 @@ describe('CreditHeader', () => {
       const physicalCredit = queryByTestId('domains-credit-physical')
       expect(digitalCredit).not.toBeOnTheScreen()
       expect(physicalCredit).not.toBeOnTheScreen()
+    })
+
+    it.each([15, 16, 17])('should render correctly with exhausted credit', (age) => {
+      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+      expect(renderAPI).toMatchSnapshot()
     })
 
     it('should display coming credit for 17-year-old beneficiary', () => {

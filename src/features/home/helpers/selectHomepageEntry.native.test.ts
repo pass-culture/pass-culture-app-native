@@ -136,6 +136,7 @@ const mockUseUserRoleFromOnboarding = jest.spyOn(OnboardingRoleAPI, 'useUserRole
 
 const defaultRemoteConfig: CustomRemoteConfig = {
   test_param: 'A',
+  homeEntryIdFreeOffers: 'homeEntryIdFreeOffers',
   homeEntryIdNotConnected: 'homeEntryIdNotConnected',
   homeEntryIdGeneral: 'homeEntryIdGeneral',
   homeEntryIdOnboardingGeneral: 'homeEntryIdOnboardingGeneral',
