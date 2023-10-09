@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import {
   CreditHeader,
   CreditHeaderProps,
@@ -10,9 +11,14 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest
+    .fn()
+    .mockReturnValue({ homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' }),
+}))
 
 const mockUseIsUserUnderageBeneficiary = jest
   .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
@@ -86,6 +92,17 @@ describe('CreditHeader', () => {
       renderCreditHeader({ age: 18 })
 
       expect(screen.queryByText(/À venir pour tes/)).not.toBeOnTheScreen()
+    })
+
+    it('should navigate to thematic home with remote config homeId on banner press', () => {
+      renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
+
+      fireEvent.press(screen.getByText('L’aventure continue !'))
+
+      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+        homeId: 'homeEntryIdFreeOffers',
+        from: 'profile',
+      })
     })
   })
 

@@ -112,101 +112,138 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     withGreyContainer={false}
   >
     <View
+      accessibilityRole="link"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "alignItems": "center",
-            "borderColor": "#90949D",
-            "borderRadius": 7,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "padding": 16,
-            "width": "100%",
-          },
-          undefined,
-        ]
+        {
+          "opacity": 1,
+          "userSelect": "auto",
+        }
       }
     >
       <View
         style={
           [
             {
-              "alignContent": "center",
-              "marginRight": 16,
+              "alignItems": "center",
+              "borderColor": "#90949D",
+              "borderRadius": 7,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "padding": 16,
+              "width": "100%",
             },
+            undefined,
           ]
         }
       >
         <View
-          height={32}
-          width={32}
+          style={
+            [
+              {
+                "alignContent": "center",
+                "marginRight": 16,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
+          <View
+            height={32}
+            width={32}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginRight": 16,
+                "textAlign": "start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            L’aventure continue !
+          </Text>
+          <View
+            numberOfSpaces={1}
+            style={
+              [
+                {
+                  "height": 4,
+                },
+              ]
+            }
+          />
+          <Text
+            numberOfLines={3}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Tu peux profiter d’offres gratuites autour de toi.
           </Text>
         </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginRight": 16,
-              "textAlign": "start",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          L’aventure continue !
-        </Text>
-        <View
-          numberOfSpaces={1}
-          style={
-            [
-              {
-                "height": 4,
-              },
-            ]
-          }
-        />
-        <Text
-          numberOfLines={3}
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Tu peux profiter d’offres gratuites autour de toi.
-        </Text>
-      </View>
-      <View>
-        <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+        <View>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -341,101 +378,138 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     withGreyContainer={false}
   >
     <View
+      accessibilityRole="link"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "alignItems": "center",
-            "borderColor": "#90949D",
-            "borderRadius": 7,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "padding": 16,
-            "width": "100%",
-          },
-          undefined,
-        ]
+        {
+          "opacity": 1,
+          "userSelect": "auto",
+        }
       }
     >
       <View
         style={
           [
             {
-              "alignContent": "center",
-              "marginRight": 16,
+              "alignItems": "center",
+              "borderColor": "#90949D",
+              "borderRadius": 7,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "padding": 16,
+              "width": "100%",
             },
+            undefined,
           ]
         }
       >
         <View
-          height={32}
-          width={32}
+          style={
+            [
+              {
+                "alignContent": "center",
+                "marginRight": 16,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
+          <View
+            height={32}
+            width={32}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginRight": 16,
+                "textAlign": "start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            L’aventure continue !
+          </Text>
+          <View
+            numberOfSpaces={1}
+            style={
+              [
+                {
+                  "height": 4,
+                },
+              ]
+            }
+          />
+          <Text
+            numberOfLines={3}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Tu peux profiter d’offres gratuites autour de toi.
           </Text>
         </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginRight": 16,
-              "textAlign": "start",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          L’aventure continue !
-        </Text>
-        <View
-          numberOfSpaces={1}
-          style={
-            [
-              {
-                "height": 4,
-              },
-            ]
-          }
-        />
-        <Text
-          numberOfLines={3}
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Tu peux profiter d’offres gratuites autour de toi.
-        </Text>
-      </View>
-      <View>
-        <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+        <View>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
     </View>

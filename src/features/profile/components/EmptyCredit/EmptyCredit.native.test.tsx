@@ -24,7 +24,7 @@ describe('<EmptyCredit />', () => {
 
     expect(navigate).toHaveBeenCalledWith('ThematicHome', {
       homeId: 'homeEntryIdFreeOffers',
-      from: 'EmptyCredit',
+      from: 'profile',
     })
   })
 })
