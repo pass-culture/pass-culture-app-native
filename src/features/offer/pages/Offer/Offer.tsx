@@ -17,7 +17,6 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -72,7 +71,6 @@ export const Offer: FunctionComponent = () => {
 
   const { data: offer } = useOffer({ offerId })
   const { data } = useSubcategories()
-  const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
 
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
@@ -80,7 +78,6 @@ export const Offer: FunctionComponent = () => {
     useSimilarOffers({
       offerId,
       position: offer?.venue.coordinates,
-      shouldUseAlgoliaRecommend,
       categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
@@ -91,7 +88,6 @@ export const Offer: FunctionComponent = () => {
   } = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
-    shouldUseAlgoliaRecommend,
     categoryExcluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
   })
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
@@ -109,7 +105,6 @@ export const Offer: FunctionComponent = () => {
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-      shouldUseAlgoliaRecommend,
     })
   })
 
@@ -119,7 +114,6 @@ export const Offer: FunctionComponent = () => {
       fromOfferId,
       offerId,
       playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-      shouldUseAlgoliaRecommend,
     })
   })
 
@@ -264,7 +258,6 @@ export const Offer: FunctionComponent = () => {
         apiRecoParamsSameCategory={apiRecoParamsSameCategory}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-        shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
       <OfferHeader

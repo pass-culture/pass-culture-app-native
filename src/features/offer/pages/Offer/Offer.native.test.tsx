@@ -26,13 +26,6 @@ const useSimilarOffersSpy = jest
   .mockImplementation()
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-let mockShouldUseAlgoliaRecommend = false
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: () => ({
-    shouldUseAlgoliaRecommend: mockShouldUseAlgoliaRecommend,
-  }),
-}))
-
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
@@ -142,13 +135,11 @@ describe('<Offer />', () => {
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         offerId: offerResponseSnap.id,
         position: offerResponseSnap.venue.coordinates,
-        shouldUseAlgoliaRecommend: false,
       })
       expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(2, {
         categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         offerId: offerResponseSnap.id,
         position: offerResponseSnap.venue.coordinates,
-        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -174,14 +165,12 @@ describe('<Offer />', () => {
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-        shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -201,14 +190,12 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
         })
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
           ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
         })
       })
     })
@@ -235,7 +222,6 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
         })
       })
 
@@ -251,7 +237,6 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
         })
       })
     })
@@ -278,7 +263,6 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
         })
       })
 
@@ -294,7 +278,6 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
         })
       })
     })
@@ -320,14 +303,12 @@ describe('<Offer />', () => {
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-        shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -354,51 +335,12 @@ describe('<Offer />', () => {
         fromOfferId,
         offerId,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-        shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-        shouldUseAlgoliaRecommend: false,
-      })
-    })
-
-    describe('When A/B Testing activated', () => {
-      beforeEach(() => {
-        mockShouldUseAlgoliaRecommend = true
-      })
-      it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        useSimilarOffersSpy.mockReturnValueOnce({
-          similarOffers: mockedAlgoliaResponse.hits,
-          apiRecoParams,
-        })
-        const { getByTestId } = renderOfferPage()
-        const scrollView = getByTestId('offer-container')
-
-        await act(async () => {
-          fireEvent.scroll(scrollView, nativeEventBottom)
-        })
-
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          ...apiRecoParams,
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: true,
-        })
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-          ...apiRecoParams,
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: true,
-        })
       })
     })
   })
