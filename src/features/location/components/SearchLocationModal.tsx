@@ -6,6 +6,8 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -54,6 +56,8 @@ export const SearchLocationModal = ({
     isCurrentLocationMode,
   } = useLocationModal(visible)
 
+  const { searchState, dispatch } = useSearch()
+
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
   const [aroundRadius, setAroundRadius] = useState(50)
@@ -92,11 +96,25 @@ export const SearchLocationModal = ({
   )
 
   const onSubmit = () => {
-    if (selectedLocationMode === LocationMode.CUSTOM_POSITION) {
+    if (selectedLocationMode === LocationMode.CUSTOM_POSITION && selectedPlace) {
       setPlaceGlobally(selectedPlace)
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          locationFilter: { place: selectedPlace, locationType: LocationType.PLACE, aroundRadius },
+        },
+      })
       analytics.logUserSetLocation('search')
     } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
       setPlaceGlobally(null)
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
+        },
+      })
     }
     dismissModal()
   }
