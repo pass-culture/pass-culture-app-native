@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { View, ImageBackground } from 'react-native'
+import { ImageBackground, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -12,7 +12,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoModuleProps } from 'features/home/types'
 import { Offer } from 'shared/offer/types'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -211,7 +211,7 @@ const StyledMultiOfferList = styled(View)<{
   height: '100%',
 }))
 
-const StyledSeparator = styled(Separator)<{
+const StyledSeparator = styled(HorizontalSeparator)<{
   hasOnlyTwoOffers: boolean
 }>(({ hasOnlyTwoOffers }) => ({
   height: 2,

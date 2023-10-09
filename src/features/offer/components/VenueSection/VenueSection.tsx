@@ -11,7 +11,7 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { QueryKeys } from 'libs/queryKeys'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -80,7 +80,7 @@ export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner
       ) : (
         <View testID="venue-info">
           <Spacer.Column numberOfSpaces={4} />
-          <Separator />
+          <HorizontalSeparator />
           <Spacer.Column numberOfSpaces={4} />
           <VenueDetails
             title={venue.publicName || venue.name}
@@ -88,7 +88,7 @@ export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner
             distance={distanceToLocation}
           />
           <Spacer.Column numberOfSpaces={4} />
-          <Separator />
+          <HorizontalSeparator />
           <Spacer.Column numberOfSpaces={1} />
         </View>
       )}

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
@@ -31,7 +31,7 @@ export const AddressOption = ({
           <IconContainer>{!!selected && <Validate />}</IconContainer>
         </TextContainer>
       </StyledTouchableOpacity>
-      <Separator />
+      <HorizontalSeparator />
     </Container>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
 export function ChangeEmailDisclaimer() {
@@ -12,7 +12,7 @@ export function ChangeEmailDisclaimer() {
         e-mail qu’une fois par jour.
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
+      <HorizontalSeparator />
     </React.Fragment>
   )
 }

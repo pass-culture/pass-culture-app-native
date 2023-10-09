@@ -17,7 +17,7 @@ import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
@@ -176,7 +176,7 @@ const ItemSeparatorContainer = styled.View({
 function ItemSeparatorComponent() {
   return (
     <ItemSeparatorContainer>
-      <Separator />
+      <HorizontalSeparator />
     </ItemSeparatorContainer>
   )
 }

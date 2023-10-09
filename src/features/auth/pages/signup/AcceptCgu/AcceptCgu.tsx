@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -12,7 +12,7 @@ import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -126,7 +126,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         numberOfLines={2}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
+      <HorizontalSeparator />
       <Spacer.Column numberOfSpaces={8} />
       <Typo.Body>
         Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu

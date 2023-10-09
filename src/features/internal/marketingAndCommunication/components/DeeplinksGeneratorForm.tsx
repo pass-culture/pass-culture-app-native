@@ -12,9 +12,9 @@ import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommun
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
+  ParamConfig,
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
-  ParamConfig,
 } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -29,7 +29,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/BicolorWarning'
@@ -80,7 +80,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           onSelect={onSelectScreenName}
         />
         <Spacer.Column numberOfSpaces={2} />
-        <Separator />
+        <HorizontalSeparator />
       </React.Fragment>
     )
   }
@@ -247,7 +247,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             <StyledCaption>{config.description}</StyledCaption>
           </PaddingContainer>
         )}
-        <Separator />
+        <HorizontalSeparator />
       </React.Fragment>
     )
   }

@@ -14,7 +14,7 @@ import { useAppStateChange } from 'libs/appState'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -146,7 +146,7 @@ export function NotificationSettings() {
           : 'Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture '}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
+      <HorizontalSeparator />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
         Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.
@@ -160,7 +160,7 @@ export function NotificationSettings() {
         />
         {Platform.OS === 'ios' && (
           <React.Fragment>
-            <Separator />
+            <HorizontalSeparator />
             <Spacer.Column numberOfSpaces={4} />
             <Typo.CaptionNeutralInfo>
               Je veux être alerté des actualités et des meilleures offres du pass Culture

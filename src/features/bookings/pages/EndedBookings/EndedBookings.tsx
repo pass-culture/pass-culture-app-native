@@ -13,7 +13,7 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -73,4 +73,4 @@ const EndedBookingsCount = styled(Typo.Body).attrs(getHeadingAttrs(2))(({ theme 
 
 const contentContainerStyle = { paddingHorizontal: getSpacing(5) }
 const ListFooterComponent = () => <Spacer.Column numberOfSpaces={12} />
-const StyledSeparator = styled(Separator)({ marginVertical: getSpacing(4) })
+const StyledSeparator = styled(HorizontalSeparator)({ marginVertical: getSpacing(4) })

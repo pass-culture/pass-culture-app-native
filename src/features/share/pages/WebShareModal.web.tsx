@@ -6,15 +6,15 @@ import { WebShareModalProps } from 'features/share/types'
 // eslint-disable-next-line no-restricted-imports
 import {
   isDesktopDeviceDetectOnWeb,
-  isMobileDeviceDetectOnWeb,
   isMacOsDeviceDetectOnWeb,
+  isMobileDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { Ul } from 'ui/components/Ul'
@@ -95,7 +95,7 @@ export const WebShareModal = ({
       onRightIconPress={dismissModal}>
       <Container>
         <Spacer.Column numberOfSpaces={3} />
-        <Separator />
+        <HorizontalSeparator />
         <Spacer.Column numberOfSpaces={3} />
         <NonSocialButtonsContainer>
           <NonSocialButtonsItem>
@@ -131,7 +131,7 @@ export const WebShareModal = ({
           }
         </NonSocialButtonsContainer>
         <Spacer.Column numberOfSpaces={3} />
-        <Separator />
+        <HorizontalSeparator />
         <Spacer.Column numberOfSpaces={6} />
         <SocialButtonsContainer>
           {socialButtonProps.map((props) => (

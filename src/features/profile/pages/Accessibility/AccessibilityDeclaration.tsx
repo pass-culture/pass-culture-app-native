@@ -7,7 +7,7 @@ import { PageProfileSection } from 'features/profile/components/PageProfileSecti
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
@@ -417,6 +417,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,
 }))
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(HorizontalSeparator)({
   marginVertical: getSpacing(6),
 })

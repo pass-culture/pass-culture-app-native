@@ -6,7 +6,7 @@ import { PageProfileSection } from 'features/profile/components/PageProfileSecti
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -82,6 +82,6 @@ const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,
 }))``
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(HorizontalSeparator)({
   marginVertical: getSpacing(4),
 })

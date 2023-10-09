@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { Question } from 'ui/svg/icons/Question'
@@ -64,6 +64,6 @@ const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
   textAlign: 'left',
 })
 
-const GreySeparator = styled(Separator).attrs(({ theme }) => ({
+const GreySeparator = styled(HorizontalSeparator).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))``

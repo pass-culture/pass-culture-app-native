@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
@@ -41,7 +41,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
+      <HorizontalSeparator />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />

@@ -5,7 +5,7 @@ import { Booking } from 'features/bookings/types'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { SectionRow } from 'ui/components/SectionRow'
-import { Separator } from 'ui/components/Separator'
+import { HorizontalSeparator } from 'ui/components/Separator'
 import { Spacer } from 'ui/theme'
 
 export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (props) => {
@@ -22,7 +22,7 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
 
   return (
     <React.Fragment>
-      <Separator />
+      <HorizontalSeparator />
       <Spacer.Column numberOfSpaces={4} />
       <EndedBookingsSectionWrapper>
         <SectionRow
