@@ -8,13 +8,8 @@ import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Spacer, Typo } from 'ui/theme'
-
-const INCOMING_CREDIT_LABELS_MAP: Record<number, { label: string; highlightedLabel: string }> = {
-  15: { label: 'À venir pour tes 16 ans\u00a0: ', highlightedLabel: '+ 30\u00a0€' },
-  16: { label: 'À venir pour tes 17 ans\u00a0: ', highlightedLabel: '+ 30\u00a0€' },
-  17: { label: 'À venir pour tes 18 ans\u00a0: ', highlightedLabel: '300\u00a0€' },
-}
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -31,6 +26,21 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
 }: CreditHeaderProps) {
+  const depositAmount = useDepositAmountsByAge()
+  const incomingCreditLabelsMap: Record<number, { label: string; highlightedLabel: string }> = {
+    15: {
+      label: 'À venir pour tes 16 ans\u00a0: ',
+      highlightedLabel: `+ ${depositAmount.sixteenYearsOldDeposit}`,
+    },
+    16: {
+      label: 'À venir pour tes 17 ans\u00a0: ',
+      highlightedLabel: `+ ${depositAmount.seventeenYearsOldDeposit}`,
+    },
+    17: {
+      label: 'À venir pour tes 18 ans\u00a0: ',
+      highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
+    },
+  }
   const name = `${firstName} ${lastName}`
 
   const displayedExpirationDate = depositExpirationDate
@@ -54,14 +64,12 @@ export function CreditHeader({
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
-          {!!(age && INCOMING_CREDIT_LABELS_MAP[age]) && (
+          {!!(age && incomingCreditLabelsMap[age]) && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Typo.Body>
-                {INCOMING_CREDIT_LABELS_MAP[age].label}
-                <HighlightedBody>
-                  {INCOMING_CREDIT_LABELS_MAP[age].highlightedLabel}
-                </HighlightedBody>
+                {incomingCreditLabelsMap[age].label}
+                <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
               </Typo.Body>
             </React.Fragment>
           )}
