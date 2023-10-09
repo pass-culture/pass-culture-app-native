@@ -77,6 +77,8 @@ jobs:
         run: |
           bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
         env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - name: Create Sentry sourcemaps
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
