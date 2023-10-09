@@ -24,12 +24,12 @@ const dateInFuture = '2100-02-09T11:17:14.786670'
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
     it('should render correctly with valid non exhausted credit', () => {
-      const renderAPI = renderCreditHeader()
+      const renderAPI = renderCreditHeader({ age: 18 })
       expect(renderAPI).toMatchSnapshot()
     })
 
     it('should render correctly with expired credit', () => {
-      const renderAPI = renderCreditHeader({ depositExpirationDate: dateInPast })
+      const renderAPI = renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
       expect(renderAPI).toMatchSnapshot()
     })
 
@@ -39,13 +39,13 @@ describe('CreditHeader', () => {
     })
 
     it('should display user name', () => {
-      const { queryByText } = renderCreditHeader()
+      const { queryByText } = renderCreditHeader({ age: 18 })
       const name = queryByText('Rosa Bonheur')
       expect(name).toBeOnTheScreen()
     })
 
     it('should display deposit expiration date', () => {
-      const { queryByText } = renderCreditHeader()
+      const { queryByText } = renderCreditHeader({ age: 18 })
       const depositExpirationDate = queryByText(
         formatToSlashedFrenchDate(setDateOneDayEarlier(dateInFuture))
       )
@@ -53,7 +53,7 @@ describe('CreditHeader', () => {
     })
 
     it('should display credit ceilings', () => {
-      const { queryByTestId } = renderCreditHeader()
+      const { queryByTestId } = renderCreditHeader({ age: 18 })
       const digitalCredit = queryByTestId('domains-credit-digital')
       const physicalCredit = queryByTestId('domains-credit-physical')
       expect(digitalCredit).toBeOnTheScreen()
@@ -61,19 +61,19 @@ describe('CreditHeader', () => {
     })
 
     it('should display credit info', () => {
-      const { queryByTestId } = renderCreditHeader()
+      const { queryByTestId } = renderCreditHeader({ age: 18 })
       const creditInfo = queryByTestId('credit-info')
       expect(creditInfo).toBeOnTheScreen()
     })
 
     it('should display tutorial button', () => {
-      const { queryByTestId } = renderCreditHeader()
+      const { queryByTestId } = renderCreditHeader({ age: 18 })
       const explanationButton = queryByTestId('Comment ça marche ?')
       expect(explanationButton).toBeOnTheScreen()
     })
 
     it('should not display credit info and ceilings for expired credit', () => {
-      const { queryByTestId } = renderCreditHeader({ depositExpirationDate: dateInPast })
+      const { queryByTestId } = renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
       const creditInfo = queryByTestId('credit-info')
       const digitalCredit = queryByTestId('domains-credit-digital')
       const physicalCredit = queryByTestId('domains-credit-physical')
@@ -83,7 +83,7 @@ describe('CreditHeader', () => {
     })
 
     it('should not display coming credit for 18-year-old beneficiary', () => {
-      renderCreditHeader()
+      renderCreditHeader({ age: 18 })
 
       expect(screen.queryByText(/À venir pour tes/)).not.toBeOnTheScreen()
     })
@@ -94,23 +94,26 @@ describe('CreditHeader', () => {
       mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     })
 
-    it('should render correctly for underage beneficiary', () => {
-      const renderAPI = renderCreditHeader()
+    it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
+      const renderAPI = renderCreditHeader({ age })
       expect(renderAPI).toMatchSnapshot({})
     })
 
-    it('should not display credit ceilings for underage beneficiary', () => {
-      const { queryByTestId } = renderCreditHeader()
+    it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
+      const { queryByTestId } = renderCreditHeader({ age })
       const digitalCredit = queryByTestId('domains-credit-digital')
       const physicalCredit = queryByTestId('domains-credit-physical')
       expect(digitalCredit).not.toBeOnTheScreen()
       expect(physicalCredit).not.toBeOnTheScreen()
     })
 
-    it.each([15, 16, 17])('should render correctly with exhausted credit', (age) => {
-      const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
-      expect(renderAPI).toMatchSnapshot()
-    })
+    it.each([15, 16, 17])(
+      'should render correctly with exhausted credit for %s year-old',
+      (age) => {
+        const renderAPI = renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+        expect(renderAPI).toMatchSnapshot()
+      }
+    )
 
     it('should display coming credit for 17-year-old beneficiary', () => {
       renderCreditHeader({ age: 17 })

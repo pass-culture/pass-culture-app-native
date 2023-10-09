@@ -43,7 +43,7 @@ export function CreditHeader({
     },
   }
 
-  if (!domainsCredit) return null
+  if (!domainsCredit || !age) return null
 
   const name = `${firstName} ${lastName}`
   const isCreditEmpty = domainsCredit.all.remaining === 0
@@ -65,7 +65,7 @@ export function CreditHeader({
           <BeneficiaryCeilings domainsCredit={domainsCredit} />
         </React.Fragment>
       )}
-      {!!(age && incomingCreditLabelsMap[age] && !isCreditEmpty) && (
+      {!!(incomingCreditLabelsMap[age] && !isCreditEmpty) && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
           <Typo.Body>
@@ -74,7 +74,7 @@ export function CreditHeader({
           </Typo.Body>
         </React.Fragment>
       )}
-      {!!(isCreditEmpty && age) && <EmptyCredit age={age} />}
+      {!!isCreditEmpty && <EmptyCredit age={age} />}
       <Spacer.Column numberOfSpaces={1} />
       <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
     </HeaderWithGreyContainer>
