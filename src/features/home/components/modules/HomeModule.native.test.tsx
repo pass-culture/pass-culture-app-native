@@ -19,6 +19,7 @@ import { HomepageModule, ModuleData } from 'features/home/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
@@ -62,6 +63,12 @@ jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
 
 const defaultData: ModuleData = {
   playlistItems: offersFixture,
+  nbPlaylistResults: 4,
+  moduleId: 'blablabla',
+}
+
+const defaultDataVenues: ModuleData = {
+  playlistItems: mockVenues.hits,
   nbPlaylistResults: 4,
   moduleId: 'blablabla',
 }
@@ -155,7 +162,6 @@ describe('<HomeModule />', () => {
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should display VideoModule', async () => {
     renderHomeModule(videoModuleFixture)
-
     await act(async () => {})
 
     expect(screen.getByText('Découvre Lujipeka')).toBeOnTheScreen()
@@ -178,13 +184,11 @@ describe('<HomeModule />', () => {
     expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
   })
 
-  // TODO(PC-23671): Fix this VenuesModule test
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should display VenuesModule', async () => {
-    renderHomeModule(formattedVenuesModule)
+  it('should display VenuesModule', async () => {
+    renderHomeModule(formattedVenuesModule, defaultDataVenues)
 
     await act(async () => {})
-    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+    expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
   })
 })
 
