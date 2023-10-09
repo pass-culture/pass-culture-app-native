@@ -24,7 +24,7 @@ export function LocationSlider({ defaultValue = MAX_RADIUS, onChange }: Location
     <View>
       <Spacer.Column numberOfSpaces={4} />
       <LabelRadiusContainer nativeID={radiusLabelId}>
-        <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
+        <Typo.Body>Dans un rayon de&nbsp;:</Typo.Body>
         <Typo.ButtonText>{`${internalValue}\u00a0km`}</Typo.ButtonText>
       </LabelRadiusContainer>
 
@@ -37,7 +37,7 @@ export function LocationSlider({ defaultValue = MAX_RADIUS, onChange }: Location
         onValuesChange={setInternalValue}
         onValuesChangeFinish={onChange}
         shouldShowMinMaxValues
-        minMaxValuesComplement={`\u00a0km`}
+        minMaxValuesComplement="&nbsp;km"
         maxLabel="Dans un rayon de&nbsp;:"
         sliderLength={sliderLength}
         formatValues={formatKm}

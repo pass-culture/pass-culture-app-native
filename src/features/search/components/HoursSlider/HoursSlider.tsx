@@ -20,13 +20,14 @@ const formatHour = (hour: number) => `${hour}h`
 export function HoursSlider({ defaultValue, onChange }: HoursSliderProps) {
   const [internalValue, setInternalValue] = useState<number[]>(defaultValue)
   const { sliderLength } = useGetFullscreenModalSliderLength()
+  const [minHour, maxHour] = internalValue || [0, 24]
 
   return (
     <View>
       <Spacer.Column numberOfSpaces={4} />
       <LabelHoursContainer nativeID={hoursLabelId}>
-        <Typo.Body>{`Sortir entre`}</Typo.Body>
-        <Typo.ButtonText>{`${internalValue?.[0]}\u00a0h et ${internalValue?.[1]}\u00a0h`}</Typo.ButtonText>
+        <Typo.Body>Sortir entre</Typo.Body>
+        <Typo.ButtonText>{`${minHour}\u00a0h et ${maxHour}\u00a0h`}</Typo.ButtonText>
       </LabelHoursContainer>
       <Spacer.Column numberOfSpaces={2} />
       <Slider
