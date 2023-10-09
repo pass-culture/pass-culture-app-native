@@ -54,11 +54,15 @@ jobs:
         run: |
           bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
         env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
       - name: Deploy soft ios App for ${{ inputs.ENV }}
         run: |
           bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
         env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
           IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
 
   slack_notify:
