@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,24 +10,23 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CalendarPicker } from 'features/search/components/CalendarPicker/CalendarPicker'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
+import { HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
-import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { SearchState, SearchView } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Form } from 'ui/components/Form'
-import { Slider } from 'ui/components/inputs/Slider'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export enum RadioButtonDate {
   TODAY = 'Aujourd’hui',
@@ -64,14 +62,9 @@ export const DATE_TYPES: Array<{
   { label: RadioButtonDate.PRECISE_DATE, type: DATE_FILTER_OPTIONS.USER_PICK },
 ]
 
-const MAX_HOUR = 24
-
 const DEFAULT_TIME_RANGE: Range<number> = [8, 22]
 
-const formatHour = (hour: number) => `${hour}h`
-
 const titleId = uuidv4()
-const hoursLabelId = uuidv4()
 
 export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   title,
@@ -85,7 +78,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   const { modal } = useTheme()
   const { searchState, dispatch } = useSearch()
   const [showCalendarPicker, setShowCalendarPicker] = useState<boolean>(false)
-  const { sliderLength } = useGetFullscreenModalSliderLength()
 
   const TODAY = useMemo(() => new Date(), [])
 
@@ -225,15 +217,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
     [setValueWithValidation]
   )
 
-  const onSelectedHoursValuesChange = useCallback(
-    (newValues: number[]) => {
-      if (isVisible) {
-        setValue('selectedHours', newValues as Range<number>)
-      }
-    },
-    [isVisible, setValue]
-  )
-
   const disabled = !isValid || (!isValidating && isSubmitting)
 
   const subtitleToggle = 'Seules les sorties seront affichées'
@@ -331,28 +314,8 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                   <Controller
                     control={control}
                     name="selectedHours"
-                    render={({ field: { value } }) => (
-                      <View>
-                        <Spacer.Column numberOfSpaces={4} />
-                        <LabelHoursContainer nativeID={hoursLabelId}>
-                          <Typo.Body>{`Sortir entre`}</Typo.Body>
-                          <Typo.ButtonText>{`${value?.[0]}\u00a0h et ${value?.[1]}\u00a0h`}</Typo.ButtonText>
-                        </LabelHoursContainer>
-                        <Spacer.Column numberOfSpaces={2} />
-                        <Slider
-                          showValues={false}
-                          values={value}
-                          max={MAX_HOUR}
-                          formatValues={formatHour}
-                          onValuesChangeFinish={onSelectedHoursValuesChange}
-                          minLabel="Horaire minimum de sortie&nbsp;:"
-                          maxLabel="Horaire maximum de sortie&nbsp;:"
-                          shouldShowMinMaxValues
-                          minMaxValuesComplement="h"
-                          sliderLength={sliderLength}
-                          accessibilityLabelledBy={hoursLabelId}
-                        />
-                      </View>
+                    render={({ field: { value, onChange } }) => (
+                      <HoursSlider defaultValue={value ?? [0, 24]} onChange={onChange} />
                     )}
                   />
                 )}
@@ -377,9 +340,4 @@ const FormWrapper = styled.View({
 
 const StyledVerticalUl = styled(VerticalUl)({
   overflow: 'hidden',
-})
-
-const LabelHoursContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
 })

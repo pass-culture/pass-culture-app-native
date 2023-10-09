@@ -233,7 +233,7 @@ describe('<DatesHoursModal/>', () => {
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChangeFinish([18, 23])
+        slider.props.onValuesChange([18, 23])
       })
 
       expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
@@ -241,13 +241,15 @@ describe('<DatesHoursModal/>', () => {
       const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
+      })
+      await act(async () => {
         fireEvent.press(toggleHour)
       })
 
       expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
 
-    it('time range selected when desactivating hour toggle', async () => {
+    it('time range selected when deactivating hour toggle', async () => {
       mockSearchState = {
         ...searchState,
       }
@@ -260,13 +262,15 @@ describe('<DatesHoursModal/>', () => {
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-        slider.props.onValuesChangeFinish([18, 23])
+        slider.props.onValuesChange([18, 23])
       })
 
       expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
       await act(async () => {
         fireEvent.press(toggleHour)
+      })
+      await act(async () => {
         fireEvent.press(toggleHour)
       })
 
