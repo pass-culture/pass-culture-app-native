@@ -1,0 +1,47 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- tapOn: "Films, séries, cinéma"
+#- TODO trouver une solution pour cliquer sans passer par la position.
+- tapOn:
+    point: "50%,71%"
+# Mise en favoris
+- tapOn:
+    id: "animated-icon-favorite"
+- runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- tapOn: "Catégories\_: Filtre sélectionné"
+- tapOn: "Films, séries, cinéma"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
+#- TODO trouver une solution pour cliquer sans passer par la position.
+- tapOn:
+    point: "49%,69%"
+- tapOn:
+    point: "49%,69%"
+- tapOn:
+    id: "animated-icon-favorite"
+- tapOn:
+    id: "animated-icon-favorite-filled"
+- tapOn:
+    id: "animated-icon-favorite"
+- tapOn:
+    id: "animated-icon-back"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyFavorite.yml
+- assertVisible: "1 favori"
+- assertVisible: "Supprimer"
+- assertVisible: "Réserver"
+- tapOn: "Supprimer"
+- assertVisible:
+    text: "Mes favoris"
+    index: 0
+- assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+- assertVisible: "Tu n’as pas encore de favori\_?\nExplore le catalogue pass Culture\
+    \ et ajoute les offres en favori pour les retrouver facilement\_!"
+- assertVisible: "Découvrir le catalogue"
+- tapOn: "Découvrir le catalogue"
+- assertVisible: "Rechercher des offres"
+- runFlow: reusableFlows/StopApp.yml # Stop App

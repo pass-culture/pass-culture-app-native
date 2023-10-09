@@ -1,0 +1,66 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml
+- tapOn: "Films, séries, cinéma"
+# TODO le tapOn selectionne la première offre présente, il faudrait trouver un moyen de séléctionner une offre pré-définie
+- tapOn:
+    point: "50%,71%"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+- runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonDateAndHour.yml
+- runFlow: reusableFlows/components/buttons/SimpleIdButtonSwitchDate.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonThisWeek.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
+# TODO le tapOn selectionne la première offre présente, il faudrait trouver un moyen de séléctionner une offre pré-définie
+- tapOn:
+    point: "49%,84%"
+- tapOn:
+    point: "49%,84%"
+- assertVisible: "Visite de la Maison-Atelier Foujita"
+- assertVisible: "Visite"
+- assertVisible: "À deux\_!"
+- assertVisible: "Gratuit"
+- assertVisible: "En 1991, Kimiyo Foujita a fait don du dernier atelier de son époux,\
+    \ le peintre franco-japonais Léonard Foujita au Conseil départemental de l'Essonne,\
+    \ qui a exaucé le vœu de l’artiste en permettant la conservation et l’ouverture\
+    \ au public de ce lieu de mémoire unique en Ile-de-France.\nSituée en vallée de\
+    \ Chevreuse, la petite maison rurale a été réaménagée par le peintre au début\
+    \ des années 1960. Dans ce site préservé, le visiteur pourra découvrir l’atmosphè\
+    re intime d’un peintre de l'Ecole de Paris. \nAu dernier étage de la maison, l’\
+    atelier de l’artiste est conservé intact. Pinceaux, pigments, maquettes et peintures\
+    \ murales (préparation de l’œuvre réalisée dans la chapelle ND de la Paix à Reims)\
+    \ révèlent toute la richesse et les secrets d’un créateur.\nDans le presbytère,\
+    \ espace d’accueil du lieu de mémoire, le visiteur pourra prolonger sa visite\
+    \ à travers des expositions temporaires."
+
+- scrollUntilVisible:
+      element: "voir plus"
+      direction: DOWN
+- tapOn: "voir plus"
+
+- assertVisible: "Durée"
+- assertVisible: "1h"
+- assertVisible: "En 1991, Kimiyo Foujita a fait don du dernier atelier de son époux,\
+    \ le peintre franco-japonais Léonard Foujita au Conseil départemental de l'Essonne,\
+    \ qui a exaucé le vœu de l’artiste en permettant la conservation et l’ouverture\
+    \ au public de ce lieu de mémoire unique en Ile-de-France.\nSituée en vallée de\
+    \ Chevreuse, la petite maison rurale a été réaménagée par le peintre au début\
+    \ des années 1960. Dans ce site préservé, le visiteur pourra découvrir l’atmosphè\
+    re intime d’un peintre de l'Ecole de Paris. \nAu dernier étage de la maison, l’\
+    atelier de l’artiste est conservé intact. Pinceaux, pigments, maquettes et peintures\
+    \ murales (préparation de l’œuvre réalisée dans la chapelle ND de la Paix à Reims)\
+    \ révèlent toute la richesse et les secrets d’un créateur.\nDans le presbytère,\
+    \ espace d’accueil du lieu de mémoire, le visiteur pourra prolonger sa visite\
+    \ à travers des expositions temporaires."
+- assertVisible: "Crédit photo"
+- assertVisible: "© Henri Perrot"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
+- tapOn:
+      id: "final-animated-icon-back"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

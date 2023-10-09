@@ -1,0 +1,31 @@
+appId: app.passculture.staging
+---
+
+#Penser à désactiver le reCaptcha #ENABLE_NATIVE_APP_RECAPTCHA
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyFavorite.yml
+- runFlow: reusableFlows/features/profile/AccountCreationPage.yml # Creation Page
+- runFlow: reusableFlows/features/auth/CguPage.yml # Cgu Page
+- runFlow: reusableFlows/features/auth/ConfirmationEmailPage.yml # ConfirmationEmail Page
+- runFlow: reusableFlows/StopApp.yml # Stop App
+- runFlow:
+      when:
+          visible: "Revenir en haut de la page"
+      file: "reusableFlows/MailNative.yml"
+- runFlow: reusableFlows/SearchMail.yml # SearchMail Page
+- runFlow:
+      when:
+          visible: "Afficher le texte des messages précédents"
+      file: "reusableFlows/DoublonsMail.yml"
+
+- scrollUntilVisible:
+    element: "confirmation de l'email"
+    direction: DOWN
+
+- tapOn: "Confirmer mon adresse email"
+- runFlow: reusableFlows/features/auth/IdCheckPage.yml # IdCheck Page
+- runFlow: reusableFlows/features/identityCheck/StepperPage.yml # Stepper Page
+- runFlow: reusableFlows/features/identityCheck/NumberPhone.yml #Number Phone
+
+#ValidationCodePhone

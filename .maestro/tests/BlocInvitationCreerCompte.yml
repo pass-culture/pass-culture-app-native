@@ -1,0 +1,13 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- tapOn:
+    text: "Accueil"
+    index: 0
+- assertVisible: "Bienvenue\_!"
+- assertVisible: "Débloque ton crédit"
+- tapOn:
+    id: "module-background"
+- assertVisible: "Crée-toi un compte"
+- runFlow: reusableFlows/StopApp.yml # Stop App

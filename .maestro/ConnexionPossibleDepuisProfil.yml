@@ -1,8 +1,0 @@
-appId: app.passculture.staging
----
-- runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
-- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonMyProfile.yml
-- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonConnect.yml
-- runFlow: reusableFlows/ui/components/buttons/SimpleActionButtonBack.yml
-- runFlow: reusableFlows/StopApp.yml # Stop App

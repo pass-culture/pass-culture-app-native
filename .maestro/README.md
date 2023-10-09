@@ -1,6 +1,6 @@
 # POC Maestro
 
-[Documentation de Maestro](https://maestro.mobile.dev/)
+[Documentation de Maestro](https:/maestro.mobile.dev/)
 
 ## Prérequis
 
@@ -11,12 +11,12 @@
 
 ## Configuration
 
-[Documentation d'installation](https://maestro.mobile.dev/getting-started/installing-maestro)
+[Documentation d'installation](https:/maestro.mobile.dev/getting-started/installing-maestro)
 
 Pour installer Maestro sur Mac OS, Linux or Windows :
 
 ```bash
-curl -Ls "https://get.maestro.mobile.dev" | bash
+curl -Ls "https:/get.maestro.mobile.dev" | bash
 ```
 
 Connecter un device virtuel
@@ -59,7 +59,7 @@ maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e 
 
 ## Écrire un test
 
-L'utilisation de [Maestro studio](https://maestro.mobile.dev/getting-started/maestro-studio) simplifie l'écriture des tests car il permet de voir les différent sélecteurs possible a l'aide d'une interface. Pour démarrer Maestro Studio il faut :
+L'utilisation de [Maestro studio](https:/maestro.mobile.dev/getting-started/maestro-studio) simplifie l'écriture des tests car il permet de voir les différent sélecteurs possible a l'aide d'une interface. Pour démarrer Maestro Studio il faut :
 
 ```bash
 yarn start
@@ -77,4 +77,4 @@ appId: your.app.id > Mettre l'ID de l'app que vous voulez tester comme "app.pass
 - tapOn: 'Text on the screen'
 ```
 
-Voici [une liste des commandes](https://maestro.mobile.dev/api-reference/commands) que nous pouvons utiliser pour écrire les tests.
+Voici [une liste des commandes](https:/maestro.mobile.dev/api-reference/commands) que nous pouvons utiliser pour écrire les tests.
