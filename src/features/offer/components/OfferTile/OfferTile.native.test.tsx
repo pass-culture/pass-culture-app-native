@@ -99,7 +99,7 @@ describe('OfferTile component', () => {
   it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
     render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<OfferTile {...props} homeEntryId={'abcd'} />)
+      reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />)
     )
     await fireEvent.press(screen.getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({

@@ -138,7 +138,7 @@ export function ChangePassword() {
         <Form.MaxWidth flex={1}>
           <PasswordInputController
             control={control}
-            name={'currentPassword'}
+            name="currentPassword"
             label="Mot de passe actuel"
             placeholder="Ton mot de passe actuel"
             isRequiredField

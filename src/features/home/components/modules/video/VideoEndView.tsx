@@ -31,7 +31,7 @@ export const VideoEndView: React.FC<{
           <ButtonWithCaption
             onPress={onPressReplay}
             accessibilityLabel="Revoir la vidéo"
-            wording={'Revoir'}
+            wording="Revoir"
             icon={StyledReplayIcon}
           />
           {!!offer && (

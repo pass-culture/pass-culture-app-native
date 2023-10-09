@@ -50,7 +50,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
             ...analyticsParams,
           })
         }}
-        testId={'multi-offer-tile'}>
+        testId="multi-offer-tile">
         <OfferImage
           imageUrl={offer.offer.thumbUrl}
           categoryId={categoryId}

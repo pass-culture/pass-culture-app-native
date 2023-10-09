@@ -14,7 +14,7 @@ const HeaderInterpolation = animatedValue.interpolate({
 
 describe('ThematicHomeHeader', () => {
   it('should navigate to home page on press go back button', () => {
-    render(<ThematicHomeHeader title={'Un titre'} headerTransition={HeaderInterpolation} />)
+    render(<ThematicHomeHeader title="Un titre" headerTransition={HeaderInterpolation} />)
     const backButton = screen.getByTestId('Revenir en arrière')
 
     fireEvent.press(backButton)

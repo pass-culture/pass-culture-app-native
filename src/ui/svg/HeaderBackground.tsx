@@ -51,7 +51,7 @@ const HeaderBackgroundSvg: React.FC<HeaderBackgroundProps> = (props) => {
       preserveAspectRatio="xMidYMin slice"
       height={height}
       width={width}
-      viewBox={`0 0 375 352`}>
+      viewBox="0 0 375 352">
       <Defs>
         <LinearGradient id={id1} x1="34.782%" x2="88.023%" y1="5.945%" y2="111.119%">
           <Stop offset="0%" stopColor="#EB0055" />

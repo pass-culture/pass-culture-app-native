@@ -55,9 +55,9 @@ const renderVideoEndView = async () => {
       offer={mockOffer}
       onPressSeeOffer={mockHideModal}
       style={viewDimensions}
-      moduleId={'abcd'}
-      moduleName={'salut à tous c’est lujipeka'}
-      homeEntryId={'xyz'}
+      moduleId="abcd"
+      moduleName="salut à tous c’est lujipeka"
+      homeEntryId="xyz"
     />,
     {
       /* eslint-disable local-rules/no-react-query-provider-hoc */

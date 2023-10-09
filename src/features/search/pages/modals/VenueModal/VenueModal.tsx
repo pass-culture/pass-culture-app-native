@@ -48,7 +48,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
   return (
     <AppModal
       visible={visible}
-      title={'Point de vente'}
+      title="Point de vente"
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={dismissModal}
@@ -57,7 +57,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       fixedModalBottom={
         <React.Fragment>
           <ButtonPrimary
-            wording={'Valider le point de vente'}
+            wording="Valider le point de vente"
             disabled={!selectedVenue}
             onPress={dismissModal}
           />

@@ -50,7 +50,7 @@ describe('<Checkbox />', () => {
   describe('toggle his state', () => {
     it('check the box when is unchecked', async () => {
       const onPressMock = jest.fn()
-      render(<Checkbox label={'I agree to disagree'} isChecked={false} onPress={onPressMock} />)
+      render(<Checkbox label="I agree to disagree" isChecked={false} onPress={onPressMock} />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox'))
@@ -61,7 +61,7 @@ describe('<Checkbox />', () => {
 
     it('uncheck the box when is checked', async () => {
       const onPressMock = jest.fn()
-      render(<Checkbox label={'I agree to disagree'} isChecked onPress={onPressMock} />)
+      render(<Checkbox label="I agree to disagree" isChecked onPress={onPressMock} />)
 
       await act(async () => {
         await userEvent.click(screen.getByRole('checkbox'))
@@ -74,7 +74,7 @@ describe('<Checkbox />', () => {
   describe('when pressing space', () => {
     it("doesn't change the checked state when doesn't having the focus", async () => {
       const onPressMock = jest.fn()
-      render(<Checkbox label={'I agree to disagree'} isChecked={false} onPress={onPressMock} />)
+      render(<Checkbox label="I agree to disagree" isChecked={false} onPress={onPressMock} />)
 
       await userEvent.keyboard('[Space]')
 
@@ -86,7 +86,7 @@ describe('<Checkbox />', () => {
     describe.skip('when it has focus', () => {
       it('check the box when is unchecked', async () => {
         const onPressMock = jest.fn()
-        render(<Checkbox label={'I agree to disagree'} isChecked={false} onPress={onPressMock} />)
+        render(<Checkbox label="I agree to disagree" isChecked={false} onPress={onPressMock} />)
 
         await act(async () => {
           await userEvent.tab()
@@ -98,7 +98,7 @@ describe('<Checkbox />', () => {
 
       it('uncheck the box and is checked', async () => {
         const onPressMock = jest.fn()
-        render(<Checkbox label={'I agree to disagree'} isChecked onPress={onPressMock} />)
+        render(<Checkbox label="I agree to disagree" isChecked onPress={onPressMock} />)
 
         await act(async () => {
           await userEvent.tab()
