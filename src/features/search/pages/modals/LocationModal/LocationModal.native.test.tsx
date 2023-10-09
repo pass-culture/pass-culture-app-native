@@ -668,7 +668,7 @@ describe('<LocationModal/>', () => {
 
         await act(async () => {
           const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
-          slider.props.onValuesChange([50])
+          slider.props.onValuesChangeFinish([50])
         })
 
         const searchButton = screen.getByText('Rechercher')

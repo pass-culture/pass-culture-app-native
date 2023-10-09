@@ -2,20 +2,20 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { Keyboard, TextInput as RNTextInput, View } from 'react-native'
+import { Keyboard, TextInput as RNTextInput } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { LocationSlider } from 'features/search/components/LocationSlider/LocationSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
-import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlacesOrVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlacesOrVenues'
 import { SearchState, SearchView } from 'features/search/types'
@@ -28,7 +28,6 @@ import { Form } from 'ui/components/Form'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { Slider } from 'ui/components/inputs/Slider'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,7 +39,7 @@ import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type LocationModalFormData = {
   locationChoice: RadioButtonLocation
@@ -64,11 +63,8 @@ const LOCATION_TYPES = [
   { label: RadioButtonLocation.EVERYWHERE, icon: Everywhere },
 ]
 
-const formatKm = (km: number) => `${km}\u00a0km`
-
 const titleId = uuidv4()
 const accessibilityDescribedBy = uuidv4()
-const radiusLabelId = uuidv4()
 
 const getLocationChoice = (locationType: LocationType) => {
   if (locationType === LocationType.EVERYWHERE) {
@@ -114,7 +110,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   } = useLocation()
   const isGeolocated = !!position
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
-  const { sliderLength } = useGetFullscreenModalSliderLength()
 
   const {
     showModal: showGeolocPermissionModal,
@@ -347,15 +342,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
   const disabled = !isValid || (!isValidating && isSubmitting)
 
-  const onValuesChange = useCallback(
-    (newValues: number[]) => {
-      if (isVisible) {
-        setValue('aroundRadius', newValues[0])
-      }
-    },
-    [isVisible, setValue]
-  )
-
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
   return (
@@ -457,32 +443,16 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                         <Controller
                           control={control}
                           name="aroundRadius"
-                          render={({ field: { value: aroundRadius } }) => (
-                            <React.Fragment>
-                              {value === RadioButtonLocation.AROUND_ME && (
-                                <View>
-                                  <Spacer.Column numberOfSpaces={4} />
-                                  <LabelRadiusContainer nativeID={radiusLabelId}>
-                                    <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
-                                    <Typo.ButtonText>{`${aroundRadius}\u00a0km`}</Typo.ButtonText>
-                                  </LabelRadiusContainer>
-                                  <Spacer.Column numberOfSpaces={2} />
-                                  <Slider
-                                    showValues={false}
-                                    values={[aroundRadius]}
-                                    max={MAX_RADIUS}
-                                    onValuesChange={onValuesChange}
-                                    shouldShowMinMaxValues
-                                    minMaxValuesComplement={`\u00a0km`}
-                                    maxLabel="Dans un rayon de&nbsp;:"
-                                    sliderLength={sliderLength}
-                                    formatValues={formatKm}
-                                    accessibilityLabelledBy={radiusLabelId}
-                                  />
-                                </View>
-                              )}
-                            </React.Fragment>
-                          )}
+                          render={({ field: { value: aroundRadius, onChange } }) =>
+                            value === RadioButtonLocation.AROUND_ME ? (
+                              <LocationSlider
+                                defaultValue={aroundRadius}
+                                onChange={(v) => onChange(v[0])}
+                              />
+                            ) : (
+                              <React.Fragment />
+                            )
+                          }
                         />
                       )}
                       <Spacer.Column numberOfSpaces={6} />
@@ -511,11 +481,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
 const FormWrapper = styled.View({
   alignItems: 'center',
-})
-
-const LabelRadiusContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
 })
 
 const StyledVerticalUl = styled(VerticalUl)({
