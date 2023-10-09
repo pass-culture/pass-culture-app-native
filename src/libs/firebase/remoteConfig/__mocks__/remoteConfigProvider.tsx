@@ -1,5 +1,6 @@
 export const useRemoteConfigContext = jest.fn().mockReturnValue({
   test_param: 'A',
+  homeEntryIdFreeOffers: 'homeEntryIdFreeOffers',
   homeEntryIdNotConnected: 'homeEntryIdNotConnected',
   homeEntryIdGeneral: 'homeEntryIdGeneral',
   homeEntryIdWithoutBooking_18: 'homeEntryIdWithoutBooking_18',

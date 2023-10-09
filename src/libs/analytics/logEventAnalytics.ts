@@ -203,8 +203,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_MODAL_BENEFICIARY_CEILINGS }),
   logConsultModalExpiredGrant: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_MODAL_EXPIRED_GRANT }),
-  logConsultModalNoMoreCredit: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_MODAL_NO_MORE_CREDIT }),
   logConsultOffer: (params: {
     offerId: number
     from: Referrals

@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { DomainsCredit } from 'api/gen'
-import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
@@ -17,15 +15,10 @@ import { Spacer } from 'ui/theme'
 
 interface Props {
   age?: number
-  domainsCredit: DomainsCredit
   isDepositExpired: boolean
 }
 
-export const CreditExplanation: FunctionComponent<Props> = ({
-  age,
-  domainsCredit,
-  isDepositExpired,
-}) => {
+export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpired }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
     age && age < 19 && age > 14
@@ -48,22 +41,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({
       </React.Fragment>
     )
   }
-  if (domainsCredit.all.remaining === 0) {
-    const onPressExplanationButton = () => {
-      showModal()
-      analytics.logConsultModalNoMoreCredit()
-    }
-    return (
-      <React.Fragment>
-        <StyledButtonQuaternaryBlack
-          icon={Question}
-          wording="J’ai dépensé tout mon crédit, que&nbsp;faire&nbsp;?"
-          onPress={onPressExplanationButton}
-        />
-        <ExhaustedCreditModal visible={visible} hideModal={hideModal} />
-      </React.Fragment>
-    )
-  }
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
