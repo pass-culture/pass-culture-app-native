@@ -309,7 +309,7 @@ describe('<Search/>', () => {
       expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
     })
 
-    describe('should navigate and execute the search with the item', () => {
+    describe('should navigate and execute the search with the history item', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(<Search />)
@@ -324,7 +324,8 @@ describe('<Search/>', () => {
             query: 'manga',
             view: SearchView.Results,
             searchId,
-            isAutocomplete: true,
+            isFromHistory: true,
+            isAutocomplete: undefined,
             offerGenreTypes: undefined,
             offerNativeCategories: undefined,
             offerCategories: [],
@@ -346,7 +347,8 @@ describe('<Search/>', () => {
             query: 'tolkien',
             view: SearchView.Results,
             searchId,
-            isAutocomplete: true,
+            isFromHistory: true,
+            isAutocomplete: undefined,
             offerGenreTypes: undefined,
             offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES],
             offerCategories: [SearchGroupNameEnumv2.LIVRES],
@@ -368,7 +370,8 @@ describe('<Search/>', () => {
             query: 'foresti',
             view: SearchView.Results,
             searchId,
-            isAutocomplete: true,
+            isFromHistory: true,
+            isAutocomplete: undefined,
             offerGenreTypes: undefined,
             offerNativeCategories: undefined,
             offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
