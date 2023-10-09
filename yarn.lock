@@ -23188,10 +23188,10 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
-react-native-lottie-splash-screen@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-lottie-splash-screen/-/react-native-lottie-splash-screen-1.0.1.tgz#f195a04d3d36ef7f69361380f8c05267fb7b0a22"
-  integrity sha512-7V/ih/IvERkRXvwZ8pSZTYgRrKXYPhRXr8VWPpnGg0Bu1XQMP582bX9i2T7N30v/i3TEQjRowoExxODCG5yP7Q==
+react-native-lottie-splash-screen@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-lottie-splash-screen/-/react-native-lottie-splash-screen-1.1.2.tgz#7d044cb6aede33dc30611da7a7d9edcb14ee005f"
+  integrity sha512-5V4sk46UlU2MbRDlncT0O3qtBdqjxKfcW5/VXceU82CPcO0z0ItcaX34L74Zt5fqkR80OW1VCccrsIGly1y0lw==
   dependencies:
     lottie-ios "3.2.3"
     lottie-react-native "^5.1.3"
