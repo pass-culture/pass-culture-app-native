@@ -7,11 +7,11 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Spacer, Typo } from 'ui/theme'
 
-import { AnimatedBlurHeaderTitle } from './AnimatedBlurHeader'
+import { ContentHeader } from './ContentHeader'
 
-const meta: ComponentMeta<typeof AnimatedBlurHeaderTitle> = {
+const meta: ComponentMeta<typeof ContentHeader> = {
   title: 'ui/headers/AnimatedBlurHeaderTitle',
-  component: AnimatedBlurHeaderTitle,
+  component: ContentHeader,
   parameters: {
     axe: {
       // We ignore this rule as the error is caused by the implementation of the story and not the component itself
@@ -22,7 +22,7 @@ const meta: ComponentMeta<typeof AnimatedBlurHeaderTitle> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AnimatedBlurHeaderTitle> = (props) => {
+const Template: ComponentStory<typeof ContentHeader> = (props) => {
   const { onScroll, headerTransition } = useOpacityTransition()
 
   const headerHeight = useGetHeaderHeight()
@@ -41,7 +41,7 @@ const Template: ComponentStory<typeof AnimatedBlurHeaderTitle> = (props) => {
         <Content />
         <Spacer.Column numberOfSpaces={10} />
       </ScrollView>
-      <AnimatedBlurHeaderTitle {...props} headerTransition={headerTransition} />
+      <ContentHeader {...props} headerTransition={headerTransition} />
     </Container>
   )
 }

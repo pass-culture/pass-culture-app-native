@@ -5886,6 +5886,7 @@ d’options
         numberOfLines={2}
         style={
           {
+            "color": "#ffffff",
             "flexShrink": 1,
             "opacity": 0,
             "textAlign": "center",
