@@ -66,9 +66,9 @@ export const CreditExplanation: FunctionComponent<Props> = ({
   }
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={3} />
-      <GreySeparator />
       <Spacer.Column numberOfSpaces={4} />
+      <GreySeparator />
+      <Spacer.Column numberOfSpaces={2.5} />
       <InternalTouchableLink
         as={StyledButtonQuaternaryBlack}
         icon={Question}

@@ -53,7 +53,7 @@ const OnlineProfile: React.FC = () => {
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
-  const userAge = user?.birthDate ? getAge(user.birthDate) : undefined
+  const userAge = getAge(user?.birthDate)
 
   const { userPositionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
     useLocation()

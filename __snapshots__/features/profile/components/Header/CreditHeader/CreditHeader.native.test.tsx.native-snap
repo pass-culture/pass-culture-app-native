@@ -1009,11 +1009,11 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
       }
     />
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         [
           {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -1031,11 +1031,11 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
       }
     />
     <View
-      numberOfSpaces={4}
+      numberOfSpaces={2.5}
       style={
         [
           {
-            "height": 16,
+            "height": 10,
           },
         ]
       }
@@ -1438,11 +1438,11 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
       }
     />
     <View
-      numberOfSpaces={3}
+      numberOfSpaces={4}
       style={
         [
           {
-            "height": 12,
+            "height": 16,
           },
         ]
       }
@@ -1460,11 +1460,11 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
       }
     />
     <View
-      numberOfSpaces={4}
+      numberOfSpaces={2.5}
       style={
         [
           {
-            "height": 16,
+            "height": 10,
           },
         ]
       }

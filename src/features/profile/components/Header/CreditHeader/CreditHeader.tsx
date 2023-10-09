@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
@@ -7,7 +8,8 @@ import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
-import { Spacer } from 'ui/theme'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { Spacer, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -24,6 +26,21 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
 }: CreditHeaderProps) {
+  const depositAmount = useDepositAmountsByAge()
+  const incomingCreditLabelsMap: Record<number, { label: string; highlightedLabel: string }> = {
+    15: {
+      label: 'À venir pour tes 16 ans\u00a0: ',
+      highlightedLabel: `+ ${depositAmount.sixteenYearsOldDeposit}`,
+    },
+    16: {
+      label: 'À venir pour tes 17 ans\u00a0: ',
+      highlightedLabel: `+ ${depositAmount.seventeenYearsOldDeposit}`,
+    },
+    17: {
+      label: 'À venir pour tes 18 ans\u00a0: ',
+      highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
+    },
+  }
   const name = `${firstName} ${lastName}`
 
   const displayedExpirationDate = depositExpirationDate
@@ -47,6 +64,15 @@ export function CreditHeader({
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
+          {!!(age && incomingCreditLabelsMap[age]) && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <Typo.Body>
+                {incomingCreditLabelsMap[age].label}
+                <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
+              </Typo.Body>
+            </React.Fragment>
+          )}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation
             isDepositExpired={isDepositExpired}
@@ -58,3 +84,7 @@ export function CreditHeader({
     </HeaderWithGreyContainer>
   )
 }
+
+const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
