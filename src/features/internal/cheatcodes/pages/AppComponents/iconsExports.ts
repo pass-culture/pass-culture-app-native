@@ -27,6 +27,7 @@ import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { NewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
+import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
 import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { PhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -167,6 +168,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorNewIcon,
   BicolorNoId,
   BicolorNoPhone,
+  BicolorOffers,
   BicolorPhoneIcon,
   BicolorProfile,
   BicolorSearch,
