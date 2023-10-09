@@ -42,13 +42,14 @@ export function CreditHeader({
       highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
     },
   }
-  const name = `${firstName} ${lastName}`
 
+  if (!domainsCredit) return null
+
+  const name = `${firstName} ${lastName}`
+  const isCreditEmpty = domainsCredit.all.remaining === 0
   const isDepositExpired = depositExpirationDate
     ? new Date(depositExpirationDate) < new Date()
     : false
-
-  const isCreditEmpty = domainsCredit?.all.remaining === 0
 
   const subtitleProps = getHeaderSubtitleProps({
     isCreditEmpty,
@@ -58,28 +59,24 @@ export function CreditHeader({
 
   return (
     <HeaderWithGreyContainer title={name} subtitle={<Subtitle {...subtitleProps} />}>
-      {!!domainsCredit && (
+      {!(isDepositExpired || isCreditEmpty) && (
         <React.Fragment>
-          {!(isDepositExpired || isCreditEmpty) && (
-            <React.Fragment>
-              <CreditInfo totalCredit={domainsCredit.all} />
-              <BeneficiaryCeilings domainsCredit={domainsCredit} />
-            </React.Fragment>
-          )}
-          {!!(age && incomingCreditLabelsMap[age] && !isCreditEmpty) && (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <Typo.Body>
-                {incomingCreditLabelsMap[age].label}
-                <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
-              </Typo.Body>
-            </React.Fragment>
-          )}
-          {!!(isCreditEmpty && age) && <EmptyCredit age={age} />}
-          <Spacer.Column numberOfSpaces={1} />
-          <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
+          <CreditInfo totalCredit={domainsCredit.all} />
+          <BeneficiaryCeilings domainsCredit={domainsCredit} />
         </React.Fragment>
       )}
+      {!!(age && incomingCreditLabelsMap[age] && !isCreditEmpty) && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <Typo.Body>
+            {incomingCreditLabelsMap[age].label}
+            <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
+          </Typo.Body>
+        </React.Fragment>
+      )}
+      {!!(isCreditEmpty && age) && <EmptyCredit age={age} />}
+      <Spacer.Column numberOfSpaces={1} />
+      <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
     </HeaderWithGreyContainer>
   )
 }
