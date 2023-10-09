@@ -126,7 +126,39 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
       }
     />
     <View
-      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2.5}
+      style={
+        [
+          {
+            "height": 10,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
       accessibilityState={
         {
           "busy": undefined,
@@ -174,7 +206,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
           "width": "100%",
         }
       }
-      testID="J’ai dépensé tout mon crédit, que faire ?"
+      testID="Comment ça marche ?"
     >
       <View
         style={
@@ -212,7 +244,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
           ]
         }
       >
-        J’ai dépensé tout mon crédit, que faire ?
+        Comment ça marche ?
       </Text>
     </View>
   </View>,
@@ -1648,7 +1680,39 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
       }
     />
     <View
-      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2.5}
+      style={
+        [
+          {
+            "height": 10,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
       accessibilityState={
         {
           "busy": undefined,
@@ -1696,7 +1760,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
           "width": "100%",
         }
       }
-      testID="J’ai dépensé tout mon crédit, que faire ?"
+      testID="Comment ça marche ?"
     >
       <View
         style={
@@ -1734,7 +1798,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
           ]
         }
       >
-        J’ai dépensé tout mon crédit, que faire ?
+        Comment ça marche ?
       </Text>
     </View>
   </View>,
@@ -2004,7 +2068,39 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
       }
     />
     <View
-      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2.5}
+      style={
+        [
+          {
+            "height": 10,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
       accessibilityState={
         {
           "busy": undefined,
@@ -2052,7 +2148,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
           "width": "100%",
         }
       }
-      testID="J’ai dépensé tout mon crédit, que faire ?"
+      testID="Comment ça marche ?"
     >
       <View
         style={
@@ -2090,7 +2186,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
           ]
         }
       >
-        J’ai dépensé tout mon crédit, que faire ?
+        Comment ça marche ?
       </Text>
     </View>
   </View>,
@@ -2360,7 +2456,39 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
       }
     />
     <View
-      accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2.5}
+      style={
+        [
+          {
+            "height": 10,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
       accessibilityState={
         {
           "busy": undefined,
@@ -2408,7 +2536,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
           "width": "100%",
         }
       }
-      testID="J’ai dépensé tout mon crédit, que faire ?"
+      testID="Comment ça marche ?"
     >
       <View
         style={
@@ -2446,7 +2574,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
           ]
         }
       >
-        J’ai dépensé tout mon crédit, que faire ?
+        Comment ça marche ?
       </Text>
     </View>
   </View>,

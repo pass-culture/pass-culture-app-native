@@ -77,11 +77,7 @@ export function CreditHeader({
           )}
           {!!(isCreditEmpty && age) && <EmptyCredit age={age} />}
           <Spacer.Column numberOfSpaces={1} />
-          <CreditExplanation
-            isDepositExpired={isDepositExpired}
-            domainsCredit={domainsCredit}
-            age={age}
-          />
+          <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
         </React.Fragment>
       )}
     </HeaderWithGreyContainer>
