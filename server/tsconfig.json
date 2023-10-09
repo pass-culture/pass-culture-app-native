@@ -20,7 +20,7 @@
     "lib": [
       "es2021"
     ],
-    "strictNullChecks": true,
+    "strictNullChecks": true
   },
   "exclude": [
     "build/**",
