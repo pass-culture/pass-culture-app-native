@@ -51,12 +51,6 @@ export function Slider(props: Props) {
     return ['ArrowDown', 'ArrowLeft'].includes(key) ? -step : null
   }
 
-  useEffect(() => {
-    if (props.onValuesChange) {
-      props.onValuesChange(values)
-    }
-  }, [props, values])
-
   const updateCursor = (e: Event, cursor: string) => {
     const relativeStep = getRelativeStepFromKey((e as KeyboardEvent).key)
     if (relativeStep === null || ![LEFT_CURSOR, RIGHT_CURSOR].includes(cursor)) return
@@ -135,6 +129,14 @@ export function Slider(props: Props) {
     sliderContainerRef.current = ref
   }, [])
 
+  const handleValueChange = useCallback(
+    (nextValues: number[]) => {
+      props.onValuesChange?.(nextValues)
+      setValues(nextValues)
+    },
+    [props]
+  )
+
   return (
     <React.Fragment>
       {!!props.showValues && (
@@ -154,7 +156,7 @@ export function Slider(props: Props) {
           min={min}
           max={max}
           step={step}
-          onValuesChange={setValues}
+          onValuesChange={handleValueChange}
           onValuesChangeFinish={props.onValuesChangeFinish}
           sliderLength={props.sliderLength}
         />
