@@ -159,7 +159,7 @@ describe('CreditHeader', () => {
       renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
       expect(
         screen.getByText(
-          'Ton crédit sera remis à 0 aujourd’hui. Profite de ton crédit restant\u00a0!'
+          'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
         )
       ).toBeOnTheScreen()
     })

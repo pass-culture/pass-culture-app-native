@@ -33,7 +33,7 @@ describe('getCreditExpirationText', () => {
       userStatus: 'underageBeneficiary',
     })
     expect(text).toEqual(
-      'Ton crédit sera remis à 0 aujourd’hui. Profite de ton crédit restant\u00a0!'
+      'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
     )
   })
 
@@ -45,7 +45,7 @@ describe('getCreditExpirationText', () => {
       userStatus: 'underageBeneficiary',
     })
     expect(text).toEqual(
-      'Ton crédit sera remis à 0 dans 1 jour. Profite de ton crédit restant\u00a0!'
+      'Ton crédit sera remis à 0 dans 1 jour. Profite rapidement de ton crédit restant\u00a0!'
     )
   })
 
@@ -57,7 +57,7 @@ describe('getCreditExpirationText', () => {
       userStatus: 'underageBeneficiary',
     })
     expect(text).toEqual(
-      'Ton crédit sera remis à 0 dans 2 jours. Profite de ton crédit restant\u00a0!'
+      'Ton crédit sera remis à 0 dans 2 jours. Profite rapidement de ton crédit restant\u00a0!'
     )
   })
 
@@ -69,7 +69,7 @@ describe('getCreditExpirationText', () => {
       userStatus: 'underageBeneficiary',
     })
     expect(text).toEqual(
-      'Ton crédit sera remis à 0 dans 7 jours. Profite de ton crédit restant\u00a0!'
+      'Ton crédit sera remis à 0 dans 7 jours. Profite rapidement de ton crédit restant\u00a0!'
     )
   })
 })
