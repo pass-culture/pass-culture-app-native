@@ -199,6 +199,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         view: SearchView.Results,
         searchId,
         isAutocomplete: undefined,
+        isFromHistory: undefined,
       }
       pushWithSearch(partialSearchState)
     },

@@ -58,6 +58,7 @@ const searchParamsParser = {
   timeRange: JSON.parse,
   view: JSON.parse,
   minBookingsThreshold: JSON.parse,
+  isFromHistory: JSON.parse,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -209,6 +210,7 @@ const searchParamsStringifier = {
   timeRange: JSON.stringify,
   view: JSON.stringify,
   minBookingsThreshold: JSON.stringify,
+  isFromHistory: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {

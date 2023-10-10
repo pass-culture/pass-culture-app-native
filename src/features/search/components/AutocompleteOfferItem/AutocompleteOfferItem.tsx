@@ -101,6 +101,7 @@ export function AutocompleteOfferItem({
         ? [nativeCategories[0].value]
         : undefined,
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
+      isFromHistory: undefined,
     }
     addSearchHistory({
       query,
