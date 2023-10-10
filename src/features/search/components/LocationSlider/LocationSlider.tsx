@@ -15,7 +15,10 @@ type LocationSliderProps = {
 
 const formatKm = (km: number) => `${km}\u00a0km`
 
-export function LocationSlider({ defaultValue = MAX_RADIUS, onChange }: LocationSliderProps) {
+export function LocationSlider({
+  defaultValue = MAX_RADIUS,
+  onChange,
+}: Readonly<LocationSliderProps>) {
   const [internalValue, setInternalValue] = useState<number[]>([defaultValue])
   const radiusLabelId = uuidv4()
   const { sliderLength } = useGetFullscreenModalSliderLength()

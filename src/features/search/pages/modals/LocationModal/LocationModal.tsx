@@ -439,22 +439,19 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                           ) : null}
                         </React.Fragment>
                       ) : null}
-                      {item.label === RadioButtonLocation.AROUND_ME && (
+                      {item.label === RadioButtonLocation.AROUND_ME &&
+                      value === RadioButtonLocation.AROUND_ME ? (
                         <Controller
                           control={control}
                           name="aroundRadius"
-                          render={({ field: { value: aroundRadius, onChange } }) =>
-                            value === RadioButtonLocation.AROUND_ME ? (
-                              <LocationSlider
-                                defaultValue={aroundRadius}
-                                onChange={(v) => onChange(v[0])}
-                              />
-                            ) : (
-                              <React.Fragment />
-                            )
-                          }
+                          render={({ field: { value: aroundRadius, onChange } }) => (
+                            <LocationSlider
+                              defaultValue={aroundRadius}
+                              onChange={(v) => onChange(v[0])}
+                            />
+                          )}
                         />
-                      )}
+                      ) : null}
                       <Spacer.Column numberOfSpaces={6} />
                       {index + 1 < LOCATION_TYPES.length && <Separator.Horizontal />}
                     </Li>

@@ -17,7 +17,7 @@ const hoursLabelId = uuidv4()
 
 const formatHour = (hour: number) => `${hour}h`
 
-export function HoursSlider({ defaultValue, onChange }: HoursSliderProps) {
+export function HoursSlider({ defaultValue, onChange }: Readonly<HoursSliderProps>) {
   const [internalValue, setInternalValue] = useState<number[]>(defaultValue)
   const { sliderLength } = useGetFullscreenModalSliderLength()
   const [minHour, maxHour] = internalValue || [0, 24]
