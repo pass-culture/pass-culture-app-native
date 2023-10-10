@@ -71,7 +71,7 @@ appId: app.passculture.staging
     element: "Annuler ma réservation"
     direction: DOWN
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonCancelMyReservation.yml
-#- TODO : comprendre pourauoi le wording n'est pas détecté par MAESTRO
+#- TODO : comprendre pourquoi le wording n'est pas détecté par MAESTRO
 #- assertVisible:
 #    id: "cancel-annulation-message"
 - assertVisible: "Réservations terminées"
