@@ -16,7 +16,9 @@ async function getOfferById(offerId: number) {
     return await api.getNativeV1OfferofferId(offerId)
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
-      throw new OfferNotFoundError(offerId, { Screen: OfferNotFound })
+      // This happens when the offer has been rejected but it is still indexed on Algolia
+      // due to asynchronous reindexing of the back office
+      throw new OfferNotFoundError(offerId, { Screen: OfferNotFound, shouldCaptureAsInfo: true })
     }
     throw error
   }
