@@ -27,24 +27,17 @@ brew install facebook/fb/idb-companion
 idb_companion --udid <UDID-du-device-ou-vous-avez-build-lapp-en-local>
 ```
 
-## Listes des devices utilisés pour run les tests e2e :
 Pour obtenir l'UDID des devices physiques :
 
 ```bash
 adb devices
 ```
-Appareil physique branché en USB : 
-- Samsung Galaxy S9 (SM-G960F) && OS Android 10
 
 Pour obtenir l'UDID des devices virtuels :
 
 ```bash
 xcrun simctl list
 ```
-
-Appareil virtuel simulé en local
-- iPhone 14 Pro && OS 16.6.1
-
 
 Il est possible de ne pas ajouter l'UDID pour démarrer les tests, mais il faut sélectionner le device directement dans une liste de devices proposés.
 
@@ -67,8 +60,11 @@ maestro test .maestro/<nomDuTest.web.yml>
 # Lancer les tests avec l'utilisation de variables 
 maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e NEW_USERNAME=${NEW_USERNAME} -e NUMBER_PHONE=${NUMBER_PHONE} -e PASSWORD=${PASSWORD} .maestro/
 
-
 ---
+
+## Listes des devices utilisés pour run les tests e2e :
+- iPhone 14 Pro && OS 16.6.1
+- Samsung Galaxy S9 (SM-G960F) && OS Android 10
 
 ## Écrire un test
 
