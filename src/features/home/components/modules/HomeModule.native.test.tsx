@@ -4,6 +4,7 @@ import React from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   formattedExclusivityModule,
@@ -60,6 +61,30 @@ jest.mock('libs/geolocation/LocationWrapper', () => ({
 jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
   useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
+
+jest.mock('features/home/api/useVideoOffers')
+const mockUseVideoOffers = useVideoOffers as jest.Mock
+
+const offerFixture = {
+  offer: {
+    thumbUrl: 'http://thumbnail',
+    subcategoryId: 'CONCERT',
+  },
+  objectID: 12345,
+  venue: {
+    id: 5678,
+  },
+}
+const offerFixture2 = {
+  offer: {
+    thumbUrl: 'http://thumbnail',
+    subcategoryId: 'CONFERENCE',
+  },
+  objectID: 67890,
+  venue: {
+    id: 5432,
+  },
+}
 
 const defaultData: ModuleData = {
   playlistItems: offersFixture,
@@ -158,13 +183,14 @@ describe('<HomeModule />', () => {
     expect(screen.getByText('Tes évènements en ligne')).toBeOnTheScreen()
   })
 
-  // TODO(PC-23671): Fix this VideoModule test
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should display VideoModule', async () => {
-    renderHomeModule(videoModuleFixture)
-    await act(async () => {})
+  it('should display VideoModule', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture2] })
 
-    expect(screen.getByText('Découvre Lujipeka')).toBeOnTheScreen()
+    renderHomeModule(videoModuleFixture)
+
+    await screen.findByText('Découvre Lujipeka')
+    expect(screen.getByTestId('mobile-video-module')).toBeOnTheScreen()
   })
 
   it('should display ThematicHighlightModule', async () => {
