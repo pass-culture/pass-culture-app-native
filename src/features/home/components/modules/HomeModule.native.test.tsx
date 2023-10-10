@@ -65,26 +65,28 @@ jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
 jest.mock('features/home/api/useVideoOffers')
 const mockUseVideoOffers = useVideoOffers as jest.Mock
 
-const offerFixture = {
-  offer: {
-    thumbUrl: 'http://thumbnail',
-    subcategoryId: 'CONCERT',
+const offerFixture = [
+  {
+    offer: {
+      thumbUrl: 'http://thumbnail',
+      subcategoryId: 'CONCERT',
+    },
+    objectID: 12345,
+    venue: {
+      id: 5678,
+    },
   },
-  objectID: 12345,
-  venue: {
-    id: 5678,
+  {
+    offer: {
+      thumbUrl: 'http://thumbnail',
+      subcategoryId: 'CONFERENCE',
+    },
+    objectID: 67890,
+    venue: {
+      id: 5432,
+    },
   },
-}
-const offerFixture2 = {
-  offer: {
-    thumbUrl: 'http://thumbnail',
-    subcategoryId: 'CONFERENCE',
-  },
-  objectID: 67890,
-  venue: {
-    id: 5432,
-  },
-}
+]
 
 const defaultData: ModuleData = {
   playlistItems: offersFixture,
@@ -184,8 +186,8 @@ describe('<HomeModule />', () => {
   })
 
   it('should display VideoModule', async () => {
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture2] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[0]] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[1]] })
 
     renderHomeModule(videoModuleFixture)
 
