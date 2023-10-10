@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
@@ -27,7 +28,7 @@ type VenueModalHook = {
 const useVenueModal = (dismissModal: VoidFunction): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
-  const { dispatch } = useSearch()
+  const { dispatch, searchState } = useSearch()
 
   const doChangeVenue = useCallback((text: string) => {
     setVenueQuery(text)
@@ -44,14 +45,20 @@ const useVenueModal = (dismissModal: VoidFunction): VenueModalHook => {
     setVenueQuery(venue.label)
   }, [])
 
-  const doApplySearch = useCallback(() => {
+  const doApplySearch = () => {
     if (selectedVenue)
       dispatch({
-        type: 'SET_LOCATION_VENUE',
-        payload: selectedVenue as Venue,
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          locationFilter: {
+            locationType: LocationType.VENUE,
+            venue: selectedVenue as Venue,
+          },
+        },
       })
-    dismissModal()
-  }, [dismissModal, dispatch, selectedVenue])
+    dismissModal?.()
+  }
 
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery

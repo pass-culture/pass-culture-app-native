@@ -1,4 +1,5 @@
 import { initialSearchState } from 'features/search/context/reducer'
+import { LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
@@ -91,7 +92,7 @@ describe('useVenueModal', () => {
     expect(dismissMyModal).toHaveBeenCalledWith()
   })
   it('when select a venue and validate it should apply search to the context', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: dismissMyModal })
+    const { result } = renderHook(useVenueModal)
 
     await act(async () => {
       result.current.doChangeVenue(venue.label)
@@ -100,19 +101,25 @@ describe('useVenueModal', () => {
     await act(async () => {
       result.current.doApplySearch()
     })
-    expect(dismissMyModal).toHaveBeenCalledWith()
+    expect(dismissMyModal).not.toHaveBeenCalled()
     expect(mockStateDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION_VENUE',
-      payload: venue,
+      type: 'SET_STATE',
+      payload: {
+        ...mockSearchState,
+        locationFilter: {
+          locationType: LocationType.VENUE,
+          venue: venue,
+        },
+      },
     })
   })
   it('when nothing is to be search then search cannot be done', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: dismissMyModal })
+    const { result } = renderHook(useVenueModal)
 
     await act(async () => {
       result.current.doApplySearch()
     })
-    expect(dismissMyModal).toHaveBeenCalledWith()
+    expect(dismissMyModal).not.toHaveBeenCalled()
     expect(mockStateDispatch).not.toHaveBeenCalled()
   })
 })
