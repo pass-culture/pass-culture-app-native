@@ -107,6 +107,17 @@ describe('CreditHeader', () => {
         from: 'profile',
       })
     })
+
+    it('should display time left when credit expires soon', () => {
+      mockdate.set(new Date(today))
+      renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
+
+      expect(
+        screen.getByText(
+          'Ton crédit expire aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
+        )
+      ).toBeOnTheScreen()
+    })
   })
 
   describe('Beneficiary is underage', () => {
