@@ -30,8 +30,8 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
   const { showErrorSnackBar } = useSnackBarContext()
 
   const requestsWording = plural(remainingAttempts ?? 0, {
-    one: '# demande',
-    other: '# demandes',
+    singular: '# demande',
+    plural: '# demandes',
   })
 
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({

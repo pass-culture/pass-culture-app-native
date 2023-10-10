@@ -169,8 +169,8 @@ export const SearchResults: React.FC = () => {
   const numberOfResults =
     nbHits > 0
       ? plural(nbHits, {
-          one: '# résultat',
-          other: '# résultats',
+          singular: '# résultat',
+          plural: '# résultats',
         })
       : 'Pas de résultat'
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''

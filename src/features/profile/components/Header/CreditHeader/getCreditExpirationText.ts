@@ -14,7 +14,7 @@ export const getCreditExpirationText = (
     return 'Ton crédit sera remis à 0 aujourd’hui. Profite de ton crédit restant\u00a0!'
 
   return `Ton crédit sera remis à 0 dans ${daysLeft} ${plural(daysLeft, {
-    one: 'jour',
-    other: 'jours',
+    singular: 'jour',
+    plural: 'jours',
   })}. Profite de ton crédit restant\u00a0!`
 }

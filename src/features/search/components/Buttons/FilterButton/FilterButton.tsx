@@ -19,8 +19,8 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
   const accessibilityLabel =
     activeFilters > 0
       ? plural(activeFilters, {
-          one: `Voir tous les filtres\u00a0: # filtre actif`,
-          other: `Voir tous les filtres\u00a0: # filtres actifs`,
+          singular: `Voir tous les filtres\u00a0: # filtre actif`,
+          plural: `Voir tous les filtres\u00a0: # filtres actifs`,
         })
       : 'Voir tous les filtres'
   const { searchState, dispatch } = useSearch()

@@ -12,8 +12,8 @@ interface Props {
 
 export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   const numberOfResults = plural(nbHits, {
-    one: '# résultat',
-    other: '# résultats',
+    singular: '# résultat',
+    plural: '# résultats',
   })
 
   if (!nbHits) return <React.Fragment></React.Fragment>
