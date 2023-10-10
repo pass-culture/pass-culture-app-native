@@ -7,6 +7,11 @@ import useVenueModal from './useVenueModal'
 const venue: Venue = mockedSuggestedVenues[0]
 
 jest.useFakeTimers({ legacyFakeTimers: true })
+jest.mock('ui/hooks/useDebounceValue', () => ({
+  useDebounceValue: (value, delay) => value,
+}))
+
+const dismissMyModal: () => void = jest.fn()
 
 describe('useVenueModal', () => {
   it('when start it should return falsy state', () => {
@@ -41,5 +46,21 @@ describe('useVenueModal', () => {
     expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
     expect(result.current.isVenueNotSelected).toBeFalsy()
     expect(result.current.venueQuery.length).toBe(venue.label.length)
+  })
+  it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
+    const { result } = renderHook(useVenueModal, { initialProps: dismissMyModal })
+
+    await act(async () => {
+      result.current.doChangeVenue(venue.label)
+      result.current.doSetSelectedVenue(venue)
+    })
+
+    expect(dismissMyModal).not.toHaveBeenCalled()
+
+    await act(async () => {
+      result.current.doApplySearch()
+    })
+
+    expect(dismissMyModal).toHaveBeenCalled()
   })
 })
