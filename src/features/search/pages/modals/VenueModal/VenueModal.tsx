@@ -46,7 +46,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
           <ButtonPrimary
             wording="Valider le point de vente"
             disabled={isVenueNotSelected}
-            onPress={dismissModal}
+            onPress={doApplySearch}
           />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
         </React.Fragment>
