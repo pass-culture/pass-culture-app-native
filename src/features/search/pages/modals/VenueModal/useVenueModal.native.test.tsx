@@ -103,14 +103,8 @@ describe('useVenueModal', () => {
     })
     expect(dismissMyModal).not.toHaveBeenCalled()
     expect(mockStateDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: {
-        ...mockSearchState,
-        locationFilter: {
-          locationType: LocationType.VENUE,
-          venue: venue,
-        },
-      },
+      type: 'SET_LOCATION_VENUE',
+      payload: venue,
     })
   })
   it('when nothing is to be search then search cannot be done', async () => {
