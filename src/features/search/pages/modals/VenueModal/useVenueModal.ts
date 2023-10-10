@@ -28,7 +28,7 @@ type VenueModalHook = {
 const useVenueModal = (dismissModal: VoidFunction): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
-  const { dispatch, searchState } = useSearch()
+  const { dispatch } = useSearch()
 
   const doChangeVenue = useCallback((text: string) => {
     setVenueQuery(text)
@@ -48,14 +48,8 @@ const useVenueModal = (dismissModal: VoidFunction): VenueModalHook => {
   const doApplySearch = () => {
     if (selectedVenue)
       dispatch({
-        type: 'SET_STATE',
-        payload: {
-          ...searchState,
-          locationFilter: {
-            locationType: LocationType.VENUE,
-            venue: selectedVenue as Venue,
-          },
-        },
+        type: 'SET_LOCATION_VENUE',
+        payload: selectedVenue as Venue,
       })
     dismissModal?.()
   }
