@@ -64,7 +64,7 @@ platform :ios do
           --target-binary-version \"#{ENV['VERSION']}\" \
           --description \"#{escaped_release_notes}\" \
           --disable-duplicate-release-error \
-          --sourcemap-output \
+          --sourcemap-output-dir build/CodePush \
           --output-dir ./build"
       upload_sentry_sourceMaps_soft
     else
@@ -154,7 +154,7 @@ platform :android do
             --target-binary-version \"#{ENV['VERSION']}\" \
             --description \"#{escaped_release_notes}\" \
             --disable-duplicate-release-error \
-            --sourcemap-output \
+            --sourcemap-output-dir build/CodePush \
             --output-dir ./build"
       upload_sentry_sourceMaps_soft
     else
