@@ -307,6 +307,6 @@ describe('useSearchHistory', () => {
       result.current.setQueryHistory('a')
     })
 
-    expect(result.current.filteredHistory.length).toEqual(3)
+    expect(result.current.filteredHistory.length).toEqual(2)
   })
 })

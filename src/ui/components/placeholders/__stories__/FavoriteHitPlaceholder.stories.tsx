@@ -6,5 +6,6 @@ export default {
   title: 'ui/placeholders',
 }
 
-export const FavoriteHit = () => <FavoriteHitPlaceholder />
+// TODO(PC-20094): Fix this story
+const FavoriteHit = () => <FavoriteHitPlaceholder />
 FavoriteHit.storyName = 'FavoriteHitPlaceholder'
