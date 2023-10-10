@@ -103,7 +103,7 @@ export const SearchResults: React.FC = () => {
   } = useModal(false)
   const hasPosition = useHasPosition()
 
-  const activeFilters = useFilterCount(searchState)
+  const activeFiltersCount = useFilterCount(searchState)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -202,7 +202,7 @@ export const SearchResults: React.FC = () => {
           <Spacer.Row numberOfSpaces={5} />
           <Ul>
             <StyledLi>
-              <FilterButton activeFilters={activeFilters} />
+              <FilterButton activeFilters={activeFiltersCount} />
             </StyledLi>
             <StyledLi>
               <SingleFilterButton
