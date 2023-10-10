@@ -73,6 +73,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -87,10 +97,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -324,6 +334,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -338,10 +358,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -352,7 +372,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -590,6 +610,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -604,10 +634,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -618,7 +648,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -1094,6 +1124,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -1108,10 +1148,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -1122,7 +1162,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -1562,6 +1602,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -1576,10 +1626,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -1590,7 +1640,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -2030,6 +2080,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -2044,10 +2104,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -2058,7 +2118,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -2498,6 +2558,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -2512,10 +2582,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -2887,6 +2957,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -2901,10 +2981,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -3276,6 +3356,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -3290,10 +3380,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }

@@ -159,14 +159,24 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       ]
     }
   >
+    <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
     <Text
       style={
         [
           {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
           },
         ]
       }

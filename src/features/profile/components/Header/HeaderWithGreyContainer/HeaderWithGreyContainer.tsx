@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type PropsWithChildren = {
   title: string
@@ -22,7 +22,8 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       <PageHeader title={title} numberOfLines={2} />
       {!!subtitle && (
         <SubtitleContainer>
-          {typeof subtitle === 'string' ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : subtitle}
+          <Spacer.Column numberOfSpaces={1} />
+          {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
         </SubtitleContainer>
       )}
       {!!children && (
@@ -48,7 +49,3 @@ const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
     minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
   })
 )
-
-const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
