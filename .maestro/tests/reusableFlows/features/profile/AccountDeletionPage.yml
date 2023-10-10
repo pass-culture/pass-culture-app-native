@@ -1,0 +1,13 @@
+appId: app.passculture.staging
+---
+#AccountDeletionPage
+- assertVisible: "Ton compte a été désactivé"
+- assertVisible: "\U0001f622\_On est super triste de te voir partir."
+- assertVisible: "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver\
+    \ ton compte en te connectant."
+- assertVisible: "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass\
+    \ Culture."
+- assertVisible:
+          id: "Retourner à l’accueil"
+- assertVisible:
+          id: "Réactiver mon compte"

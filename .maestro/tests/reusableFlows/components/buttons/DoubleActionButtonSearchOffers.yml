@@ -1,0 +1,5 @@
+appId: app.passculture.staging
+---
+
+- tapOn: "Rechercher des offres"
+- tapOn: "Rechercher des offres" # pour sortir de la saisie

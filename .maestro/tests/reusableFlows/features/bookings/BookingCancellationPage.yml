@@ -1,0 +1,10 @@
+appId: app.passculture.staging
+---
+#BookingCancellationPage
+- assertVisible: "Tu es sur le point d’annuler"
+- assertVisible:
+      id: "Annuler ma réservation"
+- assertVisible:
+      id: "Retourner à ma réservation"
+
+

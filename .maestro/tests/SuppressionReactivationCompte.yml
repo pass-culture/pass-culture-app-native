@@ -1,0 +1,30 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- tapOn: "Informations personnelles"
+- assertVisible:
+    text: "Supprimer mon compte"
+    index: 1
+- tapOn: "Supprimer mon compte"
+- runFlow: reusableFlows/features/Profile/AccountDeletionConfirmationPage.yml
+- tapOn: "Supprimer mon compte"
+- runFlow: reusableFlows/features/Profile/AccountDeletionPage.yml
+- tapOn: "Retourner à l’accueil"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- assertVisible: "Se connecter"
+- runFlow: reusableFlows/features/auth/ToLogin.yml
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/features/auth/AccountDeactivationPage.yml
+- tapOn: "Réactiver mon compte"
+- runFlow: reusableFlows/features/auth/AccountReactivationPage.yml
+- tapOn: "Découvrir le catalogue"
+- assertVisible: "Bonjour Nicolas"
+- assertVisible: "Tu as 300\_€ sur ton pass"
+- tapOn: "Découvrir le catalogue"
+- runFlow: reusableFlows/StopApp.yml # Stop App

@@ -1,0 +1,9 @@
+appId: app.passculture.staging
+---
+- assertVisible: "Connecte-toi"
+- scrollUntilVisible:
+    element: "Se connecter"
+    direction: DOWN
+
+- tapOn: "Se connecter"
+- tapOn: "Se connecter" # Sortir de la saisie

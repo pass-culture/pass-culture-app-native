@@ -1,0 +1,10 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonConnect.yml
+- tapOn: "Afficher le mot de passe"
+- tapOn: "Afficher le mot de passe" # pour sortir de la saisie
+- tapOn: "Cacher le mot de passe"
+- runFlow: reusableFlows/StopApp.yml # Stop App
