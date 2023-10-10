@@ -15,10 +15,14 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  check-proxy-version:
+    uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
   check-server-folder-changes:
     name: Check server folder changes
+    needs: check-proxy-version
     uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
     with:
+      base_tag: ${{ needs.check-proxy-version.outputs.proxy_version }}
       folder: server
   check-storybook-folder-changes:
     name: Check storybook folder changes

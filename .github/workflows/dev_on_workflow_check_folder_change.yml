@@ -9,6 +9,9 @@ on:
       folder:
         type: string
         required: true
+      base_tag:
+        type: string
+        required: false
 
 jobs:
   check-folder-changes:
@@ -20,9 +23,14 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - id: get-git-tag
+        if: inputs.base_sha
+        name: Get last git tag that match server proxy version
+        run: echo base_tag=$(git tag --sort=-taggerdate | grep ${{ inputs.base_tag }} | head -n1) >> $GITHUB_OUTPUT
       - id: folder-check-changed-files
         uses: tj-actions/changed-files@v39
         with:
+          base_sha: ${{ steps.get-git-tag.outputs.base_tag }}
           files: |
             ${{ inputs.folder }}/**
       - id: dump-folder-check-changed-files
