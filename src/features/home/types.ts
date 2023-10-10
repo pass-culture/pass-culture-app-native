@@ -315,34 +315,10 @@ export const isOffersModule = (module: HomepageModule): module is OffersModule =
   return module.type === HomepageModuleType.OffersModule
 }
 
-export const isRecommendedOffersModule = (
-  module: HomepageModule
-): module is RecommendedOffersModule => {
-  return module.type === HomepageModuleType.RecommendedOffersModule
-}
-
-export const isBusinessModule = (module: HomepageModule): module is BusinessModule => {
-  return module.type === HomepageModuleType.BusinessModule
-}
-
 export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
   return module.type === HomepageModuleType.ExclusivityModule
 }
 
 export const isHighlightOfferModule = (module: HomepageModule): module is HighlightOfferModule => {
   return module.type === HomepageModuleType.HighlightOfferModule
-}
-
-export const isThematicHighlightModule = (
-  module: HomepageModule
-): module is ThematicHighlightModule => {
-  return module.type === HomepageModuleType.ThematicHighlightModule
-}
-
-export const isCategoryListModule = (module: HomepageModule): module is CategoryListModule => {
-  return module.type === HomepageModuleType.CategoryListModule
-}
-
-export const isVideoModule = (module: HomepageModule): module is VideoModule => {
-  return module.type === HomepageModuleType.VideoModule
 }
