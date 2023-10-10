@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -26,6 +27,8 @@ const mockUseIsUserUnderageBeneficiary = jest
 
 const dateInPast = '2022-08-01T18:00:00'
 const dateInFuture = '2100-02-09T11:17:14.786670'
+const today = '2023-02-10T21:00:00'
+const tomorrow = '2023-02-11T21:00:00'
 
 describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
@@ -109,6 +112,7 @@ describe('CreditHeader', () => {
   describe('Beneficiary is underage', () => {
     beforeEach(() => {
       mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+      mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
     })
 
     it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
@@ -148,6 +152,16 @@ describe('CreditHeader', () => {
       renderCreditHeader({ age: 15 })
 
       expect(screen.queryByText('À venir pour tes 16 ans : + 30 €')).toBeOnTheScreen()
+    })
+
+    it('should display time left when credit expires soon', () => {
+      mockdate.set(new Date(today))
+      renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
+      expect(
+        screen.getByText(
+          'Ton crédit sera remis à 0 aujourd’hui. Profite de ton crédit restant\u00a0!'
+        )
+      ).toBeOnTheScreen()
     })
   })
 })
