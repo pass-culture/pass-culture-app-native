@@ -4,16 +4,26 @@ import { Venue } from 'features/venue/types'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 type VenueModalHook = {
-  doChangeVenue: (arg0: string) => void
+  doChangeVenue: (text: string) => void
   doResetVenue: () => void
-  doSetSelectedVenue: (arg0: Venue) => void
+  doSetSelectedVenue: (venue: Venue) => void
+  doApplySearch: () => void
   isQueryProvided: boolean
   shouldShowSuggestedVenues: boolean
   isVenueNotSelected: boolean
   venueQuery: string
 }
 
-const useVenueModal = (): VenueModalHook => {
+/**
+ * Build the logic of the modal so buttons are only shown
+ * when the input venue query has been filled
+ * by a click on the selected dropdown venue list
+ * It can then apply the "search" by changing the search context
+ *
+ * @param dismissModal callback to close modal passed by parent component
+ * @returns
+ */
+const useVenueModal = (dismissModal: () => void | null): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
 
@@ -31,6 +41,10 @@ const useVenueModal = (): VenueModalHook => {
     setVenueQuery(venue.label)
   }
 
+  const doApplySearch = () => {
+    dismissModal?.()
+  }
+
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
   const shouldShowSuggestedVenues = isQueryProvided && !selectedVenue
@@ -40,6 +54,7 @@ const useVenueModal = (): VenueModalHook => {
     doChangeVenue,
     doResetVenue,
     doSetSelectedVenue,
+    doApplySearch,
     isQueryProvided,
     shouldShowSuggestedVenues,
     isVenueNotSelected,

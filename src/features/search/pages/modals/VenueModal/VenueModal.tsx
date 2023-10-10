@@ -23,10 +23,11 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     doChangeVenue,
     doResetVenue,
     doSetSelectedVenue,
+    doApplySearch,
     shouldShowSuggestedVenues,
     isVenueNotSelected,
     venueQuery,
-  } = useVenueModal()
+  } = useVenueModal(dismissModal)
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
@@ -37,7 +38,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       title="Point de vente"
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
-      onRightIconPress={dismissModal}
+      onRightIconPress={doApplySearch}
       isUpToStatusBar
       scrollEnabled={false}
       fixedModalBottom={
