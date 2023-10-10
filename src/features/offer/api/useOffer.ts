@@ -5,6 +5,7 @@ import { ApiError } from 'api/apiHelpers'
 import { OfferResponse } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { OfferNotFoundError } from 'libs/monitoring'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 async function getOfferById(offerId: number) {
@@ -21,7 +22,12 @@ async function getOfferById(offerId: number) {
   }
 }
 
-export const useOffer = ({ offerId }: { offerId: number }) =>
-  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () =>
-    offerId ? getOfferById(offerId) : undefined
+export const useOffer = ({ offerId }: { offerId: number }) => {
+  const netInfo = useNetInfoContext()
+
+  return useQuery<OfferResponse | undefined>(
+    [QueryKeys.OFFER, offerId],
+    () => (offerId ? getOfferById(offerId) : undefined),
+    { enabled: !!netInfo.isConnected }
   )
+}
