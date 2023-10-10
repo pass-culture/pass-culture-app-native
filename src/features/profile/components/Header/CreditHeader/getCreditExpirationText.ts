@@ -2,10 +2,18 @@ import { differenceInDays } from 'date-fns'
 
 import { plural } from 'libs/plural'
 
-export const getCreditExpirationText = (
-  depositExpirationDate: Date,
-  baseDate: Date = new Date()
-): string | undefined => {
+type UserStatus = 'beneficiary' | 'underageBeneficiary'
+type Args = {
+  depositExpirationDate: Date
+  baseDate?: Date
+  userStatus?: UserStatus
+}
+
+export const getCreditExpirationText = ({
+  depositExpirationDate,
+  baseDate = new Date(),
+  userStatus,
+}: Args): string | undefined => {
   const daysLeft = differenceInDays(depositExpirationDate, baseDate)
 
   if (daysLeft > 7 || daysLeft < 0) return
