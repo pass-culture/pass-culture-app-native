@@ -12,7 +12,7 @@ import { LENGTH_S } from 'ui/theme'
 
 type VenuesModuleProps = {
   moduleId: string
-  display: DisplayParametersFields
+  displayParameters: DisplayParametersFields
   homeEntryId: string | undefined
   index: number
   data?: ModuleData
@@ -25,13 +25,13 @@ const keyExtractor = (item: VenueHit) => item.id.toString()
 
 export const VenuesModule = ({
   moduleId,
-  display,
+  displayParameters,
   index,
   homeEntryId,
   data,
 }: VenuesModuleProps) => {
   const { position } = useHomePosition()
-  const moduleName = display.title
+  const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
 
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
@@ -49,7 +49,7 @@ export const VenuesModule = ({
     [position, moduleName, moduleId, homeEntryId]
   )
 
-  const shouldModuleBeDisplayed = playlistItems.length > display.minOffers
+  const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -67,8 +67,8 @@ export const VenuesModule = ({
   return (
     <PassPlaylist
       testID="offersModuleList"
-      title={display.title}
-      subtitle={display.subtitle}
+      title={displayParameters.title}
+      subtitle={displayParameters.subtitle}
       data={playlistItems || []}
       itemHeight={ITEM_HEIGHT}
       itemWidth={ITEM_WIDTH}
