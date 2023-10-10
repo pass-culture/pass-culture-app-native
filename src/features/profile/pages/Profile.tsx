@@ -61,11 +61,14 @@ const OnlineProfile: React.FC = () => {
     permissionState === GeolocPermissionState.GRANTED
   )
 
+  const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
   const isDepositExpired = user?.depositExpirationDate
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
+  const isExpiredOrCreditEmptyWithNoUpcomingCredit =
+    userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty)
 
-  const shouldDisplayTutorial = !user?.isBeneficiary || isDepositExpired
+  const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
 
   const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
     userAge && userAge < 19 && userAge > 14

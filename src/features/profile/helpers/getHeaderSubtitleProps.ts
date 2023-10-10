@@ -9,14 +9,14 @@ export const getHeaderSubtitleProps = ({
   isDepositExpired: boolean
   depositExpirationDate?: string
 }) => {
-  if (isCreditEmpty) return { startSubtitle: 'Tu as dépensé tout ton crédit' }
-
   const displayedExpirationDate = depositExpirationDate
     ? formatToSlashedFrenchDate(setDateOneDayEarlier(depositExpirationDate))
     : ''
 
   if (isDepositExpired)
     return { startSubtitle: 'Ton crédit a expiré le', boldEndSubtitle: displayedExpirationDate }
+
+  if (isCreditEmpty) return { startSubtitle: 'Tu as dépensé tout ton crédit' }
 
   return {
     startSubtitle: 'Profite de ton crédit jusqu’au',

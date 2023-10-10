@@ -9,7 +9,11 @@ import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
 import { Spacer, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
@@ -27,6 +31,7 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
 }: CreditHeaderProps) {
+  const { homeEntryIdFreeOffers } = useRemoteConfigContext()
   const depositAmount = useDepositAmountsByAge()
   const incomingCreditLabelsMap: Record<number, { label: string; highlightedLabel: string }> = {
     15: {
@@ -42,13 +47,14 @@ export function CreditHeader({
       highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
     },
   }
-  const name = `${firstName} ${lastName}`
 
+  if (!domainsCredit || !age) return null
+
+  const name = `${firstName} ${lastName}`
+  const isCreditEmpty = domainsCredit.all.remaining === 0
   const isDepositExpired = depositExpirationDate
     ? new Date(depositExpirationDate) < new Date()
     : false
-
-  const isCreditEmpty = domainsCredit?.all.remaining === 0
 
   const subtitleProps = getHeaderSubtitleProps({
     isCreditEmpty,
@@ -56,9 +62,29 @@ export function CreditHeader({
     depositExpirationDate,
   })
 
+  const isExpiredOrCreditEmptyWithNoUpcomingCredit =
+    age >= 18 && (isDepositExpired || isCreditEmpty)
+
   return (
-    <HeaderWithGreyContainer title={name} subtitle={<Subtitle {...subtitleProps} />}>
-      {!!domainsCredit && (
+    <HeaderWithGreyContainer
+      title={name}
+      subtitle={<Subtitle {...subtitleProps} />}
+      withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
+      {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (
+        <InternalTouchableLink
+          navigateTo={{
+            screen: 'ThematicHome',
+            params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
+          }}>
+          <GenericBanner LeftIcon={BicolorOffers}>
+            <Typo.ButtonText>L’aventure continue&nbsp;!</Typo.ButtonText>
+            <Spacer.Column numberOfSpaces={1} />
+            <StyledBody numberOfLines={3}>
+              Tu peux profiter d’offres gratuites autour de toi.
+            </StyledBody>
+          </GenericBanner>
+        </InternalTouchableLink>
+      ) : (
         <React.Fragment>
           {!(isDepositExpired || isCreditEmpty) && (
             <React.Fragment>
@@ -66,7 +92,7 @@ export function CreditHeader({
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
-          {!!(age && incomingCreditLabelsMap[age] && !isCreditEmpty) && (
+          {!!(incomingCreditLabelsMap[age] && !isCreditEmpty) && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Typo.Body>
@@ -75,7 +101,7 @@ export function CreditHeader({
               </Typo.Body>
             </React.Fragment>
           )}
-          {!!(isCreditEmpty && age) && <EmptyCredit age={age} />}
+          {!!isCreditEmpty && <EmptyCredit age={age} />}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
         </React.Fragment>
@@ -86,4 +112,8 @@ export function CreditHeader({
 
 const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
+}))
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

@@ -33,7 +33,7 @@ export const EmptyCredit = ({ age }: { age: number }) => {
         wording="Profite d’offres gratuites"
         navigateTo={{
           screen: 'ThematicHome',
-          params: { homeId: homeEntryIdFreeOffers, from: 'EmptyCredit' },
+          params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
         }}
         icon={WhiteOffers}
       />
