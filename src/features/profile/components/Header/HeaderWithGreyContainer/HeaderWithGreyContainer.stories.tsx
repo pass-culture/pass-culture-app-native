@@ -41,6 +41,7 @@ const Row = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
 })
+
 export const WithComponentAsSubtitle = Template.bind({})
 WithComponentAsSubtitle.args = {
   title: 'Jean Dubois',
@@ -50,6 +51,12 @@ WithComponentAsSubtitle.args = {
       <Typo.ButtonText>{formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}</Typo.ButtonText>
     </Row>
   ),
+}
+
+export const WithInfoBanner = Template.bind({})
+WithInfoBanner.args = {
+  title: 'Jean Dubois',
+  bannerText: 'Some really important information',
 }
 
 export const WithLargeContent = Template.bind({})

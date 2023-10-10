@@ -6,9 +6,12 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
+import { getCreditExpirationText } from 'features/profile/components/Header/CreditHeader/getCreditExpirationText'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
+import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
+import { setDateOneDayEarlier } from 'libs/dates'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
@@ -47,10 +50,11 @@ export function CreditHeader({
       highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
     },
   }
+  const name = `${firstName} ${lastName}`
+  const IsUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   if (!domainsCredit || !age) return null
 
-  const name = `${firstName} ${lastName}`
   const isCreditEmpty = domainsCredit.all.remaining === 0
   const isDepositExpired = depositExpirationDate
     ? new Date(depositExpirationDate) < new Date()
@@ -64,10 +68,15 @@ export function CreditHeader({
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
     age >= 18 && (isDepositExpired || isCreditEmpty)
+  const bannerText =
+    IsUserUnderageBeneficiary && depositExpirationDate
+      ? getCreditExpirationText(new Date(setDateOneDayEarlier(depositExpirationDate)))
+      : undefined
 
   return (
     <HeaderWithGreyContainer
       title={name}
+      bannerText={bannerText}
       subtitle={<Subtitle {...subtitleProps} />}
       withGreyContainer={!isExpiredOrCreditEmptyWithNoUpcomingCredit}>
       {isExpiredOrCreditEmptyWithNoUpcomingCredit ? (

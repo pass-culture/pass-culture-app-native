@@ -1,19 +1,23 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type PropsWithChildren = {
   title: string
   subtitle?: ReactNode | string
   withGreyContainer?: boolean
+  bannerText?: string
   children: React.ReactNode
 }
 
 export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   title,
   subtitle,
+  bannerText,
   children,
   withGreyContainer = true,
 }) => {
@@ -25,6 +29,12 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
           <Spacer.Column numberOfSpaces={1} />
           {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
         </SubtitleContainer>
+      )}
+      {!!bannerText && (
+        <BannerContainer>
+          <InfoBanner message={bannerText} icon={Info} />
+          <Spacer.Column numberOfSpaces={6} />
+        </BannerContainer>
       )}
       {!!children && (
         <GreyContainer withGreyContainer={withGreyContainer}>{children}</GreyContainer>
@@ -49,3 +59,6 @@ const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
     minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
   })
 )
+const BannerContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
