@@ -103,6 +103,7 @@ export const SearchLocationModal = ({
         payload: {
           ...searchState,
           locationFilter: { place: selectedPlace, locationType: LocationType.PLACE, aroundRadius },
+          offerTypes: { ...searchState.offerTypes, isDigital: !!includeDigitalOffers },
         },
       })
       analytics.logUserSetLocation('search')
@@ -113,6 +114,7 @@ export const SearchLocationModal = ({
         payload: {
           ...searchState,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
+          offerTypes: { ...searchState.offerTypes, isDigital: !!includeDigitalOffers },
         },
       })
     }
