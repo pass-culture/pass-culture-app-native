@@ -18,7 +18,7 @@
     "node": "18"
   },
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc --build && cp package.json build",
     "predeploy": "yarn build",
     "deploy": "gcloud app deploy --quiet",
     "deploy:testing": "cat .env.testing > .env && sed -i.back -e '/web-proxy-testing/! s/web-proxy/web-proxy-testing/g' app.yaml && yarn deploy",
