@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
@@ -26,6 +28,7 @@ type VenueModalHook = {
 const useVenueModal = (dismissModal: () => void | null): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
+  const { dispatch, searchState } = useSearch()
 
   const doChangeVenue = (text: string) => {
     setVenueQuery(text)
@@ -42,6 +45,17 @@ const useVenueModal = (dismissModal: () => void | null): VenueModalHook => {
   }
 
   const doApplySearch = () => {
+    if (selectedVenue)
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          locationFilter: {
+            locationType: LocationType.VENUE,
+            venue: selectedVenue as Venue,
+          },
+        },
+      })
     dismissModal?.()
   }
 

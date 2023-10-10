@@ -1,3 +1,5 @@
+import { initialSearchState } from 'features/search/context/reducer'
+import { LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
@@ -9,6 +11,14 @@ const venue: Venue = mockedSuggestedVenues[0]
 jest.useFakeTimers({ legacyFakeTimers: true })
 jest.mock('ui/hooks/useDebounceValue', () => ({
   useDebounceValue: (value, delay) => value,
+}))
+const mockSearchState = initialSearchState
+const mockStateDispatch = jest.fn()
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockStateDispatch,
+  }),
 }))
 
 const dismissMyModal: () => void = jest.fn()
@@ -62,5 +72,36 @@ describe('useVenueModal', () => {
     })
 
     expect(dismissMyModal).toHaveBeenCalled()
+  })
+  it('when select a venue and validate it should apply search to the context', async () => {
+    const { result } = renderHook(useVenueModal)
+
+    await act(async () => {
+      result.current.doChangeVenue(venue.label)
+      result.current.doSetSelectedVenue(venue)
+    })
+    await act(async () => {
+      result.current.doApplySearch()
+    })
+    expect(dismissMyModal).not.toHaveBeenCalled()
+    expect(mockStateDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        ...mockSearchState,
+        locationFilter: {
+          locationType: LocationType.VENUE,
+          venue: venue,
+        },
+      },
+    })
+  })
+  it('when nothing is to be search then search cannot be done', async () => {
+    const { result } = renderHook(useVenueModal)
+
+    await act(async () => {
+      result.current.doApplySearch()
+    })
+    expect(dismissMyModal).not.toHaveBeenCalled()
+    expect(mockStateDispatch).not.toHaveBeenCalled()
   })
 })
