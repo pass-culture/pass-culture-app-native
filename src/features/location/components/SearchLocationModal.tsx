@@ -55,7 +55,7 @@ export const SearchLocationModal = ({
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const [aroundRadius, setAroundRadius] = useState(100)
+  const [aroundRadius, setAroundRadius] = useState(50)
   const [includeDigitalOffers, setIncludeDigitalOffers] = useState(false)
 
   const runGeolocationDialogs = useCallback(async () => {
