@@ -7,7 +7,7 @@ import { getPriceAsNumber } from 'features/search/helpers/getPriceAsNumber/getPr
 import { getPriceDescription } from 'features/search/helpers/getPriceDescription/getPriceDescription'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { OrderPrice } from 'ui/svg/icons/OrderPrice'
+import { Code } from 'ui/svg/icons/Code'
 
 type Props = {
   onClose?: VoidFunction
@@ -31,7 +31,7 @@ export const Price = ({ onClose }: Props) => {
   return (
     <React.Fragment>
       <FilterRow
-        icon={OrderPrice}
+        icon={Code}
         title="Prix"
         description={getPriceDescription(minPrice, maxPrice)}
         onPress={onPress}
