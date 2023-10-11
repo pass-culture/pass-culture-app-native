@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 
 import { env } from 'libs/environment'
+import { ReCaptchaInternalError } from 'libs/recaptcha/errors'
 
 import { useCaptcha } from './useCaptcha'
 
 type Props = {
-  onError: (error: string) => void
+  onError: (errorCode: ReCaptchaInternalError, error: string) => void
   onExpire: () => void
   onSuccess: (token: string) => void
   isVisible: boolean
@@ -35,7 +36,10 @@ export function ReCaptcha(props: Props) {
   }
 
   function onRecaptchaErrorCallback() {
-    props.onError('reCAPTCHA error: error-callback of widget called')
+    props.onError(
+      'NetworkError',
+      'reCAPTCHA error: error-callback of widget called, usually network connectivity'
+    )
   }
 
   useEffect(() => {
@@ -47,7 +51,10 @@ export function ReCaptcha(props: Props) {
       numberOfRetries = numberOfRetries + 1
       if (numberOfRetries > 15) {
         clearInterval(intervalId)
-        props.onError('reCAPTCHA error: Number of retries exceeded')
+        props.onError(
+          'NumberOfRenderRetriesExceeded',
+          'reCAPTCHA error: Number of retries render exceeded'
+        )
         return
       }
 
@@ -80,7 +87,8 @@ export function ReCaptcha(props: Props) {
             grecaptcha.execute()
             clearInterval(intervalId)
           } catch (error) {
-            if (error instanceof Error) props.onError('reCAPTCHA error: ' + error.message)
+            if (error instanceof Error)
+              props.onError('UnknownError', 'reCAPTCHA error: ' + error.message)
           }
         }
       }

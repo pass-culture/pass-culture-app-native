@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -64,7 +65,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     setIsDoingReCaptchaChallenge(false)
   }, [])
 
-  const onReCaptchaError = useCallback((error: string) => {
+  const onReCaptchaError = useCallback((errorCode: ReCaptchaError, error: string | undefined) => {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
     captureMonitoringError(error, 'AcceptCguOnReCaptchaError')
@@ -99,7 +100,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       {!!settings?.isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
-          onError={onReCaptchaError}
+          onError={(errorCode, error) => onReCaptchaError(errorCode, error)}
           onExpire={onReCaptchaExpire}
           onSuccess={onReCaptchaSuccess}
           isVisible={isDoingReCaptchaChallenge}
