@@ -67,10 +67,12 @@ const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }
   size: theme.icons.sizes.small,
 }))``
 
+const MA_POSITION_WIDTH = 74
+
 const LocationTitle = styled(Typo.Caption).attrs({
   numberOfLines: 1,
 })({
-  maxWidth: 74, // max width corresponds to the size of "Ma position" state.
+  maxWidth: MA_POSITION_WIDTH,
 })
 
 const LocationButton = styled(TouchableOpacity)({
