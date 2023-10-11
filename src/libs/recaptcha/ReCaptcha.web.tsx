@@ -37,7 +37,7 @@ export function ReCaptcha(props: Props) {
 
   function onRecaptchaErrorCallback() {
     props.onError(
-      'NetworkError',
+      ReCaptchaInternalError.NetworkError,
       'reCAPTCHA error: error-callback of widget called, usually network connectivity'
     )
   }
@@ -52,7 +52,7 @@ export function ReCaptcha(props: Props) {
       if (numberOfRetries > 15) {
         clearInterval(intervalId)
         props.onError(
-          'NumberOfRenderRetriesExceeded',
+          ReCaptchaInternalError.NumberOfRenderRetriesExceeded,
           'reCAPTCHA error: Number of retries render exceeded'
         )
         return
@@ -88,7 +88,10 @@ export function ReCaptcha(props: Props) {
             clearInterval(intervalId)
           } catch (error) {
             if (error instanceof Error)
-              props.onError('UnknownError', 'reCAPTCHA error: ' + error.message)
+              props.onError(
+                ReCaptchaInternalError.UnknownError,
+                'reCAPTCHA error: ' + error.message
+              )
           }
         }
       }
