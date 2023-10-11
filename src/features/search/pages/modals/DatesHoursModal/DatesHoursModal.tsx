@@ -25,7 +25,7 @@ import { Slider } from 'ui/components/inputs/Slider'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
@@ -312,7 +312,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                   />
                 )}
                 <Spacer.Column numberOfSpaces={6} />
-                <HorizontalSeparator />
+                <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={6} />
               </React.Fragment>
             )}

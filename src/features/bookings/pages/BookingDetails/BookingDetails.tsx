@@ -32,7 +32,7 @@ import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimens
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -188,7 +188,7 @@ export function BookingDetails() {
             {!!shouldDisplayItineraryButton && (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={4} />
-                <HorizontalSeparator />
+                <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={4} />
                 <SeeItineraryButton
                   externalNav={{

@@ -29,7 +29,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning as WarningDefault } from 'ui/svg/icons/BicolorWarning'
@@ -80,7 +80,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           onSelect={onSelectScreenName}
         />
         <Spacer.Column numberOfSpaces={2} />
-        <HorizontalSeparator />
+        <Separator.Horizontal />
       </React.Fragment>
     )
   }
@@ -247,7 +247,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             <StyledCaption>{config.description}</StyledCaption>
           </PaddingContainer>
         )}
-        <HorizontalSeparator />
+        <Separator.Horizontal />
       </React.Fragment>
     )
   }

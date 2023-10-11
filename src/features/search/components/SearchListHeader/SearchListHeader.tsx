@@ -23,7 +23,7 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Playlist } from 'ui/components/Playlist'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
@@ -189,7 +189,7 @@ const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
 })
 
-const StyledSeparator = styled(HorizontalSeparator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   width: 'auto',
   marginLeft: getSpacing(6),
   marginRight: getSpacing(6),

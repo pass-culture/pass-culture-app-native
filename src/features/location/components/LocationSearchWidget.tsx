@@ -6,7 +6,7 @@ import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/geolocation'
 import { useModal } from 'ui/components/modals/useModal'
-import { VerticalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -33,7 +33,7 @@ export const LocationSearchWidget = () => {
 
   return (
     <Container>
-      <VerticalSeparator />
+      <Separator.Vertical />
       <Spacer.Row numberOfSpaces={2} />
       <LocationButton onPress={showLocationModal} testID="Ouvrir la modale de localisation">
         {isWidgetHighlighted ? <LocationPointerFilled /> : <LocationPointerNotFilled />}

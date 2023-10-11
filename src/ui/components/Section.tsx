@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { HorizontalSeparator } from './Separator'
+import { Separator } from './Separator'
 
 type SectionProps = PropsWithChildren<{
   title?: string
@@ -15,7 +15,7 @@ export function Section(props: SectionProps) {
     <Container>
       {!!props.title && <StyledCaption>{props.title}</StyledCaption>}
       <Spacer.Column numberOfSpaces={2} />
-      <HorizontalSeparator />
+      <Separator.Horizontal />
       {props.children}
     </Container>
   )

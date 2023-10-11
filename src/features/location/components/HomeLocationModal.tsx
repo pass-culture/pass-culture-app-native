@@ -8,7 +8,7 @@ import { GeolocPermissionState } from 'libs/geolocation'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
@@ -102,7 +102,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <HorizontalSeparator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}

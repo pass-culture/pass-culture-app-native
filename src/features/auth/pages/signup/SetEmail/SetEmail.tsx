@@ -23,7 +23,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
@@ -103,7 +103,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         render={NewsletterCheckboxControlled}
       />
       <Spacer.Column numberOfSpaces={10} />
-      <HorizontalSeparator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={8} />
       <CaptionNeutralInfo>
         Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la

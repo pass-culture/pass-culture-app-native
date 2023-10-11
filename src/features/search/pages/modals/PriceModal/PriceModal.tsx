@@ -25,7 +25,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -287,7 +287,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           )}
         />
         <Spacer.Column numberOfSpaces={6} />
-        <HorizontalSeparator />
+        <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         {!!isLoggedInAndBeneficiary && (
           <Controller
@@ -302,7 +302,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                   testID="limitCreditSearch"
                 />
                 <Spacer.Column numberOfSpaces={6} />
-                <HorizontalSeparator />
+                <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={6} />
               </React.Fragment>
             )}

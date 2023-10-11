@@ -13,7 +13,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { SectionRow } from 'ui/components/SectionRow'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -109,7 +109,7 @@ export function PersonalData() {
   )
 }
 
-const StyledSeparator = styled(HorizontalSeparator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
 })
 

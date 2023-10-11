@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { SectionRow } from 'ui/components/SectionRow'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing } from 'ui/theme'
 
 const StyledSectionRow = styled(SectionRow)<{ noTopMargin?: boolean }>(({ noTopMargin }) => ({
@@ -43,7 +43,7 @@ const sections = [
 export function Accessibility() {
   return (
     <PageProfileSection title="Accessibilité">
-      <AccessibilityList items={sections} Separator={<HorizontalSeparator />} />
+      <AccessibilityList items={sections} Separator={<Separator.Horizontal />} />
     </PageProfileSection>
   )
 }

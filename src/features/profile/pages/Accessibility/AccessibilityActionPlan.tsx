@@ -6,7 +6,7 @@ import { ContactSupportButton } from 'features/profile/components/Buttons/Contac
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -377,6 +377,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,
 }))
 
-const StyledSeparator = styled(HorizontalSeparator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),
 })

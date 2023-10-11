@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface SeparatorWithTextProps {
@@ -27,7 +27,7 @@ const StyledLabel = styled(Typo.Caption)({
   marginHorizontal: getSpacing(2.5),
 })
 
-const StyledSeparator = styled(HorizontalSeparator)(({ theme }) => ({
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.greySemiDark,
 }))

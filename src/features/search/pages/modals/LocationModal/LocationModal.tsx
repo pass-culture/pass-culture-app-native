@@ -33,7 +33,7 @@ import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -487,7 +487,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                         />
                       )}
                       <Spacer.Column numberOfSpaces={6} />
-                      {index + 1 < LOCATION_TYPES.length && <HorizontalSeparator />}
+                      {index + 1 < LOCATION_TYPES.length && <Separator.Horizontal />}
                     </Li>
                   ))}
                 </StyledVerticalUl>

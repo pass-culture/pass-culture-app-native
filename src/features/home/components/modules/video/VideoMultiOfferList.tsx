@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
-import { HorizontalSeparator } from 'ui/components/Separator'
+import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Spacer, getSpacing } from 'ui/theme'
 
@@ -48,7 +48,7 @@ const ItemSeparatorContainer = styled.View({
 function ItemSeparatorComponent() {
   return (
     <ItemSeparatorContainer>
-      <HorizontalSeparator />
+      <Separator.Horizontal />
     </ItemSeparatorContainer>
   )
 }
