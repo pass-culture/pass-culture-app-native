@@ -19,8 +19,8 @@ export function PhoneValidationTooManySMSSent() {
   const hoursUntilAllowedRetry = Math.max(0, timeDiffInHours(counterResetDatetime ?? new Date()))
 
   const hoursLeftWording = plural(hoursUntilAllowedRetry, {
-    one: 'Tu pourras réessayer dans # heure.',
-    other: 'Tu pourras réessayer dans # heures.',
+    singular: 'Tu pourras réessayer dans # heure.',
+    plural: 'Tu pourras réessayer dans # heures.',
   })
 
   return (

@@ -16,8 +16,8 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
   }
 
   const endedBookingsLabel = plural(endedBookings.length, {
-    one: 'Réservation terminée',
-    other: 'Réservations terminées',
+    singular: 'Réservation terminée',
+    plural: 'Réservations terminées',
   })
 
   return (

@@ -111,8 +111,8 @@ export const SuggestedPlacesOrVenues: FunctionComponent<Props> = ({
 
 const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) => {
   const numberOfResults = plural(nbHits, {
-    one: '# résultat',
-    other: '# résultats',
+    singular: '# résultat',
+    plural: '# résultats',
   })
 
   return (

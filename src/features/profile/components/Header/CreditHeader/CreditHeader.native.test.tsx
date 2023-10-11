@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { DomainsCredit } from 'api/gen'
 import {
   CreditHeader,
   CreditHeaderProps,
@@ -107,6 +108,34 @@ describe('CreditHeader', () => {
         from: 'profile',
       })
     })
+
+    it('should display time left when credit expires soon', () => {
+      mockdate.set(new Date(today))
+      renderCreditHeader({ depositExpirationDate: tomorrow, age: 20 })
+
+      expect(
+        screen.getByText(
+          'Ton crédit expire aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
+        )
+      ).toBeOnTheScreen()
+    })
+
+    it('should not display time left when credit expires soon, but is empty', () => {
+      mockdate.set(new Date(today))
+      const emptyCredit: DomainsCredit = {
+        all: {
+          initial: 30,
+          remaining: 0,
+        },
+      }
+      renderCreditHeader({ depositExpirationDate: tomorrow, age: 20, domainsCredit: emptyCredit })
+
+      expect(
+        screen.queryByText(
+          'Ton crédit expire aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
+        )
+      ).not.toBeOnTheScreen()
+    })
   })
 
   describe('Beneficiary is underage', () => {
@@ -159,7 +188,7 @@ describe('CreditHeader', () => {
       renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
       expect(
         screen.getByText(
-          'Ton crédit sera remis à 0 aujourd’hui. Profite de ton crédit restant\u00a0!'
+          'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
         )
       ).toBeOnTheScreen()
     })
