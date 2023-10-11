@@ -8,8 +8,8 @@ import { useLocation } from 'libs/geolocation'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
@@ -36,7 +36,7 @@ export const LocationSearchWidget = () => {
       <Separator.Vertical />
       <Spacer.Row numberOfSpaces={2} />
       <LocationButton onPress={showLocationModal} testID="Ouvrir la modale de localisation">
-        {isWidgetHighlighted ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
+        {isWidgetHighlighted ? <LocationPointerFilled /> : <SmallLocationPointerNotFilled />}
         <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
@@ -59,9 +59,7 @@ const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})
 
-const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }) => ({
-  color: theme.colors.black,
-  color2: theme.colors.black,
+const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
