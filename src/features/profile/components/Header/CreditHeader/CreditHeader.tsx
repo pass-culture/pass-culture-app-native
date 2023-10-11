@@ -68,12 +68,13 @@ export function CreditHeader({
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
     age >= 18 && (isDepositExpired || isCreditEmpty)
-  const bannerText = depositExpirationDate
-    ? getCreditExpirationText({
-        depositExpirationDate: new Date(setDateOneDayEarlier(depositExpirationDate)),
-        userStatus: IsUserUnderageBeneficiary ? 'underageBeneficiary' : 'beneficiary',
-      })
-    : undefined
+  const bannerText =
+    depositExpirationDate && !isCreditEmpty
+      ? getCreditExpirationText({
+          depositExpirationDate: new Date(setDateOneDayEarlier(depositExpirationDate)),
+          userStatus: IsUserUnderageBeneficiary ? 'underageBeneficiary' : 'beneficiary',
+        })
+      : undefined
 
   return (
     <HeaderWithGreyContainer
