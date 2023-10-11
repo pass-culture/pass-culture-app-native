@@ -13,7 +13,7 @@ appId: app.passculture.staging
 - tapOn: "Continuer vers l’étape Mot de passe"
 - inputText: ${PASSWORD}
 #Appui en dehors pour sortir du champ
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
      point: "50%,40%"
 #- tapOn: "Retour"

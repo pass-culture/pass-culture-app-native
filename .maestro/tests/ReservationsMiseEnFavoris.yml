@@ -4,7 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
     point: "50%,71%"
 # Mise en favoris
@@ -17,7 +17,7 @@ appId: app.passculture.staging
 - tapOn: "Catégories\_: Filtre sélectionné"
 - tapOn: "Films, séries, cinéma"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
     point: "49%,69%"
 - tapOn:
