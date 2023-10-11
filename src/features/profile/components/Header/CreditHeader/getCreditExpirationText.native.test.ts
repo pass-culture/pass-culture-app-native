@@ -15,7 +15,7 @@ describe('getCreditExpirationText', () => {
     expect(text).toBeUndefined()
   })
 
-  it('should get nothing when expiration date is past for under', () => {
+  it('should get nothing when expiration date is past for underage', () => {
     const creditExpirationDay = subDays(today, 1)
     const text = getCreditExpirationText({
       depositExpirationDate: creditExpirationDay,

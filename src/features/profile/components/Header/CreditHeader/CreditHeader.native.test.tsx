@@ -110,7 +110,7 @@ describe('CreditHeader', () => {
 
     it('should display time left when credit expires soon', () => {
       mockdate.set(new Date(today))
-      renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
+      renderCreditHeader({ depositExpirationDate: tomorrow, age: 20 })
 
       expect(
         screen.getByText(
