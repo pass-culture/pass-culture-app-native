@@ -17,7 +17,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
-import { eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { storage } from 'libs/storage'
@@ -175,7 +175,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     (errorCode: ReCaptchaError, error: string | undefined) => {
       setIsDoingReCaptchaChallenge(false)
       setErrorMessage('Un problème est survenu, réessaie plus tard.')
-      eventMonitoring.captureMessage(`Login Recaptcha Error: ${error}`, 'info')
+      if (errorCode !== 'NetworkError') {
+        captureMonitoringError(`${errorCode} ${error}`, 'Login recaptcha error')
+      }
     },
     [setErrorMessage]
   )

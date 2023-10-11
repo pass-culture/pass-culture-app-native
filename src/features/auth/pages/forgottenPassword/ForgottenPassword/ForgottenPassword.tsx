@@ -190,7 +190,9 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
       onReCaptchaError(errorCode: ReCaptchaError, error: string | undefined) {
         setValue('isDoingReCaptchaChallenge', false)
         setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-        captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
+        if (errorCode !== 'NetworkError') {
+          captureMonitoringError(`${errorCode} ${error}`, 'ForgottenPasswordOnRecaptchaError')
+        }
       },
       onBackNavigation() {
         navigate('Login')
