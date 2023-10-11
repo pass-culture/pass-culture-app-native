@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { openUrl } from 'features/navigation/helpers'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
-import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
