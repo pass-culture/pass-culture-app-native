@@ -10,7 +10,7 @@ import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
@@ -51,7 +51,7 @@ export const LocationSearchWidget = () => {
 }
 const Container = styled.View({
   flexDirection: 'row',
-  height: 32,
+  height: getSpacing(8),
 })
 
 const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
