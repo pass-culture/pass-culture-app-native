@@ -437,6 +437,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -504,6 +505,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -3519,6 +3521,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
