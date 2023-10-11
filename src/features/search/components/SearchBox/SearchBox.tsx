@@ -235,6 +235,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     searchInHistory,
   ])
 
+  const showLocationButton = enableAppLocation
+    ? params?.view === SearchView.Results
+    : params === undefined || params.view === SearchView.Landing
+
   return (
     <RowContainer>
       {!!accessibleHiddenTitle && (
@@ -258,11 +262,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               onSubmitQuery={onSubmitQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
-              showLocationButton={
-                enableAppLocation
-                  ? params?.view === SearchView.Results
-                  : params === undefined || params.view === SearchView.Landing
-              }
+              showLocationButton={showLocationButton}
               locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}
