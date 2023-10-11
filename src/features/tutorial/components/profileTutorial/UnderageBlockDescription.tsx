@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
+import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -10,7 +11,7 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const UnderageBlockDescription: () => React.ReactElement = () => {
   const { isLoggedIn, user } = useAuthContext()
-  const items = isLoggedIn && user?.isBeneficiary ? [defaultItems[1]] : defaultItems
+  const items = isLoggedIn && isUserUnderageBeneficiary(user) ? [defaultItems[1]] : defaultItems
 
   return (
     <React.Fragment>

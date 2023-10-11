@@ -59,6 +59,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // first call in ProfileTutorialAgeInformation
     mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Second call in useDepositActivationAge
     mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Third call in UnderageBlockDescription
+    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Fourth call in EighteenBlockDescription
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
@@ -134,6 +135,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockUseAuthContext.mockReturnValueOnce(mockedUser) // first call in ProfileTutorialAgeInformation
     mockUseAuthContext.mockReturnValueOnce(mockedUser) // Second call in useDepositActivationAge
     mockUseAuthContext.mockReturnValueOnce(mockedUser) // Third call in UnderageBlockDescription
+    mockUseAuthContext.mockReturnValueOnce(mockedUser) // Fourth call in EighteenBlockDescription
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
