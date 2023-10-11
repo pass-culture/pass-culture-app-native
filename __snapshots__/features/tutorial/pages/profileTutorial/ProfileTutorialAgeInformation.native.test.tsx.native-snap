@@ -1498,6 +1498,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 ]
               }
             />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -1541,6 +1551,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             >
               Ton crédit est remis à 0
             </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <View
               numberOfSpaces={3}
               style={
@@ -4580,6 +4600,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 ]
               }
             />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -4623,6 +4653,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             >
               Ton crédit est remis à 0
             </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <View
               numberOfSpaces={3}
               style={
