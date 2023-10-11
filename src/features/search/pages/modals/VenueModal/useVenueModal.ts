@@ -6,7 +6,7 @@ import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 type VenueModalHook = {
   doChangeVenue: (text: string) => void
-  doResetVenue: () => void
+  doResetVenue: VoidFunction
   doSetSelectedVenue: (venue: Venue) => void
   doApplySearch: () => void
   isQueryProvided: boolean
