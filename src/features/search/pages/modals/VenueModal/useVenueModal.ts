@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { Venue } from 'features/venue/types'
@@ -11,7 +11,7 @@ type VenueModalHook = {
   doApplySearch: VoidFunction
   isQueryProvided: boolean
   shouldShowSuggestedVenues: boolean
-  isVenueNotSelected: boolean
+  isVenueSelected: boolean
   venueQuery: string
 }
 
@@ -24,38 +24,38 @@ type VenueModalHook = {
  * @param dismissModal callback to close modal passed by parent component
  * @returns
  */
-const useVenueModal = (dismissModal: () => void | null): VenueModalHook => {
+const useVenueModal = (dismissModal: VoidFunction): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
   const { dispatch } = useSearch()
 
-  const doChangeVenue = (text: string) => {
+  const doChangeVenue = useCallback((text: string) => {
     setVenueQuery(text)
     setSelectedVenue(null)
-  }
-  const doResetVenue = () => {
+  }, [])
+
+  const doResetVenue = useCallback(() => {
     setVenueQuery('')
     setSelectedVenue(null)
-  }
+  }, [])
 
-  const doSetSelectedVenue = (venue: Venue) => {
+  const doSetSelectedVenue = useCallback((venue: Venue) => {
     setSelectedVenue(venue)
     setVenueQuery(venue.label)
-  }
+  }, [])
 
-  const doApplySearch = () => {
+  const doApplySearch = useCallback(() => {
     if (selectedVenue)
       dispatch({
         type: 'SET_LOCATION_VENUE',
         payload: selectedVenue as Venue,
       })
-    dismissModal?.()
-  }
+    dismissModal()
+  }, [dismissModal, dispatch, selectedVenue])
 
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
   const shouldShowSuggestedVenues = isQueryProvided && !selectedVenue
-  const isVenueNotSelected = !selectedVenue
 
   return {
     doChangeVenue,
@@ -64,7 +64,7 @@ const useVenueModal = (dismissModal: () => void | null): VenueModalHook => {
     doApplySearch,
     isQueryProvided,
     shouldShowSuggestedVenues,
-    isVenueNotSelected,
+    isVenueSelected: !!selectedVenue,
     venueQuery,
   }
 }

@@ -25,7 +25,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     doSetSelectedVenue,
     doApplySearch,
     shouldShowSuggestedVenues,
-    isVenueNotSelected,
+    isVenueSelected,
     venueQuery,
   } = useVenueModal(dismissModal)
 
@@ -45,7 +45,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
         <Center>
           <ButtonPrimary
             wording="Valider le point de vente"
-            disabled={isVenueNotSelected}
+            disabled={!isVenueSelected}
             onPress={doApplySearch}
           />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
