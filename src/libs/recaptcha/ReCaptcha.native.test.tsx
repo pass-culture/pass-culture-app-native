@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, render } from 'tests/utils'
 
@@ -35,13 +36,13 @@ describe('<ReCaptcha />', () => {
     expect(reCaptchaProps.onSuccess).toBeCalledWith('fakeToken')
   })
 
-  it("should call onError() callback when webview's message is error", () => {
+  it('should call onError() callback when recaptcha raises an error', () => {
     const renderAPI = renderReCaptcha(reCaptchaProps)
     const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
 
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
-    expect(reCaptchaProps.onError).toBeCalledWith('someError')
+    expect(reCaptchaProps.onError).toBeCalledWith('UnknownError', 'someError')
   })
 
   it("should call onClose() callback when webview's message is close", () => {

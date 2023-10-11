@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, fireEvent, render, waitFor, screen, act } from 'tests/utils'
@@ -119,7 +120,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     expect(
       screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')

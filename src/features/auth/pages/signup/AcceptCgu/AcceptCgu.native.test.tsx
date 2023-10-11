@@ -9,6 +9,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, screen, fireEvent, render, waitFor } from 'tests/utils'
 
@@ -175,8 +176,7 @@ describe('<AcceptCgu/>', () => {
 
     fireEvent.press(screen.getByText('Accepter et s’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     await waitFor(() => {
       expect(

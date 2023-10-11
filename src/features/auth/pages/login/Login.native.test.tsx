@@ -27,6 +27,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { eventMonitoring } from 'libs/monitoring'
+import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { From } from 'shared/offer/enums'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -484,7 +485,7 @@ describe('<Login/>', () => {
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+      await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(screen.queryByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
     })
@@ -496,7 +497,7 @@ describe('<Login/>', () => {
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+      await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(apiSignInSpy).not.toHaveBeenCalled()
     })
@@ -508,7 +509,7 @@ describe('<Login/>', () => {
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+      await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
         'Login Recaptcha Error: someError',
