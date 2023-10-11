@@ -14,7 +14,7 @@ jest.mock('ui/components/modals/useModal', () => ({
 
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
-    renderLocationSearchWidget()
+    render(<LocationSearchWidget />)
 
     const button = screen.getByTestId('Ouvrir la modale de localisation')
 
@@ -22,7 +22,3 @@ describe('LocationSearchWidget', () => {
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 })
-
-const renderLocationSearchWidget = () => {
-  render(<LocationSearchWidget />)
-}
