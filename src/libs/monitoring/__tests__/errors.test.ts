@@ -37,6 +37,21 @@ describe('MonitoringError', () => {
     expect(eventMonitoring.captureException).toBeCalledWith(error, captureContext)
     expect(error.name).toBe('RenamedError')
   })
+
+  it('should call eventMonitoring.captureMessage() on new MonitoringError instance when shouldBeCapturedAsInfo is true', () => {
+    const error = new MonitoringError('error', { shouldBeCapturedAsInfo: true })
+    expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(1, error.message, 'info')
+  })
+
+  it('should not call eventMonitoring.captureMessage() on new MonitoringError instance when shouldBeCapturedAsInfo is false', () => {
+    new MonitoringError('error', { shouldBeCapturedAsInfo: false })
+    expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+  })
+
+  it('should not call eventMonitoring.captureMessage() on new MonitoringError instance when shouldBeCapturedAsInfo is undefined', () => {
+    new MonitoringError('error')
+    expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+  })
 })
 
 describe('OfferNotFoundError', () => {
