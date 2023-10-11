@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { SubscriptionStatus, YoungStatusType } from 'api/gen'
+import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
@@ -52,14 +52,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockdate.set(CURRENT_DATE)
   })
   it('should render correctly when logged in at 15', () => {
-    const mockUnderageBeneficiaryUser = {
-      ...defaultAuthContext,
-      user: underageBeneficiaryUser,
-    }
-    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // first call in ProfileTutorialAgeInformation
-    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Second call in useDepositActivationAge
-    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Third call in UnderageBlockDescription
-    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Fourth call in EighteenBlockDescription
+    mockAuthContextForAllRenders(underageBeneficiaryUser)
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
@@ -127,15 +120,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it('should display not logged in version when user is not loggedIn', () => {
-    const mockedUser = {
-      ...defaultAuthContext,
-      isLoggedIn: false,
-      user: undefined,
-    }
-    mockUseAuthContext.mockReturnValueOnce(mockedUser) // first call in ProfileTutorialAgeInformation
-    mockUseAuthContext.mockReturnValueOnce(mockedUser) // Second call in useDepositActivationAge
-    mockUseAuthContext.mockReturnValueOnce(mockedUser) // Third call in UnderageBlockDescription
-    mockUseAuthContext.mockReturnValueOnce(mockedUser) // Fourth call in EighteenBlockDescription
+    mockAuthContextForAllRenders()
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
@@ -167,3 +152,15 @@ describe('<ProfileTutorialAgeInformation />', () => {
     expect(screen.getByText('Activer mon crédit')).toBeOnTheScreen()
   })
 })
+
+const mockAuthContextForAllRenders = (user?: UserProfileResponse) => {
+  const mockedContext = {
+    ...defaultAuthContext,
+    isLoggedIn: !!user,
+    user,
+  }
+  mockUseAuthContext.mockReturnValueOnce(mockedContext) // First call in ProfileTutorialAgeInformation
+  mockUseAuthContext.mockReturnValueOnce(mockedContext) // Second call in useDepositActivationAge
+  mockUseAuthContext.mockReturnValueOnce(mockedContext) // Third call in UnderageBlockDescription
+  mockUseAuthContext.mockReturnValueOnce(mockedContext) // Fourth call in EighteenBlockDescription
+}
