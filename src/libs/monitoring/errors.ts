@@ -88,8 +88,11 @@ export class OfferNotFoundError extends ScreenError {
 }
 
 export class VenueNotFoundError extends ScreenError {
-  constructor(venueId: number | undefined, { Screen, callback }: ScreenErrorInfo) {
+  constructor(
+    venueId: number | undefined,
+    { Screen, callback, shouldBeCapturedAsInfo }: ScreenErrorInfo
+  ) {
     const message = venueId ? `Venue ${venueId} could not be retrieved` : 'venueId is undefined'
-    super(message, { Screen, callback })
+    super(message, { Screen, callback, shouldBeCapturedAsInfo })
   }
 }
