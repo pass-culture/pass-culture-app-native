@@ -17,12 +17,17 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import {
+  PageHeaderWithoutPlaceholder,
+  useGetHeaderHeight,
+} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
+  const headerHeight = useGetHeaderHeight()
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const logReinitializeFilters = useFunctionOnce(() => {
@@ -31,7 +36,7 @@ export const SearchFilter: React.FC = () => {
   const { userPosition: position } = useLocation()
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
-  const { isDesktopViewport, isMobileViewport } = useTheme()
+  const { isMobileViewport } = useTheme()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params || { view: SearchView.Landing } })
@@ -78,80 +83,69 @@ export const SearchFilter: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
-  const shouldDisplayBackButton = isDesktopViewport
   const shouldDisplayCloseButton = isMobileViewport
 
   return (
     <Container>
-      <PageHeaderSecondary
-        title="Filtrer"
-        onGoBack={onGoBack}
-        onClose={onGoBack}
-        shouldDisplayBackButton={shouldDisplayBackButton}
-        shouldDisplayCloseButton={shouldDisplayCloseButton}
-      />
-      <React.Fragment>
-        <StyledScrollView scrollEnabled keyboardShouldPersistTaps="always">
-          <VerticalUl>
-            {/* Catégories */}
+      <PageHeaderWithoutPlaceholder title="Filtres" onGoBack={onGoBack} />
+
+      <ScrollView scrollEnabled keyboardShouldPersistTaps="always">
+        <Placeholder height={headerHeight} />
+        <VerticalUl>
+          {/* Catégories */}
+          <StyledLi>
+            <Spacer.Column numberOfSpaces={6} />
+            <Section.Category onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator />
+          </StyledLi>
+
+          {/* Duo */}
+          {!!hasDuoOfferToggle && (
             <StyledLi>
               <Spacer.Column numberOfSpaces={4} />
-              <Section.Category onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
+              <Section.OfferDuo onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
             </StyledLi>
+          )}
 
-            {/* Duo */}
-            {!!hasDuoOfferToggle && (
-              <StyledLi>
-                <Spacer.Column numberOfSpaces={4} />
-                <Section.OfferDuo onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-                <Spacer.Column numberOfSpaces={4} />
-                <Separator />
-              </StyledLi>
-            )}
+          {/* Prix */}
+          <StyledLi>
+            <Spacer.Column numberOfSpaces={4} />
+            <Section.Price onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator />
+          </StyledLi>
 
-            {/* Prix */}
-            <StyledLi>
-              <Spacer.Column numberOfSpaces={4} />
-              <Section.Price onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-              <Separator marginVertical={getSpacing(4)} />
-            </StyledLi>
-
-            {/* Date & Heure */}
-            <StyledLi>
-              <Section.DateHour onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-            </StyledLi>
-          </VerticalUl>
-        </StyledScrollView>
-      </React.Fragment>
-
+          {/* Date & Heure */}
+          <StyledLi>
+            <Spacer.Column numberOfSpaces={4} />
+            <Section.DateHour onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
+            <Spacer.Column numberOfSpaces={6} />
+          </StyledLi>
+        </VerticalUl>
+      </ScrollView>
+      <BlurHeader height={headerHeight} />
+      <Spacer.Column numberOfSpaces={10} />
       <FilterPageButtons
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
         isModal={false}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
-      <Spacer.BottomScreen />
     </Container>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
-  flex: 1,
   backgroundColor: theme.colors.white,
 }))
 
-const StyledScrollView = styled(ScrollView)({
-  flex: 1,
-})
-
-const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVertical = 0 }) => ({
-  width: theme.appContentWidth - getSpacing(2 * 6),
+const Separator = styled.View(({ theme }) => ({
+  width: '100%',
   height: 2,
   backgroundColor: theme.colors.greyLight,
-  alignSelf: 'center',
-  marginVertical: marginVertical,
 }))
 
 const StyledLi = styled(Li)({
@@ -159,3 +153,7 @@ const StyledLi = styled(Li)({
   marginLeft: getSpacing(6),
   marginRight: getSpacing(6),
 })
+
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))

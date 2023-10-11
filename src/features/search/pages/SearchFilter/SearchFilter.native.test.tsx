@@ -9,7 +9,7 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
@@ -42,7 +42,7 @@ describe('<SearchFilter/>', () => {
     }
     renderSearchFilter()
 
-    await screen.findByText('Filtrer')
+    await screen.findByText('Filtres')
 
     expect(screen).toMatchSnapshot()
   })
@@ -66,7 +66,7 @@ describe('<SearchFilter/>', () => {
       renderSearchFilter()
 
       await act(async () => {
-        fireEvent.press(screen.getByTestId('Fermer'))
+        fireEvent.press(screen.getByTestId('Revenir en arrière'))
       })
 
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -141,19 +141,11 @@ describe('<SearchFilter/>', () => {
 
     expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
   })
-
-  it('should display close button on header', async () => {
+  it('should display back button on header', async () => {
     renderSearchFilter()
     await act(async () => {})
 
-    expect(screen.getByTestId('Fermer')).toBeOnTheScreen()
-  })
-
-  it('should not display back button on header', async () => {
-    renderSearchFilter()
-    await act(async () => {})
-
-    expect(screen.queryByTestId('Revenir en arrière')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('Revenir en arrière')).toBeOnTheScreen()
   })
 })
 
