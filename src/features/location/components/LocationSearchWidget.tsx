@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/geolocation'
 import { useModal } from 'ui/components/modals/useModal'
@@ -13,17 +14,8 @@ import { Spacer, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
-  const getLocationTitle = useCallback(() => {
-    if (place !== null) {
-      return place.label
-    }
-    if (userPosition !== null) {
-      return 'Ma position'
-    }
-    return 'Me localiser'
-  }, [place, userPosition])
 
-  const locationTitle = getLocationTitle()
+  const locationTitle = getLocationTitle(place, userPosition)
 
   const {
     visible: locationModalVisible,
