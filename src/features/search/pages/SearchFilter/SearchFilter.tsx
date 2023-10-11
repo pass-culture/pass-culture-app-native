@@ -92,15 +92,7 @@ export const SearchFilter: React.FC = () => {
       />
       <React.Fragment>
         <StyledScrollView scrollEnabled keyboardShouldPersistTaps="always">
-          {/* Localisation */}
           <VerticalUl>
-            <StyledLi>
-              <Spacer.Column numberOfSpaces={4} />
-              <Section.Location onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-              <Spacer.Column numberOfSpaces={4} />
-              <Separator />
-            </StyledLi>
-
             {/* Catégories */}
             <StyledLi>
               <Spacer.Column numberOfSpaces={4} />
