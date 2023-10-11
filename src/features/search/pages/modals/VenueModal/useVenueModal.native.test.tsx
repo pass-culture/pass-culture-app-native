@@ -91,7 +91,7 @@ describe('useVenueModal', () => {
     expect(dismissMyModal).toHaveBeenCalledWith()
   })
   it('when select a venue and validate it should apply search to the context', async () => {
-    const { result } = renderHook(useVenueModal)
+    const { result } = renderHook(useVenueModal, { initialProps: dismissMyModal })
 
     await act(async () => {
       result.current.doChangeVenue(venue.label)
@@ -100,19 +100,19 @@ describe('useVenueModal', () => {
     await act(async () => {
       result.current.doApplySearch()
     })
-    expect(dismissMyModal).not.toHaveBeenCalled()
+    expect(dismissMyModal).toHaveBeenCalled()
     expect(mockStateDispatch).toHaveBeenCalledWith({
       type: 'SET_LOCATION_VENUE',
       payload: venue,
     })
   })
   it('when nothing is to be search then search cannot be done', async () => {
-    const { result } = renderHook(useVenueModal)
+    const { result } = renderHook(useVenueModal, { initialProps: dismissMyModal })
 
     await act(async () => {
       result.current.doApplySearch()
     })
-    expect(dismissMyModal).not.toHaveBeenCalled()
+    expect(dismissMyModal).toHaveBeenCalled()
     expect(mockStateDispatch).not.toHaveBeenCalled()
   })
 })

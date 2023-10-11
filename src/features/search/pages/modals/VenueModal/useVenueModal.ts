@@ -44,14 +44,14 @@ const useVenueModal = (dismissModal: VoidFunction): VenueModalHook => {
     setVenueQuery(venue.label)
   }, [])
 
-  const doApplySearch = () => {
+  const doApplySearch = useCallback(() => {
     if (selectedVenue)
       dispatch({
         type: 'SET_LOCATION_VENUE',
         payload: selectedVenue as Venue,
       })
-    dismissModal?.()
-  }
+    dismissModal()
+  }, [dismissModal, dispatch, selectedVenue])
 
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
