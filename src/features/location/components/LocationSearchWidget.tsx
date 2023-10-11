@@ -40,14 +40,12 @@ export const LocationSearchWidget = () => {
         <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
-      <React.Fragment>
-        <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-        <SearchLocationModal
-          visible={locationModalVisible}
-          dismissModal={hideLocationModal}
-          showVenueModal={showVenueModal}
-        />
-      </React.Fragment>
+      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
+      <SearchLocationModal
+        visible={locationModalVisible}
+        dismissModal={hideLocationModal}
+        showVenueModal={showVenueModal}
+      />
     </Container>
   )
 }
