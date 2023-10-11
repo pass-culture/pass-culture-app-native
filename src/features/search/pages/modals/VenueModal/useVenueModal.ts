@@ -8,7 +8,7 @@ type VenueModalHook = {
   doChangeVenue: (text: string) => void
   doResetVenue: VoidFunction
   doSetSelectedVenue: (venue: Venue) => void
-  doApplySearch: () => void
+  doApplySearch: VoidFunction
   isQueryProvided: boolean
   shouldShowSuggestedVenues: boolean
   isVenueNotSelected: boolean
