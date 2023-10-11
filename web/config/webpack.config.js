@@ -586,7 +586,15 @@ module.exports = function (webpackEnv) {
       ),
       new CspHtmlWebpackPlugin(
         {
-          'script-src': `'self' https://websdk.appsflyer.com https://www.googletagmanager.com https://www.gstatic.com/recaptcha/ https://www.google.com/recaptcha/ ${process.env.APP_PUBLIC_URL}/static/`,
+          'script-src': [
+            "'self'",
+            'https://websdk.appsflyer.com',
+            'https://www.googletagmanager.com',
+            'https://www.gstatic.com/recaptcha/',
+            'https://www.google.com/recaptcha/',
+            'https://oos.eu-west-2.outscale.com/public-ubble-ai/',
+            `${process.env.APP_PUBLIC_URL}/static/`,
+          ].join(' '),
         },
         {
           hashEnabled: { 'style-src': false },
