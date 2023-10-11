@@ -2,6 +2,7 @@ appId: app.passculture.staging
 ---
 - assertVisible: "À 17 ans, profite de ton pass Culture\_!"
 - assertVisible: "Comment ça marche\_?"
+
 - assertVisible:
     text: "passé"
     index: 0
