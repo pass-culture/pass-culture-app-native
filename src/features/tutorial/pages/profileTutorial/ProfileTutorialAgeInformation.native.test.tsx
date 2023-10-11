@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -52,6 +52,13 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockdate.set(CURRENT_DATE)
   })
   it('should render correctly when logged in at 15', () => {
+    const mockUnderageBeneficiaryUser = {
+      ...defaultAuthContext,
+      user: underageBeneficiaryUser,
+    }
+    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // first call in ProfileTutorialAgeInformation
+    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Second call in useDepositActivationAge
+    mockUseAuthContext.mockReturnValueOnce(mockUnderageBeneficiaryUser) // Third call in UnderageBlockDescription
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
@@ -119,11 +126,14 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it('should display not logged in version when user is not loggedIn', () => {
-    mockUseAuthContext.mockReturnValueOnce({
+    const mockedUser = {
       ...defaultAuthContext,
       isLoggedIn: false,
       user: undefined,
-    })
+    }
+    mockUseAuthContext.mockReturnValueOnce(mockedUser) // first call in ProfileTutorialAgeInformation
+    mockUseAuthContext.mockReturnValueOnce(mockedUser) // Second call in useDepositActivationAge
+    mockUseAuthContext.mockReturnValueOnce(mockedUser) // Third call in UnderageBlockDescription
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
