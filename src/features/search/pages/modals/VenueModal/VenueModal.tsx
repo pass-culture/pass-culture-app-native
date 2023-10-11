@@ -42,14 +42,14 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       isUpToStatusBar
       scrollEnabled={false}
       fixedModalBottom={
-        <React.Fragment>
+        <Center>
           <ButtonPrimary
             wording="Valider le point de vente"
             disabled={isVenueNotSelected}
             onPress={doApplySearch}
           />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
-        </React.Fragment>
+        </Center>
       }>
       <Spacer.Column numberOfSpaces={10} />
       <SubtitleContainer>
@@ -94,3 +94,7 @@ const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
 const KeyboardPlaceholder = styled.View<{ keyboardHeight: number }>(({ keyboardHeight }) => ({
   height: keyboardHeight,
 }))
+
+const Center = styled.View({
+  alignItems: 'center',
+})
