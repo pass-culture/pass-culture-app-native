@@ -2325,6 +2325,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 ]
               }
             />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -5423,6 +5433,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 [
                   {
                     "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
                   },
                 ]
               }

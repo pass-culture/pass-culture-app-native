@@ -31,9 +31,12 @@ export const lastStep: CreditComponentProps = {
   creditStep: 'information',
   iconComponent: <GreyOffers />,
   children: (
-    <InformationStepContent
-      title="Au bout de 2 ans, ton crédit expire… Mais l’aventure continue&nbsp;!"
-      subtitle="Tu peux continuer à réserver des offres gratuites autour de chez toi."
-    />
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={6} />
+      <InformationStepContent
+        title="Au bout de 2 ans, ton crédit expire… Mais l’aventure continue&nbsp;!"
+        subtitle="Tu peux continuer à réserver des offres gratuites autour de chez toi."
+      />
+    </React.Fragment>
   ),
 }
