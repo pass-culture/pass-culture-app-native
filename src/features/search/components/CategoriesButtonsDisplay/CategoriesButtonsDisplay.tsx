@@ -45,7 +45,7 @@ const CategoriesTitle = styled(Typo.Title3).attrs({
   children: 'Explore les catégories',
   ...getHeadingAttrs(2),
 })(({ theme }) => ({
-  marginTop: getSpacing(8),
+  marginTop: getSpacing(4),
   marginBottom: getSpacing(theme.isDesktopViewport ? 1 : 2),
   paddingHorizontal: getSpacing(3),
 }))

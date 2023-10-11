@@ -84,6 +84,7 @@ export const SearchHeader = memo(function SearchHeader({
             searchInHistory={searchInHistory}
           />
         </View>
+        <Spacer.Column numberOfSpaces={4} />
       </HeaderContainer>
     </React.Fragment>
   )

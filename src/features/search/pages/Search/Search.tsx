@@ -135,7 +135,6 @@ export function Search() {
               keyboardShouldPersistTaps="handled"
               onScroll={Keyboard.dismiss}
               scrollEventThrottle={400}>
-              <Spacer.Column numberOfSpaces={4} />
               <SearchHistory
                 history={filteredHistory}
                 queryHistory={queryHistory}
