@@ -8,24 +8,24 @@ type ErrorInfo = {
   name?: string
   captureContext?: Partial<ScopeContext>
   skipLogging?: boolean
-  shouldCaptureAsInfo?: boolean
+  shouldBeCapturedAsInfo?: boolean
 }
 
 export class MonitoringError extends Error {
   constructor(
     message: string,
-    { name, captureContext, skipLogging = false, shouldCaptureAsInfo }: ErrorInfo = {}
+    { name, captureContext, skipLogging = false, shouldBeCapturedAsInfo = false }: ErrorInfo = {}
   ) {
     super(message)
     if (name) {
       this.name = name
     }
 
-    if (shouldCaptureAsInfo) {
+    if (shouldBeCapturedAsInfo) {
       eventMonitoring.captureMessage(this.message, 'info')
     }
 
-    if (!skipLogging && !shouldCaptureAsInfo) {
+    if (!skipLogging && !shouldBeCapturedAsInfo) {
       eventMonitoring.captureException(this, captureContext)
     }
   }
@@ -47,9 +47,9 @@ export class AsyncError extends MonitoringError {
   retry?: () => Promise<unknown> | void
   constructor(
     message: string,
-    { name = 'AsyncError', captureContext, retry, shouldCaptureAsInfo }: AsyncErrorInfo = {}
+    { name = 'AsyncError', captureContext, retry, shouldBeCapturedAsInfo }: AsyncErrorInfo = {}
   ) {
-    super(message, { name, captureContext, shouldCaptureAsInfo })
+    super(message, { name, captureContext, shouldBeCapturedAsInfo })
     this.retry = retry
   }
 }
@@ -68,9 +68,9 @@ export class ScreenError extends AsyncError {
   Screen: ComponentType<ScreenErrorProps>
   constructor(
     message: string,
-    { name = 'ScreenError', Screen, skipLogging, shouldCaptureAsInfo }: ScreenErrorInfo
+    { name = 'ScreenError', Screen, skipLogging, shouldBeCapturedAsInfo }: ScreenErrorInfo
   ) {
-    super(message, { name, skipLogging, shouldCaptureAsInfo })
+    super(message, { name, skipLogging, shouldBeCapturedAsInfo })
     this.Screen = Screen
   }
 }
@@ -80,10 +80,10 @@ ScreenError.prototype.name = 'ScreenError'
 export class OfferNotFoundError extends ScreenError {
   constructor(
     offerId: number | undefined,
-    { Screen, callback, shouldCaptureAsInfo }: ScreenErrorInfo
+    { Screen, callback, shouldBeCapturedAsInfo }: ScreenErrorInfo
   ) {
     const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
-    super(message, { Screen, callback, shouldCaptureAsInfo })
+    super(message, { Screen, callback, shouldBeCapturedAsInfo })
   }
 }
 

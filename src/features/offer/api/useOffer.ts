@@ -18,7 +18,7 @@ async function getOfferById(offerId: number) {
     if (error instanceof ApiError && error.statusCode === 404) {
       // This happens when the offer has been rejected but it is still indexed on Algolia
       // due to asynchronous reindexing of the back office
-      throw new OfferNotFoundError(offerId, { Screen: OfferNotFound, shouldCaptureAsInfo: true })
+      throw new OfferNotFoundError(offerId, { Screen: OfferNotFound, shouldBeCapturedAsInfo: true })
     }
     throw error
   }
