@@ -437,6 +437,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -504,6 +505,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -3549,73 +3551,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 16,
-                              "marginRight": 8,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={16}
-                          width={16}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        Tu as 1 an pour activer ton crédit.
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
