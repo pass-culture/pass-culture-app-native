@@ -54,6 +54,8 @@ export function AutocompleteOfferItem({
   )?.value
   const hasMostPopularHitNativeCategory =
     nativeCategories.length > 0 && !!mostPopularNativeCategoryId
+  const hasMostPopularHitCategory =
+    categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
   const categoriesFromNativeCategory = useMemo(
     () => getSearchGroupsEnumArrayFromNativeCategoryEnum(data, mostPopularNativeCategoryId),
     [data, mostPopularNativeCategoryId]
@@ -66,9 +68,13 @@ export function AutocompleteOfferItem({
 
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
-      return categories.length > 0 ? [categories[0].value] : []
+      return categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
+        ? [categories[0].value]
+        : []
     } else {
-      return [categoriesFromNativeCategory[0]]
+      return categoriesFromNativeCategory[0] in SearchGroupNameEnumv2
+        ? [categoriesFromNativeCategory[0]]
+        : []
     }
   }, [
     categories,

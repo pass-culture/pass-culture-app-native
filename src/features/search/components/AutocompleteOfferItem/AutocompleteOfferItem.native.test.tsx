@@ -14,6 +14,8 @@ import {
   mockHitWithOnlyCategory,
   mockHitWithoutCategoryAndNativeCategory,
   mockHitUnknownNativeCategory,
+  mockHitUnknownNativeCategoryAndCategory,
+  mockHitUnknownCategory,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -249,6 +251,57 @@ describe('AutocompleteOfferItem component', () => {
         )
       })
 
+      it('without the most popular category and native category when there are unknown in the app', async () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownNativeCategoryAndCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        expect(navigate).toBeCalledWith(
+          ...getTabNavConfig('Search', {
+            ...initialSearchState,
+            query: mockHitWithOnlyCategory.query,
+            offerCategories: [],
+            offerNativeCategories: undefined,
+            locationFilter: mockSearchState.locationFilter,
+            priceRange: mockSearchState.priceRange,
+            view: SearchView.Results,
+            searchId,
+            isAutocomplete: true,
+          })
+        )
+      })
+
+      it('without the most popular category when it is unknown in the app', async () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        expect(navigate).toBeCalledWith(
+          ...getTabNavConfig('Search', {
+            ...initialSearchState,
+            query: mockHitWithOnlyCategory.query,
+            offerCategories: [],
+            locationFilter: mockSearchState.locationFilter,
+            priceRange: mockSearchState.priceRange,
+            view: SearchView.Results,
+            searchId,
+            isAutocomplete: true,
+          })
+        )
+      })
+
       it('without the most popular native category but the most popular category when native category is unknown in the app', async () => {
         render(
           <AutocompleteOfferItem
@@ -317,6 +370,19 @@ describe('AutocompleteOfferItem component', () => {
 
         expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
+
+      it('when there are unknown in the app', async () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownNativeCategoryAndCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+
+        expect(screen.queryByText('dans')).not.toBeOnTheScreen()
+      })
     })
 
     describe('should not display the most popular native category of the query suggestion ', () => {
@@ -372,6 +438,19 @@ describe('AutocompleteOfferItem component', () => {
         )
 
         expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
+      })
+
+      it('when category is unknown in the app', async () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+
+        expect(screen.queryByText('dans')).not.toBeOnTheScreen()
       })
     })
 
