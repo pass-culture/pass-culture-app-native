@@ -37,7 +37,11 @@ export const LocationSearchWidget = () => {
       <Separator.Vertical />
       <Spacer.Row numberOfSpaces={2} />
       <LocationButton onPress={showLocationModal} testID="Ouvrir la modale de localisation">
-        {isWidgetHighlighted ? <LocationPointerFilled /> : <SmallLocationPointerNotFilled />}
+        {isWidgetHighlighted ? (
+          <LocationPointerFilled testID="location pointer filled" />
+        ) : (
+          <SmallLocationPointerNotFilled testID="location pointer not filled" />
+        )}
         <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
