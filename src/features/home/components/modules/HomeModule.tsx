@@ -14,8 +14,6 @@ import {
   HomepageModuleType,
   isExclusivityModule,
   isHighlightOfferModule,
-  isVenuesModule,
-  isVideoModule,
   ModuleData,
 } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -29,14 +27,16 @@ const modules = {
   [HomepageModuleType.OffersModule]: OffersModule,
   [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
   [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
+  [HomepageModuleType.VideoModule]: VideoModule,
+  [HomepageModuleType.VenuesModule]: VenuesModule,
 }
 
 const UnmemoizedModule = ({
   item,
   index,
   homeEntryId,
-  videoModuleId,
   data,
+  videoModuleId,
 }: {
   item: HomepageModule
   index: number
@@ -47,31 +47,6 @@ const UnmemoizedModule = ({
   const enableNewExclusivityBlock = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK
   )
-
-  /* TODO(PC-23671): Refactor VenuesModule and VideoModule into
-  modules constant after adding tests in HomeModule.native.test.tsx */
-  if (isVenuesModule(item)) {
-    return (
-      <VenuesModule
-        moduleId={item.id}
-        display={item.displayParameters}
-        homeEntryId={homeEntryId}
-        index={index}
-        data={data}
-      />
-    )
-  }
-
-  if (isVideoModule(item)) {
-    return (
-      <VideoModule
-        {...item}
-        homeEntryId={homeEntryId}
-        index={index}
-        shouldShowModal={item.id === videoModuleId}
-      />
-    )
-  }
 
   if (
     (isHighlightOfferModule(item) && !enableNewExclusivityBlock) ||
@@ -89,6 +64,7 @@ const UnmemoizedModule = ({
       index={index}
       moduleId={item.id}
       data={data}
+      shouldShowModal={item.id === videoModuleId}
     />
   )
 }
