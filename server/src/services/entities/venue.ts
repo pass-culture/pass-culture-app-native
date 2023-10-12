@@ -7,6 +7,9 @@ const { DEEPLINK_PROTOCOL } = env
 export const VENUE: EntityType = {
   API_MODEL_NAME: 'venue',
   METAS_CONFIG: {
+    title(entity: Record<string, unknown>) {
+      return (entity.publicName || entity.name) as string
+    },
     metaTitle(entity: Record<string, unknown>) {
       return (entity.publicName || entity.name) as string
     },

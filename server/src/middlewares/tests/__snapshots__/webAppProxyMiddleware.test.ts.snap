@@ -5,7 +5,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
 <html lang=\\"fr\\">
   <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/9\\" />
     <meta charset=\\"utf-8\\">
-    <title>pass Culture</title>
+    <title>Relais culturel La Nef | pass Culture</title>
     <meta name=\\"title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
     <meta name=\\"description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>

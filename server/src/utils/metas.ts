@@ -122,6 +122,11 @@ export async function replaceHtmlMetas(
       },
     }
 
+    html = html.replace(
+      /<title>.*<\/title>/g,
+      `<title>${encode(METAS_CONFIG.title(entity))} | pass Culture</title>`
+    )
+
     Object.values(metaConfig).forEach(({ regEx, data }) => {
       if (data) {
         html = html.replace(regEx, `<meta $1="$2" content="${encode(data)}" />`)

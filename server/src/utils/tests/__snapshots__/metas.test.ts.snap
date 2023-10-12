@@ -5,7 +5,7 @@ exports[`metas utils should replace meta for offer 1`] = `
 <html lang=\\"fr\\">
   <head>
     <meta charset=\\"utf-8\\">
-    <title>pass Culture</title>
+    <title>&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF | pass Culture</title>
     <meta name=\\"title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Sous les étoiles de Paris - VF\\" />
     <meta name=\\"description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html\\" />
@@ -56,7 +56,7 @@ exports[`metas utils should replace meta for venue 1`] = `
 <html lang=\\"fr\\">
   <head>
     <meta charset=\\"utf-8\\">
-    <title>pass Culture</title>
+    <title>&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Le Petit Rintintin 1 | pass Culture</title>
     <meta name=\\"title\\" content=\\"pass Culture | &lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;Le Petit Rintintin 1\\" />
     <meta name=\\"description\\" content=\\"&lt;img src=&quot;data:image/gif;base64 onerror=&quot;javascript:alert(&quot;hack&quot;)&quot; /&gt;https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
