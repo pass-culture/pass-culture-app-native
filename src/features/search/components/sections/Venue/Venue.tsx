@@ -15,10 +15,10 @@ export const Venue = () => {
     hideModal: hideSearchVenueModal,
   } = useModal(false)
 
-  let venueLabel = undefined
-  if (searchState.locationFilter.locationType === LocationType.VENUE) {
-    venueLabel = searchState.locationFilter.venue.label
-  }
+  const venueLabel =
+    searchState.locationFilter.locationType === LocationType.VENUE
+      ? searchState.locationFilter.venue.label
+      : undefined
 
   return (
     <React.Fragment>
