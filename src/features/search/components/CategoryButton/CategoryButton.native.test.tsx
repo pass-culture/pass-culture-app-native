@@ -8,7 +8,7 @@ import { CategoryButton } from './CategoryButton'
 
 describe('CategoryButton', () => {
   it('should render correctly', () => {
-    const categoryButton = render(
+    render(
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
@@ -17,7 +17,7 @@ describe('CategoryButton', () => {
         gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
-    expect(categoryButton).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should execute search on category click', () => {

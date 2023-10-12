@@ -23,9 +23,9 @@ jest.mock('features/navigation/navigationRef')
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { getByText } = renderResetPasswordExpiredLink()
+    renderResetPasswordExpiredLink()
 
-    fireEvent.press(getByText(`Retourner à l’accueil`))
+    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
 
     await waitFor(() => {
       expect(navigateFromRef).toHaveBeenCalledWith(
@@ -36,9 +36,9 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
-    const { getByText } = renderResetPasswordExpiredLink()
+    renderResetPasswordExpiredLink()
 
-    fireEvent.press(getByText(`Renvoyer l’email`))
+    fireEvent.press(screen.getByText(`Renvoyer l’email`))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
@@ -75,9 +75,8 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 function renderResetPasswordExpiredLink() {
-  const renderAPI = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />)
   )
-  return renderAPI
 }

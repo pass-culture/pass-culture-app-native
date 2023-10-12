@@ -396,9 +396,9 @@ describe('<Search/>', () => {
   describe('When offline', () => {
     it('should display offline page', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const renderAPI = render(<Search />)
+      render(<Search />)
       await act(async () => {})
-      expect(renderAPI.getByText('Pas de réseau internet')).toBeOnTheScreen()
+      expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
 

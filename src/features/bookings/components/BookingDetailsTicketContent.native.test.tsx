@@ -28,14 +28,12 @@ describe('BookingDetailsTicketContent', () => {
   it('should not display the booking token when booking has activation code', () => {
     render(<BookingDetailsTicketContent booking={booking} />)
 
-    // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
     expect(screen.queryByText(booking.token)).not.toBeOnTheScreen()
   })
 
   it('should display the booking token when booking has no activation code', () => {
     render(<BookingDetailsTicketContent booking={originalBooking} />)
 
-    // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
     expect(screen.getByText(booking.token)).toBeOnTheScreen()
   })
 

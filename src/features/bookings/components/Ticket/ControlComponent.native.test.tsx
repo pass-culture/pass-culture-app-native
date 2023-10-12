@@ -8,32 +8,32 @@ describe('<ControlComponent />', () => {
   const onPress = jest.fn()
 
   it('should render correctly prev by default', () => {
-    const renderAPI = renderControlComponent()
-    expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowPrevious')).toBeOnTheScreen()
-    expect(() => renderAPI.getByTestId('arrowNext')).toThrowError()
+    renderControlComponent()
+    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
+    expect(() => screen.getByTestId('arrowNext')).toThrowError()
   })
 
   it('should render prev when type is prev', () => {
-    const renderAPI = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
     })
-    expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowPrevious')).toBeOnTheScreen()
-    expect(() => renderAPI.getByTestId('arrowNext')).toThrowError()
+    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
+    expect(() => screen.getByTestId('arrowNext')).toThrowError()
   })
 
   it('renders render next when type is next', () => {
-    const renderAPI = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Next',
       type: 'next',
     })
-    expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowNext')).toBeOnTheScreen()
-    expect(() => renderAPI.getByTestId('arrowPrevious')).toThrowError()
+    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('arrowNext')).toBeOnTheScreen()
+    expect(() => screen.getByTestId('arrowPrevious')).toThrowError()
   })
 
   it('renders trigger onPress when pressed', () => {

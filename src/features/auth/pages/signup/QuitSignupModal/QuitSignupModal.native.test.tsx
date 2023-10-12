@@ -18,8 +18,8 @@ describe('QuitSignupModal', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = renderQuitSignupModal(true)
-    expect(renderAPI).toMatchSnapshot()
+    renderQuitSignupModal(true)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should not display the modal when visible is false', () => {

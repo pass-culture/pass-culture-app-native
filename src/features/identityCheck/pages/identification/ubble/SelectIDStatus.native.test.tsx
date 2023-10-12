@@ -7,8 +7,8 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 describe('SelectIDStatus', () => {
   it('should render SelectIDStatus page correctly', () => {
-    const renderAPI = render(<SelectIDStatus />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<SelectIDStatus />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to ubble webview when pressing "J’ai ma pièce d’identité en cours de validité" button', async () => {

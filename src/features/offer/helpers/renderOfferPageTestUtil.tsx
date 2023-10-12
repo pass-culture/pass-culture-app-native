@@ -35,7 +35,7 @@ export function renderOfferPage(
   openModalOnNavigation?: boolean
 ) {
   mockedOffer = { ...offerResponseSnap, ...extraOffer }
-  const wrapper = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -49,6 +49,4 @@ export function renderOfferPage(
       </NavigationContainer>
     )
   )
-
-  return wrapper
 }

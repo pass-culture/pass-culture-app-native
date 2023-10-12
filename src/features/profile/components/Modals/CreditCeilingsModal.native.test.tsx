@@ -15,25 +15,25 @@ const domainsCreditWithoutPhysicalCeiling = {
 
 describe('<CreditCeilingsModal/>', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(
+    render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
         visible
         hideModal={hideModalMock}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display nothing if modal is not visible', () => {
-    const renderAPI = render(
+    render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
         visible={false}
         hideModal={hideModalMock}
       />
     )
-    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+    expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
   it('should call hideModal function when clicking on Close icon', () => {

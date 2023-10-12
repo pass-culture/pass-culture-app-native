@@ -36,7 +36,7 @@ describe('AccessibleTabBar', () => {
   })
 
   it('should identify only one tab as current page', () => {
-    const renderAPI = renderTabBar()
+    renderTabBar()
     const tabsTestIds = [
       'Accueil',
       'Rechercher des offres',
@@ -44,7 +44,7 @@ describe('AccessibleTabBar', () => {
       'Favoris',
       'Mon profil',
     ]
-    const tabs = tabsTestIds.map((testID) => renderAPI.getByTestId(testID))
+    const tabs = tabsTestIds.map((testID) => screen.getByTestId(testID))
 
     const currentPageList = tabs
       .map((tab) => tab.getAttribute('aria-current'))

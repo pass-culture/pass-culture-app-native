@@ -12,14 +12,14 @@ jest.mock('features/navigation/navigationRef')
 
 describe('ComeBackLater', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<ComeBackLater />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ComeBackLater />)
+    expect(screen).toMatchSnapshot()
   })
 
   it("should navigate to the home page when the 'M'identifier' plus tard' button is pressed", async () => {
-    const comeBackLater = render(<ComeBackLater />)
+    render(<ComeBackLater />)
 
-    const button = comeBackLater.getByText('M’identifier plus tard')
+    const button = screen.getByText('M’identifier plus tard')
 
     fireEvent.press(button)
 

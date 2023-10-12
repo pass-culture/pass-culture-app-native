@@ -8,8 +8,8 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 describe('OnboardingWelcome', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<OnboardingWelcome />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<OnboardingWelcome />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to OnboardingGeolocation when "C’est parti !" is clicked', async () => {

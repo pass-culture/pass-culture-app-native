@@ -13,8 +13,8 @@ jest.mock('react-query')
 
 describe('EndedBookings', () => {
   it('should render correctly', () => {
-    const renderAPI = renderEndedBookings(bookingsSnap)
-    expect(renderAPI).toMatchSnapshot()
+    renderEndedBookings(bookingsSnap)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should always execute the query (in cache or in network)', () => {

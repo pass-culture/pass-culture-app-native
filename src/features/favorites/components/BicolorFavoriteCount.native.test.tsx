@@ -62,10 +62,10 @@ describe('BicolorFavoriteCount component', () => {
   it('should not show nbFavorites within badge when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    const renderAPI = renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
+    renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
     await act(async () => {})
 
-    expect(renderAPI.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
   })
 })
 

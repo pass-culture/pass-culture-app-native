@@ -12,14 +12,7 @@ import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import {
-  bottomScrollEvent,
-  fireEvent,
-  middleScrollEvent,
-  render,
-  screen,
-  waitFor,
-} from 'tests/utils'
+import { bottomScrollEvent, fireEvent, middleScrollEvent, render, screen } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -84,8 +77,8 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Venue />', () => {
   it('should match snapshot', async () => {
-    const venue = await renderVenue(venueId)
-    expect(venue).toMatchSnapshot()
+    await renderVenue(venueId)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log consult venue when URL has from param with deeplink', async () => {
@@ -153,7 +146,5 @@ describe('<Venue />', () => {
 
 async function renderVenue(id: number, from?: Referrals) {
   useRoute.mockImplementation(() => ({ params: { id, from } }))
-  const wrapper = render(<Venue />)
-  await waitFor(() => wrapper)
-  return wrapper
+  render(<Venue />)
 }

@@ -34,14 +34,14 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {
     mockedUseBookingOffer.mockReturnValueOnce(undefined)
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should return empty component when no stock', async () => {
     mockedUseBookingStock.mockReturnValueOnce(undefined)
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should return empty component when no quantity', async () => {
@@ -50,8 +50,8 @@ describe('<BookingInformations />', () => {
       dispatch: () => null,
       dismissModal: () => null,
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render event date section when event', async () => {
@@ -63,8 +63,8 @@ describe('<BookingInformations />', () => {
       stocks: [],
       venue: mockOffer.venue,
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display free wording is free', async () => {
@@ -82,8 +82,8 @@ describe('<BookingInformations />', () => {
       price: 0,
       activationCode: { expirationDate: '2020-12-01T00:00:00Z' },
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display unique price when quantity is unique', async () => {
@@ -100,8 +100,8 @@ describe('<BookingInformations />', () => {
       dispatch: () => null,
       dismissModal: () => null,
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display stock label', () => {
@@ -121,8 +121,8 @@ describe('<BookingInformations />', () => {
       priceCategoryLabel: 'A stock label',
     })
 
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
 
     expect(screen.getByTestId('price-line__label')).toBeOnTheScreen()
   })
@@ -143,8 +143,8 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
 
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
 
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
     expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
@@ -165,8 +165,8 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
 
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
 
     expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
   })
@@ -180,8 +180,8 @@ describe('<BookingInformations />', () => {
       subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
       venue: mockOffer.venue,
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {
@@ -193,8 +193,8 @@ describe('<BookingInformations />', () => {
       stocks: [],
       venue: mockOffer.venue,
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should not display expirationDate section when offer is digital and has no expirationDate', async () => {
@@ -211,8 +211,8 @@ describe('<BookingInformations />', () => {
       beginningDatetime: '2020-12-01T00:00:00Z',
       price: 0,
     })
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
+    render(<BookingInformations />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should not display address when shouldDisplayAddress = false', () => {

@@ -7,10 +7,8 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 const onSkip = jest.fn()
 describe('<GenericInfoPageWhite />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
-      <GenericInfoPageWhite title="GenericInfoPageWhite" icon={BicolorPhonePending} />
-    )
-    expect(renderAPI).toMatchSnapshot()
+    render(<GenericInfoPageWhite title="GenericInfoPageWhite" icon={BicolorPhonePending} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should call skip when onSkip is provided', () => {

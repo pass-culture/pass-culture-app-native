@@ -329,9 +329,9 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
-    const { getByText } = renderLogin()
+    renderLogin()
 
-    const signupButton = getByText('Créer un compte')
+    const signupButton = screen.getByText('Créer un compte')
     await act(async () => {
       fireEvent.press(signupButton)
     })

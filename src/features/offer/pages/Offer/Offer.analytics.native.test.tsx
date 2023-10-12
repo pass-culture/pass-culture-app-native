@@ -39,8 +39,8 @@ describe('<Offer /> - Analytics', () => {
   }
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
-    const offerPage = renderOfferPage()
-    const scrollView = offerPage.getByTestId('offer-container')
+    renderOfferPage()
+    const scrollView = screen.getByTestId('offer-container')
 
     await act(async () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
@@ -55,8 +55,8 @@ describe('<Offer /> - Analytics', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" only once', async () => {
-    const offerPage = renderOfferPage()
-    const scrollView = offerPage.getByTestId('offer-container')
+    renderOfferPage()
+    const scrollView = screen.getByTestId('offer-container')
     await act(async () => {
       // 1st scroll to bottom => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })

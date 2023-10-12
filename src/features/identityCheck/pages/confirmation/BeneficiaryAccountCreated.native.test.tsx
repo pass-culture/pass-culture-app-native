@@ -25,13 +25,13 @@ jest.mock('features/share/context/ShareAppWrapper', () => ({
 
 describe('<BeneficiaryAccountCreated/>', () => {
   it('should render correctly for underage beneficiaries', () => {
-    const renderAPI = renderBeneficiaryAccountCreated()
-    expect(renderAPI).toMatchSnapshot()
+    renderBeneficiaryAccountCreated()
+    expect(screen).toMatchSnapshot()
   })
   it('should render correctly for 18 year-old beneficiaries', () => {
     mockIsUserUnderageBeneficiary = false
-    const renderAPI = renderBeneficiaryAccountCreated()
-    expect(renderAPI).toMatchSnapshot()
+    renderBeneficiaryAccountCreated()
+    expect(screen).toMatchSnapshot()
   })
   it('should track Batch event when button is clicked', async () => {
     renderBeneficiaryAccountCreated()

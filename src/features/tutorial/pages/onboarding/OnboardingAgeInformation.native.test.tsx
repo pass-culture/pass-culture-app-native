@@ -14,8 +14,8 @@ const AGES = [15, 16, 17, 18]
 
 describe('OnboardingAgeInformation', () => {
   it.each(AGES)('should render correctly for %s-year-old', (age) => {
-    const renderAPI = renderOnboardingAgeInformation({ age })
-    expect(renderAPI).toMatchSnapshot()
+    renderOnboardingAgeInformation({ age })
+    expect(screen).toMatchSnapshot()
   })
 
   it.each(AGES)('should only display one active block for %s-year-old', (age) => {

@@ -6,8 +6,8 @@ import { render, fireEvent, screen } from 'tests/utils'
 
 describe('Accessibility', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<Accessibility />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<Accessibility />)
+    expect(screen).toMatchSnapshot()
   })
 
   it.each`

@@ -23,10 +23,10 @@ describe('OfferCaption component', () => {
   })
 
   it('should have the isDuo text if user is Beneficiary', () => {
-    const renderAPI = render(<OfferCaption {...props} />)
+    const { rerender } = render(<OfferCaption {...props} />)
     expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€ - Duo')
 
-    renderAPI.rerender(<OfferCaption {...props} isDuo={false} />)
+    rerender(<OfferCaption {...props} isDuo={false} />)
     expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
   })
 

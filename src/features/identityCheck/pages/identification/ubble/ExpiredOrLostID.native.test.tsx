@@ -12,8 +12,8 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('ExpiredOrLostID', () => {
   it('should render correctly', () => {
-    const ExpiredOrLostIDPage = render(<ExpiredOrLostID />)
-    expect(ExpiredOrLostIDPage).toMatchSnapshot()
+    render(<ExpiredOrLostID />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should open ants url on press "Aller sur demarches-simplifiees.fr"', async () => {

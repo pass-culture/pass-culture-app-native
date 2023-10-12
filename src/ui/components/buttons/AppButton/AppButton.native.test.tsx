@@ -49,8 +49,8 @@ describe('AppButton Component', () => {
   })
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
-      const renderAPI = render(<AppButton {...baseProps} wording="Testing inline" inline />)
-      expect(renderAPI).toMatchSnapshot()
+      render(<AppButton {...baseProps} wording="Testing inline" inline />)
+      expect(screen).toMatchSnapshot()
     })
   })
 })

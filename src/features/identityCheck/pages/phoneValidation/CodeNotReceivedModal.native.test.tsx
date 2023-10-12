@@ -46,9 +46,9 @@ describe('<CodeNotReceivedModal />', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
   it('should match snapshot', () => {
-    const renderAPI = renderCodeNotReceivedModal()
+    renderCodeNotReceivedModal()
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should have a different color if one attempt remaining', () => {
@@ -57,9 +57,9 @@ describe('<CodeNotReceivedModal />', () => {
       counterResetDatetime: 'time',
       isLastAttempt: true,
     })
-    const renderAPI = renderCodeNotReceivedModal()
+    renderCodeNotReceivedModal()
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should call dismissModal upon pressing on Close', () => {

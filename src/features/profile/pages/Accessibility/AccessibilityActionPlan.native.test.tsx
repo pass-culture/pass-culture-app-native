@@ -8,8 +8,8 @@ const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('AccessibilityActionPlan', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<AccessibilityActionPlan />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<AccessibilityActionPlan />)
+    expect(screen).toMatchSnapshot()
   })
 
   it.each([

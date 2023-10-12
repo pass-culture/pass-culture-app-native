@@ -15,8 +15,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<SelectIDOrigin />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<SelectIDOrigin />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to SelectIDStatus on press french HeroButtonList', async () => {

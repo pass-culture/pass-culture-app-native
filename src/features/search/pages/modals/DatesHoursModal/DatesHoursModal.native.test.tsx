@@ -40,13 +40,13 @@ describe('<DatesHoursModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    const renderAPI = renderDatesHoursModal()
+    renderDatesHoursModal()
 
     await waitFor(() => {
       expect(screen.getByLabelText('Rechercher')).toBeEnabled()
     })
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   describe('should show', () => {

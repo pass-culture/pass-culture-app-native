@@ -17,8 +17,8 @@ jest.mock('features/auth/context/AuthContext')
 
 describe('<BeneficiaryRequestSent />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<BeneficiaryRequestSent />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<BeneficiaryRequestSent />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to native cultural survey page WHEN "On y va !" is clicked', () => {

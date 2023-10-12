@@ -7,8 +7,8 @@ import { TutorialPage } from './TutorialPage'
 
 describe('TutorialPage', () => {
   it('should render correctly', () => {
-    const renderAPI = renderTutorialPage()
-    expect(renderAPI).toMatchSnapshot()
+    renderTutorialPage()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should trigger onPress when clicking on button', async () => {

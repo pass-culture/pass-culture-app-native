@@ -12,10 +12,10 @@ const hideModal = jest.fn()
 
 describe('<AuthenticationModal />', () => {
   it('should match previous snapshot', () => {
-    const modal = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    expect(modal).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to signup page when clicking on "Créer un compte" button', async () => {

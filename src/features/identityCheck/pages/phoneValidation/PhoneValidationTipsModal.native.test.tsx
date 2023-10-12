@@ -5,10 +5,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 describe('<PhoneValidationTipsModal />', () => {
   it('should match snapshot', () => {
-    const renderAPI = render(
-      <PhoneValidationTipsModal isVisible dismissModal={jest.fn()} onGoBack={jest.fn()} />
-    )
-    expect(renderAPI).toMatchSnapshot()
+    render(<PhoneValidationTipsModal isVisible dismissModal={jest.fn()} onGoBack={jest.fn()} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it("should call dismissModal upon pressing 'j'ai compris'", () => {

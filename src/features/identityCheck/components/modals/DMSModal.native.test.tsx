@@ -13,8 +13,8 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('<DMSModal/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<DMSModal visible hideModal={hideModalMock} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<DMSModal visible hideModal={hideModalMock} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should call hideModal function when clicking on Close icon', () => {

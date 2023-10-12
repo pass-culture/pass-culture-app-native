@@ -60,8 +60,8 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the LoggedOutHeader if no user', () => {
-    const ProfileHeaderComponent = render(<ProfileHeader user={undefined} />)
-    expect(ProfileHeaderComponent).toMatchSnapshot()
+    render(<ProfileHeader user={undefined} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
@@ -81,12 +81,12 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {
-    const ProfileHeaderComponent = render(<ProfileHeader user={notBeneficiaryUser} />)
-    expect(ProfileHeaderComponent).toMatchSnapshot()
+    render(<ProfileHeader user={notBeneficiaryUser} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', () => {
-    const ProfileHeaderComponent = render(<ProfileHeader user={exUnderageBeneficiaryUser} />)
-    expect(ProfileHeaderComponent).toMatchSnapshot()
+    render(<ProfileHeader user={exUnderageBeneficiaryUser} />)
+    expect(screen).toMatchSnapshot()
   })
 })

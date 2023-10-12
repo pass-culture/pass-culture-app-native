@@ -9,8 +9,8 @@ const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('AccessibilityEngagement', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<AccessibilityEngagement />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<AccessibilityEngagement />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should open FAQ when clicking help center link', () => {

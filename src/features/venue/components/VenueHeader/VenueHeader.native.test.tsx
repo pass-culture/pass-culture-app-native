@@ -15,9 +15,9 @@ jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
-    const venueHeader = renderVenueHeader()
-    expect(venueHeader.queryByTestId('animated-icon-back')).toBeOnTheScreen()
-    expect(venueHeader.queryByTestId('animated-icon-share')).toBeOnTheScreen()
+    renderVenueHeader()
+    expect(screen.queryByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.queryByTestId('animated-icon-share')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {
@@ -60,7 +60,7 @@ describe('<VenueHeader />', () => {
 
 function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
-  const wrapper = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <VenueHeader
@@ -70,5 +70,5 @@ function renderVenueHeader() {
       />
     )
   )
-  return { ...wrapper, animatedValue }
+  return { animatedValue }
 }

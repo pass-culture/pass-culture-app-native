@@ -40,11 +40,9 @@ describe('<CancelBookingModal />', () => {
 
   it('should dismiss modal on press rightIconButton', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const page = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
-    const dismissModalButton = page.getByTestId('Ne pas annuler')
+    const dismissModalButton = screen.getByTestId('Ne pas annuler')
 
     fireEvent.press(dismissModalButton)
     expect(mockDismissModal).toHaveBeenCalledTimes(1)

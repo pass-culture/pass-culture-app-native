@@ -13,8 +13,8 @@ const props = {
 
 describe('MarketingModal', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<MarketingModal {...props} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<MarketingModal {...props} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should call onBackdropPress when clicking outside modal', async () => {

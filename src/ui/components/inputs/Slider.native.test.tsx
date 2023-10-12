@@ -6,7 +6,7 @@ import { Slider } from './Slider'
 
 describe('<Slider />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    render(
       <Slider
         values={[0, 100]}
         showValues
@@ -18,7 +18,7 @@ describe('<Slider />', () => {
         maxLabel="Max label"
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   describe('values', () => {

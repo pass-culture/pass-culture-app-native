@@ -10,14 +10,14 @@ const accessibilityLabel = 'Enlever le lieu'
 
 describe('<ClippedTag/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    render(
       <ClippedTag
         label={label}
         onPress={removeVenueId}
         iconAccessibilityLabel={accessibilityLabel}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should delete venueId and ClippedTag when clicking on Clear icon', () => {

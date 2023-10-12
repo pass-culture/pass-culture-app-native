@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
@@ -15,13 +15,13 @@ const renderResendEmailButton = () => (
 
 describe('<LayoutExpiredLink/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    render(
       <LayoutExpiredLink
         renderCustomButton={renderResendEmailButton}
         urlFAQ={url}
         contactSupport={contactSupport}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 })

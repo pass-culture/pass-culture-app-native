@@ -15,13 +15,13 @@ describe('FavoriteListSurveyModal', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = render(<FavoriteListSurveyModal visible hideModal={hideModalMock} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<FavoriteListSurveyModal visible hideModal={hideModalMock} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display nothing if modal is not visible', () => {
-    const renderAPI = render(<FavoriteListSurveyModal visible={false} hideModal={hideModalMock} />)
-    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+    render(<FavoriteListSurveyModal visible={false} hideModal={hideModalMock} />)
+    expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
   it('should call hideModal function when clicking on Close icon', () => {

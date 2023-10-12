@@ -13,27 +13,27 @@ const hideModal = jest.fn()
 
 describe('NonEligibleModal', () => {
   it('should render correctly for onboarding non-eligible under 15', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+    renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly for profile tutorial non-eligible under 15 ', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+    renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly for onboarding non-eligible over 18 ', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
+    renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly for profile tutorial non-eligible over 18 ', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.PROFILE_TUTORIAL)
+    renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.PROFILE_TUTORIAL)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it.each(Object.values(NonEligible))(

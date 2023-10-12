@@ -25,8 +25,8 @@ describe('DMSIntroduction', () => {
     })
 
     it('should render correctly', () => {
-      const DMSIntroductionFR = render(<DMSIntroduction />)
-      expect(DMSIntroductionFR).toMatchSnapshot()
+      render(<DMSIntroduction />)
+      expect(screen).toMatchSnapshot()
     })
 
     it('should open french dms link when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
@@ -60,8 +60,8 @@ describe('DMSIntroduction', () => {
     })
 
     it('should render correctly', () => {
-      const DMSIntroductionFR = render(<DMSIntroduction />)
-      expect(DMSIntroductionFR).toMatchSnapshot()
+      render(<DMSIntroduction />)
+      expect(screen).toMatchSnapshot()
     })
 
     it('should open foreign dms link when pressing "Aller sur demarches-simplifiees.fr" button', async () => {

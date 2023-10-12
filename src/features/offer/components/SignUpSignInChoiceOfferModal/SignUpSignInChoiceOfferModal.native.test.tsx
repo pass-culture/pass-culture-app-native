@@ -11,10 +11,8 @@ const dismissModal = jest.fn()
 
 describe('SignUpSignInChoiceOfferModal', () => {
   it('should match previous snapshot', () => {
-    const modal = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
-    )
-    expect(modal).toMatchSnapshot()
+    render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('go to login with offerId in params on button click and log analytics', async () => {

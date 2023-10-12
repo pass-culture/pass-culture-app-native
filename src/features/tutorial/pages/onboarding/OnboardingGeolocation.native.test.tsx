@@ -13,8 +13,8 @@ jest.mock('libs/geolocation/LocationWrapper', () => ({
 
 describe('OnboardingGeolocation', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<OnboardingGeolocation />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<OnboardingGeolocation />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to AgeSelection when "Passer" is clicked', async () => {

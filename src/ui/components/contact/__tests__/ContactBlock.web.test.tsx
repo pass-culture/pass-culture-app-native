@@ -9,7 +9,7 @@ jest.mock('features/venue/api/useVenue')
 
 describe('<ContactBlock/>', () => {
   it('should match snapshot', () => {
-    const wrapper = render(<ContactBlock venueId={venueResponseSnap.id} />)
-    expect(wrapper).toMatchSnapshot()
+    const renderAPI = render(<ContactBlock venueId={venueResponseSnap.id} />)
+    expect(renderAPI).toMatchSnapshot()
   })
 })

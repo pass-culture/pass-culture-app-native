@@ -81,12 +81,12 @@ describe('CodePushButton', () => {
       })
 
       // We press the sync button
-      const button = render(<CodePushButton />)
-      fireEvent.press(button.getByTestId('Check update'))
+      render(<CodePushButton />)
+      fireEvent.press(screen.getByTestId('Check update'))
       expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
       // We expect our component to render that the corresponding message status
-      const messageStatus = button.getByTestId('status')
+      const messageStatus = screen.getByTestId('status')
       expect(messageStatus.props.children).toEqual(displayStatusMessage)
     }
   )

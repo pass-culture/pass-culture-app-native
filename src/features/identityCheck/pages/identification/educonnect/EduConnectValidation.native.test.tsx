@@ -42,8 +42,8 @@ describe('<EduConnectValidation />', () => {
   })
 
   it('should render EduConnectValidation component correctly', () => {
-    const renderAPI = render(<EduConnectValidation />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<EduConnectValidation />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display user infos with props given', () => {

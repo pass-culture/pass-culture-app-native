@@ -6,8 +6,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 describe('NoContentError', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<NoContentError />)
-    expect(renderAPI.toJSON()).toMatchSnapshot()
+    render(<NoContentError />)
+    expect(screen.toJSON()).toMatchSnapshot()
   })
 
   it('should redirect to Search tab when pressing the button', () => {

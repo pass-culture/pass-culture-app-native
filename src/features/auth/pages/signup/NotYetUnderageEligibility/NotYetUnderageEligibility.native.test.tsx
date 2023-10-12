@@ -17,10 +17,8 @@ const navigationProps = {
 
 describe('<NotYetUnderageEligibility />', () => {
   it('should render properly', () => {
-    const NotYetUnderageEligibilityComponent = render(
-      <NotYetUnderageEligibility {...navigationProps} />
-    )
-    expect(NotYetUnderageEligibilityComponent).toMatchSnapshot()
+    render(<NotYetUnderageEligibility {...navigationProps} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to home page WHEN go back to home button is clicked', () => {

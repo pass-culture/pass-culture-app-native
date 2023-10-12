@@ -26,7 +26,7 @@ describe('OfferCaption component', () => {
     render(<OfferCaption {...props} />)
     expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€ - Duo')
 
-    getByTestId = render(<OfferCaption {...props} isDuo={false} />).getByTestId
+    render(<OfferCaption {...props} isDuo={false} />).getByTestId
     expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€')
   })
 

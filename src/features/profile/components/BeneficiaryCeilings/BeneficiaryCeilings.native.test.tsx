@@ -16,8 +16,8 @@ const mockUseIsUserUnderageBeneficiary = jest
 
 describe('BeneficiaryCeilings', () => {
   it('should not return credits if credit is exhausted', () => {
-    const renderAPI = render(<BeneficiaryCeilings domainsCredit={domains_exhausted_credit_v1} />)
-    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+    render(<BeneficiaryCeilings domainsCredit={domains_exhausted_credit_v1} />)
+    expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
   describe('Domains credit v1', () => {
@@ -50,14 +50,14 @@ describe('BeneficiaryCeilings', () => {
 
   describe('Domains credit underage', () => {
     it('should not return credits if domains credit underage and is not user underage beneficiary', () => {
-      const renderAPI = render(<BeneficiaryCeilings domainsCredit={domains_credit_underage} />)
-      expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+      render(<BeneficiaryCeilings domainsCredit={domains_credit_underage} />)
+      expect(screen.toJSON()).not.toBeOnTheScreen()
     })
   })
 
   it('should not return credits if user underage beneficiary', () => {
     mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
-    const renderAPI = render(<BeneficiaryCeilings domainsCredit={domains_credit_v1} />)
-    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+    render(<BeneficiaryCeilings domainsCredit={domains_credit_v1} />)
+    expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 })

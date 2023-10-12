@@ -12,9 +12,9 @@ const offerId = 1
 
 describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
-    const modal = render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
+    render(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
 
-    expect(modal).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should close modal and navigate to profile when pressing "Aller vers la section profil" button', () => {

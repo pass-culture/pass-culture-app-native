@@ -54,8 +54,8 @@ const defaultParams = {
 
 describe('<VenueOffers />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<VenueOffers venueId={venueId} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<VenueOffers venueId={venueId} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {

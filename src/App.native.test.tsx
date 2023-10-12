@@ -28,6 +28,5 @@ describe('<App /> with mocked RootNavigator', () => {
 })
 
 const renderApp = async () => {
-  const wrapper = render(<AppWithoutMonitoring />)
-  return wrapper
+  render(<AppWithoutMonitoring />)
 }

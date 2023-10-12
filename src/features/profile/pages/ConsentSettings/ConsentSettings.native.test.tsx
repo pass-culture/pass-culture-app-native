@@ -35,10 +35,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 describe('<ConsentSettings/>', () => {
   it('should render correctly', async () => {
-    const renderAPI = renderConsentSettings()
+    renderConsentSettings()
 
     await screen.findByTestId('Interrupteur Tout accepter')
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should persist cookies consent information when user partially accepts cookies', async () => {

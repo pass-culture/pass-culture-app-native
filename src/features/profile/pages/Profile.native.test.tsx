@@ -391,7 +391,7 @@ const defaultOptions = {
 
 function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  const renderAPI = render(
+  render(
     <NavigationContainer>
       <TabStack.Navigator initialRouteName="Profile">
         <TabStack.Screen name="Profile" component={Profile} />
@@ -399,5 +399,5 @@ function renderProfile(options: Options = defaultOptions) {
     </NavigationContainer>,
     { wrapper }
   )
-  return renderAPI
+  
 }

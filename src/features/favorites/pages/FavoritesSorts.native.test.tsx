@@ -47,14 +47,14 @@ describe('<FavoritesSorts/>', () => {
   afterEach(jest.resetAllMocks)
 
   it('should render correctly', () => {
-    const renderAPI = renderFavoritesSort()
-    expect(renderAPI).toMatchSnapshot()
+    renderFavoritesSort()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should go back on validate', async () => {
-    const renderAPI = renderFavoritesSort()
+    renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.press(screen.getByText('Valider'))
 
     await waitFor(() => {
       expect(mockGoBack).toHaveBeenCalledTimes(1)
@@ -74,10 +74,10 @@ describe('<FavoritesSorts/>', () => {
       sortByWording: string
       expectedAnalytics: FavoriteSortBy
     }) => {
-      const renderAPI = renderFavoritesSort()
+      renderFavoritesSort()
 
-      fireEvent.press(renderAPI.getByText(sortByWording))
-      fireEvent.press(renderAPI.getByText('Valider'))
+      fireEvent.press(screen.getByText(sortByWording))
+      fireEvent.press(screen.getByText('Valider'))
 
       await waitFor(() => {
         expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
@@ -101,16 +101,14 @@ describe('<FavoritesSorts/>', () => {
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
-    const renderAPI = renderFavoritesSort()
+    renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Proximité géographique'))
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.press(screen.getByText('Proximité géographique'))
+    fireEvent.press(screen.getByText('Valider'))
 
     await waitFor(() => {
       expect(
-        renderAPI.queryByText(
-          `La géolocalisation est temporairement inutilisable sur ton téléphone`
-        )
+        screen.queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
       ).not.toBeOnTheScreen()
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
         sortBy: 'AROUND_ME',
@@ -121,10 +119,10 @@ describe('<FavoritesSorts/>', () => {
   it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED
-    const renderAPI = renderFavoritesSort()
+    renderFavoritesSort()
 
-    fireEvent.press(renderAPI.getByText('Proximité géographique'))
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.press(screen.getByText('Proximité géographique'))
+    fireEvent.press(screen.getByText('Valider'))
 
     await waitFor(() => {
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
@@ -138,10 +136,9 @@ describe('<FavoritesSorts/>', () => {
 })
 
 function renderFavoritesSort() {
-  const renderAPI = render(
+  render(
     <FavoritesWrapper>
       <FavoritesSorts />
     </FavoritesWrapper>
   )
-  return renderAPI
 }

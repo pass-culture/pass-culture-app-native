@@ -136,7 +136,6 @@ describe('CulturalSurveysQuestions page', () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
     const CulturalSurveyAnswerCheckbox = screen.getByText(
-      // @ts-expect-error mocked Hook is defined
       questionsFromMockedHook?.questions[0].answers[2].title
     )
     fireEvent.press(CulturalSurveyAnswerCheckbox)

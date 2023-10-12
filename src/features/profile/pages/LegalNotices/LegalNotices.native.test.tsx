@@ -10,8 +10,8 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('LegalNotices', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(<LegalNotices />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<LegalNotices />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate when the cgu row is clicked', async () => {

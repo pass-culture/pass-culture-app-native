@@ -18,9 +18,9 @@ describe('<OfferCategoryChoices />', () => {
 
   it('should match snapshot', () => {
     const onChange = jest.fn()
-    const renderAPI = render(<OfferCategoryChoices onChange={onChange} />)
+    render(<OfferCategoryChoices onChange={onChange} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should call onChange with proper category when toggling', () => {
