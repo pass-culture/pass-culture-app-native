@@ -18,7 +18,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring'
-import { ReCaptchaError } from 'libs/recaptcha/errors'
+import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
@@ -172,11 +172,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }, [])
 
   const onReCaptchaError = useCallback(
-    (errorCode: ReCaptchaError, error: string | undefined) => {
+    (errorCode: ReCaptchaError, error?: string | undefined) => {
       setIsDoingReCaptchaChallenge(false)
       setErrorMessage('Un problème est survenu, réessaie plus tard.')
-      if (errorCode !== 'NetworkError') {
-        captureMonitoringError(`${errorCode} ${error}`, 'Login recaptcha error')
+      if (errorCode !== ReCaptchaInternalError.NetworkError) {
+        captureMonitoringError(`${errorCode} ${error}`, 'LoginOnRecaptchaError')
       }
     },
     [setErrorMessage]
@@ -221,7 +221,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       {!!isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
-          onError={(errorCode, error) => onReCaptchaError(errorCode, error)}
+          onError={onReCaptchaError}
           onExpire={onReCaptchaExpire}
           onSuccess={onReCaptchaSuccess}
           isVisible={isDoingReCaptchaChallenge}

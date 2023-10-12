@@ -514,7 +514,7 @@ describe('<Login/>', () => {
 
       expect(captureMonitoringError).toHaveBeenCalledWith(
         'UnknownError someError',
-        'Login recaptcha error'
+        'LoginOnRecaptchaError'
       )
     })
 

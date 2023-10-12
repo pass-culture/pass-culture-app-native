@@ -68,7 +68,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   const onReCaptchaError = useCallback((errorCode: ReCaptchaError, error: string | undefined) => {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
-    if (errorCode !== 'NetworkError') {
+    if (errorCode !== 'ReCaptchaNetworkError') {
       captureMonitoringError(`${errorCode} ${error}`, 'AcceptCguOnReCaptchaError')
     }
   }, [])
@@ -102,7 +102,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       {!!settings?.isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
-          onError={(errorCode, error) => onReCaptchaError(errorCode, error)}
+          onError={onReCaptchaError}
           onExpire={onReCaptchaExpire}
           onSuccess={onReCaptchaSuccess}
           isVisible={isDoingReCaptchaChallenge}

@@ -62,7 +62,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                 }
 
                 function onRecaptchaErrorCallback() {
-                    onError("NetworkError")
+                    onError("ReCaptchaNetworkError")
                 }
 
                 function isReadyToExecute() { 
@@ -78,7 +78,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError("NumberOfRenderRetriesExceeded");
+                        onError("ReCaptchaNumberOfRenderRetriesExceeded");
                     }
                 }
 
@@ -90,7 +90,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                             readyInterval = setInterval(executeWhenReady, 1000);
                         }
                     } catch(error) {
-                        onError("UnknownError", error);
+                        onError("ReCaptchaUnknownError", error);
                     }
                 };
             </script>

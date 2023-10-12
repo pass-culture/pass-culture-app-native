@@ -54,7 +54,7 @@ export const ForgottenPassword = () => {
       {!!settings?.isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
-          onError={(errorCode, error) => onReCaptchaError(errorCode, error)}
+          onError={onReCaptchaError}
           onExpire={onReCaptchaExpire}
           onSuccess={onReCaptchaSuccess}
           isVisible={isDoingReCaptchaChallenge}
@@ -190,7 +190,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
       onReCaptchaError(errorCode: ReCaptchaError, error: string | undefined) {
         setValue('isDoingReCaptchaChallenge', false)
         setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-        if (errorCode !== 'NetworkError') {
+        if (errorCode !== 'ReCaptchaNetworkError') {
           captureMonitoringError(`${errorCode} ${error}`, 'ForgottenPasswordOnRecaptchaError')
         }
       },

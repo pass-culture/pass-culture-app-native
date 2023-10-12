@@ -1,6 +1,6 @@
 export enum ReCaptchaInternalError {
-  NetworkError = 'NetworkError',
-  NumberOfRenderRetriesExceeded = 'NumberOfRenderRetriesExceeded',
-  UnknownError = 'UnknownError',
+  NetworkError = 'ReCaptchaNetworkError',
+  NumberOfRenderRetriesExceeded = 'ReCaptchaNumberOfRenderRetriesExceeded',
+  UnknownError = 'ReCaptchaUnknownError',
 }
-export type ReCaptchaError = ReCaptchaInternalError | 'WebViewError'
+export type ReCaptchaError = ReCaptchaInternalError | 'ReCaptchaWebViewError'

@@ -6,7 +6,7 @@ import { ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { useCaptcha } from './useCaptcha'
 
 type Props = {
-  onError: (errorCode: ReCaptchaInternalError, error: string) => void
+  onError: (errorCode: ReCaptchaInternalError, error?: string) => void
   onExpire: () => void
   onSuccess: (token: string) => void
   isVisible: boolean
@@ -36,10 +36,7 @@ export function ReCaptcha(props: Props) {
   }
 
   function onRecaptchaErrorCallback() {
-    props.onError(
-      ReCaptchaInternalError.NetworkError,
-      'reCAPTCHA error: error-callback of widget called, usually network connectivity'
-    )
+    props.onError(ReCaptchaInternalError.NetworkError)
   }
 
   useEffect(() => {
@@ -51,10 +48,7 @@ export function ReCaptcha(props: Props) {
       numberOfRetries = numberOfRetries + 1
       if (numberOfRetries > 15) {
         clearInterval(intervalId)
-        props.onError(
-          ReCaptchaInternalError.NumberOfRenderRetriesExceeded,
-          'reCAPTCHA error: Number of retries render exceeded'
-        )
+        props.onError(ReCaptchaInternalError.NumberOfRenderRetriesExceeded)
         return
       }
 
