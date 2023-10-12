@@ -197,7 +197,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
     needs: [check-server-folder-changes-staging, deploy-web-staging]
-    if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true'
+    if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: staging
@@ -218,7 +218,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-integration:
     needs: [check-server-folder-changes-production, deploy-web-integration]
-    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true'
+    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: integration
@@ -239,7 +239,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-production:
     needs: [check-server-folder-changes-production, deploy-web-production]
-    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true'
+    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: production
