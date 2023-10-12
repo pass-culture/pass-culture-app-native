@@ -4,6 +4,7 @@ import React from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   formattedExclusivityModule,
@@ -19,6 +20,7 @@ import { HomepageModule, ModuleData } from 'features/home/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
@@ -60,8 +62,40 @@ jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
   useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 
+jest.mock('features/home/api/useVideoOffers')
+const mockUseVideoOffers = useVideoOffers as jest.Mock
+
+const offerFixture = [
+  {
+    offer: {
+      thumbUrl: 'http://thumbnail',
+      subcategoryId: 'CONCERT',
+    },
+    objectID: 12345,
+    venue: {
+      id: 5678,
+    },
+  },
+  {
+    offer: {
+      thumbUrl: 'http://thumbnail',
+      subcategoryId: 'CONFERENCE',
+    },
+    objectID: 67890,
+    venue: {
+      id: 5432,
+    },
+  },
+]
+
 const defaultData: ModuleData = {
   playlistItems: offersFixture,
+  nbPlaylistResults: 4,
+  moduleId: 'blablabla',
+}
+
+const defaultDataVenues: ModuleData = {
+  playlistItems: mockVenues.hits,
   nbPlaylistResults: 4,
   moduleId: 'blablabla',
 }
@@ -151,14 +185,14 @@ describe('<HomeModule />', () => {
     expect(screen.getByText('Tes évènements en ligne')).toBeOnTheScreen()
   })
 
-  // TODO(PC-23671): Fix this VideoModule test
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should display VideoModule', async () => {
+  it('should display VideoModule', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[0]] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[1]] })
+
     renderHomeModule(videoModuleFixture)
 
-    await act(async () => {})
-
-    expect(screen.getByText('Découvre Lujipeka')).toBeOnTheScreen()
+    await screen.findByText('Découvre Lujipeka')
+    expect(screen.getByTestId('mobile-video-module')).toBeOnTheScreen()
   })
 
   it('should display ThematicHighlightModule', async () => {
@@ -178,13 +212,11 @@ describe('<HomeModule />', () => {
     expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
   })
 
-  // TODO(PC-23671): Fix this VenuesModule test
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should display VenuesModule', async () => {
-    renderHomeModule(formattedVenuesModule)
+  it('should display VenuesModule', async () => {
+    renderHomeModule(formattedVenuesModule, defaultDataVenues)
 
     await act(async () => {})
-    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+    expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
   })
 })
 

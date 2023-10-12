@@ -10,7 +10,7 @@ jest.mock('react-query')
 
 const props = {
   moduleId: 'fakemoduleid',
-  display: { title: 'Module title', minOffers: 1 } as DisplayParametersFields,
+  displayParameters: { title: 'Module title', minOffers: 1 } as DisplayParametersFields,
   search: [],
   homeEntryId: 'fakeEntryId',
   index: 1,

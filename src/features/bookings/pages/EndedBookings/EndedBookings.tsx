@@ -27,8 +27,8 @@ export const EndedBookings: React.FC = () => {
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
-    one: '# réservation terminée',
-    other: '# réservations terminées',
+    singular: '# réservation terminée',
+    plural: '# réservations terminées',
   })
 
   const ListHeaderComponent = useCallback(
