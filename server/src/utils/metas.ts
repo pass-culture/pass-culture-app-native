@@ -11,8 +11,8 @@ const { APP_PUBLIC_URL, ORGANIZATION_PREFIX } = env
 const { href } = new URL(APP_PUBLIC_URL)
 
 const REGEX = {
-  title: /<meta\s+(name)="(title)"\s+content="([^"]*)"\s*\/?>/g,
-  description: /<meta\s+(name)="(description)"\s+content="([^"]*)"\s*\/?>/g,
+  metaTitle: /<meta\s+(name)="(title)"\s+content="([^"]*)"\s*\/?>/g,
+  metaDescription: /<meta\s+(name)="(description)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:url']: /<meta\s+(property)="(og:url)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:title']: /<meta\s+(property)="(og:title)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:description']: /<meta\s+(property)="(og:description)"\s+content="([^"]*)"\s*\/?>/g,
@@ -48,13 +48,13 @@ export async function replaceHtmlMetas(
     const subPath = endpoint.slice(1)
     const METAS_CONFIG = ENTITY_METAS_CONFIG_MAP[type]
     const metaConfig: MetaConfig = {
-      title: {
-        data: addOrganizationPrefix(METAS_CONFIG.title(entity)),
-        regEx: REGEX.title,
+      metaTitle: {
+        data: addOrganizationPrefix(METAS_CONFIG.metaTitle(entity)),
+        regEx: REGEX.metaTitle,
       },
-      description: {
-        data: METAS_CONFIG.description(entity),
-        regEx: REGEX.description,
+      metaDescription: {
+        data: METAS_CONFIG.metaDescription(entity),
+        regEx: REGEX.metaDescription,
       },
       ['og:url']: {
         data: METAS_CONFIG['og:url'](href, subPath),

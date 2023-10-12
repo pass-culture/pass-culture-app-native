@@ -16,8 +16,8 @@ export type EntityKeys = keyof typeof ENTITY_MAP
 export type EntityType = {
   API_MODEL_NAME: string
   METAS_CONFIG: {
-    title: (entity: Record<string, unknown>) => string
-    description: (entity: Record<string, unknown>) => string
+    metaTitle: (entity: Record<string, unknown>) => string
+    metaDescription: (entity: Record<string, unknown>) => string
     ['og:url']: (href: string, subPath: string) => string
     ['og:title']: (entity: Record<string, unknown>) => string
     ['og:description']: (entity: Record<string, unknown>) => string

@@ -7,10 +7,10 @@ const { DEEPLINK_PROTOCOL } = env
 export const OFFER: EntityType = {
   API_MODEL_NAME: 'offer',
   METAS_CONFIG: {
-    title(entity: Record<string, unknown>) {
+    metaTitle(entity: Record<string, unknown>) {
       return entity.name as string
     },
-    description(entity: Record<string, unknown>) {
+    metaDescription(entity: Record<string, unknown>) {
       return entity.description as string
     },
     ['og:url'](href: string, subPath: string) {
