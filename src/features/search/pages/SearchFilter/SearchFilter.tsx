@@ -110,6 +110,14 @@ export const SearchFilter: React.FC = () => {
             </StyledLi>
           )}
 
+          {/* Point de vente */}
+          <StyledLi>
+            <Spacer.Column numberOfSpaces={4} />
+            <Section.Venue />
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator />
+          </StyledLi>
+
           {/* Prix */}
           <StyledLi>
             <Spacer.Column numberOfSpaces={4} />
