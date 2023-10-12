@@ -94,7 +94,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const shouldDisplayVenuesPlaylist =
     enableVenuesInSearchResults &&
     searchState.locationFilter.locationType !== LocationType.VENUE &&
-    params?.locationFilter?.locationType !== LocationType.VENUE
+    params?.locationFilter?.locationType !== LocationType.VENUE &&
+    (venues ?? []).length > 0
 
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()

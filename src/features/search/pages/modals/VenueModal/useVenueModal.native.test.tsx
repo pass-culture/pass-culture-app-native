@@ -1,9 +1,11 @@
 import { initialSearchState } from 'features/search/context/reducer'
+import { LocationType } from 'features/search/enums'
+import { SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
 
-import useVenueModal from './useVenueModal'
+import useVenueModal, { VenueModalHookCallback } from './useVenueModal'
 
 const venue: Venue = mockedSuggestedVenues[0]
 
@@ -21,6 +23,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const dismissMyModal: VoidFunction = jest.fn()
+const doAfterSearch: VenueModalHookCallback = jest.fn()
 
 describe('useVenueModal', () => {
   it('when start it should return falsy state', () => {
@@ -102,8 +105,12 @@ describe('useVenueModal', () => {
     })
     expect(dismissMyModal).toHaveBeenCalled()
     expect(mockStateDispatch).toHaveBeenCalledWith({
-      type: 'SET_LOCATION_VENUE',
-      payload: venue,
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationType.VENUE, venue: venue },
+        view: SearchView.Results,
+      },
     })
   })
   it('when nothing is to be search then search cannot be done', async () => {
@@ -112,7 +119,47 @@ describe('useVenueModal', () => {
     await act(async () => {
       result.current.doApplySearch()
     })
+    expect(doAfterSearch).not.toHaveBeenCalled()
     expect(dismissMyModal).toHaveBeenCalled()
     expect(mockStateDispatch).not.toHaveBeenCalled()
+  })
+  it('when nothing is to be search then search cannot be done and no calls is made', async () => {
+    const { result } = renderHook(
+      ({ dismissModal, doAfterSearch }) => useVenueModal(dismissModal, doAfterSearch),
+      {
+        initialProps: {
+          dismissModal: dismissMyModal,
+          doAfterSearch: doAfterSearch,
+        },
+      }
+    )
+
+    await act(async () => {
+      result.current.doApplySearch()
+    })
+    expect(doAfterSearch).not.toHaveBeenCalled()
+    expect(dismissMyModal).toHaveBeenCalled()
+    expect(mockStateDispatch).not.toHaveBeenCalled()
+  })
+  it('when a search is made then the callback is called', async () => {
+    const { result } = renderHook(
+      ({ dismissModal, doAfterSearch }) => useVenueModal(dismissModal, doAfterSearch),
+      {
+        initialProps: {
+          dismissModal: dismissMyModal,
+          doAfterSearch: doAfterSearch,
+        },
+      }
+    )
+    await act(async () => {
+      result.current.doChangeVenue(venue.label)
+      result.current.doSetSelectedVenue(venue)
+    })
+    await act(async () => {
+      result.current.doApplySearch()
+    })
+    expect(doAfterSearch).toHaveBeenCalled()
+    expect(dismissMyModal).toHaveBeenCalled()
+    expect(mockStateDispatch).toHaveBeenCalled()
   })
 })
