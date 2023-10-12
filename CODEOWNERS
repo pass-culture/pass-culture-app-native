@@ -1,3 +1,5 @@
+# also update on Sentry https://sentry.passculture.team/settings/sentry/projects/application-native/ownership/
+
 src/features/auth/                                   @pass-culture/jeunes-activation
 src/features/birthdayNotifications/                  @pass-culture/jeunes-conversion
 src/features/bookings/                               @pass-culture/jeunes-conversion
