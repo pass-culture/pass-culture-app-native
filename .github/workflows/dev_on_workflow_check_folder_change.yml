@@ -9,6 +9,9 @@ on:
       folder:
         type: string
         required: true
+      base_sha:
+        type: string
+        required: false
 
 jobs:
   check-folder-changes:
@@ -23,6 +26,7 @@ jobs:
       - id: folder-check-changed-files
         uses: tj-actions/changed-files@v39
         with:
+          base_sha: ${{ inputs.base_sha }}
           files: |
             ${{ inputs.folder }}/**
       - id: dump-folder-check-changed-files

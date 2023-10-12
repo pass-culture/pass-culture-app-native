@@ -15,10 +15,37 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  check-proxy-version-staging:
+    name: Check staging proxy tag
+    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+    uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
+    with:
+      WEBAPP_URL: https://app.staging.passculture.team
+  check-proxy-version-production:
+    name: Check production proxy tag
+    if: startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')
+    uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
+    with:
+      WEBAPP_URL: https://passculture.app
   check-server-folder-changes:
     name: Check server folder changes
+    if: ${{ ! (startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')) }}
     uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
     with:
+      folder: server
+  check-server-folder-changes-staging:
+    name: Check server folder changes staging
+    needs: check-proxy-version-staging
+    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+    with:
+      base_sha: ${{ needs.check-proxy-version-staging.outputs.proxy_base_tag }}
+      folder: server
+  check-server-folder-changes-production:
+    name: Check server folder changes production
+    needs: check-proxy-version-production
+    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+    with:
+      base_sha: ${{ needs.check-proxy-version-production.outputs.proxy_base_tag }}
       folder: server
   check-storybook-folder-changes:
     name: Check storybook folder changes
@@ -169,8 +196,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
-    needs: [check-server-folder-changes, deploy-web-staging]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    needs: [check-server-folder-changes-staging, deploy-web-staging]
+    if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true'
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: staging
@@ -190,8 +217,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-integration:
-    needs: [check-server-folder-changes, deploy-web-integration]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    needs: [check-server-folder-changes-production, deploy-web-integration]
+    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true'
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: integration
@@ -211,8 +238,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-production:
-    needs: [check-server-folder-changes, deploy-web-production]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+    needs: [check-server-folder-changes-production, deploy-web-production]
+    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true'
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: production
