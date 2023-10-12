@@ -13,6 +13,7 @@ import {
   mockHitSeveralCategoriesWithAssociationToNativeCategory,
   mockHitWithOnlyCategory,
   mockHitWithoutCategoryAndNativeCategory,
+  mockHitUnknownNativeCategory,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -247,6 +248,32 @@ describe('AutocompleteOfferItem component', () => {
           })
         )
       })
+
+      it('without the most popular native category but the most popular category when native category is unknown in the app', async () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownNativeCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+
+        expect(navigate).toBeCalledWith(
+          ...getTabNavConfig('Search', {
+            ...initialSearchState,
+            query: mockHitWithOnlyCategory.query,
+            offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+            offerNativeCategories: undefined,
+            locationFilter: mockSearchState.locationFilter,
+            priceRange: mockSearchState.priceRange,
+            view: SearchView.Results,
+            searchId,
+            isAutocomplete: true,
+          })
+        )
+      })
     })
 
     describe('should display the most popular native category of the query suggestion', () => {
@@ -305,6 +332,19 @@ describe('AutocompleteOfferItem component', () => {
 
         expect(screen.queryByText('Arts visuels')).not.toBeOnTheScreen()
       })
+
+      it('when it is unknown in the app', () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownNativeCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+
+        expect(screen.queryByText('dans CD_VINYLES')).not.toBeOnTheScreen()
+      })
     })
 
     describe('should not display the most popular category of the query suggestion ', () => {
@@ -360,6 +400,19 @@ describe('AutocompleteOfferItem component', () => {
         )
 
         expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
+      })
+
+      it('native category is unknown in the app', async () => {
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitUnknownNativeCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+
+        expect(screen.getByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
       })
     })
   })
