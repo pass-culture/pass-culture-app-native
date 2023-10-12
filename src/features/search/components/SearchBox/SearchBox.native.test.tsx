@@ -7,14 +7,21 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
+import { LocationType } from 'features/search/enums'
+import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchState, SearchView } from 'features/search/types'
+import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { Venue } from 'features/venue/types'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
+import { SuggestedPlace } from 'libs/place'
+import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from './SearchBox'
 
-const mockSearchState: SearchState = {
+let mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   priceRange: [0, 20],
@@ -60,7 +67,7 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-const mockPosition: Position = DEFAULT_POSITION
+let mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/geolocation/LocationWrapper', () => ({
   useLocation: () => ({
@@ -87,6 +94,13 @@ const mockRoutesWithVenue = [
     params: { screen: 'Search', params: { view: SearchView.Results } },
   },
 ]
+
+const Kourou: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
+const venue: Venue = mockedSuggestedVenues[0]
 
 const searchId = uuidv4()
 
@@ -455,6 +469,33 @@ describe('SearchBox component', () => {
     )
   })
 
+  it('should open location modal on location button click', async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
+    const mockShowModal = jest.fn()
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: false,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
+    const { getByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
+
+    const locationButton = getByTestId('Partout')
+
+    await act(async () => {
+      fireEvent.press(locationButton)
+    })
+
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
+
   it('should display suggestions view when focusing search input and no search executed', async () => {
     const { getByPlaceholderText } = render(
       <SearchBox
@@ -497,57 +538,95 @@ describe('SearchBox component', () => {
     }
   )
 
-  describe('SearchBox component with venue previous route', () => {
-    beforeEach(() => {
-      jest.spyOn(navigationRef, 'getState').mockReturnValue({
-        key: 'Navigator',
-        index: 1,
-        routeNames: ['TabNavigator'],
-        routes: mockRoutesWithVenue,
-        type: 'tab',
-        stale: false,
-      })
-    })
-    const searchInputID = uuidv4()
+  it.each`
+    locationType               | locationFilter                                                                   | position            | locationButtonLabel
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
+    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
+  `(
+    'should display $locationButtonLabel in location button label when location type is $locationType and position is $position',
+    async ({
+      locationFilter,
+      position,
+      locationButtonLabel,
+    }: {
+      locationFilter: LocationFilter
+      position: Position
+      locationButtonLabel: string
+    }) => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
 
-    it('should reset location to eveywhere when current and previous views are identical and previous route is Venue', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { view: SearchView.Results, previousView: SearchView.Results },
-      })
-      render(
+      mockSearchState = { ...initialSearchState, locationFilter }
+      mockPosition = position
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, locationFilter } })
+      const { queryByText } = render(
         <SearchBox
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
         />
       )
-      const previousButton = screen.getByTestId('Revenir en arrière')
+      await act(async () => {})
 
-      await act(async () => {
-        fireEvent.press(previousButton)
-      })
+      expect(queryByText(locationButtonLabel)).toBeOnTheScreen()
+    }
+  )
+})
 
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_LOCATION_EVERYWHERE' })
+describe('SearchBox component with venue previous route', () => {
+  beforeEach(() => {
+    jest.spyOn(navigationRef, 'getState').mockReturnValue({
+      key: 'Navigator',
+      index: 1,
+      routeNames: ['TabNavigator'],
+      routes: mockRoutesWithVenue,
+      type: 'tab',
+      stale: false,
+    })
+  })
+  const searchInputID = uuidv4()
+
+  it('should reset location to eveywhere when current and previous views are identical and previous route is Venue', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { view: SearchView.Results, previousView: SearchView.Results },
+    })
+    render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
+    const previousButton = screen.getByTestId('Revenir en arrière')
+
+    await act(async () => {
+      fireEvent.press(previousButton)
     })
 
-    it('should execute go back when current and previous views are identical and previous route is Venue', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { view: SearchView.Results, previousView: SearchView.Results },
-      })
-      render(
-        <SearchBox
-          searchInputID={searchInputID}
-          addSearchHistory={jest.fn()}
-          searchInHistory={jest.fn()}
-        />
-      )
-      const previousButton = screen.getByTestId('Revenir en arrière')
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_LOCATION_EVERYWHERE' })
+  })
 
-      await act(async () => {
-        fireEvent.press(previousButton)
-      })
-
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
+  it('should execute go back when current and previous views are identical and previous route is Venue', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { view: SearchView.Results, previousView: SearchView.Results },
     })
+    render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
+    const previousButton = screen.getByTestId('Revenir en arrière')
+
+    await act(async () => {
+      fireEvent.press(previousButton)
+    })
+
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 })
