@@ -67,16 +67,20 @@ export function Search() {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
   }, [dispatch, params])
 
-  const currentView = useMemo(() => params?.view, [params?.view])
+  const currentFilters = params?.locationFilter
+
+  const currentView = useMemo(() => {
+    return params?.view
+  }, [params?.view])
 
   const searchVenuePosition = useMemo(
-    () => buildSearchVenuePosition(params?.locationFilter, userPosition),
-    [params?.locationFilter, userPosition]
+    () => buildSearchVenuePosition(currentFilters, userPosition),
+    [currentFilters, userPosition]
   )
 
   const currentVenuesIndex = useMemo(() => {
-    return getCurrentVenuesIndex(params?.locationFilter?.locationType)
-  }, [params?.locationFilter?.locationType])
+    return getCurrentVenuesIndex(currentFilters?.locationType)
+  }, [currentFilters?.locationType])
 
   const onVenuePress = useCallback(async (venueId: number) => {
     await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
@@ -152,7 +156,7 @@ export function Search() {
               <Spacer.Column numberOfSpaces={3} />
             </StyledScrollView>
           ) : (
-            <BodySearch view={params?.view} />
+            <BodySearch view={currentView} />
           )}
         </InstantSearch>
       </Form.Flex>

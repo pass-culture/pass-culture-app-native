@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
+import useVenueModal, {
+  VenueModalHookCallback,
+} from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -15,10 +17,11 @@ import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
-  dismissModal: () => void
+  dismissModal: VoidFunction
+  onSearch?: VenueModalHookCallback
 }
 
-export const VenueModal = ({ visible, dismissModal }: Props) => {
+export const VenueModal = ({ visible, dismissModal, onSearch }: Props) => {
   const {
     doChangeVenue,
     doResetVenue,
@@ -27,7 +30,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     shouldShowSuggestedVenues,
     isVenueSelected,
     venueQuery,
-  } = useVenueModal(dismissModal)
+  } = useVenueModal(dismissModal, onSearch)
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
@@ -37,7 +40,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       visible={visible}
       title="Point de vente"
       rightIconAccessibilityLabel="Fermer la modale"
-      rightIcon={Close}
+      rightIcon={() => <Close />}
       onRightIconPress={doApplySearch}
       isUpToStatusBar
       scrollEnabled={false}
