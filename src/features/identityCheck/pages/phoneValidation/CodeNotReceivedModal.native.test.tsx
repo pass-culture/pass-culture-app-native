@@ -9,7 +9,7 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -64,9 +64,9 @@ describe('<CodeNotReceivedModal />', () => {
 
   it('should call dismissModal upon pressing on Close', () => {
     const dismissModalMock = jest.fn()
-    const { getByTestId } = renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
+    renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
 
-    const closeButton = getByTestId('Fermer la modale')
+    const closeButton = screen.getByTestId('Fermer la modale')
     fireEvent.press(closeButton)
 
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
@@ -82,9 +82,9 @@ describe('<CodeNotReceivedModal />', () => {
       })
     )
     const dismissModalMock = jest.fn()
-    const { getByTestId } = renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
+    renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
 
-    const requestNewCodeButton = getByTestId('Demander un autre code')
+    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
     await waitFor(() => expect(dismissModalMock).toHaveBeenCalledTimes(1))
@@ -98,9 +98,9 @@ describe('<CodeNotReceivedModal />', () => {
       })
     )
     const dismissModalMock = jest.fn()
-    const { getByTestId } = renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
+    renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
 
-    const requestNewCodeButton = getByTestId('Demander un autre code')
+    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
     await waitFor(() => expect(dismissModalMock).toHaveBeenCalledTimes(1))
@@ -113,9 +113,9 @@ describe('<CodeNotReceivedModal />', () => {
         message: 'some message',
       })
     )
-    const { getByTestId } = renderCodeNotReceivedModal()
+    renderCodeNotReceivedModal()
 
-    const requestNewCodeButton = getByTestId('Demander un autre code')
+    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
     await waitFor(() =>
@@ -133,18 +133,18 @@ describe('<CodeNotReceivedModal />', () => {
         message: 'Le nombre de tentatives maximal est dépassé',
       })
     )
-    const { getByTestId } = renderCodeNotReceivedModal()
+    renderCodeNotReceivedModal()
 
-    const requestNewCodeButton = getByTestId('Demander un autre code')
+    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
     fireEvent.press(requestNewCodeButton)
 
     await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
   })
 
   it('should log event when pressing "Demander un autre code" button', async () => {
-    const { getByTestId } = renderCodeNotReceivedModal()
+    renderCodeNotReceivedModal()
 
-    const requestNewCodeButton = getByTestId('Demander un autre code')
+    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
     await act(async () => {
       fireEvent.press(requestNewCodeButton)
     })

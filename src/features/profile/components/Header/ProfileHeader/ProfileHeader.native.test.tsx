@@ -5,7 +5,7 @@ import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -65,19 +65,19 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    const { getByText } = render(<ProfileHeader user={user} />)
-    expect(getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+    render(<ProfileHeader user={user} />)
+    expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
-    const { getByText } = render(<ProfileHeader user={user} />)
-    expect(getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+    render(<ProfileHeader user={user} />)
+    expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    const { getByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
-    expect(getByText('Ton crédit a expiré le')).toBeOnTheScreen()
+    render(<ProfileHeader user={exBeneficiaryUser} />)
+    expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {

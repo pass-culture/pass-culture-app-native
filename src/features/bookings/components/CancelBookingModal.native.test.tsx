@@ -7,7 +7,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
-import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { fireEvent, render, useMutationFactory, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -52,11 +52,10 @@ describe('<CancelBookingModal />', () => {
 
   it('should dismiss modal on press "retourner à ma réservation', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
 
-    const goBackButton = getByText('Retourner à ma réservation')
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    const goBackButton = screen.getByText('Retourner à ma réservation')
 
     fireEvent.press(goBackButton)
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
@@ -64,32 +63,29 @@ describe('<CancelBookingModal />', () => {
 
   it('should log "ConfirmBookingCancellation" on press "Annuler ma réservation"', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
 
-    fireEvent.press(getByText('Annuler ma réservation'))
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    fireEvent.press(screen.getByText('Annuler ma réservation'))
     expect(analytics.logConfirmBookingCancellation).toHaveBeenCalledWith(booking.stock.offer.id)
   })
 
   it('should close modal on success', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
 
-    fireEvent.press(getByText('Annuler ma réservation'))
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    fireEvent.press(screen.getByText('Annuler ma réservation'))
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should showErrorSnackBar and close modal on press "Annuler ma réservation"', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
 
-    fireEvent.press(getByText('Annuler ma réservation'))
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    fireEvent.press(screen.getByText('Annuler ma réservation'))
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Impossible d’annuler la réservation. Connecte-toi à internet avant de réessayer.',
@@ -99,34 +95,40 @@ describe('<CancelBookingModal />', () => {
 
   it('should display offer name', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { queryByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
-    expect(queryByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
+
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    expect(screen.queryByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
 
   it('should display refund rule if user is beneficiary and offer is not free', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { queryByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
-    expect(queryByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeOnTheScreen()
+
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    expect(
+      screen.queryByText('19\u00a0€ seront recrédités sur ton pass Culture.')
+    ).toBeOnTheScreen()
   })
 
   it('should display refund rule if user is ex beneficiary and offer is not free', () => {
     mockIsCreditExpired = true
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { queryByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
+
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     expect(
-      queryByText('Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.')
+      screen.queryByText(
+        'Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.'
+      )
     ).toBeOnTheScreen()
   })
 
   it('should navigate to bookings and show error snackbar if cancel booking request fails', async () => {
-    const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
+    const useMutationCallbacks: {
+      onError: (error: unknown) => void
+      onSuccess: () => void
+    } = {
       onSuccess: () => {},
       onError: () => {},
     }
@@ -138,11 +140,10 @@ describe('<CancelBookingModal />', () => {
     }
 
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { getByText } = render(
-      <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-    )
 
-    const cancelButton = getByText('Annuler ma réservation')
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
+
+    const cancelButton = screen.getByText('Annuler ma réservation')
 
     fireEvent.press(cancelButton)
 

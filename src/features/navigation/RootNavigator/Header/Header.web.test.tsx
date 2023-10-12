@@ -41,20 +41,20 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
-    expect(screen.queryByText('Accueil')).toBeInTheDocument()
-    expect(screen.queryByText('Recherche')).toBeInTheDocument()
+    expect(screen.getByText('Accueil')).toBeInTheDocument()
+    expect(screen.getByText('Recherche')).toBeInTheDocument()
     expect(screen.queryByText('Réservations')).not.toBeInTheDocument()
-    expect(screen.queryByText('Favoris')).toBeInTheDocument()
-    expect(screen.queryByText('Profil')).toBeInTheDocument()
+    expect(screen.getByText('Favoris')).toBeInTheDocument()
+    expect(screen.getByText('Profil')).toBeInTheDocument()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
-    expect(screen.queryByText('Accueil')).toBeInTheDocument()
-    expect(screen.queryByText('Recherche')).toBeInTheDocument()
+    expect(screen.getByText('Accueil')).toBeInTheDocument()
+    expect(screen.getByText('Recherche')).toBeInTheDocument()
     expect(screen.queryByText('Réservations')).not.toBeInTheDocument()
-    expect(screen.queryByText('Favoris')).toBeInTheDocument()
-    expect(screen.queryByText('Profil')).toBeInTheDocument()
+    expect(screen.getByText('Favoris')).toBeInTheDocument()
+    expect(screen.getByText('Profil')).toBeInTheDocument()
   })
 
   it('should render Header for beneficiary and logged in users', async () => {

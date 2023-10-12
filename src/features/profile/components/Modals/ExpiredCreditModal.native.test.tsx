@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -17,8 +17,8 @@ describe('<ExpiredCreditModal/>', () => {
   })
 
   it('should call hideModal function when clicking on Close icon', () => {
-    const { getByTestId } = render(<ExpiredCreditModal visible hideModal={hideModalMock} />)
-    const rightIcon = getByTestId('Fermer la modale')
+    render(<ExpiredCreditModal visible hideModal={hideModalMock} />)
+    const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })

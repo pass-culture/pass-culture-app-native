@@ -3,7 +3,7 @@ import React from 'react'
 
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import { underageBeneficiaryUser } from 'fixtures/user'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
@@ -37,9 +37,9 @@ describe('<RecreditBirthdayNotification />', () => {
   })
 
   it('should have correct text', async () => {
-    const { getByText } = render(<RecreditBirthdayNotification />)
+    render(<RecreditBirthdayNotification />)
 
-    const recreditText = getByText(
+    const recreditText = screen.getByText(
       'Pour tes 16 ans, 50\u00a0€ ont été ajoutés à ton compte. Tu disposes maintenant de :'
     )
 

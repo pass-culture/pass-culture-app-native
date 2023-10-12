@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { SeeMore } from './SeeMore'
 
@@ -24,8 +24,8 @@ describe('<SeeMore />', () => {
     expect(props.onPress).toHaveBeenCalledTimes(1)
   })
   it('is a link when navigateTo is given', () => {
-    const { getByRole } = render(<SeeMore {...props} navigateTo={{ screen: 'Accessibility' }} />)
+    render(<SeeMore {...props} navigateTo={{ screen: 'Accessibility' }} />)
 
-    expect(getByRole('link')).toBeOnTheScreen()
+    expect(screen.getByRole('link')).toBeOnTheScreen()
   })
 })

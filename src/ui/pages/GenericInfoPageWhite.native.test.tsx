@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
@@ -14,7 +14,7 @@ describe('<GenericInfoPageWhite />', () => {
   })
 
   it('should call skip when onSkip is provided', () => {
-    const { getByText } = render(
+    render(
       <GenericInfoPageWhite
         title="GenericInfoPageWhite"
         icon={BicolorPhonePending}
@@ -22,7 +22,7 @@ describe('<GenericInfoPageWhite />', () => {
       />
     )
 
-    const skipButton = getByText('Passer')
+    const skipButton = screen.getByText('Passer')
     fireEvent.press(skipButton)
 
     expect(onSkip).toHaveBeenCalledTimes(1)

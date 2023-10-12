@@ -5,7 +5,7 @@ import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -30,8 +30,8 @@ describe('DMSIntroduction', () => {
     })
 
     it('should open french dms link when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
-      const { getByText } = render(<DMSIntroduction />)
-      const button = getByText('Aller sur demarches-simplifiees.fr')
+      render(<DMSIntroduction />)
+      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
 
       fireEvent.press(button)
 
@@ -41,9 +41,9 @@ describe('DMSIntroduction', () => {
     })
 
     it('should log french DMS event when pressing "Aller sur demarches-simplifiees.fr" button', () => {
-      const { getByText } = render(<DMSIntroduction />)
+      render(<DMSIntroduction />)
 
-      const button = getByText('Aller sur demarches-simplifiees.fr')
+      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
       fireEvent.press(button)
 
       expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
@@ -65,8 +65,8 @@ describe('DMSIntroduction', () => {
     })
 
     it('should open foreign dms link when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
-      const { getByText } = render(<DMSIntroduction />)
-      const button = getByText('Aller sur demarches-simplifiees.fr')
+      render(<DMSIntroduction />)
+      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
 
       fireEvent.press(button)
 
@@ -76,9 +76,9 @@ describe('DMSIntroduction', () => {
     })
 
     it('should log foreign DMS event when pressing "Aller sur demarches-simplifiees.fr" button', () => {
-      const { getByText } = render(<DMSIntroduction />)
+      render(<DMSIntroduction />)
 
-      const button = getByText('Aller sur demarches-simplifiees.fr')
+      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
       fireEvent.press(button)
 
       expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)

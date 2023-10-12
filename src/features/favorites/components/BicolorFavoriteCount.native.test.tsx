@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render, waitFor } from 'tests/utils'
+import { act, render, waitFor, screen } from 'tests/utils'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
@@ -21,41 +21,41 @@ describe('BicolorFavoriteCount component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render non connected icon', async () => {
-    const { queryByTestId } = renderBicolorFavoriteCount({ isLoggedIn: false })
+    renderBicolorFavoriteCount({ isLoggedIn: false })
 
     await waitFor(() => {
-      expect(queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
     })
   })
 
   it('should render connected icon', async () => {
-    const { getByTestId } = renderBicolorFavoriteCount({ isLoggedIn: true })
+    renderBicolorFavoriteCount({ isLoggedIn: true })
 
     await waitFor(() => {
-      expect(getByTestId('bicolor-favorite-count')).toBeOnTheScreen()
+      expect(screen.getByTestId('bicolor-favorite-count')).toBeOnTheScreen()
     })
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
-    const { getByText } = renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
+    renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
 
     await waitFor(() => {
-      expect(getByText('99')).toBeOnTheScreen()
+      expect(screen.getByText('99')).toBeOnTheScreen()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
-    const { getByText } = renderBicolorFavoriteCount({ isLoggedIn: true })
+    renderBicolorFavoriteCount({ isLoggedIn: true })
 
     await waitFor(() => {
-      expect(getByText(defaultOptions.count.toString())).toBeOnTheScreen()
+      expect(screen.getByText(defaultOptions.count.toString())).toBeOnTheScreen()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
-    const { getByText } = renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
+    renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
     await waitFor(() => {
-      expect(getByText('0')).toBeOnTheScreen()
+      expect(screen.getByText('0')).toBeOnTheScreen()
     })
   })
 

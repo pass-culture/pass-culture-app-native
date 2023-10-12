@@ -7,7 +7,7 @@ import {
   useTabNavigationContext,
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { TabBar } from '../TabBar'
 
@@ -67,7 +67,7 @@ describe('TabBar', () => {
   })
 
   it('should display the 5 following tabs with Home selected', async () => {
-    const { getByTestId } = renderTabBar()
+    renderTabBar()
 
     const expectedTabsTestIds = [
       'Accueil sélectionné',
@@ -79,7 +79,7 @@ describe('TabBar', () => {
     ].sort()
 
     expectedTabsTestIds.map((tab) => {
-      expect(getByTestId(tab)).toBeOnTheScreen()
+      expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
   })
 
@@ -91,7 +91,7 @@ describe('TabBar', () => {
         isSelected: route.name === 'Bookings',
       })),
     })
-    const { getByTestId } = renderTabBar()
+    renderTabBar()
     const expectedTabsTestIds = [
       'Accueil',
       'Rechercher des offres',
@@ -102,7 +102,7 @@ describe('TabBar', () => {
     ].sort()
 
     expectedTabsTestIds.map((tab) => {
-      expect(getByTestId(tab)).toBeOnTheScreen()
+      expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
   })
 

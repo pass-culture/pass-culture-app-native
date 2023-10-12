@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, screen } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
@@ -22,9 +22,9 @@ describe('<BeneficiaryRequestSent />', () => {
   })
 
   it('should redirect to native cultural survey page WHEN "On y va !" is clicked', () => {
-    const { getByText } = render(<BeneficiaryRequestSent />)
+    render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(getByText('On y va\u00a0!'))
+    fireEvent.press(screen.getByText('On y va\u00a0!'))
 
     expect(navigateFromRef).not.toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledTimes(1)
@@ -36,9 +36,9 @@ describe('<BeneficiaryRequestSent />', () => {
       user: { needsToFillCulturalSurvey: false },
     }))
 
-    const { getByText } = render(<BeneficiaryRequestSent />)
+    render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(getByText('On y va\u00a0!'))
+    fireEvent.press(screen.getByText('On y va\u00a0!'))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,

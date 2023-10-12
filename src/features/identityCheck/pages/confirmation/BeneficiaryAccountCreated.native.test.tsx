@@ -4,7 +4,7 @@ import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirma
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { BatchUser } from 'libs/react-native-batch'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -34,13 +34,13 @@ describe('<BeneficiaryAccountCreated/>', () => {
     expect(renderAPI).toMatchSnapshot()
   })
   it('should track Batch event when button is clicked', async () => {
-    const { getByText } = renderBeneficiaryAccountCreated()
-    fireEvent.press(getByText('C’est parti !'))
+    renderBeneficiaryAccountCreated()
+    fireEvent.press(screen.getByText('C’est parti !'))
     expect(BatchUser.trackEvent).toBeCalledWith('has_validated_subscription')
   })
   it('should show beneficiary share app modal when button is clicked', async () => {
-    const { getByText } = renderBeneficiaryAccountCreated()
-    fireEvent.press(getByText('C’est parti !'))
+    renderBeneficiaryAccountCreated()
+    fireEvent.press(screen.getByText('C’est parti !'))
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 })

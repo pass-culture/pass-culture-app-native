@@ -5,7 +5,7 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 
@@ -24,13 +24,13 @@ describe('EndedBookings', () => {
   })
 
   it('should display the right number of ended bookings', () => {
-    const { queryByText } = renderEndedBookings(bookingsSnap)
-    expect(queryByText('1 réservation terminée')).toBeOnTheScreen()
+    renderEndedBookings(bookingsSnap)
+    expect(screen.queryByText('1 réservation terminée')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {
-    const { getByTestId } = renderEndedBookings(bookingsSnap)
-    fireEvent.press(getByTestId('Revenir en arrière'))
+    renderEndedBookings(bookingsSnap)
+    fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })

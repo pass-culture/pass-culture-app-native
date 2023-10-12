@@ -12,7 +12,7 @@ describe('<E2eContextProvider /> False', () => {
     } as Response)
     renderE2eContextProvider()
     await waitFor(async () => {
-      await expect(screen.queryByTestId('false-test')).toBeTruthy()
+      await expect(screen.getByTestId('false-test')).toBeTruthy()
     })
     await expect(screen.queryByTestId('true-test')).toBeFalsy()
     await expect(screen.getByTestId('false-test').children.join('')).toBe('hello false world')

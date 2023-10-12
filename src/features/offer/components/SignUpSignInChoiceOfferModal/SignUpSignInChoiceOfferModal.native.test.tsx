@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { SignUpSignInChoiceOfferModal } from './SignUpSignInChoiceOfferModal'
 
@@ -18,36 +18,38 @@ describe('SignUpSignInChoiceOfferModal', () => {
   })
 
   it('go to login with offerId in params on button click and log analytics', async () => {
-    const { getByText } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
-    )
+    render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
 
-    const button = getByText('Se connecter')
+    const button = screen.getByText('Se connecter')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('Login', { preventCancellation: true, offerId: OFFER_ID })
+    expect(navigate).toBeCalledWith('Login', {
+      preventCancellation: true,
+      offerId: OFFER_ID,
+    })
     expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
   it('go to signup with offerId in params on click button and log analytics', async () => {
-    const { getByText } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
-    )
+    render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
 
-    const button = getByText('Créer un compte')
+    const button = screen.getByText('Créer un compte')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true, offerId: OFFER_ID })
+    expect(navigate).toBeCalledWith('SignupForm', {
+      preventCancellation: true,
+      offerId: OFFER_ID,
+    })
     expect(analytics.logSignUpFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
-    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'offer_favorite' })
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
+      from: 'offer_favorite',
+    })
   })
 
   it('should log analytics when quitting modal', async () => {
-    const { getByTestId } = render(
-      <SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />
-    )
+    render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
 
-    const closeButton = getByTestId('Fermer la modale')
+    const closeButton = screen.getByTestId('Fermer la modale')
     await fireEvent.press(closeButton)
 
     expect(dismissModal).toHaveBeenCalledTimes(1)

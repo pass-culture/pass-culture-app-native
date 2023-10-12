@@ -4,7 +4,7 @@ import { getTrackingStatus, requestTrackingPermission } from 'react-native-track
 
 import * as TrackOpenApp from 'libs/campaign/logOpenApp'
 import { useTrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('react-native-tracking-transparency')
 const mockGetTrackingStatus = getTrackingStatus as jest.Mock
@@ -27,8 +27,8 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('denied')
 
-    const { findByTestId } = render(<TestComponent />)
-    await findByTestId('consentAsked')
+    render(<TestComponent />)
+    await screen.findByTestId('consentAsked')
 
     expect(mockRequestTrackingPermission).toHaveBeenCalledWith()
   })
@@ -37,8 +37,8 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('authorized')
 
-    const { findByTestId } = render(<TestComponent />)
-    await findByTestId('consentAsked')
+    render(<TestComponent />)
+    await screen.findByTestId('consentAsked')
 
     expect(logOpenAppMock).toHaveBeenCalledWith('authorized')
   })
@@ -46,8 +46,8 @@ describe('useTrackingConsent', () => {
   it('should not ask for consent when it has already been asked', async () => {
     mockGetTrackingStatus.mockResolvedValueOnce('denied')
 
-    const { findByTestId } = render(<TestComponent />)
-    await findByTestId('consentAsked')
+    render(<TestComponent />)
+    await screen.findByTestId('consentAsked')
 
     expect(mockRequestTrackingPermission).not.toHaveBeenCalled()
   })
@@ -55,8 +55,8 @@ describe('useTrackingConsent', () => {
   it('should not ask for consent when it is not available', async () => {
     mockGetTrackingStatus.mockResolvedValueOnce('unavailable')
 
-    const { findByTestId } = render(<TestComponent />)
-    await findByTestId('consentAsked')
+    render(<TestComponent />)
+    await screen.findByTestId('consentAsked')
 
     expect(mockRequestTrackingPermission).not.toHaveBeenCalled()
   })
@@ -65,9 +65,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('denied')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentAsked = await findByTestId('consentAsked')
+    const consentAsked = await screen.findByTestId('consentAsked')
     expect(consentAsked.props.children).toEqual(true)
   })
 
@@ -75,9 +75,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('unavailable')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentAsked = await findByTestId('consentAsked')
+    const consentAsked = await screen.findByTestId('consentAsked')
     expect(consentAsked.props.children).toEqual(true)
   })
 
@@ -85,9 +85,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('not-determined')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentAsked = await findByTestId('consentAsked')
+    const consentAsked = await screen.findByTestId('consentAsked')
     expect(consentAsked.props.children).toEqual(false)
   })
 
@@ -95,9 +95,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('authorized')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentTracking = await findByTestId('consentTracking')
+    const consentTracking = await screen.findByTestId('consentTracking')
     expect(consentTracking.props.children).toEqual(true)
   })
 
@@ -105,9 +105,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('denied')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentTracking = await findByTestId('consentTracking')
+    const consentTracking = await screen.findByTestId('consentTracking')
     expect(consentTracking.props.children).toEqual(false)
   })
 
@@ -115,9 +115,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('unavailable')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentTracking = await findByTestId('consentTracking')
+    const consentTracking = await screen.findByTestId('consentTracking')
     expect(consentTracking.props.children).toEqual(true)
   })
 
@@ -128,9 +128,9 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')
     mockRequestTrackingPermission.mockResolvedValueOnce('restricted')
 
-    const { findByTestId } = render(<TestComponent />)
+    render(<TestComponent />)
 
-    const consentTracking = await findByTestId('consentTracking')
+    const consentTracking = await screen.findByTestId('consentTracking')
     expect(consentTracking.props.children).toEqual(false)
   })
 })

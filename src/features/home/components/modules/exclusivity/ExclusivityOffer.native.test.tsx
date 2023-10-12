@@ -8,7 +8,7 @@ import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/E
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, screen } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300),
@@ -38,8 +38,8 @@ describe('ExclusivityModule component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should navigate to the offer when clicking on the image', () => {
-    const { getByTestId } = render(<ExclusivityOffer {...props} />)
-    fireEvent.press(getByTestId('Image d’Adèle'))
+    render(<ExclusivityOffer {...props} />)
+    fireEvent.press(screen.getByTestId('Image d’Adèle'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: mockOffer.id,
       from: 'home',
@@ -47,8 +47,8 @@ describe('ExclusivityModule component', () => {
   })
 
   it('should log a click event when clicking on the image', () => {
-    const { getByTestId } = render(<ExclusivityOffer {...props} />)
-    fireEvent.press(getByTestId('Image d’Adèle'))
+    render(<ExclusivityOffer {...props} />)
+    fireEvent.press(screen.getByTestId('Image d’Adèle'))
     expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,
       moduleId: props.moduleId,

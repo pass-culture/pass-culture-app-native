@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { OfferDuo } from './OfferDuo'
 
@@ -21,8 +21,8 @@ describe('OfferDuo component', () => {
         offerIsDuo: true,
       },
     })
-    const { queryByText } = renderOfferDuo()
-    expect(queryByText(`Activé`)).toBeOnTheScreen()
+    renderOfferDuo()
+    expect(screen.queryByText(`Activé`)).toBeOnTheScreen()
   })
 
   it('should not render OfferDuo with Activé description', () => {
@@ -31,8 +31,8 @@ describe('OfferDuo component', () => {
         offerIsDuo: false,
       },
     })
-    const { queryByText } = renderOfferDuo()
-    expect(queryByText(`Activé`)).not.toBeOnTheScreen()
+    renderOfferDuo()
+    expect(screen.queryByText(`Activé`)).not.toBeOnTheScreen()
   })
 })
 

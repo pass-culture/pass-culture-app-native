@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
@@ -36,17 +36,15 @@ describe('getIconAndWording', () => {
 })
 describe('AccessibilityAtom', () => {
   it('should display the validIcon when isValid is true', () => {
-    const { queryByTestId } = render(
-      <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />
-    )
-    expect(queryByTestId('invalidTestId')).not.toBeOnTheScreen()
-    expect(queryByTestId('validTestId')).toBeOnTheScreen()
+    render(<AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />)
+
+    expect(screen.queryByTestId('invalidTestId')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('validTestId')).toBeOnTheScreen()
   })
   it('should displat the invalidIcon when isValid is false', () => {
-    const { queryByTestId } = render(
-      <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />
-    )
-    expect(queryByTestId('invalidTestId')).toBeOnTheScreen()
-    expect(queryByTestId('validTestId')).not.toBeOnTheScreen()
+    render(<AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />)
+
+    expect(screen.queryByTestId('invalidTestId')).toBeOnTheScreen()
+    expect(screen.queryByTestId('validTestId')).not.toBeOnTheScreen()
   })
 })

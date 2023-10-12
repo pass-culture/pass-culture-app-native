@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated } from 'react-native'
 
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { Check } from 'ui/svg/icons/Check'
 
@@ -19,7 +19,7 @@ describe('SnackBar Component', () => {
   })
   describe('Basic behavior', () => {
     it('should forward properly text and colors', () => {
-      const { getByTestId } = render(
+      render(
         renderSnackBar({
           visible: true,
           message: 'message',
@@ -32,11 +32,11 @@ describe('SnackBar Component', () => {
         })
       )
 
-      getByTestId('snackbar-message')
+      screen.getByTestId('snackbar-message')
 
-      const view = getByTestId('snackbar-view')
-      const progressBar = getByTestId('snackbar-progressbar')
-      const message = getByTestId('snackbar-message')
+      const view = screen.getByTestId('snackbar-view')
+      const progressBar = screen.getByTestId('snackbar-progressbar')
+      const message = screen.getByTestId('snackbar-message')
 
       expect(view.props.backgroundColor).toEqual(theme.colors.accent)
       expect(progressBar.props.backgroundColor).toEqual(theme.colors.greenLight)
@@ -44,7 +44,7 @@ describe('SnackBar Component', () => {
     })
 
     it('should not display progress bar if timeout is not provided', () => {
-      const { queryByTestId } = render(
+      render(
         renderSnackBar({
           visible: true,
           message: 'message',
@@ -55,37 +55,36 @@ describe('SnackBar Component', () => {
           refresher: 1,
         })
       )
-      const progressBar = queryByTestId('snackbar-progressbar')
+
+      const progressBar = screen.queryByTestId('snackbar-progressbar')
       expect(progressBar).not.toBeOnTheScreen()
     })
 
     it('should render the content container when visible=true', () => {
-      const { queryByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
+      render(renderHelperSnackBar(true, { message: 'message' }))
 
-      expect(queryByTestId('snackbar-message')).toBeOnTheScreen()
+      expect(screen.queryByTestId('snackbar-message')).toBeOnTheScreen()
     })
 
     it('should render the content container when visible=false only if already rendered', async () => {
-      const { queryByTestId, rerender } = render(
-        renderHelperSnackBar(false, { message: 'message' }, 0)
-      )
-      expect(queryByTestId('snackbar-container')).not.toBeOnTheScreen()
+      const { rerender } = render(renderHelperSnackBar(false, { message: 'message' }, 0))
+      expect(screen.queryByTestId('snackbar-container')).not.toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(true, { message: 'message' }, 1))
-      expect(queryByTestId('snackbar-container')).toBeOnTheScreen()
+      expect(screen.queryByTestId('snackbar-container')).toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(false, { message: 'message' }, 2))
-      expect(queryByTestId('snackbar-container')).toBeOnTheScreen()
+      expect(screen.queryByTestId('snackbar-container')).toBeOnTheScreen()
     })
 
     it('should render the illustration icon when provided when visible', () => {
-      const { queryByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
+      render(renderHelperSnackBar(true, { message: 'message' }))
 
-      expect(queryByTestId('snackbar-icon')).toBeOnTheScreen()
+      expect(screen.queryByTestId('snackbar-icon')).toBeOnTheScreen()
     })
 
     it('should not render the illustration icon when not provided', () => {
-      const { queryByTestId } = render(
+      render(
         renderSnackBar({
           visible: true,
           message: 'message',
@@ -96,7 +95,8 @@ describe('SnackBar Component', () => {
           refresher: 1,
         })
       )
-      const icon = queryByTestId('snackbar-icon')
+
+      const icon = screen.queryByTestId('snackbar-icon')
 
       expect(icon).not.toBeOnTheScreen()
     })
@@ -104,11 +104,10 @@ describe('SnackBar Component', () => {
     it('should trigger onClose when the closeIcon is clicked', async () => {
       const onClose = jest.fn()
       const snackBarMessage = 'message'
-      const { getByTestId } = render(
-        renderHelperSnackBar(true, { message: snackBarMessage, onClose })
-      )
 
-      const touchable = getByTestId(`Supprimer le message\u00a0: ${snackBarMessage}`)
+      render(renderHelperSnackBar(true, { message: snackBarMessage, onClose }))
+
+      const touchable = screen.getByTestId(`Supprimer le message\u00a0: ${snackBarMessage}`)
 
       fireEvent.press(touchable)
 
@@ -142,15 +141,13 @@ describe('SnackBar Component', () => {
       const timing = getAnimatedTimingImplementation()
 
       let refresher = 1
-      const { rerender, getByTestId } = render(
-        renderHelperSnackBar(false, { message: 'message' }, refresher)
-      )
+      const { rerender } = render(renderHelperSnackBar(false, { message: 'message' }, refresher))
 
       // this second rendering simulate the appearance
       refresher = 2 // should de greather than the previous
       rerender(renderHelperSnackBar(true, { message: 'message' }, refresher))
 
-      const container = getByTestId('snackbar-container')
+      const container = screen.getByTestId('snackbar-container')
 
       expect(container.props.style[0].display).toEqual('flex')
 
@@ -175,15 +172,13 @@ describe('SnackBar Component', () => {
       const timing = jest.spyOn(Animated, 'timing')
 
       let refresher = 1
-      const { rerender, getByTestId } = render(
-        renderHelperSnackBar(true, { message: 'message' }, refresher)
-      )
+      const { rerender } = render(renderHelperSnackBar(true, { message: 'message' }, refresher))
 
       // this second rendering simulate the disappearance
       refresher = 2 // should de greather than the previous
       rerender(renderHelperSnackBar(false, { message: 'message' }, refresher))
 
-      const container = getByTestId('snackbar-container')
+      const container = screen.getByTestId('snackbar-container')
       expect(container.props.style[0].display).toEqual('none')
       /**
        * It's called twice because of the following function being triggered
@@ -204,16 +199,14 @@ describe('SnackBar Component', () => {
       const timing = getAnimatedTimingImplementation()
 
       let refresher = 1
-      const { rerender, getByTestId } = render(
-        renderHelperSnackBar(true, { message: 'message' }, refresher)
-      )
+      const { rerender } = render(renderHelperSnackBar(true, { message: 'message' }, refresher))
 
       // this second rendering simulate a change of props
       refresher = 2 // should de greather than the previous
       rerender(renderHelperSnackBar(true, { message: 'a new message', timeout: 2 }, refresher))
 
-      const container = getByTestId('snackbar-container')
-      const text = getByTestId('snackbar-message')
+      const container = screen.getByTestId('snackbar-container')
+      const text = screen.getByTestId('snackbar-message')
 
       expect(container.props.isVisible).toEqual(true)
       expect(text.props.children).toEqual('a new message')

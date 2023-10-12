@@ -54,8 +54,8 @@ describe('Bookings', () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(screen.queryByText('1')).toBeInTheDocument()
-      expect(screen.queryByText('Réservation terminée')).toBeInTheDocument()
+      expect(screen.getByText('1')).toBeInTheDocument()
+      expect(screen.getByText('Réservation terminée')).toBeInTheDocument()
     })
   })
 

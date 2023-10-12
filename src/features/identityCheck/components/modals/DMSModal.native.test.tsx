@@ -4,7 +4,7 @@ import { DMSModal } from 'features/identityCheck/components/modals/DMSModal'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -18,8 +18,8 @@ describe('<DMSModal/>', () => {
   })
 
   it('should call hideModal function when clicking on Close icon', () => {
-    const { getByTestId } = render(<DMSModal visible hideModal={hideModalMock} />)
-    const rightIcon = getByTestId(
+    render(<DMSModal visible hideModal={hideModalMock} />)
+    const rightIcon = screen.getByTestId(
       'Fermer la modale pour transmettre un document sur le site Démarches Simplifiée'
     )
     fireEvent.press(rightIcon)
@@ -27,16 +27,16 @@ describe('<DMSModal/>', () => {
   })
 
   it('should open DSM french citizen when clicking on "Je suis de nationalité française" button', async () => {
-    const { getByText } = render(<DMSModal visible hideModal={hideModalMock} />)
-    const frenchCitizenDMSButton = getByText('Je suis de nationalité française')
+    render(<DMSModal visible hideModal={hideModalMock} />)
+    const frenchCitizenDMSButton = screen.getByText('Je suis de nationalité française')
     await fireEvent.press(frenchCitizenDMSButton)
     expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
     expect(mockedOpenUrl).toBeCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })
 
   it('should open DSM french citizen when clicking on "Je suis de nationalité étrangère" button', async () => {
-    const { getByText } = render(<DMSModal visible hideModal={hideModalMock} />)
-    const foreignCitizenDMSButton = getByText('Je suis de nationalité étrangère')
+    render(<DMSModal visible hideModal={hideModalMock} />)
+    const foreignCitizenDMSButton = screen.getByText('Je suis de nationalité étrangère')
     await fireEvent.press(foreignCitizenDMSButton)
     expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
     expect(mockedOpenUrl).toBeCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)

@@ -13,7 +13,7 @@ import {
   GEOLOCATION_USER_ERROR_MESSAGE,
   Position,
 } from 'libs/geolocation'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>
   jest.requireActual('features/favorites/context/FavoritesWrapper')
@@ -93,11 +93,11 @@ describe('<FavoritesSorts/>', () => {
       type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
       message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
     }
-    const { getByText, queryByText } = renderFavoritesSort()
+    renderFavoritesSort()
 
-    fireEvent.press(getByText('Proximité géographique'))
+    fireEvent.press(screen.getByText('Proximité géographique'))
 
-    expect(queryByText(mockPositionError.message)).toBeOnTheScreen()
+    expect(screen.queryByText(mockPositionError.message)).toBeOnTheScreen()
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {

@@ -3,7 +3,7 @@ import React from 'react'
 import { offerVenueResponseSnap as venue } from 'features/offer/fixtures/offerVenueReponse'
 import { mockedFullAddress as address } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
-import { fireEvent, render, act } from 'tests/utils'
+import { fireEvent, render, act, screen } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('libs/itinerary/useItinerary', () => ({
@@ -19,7 +19,7 @@ const beforeNavigateToItinerary = jest.fn()
 
 describe('WhereSection', () => {
   it('should log ConsultLocationItinerary analytics when clicking on "voir l’itinéraire"', () => {
-    const { getByText } = render(
+    render(
       <WhereSection
         venue={venue}
         locationCoordinates={{ latitude: 2, longitude: 4 }}
@@ -28,8 +28,9 @@ describe('WhereSection', () => {
         showVenueBanner
       />
     )
+
     act(() => {
-      fireEvent.press(getByText('Voir l’itinéraire'))
+      fireEvent.press(screen.getByText('Voir l’itinéraire'))
     })
     expect(beforeNavigateToItinerary).toHaveBeenCalledTimes(1)
   })

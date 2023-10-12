@@ -2,13 +2,16 @@ import React from 'react'
 
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { beneficiaryUser } from 'fixtures/user'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 const domainsCreditWithPhysicalCeiling = beneficiaryUser.domainsCredit!
-const domainsCreditWithoutPhysicalCeiling = { ...beneficiaryUser.domainsCredit!, physical: null }
+const domainsCreditWithoutPhysicalCeiling = {
+  ...beneficiaryUser.domainsCredit!,
+  physical: null,
+}
 
 describe('<CreditCeilingsModal/>', () => {
   it('should render correctly', async () => {
@@ -34,39 +37,42 @@ describe('<CreditCeilingsModal/>', () => {
   })
 
   it('should call hideModal function when clicking on Close icon', () => {
-    const { getByTestId } = render(
+    render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
         visible
         hideModal={hideModalMock}
       />
     )
-    const rightIcon = getByTestId('Fermer la modale')
+
+    const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should display text without physical ceiling if no physical ceiling', () => {
-    const { queryByTestId } = render(
+    render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithoutPhysicalCeiling}
         visible
         hideModal={hideModalMock}
       />
     )
-    expect(queryByTestId('creditText')).toBeOnTheScreen()
-    expect(queryByTestId('creditTextWithPhysicalCeiling')).not.toBeOnTheScreen()
+
+    expect(screen.queryByTestId('creditText')).toBeOnTheScreen()
+    expect(screen.queryByTestId('creditTextWithPhysicalCeiling')).not.toBeOnTheScreen()
   })
 
   it('should display text with physical ceiling if it exists', () => {
-    const { queryByTestId } = render(
+    render(
       <CreditCeilingsModal
         domainsCredit={domainsCreditWithPhysicalCeiling}
         visible
         hideModal={hideModalMock}
       />
     )
-    expect(queryByTestId('creditText')).not.toBeOnTheScreen()
-    expect(queryByTestId('creditTextWithPhysicalCeiling')).toBeOnTheScreen()
+
+    expect(screen.queryByTestId('creditText')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('creditTextWithPhysicalCeiling')).toBeOnTheScreen()
   })
 })

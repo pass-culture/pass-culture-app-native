@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { ImageCaption } from '../ImageCaption'
 
@@ -15,13 +15,13 @@ describe('ImageCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON, queryByTestId } = render(<ImageCaption {...props} />)
+    const { toJSON } = render(<ImageCaption {...props} />)
     expect(toJSON()).toMatchSnapshot()
-    expect(queryByTestId('distanceImageCaption')).toBeOnTheScreen()
+    expect(screen.queryByTestId('distanceImageCaption')).toBeOnTheScreen()
   })
 
   it('should not display the distance if not available', () => {
-    const { queryByTestId } = render(<ImageCaption {...props} distance={undefined} />)
-    expect(queryByTestId('distanceImageCaption')).not.toBeOnTheScreen()
+    render(<ImageCaption {...props} distance={undefined} />)
+    expect(screen.queryByTestId('distanceImageCaption')).not.toBeOnTheScreen()
   })
 })
