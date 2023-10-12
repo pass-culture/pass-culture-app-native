@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  values?: number[]
+  values?: [number] | [number, number]
   formatValues?: (label: number) => string
   showValues?: boolean
   min?: number

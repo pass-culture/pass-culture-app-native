@@ -1,6 +1,7 @@
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { Slider } from './Slider'
 
@@ -45,13 +46,11 @@ describe('<Slider />', () => {
 
     it('should show minimum value if shouldShowMinMaxValues is true', () => {
       render(<Slider values={[100]} shouldShowMinMaxValues min={0} showValues={false} />)
-
       expect(screen.queryByText('0')).toBeOnTheScreen()
     })
 
     it('should show maximim value if shouldShowMinMaxValues is true', () => {
       render(<Slider values={[100]} shouldShowMinMaxValues max={100} showValues={false} />)
-
       expect(screen.queryByText('100')).toBeOnTheScreen()
     })
 
@@ -65,8 +64,20 @@ describe('<Slider />', () => {
           minMaxValuesComplement={`\u00a0km`}
         />
       )
-
       expect(screen.queryByText('100\u00a0km')).toBeOnTheScreen()
+    })
+
+    it('should call onValuesChange when slider value changes', async () => {
+      const mockOnValuesChange = jest.fn()
+
+      render(<Slider values={[0, 100]} onValuesChange={mockOnValuesChange} showValues />)
+
+      await act(async () => {
+        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+        slider.props.onValuesChange(50)
+      })
+
+      expect(mockOnValuesChange).toHaveBeenCalledWith(50)
     })
   })
 })

@@ -4,11 +4,12 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
+import { Range } from 'libs/typesUtils/typeHelpers'
 import { Slider } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
-type HoursSliderProps = {
-  defaultValue: number[]
+export type HoursSliderProps = {
+  defaultValue: Range<number>
   onChange: (nextHours: number[]) => void
 }
 

@@ -40,7 +40,7 @@ type DatesHoursModalFormData = {
   selectedDateChoice: DATE_FILTER_OPTIONS
   selectedDate?: Date
   hasSelectedHours: boolean
-  selectedHours?: Range<number>
+  selectedHours: Range<number>
 }
 
 export type DatesHoursModalProps = {
@@ -63,6 +63,7 @@ export const DATE_TYPES: Array<{
 ]
 
 const DEFAULT_TIME_RANGE: Range<number> = [8, 22]
+const DEFAULT_TIME_VALUE: Range<number> = [0, 24]
 
 const titleId = uuidv4()
 
@@ -89,7 +90,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
         ? new Date(searchState.date?.selectedDate)
         : undefined,
       hasSelectedHours: !!searchState.timeRange,
-      selectedHours: searchState.timeRange ?? undefined,
+      selectedHours: searchState.timeRange ?? DEFAULT_TIME_VALUE,
     }
   }, [searchState.date, searchState.timeRange])
 
@@ -196,7 +197,10 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   const toggleHours = useCallback(() => {
     const toggleHoursValue = !getValues('hasSelectedHours')
     setValueWithValidation('hasSelectedHours', toggleHoursValue)
-    setValueWithValidation('selectedHours', toggleHoursValue ? DEFAULT_TIME_RANGE : undefined)
+    setValueWithValidation(
+      'selectedHours',
+      toggleHoursValue ? DEFAULT_TIME_RANGE : DEFAULT_TIME_VALUE
+    )
   }, [getValues, setValueWithValidation])
 
   const selectDateFilterOption = useCallback(
@@ -315,7 +319,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                     control={control}
                     name="selectedHours"
                     render={({ field: { value, onChange } }) => (
-                      <HoursSlider defaultValue={value ?? [0, 24]} onChange={onChange} />
+                      <HoursSlider defaultValue={value} onChange={onChange} />
                     )}
                   />
                 )}
