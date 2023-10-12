@@ -208,6 +208,16 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         }
       >
         <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <View
           accessibilityRole="none"
           style={
             [
@@ -220,11 +230,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
-            numberOfSpaces={6}
+            numberOfSpaces={4}
             style={
               [
                 {
-                  "height": 24,
+                  "height": 16,
                 },
               ]
             }
@@ -382,17 +392,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               ]
             }
           />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 2,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="none"
@@ -406,6 +405,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             ]
           }
         >
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
           <View
             numberOfSpaces={4}
             style={
@@ -569,17 +579,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               ]
             }
           />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 2,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="none"
@@ -593,6 +592,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             ]
           }
         >
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
           <View
             numberOfSpaces={4}
             style={
@@ -756,17 +766,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               ]
             }
           />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 2,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
         </View>
         <View
           accessibilityRole="none"
@@ -780,6 +779,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             ]
           }
         >
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
           <View
             numberOfSpaces={4}
             style={
@@ -934,16 +944,26 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             visible={false}
           />
           <View
-            numberOfSpaces={6}
+            numberOfSpaces={4}
             style={
               [
                 {
-                  "height": 24,
+                  "height": 16,
                 },
               ]
             }
           />
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "height": 8,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </RCTScrollView>

@@ -85,6 +85,12 @@ export const SearchFilter: React.FC = () => {
 
   const shouldDisplayCloseButton = isMobileViewport
 
+  const sectionItems = [Section.Category]
+  if (hasDuoOfferToggle) sectionItems.push(Section.OfferDuo)
+  sectionItems.push(Section.Venue)
+  sectionItems.push(Section.Price)
+  sectionItems.push(Section.DateHour)
+
   return (
     <Container>
       <PageHeaderWithoutPlaceholder title="Filtres" onGoBack={onGoBack} />
@@ -92,46 +98,15 @@ export const SearchFilter: React.FC = () => {
       <ScrollView scrollEnabled keyboardShouldPersistTaps="always">
         <Placeholder height={headerHeight} />
         <VerticalUl>
-          {/* Catégories */}
-          <StyledLi>
-            <Spacer.Column numberOfSpaces={6} />
-            <Section.Category onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-            <Spacer.Column numberOfSpaces={4} />
-            <Separator />
-          </StyledLi>
-
-          {/* Duo */}
-          {!!hasDuoOfferToggle && (
-            <StyledLi>
-              <Spacer.Column numberOfSpaces={4} />
-              <Section.OfferDuo onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-              <Spacer.Column numberOfSpaces={4} />
-              <Separator />
-            </StyledLi>
-          )}
-
-          {/* Point de vente */}
-          <StyledLi>
-            <Spacer.Column numberOfSpaces={4} />
-            <Section.Venue />
-            <Spacer.Column numberOfSpaces={4} />
-            <Separator />
-          </StyledLi>
-
-          {/* Prix */}
-          <StyledLi>
-            <Spacer.Column numberOfSpaces={4} />
-            <Section.Price onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-            <Spacer.Column numberOfSpaces={4} />
-            <Separator />
-          </StyledLi>
-
-          {/* Date & Heure */}
-          <StyledLi>
-            <Spacer.Column numberOfSpaces={4} />
-            <Section.DateHour onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
-            <Spacer.Column numberOfSpaces={6} />
-          </StyledLi>
+          <Spacer.Column numberOfSpaces={2} />
+          {sectionItems.map((SectionItem, index) => {
+            return (
+              <SectionWrapper key={index} isFirstSectionItem={index === 0}>
+                <SectionItem onClose={shouldDisplayCloseButton ? onGoBack : undefined} />
+              </SectionWrapper>
+            )
+          })}
+          <Spacer.Column numberOfSpaces={2} />
         </VerticalUl>
       </ScrollView>
       <BlurHeader height={headerHeight} />
@@ -143,6 +118,20 @@ export const SearchFilter: React.FC = () => {
         filterBehaviour={FilterBehaviour.SEARCH}
       />
     </Container>
+  )
+}
+
+const SectionWrapper: React.FunctionComponent<{
+  children: React.JSX.Element
+  isFirstSectionItem: boolean
+}> = ({ children, isFirstSectionItem = false }) => {
+  return (
+    <StyledLi>
+      {isFirstSectionItem ? null : <Separator />}
+      <Spacer.Column numberOfSpaces={4} />
+      {children}
+      <Spacer.Column numberOfSpaces={4} />
+    </StyledLi>
   )
 }
 
