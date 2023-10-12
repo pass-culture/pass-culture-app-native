@@ -18,7 +18,7 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
-const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
+export const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
 const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
 const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)

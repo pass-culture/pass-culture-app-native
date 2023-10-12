@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
@@ -63,12 +64,10 @@ const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ 
   size: theme.icons.sizes.small,
 }))``
 
-const MA_POSITION_WIDTH = 74
-
 const LocationTitle = styled(Typo.Caption).attrs({
   numberOfLines: 1,
 })({
-  maxWidth: MA_POSITION_WIDTH,
+  maxWidth: LOCATION_TITLE_MAX_WIDTH,
 })
 
 const LocationButton = styled(TouchableOpacity)({
