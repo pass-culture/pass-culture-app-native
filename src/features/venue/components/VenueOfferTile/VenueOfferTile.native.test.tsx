@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
+import { CategoryIdEnum, HomepageLabelNameEnumv2 } from 'api/gen'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -13,7 +13,7 @@ const offerId = 116656
 const venueId = 34
 
 const props = {
-  categoryLabel: HomepageLabelNameEnum.MUSIQUE,
+  categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
   categoryId: CategoryIdEnum.MUSIQUE_LIVE,
   subcategoryId: offer.subcategoryId,
   expenseDomains: [],
