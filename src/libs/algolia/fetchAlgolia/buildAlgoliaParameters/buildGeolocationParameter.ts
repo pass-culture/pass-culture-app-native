@@ -17,6 +17,8 @@ export const buildGeolocationParameter = ({
   isOnline,
 }: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   let locationFilter = providedLocationFilter
+  if (isOnline) return
+
   if (!locationFilter)
     locationFilter = userLocation
       ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
@@ -36,7 +38,6 @@ export const buildGeolocationParameter = ({
   }
 
   if (!userLocation) return
-  if (isOnline && locationFilter.locationType === LocationType.AROUND_ME) return
   if (locationFilter.locationType === LocationType.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
