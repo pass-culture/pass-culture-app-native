@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
@@ -22,6 +23,13 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
 const hideModalMock = jest.fn()
 
 describe('VideoMonoOfferTile', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should redirect to an offer when pressing it', async () => {
     renderOfferVideoModule()
 

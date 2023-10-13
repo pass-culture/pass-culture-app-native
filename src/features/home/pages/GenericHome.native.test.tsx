@@ -7,6 +7,7 @@ import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
@@ -32,6 +33,13 @@ jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculatio
 }))
 
 describe('GenericHome', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   describe('With not displayed skeleton by default', () => {

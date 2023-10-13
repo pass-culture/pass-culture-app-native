@@ -1,15 +1,15 @@
+import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -32,17 +32,19 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('<SetAddress/>', () => {
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
-  beforeEach(() => {
-    mockServer.getAPIV1('/native/v1/settings', mockDefaultSettings)
-    mockServer.universalGet(
-      'https://api-adresse.data.gouv.fr/search?q=1%20rue%20Poissonni%C3%A8re&limit=10',
-      {
-        responseOptions: { data: mockedSuggestedPlaces },
-        requestOptions: { persist: true },
-      }
+  beforeAll(() => {
+    server.listen()
+    server.use(
+      rest.get('https://api-adresse.data.gouv.fr/search', (req, res, ctx) =>
+        res(ctx.status(200), ctx.json(mockedSuggestedPlaces))
+      )
     )
   })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
+  mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   it('should render correctly', async () => {
     renderSetAddress()

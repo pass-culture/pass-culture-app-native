@@ -5,6 +5,7 @@ import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -20,6 +21,13 @@ jest.mock('features/home/api/useVideoOffers')
 const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 describe('VideoModule', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should show modal when pressing video thumbnail', async () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()

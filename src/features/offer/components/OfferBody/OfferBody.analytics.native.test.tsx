@@ -15,6 +15,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
@@ -83,6 +84,13 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<OfferBody /> - Analytics', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   const trigger = async (component: ReactTestInstance) => {
     fireEvent.press(component)
 

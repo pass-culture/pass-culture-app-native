@@ -12,6 +12,7 @@ import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { render, screen, act } from 'tests/utils'
 
 const mockedNavigate = jest.fn()
@@ -55,7 +56,14 @@ const today = '2021-03-30T00:00:00Z'
 mockdate.set(new Date(today))
 
 describe('<NonBeneficiaryHeader/>', () => {
-  afterAll(mockdate.reset)
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+    mockdate.reset()
+  })
 
   describe('<EligibilityBanner/>', () => {
     beforeEach(() => {

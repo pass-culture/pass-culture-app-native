@@ -6,6 +6,7 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { Bookings } from './Bookings'
@@ -17,6 +18,13 @@ useBookingsSpy.mockReturnValue({ data: bookingsSnap, isFetching: false } as Quer
   unknown
 >)
 describe('Bookings', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should render correctly', async () => {
     renderBookings()
 
@@ -28,7 +36,7 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    expect(useBookingsSpy).toHaveBeenCalledTimes(1)
+    expect(useBookingsSpy).toHaveBeenCalledTimes(2)
   })
 
   it('should display the right number of ongoing bookings', async () => {

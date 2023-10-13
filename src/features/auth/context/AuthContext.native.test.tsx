@@ -1,12 +1,15 @@
 import mockdate from 'mockdate'
+import { rest } from 'msw'
 import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
+import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
+import { env } from 'libs/environment'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { saveRefreshToken, clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -14,8 +17,8 @@ import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, renderHook } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
@@ -30,19 +33,19 @@ const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs
 const decodeTokenSpy = jest.spyOn(jwt, 'default')
 
 jest.useFakeTimers({ legacyFakeTimers: true })
-const mockUserProfileInfo = (user = beneficiaryUser) => {
-  mockServer.getAPIV1('/native/v1/me', {
-    responseOptions: { data: user },
-    requestOptions: { persist: true },
-  })
-}
 
 describe('AuthContext', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
     await storage.clear('access_token')
     await clearRefreshToken()
-    mockUserProfileInfo()
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
     decodeTokenSpy.mockReturnValue({
       ...decodedTokenWithRemainingLifetime,
@@ -62,7 +65,7 @@ describe('AuthContext', () => {
       expect(result.current.user).toBeUndefined()
     })
 
-    it.only('should return the user when logged in with internet connection', async () => {
+    it('should return the user when logged in with internet connection', async () => {
       await saveRefreshToken('token')
 
       const result = renderUseAuthContext()
@@ -127,7 +130,11 @@ describe('AuthContext', () => {
     })
 
     it('should not set user properties to Amplitude events when user is not logged in', async () => {
-      mockServer.getAPIV1('/native/v1/me', nonBeneficiaryUser)
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res(ctx.status(200), ctx.json(nonBeneficiaryUser))
+        )
+      )
 
       renderUseAuthContext()
 
@@ -137,8 +144,11 @@ describe('AuthContext', () => {
     })
 
     it('should set user id when user is logged in', async () => {
-      mockServer.getAPIV1('/native/v1/me', nonBeneficiaryUser)
-
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res(ctx.status(200), ctx.json(nonBeneficiaryUser))
+        )
+      )
       await saveRefreshToken('token')
 
       renderUseAuthContext()

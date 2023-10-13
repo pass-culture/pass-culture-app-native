@@ -7,6 +7,7 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
@@ -39,6 +40,13 @@ const mockPostNativeV1SendOfferLinkByPushofferId = jest.spyOn(
 )
 
 describe('<BookingImpossible />', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   describe('When offer is already favorite', () => {
     beforeEach(() => {
       const favoritesResponseWithOfferIn: PaginatedFavoritesResponse = {

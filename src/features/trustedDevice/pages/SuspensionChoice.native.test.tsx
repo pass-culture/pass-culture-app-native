@@ -7,6 +7,7 @@ import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -22,6 +23,13 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<SuspensionChoice/>', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should match snapshot', () => {
     renderSuspensionChoice()
 

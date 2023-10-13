@@ -10,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, waitFor, screen, act } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -50,6 +51,13 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 describe('<Favorite /> component', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should navigate to the offer when clicking on the favorite', async () => {
     renderFavorite()
 

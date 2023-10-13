@@ -9,6 +9,7 @@ import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOff
 import { analytics } from 'libs/analytics'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const offerFixture = offersFixture[0]
@@ -27,6 +28,13 @@ mockUseAuthContext.mockReturnValue({
 })
 
 describe('HighlightOfferModule', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should navigate to offer page on press', async () => {
     mockUseHighlightOffer.mockReturnValueOnce(offerFixture)
 

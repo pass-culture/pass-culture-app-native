@@ -25,6 +25,7 @@ import { GeoCoordinates, Position } from 'libs/geolocation'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
@@ -99,6 +100,13 @@ const defaultDataVenues: ModuleData = {
 }
 
 describe('<HomeModule />', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should display old exclusivity module when feature flag is false', async () => {
     mockServer.getAPIV1('/native/v1/offer/123456789', offerResponseSnap)
     useFeatureFlagSpy.mockReturnValueOnce(false)

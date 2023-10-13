@@ -9,6 +9,7 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
@@ -44,6 +45,13 @@ const mockedHighlightHeaderData = {
 }
 
 describe('ThematicHome', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
   mockUseHomepageData.mockReturnValue({

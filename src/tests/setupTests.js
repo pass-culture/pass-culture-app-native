@@ -5,6 +5,8 @@ import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
 import { queryCache } from './reactQueryProviderHOC'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { server } from './server'
 
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
@@ -31,6 +33,15 @@ global.AbortController = jest.fn(() => ({
   signal: {},
   abort: jest.fn(),
 }))
+
+global.beforeAll(() => {
+  server.listen()
+})
+
+global.afterAll(() => {
+  server.resetHandlers()
+  server.close()
+})
 
 // WEB MOCKS
 // To replicate the browser behaviour in our node test environement (jsdom), we have to make the following mocks :

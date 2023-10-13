@@ -8,6 +8,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -34,6 +35,13 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('<ConsentSettings/>', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should render correctly', async () => {
     renderConsentSettings()
 

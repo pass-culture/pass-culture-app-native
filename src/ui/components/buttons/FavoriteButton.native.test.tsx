@@ -13,6 +13,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import {
@@ -69,6 +70,13 @@ const mockUseRemoveFavorite = () => {
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<FavoriteButton />', () => {
+  beforeAll(() => {
+    server.listen()
+  })
+  afterAll(() => {
+    server.resetHandlers()
+    server.close()
+  })
   it('should render favorite icon', async () => {
     renderFavoriteButton()
     await act(async () => {})
