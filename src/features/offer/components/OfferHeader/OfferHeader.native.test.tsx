@@ -107,7 +107,7 @@ function renderOfferHeader() {
   )
 
   const animatedValue = new Animated.Value(0)
-  const wrapper = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <OfferHeader
@@ -117,5 +117,5 @@ function renderOfferHeader() {
       />
     )
   )
-  return { ...wrapper, animatedValue }
+  return { animatedValue }
 }

@@ -32,46 +32,46 @@ const INCORRECT_EMAIL_MESSAGE =
 
 describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', () => {
-    const { getByText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
-    const button = getByText('Continuer')
+    const button = screen.getByText('Continuer')
     expect(button).toBeDisabled()
   })
 
   it('should display disabled validate button when email input is filled with spaces', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, '    ')
     })
 
-    const button = getByText('Continuer')
+    const button = screen.getByText('Continuer')
     expect(button).toBeDisabled()
   })
 
   it('should enable validate button when email input is filled', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
 
-    const button = getByText('Continuer')
+    const button = screen.getByText('Continuer')
     expect(button).toBeEnabled()
   })
 
   it('should go to next step on valid email with email and newsletter params', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
 
     await act(async () => {
-      const continueButton = getByText('Continuer')
+      const continueButton = screen.getByText('Continuer')
       fireEvent.press(continueButton)
     })
 
@@ -82,41 +82,41 @@ describe('<SetEmail />', () => {
   })
 
   it('should hide email help message when email is valid', async () => {
-    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
     await act(async () => {
-      const continueButton = getByText('Continuer')
+      const continueButton = screen.getByText('Continuer')
       fireEvent.press(continueButton)
     })
 
-    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).not.toBeOnTheScreen()
+    expect(screen.queryByText(INCORRECT_EMAIL_MESSAGE)).not.toBeOnTheScreen()
   })
 
   it('should reject invalid email when trying to submit', async () => {
-    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe')
     })
 
     await act(async () => {
-      const continueButton = getByText('Continuer')
+      const continueButton = screen.getByText('Continuer')
       fireEvent.press(continueButton)
     })
 
-    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).toBeOnTheScreen()
+    expect(screen.queryByText(INCORRECT_EMAIL_MESSAGE)).toBeOnTheScreen()
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
-    const { getByText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const loginButton = getByText('Se connecter')
+      const loginButton = screen.getByText('Se connecter')
       fireEvent.press(loginButton)
     })
 
@@ -124,10 +124,10 @@ describe('<SetEmail />', () => {
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
-    const { getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -135,14 +135,14 @@ describe('<SetEmail />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
+    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should log analytics when user select the suggested email', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -150,7 +150,7 @@ describe('<SetEmail />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    const suggestionButton = getByText('Appliquer la modification')
+    const suggestionButton = screen.getByText('Appliquer la modification')
     fireEvent.press(suggestionButton)
 
     expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
@@ -159,10 +159,10 @@ describe('<SetEmail />', () => {
   it('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
     const OFFER_ID = 1
     useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
-    const { getByText } = render(<SetEmail {...props} />)
+    render(<SetEmail {...props} />)
 
     await act(async () => {
-      const loginButton = getByText('Se connecter')
+      const loginButton = screen.getByText('Se connecter')
       fireEvent.press(loginButton)
     })
 

@@ -22,8 +22,8 @@ const props: VenueTileProps = {
 
 describe('VenueTile component', () => {
   it('should render correctly', () => {
-    const component = render(<VenueTile {...props} />)
-    expect(component).toMatchSnapshot()
+    render(<VenueTile {...props} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to the venue when clicking on the venue tile', async () => {

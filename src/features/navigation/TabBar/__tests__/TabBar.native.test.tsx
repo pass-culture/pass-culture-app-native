@@ -7,7 +7,7 @@ import {
   useTabNavigationContext,
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { TabBar } from '../TabBar'
 
@@ -62,12 +62,12 @@ describe('TabBar', () => {
   // TODO(PC-13119): Add native stories for this component
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('render correctly', () => {
-    const renderAPI = renderTabBar()
-    expect(renderAPI).toMatchSnapshot()
+    renderTabBar()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display the 5 following tabs with Home selected', async () => {
-    const { getByTestId } = renderTabBar()
+    renderTabBar()
 
     const expectedTabsTestIds = [
       'Accueil sélectionné',
@@ -79,7 +79,7 @@ describe('TabBar', () => {
     ].sort()
 
     expectedTabsTestIds.map((tab) => {
-      expect(getByTestId(tab)).toBeOnTheScreen()
+      expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
   })
 
@@ -91,7 +91,7 @@ describe('TabBar', () => {
         isSelected: route.name === 'Bookings',
       })),
     })
-    const { getByTestId } = renderTabBar()
+    renderTabBar()
     const expectedTabsTestIds = [
       'Accueil',
       'Rechercher des offres',
@@ -102,13 +102,13 @@ describe('TabBar', () => {
     ].sort()
 
     expectedTabsTestIds.map((tab) => {
-      expect(getByTestId(tab)).toBeOnTheScreen()
+      expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
   })
 
   it('displays only one selected at a time', () => {
-    const renderAPI = renderTabBar()
-    expect(renderAPI.queryAllByTestId(/sélectionné/)).toHaveLength(1)
+    renderTabBar()
+    expect(screen.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
   it('does not reset navigation when clicked on selected tab', () => {
@@ -119,10 +119,10 @@ describe('TabBar', () => {
         isSelected: route.name === 'Profile',
       })),
     })
-    const renderAPI = renderTabBar()
-    expect(renderAPI.getByTestId('Mon profil sélectionné')).toBeOnTheScreen()
+    renderTabBar()
+    expect(screen.getByTestId('Mon profil sélectionné')).toBeOnTheScreen()
 
-    const profileTab = renderAPI.getByTestId('Mon profil')
+    const profileTab = screen.getByTestId('Mon profil')
     fireEvent.press(profileTab)
 
     expect(navigation.emit).not.toHaveBeenCalled()
@@ -130,10 +130,10 @@ describe('TabBar', () => {
   })
 
   it('should reset navigation when clicked on selected home tab', async () => {
-    const renderAPI = renderTabBar()
-    expect(renderAPI.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
+    renderTabBar()
+    expect(screen.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
 
-    const homeTab = renderAPI.getByTestId('Accueil')
+    const homeTab = screen.getByTestId('Accueil')
     fireEvent.press(homeTab)
 
     expect(navigation.emit).toHaveBeenCalledTimes(1)
@@ -141,8 +141,8 @@ describe('TabBar', () => {
   })
 
   it('navigates to Profile on Profile tab click', async () => {
-    const renderAPI = renderTabBar()
-    const profileTab = renderAPI.getByTestId('Mon profil')
+    renderTabBar()
+    const profileTab = screen.getByTestId('Mon profil')
 
     fireEvent.press(profileTab)
 
@@ -154,9 +154,8 @@ describe('TabBar', () => {
 })
 
 function renderTabBar() {
-  const renderAPI = render(
+  render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<TabBar navigation={navigation} />)
   )
-  return renderAPI
 }

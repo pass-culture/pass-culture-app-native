@@ -7,7 +7,7 @@ import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/booking
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { render, act } from 'tests/utils'
+import { render, act, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -63,14 +63,17 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         refetch: refetch as unknown,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
-      const { getByTestId } = render(<OnGoingBookingsList />)
+      render(<OnGoingBookingsList />)
 
-      const flatList = getByTestId('OnGoingBookingsList')
+      const flatList = screen.getByTestId('OnGoingBookingsList')
       expect(flatList).toBeDefined()
       expect(flatList.props.onRefresh).toBeDefined()
     })
     it('should show snack bar error when trying to pull to refetch with message "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."', async () => {
-      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
+      mockUseNetInfoContext.mockReturnValueOnce({
+        isConnected: false,
+        isInternetReachable: false,
+      })
       const refetch = jest.fn()
       const loadingBookings = {
         data: {
@@ -83,9 +86,9 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         refetch: refetch as unknown,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
-      const { getByTestId } = render(<OnGoingBookingsList />)
+      render(<OnGoingBookingsList />)
 
-      const flatList = getByTestId('OnGoingBookingsList')
+      const flatList = screen.getByTestId('OnGoingBookingsList')
       expect(flatList).toBeDefined()
 
       await act(async () => {
@@ -106,9 +109,9 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isFetching: false,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
-      const { queryByTestId } = render(<OnGoingBookingsList />)
+      render(<OnGoingBookingsList />)
 
-      const placeholder = queryByTestId('BookingsPlaceholder')
+      const placeholder = screen.queryByTestId('BookingsPlaceholder')
 
       expect(placeholder).toBeOnTheScreen()
     })
@@ -118,17 +121,17 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isLoading: true,
       } as UseQueryResult<SubcategoriesResponseModelv2, unknown>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
-      const { queryByTestId } = render(<OnGoingBookingsList />)
+      render(<OnGoingBookingsList />)
 
-      const placeholder = queryByTestId('BookingsPlaceholder')
+      const placeholder = screen.queryByTestId('BookingsPlaceholder')
 
       expect(placeholder).toBeOnTheScreen()
     })
   })
 
   it('should trigger logEvent "BookingsScrolledToBottom" when reaching the end', () => {
-    const { getByTestId } = render(<OnGoingBookingsList />)
-    const flatList = getByTestId('OnGoingBookingsList')
+    render(<OnGoingBookingsList />)
+    const flatList = screen.getByTestId('OnGoingBookingsList')
 
     flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
     expect(analytics.logBookingsScrolledToBottom).not.toHaveBeenCalled()
@@ -139,8 +142,8 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 
   it('should trigger logEvent "BookingsScrolledToBottom" only once', () => {
-    const { getByTestId } = render(<OnGoingBookingsList />)
-    const flatList = getByTestId('OnGoingBookingsList')
+    render(<OnGoingBookingsList />)
+    const flatList = screen.getByTestId('OnGoingBookingsList')
 
     // 1st scroll to bottom => trigger
     flatList.props.onScroll({ nativeEvent: nativeEventBottom })

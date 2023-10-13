@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
-import { renderHook, render } from 'tests/utils'
+import { renderHook, render, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 jest.mock('react-query')
@@ -37,59 +37,68 @@ describe('useOfferModal', () => {
   })
 
   it('should return application processing modal when asked', () => {
-    const { getByText } = render(
+    render(
       <TestOfferModal
         modalToDisplay={OfferModal.APPLICATION_PROCESSING}
         offerId={1000}
         from={StepperOrigin.OFFER}
       />
     )
-    expect(getByText('C’est pour bientôt\u00a0!')).toBeOnTheScreen()
+
+    expect(screen.getByText('C’est pour bientôt\u00a0!')).toBeOnTheScreen()
   })
 
   it('should return authentication modal when asked', () => {
-    const { getByText } = render(
+    render(
       <TestOfferModal
         modalToDisplay={OfferModal.AUTHENTICATION}
         offerId={1000}
         from={StepperOrigin.OFFER}
       />
     )
-    expect(getByText('Identifie-toi' + LINE_BREAK + 'pour réserver l’offre')).toBeOnTheScreen()
+
+    expect(
+      screen.getByText('Identifie-toi' + LINE_BREAK + 'pour réserver l’offre')
+    ).toBeOnTheScreen()
   })
 
   it('should return booking modal when asked', () => {
-    const { getByText } = render(
+    render(
       <TestOfferModal
         modalToDisplay={OfferModal.BOOKING}
         offerId={1000}
         from={StepperOrigin.OFFER}
       />
     )
-    expect(getByText('BookingOfferModal')).toBeOnTheScreen()
+
+    expect(screen.getByText('BookingOfferModal')).toBeOnTheScreen()
   })
 
   it('should return error application modal when asked', () => {
-    const { getByText } = render(
+    render(
       <TestOfferModal
         modalToDisplay={OfferModal.ERROR_APPLICATION}
         offerId={1000}
         from={StepperOrigin.OFFER}
       />
     )
-    expect(getByText('Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit')).toBeOnTheScreen()
+
+    expect(
+      screen.getByText('Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit')
+    ).toBeOnTheScreen()
   })
 
   it('should return finish subscription modal when asked', () => {
-    const { getByText } = render(
+    render(
       <TestOfferModal
         modalToDisplay={OfferModal.FINISH_SUBSCRIPTION}
         offerId={1000}
         from={StepperOrigin.OFFER}
       />
     )
+
     expect(
-      getByText('Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre')
+      screen.getByText('Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre')
     ).toBeOnTheScreen()
   })
 })

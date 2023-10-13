@@ -17,7 +17,7 @@ const defaultProps = {
 
 describe('<WebShareModal />', () => {
   it('should not render in native', () => {
-    const renderAPI = render(<WebShareModal {...defaultProps} />)
-    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+    const { toJSON } = render(<WebShareModal {...defaultProps} />)
+    expect(toJSON()).not.toBeOnTheScreen()
   })
 })

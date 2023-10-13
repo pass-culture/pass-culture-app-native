@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
 
 const props = {
@@ -11,7 +11,7 @@ const props = {
 
 describe('<ImageTile/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<ImageTile {...props} onlyTopBorderRadius />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ImageTile {...props} onlyTopBorderRadius />)
+    expect(screen).toMatchSnapshot()
   })
 })

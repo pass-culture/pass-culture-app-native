@@ -6,7 +6,7 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
@@ -20,15 +20,14 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 
 describe('NoFavoritesResult component', () => {
   it('should show the message', () => {
-    const text = render(<NoFavoritesResult />).getByText(
-      `Retrouve toutes tes offres en un clin d’oeil`
-    )
+    render(<NoFavoritesResult />)
+    const text = screen.getByText(`Retrouve toutes tes offres en un clin d’oeil`)
     expect(text).toBeOnTheScreen()
   })
 
   it('should navigate to Search when pressing button and log event', async () => {
-    const renderAPI = render(<NoFavoritesResult />)
-    const button = renderAPI.getByText('Découvrir le catalogue')
+    render(<NoFavoritesResult />)
+    const button = screen.getByText('Découvrir le catalogue')
     await fireEvent.press(button)
     expect(navigate).toBeCalledWith(...getTabNavConfig('Search', { view: SearchView.Landing }))
     expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')

@@ -4,7 +4,7 @@ import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { StepButton } from 'features/identityCheck/components/StepButton'
 import { StepButtonState, StepDetails, IdentityCheckStep } from 'features/identityCheck/types'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -32,8 +32,8 @@ describe('StepButton', () => {
         },
       }
 
-      const stepButton = render(<StepButton step={identificationStep} />)
-      expect(stepButton.getByTestId(stepTestId).props.accessibilityState.disabled).toBe(isDisabled)
+      render(<StepButton step={identificationStep} />)
+      expect(screen.getByTestId(stepTestId).props.accessibilityState.disabled).toBe(isDisabled)
     }
   )
   it.each`
@@ -58,9 +58,9 @@ describe('StepButton', () => {
         },
       }
 
-      const stepButton = render(<StepButton step={identificationStep} />)
+      render(<StepButton step={identificationStep} />)
 
-      expect(stepButton.queryByTestId(stepTestId)).toBeOnTheScreen()
+      expect(screen.queryByTestId(stepTestId)).toBeOnTheScreen()
     }
   )
 })

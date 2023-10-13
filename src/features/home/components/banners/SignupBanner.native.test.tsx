@@ -7,9 +7,9 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 describe('SignupBanner', () => {
   it('should redirect to signup form on press', async () => {
-    const { getByText } = render(<SignupBanner />)
+    render(<SignupBanner />)
 
-    fireEvent.press(getByText('Débloque ton crédit'))
+    fireEvent.press(screen.getByText('Débloque ton crédit'))
 
     await waitFor(() => expect(navigate).toHaveBeenCalledWith('SignupForm', undefined))
   })

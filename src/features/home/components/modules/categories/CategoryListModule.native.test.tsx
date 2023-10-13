@@ -5,7 +5,7 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 describe('CategoryListModule', () => {
   it('should call analytics when the module is displayed', () => {
@@ -27,7 +27,7 @@ describe('CategoryListModule', () => {
     )
   })
   it('should call analytics when a categoryBlock is clicked', () => {
-    const categoryListModule = render(
+    render(
       <CategoryListModule
         id="123"
         title="module"
@@ -37,7 +37,7 @@ describe('CategoryListModule', () => {
       />
     )
 
-    const bloc = categoryListModule.getByText('Toto au cinéma')
+    const bloc = screen.getByText('Toto au cinéma')
 
     fireEvent.press(bloc)
 
@@ -50,7 +50,7 @@ describe('CategoryListModule', () => {
   })
 
   it('should navigate to thematic home when a categoryBlock is clicked', async () => {
-    const categoryListModule = render(
+    render(
       <CategoryListModule
         id="123"
         title="module"
@@ -60,7 +60,7 @@ describe('CategoryListModule', () => {
       />
     )
 
-    const bloc = categoryListModule.getByText('Toto au cinéma')
+    const bloc = screen.getByText('Toto au cinéma')
 
     await act(async () => {
       fireEvent.press(bloc)

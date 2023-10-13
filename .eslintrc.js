@@ -30,6 +30,7 @@ module.exports = {
   },
   rules: {
     'testing-library/await-async-utils': ['error'],
+    'testing-library/prefer-screen-queries': ['error'],
     'local-rules/independent-mocks': ['error'],
     'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],

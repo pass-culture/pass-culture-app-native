@@ -5,7 +5,7 @@ import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { buildSuggestedPlaces } from 'libs/place/fetchPlaces'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 let mockPlaces: SuggestedPlace[] = []
 const mockVenues: Venue[] = []
@@ -21,14 +21,15 @@ const mockSetSelectedPlaceOrVenue = jest.fn()
 describe('<SuggestedPlacesOrVenues/>', () => {
   it('should call setSelectedPlaceOrVenue when selecting a place', () => {
     mockPlaces = buildSuggestedPlaces(mockedSuggestedPlaces)
-    const { getByTestId } = render(
+
+    render(
       <SuggestedPlacesOrVenues
         query="paris"
         setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue}
       />
     )
 
-    fireEvent.press(getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`))
+    fireEvent.press(screen.getByTestId(`${mockPlaces[1].label} ${mockPlaces[1].info}`))
 
     expect(mockSetSelectedPlaceOrVenue).toHaveBeenCalledWith(mockPlaces[1])
   })
@@ -36,33 +37,39 @@ describe('<SuggestedPlacesOrVenues/>', () => {
   it('should show empty component only when query is not empty and the results are not loading', () => {
     mockPlaces = []
     mockIsLoading = false
-    const { getByText } = render(
+
+    render(
       <SuggestedPlacesOrVenues
         query="paris"
         setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue}
       />
     )
-    expect(getByText('Aucun lieu ne correspond à ta recherche')).toBeOnTheScreen()
+
+    expect(screen.getByText('Aucun lieu ne correspond à ta recherche')).toBeOnTheScreen()
   })
 
   it('should not show empty component if the query is empty and the results are not loading', () => {
     mockPlaces = []
     mockIsLoading = false
-    const { queryByText } = render(
+
+    render(
       <SuggestedPlacesOrVenues query="" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
     )
-    expect(queryByText('Aucun lieu ne correspond à ta recherche')).not.toBeOnTheScreen()
+
+    expect(screen.queryByText('Aucun lieu ne correspond à ta recherche')).not.toBeOnTheScreen()
   })
 
   it('should not show empty component if the results are still loading', () => {
     mockPlaces = []
     mockIsLoading = true
-    const { queryByText } = render(
+
+    render(
       <SuggestedPlacesOrVenues
         query="paris"
         setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue}
       />
     )
-    expect(queryByText('Aucun lieu ne correspond à ta recherche')).not.toBeOnTheScreen()
+
+    expect(screen.queryByText('Aucun lieu ne correspond à ta recherche')).not.toBeOnTheScreen()
   })
 })

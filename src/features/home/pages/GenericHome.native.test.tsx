@@ -37,17 +37,17 @@ describe('GenericHome', () => {
   describe('With not displayed skeleton by default', () => {
     it('should display skeleton', async () => {
       useShowSkeletonSpy.mockReturnValueOnce(true)
-      const home = renderGenericHome()
+      renderGenericHome()
       await act(async () => {})
 
-      expect(home).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
     })
 
     it('should display real content', async () => {
-      const home = renderGenericHome()
+      renderGenericHome()
       await act(async () => {})
 
-      expect(home).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
     })
 
     it('should display offline page when not connected', async () => {

@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 
@@ -13,16 +13,16 @@ describe('<OfflineModeContainer />', () => {
   mockUseNetInfoContext.mockImplementation(() => ({ isConnected: false }))
 
   it('should render children and show banner when offline at init when isConnected is false', () => {
-    const renderAPI = renderOfflineModeContainer()
-    expect(renderAPI.queryByText('Hello World')).toBeOnTheScreen()
-    expect(renderAPI.queryByText('aucune connexion internet.')).toBeOnTheScreen()
+    renderOfflineModeContainer()
+    expect(screen.queryByText('Hello World')).toBeOnTheScreen()
+    expect(screen.queryByText('aucune connexion internet.')).toBeOnTheScreen()
   })
 
   it('should render children and not show banner when offline at init when isConnected is true', () => {
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
-    const renderAPI = renderOfflineModeContainer()
-    expect(renderAPI.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
-    expect(renderAPI.queryByText('Hello World')).toBeOnTheScreen()
+    renderOfflineModeContainer()
+    expect(screen.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Hello World')).toBeOnTheScreen()
   })
 
   it('should not show "aucune connexion internet." at init, then show when isConnected is false, then hide when isConnected switch back to true', () => {
@@ -30,16 +30,16 @@ describe('<OfflineModeContainer />', () => {
       isConnected: true,
       isInternetReachable: true,
     }))
-    const renderAPI = renderOfflineModeContainer()
-    expect(renderAPI.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
+    renderOfflineModeContainer()
+    expect(screen.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
 
     mockUseNetInfoContext.mockImplementationOnce(() => ({
       isConnected: false,
       isInternetReachable: false,
     }))
-    renderAPI.rerender(getJsx())
+    screen.rerender(getJsx())
 
-    expect(renderAPI.queryByText('aucune connexion internet.')).toBeOnTheScreen()
+    expect(screen.queryByText('aucune connexion internet.')).toBeOnTheScreen()
   })
 })
 

@@ -2,24 +2,24 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { FilterButton } from './FilterButton'
 
 describe('FilterButton', () => {
   it('should contains the number of active filters', async () => {
-    const { queryByText } = render(<FilterButton activeFilters={2} />)
+    render(<FilterButton activeFilters={2} />)
 
     await waitFor(() => {
-      expect(queryByText('2')).toBeOnTheScreen()
+      expect(screen.queryByText('2')).toBeOnTheScreen()
     })
   })
 
   it('should not display badge when there are no active filters', async () => {
-    const { queryByTestId } = render(<FilterButton activeFilters={0} />)
+    render(<FilterButton activeFilters={0} />)
 
     await waitFor(() => {
-      expect(queryByTestId('searchFilterBadge')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('searchFilterBadge')).not.toBeOnTheScreen()
     })
   })
 
@@ -27,9 +27,9 @@ describe('FilterButton', () => {
     useRoute.mockReturnValueOnce({
       params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
     })
-    const { getByTestId } = render(<FilterButton activeFilters={1} />)
+    render(<FilterButton activeFilters={1} />)
 
-    const filterButton = getByTestId('searchFilterBadge')
+    const filterButton = screen.getByTestId('searchFilterBadge')
     fireEvent.press(filterButton)
 
     await waitFor(() => {
@@ -41,26 +41,30 @@ describe('FilterButton', () => {
 
   describe('Accessibility', () => {
     it('should have an accessible label with the number of active filters', async () => {
-      const { queryByLabelText } = render(<FilterButton activeFilters={2} />)
+      render(<FilterButton activeFilters={2} />)
 
       await waitFor(() => {
-        expect(queryByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')).toBeOnTheScreen()
+        expect(
+          screen.queryByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
+        ).toBeOnTheScreen()
       })
     })
 
     it('should have an accessible label with one active filter', async () => {
-      const { queryByLabelText } = render(<FilterButton activeFilters={1} />)
+      render(<FilterButton activeFilters={1} />)
 
       await waitFor(() => {
-        expect(queryByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')).toBeOnTheScreen()
+        expect(
+          screen.queryByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')
+        ).toBeOnTheScreen()
       })
     })
 
     it('should have an accessible label without active filter', async () => {
-      const { queryByLabelText } = render(<FilterButton activeFilters={0} />)
+      render(<FilterButton activeFilters={0} />)
 
       await waitFor(() => {
-        expect(queryByLabelText('Voir tous les filtres')).toBeOnTheScreen()
+        expect(screen.queryByLabelText('Voir tous les filtres')).toBeOnTheScreen()
       })
     })
   })

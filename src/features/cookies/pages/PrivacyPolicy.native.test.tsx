@@ -6,7 +6,7 @@ import * as Cookies from 'features/cookies/helpers/useCookies'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { ConsentStatus } from 'features/cookies/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { PrivacyPolicy } from './PrivacyPolicy'
 
@@ -36,9 +36,9 @@ describe('<PrivacyPolicy />', () => {
       ...defaultUseCookies,
       cookiesConsent: { state: ConsentState.LOADING },
     })
-    const renderAPI = await renderPrivacyPolicy()
+    await renderPrivacyPolicy()
 
-    const title = renderAPI.queryByText('Choisir les cookies')
+    const title = screen.queryByText('Choisir les cookies')
     expect(title).not.toBeOnTheScreen()
   })
 
@@ -47,9 +47,9 @@ describe('<PrivacyPolicy />', () => {
       ...defaultUseCookies,
       cookiesConsent: { state: ConsentState.UNKNOWN },
     })
-    const renderAPI = await renderPrivacyPolicy()
+    await renderPrivacyPolicy()
 
-    const title = renderAPI.queryByText('Choisir les cookies')
+    const title = screen.queryByText('Choisir les cookies')
     expect(title).toBeOnTheScreen()
   })
 
@@ -62,9 +62,9 @@ describe('<PrivacyPolicy />', () => {
         value: consentValue,
       },
     })
-    const renderAPI = await renderPrivacyPolicy()
+    await renderPrivacyPolicy()
 
-    const title = renderAPI.queryByText('Choisir les cookies')
+    const title = screen.queryByText('Choisir les cookies')
     expect(title).not.toBeOnTheScreen()
   })
 
@@ -77,17 +77,16 @@ describe('<PrivacyPolicy />', () => {
         value: consentValue,
       },
     })
-    const renderAPI = await renderPrivacyPolicy()
+    await renderPrivacyPolicy()
 
-    const title = renderAPI.queryByText('Choisir les cookies')
+    const title = screen.queryByText('Choisir les cookies')
     expect(title).toBeOnTheScreen()
   })
 })
 
 const renderPrivacyPolicy = async () => {
-  const renderAPI = render(<PrivacyPolicy />, {
+  render(<PrivacyPolicy />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  return renderAPI
 }

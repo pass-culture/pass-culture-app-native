@@ -22,10 +22,10 @@ mockdate.set(new Date('2022-08-09T00:00:00Z'))
 describe('<DeeplinksGeneratorForm />', () => {
   it('should render deeplink generator form with marketing as default utm_gen', () => {
     const onCreate = jest.fn()
-    const renderAPI = render(<DeeplinksGeneratorForm onCreate={onCreate} />)
-    const generateButton = renderAPI.getByTestId('Générer le lien')
-    const home = renderAPI.getByText('Home')
-    const profile = renderAPI.getByText('Profile')
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+    const generateButton = screen.getByTestId('Générer le lien')
+    const home = screen.getByText('Home')
+    const profile = screen.getByText('Profile')
 
     fireEvent.press(home)
 
@@ -67,9 +67,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
   it('should add showResults param when the user generate a search link', () => {
     const onCreate = jest.fn()
-    const renderAPI = render(<DeeplinksGeneratorForm onCreate={onCreate} />)
-    const generateButton = renderAPI.getByTestId('Générer le lien')
-    const search = renderAPI.getByText('Search')
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+    const generateButton = screen.getByTestId('Générer le lien')
+    const search = screen.getByText('Search')
 
     fireEvent.press(search)
 
@@ -85,18 +85,18 @@ describe('<DeeplinksGeneratorForm />', () => {
 
   it('should remove subcategory param when the user change the category and generate a search link', () => {
     const onCreate = jest.fn()
-    const { getByText } = render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
 
-    const search = getByText('Search')
+    const search = screen.getByText('Search')
     fireEvent.press(search)
 
-    let categoryButton = getByText('Arts & loisirs créatifs')
+    let categoryButton = screen.getByText('Arts & loisirs créatifs')
     fireEvent.press(categoryButton)
 
-    const subcategoryButton = getByText('Arts visuels')
+    const subcategoryButton = screen.getByText('Arts visuels')
     fireEvent.press(subcategoryButton)
 
-    let generateButton = getByText('Générer le lien')
+    let generateButton = screen.getByText('Générer le lien')
     fireEvent.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
@@ -106,10 +106,10 @@ describe('<DeeplinksGeneratorForm />', () => {
         'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing',
     })
 
-    categoryButton = getByText('Concerts & festivals')
+    categoryButton = screen.getByText('Concerts & festivals')
     fireEvent.press(categoryButton)
 
-    generateButton = getByText('Générer le lien')
+    generateButton = screen.getByText('Générer le lien')
     fireEvent.press(generateButton)
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {

@@ -4,7 +4,7 @@ import { ExclusivityExternalLink } from 'features/home/components/modules/exclus
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -33,9 +33,9 @@ describe('ExclusivityExternalLink component', () => {
   })
 
   it('should open url when clicking on the component', () => {
-    const { getByTestId } = render(<ExclusivityExternalLink {...props} />)
+    render(<ExclusivityExternalLink {...props} />)
 
-    fireEvent.press(getByTestId('Image d’Adèle'))
+    fireEvent.press(screen.getByTestId('Image d’Adèle'))
 
     expect(openUrl).toHaveBeenCalledWith(props.url, undefined, false)
   })

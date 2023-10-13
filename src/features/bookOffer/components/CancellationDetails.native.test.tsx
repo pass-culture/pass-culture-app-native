@@ -4,7 +4,7 @@ import React from 'react'
 import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, RenderAPI } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { CancellationDetails, formatDate } from './CancellationDetails'
 
@@ -50,9 +50,9 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        const page = render(reactQueryProviderHOC(<CancellationDetails />))
+        render(reactQueryProviderHOC(<CancellationDetails />))
 
-        expectNotCancellable(page)
+        expectNotCancellable()
       }
     )
   })
@@ -69,9 +69,9 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        const page = render(reactQueryProviderHOC(<CancellationDetails />))
+        render(reactQueryProviderHOC(<CancellationDetails />))
 
-        expectNotCancellable(page)
+        expectNotCancellable()
       }
     )
   })
@@ -86,9 +86,9 @@ describe('<CancellationDetails /> when isDigital = true', () => {
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      const page = render(reactQueryProviderHOC(<CancellationDetails />))
+      render(reactQueryProviderHOC(<CancellationDetails />))
 
-      expectCancellable(page)
+      expectCancellable()
     })
 
     // eslint-disable-next-line jest/expect-expect
@@ -100,9 +100,9 @@ describe('<CancellationDetails /> when isDigital = true', () => {
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      const page = render(reactQueryProviderHOC(<CancellationDetails />))
+      render(reactQueryProviderHOC(<CancellationDetails />))
 
-      expectNotCancellable(page)
+      expectNotCancellable()
     })
 
     // eslint-disable-next-line jest/expect-expect
@@ -114,27 +114,27 @@ describe('<CancellationDetails /> when isDigital = true', () => {
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      const page = render(reactQueryProviderHOC(<CancellationDetails />))
+      render(reactQueryProviderHOC(<CancellationDetails />))
 
-      expectCancellableBefore(page)
+      expectCancellableBefore()
     })
   })
 })
 
-const expectNotCancellable = (page: RenderAPI) => {
-  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeOnTheScreen()
-  expect(page.queryByText(/Cette réservation est annulable/)).not.toBeOnTheScreen()
-  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).not.toBeOnTheScreen()
+const expectNotCancellable = () => {
+  expect(screen.queryByText('Cette réservation n’est pas annulable')).toBeOnTheScreen()
+  expect(screen.queryByText(/Cette réservation est annulable/)).not.toBeOnTheScreen()
+  expect(screen.queryByText(/Cette réservation peut être annulée jusqu’au/)).not.toBeOnTheScreen()
 }
 
-const expectCancellable = (page: RenderAPI) => {
-  expect(page.queryByText('Cette réservation n’est pas annulable')).not.toBeOnTheScreen()
-  expect(page.queryByText(/Cette réservation est annulable/)).toBeOnTheScreen()
-  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).not.toBeOnTheScreen()
+const expectCancellable = () => {
+  expect(screen.queryByText('Cette réservation n’est pas annulable')).not.toBeOnTheScreen()
+  expect(screen.queryByText(/Cette réservation est annulable/)).toBeOnTheScreen()
+  expect(screen.queryByText(/Cette réservation peut être annulée jusqu’au/)).not.toBeOnTheScreen()
 }
 
-const expectCancellableBefore = (page: RenderAPI) => {
-  expect(page.queryByText('Cette réservation n’est pas annulable')).not.toBeOnTheScreen()
-  expect(page.queryByText(/Cette réservation est annulable/)).not.toBeOnTheScreen()
-  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeOnTheScreen()
+const expectCancellableBefore = () => {
+  expect(screen.queryByText('Cette réservation n’est pas annulable')).not.toBeOnTheScreen()
+  expect(screen.queryByText(/Cette réservation est annulable/)).not.toBeOnTheScreen()
+  expect(screen.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeOnTheScreen()
 }

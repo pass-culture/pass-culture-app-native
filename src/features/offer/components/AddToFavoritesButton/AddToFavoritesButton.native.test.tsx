@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, waitFor, render } from 'tests/utils'
+import { fireEvent, waitFor, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -24,19 +24,19 @@ const mockPostFavorite = jest.fn()
 describe('<AddToFavoriteButton />', () => {
   it('should render nothing when offer already in favorite', async () => {
     const favoriteOfferId = 146193
-    const { queryByText } = renderButton({ offerId: favoriteOfferId })
+    renderButton({ offerId: favoriteOfferId })
 
     await waitFor(() => {
-      expect(queryByText('Mettre en favori')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Mettre en favori')).not.toBeOnTheScreen()
     })
   })
 
   it('should add favorite', async () => {
-    const { getByText } = renderButton({
+    renderButton({
       offerId: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(getByText('Mettre en favori'))
+    fireEvent.press(screen.getByText('Mettre en favori'))
 
     await waitFor(() => {
       expect(mockPostFavorite).toHaveBeenCalledTimes(1)

@@ -12,14 +12,7 @@ import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import {
-  bottomScrollEvent,
-  fireEvent,
-  middleScrollEvent,
-  render,
-  screen,
-  waitFor,
-} from 'tests/utils'
+import { act, bottomScrollEvent, fireEvent, middleScrollEvent, render, screen } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -84,12 +77,16 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Venue />', () => {
   it('should match snapshot', async () => {
-    const venue = await renderVenue(venueId)
-    expect(venue).toMatchSnapshot()
+    renderVenue(venueId)
+    await act(async () => {})
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log consult venue when URL has from param with deeplink', async () => {
-    await renderVenue(venueId, 'deeplink')
+    renderVenue(venueId, 'deeplink')
+    await act(async () => {})
+
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId,
       from: 'deeplink',
@@ -97,53 +94,67 @@ describe('<Venue />', () => {
   })
 
   it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
-    await renderVenue(venueId, 'search')
+    renderVenue(venueId, 'search')
+    await act(async () => {})
+
     expect(analytics.logConsultVenue).not.toHaveBeenCalled()
   })
 
   it('should not log consult venue when URL has not "from" param', async () => {
-    await renderVenue(venueId)
+    renderVenue(venueId)
+    await act(async () => {})
+
     expect(analytics.logConsultVenue).not.toHaveBeenCalled()
   })
 
   describe('Batch trigger', () => {
     it('should trigger event after 5 seconds', async () => {
-      await renderVenue(venueId)
+      renderVenue(venueId)
 
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
 
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
     })
 
     it('should not trigger event before 5 seconds have elapsed', async () => {
-      await renderVenue(venueId)
+      renderVenue(venueId)
 
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      })
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalled()
     })
 
     it('should trigger event on scroll to bottom', async () => {
-      await renderVenue(venueId)
+      renderVenue(venueId)
 
-      fireEvent.scroll(screen.getByTestId('venue-container'), bottomScrollEvent)
+      await act(async () => {
+        fireEvent.scroll(screen.getByTestId('venue-container'), bottomScrollEvent)
+      })
 
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
     })
 
     it('should not trigger event on scroll to middle', async () => {
-      await renderVenue(venueId)
+      renderVenue(venueId)
 
-      fireEvent.scroll(screen.getByTestId('venue-container'), middleScrollEvent)
+      await act(async () => {
+        fireEvent.scroll(screen.getByTestId('venue-container'), middleScrollEvent)
+      })
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalled()
     })
 
     it('should trigger event once on scroll to bottom and after 5 seconds', async () => {
-      await renderVenue(venueId)
+      renderVenue(venueId)
 
       fireEvent.scroll(screen.getByTestId('venue-container'), bottomScrollEvent)
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
 
       expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
@@ -153,7 +164,5 @@ describe('<Venue />', () => {
 
 async function renderVenue(id: number, from?: Referrals) {
   useRoute.mockImplementation(() => ({ params: { id, from } }))
-  const wrapper = render(<Venue />)
-  await waitFor(() => wrapper)
-  return wrapper
+  render(<Venue />)
 }

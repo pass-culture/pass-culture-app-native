@@ -13,17 +13,17 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('AccordionItem', () => {
   it("should be closed by default - we don't see the children", () => {
-    const accordion = renderAccordion()
-    const accordionBody = accordion.getByTestId('accordionBody')
+    renderAccordion()
+    const accordionBody = screen.getByTestId('accordionBody')
     expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
   })
 
   it('should display the children after pressing on the title', async () => {
-    const accordion = renderAccordion()
+    renderAccordion()
     expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
     act(() => {
-      fireEvent.press(accordion.getByText('accordion title'))
+      fireEvent.press(screen.getByText('accordion title'))
       jest.runAllTimers()
     })
 
@@ -31,12 +31,12 @@ describe('AccordionItem', () => {
   })
 
   it('should expand for accessibility the accordion after pressing the title', async () => {
-    const accordion = renderAccordion()
+    renderAccordion()
 
     expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: false })
 
     act(() => {
-      fireEvent.press(accordion.getByText('accordion title'))
+      fireEvent.press(screen.getByText('accordion title'))
       jest.runAllTimers()
     })
 
@@ -44,13 +44,13 @@ describe('AccordionItem', () => {
   })
 
   it('correct arrow animation,', async () => {
-    const accordion = renderAccordion()
-    const accordionArrow = accordion.getByTestId('accordionArrow')
+    renderAccordion()
+    const accordionArrow = screen.getByTestId('accordionArrow')
     // ArrowNext (right) + 90° => arrow facing up.
     expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${Math.PI / 2}rad` })
 
     act(() => {
-      fireEvent.press(accordion.getByText('accordion title'))
+      fireEvent.press(screen.getByText('accordion title'))
       jest.runAllTimers()
     })
 
@@ -60,7 +60,7 @@ describe('AccordionItem', () => {
 })
 
 function renderAccordion() {
-  return render(
+  render(
     <AccordionItem title={accordionTitle}>
       <Children />
     </AccordionItem>

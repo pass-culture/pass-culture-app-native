@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, fireEvent, waitFor, act } from 'tests/utils'
+import { render, fireEvent, waitFor, act, screen } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
@@ -35,9 +35,9 @@ function renderSignupConfirmationExpiredLink() {
 
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    const { getByText } = renderSignupConfirmationExpiredLink()
+    renderSignupConfirmationExpiredLink()
 
-    const button = getByText('Retourner à l’accueil')
+    const button = screen.getByText('Retourner à l’accueil')
     fireEvent.press(button)
 
     await waitFor(() => {
@@ -49,9 +49,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   })
 
   it('should redirect to signup confirmation email sent page WHEN clicking on resend email and response is success', async () => {
-    const { getByText } = renderSignupConfirmationExpiredLink()
+    renderSignupConfirmationExpiredLink()
 
-    fireEvent.press(getByText(`Renvoyer l’email`))
+    fireEvent.press(screen.getByText(`Renvoyer l’email`))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
@@ -68,10 +68,10 @@ describe('<SignupConfirmationExpiredLink/>', () => {
         res.once(ctx.status(400))
       )
     )
-    const { getByText } = renderSignupConfirmationExpiredLink()
+    renderSignupConfirmationExpiredLink()
 
     await act(async () => {
-      fireEvent.press(getByText(`Renvoyer l’email`))
+      fireEvent.press(screen.getByText(`Renvoyer l’email`))
     })
 
     expect(navigate).not.toHaveBeenCalled()

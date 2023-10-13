@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { From } from 'shared/offer/enums'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { AuthenticationModal } from './AuthenticationModal'
 
@@ -12,17 +12,18 @@ const hideModal = jest.fn()
 
 describe('<AuthenticationModal />', () => {
   it('should match previous snapshot', () => {
-    const modal = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    expect(modal).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to signup page when clicking on "Créer un compte" button', async () => {
-    const { getByLabelText } = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    const signupButton = getByLabelText('Créer un compte')
+
+    const signupButton = screen.getByLabelText('Créer un compte')
 
     fireEvent.press(signupButton)
 
@@ -36,24 +37,28 @@ describe('<AuthenticationModal />', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
-    const { getByLabelText } = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    const signupButton = getByLabelText('Créer un compte')
+
+    const signupButton = screen.getByLabelText('Créer un compte')
 
     fireEvent.press(signupButton)
 
     await waitFor(() => {
       expect(analytics.logSignUpFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
-      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'offer_booking' })
+      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
+        from: 'offer_booking',
+      })
     })
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
-    const { getByText } = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    const signinButton = getByText('Se connecter')
+
+    const signinButton = screen.getByText('Se connecter')
 
     fireEvent.press(signinButton)
 
@@ -63,10 +68,11 @@ describe('<AuthenticationModal />', () => {
   })
 
   it('should go to Login from booking with offerId', async () => {
-    const { getByText } = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    const signinButton = getByText('Se connecter')
+
+    const signinButton = screen.getByText('Se connecter')
 
     fireEvent.press(signinButton)
 
@@ -80,10 +86,11 @@ describe('<AuthenticationModal />', () => {
   })
 
   it('should go to Login from favorite with offerId', async () => {
-    const { getByText } = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.FAVORITE} />
     )
-    const signinButton = getByText('Se connecter')
+
+    const signinButton = screen.getByText('Se connecter')
 
     fireEvent.press(signinButton)
 
@@ -97,10 +104,11 @@ describe('<AuthenticationModal />', () => {
   })
 
   it('should log analytics when clicking on close button with label "Fermer la modale', async () => {
-    const { getByLabelText } = render(
+    render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
-    const closeButton = getByLabelText('Fermer la modale')
+
+    const closeButton = screen.getByLabelText('Fermer la modale')
 
     fireEvent.press(closeButton)
 

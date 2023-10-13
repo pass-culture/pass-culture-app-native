@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, screen } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 
 const onChangeText = jest.fn()
@@ -12,10 +12,9 @@ describe('SearchInput component', () => {
   })
 
   it('should set value when user input some text', async () => {
-    const { getByTestId } = render(
-      <SearchInput onChangeText={onChangeText} onPressRightIcon={onReset} />
-    )
-    const searchInput = getByTestId('searchInput')
+    render(<SearchInput onChangeText={onChangeText} onPressRightIcon={onReset} />)
+
+    const searchInput = screen.getByTestId('searchInput')
 
     await fireEvent(searchInput, 'onChangeText', 'Some text')
 
@@ -23,10 +22,9 @@ describe('SearchInput component', () => {
   })
 
   it('should reset input when user click on reset icon', async () => {
-    const { getByTestId } = render(
-      <SearchInput value="Some text" onChangeText={onChangeText} onPressRightIcon={onReset} />
-    )
-    const resetIcon = getByTestId('Réinitialiser la recherche')
+    render(<SearchInput value="Some text" onChangeText={onChangeText} onPressRightIcon={onReset} />)
+
+    const resetIcon = screen.getByTestId('Réinitialiser la recherche')
 
     await fireEvent.press(resetIcon)
 
@@ -34,7 +32,7 @@ describe('SearchInput component', () => {
   })
 
   it('should display "Obligatoire" when isRequiredField = true and has label', async () => {
-    const { queryByText } = render(
+    render(
       <SearchInput
         value="Some text"
         label="Label"
@@ -44,11 +42,11 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(queryByText('Obligatoire')).toBeOnTheScreen()
+    expect(screen.queryByText('Obligatoire')).toBeOnTheScreen()
   })
 
   it('should not display "Obligatoire" when isRequiredField = false and has label', async () => {
-    const { queryByText } = render(
+    render(
       <SearchInput
         value="Some text"
         label="Label"
@@ -57,6 +55,6 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(queryByText('Obligatoire')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Obligatoire')).not.toBeOnTheScreen()
   })
 })

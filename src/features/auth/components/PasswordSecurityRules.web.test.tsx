@@ -6,11 +6,11 @@ import { render, screen } from 'tests/utils/web'
 describe('<PasswordSecurityRules />', () => {
   it('should display 5 rules', async () => {
     render(<PasswordSecurityRules password="" />)
-    expect(screen.queryByText('12 caractères')).toBeInTheDocument()
-    expect(screen.queryByText('1 majuscule')).toBeInTheDocument()
-    expect(screen.queryByText('1 minuscule')).toBeInTheDocument()
-    expect(screen.queryByText('1 chiffre')).toBeInTheDocument()
-    expect(screen.queryByText('1 caractère spécial (!@#$%^&*...)')).toBeInTheDocument()
+    expect(screen.getByText('12 caractères')).toBeInTheDocument()
+    expect(screen.getByText('1 majuscule')).toBeInTheDocument()
+    expect(screen.getByText('1 minuscule')).toBeInTheDocument()
+    expect(screen.getByText('1 chiffre')).toBeInTheDocument()
+    expect(screen.getByText('1 caractère spécial (!@#$%^&*...)')).toBeInTheDocument()
   })
 
   it('should not validate any rules if input is empty', () => {

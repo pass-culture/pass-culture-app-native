@@ -5,21 +5,21 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 
 describe('ComeBackLater', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<ComeBackLater />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ComeBackLater />)
+    expect(screen).toMatchSnapshot()
   })
 
   it("should navigate to the home page when the 'M'identifier' plus tard' button is pressed", async () => {
-    const comeBackLater = render(<ComeBackLater />)
+    render(<ComeBackLater />)
 
-    const button = comeBackLater.getByText('M’identifier plus tard')
+    const button = screen.getByText('M’identifier plus tard')
 
     fireEvent.press(button)
 
@@ -43,9 +43,9 @@ describe('ComeBackLater', () => {
     )
   })
   it("should log analytics when the 'M'identifier plus tard' button is pressed", async () => {
-    const { getByText } = render(<ComeBackLater />)
+    render(<ComeBackLater />)
 
-    const button = getByText('M’identifier plus tard')
+    const button = screen.getByText('M’identifier plus tard')
     fireEvent.press(button)
 
     await waitFor(() => expect(analytics.logComeBackLaterClicked).toHaveBeenCalledTimes(1))
