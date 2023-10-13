@@ -1,6 +1,7 @@
 import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
-import { renderHook, waitFor } from 'tests/utils'
+import { storage } from 'libs/storage'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './enums'
 import { getPosition } from './getPosition'
@@ -116,6 +117,49 @@ describe('useLocation()', () => {
         })
       }
     )
+  })
+
+  describe('location_type', () => {
+    it('should write UserGeolocation in location_type async storage when geolocation is turned on', async () => {
+      mockPermissionResult(GeolocPermissionState.GRANTED)
+      const { result } = renderLocationHook()
+      result.current.requestGeolocPermission({ onSubmit, onAcceptance, onRefusal })
+      await waitFor(() => {
+        expect(onAcceptance).toHaveBeenCalledTimes(1)
+      })
+      const localStorageLocationType = await storage.readString('location_type')
+      expect(localStorageLocationType).toEqual('UserGeolocation')
+    })
+
+    it('should write UserSpecificLocation in location_type async storage when a customPosition is set ', async () => {
+      mockPermissionResult(GeolocPermissionState.DENIED)
+      const { result } = renderLocationHook()
+      await act(async () => {
+        result.current.setCustomPosition({ latitude: 85, longitude: 40 })
+      })
+      const localStorageLocationType = await storage.readString('location_type')
+      expect(localStorageLocationType).toEqual('UserSpecificLocation')
+    })
+
+    it('should write UserSpecificLocation in location_type async storage when a customPosition is set even if geolocation is activate ', async () => {
+      mockPermissionResult(GeolocPermissionState.GRANTED)
+      const { result } = renderLocationHook()
+      await act(async () => {
+        result.current.setCustomPosition({ latitude: 85, longitude: 40 })
+      })
+      const localStorageLocationType = await storage.readString('location_type')
+      expect(localStorageLocationType).toEqual('UserSpecificLocation')
+    })
+
+    it('should clear location_type async storage when neither customPosition and userPosition are set', async () => {
+      mockPermissionResult(GeolocPermissionState.DENIED)
+      const { result } = renderLocationHook()
+      await act(async () => {
+        result.current.setCustomPosition(null)
+      })
+      const localStorageLocationType = await storage.readString('location_type')
+      expect(localStorageLocationType).toEqual(null)
+    })
   })
 })
 
