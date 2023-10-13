@@ -43,7 +43,7 @@ const sections = [
 export function Accessibility() {
   return (
     <PageProfileSection title="Accessibilité">
-      <AccessibilityList items={sections} Separator={<Separator />} />
+      <AccessibilityList items={sections} Separator={<Separator.Horizontal />} />
     </PageProfileSection>
   )
 }

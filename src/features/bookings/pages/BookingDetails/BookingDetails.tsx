@@ -188,7 +188,7 @@ export function BookingDetails() {
             {!!shouldDisplayItineraryButton && (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={4} />
-                <Separator />
+                <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={4} />
                 <SeeItineraryButton
                   externalNav={{

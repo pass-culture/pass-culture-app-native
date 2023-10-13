@@ -146,7 +146,7 @@ export function NotificationSettings() {
           : 'Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture '}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
         Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.
@@ -160,7 +160,7 @@ export function NotificationSettings() {
         />
         {Platform.OS === 'ios' && (
           <React.Fragment>
-            <Separator />
+            <Separator.Horizontal />
             <Spacer.Column numberOfSpaces={4} />
             <Typo.CaptionNeutralInfo>
               Je veux être alerté des actualités et des meilleures offres du pass Culture

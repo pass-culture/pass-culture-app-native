@@ -41,7 +41,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />

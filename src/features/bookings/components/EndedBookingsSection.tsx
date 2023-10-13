@@ -22,7 +22,7 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
 
   return (
     <React.Fragment>
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={4} />
       <EndedBookingsSectionWrapper>
         <SectionRow

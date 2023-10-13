@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { View, ImageBackground } from 'react-native'
+import { ImageBackground, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -211,7 +211,7 @@ const StyledMultiOfferList = styled(View)<{
   height: '100%',
 }))
 
-const StyledSeparator = styled(Separator)<{
+const StyledSeparator = styled(Separator.Horizontal)<{
   hasOnlyTwoOffers: boolean
 }>(({ hasOnlyTwoOffers }) => ({
   height: 2,

@@ -109,7 +109,7 @@ export function PersonalData() {
   )
 }
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
 })
 

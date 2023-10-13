@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
@@ -140,7 +140,7 @@ export const SearchLocationModal = ({
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
@@ -179,7 +179,7 @@ export const SearchLocationModal = ({
         />
       </ButtonContainer>
       <Spacer.Column numberOfSpaces={8} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>Tu peux aussi choisir un point de vente précis</Typo.Body>
       <Spacer.Column numberOfSpaces={1} />

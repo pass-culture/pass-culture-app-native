@@ -102,7 +102,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}

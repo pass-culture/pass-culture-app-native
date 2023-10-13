@@ -12,10 +12,11 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, act, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from './SearchBox'
@@ -469,6 +470,7 @@ describe('SearchBox component', () => {
   })
 
   it('should open location modal on location button click', async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
     const mockShowModal = jest.fn()
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
       visible: false,
@@ -556,6 +558,8 @@ describe('SearchBox component', () => {
       position: Position
       locationButtonLabel: string
     }) => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
+
       mockSearchState = { ...initialSearchState, locationFilter }
       mockPosition = position
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, locationFilter } })

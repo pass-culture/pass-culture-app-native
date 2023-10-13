@@ -15,7 +15,7 @@ export function Section(props: SectionProps) {
     <Container>
       {!!props.title && <StyledCaption>{props.title}</StyledCaption>}
       <Spacer.Column numberOfSpaces={2} />
-      <Separator />
+      <Separator.Horizontal />
       {props.children}
     </Container>
   )

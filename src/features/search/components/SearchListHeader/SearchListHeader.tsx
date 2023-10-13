@@ -189,7 +189,7 @@ const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
 })
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   width: 'auto',
   marginLeft: getSpacing(6),
   marginRight: getSpacing(6),
