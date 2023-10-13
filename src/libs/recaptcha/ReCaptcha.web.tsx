@@ -26,11 +26,12 @@ export function ReCaptcha(props: Props) {
   useCaptcha()
 
   const reCaptchaContainerRef = useRef<HTMLDivElement>(null)
+  const reCaptchaWidgetRef = useRef<number>()
 
   function onSuccess(token: string) {
     const { grecaptcha } = window
     if (grecaptcha?.reset) {
-      grecaptcha.reset()
+      grecaptcha.reset(reCaptchaWidgetRef.current)
     }
     props.onSuccess(token)
   }
@@ -65,7 +66,7 @@ export function ReCaptcha(props: Props) {
         if (!isReCaptchaRendered) {
           grecaptcha.ready(() => {
             if (grecaptcha.render) {
-              grecaptcha.render(reCaptchaContainer.id, {
+              reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
                 sitekey: env.SITE_KEY,
                 callback: onSuccess,
                 'expired-callback': props.onExpire,
@@ -78,7 +79,7 @@ export function ReCaptcha(props: Props) {
         }
         if (isReCaptchaRendered) {
           try {
-            grecaptcha.execute()
+            grecaptcha.execute(reCaptchaWidgetRef.current)
             clearInterval(intervalId)
           } catch (error) {
             if (error instanceof Error)
