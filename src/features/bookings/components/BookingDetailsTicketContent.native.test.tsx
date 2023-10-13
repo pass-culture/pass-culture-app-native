@@ -28,13 +28,15 @@ describe('BookingDetailsTicketContent', () => {
   it('should not display the booking token when booking has activation code', () => {
     render(<BookingDetailsTicketContent booking={booking} />)
 
-    expect(screen.queryByText(booking.token)).not.toBeOnTheScreen()
+    const token = booking.token as string
+    expect(screen.queryByText(token)).not.toBeOnTheScreen()
   })
 
   it('should display the booking token when booking has no activation code', () => {
     render(<BookingDetailsTicketContent booking={originalBooking} />)
 
-    expect(screen.getByText(booking.token)).toBeOnTheScreen()
+    const token = booking.token as string
+    expect(screen.getByText(token)).toBeOnTheScreen()
   })
 
   it('should display the access button offer when booking has activation code', () => {
