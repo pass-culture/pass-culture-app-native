@@ -399,5 +399,4 @@ function renderProfile(options: Options = defaultOptions) {
     </NavigationContainer>,
     { wrapper }
   )
-  
 }
