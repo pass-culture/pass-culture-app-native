@@ -64,7 +64,7 @@ export function ReCaptcha(props: Props) {
         if (!isReCaptchaRendered) {
           grecaptcha.ready(() => {
             if (grecaptcha.render) {
-              grecaptcha.render(reCaptchaContainer.id, {
+              grecaptcha.render(reCaptchaContainer, {
                 sitekey: env.SITE_KEY,
                 callback: onSuccess,
                 'expired-callback': props.onExpire,
