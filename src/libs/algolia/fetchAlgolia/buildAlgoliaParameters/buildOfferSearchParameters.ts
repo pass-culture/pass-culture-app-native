@@ -43,6 +43,7 @@ export const buildOfferSearchParameters = (
     priceRange = null,
     tags = [],
     timeRange = null,
+    includeDigitalOffers = false,
   }: Parameters,
   userLocation: Position,
   isUserUnderage: boolean
@@ -61,6 +62,8 @@ export const buildOfferSearchParameters = (
     offerSubcategories,
     offerTypes,
     tags,
+    includeDigitalOffers,
+    isOnline,
   }),
   ...buildNumericFilters({
     beginningDatetime,

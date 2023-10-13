@@ -2,6 +2,7 @@ import { LocationType } from 'features/search/enums'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
   buildEanPredicate,
+  buildIncludeDigitalOffersPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -31,6 +32,8 @@ export const buildFacetFilters = ({
   offerSubcategories,
   offerTypes,
   tags,
+  includeDigitalOffers,
+  isOnline,
 }: Pick<
   SearchQueryParameters,
   | 'locationFilter'
@@ -43,6 +46,8 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'offerTypes'
   | 'tags'
+  | 'includeDigitalOffers'
+  | 'isOnline'
 > & { isUserUnderage: boolean; objectIds?: string[]; eanList?: string[] }): null | {
   facetFilters: FiltersArray
 } => {
@@ -94,6 +99,12 @@ export const buildFacetFilters = ({
 
   const tagsPredicate = buildTagsPredicate(tags)
   if (tagsPredicate) facetFilters.push(tagsPredicate)
+
+  const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
+    includeDigitalOffers,
+    isOnline
+  )
+  if (includeDigitalOffersPredicate) facetFilters.push(includeDigitalOffersPredicate)
 
   if (
     locationFilter?.locationType === LocationType.VENUE &&

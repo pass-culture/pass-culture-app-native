@@ -63,7 +63,6 @@ export const SearchLocationModal = ({
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const [includeDigitalOffers, setIncludeDigitalOffers] = useState(false)
   const getInitialRadiusValue = () => {
     if (
       searchState.locationFilter.locationType === LocationType.PLACE ||
@@ -75,6 +74,9 @@ export const SearchLocationModal = ({
   }
 
   const [aroundRadius, setAroundRadius] = useState(getInitialRadiusValue)
+  const [includeDigitalOffers, setIncludeDigitalOffers] = useState(
+    searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION
+  )
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
@@ -116,7 +118,7 @@ export const SearchLocationModal = ({
         payload: {
           ...searchState,
           locationFilter: { place: selectedPlace, locationType: LocationType.PLACE, aroundRadius },
-          offerTypes: { ...searchState.offerTypes, isDigital: !!includeDigitalOffers },
+          includeDigitalOffers: includeDigitalOffers,
         },
       })
       analytics.logUserSetLocation('search')
@@ -127,7 +129,7 @@ export const SearchLocationModal = ({
         payload: {
           ...searchState,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
-          offerTypes: { ...searchState.offerTypes, isDigital: !!includeDigitalOffers },
+          includeDigitalOffers: includeDigitalOffers,
         },
       })
     }
@@ -136,6 +138,7 @@ export const SearchLocationModal = ({
 
   const onClose = () => {
     setAroundRadius(getInitialRadiusValue)
+    setIncludeDigitalOffers(searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION)
     dismissModal()
   }
 

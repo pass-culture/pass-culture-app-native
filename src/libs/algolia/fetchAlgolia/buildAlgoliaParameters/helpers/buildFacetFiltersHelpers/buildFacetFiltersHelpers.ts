@@ -82,3 +82,11 @@ export const buildTagsPredicate = (
   if (tags.length > 0) return tags.map((tag: string) => `${FACETS_FILTERS_ENUM.OFFER_TAGS}:${tag}`)
   return undefined
 }
+
+export const buildIncludeDigitalOffersPredicate = (
+  includeDigitalOffers?: boolean,
+  isOnline?: boolean
+) => {
+  if (includeDigitalOffers || isOnline) return undefined
+  return [`${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${false}`]
+}
