@@ -5,7 +5,7 @@ import { Keyboard, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
@@ -46,13 +46,16 @@ export function AutocompleteOfferItem({
   const searchGroupLabel = useSearchGroupLabel(
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
   )
-  const mostPopularNativeCategoryId = nativeCategories[0]?.value
+  const mostPopularNativeCategoryId =
+    nativeCategories[0]?.value in NativeCategoryIdEnumv2 ? nativeCategories[0]?.value : undefined
   const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
     data,
     mostPopularNativeCategoryId
   )?.value
-  const hasMostPopularHitNativeCategory = nativeCategories.length > 0
-  const hasMostPopularHitCategory = categories.length > 0
+  const hasMostPopularHitNativeCategory =
+    nativeCategories.length > 0 && !!mostPopularNativeCategoryId
+  const hasMostPopularHitCategory =
+    categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
   const categoriesFromNativeCategory = useMemo(
     () => getSearchGroupsEnumArrayFromNativeCategoryEnum(data, mostPopularNativeCategoryId),
     [data, mostPopularNativeCategoryId]
@@ -65,9 +68,13 @@ export function AutocompleteOfferItem({
 
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
-      return categories.length > 0 ? [categories[0].value] : []
+      return categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
+        ? [categories[0].value]
+        : []
     } else {
-      return [categoriesFromNativeCategory[0]]
+      return categoriesFromNativeCategory[0] in SearchGroupNameEnumv2
+        ? [categoriesFromNativeCategory[0]]
+        : []
     }
   }, [
     categories,
