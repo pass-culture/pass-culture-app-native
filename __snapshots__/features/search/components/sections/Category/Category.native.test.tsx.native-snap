@@ -45,6 +45,7 @@ exports[`Category component should render correctly 1`] = `
     testID="FilterRow"
   >
     <View
+      fill="#161617"
       height={24}
       width={24}
     >
