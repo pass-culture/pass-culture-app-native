@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions'
 import { ComponentStory } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
@@ -13,20 +12,15 @@ export default {
   component: LocationSlider,
 }
 
-const Template: ComponentStory<typeof LocationSlider> = (props: LocationSliderProps) => (
-  <LocationSlider {...props} />
-)
-
-const WrappedTemplate: ComponentStory<typeof LocationSlider> = (props) => (
+const WrappedTemplate: ComponentStory<typeof LocationSlider> = (props: LocationSliderProps) => (
   <View style={styles.wrapper}>
-    <Template {...props} />
+    <LocationSlider {...props} />
   </View>
 )
 
 export const Default = WrappedTemplate.bind({})
 Default.args = {
   defaultValue: 50,
-  onChange: action('value changed'),
 }
 
 const styles = StyleSheet.create({

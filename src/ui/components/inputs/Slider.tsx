@@ -5,15 +5,16 @@ import styled from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+export type ValuesType = [number] | [number, number]
 interface Props {
-  values?: [number] | [number, number]
+  values?: ValuesType
   formatValues?: (label: number) => string
   showValues?: boolean
   min?: number
   max?: number
   step?: number
-  onValuesChange?: (newValues: number[]) => void
-  onValuesChangeFinish?: (newValues: number[]) => void
+  onValuesChange?: (newValues: ValuesType) => void
+  onValuesChangeFinish?: (newValues: ValuesType) => void
   sliderLength?: number
   minLabel?: string
   maxLabel?: string
@@ -25,7 +26,7 @@ interface Props {
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
 const DEFAULT_STEP = 1
-const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
+const DEFAULT_VALUES: ValuesType = [DEFAULT_MIN, DEFAULT_MAX]
 
 const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
@@ -41,7 +42,7 @@ export function Slider(props: Props) {
   const shouldShowMinMaxValues = props.shouldShowMinMaxValues ?? false
   const minMaxValuesComplement = props.minMaxValuesComplement ?? ''
 
-  const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
+  const [values, setValues] = useState<ValuesType>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
 
   const getRelativeStepFromKey = (key: string) => {
@@ -55,7 +56,7 @@ export function Slider(props: Props) {
     const relativeStep = getRelativeStepFromKey((e as KeyboardEvent).key)
     if (relativeStep === null || ![LEFT_CURSOR, RIGHT_CURSOR].includes(cursor)) return
 
-    let nextValues: number[] = []
+    let nextValues: ValuesType = [min, max]
     setValues((previousValues) => {
       if (previousValues.length === 1) {
         nextValues = [Math.min(Math.max(min, previousValues[0] + relativeStep), max)]
@@ -108,7 +109,7 @@ export function Slider(props: Props) {
         rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
         rightCursor?.setAttribute('aria-valuemax', `${max}`)
         rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
-        const rightCursorValue = `${maxLabel} ${formatValues(values[1])}`
+        const rightCursorValue = `${maxLabel} ${formatValues(values[1] ?? max)}`
         props.accessibilityLabelledBy &&
           rightCursor?.setAttribute('aria-labelledby', props.accessibilityLabelledBy)
         rightCursor?.setAttribute('aria-valuetext', rightCursorValue)
@@ -131,8 +132,15 @@ export function Slider(props: Props) {
 
   const handleValueChange = useCallback(
     (nextValues: number[]) => {
-      props.onValuesChange?.(nextValues)
-      setValues(nextValues)
+      props.onValuesChange?.(nextValues as ValuesType)
+      setValues(nextValues as ValuesType)
+    },
+    [props]
+  )
+
+  const handleValueChangeFinish = useCallback(
+    (nextValues: number[]) => {
+      props.onValuesChangeFinish?.(nextValues as ValuesType)
     },
     [props]
   )
@@ -157,7 +165,7 @@ export function Slider(props: Props) {
           max={max}
           step={step}
           onValuesChange={handleValueChange}
-          onValuesChangeFinish={props.onValuesChangeFinish}
+          onValuesChangeFinish={handleValueChangeFinish}
           sliderLength={props.sliderLength}
         />
       </SliderWrapper>

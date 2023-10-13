@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions'
 import { ComponentStory } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
@@ -10,20 +9,15 @@ export default {
   component: HoursSlider,
 }
 
-const Template: ComponentStory<typeof HoursSlider> = (props: HoursSliderProps) => (
-  <HoursSlider {...props} />
-)
-
-const WrappedTemplate: ComponentStory<typeof HoursSlider> = (props) => (
+const WrappedTemplate: ComponentStory<typeof HoursSlider> = (props: HoursSliderProps) => (
   <View style={styles.wrapper}>
-    <Template {...props} />
+    <HoursSlider {...props} />
   </View>
 )
 
 export const Default = WrappedTemplate.bind({})
 Default.args = {
   defaultValue: [8, 22],
-  onChange: action('value changed'),
 }
 
 const styles = StyleSheet.create({

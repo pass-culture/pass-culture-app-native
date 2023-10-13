@@ -10,7 +10,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CalendarPicker } from 'features/search/components/CalendarPicker/CalendarPicker'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
-import { HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
+import { Hour, HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -319,7 +319,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                     control={control}
                     name="selectedHours"
                     render={({ field: { value, onChange } }) => (
-                      <HoursSlider defaultValue={value} onChange={onChange} />
+                      <HoursSlider defaultValue={value as [Hour, Hour]} onChange={onChange} />
                     )}
                   />
                 )}
