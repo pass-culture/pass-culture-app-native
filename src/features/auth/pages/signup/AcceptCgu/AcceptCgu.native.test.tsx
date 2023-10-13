@@ -9,6 +9,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, screen, fireEvent, render, waitFor } from 'tests/utils'
 
@@ -175,21 +176,40 @@ describe('<AcceptCgu/>', () => {
 
     fireEvent.press(screen.getByText('Accepter et s’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     await waitFor(() => {
       expect(
         screen.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeOnTheScreen()
-      expect(captureMonitoringError).toHaveBeenNthCalledWith(
-        1,
-        'someError',
-        'AcceptCguOnReCaptchaError'
-      )
       expect(props.signUp).not.toBeCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
+  })
+  it('should log to Sentry when reCAPTCHA challenge was failed', async () => {
+    simulateConnectedNetwork()
+    renderAcceptCGU()
+
+    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+
+    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
+
+    expect(captureMonitoringError).toHaveBeenCalledWith(
+      'UnknownError someError',
+      'AcceptCguOnReCaptchaError'
+    )
+  })
+  it('should not log to Sentry on reCAPTCHA network error', async () => {
+    simulateConnectedNetwork()
+    renderAcceptCGU()
+
+    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+
+    simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+
+    expect(captureMonitoringError).not.toHaveBeenCalled()
   })
 
   it('should NOT call API to create user account when reCAPTCHA token has expired', async () => {

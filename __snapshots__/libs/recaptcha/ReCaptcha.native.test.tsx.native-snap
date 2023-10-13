@@ -54,7 +54,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                 function onClose() { sendMessagePayload({ "message": "close" }); }
                 function onDebug(log) { sendMessagePayload({ "message": "debug", "log": log }); }
                 function onExpire() { sendMessagePayload({ "message": "expire" }); }
-                function onError(error) { sendMessagePayload({ "message": "error", "error": error }); }
+                function onError(errorCode, error) { sendMessagePayload({ "message": "error", "errorCode": errorCode, "error": error }); }
                 function onLoad() { sendMessagePayload({ "message": "load" }); }
                 function onSuccess(token) {
                     window.grecaptcha.reset()
@@ -62,7 +62,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                 }
 
                 function onRecaptchaErrorCallback() {
-                    onError("reCAPTCHA error: error-callback of widget called")
+                    onError("ReCaptchaNetworkError")
                 }
 
                 function isReadyToExecute() { 
@@ -78,7 +78,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError("reCAPTCHA error: Number of retry render exceeded");
+                        onError("ReCaptchaNumberOfRenderRetriesExceeded");
                     }
                 }
 
@@ -90,7 +90,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                             readyInterval = setInterval(executeWhenReady, 1000);
                         }
                     } catch(error) {
-                        onError("reCAPTCHA error: " + error.message);
+                        onError("ReCaptchaUnknownError", error);
                     }
                 };
             </script>

@@ -10,6 +10,7 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -186,10 +187,12 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
       onReCaptchaClose() {
         setValue('isDoingReCaptchaChallenge', false)
       },
-      onReCaptchaError(error: string) {
+      onReCaptchaError(errorCode: ReCaptchaError, error: string | undefined) {
         setValue('isDoingReCaptchaChallenge', false)
         setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-        captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
+        if (errorCode !== 'ReCaptchaNetworkError') {
+          captureMonitoringError(`${errorCode} ${error}`, 'ForgottenPasswordOnRecaptchaError')
+        }
       },
       onBackNavigation() {
         navigate('Login')

@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
 import { WEBAPP_V2_URL } from 'libs/environment'
+import { ReCaptchaError } from 'libs/recaptcha/errors'
 
 import { reCaptchaWebviewHTML } from './webviewHTML'
 
@@ -14,14 +15,14 @@ const ORIGIN_WHITELIST = ['*']
 type MessagePayload =
   | { message: 'close' }
   | { message: 'debug'; log: string }
-  | { message: 'error'; error: string }
+  | { message: 'error'; errorCode: ReCaptchaError; error?: string }
   | { message: 'expire' }
   | { message: 'load' }
   | { message: 'success'; token: string }
 
 type Props = {
   onClose: () => void
-  onError: (error: string) => void
+  onError: (errorCode: ReCaptchaError, error?: string) => void
   onExpire: () => void
   onLoad?: () => void
   onSuccess: (token: string) => void
@@ -64,7 +65,7 @@ export const ReCaptcha: React.FC<Props> = (props) => {
       if (payload.message === 'load') handleLoad()
       if (payload.message === 'close') props.onClose()
       if (payload.message === 'expire') props.onExpire()
-      if (payload.message === 'error') props.onError(payload.error)
+      if (payload.message === 'error') props.onError(payload.errorCode, payload.error)
       if (payload.message === 'success') props.onSuccess(payload.token)
       // eslint-disable-next-line no-console
       if (payload.message === 'debug') console.debug(payload.log)
@@ -100,8 +101,8 @@ export const ReCaptcha: React.FC<Props> = (props) => {
           incognito
           key={keyToReCreateWebViewFromScratch}
           onError={(event) => {
-            const errorMessage = 'WebView error: ' + event.nativeEvent.description
-            props.onError(errorMessage)
+            const errorMessage = event.nativeEvent.description
+            props.onError('ReCaptchaWebViewError', errorMessage)
           }}
           onLoadStart={onLoadStart}
           onMessage={handleMessage}
