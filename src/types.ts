@@ -5,10 +5,10 @@ declare global {
   interface Window {
     // See usage of `window.grecaptcha` in ReCaptcha.web.tsx
     grecaptcha?: {
-      execute?: () => void
+      execute?: (widgetId?: number) => void
       ready?: (callback: () => void) => void
       render?: (
-        containerId: string,
+        container: HTMLElement | string,
         options: {
           sitekey: string
           callback: (token: string) => void
@@ -17,8 +17,8 @@ declare global {
           size: string
           theme: string
         }
-      ) => void
-      reset?: () => void
+      ) => number
+      reset?: (widgetId?: number) => void
     }
     onUbbleReady?: () => void
     pcupdate?: boolean
