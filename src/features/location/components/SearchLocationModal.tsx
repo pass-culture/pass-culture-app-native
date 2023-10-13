@@ -25,6 +25,9 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { Typo } from 'ui/theme'
 
+const DEFAULT_RADIUS = 50
+const DEFAULT_DIGITAL_OFFERS_SELECTION = false
+
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
@@ -60,8 +63,18 @@ export const SearchLocationModal = ({
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const [aroundRadius, setAroundRadius] = useState(50)
   const [includeDigitalOffers, setIncludeDigitalOffers] = useState(false)
+  const getInitialRadiusValue = () => {
+    if (
+      searchState.locationFilter.locationType === LocationType.PLACE ||
+      searchState.locationFilter.locationType === LocationType.AROUND_ME
+    ) {
+      return searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
+    }
+    return DEFAULT_RADIUS
+  }
+
+  const [aroundRadius, setAroundRadius] = useState(getInitialRadiusValue)
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
@@ -122,6 +135,7 @@ export const SearchLocationModal = ({
   }
 
   const onClose = () => {
+    setAroundRadius(getInitialRadiusValue)
     dismissModal()
   }
 
