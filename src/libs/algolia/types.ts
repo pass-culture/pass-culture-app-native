@@ -72,6 +72,7 @@ export type SearchQueryParameters = {
   searchId?: string
   tags: string[]
   timeRange: Range<number> | null
+  includeDigitalOffers?: boolean
 }
 
 export const transformHit = transformOfferHit

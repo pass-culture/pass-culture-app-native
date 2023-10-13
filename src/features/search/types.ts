@@ -78,6 +78,7 @@ export interface SearchState {
   // TODO(EveJulliard): re typer la fonction parseSearchParameters
   // pour supprimer minBookingsThreshold du type SearchState
   minBookingsThreshold?: number
+  includeDigitalOffers?: boolean
   isFromHistory?: boolean
 }
 
