@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -126,7 +126,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         numberOfLines={2}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={8} />
       <Typo.Body>
         Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu

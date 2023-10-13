@@ -9,7 +9,7 @@ import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/Ca
 import { DescriptionContext } from 'features/search/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useModal } from 'ui/components/modals/useModal'
-import { All } from 'ui/svg/icons/bicolor/All'
+import { Sort } from 'ui/svg/icons/Sort'
 
 type Props = {
   onClose?: VoidFunction
@@ -43,7 +43,7 @@ export const Category = ({ onClose }: Props) => {
 
   return (
     <React.Fragment>
-      <FilterRow icon={All} title="Catégorie" onPress={onPress} description={description} />
+      <FilterRow icon={Sort} title="Catégorie" onPress={onPress} description={description} />
       <CategoriesModal
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}

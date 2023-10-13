@@ -1,13 +1,13 @@
 import { Category } from './Category/Category'
 import { DateHour } from './DateHour/DateHour'
-import { Location } from './Location/Location'
 import { OfferDuo } from './OfferDuo/OfferDuo'
 import { Price } from './Price/Price'
+import { Venue } from './Venue/Venue'
 
 export default {
   Category,
   DateHour,
-  Location,
   OfferDuo,
   Price,
+  Venue,
 }

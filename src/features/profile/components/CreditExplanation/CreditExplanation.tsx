@@ -64,6 +64,6 @@ const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
   textAlign: 'left',
 })
 
-const GreySeparator = styled(Separator).attrs(({ theme }) => ({
+const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))``

@@ -4,11 +4,11 @@ import omit from 'lodash/omit'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-core'
 import {
+  Keyboard,
   NativeSyntheticEvent,
   Platform,
-  TextInputSubmitEditingEventData,
   TextInput as RNTextInput,
-  Keyboard,
+  TextInputSubmitEditingEventData,
 } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -29,6 +29,8 @@ import { useLocationChoice } from 'features/search/helpers/useLocationChoice/use
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -53,6 +55,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   searchInHistory,
   ...props
 }) => {
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
+
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -231,6 +235,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     searchInHistory,
   ])
 
+  const showLocationButton = enableAppLocation
+    ? params?.view === SearchView.Results
+    : params === undefined || params.view === SearchView.Landing
+
   return (
     <RowContainer>
       {!!accessibleHiddenTitle && (
@@ -254,7 +262,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               onSubmitQuery={onSubmitQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
-              showLocationButton={params === undefined || params.view === SearchView.Landing}
+              showLocationButton={showLocationButton}
               locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}

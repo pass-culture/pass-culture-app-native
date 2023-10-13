@@ -6,9 +6,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     [
       {
         "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
       },
     ]
   }
@@ -18,200 +15,187 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     style={
       [
         {
-          "width": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
         },
       ]
     }
   >
     <View
+      customHeight={16}
+      enable={true}
       style={
-        {
-          "height": 64,
-        }
+        [
+          {
+            "height": 16,
+          },
+        ]
       }
     />
     <View
       style={
         [
           {
-            "backgroundColor": "#eb0055",
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-            "zIndex": 1,
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
           },
         ]
       }
     >
       <View
-        customHeight={16}
-        enable={true}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
         style={
           [
             {
               "alignItems": "center",
-              "height": 48,
-              "justifyContent": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
         <View
+          positionInHeader="left"
           style={
             [
               {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
               },
             ]
           }
         >
-          <View
-            positionInHeader="left"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-            testID="back-button-container"
-          />
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Filtrer
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-            testID="close-button-container"
-          >
-            <View
-              accessibilityLabel="Fermer"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 40,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Fermer"
-            >
-              <View
-                height={24}
-                testID="icon-close"
-                width={24}
-              >
-                <Text>
-                  icon-close-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  [
-                    {
-                      "display": "none",
-                    },
-                  ]
-                }
-              >
-                Retour
-              </Text>
-            </View>
-          </View>
-        </View>
+          Filtres
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
       </View>
     </View>
   </View>
   <RCTScrollView
     keyboardShouldPersistTaps="always"
     scrollEnabled={true}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
   >
     <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
+            },
+          ]
+        }
+      />
       <View
         accessibilityRole="list"
         style={
@@ -224,210 +208,15 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         }
       >
         <View
-          accessibilityRole="none"
+          numberOfSpaces={2}
           style={
             [
               {
-                "display": "flex",
-                "marginLeft": 24,
-                "marginRight": 24,
+                "height": 8,
               },
             ]
           }
-        >
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={false}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="FilterRow"
-          >
-            <View
-              height={24}
-              testID="BicolorLocationPointer"
-              width={24}
-            >
-              <Text>
-                BicolorLocationPointer-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Localisation
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  Autour de moi
-                </Text>
-              </View>
-            </View>
-            <View
-              accessibilityLabel="Affiner la recherche"
-              height={20}
-              width={20}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            accessibilityRole="none"
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
-              [
-                "portrait",
-                "landscape",
-              ]
-            }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "alignSelf": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "height": 2,
-                  "marginVertical": 0,
-                  "width": 912,
-                },
-              ]
-            }
-          />
-        </View>
+        />
         <View
           accessibilityRole="none"
           style={
@@ -493,6 +282,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             testID="FilterRow"
           >
             <View
+              fill="#161617"
               height={24}
               width={24}
             >
@@ -602,15 +392,189 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               ]
             }
           />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+                "marginLeft": 24,
+                "marginRight": 24,
+              },
+            ]
+          }
+        >
           <View
             style={
               [
                 {
-                  "alignSelf": "center",
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
-                  "marginVertical": 0,
-                  "width": 912,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="FilterRow"
+          >
+            <View
+              fill="none"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Point de vente
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityLabel="Affiner la recherche"
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
                 },
               ]
             }
@@ -628,6 +592,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             ]
           }
         >
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
           <View
             numberOfSpaces={4}
             style={
@@ -782,15 +757,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             visible={false}
           />
           <View
-            marginVertical={16}
+            numberOfSpaces={4}
             style={
               [
                 {
-                  "alignSelf": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "height": 2,
-                  "marginVertical": 16,
-                  "width": 912,
+                  "height": 16,
                 },
               ]
             }
@@ -808,6 +779,27 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             ]
           }
         >
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 2,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
           <View
             accessibilityRole="button"
             accessibilityState={
@@ -851,6 +843,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             testID="FilterRow"
           >
             <View
+              fill="#161617"
               height={24}
               width={24}
             >
@@ -950,10 +943,75 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             transparent={true}
             visible={false}
           />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "height": 8,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </RCTScrollView>
+  <View
+    height={65}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 65,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
+      }
+    />
+  </View>
+  <View
+    numberOfSpaces={10}
+    style={
+      [
+        {
+          "height": 40,
+        },
+      ]
+    }
+  />
   <View
     isModal={false}
     style={
@@ -1136,16 +1194,5 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
 </View>
 `;

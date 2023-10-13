@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
+import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
@@ -17,7 +18,7 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
-const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
+export const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
 const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
 const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
@@ -35,17 +36,8 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const shouldShowHomeLocationModal = enableTooltip
 
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
-  const getLocationTitle = useCallback(() => {
-    if (place !== null) {
-      return place.label
-    }
-    if (userPosition !== null) {
-      return 'Ma position'
-    }
-    return 'Me localiser'
-  }, [place, userPosition])
 
-  const locationTitle = getLocationTitle()
+  const locationTitle = getLocationTitle(place, userPosition)
 
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 

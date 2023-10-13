@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
@@ -287,7 +287,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           )}
         />
         <Spacer.Column numberOfSpaces={6} />
-        <Separator />
+        <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         {!!isLoggedInAndBeneficiary && (
           <Controller
@@ -302,7 +302,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
                   testID="limitCreditSearch"
                 />
                 <Spacer.Column numberOfSpaces={6} />
-                <Separator />
+                <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={6} />
               </React.Fragment>
             )}

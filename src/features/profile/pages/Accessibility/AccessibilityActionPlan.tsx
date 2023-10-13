@@ -377,6 +377,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.italic,
 }))
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),
 })

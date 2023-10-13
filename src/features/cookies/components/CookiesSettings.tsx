@@ -116,7 +116,7 @@ export const CookiesSettings = ({
                 <Spacer.Column numberOfSpaces={4} />
               </React.Fragment>
             )}
-            <Separator />
+            <Separator.Horizontal />
           </React.Fragment>
         )
       })}
