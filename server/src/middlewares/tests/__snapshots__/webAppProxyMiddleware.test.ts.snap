@@ -6,13 +6,13 @@ exports[`metasResponseInterceptor with real backend should request the real test
   <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/9\\" />
     <meta charset=\\"utf-8\\">
     <title>Relais culturel La Nef | pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
+    <meta name=\\"title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
     <meta name=\\"description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
     <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/9\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
+    <meta property=\\"og:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
     <meta property=\\"og:description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
     <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png\\" />
@@ -21,7 +21,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
     <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/9\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
+    <meta name=\\"twitter:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
     <meta name=\\"twitter:description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
     <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png\\" />

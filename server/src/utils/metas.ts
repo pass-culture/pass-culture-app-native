@@ -33,8 +33,8 @@ const REGEX = {
   ['al:android:url']: /<meta\s+(name)="(al:android:url)"\s+content="([^"]*)"\s*\/?>/g,
 }
 
-export function addOrganizationPrefix(title: string) {
-  return `${ORGANIZATION_PREFIX} | ${title}`
+export function addOrganizationSuffix(title: string) {
+  return `${title} | ${ORGANIZATION_PREFIX}`
 }
 
 export async function replaceHtmlMetas(
@@ -49,7 +49,7 @@ export async function replaceHtmlMetas(
     const METAS_CONFIG = ENTITY_METAS_CONFIG_MAP[type]
     const metaConfig: MetaConfig = {
       metaTitle: {
-        data: addOrganizationPrefix(METAS_CONFIG.metaTitle(entity)),
+        data: addOrganizationSuffix(METAS_CONFIG.metaTitle(entity)),
         regEx: REGEX.metaTitle,
       },
       metaDescription: {
@@ -61,7 +61,7 @@ export async function replaceHtmlMetas(
         regEx: REGEX['og:url'],
       },
       ['og:title']: {
-        data: addOrganizationPrefix(METAS_CONFIG['og:title'](entity)),
+        data: addOrganizationSuffix(METAS_CONFIG['og:title'](entity)),
         regEx: REGEX['og:title'],
       },
       ['og:description']: {
@@ -85,7 +85,7 @@ export async function replaceHtmlMetas(
         regEx: REGEX['twitter:url'],
       },
       ['twitter:title']: {
-        data: addOrganizationPrefix(METAS_CONFIG['twitter:title'](entity)),
+        data: addOrganizationSuffix(METAS_CONFIG['twitter:title'](entity)),
         regEx: REGEX['twitter:title'],
       },
       ['twitter:description']: {
@@ -124,7 +124,7 @@ export async function replaceHtmlMetas(
 
     html = html.replace(
       /<title>.*<\/title>/g,
-      `<title>${encode(METAS_CONFIG.title(entity))} | pass Culture</title>`
+      `<title>${addOrganizationSuffix(encode(METAS_CONFIG.title(entity)))}</title>`
     )
 
     Object.values(metaConfig).forEach(({ regEx, data }) => {
