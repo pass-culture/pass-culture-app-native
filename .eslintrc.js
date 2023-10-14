@@ -12,6 +12,7 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
+    'plugin:@bam.tech/recommended',
     'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
     'plugin:react-native/all', // Enables all rules from react-native
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
@@ -56,6 +57,7 @@ module.exports = {
       'error',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
+    'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
@@ -358,6 +360,7 @@ module.exports = {
     {
       files: ['**/*.test.ts', '**/*.test.tsx', '__mocks__'],
       env: { jest: true },
+      extends: 'plugin:@bam.tech/tests',
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
@@ -366,8 +369,12 @@ module.exports = {
         'jest/no-disabled-tests': 'warn',
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
+        'jest/no-mocks-import': 'off',
         'jest/valid-expect': 'error',
         'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'measurePerformance'] }],
+        'jest/valid-title': 'off',
+        'testing-library/no-unnecessary-act': 'off',
+        'testing-library/no-wait-for-multiple-assertions': 'off',
       },
     },
   ],
