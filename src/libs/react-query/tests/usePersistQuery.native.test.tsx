@@ -41,10 +41,10 @@ describe('usePersistQuery', () => {
       await flushAllPromisesWithAct()
 
       const persistDataStr = await AsyncStorage.getItem(queryKey)
+
       expect(persistDataStr).toBeTruthy()
-      if (typeof persistDataStr === 'string') {
-        expect(JSON.parse(persistDataStr)).toEqual(onlineData)
-      }
+
+      expect(JSON.parse(persistDataStr as string)).toEqual(onlineData)
     })
 
     it('should fail to save distant data locally and log to sentry', async () => {

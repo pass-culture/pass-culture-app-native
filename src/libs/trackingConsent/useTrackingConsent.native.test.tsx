@@ -28,7 +28,8 @@ describe('useTrackingConsent', () => {
     mockRequestTrackingPermission.mockResolvedValueOnce('denied')
 
     render(<TestComponent />)
-    await screen.findByTestId('consentAsked')
+
+    expect(await screen.findByTestId('consentAsked')).toBeOnTheScreen()
 
     expect(mockRequestTrackingPermission).toHaveBeenCalledWith()
   })
@@ -38,7 +39,8 @@ describe('useTrackingConsent', () => {
     mockRequestTrackingPermission.mockResolvedValueOnce('authorized')
 
     render(<TestComponent />)
-    await screen.findByTestId('consentAsked')
+
+    expect(await screen.findByTestId('consentAsked')).toBeOnTheScreen()
 
     expect(logOpenAppMock).toHaveBeenCalledWith('authorized')
   })
@@ -47,7 +49,8 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('denied')
 
     render(<TestComponent />)
-    await screen.findByTestId('consentAsked')
+
+    expect(await screen.findByTestId('consentAsked')).toBeOnTheScreen()
 
     expect(mockRequestTrackingPermission).not.toHaveBeenCalled()
   })
@@ -56,7 +59,8 @@ describe('useTrackingConsent', () => {
     mockGetTrackingStatus.mockResolvedValueOnce('unavailable')
 
     render(<TestComponent />)
-    await screen.findByTestId('consentAsked')
+
+    expect(await screen.findByTestId('consentAsked')).toBeOnTheScreen()
 
     expect(mockRequestTrackingPermission).not.toHaveBeenCalled()
   })

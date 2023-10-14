@@ -99,21 +99,35 @@ describe('useLocation()', () => {
     })
 
     it.each`
-      permission                                          | statement
-      ${GeolocPermissionState.GRANTED}                    | ${'call'}
-      ${GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY} | ${'call'}
-      ${GeolocPermissionState.DENIED}                     | ${'not call'}
-      ${GeolocPermissionState.NEVER_ASK_AGAIN}            | ${'not call'}
+      permission
+      ${GeolocPermissionState.GRANTED}
+      ${GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY}
     `(
-      'should $statement getPosition() when permission is $permission',
-      async (params: { permission: GeolocPermissionState; statement: 'call' | 'not call' }) => {
-        const { permission, statement } = params
+      'should call getPosition() when permission is $permission',
+      async (params: { permission: GeolocPermissionState }) => {
+        const { permission } = params
         mockPermissionResult(permission)
         renderLocationHook()
 
         await waitFor(() => {
-          if (statement === 'call') expect(mockGetPosition).toHaveBeenCalledTimes(1)
-          else expect(mockGetPosition).not.toHaveBeenCalled()
+          expect(mockGetPosition).toHaveBeenCalledTimes(1)
+        })
+      }
+    )
+
+    it.each`
+      permission
+      ${GeolocPermissionState.DENIED}
+      ${GeolocPermissionState.NEVER_ASK_AGAIN}
+    `(
+      'should not call getPosition() when permission is $permission',
+      async (params: { permission: GeolocPermissionState }) => {
+        const { permission } = params
+        mockPermissionResult(permission)
+        renderLocationHook()
+
+        await waitFor(() => {
+          expect(mockGetPosition).not.toHaveBeenCalled()
         })
       }
     )

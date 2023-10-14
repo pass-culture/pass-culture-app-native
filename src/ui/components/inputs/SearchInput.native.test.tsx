@@ -16,7 +16,7 @@ describe('SearchInput component', () => {
 
     const searchInput = screen.getByTestId('searchInput')
 
-    await fireEvent(searchInput, 'onChangeText', 'Some text')
+    fireEvent(searchInput, 'onChangeText', 'Some text')
 
     expect(onChangeText).toBeCalledWith('Some text')
   })
@@ -26,7 +26,7 @@ describe('SearchInput component', () => {
 
     const resetIcon = screen.getByTestId('Réinitialiser la recherche')
 
-    await fireEvent.press(resetIcon)
+    fireEvent.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
   })

@@ -96,7 +96,7 @@ describe('buildGeolocationParameter', () => {
     })
     const expectOutput = {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-      aroundRadius: (locationFilterAroundMe.aroundRadius ?? 0) * 1000,
+      aroundRadius: (locationFilterAroundMe.aroundRadius as number) * 1000,
     }
     expect(result).toEqual(expectOutput)
   })

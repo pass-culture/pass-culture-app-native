@@ -3,13 +3,11 @@ import { AnalyticsEvent, validateAnalyticsEvent } from 'libs/firebase/analytics/
 const analyticsMembers = [...Object.values(AnalyticsEvent)]
 
 describe('AnalyticsEvent', () => {
-  // eslint-disable-next-line jest/expect-expect
   it('actual members should respect Firebase naming rules', () => {
     for (const member of analyticsMembers) {
       const isValidMember = validateAnalyticsEvent(member as string)
-      if (!isValidMember) {
-        fail(`${member} is not valid`)
-      }
+
+      expect(isValidMember).toBeTruthy()
     }
   })
   it('fake member should fail the test when it is too long', () => {

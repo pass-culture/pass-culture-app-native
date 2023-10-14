@@ -21,28 +21,41 @@ describe('checkGeolocPermission()', () => {
   afterEach(resetNavigatorPermissions)
 
   it.each`
-    permissionStatus                            | expectedState                                       | isPermissionAPIUndefined
-    ${{ state: 'granted' } as PermissionStatus} | ${GeolocPermissionState.GRANTED}                    | ${false}
-    ${{ state: 'denied' } as PermissionStatus}  | ${GeolocPermissionState.NEVER_ASK_AGAIN}            | ${false}
-    ${{ state: 'prompt' } as PermissionStatus}  | ${GeolocPermissionState.DENIED}                     | ${false}
-    ${undefined}                                | ${GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY} | ${true}
+    permissionStatus                            | expectedState                            | isPermissionAPIUndefined
+    ${{ state: 'granted' } as PermissionStatus} | ${GeolocPermissionState.GRANTED}         | ${false}
+    ${{ state: 'denied' } as PermissionStatus}  | ${GeolocPermissionState.NEVER_ASK_AGAIN} | ${false}
+    ${{ state: 'prompt' } as PermissionStatus}  | ${GeolocPermissionState.DENIED}          | ${false}
   `(
     'should return $expectedState when permissionStatus=$permissionStatus and isPermissionAPIUndefined=$isPermissionAPIUndefined',
     async ({
       permissionStatus,
       expectedState,
-      isPermissionAPIUndefined,
     }: {
       permissionStatus: PermissionStatus
       expectedState: GeolocPermissionState
-      isPermissionAPIUndefined: boolean
     }) => {
-      if (isPermissionAPIUndefined) mockNavigatorPermissionsUndefined()
       mockQuery.mockResolvedValueOnce(permissionStatus)
       const state = await checkGeolocPermission()
-      if (isPermissionAPIUndefined) expect(mockQuery).not.toBeCalled()
-      else expect(mockQuery).toBeCalledTimes(1)
+
+      expect(mockQuery).toHaveBeenCalledTimes(1)
       expect(state).toEqual(expectedState)
+    }
+  )
+
+  it.each`
+    permissionStatus | expectedState                                       | isPermissionAPIUndefined
+    ${undefined}     | ${GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY} | ${true}
+  `(
+    'should return need_ask_position_directly when permissionStatus is undefined and permissionAPI is undefined',
+    async () => {
+      mockNavigatorPermissionsUndefined()
+      // @ts-expect-error: this is a mock
+      mockQuery.mockResolvedValueOnce(undefined)
+      const state = await checkGeolocPermission()
+
+      expect(mockQuery).not.toHaveBeenCalled()
+
+      expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
     }
   )
 })

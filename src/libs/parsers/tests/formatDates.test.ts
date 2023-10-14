@@ -287,7 +287,8 @@ describe('formatDates', () => {
     ${[OCTOBER_5_2020, OCTOBER_5_2020]}     | ${undefined}
     ${[OCTOBER_5_2020, NOVEMBER_12_2020]}   | ${'12 novembre 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
-    const timestampsInSeconds = dates && dates.map((date: Date) => date.valueOf())
+    const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
+
     expect(formatDates(timestampsInSeconds)).toEqual(expected)
   })
 })

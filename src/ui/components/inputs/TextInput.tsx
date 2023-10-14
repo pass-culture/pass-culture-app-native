@@ -40,13 +40,6 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
     }
   }
 
-  const RightLabel = () => {
-    if (customProps.isRequiredField) return <RequiredLabel />
-    if (customProps.rightLabel)
-      return <Typo.CaptionNeutralInfo>{customProps.rightLabel}</Typo.CaptionNeutralInfo>
-    return <React.Fragment />
-  }
-
   return (
     <ContainerWithMaxWidth>
       {!!customProps.label && (
@@ -54,7 +47,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           <FlexInputLabel htmlFor={textInputID}>
             <LabelContainer>
               <Typo.Body>{customProps.label}</Typo.Body>
-              <RightLabel />
+              <RightLabel
+                isRequiredField={customProps.isRequiredField}
+                rightLabel={customProps.rightLabel}
+              />
             </LabelContainer>
           </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
@@ -97,6 +93,16 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
 }
 
 export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
+
+type RightLabelProps = {
+  isRequiredField?: boolean
+  rightLabel?: string
+}
+const RightLabel = ({ isRequiredField, rightLabel }: RightLabelProps) => {
+  if (isRequiredField) return <RequiredLabel />
+  if (rightLabel) return <Typo.CaptionNeutralInfo>{rightLabel}</Typo.CaptionNeutralInfo>
+  return <React.Fragment />
+}
 
 const IconTouchableOpacity = styledButton(Touchable)({
   maxWidth: getSpacing(15),

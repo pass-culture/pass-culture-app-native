@@ -14,7 +14,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 
@@ -176,23 +176,27 @@ describe('<VenueOffers />', () => {
 
   it(`should set search state when clicking "En voir plus" button`, async () => {
     render(<VenueOffers venueId={venueId} />)
-    await fireEvent.press(screen.getByText('En voir plus'))
-    expect(push).toBeCalledWith('TabNavigator', {
-      params: {
-        ...defaultParams,
-        locationFilter: {
-          locationType: 'VENUE',
-          venue: {
-            geolocation: { latitude: 48.87004, longitude: 2.3785 },
-            info: 'Paris',
-            label: 'Le Petit Rintintin 1',
-            venueId: 5543,
+
+    fireEvent.press(screen.getByText('En voir plus'))
+
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...defaultParams,
+          locationFilter: {
+            locationType: 'VENUE',
+            venue: {
+              geolocation: { latitude: 48.87004, longitude: 2.3785 },
+              info: 'Paris',
+              label: 'Le Petit Rintintin 1',
+              venueId: 5543,
+            },
           },
+          view: SearchView.Results,
+          previousView: SearchView.Results,
         },
-        view: SearchView.Results,
-        previousView: SearchView.Results,
-      },
-      screen: 'Search',
+        screen: 'Search',
+      })
     })
   })
 
