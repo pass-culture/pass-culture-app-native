@@ -602,6 +602,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
+  logUserSetLocation: (from: 'home' | 'search') =>
+    analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_LOCATION }, { from }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenuePlaylistDisplayedOnSearchResults: (params: {
