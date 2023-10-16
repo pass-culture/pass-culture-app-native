@@ -52,8 +52,6 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   alignItems: 'center',
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(4),
-  paddingTop: getSpacing(1.5),
-  paddingBottom: getSpacing(1.5),
   height: getSpacing(8),
   backgroundColor: isSelected ? theme.colors.greyLight : theme.colors.white,
   borderColor: theme.colors.black,

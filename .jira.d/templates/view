@@ -1,2 +1,2 @@
-{{/* This file is used by update-jira-issues.yml github action via go jira cli https://github.com/go-jira/jira */ -}}
+{{/* This file is used by dev_on_workflow_update_jira_issues github action via go jira cli https://github.com/go-jira/jira to update commit number */ -}}
 {{ .fields.customfield_10059 }}

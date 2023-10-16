@@ -91,7 +91,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
       rightIcon={Close}
       onRightIconPress={onClose}
       isUpToStatusBar
-      scrollEnabled={false}
+      scrollEnabled
       onModalHide={onModalHideRef.current}>
       <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
