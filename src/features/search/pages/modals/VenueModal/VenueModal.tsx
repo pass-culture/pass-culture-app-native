@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import useVenueModal, {
-  VenueModalHookCallback,
-} from 'features/search/pages/modals/VenueModal/useVenueModal'
+import { VenueModalHookCallback } from 'features/search/pages/modals/VenueModal/type'
+import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'

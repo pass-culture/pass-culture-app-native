@@ -2,22 +2,13 @@ import { useState, useCallback } from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
+import {
+  VenueModalHook,
+  VenueModalHookCallback,
+} from 'features/search/pages/modals/VenueModal/type'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
-
-export type VenueModalHook = {
-  doChangeVenue: (text: string) => void
-  doResetVenue: VoidFunction
-  doSetSelectedVenue: (venue: Venue) => void
-  doApplySearch: VoidFunction
-  isQueryProvided: boolean
-  shouldShowSuggestedVenues: boolean
-  isVenueSelected: boolean
-  venueQuery: string
-}
-
-export type VenueModalHookCallback = (payload: Partial<SearchState>) => void
 
 /**
  * Build the logic of the modal so buttons are only shown
