@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
@@ -6,10 +7,12 @@ import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { GeolocPermissionState } from 'libs/geolocation'
+import { SuggestedPlace } from 'libs/place'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -49,6 +52,8 @@ export const SearchLocationModal = ({
     showGeolocPermissionModal,
     isCurrentLocationMode,
   } = useLocationModal(visible)
+
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
 
   const [aroundRadius, setAroundRadius] = useState(100)
   const [includeDigitalOffers, setIncludeDigitalOffers] = useState(false)
@@ -105,10 +110,24 @@ export const SearchLocationModal = ({
     [setAroundRadius]
   )
 
+  const onPlaceSelection = (place: SuggestedPlace) => {
+    onSetSelectedPlace(place)
+    Keyboard.dismiss()
+  }
+
   const onPressShowVenueModal = () => {
     dismissModal()
     onModalHideRef.current = showVenueModal
   }
+
+  useKeyboardEvents({
+    onBeforeShow(data) {
+      setKeyboardHeight(data.keyboardHeight)
+    },
+    onBeforeHide() {
+      setKeyboardHeight(0)
+    },
+  })
 
   return (
     <AppModal
@@ -118,8 +137,9 @@ export const SearchLocationModal = ({
       rightIcon={Close}
       onRightIconPress={onClose}
       isUpToStatusBar
-      scrollEnabled={false}
-      onModalHide={onModalHideRef.current}>
+      scrollEnabled
+      onModalHide={onModalHideRef.current}
+      keyboardShouldPersistTaps="handled">
       <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.GEOLOCATION)}
@@ -157,7 +177,7 @@ export const SearchLocationModal = ({
             placeQuery={placeQuery}
             setPlaceQuery={setPlaceQuery}
             onResetPlace={onResetPlace}
-            onSetSelectedPlace={onSetSelectedPlace}
+            onSetSelectedPlace={onPlaceSelection}
           />
           <Spacer.Column numberOfSpaces={4} />
           {!!selectedPlace && (
@@ -189,6 +209,7 @@ export const SearchLocationModal = ({
         onPress={onPressShowVenueModal}
         justifyContent="flex-start"
       />
+      <Spacer.Column numberOfSpaces={keyboardHeight / 4} />
     </AppModal>
   )
 }
