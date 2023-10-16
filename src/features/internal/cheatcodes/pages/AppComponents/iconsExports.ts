@@ -11,8 +11,7 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
-import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
-import { EmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
+import { BicolorEmailIcon, EmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
@@ -23,16 +22,14 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
-import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
-import { NewIcon } from 'ui/svg/icons/BicolorNewIcon'
+import { BicolorNewIcon, NewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
-import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
-import { PhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
+import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
+import { BicolorPhoneIcon, PhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
-import { BicolorShare } from 'ui/svg/icons/BicolorShare'
-import { Share } from 'ui/svg/icons/BicolorShare'
+import { BicolorShare, Share } from 'ui/svg/icons/BicolorShare'
 import { BicolorSignal } from 'ui/svg/icons/BicolorSignal'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
@@ -40,9 +37,11 @@ import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
+import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { Check } from 'ui/svg/icons/Check'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
+import { Code } from 'ui/svg/icons/Code'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Digital } from 'ui/svg/icons/Digital'
@@ -167,6 +166,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorNewIcon,
   BicolorNoId,
   BicolorNoPhone,
+  BicolorOffers,
   BicolorPhoneIcon,
   BicolorProfile,
   BicolorSearch,
@@ -178,8 +178,10 @@ export const SecondaryAndBiggerIcons = {
   BicolorWarning,
   Booking,
   Calendar,
+  CalendarS,
   Check,
   Close,
+  Code,
   Confidentiality,
   Duo,
   EmailIcon,

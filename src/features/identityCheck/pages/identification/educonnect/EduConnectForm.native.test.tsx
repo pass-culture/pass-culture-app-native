@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, superFlushWithAct } from 'tests/utils'
+import { render, screen, superFlushWithAct } from 'tests/utils'
 
 import { EduConnectForm } from './EduConnectForm'
 
@@ -9,9 +9,9 @@ jest.mock('libs/eduConnectClient')
 
 describe('<EduConnectForm />', () => {
   it('should render EduConnectForm', async () => {
-    const renderAPI = render(<EduConnectForm />)
+    render(<EduConnectForm />)
     superFlushWithAct()
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 })

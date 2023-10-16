@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, waitFor } from 'tests/utils'
+import { render, fireEvent, waitFor, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -61,8 +61,8 @@ describe('BusinessModule component', () => {
   })
 
   it('should log "BusinessBlockClicked" when clicking on the image', () => {
-    const { getByTestId } = renderModule(props)
-    fireEvent.press(getByTestId('imageBusiness'))
+    renderModule(props)
+    fireEvent.press(screen.getByTestId('imageBusiness'))
     expect(analytics.logBusinessBlockClicked).toHaveBeenCalledWith({
       moduleName: props.analyticsTitle,
       moduleId: props.moduleId,
@@ -90,8 +90,8 @@ describe('BusinessModule component', () => {
   })
 
   it('should open url when clicking on the image', async () => {
-    const { getByTestId } = renderModule(props)
-    fireEvent.press(getByTestId('imageBusiness'))
+    renderModule(props)
+    fireEvent.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(openURLSpy).toHaveBeenCalledWith('url')
@@ -104,12 +104,13 @@ describe('BusinessModule component', () => {
       isLoggedIn: true,
       isUserLoading: true,
     }))
-    const { getByTestId } = renderModule({
+
+    renderModule({
       ...props,
       url: 'some_url_with_email={email}',
     })
 
-    fireEvent.press(getByTestId('imageBusiness'))
+    fireEvent.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
@@ -128,12 +129,12 @@ describe('BusinessModule component', () => {
       isLoggedIn: true,
     })
 
-    const { getByTestId } = renderModule({
+    renderModule({
       ...props,
       url: 'some_url_with_email={email}',
     })
 
-    fireEvent.press(getByTestId('imageBusiness'))
+    fireEvent.press(screen.getByTestId('imageBusiness'))
     await waitFor(() =>
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
@@ -150,12 +151,12 @@ describe('BusinessModule component', () => {
       isLoggedIn: false,
     })
 
-    const { getByTestId } = renderModule({
+    renderModule({
       ...props,
       url: 'some_url_with_no_email',
     })
 
-    fireEvent.press(getByTestId('imageBusiness'))
+    fireEvent.press(screen.getByTestId('imageBusiness'))
     await waitFor(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
     mockUseAuthContext.mockReset()

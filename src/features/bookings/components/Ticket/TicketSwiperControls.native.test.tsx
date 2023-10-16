@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { TicketSwiperControls } from 'features/bookings/components/Ticket/TicketSwiperControls'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 const props = {
   prevTitle: 'prev',
@@ -14,29 +14,29 @@ const props = {
 
 describe('<TicketSwiperControls/>', () => {
   it('should hide prev button if currentStep === 1', () => {
-    const { queryByTestId } = render(<TicketSwiperControls {...props} />)
-    expect(queryByTestId('Revenir à l’étape précédente')).not.toBeOnTheScreen()
-    queryByTestId('control-component-spacing-prev')
+    render(<TicketSwiperControls {...props} />)
+    expect(screen.queryByTestId('Revenir à l’étape précédente')).not.toBeOnTheScreen()
+    screen.queryByTestId('control-component-spacing-prev')
   })
 
   it('should show prev button if currentStep > 1', () => {
     props.currentStep = 2
-    const { queryByTestId } = render(<TicketSwiperControls {...props} />)
-    queryByTestId('Revenir à l’étape précédente')
-    expect(queryByTestId('control-component-spacing-prev')).not.toBeOnTheScreen()
+    render(<TicketSwiperControls {...props} />)
+    screen.queryByTestId('Revenir à l’étape précédente')
+    expect(screen.queryByTestId('control-component-spacing-prev')).not.toBeOnTheScreen()
   })
 
   it('should hide next button if currentStep === numberOfSteps', () => {
     props.currentStep = 4
-    const { queryByTestId } = render(<TicketSwiperControls {...props} />)
-    expect(queryByTestId('Continuer vers l’étape suivante')).not.toBeOnTheScreen()
-    queryByTestId('control-component-spacing-next')
+    render(<TicketSwiperControls {...props} />)
+    expect(screen.queryByTestId('Continuer vers l’étape suivante')).not.toBeOnTheScreen()
+    screen.queryByTestId('control-component-spacing-next')
   })
 
   it('should show prev button if currentStep !== 1', () => {
     props.currentStep = 2
-    const { queryByTestId } = render(<TicketSwiperControls {...props} />)
-    queryByTestId('Continuer vers l’étape suivante')
-    expect(queryByTestId('control-component-spacing-next')).not.toBeOnTheScreen()
+    render(<TicketSwiperControls {...props} />)
+    screen.queryByTestId('Continuer vers l’étape suivante')
+    expect(screen.queryByTestId('control-component-spacing-next')).not.toBeOnTheScreen()
   })
 })

@@ -103,7 +103,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         render={NewsletterCheckboxControlled}
       />
       <Spacer.Column numberOfSpaces={10} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={8} />
       <CaptionNeutralInfo>
         Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la

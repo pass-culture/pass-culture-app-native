@@ -38,10 +38,9 @@ describe('<FavoritesSorts/>', () => {
 })
 
 function renderFavoritesSort() {
-  const renderAPI = render(
+  return render(
     <FavoritesWrapper>
       <FavoritesSorts />
     </FavoritesWrapper>
   )
-  return renderAPI
 }

@@ -6,8 +6,8 @@ import { WebShareModalProps } from 'features/share/types'
 // eslint-disable-next-line no-restricted-imports
 import {
   isDesktopDeviceDetectOnWeb,
-  isMobileDeviceDetectOnWeb,
   isMacOsDeviceDetectOnWeb,
+  isMobileDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -95,7 +95,7 @@ export const WebShareModal = ({
       onRightIconPress={dismissModal}>
       <Container>
         <Spacer.Column numberOfSpaces={3} />
-        <Separator />
+        <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={3} />
         <NonSocialButtonsContainer>
           <NonSocialButtonsItem>
@@ -131,7 +131,7 @@ export const WebShareModal = ({
           }
         </NonSocialButtonsContainer>
         <Spacer.Column numberOfSpaces={3} />
-        <Separator />
+        <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         <SocialButtonsContainer>
           {socialButtonProps.map((props) => (

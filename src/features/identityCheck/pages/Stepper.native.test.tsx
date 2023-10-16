@@ -168,9 +168,9 @@ describe('Stepper navigation', () => {
         identification: { method: null },
       })
 
-      const stepper = render(<Stepper />)
+      render(<Stepper />)
 
-      const stepButton = stepper.getByText(stepperLabel)
+      const stepButton = screen.getByText(stepperLabel)
       fireEvent.press(stepButton)
 
       expect(analytics.logIdentityCheckStep).toHaveBeenNthCalledWith(1, eventParam)

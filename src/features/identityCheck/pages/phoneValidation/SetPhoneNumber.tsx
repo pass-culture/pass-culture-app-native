@@ -52,8 +52,8 @@ export const SetPhoneNumber = () => {
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
 
   const requestsWording = plural(remainingAttempts ?? 0, {
-    one: '# demande',
-    other: '# demandes',
+    singular: '# demande',
+    plural: '# demandes',
   })
 
   const {

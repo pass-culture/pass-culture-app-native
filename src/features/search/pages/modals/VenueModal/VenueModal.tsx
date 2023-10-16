@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
+import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
-import { Venue } from 'features/venue/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
@@ -20,30 +19,18 @@ interface Props {
 }
 
 export const VenueModal = ({ visible, dismissModal }: Props) => {
-  const [venueQuery, setVenueQuery] = useState('')
-  const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
-  const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
+  const {
+    doChangeVenue,
+    doResetVenue,
+    doSetSelectedVenue,
+    doApplySearch,
+    shouldShowSuggestedVenues,
+    isVenueSelected,
+    venueQuery,
+  } = useVenueModal(dismissModal)
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
-
-  const onChangeVenue = (text: string) => {
-    setVenueQuery(text)
-    setSelectedVenue(null)
-  }
-
-  const onResetVenue = () => {
-    setVenueQuery('')
-    setSelectedVenue(null)
-  }
-
-  const onSetSelectedVenue = (venue: Venue) => {
-    setSelectedVenue(venue)
-    setVenueQuery(venue.label)
-  }
-
-  const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
-  const shouldShowSuggestedVenues = isQueryProvided && !selectedVenue
 
   return (
     <AppModal
@@ -51,18 +38,18 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       title="Point de vente"
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
-      onRightIconPress={dismissModal}
+      onRightIconPress={doApplySearch}
       isUpToStatusBar
       scrollEnabled={false}
       fixedModalBottom={
-        <React.Fragment>
+        <Center>
           <ButtonPrimary
             wording="Valider le point de vente"
-            disabled={!selectedVenue}
-            onPress={dismissModal}
+            disabled={!isVenueSelected}
+            onPress={doApplySearch}
           />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
-        </React.Fragment>
+        </Center>
       }>
       <Spacer.Column numberOfSpaces={10} />
       <SubtitleContainer>
@@ -75,15 +62,15 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
         autoFocus
         LeftIcon={StyledMagnifyingGlass}
         inputHeight="regular"
-        onChangeText={onChangeVenue}
-        onPressRightIcon={onResetVenue}
+        onChangeText={doChangeVenue}
+        onPressRightIcon={doResetVenue}
         placeholder="Cinéma, librairie, magasin…"
         value={venueQuery}
       />
       {!!shouldShowSuggestedVenues && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <SuggestedVenues query={venueQuery} setSelectedVenue={onSetSelectedVenue} />
+          <SuggestedVenues query={venueQuery} setSelectedVenue={doSetSelectedVenue} />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />
@@ -107,3 +94,7 @@ const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
 const KeyboardPlaceholder = styled.View<{ keyboardHeight: number }>(({ keyboardHeight }) => ({
   height: keyboardHeight,
 }))
+
+const Center = styled.View({
+  alignItems: 'center',
+})

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { ControlComponent, ControlComponentProps } from './ControlComponent'
 
@@ -8,63 +8,66 @@ describe('<ControlComponent />', () => {
   const onPress = jest.fn()
 
   it('should render correctly prev by default', () => {
-    const renderAPI = renderControlComponent()
-    expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowPrevious')).toBeOnTheScreen()
-    expect(() => renderAPI.getByTestId('arrowNext')).toThrowError()
+    renderControlComponent()
+    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
+    expect(() => screen.getByTestId('arrowNext')).toThrowError()
   })
 
   it('should render prev when type is prev', () => {
-    const renderAPI = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
     })
-    expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowPrevious')).toBeOnTheScreen()
-    expect(() => renderAPI.getByTestId('arrowNext')).toThrowError()
+    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
+    expect(() => screen.getByTestId('arrowNext')).toThrowError()
   })
 
   it('renders render next when type is next', () => {
-    const renderAPI = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Next',
       type: 'next',
     })
-    expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowNext')).toBeOnTheScreen()
-    expect(() => renderAPI.getByTestId('arrowPrevious')).toThrowError()
+    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('arrowNext')).toBeOnTheScreen()
+    expect(() => screen.getByTestId('arrowPrevious')).toThrowError()
   })
 
   it('renders trigger onPress when pressed', () => {
-    const { getByTestId } = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
     })
-    fireEvent.press(getByTestId('Previous'))
+
+    fireEvent.press(screen.getByTestId('Previous'))
     expect(onPress).toHaveBeenCalledTimes(1)
   })
 
   it('should render prev button with margin left if withMargin is equal to true', () => {
-    const { getByTestId } = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
       withMargin: true,
     })
-    const controlButton = getByTestId('Previous')
+
+    const controlButton = screen.getByTestId('Previous')
     expect(controlButton.props.style.marginLeft).toEqual('70%')
   })
 
   it('should render next button with margin right if withMargin is equal to true', () => {
-    const { getByTestId } = renderControlComponent({
+    renderControlComponent({
       onPress,
       title: 'Next',
       type: 'next',
       withMargin: true,
     })
-    const controlButton = getByTestId('Next')
+
+    const controlButton = screen.getByTestId('Next')
     expect(controlButton.props.style.marginRight).toEqual('70%')
   })
 })

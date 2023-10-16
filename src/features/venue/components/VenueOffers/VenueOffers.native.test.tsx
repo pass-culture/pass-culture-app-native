@@ -11,7 +11,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 
@@ -54,13 +54,13 @@ const defaultParams = {
 
 describe('<VenueOffers />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<VenueOffers venueId={venueId} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<VenueOffers venueId={venueId} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {
-    const { queryByText } = render(<VenueOffers venueId={venueId} />)
-    expect(queryByText('En voir plus')).toBeOnTheScreen()
+    render(<VenueOffers venueId={venueId} />)
+    expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
 
   it(`should not display "En voir plus" button if nbHits is same as hits.length`, () => {
@@ -68,13 +68,13 @@ describe('<VenueOffers />', () => {
       data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
-    const { queryByText } = render(<VenueOffers venueId={venueId} />)
-    expect(queryByText('En voir plus')).not.toBeOnTheScreen()
+    render(<VenueOffers venueId={venueId} />)
+    expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should set search state when clicking "En voir plus" button`, async () => {
-    const { getByText } = render(<VenueOffers venueId={venueId} />)
-    await fireEvent.press(getByText('En voir plus'))
+    render(<VenueOffers venueId={venueId} />)
+    await fireEvent.press(screen.getByText('En voir plus'))
     expect(push).toBeCalledWith('TabNavigator', {
       params: {
         ...defaultParams,
@@ -95,14 +95,14 @@ describe('<VenueOffers />', () => {
   })
 
   it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, () => {
-    const { getByText } = render(<VenueOffers venueId={venueId} />)
-    fireEvent.press(getByText('En voir plus'))
+    render(<VenueOffers venueId={venueId} />)
+    fireEvent.press(screen.getByText('En voir plus'))
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
   it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, async () => {
-    const { getByText } = render(<VenueOffers venueId={venueId} />)
-    fireEvent.press(getByText('Voir toutes les offres'))
+    render(<VenueOffers venueId={venueId} />)
+    fireEvent.press(screen.getByText('Voir toutes les offres'))
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 })

@@ -10,7 +10,10 @@ export const VENUE: EntityType = {
     title(entity: Record<string, unknown>) {
       return (entity.publicName || entity.name) as string
     },
-    description(entity: Record<string, unknown>) {
+    metaTitle(entity: Record<string, unknown>) {
+      return (entity.publicName || entity.name) as string
+    },
+    metaDescription(entity: Record<string, unknown>) {
       return entity.description as string
     },
     ['og:url'](href: string, subPath: string) {

@@ -1,19 +1,19 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 
 describe('<ScrollButtonForNotTouchDevice />', () => {
   it('should render correctly on left direction', () => {
-    const renderAPI = render(<ScrollButtonForNotTouchDevice top={55} horizontalAlign="left" />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ScrollButtonForNotTouchDevice top={55} horizontalAlign="left" />)
+    expect(screen).toMatchSnapshot()
   })
   it('should render correctly on right direction', () => {
-    const renderAPI = render(<ScrollButtonForNotTouchDevice top={55} horizontalAlign="right" />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ScrollButtonForNotTouchDevice top={55} horizontalAlign="right" />)
+    expect(screen).toMatchSnapshot()
   })
   it('should render correctly when no top given', () => {
-    const renderAPI = render(<ScrollButtonForNotTouchDevice horizontalAlign="right" />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<ScrollButtonForNotTouchDevice horizontalAlign="right" />)
+    expect(screen).toMatchSnapshot()
   })
 })

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { OfferSeeMore } from './OfferSeeMore'
 
@@ -9,24 +9,24 @@ const offerId = 116656
 
 describe('OfferSeeMore', () => {
   it('displays the short wording when no props are precised', () => {
-    const { queryByText } = render(<OfferSeeMore id={123} />)
-    expect(queryByText('Voir plus d’informations')).not.toBeOnTheScreen()
-    expect(queryByText('voir plus')).toBeOnTheScreen()
+    render(<OfferSeeMore id={123} />)
+    expect(screen.queryByText('Voir plus d’informations')).not.toBeOnTheScreen()
+    expect(screen.queryByText('voir plus')).toBeOnTheScreen()
   })
   it('displays the long wording when precised', () => {
-    const { queryByText } = render(<OfferSeeMore id={123} longWording />)
-    expect(queryByText('voir plus')).not.toBeOnTheScreen()
-    expect(queryByText('Voir plus d’informations')).toBeOnTheScreen()
+    render(<OfferSeeMore id={123} longWording />)
+    expect(screen.queryByText('voir plus')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Voir plus d’informations')).toBeOnTheScreen()
   })
   describe('Analytics', () => {
     it('should log ConsultDescriptionDetails each time we open the details', async () => {
-      const { getByTestId } = render(<OfferSeeMore id={offerId} longWording />)
+      render(<OfferSeeMore id={offerId} longWording />)
 
-      fireEvent.press(getByTestId('Voir plus d’informations'))
+      fireEvent.press(screen.getByTestId('Voir plus d’informations'))
       expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledTimes(1)
       expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledWith(offerId)
 
-      fireEvent.press(getByTestId('Voir plus d’informations'))
+      fireEvent.press(screen.getByTestId('Voir plus d’informations'))
       expect(analytics.logConsultDescriptionDetails).toHaveBeenCalledTimes(2)
     })
   })

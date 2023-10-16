@@ -1,0 +1,12 @@
+appId: app.passculture.staging
+---
+#AccountDeletionPage
+- assertVisible: "Détails de la réservation"
+- assertVisible: "Les biens acquis ou réservés sur le pass Culture sont destinés à\
+    \ un usage strictement personnel et ne peuvent faire l’objet de revente."
+- assertVisible: "Informations"
+- assertVisible: "Lieu de retrait"
+- assertVisible: "Conditions d’annulation"
+- assertVisible: "Cette réservation est annulable"
+- assertVisible: "Confirmer la réservation"
+

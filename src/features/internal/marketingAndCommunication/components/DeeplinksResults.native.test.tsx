@@ -2,7 +2,7 @@ import React from 'react'
 
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { DeeplinksResult } from 'features/internal/marketingAndCommunication/components/DeeplinksResult'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 describe('<DeeplinksResult />', () => {
   const result: GeneratedDeeplink = {
@@ -12,13 +12,13 @@ describe('<DeeplinksResult />', () => {
   }
 
   it('should display deeplinks results', () => {
-    const renderAPI = render(<DeeplinksResult result={result} />)
-    expect(renderAPI.getByText(result.firebaseLink)).toBeOnTheScreen()
-    expect(renderAPI.getByText(result.universalLink)).toBeOnTheScreen()
+    render(<DeeplinksResult result={result} />)
+    expect(screen.getByText(result.firebaseLink)).toBeOnTheScreen()
+    expect(screen.getByText(result.universalLink)).toBeOnTheScreen()
   })
 
   it('should display message when no results are provided', async () => {
-    const renderAPI = render(<DeeplinksResult />)
-    expect(renderAPI.getByText(`Vous devez d’abord générer un lien`)).toBeOnTheScreen()
+    render(<DeeplinksResult />)
+    expect(screen.getByText(`Vous devez d’abord générer un lien`)).toBeOnTheScreen()
   })
 })

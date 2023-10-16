@@ -31,6 +31,10 @@ To be able to install and run the mobile apps (iOS and Android) and web app, you
 - Configure Sentry through [this tutorial](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli)
 - Run `yarn install` to install all the dependencies
 
+- If you have EACCESS issues with your Node installation (when trying to enable corepack for example during yarn installation), consider installing Homebrew to install NVM via Homebrew. Homebrew will be useful for installing Git as well. 
+
+- When choosing the version of node via nvm, check the file .node-version at the root of the pass-culture-app-native repo to find the version you should use.
+
 #### 📱 Mobile
 
 To run the mobile app on Android or iOS, you will need to follow the installation steps:

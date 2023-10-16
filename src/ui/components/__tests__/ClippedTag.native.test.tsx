@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { ClippedTag } from '../ClippedTag'
 
@@ -10,18 +10,18 @@ const accessibilityLabel = 'Enlever le lieu'
 
 describe('<ClippedTag/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    render(
       <ClippedTag
         label={label}
         onPress={removeVenueId}
         iconAccessibilityLabel={accessibilityLabel}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should delete venueId and ClippedTag when clicking on Clear icon', () => {
-    const { getByTestId } = render(
+    render(
       <ClippedTag
         label={label}
         onPress={removeVenueId}
@@ -29,7 +29,7 @@ describe('<ClippedTag/>', () => {
       />
     )
 
-    const clearIcon = getByTestId('Enlever le lieu')
+    const clearIcon = screen.getByTestId('Enlever le lieu')
     fireEvent.press(clearIcon)
     expect(removeVenueId).toHaveBeenCalledTimes(1)
   })

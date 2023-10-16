@@ -1,4 +1,5 @@
 import { env } from 'libs/environment'
+import { ReCaptchaInternalError } from 'libs/recaptcha/errors'
 
 export const reCaptchaWebviewHTML = `
     <!DOCTYPE html>
@@ -14,7 +15,7 @@ export const reCaptchaWebviewHTML = `
                 function onClose() { sendMessagePayload({ "message": "close" }); }
                 function onDebug(log) { sendMessagePayload({ "message": "debug", "log": log }); }
                 function onExpire() { sendMessagePayload({ "message": "expire" }); }
-                function onError(error) { sendMessagePayload({ "message": "error", "error": error }); }
+                function onError(errorCode, error) { sendMessagePayload({ "message": "error", "errorCode": errorCode, "error": error }); }
                 function onLoad() { sendMessagePayload({ "message": "load" }); }
                 function onSuccess(token) {
                     window.grecaptcha.reset()
@@ -22,7 +23,7 @@ export const reCaptchaWebviewHTML = `
                 }
 
                 function onRecaptchaErrorCallback() {
-                    onError("reCAPTCHA error: error-callback of widget called")
+                    onError("${ReCaptchaInternalError.NetworkError}")
                 }
 
                 function isReadyToExecute() { 
@@ -38,7 +39,7 @@ export const reCaptchaWebviewHTML = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError("reCAPTCHA error: Number of retry render exceeded");
+                        onError("${ReCaptchaInternalError.NumberOfRenderRetriesExceeded}");
                     }
                 }
 
@@ -50,7 +51,7 @@ export const reCaptchaWebviewHTML = `
                             readyInterval = setInterval(executeWhenReady, 1000);
                         }
                     } catch(error) {
-                        onError("reCAPTCHA error: " + error.message);
+                        onError("${ReCaptchaInternalError.UnknownError}", error);
                     }
                 };
             </script>

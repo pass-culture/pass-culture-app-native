@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -25,14 +25,14 @@ describe('ModalHeader component', () => {
         leftIcon: undefined,
         onLeftIconPress: undefined,
       }
-      const { queryByTestId } = render(<ModalHeader {...propsWithoutLeftIcon} />)
-      const leftIcon = queryByTestId('Revenir en arrière')
+      render(<ModalHeader {...propsWithoutLeftIcon} />)
+      const leftIcon = screen.queryByTestId('Revenir en arrière')
       expect(leftIcon).not.toBeOnTheScreen()
     })
     it('should be visible when the icon is provided', async () => {
-      const { getByTestId, findByTestId } = render(<ModalHeader {...props} />)
-      getByTestId('Revenir en arrière') // test existence
-      const leftIconButton = await findByTestId(props.leftIconAccessibilityLabel)
+      render(<ModalHeader {...props} />)
+      screen.getByTestId('Revenir en arrière') // test existence
+      const leftIconButton = await screen.findByTestId(props.leftIconAccessibilityLabel)
       await fireEvent.press(leftIconButton)
       expect(props.onLeftIconPress).toBeCalledTimes(1)
     })
@@ -45,14 +45,14 @@ describe('ModalHeader component', () => {
         rightIcon: undefined,
         onRightIconPress: undefined,
       }
-      const { queryByTestId } = render(<ModalHeader {...propsWithoutRightIcon} />)
-      const rightIcon = queryByTestId('Fermer la modale')
+      render(<ModalHeader {...propsWithoutRightIcon} />)
+      const rightIcon = screen.queryByTestId('Fermer la modale')
       expect(rightIcon).not.toBeOnTheScreen()
     })
     it('should be visible when the icon is provided', async () => {
-      const { getByTestId, findByTestId } = render(<ModalHeader {...props} />)
-      getByTestId('Fermer la modale') // test existence
-      const rightIconButton = await findByTestId(props.rightIconAccessibilityLabel)
+      render(<ModalHeader {...props} />)
+      screen.getByTestId('Fermer la modale') // test existence
+      const rightIconButton = await screen.findByTestId(props.rightIconAccessibilityLabel)
       await fireEvent.press(rightIconButton)
       expect(props.onRightIconPress).toBeCalledTimes(1)
     })

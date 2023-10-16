@@ -82,6 +82,6 @@ const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,
 }))``
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
 })

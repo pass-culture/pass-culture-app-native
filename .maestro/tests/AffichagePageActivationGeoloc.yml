@@ -1,0 +1,13 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAllAccept.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonUseMyLocation.yml
+# Geoloc App
+- runFlow:
+      when:
+          visible:
+              id: "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
+      file: "reusableFlows/features/location/GeolocApp.yml"
+- runFlow: reusableFlows/StopApp.yml # Stop App

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { TextInput } from './TextInput'
 
@@ -11,9 +11,9 @@ const NormalStateTextInput = (
 
 describe('<TextInput />', () => {
   it('should render correctly when NOT focused', () => {
-    const instance = render(NormalStateTextInput)
+    render(NormalStateTextInput)
 
-    expect(instance).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render ref correctly', () => {

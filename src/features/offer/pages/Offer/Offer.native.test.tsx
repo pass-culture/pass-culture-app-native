@@ -153,8 +153,8 @@ describe('<Offer />', () => {
         apiRecoParams,
       })
 
-      const { getByTestId } = renderOfferPage()
-      const scrollView = getByTestId('offer-container')
+      renderOfferPage()
+      const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
@@ -177,8 +177,8 @@ describe('<Offer />', () => {
     it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
       useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
-      const { getByTestId } = renderOfferPage()
-      const scrollView = getByTestId('offer-container')
+      renderOfferPage()
+      const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
@@ -210,8 +210,8 @@ describe('<Offer />', () => {
       })
 
       it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
-        const { getByTestId } = renderOfferPage()
-        const scrollView = getByTestId('offer-container')
+        renderOfferPage()
+        const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
           fireEvent.scroll(scrollView, nativeEventBottom)
@@ -226,8 +226,8 @@ describe('<Offer />', () => {
       })
 
       it('should not log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        const { getByTestId } = renderOfferPage()
-        const scrollView = getByTestId('offer-container')
+        renderOfferPage()
+        const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
           fireEvent.scroll(scrollView, nativeEventBottom)
@@ -251,8 +251,8 @@ describe('<Offer />', () => {
       })
 
       it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        const { getByTestId } = renderOfferPage()
-        const scrollView = getByTestId('offer-container')
+        renderOfferPage()
+        const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
           fireEvent.scroll(scrollView, nativeEventBottom)
@@ -267,8 +267,8 @@ describe('<Offer />', () => {
       })
 
       it('should not log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        const { getByTestId } = renderOfferPage()
-        const scrollView = getByTestId('offer-container')
+        renderOfferPage()
+        const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
           fireEvent.scroll(scrollView, nativeEventBottom)

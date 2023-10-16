@@ -73,6 +73,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -87,10 +97,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -103,62 +113,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     style={
       [
         {
-          "backgroundColor": "#F1F1F4",
           "borderRadius": 8,
           "marginBottom": 8,
           "marginHorizontal": 24,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
         },
       ]
     }
+    withGreyContainer={false}
   >
     <View
-      numberOfSpaces={1}
-      style={
-        [
-          {
-            "height": 4,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      color="#CBCDD2"
-      style={
-        [
-          {
-            "backgroundColor": "#CBCDD2",
-            "height": 1,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={2.5}
-      style={
-        [
-          {
-            "height": 10,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Comment ça marche ?"
+      accessibilityRole="link"
       accessibilityState={
         {
           "busy": undefined,
@@ -176,7 +140,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
           "text": undefined,
         }
       }
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -188,64 +152,110 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
       onStartShouldSetResponder={[Function]}
       style={
         {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "height": "auto",
-          "justifyContent": "flex-start",
-          "maxWidth": 500,
-          "minHeight": 40,
           "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 2,
-          "textAlign": "left",
           "userSelect": "auto",
-          "width": "100%",
         }
       }
-      testID="Comment ça marche ?"
     >
       <View
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "borderColor": "#90949D",
+              "borderRadius": 7,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "padding": 16,
+              "width": "100%",
             },
+            undefined,
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "alignContent": "center",
+                "marginRight": 16,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
+          <View
+            height={32}
+            width={32}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginRight": 16,
+                "textAlign": "start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            L’aventure continue !
+          </Text>
+          <View
+            numberOfSpaces={1}
+            style={
+              [
+                {
+                  "height": 4,
+                },
+              ]
+            }
+          />
+          <Text
+            numberOfLines={3}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Tu peux profiter d’offres gratuites autour de toi.
           </Text>
         </View>
+        <View>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -324,6 +334,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -338,10 +358,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -352,7 +372,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -369,30 +389,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     style={
       [
         {
-          "backgroundColor": "#F1F1F4",
           "borderRadius": 8,
           "marginBottom": 8,
           "marginHorizontal": 24,
-          "paddingBottom": 24,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 24,
         },
       ]
     }
+    withGreyContainer={false}
   >
     <View
-      numberOfSpaces={1}
-      style={
-        [
-          {
-            "height": 4,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Mon crédit est expiré, que faire ?"
+      accessibilityRole="link"
       accessibilityState={
         {
           "busy": undefined,
@@ -410,7 +416,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
           "text": undefined,
         }
       }
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       onClick={[Function]}
@@ -422,64 +428,110 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
       onStartShouldSetResponder={[Function]}
       style={
         {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "height": "auto",
-          "justifyContent": "flex-start",
-          "maxWidth": 500,
-          "minHeight": 40,
           "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 2,
-          "textAlign": "left",
           "userSelect": "auto",
-          "width": "100%",
         }
       }
-      testID="Mon crédit est expiré, que faire ?"
     >
       <View
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "borderColor": "#90949D",
+              "borderRadius": 7,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "padding": 16,
+              "width": "100%",
             },
+            undefined,
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "alignContent": "center",
+                "marginRight": 16,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
+          <View
+            height={32}
+            width={32}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginRight": 16,
+                "textAlign": "start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            L’aventure continue !
+          </Text>
+          <View
+            numberOfSpaces={1}
+            style={
+              [
+                {
+                  "height": 4,
+                },
+              ]
+            }
+          />
+          <Text
+            numberOfLines={3}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Tu peux profiter d’offres gratuites autour de toi.
           </Text>
         </View>
+        <View>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Mon crédit est expiré, que faire ?
-      </Text>
     </View>
   </View>,
 ]
@@ -558,6 +610,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -572,10 +634,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -586,7 +648,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -614,6 +676,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         },
       ]
     }
+    withGreyContainer={true}
   >
     <View
       testID="credit-info"
@@ -988,7 +1051,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
 ]
 `;
 
-exports[`CreditHeader Beneficiary is underage should render correctly for underage beneficiary 1`] = `
+exports[`CreditHeader Beneficiary is underage should render correctly for 15 year-old 1`] = `
 [
   <View
     customHeight={16}
@@ -1061,6 +1124,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -1075,10 +1148,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -1089,7 +1162,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -1117,6 +1190,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
         },
       ]
     }
+    withGreyContainer={true}
   >
     <View
       testID="credit-info"
@@ -1282,6 +1356,44 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
       </View>
     </View>
     <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      À venir pour tes 16 ans : 
+      <Text
+        style={
+          [
+            {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        + 30 €
+      </Text>
+    </Text>
+    <View
       numberOfSpaces={1}
       style={
         [
@@ -1417,7 +1529,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
 ]
 `;
 
-exports[`CreditHeader Beneficiary is underage should render correctly with exhausted credit 1`] = `
+exports[`CreditHeader Beneficiary is underage should render correctly for 16 year-old 1`] = `
 [
   <View
     customHeight={16}
@@ -1490,6 +1602,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -1504,10 +1626,966 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "color": "#696A6F",
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Profite de ton crédit jusqu’au
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+         
+        08/02/2100
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+    withGreyContainer={true}
+  >
+    <View
+      testID="credit-info"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 38,
+              "lineHeight": 48,
+            },
+          ]
+        }
+      >
+        400 €
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          [
+            {
+              "height": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 48,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          height="normal"
+          style={
+            [
+              {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 48,
+                "flexDirection": "row",
+                "height": 18,
+                "width": "100%",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <BVLinearGradient
+            angle={180}
+            colors={
+              [
+                451608661,
+                439484566,
+              ]
+            }
+            endPoint={
+              {
+                "x": 1,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "#ffffff",
+                  "borderRadius": 48,
+                  "borderWidth": 2,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+            useAngle={true}
+          />
+          <BVLinearGradient
+            colors={
+              [
+                872415231,
+                4294967295,
+                872415231,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderRadius": 48,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <BVLinearGradient
+            angle={90}
+            colors={
+              [
+                4293591125,
+                4281467030,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            progress={0.8}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderRadius": 48,
+                  "flexBasis": 0,
+                  "flexGrow": 0.8,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            testID="progress-bar"
+            useAngle={true}
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      À venir pour tes 17 ans : 
+      <Text
+        style={
+          [
+            {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        + 30 €
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2.5}
+      style={
+        [
+          {
+            "height": 10,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "height": "auto",
+          "justifyContent": "flex-start",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 2,
+          "textAlign": "left",
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Comment ça marche ?"
+    >
+      <View
+        style={
+          [
+            {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#161617"
+          height={16}
+          testID="button-icon"
+          width={16}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
+              "marginLeft": 4,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Comment ça marche ?
+      </Text>
+    </View>
+  </View>,
+]
+`;
+
+exports[`CreditHeader Beneficiary is underage should render correctly for 17 year-old 1`] = `
+[
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      [
+        {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginHorizontal": 24,
+          "marginTop": 24,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Rosa Bonheur
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    style={
+      [
+        {
+          "marginBottom": 24,
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Profite de ton crédit jusqu’au
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+         
+        08/02/2100
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#F1F1F4",
+          "borderRadius": 8,
+          "marginBottom": 8,
+          "marginHorizontal": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+        },
+      ]
+    }
+    withGreyContainer={true}
+  >
+    <View
+      testID="credit-info"
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 38,
+              "lineHeight": 48,
+            },
+          ]
+        }
+      >
+        400 €
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          [
+            {
+              "height": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 48,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          height="normal"
+          style={
+            [
+              {
+                "backgroundColor": "#ffffff",
+                "borderRadius": 48,
+                "flexDirection": "row",
+                "height": 18,
+                "width": "100%",
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <BVLinearGradient
+            angle={180}
+            colors={
+              [
+                451608661,
+                439484566,
+              ]
+            }
+            endPoint={
+              {
+                "x": 1,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderColor": "#ffffff",
+                  "borderRadius": 48,
+                  "borderWidth": 2,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+            useAngle={true}
+          />
+          <BVLinearGradient
+            colors={
+              [
+                872415231,
+                4294967295,
+                872415231,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderRadius": 48,
+                  "height": "100%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <BVLinearGradient
+            angle={90}
+            colors={
+              [
+                4293591125,
+                4281467030,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            progress={0.8}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderRadius": 48,
+                  "flexBasis": 0,
+                  "flexGrow": 0.8,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+            testID="progress-bar"
+            useAngle={true}
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      À venir pour tes 18 ans : 
+      <Text
+        style={
+          [
+            {
+              "color": "#320096",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        300 €
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      color="#CBCDD2"
+      style={
+        [
+          {
+            "backgroundColor": "#CBCDD2",
+            "height": 1,
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2.5}
+      style={
+        [
+          {
+            "height": 10,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Comment ça marche ?"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "height": "auto",
+          "justifyContent": "flex-start",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 2,
+          "textAlign": "left",
+          "userSelect": "auto",
+          "width": "100%",
+        }
+      }
+      testID="Comment ça marche ?"
+    >
+      <View
+        style={
+          [
+            {
+              "flexShrink": 0,
+            },
+          ]
+        }
+      >
+        <View
+          fill="#161617"
+          height={16}
+          testID="button-icon"
+          width={16}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "marginLeft": 4,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Comment ça marche ?
+      </Text>
+    </View>
+  </View>,
+]
+`;
+
+exports[`CreditHeader Beneficiary is underage should render correctly with exhausted credit for 15 year-old 1`] = `
+[
+  <View
+    customHeight={16}
+    enable={true}
+    style={
+      [
+        {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginHorizontal": 24,
+          "marginTop": 24,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Rosa Bonheur
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    style={
+      [
+        {
+          "marginBottom": 24,
+          "marginHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -1531,6 +2609,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         },
       ]
     }
+    withGreyContainer={true}
   >
     <Text
       style={
@@ -1805,7 +2884,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
 ]
 `;
 
-exports[`CreditHeader Beneficiary is underage should render correctly with exhausted credit 2`] = `
+exports[`CreditHeader Beneficiary is underage should render correctly with exhausted credit for 16 year-old 1`] = `
 [
   <View
     customHeight={16}
@@ -1878,6 +2957,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -1892,10 +2981,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -1919,6 +3008,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         },
       ]
     }
+    withGreyContainer={true}
   >
     <Text
       style={
@@ -2193,7 +3283,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
 ]
 `;
 
-exports[`CreditHeader Beneficiary is underage should render correctly with exhausted credit 3`] = `
+exports[`CreditHeader Beneficiary is underage should render correctly with exhausted credit for 17 year-old 1`] = `
 [
   <View
     customHeight={16}
@@ -2266,6 +3356,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
     }
   >
     <View
+      numberOfSpaces={1}
+      style={
+        [
+          {
+            "height": 4,
+          },
+        ]
+      }
+    />
+    <View
       style={
         [
           {
@@ -2280,10 +3380,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -2307,6 +3407,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         },
       ]
     }
+    withGreyContainer={true}
   >
     <Text
       style={

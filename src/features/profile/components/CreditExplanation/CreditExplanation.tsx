@@ -14,7 +14,7 @@ import { Question } from 'ui/svg/icons/Question'
 import { Spacer } from 'ui/theme'
 
 interface Props {
-  age?: number
+  age: number
   isDepositExpired: boolean
 }
 
@@ -64,6 +64,6 @@ const StyledButtonQuaternaryBlack = styledButton(ButtonQuaternaryBlack).attrs({
   textAlign: 'left',
 })
 
-const GreySeparator = styled(Separator).attrs(({ theme }) => ({
+const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))``

@@ -1,22 +1,22 @@
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { PasswordInput } from './PasswordInput'
 
 describe('<PasswordInput />', () => {
   it('should change accessibilityLabel when password is hidden or it was displayed', () => {
-    const { queryByLabelText, getByTestId } = render(<PasswordInput />)
+    render(<PasswordInput />)
 
-    expect(queryByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
-    expect(queryByLabelText('Cacher le mot de passe')).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
+    expect(screen.queryByLabelText('Cacher le mot de passe')).not.toBeOnTheScreen()
 
-    const switchPasswordVisibilityButton = getByTestId('Afficher le mot de passe')
+    const switchPasswordVisibilityButton = screen.getByTestId('Afficher le mot de passe')
 
     fireEvent.press(switchPasswordVisibilityButton)
-    expect(queryByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
-    expect(queryByLabelText('Afficher le mot de passe')).not.toBeOnTheScreen()
+    expect(screen.queryByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
+    expect(screen.queryByLabelText('Afficher le mot de passe')).not.toBeOnTheScreen()
   })
 
   it('should render ref correctly', () => {

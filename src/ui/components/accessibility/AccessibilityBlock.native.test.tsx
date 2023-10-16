@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 
 describe('AccessibilityBlock', () => {
   it('renders all handicap information', () => {
-    const { queryByTestId } = render(
+    render(
       <AccessibilityBlock
         audioDisability
         motorDisability={false}
@@ -13,13 +13,14 @@ describe('AccessibilityBlock', () => {
         visualDisability={false}
       />
     )
-    expect(queryByTestId('Handicap visuel')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap moteur')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap auditif')).toBeOnTheScreen()
+
+    expect(screen.queryByTestId('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Handicap auditif')).toBeOnTheScreen()
   })
   it('renders only available handicap information', () => {
-    const { queryByTestId } = render(
+    render(
       <AccessibilityBlock
         audioDisability={undefined}
         motorDisability={false}
@@ -27,9 +28,10 @@ describe('AccessibilityBlock', () => {
         visualDisability={false}
       />
     )
-    expect(queryByTestId('Handicap visuel')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap moteur')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap auditif')).not.toBeOnTheScreen()
+
+    expect(screen.queryByTestId('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Handicap auditif')).not.toBeOnTheScreen()
   })
 })

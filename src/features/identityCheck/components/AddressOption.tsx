@@ -31,7 +31,7 @@ export const AddressOption = ({
           <IconContainer>{!!selected && <Validate />}</IconContainer>
         </TextContainer>
       </StyledTouchableOpacity>
-      <Separator />
+      <Separator.Horizontal />
     </Container>
   )
 }

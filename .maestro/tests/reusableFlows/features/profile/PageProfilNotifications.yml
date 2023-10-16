@@ -1,0 +1,17 @@
+appId: app.passculture.staging
+---
+- assertVisible: "Notifications"
+- assertVisible: "Tu dois être connecté pour activer les notifications et rester informé\
+    \ des actualités du pass Culture "
+- assertVisible: "Je veux recevoir les recommandations personnalisées et meilleures\
+    \ offres du pass Culture."
+- tapOn: "Désactivé"
+- assertVisible: "Désactivé"
+- tapOn:
+        id: "Interrupteur Autoriser l’envoi d’e-mails"
+- assertVisible:
+        id: "Interrupteur Autoriser l’envoi d’e-mails"
+- assertVisible:
+        id: "Revenir en arrière"
+- tapOn:
+        id: "Revenir en arrière"

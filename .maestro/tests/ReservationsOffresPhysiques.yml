@@ -1,0 +1,45 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- tapOn: "Films, séries, cinéma"
+
+#- TODO trouver une solution pour cliquer sans passer par la position (actuellement il est simplement possible de cliquer en connaissant l'offre).
+- tapOn: SPIDER-MAN NEW GENERATION # nom de l'offre consultable
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+- runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- tapOn: "Catégories\_: Filtre sélectionné"
+- tapOn: "Films, séries, cinéma"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
+#- TODO trouver une solution pour cliquer sans passer par la position.
+- tapOn: SPIDER-MAN NEW GENERATION # nom de l'offre consultable
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+- runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
+- runFlow: reusableFlows/features/bookOffer/BookingConfirmationPage.yml # BookingConfirmationPage
+- tapOn: "Voir ma réservation"
+- assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
+    \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
+    \ ou le céder."
+- assertVisible: "Ma réservation"
+- tapOn:
+      id: "animated-icon-back"
+- assertVisible:
+      text: "Mes réservations"
+      index: 0
+- assertVisible: "Mes réservations"
+#- TODO trouver une solution pour cliquer sans passer par la position.
+- tapOn:
+      point: "61%,16%"
+- scrollUntilVisible:
+      element: "Annuler ma réservation"
+      direction: DOWN
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonCancelMyReservation.yml
+- runFlow: reusableFlows/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonCancelMyReservation.yml
+- assertVisible: "Réservations terminées"
+- runFlow: reusableFlows/StopApp.yml # Stop App

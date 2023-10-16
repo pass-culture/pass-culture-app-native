@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -15,13 +15,11 @@ describe('accessibilityList', () => {
     ({ itemList, numberOfSeparator }) => {
       const Separator = <Spacer.Column numberOfSpaces={6} testID="accessibility-list-separator" />
 
-      const { queryAllByTestId, queryAllByText } = render(
-        <AccessibilityList items={itemList} Separator={Separator} />
-      )
+      render(<AccessibilityList items={itemList} Separator={Separator} />)
 
-      const separatorList = queryAllByTestId('accessibility-list-separator')
+      const separatorList = screen.queryAllByTestId('accessibility-list-separator')
 
-      expect(queryAllByText('Item').length).toEqual(itemList.length)
+      expect(screen.queryAllByText('Item').length).toEqual(itemList.length)
       expect(separatorList.length).toEqual(numberOfSeparator)
     }
   )

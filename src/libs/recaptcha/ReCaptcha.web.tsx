@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 
 import { env } from 'libs/environment'
+import { ReCaptchaInternalError } from 'libs/recaptcha/errors'
 
 import { useCaptcha } from './useCaptcha'
 
 type Props = {
-  onError: (error: string) => void
+  onError: (errorCode: ReCaptchaInternalError, error?: string) => void
   onExpire: () => void
   onSuccess: (token: string) => void
   isVisible: boolean
@@ -25,17 +26,18 @@ export function ReCaptcha(props: Props) {
   useCaptcha()
 
   const reCaptchaContainerRef = useRef<HTMLDivElement>(null)
+  const reCaptchaWidgetRef = useRef<number>()
 
   function onSuccess(token: string) {
     const { grecaptcha } = window
     if (grecaptcha?.reset) {
-      grecaptcha.reset()
+      grecaptcha.reset(reCaptchaWidgetRef.current)
     }
     props.onSuccess(token)
   }
 
   function onRecaptchaErrorCallback() {
-    props.onError('reCAPTCHA error: error-callback of widget called')
+    props.onError(ReCaptchaInternalError.NetworkError)
   }
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export function ReCaptcha(props: Props) {
       numberOfRetries = numberOfRetries + 1
       if (numberOfRetries > 15) {
         clearInterval(intervalId)
-        props.onError('reCAPTCHA error: Number of retries exceeded')
+        props.onError(ReCaptchaInternalError.NumberOfRenderRetriesExceeded)
         return
       }
 
@@ -64,7 +66,7 @@ export function ReCaptcha(props: Props) {
         if (!isReCaptchaRendered) {
           grecaptcha.ready(() => {
             if (grecaptcha.render) {
-              grecaptcha.render(reCaptchaContainer.id, {
+              reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
                 sitekey: env.SITE_KEY,
                 callback: onSuccess,
                 'expired-callback': props.onExpire,
@@ -77,10 +79,14 @@ export function ReCaptcha(props: Props) {
         }
         if (isReCaptchaRendered) {
           try {
-            grecaptcha.execute()
+            grecaptcha.execute(reCaptchaWidgetRef.current)
             clearInterval(intervalId)
           } catch (error) {
-            if (error instanceof Error) props.onError('reCAPTCHA error: ' + error.message)
+            if (error instanceof Error)
+              props.onError(
+                ReCaptchaInternalError.UnknownError,
+                'reCAPTCHA error: ' + error.message
+              )
           }
         }
       }

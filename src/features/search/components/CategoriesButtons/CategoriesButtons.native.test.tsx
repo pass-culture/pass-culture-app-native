@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
 
@@ -15,16 +15,16 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 describe('CategoriesButtons', () => {
   it('should display categories', () => {
-    const { queryAllByRole } = render(<CategoriesButtons onPressCategory={jest.fn()} />)
+    render(<CategoriesButtons onPressCategory={jest.fn()} />)
 
-    expect(queryAllByRole('button').length).toEqual(14)
+    expect(screen.queryAllByRole('button').length).toEqual(14)
   })
 
   it('should call given callBack on press', () => {
     const mockOnPressCategory = jest.fn()
-    const { getByText } = render(<CategoriesButtons onPressCategory={mockOnPressCategory} />)
+    render(<CategoriesButtons onPressCategory={mockOnPressCategory} />)
 
-    const categoryButton = getByText('Spectacles')
+    const categoryButton = screen.getByText('Spectacles')
     fireEvent.press(categoryButton)
 
     expect(mockOnPressCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)

@@ -26,7 +26,8 @@ import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
+import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { From } from 'shared/offer/enums'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -36,6 +37,7 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 
 import { Login } from './Login'
 
+jest.mock('libs/monitoring')
 jest.mock('features/navigation/helpers')
 const mockSearchDispatch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
@@ -327,9 +329,9 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
-    const { getByText } = renderLogin()
+    renderLogin()
 
-    const signupButton = getByText('Créer un compte')
+    const signupButton = screen.getByText('Créer un compte')
     await act(async () => {
       fireEvent.press(signupButton)
     })
@@ -484,7 +486,7 @@ describe('<Login/>', () => {
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+      await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(screen.queryByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
     })
@@ -496,7 +498,7 @@ describe('<Login/>', () => {
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+      await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
       expect(apiSignInSpy).not.toHaveBeenCalled()
     })
@@ -508,12 +510,24 @@ describe('<Login/>', () => {
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+      await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
-        'Login Recaptcha Error: someError',
-        'info'
+      expect(captureMonitoringError).toHaveBeenCalledWith(
+        'UnknownError someError',
+        'LoginOnRecaptchaError'
       )
+    })
+
+    it('should not log to Sentry on reCAPTCHA network error', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+
+      expect(captureMonitoringError).not.toHaveBeenCalled()
     })
 
     it('should display error message when reCAPTCHA token has expired', async () => {

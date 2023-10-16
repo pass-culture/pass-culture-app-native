@@ -67,6 +67,8 @@ jobs:
         run: |
           bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
         env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ steps.secrets.outputs.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
           IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}

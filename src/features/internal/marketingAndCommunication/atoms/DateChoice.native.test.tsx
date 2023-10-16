@@ -3,7 +3,7 @@ import React from 'react'
 
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { DateChoice } from 'features/internal/marketingAndCommunication/atoms/DateChoice'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const onChange = jest.fn()
 
@@ -17,9 +17,9 @@ describe('<DateChoice />', () => {
 
   it('should call onChange with new Date', () => {
     const onChange = jest.fn()
-    const renderAPI = render(<DateChoice onChange={onChange} />)
+    render(<DateChoice onChange={onChange} />)
 
-    const datePicker = renderAPI.getByTestId('date-picker-spinner-native')
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
     expect(onChange).toBeCalledWith(ELIGIBLE_AGE_DATE)

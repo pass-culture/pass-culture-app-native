@@ -48,7 +48,7 @@ const ItemSeparatorContainer = styled.View({
 function ItemSeparatorComponent() {
   return (
     <ItemSeparatorContainer>
-      <Separator />
+      <Separator.Horizontal />
     </ItemSeparatorContainer>
   )
 }

@@ -13,8 +13,8 @@ jest.mock('features/navigation/navigationRef')
 
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', () => {
-    const VerifyEligibilityComponent = render(<VerifyEligibility />)
-    expect(VerifyEligibilityComponent).toMatchSnapshot()
+    render(<VerifyEligibility />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to home page WHEN "Vérifier mon identité plus tard" button is clicked', () => {

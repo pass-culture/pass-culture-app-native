@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { MINIMUM_DATE, CURRENT_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
 const props = {
@@ -17,9 +17,9 @@ describe('<DateInput />', () => {
   })
 
   it('should render correctly', () => {
-    const { queryByTestId } = render(<DateInput {...props} />)
-    expect(queryByTestId('date-picker-spinner-native')).toBeOnTheScreen()
-    expect(queryByTestId('date-picker-dropdown')).not.toBeOnTheScreen()
-    expect(queryByTestId('date-picker-spinner-touch')).not.toBeOnTheScreen()
+    render(<DateInput {...props} />)
+    expect(screen.queryByTestId('date-picker-spinner-native')).toBeOnTheScreen()
+    expect(screen.queryByTestId('date-picker-dropdown')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('date-picker-spinner-touch')).not.toBeOnTheScreen()
   })
 })

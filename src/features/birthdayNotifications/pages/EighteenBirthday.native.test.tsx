@@ -19,8 +19,8 @@ afterEach(() => {
 describe('<EighteenBirthday />', () => {
   it('should render eighteen birthday', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const renderAPI = render(reactQueryProviderHOC(<EighteenBirthday />))
-    expect(renderAPI).toMatchSnapshot()
+    render(reactQueryProviderHOC(<EighteenBirthday />))
+    expect(screen).toMatchSnapshot()
   })
 
   it('should set `has_seen_eligible_card` to true in storage', async () => {

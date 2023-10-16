@@ -1,12 +1,12 @@
 import * as React from 'react'
 
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
-import { render, fireEvent } from 'tests/utils'
+import { render, fireEvent, screen } from 'tests/utils'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 
 describe('CulturalSurveyCheckbox', () => {
   it('should render correctly', () => {
-    const CulturalSurveyCheckboxComponent = render(
+    render(
       <CulturalSurveyCheckbox
         icon={culturalSurveyIcons.Museum}
         title="Visité un musée,"
@@ -15,10 +15,10 @@ describe('CulturalSurveyCheckbox', () => {
         onPress={jest.fn()}
       />
     )
-    expect(CulturalSurveyCheckboxComponent).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
   it('should render correctly when pressed', () => {
-    const CulturalSurveyCheckboxComponent = render(
+    render(
       <CulturalSurveyCheckbox
         icon={culturalSurveyIcons.Museum}
         title="Visité un musée,"
@@ -27,10 +27,8 @@ describe('CulturalSurveyCheckbox', () => {
         onPress={jest.fn()}
       />
     )
-    const Button = CulturalSurveyCheckboxComponent.getByLabelText(
-      'Visité un musée, un monument, une exposition...'
-    )
+    const Button = screen.getByLabelText('Visité un musée, un monument, une exposition...')
     fireEvent.press(Button)
-    expect(CulturalSurveyCheckboxComponent).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 })

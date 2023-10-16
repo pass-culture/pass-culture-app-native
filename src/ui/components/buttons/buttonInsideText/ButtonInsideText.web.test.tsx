@@ -16,7 +16,7 @@ describe('ButtonInsideText Component', () => {
     })
     it('should display icon when provided', () => {
       render(<ButtonInsideText wording={wording} icon={ExternalSiteFilled} />)
-      expect(screen.queryByTestId('button-icon')).toBeInTheDocument()
+      expect(screen.getByTestId('button-icon')).toBeInTheDocument()
     })
   })
   describe('* typography property', () => {

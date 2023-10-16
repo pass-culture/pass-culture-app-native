@@ -312,7 +312,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                   />
                 )}
                 <Spacer.Column numberOfSpaces={6} />
-                <Separator />
+                <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={6} />
               </React.Fragment>
             )}

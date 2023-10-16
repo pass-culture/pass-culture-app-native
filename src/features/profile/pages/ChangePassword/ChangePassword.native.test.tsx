@@ -25,8 +25,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 function renderChangePassword() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  const wrapper = render(reactQueryProviderHOC(<ChangePassword />))
-  return wrapper
+  render(reactQueryProviderHOC(<ChangePassword />))
 }
 
 describe('ChangePassword', () => {

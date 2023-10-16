@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -64,10 +65,12 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     setIsDoingReCaptchaChallenge(false)
   }, [])
 
-  const onReCaptchaError = useCallback((error: string) => {
+  const onReCaptchaError = useCallback((errorCode: ReCaptchaError, error: string | undefined) => {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
-    captureMonitoringError(error, 'AcceptCguOnReCaptchaError')
+    if (errorCode !== 'ReCaptchaNetworkError') {
+      captureMonitoringError(`${errorCode} ${error}`, 'AcceptCguOnReCaptchaError')
+    }
   }, [])
 
   const onReCaptchaExpire = useCallback(() => {
@@ -126,7 +129,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         numberOfLines={2}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={8} />
       <Typo.Body>
         Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu

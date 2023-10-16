@@ -1,7 +1,7 @@
 {
   "name": "@pass-culture/web-proxy",
   "description": "Express proxy for pass-culture-app-native Web Application",
-  "version": "1.260.0",
+  "version": "1.261.1",
   "private": true,
   "main": "build/src/index.js",
   "author": {
@@ -18,7 +18,7 @@
     "node": "18"
   },
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc --build && cp package.json build",
     "predeploy": "yarn build",
     "deploy": "gcloud app deploy --quiet",
     "deploy:testing": "cat .env.testing > .env && sed -i.back -e '/web-proxy-testing/! s/web-proxy/web-proxy-testing/g' app.yaml && yarn deploy",

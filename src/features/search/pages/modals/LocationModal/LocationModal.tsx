@@ -1,8 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useMemo, useRef, useState, useEffect } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { Keyboard, View, TextInput as RNTextInput } from 'react-native'
+import { Keyboard, TextInput as RNTextInput, View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -487,7 +487,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                         />
                       )}
                       <Spacer.Column numberOfSpaces={6} />
-                      {index + 1 < LOCATION_TYPES.length && <Separator />}
+                      {index + 1 < LOCATION_TYPES.length && <Separator.Horizontal />}
                     </Li>
                   ))}
                 </StyledVerticalUl>

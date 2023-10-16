@@ -6,7 +6,7 @@ import {
   VENUE_WITH_BANNER_RESPONSE_SNAPSHOT,
 } from '../../../tests/constants'
 import { ENTITY_MAP, EntityKeys } from '../../services/entities/types'
-import { replaceHtmlMetas, addOrganizationPrefix } from '../metas'
+import { replaceHtmlMetas } from '../metas'
 import { env } from '../../libs/environment/env'
 import { logger } from '../logging'
 
@@ -55,10 +55,6 @@ describe('metas utils', () => {
       VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id
     )
     expect(newHtml).toMatchSnapshot()
-  })
-
-  it(`should prefix string "Hello World" with "${env.ORGANIZATION_PREFIX} |"`, () => {
-    expect(addOrganizationPrefix('Hello World')).toEqual(`${env.ORGANIZATION_PREFIX} | Hello World`)
   })
 
   it('should encode metadata in json-ld', async () => {

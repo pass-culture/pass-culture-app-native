@@ -24,12 +24,10 @@ describe('<Checkbox />', () => {
   it('can be checked with checkbox', async () => {
     const label = 'I agree to disagree'
     const onPressMock = jest.fn()
-    const { getByLabelText } = render(
-      <Checkbox label={label} isChecked={false} onPress={onPressMock} />
-    )
+    render(<Checkbox label={label} isChecked={false} onPress={onPressMock} />)
 
     await act(async () => {
-      await userEvent.click(getByLabelText(label))
+      await userEvent.click(screen.getByLabelText(label))
     })
 
     expect(onPressMock).toHaveBeenCalledWith(true)
@@ -38,10 +36,10 @@ describe('<Checkbox />', () => {
   it('can be checked with label', async () => {
     const label = 'I agree to disagree'
     const onPressMock = jest.fn()
-    const { getByText } = render(<Checkbox label={label} isChecked={false} onPress={onPressMock} />)
+    render(<Checkbox label={label} isChecked={false} onPress={onPressMock} />)
 
     await act(async () => {
-      await userEvent.click(getByText(label))
+      await userEvent.click(screen.getByText(label))
     })
 
     expect(onPressMock).toHaveBeenCalledWith(true)

@@ -20,6 +20,7 @@ type PerformSearchState = {
   searchNativeCategories?: string
   searchQuery?: string
   searchTimeRange?: string
+  searchIsBasedOnHistory?: boolean
 }
 
 export const isCloseToBottom = ({
@@ -122,6 +123,10 @@ export const buildPerformSearchState = (searchState: SearchState) => {
 
   if (searchState.timeRange !== null) {
     state.searchTimeRange = JSON.stringify(searchState.timeRange)
+  }
+
+  if (searchState.isFromHistory) {
+    state.searchIsBasedOnHistory = searchState.isFromHistory
   }
 
   return state

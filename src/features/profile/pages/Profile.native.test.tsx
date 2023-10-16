@@ -9,8 +9,9 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
+import { domains_exhausted_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { TutorialTypes } from 'features/tutorial/enums'
-import { nonBeneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import {
@@ -238,6 +239,29 @@ describe('Profile component', () => {
 
       expect(openUrl).toBeCalledWith(env.FAQ_LINK, undefined, true)
     })
+
+    it('should display tutorial row when user is exbeneficiary', () => {
+      mockedUseAuthContext.mockImplementationOnce(() => ({
+        isLoggedIn: true,
+        user: { ...beneficiaryUser, depositExpirationDate: '2022-10-10T00:00:00Z' },
+      }))
+      renderProfile()
+
+      expect(screen.getByText('Comment ça marche ?')).toBeOnTheScreen()
+    })
+
+    it('should display tutorial row when user has no credit and no upcoming credit', () => {
+      mockedUseAuthContext.mockImplementationOnce(() => ({
+        isLoggedIn: true,
+        user: {
+          ...beneficiaryUser,
+          domainsCredit: domains_exhausted_credit_v1,
+        },
+      }))
+      renderProfile()
+
+      expect(screen.getByText('Comment ça marche ?')).toBeOnTheScreen()
+    })
   })
 
   describe('other section', () => {
@@ -367,7 +391,7 @@ const defaultOptions = {
 
 function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  const renderAPI = render(
+  render(
     <NavigationContainer>
       <TabStack.Navigator initialRouteName="Profile">
         <TabStack.Screen name="Profile" component={Profile} />
@@ -375,5 +399,4 @@ function renderProfile(options: Options = defaultOptions) {
     </NavigationContainer>,
     { wrapper }
   )
-  return renderAPI
 }

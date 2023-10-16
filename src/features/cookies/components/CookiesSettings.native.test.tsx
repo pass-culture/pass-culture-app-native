@@ -11,13 +11,13 @@ jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('<CookiesSettings/>', () => {
   it('should render correctly', async () => {
-    const renderAPI = renderCookiesSettings()
+    renderCookiesSettings()
 
     await screen.findByTestId(
       'Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs'
     )
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should disable and check essential cookies switch', async () => {

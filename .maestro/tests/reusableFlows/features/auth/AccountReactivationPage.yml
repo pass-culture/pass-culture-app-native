@@ -1,0 +1,7 @@
+appId: app.passculture.staging
+---
+#AccountReactivationPage
+- assertVisible: "Ton compte a été réactivé"
+- assertVisible: "On est ravi de te revoir\_!"
+- assertVisible: "Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture."
+- assertVisible: "Découvrir le catalogue"

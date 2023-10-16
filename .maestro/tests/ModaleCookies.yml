@@ -1,0 +1,17 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- tapOn: "Choisir les cookies"
+#TODO trouver un moyen pour cliquer par le texte car les toggles ne se cliquable que par l'ID
+- tapOn:
+    id: "Interrupteur Tout accepter"
+- tapOn:
+    id: "Interrupteur Tout accepter"
+- tapOn:
+    id: "Interrupteur Personnaliser ta navigation"
+- tapOn:
+    id: "Interrupteur Enregistrer des statistiques de navigation"
+- tapOn:
+    id: "Interrupteur Mesurer l’efficacité de nos publicités"
+- tapOn: "Enregistrer mes choix"
+- runFlow: reusableFlows/StopApp.yml # Stop App

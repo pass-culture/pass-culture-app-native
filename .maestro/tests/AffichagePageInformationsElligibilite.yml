@@ -1,0 +1,32 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAllAccept.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonPass.yml
+- assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
+- assertVisible: "Cela permet de savoir si tu peux bénéficier du pass Culture."
+- assertVisible:
+    text: "j’ai 15 ans"
+    index: 1
+- assertVisible:
+    text: "j’ai 16 ans"
+    index: 1
+- assertVisible:
+    text: "j’ai 17 ans"
+    index: 1
+- assertVisible:
+    text: "j’ai 18 ans"
+    index: 1
+- assertVisible: "Autre"
+- assertVisible: "j’ai moins de 15 ans ou plus de 18 ans"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonPass.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAge15.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonCreateAccount.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBack.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

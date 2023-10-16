@@ -8,7 +8,7 @@ import {
   MAXIMUM_DATE,
   MINIMUM_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { DatePickerSpinner } from './DatePickerSpinner'
 
@@ -28,18 +28,18 @@ describe('<DatePickerSpinner />', () => {
 
   describe('- navigation -', () => {
     it('should keep disabled the button "Continuer" when the date is not selected', () => {
-      const { getByTestId } = render(<DatePickerSpinner {...props} />)
+      render(<DatePickerSpinner {...props} />)
 
-      const datePicker = getByTestId('date-picker-spinner-native')
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
       fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
 
       expect(props.onChange).toBeCalledWith(CURRENT_DATE)
     })
 
     it('should keep enable the button "Continuer" when the date is selected and is different from the current date', () => {
-      const { getByTestId } = render(<DatePickerSpinner {...props} />)
+      render(<DatePickerSpinner {...props} />)
 
-      const datePicker = getByTestId('date-picker-spinner-native')
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
       fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
       expect(props.onChange).toBeCalledWith(ELIGIBLE_AGE_DATE)

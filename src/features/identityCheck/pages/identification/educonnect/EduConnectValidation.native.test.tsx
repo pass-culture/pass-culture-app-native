@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CommonActions, dispatch, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { EduConnectValidation } from './EduConnectValidation'
 
@@ -28,8 +28,8 @@ describe('<EduConnectValidation />', () => {
   )
 
   it('should redirect to Stepper when logged in with EduConnect', async () => {
-    const { getByText } = render(<EduConnectValidation />)
-    const validateButton = getByText('Valider mes informations')
+    render(<EduConnectValidation />)
+    const validateButton = screen.getByText('Valider mes informations')
     fireEvent.press(validateButton)
 
     await waitFor(() => {
@@ -42,20 +42,20 @@ describe('<EduConnectValidation />', () => {
   })
 
   it('should render EduConnectValidation component correctly', () => {
-    const renderAPI = render(<EduConnectValidation />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<EduConnectValidation />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display user infos with props given', () => {
-    const { getByText } = render(<EduConnectValidation />)
-    expect(getByText('John')).toBeOnTheScreen()
-    expect(getByText('Doe')).toBeOnTheScreen()
-    expect(getByText('28/01/1993')).toBeOnTheScreen()
+    render(<EduConnectValidation />)
+    expect(screen.getByText('John')).toBeOnTheScreen()
+    expect(screen.getByText('Doe')).toBeOnTheScreen()
+    expect(screen.getByText('28/01/1993')).toBeOnTheScreen()
   })
   it("should trigger tracker when the 'Valider mes informations' button is pressed", () => {
-    const { getByText } = render(<EduConnectValidation />)
+    render(<EduConnectValidation />)
 
-    const button = getByText('Valider mes informations')
+    const button = screen.getByText('Valider mes informations')
 
     fireEvent.press(button)
 

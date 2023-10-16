@@ -33,13 +33,13 @@ describe('CheatCodes component', () => {
   `('should display/not display code push button', async ({ environment, buttonIsdisplayed }) => {
     env.ENV = environment
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const instance = renderCheatCodes()
+    renderCheatCodes()
 
     await screen.findByText('CheatCodes')
 
     buttonIsdisplayed
-      ? expect(instance.queryByText('Check update')).toBeOnTheScreen()
-      : expect(instance.queryByText('Check update')).not.toBeOnTheScreen()
+      ? expect(screen.queryByText('Check update')).toBeOnTheScreen()
+      : expect(screen.queryByText('Check update')).not.toBeOnTheScreen()
     expect.assertions(1)
   })
 
@@ -54,5 +54,5 @@ describe('CheatCodes component', () => {
 
 function renderCheatCodes() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
+  render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 }

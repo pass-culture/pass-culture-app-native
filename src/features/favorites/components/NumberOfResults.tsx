@@ -11,8 +11,8 @@ export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites
     <Container>
       <Caption>
         {plural(nbFavorites, {
-          one: '# favori',
-          other: '# favoris',
+          singular: '# favori',
+          plural: '# favoris',
         })}
       </Caption>
     </Container>

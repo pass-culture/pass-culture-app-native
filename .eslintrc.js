@@ -30,6 +30,7 @@ module.exports = {
   },
   rules: {
     'testing-library/await-async-utils': ['error'],
+    'testing-library/prefer-screen-queries': ['error'],
     'local-rules/independent-mocks': ['error'],
     'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],
@@ -167,12 +168,6 @@ module.exports = {
             importNames: ['default'],
             message:
               'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',
-          },
-          {
-            name: 'lodash',
-            importNames: ['cloneDeep'],
-            message:
-              'Do not use lodash cloneDeep, use structuredClone instead, as it is included in JS now',
           },
         ],
         patterns: [

@@ -8,7 +8,7 @@ import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { analytics } from 'libs/analytics'
 import { BatchUser } from 'libs/react-native-batch'
-import { render, fireEvent, waitFor } from 'tests/utils'
+import { render, fireEvent, waitFor, screen } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
@@ -26,14 +26,14 @@ jest.mock('features/share/context/ShareAppWrapper', () => ({
 
 describe('<AccountCreated />', () => {
   it('should render correctly', () => {
-    const renderAPI = renderAccountCreated()
-    expect(renderAPI).toMatchSnapshot()
+    renderAccountCreated()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to native cultural survey page WHEN "On y va !" button is clicked', async () => {
-    const renderAPI = renderAccountCreated()
+    renderAccountCreated()
 
-    fireEvent.press(renderAPI.getByText('On y va\u00a0!'))
+    fireEvent.press(screen.getByText('On y va\u00a0!'))
 
     await waitFor(() => {
       expect(navigateFromRef).not.toBeCalled()
@@ -47,9 +47,9 @@ describe('<AccountCreated />', () => {
     mockUseAuthContext.mockReturnValueOnce({
       user: { ...globalMockUser, needsToFillCulturalSurvey: false },
     })
-    const renderAPI = renderAccountCreated()
+    renderAccountCreated()
 
-    fireEvent.press(renderAPI.getByText('On y va\u00a0!'))
+    fireEvent.press(screen.getByText('On y va\u00a0!'))
 
     await waitFor(() => {
       expect(navigateFromRef).toBeCalledWith(
@@ -61,25 +61,25 @@ describe('<AccountCreated />', () => {
   })
 
   it('should track Batch event when "On y va !" button is clicked', async () => {
-    const renderAPI = renderAccountCreated()
+    renderAccountCreated()
 
-    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByText('On y va\u00a0!'))
 
     expect(BatchUser.trackEvent).toBeCalledWith('has_validated_account')
   })
 
   it('should show non eligible share app modal when "On y va !" button is clicked', async () => {
-    const renderAPI = renderAccountCreated()
+    renderAccountCreated()
 
-    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByText('On y va\u00a0!'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.NOT_ELIGIBLE)
   })
 
   it('should log analytics when "On y va !" button is clicked', async () => {
-    const renderAPI = renderAccountCreated()
+    renderAccountCreated()
 
-    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByText('On y va\u00a0!'))
 
     expect(analytics.logAccountCreatedStartClicked).toHaveBeenCalledTimes(1)
   })
