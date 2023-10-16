@@ -263,11 +263,12 @@ exports[`VenueModal should render correctly 1`] = `
             testID="Fermer la modale"
           >
             <View
-              height={32}
-              width={32}
+              height={20}
+              testID="rightIcon"
+              width={20}
             >
               <Text>
-                undefined-SVG-Mock
+                rightIcon-SVG-Mock
               </Text>
             </View>
           </View>
