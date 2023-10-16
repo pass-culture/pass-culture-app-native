@@ -1,9 +1,9 @@
-import { useState, useCallback } from 'react'
-
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { analytics } from 'libs/analytics'
+import { useState, useCallback } from 'react'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 export type VenueModalHook = {
@@ -62,6 +62,7 @@ const useVenueModal = (
         type: 'SET_STATE',
         payload,
       })
+      analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
       doAfterSearch?.(payload)
     }
 

@@ -2,6 +2,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { analytics } from 'libs/analytics'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
 
@@ -174,5 +175,25 @@ describe('useVenueModal', () => {
         view: SearchView.Results,
       },
     })
+  })
+
+  it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
+    const { result } = renderHook(
+      ({ dismissModal, doAfterSearch }) => useVenueModal(dismissModal, doAfterSearch),
+      {
+        initialProps: {
+          dismissModal: dismissMyModal,
+          doAfterSearch,
+        },
+      }
+    )
+
+    await act(() => {
+      result.current.doSetSelectedVenue({ label: 'venueLabel', info: 'info', venueId: 1234 })
+    })
+    await act(() => {
+      result.current.doApplySearch()
+    })
+    expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: 'venueLabel' })
   })
 })
