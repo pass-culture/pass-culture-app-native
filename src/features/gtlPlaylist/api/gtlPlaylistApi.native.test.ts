@@ -37,8 +37,18 @@ describe('GTL Playlist API', () => {
       })
 
       expect(result).toEqual([
-        { layout: 'two-items', offers: { hits: [] }, title: 'Jeunesse' },
-        { layout: 'two-items', offers: { hits: [] }, title: 'Littérature' },
+        {
+          layout: 'two-items',
+          offers: { hits: [] },
+          title: 'Jeunesse',
+          entryId: '7FqRezKdV0mcUjOYerCUuJ',
+        },
+        {
+          layout: 'two-items',
+          offers: { hits: [] },
+          title: 'Littérature',
+          entryId: '2xUlLBRfxdk6jeYyJszunX',
+        },
       ])
     })
   })
@@ -68,6 +78,9 @@ describe('GTL Playlist API', () => {
                 minOffers: 1,
               },
             },
+          },
+          sys: {
+            id: '2xUlLBRfxdk6jeYyJszunX',
           },
         },
       ],
@@ -129,6 +142,7 @@ describe('GTL Playlist API', () => {
             hits: [],
           },
           title: 'Ma Playlist Littérature',
+          entryId: '2xUlLBRfxdk6jeYyJszunX',
         },
       ])
     })

@@ -20,5 +20,8 @@ export type ContentfulGtlPlaylistResponse = [
         }
       }
     }
+    sys: {
+      id: string
+    }
   }
 ]
