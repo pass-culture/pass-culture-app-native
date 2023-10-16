@@ -70,6 +70,18 @@ export const SearchResults: React.FC = () => {
   const { userPosition } = useLocation()
   const previousUserPosition = usePrevious(userPosition)
 
+  // Execute log only on initial search fetch
+  const previousIsLoading = usePrevious(isLoading)
+  useEffect(() => {
+    if (previousIsLoading && !isLoading) {
+      analytics.logPerformSearch(searchState, nbHits)
+
+      if (nbHits === 0) {
+        analytics.logNoSearchResult(searchState.query, searchState.searchId)
+      }
+    }
+  }, [isLoading, nbHits, previousIsLoading, searchState])
+
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { params } = useRoute<UseRouteType<'Search'>>()

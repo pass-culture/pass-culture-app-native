@@ -1,14 +1,10 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchView } from 'features/search/types'
-import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { NoSearchResult } from './NoSearchResult'
-
-const searchId = uuidv4()
 
 describe('NoSearchResult component', () => {
   it('should show the message without query entered', () => {
@@ -62,21 +58,5 @@ describe('NoSearchResult component', () => {
       view: SearchView.Landing,
       query: 'vinyle',
     })
-  })
-
-  it('should log NoSearchResult with the query', () => {
-    useRoute.mockReturnValueOnce({
-      params: { view: SearchView.Landing, query: '', searchId },
-    })
-
-    render(<NoSearchResult />)
-    expect(analytics.logNoSearchResult).not.toHaveBeenLastCalledWith('')
-
-    useRoute.mockReturnValueOnce({
-      params: { view: SearchView.Landing, query: 'no result query', searchId },
-    })
-    render(<NoSearchResult />)
-    expect(analytics.logNoSearchResult).toHaveBeenLastCalledWith('no result query', searchId)
-    expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
   })
 })

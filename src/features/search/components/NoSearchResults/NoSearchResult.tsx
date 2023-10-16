@@ -1,26 +1,19 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const NoSearchResult: React.FC = () => {
+export function NoSearchResult() {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const query = params?.query
-
-  useEffect(() => {
-    if (query) {
-      analytics.logNoSearchResult(query, params?.searchId)
-    }
-  }, [params?.searchId, query])
 
   const onPressUpdateFilters = useCallback(() => {
     navigate('SearchFilter', params ?? {})
