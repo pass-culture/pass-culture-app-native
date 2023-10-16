@@ -223,10 +223,8 @@ exports[`SearchResults component should render correctly 1`] = `
                   "height": 32,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "paddingBottom": 6,
                   "paddingLeft": 16,
                   "paddingRight": 16,
-                  "paddingTop": 6,
                   "userSelect": "auto",
                 }
               }
@@ -324,10 +322,8 @@ exports[`SearchResults component should render correctly 1`] = `
                   "height": 32,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "paddingBottom": 6,
                   "paddingLeft": 16,
                   "paddingRight": 16,
-                  "paddingTop": 6,
                   "userSelect": "auto",
                 }
               }
@@ -405,10 +401,8 @@ exports[`SearchResults component should render correctly 1`] = `
                   "height": 32,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "paddingBottom": 6,
                   "paddingLeft": 16,
                   "paddingRight": 16,
-                  "paddingTop": 6,
                   "userSelect": "auto",
                 }
               }
@@ -486,10 +480,8 @@ exports[`SearchResults component should render correctly 1`] = `
                   "height": 32,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "paddingBottom": 6,
                   "paddingLeft": 16,
                   "paddingRight": 16,
-                  "paddingTop": 6,
                   "userSelect": "auto",
                 }
               }
@@ -568,10 +560,8 @@ exports[`SearchResults component should render correctly 1`] = `
                   "height": 32,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "paddingBottom": 6,
                   "paddingLeft": 16,
                   "paddingRight": 16,
-                  "paddingTop": 6,
                   "userSelect": "auto",
                 }
               }

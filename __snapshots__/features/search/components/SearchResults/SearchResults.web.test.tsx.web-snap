@@ -93,8 +93,6 @@ exports[`SearchResults component should render correctly 1`] = `
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 6px;
-  padding-bottom: 6px;
   height: 32px;
   background-color: #F1F1F4;
   border-color: #161617;
@@ -129,8 +127,6 @@ exports[`SearchResults component should render correctly 1`] = `
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 6px;
-  padding-bottom: 6px;
   height: 32px;
   background-color: #ffffff;
   border-color: #161617;
@@ -637,8 +633,6 @@ exports[`SearchResults component should render correctly 1`] = `
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 6px;
-  padding-bottom: 6px;
   height: 32px;
   background-color: #F1F1F4;
   border-color: #161617;
@@ -673,8 +667,6 @@ exports[`SearchResults component should render correctly 1`] = `
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 6px;
-  padding-bottom: 6px;
   height: 32px;
   background-color: #ffffff;
   border-color: #161617;
