@@ -575,6 +575,71 @@ describe('SearchBox component', () => {
       expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
     }
   )
+
+  it.each`
+    locationType               | locationFilter                                                                   | position            | locationSearchWidgetLabel
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
+    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
+    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
+  `(
+    'should display $locationSearchWidgetLabel in location search widget when location type is $locationType and position is $position',
+    async ({
+      locationFilter,
+      position,
+      locationSearchWidgetLabel,
+    }: {
+      locationFilter: LocationFilter
+      position: Position
+      locationSearchWidgetLabel: string
+    }) => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+
+      mockSearchState = { ...initialSearchState, locationFilter }
+      mockPosition = position
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, locationFilter } })
+      render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
+      await act(async () => {})
+
+      expect(screen.getByText(locationSearchWidgetLabel)).toBeOnTheScreen()
+    }
+  )
+
+  it('should not display locationSearchWidget when isDesktopViewport = true', async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: { locationType: LocationType.EVERYWHERE },
+    }
+    mockPosition = DEFAULT_POSITION
+    useRoute.mockReturnValueOnce({
+      params: {
+        view: SearchView.Results,
+        locationFilter: { locationType: LocationType.EVERYWHERE },
+      },
+    })
+    render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />,
+      { theme: { isDesktopViewport: true } }
+    )
+    await act(async () => {})
+
+    expect(screen.getByText('Partout')).toBeOnTheScreen()
+  })
 })
 
 describe('SearchBox component with venue previous route', () => {

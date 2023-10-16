@@ -5,6 +5,7 @@ import {
   TextInput as RNTextInput,
   TextInputSubmitEditingEventData,
 } from 'react-native'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
@@ -61,8 +62,25 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   }: Props,
   ref
 ) {
+  const { isDesktopViewport } = useTheme()
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
+  const renderSearchChildren = () => {
+    if (!showLocationButton) return null
+    if (enableAppLocation) {
+      return isDesktopViewport ? null : <LocationSearchWidget />
+    }
+    return (
+      <LocationButton
+        wording={locationLabel ?? ''}
+        onPress={onPressLocationButton}
+        icon={LocationPointer}
+        buttonHeight="extraSmall"
+        ellipsizeMode="tail"
+        numberOfLines={numberOfLinesForLocation}
+      />
+    )
+  }
   return (
     <StyledSearchInput
       ref={ref}
@@ -78,19 +96,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       inputHeight="regular"
       testID="searchInput"
       {...props}>
-      {!!showLocationButton &&
-        (!enableAppLocation ? (
-          <LocationButton
-            wording={locationLabel ?? ''}
-            onPress={onPressLocationButton}
-            icon={LocationPointer}
-            buttonHeight="extraSmall"
-            ellipsizeMode="tail"
-            numberOfLines={numberOfLinesForLocation}
-          />
-        ) : (
-          <LocationSearchWidget />
-        ))}
+      {renderSearchChildren()}
     </StyledSearchInput>
   )
 })
