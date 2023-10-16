@@ -530,6 +530,39 @@ describe('SearchResults component', () => {
     expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(1, mockSearchState, mockNbHits)
   })
 
+  it('should not log NoSearchResult when there is not search query execution', async () => {
+    render(<SearchResults />)
+    await act(async () => {})
+
+    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+  })
+
+  it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
+    mockIsLoading = true
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    screen.rerender(<SearchResults />)
+    expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
+
+    screen.rerender(<SearchResults />)
+    expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
+    mockIsLoading = true
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    mockSearchState = searchState
+    screen.rerender(<SearchResults />)
+    expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
+  })
+
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
     mockHits = mockedAlgoliaResponse.hits

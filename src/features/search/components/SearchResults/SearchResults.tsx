@@ -75,6 +75,10 @@ export const SearchResults: React.FC = () => {
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
       analytics.logPerformSearch(searchState, nbHits)
+
+      if (nbHits === 0) {
+        analytics.logNoSearchResult(searchState.query, searchState.searchId)
+      }
     }
   }, [isLoading, nbHits, previousIsLoading, searchState])
 
