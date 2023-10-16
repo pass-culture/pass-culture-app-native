@@ -21,6 +21,8 @@ interface Props {
   onSearch?: VenueModalHookCallback
 }
 
+const IconClose = () => <Close />
+
 export const VenueModal = ({ visible, dismissModal, onSearch }: Props) => {
   const {
     doChangeVenue,
@@ -40,7 +42,7 @@ export const VenueModal = ({ visible, dismissModal, onSearch }: Props) => {
       visible={visible}
       title="Point de vente"
       rightIconAccessibilityLabel="Fermer la modale"
-      rightIcon={() => <Close />}
+      rightIcon={IconClose}
       onRightIconPress={doApplySearch}
       isUpToStatusBar
       scrollEnabled={false}
