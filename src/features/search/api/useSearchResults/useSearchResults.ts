@@ -10,7 +10,6 @@ import { AlgoliaVenue, FacetData } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -43,8 +42,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
       })
-
-      analytics.logPerformSearch(searchState, offersResponse.nbHits)
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
       return { offers: offersResponse, venues: venuesResponse, facets: facetsResponse }
