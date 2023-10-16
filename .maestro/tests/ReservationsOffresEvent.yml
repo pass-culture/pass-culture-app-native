@@ -56,9 +56,7 @@ appId: app.passculture.staging
 - scrollUntilVisible:
       element: "Annuler ma réservation"
       direction: DOWN
-#- TODO : comprendre pourquoi le wording n'est pas détecté par MAESTRO
-#- assertVisible:
-#    id: "cancel-annulation-message"
+- assertVisible: "Réservation annulée"
 - tapOn: "Voir le détail de l’offre"
 
 - tapOn:

@@ -15,7 +15,8 @@ appId: app.passculture.staging
 
 - assertVisible: 'Date de naissance'
 - tapOn:
-    point: '75%, 70%' # TODO: Trouver un moyen de scroll dans le carrousel
+    point: '75%, 70%'
+# TODO: Trouver un moyen de scroll dans le carrousel
 - tapOn: 'Continuer vers l’étape CGU & Données'
 
 - assertVisible: 'CGU & Données'

@@ -2,11 +2,9 @@ appId: app.passculture.staging
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonBack.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
       point: "50%,71%"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
@@ -24,21 +22,21 @@ appId: app.passculture.staging
 - tapOn:
       id: "Interrupteur limitDuoOfferSearch"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
     point: "49%,84%"
 - tapOn:
     point: "49%,84%"
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
     point: "37%,72%"
 - assertVisible: "Valider la date"
 - tapOn: "Valider la date"
 - assertVisible: "Choix des options"
 - assertVisible: "Horaire"
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
     point: "50%,75%"
 - assertVisible: "Valider lʼhoraire"
@@ -47,7 +45,7 @@ appId: app.passculture.staging
 - tapOn: "Nombre de places"
 - assertVisible: "Solo"
 - assertVisible: "Duo"
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
     point: "53%,72%"
 - assertVisible: "Finaliser ma réservation"
@@ -71,8 +69,6 @@ appId: app.passculture.staging
     element: "Annuler ma réservation"
     direction: DOWN
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonCancelMyReservation.yml
-#- TODO : comprendre pourquoi le wording n'est pas détecté par MAESTRO
-#- assertVisible:
-#    id: "cancel-annulation-message"
+- assertVisible: "Réservation annulée"
 - assertVisible: "Réservations terminées"
 - runFlow: reusableFlows/StopApp.yml # Stop App
