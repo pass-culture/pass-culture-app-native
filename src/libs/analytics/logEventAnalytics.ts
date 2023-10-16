@@ -1,6 +1,3 @@
-import { Platform } from 'react-native'
-import { Social } from 'react-native-share'
-
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
@@ -17,6 +14,8 @@ import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { Platform } from 'react-native'
+import { Social } from 'react-native-share'
 
 type BaseThematicHome = {
   homeEntryId: string
@@ -602,6 +601,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
+  logUserSetVenue: ({ venueLabel }: { venueLabel: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_VENUE }, { venueLabel }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenuePlaylistDisplayedOnSearchResults: (params: {
