@@ -69,14 +69,16 @@ export function Search() {
 
   const currentFilters = params?.locationFilter
 
+  const setQueryHistoryMemoized = useCallback(
+    (query: string) => setQueryHistory(query),
+    [setQueryHistory]
+  )
+
   const currentView = useMemo(() => {
     return params?.view
   }, [params?.view])
 
-  const searchVenuePosition = useMemo(
-    () => buildSearchVenuePosition(currentFilters, userPosition),
-    [currentFilters, userPosition]
-  )
+  const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition)
 
   const currentVenuesIndex = useMemo(() => {
     return getCurrentVenuesIndex(currentFilters?.locationType)
@@ -125,7 +127,7 @@ export function Search() {
             searchInputID={searchInputID}
             searchView={currentView}
             addSearchHistory={addToHistory}
-            searchInHistory={(query: string) => setQueryHistory(query)}
+            searchInHistory={setQueryHistoryMemoized}
           />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
