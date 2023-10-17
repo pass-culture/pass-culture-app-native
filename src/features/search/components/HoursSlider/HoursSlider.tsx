@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
+import { DEFAULT_TIME_VALUE } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -44,7 +45,7 @@ const MAX_HOUR = 24
 export function HoursSlider({ defaultValue, onChange }: Readonly<HoursSliderProps>) {
   const [internalValue, setInternalValue] = useState<number[]>(defaultValue)
   const { sliderLength } = useGetFullscreenModalSliderLength()
-  const [minHour, maxHour] = internalValue || [0, 24]
+  const [minHour, maxHour] = internalValue || DEFAULT_TIME_VALUE
   const hoursLabelId = uuidv4()
 
   function handleChange(newValues: ValuesType) {

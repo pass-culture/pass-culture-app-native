@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export type ValuesType = [number] | [number, number]
+
 interface Props {
   values?: ValuesType
   formatValues?: (label: number) => string
