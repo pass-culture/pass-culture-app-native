@@ -6,6 +6,7 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
@@ -93,6 +94,7 @@ export const SearchLocationModal = ({
   const onSubmit = () => {
     if (selectedLocationMode === LocationMode.CUSTOM_POSITION) {
       setPlaceGlobally(selectedPlace)
+      analytics.logUserSetLocation('search')
     } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
       setPlaceGlobally(null)
     }

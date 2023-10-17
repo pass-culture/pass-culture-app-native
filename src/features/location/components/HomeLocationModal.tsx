@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -76,6 +77,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
 
   const onSubmit = () => {
     setPlaceGlobally(selectedPlace)
+    analytics.logUserSetLocation('home')
     dismissModal()
   }
 
