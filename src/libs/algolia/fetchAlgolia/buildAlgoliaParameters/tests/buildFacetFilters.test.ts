@@ -167,4 +167,26 @@ describe('buildFacetFilters', () => {
       facetFilters: [['offer.isEducational:false']],
     })
   })
+
+  it('should return only default and isDigital facet to false with appLocation featureFlag enabled and includeDigitalOffers to false', () => {
+    const facetFilters = buildFacetFilters({
+      ...defaultBuildFacetFilterParam,
+      enableAppLocation: true,
+      includeDigitalOffers: false,
+    })
+    expect(facetFilters).toEqual({
+      facetFilters: [['offer.isEducational:false'], ['offer.isDigital:false']],
+    })
+  })
+
+  it('should return only default with appLocation featureFlag enabled and includeDigitalOffers to true', () => {
+    const facetFilters = buildFacetFilters({
+      ...defaultBuildFacetFilterParam,
+      enableAppLocation: true,
+      includeDigitalOffers: true,
+    })
+    expect(facetFilters).toEqual({
+      facetFilters: [['offer.isEducational:false']],
+    })
+  })
 })
