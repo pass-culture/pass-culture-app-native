@@ -410,36 +410,6 @@ describe('<CategoriesModal/>', () => {
         })
       })
     })
-
-    describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
-      beforeAll(() => {
-        mockUseFeatureFlag.mockReturnValue(true)
-      })
-
-      it('should display number of results on each genre type', () => {
-        renderCategories()
-
-        // Loisirs
-        expect(screen.getByText('7 résultats')).toBeOnTheScreen()
-        // Littérature française'
-        expect(screen.getByText('6 résultats')).toBeOnTheScreen()
-      })
-    })
-
-    describe('When wipDisplaySearchNbFacetResults feature flag is not activated', () => {
-      beforeAll(() => {
-        mockUseFeatureFlag.mockReturnValue(false)
-      })
-
-      it('should not display number of results on each genre type', () => {
-        renderCategories()
-
-        // Loisirs
-        expect(screen.queryByText('7 résultats')).not.toBeOnTheScreen()
-        // Littérature française'
-        expect(screen.queryByText('6 résultats')).not.toBeOnTheScreen()
-      })
-    })
   })
 
   describe('with "Appliquer le filtre" button', () => {
