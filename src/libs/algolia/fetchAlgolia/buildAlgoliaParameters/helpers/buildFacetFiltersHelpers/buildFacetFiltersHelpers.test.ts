@@ -6,6 +6,7 @@ import {
 } from 'api/gen'
 import {
   buildEanPredicate,
+  buildIncludeDigitalOffersPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -222,5 +223,27 @@ describe('buildTagsPredicate', () => {
       'offer.tags:Semaine du 14 juillet',
       'offer.tags:Offre cinema spéciale pass culture',
     ])
+  })
+})
+
+describe('buildIncludeDigitalOffersPredicate', () => {
+  it('should return an include digital offers predicate formatted for Algolia API with isDigital = false when isOnline and includeDigitalOffers are false', () => {
+    const includeDigitalOffers = false
+    const isOnline = false
+    const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
+      includeDigitalOffers,
+      isOnline
+    )
+    expect(includeDigitalOffersPredicate).toEqual(['offer.isDigital:false'])
+  })
+
+  it('should return an include digital offers predicate undefined when isOnline or includeDigitalOffers is true', () => {
+    const includeDigitalOffers = false
+    const isOnline = true
+    const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
+      includeDigitalOffers,
+      isOnline
+    )
+    expect(includeDigitalOffersPredicate).toEqual(undefined)
   })
 })
