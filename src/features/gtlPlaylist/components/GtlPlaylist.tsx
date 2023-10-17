@@ -24,13 +24,12 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const route = useRoute<UseRouteType<'Venue'>>()
+  const entryId = playlist.entryId
 
   const renderPassPlaylist: CustomListRenderItem<Offer> = useCallback(
-    ({ item, width, height }) => {
+    ({ item, width, height, index }) => {
       const hit = transformOfferHits(item)
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-      const entryId = playlist.entryId
-      const itemIndex = playlist.offers.hits.findIndex((i) => i.objectID === hit.objectID)
 
       return (
         <VenueOfferTile
@@ -48,19 +47,11 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
           height={height}
           searchId={route.params?.searchId}
           moduleId={entryId}
-          itemIndex={itemIndex}
+          index={index}
         />
       )
     },
-    [
-      labelMapping,
-      mapping,
-      playlist.entryId,
-      playlist.offers.hits,
-      route.params?.searchId,
-      transformOfferHits,
-      venue?.id,
-    ]
+    [entryId, labelMapping, mapping, route.params?.searchId, transformOfferHits, venue?.id]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)

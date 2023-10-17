@@ -30,7 +30,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     playlistType,
     searchId,
     apiRecoParams,
-    itemIndex,
+    index,
     ...offer
   } = props
 
@@ -56,7 +56,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       fromOfferId,
       playlistType,
       searchId,
-      index: itemIndex,
+      index,
     })
   }
 

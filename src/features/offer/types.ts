@@ -27,7 +27,7 @@ export interface OfferTileProps {
   playlistType?: PlaylistType
   searchId?: string
   apiRecoParams?: RecommendationApiParams
-  itemIndex?: number
+  index?: number
 }
 
 export interface SimilarOffersResponse {
