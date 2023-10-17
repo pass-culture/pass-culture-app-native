@@ -98,7 +98,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const isWidgetHighlighted = isGeolocated || !!isCustomPosition
 
   const onSearch = useCallback(
-    (payload: Partial<SearchState> | undefined) => {
+    (payload: Partial<SearchState>) => {
       navigate(...getTabNavConfig('Search', payload))
     },
     [navigate]
