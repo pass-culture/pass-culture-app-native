@@ -2,10 +2,7 @@ import { useState, useCallback } from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
-import {
-  VenueModalHook,
-  VenueModalHookCallback,
-} from 'features/search/pages/modals/VenueModal/type'
+import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
@@ -19,10 +16,7 @@ import { useDebounceValue } from 'ui/hooks/useDebounceValue'
  * @param dismissModal callback to close modal passed by parent component
  * @returns
  */
-const useVenueModal = (
-  dismissModal: VoidFunction,
-  doAfterSearch?: VenueModalHookCallback
-): VenueModalHook => {
+const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
   const { dispatch, searchState } = useSearch()

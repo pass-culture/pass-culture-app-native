@@ -130,7 +130,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
           <VenueModal
             visible={venueModalVisible}
             dismissModal={hideVenueModal}
-            onSearch={onSearch}
+            doAfterSearch={onSearch}
           />
           <SearchLocationModal
             visible={locationModalVisible}
