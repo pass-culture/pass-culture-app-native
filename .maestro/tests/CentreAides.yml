@@ -4,7 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
 - tapOn: "Nouvelle fenêtre\_: Centre d’aide"
-# TODO : comprendre pourquoi maestro ne détecte pas le texte   "aide.passculture.app" - assertVisible: "aide.passculture.app"
+- assertVisible: "aide.passculture.app/hc/fr"
 - assertVisible:
     id: "main-content"
 - tapOn: "Applications récentes"

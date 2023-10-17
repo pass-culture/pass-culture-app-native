@@ -62,13 +62,14 @@ const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
 const mockRefetch = jest.fn()
 let mockUserData: UserData[] = []
+let mockIsLoading = false
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
     hits: mockHits,
     nbHits: mockNbHits,
     isFetching: false,
-    isLoading: false,
+    isLoading: mockIsLoading,
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
@@ -494,6 +495,72 @@ describe('SearchResults component', () => {
     screen.rerender(<SearchResults />)
     // first rendering + rendering when user stop to share his position
     expect(mockRefetch).toHaveBeenCalledTimes(2)
+  })
+
+  it('should not log PerformSearch when there is not search query execution', async () => {
+    render(<SearchResults />)
+    await act(async () => {})
+
+    expect(analytics.logPerformSearch).not.toHaveBeenCalled()
+  })
+
+  it('should log PerformSearch only one time when there is search query execution and several re-render', async () => {
+    mockIsLoading = true
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(analytics.logPerformSearch).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    screen.rerender(<SearchResults />)
+    expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
+
+    screen.rerender(<SearchResults />)
+    expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log PerformSearch with search result when there is search query execution', async () => {
+    mockIsLoading = true
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(analytics.logPerformSearch).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    mockSearchState = searchState
+    screen.rerender(<SearchResults />)
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(1, mockSearchState, mockNbHits)
+  })
+
+  it('should not log NoSearchResult when there is not search query execution', async () => {
+    render(<SearchResults />)
+    await act(async () => {})
+
+    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+  })
+
+  it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
+    mockIsLoading = true
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    screen.rerender(<SearchResults />)
+    expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
+
+    screen.rerender(<SearchResults />)
+    expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
+    mockIsLoading = true
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    mockSearchState = searchState
+    screen.rerender(<SearchResults />)
+    expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
   })
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {

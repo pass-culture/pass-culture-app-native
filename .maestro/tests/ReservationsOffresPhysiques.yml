@@ -5,7 +5,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
 - tapOn: "Films, séries, cinéma"
 
-#- TODO trouver une solution pour cliquer sans passer par la position (actuellement il est simplement possible de cliquer en connaissant l'offre).
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position (actuellement il est simplement possible de cliquer en connaissant l'offre).
 - tapOn: SPIDER-MAN NEW GENERATION # nom de l'offre consultable
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
@@ -15,7 +15,7 @@ appId: app.passculture.staging
 - tapOn: "Catégories\_: Filtre sélectionné"
 - tapOn: "Films, séries, cinéma"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn: SPIDER-MAN NEW GENERATION # nom de l'offre consultable
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation
@@ -32,7 +32,7 @@ appId: app.passculture.staging
       text: "Mes réservations"
       index: 0
 - assertVisible: "Mes réservations"
-#- TODO trouver une solution pour cliquer sans passer par la position.
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
       point: "61%,16%"
 - scrollUntilVisible:

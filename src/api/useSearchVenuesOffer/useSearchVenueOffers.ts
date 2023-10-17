@@ -137,7 +137,7 @@ export const useSearchVenueOffers = ({
 
   const nbLoadedHits =
     data?.pages.reduce((acc, curr) => {
-      acc += curr.hits.length
+      acc += curr.hits?.length ?? 0
       return acc
     }, 0) ?? 0
 

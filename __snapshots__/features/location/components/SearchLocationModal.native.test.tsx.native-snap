@@ -427,7 +427,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 ]
               }
             >
-              100 km
+              50 km
             </Text>
           </View>
           <View
@@ -505,7 +505,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           "backgroundColor": "#eb0055",
                         },
                         {
-                          "width": 864,
+                          "width": 432,
                         },
                       ]
                     }
@@ -529,7 +529,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           "borderWidth": 2,
                         },
                         {
-                          "width": 0,
+                          "width": 432,
                         },
                       ]
                     }
@@ -546,13 +546,11 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           "width": 48,
                         },
                         {
-                          "left": 840,
+                          "left": 408,
                           "top": -24,
                         },
                         undefined,
-                        {
-                          "zIndex": 1,
-                        },
+                        false,
                       ]
                     }
                   >

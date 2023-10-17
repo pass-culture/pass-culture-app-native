@@ -1,4 +1,4 @@
-# POC Maestro
+# Maestro
 
 [Documentation de Maestro](https://maestro.mobile.dev/)
 
@@ -6,8 +6,6 @@
 
 - Avoir Xcode 14 ou plus
 - Builder l'app en local
-
----
 
 ## Configuration
 
@@ -19,7 +17,7 @@ Pour installer Maestro sur Mac OS, Linux or Windows :
 curl -Ls "https://get.maestro.mobile.dev" | bash
 ```
 
-Connecter un device virtuel
+Connecter un device
 
 ```bash
 brew tap facebook/fb
@@ -41,8 +39,6 @@ xcrun simctl list
 
 Il est possible de ne pas ajouter l'UDID pour démarrer les tests, mais il faut sélectionner le device directement dans une liste de devices proposés.
 
----
-
 ## Run les tests
 
 ```bash
@@ -56,13 +52,16 @@ maestro test .maestro/<nomDuTest.yml>
 
 # Uniquement un test web spécifique ex: .maestro/web/Home.yml
 maestro test .maestro/<nomDuTest.web.yml>
+```
 
-# Lancer les tests avec l'utilisation de variables 
+## Lancer les tests avec l'utilisation de variables
+
+```bash
 maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e NEW_USERNAME=${NEW_USERNAME} -e NUMBER_PHONE=${NUMBER_PHONE} -e PASSWORD=${PASSWORD} .maestro/
+```
 
----
+## Listes des devices utilisés pour run les tests e2e
 
-## Listes des devices utilisés pour run les tests e2e :
 - iPhone 14 Pro && OS 16.6.1
 - Samsung Galaxy S9 (SM-G960F) && OS Android 10
 
@@ -75,15 +74,41 @@ yarn start
 maestro studio
 ```
 
-Pour écrire un test il faut suivre cette structure
+Pour écrire un test il faut suivre cette structure :
 
 ```yml
-# .maestro/native/MonTest.yml
-
-appId: your.app.id > Mettre l'ID de l'app que vous voulez tester comme "app.passculture.test". Cette app doit être installé sur le device virtuel.
+appId: your.app.id > Mettre l'ID de l'app que vous voulez tester comme "app.passculture.staging".
 ---
 - launchApp
 - tapOn: 'Text on the screen'
 ```
 
 Voici [une liste des commandes](https://maestro.mobile.dev/api-reference/commands) que nous pouvons utiliser pour écrire les tests.
+
+# **Troubleshooting**
+
+### **Android**
+
+<details>
+  <summary>command not found adb</summary>
+  <br/>
+Pour vérifier si adb est installé il faut exécuter :
+
+```bash
+~/Library/Android/sdk/platform-tools/adb
+```
+
+Il imprimera la version d'ADB et le chemin. Copier le chemin d'installation d'adb, qui peut ressembler à `(/Users/user-name/Library/Android/sdk/platform-tools/adb)`.
+
+Puis ouvrir le fichier `.zshrc` et ajouter comme ceci (ne pas ajouter `platform-tools/adb` dans `export ANDROID_HOME`):
+
+```bash
+export ANDROID_HOME=/Users/user-name/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+```
+
+Enfin, redémarrer le terminal.
+
+</details>

@@ -8,7 +8,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
@@ -23,7 +23,7 @@ export function PhoneValidationTooManyAttempts() {
           key={1}
           wording="Contacter le support"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-          icon={Email}
+          icon={EmailFilled}
           externalNav={contactSupport.forPhoneNumberConfirmation}
         />,
         <InternalTouchableLink
