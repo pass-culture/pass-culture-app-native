@@ -30,6 +30,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    'react/no-unused-prop-types': 'off', // has false positives
     'testing-library/await-async-utils': ['error'],
     'testing-library/prefer-screen-queries': ['error'],
     'local-rules/independent-mocks': ['error'],
@@ -375,6 +376,7 @@ module.exports = {
         'jest/valid-title': 'off',
         'testing-library/no-unnecessary-act': 'off',
         'testing-library/no-wait-for-multiple-assertions': 'off',
+        'testing-library/prefer-explicit-assert': 'off',
       },
     },
   ],
