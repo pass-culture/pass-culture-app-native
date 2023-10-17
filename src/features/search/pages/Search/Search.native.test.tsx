@@ -247,7 +247,7 @@ describe('<Search/>', () => {
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
 
-      await fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
 
       expect(analytics.logConsultVenue).toHaveBeenCalledWith({
         from: 'searchAutoComplete',

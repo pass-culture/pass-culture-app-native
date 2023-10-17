@@ -1,13 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import {
-  Controller,
-  ControllerFieldState,
-  ControllerRenderProps,
-  useForm,
-  UseFormStateReturn,
-} from 'react-hook-form'
+import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -37,8 +31,6 @@ type FormValues = {
 
 type InputControlled<fieldName extends keyof FormValues> = {
   field: ControllerRenderProps<FormValues, fieldName>
-  fieldState: ControllerFieldState
-  formState: UseFormStateReturn<FormValues>
 }
 
 const NewsletterCheckboxControlled = ({

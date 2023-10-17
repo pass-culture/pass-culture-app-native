@@ -7,7 +7,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
@@ -80,15 +80,17 @@ describe('EndedBookingItem', () => {
     })
 
     const item = screen.getByText('Réservation annulée')
-    await fireEvent.press(item)
+    fireEvent.press(item)
 
-    expect(navigate).toHaveBeenCalledWith('Offer', {
-      id: 147874,
-      from: 'endedbookings',
-    })
-    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      offerId: 147874,
-      from: 'endedbookings',
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        id: 147874,
+        from: 'endedbookings',
+      })
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+        offerId: 147874,
+        from: 'endedbookings',
+      })
     })
   })
 
@@ -100,10 +102,12 @@ describe('EndedBookingItem', () => {
     })
 
     const item = screen.getByText('Réservation archivée')
-    await fireEvent.press(item)
+    fireEvent.press(item)
 
-    expect(navigate).toHaveBeenCalledWith('BookingDetails', {
-      id: 321,
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('BookingDetails', {
+        id: 321,
+      })
     })
   })
 

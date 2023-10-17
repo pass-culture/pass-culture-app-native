@@ -107,15 +107,10 @@ describe('BookHourChoice', () => {
     render(<BookHourChoice />)
 
     // firstStock correspond to 2021-03-02 stock
-    const firstStock = screen.queryByTestId('HourChoice148409-label')
+    const firstStock = screen.getByTestId('HourChoice148409-label')
+    fireEvent.press(firstStock)
 
-    if (firstStock) {
-      fireEvent.press(firstStock)
-
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148409 })
-    } else {
-      throw new Error('should have find firstStock')
-    }
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148409 })
   })
 
   it('should pass formatted hour and price props', () => {
