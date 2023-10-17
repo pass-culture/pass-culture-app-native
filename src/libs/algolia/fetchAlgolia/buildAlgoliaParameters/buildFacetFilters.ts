@@ -23,6 +23,7 @@ export const buildFacetFilters = ({
   isUserUnderage,
   locationFilter,
   objectIds,
+  enableAppLocation,
   offerCategories,
   offerGenreTypes,
   offerGtlLabel,
@@ -48,7 +49,12 @@ export const buildFacetFilters = ({
   | 'tags'
   | 'includeDigitalOffers'
   | 'isOnline'
-> & { isUserUnderage: boolean; objectIds?: string[]; eanList?: string[] }): null | {
+> & {
+  isUserUnderage: boolean
+  objectIds?: string[]
+  eanList?: string[]
+  enableAppLocation?: boolean
+}): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
@@ -104,7 +110,8 @@ export const buildFacetFilters = ({
     includeDigitalOffers,
     isOnline
   )
-  if (includeDigitalOffersPredicate) facetFilters.push(includeDigitalOffersPredicate)
+  if (includeDigitalOffersPredicate && enableAppLocation)
+    facetFilters.push(includeDigitalOffersPredicate)
 
   if (
     locationFilter?.locationType === LocationType.VENUE &&

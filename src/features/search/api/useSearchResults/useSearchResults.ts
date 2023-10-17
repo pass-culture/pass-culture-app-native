@@ -10,6 +10,8 @@ import { AlgoliaVenue, FacetData } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -31,6 +33,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
@@ -41,6 +44,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
+        enableAppLocation,
       })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)

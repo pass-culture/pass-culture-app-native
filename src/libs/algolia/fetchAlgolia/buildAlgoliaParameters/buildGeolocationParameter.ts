@@ -9,15 +9,17 @@ type Params = {
   locationFilter?: SearchQueryParameters['locationFilter']
   userLocation: Position
   isOnline?: SearchQueryParameters['isOnline']
+  enableAppLocation?: boolean
 }
 
 export const buildGeolocationParameter = ({
   locationFilter: providedLocationFilter,
   userLocation,
   isOnline,
+  enableAppLocation,
 }: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   let locationFilter = providedLocationFilter
-  if (isOnline) return
+  if (isOnline && enableAppLocation) return
 
   if (!locationFilter)
     locationFilter = userLocation
@@ -38,6 +40,8 @@ export const buildGeolocationParameter = ({
   }
 
   if (!userLocation) return
+  if (!enableAppLocation && isOnline && locationFilter.locationType === LocationType.AROUND_ME)
+    return
   if (locationFilter.locationType === LocationType.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,

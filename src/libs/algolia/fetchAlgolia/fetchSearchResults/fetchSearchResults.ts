@@ -21,6 +21,7 @@ type FetchOfferAndVenuesArgs = {
   excludedObjectIds?: string[]
   offersIndex?: string
   venuesIndex?: string
+  enableAppLocation?: boolean
 }
 
 export const fetchSearchResults = async ({
@@ -29,8 +30,14 @@ export const fetchSearchResults = async ({
   isUserUnderage,
   storeQueryID,
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
+  enableAppLocation,
 }: FetchOfferAndVenuesArgs) => {
-  const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+  const searchParameters = buildOfferSearchParameters(
+    parameters,
+    userLocation,
+    isUserUnderage,
+    enableAppLocation
+  )
 
   const currentVenuesIndex = getCurrentVenuesIndex(
     parameters?.locationFilter?.locationType,
