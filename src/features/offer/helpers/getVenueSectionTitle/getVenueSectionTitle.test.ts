@@ -12,8 +12,8 @@ describe('getVenueSectionTitle', () => {
     expect(venueSectionTitle).toEqual('Lieu de projection')
   })
 
-  it('should return "Lieu de l’événement" when offer is an event', () => {
+  it('should return "Lieu de l’évènement" when offer is an event', () => {
     const venueSectionTitle = getVenueSectionTitle(SubcategoryIdEnum.CONCERT, true)
-    expect(venueSectionTitle).toEqual('Lieu de l’événement')
+    expect(venueSectionTitle).toEqual('Lieu de l’évènement')
   })
 })

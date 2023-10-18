@@ -43,7 +43,7 @@ appId: app.passculture.staging
 - assertVisible: "Les biens acquis ou réservés sur le pass Culture sont destinés à\
     \ un usage strictement personnel et ne peuvent faire l’objet de revente."
 - assertVisible: "Informations"
-- assertVisible: "Lieu de l’événement"
+- assertVisible: "Lieu de l’évènement"
 - assertVisible: "Conditions d’annulation"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
 - assertVisible: "Réservation confirmée\_!"

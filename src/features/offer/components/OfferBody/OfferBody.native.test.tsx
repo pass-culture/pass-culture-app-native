@@ -541,7 +541,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
-        expect(screen.queryByText('Lieu de l’événement')).toBeOnTheScreen()
+        expect(screen.queryByText('Lieu de l’évènement')).toBeOnTheScreen()
       })
 
       it('With "Lieu de projection" in title when offer subcategory is "Séances de cinéma"', async () => {
