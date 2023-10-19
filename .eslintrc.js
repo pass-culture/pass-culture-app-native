@@ -31,8 +31,7 @@ module.exports = {
   },
   rules: {
     'react/no-unused-prop-types': 'off', // has false positives
-    'testing-library/await-async-utils': ['error'],
-    'testing-library/prefer-screen-queries': ['error'],
+    'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/independent-mocks': ['error'],
     'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],
@@ -377,6 +376,11 @@ module.exports = {
         'testing-library/no-unnecessary-act': 'off',
         'testing-library/no-wait-for-multiple-assertions': 'off',
         'testing-library/prefer-explicit-assert': 'off',
+        'testing-library/await-async-utils': ['error'],
+        'testing-library/prefer-screen-queries': ['error'],
+        'testing-library/no-await-sync-events': 'off', // TODO(PC-25292): enable when its issues are fixed
+        'jest/no-conditional-in-test': 'off', // TODO(PC-25293): enable when its issues are fixed
+        'testing-library/no-container': 'off', // TODO(PC-25294): enable when its issues are fixed
       },
     },
   ],
