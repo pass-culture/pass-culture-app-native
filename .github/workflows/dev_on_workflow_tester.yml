@@ -125,7 +125,7 @@ jobs:
         with:
           projectBaseDir: server
   slack_notify:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native

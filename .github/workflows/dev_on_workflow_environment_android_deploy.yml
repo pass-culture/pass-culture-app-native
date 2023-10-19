@@ -14,7 +14,7 @@ on:
 
 jobs:
   sentry_and_deploy:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     steps:
       - uses: actions/checkout@v4
       - name: Setup java
@@ -84,7 +84,7 @@ jobs:
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
 
   slack_notify:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     if: ${{ always() }}
     needs: sentry_and_deploy
     steps:
