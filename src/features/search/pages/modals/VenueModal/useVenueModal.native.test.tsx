@@ -23,12 +23,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const dismissMyModal: VoidFunction = jest.fn()
+const dismissModal: VoidFunction = jest.fn()
 const doAfterSearch: VenueModalHookCallback = jest.fn()
 
 describe('useVenueModal', () => {
   it('when start it should return falsy state', () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal: dismissMyModal } })
+    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     expect(result.current.isQueryProvided).toBeFalsy()
     expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
@@ -37,7 +37,7 @@ describe('useVenueModal', () => {
   })
   it('when provide a query it should change state for the UI', async () => {
     const { result } = renderHook(useVenueModal, {
-      initialProps: { dismissModal: dismissMyModal },
+      initialProps: { dismissModal },
     })
 
     await act(async () => {
@@ -50,7 +50,7 @@ describe('useVenueModal', () => {
     expect(result.current.venueQuery.length).toBe(4)
   })
   it('when select a venue it should change state for the UI', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal: dismissMyModal } })
+    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     await act(async () => {
       result.current.doChangeVenue(venue.label)
@@ -63,7 +63,7 @@ describe('useVenueModal', () => {
     expect(result.current.venueQuery.length).toBe(venue.label.length)
   })
   it('when select a venue and reset it should reset the UI', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal: dismissMyModal } })
+    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     await act(async () => {
       result.current.doChangeVenue(venue.label)
@@ -81,23 +81,23 @@ describe('useVenueModal', () => {
     expect(result.current.venueQuery.length).toBe(0)
   })
   it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal: dismissMyModal } })
+    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     await act(async () => {
       result.current.doChangeVenue(venue.label)
       result.current.doSetSelectedVenue(venue)
     })
 
-    expect(dismissMyModal).not.toHaveBeenCalledWith()
+    expect(dismissModal).not.toHaveBeenCalledWith()
 
     await act(async () => {
       result.current.doApplySearch()
     })
 
-    expect(dismissMyModal).toHaveBeenCalledWith()
+    expect(dismissModal).toHaveBeenCalledWith()
   })
   it('when select a venue and validate it should apply search to the context', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal: dismissMyModal } })
+    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     await act(async () => {
       result.current.doChangeVenue(venue.label)
@@ -106,7 +106,7 @@ describe('useVenueModal', () => {
     await act(async () => {
       result.current.doApplySearch()
     })
-    expect(dismissMyModal).toHaveBeenCalledWith()
+    expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
       payload: {
@@ -117,13 +117,13 @@ describe('useVenueModal', () => {
     })
   })
   it('when nothing is to be search then search cannot be done', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal: dismissMyModal } })
+    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     await act(async () => {
       result.current.doApplySearch()
     })
     expect(doAfterSearch).not.toHaveBeenCalledWith()
-    expect(dismissMyModal).toHaveBeenCalledWith()
+    expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
   it('when nothing is to be search then search cannot be done and no calls is made', async () => {
@@ -131,7 +131,7 @@ describe('useVenueModal', () => {
       ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
       {
         initialProps: {
-          dismissModal: dismissMyModal,
+          dismissModal,
           doAfterSearch: doAfterSearch,
         },
       }
@@ -141,7 +141,7 @@ describe('useVenueModal', () => {
       result.current.doApplySearch()
     })
     expect(doAfterSearch).not.toHaveBeenCalledWith()
-    expect(dismissMyModal).toHaveBeenCalledWith()
+    expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
   it('when a search is made then the callback is called', () => {
@@ -149,7 +149,7 @@ describe('useVenueModal', () => {
       ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
       {
         initialProps: {
-          dismissModal: dismissMyModal,
+          dismissModal,
           doAfterSearch,
         },
       }
