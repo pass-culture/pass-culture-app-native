@@ -20,7 +20,7 @@ jobs:
   yarn_lint:
     runs-on: [self-hosted, linux, x64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
@@ -44,7 +44,7 @@ jobs:
   yarn_typescript:
     runs-on: [self-hosted, linux, x64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'

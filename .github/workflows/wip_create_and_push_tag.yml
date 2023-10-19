@@ -21,7 +21,7 @@ jobs:
     #   GIT_CONFIG_NAME: ${{ github.actor }}
     steps:
       - name: Checkout commit hash
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ inputs.commitHash }}
           token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
