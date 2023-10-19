@@ -13,14 +13,13 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation, GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
@@ -107,13 +106,18 @@ export const HomeHeader: FunctionComponent = function () {
     return null
   }, [isLoggedIn, homeBanner, enableAppLocation])
 
-  const shouldDisplayLocationWidget = !isDesktopViewport && enableAppLocation
+  const shouldDisplayMobileLocationWidget = !isDesktopViewport && enableAppLocation
 
   return (
     <React.Fragment>
-      <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
-        {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
-      </PageHeader>
+      <Spacer.TopScreen />
+      <HeaderContainer>
+        <TitleContainer>
+          <Typo.Title1 numberOfLines={2}>{welcomeTitle}</Typo.Title1>
+          <Subtitle>{getSubtitle()}</Subtitle>
+        </TitleContainer>
+        {!!shouldDisplayMobileLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
+      </HeaderContainer>
       <PageContent>
         <Spacer.Column numberOfSpaces={6} />
         {Banner}
@@ -121,6 +125,20 @@ export const HomeHeader: FunctionComponent = function () {
     </React.Fragment>
   )
 }
+
+const HeaderContainer = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  marginTop: getSpacing(6),
+  marginHorizontal: theme.contentPage.marginHorizontal,
+  zIndex: theme.zIndex.header,
+}))
+
+const TitleContainer = styled.View({
+  width: '100%',
+})
+const Subtitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const PageContent = styled.View({
   marginHorizontal: getSpacing(6),
