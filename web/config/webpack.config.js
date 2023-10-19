@@ -588,6 +588,7 @@ module.exports = function (webpackEnv) {
         {
           'script-src': [
             "'self'",
+            '*.youtube.com',
             'https://websdk.appsflyer.com',
             'https://www.googletagmanager.com',
             'https://www.gstatic.com/recaptcha/',
