@@ -79,8 +79,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS }),
   logAllModulesSeen: (numberOfModules: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ALL_MODULES_SEEN }, { numberOfModules }),
-  logAllTilesSeen: (params: { moduleName?: string; numberOfTiles?: number; searchId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
+  logAllTilesSeen: (params: {
+    moduleName?: string
+    numberOfTiles?: number
+    searchId?: string
+    moduleId?: string
+    venueId?: number
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
   logBookingConfirmation: (params: {
@@ -216,6 +221,7 @@ export const logEventAnalytics = {
     fromMultivenueOfferId?: number
     playlistType?: PlaylistType
     offer_display_index?: number
+    index?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
   logConsultTutorial: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, { from }),
@@ -602,6 +608,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
+  logUserSetLocation: (from: 'home' | 'search') =>
+    analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_LOCATION }, { from }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
   logVenuePlaylistDisplayedOnSearchResults: (params: {

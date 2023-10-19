@@ -34,7 +34,7 @@ jobs:
 
       # Useful to get the latest service worker test script
       - name: Checkout registry
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # To initialize the latest node version
       - name: Setup Node.JS
@@ -51,7 +51,7 @@ jobs:
 
       # Clone the version from in its own directory
       - name: Checkout ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.versionFrom }}${{ github.event.client_payload.versionFrom }}
           path: versionFrom
@@ -65,7 +65,7 @@ jobs:
 
       # Clone the version to in its own directory
       - name: Checkout ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.versionTo }}${{ github.event.client_payload.versionTo }}
           path: versionTo

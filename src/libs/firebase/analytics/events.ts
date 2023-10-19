@@ -141,6 +141,7 @@ export enum AnalyticsEvent {
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
   STEPPER_DISPLAYED = 'StepperDisplayed',
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
+  USER_SET_LOCATION = 'UserSetLocation',
   USE_FILTER = 'UseFilter',
   VENUE_CONTACT = 'VenueContact',
   VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS = 'VenuePlaylistDisplayedOnSearchResults',
