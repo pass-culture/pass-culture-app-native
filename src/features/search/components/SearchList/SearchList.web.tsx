@@ -1,85 +1,136 @@
-import React, { forwardRef } from 'react'
-import { FlatList } from 'react-native'
+import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
+import { Animated, LayoutChangeEvent, View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
-import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
+import { RowData, SearchListItem } from 'features/search/components/SearchListItem.web'
+import { LIST_ITEM_HEIGHT } from 'features/search/constants'
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
 import { SearchListProps } from 'features/search/types'
-import { Offer } from 'shared/offer/types'
+import { useLocation } from 'libs/geolocation'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
+import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { getSpacing } from 'ui/theme'
 
-const keyExtractor = (item: Offer) => item.objectID
+const LOAD_MORE_THRESHOLD = 300
 
-const contentContainerStyle = {
-  flex: 1,
+/**
+ * Function called to compute row size.
+ * Since the list contains header and footer components, it needs computation.
+ */
+function getItemSize() {
+  return LIST_ITEM_HEIGHT
 }
 
-export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>, SearchListProps>(
+export const SearchList = forwardRef<never, SearchListProps>(
   (
     {
       nbHits,
       hits,
-      renderItem,
       autoScrollEnabled,
-      refreshing,
-      onRefresh,
       isFetchingNextPage,
       onEndReached,
-      onScroll,
       onPress,
       userData,
       venuesUserData,
     },
-    ref
+    _ref
   ) => {
+    const [availableHeight, setAvailableHeight] = useState(0)
+    const outerListRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<VariableSizeList<RowData>>(null)
+    const { isGeolocated } = useLocation()
+    const { searchState } = useSearch()
+
+    /**
+     * This method will compute maximum height to set list height programatically.
+     */
+    const onLayout = useCallback((event: LayoutChangeEvent) => {
+      setAvailableHeight(event.nativeEvent.layout.height)
+    }, [])
+
+    const handleScroll = useCallback(
+      (props: ListOnScrollProps) => {
+        if (outerListRef.current && autoScrollEnabled) {
+          const { scrollTop, scrollHeight, clientHeight } = outerListRef.current
+
+          const isNearToBottom = scrollTop + clientHeight >= scrollHeight - LOAD_MORE_THRESHOLD
+
+          if (isNearToBottom && !isFetchingNextPage) {
+            onEndReached?.()
+          }
+        }
+      },
+      [autoScrollEnabled, handleScrollOpacity, isFetchingNextPage, onEndReached]
+    )
+
+    /**
+     * Data given to every search list items.
+     */
+    const data = {
+      /**
+       * This one in special since we manually add two empty objects.
+       * The first one is used as a placeholder to place Header component.
+       * The last one is used as a placeholder to place Footer component.
+       *
+       * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
+       * guess what we want to draw.
+       */
+      items: hits.offers,
+      userData,
+      venuesUserData,
+      nbHits,
+      offers: hits.offers,
+      venues: hits.venues,
+      isFetchingNextPage,
+      autoScrollEnabled,
+      onPress,
+      searchState,
+    }
+
+    /**
+     * The rerender key is used to rerender the `VariableSizeList` component when important changes happen.
+     * Be careful to not add too many things here since it will completely rerender the list, and so scroll to the top.
+     */
+    const rerenderKey = useMemo(
+      () => JSON.stringify({ isGeolocated, nbHits, autoScrollEnabled, onPress }),
+      [isGeolocated, nbHits, autoScrollEnabled, onPress]
+    )
+
     return (
-      <FlatList
-        listAs="ul"
-        itemAs="li"
-        ref={ref}
-        testID="searchResultsFlatlist"
-        data={hits.offers}
-        keyExtractor={keyExtractor}
-        ListHeaderComponent={
-          nbHits > 0 ? (
-            <SearchListHeader
-              nbHits={nbHits}
-              userData={userData}
-              venues={hits.venues}
-              venuesUserData={venuesUserData}
-            />
-          ) : undefined
-        }
-        ItemSeparatorComponent={Separator}
-        ListFooterComponent={
-          <SearchListFooter
-            isFetchingNextPage={isFetchingNextPage}
-            nbLoadedHits={hits.offers?.length}
-            nbHits={nbHits}
-            autoScrollEnabled={autoScrollEnabled}
-            onPress={onPress}
-          />
-        }
-        renderItem={renderItem}
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-        onEndReached={autoScrollEnabled ? onEndReached : undefined}
-        scrollEnabled={nbHits > 0}
-        ListEmptyComponent={<NoSearchResult />}
-        onScroll={onScroll}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-        contentContainerStyle={contentContainerStyle}
-      />
+      <RootContainer onLayout={onLayout} testID="searchResultsFlatlist">
+        {nbHits ? (
+          <React.Fragment>
+            <VariableSizeList
+              ref={listRef}
+              key={rerenderKey}
+              innerElementType="ul"
+              itemData={data}
+              itemSize={(index) =>
+                getItemSize(index, hits.venues.length, isGeolocated, data.items.length, userData)
+              }
+              height={availableHeight}
+              itemCount={data.items.length}
+              outerRef={outerListRef}
+              onScroll={handleScroll}
+              width="100%">
+              {SearchListItem}
+            </VariableSizeList>
+          </React.Fragment>
+        ) : (
+          <NoSearchResult />
+        )}
+      </RootContainer>
     )
   }
 )
-SearchList.displayName = 'SearchList'
 
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-}))
+SearchList.displayName = 'SearchListWeb'
+
+const RootContainer = styled(View)({
+  flex: 1,
+})
