@@ -176,7 +176,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-staging:
-    needs: [hard-deploy-android-staging, hard-deploy-ios-staging]
+    needs: [yarn-tester]
+    if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
     with:
       ENV: staging
