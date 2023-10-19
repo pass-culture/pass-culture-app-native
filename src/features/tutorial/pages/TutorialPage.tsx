@@ -59,7 +59,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
           {subtitle ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={2} />
-              <Typo.Body numberOfLines={3}>{subtitle}</Typo.Body>
+              <Typo.Body>{subtitle}</Typo.Body>
             </React.Fragment>
           ) : null}
           <Spacer.Column numberOfSpaces={4} />
