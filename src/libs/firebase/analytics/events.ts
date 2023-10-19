@@ -93,6 +93,7 @@ export enum AnalyticsEvent {
   LOGOUT = 'Logout',
   MAIL_TO = 'MailTo',
   MODIFY_MAIL = 'ModifyMail',
+  MODULE_DISPLAYED = 'ModuleDisplayed',
   MODULE_DISPLAYED_ON_HOMEPAGE = 'ModuleDisplayedOnHomePage',
   MULTI_VENUE_OPTION_DISPLAYED = 'MultivenueOptionDisplayed',
   NO_SEARCH_RESULT = 'NoSearchResult',
