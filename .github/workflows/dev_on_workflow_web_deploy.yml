@@ -20,7 +20,7 @@ on:
 
 jobs:
   web_deploy:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     environment:
       name: ${{ inputs.ENV }}
     steps:
@@ -80,7 +80,7 @@ jobs:
         run: |
           gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     if: ${{ always() }}
     needs: web_deploy
     steps:

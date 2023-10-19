@@ -15,7 +15,7 @@ on:
 
 jobs:
   create_an_push_tag:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     # env:
     #   GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
     #   GIT_CONFIG_NAME: ${{ github.actor }}
