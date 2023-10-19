@@ -12,7 +12,9 @@ interface Props {
 export const CreditStatusTag: React.FC<Props> = ({ status }) => {
   return (
     <Container status={status}>
-      <StyledText status={status}>{status}</StyledText>
+      <StyledText status={status} accessibilityHidden>
+        {status}
+      </StyledText>
     </Container>
   )
 }
