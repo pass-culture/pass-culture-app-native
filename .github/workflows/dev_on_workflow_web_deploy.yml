@@ -27,8 +27,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - name: "OpenID Connect Authentication"
+          node-version: 18
+      - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
