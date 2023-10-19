@@ -22,7 +22,7 @@ jobs:
   yarn_test_web:
     runs-on: [self-hosted, linux, x64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
@@ -51,7 +51,7 @@ jobs:
   yarn_test_native:
     runs-on: [self-hosted, linux, x64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
@@ -92,7 +92,7 @@ jobs:
   yarn_test_proxy:
     runs-on: [self-hosted, linux, x64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:

@@ -22,7 +22,7 @@ jobs:
   web_proxy_deploy:
     runs-on: [self-hosted, linux, x64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@v1.1.0'
         with:

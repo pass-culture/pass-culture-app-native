@@ -10,7 +10,6 @@ on:
         type: string
         required: false
 
-
 jobs:
   check-proxy-version:
     name: Check proxy version
@@ -20,8 +19,10 @@ jobs:
       is_greater_version: ${{ steps.proxy-rollback-protection.outputs.is_greater_version }}
       base_tag: ${{ steps.proxy-base-tag.outputs.base_tag }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         if: inputs.WEBAPP_URL
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v3
         if: inputs.WEBAPP_URL
@@ -46,7 +47,13 @@ jobs:
         name: Compare deployed proxy version with the current deployment to prevent rollback
         run: |
           npm install -g semver-compare-cli
-          echo is_greater_version=$(npx semver-compare ${{ steps.proxy-version.outputs.proxy_version }} $(cat server/package.json | jq -r .version) && echo true || echo false) >> $GITHUB_OUTPUT
+          export current_version=$(cat server/package.json | jq -r .version)
+          export is_greater_version=$(npx semver-compare ${{ steps.proxy-version.outputs.proxy_version }} ${current_version} && echo true || echo false)
+          echo "is_greater_version=$is_greater_version" >> $GITHUB_OUTPUT
+          echo "proxy version is ${{ steps.proxy-version.outputs.proxy_version }}"
+          echo "current version is ${current_version}"
+          echo "is greater version: ${is_greater_version}"
+
 
       # Since the running proxy server is exposing the version from it's package.json and does not expose the hotfix tag (which is a tag from an existing version)
       # we filter tags by tagger date descending and pick the latest one for a given version, this can be an hotfix, ie: hotfix-staging-1.0.0-1
@@ -54,4 +61,7 @@ jobs:
       - id: proxy-base-tag
         if: ${{ inputs.WEBAPP_URL && steps.proxy-rollback-protection.outputs.is_greater_version != 'false' }}
         name: Get last git tag that match server proxy version
-        run: echo base_tag=$(git tag --sort=-taggerdate | grep ${{ steps.proxy-version.outputs.proxy_version }} | head -n1) >> $GITHUB_OUTPUT
+        run: |
+          export base_tag=$(git tag --sort=-taggerdate | grep ${{ steps.proxy-version.outputs.proxy_version }} | head -n1)
+          echo base_tag=${base_tag} >> $GITHUB_OUTPUT
+          echo "base_tag=${base_tag}"
