@@ -169,15 +169,19 @@ export const CategoriesModal = ({
       if (!payload) return
 
       let additionalSearchState: SearchState = { ...searchState, ...payload }
-      let isOnline = false
+      let isFullyDigitalOffersCategory = false
       if (payload.offerNativeCategories.length > 0) {
-        isOnline = isOnlyOnline(data, undefined, payload.offerNativeCategories[0])
+        isFullyDigitalOffersCategory = isOnlyOnline(
+          data,
+          undefined,
+          payload.offerNativeCategories[0]
+        )
       } else if (payload.offerCategories.length > 0) {
-        isOnline = isOnlyOnline(data, payload.offerCategories[0])
+        isFullyDigitalOffersCategory = isOnlyOnline(data, payload.offerCategories[0])
       }
       additionalSearchState = {
         ...additionalSearchState,
-        isOnline: isOnline || undefined,
+        isFullyDigitalOffersCategory: isFullyDigitalOffersCategory || undefined,
       }
 
       switch (filterBehaviour) {

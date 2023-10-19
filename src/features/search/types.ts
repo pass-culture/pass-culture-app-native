@@ -74,7 +74,7 @@ export interface SearchState {
   searchId?: string
   maxPossiblePrice?: string
   isAutocomplete?: boolean
-  isOnline?: boolean
+  isFullyDigitalOffersCategory?: boolean
   // TODO(EveJulliard): re typer la fonction parseSearchParameters
   // pour supprimer minBookingsThreshold du type SearchState
   minBookingsThreshold?: number

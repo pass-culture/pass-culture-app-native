@@ -8,18 +8,18 @@ import { RADIUS_FILTERS } from '../../enums'
 type Params = {
   locationFilter?: SearchQueryParameters['locationFilter']
   userLocation: Position
-  isOnline?: SearchQueryParameters['isOnline']
+  isFullyDigitalOffersCategory?: SearchQueryParameters['isFullyDigitalOffersCategory']
   enableAppLocation?: boolean
 }
 
 export const buildGeolocationParameter = ({
   locationFilter: providedLocationFilter,
   userLocation,
-  isOnline,
+  isFullyDigitalOffersCategory,
   enableAppLocation,
 }: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   let locationFilter = providedLocationFilter
-  if (isOnline && enableAppLocation) return
+  if (isFullyDigitalOffersCategory && enableAppLocation) return
 
   if (!locationFilter)
     locationFilter = userLocation
@@ -40,7 +40,11 @@ export const buildGeolocationParameter = ({
   }
 
   if (!userLocation) return
-  if (!enableAppLocation && isOnline && locationFilter.locationType === LocationType.AROUND_ME)
+  if (
+    !enableAppLocation &&
+    isFullyDigitalOffersCategory &&
+    locationFilter.locationType === LocationType.AROUND_ME
+  )
     return
   if (locationFilter.locationType === LocationType.EVERYWHERE) {
     return {

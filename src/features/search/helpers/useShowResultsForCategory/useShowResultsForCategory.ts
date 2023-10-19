@@ -27,7 +27,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         offerGenreTypes: undefined,
         view: SearchView.Results,
         searchId,
-        isOnline: isOnlyOnline(data, pressedCategory) || undefined,
+        isFullyDigitalOffersCategory: isOnlyOnline(data, pressedCategory) || undefined,
       }
       dispatch({ type: 'SET_STATE', payload: newSearchState })
       navigate(...getTabNavConfig('Search', newSearchState))

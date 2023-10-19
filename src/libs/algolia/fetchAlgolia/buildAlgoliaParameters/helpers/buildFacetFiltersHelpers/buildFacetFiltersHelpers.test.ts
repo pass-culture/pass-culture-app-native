@@ -227,22 +227,22 @@ describe('buildTagsPredicate', () => {
 })
 
 describe('buildIncludeDigitalOffersPredicate', () => {
-  it('should return an include digital offers predicate formatted for Algolia API with isDigital = false when isOnline and includeDigitalOffers are false', () => {
+  it('should return an include digital offers predicate formatted for Algolia API with isDigital = false when isFullyDigitalOffersCategory and includeDigitalOffers are false', () => {
     const includeDigitalOffers = false
-    const isOnline = false
+    const isFullyDigitalOffersCategory = false
     const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
       includeDigitalOffers,
-      isOnline
+      isFullyDigitalOffersCategory
     )
     expect(includeDigitalOffersPredicate).toEqual(['offer.isDigital:false'])
   })
 
-  it('should return an include digital offers predicate undefined when isOnline or includeDigitalOffers is true', () => {
+  it('should return an include digital offers predicate undefined when isFullyDigitalOffersCategory or includeDigitalOffers is true', () => {
     const includeDigitalOffers = false
-    const isOnline = true
+    const isFullyDigitalOffersCategory = true
     const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
       includeDigitalOffers,
-      isOnline
+      isFullyDigitalOffersCategory
     )
     expect(includeDigitalOffersPredicate).toEqual(undefined)
   })

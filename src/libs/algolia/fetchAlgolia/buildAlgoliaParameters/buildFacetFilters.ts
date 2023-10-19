@@ -34,7 +34,7 @@ export const buildFacetFilters = ({
   offerTypes,
   tags,
   includeDigitalOffers,
-  isOnline,
+  isFullyDigitalOffersCategory,
 }: Pick<
   SearchQueryParameters,
   | 'locationFilter'
@@ -48,7 +48,7 @@ export const buildFacetFilters = ({
   | 'offerTypes'
   | 'tags'
   | 'includeDigitalOffers'
-  | 'isOnline'
+  | 'isFullyDigitalOffersCategory'
 > & {
   isUserUnderage: boolean
   objectIds?: string[]
@@ -108,7 +108,7 @@ export const buildFacetFilters = ({
 
   const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
     includeDigitalOffers,
-    isOnline
+    isFullyDigitalOffersCategory
   )
   if (includeDigitalOffersPredicate && enableAppLocation)
     facetFilters.push(includeDigitalOffersPredicate)

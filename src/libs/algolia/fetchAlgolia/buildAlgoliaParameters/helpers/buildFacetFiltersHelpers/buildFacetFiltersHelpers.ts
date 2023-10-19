@@ -85,8 +85,8 @@ export const buildTagsPredicate = (
 
 export const buildIncludeDigitalOffersPredicate = (
   includeDigitalOffers?: boolean,
-  isOnline?: boolean
+  isFullyDigitalOffersCategory?: boolean
 ) => {
-  if (includeDigitalOffers || isOnline) return undefined
+  if (includeDigitalOffers || isFullyDigitalOffersCategory) return undefined
   return [`${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${false}`]
 }

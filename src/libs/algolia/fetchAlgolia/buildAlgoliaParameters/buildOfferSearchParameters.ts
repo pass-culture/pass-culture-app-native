@@ -20,7 +20,7 @@ export const buildOfferSearchParameters = (
     eanList = [],
     endingDatetime = undefined,
     excludedObjectIds = [],
-    isOnline = undefined,
+    isFullyDigitalOffersCategory = undefined,
     locationFilter,
     maxPossiblePrice = '',
     maxPrice = '',
@@ -65,7 +65,7 @@ export const buildOfferSearchParameters = (
     offerTypes,
     tags,
     includeDigitalOffers,
-    isOnline,
+    isFullyDigitalOffersCategory,
     enableAppLocation,
   }),
   ...buildNumericFilters({
@@ -81,6 +81,11 @@ export const buildOfferSearchParameters = (
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({ locationFilter, userLocation, isOnline, enableAppLocation }),
+  ...buildGeolocationParameter({
+    locationFilter,
+    userLocation,
+    isFullyDigitalOffersCategory,
+    enableAppLocation,
+  }),
   ...buildFilters({ excludedObjectIds }),
 })
