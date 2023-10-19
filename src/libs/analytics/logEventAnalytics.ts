@@ -216,6 +216,7 @@ export const logEventAnalytics = {
     fromMultivenueOfferId?: number
     playlistType?: PlaylistType
     offer_display_index?: number
+    index?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
   logConsultTutorial: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, { from }),
