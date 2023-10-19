@@ -20,7 +20,7 @@ env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 jobs:
   yarn_test_web:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, big]
     steps:
       - uses: actions/checkout@v3
       - name: "OpenID Connect Authentication"
@@ -49,7 +49,7 @@ jobs:
       - run: yarn test:unit:web:ci
 
   yarn_test_native:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, big]
     steps:
       - uses: actions/checkout@v3
       - name: "OpenID Connect Authentication"
@@ -90,7 +90,7 @@ jobs:
         with:
           projectBaseDir: .
   yarn_test_proxy:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, big]
     steps:
       - uses: actions/checkout@v3
       - name: "OpenID Connect Authentication"
