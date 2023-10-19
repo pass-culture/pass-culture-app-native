@@ -79,8 +79,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS }),
   logAllModulesSeen: (numberOfModules: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ALL_MODULES_SEEN }, { numberOfModules }),
-  logAllTilesSeen: (params: { moduleName?: string; numberOfTiles?: number; searchId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
+  logAllTilesSeen: (params: {
+    moduleName?: string
+    numberOfTiles?: number
+    searchId?: string
+    moduleId?: string
+    venueId?: number
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
   logBookingConfirmation: (params: {

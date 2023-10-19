@@ -7,7 +7,9 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
+import { useFunctionOnce } from 'libs/hooks'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -25,6 +27,14 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
   const labelMapping = useCategoryHomeLabelMapping()
   const route = useRoute<UseRouteType<'Venue'>>()
   const entryId = playlist.entryId
+
+  const logHasSeenAllTilesOnce = useFunctionOnce(() =>
+    analytics.logAllTilesSeen({
+      moduleId: entryId,
+      numberOfTiles: playlist.offers.hits.length,
+      venueId: venue.id,
+    })
+  )
 
   const renderPassPlaylist: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height, index }) => {
@@ -64,6 +74,7 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
       renderItem={renderPassPlaylist}
       keyExtractor={(item: Hit<Offer>) => item.offer.name ?? ''}
       title={playlist.title}
+      onEndReached={logHasSeenAllTilesOnce}
     />
   )
 }

@@ -5164,7 +5164,7 @@ d’options
                         "horizontal": true,
                         "keyExtractor": [Function],
                         "numColumns": 1,
-                        "onEndReached": undefined,
+                        "onEndReached": [Function],
                         "onEndReachedThreshold": 0.2,
                         "onLayout": [Function],
                         "renderItem": [Function],
