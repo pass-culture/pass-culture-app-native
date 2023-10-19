@@ -1,0 +1,5 @@
+- [ ] tester l'automation
+- [ ] vérifier que le workflow du tag est appelé
+- [ ] renommer le workflow
+- [ ] retirer le préfixe test du tag
+- [ ] finaliser la PR
