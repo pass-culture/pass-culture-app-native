@@ -422,6 +422,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="cette année"
                       style={
                         [
@@ -674,6 +675,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="à venir"
                       style={
                         [
@@ -926,6 +928,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="à venir"
                       style={
                         [
@@ -1339,6 +1342,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="à venir"
                       style={
                         [
@@ -2003,6 +2007,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="passé"
                       style={
                         [
@@ -2249,6 +2254,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="cette année"
                       style={
                         [
@@ -2501,6 +2507,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="à venir"
                       style={
                         [
@@ -2914,6 +2921,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="à venir"
                       style={
                         [
@@ -3578,6 +3586,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="passé"
                       style={
                         [
@@ -3817,6 +3826,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="passé"
                       style={
                         [
@@ -4063,6 +4073,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="cette année"
                       style={
                         [
@@ -4476,6 +4487,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="à venir"
                       style={
                         [
@@ -5140,6 +5152,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="passé"
                       style={
                         [
@@ -5379,6 +5392,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="passé"
                       style={
                         [
@@ -5618,6 +5632,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="passé"
                       style={
                         [
@@ -5879,6 +5894,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       status="cette année"
                       style={
                         [

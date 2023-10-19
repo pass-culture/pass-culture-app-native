@@ -578,6 +578,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="cette année"
                     style={
                       [
@@ -966,6 +967,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -1354,6 +1356,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -2190,6 +2193,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -3624,6 +3628,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="cette année"
                     style={
                       [
@@ -4012,6 +4017,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -4400,6 +4406,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -5236,6 +5243,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [

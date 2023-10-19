@@ -172,7 +172,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
           }
         />
         <Text
-          numberOfLines={3}
           style={
             [
               {
@@ -1159,7 +1158,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
           }
         />
         <Text
-          numberOfLines={3}
           style={
             [
               {
