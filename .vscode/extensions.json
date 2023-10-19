@@ -18,5 +18,6 @@
     "mikestead.dotenv",
     "rebornix.ruby",
     "wingrunr21.vscode-ruby",
+    "firsttris.vscode-jest-runner"
   ]
 }
