@@ -94,8 +94,12 @@ export const SearchList = forwardRef<never, SearchListProps>(
       setAvailableHeight(event.nativeEvent.layout.height)
     }, [])
 
+    const { opacity, handleScroll: handleScrollOpacity } = useScrollToBottomOpacity()
+
     const handleScroll = useCallback(
       (props: ListOnScrollProps) => {
+        handleScrollOpacity(props)
+
         if (outerListRef.current && autoScrollEnabled) {
           const { scrollTop, scrollHeight, clientHeight } = outerListRef.current
 
@@ -142,6 +146,10 @@ export const SearchList = forwardRef<never, SearchListProps>(
       [isGeolocated, nbHits, autoScrollEnabled, onPress]
     )
 
+    const handleScrollToTopPress = useCallback(() => {
+      listRef.current?.scrollToItem(0)
+    }, [])
+
     return (
       <RootContainer onLayout={onLayout} testID="searchResultsFlatlist">
         {nbHits ? (
@@ -161,6 +169,17 @@ export const SearchList = forwardRef<never, SearchListProps>(
               width="100%">
               {SearchListItem}
             </VariableSizeList>
+
+            <ScrollToTopContainer style={{ opacity }}>
+              <Container onPress={handleScrollToTopPress}>
+                <StyledLinearGradient
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0, y: 1 }}
+                  colors={['#bf275f', '#5a0d80']}>
+                  <ScrollToTopIcon />
+                </StyledLinearGradient>
+              </Container>
+            </ScrollToTopContainer>
           </React.Fragment>
         ) : (
           <NoSearchResult />
@@ -175,3 +194,30 @@ SearchList.displayName = 'SearchListWeb'
 const RootContainer = styled(View)({
   flex: 1,
 })
+
+const ScrollToTopContainer = styled(Animated.View)(({ theme }) => ({
+  alignSelf: 'center',
+  position: 'absolute',
+  right: getSpacing(7),
+  bottom: theme.tabBar.height + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton + 1000,
+  overflow: 'hidden',
+  border: 0,
+}))
+
+const Container = styledButton(Touchable)({ overflow: 'hidden' })
+
+const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
+  borderRadius: theme.borderRadius.button,
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+  height: getSpacing(10),
+  width: getSpacing(10),
+}))
+
+const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icons.sizes.small,
+}))``

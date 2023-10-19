@@ -14,6 +14,12 @@ const mockNbHits = mockedAlgoliaResponse.nbHits
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity', () => ({
+  useScrollToBottomOpacity: () => ({
+    handleScroll: jest.fn(),
+  }),
+}))
+
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
 
