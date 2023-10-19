@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react'
 import styled from 'styled-components/native'
 
+import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps, SearchState } from 'features/search/types'
 import { AlgoliaVenue } from 'libs/algolia'
@@ -38,6 +39,19 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
           venues={data.venues}
         />
       </div>
+    )
+  }
+
+  if (index === data.items.length - 1) {
+    return (
+      <SearchListFooter
+        isFetchingNextPage={data.isFetchingNextPage}
+        nbLoadedHits={data.offers?.length}
+        nbHits={data.nbHits}
+        autoScrollEnabled={data.autoScrollEnabled}
+        onPress={data.onPress}
+        style={style}
+      />
     )
   }
 

@@ -21,6 +21,7 @@ const USER_DATA_MESSAGE_HEIGHT = 72
 const GEOLOCATION_BUTTON_HEIGHT = 102
 const VENUES_PLAYLIST_HEIGHT = 265
 
+const FOOTER_SIZE = 104
 const LOAD_MORE_THRESHOLD = 300
 
 function getHeaderSize(
@@ -56,6 +57,11 @@ function getItemSize(
 ) {
   if (index === 0) {
     return getHeaderSize(userData, isGeolocated, venuesCount)
+  }
+
+  // Last index means we want to draw the Footer.
+  if (index === itemsCount - 1) {
+    return FOOTER_SIZE
   }
 
   return LIST_ITEM_HEIGHT
@@ -115,7 +121,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
        * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
        * guess what we want to draw.
        */
-      items: [{}, ...hits.offers],
+      items: [{}, ...hits.offers, {}],
       userData,
       venuesUserData,
       nbHits,

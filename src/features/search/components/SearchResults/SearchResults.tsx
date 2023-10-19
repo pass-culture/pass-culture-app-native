@@ -189,15 +189,7 @@ export const SearchResults: React.FC = () => {
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
   const handlePressFooter = () => {
-    const currentRef = searchListRef.current
-    if (currentRef instanceof FlatList) {
-      const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
-        .lastChild as HTMLElement
-      const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
-      offerLink.focus()
-      offerLink.blur()
-      onEndReached()
-    }
+    onEndReached()
   }
 
   return (
