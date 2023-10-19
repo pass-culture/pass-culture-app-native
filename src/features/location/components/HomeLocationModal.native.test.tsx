@@ -2,9 +2,11 @@ import React from 'react'
 import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
+import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
 import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { SuggestedPlace } from 'libs/place'
 import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow, act } from 'tests/utils'
 
 const hideModalMock = jest.fn()
@@ -25,12 +27,42 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 >
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
+const mockPlaces: SuggestedPlace[] = [
+  {
+    label: 'Kourou',
+    info: 'Guyane',
+    geolocation: { longitude: -52.669736, latitude: 5.16186 },
+  },
+]
+jest.mock('libs/place', () => ({
+  usePlaces: () => ({ data: mockPlaces, isLoading: false }),
+}))
+
 describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderHomeLocationModal()
     await waitForModalToShow()
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should trigger logEvent "logUserSetLocation" on onSubmit', async () => {
+    renderHomeLocationModal()
+    await waitForModalToShow()
+
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    fireEvent.changeText(searchInput, mockPlaces[0].label)
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    const validateButon = screen.getByText('Valider la localisation')
+    fireEvent.press(validateButon)
+
+    expect(analytics.logUserSetLocation).toHaveBeenCalledWith('home')
   })
 
   it('should hide modal on close modal button press', async () => {
