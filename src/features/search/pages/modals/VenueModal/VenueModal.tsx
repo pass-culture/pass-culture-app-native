@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
+import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -13,12 +14,11 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { Typo } from 'ui/theme'
 
-interface Props {
+interface Props extends VenueModalHookProps {
   visible: boolean
-  dismissModal: () => void
 }
 
-export const VenueModal = ({ visible, dismissModal }: Props) => {
+export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
   const {
     doChangeVenue,
     doResetVenue,
@@ -27,7 +27,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     shouldShowSuggestedVenues,
     isVenueSelected,
     venueQuery,
-  } = useVenueModal(dismissModal)
+  } = useVenueModal({ dismissModal, doAfterSearch })
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)

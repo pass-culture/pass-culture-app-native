@@ -67,16 +67,22 @@ export function Search() {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
   }, [dispatch, params])
 
-  const currentView = useMemo(() => params?.view, [params?.view])
+  const currentFilters = params?.locationFilter
 
-  const searchVenuePosition = useMemo(
-    () => buildSearchVenuePosition(params?.locationFilter, userPosition),
-    [params?.locationFilter, userPosition]
+  const setQueryHistoryMemoized = useCallback(
+    (query: string) => setQueryHistory(query),
+    [setQueryHistory]
   )
 
+  const currentView = useMemo(() => {
+    return params?.view
+  }, [params?.view])
+
+  const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition)
+
   const currentVenuesIndex = useMemo(() => {
-    return getCurrentVenuesIndex(params?.locationFilter?.locationType)
-  }, [params?.locationFilter?.locationType])
+    return getCurrentVenuesIndex(currentFilters?.locationType)
+  }, [currentFilters?.locationType])
 
   const onVenuePress = useCallback(async (venueId: number) => {
     await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
@@ -121,7 +127,7 @@ export function Search() {
             searchInputID={searchInputID}
             searchView={currentView}
             addSearchHistory={addToHistory}
-            searchInHistory={(query: string) => setQueryHistory(query)}
+            searchInHistory={setQueryHistoryMemoized}
           />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
@@ -152,7 +158,7 @@ export function Search() {
               <Spacer.Column numberOfSpaces={3} />
             </StyledScrollView>
           ) : (
-            <BodySearch view={params?.view} />
+            <BodySearch view={currentView} />
           )}
         </InstantSearch>
       </Form.Flex>

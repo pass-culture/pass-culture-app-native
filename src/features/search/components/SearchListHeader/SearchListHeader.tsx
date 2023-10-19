@@ -96,6 +96,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     searchState.locationFilter.locationType !== LocationType.VENUE &&
     params?.locationFilter?.locationType !== LocationType.VENUE &&
     !!venues?.length
+
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()

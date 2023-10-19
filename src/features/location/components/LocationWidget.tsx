@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Animated, LayoutChangeEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -6,7 +7,10 @@ import { HomeLocationModal } from 'features/location/components/HomeLocationModa
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
+import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -28,6 +32,7 @@ interface LocationWidgetProps {
 }
 
 export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const touchableRef = React.useRef<HTMLButtonElement>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
@@ -92,6 +97,13 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
 
   const isWidgetHighlighted = isGeolocated || !!isCustomPosition
 
+  const onSearch = useCallback(
+    (payload: Partial<SearchState>) => {
+      navigate(...getTabNavConfig('Search', payload))
+    },
+    [navigate]
+  )
+
   return (
     <React.Fragment>
       {enableTooltip ? (
@@ -115,7 +127,11 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
         <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
       ) : (
         <React.Fragment>
-          <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
+          <VenueModal
+            visible={venueModalVisible}
+            dismissModal={hideVenueModal}
+            doAfterSearch={onSearch}
+          />
           <SearchLocationModal
             visible={locationModalVisible}
             dismissModal={hideLocationModal}
