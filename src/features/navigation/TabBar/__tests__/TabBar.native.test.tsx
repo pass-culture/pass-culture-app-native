@@ -78,7 +78,7 @@ describe('TabBar', () => {
       'Mon profil',
     ].sort()
 
-    expectedTabsTestIds.map((tab) => {
+    expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
   })
@@ -101,7 +101,7 @@ describe('TabBar', () => {
       'Mon profil',
     ].sort()
 
-    expectedTabsTestIds.map((tab) => {
+    expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByTestId(tab)).toBeOnTheScreen()
     })
   })

@@ -25,7 +25,7 @@ describe('AccessibleTabBar', () => {
       'Mon profil',
     ]
 
-    expectedTabsTestIds.map((tab) => {
+    expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByTestId(tab)).toBeInTheDocument()
     })
   })
