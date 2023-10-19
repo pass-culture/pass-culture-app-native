@@ -363,28 +363,19 @@ describe('categoriesHelpers', () => {
   })
 
   describe('getNbResultsFacetLabel', () => {
-    it('should return "+100 résultats" for nbResultsFacet > 100', () => {
-      const result = getNbResultsFacetLabel(101)
-
-      expect(result).toEqual('+100 résultats')
+    it('should display "+10000" when the number of result facets is greater than 10000', () => {
+      const result = getNbResultsFacetLabel(10001)
+      expect(result).toEqual('+10000')
     })
 
-    it('should return "{nbResultsFacet} résultats" for nbResultsFacet > 1', () => {
+    it('should display the exact number of result facets', () => {
       const result = getNbResultsFacetLabel(5)
-
-      expect(result).toEqual('5 résultats')
+      expect(result).toEqual('5')
     })
 
-    it('should return "{nbResultsFacet} résultat" for nbResultsFacet === 1', () => {
-      const result = getNbResultsFacetLabel(1)
-
-      expect(result).toEqual('1 résultat')
-    })
-
-    it('should return "{nbResultsFacet} résultat" for nbResultsFacet = 0', () => {
+    it('should display "0" when the number of result facets is equal to 0', () => {
       const result = getNbResultsFacetLabel(0)
-
-      expect(result).toEqual('0 résultat')
+      expect(result).toEqual('0')
     })
   })
 })

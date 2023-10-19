@@ -270,11 +270,11 @@ describe('<CategoriesModal/>', () => {
         renderCategories()
 
         // Festivals du livre + Livres audio physiques
-        expect(screen.getAllByText('0 résultat')).toHaveLength(2)
+        expect(screen.getAllByText('0')).toHaveLength(2)
         // Livres numériques & audio
-        expect(screen.getByText('23 résultats')).toBeOnTheScreen()
+        expect(screen.getByText('23')).toBeOnTheScreen()
         // Livre Papiers
-        expect(screen.getByText('+100 résultats')).toBeOnTheScreen()
+        expect(screen.getByText('4494')).toBeOnTheScreen()
       })
     })
 
