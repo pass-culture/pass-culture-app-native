@@ -56,6 +56,10 @@ export type Action =
   | { type: 'SET_LOCATION_VENUE'; payload: Venue }
   | { type: 'SET_QUERY'; payload: string }
   | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
+  | {
+      type: 'SET_LOCATION_FILTERS'
+      payload: { locationFilter: SearchState['locationFilter']; includeDigitalOffers: boolean }
+    }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -150,6 +154,12 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'SET_QUERY':
       return { ...state, query: action.payload }
+    case 'SET_LOCATION_FILTERS':
+      return {
+        ...state,
+        locationFilter: action.payload.locationFilter,
+        includeDigitalOffers: action.payload.includeDigitalOffers,
+      }
     default:
       return state
   }

@@ -114,22 +114,20 @@ export const SearchLocationModal = ({
     if (selectedLocationMode === LocationMode.CUSTOM_POSITION && selectedPlace) {
       setPlaceGlobally(selectedPlace)
       dispatch({
-        type: 'SET_STATE',
+        type: 'SET_LOCATION_FILTERS',
         payload: {
-          ...searchState,
           locationFilter: { place: selectedPlace, locationType: LocationType.PLACE, aroundRadius },
-          includeDigitalOffers: includeDigitalOffers,
+          includeDigitalOffers,
         },
       })
       analytics.logUserSetLocation('search')
     } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
       setPlaceGlobally(null)
       dispatch({
-        type: 'SET_STATE',
+        type: 'SET_LOCATION_FILTERS',
         payload: {
-          ...searchState,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
-          includeDigitalOffers: includeDigitalOffers,
+          includeDigitalOffers,
         },
       })
     }
