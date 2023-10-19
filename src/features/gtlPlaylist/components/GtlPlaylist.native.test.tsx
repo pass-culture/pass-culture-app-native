@@ -154,4 +154,23 @@ describe('GtlPlaylist', () => {
     scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
+
+  it('should log ModuleDisplayed when playlist is loaded', () => {
+    render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+
+    expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
+      displayedOn: 'venue',
+      moduleId: '2xUlLBRfxdk6jeYyJszunX',
+      venueId: 5543,
+    })
+  })
+
+  it('should log ModuleDisplayed only once when playlist is loaded', () => {
+    render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+
+    expect(analytics.logModuleDisplayed).toHaveBeenCalledTimes(1)
+
+    screen.rerender(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+    expect(analytics.logModuleDisplayed).toHaveBeenCalledTimes(1)
+  })
 })
