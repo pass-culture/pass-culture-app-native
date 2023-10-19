@@ -452,86 +452,70 @@ exports[`SearchResults component should render correctly 1`] = `
         data-testid="searchResults"
       >
         <div
-          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          data-testid="searchResultsFlatlist"
         >
           <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z"
-            data-testid="searchResultsFlatlist"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
+            role="status"
           >
             <div
-              class="css-view-175oi2r"
-              style="flex: 1;"
+              class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
             >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
-                role="status"
-              >
-                <div
-                  class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy"
-                >
-                  <h2
-                    aria-level="2"
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    Pas de résultat
-                  </h2>
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    <span
-                      aria-live="assertive"
-                      class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                    >
-                      Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-                    </span>
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-1472mwg"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <button
-                    aria-label="Modifier mes filtres"
-                    class="c6 c7"
-                    data-testid="Modifier mes filtres"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <div
-                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
-                      dir="ltr"
-                    >
-                      Modifier mes filtres
-                    </div>
-                  </button>
-                </div>
-              </div>
               <div
                 class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
-                />
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
               </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy"
+            >
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+                dir="ltr"
+                role="heading"
+              >
+                Pas de résultat
+              </h2>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                <span
+                  aria-live="assertive"
+                  class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                >
+                  Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-1472mwg"
+            />
+            <div
+              class="css-view-175oi2r"
+            >
+              <button
+                aria-label="Modifier mes filtres"
+                class="c6 c7"
+                data-testid="Modifier mes filtres"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Modifier mes filtres
+                </div>
+              </button>
             </div>
           </div>
         </div>
@@ -991,86 +975,70 @@ exports[`SearchResults component should render correctly 1`] = `
       data-testid="searchResults"
     >
       <div
-        class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        data-testid="searchResultsFlatlist"
       >
         <div
-          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z"
-          data-testid="searchResultsFlatlist"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
+          role="status"
         >
           <div
-            class="css-view-175oi2r"
-            style="flex: 1;"
+            class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
           >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
-              role="status"
-            >
-              <div
-                class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
-              >
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Pas de résultat
-                </h2>
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
-                  dir="ltr"
-                >
-                  <span
-                    aria-live="assertive"
-                    class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                  >
-                    Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-                  </span>
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r r-height-1472mwg"
-              />
-              <div
-                class="css-view-175oi2r"
-              >
-                <button
-                  aria-label="Modifier mes filtres"
-                  class="c6 c7"
-                  data-testid="Modifier mes filtres"
-                  tabindex="0"
-                  type="button"
-                >
-                  <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
-                    dir="ltr"
-                  >
-                    Modifier mes filtres
-                  </div>
-                </button>
-              </div>
-            </div>
             <div
               class="css-view-175oi2r"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
-              />
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                undefined-SVG-Mock
+              </div>
             </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy"
+          >
+            <h2
+              aria-level="2"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+              dir="ltr"
+              role="heading"
+            >
+              Pas de résultat
+            </h2>
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+              dir="ltr"
+            >
+              <span
+                aria-live="assertive"
+                class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+              >
+                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+              </span>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-1472mwg"
+          />
+          <div
+            class="css-view-175oi2r"
+          >
+            <button
+              aria-label="Modifier mes filtres"
+              class="c6 c7"
+              data-testid="Modifier mes filtres"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                dir="ltr"
+              >
+                Modifier mes filtres
+              </div>
+            </button>
           </div>
         </div>
       </div>
