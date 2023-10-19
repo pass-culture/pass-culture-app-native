@@ -113,7 +113,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-android-testing:
     needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/testing') || startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/testing')
     uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
       ENV: testing
@@ -122,7 +122,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-testing:
     needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/testing') || startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/testing')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
       ENV: testing
