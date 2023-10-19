@@ -16,13 +16,48 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { getSpacing } from 'ui/theme'
 
+const BASE_HEADER_HEIGHT = 92
+const USER_DATA_MESSAGE_HEIGHT = 72
+const GEOLOCATION_BUTTON_HEIGHT = 102
+const VENUES_PLAYLIST_HEIGHT = 265
+
 const LOAD_MORE_THRESHOLD = 300
+
+function getHeaderSize(
+  userData: Record<'message', string>[] | undefined,
+  isGeolocated: boolean,
+  venuesCount: number
+) {
+  let totalHeight = BASE_HEADER_HEIGHT
+
+  if (userData?.[0]?.message) {
+    totalHeight += USER_DATA_MESSAGE_HEIGHT
+  } else if (!isGeolocated) {
+    totalHeight += GEOLOCATION_BUTTON_HEIGHT
+  }
+
+  if (venuesCount) {
+    totalHeight += VENUES_PLAYLIST_HEIGHT
+  }
+
+  return totalHeight
+}
 
 /**
  * Function called to compute row size.
  * Since the list contains header and footer components, it needs computation.
  */
-function getItemSize() {
+function getItemSize(
+  index: number,
+  venuesCount: number,
+  isGeolocated: boolean,
+  itemsCount: number,
+  userData: any
+) {
+  if (index === 0) {
+    return getHeaderSize(userData, isGeolocated, venuesCount)
+  }
+
   return LIST_ITEM_HEIGHT
 }
 
@@ -80,7 +115,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
        * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
        * guess what we want to draw.
        */
-      items: hits.offers,
+      items: [{}, ...hits.offers],
       userData,
       venuesUserData,
       nbHits,

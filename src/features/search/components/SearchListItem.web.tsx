@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react'
 import styled from 'styled-components/native'
 
+import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps, SearchState } from 'features/search/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { Offer } from 'shared/offer/types'
@@ -8,7 +9,7 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing } from 'ui/theme'
 
 export type RowData = {
-  items: Offer[]
+  items: (Record<string, never> | Offer)[]
   userData: SearchListProps['userData']
   venuesUserData: SearchListProps['venuesUserData']
   nbHits: SearchListProps['nbHits']
@@ -27,6 +28,19 @@ interface RowProps {
 }
 
 export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
+  if (index === 0 && data.nbHits > 0) {
+    return (
+      <div style={style}>
+        <SearchListHeader
+          nbHits={data.nbHits}
+          userData={data.userData}
+          venuesUserData={data.venuesUserData}
+          venues={data.venues}
+        />
+      </div>
+    )
+  }
+
   return (
     <li style={style}>
       <StyledHorizontalOfferTile
