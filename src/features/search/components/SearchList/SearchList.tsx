@@ -4,11 +4,10 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
+import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
 import { getSpacing } from 'ui/theme'
-
-const HIT_SIZE = 130
 
 const keyExtractor = (item: Offer) => item.objectID
 
@@ -35,7 +34,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
 
     return nbHits > 0 ? (
       <FlashList
-        estimatedItemSize={HIT_SIZE}
+        estimatedItemSize={LIST_ITEM_HEIGHT}
         ref={ref}
         testID="searchResultsFlashlist"
         data={hits.offers}
