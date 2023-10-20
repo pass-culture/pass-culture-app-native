@@ -28,5 +28,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK = 'wipEnableNewExclusivityBlock',
   WIP_ENABLE_VENUES_IN_SEARCH_RESULTS = 'wipEnableVenuesInSearchResults',
   WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
+  WIP_SAME_AUTHOR_PLAYLIST = 'wipSameAuthorPlaylist',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
 }

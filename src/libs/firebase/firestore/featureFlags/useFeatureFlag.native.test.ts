@@ -24,6 +24,7 @@ describe.each([
   RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK,
   RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS,
   RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
+  RemoteStoreFeatureFlags.WIP_SAME_AUTHOR_PLAYLIST,
   RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
 ])('useFeatureFlag %s', (featureFlag: RemoteStoreFeatureFlags) => {
   beforeAll(() =>
