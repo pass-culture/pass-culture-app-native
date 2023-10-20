@@ -81,6 +81,7 @@ describe('HomeHeader', () => {
       mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
       mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
       mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
+      mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
 
       mockUseAvailableCredit.mockReturnValueOnce(credit)
       mockUseAvailableCredit.mockReturnValueOnce(credit)
@@ -109,8 +110,10 @@ describe('HomeHeader', () => {
   })
 
   it('should display geolocation banner when geolocation is denied', async () => {
-    mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
-    mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+    mockUseGeolocation
+      .mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+      .mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
+      .mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -221,26 +224,72 @@ describe('HomeHeader', () => {
 
   it('should show LocationWidget when ENABLE_APP_LOCATION is on and when isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
     renderHomeHeader()
 
-    expect(await screen.findByText('Ma position')).toBeTruthy()
+    await screen.findByTestId('Ouvrir la modale de localisation depuis le widget')
+
+    expect(screen.getByText('Ma position')).toBeTruthy()
   })
 
   it('should not show LocationWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     renderHomeHeader(true)
 
     await waitFor(() => {
-      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
+      expect(
+        screen.queryByTestId('Ouvrir la modale de localisation depuis le widget')
+      ).not.toBeOnTheScreen()
     })
   })
 
   it('should not show LocationWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
     renderHomeHeader()
 
     await waitFor(() => {
+      expect(
+        screen.queryByTestId('Ouvrir la modale de localisation depuis le widget')
+      ).not.toBeOnTheScreen()
       expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should show LocationTitleWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
+    renderHomeHeader(true)
+
+    expect(
+      await screen.findByTestId('Ouvrir la modale de localisation depuis le titre')
+    ).toBeTruthy()
+  })
+
+  it('should not show LocationTitleWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is false', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderHomeHeader(false)
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('Ouvrir la modale de localisation depuis le titre')
+      ).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should not show LocationTitleWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is true', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    renderHomeHeader(true)
+
+    await waitFor(() => {
+      expect(
+        screen.queryByTestId('Ouvrir la modale de localisation depuis le titre')
+      ).not.toBeOnTheScreen()
     })
   })
 })

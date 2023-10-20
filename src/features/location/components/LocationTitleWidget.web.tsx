@@ -68,7 +68,6 @@ export const LocationTitleWidget = () => {
 const LocationButton = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
-  backgroundColor: 'lightblue',
   height: getSpacing(8),
   flexShrink: 1,
 })
