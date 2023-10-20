@@ -68,12 +68,45 @@ jobs:
           version-type: 'minor'
           skip-commit: 'true'
           skip-tag: 'true'
-      - name: get package version
+      - name: Get package version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-      - name: Get package version and bump build number
+      - name: Bump build number
+        id: build-number
         run: |
-          ./scripts/update_build_number_from_package_json_version.sh
+          # We have to increment the build number because it is used as the versionCode
+          # in app/build.gradle: versionCode (packageJson.build as Integer) and the
+          # Play Store requires this value to be strictly increasing. Otherwise, we get this error:
+
+          # ERROR Google Api Error: forbidden: You cannot rollout this release because it does not allow
+          # any existing users to upgrade to the newly added APKs.
+
+          # As such, since the current version is 10136027 = 1 * 10_000_000 + 136 * 1_000 + 27, we build each new version
+          # as the sum of:
+          #  + 10_000_000 * MAJOR,
+          #  + 1_000 * MINOR,
+          #  + PATCH
+          # where <VERSION> = <MAJOR>.<MINOR>.<PATCH> (ex: 1.137.3) as we use semantic versioning.
+
+          # Examples:
+          #   1.136.27 => 10 000 000 + 136 000 + 027 => 10136027
+          #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
+
+          VERSION=${{ steps.package-version.outputs.current-version}}
+          SEMVER=(${VERSION//./ })
+          MAJOR=${SEMVER[0]}
+          MINOR=${SEMVER[1]}
+          PATCH=${SEMVER[2]}
+          BUILD_NUMBER="$((10000000 * MAJOR + 1000 * MINOR + PATCH))"
+          echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
+      - name: Update build number in package.json
+        uses: jossef/action-set-json-field@v2.1
+        with:
+          file: package.json
+          field: build
+          value: ${{ steps.build-number.outputs.build_number}}
+      - name: Commit changes
+        run: |
           git add package.json
           git add server/package.json
           VERSION=${{ steps.package-version.outputs.current-version}}
