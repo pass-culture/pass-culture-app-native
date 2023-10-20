@@ -81,7 +81,7 @@ jobs:
   yarn-chromatic:
     needs: [yarn-linter, check-storybook-folder-changes]
     uses: ./.github/workflows/dev_on_workflow_chromatic.yml
-    # if: needs.check-storybook-folder-changes.outputs.folder_changed == 'true'
+    if: needs.check-storybook-folder-changes.outputs.folder_changed == 'true'
     secrets:
       CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   soft-deploy-testing:

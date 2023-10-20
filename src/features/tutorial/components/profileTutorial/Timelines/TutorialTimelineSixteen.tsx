@@ -29,12 +29,15 @@ export const TutorialTimelineSixteen = ({ activatedAt }: Props) => {
     ...SixteenStepperProps,
   ]
   return (
-    <CreditTimeline
-      age={16}
-      stepperProps={fullStepperProps}
-      type={TutorialTypes.PROFILE_TUTORIAL}
-      testID="sixteen-timeline"
-    />
+    <React.Fragment>
+      <CreditTimeline
+        age={16}
+        stepperProps={fullStepperProps}
+        type={TutorialTypes.PROFILE_TUTORIAL}
+        testID="sixteen-timeline"
+      />
+      <Spacer.Column numberOfSpaces={3} />
+    </React.Fragment>
   )
 }
 
