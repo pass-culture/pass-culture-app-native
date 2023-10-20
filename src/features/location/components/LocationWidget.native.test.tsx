@@ -21,7 +21,7 @@ describe('LocationWidget', () => {
   it('should show modal when pressing widget', async () => {
     renderLocationWidget()
 
-    const button = screen.getByTestId('Ouvrir la modale de localisation')
+    const button = screen.getByTestId('Ouvrir la modale de localisation depuis le widget')
 
     fireEvent.press(button)
 
