@@ -77,7 +77,7 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="Ouvrir la modale de localisation"
+        accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
         accessibilityRole="button"
         accessibilityState={
           {
@@ -115,7 +115,7 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="Ouvrir la modale de localisation"
+        testID="Ouvrir la modale de localisation depuis le widget"
       >
         <View
           collapsable={false}

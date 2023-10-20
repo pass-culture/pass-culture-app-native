@@ -25,7 +25,7 @@ describe('LocationSearchWidget', () => {
     })
     render(<LocationSearchWidget />)
 
-    const button = screen.getByTestId('Ouvrir la modale de localisation')
+    const button = screen.getByTestId('Ouvrir la modale de localisation depuis la recherche')
 
     fireEvent.press(button)
 
