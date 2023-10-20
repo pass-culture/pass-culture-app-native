@@ -47,9 +47,9 @@ function renderVideoPlayer() {
       youtubeVideoId={videoModuleFixture.youtubeVideoId}
       offer={mockOffer}
       onPressSeeOffer={hideModalMock}
-      moduleId={'abcd'}
-      moduleName={'lujipeka'}
-      homeEntryId={'xyz'}
+      moduleId="abcd"
+      moduleName="lujipeka"
+      homeEntryId="xyz"
     />
   )
 }

@@ -3,13 +3,13 @@ import { Text, Platform } from 'react-native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 describe('<PageWithHeader/>', () => {
   it('should render correctly', () => {
     Platform.OS = 'ios'
 
-    const renderAPI = render(
+    render(
       <PageWithHeader
         title="Page with header title"
         scrollChildren={<Text>scroll children</Text>}
@@ -17,12 +17,12 @@ describe('<PageWithHeader/>', () => {
         onGoBack={mockGoBack}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
   it('should render correctly on Android, with white header', () => {
     Platform.OS = 'android'
 
-    const renderAPI = render(
+    render(
       <PageWithHeader
         title="Page with header title"
         scrollChildren={<Text>scroll children</Text>}
@@ -30,6 +30,6 @@ describe('<PageWithHeader/>', () => {
         onGoBack={mockGoBack}
       />
     )
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 })

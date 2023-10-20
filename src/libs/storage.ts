@@ -18,10 +18,12 @@ export type StorageKey =
   | 'times_location_tooltip_has_been_displayed'
   | 'times_review_has_been_requested'
   | 'traffic_campaign'
+  | 'traffic_content'
   | 'traffic_gen'
   | 'traffic_medium'
   | 'traffic_source'
   | 'user_age'
+  | 'location_type'
 
 export const storage = {
   clear,

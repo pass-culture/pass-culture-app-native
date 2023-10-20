@@ -42,26 +42,26 @@ const mockOnClose = jest.fn()
 
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
-    const renderAPI = renderOfferDuoModal()
+    renderOfferDuoModal()
     await screen.findByText('Uniquement les offres duo')
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   describe('modal header', () => {
     it('should have header when viewport width is mobile', () => {
       const isDesktopViewport = false
-      const renderAPI = renderOfferDuoModal({}, isDesktopViewport)
+      renderOfferDuoModal({}, isDesktopViewport)
 
-      const header = renderAPI.queryByTestId('pageHeader')
+      const header = screen.queryByTestId('pageHeader')
       expect(header).toBeOnTheScreen()
     })
 
     it('should not have header when viewport width is desktop', () => {
       const isDesktopViewport = true
-      const renderAPI = renderOfferDuoModal({}, isDesktopViewport)
+      renderOfferDuoModal({}, isDesktopViewport)
 
-      const header = renderAPI.queryByTestId('pageHeader')
+      const header = screen.queryByTestId('pageHeader')
       expect(header).not.toBeOnTheScreen()
     })
 
@@ -111,9 +111,9 @@ describe('<OfferDuoModal/>', () => {
     })
 
     it('should toggle offerIsDuo', () => {
-      const renderAPI = renderOfferDuoModal()
+      renderOfferDuoModal()
 
-      const toggle = renderAPI.getByTestId('Interrupteur limitDuoOfferSearch')
+      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
@@ -131,13 +131,13 @@ describe('<OfferDuoModal/>', () => {
 
   describe('click reset button', () => {
     it('should disable duo offer when click on reset button', () => {
-      const renderAPI = renderOfferDuoModal()
+      renderOfferDuoModal()
 
-      const toggle = renderAPI.getByTestId('Interrupteur limitDuoOfferSearch')
+      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
 
       fireEvent.press(toggle)
 
-      const resetButton = renderAPI.getByText('Réinitialiser')
+      const resetButton = screen.getByText('Réinitialiser')
 
       fireEvent.press(resetButton)
 

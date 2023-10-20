@@ -18,6 +18,7 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
       hits: [],
     } as unknown as SearchResponse<Offer>,
     layout: 'one-item-medium',
+    entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
 ])
 

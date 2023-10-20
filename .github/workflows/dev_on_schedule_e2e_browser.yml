@@ -68,7 +68,7 @@ jobs:
       - name: Set PCAPI_DOCKER_TAGS environments variables
         run: echo PCAPI_DOCKER_TAG=${PC_API_DOCKER_TAG:-$(curl -sS https://backend.${{ env.ENVIRONMENT }}.passculture.team/health/api)} >> $GITHUB_ENV
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v3
         with:

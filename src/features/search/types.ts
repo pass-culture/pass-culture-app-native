@@ -78,6 +78,7 @@ export interface SearchState {
   // TODO(EveJulliard): re typer la fonction parseSearchParameters
   // pour supprimer minBookingsThreshold du type SearchState
   minBookingsThreshold?: number
+  isFromHistory?: boolean
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']
@@ -151,4 +152,6 @@ export type Highlighted<TItem> = TItem & {
 export type HistoryItem = CreateHistoryItem & {
   createdAt: number
   label: string
+  nativeCategoryLabel?: string
+  categoryLabel?: string
 }

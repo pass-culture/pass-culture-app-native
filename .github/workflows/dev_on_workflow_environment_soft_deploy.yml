@@ -1,0 +1,109 @@
+name: Install runtime environment and dependencies soft deploy
+
+on:
+  workflow_call:
+    inputs:
+      ENV:
+        type: string
+        required: true
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+jobs:
+  sentry_and_deploy:
+    runs-on: [self-hosted, linux, x64, regular]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Yarn install
+        run: yarn install
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            ANDROID_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-token
+            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+      - name: 'Render Sentry Template'
+        id: render_template
+        uses: chuhlomin/render-template@v1.6
+        with:
+          template: templates_github_ci/.sentryclirc
+          vars: |
+            token: ${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}
+          result_path: .sentryclirc
+      - name: Deploy soft android for ${{ inputs.ENV }}
+        run: |
+          bundle exec fastlane android deploy codepush: --env ${{ inputs.ENV }}
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
+      - name: Deploy soft ios App for ${{ inputs.ENV }}
+        run: |
+          bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
+
+  slack_notify:
+    runs-on: [self-hosted, linux, x64, regular]
+    if: ${{ always() }}
+    needs: sentry_and_deploy
+    steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
+      - name: Post to a Slack channel
+        id: slack
+        if: ${{ steps.sentry_and_deploy.outputs.status == 'failure' }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          # channel #alertes-deploiement-native
+          channel-id: 'C0309RP8K42'
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "mrkdwn_in": ["text"],
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ steps.sentry_and_deploy.outputs.status == 'failure'] }}",
+                      "author_name": "${{github.actor}}",
+                      "author_link": "https://github.com/${{github.actor}}",
+                      "author_icon": "https://github.com/${{github.actor}}.png",
+                      "title": "PCAPPNATIVE Deployment",
+                      "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
+                      "text": "Le déploiement android sur `${{ inputs.ENV }}` a ${{ fromJSON('["échoué :boom:", "réussi :rocket:"]')[ steps.sentry_and_deploy.outputs.status == 'failure'] }} :boom:"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}

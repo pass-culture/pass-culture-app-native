@@ -3,7 +3,7 @@ import CodePush, { LocalPackage, RemotePackage } from 'react-native-code-push' /
 import TestRenderer from 'react-test-renderer'
 
 import { tick } from 'libs/tick'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { CodePushButton } from './CodePushButton'
 
@@ -47,14 +47,13 @@ describe('CodePushButton', () => {
       return Promise.resolve(CodePush.SyncStatus.AWAITING_USER_ACTION)
     })
 
-    // We press the sync button
-    const { getByTestId, getByText } = render(<CodePushButton />)
-    fireEvent.press(getByTestId('Check update'))
+    render(<CodePushButton />)
+    fireEvent.press(screen.getByTestId('Check update'))
     expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
     // We expect our component to render that a new version is available
     const text = 'Nouvelle version sur AppCenter'
-    expect(getByText(text).props.children).toBe(text)
+    expect(screen.getByText(text).props.children).toBe(text)
   })
 
   it.each`
@@ -82,12 +81,12 @@ describe('CodePushButton', () => {
       })
 
       // We press the sync button
-      const button = render(<CodePushButton />)
-      fireEvent.press(button.getByTestId('Check update'))
+      render(<CodePushButton />)
+      fireEvent.press(screen.getByTestId('Check update'))
       expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
       // We expect our component to render that the corresponding message status
-      const messageStatus = button.getByTestId('status')
+      const messageStatus = screen.getByTestId('status')
       expect(messageStatus.props.children).toEqual(displayStatusMessage)
     }
   )

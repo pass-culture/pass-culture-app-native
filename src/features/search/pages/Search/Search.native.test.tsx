@@ -1,9 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
 import { Keyboard } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
@@ -182,6 +184,8 @@ mockUseSearchHistory.mockReturnValue({
   search: jest.fn(),
 })
 
+const searchId = uuidv4()
+
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -293,6 +297,88 @@ describe('<Search/>', () => {
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
+
+    it('should dismiss the keyboard when pressing search history item', async () => {
+      mockdate.set(TODAY_DATE)
+      const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
+      render(<Search />)
+      await act(async () => {})
+
+      fireEvent.press(screen.getByText('manga'))
+
+      expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
+    })
+
+    describe('should navigate and execute the search with the history item', () => {
+      it('When it has not category and native category', async () => {
+        mockdate.set(TODAY_DATE)
+        render(<Search />)
+        await act(async () => {})
+
+        fireEvent.press(screen.getByText('manga'))
+
+        expect(navigate).toHaveBeenNthCalledWith(
+          1,
+          ...getTabNavConfig('Search', {
+            ...mockSearchState,
+            query: 'manga',
+            view: SearchView.Results,
+            searchId,
+            isFromHistory: true,
+            isAutocomplete: undefined,
+            offerGenreTypes: undefined,
+            offerNativeCategories: undefined,
+            offerCategories: [],
+          })
+        )
+      })
+
+      it('When it has category and native category', async () => {
+        mockdate.set(TODAY_DATE)
+        render(<Search />)
+        await act(async () => {})
+
+        fireEvent.press(screen.getByText('tolkien'))
+
+        expect(navigate).toHaveBeenNthCalledWith(
+          1,
+          ...getTabNavConfig('Search', {
+            ...mockSearchState,
+            query: 'tolkien',
+            view: SearchView.Results,
+            searchId,
+            isFromHistory: true,
+            isAutocomplete: undefined,
+            offerGenreTypes: undefined,
+            offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES],
+            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+          })
+        )
+      })
+
+      it('When it has only a category', async () => {
+        mockdate.set(TODAY_DATE)
+        render(<Search />)
+        await act(async () => {})
+
+        fireEvent.press(screen.getByText('foresti'))
+
+        expect(navigate).toHaveBeenNthCalledWith(
+          1,
+          ...getTabNavConfig('Search', {
+            ...mockSearchState,
+            query: 'foresti',
+            view: SearchView.Results,
+            searchId,
+            isFromHistory: true,
+            isAutocomplete: undefined,
+            offerGenreTypes: undefined,
+            offerNativeCategories: undefined,
+            offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+          })
+        )
+      })
+    })
   })
 
   it.each([SearchView.Landing, SearchView.Results])(
@@ -310,9 +396,9 @@ describe('<Search/>', () => {
   describe('When offline', () => {
     it('should display offline page', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const renderAPI = render(<Search />)
+      render(<Search />)
       await act(async () => {})
-      expect(renderAPI.getByText('Pas de réseau internet')).toBeOnTheScreen()
+      expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
 

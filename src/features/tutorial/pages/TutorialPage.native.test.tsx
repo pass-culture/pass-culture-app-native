@@ -1,20 +1,20 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { TutorialPage } from './TutorialPage'
 
 describe('TutorialPage', () => {
   it('should render correctly', () => {
-    const renderAPI = renderTutorialPage()
-    expect(renderAPI).toMatchSnapshot()
+    renderTutorialPage()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should trigger onPress when clicking on button', async () => {
-    const { getByLabelText } = renderTutorialPage()
+    renderTutorialPage()
 
-    const button = getByLabelText('Continuer')
+    const button = screen.getByLabelText('Continuer')
     fireEvent.press(button)
 
     expect(onPress).toHaveBeenCalledTimes(1)

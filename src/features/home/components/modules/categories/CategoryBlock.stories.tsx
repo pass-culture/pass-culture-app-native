@@ -24,7 +24,7 @@ export default componentMeta
 export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = () => (
   <Container>
     <CategoryBlock
-      title={'Le plein de cinéma'}
+      title="Le plein de cinéma"
       color={Color.Gold}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
@@ -32,7 +32,7 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
     />
     <Spacer.Column numberOfSpaces={10} />
     <CategoryBlock
-      title={'Le plein de cinéma'}
+      title="Le plein de cinéma"
       color={Color.Aquamarine}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}

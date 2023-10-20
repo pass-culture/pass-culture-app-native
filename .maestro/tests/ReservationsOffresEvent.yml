@@ -1,0 +1,92 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml
+- tapOn: "Films, séries, cinéma"
+- tapOn:
+    point: "50%,71%"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+- runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonDateAndHour.yml
+- runFlow: reusableFlows/components/buttons/SimpleIdButtonSwitchDate.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonThisWeek.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
+- tapOn:
+    point: "49%,84%"
+- tapOn:
+    point: "49%,84%"
+- assertVisible: "Voir les disponibilités"
+- tapOn: "Voir les disponibilités"
+- tapOn:
+    point: "37%,59%"
+- assertVisible: "Valider la date"
+- tapOn: "Valider la date"
+- assertVisible: "Choix des options"
+- assertVisible: "Horaire"
+- tapOn:
+    point: "50%,75%"
+- assertVisible: "Valider lʼhoraire"
+- tapOn: "Valider lʼhoraire"
+- assertVisible: "Choix des options"
+- tapOn: "Nombre de places"
+- assertVisible: "Solo"
+- assertVisible: "Duo"
+- tapOn:
+    point: "19%,74%"
+- assertVisible: "Finaliser ma réservation"
+- tapOn: "Finaliser ma réservation"
+- assertVisible: "Détails de la réservation"
+- assertVisible: "Les biens acquis ou réservés sur le pass Culture sont destinés à\
+    \ un usage strictement personnel et ne peuvent faire l’objet de revente."
+- assertVisible: "Informations"
+- assertVisible: "Lieu de l’événement"
+- assertVisible: "Conditions d’annulation"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
+- assertVisible: "Réservation confirmée\_!"
+- assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
+    \ sur l’application."
+- assertVisible: "Voir ma réservation"
+- assertVisible: "Partager l’offre"
+- assertVisible: "Retourner à l’accueil"
+- tapOn: "Voir ma réservation"
+- scrollUntilVisible:
+      element: "Annuler ma réservation"
+      direction: DOWN
+- assertVisible: "Réservation annulée"
+- tapOn: "Voir le détail de l’offre"
+
+- tapOn:
+      point: "49%,32%"
+- tapOn:
+      point: "50%,34%"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+- runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml #PreBookingReservation
+- tapOn: "Confirmer la réservation"
+- runFlow: reusableFlows/features/bookOffer/BookingConfirmationPage.yml #BookingConfirmationPage
+- tapOn: "Voir ma réservation"
+- assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
+    \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
+    \ ou le céder."
+- assertVisible: "Ma réservation"
+- tapOn:
+      id: "final-animated-icon-back"
+- assertVisible:
+      text: "Mes réservations"
+      index: 0
+- assertVisible: "Mes réservations"
+
+- tapOn:
+      point: "61%,16%"
+
+- scrollUntilVisible:
+      element: "Annuler ma réservation"
+      direction: DOWN
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonCancelMyReservation.yml
+- runFlow: reusableFlows/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonCancelMyReservation.yml
+- assertVisible: "Réservations terminées"
+- runFlow: reusableFlows/StopApp.yml # Stop App

@@ -18,13 +18,14 @@ export const useUtmParams = (): ExtendedUtmParams => {
       .readMultiString([
         'traffic_gen',
         'traffic_campaign',
+        'traffic_content',
         'traffic_source',
         'traffic_medium',
         'campaign_date',
       ])
-      .then(([[, gen], [, campaign], [, source], [, medium], [, time]]) => {
+      .then(([[, gen], [, campaign], [, content], [, source], [, medium], [, time]]) => {
         const campaignDate = getCampaignDate(time)
-        setUtmParams({ gen, campaign, source, medium, campaignDate })
+        setUtmParams({ gen, campaign, content, source, medium, campaignDate })
       })
   }, [])
 

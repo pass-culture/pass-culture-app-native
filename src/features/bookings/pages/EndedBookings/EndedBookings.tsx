@@ -27,8 +27,8 @@ export const EndedBookings: React.FC = () => {
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
-    one: '# réservation terminée',
-    other: '# réservations terminées',
+    singular: '# réservation terminée',
+    plural: '# réservations terminées',
   })
 
   const ListHeaderComponent = useCallback(
@@ -73,4 +73,4 @@ const EndedBookingsCount = styled(Typo.Body).attrs(getHeadingAttrs(2))(({ theme 
 
 const contentContainerStyle = { paddingHorizontal: getSpacing(5) }
 const ListFooterComponent = () => <Spacer.Column numberOfSpaces={12} />
-const StyledSeparator = styled(Separator)({ marginVertical: getSpacing(4) })
+const StyledSeparator = styled(Separator.Horizontal)({ marginVertical: getSpacing(4) })

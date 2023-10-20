@@ -9,6 +9,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -60,6 +61,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venuesUserData,
 }) => {
   const { userPosition: position, showGeolocPermissionModal } = useLocation()
+  const { searchState } = useSearch()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const enableVenuesInSearchResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
@@ -89,12 +91,12 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
   const venueTitle = venuesUserData?.[0]?.venue_playlist_title || 'Les lieux culturels'
   const offerTitle = 'Les offres'
-
-  const shouldDisplayVenuesPlaylist = Boolean(
+  const shouldDisplayVenuesPlaylist =
+    enableVenuesInSearchResults &&
+    searchState.locationFilter.locationType !== LocationType.VENUE &&
     params?.locationFilter?.locationType !== LocationType.VENUE &&
-      venues?.length &&
-      enableVenuesInSearchResults
-  )
+    !!venues?.length
+
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()
@@ -189,7 +191,7 @@ const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
 })
 
-const StyledSeparator = styled(Separator)({
+const StyledSeparator = styled(Separator.Horizontal)({
   width: 'auto',
   marginLeft: getSpacing(6),
   marginRight: getSpacing(6),

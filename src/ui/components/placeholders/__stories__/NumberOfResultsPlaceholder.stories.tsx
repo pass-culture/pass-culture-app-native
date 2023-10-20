@@ -6,5 +6,6 @@ export default {
   title: 'ui/placeholders',
 }
 
-export const NumberOfResults = () => <NumberOfResultsPlaceholder />
+// TODO(PC-20094): Fix this story
+const NumberOfResults = () => <NumberOfResultsPlaceholder />
 NumberOfResults.storyName = 'NumberOfResultsPlaceholder'

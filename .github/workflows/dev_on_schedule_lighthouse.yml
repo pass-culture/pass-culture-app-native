@@ -6,9 +6,9 @@ on:
 
 jobs:
   lighthouse:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'

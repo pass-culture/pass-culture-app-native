@@ -5,22 +5,22 @@ import { render, screen } from 'tests/utils/web'
 
 describe('<PasswordSecurityRules />', () => {
   it('should display 5 rules', async () => {
-    render(<PasswordSecurityRules password={''} />)
-    expect(screen.queryByText('12 caractères')).toBeInTheDocument()
-    expect(screen.queryByText('1 majuscule')).toBeInTheDocument()
-    expect(screen.queryByText('1 minuscule')).toBeInTheDocument()
-    expect(screen.queryByText('1 chiffre')).toBeInTheDocument()
-    expect(screen.queryByText('1 caractère spécial (!@#$%^&*...)')).toBeInTheDocument()
+    render(<PasswordSecurityRules password="" />)
+    expect(screen.getByText('12 caractères')).toBeInTheDocument()
+    expect(screen.getByText('1 majuscule')).toBeInTheDocument()
+    expect(screen.getByText('1 minuscule')).toBeInTheDocument()
+    expect(screen.getByText('1 chiffre')).toBeInTheDocument()
+    expect(screen.getByText('1 caractère spécial (!@#$%^&*...)')).toBeInTheDocument()
   })
 
   it('should not validate any rules if input is empty', () => {
-    render(<PasswordSecurityRules password={''} />)
+    render(<PasswordSecurityRules password="" />)
     const closeIcons = screen.getAllByTestId('rule-icon-close')
     expect(closeIcons.length).toBe(5)
   })
 
   it('should validate capital rule', () => {
-    render(<PasswordSecurityRules password={'A'} />)
+    render(<PasswordSecurityRules password="A" />)
     const checkIcons = screen.getAllByTestId('rule-icon-check')
     expect(checkIcons.length).toBe(1)
     const closeIcons = screen.getAllByTestId('rule-icon-close')
@@ -28,7 +28,7 @@ describe('<PasswordSecurityRules />', () => {
   })
 
   it('should validate lowercase rule', () => {
-    render(<PasswordSecurityRules password={'a'} />)
+    render(<PasswordSecurityRules password="a" />)
     const checkIcons = screen.getAllByTestId('rule-icon-check')
     expect(checkIcons.length).toBe(1)
     const closeIcons = screen.getAllByTestId('rule-icon-close')
@@ -36,7 +36,7 @@ describe('<PasswordSecurityRules />', () => {
   })
 
   it('should validate number rule', () => {
-    render(<PasswordSecurityRules password={'1'} />)
+    render(<PasswordSecurityRules password="1" />)
     const checkIcons = screen.getAllByTestId('rule-icon-check')
     expect(checkIcons.length).toBe(1)
     const closeIcons = screen.getAllByTestId('rule-icon-close')
@@ -44,7 +44,7 @@ describe('<PasswordSecurityRules />', () => {
   })
 
   it('should validate special character rule', () => {
-    render(<PasswordSecurityRules password={'!'} />)
+    render(<PasswordSecurityRules password="!" />)
     const checkIcons = screen.getAllByTestId('rule-icon-check')
     expect(checkIcons.length).toBe(1)
     const closeIcons = screen.getAllByTestId('rule-icon-close')
@@ -52,7 +52,7 @@ describe('<PasswordSecurityRules />', () => {
   })
 
   it('should validate every rule if password is correct', () => {
-    render(<PasswordSecurityRules password={'ABCDefgh1234!!!!'} />)
+    render(<PasswordSecurityRules password="ABCDefgh1234!!!!" />)
     const checkIcons = screen.getAllByTestId('rule-icon-check')
     expect(checkIcons.length).toBe(5)
   })

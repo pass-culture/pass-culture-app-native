@@ -1,0 +1,20 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyFavorite.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonCreateAccount.yml
+- inputText: ${USERNAME}
+- tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+    es du pass Culture."
+- tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+    es du pass Culture."
+- tapOn: "Continuer vers l’étape Mot de passe"
+- inputText: ${PASSWORD}
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
+- tapOn:
+      point: "50%,40%"
+- tapOn: "Continuer vers l’étape Date de naissance"
+
+
+- runFlow: reusableFlows/StopApp.yml # Stop App

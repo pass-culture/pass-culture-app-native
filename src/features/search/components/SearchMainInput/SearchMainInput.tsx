@@ -1,12 +1,15 @@
 import React, { forwardRef } from 'react'
 import {
-  Platform,
   NativeSyntheticEvent,
-  TextInputSubmitEditingEventData,
+  Platform,
   TextInput as RNTextInput,
+  TextInputSubmitEditingEventData,
 } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -58,6 +61,25 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   }: Props,
   ref
 ) {
+  const { isDesktopViewport } = useTheme()
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
+
+  const renderSearchChildren = () => {
+    if (!showLocationButton) return null
+    if (enableAppLocation) {
+      return isDesktopViewport ? null : <LocationSearchWidget />
+    }
+    return (
+      <LocationButton
+        wording={locationLabel ?? ''}
+        onPress={onPressLocationButton}
+        icon={LocationPointer}
+        buttonHeight="extraSmall"
+        ellipsizeMode="tail"
+        numberOfLines={numberOfLinesForLocation}
+      />
+    )
+  }
   return (
     <StyledSearchInput
       ref={ref}
@@ -73,16 +95,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       inputHeight="regular"
       testID="searchInput"
       {...props}>
-      {!!showLocationButton && (
-        <LocationButton
-          wording={locationLabel ?? ''}
-          onPress={onPressLocationButton}
-          icon={LocationPointer}
-          buttonHeight="extraSmall"
-          ellipsizeMode="tail"
-          numberOfLines={numberOfLinesForLocation}
-        />
-      )}
+      {renderSearchChildren()}
     </StyledSearchInput>
   )
 })

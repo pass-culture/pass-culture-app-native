@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
-import { ExhaustedCreditModal } from 'features/profile/components/Modals/ExhaustedCreditModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -30,12 +29,6 @@ export function NavigationProfile(): React.JSX.Element {
     visible: expiredCreditModalVisible,
     showModal: showExpiredCreditModal,
     hideModal: hideExpiredCreditModal,
-  } = useModal(false)
-
-  const {
-    visible: exhaustedCreditModalVisible,
-    showModal: showExhaustedCreditModal,
-    hideModal: hideExhaustedCreditModal,
   } = useModal(false)
 
   return (
@@ -67,13 +60,6 @@ export function NavigationProfile(): React.JSX.Element {
           <ExpiredCreditModal
             visible={expiredCreditModalVisible}
             hideModal={hideExpiredCreditModal}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary wording="Modal Crédit Dépensé" onPress={showExhaustedCreditModal} />
-          <ExhaustedCreditModal
-            visible={exhaustedCreditModalVisible}
-            hideModal={hideExhaustedCreditModal}
           />
         </Row>
       </StyledContainer>

@@ -28,7 +28,7 @@ export const IdentificationForkButton: FunctionComponent<IdentificationForkButto
   return (
     <InternalTouchableLink
       navigateTo={props.navigateTo}
-      testID={`IdentificationForkButton`}
+      testID="IdentificationForkButton"
       accessibilityLabel={props.accessibilityLabel}
       onBeforeNavigate={props.onBeforeNavigate}>
       <GenericBanner LeftIcon={Icon}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
@@ -137,7 +137,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   return (
     <AppModal
       visible={visible}
-      title={'Localisation'}
+      title="Localisation"
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
       onRightIconPress={onClose}
@@ -149,17 +149,17 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         onPress={selectLocationMode(LocationMode.GEOLOCATION)}
         icon={PositionFilled}
         color={geolocationModeColor}
-        title={'Utiliser ma position actuelle'}
+        title="Utiliser ma position actuelle"
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
       <Spacer.Column numberOfSpaces={6} />
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
         color={customLocationModeColor}
-        title={'Choisir une localisation'}
+        title="Choisir une localisation"
         subtitle={LOCATION_PLACEHOLDER}
       />
       {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
@@ -186,7 +186,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <ButtonPrimary
-          wording={'Valider la localisation'}
+          wording="Valider la localisation"
           disabled={!selectedPlace}
           onPress={onSubmit}
         />

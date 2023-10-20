@@ -7,24 +7,22 @@ import { BaseTextInput } from './BaseTextInput'
 
 describe('<BaseTextInput />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<BaseTextInput placeholder={'placeholder'} value={'value'} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<BaseTextInput placeholder="placeholder" value="value" />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render ref correctly', () => {
     const ref = React.createRef<RNTextInput>()
-    render(<BaseTextInput placeholder="placeholder" value={'value'} ref={ref} />)
+    render(<BaseTextInput placeholder="placeholder" value="value" ref={ref} />)
 
     expect(ref.current).toBeTruthy()
   })
 
   it('should replicate autoFocus behaviour by calling focus() on mount when prop autoFocus is true', () => {
     const ref = React.createRef<RNTextInput>()
-    const renderAPI = render(
-      <BaseTextInput autoFocus placeholder={'placeholder'} value={'value'} ref={ref} />
-    )
+    render(<BaseTextInput autoFocus placeholder="placeholder" value="value" ref={ref} />)
 
-    const nativeTextInput = renderAPI.getByPlaceholderText('placeholder')
+    const nativeTextInput = screen.getByPlaceholderText('placeholder')
 
     expect(nativeTextInput.props.autoFocus).toBe(undefined)
     expect(ref.current?.focus).toBeCalledTimes(1)

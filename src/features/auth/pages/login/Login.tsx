@@ -17,7 +17,8 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
-import { eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
+import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
@@ -171,10 +172,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }, [])
 
   const onReCaptchaError = useCallback(
-    (error: string) => {
+    (errorCode: ReCaptchaError, error?: string | undefined) => {
       setIsDoingReCaptchaChallenge(false)
       setErrorMessage('Un problème est survenu, réessaie plus tard.')
-      eventMonitoring.captureMessage(`Login Recaptcha Error: ${error}`, 'info')
+      if (errorCode !== ReCaptchaInternalError.NetworkError) {
+        captureMonitoringError(`${errorCode} ${error}`, 'LoginOnRecaptchaError')
+      }
     },
     [setErrorMessage]
   )

@@ -7,7 +7,7 @@ import {
   DeeplinksHistory,
   DeeplinksHistoryProps,
 } from 'features/internal/marketingAndCommunication/components/DeeplinksHistory'
-import { render, waitFor } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 describe('<DeeplinksHistory />', () => {
   const history: Array<GeneratedDeeplink> = [
@@ -24,19 +24,19 @@ describe('<DeeplinksHistory />', () => {
   ]
 
   it('should display deeplinks history', () => {
-    const renderAPI = renderDeeplinksHistory({
+    renderDeeplinksHistory({
       history,
       keepHistory: false,
       setKeepHistory: (keepHistory) => keepHistory,
       rehydrateHistory: (history) => history,
     })
-    expect(renderAPI.queryByText('#0')).toBeOnTheScreen()
-    expect(renderAPI.queryByText(history[0].universalLink)).toBeOnTheScreen()
-    expect(renderAPI.queryByText(history[0].firebaseLink)).toBeOnTheScreen()
+    expect(screen.queryByText('#0')).toBeOnTheScreen()
+    expect(screen.queryByText(history[0].universalLink)).toBeOnTheScreen()
+    expect(screen.queryByText(history[0].firebaseLink)).toBeOnTheScreen()
 
-    expect(renderAPI.queryByText('#1')).toBeOnTheScreen()
-    expect(renderAPI.queryByText(history[1].universalLink)).toBeOnTheScreen()
-    expect(renderAPI.queryByText(history[1].firebaseLink)).toBeOnTheScreen()
+    expect(screen.queryByText('#1')).toBeOnTheScreen()
+    expect(screen.queryByText(history[1].universalLink)).toBeOnTheScreen()
+    expect(screen.queryByText(history[1].firebaseLink)).toBeOnTheScreen()
   })
 
   it('should purge history when mac_persist is not true', async () => {

@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
 import { CategoryButton } from './CategoryButton'
 
 describe('CategoryButton', () => {
   it('should render correctly', () => {
-    const categoryButton = render(
+    render(
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
@@ -17,12 +17,13 @@ describe('CategoryButton', () => {
         gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
-    expect(categoryButton).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should execute search on category click', () => {
     const handleClick = jest.fn()
-    const { getByRole } = render(
+
+    render(
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
@@ -32,7 +33,7 @@ describe('CategoryButton', () => {
       />
     )
 
-    const button = getByRole('button')
+    const button = screen.getByRole('button')
     fireEvent.press(button)
 
     expect(handleClick).toHaveBeenCalledTimes(1)
@@ -40,7 +41,8 @@ describe('CategoryButton', () => {
 
   it('should be self-explanatory to be accessible', () => {
     const handleClick = jest.fn()
-    const { getByLabelText } = render(
+
+    render(
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
@@ -49,7 +51,7 @@ describe('CategoryButton', () => {
       />
     )
 
-    const button = getByLabelText('Catégorie Bibliothèques & Médiathèques')
+    const button = screen.getByLabelText('Catégorie Bibliothèques & Médiathèques')
     fireEvent.press(button)
 
     expect(handleClick).toHaveBeenCalledTimes(1)

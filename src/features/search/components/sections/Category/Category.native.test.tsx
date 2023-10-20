@@ -3,7 +3,7 @@ import React from 'react'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { Category } from './Category'
 
@@ -30,10 +30,13 @@ describe('Category component', () => {
   })
 
   it('should display the category when selected', () => {
-    mockSearchState = { ...initialSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] }
-    const { getByText } = render(<Category />)
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.LIVRES],
+    }
+    render(<Category />)
 
-    expect(getByText('Livres')).toBeOnTheScreen()
+    expect(screen.getByText('Livres')).toBeOnTheScreen()
   })
 
   it('should display selected native category', () => {
@@ -42,9 +45,9 @@ describe('Category component', () => {
       offerCategories: [SearchGroupNameEnumv2.LIVRES],
       offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
     }
-    const { getByText } = render(<Category />)
+    render(<Category />)
 
-    expect(getByText('Livres papier')).toBeOnTheScreen()
+    expect(screen.getByText('Livres papier')).toBeOnTheScreen()
   })
 
   it('should display selected genre', () => {
@@ -56,22 +59,23 @@ describe('Category component', () => {
         { key: GenreType.BOOK, name: 'Bandes dessinées', value: 'Bandes dessinées' },
       ],
     }
-    const { getByText } = render(<Category />)
+    render(<Category />)
 
-    expect(getByText('Livres papier - Bandes dessinées')).toBeOnTheScreen()
+    expect(screen.getByText('Livres papier - Bandes dessinées')).toBeOnTheScreen()
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {
-    const { getByTestId } = render(<Category />, {
+    render(<Category />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
-    const categoryButton = getByTestId('FilterRow')
+
+    const categoryButton = screen.getByTestId('FilterRow')
 
     await fireEvent.press(categoryButton)
 
     await act(async () => {})
 
-    const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
+    const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
     expect(fullscreenModalScrollView).toBeOnTheScreen()
   })

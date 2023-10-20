@@ -70,6 +70,18 @@ export const SearchResults: React.FC = () => {
   const { userPosition } = useLocation()
   const previousUserPosition = usePrevious(userPosition)
 
+  // Execute log only on initial search fetch
+  const previousIsLoading = usePrevious(isLoading)
+  useEffect(() => {
+    if (previousIsLoading && !isLoading) {
+      analytics.logPerformSearch(searchState, nbHits)
+
+      if (nbHits === 0) {
+        analytics.logNoSearchResult(searchState.query, searchState.searchId)
+      }
+    }
+  }, [isLoading, nbHits, previousIsLoading, searchState])
+
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { params } = useRoute<UseRouteType<'Search'>>()
@@ -103,7 +115,7 @@ export const SearchResults: React.FC = () => {
   } = useModal(false)
   const hasPosition = useHasPosition()
 
-  const activeFilters = useFilterCount(searchState)
+  const activeFiltersCount = useFilterCount(searchState)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -169,8 +181,8 @@ export const SearchResults: React.FC = () => {
   const numberOfResults =
     nbHits > 0
       ? plural(nbHits, {
-          one: '# résultat',
-          other: '# résultats',
+          singular: '# résultat',
+          plural: '# résultats',
         })
       : 'Pas de résultat'
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
@@ -202,7 +214,7 @@ export const SearchResults: React.FC = () => {
           <Spacer.Row numberOfSpaces={5} />
           <Ul>
             <StyledLi>
-              <FilterButton activeFilters={activeFilters} />
+              <FilterButton activeFilters={activeFiltersCount} />
             </StyledLi>
             <StyledLi>
               <SingleFilterButton

@@ -16,13 +16,13 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
   }
 
   const endedBookingsLabel = plural(endedBookings.length, {
-    one: 'Réservation terminée',
-    other: 'Réservations terminées',
+    singular: 'Réservation terminée',
+    plural: 'Réservations terminées',
   })
 
   return (
     <React.Fragment>
-      <Separator />
+      <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={4} />
       <EndedBookingsSectionWrapper>
         <SectionRow

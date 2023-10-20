@@ -1,8 +1,16 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { Animated, LayoutChangeEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { LocationModal } from 'features/location/components/LocationModal'
+import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
+import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { ScreenOrigin } from 'features/location/enums'
+import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
+import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -14,33 +22,27 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
-const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
+export const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
 const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
 const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
 interface LocationWidgetProps {
-  enableTooltip: boolean
+  screenOrigin: ScreenOrigin
 }
 
-export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
+export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const touchableRef = React.useRef<HTMLButtonElement>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { isSplashScreenHidden } = useSplashScreenContext()
+  const enableTooltip = screenOrigin === ScreenOrigin.HOME
+  const shouldShowHomeLocationModal = enableTooltip
 
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
-  const getLocationTitle = useCallback(() => {
-    if (place !== null) {
-      return place.label
-    }
-    if (userPosition !== null) {
-      return 'Ma position'
-    }
-    return 'Me localiser'
-  }, [place, userPosition])
 
-  const locationTitle = getLocationTitle()
+  const locationTitle = getLocationTitle(place, userPosition)
 
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 
@@ -87,7 +89,20 @@ export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
     hideModal: hideLocationModal,
   } = useModal()
 
+  const {
+    visible: venueModalVisible,
+    showModal: showVenueModal,
+    hideModal: hideVenueModal,
+  } = useModal()
+
   const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+
+  const onSearch = useCallback(
+    (payload: Partial<SearchState>) => {
+      navigate(...getTabNavConfig('Search', payload))
+    },
+    [navigate]
+  )
 
   return (
     <React.Fragment>
@@ -108,7 +123,22 @@ export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
-      <LocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      {shouldShowHomeLocationModal ? (
+        <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      ) : (
+        <React.Fragment>
+          <VenueModal
+            visible={venueModalVisible}
+            dismissModal={hideVenueModal}
+            doAfterSearch={onSearch}
+          />
+          <SearchLocationModal
+            visible={locationModalVisible}
+            dismissModal={hideLocationModal}
+            showVenueModal={showVenueModal}
+          />
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }

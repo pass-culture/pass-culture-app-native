@@ -19,8 +19,9 @@ export function getOfferRules(properties: BookingProperties, booking?: Booking):
 
   if (numberOfExternalBookings) {
     return plural(numberOfExternalBookings, {
-      one: 'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.',
-      other:
+      singular:
+        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.',
+      plural:
         'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.',
     })
   }

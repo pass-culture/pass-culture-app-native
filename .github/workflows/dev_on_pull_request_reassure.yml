@@ -8,7 +8,7 @@ jobs:
   test-performance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run performance testing script
         run: ./scripts/reassure-test.sh
       - name: Run Danger.js to publish scores in PR

@@ -6,5 +6,6 @@ export default {
   title: 'ui/placeholders',
 }
 
-export const Hit = () => <HitPlaceholder />
+// TODO(PC-20094): Fix this story
+const Hit = () => <HitPlaceholder />
 Hit.storyName = 'HitPlaceholder'

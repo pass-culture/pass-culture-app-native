@@ -6,6 +6,7 @@ import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { useSafeState } from 'libs/hooks'
 import { SuggestedPlace } from 'libs/place'
+import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
@@ -14,8 +15,8 @@ import { GeolocPermissionState } from './enums'
 import {
   GeolocationError,
   ILocationContext,
-  RequestGeolocPermissionParams,
   Position,
+  RequestGeolocPermissionParams,
 } from './types'
 
 /* eslint-disable @typescript-eslint/no-empty-function */
@@ -138,6 +139,20 @@ export const LocationWrapper = memo(function LocationWrapper({
   useEffect(() => {
     setCustomPosition(place?.geolocation)
   }, [place?.geolocation, setCustomPosition])
+
+  useEffect(() => {
+    switch (true) {
+      case isCustomPosition:
+        storage.saveString('location_type', 'UserSpecificLocation')
+        break
+      case isGeolocated:
+        storage.saveString('location_type', 'UserGeolocation')
+        break
+      default:
+        storage.clear('location_type')
+        break
+    }
+  }, [isGeolocated, isCustomPosition])
 
   const value = useMemo(
     () => ({

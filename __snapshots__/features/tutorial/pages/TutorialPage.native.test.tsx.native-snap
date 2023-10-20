@@ -172,7 +172,6 @@ exports[`TutorialPage should render correctly 1`] = `
           }
         />
         <Text
-          numberOfLines={3}
           style={
             [
               {

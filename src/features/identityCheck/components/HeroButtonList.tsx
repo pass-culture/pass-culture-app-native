@@ -26,7 +26,7 @@ export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) =>
   return (
     <InternalTouchableLink
       navigateTo={props.navigateTo}
-      testID={`HeroButtonList`}
+      testID="HeroButtonList"
       accessibilityLabel={props.accessibilityLabel}
       onBeforeNavigate={props.onBeforeNavigate}>
       <GenericBanner LeftIcon={Icon}>

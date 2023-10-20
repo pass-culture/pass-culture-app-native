@@ -1,0 +1,13 @@
+appId: app.passculture.staging
+---
+#SearchMail
+- tapOn: "Ouvrir le panneau de navigation"
+
+- runFlow:
+    when:
+      visible:
+        text: "STAGING"
+        index: 0
+    file: "LibelleMail.yml"
+
+- tapOn: "Confirme ton email"

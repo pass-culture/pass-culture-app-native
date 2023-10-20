@@ -4,10 +4,12 @@ set -e
 
 update_app_version() {
   yarn version --"$2" --no-git-tag-version
+  yarn version --"$2" --no-git-tag-version --cwd server
 
   source ./scripts/get_version.sh
   ./scripts/update_build_number_from_package_json_version.sh
   git add package.json
+  git add server/package.json
 
   git commit -m "v${VERSION}"
   ./scripts/create_and_push_tag_from_package_json_version.sh "$1"

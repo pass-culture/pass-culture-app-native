@@ -1,0 +1,16 @@
+appId: app.passculture.staging
+---
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAllAccept.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonPass.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAge15.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAge16.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBack.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAge17.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonBack.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonAge18.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

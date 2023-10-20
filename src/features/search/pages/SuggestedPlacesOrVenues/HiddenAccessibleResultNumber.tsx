@@ -12,8 +12,8 @@ export const HiddenAccessibleResultNumber = ({
   show: boolean
 }) => {
   const numberOfResults = plural(nbResults, {
-    one: '# résultat',
-    other: '# résultats',
+    singular: '# résultat',
+    plural: '# résultats',
   })
 
   return (

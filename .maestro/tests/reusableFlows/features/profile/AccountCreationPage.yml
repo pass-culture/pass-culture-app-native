@@ -1,0 +1,39 @@
+appId: app.passculture.staging
+---
+#AccountCreationPage
+- tapOn:
+    id: "Créer un compte"
+- assertVisible: "Crée-toi un compte"
+- inputText: ${NEW_USERNAME}
+- tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+    es du pass Culture."
+- tapOn:
+    id: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+      es du pass Culture."
+- tapOn: "Continuer vers l’étape Mot de passe"
+- inputText: ${PASSWORD}
+#Appui en dehors pour sortir du champ
+# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
+- tapOn:
+     point: "50%,40%"
+#- tapOn: "Retour"
+- tapOn: "Continuer vers l’étape Date de naissance"
+- assertVisible: 'Date de naissance'
+- swipe: # days
+      start: 30%, 52%
+      end: 30%, 55%
+- swipe: # months
+      start: 47%, 52%
+      end: 47%, 55%
+# Ajouter un id pour chaque spinner et utiliser scrollUntilVisible
+# https://maestro.mobile.dev/api-reference/commands/scrolluntilvisible
+- repeat:
+      while:
+          notVisible: '2006'
+      commands:
+          - swipe: # years
+                start: 67%, 52%
+                end: 67%, 52%
+- tapOn: 'Continuer vers l’étape CGU & Données'
+
+- assertVisible: "CGU & Données"

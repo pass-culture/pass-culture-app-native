@@ -12,7 +12,7 @@ export function ChangeEmailDisclaimer() {
         e-mail qu’une fois par jour.
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={4} />
-      <Separator />
+      <Separator.Horizontal />
     </React.Fragment>
   )
 }

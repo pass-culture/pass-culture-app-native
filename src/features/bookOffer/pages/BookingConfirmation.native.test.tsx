@@ -54,8 +54,8 @@ describe('<BookingConfirmation />', () => {
   })
 
   it('should render correctly', () => {
-    const page = render(<BookingConfirmation />)
-    expect(page).toMatchSnapshot()
+    render(<BookingConfirmation />)
+    expect(screen).toMatchSnapshot()
   })
 
   describe('InAppReview', () => {
@@ -103,10 +103,10 @@ describe('<BookingConfirmation />', () => {
     })
 
     it('should log analytics when press share button', async () => {
-      const { getByText } = render(<BookingConfirmation />)
+      render(<BookingConfirmation />)
 
       await act(async () => {
-        const shareButton = getByText('Partager l’offre')
+        const shareButton = screen.getByText('Partager l’offre')
         fireEvent.press(shareButton)
       })
 
@@ -118,8 +118,8 @@ describe('<BookingConfirmation />', () => {
     })
 
     it('should go to Bookings and log analytics event', async () => {
-      const renderAPI = render(<BookingConfirmation />)
-      fireEvent.press(renderAPI.getByText('Voir ma réservation'))
+      render(<BookingConfirmation />)
+      fireEvent.press(screen.getByText('Voir ma réservation'))
 
       await waitFor(() => {
         expect(analytics.logSeeMyBooking).toBeCalledWith(mockOfferId)
@@ -147,9 +147,9 @@ describe('<BookingConfirmation />', () => {
     it.each(['Voir ma réservation', 'Retourner à l’accueil'])(
       'should track Batch event when button is clicked',
       async (buttonWording) => {
-        const { getByText } = render(<BookingConfirmation />)
+        render(<BookingConfirmation />)
 
-        fireEvent.press(getByText(buttonWording))
+        fireEvent.press(screen.getByText(buttonWording))
 
         expect(BatchUser.trackEvent).toBeCalledWith('has_booked')
       }

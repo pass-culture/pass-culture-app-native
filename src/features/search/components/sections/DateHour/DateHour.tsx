@@ -7,7 +7,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { SearchState } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useModal } from 'ui/components/modals/useModal'
-import { Calendar } from 'ui/svg/icons/Calendar'
+import { CalendarS } from 'ui/svg/icons/CalendarS'
 
 const buildDateString = (date: SearchState['date']) => {
   if (!date) return null
@@ -40,7 +40,7 @@ export const DateHour = ({ onClose }: Props) => {
   return (
     <React.Fragment>
       <FilterRow
-        icon={Calendar}
+        icon={CalendarS}
         title="Dates & heures"
         description={dateHourString}
         onPress={showModal}

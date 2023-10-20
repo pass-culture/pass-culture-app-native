@@ -1,0 +1,31 @@
+appId: app.passculture.staging
+---
+- assertVisible: "À 18 ans, profite de ton pass Culture\_!"
+- assertVisible: "Comment ça marche\_?"
+- assertVisible: "cette année"
+- assertVisible: "300\_€"
+- assertVisible: "à 18 ans"
+- assertVisible: "Tu auras 2 ans pour utiliser tes 300\_€"
+- assertVisible:
+      text: "passé"
+      index: 0
+- assertVisible: "20\_€"
+- assertVisible: "à 15 ans"
+- assertVisible:
+      text: "passé"
+      index: 1
+- assertVisible:
+      text: "30\_€"
+      index: 0
+- assertVisible: "à 16 ans"
+- assertVisible:
+      text: "passé"
+      index: 2
+- assertVisible:
+      text: "30\_€"
+      index: 1
+- assertVisible: "à 17 ans"
+- assertVisible:
+      id: "Créer un compte"
+- assertVisible:
+      id: "Plus tard"

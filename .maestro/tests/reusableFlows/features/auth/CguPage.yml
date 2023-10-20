@@ -1,0 +1,18 @@
+appId: app.passculture.staging
+---
+#CguPage
+- assertVisible: "CGU & Données"
+- assertVisible:
+    id: "Nos conditions générales d’utilisation"
+
+- assertVisible: "Nos conditions générales d’utilisation"
+- assertVisible: "Notre politique de confidentialité"
+
+- tapOn: "Pour en savoir plus sur la gestion de tes données personnelles et exercer\
+    \ tes droits tu peux\_:"
+- assertVisible: "Contacter le support"
+
+- assertVisible: "Accepter et s’inscrire"
+
+- tapOn:
+    id: "Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"

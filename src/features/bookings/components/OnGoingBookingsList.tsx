@@ -56,8 +56,8 @@ export function OnGoingBookingsList() {
   const hasBookings = onGoingBookingsCount > 0
   const hasEndedBookings = endedBookings.length > 0
   const bookingsCountLabel = plural(onGoingBookingsCount, {
-    one: '# réservation en cours',
-    other: '# réservations en cours',
+    singular: '# réservation en cours',
+    plural: '# réservations en cours',
   })
 
   const ListHeaderComponent = useCallback(
@@ -176,7 +176,7 @@ const ItemSeparatorContainer = styled.View({
 function ItemSeparatorComponent() {
   return (
     <ItemSeparatorContainer>
-      <Separator />
+      <Separator.Horizontal />
     </ItemSeparatorContainer>
   )
 }

@@ -7,7 +7,9 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
+import { useFunctionOnce } from 'libs/hooks'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -24,9 +26,18 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const route = useRoute<UseRouteType<'Venue'>>()
+  const entryId = playlist.entryId
+
+  const logHasSeenAllTilesOnce = useFunctionOnce(() =>
+    analytics.logAllTilesSeen({
+      moduleId: entryId,
+      numberOfTiles: playlist.offers.hits.length,
+      venueId: venue.id,
+    })
+  )
 
   const renderPassPlaylist: CustomListRenderItem<Offer> = useCallback(
-    ({ item, width, height }) => {
+    ({ item, width, height, index }) => {
       const hit = transformOfferHits(item)
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
 
@@ -45,10 +56,12 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
           width={width}
           height={height}
           searchId={route.params?.searchId}
+          moduleId={entryId}
+          index={index}
         />
       )
     },
-    [labelMapping, mapping, route.params?.searchId, transformOfferHits, venue?.id]
+    [entryId, labelMapping, mapping, route.params?.searchId, transformOfferHits, venue?.id]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)
@@ -61,6 +74,7 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
       renderItem={renderPassPlaylist}
       keyExtractor={(item: Hit<Offer>) => item.offer.name ?? ''}
       title={playlist.title}
+      onEndReached={logHasSeenAllTilesOnce}
     />
   )
 }

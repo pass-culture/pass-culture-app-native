@@ -790,7 +790,7 @@ export const AppComponents: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={4} />
           <CategoryListModule
             id="123"
-            title={'En ce moment sur le pass'}
+            title="En ce moment sur le pass"
             categoryBlockList={categoryBlockList}
             homeEntryId="homeEntryId"
             index={1}

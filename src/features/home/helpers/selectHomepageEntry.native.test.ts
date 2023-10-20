@@ -136,6 +136,7 @@ const mockUseUserRoleFromOnboarding = jest.spyOn(OnboardingRoleAPI, 'useUserRole
 
 const defaultRemoteConfig: CustomRemoteConfig = {
   test_param: 'A',
+  homeEntryIdFreeOffers: 'homeEntryIdFreeOffers',
   homeEntryIdNotConnected: 'homeEntryIdNotConnected',
   homeEntryIdGeneral: 'homeEntryIdGeneral',
   homeEntryIdOnboardingGeneral: 'homeEntryIdOnboardingGeneral',
@@ -145,7 +146,6 @@ const defaultRemoteConfig: CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
-  shouldUseAlgoliaRecommend: false,
 }
 
 describe('useSelectHomepageEntry', () => {

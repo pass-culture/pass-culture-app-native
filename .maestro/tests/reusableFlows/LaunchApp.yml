@@ -1,0 +1,5 @@
+appId: app.passculture.staging
+---
+- launchApp:
+    appId: 'app.passculture.staging'
+    clearState: true

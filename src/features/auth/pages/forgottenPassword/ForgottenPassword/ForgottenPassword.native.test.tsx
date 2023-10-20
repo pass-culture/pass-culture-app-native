@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, fireEvent, render, waitFor, screen, act } from 'tests/utils'
@@ -112,6 +113,32 @@ describe('<ForgottenPassword />', () => {
     })
   })
 
+  it('should log to Sentry on reCAPTCHA failure', async () => {
+    renderForgottenPassword()
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+    simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
+
+    expect(captureMonitoringError).toHaveBeenCalledWith(
+      'UnknownError someError',
+      'ForgottenPasswordOnRecaptchaError'
+    )
+  })
+  it('should not log to Sentry on reCAPTCHA network error', async () => {
+    renderForgottenPassword()
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+    simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+
+    expect(captureMonitoringError).not.toHaveBeenCalled()
+  })
+
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
     renderForgottenPassword()
 
@@ -119,16 +146,11 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     expect(
       screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
     ).toBeOnTheScreen()
-    expect(captureMonitoringError).toHaveBeenNthCalledWith(
-      1,
-      'someError',
-      'ForgottenPasswordOnRecaptchaError'
-    )
     expect(navigate).not.toBeCalled()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })

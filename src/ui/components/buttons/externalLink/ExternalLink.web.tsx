@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {

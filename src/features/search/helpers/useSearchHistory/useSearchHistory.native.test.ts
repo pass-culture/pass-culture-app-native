@@ -2,12 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { HISTORY_KEY, MAX_HISTORY_RESULTS } from 'features/search/constants'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
-import {
-  HISTORY_KEY,
-  MAX_HISTORY_RESULTS,
-  useSearchHistory,
-} from 'features/search/helpers/useSearchHistory/useSearchHistory'
+import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
@@ -82,7 +79,12 @@ describe('useSearchHistory', () => {
     })
 
     expect(result.current.filteredHistory).toEqual([
-      { ...item, createdAt: TODAY_DATE.getTime(), label: 'one piece dans Livres' },
+      {
+        ...item,
+        createdAt: TODAY_DATE.getTime(),
+        label: 'one piece dans Livres',
+        categoryLabel: 'Livres',
+      },
     ])
   })
 
@@ -140,7 +142,12 @@ describe('useSearchHistory', () => {
     })
 
     expect(result.current.filteredHistory).toEqual([
-      { ...item, createdAt: TODAY_DATE.getTime() + 1000, label: 'one piece dans Livres' },
+      {
+        ...item,
+        createdAt: TODAY_DATE.getTime() + 1000,
+        label: 'one piece dans Livres',
+        categoryLabel: 'Livres',
+      },
     ])
   })
 
@@ -157,7 +164,14 @@ describe('useSearchHistory', () => {
 
     expect(AsyncStorage.setItem).toHaveBeenLastCalledWith(
       HISTORY_KEY,
-      JSON.stringify([{ ...item, createdAt: TODAY_DATE.getTime(), label: 'one piece dans Livres' }])
+      JSON.stringify([
+        {
+          ...item,
+          createdAt: TODAY_DATE.getTime(),
+          label: 'one piece dans Livres',
+          categoryLabel: 'Livres',
+        },
+      ])
     )
   })
 
@@ -293,6 +307,6 @@ describe('useSearchHistory', () => {
       result.current.setQueryHistory('a')
     })
 
-    expect(result.current.filteredHistory.length).toEqual(3)
+    expect(result.current.filteredHistory.length).toEqual(2)
   })
 })

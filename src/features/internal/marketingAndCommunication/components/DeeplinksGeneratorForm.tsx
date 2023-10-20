@@ -12,9 +12,9 @@ import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommun
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
+  ParamConfig,
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
-  ParamConfig,
 } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -80,7 +80,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           onSelect={onSelectScreenName}
         />
         <Spacer.Column numberOfSpaces={2} />
-        <Separator />
+        <Separator.Horizontal />
       </React.Fragment>
     )
   }
@@ -247,7 +247,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             <StyledCaption>{config.description}</StyledCaption>
           </PaddingContainer>
         )}
-        <Separator />
+        <Separator.Horizontal />
       </React.Fragment>
     )
   }

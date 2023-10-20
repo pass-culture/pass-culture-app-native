@@ -1,0 +1,13 @@
+appId: app.passculture.staging
+---
+- assertVisible: "Bienvenue sur\_le\_pass\_Culture"
+- tapOn: "C’est parti\_!"
+
+- assertVisible: 'Découvre les offres près de chez toi'
+- tapOn: 'Aller à l’écran suivant'
+
+- assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
+- tapOn: 'j’ai 15 ans'
+
+- assertVisible: "À 15 ans, profite de ton pass Culture\_!"
+- tapOn: 'Créer un compte'

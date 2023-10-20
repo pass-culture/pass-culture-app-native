@@ -52,8 +52,8 @@ describe('<VenueBody />', () => {
     const venueWithNoAddressId = venueWithNoAddressResponseSnap.id
     await renderVenueBody(venueWithNoAddressId)
 
-    const adressTexts = screen.getAllByText('Le Petit Rintintin 3, 15000 Milan')
-    expect(adressTexts.length).toEqual(2)
+    const addressTexts = screen.getAllByText('Le Petit Rintintin 3, 15000 Milan')
+    expect(addressTexts.length).toEqual(2)
   })
 
   it('should not show venue banner in where section', async () => {
@@ -131,7 +131,6 @@ describe('<VenueBody />', () => {
 
 async function renderVenueBody(id: number) {
   useRoute.mockImplementation(() => ({ params: { id } }))
-  const wrapper = render(<VenueBody venueId={id} onScroll={jest.fn()} />)
-  await waitFor(() => wrapper.getByTestId('venue-container'))
-  return wrapper
+  render(<VenueBody venueId={id} onScroll={jest.fn()} />)
+  await waitFor(() => screen.getByTestId('venue-container'))
 }

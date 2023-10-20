@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { InputError } from './InputError'
 
 describe('InputError Component', () => {
   it('should display the given message', () => {
-    const { queryByText } = render(
+    render(
       <InputError
         visible
         messageId="message"
@@ -15,11 +15,11 @@ describe('InputError Component', () => {
       />
     )
 
-    const text = queryByText('message')
+    const text = screen.queryByText('message')
     expect(text).toBeOnTheScreen()
   })
   it('should hide the given message', () => {
-    const { queryByText } = render(
+    render(
       <InputError
         visible={false}
         messageId="message"
@@ -28,11 +28,11 @@ describe('InputError Component', () => {
       />
     )
 
-    const text = queryByText('message')
+    const text = screen.queryByText('message')
     expect(text).not.toBeOnTheScreen()
   })
   it('should display the right top space', () => {
-    const { getByTestId } = render(
+    render(
       <InputError
         visible
         messageId="message"
@@ -41,7 +41,7 @@ describe('InputError Component', () => {
       />
     )
 
-    const spacer = getByTestId('input-error-top-spacer')
+    const spacer = screen.getByTestId('input-error-top-spacer')
 
     expect(spacer.props.numberOfSpaces).toEqual(1)
   })

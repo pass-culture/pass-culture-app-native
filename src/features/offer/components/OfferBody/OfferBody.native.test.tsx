@@ -616,7 +616,6 @@ describe('<OfferBody />', () => {
         from: 'offer',
         fromMultivenueOfferId: 146112,
         offerId: 2,
-        shouldUseAlgoliaRecommend: undefined,
       })
     })
   })

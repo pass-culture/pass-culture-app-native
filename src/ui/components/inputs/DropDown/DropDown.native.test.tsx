@@ -6,9 +6,9 @@ import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 
 describe('<DropDown />', () => {
   it('should not render component when is native', () => {
-    const renderAPI = render(
+    const { toJSON } = render(
       <DropDown label="Mois" placeholder="Mois" options={monthNames} onChange={jest.fn()} />
     )
-    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
+    expect(toJSON()).not.toBeOnTheScreen()
   })
 })

@@ -80,7 +80,6 @@ describe('OfferTile component', () => {
     const propsFromSimilarOffers = {
       ...props,
       fromOfferId: 1,
-      shouldUseAlgoliaRecommend: false,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
       apiRecoParams,
     }
@@ -93,7 +92,6 @@ describe('OfferTile component', () => {
       from: 'similar_offer',
       moduleName: props.moduleName,
       fromOfferId: 1,
-      shouldUseAlgoliaRecommend: false,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
     })
   })
@@ -101,7 +99,7 @@ describe('OfferTile component', () => {
   it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
     render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<OfferTile {...props} homeEntryId={'abcd'} />)
+      reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />)
     )
     await fireEvent.press(screen.getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({

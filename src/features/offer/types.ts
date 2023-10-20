@@ -24,10 +24,10 @@ export interface OfferTileProps {
   height: number
   fromOfferId?: number
   fromMultivenueOfferId?: number
-  shouldUseAlgoliaRecommend?: boolean
   playlistType?: PlaylistType
   searchId?: string
   apiRecoParams?: RecommendationApiParams
+  index?: number
 }
 
 export interface SimilarOffersResponse {

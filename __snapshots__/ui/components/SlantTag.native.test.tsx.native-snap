@@ -39,7 +39,7 @@ exports[`SlantTag should render SlantTag with automatic height and width, and pa
       ]
     }
   >
-    200 €
+    200 €
   </Text>
 </View>
 `;
@@ -85,7 +85,7 @@ exports[`SlantTag should render SlantTag with given angle if provided 1`] = `
     }
     tagAngle={10}
   >
-    200 €
+    200 €
   </Text>
 </View>
 `;
@@ -131,7 +131,7 @@ exports[`SlantTag should render SlantTag with provided height and width, and no 
       ]
     }
   >
-    200 €
+    200 €
   </Text>
 </View>
 `;

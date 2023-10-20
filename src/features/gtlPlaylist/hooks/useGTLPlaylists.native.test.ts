@@ -46,6 +46,7 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
       ],
     } as SearchResponse<Offer>,
     layout: 'one-item-medium',
+    entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
 ])
 
@@ -105,6 +106,7 @@ describe('useGTLPlaylists', () => {
           ],
         },
         title: 'Test',
+        entryId: '2xUlLBRfxdk6jeYyJszunX',
       },
     ])
   })
@@ -117,6 +119,7 @@ describe('useGTLPlaylists', () => {
           hits: [],
         } as unknown as SearchResponse<Offer>,
         layout: 'one-item-medium',
+        entryId: '2xUlLBRfxdk6jeYyJszunX',
       },
     ])
 

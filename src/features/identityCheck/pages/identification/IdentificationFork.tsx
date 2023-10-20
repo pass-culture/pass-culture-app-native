@@ -23,7 +23,7 @@ export const IdentificationFork: FunctionComponent = () => {
 
   return (
     <PageWithHeader
-      title={'Identification'}
+      title="Identification"
       scrollChildren={<IdentificationForkEduconnectContent />}
     />
   )

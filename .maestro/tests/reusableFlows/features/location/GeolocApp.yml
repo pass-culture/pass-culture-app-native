@@ -1,0 +1,30 @@
+appId: app.passculture.staging
+---
+- scrollUntilVisible:
+      element: "Lorsque vous utilisez l'application"
+      direction: DOWN
+- tapOn: "Lorsque vous utilisez l'application"
+- tapOn:
+        id: "j’ai 18 ans"
+- tapOn: "Plus tard"
+- tapOn: "Mon profil"
+- tapOn:
+        id: "Interrupteur Partager ma position"
+- tapOn: "Désactiver la géolocalisation"
+- scrollUntilVisible:
+        element: "Autorisations"
+        direction: DOWN
+
+- tapOn: "Position"
+- tapOn: "Ne pas autoriser"
+- tapOn: "Retour"
+- tapOn: "Retour"
+- tapOn: "Mon profil"
+- tapOn:
+        id: "Interrupteur Partager ma position"
+- tapOn: "Activer la géolocalisation"
+- tapOn: "Autorisations"
+- tapOn: "Position"
+- tapOn: "Autoriser seulement si l'appli est en cours d'utilisation"
+- tapOn: "Retour"
+- tapOn: "Retour"

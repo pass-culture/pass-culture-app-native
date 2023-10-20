@@ -437,6 +437,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -504,6 +505,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -576,6 +578,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="cette année"
                     style={
                       [
@@ -964,6 +967,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -1352,6 +1356,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -1498,6 +1503,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 ]
               }
             />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -1541,6 +1556,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             >
               Ton crédit est remis à 0
             </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <View
               numberOfSpaces={3}
               style={
@@ -2168,6 +2193,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -2301,6 +2327,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 [
                   {
                     "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
                   },
                 ]
               }
@@ -2801,14 +2837,14 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
   </RCTScrollView>,
   <View
     collapsable={false}
-    height={65}
+    height={80}
     style={
       {
         "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "borderBottomColor": "#F1F1F4",
         "borderBottomWidth": 0,
-        "height": 65,
+        "height": 80,
         "left": 0,
         "position": "absolute",
         "right": 0,
@@ -2830,10 +2866,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
     />
     <View
       collapsable={false}
-      height={65}
+      height={80}
       style={
         {
-          "height": 65,
+          "height": 80,
           "left": 0,
           "opacity": 0,
           "overflow": "hidden",
@@ -3008,16 +3044,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
         </View>
       </View>
       <View
-        numberOfSpaces={10}
-        style={
-          [
-            {
-              "width": 40,
-            },
-          ]
-        }
-      />
-      <View
         style={
           [
             {
@@ -3068,11 +3094,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
         }
       />
       <View
-        numberOfSpaces={25}
+        numberOfSpaces={16}
         style={
           [
             {
-              "width": 100,
+              "width": 64,
             },
           ]
         }
@@ -3529,73 +3555,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "height": 16,
-                              "marginRight": 8,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={16}
-                          width={16}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "flexShrink": 1,
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        Tu as 1 an pour activer ton crédit.
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -3668,6 +3628,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="cette année"
                     style={
                       [
@@ -4056,6 +4017,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -4444,6 +4406,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -4590,6 +4553,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 ]
               }
             />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -4633,6 +4606,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             >
               Ton crédit est remis à 0
             </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
             <View
               numberOfSpaces={3}
               style={
@@ -5260,6 +5243,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   }
                 >
                   <Text
+                    accessibilityHidden={true}
                     status="à venir"
                     style={
                       [
@@ -5393,6 +5377,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 [
                   {
                     "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
                   },
                 ]
               }
@@ -5623,14 +5617,14 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
   </RCTScrollView>,
   <View
     collapsable={false}
-    height={65}
+    height={80}
     style={
       {
         "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "borderBottomColor": "#F1F1F4",
         "borderBottomWidth": 0,
-        "height": 65,
+        "height": 80,
         "left": 0,
         "position": "absolute",
         "right": 0,
@@ -5652,10 +5646,10 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
     />
     <View
       collapsable={false}
-      height={65}
+      height={80}
       style={
         {
-          "height": 65,
+          "height": 80,
           "left": 0,
           "opacity": 0,
           "overflow": "hidden",
@@ -5830,16 +5824,6 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
         </View>
       </View>
       <View
-        numberOfSpaces={10}
-        style={
-          [
-            {
-              "width": 40,
-            },
-          ]
-        }
-      />
-      <View
         style={
           [
             {
@@ -5890,11 +5874,11 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
         }
       />
       <View
-        numberOfSpaces={25}
+        numberOfSpaces={16}
         style={
           [
             {
-              "width": 100,
+              "width": 64,
             },
           ]
         }

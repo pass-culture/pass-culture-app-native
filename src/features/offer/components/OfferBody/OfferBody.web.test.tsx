@@ -82,7 +82,7 @@ describe('<OfferBody />', () => {
         fireEvent.click(otherButton)
       })
 
-      expect(screen.queryByText('Partager l’offre')).toBeInTheDocument()
+      expect(screen.getByText('Partager l’offre')).toBeInTheDocument()
     })
   })
 })

@@ -9,19 +9,26 @@ on:
       folder:
         type: string
         required: true
+      base_sha:
+        type: string
+        required: false
 
 jobs:
   check-folder-changes:
     name: Check folder changes
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted, linux, x64, regular]
     outputs:
       folder_changed: ${{ steps.folder-check-changed-files.outputs.any_changed }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - id: folder-check-changed-files
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v39
         with:
+          base_sha: ${{ inputs.base_sha }}
           files: |
             ${{ inputs.folder }}/**
+      - id: dump-folder-check-changed-files
+        name: Dump changed files context
+        run: echo '${{ toJSON(steps.folder-check-changed-files.outputs) }}'

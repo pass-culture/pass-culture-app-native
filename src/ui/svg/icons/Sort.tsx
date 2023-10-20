@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Path, G } from 'react-native-svg'
+import { G, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -12,7 +12,7 @@ function SortSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon) {
       width={size}
       height={size}
       fill={color}
-      viewBox="0 0 32 32"
+      viewBox="0 0 24 24"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <G fill="none" fillRule="evenodd">

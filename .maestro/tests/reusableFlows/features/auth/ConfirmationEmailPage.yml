@@ -1,0 +1,16 @@
+appId: app.passculture.staging
+---
+#ConfirmationEmailPage
+- assertVisible: "Confirme ton adresse e-mail"
+- assertVisible: "Tu as reçu un lien à l’adresse\_:"
+- assertVisible: ${NEW_USERNAME}
+- assertVisible: "L’e-mail peut prendre quelques minutes pour arriver."
+- tapOn: "Tu n‘as pas reçu de lien\_? Tu peux\_:"
+
+- assertVisible: "Consulter notre centre d’aide"
+- assertVisible:
+      id: "Consulter mes e-mails"
+- tapOn:
+      id: "Consulter mes e-mails"
+
+

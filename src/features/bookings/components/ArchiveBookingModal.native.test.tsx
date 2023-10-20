@@ -9,7 +9,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockShowErrorSnackBar = jest.fn()
@@ -29,13 +29,15 @@ jest.mock('libs/react-query/usePersistQuery', () => ({
 describe('<ArchiveBookingModal />', () => {
   it('should call on onDismiss', () => {
     const onDismiss = jest.fn()
-    const { getByTestId } = renderArchiveDigitalBookingOfferModal({
+
+    renderArchiveDigitalBookingOfferModal({
       visible: true,
       bookingId: 2,
       bookingTitle: 'title',
       onDismiss,
     })
-    const button = getByTestId('Retourner à ma réservation')
+
+    const button = screen.getByTestId('Retourner à ma réservation')
     fireEvent.press(button)
     expect(onDismiss).toHaveBeenCalledTimes(1)
   })
@@ -46,14 +48,15 @@ describe('<ArchiveBookingModal />', () => {
       )
     )
     const onDismiss = jest.fn()
-    const { getByText } = renderArchiveDigitalBookingOfferModal({
+
+    renderArchiveDigitalBookingOfferModal({
       visible: true,
       bookingId: 2,
       bookingTitle: 'title',
       onDismiss,
     })
 
-    const cancelButton = getByText('Terminer ma réservation')
+    const cancelButton = screen.getByText('Terminer ma réservation')
 
     fireEvent.press(cancelButton)
 
@@ -68,7 +71,10 @@ describe('<ArchiveBookingModal />', () => {
     })
   })
   it('should show error snackbar if terminate booking request fails', async () => {
-    const response = { code: 'ALREADY_USED', message: 'La réservation a déjà été utilisée.' }
+    const response = {
+      code: 'ALREADY_USED',
+      message: 'La réservation a déjà été utilisée.',
+    }
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/bookings/2/toggle_display', (req, res, ctx) =>
         res.once(ctx.status(400), ctx.json(response))
@@ -76,14 +82,15 @@ describe('<ArchiveBookingModal />', () => {
     )
 
     const onDismiss = jest.fn()
-    const { getByText } = renderArchiveDigitalBookingOfferModal({
+
+    renderArchiveDigitalBookingOfferModal({
       visible: true,
       bookingId: 2,
       bookingTitle: 'title',
       onDismiss,
     })
 
-    const cancelButton = getByText('Terminer ma réservation')
+    const cancelButton = screen.getByText('Terminer ma réservation')
     fireEvent.press(cancelButton)
 
     await waitFor(() => {

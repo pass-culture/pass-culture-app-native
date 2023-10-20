@@ -80,7 +80,7 @@ export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner
       ) : (
         <View testID="venue-info">
           <Spacer.Column numberOfSpaces={4} />
-          <Separator />
+          <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={4} />
           <VenueDetails
             title={venue.publicName || venue.name}
@@ -88,7 +88,7 @@ export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner
             distance={distanceToLocation}
           />
           <Spacer.Column numberOfSpaces={4} />
-          <Separator />
+          <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={1} />
         </View>
       )}
