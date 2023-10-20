@@ -37,51 +37,51 @@ jobs:
           TAG_NAME=v${VERSION}
           git tag -a "$TAG_NAME" -m "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
-  # create_and_push_testing_tag:
-  #   runs-on: [self-hosted, linux, x64]
-  #   env:
-  #     GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
-  #     GIT_CONFIG_NAME: ${{ github.actor }}
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         ref: pc-24028-deploy-tag-workflow
-  #         token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
-  #     - name: Author
-  #       run: |
-  #         git config --global user.email "$GIT_CONFIG_EMAIL"
-  #         git config --global user.name "$GIT_CONFIG_NAME"
-  #     - name: Bump package version
-  #       uses: phips28/gh-action-bump-version
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       with:
-  #         version-type: 'minor'
-  #         skip-commit: 'true'
-  #         skip-tag: 'true'
-  #     - name: Bump server package version
-  #       uses: phips28/gh-action-bump-version
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         PACKAGEJSON_DIR: 'server'
-  #       with:
-  #         version-type: 'minor'
-  #         skip-commit: 'true'
-  #         skip-tag: 'true'
-  #     - name: get package version
-  #       id: package-version
-  #       uses: martinbeentjes/npm-get-version-action@v1.3.1
-  #     - name: Get package version and bump build number
-  #       run: |
-  #         ./scripts/update_build_number_from_package_json_version.sh
-  #         git add package.json
-  #         git add server/package.json
-  #         VERSION=${{ steps.package-version.outputs.current-version}}
-  #         git commit -m "v${VERSION}"
-  #         git push origin
-  #     - name: Create and push testing tag
-  #       run: |
-  #         VERSION=${{ steps.package-version.outputs.current-version}}
-  #         TAG_NAME=testing/v${VERSION}
-  #         git tag -a "$TAG_NAME" -m "🚀 $TAG_NAME"
-  #         git push origin "$TAG_NAME"
+  create_and_push_testing_tag:
+    runs-on: [self-hosted, linux, x64]
+    env:
+      GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
+      GIT_CONFIG_NAME: ${{ github.actor }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: pc-24028-deploy-tag-workflow
+          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
+      - name: Author
+        run: |
+          git config --global user.email "$GIT_CONFIG_EMAIL"
+          git config --global user.name "$GIT_CONFIG_NAME"
+      - name: Bump package version
+        uses: phips28/gh-action-bump-version@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version-type: 'minor'
+          skip-commit: 'true'
+          skip-tag: 'true'
+      - name: Bump server package version
+        uses: phips28/gh-action-bump-version@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: 'server'
+        with:
+          version-type: 'minor'
+          skip-commit: 'true'
+          skip-tag: 'true'
+      - name: get package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+      - name: Get package version and bump build number
+        run: |
+          ./scripts/update_build_number_from_package_json_version.sh
+          git add package.json
+          git add server/package.json
+          VERSION=${{ steps.package-version.outputs.current-version}}
+          git commit -m "v${VERSION}"
+          git push origin
+      - name: Create and push testing tag
+        run: |
+          VERSION=${{ steps.package-version.outputs.current-version}}
+          TAG_NAME=testing/v${VERSION}
+          git tag -a "$TAG_NAME" -m "🚀 $TAG_NAME"
+          git push origin "$TAG_NAME"
