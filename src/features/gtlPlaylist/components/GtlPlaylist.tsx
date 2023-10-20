@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { VenueResponse } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
@@ -35,6 +35,10 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
       venueId: venue.id,
     })
   )
+
+  useEffect(() => {
+    analytics.logModuleDisplayed({ moduleId: entryId, displayedOn: 'venue', venueId: venue.id })
+  }, [entryId, venue.id])
 
   const renderPassPlaylist: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height, index }) => {

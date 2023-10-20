@@ -384,6 +384,8 @@ export const logEventAnalytics = {
       | 'forPhoneNumberConfirmation'
   ) => analytics.logEvent({ firebase: AnalyticsEvent.MAIL_TO }, { reason }),
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
+  logModuleDisplayed: (params: { moduleId: string; displayedOn: Referrals; venueId?: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
   logModuleDisplayedOnHomepage: (
     moduleId: string,
     moduleType: ContentTypes,
