@@ -84,7 +84,7 @@ describe('buildGeolocationParameter', () => {
     const result = buildGeolocationParameter({
       locationFilter: locationFilterAroundMe,
       userLocation,
-      isOnline: true,
+      isFullyDigitalOffersCategory: true,
     })
     expect(result).toBeUndefined()
   })

@@ -67,7 +67,7 @@ describe('useShowResultsForCategory', () => {
     })
   })
 
-  it('should navigate with isOnline param when category selected is only online platform', () => {
+  it('should navigate with isFullyDigitalOffersCategory param when category selected is only online platform', () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
@@ -78,7 +78,7 @@ describe('useShowResultsForCategory', () => {
         date: null,
         endingDatetime: undefined,
         hitsPerPage: 20,
-        isOnline: true,
+        isFullyDigitalOffersCategory: true,
         locationFilter: { locationType: 'EVERYWHERE' },
         offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
         offerIsDuo: false,
@@ -109,7 +109,7 @@ describe('useShowResultsForCategory', () => {
         date: null,
         endingDatetime: undefined,
         hitsPerPage: 20,
-        isOnline: true,
+        isFullyDigitalOffersCategory: true,
         locationFilter: { locationType: 'EVERYWHERE' },
         offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
         offerIsDuo: false,

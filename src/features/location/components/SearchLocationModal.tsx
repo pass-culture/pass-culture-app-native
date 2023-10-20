@@ -6,6 +6,8 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -22,6 +24,9 @@ import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { Typo } from 'ui/theme'
+
+const DEFAULT_RADIUS = 50
+const DEFAULT_DIGITAL_OFFERS_SELECTION = false
 
 interface LocationModalProps {
   visible: boolean
@@ -54,10 +59,24 @@ export const SearchLocationModal = ({
     isCurrentLocationMode,
   } = useLocationModal(visible)
 
+  const { searchState, dispatch } = useSearch()
+
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const [aroundRadius, setAroundRadius] = useState(50)
-  const [includeDigitalOffers, setIncludeDigitalOffers] = useState(false)
+  const getInitialRadiusValue = () => {
+    if (
+      searchState.locationFilter.locationType === LocationType.PLACE ||
+      searchState.locationFilter.locationType === LocationType.AROUND_ME
+    ) {
+      return searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
+    }
+    return DEFAULT_RADIUS
+  }
+
+  const [aroundRadius, setAroundRadius] = useState(getInitialRadiusValue)
+  const [includeDigitalOffers, setIncludeDigitalOffers] = useState(
+    searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION
+  )
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
@@ -92,16 +111,32 @@ export const SearchLocationModal = ({
   )
 
   const onSubmit = () => {
-    if (selectedLocationMode === LocationMode.CUSTOM_POSITION) {
+    if (selectedLocationMode === LocationMode.CUSTOM_POSITION && selectedPlace) {
       setPlaceGlobally(selectedPlace)
+      dispatch({
+        type: 'SET_LOCATION_FILTERS',
+        payload: {
+          locationFilter: { place: selectedPlace, locationType: LocationType.PLACE, aroundRadius },
+          includeDigitalOffers,
+        },
+      })
       analytics.logUserSetLocation('search')
     } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
       setPlaceGlobally(null)
+      dispatch({
+        type: 'SET_LOCATION_FILTERS',
+        payload: {
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
+          includeDigitalOffers,
+        },
+      })
     }
     dismissModal()
   }
 
   const onClose = () => {
+    setAroundRadius(getInitialRadiusValue)
+    setIncludeDigitalOffers(searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION)
     dismissModal()
   }
 

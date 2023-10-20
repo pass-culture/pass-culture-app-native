@@ -1654,15 +1654,15 @@ describe('fetchOffer', () => {
     })
   })
 
-  describe('isOnline & geolocation shared with around me location filter param', () => {
-    it('should fetch with around me parameters when isOnline is undefined', () => {
+  describe('isFullyDigitalOffersCategory & geolocation shared with around me location filter param', () => {
+    it('should fetch with around me parameters when isFullyDigitalOffersCategory is undefined', () => {
       const query = 'searched query'
 
       fetchOffers({
         parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
           query,
-          isOnline: undefined,
+          isFullyDigitalOffersCategory: undefined,
         } as SearchQueryParameters,
         userLocation,
         isUserUnderage: false,
@@ -1680,14 +1680,14 @@ describe('fetchOffer', () => {
       })
     })
 
-    it('should not fetch with around me parameters when isOnline is undefined', () => {
+    it('should not fetch with around me parameters when isFullyDigitalOffersCategory is undefined', () => {
       const query = 'searched query'
 
       fetchOffers({
         parameters: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
           query,
-          isOnline: true,
+          isFullyDigitalOffersCategory: true,
         } as SearchQueryParameters,
         userLocation,
         isUserUnderage: false,

@@ -36,7 +36,7 @@ const searchParamsParser = {
   endingDatetime: parseDataWithISODates,
   hitsPerPage: JSON.parse,
   isAutocomplete: JSON.parse,
-  isOnline: JSON.parse,
+  isFullyDigitalOffersCategory: JSON.parse,
   locationFilter: JSON.parse,
   maxPossiblePrice: JSON.parse,
   maxPrice: JSON.parse,
@@ -59,6 +59,7 @@ const searchParamsParser = {
   view: JSON.parse,
   minBookingsThreshold: JSON.parse,
   isFromHistory: JSON.parse,
+  includeDigitalOffers: JSON.parse,
 }
 
 export const screenParamsParser: ParamsParsers = {
@@ -188,7 +189,7 @@ const searchParamsStringifier = {
   endingDatetime: JSON.stringify,
   hitsPerPage: JSON.stringify,
   isAutocomplete: JSON.stringify,
-  isOnline: JSON.stringify,
+  isFullyDigitalOffersCategory: JSON.stringify,
   locationFilter: JSON.stringify,
   maxPossiblePrice: JSON.stringify,
   maxPrice: JSON.stringify,
@@ -211,6 +212,7 @@ const searchParamsStringifier = {
   view: JSON.stringify,
   minBookingsThreshold: JSON.stringify,
   isFromHistory: JSON.stringify,
+  includeDigitalOffers: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {

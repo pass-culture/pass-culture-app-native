@@ -10,6 +10,7 @@ type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   eanList?: string[]
+  enableAppLocation?: boolean
 }
 
 export const buildOfferSearchParameters = (
@@ -19,7 +20,7 @@ export const buildOfferSearchParameters = (
     eanList = [],
     endingDatetime = undefined,
     excludedObjectIds = [],
-    isOnline = undefined,
+    isFullyDigitalOffersCategory = undefined,
     locationFilter,
     maxPossiblePrice = '',
     maxPrice = '',
@@ -43,9 +44,11 @@ export const buildOfferSearchParameters = (
     priceRange = null,
     tags = [],
     timeRange = null,
+    includeDigitalOffers = false,
   }: Parameters,
   userLocation: Position,
-  isUserUnderage: boolean
+  isUserUnderage: boolean,
+  enableAppLocation?: boolean
 ) => ({
   ...buildFacetFilters({
     eanList,
@@ -61,6 +64,9 @@ export const buildOfferSearchParameters = (
     offerSubcategories,
     offerTypes,
     tags,
+    includeDigitalOffers,
+    isFullyDigitalOffersCategory,
+    enableAppLocation,
   }),
   ...buildNumericFilters({
     beginningDatetime,
@@ -75,6 +81,11 @@ export const buildOfferSearchParameters = (
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({ locationFilter, userLocation, isOnline }),
+  ...buildGeolocationParameter({
+    locationFilter,
+    userLocation,
+    isFullyDigitalOffersCategory,
+    enableAppLocation,
+  }),
   ...buildFilters({ excludedObjectIds }),
 })

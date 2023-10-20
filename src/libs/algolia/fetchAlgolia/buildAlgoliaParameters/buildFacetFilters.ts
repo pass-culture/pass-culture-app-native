@@ -2,6 +2,7 @@ import { LocationType } from 'features/search/enums'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
   buildEanPredicate,
+  buildIncludeDigitalOffersPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -22,6 +23,7 @@ export const buildFacetFilters = ({
   isUserUnderage,
   locationFilter,
   objectIds,
+  enableAppLocation,
   offerCategories,
   offerGenreTypes,
   offerGtlLabel,
@@ -31,6 +33,8 @@ export const buildFacetFilters = ({
   offerSubcategories,
   offerTypes,
   tags,
+  includeDigitalOffers,
+  isFullyDigitalOffersCategory,
 }: Pick<
   SearchQueryParameters,
   | 'locationFilter'
@@ -43,7 +47,14 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'offerTypes'
   | 'tags'
-> & { isUserUnderage: boolean; objectIds?: string[]; eanList?: string[] }): null | {
+  | 'includeDigitalOffers'
+  | 'isFullyDigitalOffersCategory'
+> & {
+  isUserUnderage: boolean
+  objectIds?: string[]
+  eanList?: string[]
+  enableAppLocation?: boolean
+}): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
@@ -94,6 +105,13 @@ export const buildFacetFilters = ({
 
   const tagsPredicate = buildTagsPredicate(tags)
   if (tagsPredicate) facetFilters.push(tagsPredicate)
+
+  const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
+    includeDigitalOffers,
+    isFullyDigitalOffersCategory
+  )
+  if (includeDigitalOffersPredicate && enableAppLocation)
+    facetFilters.push(includeDigitalOffersPredicate)
 
   if (
     locationFilter?.locationType === LocationType.VENUE &&

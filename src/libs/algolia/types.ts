@@ -45,7 +45,7 @@ export type SearchQueryParameters = {
   date: SelectedDate | null
   endingDatetime?: string
   hitsPerPage: number | null
-  isOnline?: boolean
+  isFullyDigitalOffersCategory?: boolean
   locationFilter?: LocationFilter
   maxPossiblePrice?: string
   maxPrice?: string
@@ -72,6 +72,7 @@ export type SearchQueryParameters = {
   searchId?: string
   tags: string[]
   timeRange: Range<number> | null
+  includeDigitalOffers?: boolean
 }
 
 export const transformHit = transformOfferHit
