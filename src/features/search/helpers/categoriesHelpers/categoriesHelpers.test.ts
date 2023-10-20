@@ -368,7 +368,7 @@ describe('categoriesHelpers', () => {
       expect(result).toEqual('+10000')
     })
 
-    it('should display the exact number of result facets', () => {
+    it('should display the exact number of result facets is less than 10000', () => {
       const result = getNbResultsFacetLabel(5)
       expect(result).toEqual('5')
     })
