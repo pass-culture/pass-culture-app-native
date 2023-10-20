@@ -275,9 +275,12 @@ describe('formatDates', () => {
     mockdate.set(NOVEMBER_1_2020)
   })
 
+  it('should return undefined when undefined is given', () => {
+    expect(formatDates(undefined)).toEqual(undefined)
+  })
+
   it.each`
     dates                                   | expected
-    ${undefined}                            | ${undefined}
     ${[]}                                   | ${undefined}
     ${[NOVEMBER_12_2020]}                   | ${'12 novembre 2020'}
     ${[NOVEMBER_12_2020, NOVEMBER_12_2020]} | ${'12 novembre 2020'}
