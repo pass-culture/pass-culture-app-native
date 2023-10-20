@@ -41,10 +41,10 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
 
   const activationAge = useDepositActivationAge()
 
-  const isEligible = isLoggedIn && user?.status.statusType === YoungStatusType.eligible
+  const isEligible = isLoggedIn && user?.status?.statusType === YoungStatusType.eligible
   const isEligibleWithoutSubscription =
     isEligible &&
-    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
+    user?.status?.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
 
   const headerTitle = isLoggedIn ? 'Comment ça marche\u00a0?' : `Le pass Culture à ${age} ans`
 
