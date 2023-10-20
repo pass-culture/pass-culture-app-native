@@ -26,7 +26,7 @@ jobs:
     with:
       folder: |
         .storybook/**
-        src/**'
+        src/**
   yarn-linter:
     needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_linter_ts.yml

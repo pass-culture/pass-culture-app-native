@@ -14,6 +14,7 @@ const GreyOffers = styled(Offers).attrs(({ theme }) => ({
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   color: theme.colors.greySemiDark,
   color2: theme.colors.greySemiDark,
+  color3: theme.colors.greySemiDark,
 }))``
 
 export const eighteenSeparatorStep: CreditComponentProps = {
