@@ -37,7 +37,7 @@ export const OfferImage: React.FC<Props> = ({
       {imageUrl ? (
         <StyledFastImage
           url={imageUrl}
-          resizeMode={FastImage.resizeMode.cover}
+          resizeMode={FastImage.resizeMode?.cover}
           size={size}
           borderRadius={borderRadius}
           withSroke={withStroke}

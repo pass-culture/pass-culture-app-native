@@ -2,7 +2,7 @@ import { useIsFocused, useRoute } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, ScrollView, View } from 'react-native'
+import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -189,16 +189,12 @@ export const SearchResults: React.FC = () => {
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
   const handlePressFooter = () => {
-    const currentRef = searchListRef.current
-    if (currentRef instanceof FlatList) {
-      const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
-        .lastChild as HTMLElement
-      const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
-      offerLink.focus()
-      offerLink.blur()
-      onEndReached()
-    }
+    onEndReached()
   }
+
+  // We don't want to render it on the web, even if it's not plugged in, since it avoids the user
+  // to press on a working button
+  const shouldRenderScrollToTopButton = nbHits > 0 && Platform.OS !== 'web'
 
   return (
     <React.Fragment>
@@ -284,7 +280,7 @@ export const SearchResults: React.FC = () => {
           venuesUserData={venuesUserData}
         />
       </Container>
-      {nbHits > 0 && (
+      {shouldRenderScrollToTopButton ? (
         <ScrollToTopContainer>
           <ScrollToTopButton
             transition={scrollButtonTransition}
@@ -294,7 +290,7 @@ export const SearchResults: React.FC = () => {
           />
           <Spacer.BottomScreen />
         </ScrollToTopContainer>
-      )}
+      ) : null}
       <CategoriesModal
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}

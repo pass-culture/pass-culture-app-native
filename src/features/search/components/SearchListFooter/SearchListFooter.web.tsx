@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { Li } from 'ui/components/Li'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -11,7 +12,8 @@ export interface SearchListFooterProps {
   nbLoadedHits: number
   nbHits: number
   autoScrollEnabled: boolean
-  onPress?: () => void
+  onPress?: VoidFunction
+  style?: ComponentProps<typeof Li>['style']
 }
 
 export const SearchListFooter = ({
@@ -20,29 +22,31 @@ export const SearchListFooter = ({
   nbHits,
   autoScrollEnabled,
   onPress,
+  style,
 }: SearchListFooterProps) => {
   const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
+
   return isFetchingNextPage && nbLoadedHits < nbHits ? (
-    <React.Fragment>
+    <Li style={style}>
       <Spacer.Column numberOfSpaces={4} />
       <ActivityIndicator testID="activity-indicator" />
       <Spacer.Column numberOfSpaces={4} />
       <Footer testID="footer" />
-    </React.Fragment>
+    </Li>
   ) : (
-    <React.Fragment>
-      {!!showMoreButton && <Separator />}
+    <Li style={style}>
+      {showMoreButton ? <Separator /> : null}
       <Footer>
-        {!!showMoreButton && (
+        {showMoreButton ? (
           <ButtonSecondary
             mediumWidth
             icon={More}
             wording="Afficher plus de résultats"
             onPress={onPress}
           />
-        )}
+        ) : null}
       </Footer>
-    </React.Fragment>
+    </Li>
   )
 }
 

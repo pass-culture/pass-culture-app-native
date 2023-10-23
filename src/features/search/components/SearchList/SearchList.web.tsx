@@ -1,85 +1,223 @@
-import React, { forwardRef } from 'react'
-import { FlatList } from 'react-native'
+import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
+import { Animated, LayoutChangeEvent, View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
-import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
+import { RowData, SearchListItem } from 'features/search/components/SearchListItem.web'
+import { LIST_ITEM_HEIGHT } from 'features/search/constants'
+import { useSearch } from 'features/search/context/SearchWrapper'
+import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
 import { SearchListProps } from 'features/search/types'
-import { Offer } from 'shared/offer/types'
+import { useLocation } from 'libs/geolocation'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
+import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { getSpacing } from 'ui/theme'
 
-const keyExtractor = (item: Offer) => item.objectID
+const BASE_HEADER_HEIGHT = 92
+const USER_DATA_MESSAGE_HEIGHT = 72
+const GEOLOCATION_BUTTON_HEIGHT = 102
+const VENUES_PLAYLIST_HEIGHT = 265
 
-const contentContainerStyle = {
-  flex: 1,
+const FOOTER_SIZE = 104
+const LOAD_MORE_THRESHOLD = 300
+
+type CustomUserData = Record<'message', string>[] | undefined
+
+function getHeaderSize(userData: CustomUserData, isGeolocated: boolean, venuesCount: number) {
+  let totalHeight = BASE_HEADER_HEIGHT
+
+  if (userData?.[0]?.message) {
+    totalHeight += USER_DATA_MESSAGE_HEIGHT
+  } else if (!isGeolocated) {
+    totalHeight += GEOLOCATION_BUTTON_HEIGHT
+  }
+
+  if (venuesCount) {
+    totalHeight += VENUES_PLAYLIST_HEIGHT
+  }
+
+  return totalHeight
 }
 
-export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>, SearchListProps>(
+/**
+ * Function called to compute row size.
+ * Since the list contains header and footer components, it needs computation.
+ */
+function getItemSize(
+  index: number,
+  venuesCount: number,
+  isGeolocated: boolean,
+  itemsCount: number,
+  userData: CustomUserData
+) {
+  const isHeader = index === 0
+  const isFooter = index === itemsCount - 1
+
+  if (isHeader) {
+    return getHeaderSize(userData, isGeolocated, venuesCount)
+  }
+
+  if (isFooter) {
+    return FOOTER_SIZE
+  }
+
+  return LIST_ITEM_HEIGHT
+}
+
+export const SearchList = forwardRef<never, SearchListProps>(
   (
     {
       nbHits,
       hits,
-      renderItem,
       autoScrollEnabled,
-      refreshing,
-      onRefresh,
       isFetchingNextPage,
       onEndReached,
-      onScroll,
       onPress,
       userData,
       venuesUserData,
     },
-    ref
+    _ref
   ) => {
+    const [availableHeight, setAvailableHeight] = useState(0)
+    const outerListRef = useRef<HTMLDivElement>(null)
+    const listRef = useRef<VariableSizeList<RowData>>(null)
+    const { isGeolocated } = useLocation()
+    const { searchState } = useSearch()
+
+    /**
+     * This method will compute maximum height to set list height programatically.
+     */
+    const onLayout = useCallback((event: LayoutChangeEvent) => {
+      setAvailableHeight(event.nativeEvent.layout.height)
+    }, [])
+
+    const { opacity, handleScroll: handleScrollOpacity } = useScrollToBottomOpacity()
+
+    const handleScroll = useCallback(
+      (props: ListOnScrollProps) => {
+        handleScrollOpacity(props)
+
+        if (outerListRef.current && autoScrollEnabled) {
+          const { scrollTop, scrollHeight, clientHeight } = outerListRef.current
+
+          const isNearToBottom = scrollTop + clientHeight >= scrollHeight - LOAD_MORE_THRESHOLD
+
+          if (isNearToBottom && !isFetchingNextPage) {
+            onEndReached?.()
+          }
+        }
+      },
+      [autoScrollEnabled, handleScrollOpacity, isFetchingNextPage, onEndReached]
+    )
+
+    /**
+     * Data given to every search list items.
+     */
+    const data = {
+      /**
+       * This one in special since we manually add two empty objects.
+       * The first one is used as a placeholder to place Header component.
+       * The last one is used as a placeholder to place Footer component.
+       *
+       * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
+       * guess what we want to draw.
+       */
+      items: [{}, ...hits.offers, {}],
+      userData,
+      venuesUserData,
+      nbHits,
+      offers: hits.offers,
+      venues: hits.venues,
+      isFetchingNextPage,
+      autoScrollEnabled,
+      onPress,
+      searchState,
+    }
+
+    /**
+     * The rerender key is used to rerender the `VariableSizeList` component when important changes happen.
+     * Be careful to not add too many things here since it will completely rerender the list, and so scroll to the top.
+     */
+    const rerenderKey = useMemo(
+      () => JSON.stringify({ isGeolocated, nbHits, autoScrollEnabled, onPress }),
+      [isGeolocated, nbHits, autoScrollEnabled, onPress]
+    )
+
+    const handleScrollToTopPress = useCallback(() => {
+      listRef.current?.scrollToItem(0)
+    }, [])
+
     return (
-      <FlatList
-        listAs="ul"
-        itemAs="li"
-        ref={ref}
-        testID="searchResultsFlatlist"
-        data={hits.offers}
-        keyExtractor={keyExtractor}
-        ListHeaderComponent={
-          nbHits > 0 ? (
-            <SearchListHeader
-              nbHits={nbHits}
-              userData={userData}
-              venues={hits.venues}
-              venuesUserData={venuesUserData}
-            />
-          ) : undefined
-        }
-        ItemSeparatorComponent={Separator}
-        ListFooterComponent={
-          <SearchListFooter
-            isFetchingNextPage={isFetchingNextPage}
-            nbLoadedHits={hits.offers?.length}
-            nbHits={nbHits}
-            autoScrollEnabled={autoScrollEnabled}
-            onPress={onPress}
-          />
-        }
-        renderItem={renderItem}
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-        onEndReached={autoScrollEnabled ? onEndReached : undefined}
-        scrollEnabled={nbHits > 0}
-        ListEmptyComponent={<NoSearchResult />}
-        onScroll={onScroll}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-        contentContainerStyle={contentContainerStyle}
-      />
+      <RootContainer onLayout={onLayout} testID="searchResultsFlatlist">
+        {nbHits ? (
+          <React.Fragment>
+            <VariableSizeList
+              ref={listRef}
+              key={rerenderKey}
+              innerElementType="ul"
+              itemData={data}
+              itemSize={(index) =>
+                getItemSize(index, hits.venues.length, isGeolocated, data.items.length, userData)
+              }
+              height={availableHeight}
+              itemCount={data.items.length}
+              outerRef={outerListRef}
+              onScroll={handleScroll}
+              width="100%">
+              {SearchListItem}
+            </VariableSizeList>
+
+            <ScrollToTopContainer style={{ opacity }}>
+              <Container onPress={handleScrollToTopPress}>
+                <StyledLinearGradient
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0, y: 1 }}
+                  colors={['#bf275f', '#5a0d80']}>
+                  <ScrollToTopIcon />
+                </StyledLinearGradient>
+              </Container>
+            </ScrollToTopContainer>
+          </React.Fragment>
+        ) : (
+          <NoSearchResult />
+        )}
+      </RootContainer>
     )
   }
 )
-SearchList.displayName = 'SearchList'
 
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
+SearchList.displayName = 'SearchListWeb'
+
+const RootContainer = styled(View)({
+  flex: 1,
+})
+
+const ScrollToTopContainer = styled(Animated.View)(({ theme }) => ({
+  alignSelf: 'center',
+  position: 'absolute',
+  right: getSpacing(7),
+  bottom: theme.tabBar.height + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+  overflow: 'hidden',
+  border: 0,
 }))
+
+const Container = styledButton(Touchable)({ overflow: 'hidden' })
+
+const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
+  borderRadius: theme.borderRadius.button,
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+  height: getSpacing(10),
+  width: getSpacing(10),
+}))
+
+const ScrollToTopIcon = styled(ScrollToTop).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icons.sizes.small,
+}))``
