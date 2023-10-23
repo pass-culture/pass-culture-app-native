@@ -60,7 +60,7 @@ It works the same with hooks and helpers.
 
 ## When to use queryBy, findBy and getBy
 
-- Prove that an element exists with `getBy` + `expect(…).toBeTruthy()`
+- Prove that an element exists with `getBy` + `expect(…).toBeOnTheScreen()` (or `expect(…).toBeInTheDocument()` for web tests)
 - Prove that an element does not exist with `queryBy` + `expect(…).toBeNull()`
 - Query an element to process some action on it with `getBy` + action
 - **Prefer to use** `await findBy`instead of `waitFor(getBy)`or `waitFor(queryBy)` as it is equivalent`,

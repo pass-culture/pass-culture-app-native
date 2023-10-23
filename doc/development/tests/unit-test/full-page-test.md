@@ -59,6 +59,8 @@ export const renderOfferBody = (
 Accessibility test should be only on **web** and on **pages** or **modals**
 
 ```jsx
+import { checkAccessibilityFor, render } from 'tests/utils/web'
+
 describe('<YourPage/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

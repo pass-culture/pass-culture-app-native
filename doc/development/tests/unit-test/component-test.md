@@ -11,8 +11,8 @@ import { render, screen } from 'tests/utils'
 
 it('should navigate to the previous when back navigation triggered', () => {
   render(<SetBirthday />)
-  
-  const leftIcon = screen.getByTestId('leftIcon')
+
+  const leftIcon = screen.getByLabelText('Revenir en arrière')
   fireEvent.press(leftIcon)
 
   expect(goBack).toHaveBeenCalledTimes(1)

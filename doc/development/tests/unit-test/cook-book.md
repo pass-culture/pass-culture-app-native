@@ -21,9 +21,10 @@ describe('Favorites reducer', () => {
 To test as an authenticated person, you can mock `useAuthContext` as follows:
 
 ```tsx
-import { useAuthContext } from 'features/auth/AuthContext'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+
 // ... and then within each test
 mockUseAuthContext.mockReturnValueOnce({
   isLoggedIn,
