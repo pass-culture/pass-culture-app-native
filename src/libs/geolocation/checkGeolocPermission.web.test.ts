@@ -42,20 +42,14 @@ describe('checkGeolocPermission()', () => {
     }
   )
 
-  it.each`
-    permissionStatus | expectedState                                       | isPermissionAPIUndefined
-    ${undefined}     | ${GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY} | ${true}
-  `(
-    'should return need_ask_position_directly when permissionStatus is undefined and permissionAPI is undefined',
-    async () => {
-      mockNavigatorPermissionsUndefined()
-      // @ts-expect-error: this is a mock
-      mockQuery.mockResolvedValueOnce(undefined)
-      const state = await checkGeolocPermission()
+  it('should return need_ask_position_directly when permissionStatus is undefined and permissionAPI is undefined', async () => {
+    mockNavigatorPermissionsUndefined()
+    // @ts-expect-error: this is a mock
+    mockQuery.mockResolvedValueOnce(undefined)
+    const state = await checkGeolocPermission()
 
-      expect(mockQuery).not.toHaveBeenCalled()
+    expect(mockQuery).not.toHaveBeenCalled()
 
-      expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
-    }
-  )
+    expect(state).toEqual(GeolocPermissionState.NEED_ASK_POSITION_DIRECTLY)
+  })
 })
