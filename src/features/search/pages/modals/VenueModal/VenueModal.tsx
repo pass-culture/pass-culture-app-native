@@ -38,7 +38,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
       title="Point de vente"
       rightIconAccessibilityLabel="Fermer la modale"
       rightIcon={Close}
-      onRightIconPress={doApplySearch}
+      onRightIconPress={dismissModal}
       isUpToStatusBar
       scrollEnabled={false}
       fixedModalBottom={
