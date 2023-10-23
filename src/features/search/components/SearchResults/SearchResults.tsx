@@ -188,10 +188,6 @@ export const SearchResults: React.FC = () => {
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
 
-  const handlePressFooter = () => {
-    onEndReached()
-  }
-
   // We don't want to render it on the web, even if it's not plugged in, since it avoids the user
   // to press on a working button
   const shouldRenderScrollToTopButton = nbHits > 0 && Platform.OS !== 'web'
@@ -275,7 +271,7 @@ export const SearchResults: React.FC = () => {
           onScroll={onScroll}
           refreshing={isRefreshing}
           onRefresh={refetch}
-          onPress={handlePressFooter}
+          onPress={onEndReached}
           userData={userData}
           venuesUserData={venuesUserData}
         />

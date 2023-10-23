@@ -453,7 +453,7 @@ exports[`SearchResults component should render correctly 1`] = `
       >
         <div
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-          data-testid="searchResultsFlatlist"
+          data-testid="searchResultsList"
         >
           <div
             class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
@@ -976,7 +976,7 @@ exports[`SearchResults component should render correctly 1`] = `
     >
       <div
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-        data-testid="searchResultsFlatlist"
+        data-testid="searchResultsList"
       >
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"

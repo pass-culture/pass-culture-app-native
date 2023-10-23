@@ -9,8 +9,11 @@ import { Offer } from 'shared/offer/types'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing } from 'ui/theme'
 
+export const headerPlaceholder = {} as const
+export const footerPlaceholder = {} as const
+
 export type RowData = {
-  items: (Record<string, never> | Offer)[]
+  items: (typeof headerPlaceholder | Offer | typeof footerPlaceholder)[]
   userData: SearchListProps['userData']
   venuesUserData: SearchListProps['venuesUserData']
   nbHits: SearchListProps['nbHits']
@@ -36,14 +39,14 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
 
   if (shouldDisplayHeader) {
     return (
-      <div style={style}>
+      <li style={style}>
         <SearchListHeader
           nbHits={data.nbHits}
           userData={data.userData}
           venuesUserData={data.venuesUserData}
           venues={data.venues}
         />
-      </div>
+      </li>
     )
   }
 
