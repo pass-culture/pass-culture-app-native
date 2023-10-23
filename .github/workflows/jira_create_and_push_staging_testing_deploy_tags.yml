@@ -1,0 +1,118 @@
+name: 'Create and push tag from package version'
+
+on:
+  workflow_dispatch:
+    inputs:
+      commitHash:
+        description: 'Hash du commit à déployer (ex: cadd172232c80206107e2f0122542adf19fb42af)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  create_and_push_staging_tag:
+    runs-on: [self-hosted, linux, x64, regular]
+    env:
+      GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
+      GIT_CONFIG_NAME: ${{ github.actor }}
+    steps:
+      - name: Checkout commit hash
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commitHash }}
+          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
+      - name: get package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+      - name: Author
+        run: |
+          git config --global user.email "$GIT_CONFIG_EMAIL"
+          git config --global user.name "$GIT_CONFIG_NAME"
+      - name: Create and push tag from package version
+        run: |
+          STAGING_VERSION=${{ steps.package-version.outputs.current-version}}
+          TAG_NAME=v${STAGING_VERSION}
+          git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
+          git push origin "$TAG_NAME"
+  create_and_push_testing_tag:
+    runs-on: [self-hosted, linux, x64, regular]
+    env:
+      GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
+      GIT_CONFIG_NAME: ${{ github.actor }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
+      - name: Author
+        run: |
+          git config --global user.email "$GIT_CONFIG_EMAIL"
+          git config --global user.name "$GIT_CONFIG_NAME"
+      - name: Bump package version
+        uses: phips28/gh-action-bump-version@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version-type: 'minor'
+          skip-commit: 'true'
+          skip-tag: 'true'
+      - name: Bump server package version
+        uses: phips28/gh-action-bump-version@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: 'server'
+        with:
+          version-type: 'minor'
+          skip-commit: 'true'
+          skip-tag: 'true'
+      - name: Get package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+      - name: Bump build number
+        id: build-number
+        run: |
+          # We have to increment the build number because it is used as the versionCode
+          # in app/build.gradle: versionCode (packageJson.build as Integer) and the
+          # Play Store requires this value to be strictly increasing. Otherwise, we get this error:
+
+          # ERROR Google Api Error: forbidden: You cannot rollout this release because it does not allow
+          # any existing users to upgrade to the newly added APKs.
+
+          # As such, since the current version is 10136027 = 1 * 10_000_000 + 136 * 1_000 + 27, we build each new version
+          # as the sum of:
+          #  + 10_000_000 * MAJOR,
+          #  + 1_000 * MINOR,
+          #  + PATCH
+          # where <VERSION> = <MAJOR>.<MINOR>.<PATCH> (ex: 1.137.3) as we use semantic versioning.
+
+          # Examples:
+          #   1.136.27 => 10 000 000 + 136 000 + 027 => 10136027
+          #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
+
+          TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
+          SEMVER=(${TESTING_VERSION//./ })
+          MAJOR=${SEMVER[0]}
+          MINOR=${SEMVER[1]}
+          PATCH=${SEMVER[2]}
+          BUILD_NUMBER="$((10000000 * MAJOR + 1000 * MINOR + PATCH))"
+          echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
+      - name: Update build number in package.json
+        uses: jossef/action-set-json-field@v2.1
+        with:
+          file: package.json
+          field: build
+          value: ${{ steps.build-number.outputs.build_number}}
+      - name: Commit changes
+        run: |
+          TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
+          git add package.json server/package.json
+          git commit --message "v${TESTING_VERSION}"
+          git push origin
+      - name: Create and push testing tag
+        run: |
+          TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
+          TAG_NAME=testing/v${TESTING_VERSION}
+          git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
+          git push origin "$TAG_NAME"
