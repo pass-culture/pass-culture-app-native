@@ -24,11 +24,9 @@ const VENUES_PLAYLIST_HEIGHT = 265
 const FOOTER_SIZE = 104
 const LOAD_MORE_THRESHOLD = 300
 
-function getHeaderSize(
-  userData: Record<'message', string>[] | undefined,
-  isGeolocated: boolean,
-  venuesCount: number
-) {
+type CustomUserData = Record<'message', string>[] | undefined
+
+function getHeaderSize(userData: CustomUserData, isGeolocated: boolean, venuesCount: number) {
   let totalHeight = BASE_HEADER_HEIGHT
 
   if (userData?.[0]?.message) {
@@ -53,14 +51,16 @@ function getItemSize(
   venuesCount: number,
   isGeolocated: boolean,
   itemsCount: number,
-  userData: any
+  userData: CustomUserData
 ) {
-  if (index === 0) {
+  const isHeader = index === 0
+  const isFooter = index === itemsCount - 1
+
+  if (isHeader) {
     return getHeaderSize(userData, isGeolocated, venuesCount)
   }
 
-  // Last index means we want to draw the Footer.
-  if (index === itemsCount - 1) {
+  if (isFooter) {
     return FOOTER_SIZE
   }
 
@@ -200,7 +200,7 @@ const ScrollToTopContainer = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
   right: getSpacing(7),
   bottom: theme.tabBar.height + getSpacing(6),
-  zIndex: theme.zIndex.floatingButton + 1000,
+  zIndex: theme.zIndex.floatingButton,
   overflow: 'hidden',
   border: 0,
 }))

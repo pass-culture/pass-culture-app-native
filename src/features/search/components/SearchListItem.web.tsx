@@ -29,7 +29,12 @@ interface RowProps {
 }
 
 export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
-  if (index === 0 && data.nbHits > 0) {
+  const isHeader = index === 0
+  const isFooter = index === data.items.length - 1
+  const hasHits = data.nbHits > 0
+  const shouldDisplayHeader = isHeader && hasHits
+
+  if (shouldDisplayHeader) {
     return (
       <div style={style}>
         <SearchListHeader
@@ -42,7 +47,7 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
     )
   }
 
-  if (index === data.items.length - 1) {
+  if (isFooter) {
     return (
       <SearchListFooter
         isFetchingNextPage={data.isFetchingNextPage}
