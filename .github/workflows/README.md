@@ -10,13 +10,13 @@ Ce workflow est celui initialement lancé pour faire un déploiement en testing/
 
 ## Description détaillée de dev_on_workflow_environment_deploy.yml
 
-Ce workflow est celui lancé à chaque merge sur la branche master et en cas de pause de tag, il permet notament le soft et le hard deploy de l'application sur Android/Ios Appstore
+Ce workflow est celui lancé à chaque merge sur la branche master et en cas de pause de tag, il permet notamment le soft et le hard deploy de l'application sur Android/Ios AppStore
 
 ![schéma deploy](/doc/ci-cd/github_action_workflows/dev_on_workflow_environment_deploy.drawio.svg)
 
 ## Description détaillée de dev_on_workflow_web_deploy.yml et dev_on_workflow_web_proxy_deploy.yml
 
-Ces worflows sont utilisés pour déployer le web sur les buckets GCP, et le proxy si il a été modifié
+Ces workflows sont utilisés pour déployer le web sur les buckets GCP, et le proxy si il a été modifié
 
 ![schéma deploy_web](/doc/ci-cd/github_action_workflows/dev_on_workflow_web_deploy.drawio.svg)
 ![schéma deploy_proxy](/doc/ci-cd/github_action_workflows/dev_on_workflow_web_proxy_deploy.drawio.svg)
