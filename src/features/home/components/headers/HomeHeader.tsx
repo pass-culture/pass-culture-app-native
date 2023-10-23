@@ -7,8 +7,8 @@ import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
-import { LocationTitleWidget } from 'features/location/components/LocationTitleWidget.web'
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
@@ -123,7 +123,7 @@ export const HomeHeader: FunctionComponent = function () {
                 <Spacer.Row numberOfSpaces={6} />
                 <Separator.Vertical />
                 <Spacer.Row numberOfSpaces={4} />
-                <LocationTitleWidget />
+                <LocationWidgetDesktop />
               </Title>
               <Subtitle>{getSubtitle()}</Subtitle>
             </TitleContainer>

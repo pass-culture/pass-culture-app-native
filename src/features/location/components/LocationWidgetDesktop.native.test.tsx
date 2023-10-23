@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { LocationTitleWidget } from 'features/location/components/LocationTitleWidget.web'
+import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { useLocation } from 'libs/geolocation'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -15,18 +15,20 @@ jest.mock('ui/components/modals/useModal', () => ({
 
 jest.mock('libs/geolocation')
 const mockUseGeolocation = useLocation as jest.Mock
-describe('LocationTitleWidget', () => {
+
+describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({
       isGeolocated: true,
       isCustomPosition: true,
       place: { label: 'test' },
     })
-    render(<LocationTitleWidget />)
+    render(<LocationWidgetDesktop />)
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis le titre')
 
-    fireEvent.click(button)
+    fireEvent.press(button)
+
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
@@ -43,10 +45,10 @@ describe('LocationTitleWidget', () => {
         place: null,
       })
 
-      render(<LocationTitleWidget />)
+      render(<LocationWidgetDesktop />)
 
-      expect(screen.getByTestId('location pointer filled')).toBeInTheDocument()
-      expect(screen.getByText('Ma position')).toBeInTheDocument()
+      expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
+      expect(screen.getByText('Ma position')).toBeOnTheScreen()
     }
   )
 
@@ -64,10 +66,10 @@ describe('LocationTitleWidget', () => {
         userPosition: null,
       })
 
-      render(<LocationTitleWidget />)
+      render(<LocationWidgetDesktop />)
 
-      expect(screen.getByTestId('location pointer not filled')).toBeInTheDocument()
-      expect(screen.getByText('Me localiser')).toBeInTheDocument()
+      expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
+      expect(screen.getByText('Me localiser')).toBeOnTheScreen()
     }
   )
 
@@ -79,9 +81,9 @@ describe('LocationTitleWidget', () => {
       userPosition: null,
     })
 
-    render(<LocationTitleWidget />)
+    render(<LocationWidgetDesktop />)
 
-    expect(screen.getByTestId('location pointer filled')).toBeInTheDocument()
-    expect(screen.getByText('my place')).toBeInTheDocument()
+    expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
+    expect(screen.getByText('my place')).toBeOnTheScreen()
   })
 })

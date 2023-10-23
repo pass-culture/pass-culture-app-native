@@ -1,9 +1,8 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { LocationModal as HomeLocationModal } from 'features/location/components/LocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
-import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/geolocation'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -12,7 +11,7 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const LocationTitleWidget = () => {
+export const LocationWidgetDesktop = () => {
   const { icons } = useTheme()
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
 
@@ -22,12 +21,6 @@ export const LocationTitleWidget = () => {
     visible: locationModalVisible,
     showModal: showLocationModal,
     hideModal: hideLocationModal,
-  } = useModal()
-
-  const {
-    visible: venueModalVisible,
-    showModal: showVenueModal,
-    hideModal: hideVenueModal,
   } = useModal()
 
   const isWidgetHighlighted = isGeolocated || !!isCustomPosition
@@ -55,12 +48,7 @@ export const LocationTitleWidget = () => {
           <ArrowDown size={icons.sizes.extraSmall} />
         </NotShrunk>
       </LocationButton>
-      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-      <SearchLocationModal
-        visible={locationModalVisible}
-        dismissModal={hideLocationModal}
-        showVenueModal={showVenueModal}
-      />
+      <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
     </React.Fragment>
   )
 }
@@ -73,6 +61,7 @@ const LocationButton = styled(TouchableOpacity)({
 })
 
 const NotShrunk = styled.View({
+  // We set to undefined to avoid shrink to be applied on the icons - otherwise their size is modified
   flexShrink: undefined,
 })
 
