@@ -5,6 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { analytics } from 'libs/analytics'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 /**
@@ -47,6 +48,7 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
         type: 'SET_STATE',
         payload,
       })
+      analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
       doAfterSearch?.(payload)
     }
 
