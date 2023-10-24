@@ -372,7 +372,7 @@ module.exports = {
         'jest/no-mocks-import': 'off',
         'jest/valid-expect': 'error',
         'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'measurePerformance'] }],
-        'jest/valid-title': 'off',
+        'jest/valid-title': ['error', { disallowedWords: [] }],
         'testing-library/no-unnecessary-act': 'off',
         'testing-library/no-wait-for-multiple-assertions': 'off',
         'testing-library/prefer-explicit-assert': 'off',
