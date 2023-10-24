@@ -6,6 +6,7 @@ import { GeolocationBanner } from 'features/home/components/banners/GeolocationB
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -105,6 +106,7 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
 
     return (
       <FlatList
+        accessibilityRole={AccessibilityRole.LIST}
         listAs="ul"
         itemAs="li"
         ref={ref}
