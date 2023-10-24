@@ -9,11 +9,13 @@ import { GeolocPermissionState } from 'libs/geolocation'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
+import { getSpacing } from 'ui/theme'
 
 interface LocationModalProps {
   visible: boolean
@@ -88,53 +90,73 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
   return (
     <AppModal
       visible={visible}
-      title="Localisation"
-      rightIconAccessibilityLabel="Fermer la modale"
-      rightIcon={Close}
-      onRightIconPress={onClose}
+      title=""
+      noPadding
       isUpToStatusBar
-      scrollEnabled
-      onModalHide={onModalHideRef.current}>
-      <Spacer.Column numberOfSpaces={6} />
-      <LocationModalButton
-        onPress={selectLocationMode(LocationMode.GEOLOCATION)}
-        icon={PositionFilled}
-        color={geolocationModeColor}
-        title="Utiliser ma position actuelle"
-        subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={6} />
-      <LocationModalButton
-        onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
-        icon={MagnifyingGlassFilled}
-        color={customLocationModeColor}
-        title="Choisir une localisation"
-        subtitle={LOCATION_PLACEHOLDER}
-      />
-      {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
-        <LocationSearchInput
-          selectedPlace={selectedPlace}
-          setSelectedPlace={setSelectedPlace}
-          placeQuery={placeQuery}
-          setPlaceQuery={setPlaceQuery}
-          onResetPlace={onResetPlace}
-          onSetSelectedPlace={onSetSelectedPlace}
+      scrollEnabled={false}
+      onModalHide={onModalHideRef.current}
+      keyboardShouldPersistTaps="handled"
+      customModalHeader={
+        <HeaderContainer>
+          <ModalHeader
+            title="Localisation"
+            rightIconAccessibilityLabel="Fermer la modale"
+            rightIcon={Close}
+            onRightIconPress={onClose}
+          />
+        </HeaderContainer>
+      }>
+      <StyledScrollView>
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.GEOLOCATION)}
+          icon={PositionFilled}
+          color={geolocationModeColor}
+          title="Utiliser ma position actuelle"
+          subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
         />
-      )}
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonContainer>
-        <ButtonPrimary
-          wording="Valider la localisation"
-          disabled={!selectedPlace}
-          onPress={onSubmit}
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
+          icon={MagnifyingGlassFilled}
+          color={customLocationModeColor}
+          title="Choisir une localisation"
+          subtitle={LOCATION_PLACEHOLDER}
         />
-      </ButtonContainer>
+        {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+          <LocationSearchInput
+            selectedPlace={selectedPlace}
+            setSelectedPlace={setSelectedPlace}
+            placeQuery={placeQuery}
+            setPlaceQuery={setPlaceQuery}
+            onResetPlace={onResetPlace}
+            onSetSelectedPlace={onSetSelectedPlace}
+          />
+        )}
+        <Spacer.Column numberOfSpaces={8} />
+        <ButtonContainer>
+          <ButtonPrimary
+            wording="Valider la localisation"
+            disabled={!selectedPlace}
+            onPress={onSubmit}
+          />
+        </ButtonContainer>
+      </StyledScrollView>
     </AppModal>
   )
 }
 
 const ButtonContainer = styled.View({
   alignItems: 'center',
+})
+
+const StyledScrollView = styled.ScrollView({
+  paddingHorizontal: getSpacing(6),
+})
+
+const HeaderContainer = styled.View({
+  padding: getSpacing(4),
+  width: '100%',
 })
