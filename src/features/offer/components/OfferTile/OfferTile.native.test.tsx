@@ -2,7 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
+import { CategoryIdEnum, HomepageLabelNameEnumv2 } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -29,7 +29,7 @@ const apiRecoParams: RecommendationApiParams = {
 
 const props = {
   analyticsFrom: 'home' as Referrals,
-  categoryLabel: HomepageLabelNameEnum.MUSIQUE,
+  categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
   categoryId: CategoryIdEnum.MUSIQUE_LIVE,
   subcategoryId: offer.subcategoryId,
   expenseDomains: [],
@@ -116,7 +116,7 @@ describe('OfferTile component', () => {
       analyticsFrom: 'venue' as Referrals,
       venueId: 1,
       searchId,
-      categoryLabel: HomepageLabelNameEnum.MUSIQUE,
+      categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
       categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       subcategoryId: offer.subcategoryId,
       price: '28 €',

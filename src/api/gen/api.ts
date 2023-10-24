@@ -174,18 +174,6 @@ export interface ActivityResponseModel {
    */
   label: string
 }
-
-/**
- * @export
- * @interface ActivityTypesResponse
- */
-export interface ActivityTypesResponse {
-  /**
-   * @type {Array<ActivityResponseModel>}
-   * @memberof ActivityTypesResponse
-   */
-  activities: Array<ActivityResponseModel>
-}
 /**
  * @export
  * @interface ActivityTypesResponse
@@ -1246,26 +1234,6 @@ export interface GenreTypeModel {
  * @export
  * @enum {string}
  */
-export enum HomepageLabelNameEnum {
-  'FILM' = 'FILM',
-  'CINEMA' = 'CINEMA',
-  'CONFERENCE' = 'CONFERENCE',
-  'JEU' = 'JEU',
-  'LIVRE' = 'LIVRE',
-  'VISITE' = 'VISITE',
-  'MUSIQUE' = 'MUSIQUE',
-  'COURS' = 'COURS',
-  'PRESSE' = 'PRESSE',
-  'SPECTACLE' = 'SPECTACLE',
-  'MATERIEL' = 'MATERIEL',
-  'CARTE_JEUNES' = 'CARTE_JEUNES',
-  'NONE' = 'NONE',
-}
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
 export enum HomepageLabelNameEnumv2 {
   'BEAUX_ARTS' = 'BEAUX_ARTS',
   'CARTE_JEUNES' = 'CARTE_JEUNES',
@@ -1285,22 +1253,6 @@ export enum HomepageLabelNameEnumv2 {
   'RENCONTRES' = 'RENCONTRES',
   'SPECTACLES' = 'SPECTACLES',
   'VISITES' = 'VISITES',
-}
-/**
- * @export
- * @interface HomepageLabelResponseModel
- */
-export interface HomepageLabelResponseModel {
-  /**
-   * @type {HomepageLabelNameEnum}
-   * @memberof HomepageLabelResponseModel
-   */
-  name: HomepageLabelNameEnum
-  /**
-   * @type {string}
-   * @memberof HomepageLabelResponseModel
-   */
-  value?: string | null
 }
 /**
  * @export
@@ -1868,16 +1820,7 @@ export interface OfferVenueResponse {
    */
   publicName?: string | null
 }
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum OnlineOfflinePlatformChoicesEnum {
-  'OFFLINE' = 'OFFLINE',
-  'ONLINE' = 'ONLINE',
-  'ONLINE_OR_OFFLINE' = 'ONLINE_OR_OFFLINE',
-}
+
 /**
  * An enumeration.
  * @export
@@ -2160,27 +2103,6 @@ export enum SchoolTypesIdEnum {
  * @export
  * @enum {string}
  */
-export enum SearchGroupNameEnum {
-  'FILM' = 'FILM',
-  'CINEMA' = 'CINEMA',
-  'CONFERENCE' = 'CONFERENCE',
-  'JEU' = 'JEU',
-  'LIVRE' = 'LIVRE',
-  'VISITE' = 'VISITE',
-  'MUSIQUE' = 'MUSIQUE',
-  'COURS' = 'COURS',
-  'PRESSE' = 'PRESSE',
-  'SPECTACLE' = 'SPECTACLE',
-  'INSTRUMENT' = 'INSTRUMENT',
-  'MATERIEL' = 'MATERIEL',
-  'CARTE_JEUNES' = 'CARTE_JEUNES',
-  'NONE' = 'NONE',
-}
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
 export enum SearchGroupNameEnumv2 {
   'ARTS_LOISIRS_CREATIFS' = 'ARTS_LOISIRS_CREATIFS',
   'BIBLIOTHEQUES_MEDIATHEQUE' = 'BIBLIOTHEQUES_MEDIATHEQUE',
@@ -2197,22 +2119,6 @@ export enum SearchGroupNameEnumv2 {
   'NONE' = 'NONE',
   'RENCONTRES_CONFERENCES' = 'RENCONTRES_CONFERENCES',
   'SPECTACLES' = 'SPECTACLES',
-}
-/**
- * @export
- * @interface SearchGroupResponseModel
- */
-export interface SearchGroupResponseModel {
-  /**
-   * @type {SearchGroupNameEnum}
-   * @memberof SearchGroupResponseModel
-   */
-  name: SearchGroupNameEnum
-  /**
-   * @type {string}
-   * @memberof SearchGroupResponseModel
-   */
-  value?: string | null
 }
 /**
  * @export
@@ -2358,27 +2264,6 @@ export interface SigninResponse {
    * @memberof SigninResponse
    */
   refreshToken: string
-}
-/**
- * @export
- * @interface SubcategoriesResponseModel
- */
-export interface SubcategoriesResponseModel {
-  /**
-   * @type {Array<HomepageLabelResponseModel>}
-   * @memberof SubcategoriesResponseModel
-   */
-  homepageLabels: Array<HomepageLabelResponseModel>
-  /**
-   * @type {Array<SearchGroupResponseModel>}
-   * @memberof SubcategoriesResponseModel
-   */
-  searchGroups: Array<SearchGroupResponseModel>
-  /**
-   * @type {Array<SubcategoryResponseModel>}
-   * @memberof SubcategoriesResponseModel
-   */
-  subcategories: Array<SubcategoryResponseModel>
 }
 /**
  * @export
@@ -2574,47 +2459,6 @@ export enum SubcategoryIdEnumv2 {
   'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
   'VISITE' = 'VISITE',
   'VOD' = 'VOD',
-}
-/**
- * @export
- * @interface SubcategoryResponseModel
- */
-export interface SubcategoryResponseModel {
-  /**
-   * @type {string}
-   * @memberof SubcategoryResponseModel
-   */
-  appLabel: string
-  /**
-   * @type {CategoryIdEnum}
-   * @memberof SubcategoryResponseModel
-   */
-  categoryId: CategoryIdEnum
-  /**
-   * @type {HomepageLabelNameEnum}
-   * @memberof SubcategoryResponseModel
-   */
-  homepageLabelName: HomepageLabelNameEnum
-  /**
-   * @type {SubcategoryIdEnum}
-   * @memberof SubcategoryResponseModel
-   */
-  id: SubcategoryIdEnum
-  /**
-   * @type {boolean}
-   * @memberof SubcategoryResponseModel
-   */
-  isEvent: boolean
-  /**
-   * @type {OnlineOfflinePlatformChoicesEnum}
-   * @memberof SubcategoryResponseModel
-   */
-  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum
-  /**
-   * @type {SearchGroupNameEnum}
-   * @memberof SubcategoryResponseModel
-   */
-  searchGroupName: SearchGroupNameEnum
 }
 /**
  * @export
@@ -3689,22 +3533,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_subcategories <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1Subcategories(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subcategories`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary get_subcategories_v2 <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4729,17 +4557,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_subcategories <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1Subcategories(options?: any): Promise<SubcategoriesResponseModel> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1Subcategories(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_subcategories_v2 <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5397,17 +5214,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1Settings(options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Settings(options)
-  }
-  /**
-    * 
-    * @summary get_subcategories <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1Subcategories(options?: any) {
-    const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1Subcategories(options)
   }
   /**
     * 
