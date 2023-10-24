@@ -368,7 +368,12 @@ export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
   }
 }
 
-export function getNbResultsFacetLabel(nbResultsFacet: number) {
-  if (nbResultsFacet > 10000) return '+10000'
-  return nbResultsFacet >= 0 ? `${nbResultsFacet}` : undefined
+export function getNbResultsFacetLabel(nbResultsFacet?: number) {
+  if (nbResultsFacet === undefined) {
+    return undefined
+  } else if (nbResultsFacet > 10000) {
+    return '+10000'
+  } else {
+    return `${nbResultsFacet}`
+  }
 }

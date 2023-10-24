@@ -377,5 +377,10 @@ describe('categoriesHelpers', () => {
       const result = getNbResultsFacetLabel(0)
       expect(result).toEqual('0')
     })
+
+    it('should return undefined when the number of result facets is undefined', () => {
+      const result = getNbResultsFacetLabel(undefined)
+      expect(result).toEqual(undefined)
+    })
   })
 })
