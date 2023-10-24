@@ -33,6 +33,7 @@ describe('OfferPartialDescription', () => {
       description: '',
     })
     const offerSeeMoreContainer = await screen.findByTestId('offerSeeMoreContainer')
+
     expect(offerSeeMoreContainer.props.style[0].alignSelf).toBe('center')
   })
 
@@ -41,6 +42,7 @@ describe('OfferPartialDescription', () => {
     await act(async () => {})
 
     const offerSeeMoreContainer = await screen.findByTestId('offerSeeMoreContainer')
+
     expect(offerSeeMoreContainer.props.style[0].alignSelf).toBe('flex-end')
   })
 
@@ -58,6 +60,7 @@ describe('OfferPartialDescription', () => {
     })
 
     await screen.findByText('Voir plus d’informations')
+
     expect(screen.queryByTestId('offerPartialDescriptionBody')).not.toBeOnTheScreen()
   })
 
@@ -163,6 +166,7 @@ describe('OfferPartialDescription', () => {
           ...defaultParams,
           description: undefined,
         })
+
         expect(await screen.findByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
       })
 
@@ -190,6 +194,7 @@ describe('OfferPartialDescription', () => {
         expect(screen.queryByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
       })
     })
+
     describe("shouldn't be rendered", () => {
       it('when there is no content on the description page', async () => {
         simulateOfferResponseWithNoDataInDescriptionPage()
@@ -222,6 +227,7 @@ describe('OfferPartialDescription', () => {
         await act(async () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
+
         expect(screen.queryByTestId('offerSeeMoreContainer')).not.toBeOnTheScreen()
       })
     })

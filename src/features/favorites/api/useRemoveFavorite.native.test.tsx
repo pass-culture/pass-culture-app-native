@@ -45,6 +45,7 @@ describe('useRemoveFavorite hook', () => {
     })
 
     expect(result.current.isLoading).toBeFalsy()
+
     result.current.mutate(favoriteId)
 
     await act(async () => {})
@@ -73,6 +74,7 @@ describe('useRemoveFavorite hook', () => {
     })
 
     expect(result.current.isLoading).toBeFalsy()
+
     result.current.mutate(favoriteId)
 
     await waitFor(() => {

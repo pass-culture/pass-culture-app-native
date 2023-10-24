@@ -18,6 +18,7 @@ describe('<Checkbox />', () => {
       />
     )
     const results = await checkAccessibilityFor(container)
+
     expect(results).toHaveNoViolations()
   })
 })

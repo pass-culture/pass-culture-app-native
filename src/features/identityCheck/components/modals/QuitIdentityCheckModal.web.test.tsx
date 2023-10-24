@@ -18,6 +18,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     renderQuitIdentityCheckModal(false)
 
     const title = screen.queryByText('Veux-tu abandonner la vérification d’identité ?')
+
     expect(title).not.toBeInTheDocument()
   })
 
@@ -25,6 +26,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     renderQuitIdentityCheckModal(true)
 
     const title = screen.queryByText('Veux-tu abandonner la vérification d’identité ?')
+
     expect(title).toBeInTheDocument()
   })
 

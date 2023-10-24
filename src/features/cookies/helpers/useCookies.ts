@@ -16,8 +16,7 @@ import Package from '../../../../package.json'
 
 const COOKIES_CONSENT_KEY = 'cookies'
 
-export const getCookiesChoice = async () =>
-  await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
+export const getCookiesChoice = async () => storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
 const removeCookiesConsentAndChoiceDate = async (cookiesChoice: CookiesConsent): Promise<void> => {
   await storage.saveObject(COOKIES_CONSENT_KEY, {

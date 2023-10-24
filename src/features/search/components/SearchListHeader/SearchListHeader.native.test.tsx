@@ -200,6 +200,7 @@ describe('<SearchListHeader />', () => {
 
   it('should show correct title when NO userData exists', () => {
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
     expect(screen.queryByText('Les lieux culturels')).toBeOnTheScreen()
   })
 
@@ -212,12 +213,14 @@ describe('<SearchListHeader />', () => {
         venues={mockVenues}
       />
     )
+
     expect(screen.queryByText('Les lieux culturels')).not.toBeOnTheScreen()
     expect(screen.queryByText('test')).toBeOnTheScreen()
   })
 
   it('should not display the geolocation button if position is not null', () => {
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
     expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
@@ -233,6 +236,7 @@ describe('<SearchListHeader />', () => {
       <SearchListHeader nbHits={10} userData={[{ message: 'message test' }]} venuesUserData={[]} />
     )
     const bannerContainer = screen.getByTestId('banner-container')
+
     expect(bannerContainer.props.style).toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
   })
 
@@ -241,12 +245,14 @@ describe('<SearchListHeader />', () => {
       <SearchListHeader nbHits={0} userData={[{ message: 'message test' }]} venuesUserData={[]} />
     )
     const bannerContainer = screen.getByTestId('banner-container')
+
     expect(bannerContainer.props.style).not.toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
   })
 
   describe('When wipEnableVenuesInSearchResults feature flag activated', () => {
     it('should render venue items when there are venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
       expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
     })
 
@@ -271,6 +277,7 @@ describe('<SearchListHeader />', () => {
         render(
           <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />
         )
+
         expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
           isGeolocated,
           searchId: 'testUuidV4',
@@ -284,6 +291,7 @@ describe('<SearchListHeader />', () => {
         params: { searchId, locationFilter: { locationType: LocationType.VENUE } },
       })
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
     })
 
@@ -304,6 +312,7 @@ describe('<SearchListHeader />', () => {
       })
 
       scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+
       expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
     })
 
@@ -321,6 +330,7 @@ describe('<SearchListHeader />', () => {
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are not venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
     })
 
@@ -329,6 +339,7 @@ describe('<SearchListHeader />', () => {
         params: { searchId },
       })
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+
       expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
     })
   })
@@ -367,6 +378,7 @@ describe('<SearchListHeader />', () => {
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when received venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
     })
 
@@ -375,6 +387,7 @@ describe('<SearchListHeader />', () => {
         params: { searchId },
       })
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
       expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
     })
   })

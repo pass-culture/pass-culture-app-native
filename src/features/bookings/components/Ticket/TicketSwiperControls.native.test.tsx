@@ -15,7 +15,9 @@ const props = {
 describe('<TicketSwiperControls/>', () => {
   it('should hide prev button if currentStep === 1', () => {
     render(<TicketSwiperControls {...props} />)
+
     expect(screen.queryByTestId('Revenir à l’étape précédente')).not.toBeOnTheScreen()
+
     screen.queryByTestId('control-component-spacing-prev')
   })
 
@@ -23,13 +25,16 @@ describe('<TicketSwiperControls/>', () => {
     props.currentStep = 2
     render(<TicketSwiperControls {...props} />)
     screen.queryByTestId('Revenir à l’étape précédente')
+
     expect(screen.queryByTestId('control-component-spacing-prev')).not.toBeOnTheScreen()
   })
 
   it('should hide next button if currentStep === numberOfSteps', () => {
     props.currentStep = 4
     render(<TicketSwiperControls {...props} />)
+
     expect(screen.queryByTestId('Continuer vers l’étape suivante')).not.toBeOnTheScreen()
+
     screen.queryByTestId('control-component-spacing-next')
   })
 
@@ -37,6 +42,7 @@ describe('<TicketSwiperControls/>', () => {
     props.currentStep = 2
     render(<TicketSwiperControls {...props} />)
     screen.queryByTestId('Continuer vers l’étape suivante')
+
     expect(screen.queryByTestId('control-component-spacing-next')).not.toBeOnTheScreen()
   })
 })

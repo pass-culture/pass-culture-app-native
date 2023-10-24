@@ -15,12 +15,14 @@ describe('EduConnectErrorBoundary component', () => {
         resetErrorBoundary={jest.fn()}
       />
     )
+
     expect(eventMonitoring.captureException).not.toHaveBeenCalled()
   })
 
   it('should log error on sentry when error is not an EduConnectError', () => {
     const error = new Error('some error')
     render(<EduConnectErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
   })
 })

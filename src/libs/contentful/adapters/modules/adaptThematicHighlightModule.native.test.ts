@@ -13,6 +13,7 @@ describe('adaptThematicHighlightModule', () => {
       formattedThematicHighlightModule
     )
   })
+
   it('should return null when the module is not published', () => {
     const rawThematicHighlightModule = {
       ...thematicHighlightModuleFixture,

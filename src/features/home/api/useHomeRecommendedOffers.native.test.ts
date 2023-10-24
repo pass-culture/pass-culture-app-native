@@ -47,18 +47,23 @@ describe('useHomeRecommendedOffers', () => {
 
   it('should not call recommendation mutation when user is not connected', () => {
     renderHook(() => useHomeRecommendedOffers(undefined, position, mockModuleId))
+
     expect(mutate).not.toHaveBeenCalled()
   })
 
   it('should call recommendation mutation when user is connected', () => {
     renderHook(() => useHomeRecommendedOffers(mockUserId, position, mockModuleId))
+
     expect(mutate).toHaveBeenCalledTimes(1)
   })
 
   it('should call algolia hook', () => {
     renderHook(() => useHomeRecommendedOffers(undefined, position, mockModuleId))
+
     expect(algoliaSpy).toHaveBeenCalledTimes(1)
+
     renderHook(() => useHomeRecommendedOffers(mockUserId, position, mockModuleId))
+
     expect(algoliaSpy).toHaveBeenCalledTimes(2)
   })
 })
@@ -70,6 +75,7 @@ describe('getRecommendationParameters', () => {
 
   it('should return empty parameters when no parameters are provided', () => {
     const result = getRecommendationParameters(undefined, subcategoryLabelMapping)
+
     expect(result).toEqual({})
   })
 
@@ -91,6 +97,7 @@ describe('getRecommendationParameters', () => {
       parameters,
       subcategoryLabelMapping
     )
+
     expect(recommendationParameters).toEqual({
       categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
       end_date: '2022-05-08T00:00+00:00',
@@ -119,6 +126,7 @@ describe('getRecommendationParameters', () => {
       parameters,
       subcategoryLabelMapping
     )
+
     expect(recommendationParameters).toEqual({
       categories: [],
       subcategories: [],

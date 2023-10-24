@@ -15,6 +15,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 describe('useAvailableCategories', () => {
   it('should all availables categories', () => {
     const categories = useAvailableCategories()
+
     expect(categories).toEqual([
       {
         icon: categoriesIcons.Palette,
@@ -143,6 +144,7 @@ describe('useAvailableCategories', () => {
       ],
     }
     const categories = useAvailableCategories()
+
     expect(categories).toEqual([
       {
         icon: categoriesIcons.Palette,
@@ -169,6 +171,7 @@ describe('useAvailableCategories', () => {
       searchGroups: [],
     }
     const categories = useAvailableCategories()
+
     expect(categories).toEqual([])
   })
 })

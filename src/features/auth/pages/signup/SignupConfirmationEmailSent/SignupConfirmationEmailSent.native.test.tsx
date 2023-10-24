@@ -37,8 +37,8 @@ describe('<SignupConfirmationEmailSent />', () => {
     const consultHelpSupportButton = screen.getByText('Consulter notre centre d’aide')
     await act(async () => fireEvent.press(consultHelpSupportButton))
 
-    expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toBeCalledTimes(1)
-    expect(mockedOpenUrl).toBeCalledWith(
+    expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toHaveBeenCalledTimes(1)
+    expect(mockedOpenUrl).toHaveBeenCalledWith(
       contactSupport.forSignupConfirmationEmailNotReceived.url,
       contactSupport.forSignupConfirmationEmailNotReceived.params,
       true

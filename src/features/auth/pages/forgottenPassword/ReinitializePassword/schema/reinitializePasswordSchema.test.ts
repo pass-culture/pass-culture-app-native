@@ -9,6 +9,7 @@ describe('reinitializePasswordSchema', () => {
       confirmedPassword: 'user@AZERTY123',
     }
     const result = await reinitializePasswordSchema.validate(values)
+
     expect(result).toEqual(values)
   })
 
@@ -17,6 +18,7 @@ describe('reinitializePasswordSchema', () => {
       newPassword: 'userAZERTY123',
       confirmedPassword: 'userAZERTY123',
     })
+
     await expect(result).rejects.toEqual(new ValidationError('1 Caractère spécial (!@#$%^&*...)'))
   })
 
@@ -25,6 +27,7 @@ describe('reinitializePasswordSchema', () => {
       newPassword: 'user@AZERTY123',
       confirmedPassword: 'user@AZERTY12',
     })
+
     await expect(result).rejects.toEqual(new ValidationError('Les mots de passe ne concordent pas'))
   })
 })

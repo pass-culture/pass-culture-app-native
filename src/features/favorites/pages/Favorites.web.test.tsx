@@ -30,6 +30,7 @@ describe('<Favorites/>', () => {
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })
@@ -38,6 +39,7 @@ describe('<Favorites/>', () => {
       const { container } = renderFavorites({ isLoggedIn: false })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -46,6 +48,7 @@ describe('<Favorites/>', () => {
       const { container } = renderFavorites({ isLoggedIn: true })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

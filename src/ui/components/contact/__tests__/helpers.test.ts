@@ -12,7 +12,7 @@ describe('openPhoneNumber', () => {
     openPhoneNumber(phoneNumber)
 
     await waitFor(() => {
-      expect(openURL).toBeCalledWith(`telprompt:${phoneNumber}`)
+      expect(openURL).toHaveBeenCalledWith(`telprompt:${phoneNumber}`)
     })
   })
 
@@ -21,7 +21,7 @@ describe('openPhoneNumber', () => {
     openPhoneNumber(phoneNumber)
 
     await waitFor(() => {
-      expect(openURL).toBeCalledWith(`tel:${phoneNumber}`)
+      expect(openURL).toHaveBeenCalledWith(`tel:${phoneNumber}`)
     })
   })
 })

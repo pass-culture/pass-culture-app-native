@@ -20,6 +20,7 @@ describe('useVersion', () => {
     const { result } = renderHook(useVersion)
 
     await act(async () => {})
+
     expect(result.current).toEqual('Version\u00A01.10.5-4')
   })
 

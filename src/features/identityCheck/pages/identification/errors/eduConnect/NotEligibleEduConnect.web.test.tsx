@@ -14,6 +14,7 @@ describe('<NotEligibleEduConnect/>', () => {
         />
       )
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

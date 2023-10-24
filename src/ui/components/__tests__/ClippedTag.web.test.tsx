@@ -17,6 +17,7 @@ describe('<ClippedTag/>', () => {
         iconAccessibilityLabel={accessibilityLabel}
       />
     )
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -31,6 +32,7 @@ describe('<ClippedTag/>', () => {
 
     const clearIcon = screen.getByTestId('Enlever le lieu')
     fireEvent.click(clearIcon)
+
     expect(removeVenueId).toHaveBeenCalledTimes(1)
   })
 })

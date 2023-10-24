@@ -11,6 +11,7 @@ describe('<PhoneValidationTipsModal/>', () => {
         <PhoneValidationTipsModal isVisible dismissModal={jest.fn()} onGoBack={jest.fn()} />
       )
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

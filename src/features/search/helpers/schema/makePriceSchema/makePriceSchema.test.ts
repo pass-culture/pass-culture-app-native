@@ -7,46 +7,55 @@ describe('price schema', () => {
   describe('should match', () => {
     it('a valid integer price', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('123')
+
       expect(result).toEqual('123')
     })
 
     it('a valid price with a dot', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('123.45')
+
       expect(result).toEqual('123.45')
     })
 
     it('a valid price with a comma', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('123,45')
+
       expect(result).toEqual('123,45')
     })
 
     it('a valid price with only one decimal', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('123,4')
+
       expect(result).toEqual('123,4')
     })
 
     it('a valid price between spaces', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('   123,4  ')
+
       expect(result).toEqual('123,4')
     })
 
     it('a valid price with a dot but no decimal', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('123.')
+
       expect(result).toEqual('123.')
     })
 
     it('when input less than the initial credit', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate('200')
+
       expect(result).toEqual('200')
     })
 
     it('when input equal to the initial credit', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate(MAX_PRICE.toString())
+
       expect(result).toEqual(MAX_PRICE.toString())
     })
 
     it('when input is undefined', async () => {
       const result = await makePriceSchema(MAX_PRICE.toString()).validate(undefined)
+
       expect(result).toEqual(undefined)
     })
   })

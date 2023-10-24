@@ -55,6 +55,7 @@ describe('<CookiesConsent/>', () => {
     renderCookiesConsent()
 
     await screen.findByText('Tout accepter')
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -77,6 +78,7 @@ describe('<CookiesConsent/>', () => {
           refused: [],
         },
       }
+
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
     })
 
@@ -155,6 +157,7 @@ describe('<CookiesConsent/>', () => {
           refused: ALL_OPTIONAL_COOKIES,
         },
       }
+
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
     })
 
@@ -230,6 +233,7 @@ describe('<CookiesConsent/>', () => {
           refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
         },
       }
+
       expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
     })
 

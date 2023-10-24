@@ -127,6 +127,7 @@ describe('SearchResults component', () => {
     jest.advanceTimersByTime(2000)
     render(<SearchResults />)
     await act(async () => {})
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -164,6 +165,7 @@ describe('SearchResults component', () => {
     await act(async () => {
       flashList.props.onEndReached()
     })
+
     expect(mockFetchNextPage).toHaveBeenCalledTimes(2)
     expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(2, searchId)
   })
@@ -201,6 +203,7 @@ describe('SearchResults component', () => {
       expect(categoryButtonIcon).toBeOnTheScreen()
 
       const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
+
       expect(categoryButton).toHaveStyle({
         borderWidth: 2,
         backgroundColor: theme.colors.greyLight,
@@ -237,9 +240,11 @@ describe('SearchResults component', () => {
       await act(async () => {})
 
       const priceButtonIcon = screen.getByTestId('priceButtonIcon')
+
       expect(priceButtonIcon).toBeOnTheScreen()
 
       const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
+
       expect(priceButton).toHaveStyle({ borderWidth: 2, backgroundColor: theme.colors.greyLight })
     })
   })
@@ -446,9 +451,11 @@ describe('SearchResults component', () => {
         await act(async () => {})
 
         const datesHoursButtonIcon = screen.getByTestId('datesHoursButtonIcon')
+
         expect(datesHoursButtonIcon).toBeOnTheScreen()
 
         const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
+
         expect(datesHoursButton).toHaveStyle({
           borderWidth: 2,
           backgroundColor: theme.colors.greyLight,
@@ -474,10 +481,12 @@ describe('SearchResults component', () => {
     mockPosition = null
     render(<SearchResults />)
     await act(async () => {})
+
     expect(mockRefetch).not.toHaveBeenCalled()
 
     mockPosition = DEFAULT_POSITION
     screen.rerender(<SearchResults />)
+
     expect(mockRefetch).toHaveBeenCalledTimes(1)
   })
 
@@ -485,14 +494,17 @@ describe('SearchResults component', () => {
     mockPosition = DEFAULT_POSITION
     render(<SearchResults />)
     await act(async () => {})
+
     // previousUserPosition is empty in first rendering
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
     screen.rerender(<SearchResults />)
+
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
     mockPosition = null
     screen.rerender(<SearchResults />)
+
     // first rendering + rendering when user stop to share his position
     expect(mockRefetch).toHaveBeenCalledTimes(2)
   })
@@ -508,13 +520,16 @@ describe('SearchResults component', () => {
     mockIsLoading = true
     render(<SearchResults />)
     await act(async () => {})
+
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
 
     mockIsLoading = false
     screen.rerender(<SearchResults />)
+
     expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
 
     screen.rerender(<SearchResults />)
+
     expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
   })
 
@@ -522,11 +537,13 @@ describe('SearchResults component', () => {
     mockIsLoading = true
     render(<SearchResults />)
     await act(async () => {})
+
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
 
     mockIsLoading = false
     mockSearchState = searchState
     screen.rerender(<SearchResults />)
+
     expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(1, mockSearchState, mockNbHits)
   })
 
@@ -541,13 +558,16 @@ describe('SearchResults component', () => {
     mockIsLoading = true
     render(<SearchResults />)
     await act(async () => {})
+
     expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
 
     mockIsLoading = false
     screen.rerender(<SearchResults />)
+
     expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
 
     screen.rerender(<SearchResults />)
+
     expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
   })
 
@@ -555,11 +575,13 @@ describe('SearchResults component', () => {
     mockIsLoading = true
     render(<SearchResults />)
     await act(async () => {})
+
     expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
 
     mockIsLoading = false
     mockSearchState = searchState
     screen.rerender(<SearchResults />)
+
     expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
   })
 

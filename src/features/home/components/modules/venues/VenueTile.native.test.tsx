@@ -23,6 +23,7 @@ const props: VenueTileProps = {
 describe('VenueTile component', () => {
   it('should render correctly', () => {
     render(<VenueTile {...props} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -65,11 +66,13 @@ describe('VenueTile component', () => {
 
   it('should show venue placeholder when no venue does not have image', () => {
     render(<VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />)
+
     expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()
   })
 
   it('should show distance prop when provided', () => {
     render(<VenueTile {...props} userPosition={{ latitude: 2, longitude: 1 }} />)
+
     expect(screen.getByTestId('distance-tag')).toBeTruthy()
   })
 })

@@ -217,7 +217,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(analytics.logHasChangedPassword).toBeCalledWith({
+    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'forgottenpassword',
       reason: 'resetPassword',
     })
@@ -238,7 +238,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(analytics.logHasChangedPassword).toBeCalledWith({
+    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'accountsecurity',
       reason: 'resetPassword',
     })
@@ -258,7 +258,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(mockShowSuccessSnackBar).toBeCalledWith({
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton mot de passe est modifié\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
@@ -279,7 +279,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(mockShowErrorSnackBar).toBeCalledWith({
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur s’est produite pendant la modification de ton mot de passe.',
       timeout: SNACK_BAR_TIME_OUT,
     })

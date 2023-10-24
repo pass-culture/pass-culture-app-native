@@ -8,7 +8,7 @@ import { CustomRemoteConfig } from './remoteConfig.types'
 
 export const remoteConfig = {
   async refresh() {
-    return await fetchAndActivate(firebaseRemoteConfig)
+    return fetchAndActivate(firebaseRemoteConfig)
   },
   // `getValues()` does not fetch anything, it accesses the values fetched by fetchAndActivate()`.
   // So be sure to have your remote config refreshed before using `getValues()`.

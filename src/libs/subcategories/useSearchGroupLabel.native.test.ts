@@ -34,6 +34,7 @@ describe('useCategoryId', () => {
     'useSearchGroupLabel($SearchGroupName) = $SearchGroupLabel',
     ({ SearchGroupName, SearchGroupLabel }) => {
       const { result: searchGroupLabel } = renderHook(() => useSearchGroupLabel(SearchGroupName))
+
       expect(searchGroupLabel.current).toBe(SearchGroupLabel)
     }
   )

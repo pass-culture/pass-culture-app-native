@@ -55,6 +55,7 @@ describe('SetPhoneNumber', () => {
     renderSetPhoneNumber()
     await waitFor(() => expect(screen.getByText('J’ai compris')).toBeOnTheScreen())
   })
+
   it('should have a different color if 1 attempt is remaining', async () => {
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
       visible: false,
@@ -80,6 +81,7 @@ describe('SetPhoneNumber', () => {
 
     await waitFor(() => expect(analytics.logScreenViewSetPhoneNumber).toHaveBeenCalledTimes(1))
   })
+
   describe('continue button', () => {
     const mockFetch = jest.spyOn(global, 'fetch')
     mockFetch.mockResolvedValue(

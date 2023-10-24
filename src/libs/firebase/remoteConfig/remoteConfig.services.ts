@@ -8,7 +8,7 @@ export const remoteConfig = {
     await firebaseRemoteConfig().setDefaults(DEFAULT_REMOTE_CONFIG as GenericRemoteConfig)
   },
   async refresh() {
-    return await firebaseRemoteConfig().fetchAndActivate()
+    return firebaseRemoteConfig().fetchAndActivate()
   },
   /**
   `getValues()` does not fetch anything, it accesses the values fetched by `firebaseRemoteConfig().fetchAndActivate()`.

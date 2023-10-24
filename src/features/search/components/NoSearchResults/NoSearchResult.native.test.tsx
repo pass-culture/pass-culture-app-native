@@ -15,6 +15,7 @@ describe('NoSearchResult component', () => {
     const textContinuation = screen.getByText(
       'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
     )
+
     expect(text).toBeOnTheScreen()
     expect(textContinuation).toBeOnTheScreen()
   })

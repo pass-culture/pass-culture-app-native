@@ -10,6 +10,7 @@ describe('<AccessibilityEngagement/>', () => {
       const { container } = render(<AccessibilityEngagement />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

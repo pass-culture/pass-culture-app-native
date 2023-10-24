@@ -34,6 +34,7 @@ describe('getHistoryLessThan30Days', () => {
 
   it('should return history less than 30 days', () => {
     const historyLessThan30Days = getHistoryLessThan30Days(history)
+
     expect(historyLessThan30Days).toEqual([
       {
         createdAt: new Date('2023-09-20T00:00:00.000Z').getTime(),

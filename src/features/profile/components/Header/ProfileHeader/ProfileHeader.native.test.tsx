@@ -61,32 +61,38 @@ describe('ProfileHeader', () => {
 
   it('should display the LoggedOutHeader if no user', () => {
     render(<ProfileHeader user={undefined} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
     render(<ProfileHeader user={user} />)
+
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     render(<ProfileHeader user={user} />)
+
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
     render(<ProfileHeader user={exBeneficiaryUser} />)
+
     expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {
     render(<ProfileHeader user={notBeneficiaryUser} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', () => {
     render(<ProfileHeader user={exUnderageBeneficiaryUser} />)
+
     expect(screen).toMatchSnapshot()
   })
 })

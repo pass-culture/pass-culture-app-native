@@ -27,6 +27,7 @@ describe('useLocation()', () => {
     beforeEach(() => {
       mockGetPositionSuccess()
     })
+
     it('should call onSubmit() and onAcceptance() when requestGeolocPermission() returns GRANTED', async () => {
       mockPermissionResult(GeolocPermissionState.GRANTED)
       const { result } = renderLocationHook()
@@ -142,6 +143,7 @@ describe('useLocation()', () => {
         expect(onAcceptance).toHaveBeenCalledTimes(1)
       })
       const localStorageLocationType = await storage.readString('location_type')
+
       expect(localStorageLocationType).toEqual('UserGeolocation')
     })
 
@@ -152,6 +154,7 @@ describe('useLocation()', () => {
         result.current.setCustomPosition({ latitude: 85, longitude: 40 })
       })
       const localStorageLocationType = await storage.readString('location_type')
+
       expect(localStorageLocationType).toEqual('UserSpecificLocation')
     })
 
@@ -162,6 +165,7 @@ describe('useLocation()', () => {
         result.current.setCustomPosition({ latitude: 85, longitude: 40 })
       })
       const localStorageLocationType = await storage.readString('location_type')
+
       expect(localStorageLocationType).toEqual('UserSpecificLocation')
     })
 
@@ -172,6 +176,7 @@ describe('useLocation()', () => {
         result.current.setCustomPosition(null)
       })
       const localStorageLocationType = await storage.readString('location_type')
+
       expect(localStorageLocationType).toEqual(null)
     })
   })

@@ -18,6 +18,7 @@ jest.mock('react-device-detect', () => defaultDeviceMock)
 describe('SupportedBrowsersGate', () => {
   it('render correctly', () => {
     render(<SupportedBrowsersGate />)
+
     expect(screen).toMatchSnapshot()
   })
 

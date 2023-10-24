@@ -24,7 +24,10 @@ describe('DeleteProfileSuccess component', () => {
 
     fireEvent.press(screen.getByText(`Retourner à l’accueil`))
 
-    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
   })
 
   it('should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button', async () => {
@@ -33,8 +36,8 @@ describe('DeleteProfileSuccess component', () => {
     fireEvent.press(screen.getByText('Réactiver mon compte'))
 
     await waitFor(() => {
-      expect(analytics.logAccountReactivation).toBeCalledWith('deleteprofilesuccess')
-      expect(navigate).toBeCalledWith('Login', undefined)
+      expect(analytics.logAccountReactivation).toHaveBeenCalledWith('deleteprofilesuccess')
+      expect(navigate).toHaveBeenCalledWith('Login', undefined)
     })
   })
 })

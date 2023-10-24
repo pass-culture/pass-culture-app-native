@@ -8,7 +8,9 @@ describe('getIsE2e web ios safari workaround', () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       ok: true,
     } as Response)
+
     expect(await getIsE2e()).toBeTruthy()
+
     process.env.NODE_ENV = 'test'
   })
 })

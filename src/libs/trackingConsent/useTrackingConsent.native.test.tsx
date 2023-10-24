@@ -72,6 +72,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentAsked = await screen.findByTestId('consentAsked')
+
     expect(consentAsked.props.children).toEqual(true)
   })
 
@@ -82,6 +83,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentAsked = await screen.findByTestId('consentAsked')
+
     expect(consentAsked.props.children).toEqual(true)
   })
 
@@ -92,6 +94,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentAsked = await screen.findByTestId('consentAsked')
+
     expect(consentAsked.props.children).toEqual(false)
   })
 
@@ -102,6 +105,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentTracking = await screen.findByTestId('consentTracking')
+
     expect(consentTracking.props.children).toEqual(true)
   })
 
@@ -112,6 +116,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentTracking = await screen.findByTestId('consentTracking')
+
     expect(consentTracking.props.children).toEqual(false)
   })
 
@@ -122,6 +127,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentTracking = await screen.findByTestId('consentTracking')
+
     expect(consentTracking.props.children).toEqual(true)
   })
 
@@ -135,6 +141,7 @@ describe('useTrackingConsent', () => {
     render(<TestComponent />)
 
     const consentTracking = await screen.findByTestId('consentTracking')
+
     expect(consentTracking.props.children).toEqual(false)
   })
 })

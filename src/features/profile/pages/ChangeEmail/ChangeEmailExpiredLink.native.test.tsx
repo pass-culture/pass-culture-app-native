@@ -50,7 +50,10 @@ describe('<ChangeEmailExpiredLink />', () => {
 
     fireEvent.press(screen.getByText(`Retourner à l’accueil`))
 
-    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
   })
 
   it('should navigate when clicking on resend email button', () => {

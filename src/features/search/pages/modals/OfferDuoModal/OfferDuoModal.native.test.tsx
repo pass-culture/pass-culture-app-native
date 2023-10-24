@@ -54,6 +54,7 @@ describe('<OfferDuoModal/>', () => {
       renderOfferDuoModal({}, isDesktopViewport)
 
       const header = screen.queryByTestId('pageHeader')
+
       expect(header).toBeOnTheScreen()
     })
 
@@ -62,6 +63,7 @@ describe('<OfferDuoModal/>', () => {
       renderOfferDuoModal({}, isDesktopViewport)
 
       const header = screen.queryByTestId('pageHeader')
+
       expect(header).not.toBeOnTheScreen()
     })
 

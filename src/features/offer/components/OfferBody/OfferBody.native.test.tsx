@@ -192,6 +192,7 @@ describe('<OfferBody />', () => {
         await screen.findByText('Envoyer sur Instagram')
 
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
           fromOfferId: offerId,
@@ -210,6 +211,7 @@ describe('<OfferBody />', () => {
         await screen.findByText('Envoyer sur Instagram')
 
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
+
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
           fromOfferId: offerId,
@@ -253,6 +255,7 @@ describe('<OfferBody />', () => {
 
     describe('on Android', () => {
       beforeAll(() => (Platform.OS = 'android'))
+
       afterAll(() => (Platform.OS = 'ios'))
 
       it('should open social medium on share button press using correct message', async () => {
@@ -378,6 +381,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -392,6 +396,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -399,6 +404,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -406,6 +412,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Où\u00a0?')).toBeOnTheScreen()
     })
 
@@ -413,6 +420,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByTestId('venueCard')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('venueInfos')).not.toBeOnTheScreen()
     })
@@ -436,6 +444,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
     })
 
@@ -452,6 +461,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -462,6 +472,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -478,6 +489,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
     })
 
@@ -494,6 +506,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -506,6 +519,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -513,6 +527,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
@@ -520,6 +535,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
+
       expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
     })
 
@@ -531,6 +547,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
+
         expect(screen.queryByText('Lieu de retrait')).toBeOnTheScreen()
       })
 
@@ -541,6 +558,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
+
         expect(screen.queryByText('Lieu de l’évènement')).toBeOnTheScreen()
       })
 
@@ -551,6 +569,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
+
         expect(screen.queryByText('Lieu de projection')).toBeOnTheScreen()
       })
     })

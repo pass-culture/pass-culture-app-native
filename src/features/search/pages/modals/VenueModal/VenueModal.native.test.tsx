@@ -20,6 +20,7 @@ describe('VenueModal', () => {
 
     expect(screen).toMatchSnapshot()
   })
+
   it('should close when pressing the close button', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
     await waitForModalToShow()

@@ -30,6 +30,7 @@ describe('<SearchList />', () => {
     userData: [],
     venuesUserData: [],
   }
+
   it('should renders correctly', async () => {
     render(<SearchList {...props} />)
 

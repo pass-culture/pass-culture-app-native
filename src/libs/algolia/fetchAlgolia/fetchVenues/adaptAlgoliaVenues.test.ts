@@ -14,6 +14,7 @@ describe('adaptAlgoliaVenues', () => {
       },
     ]
     const adaptedVenues = adaptAlgoliaVenues(algoliaVenuesFixture)
+
     expect(adaptedVenues).toEqual(expectedVenues)
   })
 })

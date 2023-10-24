@@ -13,6 +13,7 @@ const props = {
 describe('<DatePickerDropDown />', () => {
   it('should not render component when is native', () => {
     const { toJSON } = render(<DatePickerDropDown {...props} />)
+
     expect(toJSON()).not.toBeOnTheScreen()
   })
 })

@@ -34,6 +34,7 @@ describe('VenueOfferTile component', () => {
   it('should render correctly', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { toJSON } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
+
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -55,6 +56,7 @@ describe('VenueOfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
     fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId,
       from: 'venue',
@@ -69,6 +71,7 @@ describe('VenueOfferTile component', () => {
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)
+
     expect(query).not.toBeUndefined()
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({

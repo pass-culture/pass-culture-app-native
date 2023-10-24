@@ -18,7 +18,7 @@ describe('SearchInput component', () => {
 
     fireEvent(searchInput, 'onChangeText', 'Some text')
 
-    expect(onChangeText).toBeCalledWith('Some text')
+    expect(onChangeText).toHaveBeenCalledWith('Some text')
   })
 
   it('should reset input when user click on reset icon', async () => {

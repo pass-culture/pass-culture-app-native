@@ -26,6 +26,7 @@ describe('saveRefreshToken()', () => {
 
   it('should throw when setGenericPassword throws', async () => {
     expect.assertions(1)
+
     Keychain.setGenericPassword.mockImplementationOnce(async () => {
       throw Error()
     })
@@ -58,6 +59,7 @@ describe('getRefreshToken()', () => {
 
   it('should throw when getGenericPassword throws', async () => {
     expect.assertions(1)
+
     Keychain.getGenericPassword.mockImplementationOnce(async () => {
       throw Error()
     })

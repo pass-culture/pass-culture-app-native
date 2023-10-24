@@ -45,6 +45,7 @@ describe('<Offer /> - Analytics', () => {
     await act(async () => {
       await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     })
+
     expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
 
     await act(async () => {
@@ -61,6 +62,7 @@ describe('<Offer /> - Analytics', () => {
       // 1st scroll to bottom => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
     })
+
     expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerId)
 
     // @ts-expect-error: logConsultWholeOffer is the mock function but is seen as the real function

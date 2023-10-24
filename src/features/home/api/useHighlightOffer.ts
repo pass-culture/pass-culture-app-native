@@ -72,7 +72,7 @@ export const useHighlightOffer = ({
   const offerByEanQuery = async () => {
     if (!offerEan) return undefined
 
-    return await fetchOffersByEan({
+    return fetchOffersByEan({
       eanList: [offerEan],
       userLocation: position,
       isUserUnderage,

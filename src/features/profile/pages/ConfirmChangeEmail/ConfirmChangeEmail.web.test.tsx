@@ -36,6 +36,7 @@ describe('<ConfirmChangeEmail />', () => {
       const { container } = render(<ConfirmChangeEmail navigation={navigation} route={route} />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

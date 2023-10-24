@@ -40,12 +40,15 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 describe('<IdentityCheckEnd/>', () => {
   it('should render correctly', () => {
     render(<IdentityCheckEnd />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to stepper after timeout if nextSubscriptionStep is not null', async () => {
     render(<IdentityCheckEnd />)
+
     expect(navigate).not.toHaveBeenCalled()
+
     jest.advanceTimersByTime(3000)
 
     await waitFor(() => {
@@ -63,8 +66,11 @@ describe('<IdentityCheckEnd/>', () => {
       nextSubscriptionStep: null,
     }
     render(<IdentityCheckEnd />)
+
     expect(navigateToHome).not.toHaveBeenCalled()
+
     jest.advanceTimersByTime(3000)
+
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 

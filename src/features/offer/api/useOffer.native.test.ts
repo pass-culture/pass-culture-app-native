@@ -12,6 +12,7 @@ describe('useOffer', () => {
     })
 
     await act(async () => {})
+
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
   })
 })

@@ -32,11 +32,13 @@ jest.mock('features/navigation/navigationRef')
 describe('TrackEmailChange', () => {
   it('should render the component correctly', () => {
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Suivi de ton changement d’e-mail')).toBeOnTheScreen()
   })
 
   it('should display "Envoi de ta demande"', () => {
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Envoi de ta demande')).toBeOnTheScreen()
   })
 
@@ -50,6 +52,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Confirme ta demande')).toBeOnTheScreen()
   })
 
@@ -63,6 +66,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.queryByText('Confirme ta demande')).not.toBeOnTheScreen()
   })
 
@@ -76,6 +80,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Confirmation de ta demande')).toBeOnTheScreen()
   })
 
@@ -89,6 +94,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.queryByText('Confirmation de ta demande')).not.toBeOnTheScreen()
   })
 
@@ -102,6 +108,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Valide ta nouvelle adresse')).toBeOnTheScreen()
   })
 
@@ -115,6 +122,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.queryByText('Valide ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
@@ -128,6 +136,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Validation de ta nouvelle adresse')).toBeOnTheScreen()
   })
 
@@ -141,6 +150,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.queryByText('Validation de ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
@@ -154,6 +164,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Connecte-toi sur ta nouvelle adresse')).toBeOnTheScreen()
   })
 
@@ -167,6 +178,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
@@ -180,6 +192,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Connexion sur ta nouvelle adresse')).toBeOnTheScreen()
   })
 
@@ -193,6 +206,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.queryByText('Connexion sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
@@ -221,6 +235,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Depuis l’email envoyé à example@example.com')).toBeOnTheScreen()
   })
 
@@ -234,6 +249,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
+
     expect(screen.getByText('Depuis l’email envoyé à new@example.com')).toBeOnTheScreen()
   })
 
@@ -244,6 +260,7 @@ describe('TrackEmailChange', () => {
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<TrackEmailChange />)
+
       expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
@@ -260,6 +277,7 @@ describe('TrackEmailChange', () => {
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<TrackEmailChange />)
+
       expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
     })
   })

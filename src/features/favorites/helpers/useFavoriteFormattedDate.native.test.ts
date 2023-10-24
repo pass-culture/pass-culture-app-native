@@ -6,6 +6,7 @@ describe('useFavoriteFormattedDate', () => {
   it('should return formatted date when offer date is provided', () => {
     const offerWithDate = favoriteOfferResponseSnap
     const { result } = renderHook(() => useFavoriteFormattedDate({ offer: offerWithDate }))
+
     expect(result.current).toEqual('1 avril 2021')
   })
 
@@ -16,6 +17,7 @@ describe('useFavoriteFormattedDate', () => {
       startDate: '2021-04-04T12:00:00',
     }
     const { result } = renderHook(() => useFavoriteFormattedDate({ offer: offerWithStartDate }))
+
     expect(result.current).toEqual('Dès le 4 avril 2021')
   })
 
@@ -26,6 +28,7 @@ describe('useFavoriteFormattedDate', () => {
       startDate: null,
     }
     const { result } = renderHook(() => useFavoriteFormattedDate({ offer: offerWithoutDate }))
+
     expect(result.current).toBeUndefined()
   })
 })

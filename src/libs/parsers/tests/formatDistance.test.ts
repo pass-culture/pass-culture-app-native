@@ -29,6 +29,7 @@ describe('formatDistance', () => {
   it("should return undefined if we can't have the user's position", () => {
     const coords = { lat: 48.85, lng: 2.29 }
     const position = null
+
     expect(formatDistance(coords, position)).toBeUndefined()
   })
 })

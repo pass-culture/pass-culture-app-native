@@ -192,6 +192,7 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         })
         const { wording, onPress, navigateTo, externalNav } = result || {}
+
         expect(wording).toEqual(expected)
         expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
           disabled
@@ -231,6 +232,7 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         })
         const { wording, onPress, navigateTo, externalNav } = result || {}
+
         expect(wording).toEqual(expected)
         expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
           disabled
@@ -264,6 +266,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Offre épuisée" if offer is sold out', () => {
       const result = getCta({ isSoldOut: true })
+
       expect(result).toEqual({
         wording: 'Offre épuisée',
         isDisabled: true,
@@ -272,6 +275,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Offre expirée" if offer is expired and sold out', () => {
       const result = getCta({ isExpired: true, isSoldOut: true })
+
       expect(result).toEqual({
         wording: 'Offre expirée',
         isDisabled: true,
@@ -280,6 +284,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Offre expirée" if offer is expired', () => {
       const result = getCta({ isExpired: true })
+
       expect(result).toEqual({
         wording: 'Offre expirée',
         isDisabled: true,
@@ -288,6 +293,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Offre expirée" if offer is not released', () => {
       const result = getCta({ isReleased: false })
+
       expect(result).toEqual({
         wording: 'Offre expirée',
         isDisabled: true,
@@ -296,6 +302,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Réserver l’offre" if offer is an ended booking', () => {
       const result = getCta({}, { isEndedUsedBooking: true })
+
       expect(result).toEqual({
         wording: 'Réserver l’offre',
         modalToDisplay: OfferModal.BOOKING,
@@ -306,6 +313,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Accéder à l’offre en ligne" when offer is digital and free', () => {
       const result = getCta({ isDigital: true, stocks: [{ ...baseOffer.stocks[0], price: 0 }] })
+
       expect(result).toEqual({
         wording: 'Accéder à l’offre en ligne',
         isDisabled: false,
@@ -315,6 +323,7 @@ describe('getCtaWordingAndAction', () => {
 
     it('CTA="Réserver l’offre" when offer is digital and not free', () => {
       const result = getCta({ isDigital: true, stocks: [{ ...baseOffer.stocks[0], price: 100 }] })
+
       expect(result).toEqual({
         wording: 'Réserver l’offre',
         modalToDisplay: OfferModal.BOOKING,
@@ -336,6 +345,7 @@ describe('getCtaWordingAndAction', () => {
           { hasEnoughCredit, isUnderageBeneficiary: false },
           { isEvent }
         )
+
         expect(result).toEqual({
           wording,
           modalToDisplay,
@@ -368,6 +378,7 @@ describe('getCtaWordingAndAction', () => {
           { hasEnoughCredit, isUnderageBeneficiary },
           { isEvent: false }
         )
+
         expect(result).toEqual({
           wording,
           modalToDisplay,
@@ -463,6 +474,7 @@ describe('getCtaWordingAndAction', () => {
             { isUnderageBeneficiary: true },
             { isEvent, searchGroupName: category }
           )
+
           expect(wording).toEqual(expected)
           expect(modalToDisplay).toEqual(mustShowBookingModal)
           expect(
@@ -494,6 +506,7 @@ describe('getCtaWordingAndAction', () => {
         }) || {}
 
       if (onPress) onPress()
+
       expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, { offerId: baseOffer.id })
     })
 
@@ -517,6 +530,7 @@ describe('getCtaWordingAndAction', () => {
         }) || {}
 
       if (onPress) onPress()
+
       expect(analytics.logConsultAvailableDates).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
 
@@ -540,6 +554,7 @@ describe('getCtaWordingAndAction', () => {
         }) || {}
 
       if (onPress) onPress()
+
       expect(analytics.logConsultFinishSubscriptionModal).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
 
@@ -563,6 +578,7 @@ describe('getCtaWordingAndAction', () => {
         }) || {}
 
       if (onPress) onPress()
+
       expect(analytics.logConsultApplicationProcessingModal).toHaveBeenNthCalledWith(
         1,
         baseOffer.id
@@ -589,6 +605,7 @@ describe('getCtaWordingAndAction', () => {
         }) || {}
 
       if (onPress) onPress()
+
       expect(analytics.logConsultErrorApplicationModal).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
   })

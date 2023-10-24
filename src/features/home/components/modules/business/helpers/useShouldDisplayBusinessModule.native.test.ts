@@ -47,6 +47,7 @@ describe('showBusinessModule()', () => {
       const { result } = renderHook(() =>
         useShouldDisplayBusinessModule(targetNotConnectedUsersOnly, connected, moduleLocalization)
       )
+
       expect(result.current).toBe(expected)
     }
   )
@@ -71,6 +72,7 @@ describe('showBusinessModule()', () => {
       const { result } = renderHook(() =>
         useShouldDisplayBusinessModule(targetNotConnectedUsersOnly, connected, moduleLocalization)
       )
+
       expect(result.current).toBe(expected)
     }
   )

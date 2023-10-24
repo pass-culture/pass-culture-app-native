@@ -35,6 +35,7 @@ describe.each([
         get: mockGet,
       })
   )
+
   it.each`
     firebaseFeatureFlag | minimalBuildNumber | expected
     ${false}            | ${undefined}       | ${'disabled when firestore minimalBuildNumber is undefined'}
@@ -58,6 +59,7 @@ describe.each([
       const { result } = renderHook(() => useFeatureFlag(featureFlag))
 
       await act(async () => {})
+
       expect(result.current).toBe(firebaseFeatureFlag)
     }
   )

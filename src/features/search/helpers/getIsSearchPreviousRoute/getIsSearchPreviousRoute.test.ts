@@ -8,6 +8,7 @@ describe('getIsSearchPreviousRoute', () => {
       { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'Search' } },
     ]
     const isSearchPreviousRoute = getIsSearchPreviousRoute(routes)
+
     expect(isSearchPreviousRoute).toBeFalsy()
   })
 
@@ -17,6 +18,7 @@ describe('getIsSearchPreviousRoute', () => {
       { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'Search' } },
     ]
     const isSearchPreviousRoute = getIsSearchPreviousRoute(routes)
+
     expect(isSearchPreviousRoute).toBeFalsy()
   })
 
@@ -30,6 +32,7 @@ describe('getIsSearchPreviousRoute', () => {
       { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'Bookings' } },
     ]
     const isSearchPreviousRoute = getIsSearchPreviousRoute(routes, SearchView.Landing)
+
     expect(isSearchPreviousRoute).toBeFalsy()
   })
 
@@ -43,6 +46,7 @@ describe('getIsSearchPreviousRoute', () => {
       },
     ]
     const isSearchPreviousRoute = getIsSearchPreviousRoute(routes, SearchView.Results)
+
     expect(isSearchPreviousRoute).toBeFalsy()
   })
 
@@ -56,6 +60,7 @@ describe('getIsSearchPreviousRoute', () => {
       },
     ]
     const isSearchPreviousRoute = getIsSearchPreviousRoute(routes, SearchView.Results)
+
     expect(isSearchPreviousRoute).toBeTruthy()
   })
 })

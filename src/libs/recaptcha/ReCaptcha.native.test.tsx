@@ -18,12 +18,14 @@ const reCaptchaProps = {
 describe('<ReCaptcha />', () => {
   it('should render correctly', () => {
     renderReCaptcha(reCaptchaProps)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should not render webview when modal is not visible', () => {
     renderReCaptcha({ ...reCaptchaProps, isVisible: false })
     const recaptchaWebview = screen.queryByTestId('recaptcha-webview')
+
     expect(recaptchaWebview).not.toBeOnTheScreen()
   })
 
@@ -33,7 +35,7 @@ describe('<ReCaptcha />', () => {
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
-    expect(reCaptchaProps.onSuccess).toBeCalledWith('fakeToken')
+    expect(reCaptchaProps.onSuccess).toHaveBeenCalledWith('fakeToken')
   })
 
   it('should call onError() callback when recaptcha raises an error', () => {
@@ -42,7 +44,7 @@ describe('<ReCaptcha />', () => {
 
     simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
-    expect(reCaptchaProps.onError).toBeCalledWith('UnknownError', 'someError')
+    expect(reCaptchaProps.onError).toHaveBeenCalledWith('UnknownError', 'someError')
   })
 
   it("should call onClose() callback when webview's message is close", () => {

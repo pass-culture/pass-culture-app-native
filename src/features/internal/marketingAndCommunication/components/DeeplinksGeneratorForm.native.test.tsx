@@ -40,6 +40,7 @@ describe('<DeeplinksGeneratorForm />', () => {
     fireEvent.press(profile)
 
     fireEvent.press(generateButton)
+
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
         'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Fprofil%3Ffrom%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
@@ -124,6 +125,7 @@ describe('<DeeplinksGeneratorForm />', () => {
 describe('getDefaultScreenParams', () => {
   it('should return an object with view, locationFilter, noFocus, from params when screen is Search', () => {
     const defaultParams = getDefaultScreenParams('Search')
+
     expect(defaultParams).toEqual({
       view: SearchView.Results,
       locationFilter: { locationType: LocationType.EVERYWHERE },
@@ -136,6 +138,7 @@ describe('getDefaultScreenParams', () => {
     'should return an object with from param set to "deeplink" when screen is %s',
     (screen) => {
       const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)
+
       expect(defaultParams).toEqual({
         from: 'deeplink',
       })

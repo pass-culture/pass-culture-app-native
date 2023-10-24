@@ -9,6 +9,7 @@ describe('<IdentityCheckPending/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<IdentityCheckPending />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

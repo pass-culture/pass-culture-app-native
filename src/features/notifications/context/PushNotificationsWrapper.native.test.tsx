@@ -73,6 +73,7 @@ describe('usePushNotificationsContext()', () => {
       })
 
       const hasSeenModalOnce = await storage.readObject(PUSH_NOTIFICATIONS_STORAGE_KEY)
+
       expect(hasSeenModalOnce).toBeTruthy()
     })
   })

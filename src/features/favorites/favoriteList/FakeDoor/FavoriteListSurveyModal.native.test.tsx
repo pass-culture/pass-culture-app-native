@@ -9,6 +9,7 @@ const hideModalMock = jest.fn()
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const FAV_LIST_FAKE_DOOR_STORAGE_KEY = 'has_seen_fav_list_fake_door'
+
 describe('FavoriteListSurveyModal', () => {
   beforeEach(() => {
     storage.clear(FAV_LIST_FAKE_DOOR_STORAGE_KEY)
@@ -16,11 +17,13 @@ describe('FavoriteListSurveyModal', () => {
 
   it('should render correctly', () => {
     render(<FavoriteListSurveyModal visible hideModal={hideModalMock} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display nothing if modal is not visible', () => {
     render(<FavoriteListSurveyModal visible={false} hideModal={hideModalMock} />)
+
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
@@ -28,12 +31,14 @@ describe('FavoriteListSurveyModal', () => {
     render(<FavoriteListSurveyModal visible hideModal={hideModalMock} />)
     const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
+
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should open survey when clicking the button', () => {
     render(<FavoriteListSurveyModal visible hideModal={hideModalMock} />)
     fireEvent.press(screen.getByText('Répondre au questionnaire'))
+
     expect(openUrl).toHaveBeenCalledWith(
       'https://passculture.qualtrics.com/jfe/form/SV_0qAg2IoZijISBsG',
       undefined,

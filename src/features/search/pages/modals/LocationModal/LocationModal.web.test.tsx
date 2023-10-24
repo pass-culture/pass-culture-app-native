@@ -68,6 +68,7 @@ describe('<LocationModal/>', () => {
       const { container } = renderLocationModal({})
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })

@@ -9,6 +9,7 @@ describe('getLocationLabel', () => {
       isPermanent: true,
     }
     const offerRules = getLocationLabel(initialBooking.stock, properties)
+
     expect(offerRules).toEqual('')
   })
 
@@ -17,6 +18,7 @@ describe('getLocationLabel', () => {
       isDigital: true,
     }
     const offerRules = getLocationLabel(initialBooking.stock, properties)
+
     expect(offerRules).toEqual('')
   })
 
@@ -26,6 +28,7 @@ describe('getLocationLabel', () => {
       isDigital: false,
     }
     const offerRules = getLocationLabel(initialBooking.stock, properties)
+
     expect(offerRules).toEqual('Maison de la Brique, Drancy')
   })
 
@@ -49,6 +52,7 @@ describe('getLocationLabel', () => {
       },
     }
     const offerRules = getLocationLabel(booking.stock, properties)
+
     expect(offerRules).toEqual('Maison de la Brique, Drancy')
   })
 
@@ -72,6 +76,7 @@ describe('getLocationLabel', () => {
       },
     }
     const offerRules = getLocationLabel(booking.stock, properties)
+
     expect(offerRules).toEqual('Maison de la Brique, Drancy')
   })
 
@@ -96,6 +101,7 @@ describe('getLocationLabel', () => {
     }
 
     const offerRules = getLocationLabel(booking.stock, properties)
+
     expect(offerRules).toEqual('Maison de la Brique public, Drancy')
   })
 
@@ -120,6 +126,7 @@ describe('getLocationLabel', () => {
     }
 
     const offerRules = getLocationLabel(booking.stock, properties)
+
     expect(offerRules).toEqual('Maison de la Brique')
   })
 
@@ -144,6 +151,7 @@ describe('getLocationLabel', () => {
     }
 
     const offerRules = getLocationLabel(booking.stock, properties)
+
     expect(offerRules).toEqual('Maison de la Brique')
   })
 })

@@ -14,6 +14,7 @@ describe('ShareAppModal', () => {
     const { container } = render(
       <ShareAppModal visible hideModal={jest.fn()} modalType={modalType} />
     )
+
     expect(container).toBeEmptyDOMElement()
   })
 })

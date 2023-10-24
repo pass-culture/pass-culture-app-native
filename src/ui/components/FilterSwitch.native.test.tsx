@@ -13,7 +13,8 @@ describe('<FilterSwitch />', () => {
     const Switch = screen.getByTestId('Interrupteur')
 
     fireEvent.press(Switch)
-    expect(toggle).toBeCalledTimes(1)
+
+    expect(toggle).toHaveBeenCalledTimes(1)
   })
 
   it('should not call toggle when switch is disabled and press on', () => {
@@ -22,6 +23,7 @@ describe('<FilterSwitch />', () => {
     const Switch = screen.getByTestId('Interrupteur')
 
     fireEvent.press(Switch)
-    expect(toggle).not.toBeCalledTimes(1)
+
+    expect(toggle).not.toHaveBeenCalledTimes(1)
   })
 })

@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 describe('<NoTicket/>', () => {
   it('should render correctly', () => {
     render(<NoTicket />)
+
     expect(screen).toMatchSnapshot()
   })
 })

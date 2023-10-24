@@ -22,11 +22,13 @@ describe('<AlreadyBooked />', () => {
   it('should dismiss modal when clicking on cta', () => {
     render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponse} />)
     fireEvent.press(screen.getByText('Mes réservations terminées'))
+
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should change booking step from date to confirmation', () => {
     render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponse} />)
+
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'CHANGE_STEP',
       payload: Step.CONFIRMATION,

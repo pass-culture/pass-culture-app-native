@@ -37,6 +37,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
+
     expect(screen.queryByLabelText('Distance depuis la localisation')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Activer la localisation')).not.toBeOnTheScreen()
 
@@ -48,6 +49,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
+
     expect(screen.queryByLabelText('Géolocalisation désactivée')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Distance depuis la localisation')).not.toBeOnTheScreen()
   })
@@ -117,6 +119,7 @@ describe('<VenueIconCaptions />', () => {
     )
 
     fireEvent.press(screen.getByTestId('Géolocalisation désactivée'))
+
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
 })

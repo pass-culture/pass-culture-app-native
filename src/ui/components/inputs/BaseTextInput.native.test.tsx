@@ -8,6 +8,7 @@ import { BaseTextInput } from './BaseTextInput'
 describe('<BaseTextInput />', () => {
   it('should render correctly', () => {
     render(<BaseTextInput placeholder="placeholder" value="value" />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -25,7 +26,7 @@ describe('<BaseTextInput />', () => {
     const nativeTextInput = screen.getByPlaceholderText('placeholder')
 
     expect(nativeTextInput.props.autoFocus).toBe(undefined)
-    expect(ref.current?.focus).toBeCalledTimes(1)
+    expect(ref.current?.focus).toHaveBeenCalledTimes(1)
   })
 
   it('should use default value when provided', () => {

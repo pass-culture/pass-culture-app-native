@@ -6,6 +6,7 @@ describe('getPastYears', () => {
     const currentYear = '2023'
     const expectedOutput = ['2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015']
     const result = getPastYears(startYear, currentYear)
+
     expect(result).toEqual(expectedOutput)
   })
 
@@ -14,6 +15,7 @@ describe('getPastYears', () => {
     const currentYear = '2022'
     const expectedOutput: string[] = []
     const result = getPastYears(startYear, currentYear)
+
     expect(result).toEqual(expectedOutput)
   })
 
@@ -22,6 +24,7 @@ describe('getPastYears', () => {
     const currentYear = 'not a number'
     const expectedOutput: string[] = []
     const result = getPastYears(startYear, currentYear)
+
     expect(result).toEqual(expectedOutput)
   })
 
@@ -30,6 +33,7 @@ describe('getPastYears', () => {
     const currentYear = '5'
     const expectedOutput = ['5', '4', '3', '2', '1', '0', '-1', '-2', '-3', '-4', '-5']
     const result = getPastYears(startYear, currentYear)
+
     expect(result).toEqual(expectedOutput)
   })
 })

@@ -11,6 +11,7 @@ describe('<BookingNotFound/>', () => {
         <BookingNotFound error={new Error('error')} resetErrorBoundary={() => null} />
       )
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

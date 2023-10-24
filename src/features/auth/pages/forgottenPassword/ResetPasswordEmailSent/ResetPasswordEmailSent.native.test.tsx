@@ -29,7 +29,7 @@ describe('<ResetPasswordEmailSent />', () => {
     const quitButton = await screen.findByText('Quitter')
     fireEvent.press(quitButton)
 
-    expect(navigate).toBeCalledWith('Login', undefined)
+    expect(navigate).toHaveBeenCalledWith('Login', undefined)
   })
 
   it('should open mail app when clicking on check email button', async () => {

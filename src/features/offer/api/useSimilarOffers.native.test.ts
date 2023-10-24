@@ -93,6 +93,7 @@ describe('useSimilarOffers', () => {
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
+
     expect(algoliaSpy).toHaveBeenCalledWith([], true)
   })
 
@@ -102,6 +103,7 @@ describe('useSimilarOffers', () => {
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
+
     expect(fetchApiRecoSpy).not.toHaveBeenCalled()
   })
 
@@ -112,6 +114,7 @@ describe('useSimilarOffers', () => {
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
+
     expect(fetchApiRecoSpy).not.toHaveBeenCalled()
   })
 
@@ -124,6 +127,7 @@ describe('useSimilarOffers', () => {
       })
     )
     await act(async () => {})
+
     expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
   })
 
@@ -136,6 +140,7 @@ describe('useSimilarOffers', () => {
       })
     )
     await act(async () => {})
+
     expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
   })
 })
@@ -144,6 +149,7 @@ describe('getSimilarOffersEndpoint', () => {
   describe('should return endpoint', () => {
     it('with user id query param when it is provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, mockUserId)
+
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&userId=${mockUserId}`
       )
@@ -151,6 +157,7 @@ describe('getSimilarOffersEndpoint', () => {
 
     it('with latitude and longitude query params when there are provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, position)
+
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&longitude=${position.longitude}&latitude=${position.latitude}`
       )
@@ -161,6 +168,7 @@ describe('getSimilarOffersEndpoint', () => {
         latitude: null,
         longitude: null,
       })
+
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`
       )
@@ -170,6 +178,7 @@ describe('getSimilarOffersEndpoint', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, [
         SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       ])
+
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}`
       )
@@ -180,6 +189,7 @@ describe('getSimilarOffersEndpoint', () => {
         SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       ])
+
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}&categories=${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}`
       )
@@ -189,6 +199,7 @@ describe('getSimilarOffersEndpoint', () => {
   describe('should not return endpoint', () => {
     it('with offer id, user id, latitude, longitude and categories query params when they are not provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, undefined)
+
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`
       )
@@ -196,6 +207,7 @@ describe('getSimilarOffersEndpoint', () => {
 
     it('when offer id not passed in parameter', () => {
       const endpoint = getSimilarOffersEndpoint(undefined, undefined, undefined, undefined)
+
       expect(endpoint).toEqual(undefined)
     })
   })
@@ -239,17 +251,20 @@ describe('getCategories', () => {
   describe('should return an empty array ', () => {
     it('when categoryIncluded and categoryExcluded not defined', () => {
       const categories = getCategories()
+
       expect(categories).toEqual([])
     })
 
     it('when categoryExcluded defined but not searchGroups', () => {
       const categories = getCategories(undefined, undefined, SearchGroupNameEnumv2.CARTES_JEUNES)
+
       expect(categories).toEqual([])
     })
   })
 
   it('should return an array with category of categoryIncluded parameter when defined', () => {
     const categories = getCategories(mockSearchGroups, SearchGroupNameEnumv2.CARTES_JEUNES)
+
     expect(categories).toEqual([SearchGroupNameEnumv2.CARTES_JEUNES])
   })
 
@@ -259,6 +274,7 @@ describe('getCategories', () => {
       undefined,
       SearchGroupNameEnumv2.CARTES_JEUNES
     )
+
     expect(categories).toEqual([
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,

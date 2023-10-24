@@ -9,6 +9,7 @@ describe('<DeleteProfileSuccess/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<DeleteProfileSuccess />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

@@ -45,13 +45,15 @@ useFeatureFlagSpy.mockReturnValue(false)
 describe('useStepperInfo', () => {
   it('should return title and subtitle', () => {
     const { title, subtitle } = useStepperInfo()
+
     expect(title).toEqual('Title')
     expect(subtitle).toEqual('Subtitle')
   })
 
   it('should return 3 steps if there is no phone validation step', () => {
     const { stepsDetails } = useStepperInfo()
-    expect(stepsDetails.length).toEqual(3)
+
+    expect(stepsDetails).toHaveLength(3)
   })
 
   it('should return 4 steps when useGetStepperInfo returns 4 steps', () => {
@@ -59,7 +61,8 @@ describe('useStepperInfo', () => {
       stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
     })
     const { stepsDetails } = useStepperInfo()
-    expect(stepsDetails.length).toEqual(4)
+
+    expect(stepsDetails).toHaveLength(4)
   })
 
   it('should return PhoneValidationTooManySMSSent if no remaining attempts left', () => {
@@ -94,6 +97,7 @@ describe('useStepperInfo', () => {
     const phoneValidationStep = stepsDetails.find(
       (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
+
     expect(phoneValidationStep?.firstScreen).toEqual('SetPhoneNumber')
   })
 

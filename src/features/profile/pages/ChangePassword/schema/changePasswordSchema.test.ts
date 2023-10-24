@@ -13,6 +13,7 @@ describe('changePasswordSchema', () => {
         confirmedPassword: 'user@AZERTY123',
       }
       const result = await changePasswordSchema.validate(values)
+
       expect(result).toEqual(values)
     })
   })
@@ -29,6 +30,7 @@ describe('changePasswordSchema', () => {
           newPassword,
           confirmedPassword,
         })
+
         await expect(result).rejects.toEqual(
           new ValidationError('1 Caractère spécial (!@#$%^&*...)')
         )
@@ -41,6 +43,7 @@ describe('changePasswordSchema', () => {
         newPassword: 'abc',
         confirmedPassword: 'def',
       })
+
       await expect(result).rejects.toEqual(
         new ValidationError('Les mots de passe ne concordent pas')
       )
@@ -61,6 +64,7 @@ describe('changePasswordSchema', () => {
       ],
     ])(`should fail due to not being ${PASSWORD_MIN_LENGTH} character length`, async (values) => {
       const result = changePasswordSchema.validate(values)
+
       await expect(result).rejects.toEqual(new ValidationError('12 Caractères'))
     })
 
@@ -79,6 +83,7 @@ describe('changePasswordSchema', () => {
       ],
     ])('should fail due to not have 1 uppercase character', async (values) => {
       const result = changePasswordSchema.validate(values)
+
       await expect(result).rejects.toEqual(new ValidationError('1 Majuscule'))
     })
 
@@ -97,6 +102,7 @@ describe('changePasswordSchema', () => {
       ],
     ])('should fail due to not have 1 number character', async (values) => {
       const result = changePasswordSchema.validate(values)
+
       await expect(result).rejects.toEqual(new ValidationError('1 Chiffre'))
     })
   })

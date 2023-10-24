@@ -26,6 +26,7 @@ describe('<BookingDetailsCancelButton />', () => {
       code: 'someCode',
     }
     renderBookingDetailsCancelButton(booking)
+
     expect(screen.getByTestId('Terminer')).toBeOnTheScreen()
   })
 
@@ -34,6 +35,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = null
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
+
     expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
   })
 
@@ -44,6 +46,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = date.toISOString()
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
+
     expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
   })
 
@@ -53,6 +56,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = '2020-03-15T23:01:37.925926'
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
+
     expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
   })
 
@@ -90,6 +94,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = '2020-11-01T00:00:00Z'
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
+
     expect(
       screen.getByText(
         'Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a01 novembre 2020'
@@ -103,6 +108,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.stock.offer.isDigital = false
     mockedisUserExBeneficiary.mockReturnValueOnce(true)
     renderBookingDetailsCancelButton(booking)
+
     expect(
       screen.getByText(
         'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1 novembre 2020'
@@ -138,6 +144,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = null
 
     renderBookingDetailsCancelButton(booking)
+
     expect(screen.queryByTestId('cancel-annulation-message')).not.toBeOnTheScreen()
   })
 
@@ -149,6 +156,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
 
       renderBookingDetailsCancelButton(booking)
+
       expect(screen.queryByText('Ta réservation sera archivée le 17/03/2021')).not.toBeOnTheScreen()
     })
 
@@ -159,6 +167,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
 
       renderBookingDetailsCancelButton(booking)
+
       expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
     })
   })
@@ -173,6 +182,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.totalAmount = 0
 
       renderBookingDetailsCancelButton(booking)
+
       expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
     })
 
@@ -185,6 +195,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.totalAmount = 0
 
       renderBookingDetailsCancelButton(booking)
+
       expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
     })
 
@@ -197,6 +208,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.totalAmount = 0
 
       renderBookingDetailsCancelButton(booking)
+
       expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
     })
 
@@ -209,6 +221,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.totalAmount = 0
 
       renderBookingDetailsCancelButton(booking)
+
       expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
     })
   })

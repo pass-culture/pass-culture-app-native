@@ -36,6 +36,7 @@ describe('useEndedBookingFromOfferId', () => {
     })
 
     await act(async () => {})
+
     expect(result.current?.data?.id).toEqual(booking.id)
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })

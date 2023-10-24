@@ -18,6 +18,7 @@ const navigationProps = {
 describe('<NotYetUnderageEligibility />', () => {
   it('should render properly', () => {
     render(<NotYetUnderageEligibility {...navigationProps} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -27,6 +28,9 @@ describe('<NotYetUnderageEligibility />', () => {
     const button = screen.getByText('Retourner à l’accueil')
     fireEvent.press(button)
 
-    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
   })
 })

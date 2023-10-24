@@ -139,8 +139,9 @@ describe('<SearchFilter/>', () => {
       fireEvent.press(screen.getByText('Réinitialiser'))
     })
 
-    expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
+    expect(analytics.logReinitializeFilters).toHaveBeenCalledTimes(1)
   })
+
   it('should display back button on header', async () => {
     renderSearchFilter()
     await act(async () => {})

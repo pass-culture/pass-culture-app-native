@@ -55,6 +55,7 @@ describe('<BookingConfirmation />', () => {
 
   it('should render correctly', () => {
     render(<BookingConfirmation />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -122,8 +123,8 @@ describe('<BookingConfirmation />', () => {
       fireEvent.press(screen.getByText('Voir ma réservation'))
 
       await waitFor(() => {
-        expect(analytics.logSeeMyBooking).toBeCalledWith(mockOfferId)
-        expect(reset).toBeCalledWith({
+        expect(analytics.logSeeMyBooking).toHaveBeenCalledWith(mockOfferId)
+        expect(reset).toHaveBeenCalledWith({
           index: 1,
           routes: [
             {
@@ -151,7 +152,7 @@ describe('<BookingConfirmation />', () => {
 
         fireEvent.press(screen.getByText(buttonWording))
 
-        expect(BatchUser.trackEvent).toBeCalledWith('has_booked')
+        expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_booked')
       }
     )
   })

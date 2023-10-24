@@ -19,9 +19,11 @@ describe('[Analytics utils]', () => {
     contentOffset: { y: 900 },
     contentSize: { height: 1600 },
   }
+
   it('event should not be close to bottom', () => {
     expect(isCloseToBottom(nativeEventMiddle as unknown as NativeScrollEvent)).toBeFalsy()
   })
+
   it('event should be close to bottom', () => {
     expect(isCloseToBottom(nativeEventBottom as unknown as NativeScrollEvent)).toBeTruthy()
   })
@@ -33,6 +35,7 @@ describe('[Analytics utils]', () => {
         view: SearchView.Results,
         date: null,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -45,6 +48,7 @@ describe('[Analytics utils]', () => {
         view: SearchView.Results,
         date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchDate: JSON.stringify({
@@ -60,6 +64,7 @@ describe('[Analytics utils]', () => {
         ...initialSearchState,
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -72,6 +77,7 @@ describe('[Analytics utils]', () => {
         isAutocomplete: true,
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchIsAutocomplete: true,
@@ -85,6 +91,7 @@ describe('[Analytics utils]', () => {
         maxPrice: '30',
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchMaxPrice: '30',
@@ -98,6 +105,7 @@ describe('[Analytics utils]', () => {
         minPrice: '10',
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchMinPrice: '10',
@@ -111,6 +119,7 @@ describe('[Analytics utils]', () => {
         offerCategories: [],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -123,6 +132,7 @@ describe('[Analytics utils]', () => {
         offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchCategories: JSON.stringify([SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]),
@@ -136,6 +146,7 @@ describe('[Analytics utils]', () => {
         offerGenreTypes: [],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -148,6 +159,7 @@ describe('[Analytics utils]', () => {
         offerGenreTypes: [{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchGenreTypes: JSON.stringify([{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }]),
@@ -161,6 +173,7 @@ describe('[Analytics utils]', () => {
         offerIsDuo: true,
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsDuo: true,
@@ -174,6 +187,7 @@ describe('[Analytics utils]', () => {
         offerIsFree: true,
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsFree: true,
@@ -187,6 +201,7 @@ describe('[Analytics utils]', () => {
         offerNativeCategories: [],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -199,6 +214,7 @@ describe('[Analytics utils]', () => {
         offerNativeCategories: [NativeCategoryIdEnumv2.CD],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchNativeCategories: JSON.stringify([NativeCategoryIdEnumv2.CD]),
@@ -212,6 +228,7 @@ describe('[Analytics utils]', () => {
         query: '',
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -224,6 +241,7 @@ describe('[Analytics utils]', () => {
         query: 'angele',
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchQuery: 'angele',
@@ -237,6 +255,7 @@ describe('[Analytics utils]', () => {
         timeRange: null,
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
@@ -249,6 +268,7 @@ describe('[Analytics utils]', () => {
         timeRange: [18, 22],
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchTimeRange: JSON.stringify([18, 22]),
@@ -262,6 +282,7 @@ describe('[Analytics utils]', () => {
         isFromHistory: true,
         view: SearchView.Results,
       })
+
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchIsBasedOnHistory: true,
@@ -276,6 +297,7 @@ describe('[Analytics utils]', () => {
         locationType: LocationType.EVERYWHERE,
       }
       const locationFilterParam = buildLocationFilterParam(everywhereType)
+
       expect(locationFilterParam).toEqual(JSON.stringify(everywhereType))
     })
 
@@ -285,6 +307,7 @@ describe('[Analytics utils]', () => {
         aroundRadius: 100,
       }
       const locationFilterParam = buildLocationFilterParam(aroundMeType)
+
       expect(locationFilterParam).toEqual(JSON.stringify(aroundMeType))
     })
 
@@ -298,6 +321,7 @@ describe('[Analytics utils]', () => {
         },
       }
       const locationFilterParam = buildLocationFilterParam(venueType)
+
       expect(locationFilterParam).toEqual(
         JSON.stringify({ locationType: LocationType.VENUE, label: 'Accor Arena' })
       )
@@ -313,6 +337,7 @@ describe('[Analytics utils]', () => {
         },
       }
       const locationFilterParam = buildLocationFilterParam(venueType)
+
       expect(locationFilterParam).toEqual(
         JSON.stringify({
           locationType: LocationType.VENUE,
@@ -332,6 +357,7 @@ describe('[Analytics utils]', () => {
         aroundRadius: 100,
       }
       const locationFilterParam = buildLocationFilterParam(placeType)
+
       expect(locationFilterParam).toEqual(
         JSON.stringify({ locationType: LocationType.PLACE, label: 'Rue de la Paix, Paris' })
       )
@@ -348,6 +374,7 @@ describe('[Analytics utils]', () => {
         aroundRadius: 100,
       }
       const locationFilterParam = buildLocationFilterParam(placeType)
+
       expect(locationFilterParam).toEqual(
         JSON.stringify({
           locationType: LocationType.PLACE,

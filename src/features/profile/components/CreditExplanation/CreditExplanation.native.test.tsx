@@ -8,17 +8,20 @@ import { fireEvent, render, screen } from 'tests/utils'
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
     render(<CreditExplanation isDepositExpired age={18} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly for valid credit', () => {
     render(<CreditExplanation isDepositExpired={false} age={18} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   describe('With modal', () => {
     it('should not display modal if button is not triggered', () => {
       render(<CreditExplanation isDepositExpired age={18} />)
+
       expect(screen.queryByTestId('modalHeader')).not.toBeOnTheScreen()
     })
 
@@ -26,6 +29,7 @@ describe('<CreditExplanation/>', () => {
       render(<CreditExplanation isDepositExpired age={18} />)
       const explanationButton = screen.getByTestId('Mon crédit est expiré, que\u00a0faire\u00a0?')
       fireEvent.press(explanationButton)
+
       expect(screen.queryByTestId('modalHeader')).toBeOnTheScreen()
     })
   })
@@ -35,6 +39,7 @@ describe('<CreditExplanation/>', () => {
       render(<CreditExplanation isDepositExpired={false} age={18} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
       fireEvent.press(explanationButton)
+
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
     })
 
@@ -42,6 +47,7 @@ describe('<CreditExplanation/>', () => {
       render(<CreditExplanation isDepositExpired={false} age={17} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
       fireEvent.press(explanationButton)
+
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 17 })
     })
   })

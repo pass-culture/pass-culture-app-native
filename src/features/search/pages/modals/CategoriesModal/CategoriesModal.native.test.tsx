@@ -42,9 +42,11 @@ describe('<CategoriesModal/>', () => {
   afterEach(() => {
     mockData = placeholderData
   })
+
   describe('With categories view', () => {
     it('should render correctly', () => {
       renderCategories()
+
       expect(screen.toJSON()).toMatchSnapshot()
     })
 
@@ -56,6 +58,7 @@ describe('<CategoriesModal/>', () => {
 
     it('should show all categories', () => {
       renderCategories()
+
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
       expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
       expect(screen.getByText('Musées & visites culturelles')).toBeOnTheScreen()
@@ -65,6 +68,7 @@ describe('<CategoriesModal/>', () => {
     it('should not show categories when the backend returns no category', () => {
       mockData = { ...mockData, searchGroups: [] }
       renderCategories()
+
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
       expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
@@ -79,6 +83,7 @@ describe('<CategoriesModal/>', () => {
         ],
       }
       renderCategories()
+
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
       expect(screen.queryByText('Films, séries, cinéma')).toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
@@ -140,6 +145,7 @@ describe('<CategoriesModal/>', () => {
 
       await waitFor(() => {
         const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+
         expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
       })
     })
@@ -191,6 +197,7 @@ describe('<CategoriesModal/>', () => {
       })
       const previousButton = screen.getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
+
       expect(screen.getByText('Catégories')).toBeOnTheScreen()
     })
 
@@ -249,6 +256,7 @@ describe('<CategoriesModal/>', () => {
 
       await waitFor(() => {
         const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+
         expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
       })
     })
@@ -302,6 +310,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       fireEvent.press(screen.getByText('Livres papier'))
+
       expect(screen.getByText('Bandes dessinées')).toBeOnTheScreen()
     })
 
@@ -312,6 +321,7 @@ describe('<CategoriesModal/>', () => {
       const previousButton = screen.getByTestId('Revenir en arrière')
 
       fireEvent.press(previousButton)
+
       expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
 
@@ -377,6 +387,7 @@ describe('<CategoriesModal/>', () => {
 
       await waitFor(() => {
         const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+
         expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
       })
     })

@@ -26,6 +26,7 @@ describe('ThematicHighlightModule', () => {
         endingDate={CURRENT_DATE}
       />
     )
+
     expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeOnTheScreen()
   })
 
@@ -38,6 +39,7 @@ describe('ThematicHighlightModule', () => {
         endingDate={PASSED_DATE}
       />
     )
+
     expect(screen.queryByText(formattedThematicHighlightModule.title)).not.toBeOnTheScreen()
   })
 

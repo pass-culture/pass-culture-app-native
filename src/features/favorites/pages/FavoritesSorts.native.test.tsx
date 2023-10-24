@@ -44,10 +44,12 @@ describe('<FavoritesSorts/>', () => {
     mockPosition = DEFAULT_POSITION
     mockPositionError = null
   })
+
   afterEach(jest.resetAllMocks)
 
   it('should render correctly', () => {
     renderFavoritesSort()
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -80,7 +82,7 @@ describe('<FavoritesSorts/>', () => {
       fireEvent.press(screen.getByText('Valider'))
 
       await waitFor(() => {
-        expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
+        expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
           sortBy: expectedAnalytics,
         })
       })
@@ -110,7 +112,7 @@ describe('<FavoritesSorts/>', () => {
       expect(
         screen.queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
       ).not.toBeOnTheScreen()
-      expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
+      expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
         sortBy: 'AROUND_ME',
       })
     })
@@ -125,10 +127,10 @@ describe('<FavoritesSorts/>', () => {
     fireEvent.press(screen.getByText('Valider'))
 
     await waitFor(() => {
-      expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
+      expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
         sortBy: 'RECENTLY_ADDED',
       })
-      expect(analytics.logHasAppliedFavoritesSorting).not.toBeCalledWith({
+      expect(analytics.logHasAppliedFavoritesSorting).not.toHaveBeenCalledWith({
         sortBy: 'AROUND_ME',
       })
     })

@@ -108,6 +108,7 @@ describe('fetchOffer', () => {
         clickAnalytics: true,
       })
     })
+
     it('should fetch with facetFilters parameter when one category is provided and when underage', () => {
       const query = 'searched query'
       const offerCategories = ['LECON']

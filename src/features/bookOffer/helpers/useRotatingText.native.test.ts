@@ -22,12 +22,14 @@ describe('useRotatingText', () => {
 
     // Skipping only 1s of 3s
     jest.advanceTimersByTime(1000)
+
     expect(hook.result.current).toEqual('Hello')
 
     // Skipping rest
     act(() => {
       jest.runOnlyPendingTimers()
     })
+
     expect(hook.result.current).toEqual('Jest')
   })
 
@@ -46,11 +48,13 @@ describe('useRotatingText', () => {
     act(() => {
       jest.advanceTimersByTime(3000)
     })
+
     expect(hook.result.current).toEqual('Jest')
 
     act(() => {
       jest.advanceTimersByTime(2000)
     })
+
     expect(hook.result.current).toEqual('Hello')
   })
 
@@ -65,11 +69,13 @@ describe('useRotatingText', () => {
     act(() => {
       jest.runOnlyPendingTimers()
     })
+
     expect(hook.result.current).toEqual('Jest')
 
     act(() => {
       jest.runOnlyPendingTimers()
     })
+
     expect(hook.result.current).toEqual('Jest')
   })
 
@@ -101,15 +107,19 @@ describe('useRotatingText', () => {
     act(() => {
       jest.runOnlyPendingTimers()
     })
+
     expect(hook.result.current).toEqual('Hello')
 
     act(() => {
       hook.rerender(true)
     })
+
     expect(hook.result.current).toEqual('Hello')
+
     act(() => {
       jest.runOnlyPendingTimers()
     })
+
     expect(hook.result.current).toEqual('Jest')
   })
 })

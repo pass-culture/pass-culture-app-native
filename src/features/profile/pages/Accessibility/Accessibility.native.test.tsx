@@ -7,6 +7,7 @@ import { render, fireEvent, screen } from 'tests/utils'
 describe('Accessibility', () => {
   it('should render correctly', () => {
     render(<Accessibility />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -22,6 +23,6 @@ describe('Accessibility', () => {
     const row = screen.getByText(title)
     fireEvent.press(row)
 
-    expect(navigate).toBeCalledWith(route, undefined)
+    expect(navigate).toHaveBeenCalledWith(route, undefined)
   })
 })

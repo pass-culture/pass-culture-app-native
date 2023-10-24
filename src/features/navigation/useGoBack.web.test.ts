@@ -36,6 +36,7 @@ describe('useGoBack()', () => {
     it('should return true if canGoBack = true', () => {
       mockCanGoBack = true
       const { result } = renderUseGoBack()
+
       expect(result.current.canGoBack()).toBe(true)
     })
 
@@ -48,6 +49,7 @@ describe('useGoBack()', () => {
           length: historyLength,
         }))
         const { result } = renderUseGoBack()
+
         expect(result.current.canGoBack()).toBe(historyLength > 2)
       }
     )
@@ -58,7 +60,8 @@ describe('useGoBack()', () => {
       mockCanGoBack = false
       const { result } = renderUseGoBack()
       result.current.goBack()
-      expect(mockNavigate).toBeCalledWith(...homeNavConfig)
+
+      expect(mockNavigate).toHaveBeenCalledWith(...homeNavConfig)
     })
 
     it("should use history if previous route doesn't exist and canGoBack = true", async () => {
@@ -67,6 +70,7 @@ describe('useGoBack()', () => {
 
       const { result } = renderUseGoBack()
       result.current.goBack()
+
       expect(mockHistoryBack).toHaveBeenCalledTimes(1)
     })
 
@@ -75,6 +79,7 @@ describe('useGoBack()', () => {
       mockPreviousRoute.name = 'Login'
       const { result } = renderUseGoBack()
       result.current.goBack()
+
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })

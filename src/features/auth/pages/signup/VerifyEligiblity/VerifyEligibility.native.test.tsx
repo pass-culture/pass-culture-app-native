@@ -14,6 +14,7 @@ jest.mock('features/navigation/navigationRef')
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', () => {
     render(<VerifyEligibility />)
+
     expect(screen).toMatchSnapshot()
   })
 

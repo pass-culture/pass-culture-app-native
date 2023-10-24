@@ -17,6 +17,7 @@ describe('TicketBody', () => {
   describe('<QrCode/> display', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
       render(<TicketBody {...initialProps} />)
+
       expect(screen.queryByTestId('qr-code')).toBeOnTheScreen()
     })
 
@@ -30,6 +31,7 @@ describe('TicketBody', () => {
   describe('Withdrawal', () => {
     it("should not display withdrawal informations for legacy offer that doesn't withdrawal informations", () => {
       render(<TicketBody {...initialProps} withdrawalType={undefined} />)
+
       expect(screen.queryByTestId('withdrawal-info')).not.toBeOnTheScreen()
     })
 

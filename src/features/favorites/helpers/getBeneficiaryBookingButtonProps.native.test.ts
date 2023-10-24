@@ -18,6 +18,7 @@ describe('getBeneficiaryBookingButtonProps', () => {
       user,
       mockOnInAppBooking
     )
+
     expect(buttonProperties).toEqual({
       wording: 'Offre réservée',
       disabled: true,
@@ -32,6 +33,7 @@ describe('getBeneficiaryBookingButtonProps', () => {
       user,
       mockOnInAppBooking
     )
+
     expect(buttonProperties).toEqual({
       wording: 'Offre expirée',
       disabled: true,
@@ -46,6 +48,7 @@ describe('getBeneficiaryBookingButtonProps', () => {
       user,
       mockOnInAppBooking
     )
+
     expect(buttonProperties).toEqual({
       wording: 'Offre expirée',
       disabled: true,
@@ -61,6 +64,7 @@ describe('getBeneficiaryBookingButtonProps', () => {
       user,
       mockOnInAppBooking
     )
+
     expect(buttonProperties).toEqual({
       wording: 'Crédit insuffisant',
       disabled: true,
@@ -75,6 +79,7 @@ describe('getBeneficiaryBookingButtonProps', () => {
       user,
       mockOnInAppBooking
     )
+
     expect(buttonProperties.wording).toEqual('Réserver')
     expect(buttonProperties.accessibilityLabel).toEqual('Réserver l’offre Spectacle de test')
     expect(buttonProperties.onPress).toBeInstanceOf(Function)
@@ -89,6 +94,7 @@ describe('getBeneficiaryBookingButtonProps', () => {
       user,
       mockOnInAppBooking
     )
+
     expect(buttonProperties.wording).toEqual('Réserver')
     expect(buttonProperties.accessibilityLabel).toEqual('Réserver l’offre Spectacle de test')
     expect(buttonProperties.onPress).toBeInstanceOf(Function)

@@ -46,8 +46,10 @@ describe('formatHour()', () => {
 describe('getStatusFromStocks()', () => {
   it('should return NOT_BOOKABLE if no stock', () => {
     const status = getStatusFromStocks([], 1000)
+
     expect(status).toEqual(OfferStatus.NOT_BOOKABLE)
   })
+
   it('should return NOT_BOOKABLE if no bookable stock', () => {
     const status = getStatusFromStocks(
       [
@@ -56,8 +58,10 @@ describe('getStatusFromStocks()', () => {
       ],
       1000
     )
+
     expect(status).toEqual(OfferStatus.NOT_BOOKABLE)
   })
+
   it('should return NOT_BOOKABLE if the bookable stocks are too expensive', () => {
     const status = getStatusFromStocks(
       [
@@ -66,8 +70,10 @@ describe('getStatusFromStocks()', () => {
       ],
       1000
     )
+
     expect(status).toEqual(OfferStatus.NOT_BOOKABLE)
   })
+
   it('should return BOOKABLE if one bookable stock is under the user credit', () => {
     const status = getStatusFromStocks(
       [
@@ -77,6 +83,7 @@ describe('getStatusFromStocks()', () => {
       ],
       2000
     )
+
     expect(status).toEqual(OfferStatus.BOOKABLE)
   })
 })

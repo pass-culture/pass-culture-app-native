@@ -39,6 +39,7 @@ describe('<ForgottenPassword />', () => {
 
     await waitFor(() => {
       const validateButton = screen.getByText('Valider')
+
       expect(validateButton).toBeEnabled()
     })
   })
@@ -62,7 +63,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(leftIcon)
 
     await waitFor(() => {
-      expect(navigate).toBeCalledWith('Login')
+      expect(navigate).toHaveBeenCalledWith('Login')
     })
   })
 
@@ -105,7 +106,7 @@ describe('<ForgottenPassword />', () => {
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
-      expect(replace).toBeCalledTimes(1)
+      expect(replace).toHaveBeenCalledTimes(1)
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
@@ -127,6 +128,7 @@ describe('<ForgottenPassword />', () => {
       'ForgottenPasswordOnRecaptchaError'
     )
   })
+
   it('should not log to Sentry on reCAPTCHA network error', async () => {
     renderForgottenPassword()
 
@@ -151,7 +153,7 @@ describe('<ForgottenPassword />', () => {
     expect(
       screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
     ).toBeOnTheScreen()
-    expect(navigate).not.toBeCalled()
+    expect(navigate).not.toHaveBeenCalled()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
@@ -176,7 +178,7 @@ describe('<ForgottenPassword />', () => {
         'Échec de la requête https://localhost/native/v1/request_password_reset, code: 400',
         'ForgottenPasswordRequestResetError'
       )
-      expect(navigate).not.toBeCalled()
+      expect(navigate).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
@@ -234,7 +236,7 @@ describe('<ForgottenPassword />', () => {
       const continueButton = screen.getByText('Valider')
       fireEvent.press(continueButton)
 
-      expect(isEmailValid).toReturnWith(true)
+      expect(isEmailValid).toHaveReturnedWith(true)
       expect(
         screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'

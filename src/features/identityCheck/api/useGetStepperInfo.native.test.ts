@@ -19,6 +19,7 @@ describe('useGetStepperInfo', () => {
     )
     const result = renderGetStepperInfo()
     await act(async () => {})
+
     expect(result.result.current).toEqual({
       stepToDisplay: SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
       title: 'Titre Stepper',
@@ -26,6 +27,7 @@ describe('useGetStepperInfo', () => {
       identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
     })
   })
+
   it('should return an errorMessage', async () => {
     server.use(
       rest.get(env.API_BASE_URL + '/native/v1/subscription/stepper', (_req, res, ctx) =>
@@ -34,6 +36,7 @@ describe('useGetStepperInfo', () => {
     )
     const result = renderGetStepperInfo()
     await act(async () => {})
+
     expect(result.result.current).toEqual({
       stepToDisplay: SubscriptionStepperErrorResponseFixture.subscriptionStepsToDisplay,
       title: 'Titre Stepper',
@@ -51,6 +54,7 @@ describe('useGetStepperInfo', () => {
     )
     const result = renderGetStepperInfo()
     await act(async () => {})
+
     expect(result.result.current).toEqual({
       stepToDisplay: [],
       title: '',

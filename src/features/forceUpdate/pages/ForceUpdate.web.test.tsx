@@ -11,6 +11,7 @@ describe('<ForceUpdate/>', () => {
     render(<ForceUpdate resetErrorBoundary={() => null} />)
 
     const goToWebappButton = screen.queryByText('Utiliser la version web')
+
     expect(goToWebappButton).not.toBeInTheDocument()
   })
 

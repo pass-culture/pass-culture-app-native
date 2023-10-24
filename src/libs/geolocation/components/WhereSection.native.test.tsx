@@ -32,6 +32,7 @@ describe('WhereSection', () => {
     act(() => {
       fireEvent.press(screen.getByText('Voir l’itinéraire'))
     })
+
     expect(beforeNavigateToItinerary).toHaveBeenCalledTimes(1)
   })
 })

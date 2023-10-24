@@ -28,6 +28,7 @@ describe('<VenueSection />', () => {
         title="Lieu de retrait"
       />
     )
+
     expect(screen.queryByText('Voir l’itinéraire')).toBeOnTheScreen()
   })
 
@@ -80,6 +81,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
@@ -92,6 +94,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
@@ -104,6 +107,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
@@ -116,6 +120,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
@@ -128,6 +133,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
@@ -140,6 +146,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
@@ -152,6 +159,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
   })
@@ -181,6 +189,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByTestId('venue-card')).toBeOnTheScreen()
     })
 
@@ -193,6 +202,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByTestId('venue-info')).not.toBeOnTheScreen()
     })
 
@@ -239,6 +249,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByTestId('venue-info')).toBeOnTheScreen()
     })
 
@@ -250,6 +261,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
+
       expect(screen.queryByTestId('venue-card')).not.toBeOnTheScreen()
     })
   })

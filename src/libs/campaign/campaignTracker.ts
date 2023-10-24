@@ -70,7 +70,7 @@ async function getUserId(): Promise<string | undefined> {
     }
     appsFlyer.getAppsFlyerUID(getAppsFlyerUIDCallback)
   })
-  return await appsFlyerUserIdPromise
+  return appsFlyerUserIdPromise
 }
 
 function startAppsFlyer(enabled: boolean) {

@@ -11,6 +11,7 @@ describe('getPosition()', () => {
       .spyOn(Geolocation, 'getCurrentPosition')
       .mockImplementation(getCurrentPositionSuccess)
     const position = await getPosition()
+
     expect(getCurrentPositionSpy).toHaveBeenCalledTimes(1)
     expect(position).toEqual(EiffelTourCoordinates)
   })

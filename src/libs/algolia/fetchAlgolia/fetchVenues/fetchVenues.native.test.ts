@@ -37,12 +37,14 @@ describe('fetchVenues', () => {
     visual_disability: false,
     website: 'https://my.website.com',
   }
+
   it('should fetch venues', () => {
     fetchVenues({ query: 'queryString' })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
     expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [] })
   })
+
   it.each`
     fixture | expectedResult
     ${{ hits: [venueFixture] }} | ${{

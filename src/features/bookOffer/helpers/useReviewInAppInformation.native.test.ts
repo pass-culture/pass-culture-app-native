@@ -25,6 +25,7 @@ describe('useReviewInAppInformation', () => {
     storage.saveObject('times_review_has_been_requested', 3)
     const { result } = renderHook(() => useReviewInAppInformation())
     await act(async () => {})
+
     expect(result.current.shouldReviewBeRequested).toBe(true)
   })
 

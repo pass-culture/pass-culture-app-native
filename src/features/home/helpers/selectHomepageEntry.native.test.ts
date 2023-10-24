@@ -153,6 +153,7 @@ describe('useSelectHomepageEntry', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry())
     const Homepage = result.current([])
+
     expect(Homepage).toBeUndefined()
   })
 
@@ -160,6 +161,7 @@ describe('useSelectHomepageEntry', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry(homeEntryId))
     const Homepage = result.current(shuffle(homepageEntries))
+
     expect(Homepage).toBe(homeEntryWithId)
   })
 
@@ -281,6 +283,7 @@ describe('useSelectHomepageEntry', () => {
       it('should retrieve the home entry tagged master+userunderage if available', () => {
         const { result } = renderHook(useSelectHomepageEntry)
         const playlist = result.current(shuffle(homepageEntries))
+
         expect(playlist).toStrictEqual(homeEntryUnderageMaster)
       })
 
@@ -293,24 +296,28 @@ describe('useSelectHomepageEntry', () => {
           adaptedHomepage,
           homeEntryWithId,
         ]
+
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
       })
 
       it('should retrieve the only playlist tagged master if no tag userunderage available', () => {
         const { result } = renderHook(useSelectHomepageEntry)
         const playlists = [homeEntryAll, homeEntryMaster, adaptedHomepage, homeEntryWithId]
+
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
       })
 
       it('should retrieve the first userunderage playlist even if no playlist tagged master', () => {
         const { result } = renderHook(useSelectHomepageEntry)
         const playlists = [homeEntryUnderage, homeEntryAll, adaptedHomepage, homeEntryWithId]
+
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryUnderage)
       })
 
       it('should retrieve the first playlist if no playlist tagged master or userunderage', () => {
         const { result } = renderHook(useSelectHomepageEntry)
         const playlists = shuffle([homeEntryAll, adaptedHomepage, homeEntryWithId])
+
         expect(result.current(playlists)).toStrictEqual(playlists[0])
       })
     })
@@ -337,6 +344,7 @@ describe('useSelectHomepageEntry', () => {
       it('should retrieve the playlist tagged master+usergrandpublic if available', () => {
         const { result } = renderHook(useSelectHomepageEntry)
         const playlist = result.current(shuffle(homepageEntries))
+
         expect(playlist).toStrictEqual(homeEntryAllMaster)
       })
 
@@ -350,6 +358,7 @@ describe('useSelectHomepageEntry', () => {
           adaptedHomepage,
           homeEntryWithId,
         ]
+
         expect(result.current(shuffle(playlists))).toStrictEqual(homeEntryMaster)
       })
 
@@ -361,12 +370,14 @@ describe('useSelectHomepageEntry', () => {
           adaptedHomepage,
           homeEntryWithId,
         ])
+
         expect(result.current(playlists)).toStrictEqual(homeEntryAll)
       })
 
       it('should retrieve the first playlist if no playlist tagged master or usergrandpublic', () => {
         const { result } = renderHook(useSelectHomepageEntry)
         const playlists = shuffle([homeEntryUnderage, adaptedHomepage, homeEntryWithId])
+
         expect(result.current(playlists)).toStrictEqual(playlists[0])
       })
     })

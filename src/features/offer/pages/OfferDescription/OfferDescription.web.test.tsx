@@ -18,6 +18,7 @@ describe('<OfferDescription/>', () => {
       const { container } = render(<OfferDescription />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

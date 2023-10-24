@@ -19,19 +19,23 @@ describe('OfferCaption component', () => {
 
   it('should render correctly', () => {
     const { toJSON } = render(<OfferCaption {...props} />)
+
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should have the isDuo text if user is Beneficiary', () => {
     render(<OfferCaption {...props} />)
+
     expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€ - Duo')
 
     render(<OfferCaption {...props} isDuo={false} />).getByTestId
+
     expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€')
   })
 
   it('should not have the isDuo text if user is not Beneficiary', () => {
     render(<OfferCaption {...props} isBeneficiary={false} />)
+
     expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€')
   })
 })

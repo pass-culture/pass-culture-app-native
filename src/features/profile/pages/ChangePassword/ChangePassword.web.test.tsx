@@ -20,6 +20,7 @@ describe('<ChangePassword/>', () => {
       const { container } = render(<ChangePassword />)
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })

@@ -7,6 +7,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 describe('<FavoriteListOfferModal />', () => {
   it('should render correctly', () => {
     render(<FavoriteListOfferModal visible hideModal={jest.fn()} showSurveyModal={jest.fn()} />)
+
     expect(screen).toMatchSnapshot()
   })
 

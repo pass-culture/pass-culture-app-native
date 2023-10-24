@@ -8,6 +8,7 @@ describe('Timezones', () => {
     expect(new Date().getTimezoneOffset()).toBe(0)
   })
 })
+
 describe('time', () => {
   describe('computeTimeRangeFromHoursToSeconds', () => {
     it('should convert hours in seconds from given time range in UTC', () => {
@@ -32,6 +33,7 @@ describe('time', () => {
 
       // Then
       const april_16_2020_midnight = 1586995200
+
       expect(result).toBe(april_16_2020_midnight)
     })
   })
@@ -46,6 +48,7 @@ describe('time', () => {
 
       // Then
       const april_16_2020_23_59_59 = 1587081599
+
       expect(result).toBe(april_16_2020_23_59_59)
     })
   })
@@ -60,6 +63,7 @@ describe('time', () => {
 
       // Then
       const saturday_may_02_2020_eleven_am_timestamp = 1588417200
+
       expect(result).toBe(saturday_may_02_2020_eleven_am_timestamp)
     })
 
@@ -72,6 +76,7 @@ describe('time', () => {
 
       // Then
       const saturday_may_02_2020_eleven_am_timestamp = 1588418643
+
       expect(result).toBe(saturday_may_02_2020_eleven_am_timestamp)
     })
 
@@ -84,6 +89,7 @@ describe('time', () => {
 
       // Then
       const saturday_may_02_2020_eleven_am_timestamp = 1588418643
+
       expect(result).toBe(saturday_may_02_2020_eleven_am_timestamp)
     })
   })
@@ -121,6 +127,7 @@ describe('time', () => {
 
       // Then
       const sunday_april_19_2020_23_59_59 = 1587340799
+
       expect(result).toBe(sunday_april_19_2020_23_59_59)
     })
 
@@ -133,6 +140,7 @@ describe('time', () => {
 
       // Then
       const sunday_may_03_2020_23_59_59 = 1588550399
+
       expect(result).toBe(sunday_may_03_2020_23_59_59)
     })
 
@@ -145,6 +153,7 @@ describe('time', () => {
 
       // Then
       const sunday_may_03_2020_23_59_59 = 1588550399
+
       expect(result).toBe(sunday_may_03_2020_23_59_59)
     })
   })
@@ -174,6 +183,7 @@ describe('time', () => {
       const may_02_2020_ten_pm_timestamp = 1588456800
       const may_03_2020_six_pm_timestamp = 1588528800
       const may_03_2020_ten_pm_timestamp = 1588543200
+
       expect(dateWithBeginningAndEndingTimes).toStrictEqual([
         [april_28_2020_six_pm_timestamp, april_28_2020_ten_pm_timestamp],
         [april_29_2020_six_pm_timestamp, april_29_2020_ten_pm_timestamp],
@@ -195,6 +205,7 @@ describe('time', () => {
 
       // Then
       const saturday_april_18_2020_midnight = 1587168000
+
       expect(result).toBe(saturday_april_18_2020_midnight)
     })
 
@@ -207,6 +218,7 @@ describe('time', () => {
 
       // Then
       const saturday_may_02_2020_midnight = 1588377600
+
       expect(result).toBe(saturday_may_02_2020_midnight)
     })
 
@@ -219,6 +231,7 @@ describe('time', () => {
 
       // Then
       const saturday_may_02_2020_eleven_am_timestamp = 1588417200
+
       expect(result).toBe(saturday_may_02_2020_eleven_am_timestamp)
     })
 
@@ -231,6 +244,7 @@ describe('time', () => {
 
       // Then
       const sunday_may_03_2020_eleven_am_timestamp = 1588503600
+
       expect(result).toBe(sunday_may_03_2020_eleven_am_timestamp)
     })
 
@@ -245,6 +259,7 @@ describe('time', () => {
 
       // Then
       const sunday_may_03_2020_eleven_am_timestamp_ceiled = 1588503807
+
       expect(result).toBe(sunday_may_03_2020_eleven_am_timestamp_ceiled)
     })
   })
@@ -266,6 +281,7 @@ describe('time', () => {
       const may_02_2020_ten_pm_timestamp = 1588456800
       const may_03_2020_six_pm_timestamp = 1588528800
       const may_03_2020_ten_pm_timestamp = 1588543200
+
       expect(dateWithBeginningAndEndingTimes).toStrictEqual([
         [may_02_2020_six_pm_timestamp, may_02_2020_ten_pm_timestamp],
         [may_03_2020_six_pm_timestamp, may_03_2020_ten_pm_timestamp],

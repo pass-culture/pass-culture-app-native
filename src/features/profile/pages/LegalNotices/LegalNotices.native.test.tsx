@@ -11,6 +11,7 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 describe('LegalNotices', () => {
   it('should render correctly', async () => {
     render(<LegalNotices />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -22,6 +23,7 @@ describe('LegalNotices', () => {
 
     expect(openUrl).toHaveBeenCalledWith(env.CGU_LINK, undefined, true)
   })
+
   it('should navigate when the data-privacy-chart row is clicked', async () => {
     render(<LegalNotices />)
 

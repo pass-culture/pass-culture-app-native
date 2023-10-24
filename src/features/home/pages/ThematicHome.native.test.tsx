@@ -185,6 +185,7 @@ describe('ThematicHome', () => {
     renderThematicHome()
 
     await act(async () => {})
+
     expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
   })
 
@@ -192,6 +193,7 @@ describe('ThematicHome', () => {
     renderThematicHome()
 
     await act(async () => {})
+
     expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 })

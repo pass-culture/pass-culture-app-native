@@ -38,6 +38,7 @@ describe('useAccountSuspensionDate', () => {
     const { result, unmount } = renderSuspensionDateHook()
 
     expect(result.current.data).toBeUndefined()
+
     unmount()
   })
 })

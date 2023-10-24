@@ -30,6 +30,7 @@ describe('useAccountSuspensionStatus', () => {
     const { result } = renderSuspensionDateHook()
 
     await act(async () => {})
+
     expect(result.current.data?.status).toBe(expectedResponse.status)
   })
 
@@ -38,6 +39,7 @@ describe('useAccountSuspensionStatus', () => {
     const { result } = renderSuspensionDateHook()
 
     await act(async () => {})
+
     expect(result.current.data).toBeNull()
   })
 })

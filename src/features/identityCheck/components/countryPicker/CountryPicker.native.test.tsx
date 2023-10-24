@@ -23,7 +23,7 @@ describe('<CountryPicker />', () => {
     fireEvent.press(screen.getByLabelText('Guadeloupe +590'))
 
     await act(async () => {
-      expect(onSelectCountry).toBeCalledWith({
+      expect(onSelectCountry).toHaveBeenCalledWith({
         id: 'GP',
         name: 'Guadeloupe',
         callingCode: '590',

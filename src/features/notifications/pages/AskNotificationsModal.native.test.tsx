@@ -13,6 +13,7 @@ const mockCheckNotifications = jest.spyOn(Permissions, 'checkNotifications')
 const RESULTS = Permissions.RESULTS
 
 const hideModal = jest.fn()
+
 describe('AskNotificationsModal', () => {
   it('should render properly', () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)

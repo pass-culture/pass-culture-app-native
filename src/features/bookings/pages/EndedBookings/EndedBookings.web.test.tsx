@@ -16,6 +16,7 @@ describe('EndedBookings', () => {
       const { container } = renderEndedBookings(bookingsSnap)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

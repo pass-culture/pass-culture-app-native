@@ -43,7 +43,7 @@ describe('openUrl', () => {
       await openUrl(link)
       await act(() => {})
 
-      expect(NativeModules.DefaultBrowserModule.openUrl).toBeCalledWith(link)
+      expect(NativeModules.DefaultBrowserModule.openUrl).toHaveBeenCalledWith(link)
     })
 
     it('should open links on browser using Linking when url is invalid on Android', async () => {
@@ -53,7 +53,7 @@ describe('openUrl', () => {
       const invalidLink = 'abcdef'
       await openUrl(invalidLink)
 
-      expect(openURL).toBeCalledWith(invalidLink)
+      expect(openURL).toHaveBeenCalledWith(invalidLink)
     })
 
     it('should open links with Linking on iOS', async () => {
@@ -62,7 +62,7 @@ describe('openUrl', () => {
       const link = 'https://www.google.com'
       await openUrl(link)
 
-      expect(openURL).toBeCalledWith(link)
+      expect(openURL).toHaveBeenCalledWith(link)
     })
   })
 
@@ -77,8 +77,8 @@ describe('openUrl', () => {
       const link = 'https://mockValidPrefix1' + `/${path}`
       await openUrl(link)
 
-      expect(openURL).not.toBeCalled()
-      expect(navigateFromRef).toBeCalledWith('Offer', { id: 1, from: 'offer' })
+      expect(openURL).not.toHaveBeenCalled()
+      expect(navigateFromRef).toHaveBeenCalledWith('Offer', { id: 1, from: 'offer' })
     })
 
     it('should navigate to external screen even when screen is in-app when isExternal is true (ex: Offer)', async () => {
@@ -89,7 +89,7 @@ describe('openUrl', () => {
       await openUrl(link, undefined, true)
 
       expect(navigateFromRef).not.toHaveBeenCalled()
-      expect(openURL).toBeCalledWith(link)
+      expect(openURL).toHaveBeenCalledWith(link)
     })
 
     it('should navigate to PageNotFound when in-app screen cannot be found (ex: Offer)', async () => {
@@ -101,8 +101,8 @@ describe('openUrl', () => {
       const link = 'https://mockValidPrefix2' + '/unknown'
       await openUrl(link)
 
-      expect(openURL).not.toBeCalled()
-      expect(navigateFromRef).toBeCalledWith('PageNotFound', undefined)
+      expect(openURL).not.toHaveBeenCalled()
+      expect(navigateFromRef).toHaveBeenCalledWith('PageNotFound', undefined)
     })
   })
 
@@ -114,6 +114,7 @@ describe('openUrl', () => {
       await openUrl(link)
 
       await act(async () => {})
+
       expect(analytics.logOpenExternalUrl).toHaveBeenCalledWith(link, {})
     })
 
@@ -123,7 +124,7 @@ describe('openUrl', () => {
       const link = 'https://www.google.com'
       await openUrl(link, { shouldLogEvent: false })
 
-      expect(analytics.logOpenExternalUrl).not.toBeCalled()
+      expect(analytics.logOpenExternalUrl).not.toHaveBeenCalled()
     })
   })
 
@@ -149,6 +150,7 @@ describe('openUrl', () => {
       const fallbackLink = 'https://www.googlefallback.com'
       await openUrl(link, { fallbackUrl: fallbackLink })
       await act(async () => {})
+
       expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
         1,
         'OpenExternalUrlError: Did not open correctly',

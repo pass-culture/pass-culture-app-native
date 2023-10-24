@@ -56,11 +56,13 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 describe('OffersModule component', () => {
   it('should render correctly', () => {
     render(<OffersModule {...props} index={1} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should not render if data is undefined', () => {
     render(<OffersModule {...{ ...props, data: undefined }} />)
+
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 })
@@ -74,6 +76,7 @@ describe('OffersModule component - Analytics', () => {
       // 1st scroll to last item => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
     })
+
     expect(analytics.logAllTilesSeen).toHaveBeenCalledWith({
       moduleName: props.displayParameters.title,
       numberOfTiles: mockNbHits,
@@ -81,6 +84,7 @@ describe('OffersModule component - Analytics', () => {
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
     scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
 

@@ -94,6 +94,7 @@ describe('<Search/>', () => {
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })
@@ -106,6 +107,7 @@ describe('<Search/>', () => {
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })

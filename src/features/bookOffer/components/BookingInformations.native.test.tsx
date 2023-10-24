@@ -35,12 +35,14 @@ describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {
     mockedUseBookingOffer.mockReturnValueOnce(undefined)
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should return empty component when no stock', async () => {
     mockedUseBookingStock.mockReturnValueOnce(undefined)
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -51,6 +53,7 @@ describe('<BookingInformations />', () => {
       dismissModal: () => null,
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -64,6 +67,7 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -83,6 +87,7 @@ describe('<BookingInformations />', () => {
       activationCode: { expirationDate: '2020-12-01T00:00:00Z' },
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -101,6 +106,7 @@ describe('<BookingInformations />', () => {
       dismissModal: () => null,
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -122,6 +128,7 @@ describe('<BookingInformations />', () => {
     })
 
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
 
     expect(screen.getByTestId('price-line__label')).toBeOnTheScreen()
@@ -144,11 +151,13 @@ describe('<BookingInformations />', () => {
     })
 
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
 
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
     expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
   })
+
   it('should not display stock attributes when the offer has not it', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
@@ -166,6 +175,7 @@ describe('<BookingInformations />', () => {
     })
 
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
 
     expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
@@ -181,6 +191,7 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -194,6 +205,7 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -212,6 +224,7 @@ describe('<BookingInformations />', () => {
       price: 0,
     })
     render(<BookingInformations />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -225,6 +238,7 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
     render(<BookingInformations shouldDisplayAddress={false} />)
+
     expect(screen.queryByText('RUE DE CALI')).not.toBeOnTheScreen()
   })
 })

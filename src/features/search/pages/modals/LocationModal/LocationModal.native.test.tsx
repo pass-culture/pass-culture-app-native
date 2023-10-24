@@ -100,6 +100,7 @@ describe('<LocationModal/>', () => {
     renderLocationModal()
 
     const searchButton = await screen.findByLabelText('Rechercher')
+
     expect(searchButton).toBeEnabled()
 
     expect(screen).toMatchSnapshot()
@@ -213,6 +214,7 @@ describe('<LocationModal/>', () => {
     await act(async () => {
       fireEvent.press(radioButton)
     })
+
     expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeOnTheScreen()
   })
 
@@ -227,6 +229,7 @@ describe('<LocationModal/>', () => {
     await act(async () => {
       fireEvent.press(radioButton)
     })
+
     expect(screen.queryByTestId('slider')).toBeOnTheScreen()
   })
 
@@ -253,6 +256,7 @@ describe('<LocationModal/>', () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
     renderLocationModal()
+
     expect(screen.queryByText(geolocationModalText)).not.toBeOnTheScreen()
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
@@ -308,12 +312,14 @@ describe('<LocationModal/>', () => {
 
       const defaultRadioButton = screen.getByTestId(RadioButtonLocation.NO_LOCATION)
       const radioButton = screen.getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
 
       await act(async () => {
         fireEvent.press(radioButton)
       })
+
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
@@ -321,6 +327,7 @@ describe('<LocationModal/>', () => {
       await act(async () => {
         fireEvent.press(resetButton)
       })
+
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
     })
@@ -334,12 +341,14 @@ describe('<LocationModal/>', () => {
 
       const defaultRadioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
       const radioButton = screen.getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
 
       await act(async () => {
         fireEvent.press(radioButton)
       })
+
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: false })
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
@@ -347,6 +356,7 @@ describe('<LocationModal/>', () => {
       await act(async () => {
         fireEvent.press(resetButton)
       })
+
       expect(radioButton.props.accessibilityState).toEqual({ checked: false })
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
     })
@@ -373,7 +383,8 @@ describe('<LocationModal/>', () => {
       await act(async () => {
         fireEvent.press(aroundMeRadioButton)
       })
-      expect(screen.getAllByText(`${MAX_RADIUS}\u00a0km`).length).toEqual(2)
+
+      expect(screen.getAllByText(`${MAX_RADIUS}\u00a0km`)).toHaveLength(2)
     })
 
     it('should reset search input place or venue when pressing reset button', async () => {
@@ -397,6 +408,7 @@ describe('<LocationModal/>', () => {
 
       await act(async () => {
         const searchInput = screen.getByPlaceholderText(`Adresse, cinéma, musée...`)
+
         expect(searchInput.props.value).toEqual('')
       })
     })

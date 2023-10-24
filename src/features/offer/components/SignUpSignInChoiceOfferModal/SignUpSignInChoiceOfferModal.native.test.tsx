@@ -12,6 +12,7 @@ const dismissModal = jest.fn()
 describe('SignUpSignInChoiceOfferModal', () => {
   it('should match previous snapshot', () => {
     render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -21,7 +22,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = screen.getByText('Se connecter')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('Login', {
+    expect(navigate).toHaveBeenCalledWith('Login', {
       preventCancellation: true,
       offerId: OFFER_ID,
     })
@@ -34,7 +35,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = screen.getByText('Créer un compte')
     await fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('SignupForm', {
+    expect(navigate).toHaveBeenCalledWith('SignupForm', {
       preventCancellation: true,
       offerId: OFFER_ID,
     })

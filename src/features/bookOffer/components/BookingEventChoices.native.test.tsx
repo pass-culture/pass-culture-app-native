@@ -59,8 +59,10 @@ describe('<BookingEventChoices />', () => {
       },
     })
   })
+
   it('should display only date step at beginning', () => {
     render(<BookingEventChoices stocks={[]} />)
+
     expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
@@ -78,6 +80,7 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     render(<BookingEventChoices stocks={[]} />)
+
     expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('HourStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
@@ -95,6 +98,7 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     render(<BookingEventChoices stocks={[]} />)
+
     expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('HourStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('DuoStep')).toBeOnTheScreen()
@@ -113,6 +117,7 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     render(<BookingEventChoices stocks={[]} />)
+
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
@@ -170,12 +175,14 @@ describe('<BookingEventChoices />', () => {
 
     it('should display "Choisir les options"', () => {
       render(<BookingEventChoices stocks={[]} />)
+
       expect(screen.getByText('Choisir les options')).toBeOnTheScreen()
     })
 
     it('should not change step when the button is disabled', () => {
       render(<BookingEventChoices stocks={[]} />)
       fireEvent.press(screen.getByText('Choisir les options'))
+
       expect(mockDispatch).not.toHaveBeenCalled()
     })
   })
@@ -196,18 +203,21 @@ describe('<BookingEventChoices />', () => {
 
     it('should display "Valider ces options"', () => {
       render(<BookingEventChoices stocks={[]} />)
+
       expect(screen.getByText('Valider ces options')).toBeOnTheScreen()
     })
 
     it('should change step to confirmation screen when the button is enabled', () => {
       render(<BookingEventChoices stocks={[]} />)
       fireEvent.press(screen.getByText('Valider ces options'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
   })
 
   it('should not display button when prices by categories feature flag disabled', () => {
     render(<BookingEventChoices stocks={[]} enablePricesByCategories />)
+
     expect(
       screen.queryByTestId('modalButtonWithoutEnabledPricesByCategories')
     ).not.toBeOnTheScreen()

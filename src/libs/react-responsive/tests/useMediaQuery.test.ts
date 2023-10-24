@@ -105,6 +105,7 @@ describe('useMediaQuery native', () => {
           minHeight,
           maxHeight,
         })
+
         expect(isMq).toBe(mq)
       }
     )

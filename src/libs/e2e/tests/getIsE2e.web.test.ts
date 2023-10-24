@@ -5,7 +5,9 @@ describe('getIsE2e web', () => {
     process.env.NODE_ENV = 'development'
     // @ts-expect-error : `webdriver` is a read-only property
     globalThis.navigator.webdriver = true
+
     expect(await getIsE2e()).toBeTruthy()
+
     process.env.NODE_ENV = 'test'
   })
 })

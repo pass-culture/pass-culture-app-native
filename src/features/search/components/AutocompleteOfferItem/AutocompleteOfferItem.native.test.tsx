@@ -88,7 +88,7 @@ describe('AutocompleteOfferItem component', () => {
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(navigate).toBeCalledWith(
+      expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...initialSearchState,
           query: mockHit.query,
@@ -131,7 +131,7 @@ describe('AutocompleteOfferItem component', () => {
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(navigate).toBeCalledWith(
+      expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...initialSearchState,
           query: mockHit.query,
@@ -160,7 +160,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHit.query,
@@ -186,7 +186,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithAssociationToNativeCategory.query,
@@ -212,7 +212,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithoutAssociationToNativeCategory.query,
@@ -237,7 +237,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -262,7 +262,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -288,7 +288,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -313,7 +313,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,

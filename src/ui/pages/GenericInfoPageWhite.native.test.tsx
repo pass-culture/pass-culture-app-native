@@ -5,9 +5,11 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
 const onSkip = jest.fn()
+
 describe('<GenericInfoPageWhite />', () => {
   it('should render correctly', () => {
     render(<GenericInfoPageWhite title="GenericInfoPageWhite" icon={BicolorPhonePending} />)
+
     expect(screen).toMatchSnapshot()
   })
 

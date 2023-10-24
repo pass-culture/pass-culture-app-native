@@ -51,6 +51,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
   })
+
   it('should render correctly when logged in at 15', () => {
     mockAuthContextForAllRenders(underageBeneficiaryUser)
     render(<ProfileTutorialAgeInformation {...navProps} />)

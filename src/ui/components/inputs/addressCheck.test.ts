@@ -11,6 +11,7 @@ describe('isAddressValid function', () => {
     "1 rue de l'artillerie",
   ])('should accept a well-formatted address: %s', (address) => {
     const isValid = isAddressValid(address)
+
     expect(isValid).toEqual(true)
   })
 
@@ -18,6 +19,7 @@ describe('isAddressValid function', () => {
     'should reject a unwell-formatted address: %s',
     (address) => {
       const isValid = isAddressValid(address)
+
       expect(isValid).toEqual(false)
     }
   )

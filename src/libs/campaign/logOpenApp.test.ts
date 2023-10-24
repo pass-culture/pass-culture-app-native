@@ -17,6 +17,7 @@ describe('logOpenApp', () => {
   describe('for appsFlyer', () => {
     it.each(acceptedTracking)('should log open app event when status is %s', async (status) => {
       await logOpenApp(status)
+
       expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(1, CampaignEvents.OPEN_APP, {
         af_firebase_pseudo_id: await firebaseAnalytics.getAppInstanceId(),
       })
@@ -24,6 +25,7 @@ describe('logOpenApp', () => {
 
     it.each(refusedTracking)('should not log open event when status is %s', async (status) => {
       await logOpenApp(status)
+
       expect(campaignTracker.logEvent).not.toHaveBeenCalled()
     })
   })
@@ -31,6 +33,7 @@ describe('logOpenApp', () => {
   describe('for firebase', () => {
     it.each(acceptedTracking)('should log open app event when status is %s', async (status) => {
       await logOpenApp(status)
+
       expect(analytics.logOpenApp).toHaveBeenNthCalledWith(1, {
         appsFlyerUserId: 'uniqueCustomerId',
       })
@@ -38,6 +41,7 @@ describe('logOpenApp', () => {
 
     it.each(refusedTracking)('should not log open event when status is %s', async (status) => {
       await logOpenApp(status)
+
       expect(analytics.logOpenApp).not.toHaveBeenCalled()
     })
   })

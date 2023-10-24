@@ -38,6 +38,7 @@ describe('<ConsentSettings/>', () => {
     renderConsentSettings()
 
     await screen.findByTestId('Interrupteur Tout accepter')
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -125,11 +126,11 @@ describe('<ConsentSettings/>', () => {
       fireEvent.press(saveChoice)
     })
 
-    expect(mockShowSuccessSnackBar).toBeCalledWith({
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    expect(mockNavigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
   })
 })
 

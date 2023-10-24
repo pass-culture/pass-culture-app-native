@@ -141,7 +141,7 @@ describe('Profile component', () => {
       const row = screen.getByText('Informations personnelles')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('PersonalData', undefined)
+      expect(mockNavigate).toHaveBeenCalledWith('PersonalData', undefined)
     })
 
     describe('geolocation switch', () => {
@@ -153,6 +153,7 @@ describe('Profile component', () => {
         const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
+
         expect(positionErrorMessage).not.toBeOnTheScreen()
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(true)
       })
@@ -174,6 +175,7 @@ describe('Profile component', () => {
         renderProfile()
 
         const geolocSwitch = screen.getByTestId('Interrupteur Partager ma position')
+
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(false)
       })
 
@@ -186,20 +188,21 @@ describe('Profile component', () => {
 
         fireEvent.press(screen.getByTestId('Interrupteur Partager ma position'))
 
-        expect(mockFavoriteDispatch).toBeCalledWith({
+        expect(mockFavoriteDispatch).toHaveBeenCalledWith({
           type: 'SET_SORT_BY',
           payload: 'RECENTLY_ADDED',
         })
         expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
       })
     })
+
     it('should navigate when the notifications row is clicked', () => {
       renderProfile()
 
       const notificationsButton = screen.getByText('Notifications')
       fireEvent.press(notificationsButton)
 
-      expect(mockNavigate).toBeCalledWith('NotificationSettings', undefined)
+      expect(mockNavigate).toHaveBeenCalledWith('NotificationSettings', undefined)
     })
   })
 
@@ -212,7 +215,7 @@ describe('Profile component', () => {
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(mockNavigate).toBeCalledWith('AgeSelection', {
+        expect(mockNavigate).toHaveBeenCalledWith('AgeSelection', {
           type: TutorialTypes.PROFILE_TUTORIAL,
         })
       })
@@ -226,7 +229,7 @@ describe('Profile component', () => {
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(mockNavigate).toBeCalledWith('ProfileTutorialAgeInformation', { age: 18 })
+        expect(mockNavigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
       })
     })
 
@@ -237,7 +240,7 @@ describe('Profile component', () => {
       const faqButton = screen.getByText('Centre d’aide')
       fireEvent.press(faqButton)
 
-      expect(openUrl).toBeCalledWith(env.FAQ_LINK, undefined, true)
+      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
     })
 
     it('should display tutorial row when user is exbeneficiary', () => {
@@ -271,7 +274,7 @@ describe('Profile component', () => {
       const accessibilityButton = screen.getByText('Accessibilité')
       fireEvent.press(accessibilityButton)
 
-      expect(mockNavigate).toBeCalledWith('Accessibility', undefined)
+      expect(mockNavigate).toHaveBeenCalledWith('Accessibility', undefined)
     })
 
     it('should navigate when the legal notices row is clicked', () => {
@@ -280,7 +283,7 @@ describe('Profile component', () => {
       const legalNoticesButton = screen.getByText('Informations légales')
       fireEvent.press(legalNoticesButton)
 
-      expect(mockNavigate).toBeCalledWith('LegalNotices', undefined)
+      expect(mockNavigate).toHaveBeenCalledWith('LegalNotices', undefined)
     })
 
     it('should navigate when the confidentiality row is clicked', () => {
@@ -289,7 +292,7 @@ describe('Profile component', () => {
       const confidentialityButton = screen.getByText('Confidentialité')
       fireEvent.press(confidentialityButton)
 
-      expect(mockNavigate).toBeCalledWith('ConsentSettings', undefined)
+      expect(mockNavigate).toHaveBeenCalledWith('ConsentSettings', undefined)
     })
   })
 
@@ -298,6 +301,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const shareButton = screen.queryByText('Partage le pass Culture')
+
       expect(shareButton).toBeOnTheScreen()
     })
 
@@ -316,6 +320,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const signoutButton = screen.getByText('Déconnexion')
+
       expect(signoutButton).toBeOnTheScreen()
     })
 
@@ -325,6 +330,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const signoutButton = screen.queryByText('Déconnexion')
+
       expect(signoutButton).not.toBeOnTheScreen()
     })
 
@@ -364,10 +370,11 @@ describe('Profile component', () => {
       const scrollContainer = screen.getByTestId('profile-scrollview')
       fireEvent.scroll(scrollContainer, middleScrollEvent)
 
-      expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(0)
+      expect(analytics.logProfilScrolledToBottom).toHaveBeenCalledTimes(0)
 
       fireEvent.scroll(scrollContainer, bottomScrollEvent)
-      expect(analytics.logProfilScrolledToBottom).toBeCalledTimes(1)
+
+      expect(analytics.logProfilScrolledToBottom).toHaveBeenCalledTimes(1)
     })
 
     it('should log event ShareApp on share banner press', () => {

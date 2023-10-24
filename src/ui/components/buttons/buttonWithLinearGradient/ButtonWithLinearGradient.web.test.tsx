@@ -28,6 +28,7 @@ describe('<ButtonWithLinearGradient />', () => {
     const href = 'https://example.link/'
     render(<ButtonWithLinearGradient wording="Wording to display" href={href} onPress={onPress} />)
     const text = screen.queryByText('Wording to display')
+
     expect(text?.closest('a')?.href).toBe(href)
     expect(text?.closest('a')?.type).toBe('')
   })

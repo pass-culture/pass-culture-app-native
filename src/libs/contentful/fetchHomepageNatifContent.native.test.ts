@@ -4,6 +4,7 @@ import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifCon
 describe('Contentful fetchHomepageNatifContent', () => {
   it('should retrieve a list of adapted homepages', async () => {
     const result = await fetchHomepageNatifContent()
+
     expect(result).toEqual(homepageList)
   })
 })

@@ -36,11 +36,13 @@ describe('<VenueBody /> - Analytics', () => {
     renderVenueBody()
 
     await trigger(screen.getByText('Accessibilité'))
+
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultAccessibility).toHaveBeenCalledWith({ venueId })
 
     await trigger(screen.getByText('Accessibilité'))
     await trigger(screen.getByText('Accessibilité'))
+
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
@@ -48,11 +50,13 @@ describe('<VenueBody /> - Analytics', () => {
     renderVenueBody()
 
     await trigger(screen.getByText('Modalités de retrait'))
+
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith({ venueId })
 
     await trigger(screen.getByText('Modalités de retrait'))
     await trigger(screen.getByText('Modalités de retrait'))
+
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
@@ -61,6 +65,7 @@ describe('<VenueBody /> - Analytics', () => {
     await act(async () => {
       fireEvent.press(screen.getByText('Voir l’itinéraire'))
     })
+
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
   })
 })

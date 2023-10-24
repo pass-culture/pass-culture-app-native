@@ -13,6 +13,7 @@ describe('getOfferRules', () => {
       isEvent: false,
     }
     const offerRules = getOfferRules(properties, undefined)
+
     expect(offerRules).toEqual(
       'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
     )
@@ -26,6 +27,7 @@ describe('getOfferRules', () => {
       isEvent: false,
     }
     const offerRules = getOfferRules(properties)
+
     expect(offerRules).toEqual(
       'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
     )
@@ -39,6 +41,7 @@ describe('getOfferRules', () => {
       isEvent: false,
     }
     const offerRules = getOfferRules(properties)
+
     expect(offerRules).toEqual(
       'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
     )
@@ -62,6 +65,7 @@ describe('getOfferRules', () => {
         },
       }
       const offerRules = getOfferRules(properties, newBooking)
+
       expect(offerRules).toEqual(
         'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
@@ -86,6 +90,7 @@ describe('getOfferRules', () => {
         },
       }
       const offerRules = getOfferRules(properties, newBooking)
+
       expect(offerRules).toEqual('')
     }
   )
@@ -99,6 +104,7 @@ describe('getOfferRules', () => {
     }
     booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
     const offerRules = getOfferRules(properties, booking)
+
     expect(offerRules).toEqual(
       'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
     )
@@ -116,6 +122,7 @@ describe('getOfferRules', () => {
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
     ]
     const offerRules = getOfferRules(properties, booking)
+
     expect(offerRules).toEqual(
       'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.'
     )
@@ -129,6 +136,7 @@ describe('getOfferRules', () => {
       isEvent: false,
     }
     const offerRules = getOfferRules(properties)
+
     expect(offerRules).toEqual('')
   })
 })

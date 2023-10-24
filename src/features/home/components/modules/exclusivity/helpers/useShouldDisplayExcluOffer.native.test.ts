@@ -35,12 +35,14 @@ excluOfferAPISpy.mockReturnValue({
 describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
     const { result } = renderHook(() => useShouldDisplayExcluOffer(undefined, offerId))
+
     expect(result.current).toBe(true)
   })
 
   it('should not display offer if price is above user max credit', () => {
     mockedUseMaxPrice.mockReturnValueOnce(3)
     const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+
     expect(result.current).toBe(false)
   })
 
@@ -48,12 +50,14 @@ describe('useShouldDisplayExcluOffer', () => {
     it('should display offer if user is within radius', () => {
       mockPosition = { latitude: 20, longitude: 2 }
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+
       expect(result.current).toBe(true)
     })
 
     it('should not display offer if user is too far from offer', () => {
       mockPosition = { latitude: 52.5, longitude: 13.4 }
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+
       expect(result.current).toBe(false)
     })
 
@@ -67,6 +71,7 @@ describe('useShouldDisplayExcluOffer', () => {
       } as UseQueryResult<OfferResponse>)
 
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+
       expect(result.current).toBe(false)
     })
   })
@@ -79,12 +84,14 @@ describe('useShouldDisplayExcluOffer', () => {
     it('should display offer if module is not geolocated', () => {
       display = { aroundRadius: 20, isGeolocated: false }
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+
       expect(result.current).toBe(true)
     })
 
     it('should not display offer if module is geolocated', () => {
       display = { aroundRadius: 20, isGeolocated: true }
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
+
       expect(result.current).toBe(false)
     })
   })

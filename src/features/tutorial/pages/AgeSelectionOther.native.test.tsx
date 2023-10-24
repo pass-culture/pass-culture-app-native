@@ -37,6 +37,7 @@ describe('AgeSelectionOther', () => {
       const button = screen.getByText('moins de 15 ans')
 
       fireEvent.press(button)
+
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
@@ -102,6 +103,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       const userAge = await storage.readObject('user_age')
+
       expect(userAge).toBe(NonEligible.UNDER_15)
     })
 
@@ -112,6 +114,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       const userAge = await storage.readObject('user_age')
+
       expect(userAge).toBe(NonEligible.OVER_18)
     })
   })
@@ -128,6 +131,7 @@ describe('AgeSelectionOther', () => {
       const button = screen.getByText('moins de 15 ans')
 
       fireEvent.press(button)
+
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
@@ -193,6 +197,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       const userAge = await storage.readObject('user_age')
+
       expect(userAge).toBeNull()
     })
 
@@ -203,6 +208,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       const userAge = await storage.readObject('user_age')
+
       expect(userAge).toBeNull()
     })
   })

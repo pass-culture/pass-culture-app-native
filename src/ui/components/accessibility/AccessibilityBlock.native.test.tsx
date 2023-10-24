@@ -19,6 +19,7 @@ describe('AccessibilityBlock', () => {
     expect(screen.queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
     expect(screen.queryByTestId('Handicap auditif')).toBeOnTheScreen()
   })
+
   it('renders only available handicap information', () => {
     render(
       <AccessibilityBlock

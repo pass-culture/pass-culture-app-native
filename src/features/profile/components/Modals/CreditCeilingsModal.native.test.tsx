@@ -22,6 +22,7 @@ describe('<CreditCeilingsModal/>', () => {
         hideModal={hideModalMock}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -33,6 +34,7 @@ describe('<CreditCeilingsModal/>', () => {
         hideModal={hideModalMock}
       />
     )
+
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
@@ -47,6 +49,7 @@ describe('<CreditCeilingsModal/>', () => {
 
     const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
+
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 

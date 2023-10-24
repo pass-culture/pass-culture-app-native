@@ -10,22 +10,27 @@ describe('AnalyticsEvent', () => {
       expect(isValidMember).toBeTruthy()
     }
   })
+
   it('fake member should fail the test when it is too long', () => {
     expect(validateAnalyticsEvent('a'.repeat(39))).toBeTruthy()
     expect(validateAnalyticsEvent('a'.repeat(40))).toBeTruthy()
     expect(validateAnalyticsEvent('a'.repeat(41))).toBeFalsy()
   })
+
   it('fake member should fail the test when its first letter is not alphabetic', () => {
     expect(validateAnalyticsEvent('!test')).toBeFalsy()
     expect(validateAnalyticsEvent('1test')).toBeFalsy()
     expect(validateAnalyticsEvent('_test')).toBeFalsy()
   })
+
   it('fake member should fail the test when it contains a non alpha numeric char', () => {
     expect(validateAnalyticsEvent('Event-Testé')).toBeFalsy()
   })
+
   it('fake member should fail the test when it includes a "-"', () => {
     expect(validateAnalyticsEvent('Event-Test')).toBeFalsy()
   })
+
   it('fake member should fail the test when it starts a reserved prefix', () => {
     expect(validateAnalyticsEvent('firebase_test')).toBeFalsy()
     expect(validateAnalyticsEvent('google_test')).toBeFalsy()

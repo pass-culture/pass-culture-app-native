@@ -45,6 +45,7 @@ describe('<AccountSecurityBuffer/>', () => {
     renderAccountSecurityBuffer()
 
     const LOADING_TEXT = 'Chargement en cours...'
+
     expect(await screen.findByText(LOADING_TEXT)).toBeOnTheScreen()
   })
 

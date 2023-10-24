@@ -24,6 +24,7 @@ describe('buildNumericFilters', () => {
 
   it('should return default offer prices as a filter when no numeric filters defined', () => {
     const numericFilters = buildNumericFilters(defaultBuildNumericFilters)
+
     expect(numericFilters).toEqual({ numericFilters: [['offer.prices: 0 TO 300']] })
   })
 
@@ -33,6 +34,7 @@ describe('buildNumericFilters', () => {
       minPrice: '10',
       maxPrice: '50',
     })
+
     expect(numericFilters).toEqual({ numericFilters: [['offer.prices: 10 TO 50']] })
   })
 
@@ -44,6 +46,7 @@ describe('buildNumericFilters', () => {
         selectedDate: new Date('2023-04-24').toISOString(),
       },
     })
+
     expect(numericFilters).toEqual({
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.dates: 1682294400 TO 1682380799']],
     })
@@ -54,6 +57,7 @@ describe('buildNumericFilters', () => {
       ...defaultBuildNumericFilters,
       offerIsNew: true,
     })
+
     expect(numericFilters).toEqual({
       numericFilters: [
         ['offer.prices: 0 TO 300'],
@@ -68,6 +72,7 @@ describe('buildNumericFilters', () => {
       beginningDatetime: new Date('2023-04-20').toISOString(),
       endingDatetime: new Date('2023-04-24').toISOString(),
     })
+
     expect(numericFilters).toEqual({
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.dates: 1681948800 TO 1682294400']],
     })
@@ -78,6 +83,7 @@ describe('buildNumericFilters', () => {
       ...defaultBuildNumericFilters,
       minBookingsThreshold: 1,
     })
+
     expect(numericFilters).toEqual({
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.last30DaysBookings >= 1']],
     })

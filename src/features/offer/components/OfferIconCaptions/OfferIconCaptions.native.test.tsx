@@ -167,6 +167,7 @@ describe('<OfferIconCaptions />', () => {
     renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
 
     const euro = await screen.findByTestId('caption-iconPrice')
+
     expect(euro.props.children).toEqual(expectedDisplayedPrice)
   })
 })

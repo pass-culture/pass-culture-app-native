@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 describe('<IdentityCheckUnavailable />', () => {
   it('should render correctly', () => {
     render(<IdentityCheckUnavailable />)
+
     expect(screen).toMatchSnapshot()
   })
 })

@@ -42,6 +42,7 @@ describe('NonEligibleModal', () => {
       renderNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
 
       fireEvent.press(screen.getByTestId('Fermer la modale'))
+
       expect(hideModal).toHaveBeenCalledTimes(1)
     }
   )
@@ -87,6 +88,7 @@ describe('NonEligibleModal', () => {
     const button = screen.getByText('comment ça marche\u00a0?')
 
     fireEvent.press(button)
+
     expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_CREDIT)
   })
 })

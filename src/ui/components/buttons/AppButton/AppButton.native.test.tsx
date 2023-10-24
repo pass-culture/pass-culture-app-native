@@ -18,25 +18,33 @@ describe('AppButton Component', () => {
   describe('* Icon property', () => {
     it('should display icon when provided', () => {
       render(<AppButton {...baseProps} />)
+
       expect(screen.queryByTestId('button-icon')).toBeOnTheScreen()
     })
+
     it('should not display icon when not provided', () => {
       render(<AppButton {...baseProps} icon={undefined} />)
+
       expect(screen.queryByTestId('button-icon')).not.toBeOnTheScreen()
     })
   })
+
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
       render(<AppButton {...baseProps} isLoading />)
+
       expect(screen.queryByTestId('Chargement en cours')).toBeOnTheScreen()
       expect(screen.queryByTestId('button-icon')).not.toBeOnTheScreen()
     })
+
     it('should display right elements when isLoading equals false', () => {
       render(<AppButton {...baseProps} isLoading={false} />)
+
       expect(screen.queryByTestId('button-icon')).toBeOnTheScreen()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
+
   describe('* Disabled property', () => {
     it('should disable handlers when disabled equals true', () => {
       render(<AppButton {...baseProps} disabled />)
@@ -47,9 +55,11 @@ describe('AppButton Component', () => {
       expect(container.props.onLongPress).toBeFalsy()
     })
   })
+
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
       render(<AppButton {...baseProps} wording="Testing inline" inline />)
+
       expect(screen).toMatchSnapshot()
     })
   })

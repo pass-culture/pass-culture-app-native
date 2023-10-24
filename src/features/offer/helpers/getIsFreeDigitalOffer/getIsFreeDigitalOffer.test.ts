@@ -4,6 +4,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 describe('getIsFreeDigitalOffer', () => {
   it('should return false when offer is not defined', () => {
     const isFreeDigitalOffer = getIsFreeDigitalOffer()
+
     expect(isFreeDigitalOffer).toEqual(false)
   })
 
@@ -13,6 +14,7 @@ describe('getIsFreeDigitalOffer', () => {
       isDigital: true,
       stocks: [{ ...mockOffer.stocks[0], price: 100 }],
     })
+
     expect(isFreeDigitalOffer).toEqual(false)
   })
 
@@ -22,6 +24,7 @@ describe('getIsFreeDigitalOffer', () => {
       isDigital: false,
       stocks: [{ ...mockOffer.stocks[0], price: 0 }],
     })
+
     expect(isFreeDigitalOffer).toEqual(false)
   })
 
@@ -31,6 +34,7 @@ describe('getIsFreeDigitalOffer', () => {
       isDigital: false,
       stocks: [{ ...mockOffer.stocks[0], price: 100 }],
     })
+
     expect(isFreeDigitalOffer).toEqual(false)
   })
 
@@ -40,6 +44,7 @@ describe('getIsFreeDigitalOffer', () => {
       isDigital: true,
       stocks: [{ ...mockOffer.stocks[0], price: 0 }],
     })
+
     expect(isFreeDigitalOffer).toEqual(true)
   })
 })

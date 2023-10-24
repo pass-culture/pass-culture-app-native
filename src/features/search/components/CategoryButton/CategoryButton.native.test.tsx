@@ -17,6 +17,7 @@ describe('CategoryButton', () => {
         gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 

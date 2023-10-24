@@ -14,6 +14,7 @@ describe('<OfferNotFound/>', () => {
       )
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

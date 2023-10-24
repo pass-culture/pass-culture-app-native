@@ -80,6 +80,7 @@ describe('useSubcategory', () => {
     'useSubcategory($subcategory) = { isEvent: $isEvent, categoryId: $categoryId, searchGroupName: $searchGroupName }',
     ({ subcategory, isEvent, categoryId, searchGroupName }) => {
       const { result } = renderHook(() => useSubcategory(subcategory))
+
       expect(result.current.isEvent).toBe(isEvent)
       expect(result.current.categoryId).toBe(categoryId)
       expect(result.current.searchGroupName).toBe(searchGroupName)

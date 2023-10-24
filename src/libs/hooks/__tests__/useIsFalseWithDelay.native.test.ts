@@ -10,22 +10,26 @@ describe('useIsFalseWithDelay()', () => {
   it("should always return true if condition is true and doesn't change", () => {
     condition = true
     const { result } = renderUseIsFalseWithDelay(condition)
+
     expect(result.current).toBeTruthy()
 
     act(() => {
       jest.advanceTimersByTime(DELAY)
     })
+
     expect(result.current).toBeTruthy()
   })
 
   it("should always return false if condition is false and doesn't change", () => {
     const condition = false
     const { result } = renderUseIsFalseWithDelay(condition)
+
     expect(result.current).toBeFalsy()
 
     act(() => {
       jest.advanceTimersByTime(DELAY)
     })
+
     expect(result.current).toBeFalsy()
   })
 
@@ -34,11 +38,13 @@ describe('useIsFalseWithDelay()', () => {
     const { result, rerender } = renderUseIsFalseWithDelay(condition)
 
     rerender({ condition: false })
+
     expect(result.current).toBeTruthy()
 
     act(() => {
       jest.advanceTimersByTime(DELAY)
     })
+
     expect(result.current).toBeFalsy()
   })
 })

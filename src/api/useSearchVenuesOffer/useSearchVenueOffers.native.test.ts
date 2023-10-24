@@ -12,9 +12,11 @@ import { renderHook, waitFor } from 'tests/utils'
 
 describe('useSearchVenueOffers', () => {
   const position: Position = { latitude: 48.90374, longitude: 2.48171 }
+
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {
       const offerVenues = getVenueList(mockedAlgoliaResponse.hits, position)
+
       expect(offerVenues).toEqual([
         {
           address: '75000 Paris, 1 rue de la paix',
@@ -91,6 +93,7 @@ describe('useSearchVenueOffers', () => {
         },
       ]
       const offerVenues = getVenueList(hits, position)
+
       expect(offerVenues).toEqual([
         {
           address: '75000 Paris, 1 rue de la paix',
@@ -112,6 +115,7 @@ describe('useSearchVenueOffers', () => {
         offerId: 102283,
         venueId: 2,
       })
+
       expect(shouldFilterVenueOfferHit).toEqual(false)
     })
 
@@ -121,6 +125,7 @@ describe('useSearchVenueOffers', () => {
         offerId: 102280,
         venueId: 1,
       })
+
       expect(shouldFilterVenueOfferHit).toEqual(false)
     })
 
@@ -130,6 +135,7 @@ describe('useSearchVenueOffers', () => {
         offerId: 102281,
         venueId: 1,
       })
+
       expect(shouldFilterVenueOfferHit).toEqual(false)
     })
 
@@ -139,6 +145,7 @@ describe('useSearchVenueOffers', () => {
         offerId: 102281,
         venueId: 2,
       })
+
       expect(shouldFilterVenueOfferHit).toEqual(true)
     })
   })

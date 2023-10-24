@@ -19,8 +19,8 @@ describe('accessibilityList', () => {
 
       const separatorList = screen.queryAllByTestId('accessibility-list-separator')
 
-      expect(screen.queryAllByText('Item').length).toEqual(itemList.length)
-      expect(separatorList.length).toEqual(numberOfSeparator)
+      expect(screen.queryAllByText('Item')).toHaveLength(itemList.length)
+      expect(separatorList).toHaveLength(numberOfSeparator)
     }
   )
 })

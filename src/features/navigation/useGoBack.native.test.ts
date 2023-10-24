@@ -30,6 +30,7 @@ describe('useGoBack()', () => {
       (canGoBackValue) => {
         mockCanGoBack = canGoBackValue
         const { result } = renderUseGoBack()
+
         expect(result.current.canGoBack()).toBe(canGoBackValue)
       }
     )
@@ -40,7 +41,8 @@ describe('useGoBack()', () => {
       mockCanGoBack = false
       const { result } = renderUseGoBack()
       result.current.goBack()
-      expect(mockNavigate).toBeCalledWith(...homeNavConfig)
+
+      expect(mockNavigate).toHaveBeenCalledWith(...homeNavConfig)
     })
 
     it("should use navigate if previous route doesn't exist", () => {
@@ -48,7 +50,8 @@ describe('useGoBack()', () => {
       mockPreviousRoute.name = undefined
       const { result } = renderUseGoBack()
       result.current.goBack()
-      expect(mockNavigate).toBeCalledWith(...homeNavConfig)
+
+      expect(mockNavigate).toHaveBeenCalledWith(...homeNavConfig)
     })
 
     it('should call goBack if previous route exists and canGoBack = true', () => {
@@ -56,6 +59,7 @@ describe('useGoBack()', () => {
       mockPreviousRoute.name = 'Login'
       const { result } = renderUseGoBack()
       result.current.goBack()
+
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })

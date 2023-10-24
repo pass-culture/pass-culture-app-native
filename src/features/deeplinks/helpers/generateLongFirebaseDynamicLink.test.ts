@@ -12,6 +12,7 @@ describe('Formatting deeplink url', () => {
       const fullWebAppUrlWithParams = 'https://web.example.com/offre/1'
       const encodedFullWebAppUrlWithParams = 'https%3A%2F%2Fweb.example.com%2Foffre%2F1'
       const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams)
+
       expect(dynamicLink).toEqual(
         `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${longDynamicLinkURI}`
       )
@@ -29,6 +30,7 @@ describe('Formatting deeplink url', () => {
         amv,
       }
       const dynamicLink = generateLongFirebaseDynamicLink(fullWebAppUrlWithParams, extraParams)
+
       expect(dynamicLink).toEqual(
         `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodedFullWebAppUrlWithParams}&${longDynamicLinkURI}&ofl=https://webapp-v2.example.com/set-email&amv=10160005`
       )

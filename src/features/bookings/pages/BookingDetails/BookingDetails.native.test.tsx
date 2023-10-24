@@ -77,7 +77,7 @@ describe('BookingDetails', () => {
 
     await act(async () => {})
 
-    expect(useOngoingOrEndedBooking).toBeCalledWith(456)
+    expect(useOngoingOrEndedBooking).toHaveBeenCalledWith(456)
   })
 
   it('should render correctly', async () => {
@@ -250,20 +250,24 @@ describe('BookingDetails', () => {
       expect(screen.getByText('Contact organisateur')).toBeOnTheScreen()
       expect(screen.getByText('Envoyer un e-mail')).toBeOnTheScreen()
     })
+
     it('should not display booking email contact when there is no booking contact email', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.bookingContact = undefined
       renderBookingDetails(booking)
       await act(async () => {})
+
       expect(screen.queryByText('Contact Organisateur')).not.toBeOnTheScreen()
       expect(screen.queryByText('Envoyer un e-mail')).not.toBeOnTheScreen()
     })
+
     it('should open mail app when clicking on "Envoyer un e-mail"', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
       await act(async () => {})
       fireEvent.press(screen.getByText('Envoyer un e-mail'))
+
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         `mailto:bookingContactTest@email.com`,
         undefined,
@@ -283,7 +287,7 @@ describe('BookingDetails', () => {
 
     const offerId = booking.stock.offer.id
 
-    expect(navigate).toBeCalledWith('Offer', {
+    expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'bookingdetails',
     })
@@ -302,7 +306,7 @@ describe('BookingDetails', () => {
 
     const offerId = booking.stock.offer.id
 
-    expect(navigate).not.toBeCalledWith('Offer', {
+    expect(navigate).not.toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'bookingdetails',
     })
@@ -476,6 +480,7 @@ describe('BookingDetails', () => {
       await act(async () => {})
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
+
       expect(itineraryButton).toBeOnTheScreen()
 
       openItinerary.mockRestore()
@@ -540,6 +545,7 @@ describe('BookingDetails', () => {
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
       })
+
       expect(analytics.logBookingDetailsScrolledToBottom).not.toHaveBeenCalled()
 
       await act(async () => {

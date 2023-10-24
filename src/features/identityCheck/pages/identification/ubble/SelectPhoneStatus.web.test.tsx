@@ -7,6 +7,7 @@ import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/we
 describe('SelectPhoneStatus', () => {
   it('should render correctly', () => {
     const renderAPI = render(<SelectPhoneStatus />)
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -32,6 +33,7 @@ describe('SelectPhoneStatus', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<SelectPhoneStatus />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

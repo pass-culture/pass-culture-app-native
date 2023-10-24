@@ -19,6 +19,7 @@ describe('<IdentityCheckHonor/>', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<IdentityCheckHonor />))
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

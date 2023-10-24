@@ -77,7 +77,11 @@ describe('<SuspensionChoice/>', () => {
     fireEvent.press(contactSupportButton)
 
     await waitFor(() => {
-      expect(openUrl).toBeCalledWith(`mailto:service.fraude@test.passculture.app`, undefined, true)
+      expect(openUrl).toHaveBeenCalledWith(
+        `mailto:service.fraude@test.passculture.app`,
+        undefined,
+        true
+      )
     })
   })
 

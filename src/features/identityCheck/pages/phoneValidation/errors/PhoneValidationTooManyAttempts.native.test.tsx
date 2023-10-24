@@ -17,7 +17,7 @@ describe('Contact support button', () => {
     fireEvent.press(contactSupportButton)
 
     await waitFor(() => {
-      expect(openUrl).toBeCalledWith(
+      expect(openUrl).toHaveBeenCalledWith(
         contactSupport.forPhoneNumberConfirmation.url,
         contactSupport.forPhoneNumberConfirmation.params,
         true
@@ -31,6 +31,6 @@ describe('Navigate to home button', () => {
     render(<PhoneValidationTooManyAttempts />)
     fireEvent.press(screen.getByText('Retourner à l’accueil'))
 
-    expect(navigate).toBeCalledWith(homeNavConfig[0], homeNavConfig[1])
+    expect(navigate).toHaveBeenCalledWith(homeNavConfig[0], homeNavConfig[1])
   })
 })

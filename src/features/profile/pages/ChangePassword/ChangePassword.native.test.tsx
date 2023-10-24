@@ -45,6 +45,7 @@ describe('ChangePassword', () => {
     })
 
     const continueButton = screen.getByTestId('Enregistrer les modifications')
+
     expect(continueButton).toBeEnabled()
   })
 
@@ -92,6 +93,7 @@ describe('ChangePassword', () => {
     await act(async () => {
       fireEvent.press(screen.getByTestId('Enregistrer les modifications'))
     })
+
     expect(mockshowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton mot de passe est modifié',
       timeout: SNACK_BAR_TIME_OUT,
@@ -128,6 +130,7 @@ describe('ChangePassword', () => {
     await act(async () => {
       fireEvent.press(continueButton)
     })
+
     expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()
   })
 })

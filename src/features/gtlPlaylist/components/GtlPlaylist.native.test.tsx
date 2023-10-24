@@ -144,6 +144,7 @@ describe('GtlPlaylist', () => {
       // 1st scroll to last item => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
     })
+
     expect(analytics.logAllTilesSeen).toHaveBeenNthCalledWith(1, {
       moduleId: '2xUlLBRfxdk6jeYyJszunX',
       numberOfTiles: 6,
@@ -152,6 +153,7 @@ describe('GtlPlaylist', () => {
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
     scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
 
@@ -171,6 +173,7 @@ describe('GtlPlaylist', () => {
     expect(analytics.logModuleDisplayed).toHaveBeenCalledTimes(1)
 
     screen.rerender(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+
     expect(analytics.logModuleDisplayed).toHaveBeenCalledTimes(1)
   })
 })

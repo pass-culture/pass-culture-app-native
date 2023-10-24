@@ -21,6 +21,7 @@ describe('<BookingPropertiesSection />', () => {
       },
     })
   })
+
   const booking = bookingsSnap.ongoing_bookings[0]
 
   it('should display user firstname and lastname', async () => {

@@ -30,6 +30,7 @@ describe('<ValidationChangeEmail />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<ValidateEmailChange navigation={navigation} route={route} />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

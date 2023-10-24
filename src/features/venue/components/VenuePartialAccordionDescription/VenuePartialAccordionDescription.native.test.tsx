@@ -23,6 +23,7 @@ describe('VenuePartialAccordionDescription', () => {
   it("is closed by default and we don't see all the long description", () => {
     render(<VenuePartialAccordionDescription description={description} />)
     const accordionBody = screen.getByTestId('accordionBody')
+
     expect(accordionBody.props.style).toEqual({
       height: PARTIAL_DESCRIPTION_HEIGHT,
       overflow: 'hidden',
@@ -31,6 +32,7 @@ describe('VenuePartialAccordionDescription', () => {
 
   it('doesnt show description container when description is undefined', () => {
     render(<VenuePartialAccordionDescription description={undefined} />)
+
     expect(screen.queryByTestId('descriptionContainer')).not.toBeOnTheScreen()
   })
 
@@ -38,6 +40,7 @@ describe('VenuePartialAccordionDescription', () => {
     render(<VenuePartialAccordionDescription description={description} />)
 
     const accordionBody = screen.getByTestId('accordionBody')
+
     expect(accordionBody.props.style).toEqual({
       height: PARTIAL_DESCRIPTION_HEIGHT,
       overflow: 'hidden',
@@ -49,6 +52,7 @@ describe('VenuePartialAccordionDescription', () => {
     })
 
     screen.getByText('voir moins')
+
     expect(accordionBody.props.style).not.toEqual({
       height: PARTIAL_DESCRIPTION_HEIGHT,
       overflow: 'hidden',
@@ -59,6 +63,7 @@ describe('VenuePartialAccordionDescription', () => {
     render(<VenuePartialAccordionDescription description={description} />)
 
     const accordionArrow = screen.getByTestId('accordionArrow')
+
     expect(accordionArrow.props.style.transform[0]).toEqual({
       rotateZ: `${2 * Math.PI}rad`,
     })
@@ -85,11 +90,13 @@ describe('VenuePartialAccordionDescription', () => {
   it('show credit when credit is defined', () => {
     const credit = 'Picture credit'
     render(<VenuePartialAccordionDescription credit={credit} />)
+
     expect(screen.queryByTestId('credit')).toBeOnTheScreen()
   })
 
   it('doesnt show credit when credit is undefined', () => {
     render(<VenuePartialAccordionDescription />)
+
     expect(screen.queryByTestId('credit')).not.toBeOnTheScreen()
   })
 })

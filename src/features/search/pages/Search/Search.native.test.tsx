@@ -398,6 +398,7 @@ describe('<Search/>', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       render(<Search />)
       await act(async () => {})
+
       expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
@@ -427,6 +428,7 @@ describe('<Search/>', () => {
       const categoryButton = screen.getByText('Spectacles')
 
       fireEvent.press(categoryButton)
+
       expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
     })
   })

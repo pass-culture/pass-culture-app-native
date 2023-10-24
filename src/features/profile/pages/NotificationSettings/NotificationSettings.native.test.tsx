@@ -67,6 +67,7 @@ describe('NotificationSettings', () => {
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const pushSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
+
       expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(true)
     })
 
@@ -90,6 +91,7 @@ describe('NotificationSettings', () => {
         await screen.findByText('Autoriser l’envoi d’e-mails')
 
         const pushSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+
         expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(false)
       }
     )
@@ -192,6 +194,7 @@ describe('NotificationSettings', () => {
       fireEvent.press(toggleSwitch)
 
       const saveButton = screen.getByTestId('Enregistrer les modifications')
+
       expect(saveButton).toBeEnabled()
 
       await act(async () => {
@@ -226,6 +229,7 @@ describe('NotificationSettings', () => {
       fireEvent.press(toggleSwitch)
 
       const saveButton = screen.getByTestId('Enregistrer les modifications')
+
       expect(saveButton).toBeEnabled()
 
       await act(async () => {
@@ -233,7 +237,7 @@ describe('NotificationSettings', () => {
       })
 
       expect(screen.getByTestId('Enregistrer les modifications')).toBeDisabled()
-      expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
+      expect(analytics.logNotificationToggle).toHaveBeenCalledWith(false, false)
     })
   })
 })

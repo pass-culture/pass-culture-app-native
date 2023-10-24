@@ -14,6 +14,7 @@ describe('<EighteenBirthday/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<EighteenBirthday />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

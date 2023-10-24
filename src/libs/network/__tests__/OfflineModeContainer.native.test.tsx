@@ -14,6 +14,7 @@ describe('<OfflineModeContainer />', () => {
 
   it('should render children and show banner when offline at init when isConnected is false', () => {
     renderOfflineModeContainer()
+
     expect(screen.queryByText('Hello World')).toBeOnTheScreen()
     expect(screen.queryByText('aucune connexion internet.')).toBeOnTheScreen()
   })
@@ -21,6 +22,7 @@ describe('<OfflineModeContainer />', () => {
   it('should render children and not show banner when offline at init when isConnected is true', () => {
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     renderOfflineModeContainer()
+
     expect(screen.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
     expect(screen.queryByText('Hello World')).toBeOnTheScreen()
   })
@@ -31,6 +33,7 @@ describe('<OfflineModeContainer />', () => {
       isInternetReachable: true,
     }))
     renderOfflineModeContainer()
+
     expect(screen.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
 
     mockUseNetInfoContext.mockImplementationOnce(() => ({

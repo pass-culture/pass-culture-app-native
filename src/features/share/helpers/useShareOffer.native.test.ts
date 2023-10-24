@@ -119,6 +119,7 @@ describe('getShareOffer', () => {
       await act(async () => share())
 
       const shareTitle = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
+
       expect(mockShare).toHaveBeenNthCalledWith(
         1,
         {

@@ -14,6 +14,7 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 describe('<DMSModal/>', () => {
   it('should render correctly', () => {
     render(<DMSModal visible hideModal={hideModalMock} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -23,6 +24,7 @@ describe('<DMSModal/>', () => {
       'Fermer la modale pour transmettre un document sur le site Démarches Simplifiée'
     )
     fireEvent.press(rightIcon)
+
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
@@ -30,15 +32,17 @@ describe('<DMSModal/>', () => {
     render(<DMSModal visible hideModal={hideModalMock} />)
     const frenchCitizenDMSButton = screen.getByText('Je suis de nationalité française')
     await fireEvent.press(frenchCitizenDMSButton)
+
     expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
-    expect(mockedOpenUrl).toBeCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
+    expect(mockedOpenUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })
 
   it('should open DSM french citizen when clicking on "Je suis de nationalité étrangère" button', async () => {
     render(<DMSModal visible hideModal={hideModalMock} />)
     const foreignCitizenDMSButton = screen.getByText('Je suis de nationalité étrangère')
     await fireEvent.press(foreignCitizenDMSButton)
+
     expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
-    expect(mockedOpenUrl).toBeCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
+    expect(mockedOpenUrl).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
   })
 })

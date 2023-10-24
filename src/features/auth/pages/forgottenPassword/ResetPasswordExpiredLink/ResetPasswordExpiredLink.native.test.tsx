@@ -43,8 +43,9 @@ describe('<ResetPasswordExpiredLink/>', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
     })
+
     expect(analytics.logResendEmailResetPasswordExpiredLink).toHaveBeenCalledTimes(1)
-    expect(navigate).toBeCalledWith('ResetPasswordEmailSent', {
+    expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
       email: 'test@email.com',
     })
   })
@@ -66,7 +67,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
       fireEvent.press(screen.getByText(`Renvoyer l’email`))
     })
 
-    expect(useQuerySpy).toThrowError()
+    expect(useQuerySpy).toThrow()
   })
 })
 

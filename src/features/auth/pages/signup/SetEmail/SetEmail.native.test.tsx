@@ -35,6 +35,7 @@ describe('<SetEmail />', () => {
     render(<SetEmail {...props} />)
 
     const button = screen.getByText('Continuer')
+
     expect(button).toBeDisabled()
   })
 
@@ -47,6 +48,7 @@ describe('<SetEmail />', () => {
     })
 
     const button = screen.getByText('Continuer')
+
     expect(button).toBeDisabled()
   })
 
@@ -59,6 +61,7 @@ describe('<SetEmail />', () => {
     })
 
     const button = screen.getByText('Continuer')
+
     expect(button).toBeEnabled()
   })
 
@@ -75,7 +78,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(props.goToNextStep).toBeCalledWith({
+    expect(props.goToNextStep).toHaveBeenCalledWith({
       email: 'john.doe@gmail.com',
       marketingEmailSubscription: false,
     })
@@ -198,6 +201,7 @@ describe('<SetEmail />', () => {
     render(<SetEmail {...propsWithPreviousEmail} />)
 
     const emailInput = screen.getByTestId('Entrée pour l’email')
+
     expect(emailInput.props.value).toBe('john.doe@gmail.com')
   })
 
@@ -212,6 +216,7 @@ describe('<SetEmail />', () => {
     render(<SetEmail {...propsWithPreviousEmail} />)
 
     const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+
     expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(true)
   })
 
@@ -226,6 +231,7 @@ describe('<SetEmail />', () => {
     render(<SetEmail {...propsWithoutMarketingEmailSubscription} />)
 
     const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+
     expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
   })
 })

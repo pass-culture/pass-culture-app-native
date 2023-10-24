@@ -9,6 +9,7 @@ describe('useOpenItinerary', () => {
   beforeEach(() => {
     useItinerary = jest.spyOn(Itinerary, 'useItinerary')
   })
+
   afterEach(() => useItinerary?.mockRestore())
 
   describe('beforeNavigate', () => {
@@ -21,6 +22,7 @@ describe('useOpenItinerary', () => {
 
       expect(beforeNavigate).toHaveBeenCalledTimes(1)
     })
+
     it('should not call beforeNavigate', () => {
       useItinerary?.mockReturnValue({ navigateTo: jest.fn() })
       const beforeNavigate = jest.fn()
@@ -28,9 +30,10 @@ describe('useOpenItinerary', () => {
       const { result } = renderHook(() => useOpenItinerary(undefined, beforeNavigate))
       result.current.openItinerary()
 
-      expect(beforeNavigate).not.toBeCalled()
+      expect(beforeNavigate).not.toHaveBeenCalled()
     })
   })
+
   describe('canOpenItinerary', () => {
     it('should return true', () => {
       useItinerary?.mockReturnValue({ navigateTo: jest.fn() })
@@ -39,6 +42,7 @@ describe('useOpenItinerary', () => {
 
       expect(result.current.canOpenItinerary).toBe(true)
     })
+
     it.each<[string, string | undefined | null]>([
       ['address is undefined', undefined],
       ['address is null', null],

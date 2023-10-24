@@ -61,6 +61,7 @@ describe('RoundedButton', () => {
       render(<DummyComponent />)
 
       const roundContainer = screen.getByTestId('AnimatedHeaderIconRoundContainer')
+
       expect(roundContainer.props.style.backgroundColor).toBe('rgba(255, 255, 255, 1)')
       expect(roundContainer.props.style.borderColor).toBe('rgba(0, 0, 0, 1)')
     })
@@ -82,6 +83,7 @@ describe('RoundedButton', () => {
 
       const animatedIcon = screen.getByTestId('AnimatedHeaderIconRoundContainer')
         .children[0] as ReactTestInstance
+
       expect(animatedIcon.props.transition).toBe(animatedValue)
     })
   })

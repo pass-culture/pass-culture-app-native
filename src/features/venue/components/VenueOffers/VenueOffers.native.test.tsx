@@ -155,13 +155,16 @@ describe('<VenueOffers />', () => {
   afterEach(() => {
     mockVenue = venueResponseSnap
   })
+
   it('should render correctly', () => {
     render(<VenueOffers venueId={venueId} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {
     render(<VenueOffers venueId={venueId} />)
+
     expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
 
@@ -171,6 +174,7 @@ describe('<VenueOffers />', () => {
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
     render(<VenueOffers venueId={venueId} />)
+
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
@@ -203,12 +207,14 @@ describe('<VenueOffers />', () => {
   it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, () => {
     render(<VenueOffers venueId={venueId} />)
     fireEvent.press(screen.getByText('En voir plus'))
+
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
   it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, async () => {
     render(<VenueOffers venueId={venueId} />)
     fireEvent.press(screen.getByText('Voir toutes les offres'))
+
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 

@@ -59,6 +59,7 @@ describe('useFilterCount', () => {
     'should return the correct number of activated filters | $section',
     ({ partialSearchState, expected }) => {
       const state: SearchState = { ...initialSearchState, ...partialSearchState }
+
       expect(renderHook(() => useFilterCount(state)).result.current).toEqual(expected)
     }
   )
@@ -71,6 +72,7 @@ describe('useFilterCount', () => {
         venue: { ...Kourou, venueId },
       },
     }
+
     expect(renderHook(() => useFilterCount(venueSelected)).result.current).toEqual(1)
 
     const placeSelected: SearchState = {
@@ -81,12 +83,14 @@ describe('useFilterCount', () => {
         aroundRadius: 20,
       },
     }
+
     expect(renderHook(() => useFilterCount(placeSelected)).result.current).toEqual(1)
 
     const everywhereSelected: SearchState = {
       ...initialSearchState,
       locationFilter: { locationType: LocationType.EVERYWHERE },
     }
+
     expect(renderHook(() => useFilterCount(everywhereSelected)).result.current).toEqual(1)
 
     const aroundMeSelected: SearchState = {
@@ -96,6 +100,7 @@ describe('useFilterCount', () => {
         aroundRadius: 20,
       },
     }
+
     expect(renderHook(() => useFilterCount(aroundMeSelected)).result.current).toEqual(1)
   })
 
@@ -105,6 +110,7 @@ describe('useFilterCount', () => {
       ...initialSearchState,
       locationFilter: { locationType: LocationType.EVERYWHERE },
     }
+
     expect(renderHook(() => useFilterCount(everywhereSelected)).result.current).toEqual(0)
   })
 })

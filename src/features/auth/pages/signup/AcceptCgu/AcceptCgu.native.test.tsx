@@ -113,6 +113,7 @@ describe('<AcceptCgu/>', () => {
     renderAcceptCGU()
 
     const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
 
     fireEvent.press(screen.getByText('Accepter et s’inscrire'))
@@ -182,10 +183,11 @@ describe('<AcceptCgu/>', () => {
       expect(
         screen.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeOnTheScreen()
-      expect(props.signUp).not.toBeCalled()
+      expect(props.signUp).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
+
   it('should log to Sentry when reCAPTCHA challenge was failed', async () => {
     simulateConnectedNetwork()
     renderAcceptCGU()
@@ -200,6 +202,7 @@ describe('<AcceptCgu/>', () => {
       'AcceptCguOnReCaptchaError'
     )
   })
+
   it('should not log to Sentry on reCAPTCHA network error', async () => {
     simulateConnectedNetwork()
     renderAcceptCGU()
@@ -225,8 +228,8 @@ describe('<AcceptCgu/>', () => {
       expect(
         screen.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')
       ).toBeOnTheScreen()
-      expect(props.signUp).not.toBeCalled()
-      expect(navigate).not.toBeCalled()
+      expect(props.signUp).not.toHaveBeenCalled()
+      expect(navigate).not.toHaveBeenCalled()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })

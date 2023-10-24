@@ -15,6 +15,7 @@ describe('[hook] useCancelBookingMutation', () => {
 
   it('use useMutation', () => {
     useCancelBookingMutation({ onSuccess, onError })
+
     expect(useMutation).toHaveBeenCalledWith(expect.any(Function), {
       onSuccess: expect.any(Function),
       onError: expect.any(Function),
@@ -26,6 +27,7 @@ describe('[hook] useCancelBookingMutation', () => {
     // @ts-expect-error returned value is mocked
     const { mutationOptions } = returnedMutationValue
     mutationOptions.onSuccess()
+
     expect(onSuccess).toHaveBeenCalledWith()
     expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.USER_PROFILE])
     expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.BOOKINGS])
@@ -36,13 +38,16 @@ describe('[hook] useCancelBookingMutation', () => {
     // @ts-expect-error returned value is mocked
     const { mutationFunction } = returnedMutationValue
     mutationFunction('bookingId')
+
     expect(api.postNativeV1BookingsbookingIdCancel).toHaveBeenCalledWith('bookingId')
   })
+
   it('call onError input after cancel a booking on error', () => {
     const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
     // @ts-expect-error returned value is mocked
     const { mutationOptions } = returnedMutationValue
     mutationOptions.onError()
+
     expect(onError).toHaveBeenCalledWith()
   })
 })

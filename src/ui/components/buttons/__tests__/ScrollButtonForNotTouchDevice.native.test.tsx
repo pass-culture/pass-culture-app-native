@@ -6,14 +6,19 @@ import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButto
 describe('<ScrollButtonForNotTouchDevice />', () => {
   it('should render correctly on left direction', () => {
     render(<ScrollButtonForNotTouchDevice top={55} horizontalAlign="left" />)
+
     expect(screen).toMatchSnapshot()
   })
+
   it('should render correctly on right direction', () => {
     render(<ScrollButtonForNotTouchDevice top={55} horizontalAlign="right" />)
+
     expect(screen).toMatchSnapshot()
   })
+
   it('should render correctly when no top given', () => {
     render(<ScrollButtonForNotTouchDevice horizontalAlign="right" />)
+
     expect(screen).toMatchSnapshot()
   })
 })

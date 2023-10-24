@@ -6,6 +6,7 @@ describe('getCurrentVenuesIndex', () => {
   it('should return algoliaVenuesIndexPlaylistSearchNewest when locationType is EVERYWHERE and user not share his position', () => {
     const params = LocationType.EVERYWHERE
     const result = getCurrentVenuesIndex(params)
+
     expect(result).toEqual('algoliaVenuesIndexPlaylistSearchNewest')
   })
 
@@ -13,6 +14,7 @@ describe('getCurrentVenuesIndex', () => {
     const position: Position = { latitude: 48.90374, longitude: 2.48171 }
     const params = LocationType.EVERYWHERE
     const result = getCurrentVenuesIndex(params, position)
+
     expect(result).toEqual('algoliaVenuesIndexPlaylistSearch')
   })
 
@@ -20,6 +22,7 @@ describe('getCurrentVenuesIndex', () => {
     'should return algoliaVenuesIndexPlaylistSearch when locationType is %s',
     (locationType) => {
       const result = getCurrentVenuesIndex(locationType)
+
       expect(result).toEqual('algoliaVenuesIndexPlaylistSearch')
     }
   )
@@ -27,6 +30,7 @@ describe('getCurrentVenuesIndex', () => {
   it('should return algoliaVenuesIndexPlaylistSearchNewest when locationFilter is undefined', () => {
     const params = undefined
     const result = getCurrentVenuesIndex(params)
+
     expect(result).toEqual('algoliaVenuesIndexPlaylistSearchNewest')
   })
 })

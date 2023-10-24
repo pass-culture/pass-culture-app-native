@@ -27,6 +27,7 @@ describe('buildOfferGenreTypesValues', () => {
       { key: 'SHOW', name: 'Opéra', value: 'Opéra' },
     ])
   })
+
   it('should return a list of OfferGenreTypes event if one field is undefined', () => {
     const result = buildOfferGenreTypesValues(
       {

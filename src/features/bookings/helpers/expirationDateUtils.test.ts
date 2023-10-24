@@ -15,6 +15,7 @@ import { Booking } from 'features/bookings/types'
 
 describe('expirationDateUtils', () => {
   const initialBookings: Booking[] = bookingsSnap.ongoing_bookings
+
   describe('getDigitalBookingsWithoutExpirationDate', () => {
     it('should get an array with a booking if is digital and without expiration date', () => {
       // isDigital === true && !booking.expirationDate
@@ -121,6 +122,7 @@ describe('expirationDateUtils', () => {
   describe('isDigitalBookingWithoutExpirationDate', () => {
     it('should return true when booking is digital without expiration date', () => {
       const value = isDigitalBookingWithoutExpirationDate(bookingsSnap.ended_bookings[0])
+
       expect(value).toEqual(true)
     })
 
@@ -130,8 +132,10 @@ describe('expirationDateUtils', () => {
           ...bookingsSnap.ended_bookings[0],
           expirationDate: '2021-03-15T23:01:37.925926',
         })
+
         expect(value).toEqual(false)
       })
+
       it('when booking is not digital without expiration date', () => {
         const value = isDigitalBookingWithoutExpirationDate({
           ...bookingsSnap.ended_bookings[0],
@@ -140,8 +144,10 @@ describe('expirationDateUtils', () => {
             offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
           },
         })
+
         expect(value).toEqual(false)
       })
+
       it('when booking is not digital with expiration date', () => {
         const value = isDigitalBookingWithoutExpirationDate({
           ...bookingsSnap.ended_bookings[0],
@@ -151,6 +157,7 @@ describe('expirationDateUtils', () => {
             offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
           },
         })
+
         expect(value).toEqual(false)
       })
     })
@@ -161,6 +168,7 @@ describe('expirationDateUtils', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
       booking.totalAmount = 0
+
       expect(isFreeBookingInSubcategories(booking)).toBeTruthy()
     })
 
@@ -168,6 +176,7 @@ describe('expirationDateUtils', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_CONCERT
       booking.totalAmount = 0
+
       expect(isFreeBookingInSubcategories(booking)).toBeFalsy()
     })
 
@@ -175,6 +184,7 @@ describe('expirationDateUtils', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
       booking.totalAmount = 1000
+
       expect(isFreeBookingInSubcategories(booking)).toBeFalsy()
     })
   })

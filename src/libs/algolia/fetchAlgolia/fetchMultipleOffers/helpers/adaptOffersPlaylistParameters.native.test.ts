@@ -56,6 +56,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual(defaultSearchParameters)
   })
 
@@ -66,6 +67,7 @@ describe('adaptOffersPlaylistParameters', () => {
 
     const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
     const parsedParameters = result.current(parameters)
+
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
       offerCategories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
@@ -79,6 +81,7 @@ describe('adaptOffersPlaylistParameters', () => {
 
     const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
     const parsedParameters = result.current(parameters)
+
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
       offerSubcategories: ['CINE_PLEIN_AIR', 'ESCAPE_GAME', 'FESTIVAL_LIVRE'],
@@ -107,6 +110,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
@@ -122,6 +126,7 @@ describe('adaptOffersPlaylistParameters', () => {
       endingDatetime: '2020-10-02T00:00+00:00',
     })
   })
+
   it('should return parsed algolia parameters with event during 5 days when provided', () => {
     const days = 5
     const parameters = {
@@ -140,6 +145,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(mockedComputer).toHaveBeenCalledWith({
       beginningDatetime: undefined,
       endingDatetime: undefined,
@@ -159,6 +165,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: true, isEvent: false, isThing: false },
@@ -175,6 +182,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: false, isEvent: true, isThing: false },
@@ -191,6 +199,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
       offerTypes: { isDigital: false, isEvent: false, isThing: true },
@@ -207,6 +216,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 300] })
   })
 
@@ -220,6 +230,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [0, 200] })
   })
 
@@ -233,6 +244,7 @@ describe('adaptOffersPlaylistParameters', () => {
       subcategoryLabelMapping,
       genreTypeMapping
     )
+
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 200] })
   })
 
@@ -248,6 +260,7 @@ describe('adaptOffersPlaylistParameters', () => {
         subcategoryLabelMapping,
         genreTypeMapping
       )
+
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         locationType: LocationType.AROUND_ME,
@@ -264,6 +277,7 @@ describe('adaptOffersPlaylistParameters', () => {
         subcategoryLabelMapping,
         genreTypeMapping
       )
+
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         aroundRadius: 10,
@@ -280,6 +294,7 @@ describe('adaptOffersPlaylistParameters', () => {
         subcategoryLabelMapping,
         genreTypeMapping
       )
+
       expect(result).toBeUndefined()
     })
 
@@ -292,6 +307,7 @@ describe('adaptOffersPlaylistParameters', () => {
         subcategoryLabelMapping,
         genreTypeMapping
       )
+
       expect(result).toBeUndefined()
     })
 
@@ -307,6 +323,7 @@ describe('adaptOffersPlaylistParameters', () => {
         subcategoryLabelMapping,
         genreTypeMapping
       )
+
       expect(result).toStrictEqual({
         ...defaultSearchParameters,
         offerGenreTypes: [

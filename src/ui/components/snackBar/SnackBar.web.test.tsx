@@ -11,11 +11,14 @@ import { SnackBarHelperSettings } from './types'
 describe('SnackBar Component', () => {
   it('should render the content container when visible=true', async () => {
     render(renderHelperSnackBar(true, { message: 'message' }))
+
     expect(screen.getByRole(AccessibilityRole.STATUS)).toBeInTheDocument()
     expect(screen.getByTestId('snackbar-container')).toBeInTheDocument()
   })
+
   it('should render the content container when visible=false (for accessibility updates)', async () => {
     render(renderHelperSnackBar(false, { message: 'message' }))
+
     expect(screen.getByRole(AccessibilityRole.STATUS)).toBeInTheDocument()
     expect(screen.getByTestId('snackbar-container')).toBeInTheDocument()
   })

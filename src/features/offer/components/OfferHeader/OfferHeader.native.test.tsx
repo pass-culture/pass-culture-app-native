@@ -67,6 +67,7 @@ describe('<OfferHeader />', () => {
 
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue } = renderOfferHeader()
+
     expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeTruthy()
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 

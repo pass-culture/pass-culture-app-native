@@ -90,6 +90,7 @@ describe('[api] helpers', () => {
       mockGetTokenStatus.mockReturnValueOnce('valid')
       mockFetch.mockResolvedValueOnce(respondWith('apiResponse'))
       const response = await safeFetch('url', optionsWithAccessToken, api)
+
       expect(mockFetch).toHaveBeenCalledWith('url', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -108,6 +109,7 @@ describe('[api] helpers', () => {
       mockGetTokenStatus.mockReturnValueOnce('valid')
       mockFetch.mockResolvedValueOnce(respondWith('apiResponse'))
       const response = await safeFetch('native/v1/account', optionsWithAccessToken, api)
+
       expect(mockFetch).toHaveBeenCalledWith('native/v1/account', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -187,6 +189,7 @@ describe('[api] helpers', () => {
 
       const refreshAccessTokenCalls = 1
       const apiURLCalls = 2
+
       expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
     })
 
@@ -206,6 +209,7 @@ describe('[api] helpers', () => {
 
       const refreshAccessTokenCalls = 1
       const apiURLCalls = 2
+
       expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
     })
 
@@ -226,6 +230,7 @@ describe('[api] helpers', () => {
 
       const refreshAccessTokenCalls = 2
       const apiURLCalls = 2
+
       expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
     })
 
@@ -269,33 +274,41 @@ describe('[api] helpers', () => {
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(mockFetch).nthCalledWith(1, env.API_BASE_URL + '/native/v1/refresh_access_token', {
-        headers: {
-          Authorization: `Bearer ${password}`,
-          'app-version': '1.10.5',
-          'code-push-id': '',
-          'commit-hash': env.COMMIT_HASH,
-          'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          platform: Platform.OS,
-          'request-id': 'testUuidV4',
-        },
-        credentials: 'omit',
-        method: 'POST',
-      })
-      expect(mockFetch).nthCalledWith(2, env.API_BASE_URL + '/native/v1/refresh_access_token', {
-        headers: {
-          Authorization: `Bearer ${password}`,
-          'app-version': '1.10.5',
-          'code-push-id': '',
-          'commit-hash': env.COMMIT_HASH,
-          'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          platform: Platform.OS,
-          'request-id': 'testUuidV4',
-        },
-        credentials: 'omit',
-        method: 'POST',
-      })
-      expect(mockFetch).nthCalledWith(3, apiUrl, {
+      expect(mockFetch).toHaveBeenNthCalledWith(
+        1,
+        env.API_BASE_URL + '/native/v1/refresh_access_token',
+        {
+          headers: {
+            Authorization: `Bearer ${password}`,
+            'app-version': '1.10.5',
+            'code-push-id': '',
+            'commit-hash': env.COMMIT_HASH,
+            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            platform: Platform.OS,
+            'request-id': 'testUuidV4',
+          },
+          credentials: 'omit',
+          method: 'POST',
+        }
+      )
+      expect(mockFetch).toHaveBeenNthCalledWith(
+        2,
+        env.API_BASE_URL + '/native/v1/refresh_access_token',
+        {
+          headers: {
+            Authorization: `Bearer ${password}`,
+            'app-version': '1.10.5',
+            'code-push-id': '',
+            'commit-hash': env.COMMIT_HASH,
+            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            platform: Platform.OS,
+            'request-id': 'testUuidV4',
+          },
+          credentials: 'omit',
+          method: 'POST',
+        }
+      )
+      expect(mockFetch).toHaveBeenNthCalledWith(3, apiUrl, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
@@ -420,6 +433,7 @@ describe('[api] helpers', () => {
       const response = await respondWith('apiResponse')
 
       const result = await handleGeneratedApiResponse(response)
+
       expect(result).toEqual('apiResponse')
     })
 
@@ -427,6 +441,7 @@ describe('[api] helpers', () => {
       const response = new Response('apiResponse', { headers: { 'content-type': 'text/plain' } })
 
       const result = await handleGeneratedApiResponse(response)
+
       expect(result).toEqual('apiResponse')
     })
 
@@ -434,6 +449,7 @@ describe('[api] helpers', () => {
       const response = await respondWith('', 204)
 
       const result = await handleGeneratedApiResponse(response)
+
       expect(result).toEqual({})
     })
 
@@ -442,7 +458,7 @@ describe('[api] helpers', () => {
 
       const result = await handleGeneratedApiResponse(response)
 
-      expect(navigateFromRef).toBeCalledWith('SuspensionScreen')
+      expect(navigateFromRef).toHaveBeenCalledWith('SuspensionScreen')
       expect(result).toEqual({})
     })
 
@@ -453,7 +469,7 @@ describe('[api] helpers', () => {
 
       const result = await handleGeneratedApiResponse(response)
 
-      expect(navigateFromRef).toBeCalledWith('BannedCountryError')
+      expect(navigateFromRef).toHaveBeenCalledWith('BannedCountryError')
       expect(result).toEqual({})
     })
 
@@ -469,20 +485,21 @@ describe('[api] helpers', () => {
       const response = await respondWith('apiResponse', statusCode)
 
       const getResult = async () => {
-        return await handleGeneratedApiResponse(response)
+        return handleGeneratedApiResponse(response)
       }
       const error = new ApiError(
         statusCode,
         'apiResponse',
         `Échec de la requête ${response.url}, code: ${response.status}`
       )
+
       await expect(getResult).rejects.toThrow(error)
     })
 
     it('should navigate to login when access token is invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
-      expect(eventMonitoring.captureMessage).toBeCalledWith('NeedsAuthenticationResponse', {
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith('NeedsAuthenticationResponse', {
         extra: {
           status: 401,
           statusText: 'NeedsAuthenticationResponse',
@@ -522,6 +539,7 @@ describe('[api] helpers', () => {
   describe('computeTokenRemainingLifetimeInMs', () => {
     it('should return undefined when token can not be decoded', () => {
       jest.spyOn(jwt, 'decodeAccessToken').mockReturnValueOnce(null)
+
       expect(computeTokenRemainingLifetimeInMs('abc')).toBeUndefined()
     })
 

@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 describe('FAQVebview page', () => {
   it('should render the page with correct layout', () => {
     render(<FAQWebview />)
+
     expect(screen).toMatchSnapshot()
   })
 })

@@ -18,7 +18,7 @@ describe('<PhoneValidationTooManyAttempts/>', () => {
       fireEvent.click(contactSupportButton)
 
       await waitFor(() => {
-        expect(openUrl).toBeCalledWith(
+        expect(openUrl).toHaveBeenCalledWith(
           contactSupport.forPhoneNumberConfirmation.url,
           contactSupport.forPhoneNumberConfirmation.params,
           true
@@ -33,7 +33,7 @@ describe('<PhoneValidationTooManyAttempts/>', () => {
 
       fireEvent.click(screen.getByText('Retourner à l’accueil'))
 
-      expect(navigate).toBeCalledWith(...homeNavConfig)
+      expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
     })
   })
 

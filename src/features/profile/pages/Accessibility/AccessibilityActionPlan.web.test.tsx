@@ -10,6 +10,7 @@ describe('<AccessibilityActionPlan/>', () => {
       const { container } = render(<AccessibilityActionPlan />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

@@ -18,6 +18,7 @@ describe('<FeatureFlag />', () => {
         {children}
       </FeatureFlag>
     )
+
     expect(screen.getByTestId('children')).toBeOnTheScreen()
   })
 
@@ -28,6 +29,7 @@ describe('<FeatureFlag />', () => {
         {children}
       </FeatureFlag>
     )
+
     expect(screen.queryByTestId('children')).not.toBeOnTheScreen()
   })
 })

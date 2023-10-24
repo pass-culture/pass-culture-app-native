@@ -35,6 +35,7 @@ describe('useOngoingOrEndedBooking', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
+
     expect(result.current?.data?.id).toEqual(booking.id)
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
@@ -59,6 +60,7 @@ describe('useOngoingOrEndedBooking', () => {
     })
 
     await act(async () => {})
+
     expect(result.current.data).toBeNull()
   })
 })

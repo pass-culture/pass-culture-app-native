@@ -27,10 +27,13 @@ describe('PhoneValidationTooManySMSSent', () => {
   beforeAll(() => {
     mockdate.set(new Date('2022-07-08T13:00:00Z'))
   })
+
   it('should display "1 heure" in description', async () => {
     renderPhoneValidationTooManySMSSent()
+
     expect(screen.getByText('Tu pourras réessayer dans 1 heure.')).toBeOnTheScreen()
   })
+
   it('should display "2 heures" in description', async () => {
     mockedPhoneValidationRemainingAttempts.mockReturnValueOnce({
       remainingAttempts: 0,
@@ -38,21 +41,27 @@ describe('PhoneValidationTooManySMSSent', () => {
       isLastAttempt: false,
     })
     renderPhoneValidationTooManySMSSent()
+
     expect(screen.getByText('Tu pourras réessayer dans 7 heures.')).toBeOnTheScreen()
   })
+
   it('should redirect to Home when clicking on homepage button', async () => {
     renderPhoneValidationTooManySMSSent()
 
     fireEvent.press(screen.getByText('Retourner à l’accueil'))
 
-    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
   })
+
   it('should redirect to SetPhoneValidationCode when clicking on second button', async () => {
     renderPhoneValidationTooManySMSSent()
 
     fireEvent.press(screen.getByText('J’ai reçu mon code'))
 
-    expect(navigate).toBeCalledWith('SetPhoneValidationCode', undefined)
+    expect(navigate).toHaveBeenCalledWith('SetPhoneValidationCode', undefined)
   })
 })
 

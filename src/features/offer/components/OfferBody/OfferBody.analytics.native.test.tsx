@@ -96,6 +96,7 @@ describe('<OfferBody /> - Analytics', () => {
     renderOfferBodyForAnalytics()
 
     await screen.findByText(offerResponseSnap.name)
+
     expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
 
     screen.unmount()
@@ -112,6 +113,7 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logConsultAccessibility).toHaveBeenNthCalledWith(1, { offerId })
 
     await trigger(accessibilityButton)
+
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
@@ -121,9 +123,11 @@ describe('<OfferBody /> - Analytics', () => {
     const withdrawalButton = await screen.findByText('Modalités de retrait')
 
     await trigger(withdrawalButton)
+
     expect(analytics.logConsultWithdrawal).toHaveBeenNthCalledWith(1, { offerId })
 
     await trigger(withdrawalButton)
+
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
@@ -212,7 +216,7 @@ describe('<OfferBody /> - Analytics', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Voir l’itinéraire')))
 
-    expect(analytics.logConsultItinerary).toBeCalledWith({
+    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({
       offerId: offerResponseSnap.id,
       from: 'offer',
     })
@@ -243,7 +247,7 @@ describe('<OfferBody /> - Analytics', () => {
         fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
       })
 
-      expect(analytics.logMultivenueOptionDisplayed).toBeCalledWith(offerResponseSnap.id)
+      expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(offerResponseSnap.id)
     })
   })
 })

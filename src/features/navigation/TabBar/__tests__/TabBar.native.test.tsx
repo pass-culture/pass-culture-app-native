@@ -63,6 +63,7 @@ describe('TabBar', () => {
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('render correctly', () => {
     renderTabBar()
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -108,6 +109,7 @@ describe('TabBar', () => {
 
   it('displays only one selected at a time', () => {
     renderTabBar()
+
     expect(screen.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
@@ -120,6 +122,7 @@ describe('TabBar', () => {
       })),
     })
     renderTabBar()
+
     expect(screen.getByTestId('Mon profil sélectionné')).toBeOnTheScreen()
 
     const profileTab = screen.getByTestId('Mon profil')
@@ -131,6 +134,7 @@ describe('TabBar', () => {
 
   it('should reset navigation when clicked on selected home tab', async () => {
     renderTabBar()
+
     expect(screen.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
 
     const homeTab = screen.getByTestId('Accueil')
@@ -146,7 +150,7 @@ describe('TabBar', () => {
 
     fireEvent.press(profileTab)
 
-    expect(navigation.navigate).toBeCalledWith('TabNavigator', {
+    expect(navigation.navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'Profile',
       params: undefined,
     })

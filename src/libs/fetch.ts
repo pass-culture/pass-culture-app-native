@@ -41,7 +41,7 @@ async function makeExternalRequest<ResponseBody>(
     throw new Error(`Échec de la requête ${url}, code: ${response.status}`)
   }
 
-  return await response.json()
+  return response.json()
 }
 
 class NotAuthenticatedError extends Error {

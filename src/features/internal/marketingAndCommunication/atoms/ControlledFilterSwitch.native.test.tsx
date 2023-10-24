@@ -13,9 +13,11 @@ describe('<ControlledFilterSwitch />', () => {
     const Switch = screen.getByTestId('Interrupteur')
 
     fireEvent.press(Switch)
-    expect(onChange).toBeCalledWith(true)
+
+    expect(onChange).toHaveBeenCalledWith(true)
 
     fireEvent.press(Switch)
-    expect(onChange).toBeCalledWith(false)
+
+    expect(onChange).toHaveBeenCalledWith(false)
   })
 })

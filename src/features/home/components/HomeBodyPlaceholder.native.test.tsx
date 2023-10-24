@@ -7,6 +7,7 @@ import { HomeBodyPlaceholder } from './HomeBodyPlaceholder'
 describe('HomeBodyPlaceholder', () => {
   it('matches snapshot', () => {
     render(<HomeBodyPlaceholder />)
+
     expect(screen).toMatchSnapshot()
   })
 })

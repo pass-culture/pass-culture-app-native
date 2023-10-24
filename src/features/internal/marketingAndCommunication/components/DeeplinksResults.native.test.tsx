@@ -13,12 +13,14 @@ describe('<DeeplinksResult />', () => {
 
   it('should display deeplinks results', () => {
     render(<DeeplinksResult result={result} />)
+
     expect(screen.getByText(result.firebaseLink)).toBeOnTheScreen()
     expect(screen.getByText(result.universalLink)).toBeOnTheScreen()
   })
 
   it('should display message when no results are provided', async () => {
     render(<DeeplinksResult />)
+
     expect(screen.getByText(`Vous devez d’abord générer un lien`)).toBeOnTheScreen()
   })
 })

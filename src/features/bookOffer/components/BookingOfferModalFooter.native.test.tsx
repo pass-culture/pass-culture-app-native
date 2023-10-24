@@ -21,12 +21,14 @@ describe('BookingOfferModalFooter', () => {
   describe('when current step is date selection', () => {
     it('should display "Valider la date"', () => {
       render(<BookingOfferModalFooter />)
+
       expect(screen.getByText('Valider la date')).toBeOnTheScreen()
     })
 
     it('should not change step when date not selected', () => {
       render(<BookingOfferModalFooter />)
       fireEvent.press(screen.getByText('Valider la date'))
+
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
@@ -45,6 +47,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter />)
       fireEvent.press(screen.getByText('Valider la date'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
     })
   })
@@ -61,14 +64,17 @@ describe('BookingOfferModalFooter', () => {
         dispatch: jest.fn(),
       })
     })
+
     it('should display "Valider lʼhoraire"', () => {
       render(<BookingOfferModalFooter />)
+
       expect(screen.getByText('Valider lʼhoraire')).toBeOnTheScreen()
     })
 
     it('should not change step when hour not selected', () => {
       render(<BookingOfferModalFooter />)
       fireEvent.press(screen.getByText('Valider lʼhoraire'))
+
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
@@ -87,6 +93,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter hasPricesStep />)
       fireEvent.press(screen.getByText('Valider lʼhoraire'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.PRICE })
     })
 
@@ -105,6 +112,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter hasPricesStep />)
       fireEvent.press(screen.getByText('Valider lʼhoraire'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_STOCK' })
     })
 
@@ -123,6 +131,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter isDuo />)
       fireEvent.press(screen.getByText('Valider lʼhoraire'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.DUO })
     })
 
@@ -141,6 +150,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter />)
       fireEvent.press(screen.getByText('Valider lʼhoraire'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
   })
@@ -158,14 +168,17 @@ describe('BookingOfferModalFooter', () => {
         dispatch: jest.fn(),
       })
     })
+
     it('should display "Valider le prix"', () => {
       render(<BookingOfferModalFooter hasPricesStep />)
+
       expect(screen.getByText('Valider le prix')).toBeOnTheScreen()
     })
 
     it('should not change step when stock not selected', () => {
       render(<BookingOfferModalFooter />)
       fireEvent.press(screen.getByText('Valider le prix'))
+
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
@@ -184,6 +197,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter isDuo />)
       fireEvent.press(screen.getByText('Valider le prix'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.DUO })
     })
 
@@ -202,6 +216,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter />)
       fireEvent.press(screen.getByText('Valider le prix'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
   })
@@ -220,14 +235,17 @@ describe('BookingOfferModalFooter', () => {
         dispatch: jest.fn(),
       })
     })
+
     it('should display "Finaliser ma réservation"', () => {
       render(<BookingOfferModalFooter isDuo />)
+
       expect(screen.getByText('Finaliser ma réservation')).toBeOnTheScreen()
     })
 
     it('should not change step when quantity not selected', () => {
       render(<BookingOfferModalFooter isDuo />)
       fireEvent.press(screen.getByText('Finaliser ma réservation'))
+
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
@@ -246,6 +264,7 @@ describe('BookingOfferModalFooter', () => {
       })
       render(<BookingOfferModalFooter isDuo />)
       fireEvent.press(screen.getByText('Finaliser ma réservation'))
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
   })
@@ -268,6 +287,7 @@ describe('BookingOfferModalFooter', () => {
 
     it('should not display footer', () => {
       render(<BookingOfferModalFooter hasPricesStep />)
+
       expect(screen.queryByTestId('bookingOfferModalFooter')).not.toBeOnTheScreen()
     })
   })

@@ -17,6 +17,7 @@ describe('useE2eTestId', () => {
     expect(result.current.accessibilityLabel).toBe(testID)
     expect(result.current.testID).toBe(testID)
   })
+
   it('should set testID without accessibilityLabel when useIsE2e return false', () => {
     mockUseIsE2e.mockImplementationOnce(() => false)
     const testID = 'Bonjour Monde !'

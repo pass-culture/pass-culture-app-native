@@ -20,6 +20,7 @@ describe('<EighteenBirthday />', () => {
   it('should render eighteen birthday', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<EighteenBirthday />))
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -37,6 +38,7 @@ describe('<EighteenBirthday />', () => {
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
     fireEvent.press(screen.getByText('Confirmer mes informations'))
+
     expect(navigate).toHaveBeenCalledWith('Stepper', undefined)
   })
 

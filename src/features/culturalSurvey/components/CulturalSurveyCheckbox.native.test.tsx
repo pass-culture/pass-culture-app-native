@@ -15,8 +15,10 @@ describe('CulturalSurveyCheckbox', () => {
         onPress={jest.fn()}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
+
   it('should render correctly when pressed', () => {
     render(
       <CulturalSurveyCheckbox
@@ -29,6 +31,7 @@ describe('CulturalSurveyCheckbox', () => {
     )
     const Button = screen.getByLabelText('Visité un musée, un monument, une exposition...')
     fireEvent.press(Button)
+
     expect(screen).toMatchSnapshot()
   })
 })

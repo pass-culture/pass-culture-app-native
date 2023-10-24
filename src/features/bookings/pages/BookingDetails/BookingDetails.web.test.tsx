@@ -36,6 +36,7 @@ describe('BookingDetails', () => {
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })

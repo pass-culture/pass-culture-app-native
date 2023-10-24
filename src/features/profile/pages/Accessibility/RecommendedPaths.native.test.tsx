@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 describe('RecommendedPaths', () => {
   it('should render correctly', () => {
     render(<RecommendedPaths />)
+
     expect(screen).toMatchSnapshot()
   })
 })

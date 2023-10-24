@@ -12,6 +12,7 @@ describe('CategoryThematicHomeHeader', () => {
         title="Un titre"
       />
     )
+
     expect(await screen.findByText('Un titre')).toBeOnTheScreen()
     expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
   })

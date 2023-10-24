@@ -147,7 +147,7 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     })
 
-    expect(navigate).toBeCalledWith(
+    expect(navigate).toHaveBeenCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: 'jazzaza',
@@ -238,7 +238,7 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
     })
 
-    expect(navigate).not.toBeCalled()
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   describe('With autocomplete', () => {
@@ -265,7 +265,7 @@ describe('SearchBox component', () => {
         fireEvent.press(previousButton)
       })
 
-      expect(navigate).toBeCalledWith(
+      expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...initialSearchState,
           view: SearchView.Results,
@@ -293,7 +293,7 @@ describe('SearchBox component', () => {
           fireEvent.press(previousButton)
         })
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
           })
@@ -356,7 +356,7 @@ describe('SearchBox component', () => {
         fireEvent(searchInput, 'onFocus')
       })
 
-      expect(navigate).not.toBeCalled()
+      expect(navigate).not.toHaveBeenCalled()
     })
 
     it.each([[SearchView.Suggestions], [SearchView.Results]])(
@@ -376,7 +376,7 @@ describe('SearchBox component', () => {
           fireEvent.press(resetIcon)
         })
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...mockSearchState,
             query: '',
@@ -410,7 +410,7 @@ describe('SearchBox component', () => {
           fireEvent(searchInput, 'onFocus')
         })
 
-        expect(navigate).not.toBeCalled()
+        expect(navigate).not.toHaveBeenCalled()
       }
     )
 
@@ -431,7 +431,7 @@ describe('SearchBox component', () => {
           fireEvent.press(resetIcon)
         })
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...mockSearchState,
             query: '',
@@ -457,7 +457,7 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     })
 
-    expect(navigate).toBeCalledWith(
+    expect(navigate).toHaveBeenCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         query: 'jazzaza',
@@ -510,7 +510,7 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onFocus')
     })
 
-    expect(navigate).toBeCalledWith(
+    expect(navigate).toHaveBeenCalledWith(
       ...getTabNavConfig('Search', {
         ...initialSearchState,
         view: SearchView.Suggestions,
@@ -653,6 +653,7 @@ describe('SearchBox component with venue previous route', () => {
       stale: false,
     })
   })
+
   const searchInputID = uuidv4()
 
   it('should reset location to eveywhere when current and previous views are identical and previous route is Venue', async () => {

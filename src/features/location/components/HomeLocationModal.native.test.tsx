@@ -101,6 +101,7 @@ describe('HomeLocationModal', () => {
     await act(async () => {
       fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
     })
+
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
 

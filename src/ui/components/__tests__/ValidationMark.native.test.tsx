@@ -11,6 +11,7 @@ describe('ValidationMark', () => {
     expect(screen.queryByTestId('invalidTestId')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('validTestId')).toBeOnTheScreen()
   })
+
   it('should displat the invalidIcon when isValid is false', () => {
     render(
       <ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid={false} />

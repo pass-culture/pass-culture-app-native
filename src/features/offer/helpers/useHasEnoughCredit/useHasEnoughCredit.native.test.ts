@@ -61,14 +61,17 @@ describe('hasEnoughCredit', () => {
     }
 
     let domains = [ExpenseDomain.all]
+
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(true)
     expect(hasEnoughCredit(domains, 6000, domainsCredit)).toBe(false)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital]
+
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(false)
     expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBe(true)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital, ExpenseDomain.physical]
+
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(false)
     expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBe(false)
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
@@ -82,14 +85,17 @@ describe('hasEnoughCredit', () => {
     }
 
     let domains = [ExpenseDomain.all]
+
     expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBe(true)
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(false)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital]
+
     expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBe(false)
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital, ExpenseDomain.physical]
+
     expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBe(false)
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
   })

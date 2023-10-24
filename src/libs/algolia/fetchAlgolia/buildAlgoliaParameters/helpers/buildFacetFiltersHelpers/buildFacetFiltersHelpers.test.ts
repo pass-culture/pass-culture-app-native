@@ -24,6 +24,7 @@ describe('buildOfferCategoriesPredicate', () => {
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
     ])
+
     expect(offerCategoriesPredicate).toEqual([
       'offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS',
       'offer.searchGroupNamev2:BIBLIOTHEQUES_MEDIATHEQUE',
@@ -37,6 +38,7 @@ describe('buildOfferSubcategoriesPredicate', () => {
       SubcategoryIdEnumv2.CONCERT,
       SubcategoryIdEnumv2.SEANCE_CINE,
     ])
+
     expect(offerSubcategoriesPredicate).toEqual([
       'offer.subcategoryId:CONCERT',
       'offer.subcategoryId:SEANCE_CINE',
@@ -50,6 +52,7 @@ describe('buildOfferNativeCategoriesPredicate', () => {
       NativeCategoryIdEnumv2.ARTS_VISUELS,
       NativeCategoryIdEnumv2.DVD_BLU_RAY,
     ])
+
     expect(offerSubcategoriesPredicate).toEqual([
       'offer.nativeCategoryId:ARTS_VISUELS',
       'offer.nativeCategoryId:DVD_BLU_RAY',
@@ -62,6 +65,7 @@ describe('buildOfferGenreTypesPredicate', () => {
     const offerGenreTypePredicate = buildOfferGenreTypesPredicate([
       { key: 'DRAMA' as GenreType, name: 'Comédie', value: 'Comédie' },
     ])
+
     expect(offerGenreTypePredicate).toEqual([''])
   })
 
@@ -70,6 +74,7 @@ describe('buildOfferGenreTypesPredicate', () => {
       { key: GenreType.MOVIE, name: 'DETECTIVE', value: 'Policier' },
       { key: GenreType.MOVIE, name: 'ROMANCE', value: 'Romance' },
     ])
+
     expect(offerGenreTypePredicate).toEqual([
       'offer.movieGenres:DETECTIVE',
       'offer.movieGenres:ROMANCE',
@@ -81,6 +86,7 @@ describe('buildOfferGenreTypesPredicate', () => {
       { key: GenreType.BOOK, name: 'Policier', value: 'Policier' },
       { key: GenreType.BOOK, name: 'Romance', value: 'Romance' },
     ])
+
     expect(offerGenreTypePredicate).toEqual([
       'offer.bookMacroSection:Policier',
       'offer.bookMacroSection:Romance',
@@ -92,6 +98,7 @@ describe('buildOfferGenreTypesPredicate', () => {
       { key: GenreType.MUSIC, name: 'Pop', value: 'Pop' },
       { key: GenreType.MUSIC, name: 'Rap', value: 'Rap' },
     ])
+
     expect(offerGenreTypePredicate).toEqual(['offer.musicType:Pop', 'offer.musicType:Rap'])
   })
 
@@ -100,6 +107,7 @@ describe('buildOfferGenreTypesPredicate', () => {
       { key: GenreType.SHOW, name: 'Comédie musicale', value: 'Comédie musicale' },
       { key: GenreType.SHOW, name: 'Pièce de théâtre', value: 'Pièce de théâtre' },
     ])
+
     expect(offerGenreTypePredicate).toEqual([
       'offer.showType:Comédie musicale',
       'offer.showType:Pièce de théâtre',
@@ -110,13 +118,15 @@ describe('buildOfferGenreTypesPredicate', () => {
 describe('buildObjectIdsPredicate', () => {
   it('should return an object ids predicate formatted for Algolia API', () => {
     const objectIdsPredicate = buildObjectIdsPredicate(['15000', '150001'])
+
     expect(objectIdsPredicate).toEqual(['objectID:15000', 'objectID:150001'])
   })
 
   it('should catch an error Sentry when object ids param not correctly passed and return an empty array', () => {
     const error = new TypeError('objectIds.map is not a function')
     const objectIdsPredicate = buildObjectIdsPredicate('15000' as unknown as string[])
-    expect(eventMonitoring.captureException).toBeCalledWith(error, {
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
       level: 'error',
       extra: { objectIds: '15000' },
     })
@@ -127,6 +137,7 @@ describe('buildObjectIdsPredicate', () => {
 describe('buildEanPredicate', () => {
   it('should return an ean predicate formatted for Algolia API', () => {
     const objectIdsPredicate = buildEanPredicate(['9780000000001', '9780000000002'])
+
     expect(objectIdsPredicate).toEqual(['offer.ean:9780000000001', 'offer.ean:9780000000002'])
   })
 })
@@ -134,11 +145,13 @@ describe('buildEanPredicate', () => {
 describe('buildOfferIsDuoPredicate', () => {
   it('should return an offer is duo predicate formatted for Algolia API when offerIsDuo param is true', () => {
     const offerIsDuoPredicate = buildOfferIsDuoPredicate(true)
+
     expect(offerIsDuoPredicate).toEqual(['offer.isDuo:true'])
   })
 
   it('should return undefined when offerIsDuo param is false', () => {
     const offerIsDuoPredicate = buildOfferIsDuoPredicate(false)
+
     expect(offerIsDuoPredicate).toEqual(undefined)
   })
 })
@@ -150,6 +163,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: false,
       isThing: false,
     })
+
     expect(offerTypesPredicate).toEqual(undefined)
   })
 
@@ -159,6 +173,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: false,
       isThing: false,
     })
+
     expect(offerTypesPredicate).toEqual([['offer.isDigital:true']])
   })
 
@@ -168,6 +183,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: false,
       isThing: true,
     })
+
     expect(offerTypesPredicate).toEqual([['offer.isThing:true']])
   })
 
@@ -177,6 +193,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: true,
       isThing: false,
     })
+
     expect(offerTypesPredicate).toEqual([['offer.isDigital:true', 'offer.isEvent:true']])
   })
 
@@ -186,6 +203,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: false,
       isThing: true,
     })
+
     expect(offerTypesPredicate).toEqual([['offer.isDigital:false'], ['offer.isThing:true']])
   })
 
@@ -195,6 +213,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: true,
       isThing: false,
     })
+
     expect(offerTypesPredicate).toEqual([['offer.isEvent:true']])
   })
 
@@ -204,6 +223,7 @@ describe('buildOfferTypesPredicate', () => {
       isEvent: true,
       isThing: true,
     })
+
     expect(offerTypesPredicate).toEqual([['offer.isDigital:false']])
   })
 })
@@ -211,6 +231,7 @@ describe('buildOfferTypesPredicate', () => {
 describe('buildTagsPredicate', () => {
   it('should return undefined when no tags associated', () => {
     const tagsPredicate = buildTagsPredicate([])
+
     expect(tagsPredicate).toEqual(undefined)
   })
 
@@ -219,6 +240,7 @@ describe('buildTagsPredicate', () => {
       'Semaine du 14 juillet',
       'Offre cinema spéciale pass culture',
     ])
+
     expect(tagsPredicate).toEqual([
       'offer.tags:Semaine du 14 juillet',
       'offer.tags:Offre cinema spéciale pass culture',
@@ -234,6 +256,7 @@ describe('buildIncludeDigitalOffersPredicate', () => {
       includeDigitalOffers,
       isFullyDigitalOffersCategory
     )
+
     expect(includeDigitalOffersPredicate).toEqual(['offer.isDigital:false'])
   })
 
@@ -244,6 +267,7 @@ describe('buildIncludeDigitalOffersPredicate', () => {
       includeDigitalOffers,
       isFullyDigitalOffersCategory
     )
+
     expect(includeDigitalOffersPredicate).toEqual(undefined)
   })
 })

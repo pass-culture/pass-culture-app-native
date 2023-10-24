@@ -12,6 +12,7 @@ jest.mock('react-native-safe-area-context', () => ({
 describe('AccessibleTabBar', () => {
   it('renders correctly', () => {
     const renderAPI = renderTabBar()
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -32,6 +33,7 @@ describe('AccessibleTabBar', () => {
 
   it('displays only one selected at a time', () => {
     renderTabBar()
+
     expect(screen.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
@@ -49,6 +51,7 @@ describe('AccessibleTabBar', () => {
     const currentPageList = tabs
       .map((tab) => tab.getAttribute('aria-current'))
       .filter((attr) => !!attr)
+
     expect(currentPageList).toHaveLength(1)
   })
 })

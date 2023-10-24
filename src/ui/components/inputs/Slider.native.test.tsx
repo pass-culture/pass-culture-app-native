@@ -18,23 +18,27 @@ describe('<Slider />', () => {
         maxLabel="Max label"
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 
   describe('values', () => {
     it('should show two values if there are 2 values in the array values', () => {
       render(<Slider values={[0, 100]} showValues />)
+
       expect(screen.queryByText('0 - 100')).toBeOnTheScreen()
     })
 
     it('should show one value if there are 1 value in the array values', () => {
       render(<Slider values={[100]} showValues />)
+
       expect(screen.queryByText('100')).toBeOnTheScreen()
       expect(screen.queryByText('0 - 100')).not.toBeOnTheScreen()
     })
 
     it('should not show values if showValues is false', () => {
       render(<Slider values={[100]} showValues={false} />)
+
       expect(screen.queryByText('100')).not.toBeOnTheScreen()
       expect(screen.queryByText('0 - 100')).not.toBeOnTheScreen()
     })

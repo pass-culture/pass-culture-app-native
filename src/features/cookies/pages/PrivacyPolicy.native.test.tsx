@@ -39,6 +39,7 @@ describe('<PrivacyPolicy />', () => {
     await renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
+
     expect(title).not.toBeOnTheScreen()
   })
 
@@ -50,6 +51,7 @@ describe('<PrivacyPolicy />', () => {
     await renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
+
     expect(title).toBeOnTheScreen()
   })
 
@@ -65,6 +67,7 @@ describe('<PrivacyPolicy />', () => {
     await renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
+
     expect(title).not.toBeOnTheScreen()
   })
 
@@ -80,6 +83,7 @@ describe('<PrivacyPolicy />', () => {
     await renderPrivacyPolicy()
 
     const title = screen.queryByText('Choisir les cookies')
+
     expect(title).toBeOnTheScreen()
   })
 })

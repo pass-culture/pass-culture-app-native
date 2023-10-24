@@ -15,21 +15,25 @@ describe('useDistance()', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseGeolocation.mockReturnValue({ userPosition: position } as ILocationContext)
     useDistance(offerPosition)
-    expect(useLocation).toBeCalledWith()
-    expect(formatDistance).toBeCalledWith(offerPosition, position)
+
+    expect(useLocation).toHaveBeenCalledWith()
+    expect(formatDistance).toHaveBeenCalledWith(offerPosition, position)
   })
 
   it('should return undefined when no offerPosition given', () => {
     // @ts-expect-error offer position should not be undefined or null
     useDistance(undefined)
-    expect(useLocation).toBeCalledWith()
-    expect(formatDistance).not.toBeCalled()
+
+    expect(useLocation).toHaveBeenCalledWith()
+    expect(formatDistance).not.toHaveBeenCalled()
   })
+
   it('should return undefined when position is null', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseGeolocation.mockReturnValue({ userPosition: null } as ILocationContext)
     useDistance(offerPosition)
-    expect(useLocation).toBeCalledWith()
-    expect(formatDistance).not.toBeCalled()
+
+    expect(useLocation).toHaveBeenCalledWith()
+    expect(formatDistance).not.toHaveBeenCalled()
   })
 })

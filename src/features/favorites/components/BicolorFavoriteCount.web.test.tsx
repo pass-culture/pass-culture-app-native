@@ -20,6 +20,7 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 describe('BicolorFavoriteCount component', () => {
   it('should render non connected icon', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: false })
+
     expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeInTheDocument()
   })
 
@@ -55,6 +56,7 @@ describe('BicolorFavoriteCount component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
+
     expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeInTheDocument()
   })
 })

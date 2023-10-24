@@ -10,6 +10,7 @@ describe('getBookingLabelForActivationCode', () => {
     } as unknown as Booking
 
     const label = getBookingLabelForActivationCode(booking)
+
     expect(label).toEqual('À activer avant le 15 mars 2021')
   })
 

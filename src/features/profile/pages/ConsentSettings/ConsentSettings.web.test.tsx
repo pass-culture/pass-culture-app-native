@@ -29,6 +29,7 @@ describe('<ConsentSettings/>', () => {
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })

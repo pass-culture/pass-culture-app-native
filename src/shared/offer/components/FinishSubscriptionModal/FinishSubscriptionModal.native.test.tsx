@@ -31,11 +31,13 @@ describe('<FinishSubscriptionModal />', () => {
     mockDepositAmounts.mockReturnValueOnce(undefined)
 
     render(<FinishSubscriptionModal {...modalProps} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly with eighteen years old deposit amount', () => {
     render(<FinishSubscriptionModal {...modalProps} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -43,6 +45,7 @@ describe('<FinishSubscriptionModal />', () => {
     mockUseAuthContext.mockReturnValueOnce({ user: { ...beneficiaryUser, requiresIdCheck: true } })
 
     render(<FinishSubscriptionModal {...modalProps} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -50,14 +53,16 @@ describe('<FinishSubscriptionModal />', () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
     fireEvent.press(screen.getByText('Confirmer mes informations'))
-    expect(hideModal).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('Stepper', { from: StepperOrigin.FAVORITE })
+
+    expect(hideModal).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.FAVORITE })
   })
 
   it('should close modal when pressing right header icon', () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
     fireEvent.press(screen.getByTestId('Fermer la modale'))
-    expect(hideModal).toBeCalledTimes(1)
+
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 })

@@ -41,6 +41,7 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
+
     expect(screen.getByText('Accueil')).toBeInTheDocument()
     expect(screen.getByText('Recherche')).toBeInTheDocument()
     expect(screen.queryByText('Réservations')).not.toBeInTheDocument()
@@ -50,6 +51,7 @@ describe('Header', () => {
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
+
     expect(screen.getByText('Accueil')).toBeInTheDocument()
     expect(screen.getByText('Recherche')).toBeInTheDocument()
     expect(screen.queryByText('Réservations')).not.toBeInTheDocument()

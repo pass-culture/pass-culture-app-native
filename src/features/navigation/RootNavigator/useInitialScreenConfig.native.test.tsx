@@ -58,8 +58,8 @@ describe('useInitialScreen()', () => {
       const { current: screen } = await renderUseInitialScreen()
 
       expect(screen).toEqual(expectedScreen)
-      expect(analytics.logScreenView).toBeCalledTimes(1)
-      expect(analytics.logScreenView).toBeCalledWith(expectedAnalyticsScreen)
+      expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+      expect(analytics.logScreenView).toHaveBeenCalledWith(expectedAnalyticsScreen)
     }
   )
 })

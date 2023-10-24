@@ -8,6 +8,7 @@ describe('getSimilarOffersInOrder', () => {
 
   it('should return offers in ids array order', () => {
     const similarOffersInOrder = getSimilarOrRecoOffersInOrder(ids, offers)
+
     expect(similarOffersInOrder).toEqual([
       {
         offer: {
@@ -102,6 +103,7 @@ describe('getSimilarOffersInOrder', () => {
 
   it('should not return offers in offers array order', () => {
     const similarOffersInOrder = getSimilarOrRecoOffersInOrder(ids, offers)
+
     expect(similarOffersInOrder).not.toEqual(offers)
   })
 })

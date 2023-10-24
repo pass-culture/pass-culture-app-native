@@ -41,8 +41,10 @@ describe('useVideoOffers', () => {
     )
 
     await act(async () => {})
+
     expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
   })
+
   it('should return offers when asking for specific EANs', async () => {
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
@@ -56,8 +58,10 @@ describe('useVideoOffers', () => {
     )
 
     await act(async () => {})
+
     expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
   })
+
   it('should return offers when only OffersModuleParameters are provided', async () => {
     mockFetchMultipleOffers.mockResolvedValueOnce({ hits: mockOffers, nbHits: 6 })
 
@@ -70,6 +74,7 @@ describe('useVideoOffers', () => {
     )
 
     await act(async () => {})
+
     expect(result.current.offers).toEqual(offersFixture)
   })
 })

@@ -22,7 +22,7 @@ describe('logOfferConversion', () => {
   it('should send the corresponding Algolia conversion event when called', async () => {
     await logOfferConversion('abc123')('object123')
 
-    expect(mockAlgoliaSearchInsights).toBeCalledWith('convertedObjectIDsAfterSearch', {
+    expect(mockAlgoliaSearchInsights).toHaveBeenCalledWith('convertedObjectIDsAfterSearch', {
       eventName: 'Offer reserved',
       index: 'algoliaOffersIndexName',
       objectIDs: ['object123'],
@@ -33,8 +33,8 @@ describe('logOfferConversion', () => {
   it('should raise a warning instead of sending an event when called without a queryID set', async () => {
     await logOfferConversion()('object123')
 
-    expect(mockAlgoliaSearchInsights).not.toBeCalled()
-    expect(mockCaptureMonitoringError).toBeCalledWith(
+    expect(mockAlgoliaSearchInsights).not.toHaveBeenCalled()
+    expect(mockCaptureMonitoringError).toHaveBeenCalledWith(
       'Algolia Analytics: useLogOfferConversion called without any QueryID set'
     )
   })
@@ -44,6 +44,6 @@ describe('logOfferConversion', () => {
 
     await logOfferConversion('abc123')('object123')
 
-    expect(mockAlgoliaSearchInsights).not.toBeCalled()
+    expect(mockAlgoliaSearchInsights).not.toHaveBeenCalled()
   })
 })

@@ -23,6 +23,7 @@ describe('useCookiesModalContent hook description', () => {
       declineAll,
       customChoice,
     })
+
     expect(childrenProps.children).toMatchSnapshot()
     expect(childrenProps.leftIcon).toBeUndefined()
   })
@@ -37,6 +38,7 @@ describe('useCookiesModalContent hook description', () => {
       declineAll,
       customChoice,
     })
+
     expect(childrenProps.leftIcon).not.toBeUndefined()
     expect(childrenProps.children).toMatchSnapshot()
   })

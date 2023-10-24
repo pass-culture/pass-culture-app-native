@@ -8,12 +8,14 @@ describe('eventMonitoring', () => {
   describe('init()', () => {
     it("should call sentry's init() when enabled", async () => {
       await eventMonitoring.init({ enabled: true })
+
       expect(SentryModule.init).toHaveBeenCalledTimes(1)
     })
 
     it("should NOT call sentry's init() when disabled", () => {
       eventMonitoring.init({ enabled: false })
-      expect(SentryModule.init).not.toBeCalled()
+
+      expect(SentryModule.init).not.toHaveBeenCalled()
     })
 
     it('should set additional context on initialisation', async () => {

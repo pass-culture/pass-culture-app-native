@@ -5,6 +5,7 @@ describe('getDateValuesString', () => {
     const selectedDate = new Date('2022-01-31T12:00:00.000Z')
     const expectedOutput = { day: '31', month: 'Janv.', year: '2022' }
     const result = getDateValuesString(selectedDate)
+
     expect(result).toEqual(expectedOutput)
   })
 })

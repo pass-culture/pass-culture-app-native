@@ -9,9 +9,10 @@ describe('<ControlComponent />', () => {
 
   it('should render correctly prev by default', () => {
     renderControlComponent()
+
     expect(screen).toMatchSnapshot()
     expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
-    expect(() => screen.getByTestId('arrowNext')).toThrowError()
+    expect(() => screen.getByTestId('arrowNext')).toThrow()
   })
 
   it('should render prev when type is prev', () => {
@@ -20,9 +21,10 @@ describe('<ControlComponent />', () => {
       title: 'Previous',
       type: 'prev',
     })
+
     expect(screen).toMatchSnapshot()
     expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
-    expect(() => screen.getByTestId('arrowNext')).toThrowError()
+    expect(() => screen.getByTestId('arrowNext')).toThrow()
   })
 
   it('renders render next when type is next', () => {
@@ -31,9 +33,10 @@ describe('<ControlComponent />', () => {
       title: 'Next',
       type: 'next',
     })
+
     expect(screen).toMatchSnapshot()
     expect(screen.getByTestId('arrowNext')).toBeOnTheScreen()
-    expect(() => screen.getByTestId('arrowPrevious')).toThrowError()
+    expect(() => screen.getByTestId('arrowPrevious')).toThrow()
   })
 
   it('renders trigger onPress when pressed', () => {
@@ -44,6 +47,7 @@ describe('<ControlComponent />', () => {
     })
 
     fireEvent.press(screen.getByTestId('Previous'))
+
     expect(onPress).toHaveBeenCalledTimes(1)
   })
 
@@ -56,6 +60,7 @@ describe('<ControlComponent />', () => {
     })
 
     const controlButton = screen.getByTestId('Previous')
+
     expect(controlButton.props.style.marginLeft).toEqual('70%')
   })
 
@@ -68,6 +73,7 @@ describe('<ControlComponent />', () => {
     })
 
     const controlButton = screen.getByTestId('Next')
+
     expect(controlButton.props.style.marginRight).toEqual('70%')
   })
 })

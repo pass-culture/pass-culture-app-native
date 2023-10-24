@@ -30,6 +30,7 @@ describe('<IdentityCheckEnd/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<IdentityCheckEnd />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

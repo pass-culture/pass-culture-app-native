@@ -10,6 +10,7 @@ describe('<AccessibilityDeclaration />', () => {
       const { container } = render(<AccessibilityDeclaration />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

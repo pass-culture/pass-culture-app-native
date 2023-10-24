@@ -58,19 +58,17 @@ describe('<DatesHoursModal/>', () => {
       renderDatesHoursModal()
 
       let component = screen.toJSON()
-      if (Array.isArray(component)) {
-        expect(component).not.toContain('CalendarPicker')
-        expect(component).toContain('NoCalendar')
-      }
+
+      expect(component).not.toContain('CalendarPicker')
+      expect(component).toContain('NoCalendar')
 
       await act(async () => {
         fireEvent.press(screen.getByText('Date précise'))
       })
       component = screen.toJSON()
-      if (Array.isArray(component)) {
-        expect(component).toContain('CalendarPicker')
-        expect(component).not.toContain('NoCalendar')
-      }
+
+      expect(component).toContain('CalendarPicker')
+      expect(component).not.toContain('NoCalendar')
     })
 
     it("the correct date when picking 'Date précise'", async () => {
@@ -113,20 +111,18 @@ describe('<DatesHoursModal/>', () => {
     })
 
     const withCalendar = screen.toJSON()
-    if (Array.isArray(withCalendar)) {
-      expect(withCalendar).toContain('CalendarPicker')
-      expect(withCalendar).not.toContain('NoCalendar')
-    }
+
+    expect(withCalendar).toContain('CalendarPicker')
+    expect(withCalendar).not.toContain('NoCalendar')
 
     await act(async () => {
       fireEvent.press(radioButton)
     })
 
     const withoutCalendar = screen.toJSON()
-    if (Array.isArray(withoutCalendar)) {
-      expect(withoutCalendar).toContain('CalendarPicker')
-      expect(withoutCalendar).not.toContain('NoCalendar')
-    }
+
+    expect(withoutCalendar).toContain('CalendarPicker')
+    expect(withoutCalendar).not.toContain('NoCalendar')
   })
 
   describe('should desactivate', () => {
@@ -140,12 +136,14 @@ describe('<DatesHoursModal/>', () => {
       await act(async () => {
         fireEvent.press(toggleDate)
       })
+
       expect(toggleDate.props.accessibilityState.checked).toEqual(true)
 
       const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
+
       expect(toggleDate.props.accessibilityState.checked).toEqual(false)
     })
 
@@ -159,12 +157,14 @@ describe('<DatesHoursModal/>', () => {
       await act(async () => {
         fireEvent.press(toggleHour)
       })
+
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
 
       const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
       })
+
       expect(toggleHour.props.accessibilityState.checked).toEqual(false)
     })
   })
@@ -187,6 +187,7 @@ describe('<DatesHoursModal/>', () => {
         await act(async () => {
           fireEvent.press(radioButton)
         })
+
         expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
         const resetButton = screen.getByText('Réinitialiser')
@@ -216,6 +217,7 @@ describe('<DatesHoursModal/>', () => {
         await act(async () => {
           fireEvent.press(radioButton)
         })
+
         expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
         await act(async () => {
@@ -237,12 +239,14 @@ describe('<DatesHoursModal/>', () => {
       await act(async () => {
         fireEvent.press(toggleHour)
       })
+
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChangeFinish([18, 23])
       })
+
       expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
       const resetButton = screen.getByText('Réinitialiser')
@@ -250,6 +254,7 @@ describe('<DatesHoursModal/>', () => {
         fireEvent.press(resetButton)
         fireEvent.press(toggleHour)
       })
+
       expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
 
@@ -268,12 +273,14 @@ describe('<DatesHoursModal/>', () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChangeFinish([18, 23])
       })
+
       expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
       await act(async () => {
         fireEvent.press(toggleHour)
         fireEvent.press(toggleHour)
       })
+
       expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
   })

@@ -14,6 +14,7 @@ jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
 describe('<EduConnectForm />', () => {
   it('should render EduConnectForm', () => {
     const renderAPI = render(<EduConnectForm />)
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -31,6 +32,7 @@ describe('<EduConnectForm />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<EduConnectForm />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

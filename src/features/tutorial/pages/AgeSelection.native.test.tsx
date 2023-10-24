@@ -87,6 +87,7 @@ describe('AgeSelection', () => {
         fireEvent.press(button)
 
         const userAge = await storage.readObject('user_age')
+
         expect(userAge).toBe(age)
       }
     )

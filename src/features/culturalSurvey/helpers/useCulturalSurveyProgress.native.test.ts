@@ -32,6 +32,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.SORTIES))
+
     expect(progression).toEqual(0)
   })
 
@@ -44,6 +45,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.SORTIES))
+
     expect(progression).toEqual(0.33)
   })
 
@@ -56,6 +58,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.FESTIVALS))
+
     expect(progression).toEqual(0.66)
   })
 
@@ -69,6 +72,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.ACTIVITES))
+
     expect(progression).toEqual(0)
   })
 
@@ -82,6 +86,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.SORTIES))
+
     expect(progression).toEqual(0.25)
   })
 
@@ -95,6 +100,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.FESTIVALS))
+
     expect(progression).toEqual(0.5)
   })
 
@@ -108,6 +114,7 @@ describe('useCulturalSurveyProgress', () => {
     const {
       result: { current: progression },
     } = renderHook(() => useCulturalSurveyProgress(CulturalSurveyQuestionEnum.SPECTACLES))
+
     expect(progression).toEqual(0.75)
   })
 })

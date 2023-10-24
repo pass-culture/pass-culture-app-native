@@ -15,6 +15,7 @@ describe('DMSIntroduction', () => {
 
     await waitFor(() => expect(analytics.logScreenViewDMSIntroduction).toHaveBeenCalledTimes(1))
   })
+
   describe('french version', () => {
     beforeEach(() => {
       useRoute.mockReturnValueOnce({
@@ -26,6 +27,7 @@ describe('DMSIntroduction', () => {
 
     it('should render correctly', () => {
       render(<DMSIntroduction />)
+
       expect(screen).toMatchSnapshot()
     })
 
@@ -61,6 +63,7 @@ describe('DMSIntroduction', () => {
 
     it('should render correctly', () => {
       render(<DMSIntroduction />)
+
       expect(screen).toMatchSnapshot()
     })
 

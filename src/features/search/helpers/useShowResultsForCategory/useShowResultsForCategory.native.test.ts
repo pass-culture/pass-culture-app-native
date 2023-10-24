@@ -43,7 +43,7 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(mockNavigate).toBeCalledWith('TabNavigator', {
+    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
       params: {
         beginningDatetime: undefined,
         date: null,
@@ -72,7 +72,7 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
 
-    expect(mockNavigate).toBeCalledWith('TabNavigator', {
+    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
       params: {
         beginningDatetime: undefined,
         date: null,

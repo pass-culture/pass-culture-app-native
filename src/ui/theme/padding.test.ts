@@ -10,6 +10,7 @@ describe('padding', () => {
       paddingBottom: getSpacing(1),
       paddingLeft: getSpacing(1),
     }
+
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
   })
 
@@ -21,6 +22,7 @@ describe('padding', () => {
       paddingBottom: getSpacing(1),
       paddingLeft: getSpacing(2),
     }
+
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
   })
 
@@ -32,6 +34,7 @@ describe('padding', () => {
       paddingBottom: getSpacing(3),
       paddingLeft: getSpacing(2),
     }
+
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
   })
 
@@ -43,6 +46,7 @@ describe('padding', () => {
       paddingBottom: getSpacing(3),
       paddingLeft: getSpacing(4),
     }
+
     expect(expectedPaddingProps).toEqual(actualPaddingProps)
   })
 })

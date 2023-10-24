@@ -41,6 +41,7 @@ describe('<PriceModal/>', () => {
       )
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })

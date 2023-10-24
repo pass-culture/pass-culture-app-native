@@ -45,6 +45,7 @@ describe('checkGeolocPermission()', () => {
     }) => {
       mockCheck.mockResolvedValue(permissionResult as PermissionValue)
       const permission = await checkGeolocPermission()
+
       expect(permission).toEqual(expectedState)
     }
   )

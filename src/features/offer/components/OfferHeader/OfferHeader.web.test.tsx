@@ -38,9 +38,11 @@ describe('<OfferHeader />', () => {
     const offerHeaderName = screen.getByTestId('offerHeaderName')
 
     expect(offerHeaderName.style.opacity).toBe('0')
+
     await act(async () => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
     })
+
     expect(offerHeaderName.style.opacity).toBe('1')
   })
 })

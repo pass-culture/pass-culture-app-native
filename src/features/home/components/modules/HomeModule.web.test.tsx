@@ -83,6 +83,7 @@ describe('<HomeModule />', () => {
       expect(await screen.findAllByLabelText('Week-end FRAC')).not.toHaveLength(0)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -97,6 +98,7 @@ describe('<HomeModule />', () => {
       })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -106,6 +108,7 @@ describe('<HomeModule />', () => {
       expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -115,6 +118,7 @@ describe('<HomeModule />', () => {
       expect(await screen.findByText('Cette semaine sur le pass')).toBeInTheDocument()
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -141,12 +145,14 @@ describe('<HomeModule />', () => {
 
       const { container } = renderHomeModule(formattedRecommendedOffersModule)
       await act(async () => {})
+
       expect(screen.getByText('Tes évènements en ligne')).toBeInTheDocument()
 
       let results
       await act(async () => {
         results = await checkAccessibilityFor(container)
       })
+
       expect(results).toHaveNoViolations()
     })
 
@@ -156,9 +162,11 @@ describe('<HomeModule />', () => {
       const { container } = renderHomeModule(formattedThematicHighlightModule)
 
       await act(async () => {})
+
       expect(screen.getByText('Temps très fort')).toBeInTheDocument()
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -166,12 +174,14 @@ describe('<HomeModule />', () => {
       const { container } = renderHomeModule(formattedOffersModule, defaultData)
 
       await act(async () => {})
+
       expect(screen.getByText('La nuit des temps')).toBeInTheDocument()
 
       let results
       await act(async () => {
         results = await checkAccessibilityFor(container)
       })
+
       expect(results).toHaveNoViolations()
     })
   })

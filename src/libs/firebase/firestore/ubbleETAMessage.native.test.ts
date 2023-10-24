@@ -9,6 +9,7 @@ jest.mock('@react-native-firebase/firestore')
 describe('[method] ubbleETAMessage', () => {
   it('should call the right path: ubble > testing', () => {
     getUbbleETAMessage()
+
     expect(firestore().collection).toHaveBeenCalledWith('ubble')
     expect(firestore().collection('ubble').doc).toHaveBeenCalledWith('testing')
     expect(firestore().collection('ubble').doc('testing').get).toHaveBeenCalledTimes(1)

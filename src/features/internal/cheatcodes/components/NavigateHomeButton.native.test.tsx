@@ -11,6 +11,7 @@ describe('NavigateHomeButton', () => {
   it('calls navigate to Home when pressed', () => {
     render(<NavigateHomeButton />)
     fireEvent.press(screen.getByText('Naviguer vers la page d’accueil'))
+
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })

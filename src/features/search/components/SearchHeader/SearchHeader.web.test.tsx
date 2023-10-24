@@ -63,6 +63,7 @@ describe('SearchHeader component', () => {
       ...initialSearchState,
       view: SearchView.Suggestions,
     }
+
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'Search',
       params,
@@ -103,6 +104,7 @@ describe('SearchHeader component', () => {
       })
 
       const searchMainInput = screen.getByRole('searchbox', { hidden: true })
+
       expect(searchMainInput).not.toHaveFocus()
     }
   )
@@ -125,6 +127,7 @@ describe('SearchHeader component', () => {
     })
 
     const locationFilterButton = screen.getByTestId('Me localiser')
+
     expect(locationFilterButton).toHaveFocus()
   })
 })

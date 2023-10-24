@@ -97,6 +97,7 @@ describe('<OfferDescription />', () => {
     render(<OfferDescription />)
 
     fireEvent.press(screen.getByLabelText('Revenir en arrière'))
+
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerResponseSnap.id })
   })
 })
@@ -119,6 +120,7 @@ describe('getContentFromOffer()', () => {
       expect.anything(),
     ])
   })
+
   it('show relevant extraData, sorted', () => {
     expect(
       getContentFromOffer({ author: 'Tolkien', musicType: 'Rock' }, 'Weird combo')

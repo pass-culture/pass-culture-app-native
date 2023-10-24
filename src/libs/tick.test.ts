@@ -6,6 +6,7 @@ describe('libs/tick', () => {
       expect(true).toBeTruthy()
     }, 0)
     await tick()
+
     expect.assertions(1)
   })
 })

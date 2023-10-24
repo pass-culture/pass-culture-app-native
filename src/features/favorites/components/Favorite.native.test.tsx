@@ -102,7 +102,7 @@ describe('<Favorite /> component', () => {
 
     await waitFor(() => {
       expect(deleteFavoriteSpy).toHaveBeenNthCalledWith(1, id)
-      expect(mockShowErrorSnackBar).toBeCalledWith({
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
         message: 'L’offre n’a pas été retirée de tes favoris',
         timeout: SNACK_BAR_TIME_OUT,
       })

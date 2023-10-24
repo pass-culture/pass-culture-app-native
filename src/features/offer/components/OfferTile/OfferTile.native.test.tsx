@@ -51,6 +51,7 @@ describe('OfferTile component', () => {
   it('should render correctly', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
+
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
@@ -58,6 +59,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(push).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'home',
@@ -69,6 +71,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'home',
@@ -86,6 +89,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       ...apiRecoParams,
       offerId,
@@ -102,6 +106,7 @@ describe('OfferTile component', () => {
       reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />)
     )
     await fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'home',
@@ -127,6 +132,7 @@ describe('OfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...propsFromSearchVenuesPlaylist} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'venue',
@@ -142,6 +148,7 @@ describe('OfferTile component', () => {
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)
+
     expect(query).not.toBeUndefined()
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({

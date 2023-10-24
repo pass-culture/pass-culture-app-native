@@ -61,12 +61,14 @@ describe('sanitizeNavigationState', () => {
   it('should not mutate original navigation state', () => {
     const defaultStateCopy = JSON.parse(JSON.stringify(state))
     sanitizeNavigationState(state)
+
     expect(state).toEqual(defaultStateCopy)
   })
 
   it('should save 1 entry in history with index 0', () => {
     const newState = sanitizeNavigationState(state)
+
     expect(newState.index).toEqual(0)
-    expect((newState.routes as []).length).toEqual(1)
+    expect(newState.routes as []).toHaveLength(1)
   })
 })

@@ -10,6 +10,7 @@ describe('<VenueCard />', () => {
     render(<VenueCard title="Jest" address="Somewhere in your memory" onPress={onPress} />)
 
     await fireEvent.press(screen.getByText('Jest'))
+
     expect(onPress).toHaveBeenCalledTimes(1)
   })
 })

@@ -8,6 +8,7 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 describe('SelectIDStatus', () => {
   it('should render SelectIDStatus page correctly', () => {
     render(<SelectIDStatus />)
+
     expect(screen).toMatchSnapshot()
   })
 

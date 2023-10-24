@@ -186,11 +186,13 @@ describe('useSearchHistory', () => {
     const { result } = renderHook(useSearchHistory)
 
     await act(async () => {})
+
     expect(result.current.filteredHistory).toEqual([item])
 
     await act(async () => {
       result.current.removeFromHistory(item)
     })
+
     expect(result.current.filteredHistory).toEqual([])
   })
 
@@ -296,7 +298,7 @@ describe('useSearchHistory', () => {
       result.current.setQueryHistory('')
     })
 
-    expect(result.current.filteredHistory.length).toEqual(20)
+    expect(result.current.filteredHistory).toHaveLength(20)
   })
 
   it('should return 3 items maximum in the history when queryHistory is not an empty string', async () => {
@@ -307,6 +309,6 @@ describe('useSearchHistory', () => {
       result.current.setQueryHistory('a')
     })
 
-    expect(result.current.filteredHistory.length).toEqual(2)
+    expect(result.current.filteredHistory).toHaveLength(2)
   })
 })

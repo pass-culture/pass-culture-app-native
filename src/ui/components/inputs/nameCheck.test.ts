@@ -11,6 +11,7 @@ describe('isNameValid function', () => {
     'àâçéèêîôœùûÀÂÇÉÈÊÎÔŒÙÛ',
   ])('should accept a well formatted name: %s', (name) => {
     const isValid = isNameValid(name)
+
     expect(isValid).toEqual(true)
   })
 
@@ -18,6 +19,7 @@ describe('isNameValid function', () => {
     'should reject a unwell formatted name: %s',
     (name) => {
       const isValid = isNameValid(name)
+
       expect(isValid).toEqual(false)
     }
   )

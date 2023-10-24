@@ -34,8 +34,9 @@ describe('useVenueModal', () => {
     expect(result.current.isQueryProvided).toBeFalsy()
     expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
     expect(result.current.isVenueSelected).toBeFalsy()
-    expect(result.current.venueQuery.length).toBe(0)
+    expect(result.current.venueQuery).toHaveLength(0)
   })
+
   it('when provide a query it should change state for the UI', async () => {
     const { result } = renderHook(useVenueModal, {
       initialProps: { dismissModal },
@@ -48,8 +49,9 @@ describe('useVenueModal', () => {
     expect(result.current.isQueryProvided).toBeTruthy()
     expect(result.current.shouldShowSuggestedVenues).toBeTruthy()
     expect(result.current.isVenueSelected).toBeFalsy()
-    expect(result.current.venueQuery.length).toBe(4)
+    expect(result.current.venueQuery).toHaveLength(4)
   })
+
   it('when select a venue it should change state for the UI', async () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
@@ -61,8 +63,9 @@ describe('useVenueModal', () => {
     expect(result.current.isQueryProvided).toBeTruthy()
     expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
     expect(result.current.isVenueSelected).toBeTruthy()
-    expect(result.current.venueQuery.length).toBe(venue.label.length)
+    expect(result.current.venueQuery).toHaveLength(venue.label.length)
   })
+
   it('when select a venue and reset it should reset the UI', async () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
@@ -70,7 +73,8 @@ describe('useVenueModal', () => {
       result.current.doChangeVenue(venue.label)
       result.current.doSetSelectedVenue(venue)
     })
-    expect(result.current.venueQuery.length).toBe(venue.label.length)
+
+    expect(result.current.venueQuery).toHaveLength(venue.label.length)
 
     await act(async () => {
       result.current.doResetVenue()
@@ -79,8 +83,9 @@ describe('useVenueModal', () => {
     expect(result.current.isQueryProvided).toBeFalsy()
     expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
     expect(result.current.isVenueSelected).toBeFalsy()
-    expect(result.current.venueQuery.length).toBe(0)
+    expect(result.current.venueQuery).toHaveLength(0)
   })
+
   it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
@@ -97,6 +102,7 @@ describe('useVenueModal', () => {
 
     expect(dismissModal).toHaveBeenCalledWith()
   })
+
   it('when select a venue and validate it should apply search to the context', async () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
@@ -107,6 +113,7 @@ describe('useVenueModal', () => {
     await act(async () => {
       result.current.doApplySearch()
     })
+
     expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -117,16 +124,19 @@ describe('useVenueModal', () => {
       },
     })
   })
+
   it('when nothing is to be search then search cannot be done', async () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
     await act(async () => {
       result.current.doApplySearch()
     })
+
     expect(doAfterSearch).not.toHaveBeenCalledWith()
     expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
+
   it('when nothing is to be search then search cannot be done and no calls is made', async () => {
     const { result } = renderHook(
       ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
@@ -141,10 +151,12 @@ describe('useVenueModal', () => {
     await act(async () => {
       result.current.doApplySearch()
     })
+
     expect(doAfterSearch).not.toHaveBeenCalledWith()
     expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
+
   it('when a search is made then the callback is called', () => {
     const { result } = renderHook(
       ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
@@ -169,6 +181,7 @@ describe('useVenueModal', () => {
       view: SearchView.Results,
     })
   })
+
   it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
     const { result } = renderHook(
       ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
@@ -186,6 +199,7 @@ describe('useVenueModal', () => {
     await act(() => {
       result.current.doApplySearch()
     })
+
     expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: 'venueLabel' })
   })
 })

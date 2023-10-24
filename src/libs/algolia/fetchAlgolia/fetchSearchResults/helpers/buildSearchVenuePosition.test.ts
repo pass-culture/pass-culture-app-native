@@ -37,27 +37,34 @@ describe('buildSearchVenuePosition', () => {
   describe('When user shares his position', () => {
     it('should return user position and around radius when location filter is around me', () => {
       const searchVenuePosition = buildSearchVenuePosition(aroundMeFilter, userPosition)
+
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
+
     it('should return user position and around radius at "all" when location filter is everywhere', () => {
       const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, userPosition)
+
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
         aroundRadius: 'all',
       })
     })
+
     it('should return venue position and around radius when location filter is venue', () => {
       const searchVenuePosition = buildSearchVenuePosition(venueFilter, userPosition)
+
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
+
     it('should return place position and around radius when location filter is place', () => {
       const searchVenuePosition = buildSearchVenuePosition(placeFilter, userPosition)
+
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
         aroundRadius: convertKmToMeters(MAX_RADIUS),
@@ -81,25 +88,32 @@ describe('buildSearchVenuePosition', () => {
   describe('When user does not share his position', () => {
     it('should return around radius at "all" when location filter is around me', () => {
       const searchVenuePosition = buildSearchVenuePosition(aroundMeFilter)
+
       expect(searchVenuePosition).toEqual({
         aroundRadius: 'all',
       })
     })
+
     it('should return around radius at "all" when location filter is everywhere', () => {
       const searchVenuePosition = buildSearchVenuePosition(everywhereFilter)
+
       expect(searchVenuePosition).toEqual({
         aroundRadius: 'all',
       })
     })
+
     it('should return venue position and around radius when location filter is venue', () => {
       const searchVenuePosition = buildSearchVenuePosition(venueFilter)
+
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
+
     it('should return place position and around radius when location filter is place', () => {
       const searchVenuePosition = buildSearchVenuePosition(placeFilter)
+
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
         aroundRadius: convertKmToMeters(MAX_RADIUS),

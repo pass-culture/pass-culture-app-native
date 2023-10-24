@@ -83,7 +83,7 @@ describe('ConfirmDeleteProfile component', () => {
 
     await waitFor(() => {
       expect(analytics.logConsultArticleAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined, true)
+      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined, true)
     })
   })
 
@@ -92,7 +92,7 @@ describe('ConfirmDeleteProfile component', () => {
 
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
-    expect(mockGoBack).toBeCalledTimes(1)
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should open CGU when clicking on "conditions générales d’utilisation"', () => {

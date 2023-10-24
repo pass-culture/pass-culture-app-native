@@ -15,6 +15,7 @@ jest.mock('ui/components/modals/useModal', () => ({
 
 jest.mock('libs/geolocation')
 const mockUseGeolocation = useLocation as jest.Mock
+
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({
@@ -27,6 +28,7 @@ describe('LocationSearchWidget', () => {
     const button = screen.getByTestId('Ouvrir la modale de localisation')
 
     fireEvent.press(button)
+
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
