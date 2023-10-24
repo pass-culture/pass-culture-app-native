@@ -484,7 +484,7 @@ describe('[api] helpers', () => {
     ])('should throw error if status is not ok', async (statusCode) => {
       const response = await respondWith('apiResponse', statusCode)
 
-      const getResult = async () => {
+      const getResult = () => {
         return handleGeneratedApiResponse(response)
       }
       const error = new ApiError(
