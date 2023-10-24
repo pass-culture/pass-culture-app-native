@@ -5,7 +5,7 @@ import { shouldOpenInbox } from './shouldOpenInbox'
 jest.mock('features/navigation/helpers')
 
 describe('shouldOpenInbox', () => {
-  it("should return true if url is appUrl and contains 'openInbox' string ", () => {
+  it("should return true if url is appUrl and contains 'openInbox' string", () => {
     const link = 'prefix' + 'openInbox'
 
     expect(shouldOpenInbox(link)).toBeTruthy()

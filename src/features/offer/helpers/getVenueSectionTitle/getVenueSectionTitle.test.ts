@@ -8,7 +8,7 @@ describe('getVenueSectionTitle', () => {
     expect(venueSectionTitle).toEqual('Lieu de retrait')
   })
 
-  it('should return "Lieu de projection" when subcategory is "Séances de cinéma" ', () => {
+  it('should return "Lieu de projection" when subcategory is "Séances de cinéma"', () => {
     const venueSectionTitle = getVenueSectionTitle(SubcategoryIdEnum.SEANCE_CINE, false)
 
     expect(venueSectionTitle).toEqual('Lieu de projection')

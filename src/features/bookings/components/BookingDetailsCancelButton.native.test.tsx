@@ -102,7 +102,7 @@ describe('<BookingDetailsCancelButton />', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should block user if cancellation date is over and user is ex beneficiary ', () => {
+  it('should block user if cancellation date is over and user is ex beneficiary', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
     booking.stock.offer.isDigital = false

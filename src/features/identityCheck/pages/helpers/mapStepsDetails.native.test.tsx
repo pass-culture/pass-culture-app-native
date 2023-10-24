@@ -135,7 +135,7 @@ describe('mapStepsDetails', () => {
     },
   ]
 
-  it('should map steps info from the back with steps config from the front ', () => {
+  it('should map steps info from the back with steps config from the front', () => {
     const result = mapStepsDetails(stepsToComplete, stepsConfig)
 
     expect(result).toEqual(expectedStepsDetails)

@@ -223,7 +223,7 @@ describe('useSelectHomepageEntry', () => {
       ${{ eligibility: EligibilityType['age-18'] }}
       ${{ roles: [UserRole.BENEFICIARY] }}
     `(
-      'should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old ',
+      'should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old',
       async ({ user }) => {
         mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
         mockUseAuthContext.mockReturnValueOnce({

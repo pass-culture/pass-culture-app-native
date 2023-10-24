@@ -35,7 +35,7 @@ describe('useShowReview', () => {
     expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
   })
 
-  it('should not show the review when it is not available ', () => {
+  it('should not show the review when it is not available', () => {
     mockIsAvailable.mockReturnValueOnce(false)
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
 

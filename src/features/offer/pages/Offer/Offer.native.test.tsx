@@ -210,7 +210,7 @@ describe('<Offer />', () => {
         useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       })
 
-      it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
+      it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
         renderOfferPage()
         const scrollView = screen.getByTestId('offer-container')
 

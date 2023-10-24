@@ -59,7 +59,7 @@ describe('fetchVenues', () => {
   venueId: 4150,
   _geoloc: { lat: 48.87004, lng: 2.3785 },
 }}
-  `('should fetch venues and format them correctly ', async ({ fixture, expectedResult }) => {
+  `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)
 
     const venues = await fetchVenues({ query: 'queryString' })

@@ -41,7 +41,7 @@ describe('useGoBack()', () => {
     })
 
     it.each([1, 2, 3])(
-      'should return true if canGoBack = false but history length > 2 ',
+      'should return true if canGoBack = false but history length > 2',
       (historyLength) => {
         mockCanGoBack = false
         historySpy.mockImplementationOnce(() => ({

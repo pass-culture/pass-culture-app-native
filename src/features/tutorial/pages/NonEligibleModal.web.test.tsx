@@ -22,7 +22,7 @@ describe('<NonEligibleModal/>', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should render correctly for profile tutorial non-eligible under 15 ', async () => {
+    it('should render correctly for profile tutorial non-eligible under 15', async () => {
       const { container } = render(
         <NonEligibleModal
           visible
@@ -37,7 +37,7 @@ describe('<NonEligibleModal/>', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should render correctly for onboarding non-eligible over 18 ', async () => {
+    it('should render correctly for onboarding non-eligible over 18', async () => {
       const { container } = render(
         <NonEligibleModal
           visible
@@ -52,7 +52,7 @@ describe('<NonEligibleModal/>', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should render correctly for profile tutorial non-eligible over 18 ', async () => {
+    it('should render correctly for profile tutorial non-eligible over 18', async () => {
       const { container } = render(
         <NonEligibleModal
           visible

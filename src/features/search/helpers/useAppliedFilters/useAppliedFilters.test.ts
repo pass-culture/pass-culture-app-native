@@ -22,7 +22,7 @@ describe('useAppliedFilters', () => {
     expect(filterTypes).toEqual([FILTER_TYPES.LOCATION])
   })
 
-  describe('should return an array ', () => {
+  describe('should return an array', () => {
     it('with Localisation and Catégories when search state has category', () => {
       mockSearchState = {
         ...initialSearchState,

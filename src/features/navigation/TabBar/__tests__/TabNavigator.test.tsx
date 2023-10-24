@@ -12,7 +12,7 @@ describe('<TabNavigator />', () => {
       [true, false],
       [false, true],
       [false, false],
-    ])('should NOT display "Bookings" icon ', (isLoggedIn, isBeneficiary) => {
+    ])('should NOT display "Bookings" icon', (isLoggedIn, isBeneficiary) => {
       const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn, isBeneficiary })
 
       expect(shouldDisplayTab('Bookings')).toBe(false)

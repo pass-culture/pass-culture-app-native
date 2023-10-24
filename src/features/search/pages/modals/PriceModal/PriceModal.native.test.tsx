@@ -454,7 +454,7 @@ describe('<PriceModal/>', () => {
     expect(rightLabelMaxInput).toBeOnTheScreen()
   })
 
-  describe('should close the modal ', () => {
+  describe('should close the modal', () => {
     it('when pressing the search button', async () => {
       renderSearchPrice()
 
@@ -686,7 +686,7 @@ describe('<PriceModal/>', () => {
   })
 
   describe('with "Rechercher" button', () => {
-    describe('should navigate on search results ', () => {
+    describe('should navigate on search results', () => {
       it('when pressing button with minimum and maximum prices entered', async () => {
         renderSearchPrice()
 

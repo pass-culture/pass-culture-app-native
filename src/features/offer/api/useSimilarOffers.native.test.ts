@@ -131,7 +131,7 @@ describe('useSimilarOffers', () => {
     expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
   })
 
-  it('should call similar offers API when offer id provided and shared offer position not loaded ', async () => {
+  it('should call similar offers API when offer id provided and shared offer position not loaded', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
@@ -248,7 +248,7 @@ describe('getApiRecoSimilarOffers', () => {
 })
 
 describe('getCategories', () => {
-  describe('should return an empty array ', () => {
+  describe('should return an empty array', () => {
     it('when categoryIncluded and categoryExcluded not defined', () => {
       const categories = getCategories()
 

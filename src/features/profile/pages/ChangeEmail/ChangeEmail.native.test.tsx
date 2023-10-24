@@ -112,7 +112,7 @@ describe('<ChangeEmail/>', () => {
   })
 
   describe('When email change succeeds', () => {
-    it('should navigate to Profile ', async () => {
+    it('should navigate to Profile', async () => {
       renderChangeEmail()
       await fillInputs({})
       await submitForm()

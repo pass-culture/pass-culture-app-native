@@ -150,7 +150,7 @@ describe('<OfferDuoModal/>', () => {
     })
   })
 
-  describe('should close the modal ', () => {
+  describe('should close the modal', () => {
     it('should close modal on submit', async () => {
       renderOfferDuoModal()
       const button = screen.getByText('Rechercher')

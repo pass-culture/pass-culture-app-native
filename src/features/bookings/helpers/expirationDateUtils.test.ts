@@ -25,7 +25,7 @@ describe('expirationDateUtils', () => {
       expect(getDigitalBookingsWithoutExpirationDate(initialBookings)).toStrictEqual(arrayOfBooking)
     })
 
-    it('should return an empty array ', () => {
+    it('should return an empty array', () => {
       // isDigital === false && !booking.expirationDate
       const invalidbooking = {
         ...initialBookings[1],
@@ -51,7 +51,7 @@ describe('expirationDateUtils', () => {
       expect(isBookingInList(firstBooking, getDigitalBookingsWithoutExpirationDate)).toBeTruthy()
     })
 
-    it('should check if a booking does exist in the list of DigitalBookingWithoutExpirationDate array and return false if it does not exist ', () => {
+    it('should check if a booking does exist in the list of DigitalBookingWithoutExpirationDate array and return false if it does not exist', () => {
       const [firstBooking] = initialBookings
       const newFirstBooking = { ...firstBooking, id: 999 }
       const getDigitalBookingsWithoutExpirationDate = initialBookings
@@ -61,7 +61,7 @@ describe('expirationDateUtils', () => {
   })
 
   describe('displayExpirationMessage', () => {
-    it('should display expiration message : Ta réservation s’archivera dans ${daysLeft} jours  ', () => {
+    it('should display expiration message : Ta réservation s’archivera dans ${daysLeft} jours', () => {
       const daysLeft = 20
 
       expect(displayExpirationMessage(daysLeft)).toBe('Ta réservation s’archivera dans 20 jours')
@@ -95,7 +95,7 @@ describe('expirationDateUtils', () => {
       expect(daysCountdown(dateCreated)).toEqual(daysLeftUntilExpiration)
     })
 
-    it('should return -1 when the countdown ended  ', () => {
+    it('should return -1 when the countdown ended', () => {
       mockdate.set(new Date('2023-02-10T10:00:00Z'))
       const dateCreated = '2023-01-07T14:38:45.121155Z'
       const endedCountdown = -1

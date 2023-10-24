@@ -150,7 +150,7 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    describe('should close the modal ', () => {
+    describe('should close the modal', () => {
       it('when pressing the search button', async () => {
         renderCategories()
 
