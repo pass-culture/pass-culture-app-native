@@ -26,7 +26,8 @@ describe('customFindUrlChunks', () => {
       textToHighlight: description1,
       searchWords: [],
     })
-    expect(highlightedChunks1.length).toBe(1)
+
+    expect(highlightedChunks1).toHaveLength(1)
     expect(description1.slice(0, highlightedChunks1[0].start)).toBe(description1WithoutUrl)
   })
 
@@ -35,7 +36,8 @@ describe('customFindUrlChunks', () => {
       textToHighlight: description2,
       searchWords: [],
     })
-    expect(highlightedChunks2.length).toBe(5)
+
+    expect(highlightedChunks2).toHaveLength(5)
   })
 })
 

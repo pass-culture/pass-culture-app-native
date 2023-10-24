@@ -28,6 +28,7 @@ describe('VideoModule', () => {
     const button = screen.getByTestId('video-thumbnail')
 
     fireEvent.press(button)
+
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 

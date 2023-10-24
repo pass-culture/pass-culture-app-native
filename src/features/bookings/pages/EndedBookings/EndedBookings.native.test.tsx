@@ -14,17 +14,20 @@ jest.mock('react-query')
 describe('EndedBookings', () => {
   it('should render correctly', () => {
     renderEndedBookings(bookingsSnap)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should always execute the query (in cache or in network)', () => {
     const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
     renderEndedBookings(bookingsSnap)
-    expect(useBookings).toBeCalledTimes(1)
+
+    expect(useBookings).toHaveBeenCalledTimes(1)
   })
 
   it('should display the right number of ended bookings', () => {
     renderEndedBookings(bookingsSnap)
+
     expect(screen.queryByText('1 réservation terminée')).toBeOnTheScreen()
   })
 

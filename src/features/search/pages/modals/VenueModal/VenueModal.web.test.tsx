@@ -18,7 +18,9 @@ describe('<VenueModal/>', () => {
         results = await checkAccessibilityFor(container)
       })
       await act(async () => {})
+
       expect(results).toHaveNoViolations()
+
       await act(async () => {})
     })
   })

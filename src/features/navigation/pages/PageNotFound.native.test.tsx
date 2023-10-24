@@ -7,6 +7,7 @@ import { PageNotFound } from './PageNotFound'
 describe('<PageNotFound/>', () => {
   it('should render correctly', () => {
     render(<PageNotFound />)
+
     expect(screen).toMatchSnapshot()
   })
 })

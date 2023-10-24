@@ -7,6 +7,7 @@ import { AskNotificiationsModal } from './AskNotificationsModal'
 describe('AskNotificationsModal', () => {
   it('should render null in web', () => {
     render(<AskNotificiationsModal visible onHideModal={jest.fn()} />)
+
     expect(screen).toMatchObject({})
   })
 })

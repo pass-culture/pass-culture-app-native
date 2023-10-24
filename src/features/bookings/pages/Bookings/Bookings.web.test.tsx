@@ -24,6 +24,7 @@ describe('Bookings', () => {
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
+
         expect(results).toHaveNoViolations()
       })
     })
@@ -66,7 +67,7 @@ describe('Bookings', () => {
     fireEvent.click(cta)
 
     await waitFor(() => {
-      expect(navigate).toBeCalledWith('EndedBookings', undefined)
+      expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
     })
   })
 })

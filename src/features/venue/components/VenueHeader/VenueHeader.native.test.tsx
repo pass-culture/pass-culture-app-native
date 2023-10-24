@@ -16,6 +16,7 @@ jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
     renderVenueHeader()
+
     expect(screen.queryByTestId('animated-icon-back')).toBeOnTheScreen()
     expect(screen.queryByTestId('animated-icon-share')).toBeOnTheScreen()
   })
@@ -23,11 +24,13 @@ describe('<VenueHeader />', () => {
   it('should goBack when we press on the back button', () => {
     renderVenueHeader()
     fireEvent.press(screen.getByTestId('animated-icon-back'))
-    expect(mockGoBack).toBeCalledTimes(1)
+
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should fully display the title at the end of the animation', () => {
     const { animatedValue } = renderVenueHeader()
+
     expect(screen.getByTestId('venueHeaderName').props.accessibilityHidden).toBe(true)
     expect(screen.getByTestId('venueHeaderName').props.style.opacity).toBe(0)
 

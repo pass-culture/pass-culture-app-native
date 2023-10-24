@@ -10,6 +10,7 @@ describe('OfferCategory', () => {
     const { toJSON } = render(
       <OfferCategory categoryId={CategoryIdEnum.LIVRE} label="Livre ou carte lecture" />
     )
+
     expect(toJSON()).toMatchSnapshot()
   })
 })

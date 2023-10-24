@@ -18,6 +18,7 @@ describe('getDatesFromTimeRangeAndDate', () => {
       // Then
       const tuesday_april_28_2020_six_pm = new Date(2020, 3, 28, 18, 0, 0, 0)
       const tuesday_april_28_2020_ten_pm = new Date(2020, 3, 28, 22, 0, 0, 0)
+
       expect(dateWithBeginningAndEndingTimes).toStrictEqual([
         tuesday_april_28_2020_six_pm,
         tuesday_april_28_2020_ten_pm,
@@ -42,6 +43,7 @@ describe('getDatesFromTimeRangeAndDate', () => {
       // Then
       const tuesday_april_28_2020_midnight = new Date(2020, 3, 28, 0, 0, 0, 0)
       const wednesday_april_29_2020_midnight = new Date(2020, 3, 29, 0, 0, 0, 0)
+
       expect(dateWithBeginningAndEndingTimes).toStrictEqual([
         tuesday_april_28_2020_midnight,
         wednesday_april_29_2020_midnight,
@@ -65,6 +67,7 @@ describe('getWeekDatesFromDate', () => {
     const friday_may_01_2020_eleven_am = new Date(2020, 4, 1, 11)
     const saturday_may_02_2020_eleven_am = new Date(2020, 4, 2, 11)
     const sunday_may_03_2020_eleven_am = new Date(2020, 4, 3, 11)
+
     expect(dates).toStrictEqual([
       monday_april_27_2020_eleven_am,
       tuesday_april_28_2020_eleven_am,
@@ -88,6 +91,7 @@ describe('getWeekDatesFromDate', () => {
     const friday_may_01_2020_eleven_am = new Date(2020, 4, 1, 11)
     const saturday_may_02_2020_eleven_am = new Date(2020, 4, 2, 11)
     const sunday_may_03_2020_eleven_am = new Date(2020, 4, 3, 11)
+
     expect(dates).toStrictEqual([
       wednesday_april_29_2020_eleven_am,
       thursday_april_30_2020_eleven_am,
@@ -120,6 +124,7 @@ describe('getWeekEndDatesFromDate', () => {
     // Then
     const saturday_may_02_2020_eleven_am = new Date(2020, 4, 2, 11)
     const sunday_may_03_2020_eleven_am = new Date(2020, 4, 3, 11)
+
     expect(dates).toStrictEqual([saturday_may_02_2020_eleven_am, sunday_may_03_2020_eleven_am])
   })
 

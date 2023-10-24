@@ -15,8 +15,10 @@ describe('buildOfferTypesList', () => {
     })
 
     const expectedOffertTypeList: typeof offerTypeList = []
+
     expect(offerTypeList).toEqual(expectedOffertTypeList)
   })
+
   it('should return a formatted offerTypeList', () => {
     const bookTypes = ['art', 'cuisine']
     const movieGenres = ['ACTION', 'ART']
@@ -40,6 +42,7 @@ describe('buildOfferTypesList', () => {
       { key: 'SHOW', value: 'Danse' },
       { key: 'SHOW', value: 'Cirque' },
     ]
+
     expect(offerTypeList).toEqual(expectedOffertTypeList)
   })
 })

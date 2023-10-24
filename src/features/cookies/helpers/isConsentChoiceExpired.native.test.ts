@@ -18,6 +18,7 @@ describe('isConsentChoiceExpired', () => {
     'should not be expired if user has made choice less than 6 months ago',
     (choiceDatetime) => {
       const hasExpired = isConsentChoiceExpired(choiceDatetime)
+
       expect(hasExpired).toEqual(false)
     }
   )
@@ -26,6 +27,7 @@ describe('isConsentChoiceExpired', () => {
     'should be expired if user has made choice 6 months ago or more than 6 months ago',
     (choiceDatetime) => {
       const hasExpired = isConsentChoiceExpired(choiceDatetime)
+
       expect(hasExpired).toEqual(true)
     }
   )

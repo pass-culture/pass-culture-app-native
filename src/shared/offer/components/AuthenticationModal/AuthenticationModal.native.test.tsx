@@ -15,6 +15,7 @@ describe('<AuthenticationModal />', () => {
     render(
       <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
     )
+
     expect(screen).toMatchSnapshot()
   })
 

@@ -77,7 +77,7 @@ describe('ShareAppModal', () => {
     const shareButton = screen.getByText('Partager l’appli')
     fireEvent.press(shareButton)
 
-    expect(hideModal).toBeCalledTimes(1)
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   it.each([

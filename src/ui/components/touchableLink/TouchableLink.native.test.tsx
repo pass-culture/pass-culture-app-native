@@ -27,6 +27,7 @@ describe('<TouchableLink />', () => {
 
       expect(analytics.logConsultTutorial).toHaveBeenCalledWith('profile')
       expect(handleNavigationMock).not.toHaveBeenCalled()
+
       await waitFor(() => {
         expect(handleNavigationMock).toHaveBeenCalledTimes(1)
       })
@@ -45,6 +46,7 @@ describe('<TouchableLink />', () => {
       fireEvent.press(screen.getByText(linkText))
 
       expect(handleNavigationMock).toHaveBeenCalledTimes(1)
+
       await waitFor(() => {
         expect(mockedOnAfterNavigate).toHaveBeenCalledTimes(1)
       })

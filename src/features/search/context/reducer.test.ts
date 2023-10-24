@@ -22,13 +22,17 @@ describe('Search reducer', () => {
   })
 
   const state = initialSearchState
+
   it('should handle INIT', () => {
     let searchState = { view: SearchView.Landing } as SearchState
+
     expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
       ...initialSearchState,
       view: SearchView.Landing,
     })
+
     searchState = { view: SearchView.Results } as SearchState
+
     expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
       ...initialSearchState,
       view: SearchView.Results,
@@ -49,6 +53,7 @@ describe('Search reducer', () => {
       tags: [],
     }
     const action: Action = { type: 'SET_STATE', payload: parameters }
+
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       ...parameters,
@@ -60,6 +65,7 @@ describe('Search reducer', () => {
       type: 'PRICE_RANGE',
       payload: [30, 200] as SearchState['priceRange'],
     }
+
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       priceRange: [30, 200],
@@ -71,6 +77,7 @@ describe('Search reducer', () => {
       type: 'SET_MIN_PRICE',
       payload: '30',
     }
+
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       minPrice: '30',
@@ -82,6 +89,7 @@ describe('Search reducer', () => {
       type: 'SET_MAX_PRICE',
       payload: '200',
     }
+
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       maxPrice: '200',
@@ -94,6 +102,7 @@ describe('Search reducer', () => {
       { ...state, locationFilter: { locationType: LocationType.EVERYWHERE } },
       action
     )
+
     expect(newState.locationFilter).toStrictEqual(initialSearchState.locationFilter)
   })
 
@@ -103,6 +112,7 @@ describe('Search reducer', () => {
       { ...state, locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null } },
       action
     )
+
     expect(newState.locationFilter).toStrictEqual({
       locationType: LocationType.AROUND_ME,
       aroundRadius: 30,
@@ -118,6 +128,7 @@ describe('Search reducer', () => {
       },
       action
     )
+
     expect(newState.locationFilter).toStrictEqual({
       locationType: LocationType.PLACE,
       aroundRadius: 30,
@@ -130,6 +141,7 @@ describe('Search reducer', () => {
       type: 'TIME_RANGE',
       payload: [10, 24] as SearchState['timeRange'],
     }
+
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
       timeRange: [10, 24],
@@ -142,6 +154,7 @@ describe('Search reducer', () => {
       type: 'TOGGLE_CATEGORY',
       payload: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     })
+
     expect(newState).toStrictEqual({
       ...state,
       offerCategories: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
@@ -152,6 +165,7 @@ describe('Search reducer', () => {
       type: 'TOGGLE_CATEGORY',
       payload: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
     })
+
     expect(newState).toStrictEqual({
       ...state,
       // Note: the categories are sorted to later reuse react-query cache
@@ -166,6 +180,7 @@ describe('Search reducer', () => {
       type: 'TOGGLE_CATEGORY',
       payload: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     })
+
     expect(newState).toStrictEqual({
       ...state,
       offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
@@ -175,45 +190,60 @@ describe('Search reducer', () => {
   it('should handle OFFER_TYPE', () => {
     // 1. Add isDigital
     let newState = searchReducer(state, { type: 'OFFER_TYPE', payload: 'isDigital' })
+
     expect(newState.offerTypes).toStrictEqual({ isDigital: true, isThing: false, isEvent: false })
 
     // 2. Add isThing
     newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isThing' })
+
     expect(newState.offerTypes).toStrictEqual({ isDigital: true, isThing: true, isEvent: false })
 
     // 3. Remove isDigital
     newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isDigital' })
+
     expect(newState.offerTypes).toStrictEqual({ isDigital: false, isThing: true, isEvent: false })
   })
 
   it('should handle TOGGLE_OFFER_FREE', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_FREE' })
+
     expect(newState).toStrictEqual({ ...state, offerIsFree: true })
+
     newState = searchReducer(newState, { type: 'TOGGLE_OFFER_FREE' })
+
     expect(newState).toStrictEqual({ ...state, offerIsFree: false })
   })
 
   it('should handle TOGGLE_OFFER_DUO', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_DUO' })
+
     expect(newState).toStrictEqual({ ...state, offerIsDuo: true })
+
     newState = searchReducer(newState, { type: 'TOGGLE_OFFER_DUO' })
+
     expect(newState).toStrictEqual({ ...state, offerIsDuo: false })
   })
 
   it('should handle TOGGLE_OFFER_NEW', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_OFFER_NEW' })
+
     expect(newState).toStrictEqual({ ...state, offerIsNew: true })
+
     newState = searchReducer(newState, { type: 'TOGGLE_OFFER_NEW' })
+
     expect(newState).toStrictEqual({ ...state, offerIsNew: false })
   })
 
   it('should handle TOGGLE_DATE', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_DATE' })
+
     expect(newState.date).toStrictEqual({
       option: DATE_FILTER_OPTIONS.TODAY,
       selectedDate: Today.toISOString(),
     })
+
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
+
     expect(newState.date).toBeNull()
   })
 
@@ -223,10 +253,12 @@ describe('Search reducer', () => {
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.TODAY,
     })
+
     expect(newState.date).toBeNull()
 
     // 2. We enable Date, the section 'Date de l'offre' appears and the actions have an effect
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
+
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.TODAY) // "Aujourd'hui" by default
 
     // 3. We pick the 'Cette semaine'
@@ -234,6 +266,7 @@ describe('Search reducer', () => {
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.CURRENT_WEEK,
     })
+
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.CURRENT_WEEK)
 
     // 4. We pick the 'Ce week-end'
@@ -241,6 +274,7 @@ describe('Search reducer', () => {
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
     })
+
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)
 
     // 5. We pick the 'Date précise'
@@ -248,24 +282,30 @@ describe('Search reducer', () => {
       type: 'SELECT_DATE_FILTER_OPTION',
       payload: DATE_FILTER_OPTIONS.USER_PICK,
     })
+
     expect(newState.date?.option).toStrictEqual(DATE_FILTER_OPTIONS.USER_PICK)
   })
 
   it('should handle TOGGLE_HOUR', () => {
     let newState = searchReducer(state, { type: 'TOGGLE_HOUR' })
+
     expect(newState.timeRange).toStrictEqual([8, 24])
+
     newState = searchReducer(newState, { type: 'TOGGLE_HOUR' })
+
     expect(newState.timeRange).toBeNull()
   })
 
   it('should handle SELECT_DATE', () => {
     // 1. No effect if we haven't selected Date before
     let newState = searchReducer(state, { type: 'SELECT_DATE', payload: Today })
+
     expect(newState.date).toBeNull()
 
     // 2. We choose another date after enabling section Date de l'offre
     newState = searchReducer(newState, { type: 'TOGGLE_DATE' })
     newState = searchReducer(newState, { type: 'SELECT_DATE', payload: Tomorrow })
+
     expect(newState.date?.selectedDate).toStrictEqual(Tomorrow.toISOString())
   })
 
@@ -275,14 +315,17 @@ describe('Search reducer', () => {
       payload: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
     }
     let newState = searchReducer(state, action)
+
     expect(newState.offerCategories).toStrictEqual([SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS])
 
     newState = searchReducer(newState, { type: 'SET_CATEGORY', payload: [] })
+
     expect(newState.offerCategories).toStrictEqual([])
   })
 
   it('should handle SET_LOCATION_AROUND_ME', () => {
     const newState = searchReducer(state, { type: 'SET_LOCATION_AROUND_ME' })
+
     expect(newState.locationFilter.locationType).toEqual(LocationType.AROUND_ME)
   })
 
@@ -294,6 +337,7 @@ describe('Search reducer', () => {
       },
       { type: 'SET_LOCATION_EVERYWHERE' }
     )
+
     expect(newState.locationFilter.locationType).toEqual(LocationType.EVERYWHERE)
   })
 
@@ -302,6 +346,7 @@ describe('Search reducer', () => {
       type: 'SET_LOCATION_PLACE',
       payload: { place: Kourou },
     })
+
     expect(newState.locationFilter).toStrictEqual({
       locationType: LocationType.PLACE,
       place: Kourou,

@@ -21,7 +21,7 @@ describe('useSortedSearchCategories', () => {
   it('should return all categories', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current.length).toEqual(14)
+    expect(result.current).toHaveLength(14)
   })
 
   it("should format category's label", () => {
@@ -40,6 +40,7 @@ describe('useSortedSearchCategories', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
     const actualCategoriesLabels = result.current.map((category) => category.label)
+
     expect(actualCategoriesLabels).toEqual([
       'Concerts & festivals',
       'Films, séries, cinéma',

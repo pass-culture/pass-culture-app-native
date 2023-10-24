@@ -8,6 +8,7 @@ describe('[Method] navigateToBooking', () => {
   it('should navigate to BookingDetails', async () => {
     const bookingId = 37815152
     navigateToBooking(bookingId)
-    expect(navigateFromRef).toBeCalledWith('BookingDetails', { id: bookingId })
+
+    expect(navigateFromRef).toHaveBeenCalledWith('BookingDetails', { id: bookingId })
   })
 })

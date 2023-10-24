@@ -54,6 +54,7 @@ describe('<OfferDuoModal/>', () => {
       renderOfferDuoModal({}, isDesktopViewport)
 
       const header = screen.queryByTestId('pageHeader')
+
       expect(header).toBeOnTheScreen()
     })
 
@@ -62,6 +63,7 @@ describe('<OfferDuoModal/>', () => {
       renderOfferDuoModal({}, isDesktopViewport)
 
       const header = screen.queryByTestId('pageHeader')
+
       expect(header).not.toBeOnTheScreen()
     })
 
@@ -148,7 +150,7 @@ describe('<OfferDuoModal/>', () => {
     })
   })
 
-  describe('should close the modal ', () => {
+  describe('should close the modal', () => {
     it('should close modal on submit', async () => {
       renderOfferDuoModal()
       const button = screen.getByText('Rechercher')

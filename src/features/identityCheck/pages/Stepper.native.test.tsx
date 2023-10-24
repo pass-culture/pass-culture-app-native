@@ -71,6 +71,7 @@ describe('Stepper navigation', () => {
       identification: { method: null },
     })
     render(<Stepper />)
+
     expect(screen).toMatchSnapshot()
   })
 

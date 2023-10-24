@@ -13,9 +13,11 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
     ...mockState,
   })),
 }))
+
 describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
     render(<SelectIDOrigin />)
+
     expect(screen).toMatchSnapshot()
   })
 

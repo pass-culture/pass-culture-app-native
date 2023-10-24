@@ -7,6 +7,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 describe('NoContentError', () => {
   it('should render correctly', () => {
     render(<NoContentError />)
+
     expect(screen.toJSON()).toMatchSnapshot()
   })
 

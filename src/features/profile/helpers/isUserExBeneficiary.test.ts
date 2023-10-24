@@ -31,6 +31,7 @@ describe('isUserExBeneficiary', () => {
         amount: 10,
         isExpired: isCreditExpired,
       }))
+
       expect(isUserExBeneficiary(user)).toEqual(expected)
     }
   )

@@ -18,6 +18,7 @@ describe('<DateInput />', () => {
 
   it('should render correctly', () => {
     render(<DateInput {...props} />)
+
     expect(screen.queryByTestId('date-picker-spinner-native')).toBeOnTheScreen()
     expect(screen.queryByTestId('date-picker-dropdown')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('date-picker-spinner-touch')).not.toBeOnTheScreen()

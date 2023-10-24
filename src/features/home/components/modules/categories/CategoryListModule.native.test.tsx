@@ -26,6 +26,7 @@ describe('CategoryListModule', () => {
       'homeEntryId'
     )
   })
+
   it('should call analytics when a categoryBlock is clicked', () => {
     render(
       <CategoryListModule

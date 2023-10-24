@@ -37,6 +37,7 @@ describe('<SuspendAccountConfirmation />', () => {
         <SuspendAccountConfirmation navigation={navigation} route={route} />
       )
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

@@ -13,6 +13,7 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 describe('ExpiredOrLostID', () => {
   it('should render correctly', () => {
     render(<ExpiredOrLostID />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -29,6 +30,7 @@ describe('ExpiredOrLostID', () => {
 
     await waitFor(() => expect(analytics.logScreenViewExpiredOrLostId).toHaveBeenCalledTimes(1))
   })
+
   it('should send a batch event when the screen is mounted', async () => {
     render(<ExpiredOrLostID />)
 

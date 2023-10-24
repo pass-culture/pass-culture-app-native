@@ -30,6 +30,7 @@ describe('getDeviceId', () => {
     await getDeviceId()
 
     const deviceIdStorageAfter = await storage.readString(DEVICE_ID_KEY)
+
     expect(deviceIdStorageAfter).toEqual(DEVICE_ID_FROM_UUID)
   })
 

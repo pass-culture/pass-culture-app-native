@@ -24,6 +24,7 @@ describe('LocationWidget', () => {
     const button = screen.getByTestId('Ouvrir la modale de localisation')
 
     fireEvent.press(button)
+
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 

@@ -55,6 +55,7 @@ describe('formatFullAddressWithVenueName', () => {
     'should format correctly full address with venue name = $expected',
     ({ publicName, name, address, postalCode, city, expected }) => {
       const result = formatFullAddressWithVenueName(address, postalCode, city, publicName, name)
+
       expect(result).toEqual(expected)
     }
   )
@@ -63,17 +64,20 @@ describe('formatFullAddressWithVenueName', () => {
 describe('formatFullAddressStartsWithPostalCode', () => {
   it('should return an empty string when postal code, city and address not defined', () => {
     const formattedAddress = formatFullAddressStartsWithPostalCode(undefined, undefined, undefined)
+
     expect(formattedAddress).toEqual('')
   })
 
   describe('should return formatted address', () => {
     it('with only postal code', () => {
       const formattedAddress = formatFullAddressStartsWithPostalCode(undefined, '75000', undefined)
+
       expect(formattedAddress).toEqual('75000')
     })
 
     it('with only city', () => {
       const formattedAddress = formatFullAddressStartsWithPostalCode(undefined, undefined, 'Paris')
+
       expect(formattedAddress).toEqual('Paris')
     })
 
@@ -83,11 +87,13 @@ describe('formatFullAddressStartsWithPostalCode', () => {
         undefined,
         undefined
       )
+
       expect(formattedAddress).toEqual('1 rue de la Paix')
     })
 
     it('with postal code and city', () => {
       const formattedAddress = formatFullAddressStartsWithPostalCode(undefined, '75000', 'Paris')
+
       expect(formattedAddress).toEqual('75000 Paris')
     })
 
@@ -97,6 +103,7 @@ describe('formatFullAddressStartsWithPostalCode', () => {
         '75000',
         undefined
       )
+
       expect(formattedAddress).toEqual('75000, 1 rue de la Paix')
     })
 
@@ -106,6 +113,7 @@ describe('formatFullAddressStartsWithPostalCode', () => {
         undefined,
         'Paris'
       )
+
       expect(formattedAddress).toEqual('Paris, 1 rue de la Paix')
     })
 
@@ -115,6 +123,7 @@ describe('formatFullAddressStartsWithPostalCode', () => {
         '75000',
         'Paris'
       )
+
       expect(formattedAddress).toEqual('75000 Paris, 1 rue de la Paix')
     })
   })

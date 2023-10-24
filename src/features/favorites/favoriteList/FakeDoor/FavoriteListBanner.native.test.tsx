@@ -11,13 +11,16 @@ describe('FavoriteListBanner', () => {
   it('should return null when feature flag is not activated', () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     render(<FavoriteListBanner />)
+
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
+
   it('should open modal when clicking the banner', () => {
     render(<FavoriteListBanner />)
 
     const banner = screen.getByText('Crée une liste de favoris')
     fireEvent.press(banner)
+
     expect(screen.getByText('Encore un peu de patience...')).toBeOnTheScreen()
   })
 

@@ -50,6 +50,7 @@ describe('SetPhoneValidationCode', () => {
 
   it('should match snapshot', () => {
     renderSetPhoneValidationCode()
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -57,23 +58,30 @@ describe('SetPhoneValidationCode', () => {
     'should reject an ill-formatted code: %s',
     (code) => {
       const isValid = hasCodeCorrectFormat(code)
+
       expect(isValid).toEqual(false)
     }
   )
+
   it.each(['000000', '123456'])('should accept a well-formatted code: %s', (code) => {
     const isValid = hasCodeCorrectFormat(code)
+
     expect(isValid).toEqual(true)
   })
+
   it("should have 'Continue' button enabled according to code format", () => {
     renderSetPhoneValidationCode()
     const continueButton = screen.getByTestId('Continuer')
+
     expect(continueButton).toBeDisabled()
 
     const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000 ')
+
     expect(continueButton).toBeDisabled()
 
     fireEvent.changeText(input, '000000')
+
     expect(continueButton).not.toBeDisabled()
   })
 
@@ -86,6 +94,7 @@ describe('SetPhoneValidationCode', () => {
 
     expect(screen.queryByText('Demander un autre code')).toBeOnTheScreen()
   })
+
   it('should display input error message if code request fails', async () => {
     mockFetch.mockRejectedValueOnce(
       new ApiError(400, {
@@ -110,6 +119,7 @@ describe('SetPhoneValidationCode', () => {
       ).toBeOnTheScreen()
     })
   })
+
   it('should navigate to TooManyAttempts if too many attempts', async () => {
     mockFetch.mockRejectedValueOnce(
       new ApiError(400, {
@@ -129,6 +139,7 @@ describe('SetPhoneValidationCode', () => {
       expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
     })
   })
+
   it('should call navigateToNextScreen if validation succeeds', async () => {
     mockFetch.mockResolvedValueOnce(
       new Response(JSON.stringify({}), {

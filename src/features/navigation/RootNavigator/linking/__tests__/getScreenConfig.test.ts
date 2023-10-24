@@ -35,7 +35,8 @@ describe('getScreensAndConfig()', () => {
         options: { title: 'Offer title' },
       },
     ] as Route[]
-    expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrowError(
+
+    expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrow(
       new Error('Screen Offer: you have to declare either path or pathConfig')
     )
   })
@@ -51,13 +52,15 @@ describe('getScreensAndConfig()', () => {
         options: { title: 'Offer title' },
       },
     ] as Route[]
-    expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrowError(
+
+    expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrow(
       new Error('Screen Offer: you cannot declare both path and pathConfig')
     )
   })
 
   it('should return a screensConfig and Screens components', () => {
     const { screensConfig, Screens } = getScreensAndConfig(validRoutes, RootStack.Screen)
+
     expect(screensConfig).toEqual({
       Offer: { path: 'offer' },
       _DeeplinkOnlyOffer1: { path: 'offre1' },
@@ -65,7 +68,7 @@ describe('getScreensAndConfig()', () => {
       Login: { path: 'login', parse },
       _DeeplinkOnlyLogin1: { path: 'connexion', parse },
     })
-    expect(Screens.length).toBe(5)
+    expect(Screens).toHaveLength(5)
     expect(Screens[0].props).toEqual({
       name: 'Offer',
       component: expect.any(Object),

@@ -27,6 +27,7 @@ jest.mock('features/share/context/ShareAppWrapper', () => ({
 describe('<AccountCreated />', () => {
   it('should render correctly', () => {
     renderAccountCreated()
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -36,9 +37,9 @@ describe('<AccountCreated />', () => {
     fireEvent.press(screen.getByText('On y va\u00a0!'))
 
     await waitFor(() => {
-      expect(navigateFromRef).not.toBeCalled()
-      expect(navigate).toBeCalledTimes(1)
-      expect(navigate).toBeCalledWith('CulturalSurveyIntro', undefined)
+      expect(navigateFromRef).not.toHaveBeenCalled()
+      expect(navigate).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro', undefined)
     })
   })
 
@@ -52,11 +53,11 @@ describe('<AccountCreated />', () => {
     fireEvent.press(screen.getByText('On y va\u00a0!'))
 
     await waitFor(() => {
-      expect(navigateFromRef).toBeCalledWith(
+      expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
       )
-      expect(navigate).not.toBeCalledWith('CulturalSurvey', undefined)
+      expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
     })
   })
 
@@ -65,7 +66,7 @@ describe('<AccountCreated />', () => {
 
     fireEvent.press(await screen.findByText('On y va\u00a0!'))
 
-    expect(BatchUser.trackEvent).toBeCalledWith('has_validated_account')
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_validated_account')
   })
 
   it('should show non eligible share app modal when "On y va !" button is clicked', async () => {

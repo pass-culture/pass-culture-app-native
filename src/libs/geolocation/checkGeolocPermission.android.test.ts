@@ -48,6 +48,7 @@ describe('checkGeolocPermission()', () => {
         [PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION]: ACCESS_COARSE_LOCATION,
       } as Permissions)
       const permission = await checkGeolocPermission()
+
       expect(permission).toEqual(expectedState)
     }
   )

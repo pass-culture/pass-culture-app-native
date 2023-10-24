@@ -40,6 +40,7 @@ describe('BusinessModule component', () => {
 
   it('should render correctly - with leftIcon = Idea by default', () => {
     const { toJSON } = renderModule(props)
+
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -49,6 +50,7 @@ describe('BusinessModule component', () => {
       leftIcon:
         'https://images.ctfassets.net/2bg01iqy0isv/1Sh2Ter3f4GgW9m926jqB5/83adbbd38e399d0089ff7b8f0efadf4c/Europe.png',
     })
+
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -57,12 +59,14 @@ describe('BusinessModule component', () => {
       ...props,
       url: undefined,
     })
+
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should log "BusinessBlockClicked" when clicking on the image', () => {
     renderModule(props)
     fireEvent.press(screen.getByTestId('imageBusiness'))
+
     expect(analytics.logBusinessBlockClicked).toHaveBeenCalledWith({
       moduleName: props.analyticsTitle,
       moduleId: props.moduleId,
@@ -138,7 +142,9 @@ describe('BusinessModule component', () => {
     await waitFor(() =>
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
+
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+
     mockUseAuthContext.mockReset()
   })
 
@@ -158,7 +164,9 @@ describe('BusinessModule component', () => {
 
     fireEvent.press(screen.getByTestId('imageBusiness'))
     await waitFor(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
+
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
+
     mockUseAuthContext.mockReset()
   })
 })

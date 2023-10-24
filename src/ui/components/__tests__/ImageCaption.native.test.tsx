@@ -16,12 +16,14 @@ describe('ImageCaption component', () => {
 
   it('should render correctly', () => {
     const { toJSON } = render(<ImageCaption {...props} />)
+
     expect(toJSON()).toMatchSnapshot()
     expect(screen.queryByTestId('distanceImageCaption')).toBeOnTheScreen()
   })
 
   it('should not display the distance if not available', () => {
     render(<ImageCaption {...props} distance={undefined} />)
+
     expect(screen.queryByTestId('distanceImageCaption')).not.toBeOnTheScreen()
   })
 })

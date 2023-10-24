@@ -8,6 +8,7 @@ describe('SelectIDStatus', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<SelectIDStatus />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

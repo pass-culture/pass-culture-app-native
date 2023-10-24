@@ -20,6 +20,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
     render(<EmailInputWithSpellingHelp {...props} email="" />)
 
     const suggestionButton = screen.queryByText('Appliquer la modification')
+
     expect(suggestionButton).not.toBeOnTheScreen()
   })
 
@@ -37,6 +38,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
     const suggestionButton = screen.queryByText(
       'Veux-tu plutôt dire firstname.lastname@gmail.com ?'
     )
+
     expect(suggestionButton).toBeOnTheScreen()
   })
 

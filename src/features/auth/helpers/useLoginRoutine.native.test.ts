@@ -50,7 +50,7 @@ describe('useLoginRoutine', () => {
     const mockSaveRefreshToken = jest.spyOn(Keychain, 'saveRefreshToken')
     await renderUseLoginRoutine()
 
-    expect(mockSaveRefreshToken).toBeCalledTimes(1)
+    expect(mockSaveRefreshToken).toHaveBeenCalledTimes(1)
   })
 
   it('should log login analytics', async () => {
@@ -63,6 +63,7 @@ describe('useLoginRoutine', () => {
     await renderUseLoginRoutine()
 
     const accessTokenStorage = await storage.readString('access_token')
+
     expect(accessTokenStorage).toEqual(accessToken)
   })
 
@@ -83,6 +84,7 @@ describe('useLoginRoutine', () => {
       await renderUseLoginRoutine()
 
       const cookiesConsentStorage = await storage.readObject(COOKIES_CONSENT_KEY)
+
       expect(cookiesConsentStorage).toEqual({
         ...cookiesChoice,
         userId: FAKE_USER_ID,

@@ -17,6 +17,7 @@ describe('AsyncErrorBoundary component', () => {
         <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
       )
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })
@@ -25,6 +26,7 @@ describe('AsyncErrorBoundary component', () => {
     const renderAPI = render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -32,6 +34,7 @@ describe('AsyncErrorBoundary component', () => {
     render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
+
     expect(screen.getByTestId('Revenir en arrière')).toBeInTheDocument()
 
     fireEvent.click(screen.getByTestId('Revenir en arrière'))
@@ -47,6 +50,7 @@ describe('AsyncErrorBoundary component', () => {
         resetErrorBoundary={resetErrorBoundary}
       />
     )
+
     expect(retry).not.toHaveBeenCalled()
 
     const button = await screen.findByText('Réessayer')

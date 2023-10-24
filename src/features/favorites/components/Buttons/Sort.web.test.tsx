@@ -7,9 +7,11 @@ import { Sort } from './Sort'
 
 describe('Sort component', () => {
   afterAll(() => jest.resetAllMocks())
+
   it('should navigate to Sort page on pressing', () => {
     render(<Sort />)
     fireEvent.click(screen.getByTestId('Trier'))
+
     expect(navigate).toHaveBeenCalledWith('FavoritesSorts', undefined)
   })
 })

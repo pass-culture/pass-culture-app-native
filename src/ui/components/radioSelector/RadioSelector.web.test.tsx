@@ -35,6 +35,7 @@ describe('<RadioSelector />', () => {
       const { container } = render(<RadioSelector label="label" onPress={onPress} checked />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

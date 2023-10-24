@@ -17,6 +17,7 @@ describe('<Profile/>', () => {
           'duplicate-id-aria': { enabled: false },
         },
       })
+
       expect(results).toHaveNoViolations()
     })
   })

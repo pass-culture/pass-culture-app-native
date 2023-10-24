@@ -10,6 +10,7 @@ describe('<RecommendedPaths />', () => {
       const { container } = render(<RecommendedPaths />)
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

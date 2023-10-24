@@ -77,7 +77,7 @@ describe('[method] maintenanceStatus', () => {
         maintenanceStatusListener(mockedCallBack)
         onNext(docSnapshot)
 
-        expect(mockedCallBack).not.toBeCalled()
+        expect(mockedCallBack).not.toHaveBeenCalled()
       })
 
       it('when maintenanceIsOn is wrong', () => {
@@ -92,7 +92,7 @@ describe('[method] maintenanceStatus', () => {
         maintenanceStatusListener(mockedCallBack)
         onNext(docSnapshot)
 
-        expect(mockedCallBack).not.toBeCalled()
+        expect(mockedCallBack).not.toHaveBeenCalled()
       })
     })
 

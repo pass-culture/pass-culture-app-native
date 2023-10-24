@@ -9,6 +9,7 @@ describe('multipleQueries', () => {
     const queries = Array(51).fill({ indexName: 'indexName', query: 'query', params: {} })
 
     multipleQueries(queries)
+
     expect(client.multipleQueries).toHaveBeenCalledTimes(2)
   })
 })

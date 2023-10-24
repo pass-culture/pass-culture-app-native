@@ -5,6 +5,7 @@ describe('getIsE2e false', () => {
     jest.spyOn(global, 'fetch').mockResolvedValueOnce({
       ok: false,
     } as Response)
+
     expect(await getIsE2e()).toBeFalsy()
   })
 })

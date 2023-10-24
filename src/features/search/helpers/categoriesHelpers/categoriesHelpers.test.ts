@@ -28,6 +28,7 @@ describe('categoriesHelpers', () => {
     const categories = mockData.searchGroups
       .filter((category) => category.name !== SearchGroupNameEnumv2.NONE)
       .sort(searchGroupOrNativeCategorySortComparator)
+
     expect(categories).toEqual([
       {
         name: 'ARTS_LOISIRS_CREATIFS',
@@ -93,6 +94,7 @@ describe('categoriesHelpers', () => {
       mockData,
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS
     )
+
     expect(nativeSubcategories).toEqual([
       {
         genreType: null,
@@ -120,27 +122,32 @@ describe('categoriesHelpers', () => {
   describe('isOnlyOnline', () => {
     it('should return false when category and native category are undefined', () => {
       const value = isOnlyOnline(mockData)
+
       expect(value).toEqual(false)
     })
 
     describe('Category', () => {
       it('should return true when all native categories of the category are online platform', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
+
         expect(value).toEqual(true)
       })
 
       it('should return false when all native categories of the category are offline', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE)
+
         expect(value).toEqual(false)
       })
 
       it('should return false when native categories of the category are online and offline platform', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.SPECTACLES)
+
         expect(value).toEqual(false)
       })
 
       it('should return false when native categories of the category are online, offline and online or offline platform', () => {
         const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS)
+
         expect(value).toEqual(false)
       })
     })
@@ -152,6 +159,7 @@ describe('categoriesHelpers', () => {
           undefined,
           NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE
         )
+
         expect(value).toEqual(true)
       })
 
@@ -161,16 +169,19 @@ describe('categoriesHelpers', () => {
           undefined,
           NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
         )
+
         expect(value).toEqual(false)
       })
 
       it('should return false when pro subcategories of the native category are online and offline platform', () => {
         const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.VISITES_CULTURELLES)
+
         expect(value).toEqual(false)
       })
 
       it('should return false when pro subcategories of the native category are offline and online or offline platform', () => {
         const value = isOnlyOnline(mockData, undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
+
         expect(value).toEqual(false)
       })
     })
@@ -179,16 +190,19 @@ describe('categoriesHelpers', () => {
   describe('getNativeCategoryFromEnum', () => {
     it('should return undefined when subcategories API return undefined data', () => {
       const value = getNativeCategoryFromEnum(undefined, NativeCategoryIdEnumv2.ARTS_VISUELS)
+
       expect(value).toEqual(undefined)
     })
 
     it('should return undefined when native category id is undefined', () => {
       const value = getNativeCategoryFromEnum(mockData, undefined)
+
       expect(value).toEqual(undefined)
     })
 
     it('should return the native category from native category id', () => {
       const value = getNativeCategoryFromEnum(mockData, NativeCategoryIdEnumv2.ARTS_VISUELS)
+
       expect(value).toEqual({ genreType: null, name: 'ARTS_VISUELS', value: 'Arts visuels' })
     })
   })
@@ -197,11 +211,13 @@ describe('categoriesHelpers', () => {
     describe('should return an empty array', () => {
       it('when no data from backend', () => {
         const value = getSearchGroupsEnumArrayFromNativeCategoryEnum()
+
         expect(value).toEqual([])
       })
 
       it('without native category in parameter', () => {
         const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(mockData)
+
         expect(value).toEqual([])
       })
     })
@@ -211,6 +227,7 @@ describe('categoriesHelpers', () => {
         mockData,
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
+
       expect(value).toEqual([
         SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
         SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
@@ -221,6 +238,7 @@ describe('categoriesHelpers', () => {
   describe('isNativeCategoryOfCategory', () => {
     it('should return false when no data from backend', () => {
       const value = isNativeCategoryOfCategory()
+
       expect(value).toEqual(false)
     })
 
@@ -230,6 +248,7 @@ describe('categoriesHelpers', () => {
         SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
         NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
       )
+
       expect(value).toEqual(false)
     })
 
@@ -239,6 +258,7 @@ describe('categoriesHelpers', () => {
         SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
+
       expect(value).toEqual(true)
     })
   })
@@ -319,21 +339,25 @@ describe('categoriesHelpers', () => {
   describe('getFacetTypeFromGenreTypeKey', () => {
     it('should return OFFER_BOOK_TYPE for "BOOK"', () => {
       const result = getFacetTypeFromGenreTypeKey(GenreType.BOOK)
+
       expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE)
     })
 
     it('should return OFFER_MUSIC_TYPE for "MUSIC"', () => {
       const result = getFacetTypeFromGenreTypeKey(GenreType.MUSIC)
+
       expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE)
     })
 
     it('should return OFFER_SHOW_TYPE for "SHOW"', () => {
       const result = getFacetTypeFromGenreTypeKey(GenreType.SHOW)
+
       expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE)
     })
 
     it('should return OFFER_MOVIE_GENRES for "MOVIE"', () => {
       const result = getFacetTypeFromGenreTypeKey(GenreType.MOVIE)
+
       expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES)
     })
   })
@@ -341,21 +365,25 @@ describe('categoriesHelpers', () => {
   describe('getNbResultsFacetLabel', () => {
     it('should return "+100 résultats" for nbResultsFacet > 100', () => {
       const result = getNbResultsFacetLabel(101)
+
       expect(result).toEqual('+100 résultats')
     })
 
     it('should return "{nbResultsFacet} résultats" for nbResultsFacet > 1', () => {
       const result = getNbResultsFacetLabel(5)
+
       expect(result).toEqual('5 résultats')
     })
 
     it('should return "{nbResultsFacet} résultat" for nbResultsFacet === 1', () => {
       const result = getNbResultsFacetLabel(1)
+
       expect(result).toEqual('1 résultat')
     })
 
     it('should return "{nbResultsFacet} résultat" for nbResultsFacet = 0', () => {
       const result = getNbResultsFacetLabel(0)
+
       expect(result).toEqual('0 résultat')
     })
   })

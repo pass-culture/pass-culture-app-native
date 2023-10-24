@@ -98,6 +98,7 @@ describe('formatGroupedDates', () => {
       arrayDays: [[7]],
     }
     const result = formatGroupedDates(grouped)
+
     expect(result.formatDates).toEqual(expected.formatDates)
     expect(result.arrayDays).toEqual(expected.arrayDays)
   })
@@ -125,6 +126,7 @@ describe('formatGroupedDates', () => {
       ],
     }
     const result = formatGroupedDates(grouped)
+
     expect(result.formatDates).toEqual(expected.formatDates)
     expect(result.arrayDays).toEqual(expected.arrayDays)
   })
@@ -136,6 +138,7 @@ describe('formatGroupedDates', () => {
       arrayDays: [],
     }
     const result = formatGroupedDates(grouped)
+
     expect(result.formatDates).toEqual(expected.formatDates)
     expect(result.arrayDays).toEqual(expected.arrayDays)
   })
@@ -160,11 +163,13 @@ describe('getFormattedDates', () => {
   it('should return undefined when the array dates are invalid', () => {
     const dates = ['invalid date']
     const result = getFormattedDates(dates)
+
     expect(result).toEqual(undefined)
   })
 
   it('should return a formatted date when array contains only one unique date', () => {
     const result = getFormattedDates([DECEMBER_14_2020.toISOString()])
+
     expect(result).toEqual('14 décembre 2020')
   })
 
@@ -173,6 +178,7 @@ describe('getFormattedDates', () => {
       DECEMBER_14_2020.toISOString(),
       DECEMBER_14_2020.toISOString(),
     ])
+
     expect(result).toEqual('14 décembre 2020')
   })
 
@@ -181,6 +187,7 @@ describe('getFormattedDates', () => {
       NOVEMBER_12_2020.toISOString(),
       NOVEMBER_13_2020.toISOString(),
     ])
+
     expect(result).toEqual('les 12 et 13 novembre 2020')
   })
 
@@ -189,6 +196,7 @@ describe('getFormattedDates', () => {
       NOVEMBER_20_2020_MORNING.toISOString(),
       NOVEMBER_20_2020_EVENING.toISOString(),
     ])
+
     expect(result).toEqual('le 20 novembre 2020')
   })
 
@@ -197,6 +205,7 @@ describe('getFormattedDates', () => {
       NOVEMBER_13_2020.toISOString(),
       NOVEMBER_13_2021.toISOString(),
     ])
+
     expect(result).toEqual('le 13 novembre 2020 et le 13 novembre 2021')
   })
 
@@ -206,6 +215,7 @@ describe('getFormattedDates', () => {
       SEPTEMBER_5_2021.toISOString(),
       OCTOBER_5_2021.toISOString(),
     ])
+
     expect(result).toEqual('le 5 août 2021, le 5 septembre 2021 et le 5 octobre 2021')
   })
 
@@ -215,6 +225,7 @@ describe('getFormattedDates', () => {
       OCTOBER_5_2021.toISOString(),
       FEBRUARY_2_2022.toISOString(),
     ])
+
     expect(result).toEqual('le 5 janvier 2021, le 5 octobre 2021 et le 2 février 2022')
   })
 
@@ -224,6 +235,7 @@ describe('getFormattedDates', () => {
       JANUARY_15_2021.toISOString(),
       FEBRUARY_2_2022.toISOString(),
     ])
+
     expect(result).toEqual('les 5 et 15 janvier 2021 et le 2 février 2022')
   })
 
@@ -234,6 +246,7 @@ describe('getFormattedDates', () => {
       OCTOBER_5_2021.toISOString(),
       SEPTEMBER_5_2021.toISOString(),
     ])
+
     expect(result).toEqual('les 5 et 15 janvier 2021, le 5 septembre 2021 et le 5 octobre 2021')
   })
 
@@ -244,6 +257,7 @@ describe('getFormattedDates', () => {
       JANUARY_25_2021.toISOString(),
       OCTOBER_5_2021.toISOString(),
     ])
+
     expect(result).toEqual('les 5, 15 et 25 janvier 2021 et le 5 octobre 2021')
   })
 
@@ -254,6 +268,7 @@ describe('getFormattedDates', () => {
       JANUARY_25_2021.toISOString(),
       FEBRUARY_2_2022.toISOString(),
     ])
+
     expect(result).toEqual('les 5, 15 et 25 janvier 2021 et le 2 février 2022')
   })
 
@@ -275,19 +290,38 @@ describe('formatDates', () => {
     mockdate.set(NOVEMBER_1_2020)
   })
 
+  it('should return undefined when undefined is given', () => {
+    expect(formatDates(undefined)).toEqual(undefined)
+  })
+
+  it('should return undefined when empty array is given', () => {
+    expect(formatDates([])).toEqual(undefined)
+  })
+
+  it('should return undefined when given dates are past', () => {
+    const dates = [OCTOBER_5_2020, OCTOBER_5_2020]
+    const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
+
+    expect(formatDates(timestampsInSeconds)).toEqual(undefined)
+  })
+
+  it('should return "Dès le" when given dates are future and different', () => {
+    const dates = [DECEMBER_5_2020, NOVEMBER_12_2020]
+    const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
+
+    expect(formatDates(timestampsInSeconds)).toEqual('Dès le 12 novembre 2020')
+  })
+
   it.each`
     dates                                   | expected
-    ${undefined}                            | ${undefined}
-    ${[]}                                   | ${undefined}
     ${[NOVEMBER_12_2020]}                   | ${'12 novembre 2020'}
     ${[NOVEMBER_12_2020, NOVEMBER_12_2020]} | ${'12 novembre 2020'}
     ${[DECEMBER_5_2020]}                    | ${'5 décembre 2020'}
-    ${[DECEMBER_5_2020, NOVEMBER_12_2020]}  | ${'Dès le 12 novembre 2020'}
     ${[DECEMBER_5_2020, -NOVEMBER_12_2020]} | ${'5 décembre 2020'}
-    ${[OCTOBER_5_2020, OCTOBER_5_2020]}     | ${undefined}
     ${[OCTOBER_5_2020, NOVEMBER_12_2020]}   | ${'12 novembre 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
-    const timestampsInSeconds = dates && dates.map((date: Date) => date.valueOf())
+    const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
+
     expect(formatDates(timestampsInSeconds)).toEqual(expected)
   })
 })
@@ -352,6 +386,7 @@ describe('getUniqueSortedTimestamps', () => {
   beforeAll(() => {
     mockdate.set(NOVEMBER_1_2020)
   })
+
   it.each`
     dates                                                                                     | uniqueSortedDates
     ${[]}                                                                                     | ${[]}
@@ -363,6 +398,7 @@ describe('getUniqueSortedTimestamps', () => {
     ({ dates, uniqueSortedDates }: { dates: Date[]; uniqueSortedDates: Date[] }) => {
       const timestamps = dates.map((date) => date.valueOf())
       const uniqueSortedTimestamps = uniqueSortedDates.map((date) => date.valueOf())
+
       expect(getUniqueSortedTimestamps(timestamps)).toEqual(uniqueSortedTimestamps)
     }
   )
@@ -381,6 +417,7 @@ describe('formatDateToISOStringWithoutTime() - Brazil/East', () => {
     (day, month, year, expectedISOString) => {
       timezoneMock.register('Brazil/East')
       const date = new Date(year, month - 1, day)
+
       expect(formatDateToISOStringWithoutTime(date)).toEqual(expectedISOString)
     }
   )
@@ -399,6 +436,7 @@ describe('formatDateToISOStringWithoutTime() - Europe/London', () => {
     (day, month, year, expectedISOString) => {
       timezoneMock.register('Europe/London')
       const date = new Date(year, month - 1, day)
+
       expect(formatDateToISOStringWithoutTime(date)).toEqual(expectedISOString)
     }
   )

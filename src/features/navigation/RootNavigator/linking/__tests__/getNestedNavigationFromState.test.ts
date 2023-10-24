@@ -21,6 +21,7 @@ describe('getNestedNavigationFromState()', () => {
       expectedParams: RootNavigateParams[1]
     }) => {
       const [screen, params] = getNestedNavigationFromState(state)
+
       expect(screen).toEqual(expectedScreen)
       expect(params).toEqual(expectedParams)
     }

@@ -7,6 +7,7 @@ describe('<UTMParameters />', () => {
   it('should render correctly', async () => {
     render(<UTMParameters />)
     await screen.findByText('UTM parameters')
+
     expect(screen).toMatchSnapshot()
   })
 })

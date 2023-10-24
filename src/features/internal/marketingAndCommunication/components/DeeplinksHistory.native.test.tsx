@@ -30,6 +30,7 @@ describe('<DeeplinksHistory />', () => {
       setKeepHistory: (keepHistory) => keepHistory,
       rehydrateHistory: (history) => history,
     })
+
     expect(screen.queryByText('#0')).toBeOnTheScreen()
     expect(screen.queryByText(history[0].universalLink)).toBeOnTheScreen()
     expect(screen.queryByText(history[0].firebaseLink)).toBeOnTheScreen()
@@ -69,9 +70,11 @@ describe('<DeeplinksHistory />', () => {
     })
 
     await flushPromises()
+
     expect(setKeepHistory).toHaveBeenCalledWith(true)
 
     const persistedHistory = await AsyncStorage.getItem('mac_history')
+
     expect(rehydrateHistory).toHaveBeenCalledWith(JSON.parse(persistedHistory || '[]'))
   })
 })

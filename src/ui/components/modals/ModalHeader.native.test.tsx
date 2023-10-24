@@ -27,16 +27,22 @@ describe('ModalHeader component', () => {
       }
       render(<ModalHeader {...propsWithoutLeftIcon} />)
       const leftIcon = screen.queryByTestId('Revenir en arrière')
+
       expect(leftIcon).not.toBeOnTheScreen()
     })
+
     it('should be visible when the icon is provided', async () => {
       render(<ModalHeader {...props} />)
-      screen.getByTestId('Revenir en arrière') // test existence
+
+      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
+
       const leftIconButton = await screen.findByTestId(props.leftIconAccessibilityLabel)
-      await fireEvent.press(leftIconButton)
-      expect(props.onLeftIconPress).toBeCalledTimes(1)
+      fireEvent.press(leftIconButton)
+
+      expect(props.onLeftIconPress).toHaveBeenCalledTimes(1)
     })
   })
+
   describe('right icon', () => {
     it('should be hidden when the icon is not provided', () => {
       const propsWithoutRightIcon = {
@@ -47,14 +53,19 @@ describe('ModalHeader component', () => {
       }
       render(<ModalHeader {...propsWithoutRightIcon} />)
       const rightIcon = screen.queryByTestId('Fermer la modale')
+
       expect(rightIcon).not.toBeOnTheScreen()
     })
+
     it('should be visible when the icon is provided', async () => {
       render(<ModalHeader {...props} />)
-      screen.getByTestId('Fermer la modale') // test existence
+
+      expect(screen.getByTestId('Fermer la modale')).toBeOnTheScreen()
+
       const rightIconButton = await screen.findByTestId(props.rightIconAccessibilityLabel)
-      await fireEvent.press(rightIconButton)
-      expect(props.onRightIconPress).toBeCalledTimes(1)
+      fireEvent.press(rightIconButton)
+
+      expect(props.onRightIconPress).toHaveBeenCalledTimes(1)
     })
   })
 })

@@ -112,6 +112,7 @@ describe('<FavoriteButton />', () => {
 
     await waitFor(() => {
       const mutateData = queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse
+
       expect(
         mutateData.favorites?.find(
           (f: FavoriteResponse) => f.offer.id === favoriteResponseSnap.offer.id
@@ -174,6 +175,7 @@ describe('<FavoriteButton />', () => {
     await act(async () => {
       fireEvent.press(await screen.findByTestId('icon-favorite-filled'))
     })
+
     expect(showErrorSnackBar).toHaveBeenCalledWith({
       message: 'L’offre n’a pas été retirée de tes favoris',
       timeout: SNACK_BAR_TIME_OUT,

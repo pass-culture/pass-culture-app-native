@@ -72,6 +72,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place')
     })
 
@@ -79,6 +80,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place')
     })
 
@@ -86,6 +88,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place d’ici demain')
     })
 
@@ -93,6 +96,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place aujourd’hui')
     })
   })
@@ -102,6 +106,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dans 3 jours')
     })
 
@@ -109,6 +114,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dans 2 jours')
     })
 
@@ -116,6 +122,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place demain')
     })
 
@@ -123,6 +130,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dès' + ' 18h30')
     })
   })
@@ -132,6 +140,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dans 2 jours')
     })
 
@@ -139,6 +148,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dès demain')
     })
 
@@ -146,6 +156,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dès aujourd’hui')
     })
 
@@ -153,6 +164,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place aujourd’hui')
     })
   })
@@ -162,6 +174,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dès demain')
     })
 
@@ -169,6 +182,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dès aujourd’hui')
     })
 
@@ -176,6 +190,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place dès aujourd’hui')
     })
 
@@ -183,6 +198,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
       const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
+
       expect(message).toEqual('Billet à retirer sur place aujourd’hui')
     })
   })
@@ -210,6 +226,7 @@ describe('getEventOnSiteWithdrawLabel', () => {
 
     const message = getEventOnSiteWithdrawLabel(booking.stock)
     mockdate.reset()
+
     expect(message).toEqual('')
   })
 })

@@ -9,6 +9,7 @@ const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 describe('AccessibilityActionPlan', () => {
   it('should render correctly', () => {
     render(<AccessibilityActionPlan />)
+
     expect(screen).toMatchSnapshot()
   })
 

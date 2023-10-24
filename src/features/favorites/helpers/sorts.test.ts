@@ -18,6 +18,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 2 },
     ]
     data.sort(sortByIdDesc)
+
     expect(data.map(({ id }) => id)).toEqual([3, 2, 1])
   })
 
@@ -29,6 +30,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: 20 } },
     ]
     data.sort(sortByAscendingPrice)
+
     expect(data.map(({ id }) => id)).toEqual([4, 1, 2, 3])
   })
 
@@ -40,6 +42,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: 20, isExpired: true } },
     ]
     data.sort(sortByAscendingPrice)
+
     expect(data.map(({ id }) => id)).toEqual([4, 1, 3, 2])
   })
 
@@ -51,6 +54,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: null } },
     ]
     data.sort(sortByAscendingPrice)
+
     expect(data.map(({ id }) => id)).toEqual([4, 1, 3, 2])
   })
 
@@ -61,6 +65,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, coordinates: position2 } },
     ]
     data.sort(sortByDistanceAroundMe(position))
+
     expect(data.map(({ id }) => id)).toEqual([1, 2, 3])
   })
 
@@ -71,6 +76,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 2 },
     ]
     data.sort(sortByDistanceAroundMe(position))
+
     expect(data.map(({ id }) => id)).toEqual([1, 3, 2])
   })
 })

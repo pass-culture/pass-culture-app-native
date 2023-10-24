@@ -71,6 +71,7 @@ describe('GenericHome', () => {
       renderGenericHome()
 
       await act(async () => {})
+
       expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
     })
 
@@ -78,6 +79,7 @@ describe('GenericHome', () => {
       renderGenericHome()
 
       await act(async () => {})
+
       // home component creation performance transaction
       expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
 
@@ -91,6 +93,7 @@ describe('GenericHome', () => {
       )
 
       await act(async () => {})
+
       expect(mockFinishTransaction).toHaveBeenCalledTimes(2)
     })
   })

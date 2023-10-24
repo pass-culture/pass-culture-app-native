@@ -63,7 +63,7 @@ export const useVideoOffers = (
   const eanQuery = async () => {
     if (!eanList) return []
 
-    return await fetchOffersByEan({
+    return fetchOffersByEan({
       eanList,
       userLocation: position,
       isUserUnderage,

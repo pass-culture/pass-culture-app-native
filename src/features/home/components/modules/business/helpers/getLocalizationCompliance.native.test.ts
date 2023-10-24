@@ -22,6 +22,7 @@ const locationAreaWithUserOutside: LocationCircleArea = {
   longitude: 42,
   radius: 50,
 }
+
 describe('getLocalizationCompliance', () => {
   afterEach(jest.resetAllMocks)
 

@@ -13,6 +13,7 @@ jest.mock('features/navigation/navigationRef')
 describe('ComeBackLater', () => {
   it('should render correctly', () => {
     render(<ComeBackLater />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -30,11 +31,13 @@ describe('ComeBackLater', () => {
       )
     )
   })
+
   it('should log screen view when the screen is mounted', async () => {
     render(<ComeBackLater />)
 
     await waitFor(() => expect(analytics.logScreenViewComeBackLater).toHaveBeenCalledTimes(1))
   })
+
   it('should send a batch event when the screen is mounted', async () => {
     render(<ComeBackLater />)
 
@@ -42,6 +45,7 @@ describe('ComeBackLater', () => {
       expect(BatchUser.trackEvent).toHaveBeenNthCalledWith(1, BatchEvent.screenViewComeBackLater)
     )
   })
+
   it("should log analytics when the 'M'identifier plus tard' button is pressed", async () => {
     render(<ComeBackLater />)
 

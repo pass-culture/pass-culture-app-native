@@ -46,6 +46,7 @@ describe('buildGeolocationParameter', () => {
 
   it('should return undefined for venue location type', () => {
     const result = buildGeolocationParameter({ locationFilter: locationFilterVenue, userLocation })
+
     expect(result).toBeUndefined()
   })
 
@@ -61,6 +62,7 @@ describe('buildGeolocationParameter', () => {
       locationFilter: locationFilterPlaceNoGeolocation,
       userLocation,
     })
+
     expect(result).toBeUndefined()
   })
 
@@ -69,11 +71,13 @@ describe('buildGeolocationParameter', () => {
       locationFilter: locationFilterEverywhere,
       userLocation: null,
     })
+
     expect(result).toBeUndefined()
   })
 
   it('should return geolocation parameter for place location type with geolocation', () => {
     const result = buildGeolocationParameter({ locationFilter: locationFilterPlace, userLocation })
+
     expect(result).toEqual({
       aroundLatLng: `${locationFilterPlace?.place?.geolocation?.latitude}, ${locationFilterPlace?.place?.geolocation?.longitude}`,
       aroundRadius: locationFilterPlace.aroundRadius * 1000,
@@ -86,6 +90,7 @@ describe('buildGeolocationParameter', () => {
       userLocation,
       isFullyDigitalOffersCategory: true,
     })
+
     expect(result).toBeUndefined()
   })
 
@@ -96,8 +101,9 @@ describe('buildGeolocationParameter', () => {
     })
     const expectOutput = {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-      aroundRadius: (locationFilterAroundMe.aroundRadius ?? 0) * 1000,
+      aroundRadius: (locationFilterAroundMe.aroundRadius as number) * 1000,
     }
+
     expect(result).toEqual(expectOutput)
   })
 
@@ -106,6 +112,7 @@ describe('buildGeolocationParameter', () => {
       locationFilter: locationFilterEverywhere,
       userLocation,
     })
+
     expect(result).toEqual({
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
       aroundRadius: 'all',
@@ -116,21 +123,25 @@ describe('buildGeolocationParameter', () => {
 describe('computeAroundRadiusInMeters', () => {
   it('should return UNLIMITED_RADIUS when locationType is EVERYWHERE', () => {
     const result = computeAroundRadiusInMeters(10, LocationType.EVERYWHERE)
+
     expect(result).toEqual(RADIUS_FILTERS.UNLIMITED_RADIUS)
   })
 
   it('should return UNLIMITED_RADIUS when aroundRadius is null', () => {
     const result = computeAroundRadiusInMeters(null, LocationType.PLACE)
+
     expect(result).toEqual(RADIUS_FILTERS.UNLIMITED_RADIUS)
   })
 
   it('should return RADIUS_IN_METERS_FOR_NO_OFFERS when aroundRadius is 0', () => {
     const result = computeAroundRadiusInMeters(0, LocationType.PLACE)
+
     expect(result).toEqual(RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS)
   })
 
   it('should compute radius in meters for non-zero aroundRadius', () => {
     const result = computeAroundRadiusInMeters(5, LocationType.PLACE)
+
     expect(result).toEqual(5000)
   })
 })

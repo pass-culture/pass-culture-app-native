@@ -25,6 +25,7 @@ describe('GeolocationActivationModal', () => {
         onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -42,7 +43,7 @@ describe('GeolocationActivationModal', () => {
 
     expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
     expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
-    expect(hideGeolocPermissionModal).not.toBeCalled()
+    expect(hideGeolocPermissionModal).not.toHaveBeenCalled()
   })
 
   it('should open settings to deactivate geoloc and log event deeplinkEnableLocation', () => {
@@ -59,6 +60,6 @@ describe('GeolocationActivationModal', () => {
 
     expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
     expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
-    expect(hideGeolocPermissionModal).not.toBeCalled()
+    expect(hideGeolocPermissionModal).not.toHaveBeenCalled()
   })
 })

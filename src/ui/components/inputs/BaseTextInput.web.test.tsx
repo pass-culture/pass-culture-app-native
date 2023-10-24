@@ -8,6 +8,7 @@ import { BaseTextInput } from './BaseTextInput'
 describe('<BaseTextInput />', () => {
   it('should render correctly', () => {
     const renderAPI = render(<BaseTextInput placeholder="placeholder" value="value" />)
+
     expect(renderAPI).toMatchSnapshot()
   })
 

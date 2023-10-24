@@ -25,6 +25,7 @@ describe('<SetName/>', () => {
     render(<SetName />)
 
     const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
+
     expect(continueButton).toBeDisabled()
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')

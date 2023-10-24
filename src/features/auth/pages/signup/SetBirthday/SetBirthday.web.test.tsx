@@ -30,6 +30,7 @@ describe('<SetBirthday />', () => {
       render(<SetBirthday {...props} />)
 
       const continueButton = screen.getByTestId('Continuer')
+
       expect(continueButton).toBeDisabled()
     })
 
@@ -40,6 +41,7 @@ describe('<SetBirthday />', () => {
       fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2004' } })
 
       const continueButton = screen.getByText('Continuer')
+
       expect(continueButton).toBeEnabled()
     })
   })
@@ -50,6 +52,7 @@ describe('<SetBirthday />', () => {
       jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: true } })
+
       expect(renderAPI).toMatchSnapshot()
     })
   })

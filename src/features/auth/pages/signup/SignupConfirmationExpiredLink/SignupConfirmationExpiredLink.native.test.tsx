@@ -56,6 +56,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
     })
+
     expect(analytics.logResendEmailSignupConfirmationExpiredLink).toHaveBeenCalledTimes(1)
     expect(navigate).toHaveBeenCalledWith('SignupConfirmationEmailSent', {
       email: 'test@email.com',

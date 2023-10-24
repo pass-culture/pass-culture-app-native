@@ -16,8 +16,10 @@ describe('InputError Component', () => {
     )
 
     const text = screen.queryByText('message')
+
     expect(text).toBeOnTheScreen()
   })
+
   it('should hide the given message', () => {
     render(
       <InputError
@@ -29,8 +31,10 @@ describe('InputError Component', () => {
     )
 
     const text = screen.queryByText('message')
+
     expect(text).not.toBeOnTheScreen()
   })
+
   it('should display the right top space', () => {
     render(
       <InputError

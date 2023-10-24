@@ -17,6 +17,7 @@ describe('SnackBar Component', () => {
   afterEach(async () => {
     jest.resetAllMocks()
   })
+
   describe('Basic behavior', () => {
     it('should forward properly text and colors', () => {
       render(
@@ -57,6 +58,7 @@ describe('SnackBar Component', () => {
       )
 
       const progressBar = screen.queryByTestId('snackbar-progressbar')
+
       expect(progressBar).not.toBeOnTheScreen()
     })
 
@@ -68,12 +70,15 @@ describe('SnackBar Component', () => {
 
     it('should render the content container when visible=false only if already rendered', async () => {
       const { rerender } = render(renderHelperSnackBar(false, { message: 'message' }, 0))
+
       expect(screen.queryByTestId('snackbar-container')).not.toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(true, { message: 'message' }, 1))
+
       expect(screen.queryByTestId('snackbar-container')).toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(false, { message: 'message' }, 2))
+
       expect(screen.queryByTestId('snackbar-container')).toBeOnTheScreen()
     })
 
@@ -128,7 +133,7 @@ describe('SnackBar Component', () => {
           const refresher = 0
           render(renderHelperSnackBar(visible, { message: 'message' }, refresher))
 
-          await waitFor(async () => expect(timing).not.toBeCalled())
+          await waitFor(async () => expect(timing).not.toHaveBeenCalled())
         }
       )
     })
@@ -157,7 +162,7 @@ describe('SnackBar Component', () => {
        * - progressBarContainerRef?.current?.fadeInDown
        * - containerRef?.current?.fadeInDown
        */
-      await waitFor(async () => expect(timing).toBeCalledTimes(2))
+      await waitFor(async () => expect(timing).toHaveBeenCalledTimes(2))
 
       timing.mockRestore()
     })
@@ -179,6 +184,7 @@ describe('SnackBar Component', () => {
       rerender(renderHelperSnackBar(false, { message: 'message' }, refresher))
 
       const container = screen.getByTestId('snackbar-container')
+
       expect(container.props.style[0].display).toEqual('none')
       /**
        * It's called twice because of the following function being triggered
@@ -186,7 +192,7 @@ describe('SnackBar Component', () => {
        * - progressBarContainerRef?.current?.fadeOutUp
        * - containerRef?.current?.fadeOutUpé@
        */
-      expect(timing).toBeCalledTimes(2)
+      expect(timing).toHaveBeenCalledTimes(2)
     })
 
     /**
@@ -215,7 +221,7 @@ describe('SnackBar Component', () => {
        * in animateProgressBarWidth:
        * - Animated.timing
        */
-      expect(timing).toBeCalledTimes(1)
+      expect(timing).toHaveBeenCalledTimes(1)
     })
 
     it('should reset the timer when "refresher" is updated', async () => {
@@ -223,7 +229,7 @@ describe('SnackBar Component', () => {
       const timeout = 1
       const refresher = 1
       render(renderHelperSnackBar(false, { message: 'message', timeout, onClose }, refresher))
-      await waitFor(async () => expect(onClose).toBeCalledTimes(1))
+      await waitFor(async () => expect(onClose).toHaveBeenCalledTimes(1))
     })
   })
 })

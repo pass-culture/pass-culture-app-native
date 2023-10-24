@@ -11,6 +11,7 @@ describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
     const url = getFullUrl('unknown-path')
     const { screen, params } = getScreenFromDeeplink(url)
+
     expect(screen).toEqual('PageNotFound')
     expect(params).toEqual(undefined)
   })
@@ -19,6 +20,7 @@ describe('getScreenFromDeeplink()', () => {
     const prefix = 'https://unknown.com'
     const url = getFullUrl(getScreenPath(...homeNavConfig), prefix)
     const { screen, params } = getScreenFromDeeplink(url)
+
     expect(screen).toEqual('PageNotFound')
     expect(params).toEqual(undefined)
   })
@@ -26,6 +28,7 @@ describe('getScreenFromDeeplink()', () => {
   it('should return Home', () => {
     const url = getFullUrl(getScreenPath(...homeNavConfig))
     const { screen, params } = getScreenFromDeeplink(url)
+
     expect(screen).toEqual('TabNavigator')
     expect(params).toEqual({ screen: 'Home', params: undefined })
   })
@@ -33,6 +36,7 @@ describe('getScreenFromDeeplink()', () => {
   it('should also work with a different accepted prefix', () => {
     const url = getFullUrl(getScreenPath(...homeNavConfig), '')
     const screenFromDeeplink = getScreenFromDeeplink(url)
+
     expect(screenFromDeeplink.screen).toEqual('TabNavigator')
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
   })
@@ -40,6 +44,7 @@ describe('getScreenFromDeeplink()', () => {
   it('should return Profil when url = /profil', () => {
     const url = getFullUrl(getScreenPath(...getTabNavConfig('Profile', undefined)))
     const { screen, params } = getScreenFromDeeplink(url)
+
     expect(screen).toEqual('TabNavigator')
     expect(params).toEqual({ screen: 'Profile', params: undefined })
   })
@@ -48,6 +53,7 @@ describe('getScreenFromDeeplink()', () => {
     const url = getScreenPath('Offer', { id: 666, from: 'offer', moduleName: undefined })
 
     const { screen, params } = getScreenFromDeeplink(url)
+
     expect(screen).toEqual('Offer')
     expect(params).toEqual({ id: 666, from: 'offer' })
   })

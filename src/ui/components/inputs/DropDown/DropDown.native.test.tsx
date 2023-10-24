@@ -9,6 +9,7 @@ describe('<DropDown />', () => {
     const { toJSON } = render(
       <DropDown label="Mois" placeholder="Mois" options={monthNames} onChange={jest.fn()} />
     )
+
     expect(toJSON()).not.toBeOnTheScreen()
   })
 })

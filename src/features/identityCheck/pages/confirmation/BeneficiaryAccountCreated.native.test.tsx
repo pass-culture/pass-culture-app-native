@@ -26,21 +26,28 @@ jest.mock('features/share/context/ShareAppWrapper', () => ({
 describe('<BeneficiaryAccountCreated/>', () => {
   it('should render correctly for underage beneficiaries', () => {
     renderBeneficiaryAccountCreated()
+
     expect(screen).toMatchSnapshot()
   })
+
   it('should render correctly for 18 year-old beneficiaries', () => {
     mockIsUserUnderageBeneficiary = false
     renderBeneficiaryAccountCreated()
+
     expect(screen).toMatchSnapshot()
   })
+
   it('should track Batch event when button is clicked', async () => {
     renderBeneficiaryAccountCreated()
     fireEvent.press(screen.getByText('C’est parti !'))
-    expect(BatchUser.trackEvent).toBeCalledWith('has_validated_subscription')
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
   })
+
   it('should show beneficiary share app modal when button is clicked', async () => {
     renderBeneficiaryAccountCreated()
     fireEvent.press(screen.getByText('C’est parti !'))
+
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 })

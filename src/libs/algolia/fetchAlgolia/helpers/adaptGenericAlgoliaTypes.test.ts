@@ -10,6 +10,7 @@ describe('adaptGenericAlgoliaTypes', () => {
       nbPages: 1,
     } as SearchResponse<string>
     const result = adaptGenericAlgoliaTypes(algoliaFixtureResponse)
+
     expect(result).toEqual(['hit1', 'hit2'])
   })
 })

@@ -31,11 +31,13 @@ describe('buildFacetFilters', () => {
   it('should return null when offer categories is empty and offer is duo = false', () => {
     // @ts-ignore: Normally impossible but condition present
     const facetFilters = buildFacetFilters({ ...defaultBuildFacetFilterParam, offerTypes: null })
+
     expect(facetFilters).toEqual(null)
   })
 
   it('should return isEducational facet by default', () => {
     const facetFilters = buildFacetFilters(defaultBuildFacetFilterParam)
+
     expect(facetFilters).toEqual({ facetFilters: [['offer.isEducational:false']] })
   })
 
@@ -44,6 +46,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       isUserUnderage: true,
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.isForbiddenToUnderage:false']],
     })
@@ -54,6 +57,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:CONCERTS_FESTIVALS']],
     })
@@ -64,6 +68,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       offerSubcategories: [SubcategoryIdEnumv2.CONCERT],
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.subcategoryId:CONCERT']],
     })
@@ -74,6 +79,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       offerGenreTypes: [{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }],
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.musicType:Pop']],
     })
@@ -84,15 +90,18 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       objectIds: ['15000'],
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['objectID:15000']],
     })
   })
+
   it('should return default and ean facets when EAN specified', () => {
     const facetFilters = buildFacetFilters({
       ...defaultBuildFacetFilterParam,
       eanList: ['9780000000001'],
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.ean:9780000000001']],
     })
@@ -103,6 +112,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       offerTypes: { isEvent: true, isDigital: false, isThing: false },
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.isEvent:true']],
     })
@@ -110,6 +120,7 @@ describe('buildFacetFilters', () => {
 
   it('should return default and offer is duo facets when offer is duo set to true', () => {
     const facetFilters = buildFacetFilters({ ...defaultBuildFacetFilterParam, offerIsDuo: true })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.isDuo:true']],
     })
@@ -120,6 +131,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       tags: ['Offre cinema spéciale pass culture'],
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [
         ['offer.isEducational:false'],
@@ -133,6 +145,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       locationFilter: { locationType: LocationType.VENUE, venue: mockedSuggestedVenues[0] },
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
     })
@@ -143,6 +156,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       locationFilter: { locationType: LocationType.EVERYWHERE },
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false']],
     })
@@ -153,6 +167,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 100 },
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false']],
     })
@@ -163,6 +178,7 @@ describe('buildFacetFilters', () => {
       ...defaultBuildFacetFilterParam,
       locationFilter: { locationType: LocationType.PLACE, place, aroundRadius: 100 },
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false']],
     })
@@ -174,6 +190,7 @@ describe('buildFacetFilters', () => {
       enableAppLocation: true,
       includeDigitalOffers: false,
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['offer.isDigital:false']],
     })
@@ -185,6 +202,7 @@ describe('buildFacetFilters', () => {
       enableAppLocation: true,
       includeDigitalOffers: true,
     })
+
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false']],
     })

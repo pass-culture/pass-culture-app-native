@@ -22,6 +22,7 @@ describe('OfferDuo component', () => {
       },
     })
     renderOfferDuo()
+
     expect(screen.queryByText(`Activé`)).toBeOnTheScreen()
   })
 
@@ -32,6 +33,7 @@ describe('OfferDuo component', () => {
       },
     })
     renderOfferDuo()
+
     expect(screen.queryByText(`Activé`)).not.toBeOnTheScreen()
   })
 })

@@ -35,6 +35,7 @@ describe('useMaxPrice when user is not beneficiary', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
+
     expect(renderHook(useMaxPrice).result.current).toEqual(300)
   })
 })
@@ -48,6 +49,7 @@ describe('useMaxPrice when user under 18', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
+
     expect(renderHook(useMaxPrice).result.current).toEqual(30)
   })
 

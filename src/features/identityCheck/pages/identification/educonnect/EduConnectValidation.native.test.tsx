@@ -43,15 +43,18 @@ describe('<EduConnectValidation />', () => {
 
   it('should render EduConnectValidation component correctly', () => {
     render(<EduConnectValidation />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display user infos with props given', () => {
     render(<EduConnectValidation />)
+
     expect(screen.getByText('John')).toBeOnTheScreen()
     expect(screen.getByText('Doe')).toBeOnTheScreen()
     expect(screen.getByText('28/01/1993')).toBeOnTheScreen()
   })
+
   it("should trigger tracker when the 'Valider mes informations' button is pressed", () => {
     render(<EduConnectValidation />)
 

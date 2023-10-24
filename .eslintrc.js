@@ -12,6 +12,7 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
+    'plugin:@bam.tech/recommended',
     'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
     'plugin:react-native/all', // Enables all rules from react-native
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
@@ -29,8 +30,8 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
-    'testing-library/await-async-utils': ['error'],
-    'testing-library/prefer-screen-queries': ['error'],
+    'react/no-unused-prop-types': 'off', // has false positives
+    'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/independent-mocks': ['error'],
     'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],
@@ -56,6 +57,7 @@ module.exports = {
       'error',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
+    'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
@@ -358,6 +360,7 @@ module.exports = {
     {
       files: ['**/*.test.ts', '**/*.test.tsx', '__mocks__'],
       env: { jest: true },
+      extends: 'plugin:@bam.tech/tests',
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
@@ -366,8 +369,18 @@ module.exports = {
         'jest/no-disabled-tests': 'warn',
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
+        'jest/no-mocks-import': 'off',
         'jest/valid-expect': 'error',
         'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'measurePerformance'] }],
+        'jest/valid-title': ['error', { disallowedWords: [] }],
+        'testing-library/no-unnecessary-act': 'off',
+        'testing-library/no-wait-for-multiple-assertions': 'off',
+        'testing-library/prefer-explicit-assert': 'off',
+        'testing-library/await-async-utils': ['error'],
+        'testing-library/prefer-screen-queries': ['error'],
+        'testing-library/no-await-sync-events': 'off', // TODO(PC-25292): enable when its issues are fixed
+        'jest/no-conditional-in-test': 'off', // TODO(PC-25293): enable when its issues are fixed
+        'testing-library/no-container': 'off', // TODO(PC-25294): enable when its issues are fixed
       },
     },
   ],

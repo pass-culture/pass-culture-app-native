@@ -61,6 +61,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     },
     isGoHomeTertiaryButtonVisible: true,
   }
+
   it.each`
     eduConnectError                                         | expectedData
     ${EduConnectErrorMessageEnum.DuplicateUser}             | ${expectedDuplicatedUserData}

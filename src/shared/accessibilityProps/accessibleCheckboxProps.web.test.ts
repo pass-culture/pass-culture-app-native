@@ -2,6 +2,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 
 const label = 'Checkbox label'
+
 describe('accessibleCheckboxProps', () => {
   it.each([true, false])(
     'should return accessibility props with accessibilityChecked in web',

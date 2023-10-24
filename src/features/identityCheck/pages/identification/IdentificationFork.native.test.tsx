@@ -8,6 +8,7 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
     render(<IdentificationFork />)
+
     expect(screen).toMatchSnapshot()
   })
 

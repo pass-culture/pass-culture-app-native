@@ -15,6 +15,7 @@ describe('<ConfirmDeleteProfile/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<ConfirmDeleteProfile />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

@@ -10,9 +10,11 @@ import { render, fireEvent, screen } from 'tests/utils'
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
+
 describe('CulturalSurveyIntro page', () => {
   it('should render the page with correct layout', () => {
     render(<CulturalSurveyIntro />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -20,6 +22,7 @@ describe('CulturalSurveyIntro page', () => {
     render(<CulturalSurveyIntro />)
     const StartButton = screen.getByTestId('Débuter le questionnaire')
     fireEvent.press(StartButton)
+
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.SORTIES,
     })
@@ -29,6 +32,7 @@ describe('CulturalSurveyIntro page', () => {
     render(<CulturalSurveyIntro />)
     const StartButton = screen.getByTestId('Débuter le questionnaire')
     fireEvent.press(StartButton)
+
     expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalledTimes(1)
   })
 
@@ -36,6 +40,7 @@ describe('CulturalSurveyIntro page', () => {
     render(<CulturalSurveyIntro />)
     const LaterButton = screen.getByTestId('Plus tard')
     fireEvent.press(LaterButton)
+
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
@@ -43,6 +48,7 @@ describe('CulturalSurveyIntro page', () => {
     render(<CulturalSurveyIntro />)
     const LaterButton = screen.getByTestId('Plus tard')
     fireEvent.press(LaterButton)
+
     expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalledTimes(1)
   })
 
@@ -50,6 +56,7 @@ describe('CulturalSurveyIntro page', () => {
     render(<CulturalSurveyIntro />)
     const FAQButton = screen.getByText('En savoir plus')
     fireEvent.press(FAQButton)
+
     expect(navigate).toHaveBeenCalledWith('FAQWebview', undefined)
   })
 })

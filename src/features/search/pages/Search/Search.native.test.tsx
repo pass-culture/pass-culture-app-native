@@ -247,7 +247,7 @@ describe('<Search/>', () => {
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
 
-      await fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
 
       expect(analytics.logConsultVenue).toHaveBeenCalledWith({
         from: 'searchAutoComplete',
@@ -398,6 +398,7 @@ describe('<Search/>', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       render(<Search />)
       await act(async () => {})
+
       expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
@@ -427,6 +428,7 @@ describe('<Search/>', () => {
       const categoryButton = screen.getByText('Spectacles')
 
       fireEvent.press(categoryButton)
+
       expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
     })
   })

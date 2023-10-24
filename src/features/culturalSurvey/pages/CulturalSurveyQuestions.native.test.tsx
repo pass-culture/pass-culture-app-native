@@ -55,6 +55,7 @@ const mockUseCulturalSurveyAnswersMutation = () => {
 
 describe('CulturalSurveysQuestions page', () => {
   const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
+
   it('should render the page with correct layout', () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
@@ -151,9 +152,11 @@ describe('CulturalSurveysQuestions page', () => {
     const scrollContainer = screen.getByTestId('cultural-survey-questions-scrollview')
 
     fireEvent.scroll(scrollContainer, middleScrollEvent)
+
     expect(analytics.logCulturalSurveyScrolledToBottom).toHaveBeenCalledTimes(0)
 
     fireEvent.scroll(scrollContainer, bottomScrollEvent)
+
     expect(analytics.logCulturalSurveyScrolledToBottom).toHaveBeenNthCalledWith(1, {
       questionId: CulturalSurveyQuestionEnum.SORTIES,
     })

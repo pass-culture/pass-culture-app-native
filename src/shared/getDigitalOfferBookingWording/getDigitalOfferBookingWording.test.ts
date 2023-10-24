@@ -14,6 +14,7 @@ describe('getFreeDigitalOfferBookingWording', () => {
     'should return $wording when subcategory id is $subcategoryId',
     ({ subcategoryId, wording }) => {
       const freeNumericOfferBookingWording = getDigitalOfferBookingWording(subcategoryId)
+
       expect(freeNumericOfferBookingWording).toEqual(wording)
     }
   )
@@ -26,6 +27,7 @@ describe('getFreeDigitalOfferBookingWording', () => {
     'should return "Accéder à l’offre en ligne" when subcategory has not a specific wording as %s',
     (subcategoryId) => {
       const freeNumericOfferBookingWording = getDigitalOfferBookingWording(subcategoryId)
+
       expect(freeNumericOfferBookingWording).toEqual('Accéder à l’offre en ligne')
     }
   )

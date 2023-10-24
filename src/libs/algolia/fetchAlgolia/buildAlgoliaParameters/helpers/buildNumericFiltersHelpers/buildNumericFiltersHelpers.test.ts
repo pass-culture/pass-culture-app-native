@@ -16,16 +16,19 @@ import {
 describe('buildOfferLast30DaysBookings', () => {
   it('should return an undefined offer last 30 days bookings predicate when not defined', () => {
     const offerLast30DaysBookingsPredicate = buildOfferLast30DaysBookings(undefined)
+
     expect(offerLast30DaysBookingsPredicate).toEqual(undefined)
   })
 
   it('should return an undefined offer last 30 days bookings predicate when defined at 0', () => {
     const offerLast30DaysBookingsPredicate = buildOfferLast30DaysBookings(0)
+
     expect(offerLast30DaysBookingsPredicate).toEqual(undefined)
   })
 
   it('should return an offer last 30 days bookings predicate when defined at a value > 0', () => {
     const offerLast30DaysBookingsPredicate = buildOfferLast30DaysBookings(1)
+
     expect(offerLast30DaysBookingsPredicate).toEqual(['offer.last30DaysBookings >= 1'])
   })
 })
@@ -40,6 +43,7 @@ describe('buildOfferPriceRangePredicate', () => {
     const offerPriceRangePredicate = buildOfferPriceRangePredicate(
       defaultBuildOfferPriceRangePredicate
     )
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices: 0 TO 300'])
   })
 
@@ -48,6 +52,7 @@ describe('buildOfferPriceRangePredicate', () => {
       ...defaultBuildOfferPriceRangePredicate,
       offerIsFree: true,
     })
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices = 0'])
   })
 
@@ -56,6 +61,7 @@ describe('buildOfferPriceRangePredicate', () => {
       ...defaultBuildOfferPriceRangePredicate,
       minPrice: '10',
     })
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices: 10 TO 300'])
   })
 
@@ -64,6 +70,7 @@ describe('buildOfferPriceRangePredicate', () => {
       ...defaultBuildOfferPriceRangePredicate,
       maxPrice: '15',
     })
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices: 0 TO 15'])
   })
 
@@ -72,6 +79,7 @@ describe('buildOfferPriceRangePredicate', () => {
       ...defaultBuildOfferPriceRangePredicate,
       maxPossiblePrice: '80',
     })
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices: 0 TO 80'])
   })
 
@@ -83,6 +91,7 @@ describe('buildOfferPriceRangePredicate', () => {
       maxPrice: '300',
       maxPossiblePrice: '80',
     })
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices: 5 TO 30'])
   })
 
@@ -93,6 +102,7 @@ describe('buildOfferPriceRangePredicate', () => {
       maxPrice: '200',
       maxPossiblePrice: '80',
     })
+
     expect(offerPriceRangePredicate).toEqual(['offer.prices: 10 TO 200'])
   })
 })
@@ -102,6 +112,7 @@ describe('buildDatePredicate', () => {
 
   it('should return an undefined date predicate when date and time range not defined', () => {
     const datePredicate = buildDatePredicate(defaultDatePredicate)
+
     expect(datePredicate).toEqual(undefined)
   })
 
@@ -113,6 +124,7 @@ describe('buildDatePredicate', () => {
       },
       timeRange: [8, 24],
     })
+
     expect(datePredicate).toEqual(['offer.dates: 1682323200 TO 1682380800'])
   })
 
@@ -124,6 +136,7 @@ describe('buildDatePredicate', () => {
         selectedDate: new Date('2023-04-24').toISOString(),
       },
     })
+
     expect(datePredicate).toEqual(['offer.dates: 1682294400 TO 1682380799'])
   })
 
@@ -132,6 +145,7 @@ describe('buildDatePredicate', () => {
       ...defaultDatePredicate,
       timeRange: [8, 24],
     })
+
     expect(datePredicate).toEqual(['offer.times: 28800 TO 86400'])
   })
 })
@@ -144,6 +158,7 @@ describe('buildHomepageDatePredicate', () => {
 
   it('should return an undefined homepage date predicate when beginning and ending date not defined', () => {
     const homepageDatePredicate = buildHomepageDatePredicate(defaultBuildHomepageDatePredicate)
+
     expect(homepageDatePredicate).toEqual(undefined)
   })
 
@@ -152,6 +167,7 @@ describe('buildHomepageDatePredicate', () => {
       ...defaultBuildHomepageDatePredicate,
       beginningDatetime: new Date('2023-04-20').toISOString(),
     })
+
     expect(homepageDatePredicate).toEqual(['offer.dates >= 1681948800'])
   })
 
@@ -160,6 +176,7 @@ describe('buildHomepageDatePredicate', () => {
       ...defaultBuildHomepageDatePredicate,
       endingDatetime: new Date('2023-04-24').toISOString(),
     })
+
     expect(homepageDatePredicate).toEqual(['offer.dates <= 1682294400'])
   })
 
@@ -168,6 +185,7 @@ describe('buildHomepageDatePredicate', () => {
       beginningDatetime: new Date('2023-04-20').toISOString(),
       endingDatetime: new Date('2023-04-24').toISOString(),
     })
+
     expect(homepageDatePredicate).toEqual(['offer.dates: 1681948800 TO 1682294400'])
   })
 })
@@ -175,6 +193,7 @@ describe('buildHomepageDatePredicate', () => {
 describe('buildTimeOnlyPredicate', () => {
   it('should return a time range in seconds', () => {
     const timeOnlyPredicate = buildTimeOnlyPredicate([8, 24])
+
     expect(timeOnlyPredicate).toEqual(['offer.times: 28800 TO 86400'])
   })
 })
@@ -188,6 +207,7 @@ describe('buildDateAndTimePredicate', () => {
       },
       timeRange: [8, 24],
     })
+
     expect(dateAndTimePredicate).toEqual(['offer.dates: 1682323200 TO 1682380800'])
   })
 
@@ -199,6 +219,7 @@ describe('buildDateAndTimePredicate', () => {
       },
       timeRange: [8, 24],
     })
+
     expect(dateAndTimePredicate).toEqual(['offer.dates: 1682323200 TO 1682380800'])
   })
 
@@ -210,6 +231,7 @@ describe('buildDateAndTimePredicate', () => {
       },
       timeRange: [8, 24],
     })
+
     expect(dateAndTimePredicate).toEqual([
       'offer.dates: 1682323200 TO 1682380800',
       'offer.dates: 1682409600 TO 1682467200',
@@ -229,6 +251,7 @@ describe('buildDateAndTimePredicate', () => {
       },
       timeRange: [8, 24],
     })
+
     expect(dateAndTimePredicate).toEqual([
       'offer.dates: 1682755200 TO 1682812800',
       'offer.dates: 1682841600 TO 1682899200',
@@ -242,6 +265,7 @@ describe('buildDateOnlyPredicate', () => {
       option: DATE_FILTER_OPTIONS.TODAY,
       selectedDate: new Date('2023-04-24').toISOString(),
     })
+
     expect(dateOnlyPredicate).toEqual(['offer.dates: 1682294400 TO 1682380799'])
   })
 
@@ -250,6 +274,7 @@ describe('buildDateOnlyPredicate', () => {
       option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
       selectedDate: new Date('2023-04-24').toISOString(),
     })
+
     expect(dateOnlyPredicate).toEqual(['offer.dates: 1682294400 TO 1682899199'])
   })
 
@@ -258,6 +283,7 @@ describe('buildDateOnlyPredicate', () => {
       option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
       selectedDate: new Date('2023-04-24').toISOString(),
     })
+
     expect(dateOnlyPredicate).toEqual(['offer.dates: 1682726400 TO 1682899199'])
   })
 
@@ -266,6 +292,7 @@ describe('buildDateOnlyPredicate', () => {
       option: DATE_FILTER_OPTIONS.TODAY,
       selectedDate: new Date('2023-04-24').toISOString(),
     })
+
     expect(dateOnlyPredicate).toEqual(['offer.dates: 1682294400 TO 1682380799'])
   })
 })
@@ -277,11 +304,13 @@ describe('buildNewestOffersPredicate', () => {
 
   it('should return undefined where offerIsNew is false', () => {
     const newestOffersPredicate = buildNewestOffersPredicate(false)
+
     expect(newestOffersPredicate).toEqual(undefined)
   })
 
   it('should return a newest offers predicate when offerIsNew is true', () => {
     const newestOffersPredicate = buildNewestOffersPredicate(true)
+
     expect(newestOffersPredicate).toEqual(['offer.stocksDateCreated: 1680998400 TO 1682294400'])
   })
 })
@@ -289,6 +318,7 @@ describe('buildNewestOffersPredicate', () => {
 describe('getDatePredicate', () => {
   it('should return a date predicate from a beginning and ending dates', () => {
     const datePredicate = getDatePredicate(1682294400, 1682899199)
+
     expect(datePredicate).toEqual('offer.dates: 1682294400 TO 1682899199')
   })
 })

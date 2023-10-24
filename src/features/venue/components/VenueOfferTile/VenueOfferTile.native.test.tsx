@@ -6,7 +6,7 @@ import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOf
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
@@ -34,16 +34,21 @@ describe('VenueOfferTile component', () => {
   it('should render correctly', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { toJSON } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
+
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    await fireEvent.press(screen.getByTestId('tileImage'))
-    expect(push).toHaveBeenCalledWith('Offer', {
-      id: offerId,
-      from: 'venue',
+
+    fireEvent.press(screen.getByTestId('tileImage'))
+
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('Offer', {
+        id: offerId,
+        from: 'venue',
+      })
     })
   })
 
@@ -51,6 +56,7 @@ describe('VenueOfferTile component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
     fireEvent.press(screen.getByTestId('tileImage'))
+
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId,
       from: 'venue',
@@ -65,6 +71,7 @@ describe('VenueOfferTile component', () => {
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)
+
     expect(query).not.toBeUndefined()
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(query!.state.data).toStrictEqual({

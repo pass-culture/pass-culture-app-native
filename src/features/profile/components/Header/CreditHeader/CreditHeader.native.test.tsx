@@ -35,22 +35,26 @@ describe('CreditHeader', () => {
   describe('Beneficiary is not underage', () => {
     it('should render correctly with valid non exhausted credit', () => {
       renderCreditHeader({ age: 18 })
+
       expect(screen).toMatchSnapshot()
     })
 
     it('should render correctly with expired credit', () => {
       renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
+
       expect(screen).toMatchSnapshot()
     })
 
     it('should render correctly with exhausted credit', () => {
       renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
+
       expect(screen).toMatchSnapshot()
     })
 
     it('should display user name', () => {
       renderCreditHeader({ age: 18 })
       const name = screen.queryByText('Rosa Bonheur')
+
       expect(name).toBeOnTheScreen()
     })
 
@@ -59,6 +63,7 @@ describe('CreditHeader', () => {
       const depositExpirationDate = screen.queryByText(
         formatToSlashedFrenchDate(setDateOneDayEarlier(dateInFuture))
       )
+
       expect(depositExpirationDate).toBeOnTheScreen()
     })
 
@@ -66,6 +71,7 @@ describe('CreditHeader', () => {
       renderCreditHeader({ age: 18 })
       const digitalCredit = screen.queryByTestId('domains-credit-digital')
       const physicalCredit = screen.queryByTestId('domains-credit-physical')
+
       expect(digitalCredit).toBeOnTheScreen()
       expect(physicalCredit).toBeOnTheScreen()
     })
@@ -73,12 +79,14 @@ describe('CreditHeader', () => {
     it('should display credit info', () => {
       renderCreditHeader({ age: 18 })
       const creditInfo = screen.queryByTestId('credit-info')
+
       expect(creditInfo).toBeOnTheScreen()
     })
 
     it('should display tutorial button', () => {
       renderCreditHeader({ age: 18 })
       const explanationButton = screen.queryByTestId('Comment ça marche ?')
+
       expect(explanationButton).toBeOnTheScreen()
     })
 
@@ -87,6 +95,7 @@ describe('CreditHeader', () => {
       const creditInfo = screen.queryByTestId('credit-info')
       const digitalCredit = screen.queryByTestId('domains-credit-digital')
       const physicalCredit = screen.queryByTestId('domains-credit-physical')
+
       expect(creditInfo).not.toBeOnTheScreen()
       expect(digitalCredit).not.toBeOnTheScreen()
       expect(physicalCredit).not.toBeOnTheScreen()
@@ -146,6 +155,7 @@ describe('CreditHeader', () => {
 
     it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
       renderCreditHeader({ age })
+
       expect(screen).toMatchSnapshot({})
     })
 
@@ -153,6 +163,7 @@ describe('CreditHeader', () => {
       renderCreditHeader({ age })
       const digitalCredit = screen.queryByTestId('domains-credit-digital')
       const physicalCredit = screen.queryByTestId('domains-credit-physical')
+
       expect(digitalCredit).not.toBeOnTheScreen()
       expect(physicalCredit).not.toBeOnTheScreen()
     })
@@ -161,6 +172,7 @@ describe('CreditHeader', () => {
       'should render correctly with exhausted credit for %s year-old',
       (age) => {
         renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+
         expect(screen).toMatchSnapshot()
       }
     )
@@ -186,6 +198,7 @@ describe('CreditHeader', () => {
     it('should display time left when credit expires soon', () => {
       mockdate.set(new Date(today))
       renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
+
       expect(
         screen.getByText(
           'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'

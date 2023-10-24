@@ -17,7 +17,7 @@ type Props = {
 
 export const FavoriteListSurveyModal = ({ visible, hideModal }: Props) => {
   const saveHasSeenFakeDoor = useCallback(
-    async () => await storage.saveObject('has_seen_fav_list_fake_door', true),
+    async () => storage.saveObject('has_seen_fav_list_fake_door', true),
     []
   )
 

@@ -53,6 +53,7 @@ describe('<PriceModal/>', () => {
     renderSearchPrice()
 
     const searchButton = await screen.findByLabelText('Rechercher')
+
     expect(searchButton).toBeEnabled()
 
     expect(screen).toMatchSnapshot()
@@ -90,6 +91,7 @@ describe('<PriceModal/>', () => {
       await act(async () => fireEvent.press(resetButton))
 
       const toggleLimitCreditSearch = screen.getByTestId('Interrupteur limitCreditSearch')
+
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
 
@@ -100,6 +102,7 @@ describe('<PriceModal/>', () => {
       await act(async () => fireEvent.press(resetButton))
 
       const toggleOnlyFreeOffersSearch = screen.getByTestId('Interrupteur onlyFreeOffers')
+
       expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
   })
@@ -161,6 +164,7 @@ describe('<PriceModal/>', () => {
       await act(async () => fireEvent.press(resetButton))
 
       const toggleLimitCreditSearch = screen.getByTestId('Interrupteur limitCreditSearch')
+
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
 
@@ -172,6 +176,7 @@ describe('<PriceModal/>', () => {
       await act(async () => fireEvent.press(previousButton))
 
       const toggleLimitCreditSearch = screen.getByTestId('Interrupteur limitCreditSearch')
+
       expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(true)
     })
 
@@ -183,6 +188,7 @@ describe('<PriceModal/>', () => {
       await act(async () => fireEvent.press(resetButton))
 
       const toggleOnlyFreeOffersSearch = screen.getByTestId('Interrupteur onlyFreeOffers')
+
       expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(false)
     })
 
@@ -229,6 +235,7 @@ describe('<PriceModal/>', () => {
     await act(async () => fireEvent.press(toggleLimitCreditSearch))
 
     const maxPriceInput = screen.getByPlaceholderText('80')
+
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
@@ -240,6 +247,7 @@ describe('<PriceModal/>', () => {
     await act(async () => fireEvent.press(toggleLimitCreditSearch))
 
     const maxPriceInput = screen.getByPlaceholderText('80')
+
     expect(maxPriceInput.props.value).toStrictEqual('')
   })
 
@@ -252,6 +260,7 @@ describe('<PriceModal/>', () => {
     await act(async () => fireEvent.press(toggleLimitCreditSearch))
 
     const maxPriceInput = screen.getByPlaceholderText('80')
+
     expect(maxPriceInput.props.value).toStrictEqual('15')
   })
 
@@ -260,6 +269,7 @@ describe('<PriceModal/>', () => {
 
     const toggleLimitCreditSearch = screen.getByTestId('Interrupteur limitCreditSearch')
     await act(async () => fireEvent.press(toggleLimitCreditSearch))
+
     expect(toggleLimitCreditSearch.props.accessibilityState.checked).toStrictEqual(true)
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId('Interrupteur onlyFreeOffers')
@@ -273,6 +283,7 @@ describe('<PriceModal/>', () => {
 
     const toggleOnlyFreeOffersSearch = screen.getByTestId('Interrupteur onlyFreeOffers')
     await act(async () => fireEvent.press(toggleOnlyFreeOffersSearch))
+
     expect(toggleOnlyFreeOffersSearch.props.accessibilityState.checked).toStrictEqual(true)
 
     const toggleLimitCreditSearch = screen.getByTestId('Interrupteur limitCreditSearch')
@@ -402,6 +413,7 @@ describe('<PriceModal/>', () => {
     const inputError = screen.getByText(
       `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
     )
+
     expect(inputError).toBeOnTheScreen()
   })
 
@@ -414,6 +426,7 @@ describe('<PriceModal/>', () => {
     const inputError = screen.getByText(
       `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
     )
+
     expect(inputError).toBeOnTheScreen()
   })
 
@@ -425,6 +438,7 @@ describe('<PriceModal/>', () => {
     })
 
     const maxPriceInput = screen.getByPlaceholderText('80')
+
     expect(maxPriceInput).toBeOnTheScreen()
   })
 
@@ -436,10 +450,11 @@ describe('<PriceModal/>', () => {
     })
 
     const rightLabelMaxInput = screen.getByText(`max : 80 €`)
+
     expect(rightLabelMaxInput).toBeOnTheScreen()
   })
 
-  describe('should close the modal ', () => {
+  describe('should close the modal', () => {
     it('when pressing the search button', async () => {
       renderSearchPrice()
 
@@ -544,6 +559,7 @@ describe('<PriceModal/>', () => {
       })
 
       const creditBanner = screen.queryByTestId('creditBanner')
+
       expect(creditBanner).not.toBeOnTheScreen()
     })
 
@@ -588,6 +604,7 @@ describe('<PriceModal/>', () => {
       })
 
       const toggleLimitCreditSearch = screen.queryByTestId('Interrupteur limitCreditSearch')
+
       expect(toggleLimitCreditSearch).not.toBeOnTheScreen()
     })
 
@@ -669,7 +686,7 @@ describe('<PriceModal/>', () => {
   })
 
   describe('with "Rechercher" button', () => {
-    describe('should navigate on search results ', () => {
+    describe('should navigate on search results', () => {
       it('when pressing button with minimum and maximum prices entered', async () => {
         renderSearchPrice()
 
@@ -688,6 +705,7 @@ describe('<PriceModal/>', () => {
           maxPrice: '20',
           view: SearchView.Results,
         }
+
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: expectedSearchParams,
           screen: 'Search',
@@ -713,6 +731,7 @@ describe('<PriceModal/>', () => {
           offerIsFree: true,
           view: SearchView.Results,
         }
+
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: expectedSearchParams,
           screen: 'Search',
@@ -735,6 +754,7 @@ describe('<PriceModal/>', () => {
           minPrice: '0',
           maxPrice: '0',
         }
+
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: expectedSearchParams,
           screen: 'Search',
@@ -756,6 +776,7 @@ describe('<PriceModal/>', () => {
           offerIsFree: true,
           maxPrice: '0',
         }
+
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: expectedSearchParams,
           screen: 'Search',
@@ -776,6 +797,7 @@ describe('<PriceModal/>', () => {
           view: SearchView.Results,
           minPrice: '1',
         }
+
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: expectedSearchParams,
           screen: 'Search',

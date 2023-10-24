@@ -289,7 +289,7 @@ describe('<Login/>', () => {
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
     expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeOnTheScreen()
-    expect(navigate).not.toBeCalled()
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   it('should show error message and error inputs WHEN signin has failed because of network failure', async () => {
@@ -302,7 +302,7 @@ describe('<Login/>', () => {
     expect(
       screen.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
     ).toBeOnTheScreen()
-    expect(navigate).not.toBeCalled()
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   it('should show specific error message when signin rate limit is exceeded', async () => {
@@ -315,7 +315,7 @@ describe('<Login/>', () => {
     expect(
       screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
     ).toBeOnTheScreen()
-    expect(navigate).not.toBeCalled()
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   it('should enable login button when both text inputs are filled', async () => {
@@ -325,6 +325,7 @@ describe('<Login/>', () => {
     await fillInputs()
 
     const connectedButton = screen.getByText('Se connecter')
+
     expect(connectedButton).toBeEnabled()
   })
 
@@ -341,6 +342,7 @@ describe('<Login/>', () => {
 
   describe('Login comes from adding an offer to favorite', () => {
     const OFFER_ID = favoriteResponseSnap.offer.id
+
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // first render
     })
@@ -406,6 +408,7 @@ describe('<Login/>', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: From.BOOKING } }) // first render
     })
+
     it('should redirect to the previous offer page and ask to open the booking modal', async () => {
       renderLogin()
 

@@ -9,6 +9,7 @@ describe('<PageNotFound/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<PageNotFound />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

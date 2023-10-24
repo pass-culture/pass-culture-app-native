@@ -39,7 +39,7 @@ describe('<CookiesSettings/>', () => {
     fireEvent.press(customizationAccordion)
 
     await waitFor(() =>
-      expect(analytics.logHasOpenedCookiesAccordion).toBeCalledWith(cookieCategory)
+      expect(analytics.logHasOpenedCookiesAccordion).toHaveBeenCalledWith(cookieCategory)
     )
   })
 })

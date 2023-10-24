@@ -78,6 +78,7 @@ describe('<Offer />', () => {
 
   it('animates on scroll', async () => {
     renderOfferPage()
+
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
     await act(async () => {
@@ -209,7 +210,7 @@ describe('<Offer />', () => {
         useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       })
 
-      it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
+      it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
         renderOfferPage()
         const scrollView = screen.getByTestId('offer-container')
 
@@ -422,6 +423,7 @@ describe('<Offer />', () => {
         },
       ],
     }
+
     describe('When booking API response is success', () => {
       it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
         server.use(

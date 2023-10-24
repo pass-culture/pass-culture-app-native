@@ -9,6 +9,7 @@ jest.mock('libs/geolocation/LocationWrapper', () => ({
     customPosition: mockCustomPosition,
   }),
 }))
+
 describe('useHomePosition', () => {
   it.each`
     userPosition                     | customPosition                   | expectedPosition
@@ -21,6 +22,7 @@ describe('useHomePosition', () => {
       mockUserPosition = userPosition
 
       const { position } = useHomePosition()
+
       expect(position).toStrictEqual(expectedPosition)
     }
   )

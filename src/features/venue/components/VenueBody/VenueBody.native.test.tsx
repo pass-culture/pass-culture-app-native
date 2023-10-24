@@ -53,16 +53,19 @@ describe('<VenueBody />', () => {
     await renderVenueBody(venueWithNoAddressId)
 
     const addressTexts = screen.getAllByText('Le Petit Rintintin 3, 15000 Milan')
-    expect(addressTexts.length).toEqual(2)
+
+    expect(addressTexts).toHaveLength(2)
   })
 
   it('should not show venue banner in where section', async () => {
     await renderVenueBody(venueId)
+
     expect(screen.queryByTestId(`Lieu ${venueResponseSnap.name}`)).not.toBeOnTheScreen()
   })
 
   it('should show withdrawalDetails', async () => {
     await renderVenueBody(venueId)
+
     expect(screen.queryByText('Modalités de retrait')).toBeOnTheScreen()
   })
 
@@ -71,6 +74,7 @@ describe('<VenueBody />', () => {
       data: { ...venueResponseSnap, withdrawalDetails: null },
     } as UseQueryResult<VenueResponse>)
     await renderVenueBody(venueId)
+
     expect(screen.queryByText('Modalités de retrait')).not.toBeOnTheScreen()
   })
 
@@ -94,6 +98,7 @@ describe('<VenueBody />', () => {
 
   describe('on Android', () => {
     beforeAll(() => (Platform.OS = 'android'))
+
     afterAll(() => (Platform.OS = 'ios'))
 
     it('should open social medium on share button press', async () => {

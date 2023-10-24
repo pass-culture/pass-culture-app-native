@@ -22,6 +22,7 @@ describe('<LayoutExpiredLink/>', () => {
         contactSupport={contactSupport}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 })

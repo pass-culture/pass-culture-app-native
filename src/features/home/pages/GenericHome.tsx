@@ -79,8 +79,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
-  const logHasSeenAllModules = useFunctionOnce(
-    async () => await analytics.logAllModulesSeen(modules.length)
+  const logHasSeenAllModules = useFunctionOnce(async () =>
+    analytics.logAllModulesSeen(modules.length)
   )
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)

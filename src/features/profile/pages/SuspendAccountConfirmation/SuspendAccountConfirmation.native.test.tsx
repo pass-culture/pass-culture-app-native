@@ -58,6 +58,7 @@ describe('<SuspendAccountConfirmation />', () => {
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
 
@@ -99,6 +100,7 @@ describe('<SuspendAccountConfirmation />', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
     expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeOnTheScreen()
     expect(screen.getByText('Oui, suspendre mon compte')).toBeOnTheScreen()
     expect(screen.getByText('Ne pas suspendre mon compte')).toBeOnTheScreen()
@@ -146,6 +148,7 @@ describe('<SuspendAccountConfirmation />', () => {
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
       expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
     })
 

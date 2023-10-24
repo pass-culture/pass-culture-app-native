@@ -35,6 +35,7 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 jest.mock('ui/components/snackBar/SnackBarContext', () =>
   jest.requireActual('ui/components/snackBar/__mocks__/SnackBarContext')
 )
+
 describe('<OnGoingBookingsList /> - Analytics', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
@@ -66,9 +67,11 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
       render(<OnGoingBookingsList />)
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
+
       expect(flatList).toBeDefined()
       expect(flatList.props.onRefresh).toBeDefined()
     })
+
     it('should show snack bar error when trying to pull to refetch with message "Impossible de recharger tes réservations, connecte-toi à internet pour réessayer."', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({
         isConnected: false,
@@ -89,12 +92,14 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
       render(<OnGoingBookingsList />)
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
+
       expect(flatList).toBeDefined()
 
       await act(async () => {
         flatList.props.onRefresh()
       })
-      expect(showErrorSnackBar).toBeCalledWith({
+
+      expect(showErrorSnackBar).toHaveBeenCalledWith({
         message: `Impossible de recharger tes réservations, connecte-toi à internet pour réessayer.`,
         timeout: SNACK_BAR_TIME_OUT,
       })
@@ -134,6 +139,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     const flatList = screen.getByTestId('OnGoingBookingsList')
 
     flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
+
     expect(analytics.logBookingsScrolledToBottom).not.toHaveBeenCalled()
 
     flatList.props.onScroll({ nativeEvent: nativeEventBottom })
@@ -147,6 +153,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
     // 1st scroll to bottom => trigger
     flatList.props.onScroll({ nativeEvent: nativeEventBottom })
+
     expect(analytics.logBookingsScrolledToBottom).toHaveBeenCalledTimes(1)
 
     // 2nd scroll to bottom => NOT trigger

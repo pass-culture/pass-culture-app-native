@@ -17,7 +17,7 @@ describe('getTickets', () => {
 
     const { tickets } = getTickets({ booking })
 
-    expect(tickets.length).toEqual(1)
+    expect(tickets).toHaveLength(1)
   })
 
   it('should display as many tickets as there are external bookings', () => {
@@ -28,7 +28,7 @@ describe('getTickets', () => {
 
     const { tickets } = getTickets({ booking })
 
-    expect(tickets.length).toEqual(2)
+    expect(tickets).toHaveLength(2)
   })
 
   it('should not display the seat number if there are one external bookings', () => {
@@ -50,6 +50,7 @@ describe('getTickets', () => {
 
     const firstTicket = tickets[0]
     const secondTicket = tickets[1]
+
     expect(firstTicket.props.externalBookings.seatIndex).toEqual('1/2')
     expect(secondTicket.props.externalBookings.seatIndex).toEqual('2/2')
   })
@@ -65,7 +66,7 @@ describe('getTickets', () => {
       booking,
     })
 
-    expect(tickets.length).toEqual(2)
+    expect(tickets).toHaveLength(2)
   })
 
   it('should display the number of seats according to the value of max number of seats to display', () => {
@@ -82,6 +83,6 @@ describe('getTickets', () => {
       maxNumberOfTicketsToDisplay,
     })
 
-    expect(tickets.length).toEqual(maxNumberOfTicketsToDisplay)
+    expect(tickets).toHaveLength(maxNumberOfTicketsToDisplay)
   })
 })

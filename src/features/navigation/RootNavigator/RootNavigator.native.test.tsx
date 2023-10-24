@@ -38,6 +38,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
 
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
+
     expect(privacyPolicyTitle).not.toBeOnTheScreen()
   })
 
@@ -48,6 +49,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {})
     const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
+
     expect(privacyPolicyTitle).toBeOnTheScreen()
   })
 
@@ -61,6 +63,7 @@ describe('<RootNavigator />', () => {
     screen.getByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
+
     expect(quickAccessButton).not.toBeOnTheScreen()
   })
 })

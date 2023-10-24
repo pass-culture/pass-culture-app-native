@@ -10,6 +10,7 @@ describe('<LocationFilterChoice />', () => {
     render(<LocationFilterChoice onChange={onChange} />)
 
     fireEvent.press(screen.getByText('Partout'))
+
     expect(onChange).toHaveBeenNthCalledWith(1, {
       locationType: LocationType.EVERYWHERE,
     })

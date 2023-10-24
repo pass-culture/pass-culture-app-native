@@ -50,6 +50,7 @@ describe('<EmailInputController />', () => {
     await act(async () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
+
     expect(screen.getByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeOnTheScreen()
   })
 
@@ -67,6 +68,7 @@ describe('<EmailInputController />', () => {
 
     const suggestionButton = screen.getByText('Appliquer la modification')
     fireEvent.press(suggestionButton)
+
     expect(mockOnSpellingHelpPress).toHaveBeenCalledTimes(1)
   })
 })

@@ -17,7 +17,7 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 const offerIds = paginatedFavoritesResponseSnap.favorites.map((favorite) => favorite.offer.id)
 
-offerIds.map((offerId) => {
+offerIds.forEach((offerId) => {
   simulateBackend({
     id: offerId,
     hasAddFavoriteError: false,

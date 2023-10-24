@@ -83,6 +83,7 @@ describe('<ChangeEmail/>', () => {
       await act(async () => {})
 
       const submitButton = await screen.findByLabelText('Enregistrer les modifications')
+
       expect(submitButton).toBeDisabled()
     })
 
@@ -111,12 +112,12 @@ describe('<ChangeEmail/>', () => {
   })
 
   describe('When email change succeeds', () => {
-    it('should navigate to Profile ', async () => {
+    it('should navigate to Profile', async () => {
       renderChangeEmail()
       await fillInputs({})
       await submitForm()
 
-      expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
     })
 
     it('should show success snackbar', async () => {
@@ -124,7 +125,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(mockShowSuccessSnackBar).toBeCalledWith({
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
         message:
           'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
         timeout: SNACK_BAR_TIME_OUT,
@@ -153,6 +154,7 @@ describe('<ChangeEmail/>', () => {
     })
 
     const errorMessage = screen.queryByText('L’e-mail saisi est identique à ton e-mail actuel')
+
     expect(errorMessage).toBeOnTheScreen()
   })
 
@@ -164,7 +166,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(navigate).not.toBeCalled()
+      expect(navigate).not.toHaveBeenCalled()
     })
 
     it('should show error message', async () => {
@@ -173,6 +175,7 @@ describe('<ChangeEmail/>', () => {
       await submitForm()
 
       const errorMessage = screen.queryByText('Mot de passe incorrect')
+
       expect(errorMessage).toBeOnTheScreen()
     })
 
@@ -197,7 +200,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(navigate).not.toBeCalled()
+      expect(navigate).not.toHaveBeenCalled()
     })
 
     it('should show the generic error message', async () => {
@@ -205,7 +208,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(mockShowErrorSnackBar).toBeCalledWith({
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
         message: `Une erreur s’est produite pendant la modification de ton e-mail. Réessaie plus tard.`,
         timeout: SNACK_BAR_TIME_OUT,
       })

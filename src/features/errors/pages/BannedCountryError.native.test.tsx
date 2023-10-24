@@ -9,6 +9,7 @@ jest.mock('react-query')
 describe('BannedCountryError', () => {
   it('should render correctly', () => {
     render(<BannedCountryError />)
+
     expect(screen).toMatchSnapshot()
   })
 })

@@ -22,6 +22,7 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
 describe('useVenueSearchParameters', () => {
   it('should retrieve the default search parameters', () => {
     const { result } = renderHook(() => useVenueSearchParameters(invalidId))
+
     expect(result.current).toEqual({
       beginningDatetime: undefined,
       endingDatetime: undefined,
@@ -44,6 +45,7 @@ describe('useVenueSearchParameters', () => {
 
   it('should retrieve the locationFilter filtered on venue if available', () => {
     const { result } = renderHook(() => useVenueSearchParameters(venue.id))
+
     expect(result.current.locationFilter).toEqual({
       locationType: LocationType.VENUE,
       venue: {
@@ -58,6 +60,7 @@ describe('useVenueSearchParameters', () => {
   it('should retrieve the locationFilter filtered around me if no venue - position available', () => {
     mockPosition = { latitude: 48.8, longitude: 2.3 }
     const { result } = renderHook(() => useVenueSearchParameters(invalidId))
+
     expect(result.current.locationFilter).toEqual({
       aroundRadius: 100,
       locationType: LocationType.AROUND_ME,
@@ -67,6 +70,7 @@ describe('useVenueSearchParameters', () => {
   it('should retrieve the locationFilter filtered everywhere if no venue - position unavailable', () => {
     mockPosition = null
     const { result } = renderHook(() => useVenueSearchParameters(invalidId))
+
     expect(result.current.locationFilter).toEqual({
       locationType: LocationType.EVERYWHERE,
     })

@@ -14,6 +14,7 @@ describe('getSearchGrouAndNativeCategoryFromSubcategoryId', () => {
   describe('should return undefined', () => {
     it('when no data sent by backend and unspecified subcategory', () => {
       const value = getSearchGroupAndNativeCategoryFromSubcategoryId()
+
       expect(value).toBeUndefined()
     })
 
@@ -22,11 +23,13 @@ describe('getSearchGrouAndNativeCategoryFromSubcategoryId', () => {
         undefined,
         SubcategoryIdEnum.ABO_JEU_VIDEO
       )
+
       expect(value).toBeUndefined()
     })
 
     it('when unspecified subcategory', () => {
       const value = getSearchGroupAndNativeCategoryFromSubcategoryId(mockData)
+
       expect(value).toBeUndefined()
     })
   })
@@ -36,6 +39,7 @@ describe('getSearchGrouAndNativeCategoryFromSubcategoryId', () => {
       mockData,
       SubcategoryIdEnum.ABO_JEU_VIDEO
     )
+
     expect(value).toEqual({
       searchGroupName: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
       nativeCategory: NativeCategoryIdEnumv2.JEUX_EN_LIGNE,

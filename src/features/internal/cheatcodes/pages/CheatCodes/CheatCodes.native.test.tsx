@@ -25,26 +25,29 @@ const navigation = {
 } as any // eslint-disable-line @typescript-eslint/no-explicit-any
 
 describe('CheatCodes component', () => {
-  it.each`
-    environment     | buttonIsdisplayed
-    ${'testing'}    | ${true}
-    ${'staging'}    | ${false}
-    ${'production'} | ${false}
-  `('should display/not display code push button', async ({ environment, buttonIsdisplayed }) => {
-    env.ENV = environment
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  it('should display code push button for testing environment', async () => {
+    env.ENV = 'testing'
     renderCheatCodes()
 
     await screen.findByText('CheatCodes')
 
-    buttonIsdisplayed
-      ? expect(screen.queryByText('Check update')).toBeOnTheScreen()
-      : expect(screen.queryByText('Check update')).not.toBeOnTheScreen()
-    expect.assertions(1)
+    expect(screen.queryByText('Check update')).toBeOnTheScreen()
+  })
+
+  it.each`
+    environment
+    ${'staging'}
+    ${'production'}
+  `('should not display code push button for $environment environment', async ({ environment }) => {
+    env.ENV = environment
+    renderCheatCodes()
+
+    await screen.findByText('CheatCodes')
+
+    expect(screen.queryByText('Check update')).not.toBeOnTheScreen()
   })
 
   it('should call installationID and display it', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     renderCheatCodes()
 
     expect(BatchUser.getInstallationID).toHaveBeenCalledTimes(1)

@@ -5,7 +5,7 @@ import { analytics } from 'libs/analytics/__mocks__/provider'
 import { render, screen, fireEvent } from 'tests/utils'
 
 describe('<ParentInformation/>', () => {
-  it('should open modal on click ', async () => {
+  it('should open modal on click', async () => {
     render(<ParentInformation />)
 
     fireEvent.press(screen.getByText('En savoir plus'))

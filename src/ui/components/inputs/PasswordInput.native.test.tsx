@@ -15,6 +15,7 @@ describe('<PasswordInput />', () => {
     const switchPasswordVisibilityButton = screen.getByTestId('Afficher le mot de passe')
 
     fireEvent.press(switchPasswordVisibilityButton)
+
     expect(screen.queryByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Afficher le mot de passe')).not.toBeOnTheScreen()
   })
@@ -22,6 +23,7 @@ describe('<PasswordInput />', () => {
   it('should render ref correctly', () => {
     const myRef = React.createRef<RNTextInput>()
     render(<PasswordInput ref={myRef} />)
+
     expect(myRef.current).toBeTruthy()
   })
 })

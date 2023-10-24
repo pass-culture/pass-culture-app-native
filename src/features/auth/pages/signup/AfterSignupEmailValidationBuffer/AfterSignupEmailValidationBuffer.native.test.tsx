@@ -81,8 +81,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(loginRoutine).toBeCalledTimes(1)
-        expect(replace).toBeCalledTimes(1)
+        expect(loginRoutine).toHaveBeenCalledTimes(1)
+        expect(replace).toHaveBeenCalledTimes(1)
         expect(replace).toHaveBeenCalledWith('AccountCreated')
       })
       loginRoutine.mockRestore()
@@ -108,12 +108,13 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(loginRoutine).toBeCalledTimes(1)
-        expect(replace).toBeCalledTimes(1)
+        expect(loginRoutine).toHaveBeenCalledTimes(1)
+        expect(replace).toHaveBeenCalledTimes(1)
         expect(replace).toHaveBeenCalledWith('VerifyEligibility')
       })
       loginRoutine.mockRestore()
     })
+
     it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
       server.use(
         rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
@@ -198,7 +199,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
           message: 'Ce lien de validation n’est plus valide',
           timeout: SNACK_BAR_TIME_OUT,
         })
-        expect(replace).toBeCalledTimes(1)
+        expect(replace).toHaveBeenCalledTimes(1)
         expect(replace).toHaveBeenCalledWith(...homeNavConfig)
       })
     })
@@ -210,7 +211,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       renderPage()
 
       await waitFor(() => {
-        expect(replace).toBeCalledTimes(1)
+        expect(replace).toHaveBeenCalledTimes(1)
         expect(replace).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
           email: 'john@wick.com',
         })

@@ -15,6 +15,7 @@ const AGES = [15, 16, 17, 18]
 describe('OnboardingAgeInformation', () => {
   it.each(AGES)('should render correctly for %s-year-old', (age) => {
     renderOnboardingAgeInformation({ age })
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -60,6 +61,7 @@ describe('OnboardingAgeInformation', () => {
       const laterButton = screen.getByTestId('Plus tard')
 
       fireEvent.press(laterButton)
+
       expect(reset).toHaveBeenCalledWith({
         index: 0,
         routes: [{ name: homeNavConfig[0] }],
@@ -73,6 +75,7 @@ describe('OnboardingAgeInformation', () => {
     const creditBlock = screen.getByText(`à ${age} ans`)
 
     fireEvent.press(creditBlock)
+
     expect(analytics.logTrySelectDeposit).toHaveBeenCalledWith(age)
   })
 
@@ -82,6 +85,7 @@ describe('OnboardingAgeInformation', () => {
     const signupButton = screen.getByText('Créer un compte')
 
     fireEvent.press(signupButton)
+
     expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
       type: 'account_creation',
     })
@@ -96,6 +100,7 @@ describe('OnboardingAgeInformation', () => {
     const laterButton = screen.getByText('Plus tard')
 
     fireEvent.press(laterButton)
+
     expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
       type: 'account_creation_skipped',
     })

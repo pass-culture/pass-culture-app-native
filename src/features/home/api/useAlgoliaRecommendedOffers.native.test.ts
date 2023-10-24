@@ -12,6 +12,7 @@ const getSimilarOffersInOrderSpy = jest.spyOn(
 )
 
 const ids = ['102280', '102272', '102249', '102310']
+
 describe('useAlgoliaRecommendedOffers', () => {
   const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
   const fetchAlgoliaHitsSpy = jest
@@ -59,6 +60,7 @@ describe('useAlgoliaRecommendedOffers', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
+
     expect(result.current).toBeUndefined()
   })
 
@@ -68,6 +70,7 @@ describe('useAlgoliaRecommendedOffers', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
+
     expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1)
   })
 
@@ -77,6 +80,7 @@ describe('useAlgoliaRecommendedOffers', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
+
     expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
   })
 
@@ -86,6 +90,7 @@ describe('useAlgoliaRecommendedOffers', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
+
     expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
   })
 })

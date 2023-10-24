@@ -10,7 +10,8 @@ describe('eventMonitoring', () => {
   describe('init()', () => {
     it("should call sentry's init() when enabled", async () => {
       await eventMonitoring.init({ enabled: true })
-      expect(SentryModule.init).toBeCalledWith({
+
+      expect(SentryModule.init).toHaveBeenCalledWith({
         dsn: env.SENTRY_DSN,
         environment: 'development',
         release: `${version}-${Platform.OS}`,
@@ -22,7 +23,8 @@ describe('eventMonitoring', () => {
 
     it("should NOT call sentry's init() when disabled", () => {
       eventMonitoring.init({ enabled: false })
-      expect(SentryModule.init).not.toBeCalled()
+
+      expect(SentryModule.init).not.toHaveBeenCalled()
     })
   })
 })

@@ -8,11 +8,13 @@ const hideModalMock = jest.fn()
 describe('<ExpiredCreditModal/>', () => {
   it('should render correctly', () => {
     render(<ExpiredCreditModal visible hideModal={hideModalMock} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display nothing if modal is not visible', () => {
     render(<ExpiredCreditModal visible={false} hideModal={hideModalMock} />)
+
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
@@ -20,6 +22,7 @@ describe('<ExpiredCreditModal/>', () => {
     render(<ExpiredCreditModal visible hideModal={hideModalMock} />)
     const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
+
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 })

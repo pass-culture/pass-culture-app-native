@@ -160,6 +160,7 @@ describe('<BookingDetails />', () => {
       mockBookingStock = undefined
 
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148401 })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
     })
@@ -168,6 +169,7 @@ describe('<BookingDetails />', () => {
       mockBookingStock = undefined
       const mockStocks = [{ ...offerStockResponseSnap, isBookable: false, id: 123456 }]
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(mockDispatch).not.toHaveBeenCalled()
 
       const mockOthersStocks = [
@@ -176,6 +178,7 @@ describe('<BookingDetails />', () => {
         { ...offerStockResponseSnap, isBookable: true, id: 12345678 },
       ]
       renderBookingDetails({ stocks: mockOthersStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1234567 })
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
       expect(mockDispatch).not.toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 12345678 })
@@ -205,8 +208,10 @@ describe('<BookingDetails />', () => {
       } as ReturnType<typeof useBookingStock>
 
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(screen).toMatchSnapshot()
     })
+
     it('should render disable CTA when user is underage and stock is forbidden to underage', () => {
       mockBookingStock = {
         price: 2000,
@@ -216,6 +221,7 @@ describe('<BookingDetails />', () => {
       } as ReturnType<typeof useBookingStock>
       mockedUseIsUserUnderage.mockReturnValueOnce(true)
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
       expect(screen).toMatchSnapshot()
     })
 
@@ -226,6 +232,7 @@ describe('<BookingDetails />', () => {
       })
       const ConfirmButton = screen.getByText('Confirmer la réservation')
       fireEvent.press(ConfirmButton)
+
       expect(mockOnPressBookOffer).toHaveBeenCalledTimes(1)
     })
 
@@ -257,6 +264,7 @@ describe('<BookingDetails />', () => {
     })
     mockUseBookingOffer.mockReturnValueOnce(mockDigitalOffer)
     renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
+
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
   })
 
@@ -268,6 +276,7 @@ describe('<BookingDetails />', () => {
     })
     mockUseBookingOffer.mockReturnValueOnce(mockOffer)
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
     expect(mockDispatch).not.toHaveBeenCalledWith({
       type: 'CHANGE_STEP',
       payload: Step.CONFIRMATION,

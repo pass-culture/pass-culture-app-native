@@ -68,6 +68,7 @@ describe('ValidateEmailChange', () => {
 
   it('should render new email address', () => {
     render(<ValidateEmailChange navigation={navigation} route={route} />)
+
     expect(screen.getByText('john@doe.com')).toBeOnTheScreen()
   })
 
@@ -173,6 +174,7 @@ describe('ValidateEmailChange', () => {
     } as QueryObserverResult<EmailUpdateStatus>)
 
     render(<ValidateEmailChange navigation={navigation} route={route} />)
+
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })

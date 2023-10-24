@@ -46,8 +46,8 @@ describe('<DeeplinkItem />', () => {
 
     fireEvent.click(screen.getByTestId('Copier'))
 
-    expect(writeText).toBeCalledWith(deeplink.universalLink)
-    expect(showSuccessSnackBar).toBeCalledWith({
+    expect(writeText).toHaveBeenCalledWith(deeplink.universalLink)
+    expect(showSuccessSnackBar).toHaveBeenCalledWith({
       message: `${deeplink.universalLink} à été copié dans ton press-papier\u00a0!`,
       timeout: SNACK_BAR_TIME_OUT,
     })
@@ -58,8 +58,8 @@ describe('<DeeplinkItem />', () => {
 
     fireEvent.click(screen.getByTestId('Copier dans le presse-papier'))
 
-    expect(writeText).toBeCalledWith(deeplink.firebaseLink)
-    expect(showSuccessSnackBar).toBeCalledWith({
+    expect(writeText).toHaveBeenCalledWith(deeplink.firebaseLink)
+    expect(showSuccessSnackBar).toHaveBeenCalledWith({
       message: `${deeplink.firebaseLink} à été copié dans ton press-papier\u00a0!`,
       timeout: SNACK_BAR_TIME_OUT,
     })

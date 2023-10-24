@@ -23,6 +23,7 @@ describe('<OfferNativeCategoryChoices />', () => {
 
     expect(screen).toMatchSnapshot()
   })
+
   it('should call onChange with proper subcategory when toggling', () => {
     const onChange = jest.fn()
     render(
@@ -33,10 +34,15 @@ describe('<OfferNativeCategoryChoices />', () => {
     )
 
     fireEvent.press(screen.getByText('Arts visuels'))
+
     expect(onChange).toHaveBeenNthCalledWith(1, ['ARTS_VISUELS'])
+
     fireEvent.press(screen.getByText('Matériels créatifs'))
+
     expect(onChange).toHaveBeenNthCalledWith(2, ['MATERIELS_CREATIFS'])
+
     fireEvent.press(screen.getByText('Matériels créatifs'))
+
     expect(onChange).toHaveBeenNthCalledWith(3, [])
   })
 })

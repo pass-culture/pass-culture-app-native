@@ -11,6 +11,7 @@ describe('BookingCloseInformation', () => {
     render(<BookingCloseInformation visible hideModal={mockHideModal} />)
     const button = screen.getByText('J’ai compris')
     fireEvent.press(button)
+
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 })

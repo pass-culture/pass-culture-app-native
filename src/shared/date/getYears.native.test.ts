@@ -6,6 +6,7 @@ describe('getYears', () => {
     const numberOfYears = 3
     const expectedOutput = ['2020', '2021', '2022']
     const result = getYears(startYear, numberOfYears)
+
     expect(result).toEqual(expectedOutput)
   })
 
@@ -14,6 +15,7 @@ describe('getYears', () => {
     const numberOfYears = 0
     const expectedOutput: string[] = []
     const result = getYears(startYear, numberOfYears)
+
     expect(result).toEqual(expectedOutput)
   })
 
@@ -22,6 +24,7 @@ describe('getYears', () => {
     const numberOfYears = -3
     const expectedOutput: string[] = []
     const result = getYears(startYear, numberOfYears)
+
     expect(result).toEqual(expectedOutput)
   })
 
@@ -30,6 +33,7 @@ describe('getYears', () => {
     const numberOfYears = 5
     const expectedOutput = ['-5', '-4', '-3', '-2', '-1']
     const result = getYears(startYear, numberOfYears)
+
     expect(result).toEqual(expectedOutput)
   })
 })

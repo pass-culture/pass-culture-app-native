@@ -9,6 +9,7 @@ describe('<DMSModal/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<DMSModal visible hideModal={jest.fn()} />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

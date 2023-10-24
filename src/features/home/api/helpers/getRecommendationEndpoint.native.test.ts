@@ -14,6 +14,7 @@ describe('getRecommendationEndpoint', () => {
       position: null,
       modelEndpoint: undefined,
     })
+
     expect(endpoint).toBeUndefined()
   })
 
@@ -23,6 +24,7 @@ describe('getRecommendationEndpoint', () => {
       position: undefined,
       modelEndpoint: undefined,
     })
+
     expect(endpoint).toBeUndefined()
   })
 
@@ -32,6 +34,7 @@ describe('getRecommendationEndpoint', () => {
       position: null,
       modelEndpoint: undefined,
     })
+
     expect(endpoint).toEqual(
       `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${mockUserId}?token=${env.RECOMMENDATION_TOKEN}`
     )
@@ -40,6 +43,7 @@ describe('getRecommendationEndpoint', () => {
   it('should return endpoint with latitude and longitude query params when position is provided', () => {
     const modelEndpoint = undefined
     const endpoint = getRecommendationEndpoint({ userId: mockUserId, position, modelEndpoint })
+
     expect(endpoint).toEqual(
       `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${mockUserId}?token=${env.RECOMMENDATION_TOKEN}&longitude=${position.longitude}&latitude=${position.latitude}`
     )
@@ -48,6 +52,7 @@ describe('getRecommendationEndpoint', () => {
   it('should return endpoint with endpoint query params when a endpoint is provided', () => {
     const modelEndpoint = 'endpoint'
     const endpoint = getRecommendationEndpoint({ userId: mockUserId, position, modelEndpoint })
+
     expect(endpoint).toEqual(
       `${env.RECOMMENDATION_ENDPOINT}/playlist_recommendation/${mockUserId}?token=${env.RECOMMENDATION_TOKEN}&modelEndpoint=${modelEndpoint}&longitude=${position.longitude}&latitude=${position.latitude}`
     )

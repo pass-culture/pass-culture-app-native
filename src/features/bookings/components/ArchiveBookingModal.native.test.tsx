@@ -39,8 +39,10 @@ describe('<ArchiveBookingModal />', () => {
 
     const button = screen.getByTestId('Retourner à ma réservation')
     fireEvent.press(button)
+
     expect(onDismiss).toHaveBeenCalledTimes(1)
   })
+
   it('should call the mutation to toggle booking display', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/bookings/2/toggle_display', (req, res, ctx) =>
@@ -67,9 +69,10 @@ describe('<ArchiveBookingModal />', () => {
         timeout: 5000,
       })
       expect(onDismiss).toHaveBeenCalledTimes(1)
-      expect(mockGoBack).toBeCalledTimes(1)
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
   })
+
   it('should show error snackbar if terminate booking request fails', async () => {
     const response = {
       code: 'ALREADY_USED',

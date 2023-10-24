@@ -13,6 +13,7 @@ describe('isPhoneNumberValid', () => {
     ${'1-11-11-11'}     | ${false}
   `('should return $isValid if phone number is $phoneNumber', ({ phoneNumber, isValid }) => {
     const result = isPhoneNumberValid(phoneNumber)
+
     expect(result).toBe(isValid)
   })
 })

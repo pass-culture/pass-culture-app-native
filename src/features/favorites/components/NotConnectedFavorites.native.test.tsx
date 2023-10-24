@@ -19,8 +19,8 @@ describe('NotConnectedFavorites component', () => {
     fireEvent.press(screen.getByText(`Créer un compte`))
 
     await waitFor(() => {
-      expect(navigate).toBeCalledWith('SignupForm', undefined)
-      expect(analytics.logSignUpFromFavorite).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('SignupForm', undefined)
+      expect(analytics.logSignUpFromFavorite).toHaveBeenCalledTimes(1)
       expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'favorite' })
     })
   })
@@ -31,8 +31,8 @@ describe('NotConnectedFavorites component', () => {
     fireEvent.press(screen.getByText(`Se connecter`))
 
     await waitFor(() => {
-      expect(navigate).toBeCalledWith('Login', {})
-      expect(analytics.logSignInFromFavorite).toBeCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('Login', {})
+      expect(analytics.logSignInFromFavorite).toHaveBeenCalledTimes(1)
     })
   })
 })

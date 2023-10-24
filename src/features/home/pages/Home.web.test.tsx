@@ -36,6 +36,7 @@ describe('<Home/>', () => {
       await act(async () => {
         results = await checkAccessibilityFor(container)
       })
+
       expect(results).toHaveNoViolations()
     })
   })

@@ -24,11 +24,13 @@ const props = {
 describe('VenuesModule component', () => {
   it('should render correctly', () => {
     render(<VenuesModule {...props} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should not render if data is undefined', () => {
     render(<VenuesModule {...{ ...props, data: undefined }} />)
+
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 })

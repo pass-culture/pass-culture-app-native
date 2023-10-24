@@ -40,6 +40,7 @@ const transactions: Transaction[] = [
 describe('startTransaction', () => {
   it('should start Sentry performance transaction with the name of the transaction', () => {
     startTransaction('Transaction1')
+
     expect(eventMonitoring.startTransaction).toHaveBeenNthCalledWith(1, { name: 'Transaction1' })
   })
 })
@@ -47,11 +48,13 @@ describe('startTransaction', () => {
 describe('getTransactionFromName', () => {
   it('should return a transaction when name exist in transaction array', () => {
     const transaction = getTransactionFromName(transactions, 'Transaction1')
+
     expect(transaction).toEqual(transactions[0])
   })
 
   it('should return undefined when name not exist in transaction array', () => {
     const transaction = getTransactionFromName(transactions, 'Transaction2')
+
     expect(transaction).toBeUndefined()
   })
 })

@@ -46,6 +46,7 @@ describe('<VenueSelectionModal />', () => {
     )
 
     const results = await checkAccessibilityFor(container)
+
     expect(results).toHaveNoViolations()
   })
 })

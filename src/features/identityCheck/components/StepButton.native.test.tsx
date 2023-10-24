@@ -33,9 +33,11 @@ describe('StepButton', () => {
       }
 
       render(<StepButton step={identificationStep} />)
+
       expect(screen.getByTestId(stepTestId).props.accessibilityState.disabled).toBe(isDisabled)
     }
   )
+
   it.each`
     stepState                    | stepTestId
     ${StepButtonState.COMPLETED} | ${'Identification complété'}

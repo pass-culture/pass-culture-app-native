@@ -22,7 +22,7 @@ describe('<GenericSuspendedAccount />', () => {
     fireEvent.press(contactSupportButton)
 
     await waitFor(() => {
-      expect(openUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
+      expect(openUrl).toHaveBeenCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
     })
   })
 
@@ -37,6 +37,6 @@ describe('<GenericSuspendedAccount />', () => {
       navigateToHomeConfig.screen,
       navigateToHomeConfig.params
     )
-    expect(mockSignOut).toBeCalledTimes(1)
+    expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 })

@@ -17,8 +17,10 @@ describe('<PageWithHeader/>', () => {
         onGoBack={mockGoBack}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
+
   it('should render correctly on Android, with white header', () => {
     Platform.OS = 'android'
 
@@ -30,6 +32,7 @@ describe('<PageWithHeader/>', () => {
         onGoBack={mockGoBack}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 })

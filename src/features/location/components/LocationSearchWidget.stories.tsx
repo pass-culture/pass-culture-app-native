@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
+import { SearchWrapper } from 'features/search/context/SearchWrapper'
 
 const meta: ComponentMeta<typeof LocationSearchWidget> = {
   title: 'Features/Location/LocationSearchWidget',
@@ -12,6 +13,11 @@ const meta: ComponentMeta<typeof LocationSearchWidget> = {
       <NavigationContainer>
         <Story />
       </NavigationContainer>
+    ),
+    (Story) => (
+      <SearchWrapper>
+        <Story />
+      </SearchWrapper>
     ),
   ],
 }

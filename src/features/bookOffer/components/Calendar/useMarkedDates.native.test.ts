@@ -25,21 +25,25 @@ const credit = 1000
 describe('useMarkedDates()', () => {
   it('should not mark any dates if there are no stocks', () => {
     const { result } = renderHook(() => useMarkedDates([], 10))
+
     expect(result.current).toStrictEqual({})
   })
 
   it('should mark selected date correctly', () => {
     let hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
+
     expect(hook.result.current['2021-01-01'].selected).toBe(true)
 
     mockBookingState.date = new Date(2021, 4, 4)
     hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
+
     expect(hook.result.current['2021-01-01'].selected).toBe(false)
   })
 
   it('should skip stocks without date', () => {
     const stock = { ...offerStockResponseSnap, beginningDatetime: undefined }
     const { result } = renderHook(() => useMarkedDates([stock], credit))
+
     expect(result.current).toStrictEqual({})
   })
 
@@ -49,6 +53,7 @@ describe('useMarkedDates()', () => {
       { ...offerStockResponseSnap, isBookable: true, price: 2000 },
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
+
     expect(result.current['2021-01-01'].price).toEqual(2000)
     expect(result.current['2021-01-01'].status).toEqual('BOOKABLE')
   })
@@ -59,6 +64,7 @@ describe('useMarkedDates()', () => {
       { ...offerStockResponseSnap, isBookable: false, price: 2000 },
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
+
     expect(result.current['2021-01-01'].price).toEqual(200)
     expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
   })
@@ -69,6 +75,7 @@ describe('useMarkedDates()', () => {
       { ...offerStockResponseSnap, isBookable: true, price: 2000 },
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 200))
+
     expect(result.current['2021-01-01'].price).toEqual(2000)
     expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
   })

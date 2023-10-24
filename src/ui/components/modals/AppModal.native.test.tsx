@@ -17,11 +17,13 @@ import { AppModal } from './AppModal'
 describe('<AppModal />', () => {
   it('with minimal props', () => {
     render(<AppModal {...defaultProps} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should hide the modal when set to hidden', () => {
     render(<AppModal {...defaultProps} visible={false} />)
+
     expect(screen.getByTestId('modal')).toHaveProp('visible', false)
   })
 
@@ -31,6 +33,7 @@ describe('<AppModal />', () => {
       children: undefined,
     }
     render(<AppModal {...props} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -89,16 +92,19 @@ describe('<AppModal />', () => {
   describe('with backdrop', () => {
     it('enabled by default', () => {
       render(<AppModal {...defaultProps} />)
+
       expect(screen).toMatchSnapshot()
     })
 
     it('explicitly enabled', () => {
       render(<AppModal {...defaultProps} shouldDisplayOverlay />)
+
       expect(screen).toMatchSnapshot()
     })
 
     it('disabled', () => {
       render(<AppModal {...defaultProps} shouldDisplayOverlay={false} />)
+
       expect(screen).toMatchSnapshot()
     })
   })
@@ -111,6 +117,7 @@ describe('<AppModal />', () => {
 
     it('render', () => {
       render(<AppModal {...props} />)
+
       expect(screen).toMatchSnapshot()
     })
 
@@ -132,6 +139,7 @@ describe('<AppModal />', () => {
 
     it('render', () => {
       render(<AppModal {...props} />)
+
       expect(screen).toMatchSnapshot()
     })
 
@@ -149,6 +157,7 @@ describe('<AppModal />', () => {
     render(<AppModal {...defaultProps} />, {
       theme: { isDesktopViewport: true },
     })
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -156,6 +165,7 @@ describe('<AppModal />', () => {
     render(<AppModal {...defaultProps} />, {
       theme: { isDesktopViewport: false, appContentWidth: 400 },
     })
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -334,6 +344,7 @@ describe('<AppModal />', () => {
   describe('Spacer between header and content', () => {
     it('should display it', () => {
       render(<AppModal {...defaultProps} />)
+
       expect(screen.getByTestId('spacerBetweenHeaderAndContent')).toBeOnTheScreen()
     })
 
@@ -343,6 +354,7 @@ describe('<AppModal />', () => {
         shouldAddSpacerBetweenHeaderAndContent: false,
       }
       render(<AppModal {...modalProps} />)
+
       expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).not.toBeOnTheScreen()
     })
   })

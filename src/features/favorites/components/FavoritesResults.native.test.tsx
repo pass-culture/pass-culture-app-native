@@ -55,6 +55,7 @@ describe('FavoritesResults component', () => {
     renderFavoritesResults()
     const button = await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
+
     expect(button).toBeTruthy()
     expect(sortByButton).not.toBeOnTheScreen()
   })
@@ -68,6 +69,7 @@ describe('FavoritesResults component', () => {
 
     renderFavoritesResults()
     const container = await screen.findByTestId('FavoritesResultsPlaceHolder')
+
     expect(container).toBeOnTheScreen()
   })
 
@@ -88,8 +90,11 @@ describe('FavoritesResults component', () => {
     const container = await screen.findByText(
       `${paginatedFavoritesResponseSnap.nbFavorites} favoris`
     )
+
     expect(container).toBeOnTheScreen()
+
     const sortByButton = screen.getByText('Trier')
+
     expect(sortByButton).toBeOnTheScreen()
   })
 

@@ -12,6 +12,7 @@ const props = {
 describe('<ImageTile/>', () => {
   it('should render correctly', () => {
     render(<ImageTile {...props} onlyTopBorderRadius />)
+
     expect(screen).toMatchSnapshot()
   })
 })

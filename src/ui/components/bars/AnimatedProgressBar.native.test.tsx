@@ -21,6 +21,7 @@ describe('AnimatedProgressBar', () => {
 
     expect(toJSON()).toMatchSnapshot()
   })
+
   it('should have the right length and color', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = theme.colors.primary
@@ -35,10 +36,12 @@ describe('AnimatedProgressBar', () => {
 
     const progressBar = screen.getByTestId('animated-progress-bar')
     const style = progressBar.props.style
+
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
     expect(style.flexGrow).toEqual(expectedProgress)
 
     const progressBarIcon = screen.getByText('progress-bar-icon-SVG-Mock')
+
     expect(progressBarIcon).toBeOnTheScreen()
   })
 
@@ -57,10 +60,12 @@ describe('AnimatedProgressBar', () => {
 
     const progressBar = screen.getByTestId('animated-progress-bar')
     const style = progressBar.props.style
+
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
     expect(style.flexGrow).toEqual(1)
 
     const progressBarIcon = screen.getByText('progress-bar-icon-SVG-Mock')
+
     expect(progressBarIcon).toBeOnTheScreen()
   })
 })

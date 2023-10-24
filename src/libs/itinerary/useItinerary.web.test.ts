@@ -20,7 +20,7 @@ describe('useItinerary', () => {
     const { result } = renderHook(useItinerary)
     result.current.navigateTo(address)
     await waitFor(() => {
-      expect(openGoogleMapsItinerary).toBeCalledWith(address)
+      expect(openGoogleMapsItinerary).toHaveBeenCalledWith(address)
     })
   })
 })

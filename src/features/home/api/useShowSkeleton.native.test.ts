@@ -22,12 +22,15 @@ describe('useShowSkeleton', () => {
     const { result, rerender } = renderHook(useShowSkeleton)
 
     expect(result.current).toBeTruthy()
-    await act(async () => await rerender(1))
+
+    await act(async () => rerender(1))
 
     expect(result.current).toBeTruthy()
+
     await act(async () => {
       jest.advanceTimersByTime(ANIMATION_DELAY)
     })
+
     expect(result.current).toBeFalsy()
   })
 })

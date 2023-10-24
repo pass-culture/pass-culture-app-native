@@ -14,7 +14,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 
@@ -155,13 +155,16 @@ describe('<VenueOffers />', () => {
   afterEach(() => {
     mockVenue = venueResponseSnap
   })
+
   it('should render correctly', () => {
     render(<VenueOffers venueId={venueId} />)
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {
     render(<VenueOffers venueId={venueId} />)
+
     expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
 
@@ -171,40 +174,47 @@ describe('<VenueOffers />', () => {
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
     render(<VenueOffers venueId={venueId} />)
+
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should set search state when clicking "En voir plus" button`, async () => {
     render(<VenueOffers venueId={venueId} />)
-    await fireEvent.press(screen.getByText('En voir plus'))
-    expect(push).toBeCalledWith('TabNavigator', {
-      params: {
-        ...defaultParams,
-        locationFilter: {
-          locationType: 'VENUE',
-          venue: {
-            geolocation: { latitude: 48.87004, longitude: 2.3785 },
-            info: 'Paris',
-            label: 'Le Petit Rintintin 1',
-            venueId: 5543,
+
+    fireEvent.press(screen.getByText('En voir plus'))
+
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...defaultParams,
+          locationFilter: {
+            locationType: 'VENUE',
+            venue: {
+              geolocation: { latitude: 48.87004, longitude: 2.3785 },
+              info: 'Paris',
+              label: 'Le Petit Rintintin 1',
+              venueId: 5543,
+            },
           },
+          view: SearchView.Results,
+          previousView: SearchView.Results,
         },
-        view: SearchView.Results,
-        previousView: SearchView.Results,
-      },
-      screen: 'Search',
+        screen: 'Search',
+      })
     })
   })
 
   it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, () => {
     render(<VenueOffers venueId={venueId} />)
     fireEvent.press(screen.getByText('En voir plus'))
+
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
   it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, async () => {
     render(<VenueOffers venueId={venueId} />)
     fireEvent.press(screen.getByText('Voir toutes les offres'))
+
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 

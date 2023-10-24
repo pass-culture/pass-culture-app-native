@@ -8,6 +8,7 @@ import { TutorialPage } from './TutorialPage'
 describe('TutorialPage', () => {
   it('should render correctly', () => {
     renderTutorialPage()
+
     expect(screen).toMatchSnapshot()
   })
 

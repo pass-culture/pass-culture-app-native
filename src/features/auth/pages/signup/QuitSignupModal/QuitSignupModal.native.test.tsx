@@ -19,6 +19,7 @@ describe('QuitSignupModal', () => {
 
   it('should render correctly', () => {
     renderQuitSignupModal(true)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -26,6 +27,7 @@ describe('QuitSignupModal', () => {
     renderQuitSignupModal(false)
 
     const title = screen.queryByText('Veux-tu abandonner l’inscription ?')
+
     expect(title).not.toBeOnTheScreen()
   })
 
@@ -33,6 +35,7 @@ describe('QuitSignupModal', () => {
     renderQuitSignupModal(true)
 
     const button = screen.queryByText('Veux-tu abandonner l’inscription ?')
+
     expect(button).toBeOnTheScreen()
   })
 

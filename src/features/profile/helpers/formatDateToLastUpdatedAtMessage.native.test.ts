@@ -9,6 +9,7 @@ describe('formatDateToLastUpdatedAtMessage', () => {
 
   it('should not return formatted date when last updated date is not provided', () => {
     const { result } = renderHook(() => formatDateToLastUpdatedAtMessage(undefined))
+
     expect(result.current).toBeUndefined()
   })
 
@@ -17,6 +18,7 @@ describe('formatDateToLastUpdatedAtMessage', () => {
     timezoneMock.register('Brazil/East')
 
     const { result } = renderHook(() => formatDateToLastUpdatedAtMessage('2023-08-28 12:00:00'))
+
     expect(result.current).toEqual('28/08/2023 à 09h00')
   })
 })

@@ -22,8 +22,8 @@ describe('useInitialScreen()', () => {
 
     await waitFor(() => {
       expect(result.current).toEqual('TabNavigator')
-      expect(analytics.logScreenView).toBeCalledTimes(1)
-      expect(analytics.logScreenView).toBeCalledWith('Home')
+      expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+      expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
     })
   })
 })

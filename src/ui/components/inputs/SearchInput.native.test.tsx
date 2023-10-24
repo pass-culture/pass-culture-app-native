@@ -16,9 +16,9 @@ describe('SearchInput component', () => {
 
     const searchInput = screen.getByTestId('searchInput')
 
-    await fireEvent(searchInput, 'onChangeText', 'Some text')
+    fireEvent(searchInput, 'onChangeText', 'Some text')
 
-    expect(onChangeText).toBeCalledWith('Some text')
+    expect(onChangeText).toHaveBeenCalledWith('Some text')
   })
 
   it('should reset input when user click on reset icon', async () => {
@@ -26,7 +26,7 @@ describe('SearchInput component', () => {
 
     const resetIcon = screen.getByTestId('Réinitialiser la recherche')
 
-    await fireEvent.press(resetIcon)
+    fireEvent.press(resetIcon)
 
     expect(onReset).toHaveBeenCalledTimes(1)
   })

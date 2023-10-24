@@ -31,6 +31,7 @@ describe('<SignupForm/>', () => {
       })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
 
@@ -47,6 +48,7 @@ describe('<SignupForm/>', () => {
       await act(async () => {})
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

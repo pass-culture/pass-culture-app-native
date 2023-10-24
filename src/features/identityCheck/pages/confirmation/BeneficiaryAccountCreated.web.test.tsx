@@ -11,6 +11,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<BeneficiaryAccountCreated />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

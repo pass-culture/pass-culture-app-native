@@ -88,7 +88,7 @@ describe('AutocompleteOfferItem component', () => {
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(navigate).toBeCalledWith(
+      expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...initialSearchState,
           query: mockHit.query,
@@ -131,7 +131,7 @@ describe('AutocompleteOfferItem component', () => {
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(navigate).toBeCalledWith(
+      expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...initialSearchState,
           query: mockHit.query,
@@ -149,7 +149,7 @@ describe('AutocompleteOfferItem component', () => {
 
   describe('when item is in the first three suggestions', () => {
     describe('should execute a search with the query suggestion and', () => {
-      it('its most popular native category when it associated to only one category on hit click ', async () => {
+      it('its most popular native category when it associated to only one category on hit click', async () => {
         render(
           <AutocompleteOfferItem
             hit={mockHit}
@@ -160,7 +160,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHit.query,
@@ -186,7 +186,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithAssociationToNativeCategory.query,
@@ -212,7 +212,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithoutAssociationToNativeCategory.query,
@@ -237,7 +237,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -262,7 +262,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -288,7 +288,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -313,7 +313,7 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toBeCalledWith(
+        expect(navigate).toHaveBeenCalledWith(
           ...getTabNavConfig('Search', {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
@@ -357,7 +357,7 @@ describe('AutocompleteOfferItem component', () => {
       })
     })
 
-    describe('should not display the most popular category or native category of the query suggestion ', () => {
+    describe('should not display the most popular category or native category of the query suggestion', () => {
       it('when it does not return by Algolia', async () => {
         render(
           <AutocompleteOfferItem
@@ -385,7 +385,7 @@ describe('AutocompleteOfferItem component', () => {
       })
     })
 
-    describe('should not display the most popular native category of the query suggestion ', () => {
+    describe('should not display the most popular native category of the query suggestion', () => {
       it('when it is not associated to the most popular category', async () => {
         render(
           <AutocompleteOfferItem
@@ -413,7 +413,7 @@ describe('AutocompleteOfferItem component', () => {
       })
     })
 
-    describe('should not display the most popular category of the query suggestion ', () => {
+    describe('should not display the most popular category of the query suggestion', () => {
       it('when native category associated to only one category', async () => {
         render(
           <AutocompleteOfferItem
@@ -455,7 +455,7 @@ describe('AutocompleteOfferItem component', () => {
     })
 
     describe('should display the most popular category of the query suggestion when', () => {
-      it('it is not associated to the most popular category', async () => {
+      it('is not associated to the most popular category', async () => {
         render(
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithoutAssociationToNativeCategory}

@@ -57,10 +57,11 @@ describe('useAddFavorite hook', () => {
     const result = renderUseAddFavorite(onSuccess)
 
     expect(result.current.isLoading).toBeFalsy()
+
     result.current.mutate({ offerId })
 
     await waitFor(() => {
-      expect(onSuccess).toBeCalledWith({
+      expect(onSuccess).toHaveBeenCalledWith({
         ...favoriteResponseSnap,
         offer: {
           ...favoriteResponseSnap.offer,
@@ -85,6 +86,7 @@ describe('useAddFavorite hook', () => {
     const result = renderUseAddFavorite()
 
     expect(result.current.isLoading).toBeFalsy()
+
     result.current.mutate({ offerId })
 
     await waitFor(() => {
@@ -95,6 +97,7 @@ describe('useAddFavorite hook', () => {
     })
   })
 })
+
 it('should show snack bar when too many favorites when trying to add favorite', async () => {
   simulateBackend({
     id: offerId,
@@ -111,6 +114,7 @@ it('should show snack bar when too many favorites when trying to add favorite', 
   const result = renderUseAddFavorite()
 
   expect(result.current.isLoading).toBeFalsy()
+
   result.current.mutate({ offerId })
 
   await waitFor(() => {

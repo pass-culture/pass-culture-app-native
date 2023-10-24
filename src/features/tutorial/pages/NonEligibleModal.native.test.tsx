@@ -18,19 +18,19 @@ describe('NonEligibleModal', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly for profile tutorial non-eligible under 15 ', () => {
+  it('should render correctly for profile tutorial non-eligible under 15', () => {
     renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly for onboarding non-eligible over 18 ', () => {
+  it('should render correctly for onboarding non-eligible over 18', () => {
     renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly for profile tutorial non-eligible over 18 ', () => {
+  it('should render correctly for profile tutorial non-eligible over 18', () => {
     renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.PROFILE_TUTORIAL)
 
     expect(screen).toMatchSnapshot()
@@ -42,6 +42,7 @@ describe('NonEligibleModal', () => {
       renderNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
 
       fireEvent.press(screen.getByTestId('Fermer la modale'))
+
       expect(hideModal).toHaveBeenCalledTimes(1)
     }
   )
@@ -87,6 +88,7 @@ describe('NonEligibleModal', () => {
     const button = screen.getByText('comment ça marche\u00a0?')
 
     fireEvent.press(button)
+
     expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_CREDIT)
   })
 })

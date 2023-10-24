@@ -21,6 +21,7 @@ describe('useKeyboardEvents', () => {
     renderHook(useKeyboardEvents, {
       initialProps: { onBeforeHide: jest.fn(), onBeforeShow: jest.fn() },
     })
+
     expect(addKeyboardEventListener).toHaveBeenCalledTimes(4)
     expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardWillShow', expect.any(Function))
     expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardDidShow', expect.any(Function))
@@ -34,6 +35,7 @@ describe('useKeyboardEvents', () => {
     })
     addKeyboardEventListener.mockClear()
     keyboardEventsHook.rerender({ onBeforeShow: onBeforeShowMock, onBeforeHide: onBeforeHideMock })
+
     expect(addKeyboardEventListener).toHaveBeenCalledTimes(4)
     expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardWillShow', expect.any(Function))
     expect(addKeyboardEventListener).toHaveBeenCalledWith('keyboardDidShow', expect.any(Function))
@@ -46,41 +48,60 @@ describe('useKeyboardEvents', () => {
       Platform.OS = 'ios'
     })
 
-    it.each`
-      action    | functionMock        | expectedKeyboardShown
-      ${'Show'} | ${onBeforeShowMock} | ${true}
-      ${'Hide'} | ${onBeforeHideMock} | ${false}
-    `(
-      'calls onBefore$action props when calling keyboardWill$action ',
-      ({ action, functionMock, expectedKeyboardShown }) => {
-        renderHook(useKeyboardEvents, {
-          initialProps: {
-            onBeforeHide: action === 'Hide' ? functionMock : jest.fn(),
-            onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
-          },
-        })
-        DeviceEventEmitter.emit(`keyboardWill${action}`, keyboardEvent)
-        expect(functionMock).toHaveBeenCalledWith({
-          keyboardShown: expectedKeyboardShown,
-          keyboardHeight: 300,
-          coordinates: { start: keyboardEvent.startCoordinates, end: keyboardEvent.endCoordinates },
-        })
-      }
-    )
-
-    it.each`
-      action    | functionMock
-      ${'Show'} | ${onBeforeShowMock}
-      ${'Hide'} | ${onBeforeHideMock}
-    `('does nothing when calling keyboardDid$action ', ({ action, functionMock }) => {
+    it('calls onBeforeShow props when calling keyboardWillShow', () => {
       renderHook(useKeyboardEvents, {
         initialProps: {
-          onBeforeHide: action === 'Hide' ? functionMock : jest.fn(),
-          onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
+          onBeforeHide: jest.fn(),
+          onBeforeShow: onBeforeShowMock,
         },
       })
-      DeviceEventEmitter.emit(`keyboardDid${action}`, keyboardEvent)
-      expect(functionMock).not.toHaveBeenCalled()
+      DeviceEventEmitter.emit(`keyboardWillShow`, keyboardEvent)
+
+      expect(onBeforeShowMock).toHaveBeenCalledWith({
+        keyboardShown: true,
+        keyboardHeight: 300,
+        coordinates: { start: keyboardEvent.startCoordinates, end: keyboardEvent.endCoordinates },
+      })
+    })
+
+    it('calls onBeforeHide props when calling keyboardWillHide', () => {
+      renderHook(useKeyboardEvents, {
+        initialProps: {
+          onBeforeHide: onBeforeHideMock,
+          onBeforeShow: jest.fn(),
+        },
+      })
+      DeviceEventEmitter.emit(`keyboardWillHide`, keyboardEvent)
+
+      expect(onBeforeHideMock).toHaveBeenCalledWith({
+        keyboardShown: false,
+        keyboardHeight: 300,
+        coordinates: { start: keyboardEvent.startCoordinates, end: keyboardEvent.endCoordinates },
+      })
+    })
+
+    it('does nothing when calling keyboardDidShow', () => {
+      renderHook(useKeyboardEvents, {
+        initialProps: {
+          onBeforeHide: jest.fn(),
+          onBeforeShow: onBeforeShowMock,
+        },
+      })
+      DeviceEventEmitter.emit(`keyboardDidShow`, keyboardEvent)
+
+      expect(onBeforeShowMock).not.toHaveBeenCalled()
+    })
+
+    it('does nothing when calling keyboardDidHide', () => {
+      renderHook(useKeyboardEvents, {
+        initialProps: {
+          onBeforeHide: onBeforeHideMock,
+          onBeforeShow: jest.fn(),
+        },
+      })
+      DeviceEventEmitter.emit(`keyboardDidHide`, keyboardEvent)
+
+      expect(onBeforeHideMock).not.toHaveBeenCalled()
     })
   })
 
@@ -89,26 +110,36 @@ describe('useKeyboardEvents', () => {
       Platform.OS = 'android'
     })
 
-    it.each`
-      action    | functionMock        | expectedKeyboardShown
-      ${'Show'} | ${onBeforeShowMock} | ${true}
-      ${'Hide'} | ${onBeforeHideMock} | ${false}
-    `(
-      'calls onBefore$action props when calling keyboardWill$action ',
-      ({ action, functionMock, expectedKeyboardShown }) => {
-        renderHook(useKeyboardEvents, {
-          initialProps: {
-            onBeforeHide: action === 'Hide' ? functionMock : jest.fn(),
-            onBeforeShow: action === 'Show' ? functionMock : jest.fn(),
-          },
-        })
-        DeviceEventEmitter.emit(`keyboardWill${action}`, keyboardEvent)
-        expect(functionMock).toHaveBeenCalledWith({
-          keyboardShown: expectedKeyboardShown,
-          keyboardHeight: 300,
-          coordinates: { start: keyboardEvent.startCoordinates, end: keyboardEvent.endCoordinates },
-        })
-      }
-    )
+    it('calls onBeforeShow props when calling keyboardWillShow', () => {
+      renderHook(useKeyboardEvents, {
+        initialProps: {
+          onBeforeHide: jest.fn(),
+          onBeforeShow: onBeforeShowMock,
+        },
+      })
+      DeviceEventEmitter.emit(`keyboardWillShow`, keyboardEvent)
+
+      expect(onBeforeShowMock).toHaveBeenCalledWith({
+        keyboardShown: true,
+        keyboardHeight: 300,
+        coordinates: { start: keyboardEvent.startCoordinates, end: keyboardEvent.endCoordinates },
+      })
+    })
+
+    it('calls onBeforeHide props when calling keyboardWillHide', () => {
+      renderHook(useKeyboardEvents, {
+        initialProps: {
+          onBeforeHide: onBeforeHideMock,
+          onBeforeShow: jest.fn(),
+        },
+      })
+      DeviceEventEmitter.emit(`keyboardWillHide`, keyboardEvent)
+
+      expect(onBeforeHideMock).toHaveBeenCalledWith({
+        keyboardShown: false,
+        keyboardHeight: 300,
+        coordinates: { start: keyboardEvent.startCoordinates, end: keyboardEvent.endCoordinates },
+      })
+    })
   })
 })

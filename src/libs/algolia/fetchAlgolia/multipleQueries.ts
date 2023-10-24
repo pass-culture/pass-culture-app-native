@@ -14,7 +14,7 @@ export const multipleQueries = async <Response>(queries: MultipleQueriesQuery[])
     const resultsChunks = await Promise.all(
       queriesChunks.map(
         // eslint-disable-next-line local-rules/no-use-of-algolia-multiple-queries
-        async (queriesChunk) => await client.multipleQueries<Response>(queriesChunk)
+        async (queriesChunk) => client.multipleQueries<Response>(queriesChunk)
       )
     )
     return resultsChunks.reduce<SearchResponse<Response>[]>(

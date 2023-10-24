@@ -37,12 +37,14 @@ describe('fetchVenues', () => {
     visual_disability: false,
     website: 'https://my.website.com',
   }
+
   it('should fetch venues', () => {
     fetchVenues({ query: 'queryString' })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
     expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [] })
   })
+
   it.each`
     fixture | expectedResult
     ${{ hits: [venueFixture] }} | ${{
@@ -57,7 +59,7 @@ describe('fetchVenues', () => {
   venueId: 4150,
   _geoloc: { lat: 48.87004, lng: 2.3785 },
 }}
-  `('should fetch venues and format them correctly ', async ({ fixture, expectedResult }) => {
+  `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)
 
     const venues = await fetchVenues({ query: 'queryString' })

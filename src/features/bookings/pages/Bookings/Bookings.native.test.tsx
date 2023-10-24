@@ -16,11 +16,13 @@ useBookingsSpy.mockReturnValue({ data: bookingsSnap, isFetching: false } as Quer
   BookingsResponse,
   unknown
 >)
+
 describe('Bookings', () => {
   it('should render correctly', async () => {
     renderBookings()
 
     await screen.findByText('Mes réservations')
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -71,7 +73,7 @@ describe('Bookings', () => {
       fireEvent.press(cta)
     })
 
-    expect(navigate).toBeCalledWith('EndedBookings', undefined)
+    expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
   })
 })
 

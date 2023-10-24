@@ -25,7 +25,7 @@ describe('useLogoutRoutine', () => {
   it('should log analytics', async () => {
     await renderUseLogoutRoutine()
 
-    expect(analytics.logLogout).toBeCalledTimes(1)
+    expect(analytics.logLogout).toHaveBeenCalledTimes(1)
   })
 
   it('should remove access token from async storage', async () => {
@@ -38,7 +38,7 @@ describe('useLogoutRoutine', () => {
     const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
     await renderUseLogoutRoutine()
 
-    expect(mockClearRefreshToken).toBeCalledTimes(1)
+    expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
   })
 
   it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {

@@ -29,6 +29,7 @@ describe('BookingDetailsTicketContent', () => {
     render(<BookingDetailsTicketContent booking={booking} />)
 
     const token = booking.token as string
+
     expect(screen.queryByText(token)).not.toBeOnTheScreen()
   })
 
@@ -36,6 +37,7 @@ describe('BookingDetailsTicketContent', () => {
     render(<BookingDetailsTicketContent booking={originalBooking} />)
 
     const token = booking.token as string
+
     expect(screen.getByText(token)).toBeOnTheScreen()
   })
 
@@ -58,6 +60,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
     render(<BookingDetailsTicketContent booking={booking} />)
+
     expect(screen.queryByText('Accéder à l’offre en ligne')).not.toBeOnTheScreen()
   })
 
@@ -74,6 +77,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
     render(<BookingDetailsTicketContent booking={booking} />)
+
     expect(screen.getByText('Accéder à l’offre en ligne')).toBeOnTheScreen()
   })
 
@@ -90,6 +94,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       render(<BookingDetailsTicketContent booking={bookingForBookOffer} />)
+
       expect(screen.queryByTestId('ean')).toBeOnTheScreen()
     })
 
@@ -106,6 +111,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
+
       expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
     })
 
@@ -121,6 +127,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
+
       expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
     })
   })

@@ -28,10 +28,15 @@ describe('<OfferCategoryChoices />', () => {
     render(<OfferCategoryChoices onChange={onChange} />)
 
     fireEvent.press(screen.getByText('Arts & loisirs créatifs'))
+
     expect(onChange).toHaveBeenNthCalledWith(1, ['ARTS_LOISIRS_CREATIFS'])
+
     fireEvent.press(screen.getByText('Conférences & rencontres'))
+
     expect(onChange).toHaveBeenNthCalledWith(2, ['RENCONTRES_CONFERENCES'])
+
     fireEvent.press(screen.getByText('Conférences & rencontres'))
+
     expect(onChange).toHaveBeenNthCalledWith(3, [])
   })
 
@@ -39,6 +44,7 @@ describe('<OfferCategoryChoices />', () => {
     mockData = { ...mockData, searchGroups: [] }
     const onChange = jest.fn()
     render(<OfferCategoryChoices onChange={onChange} />)
+
     expect(screen.queryByText('Arts & loisirs créatifs')).not.toBeOnTheScreen()
     expect(screen.queryByText('Conférences & rencontres')).not.toBeOnTheScreen()
   })

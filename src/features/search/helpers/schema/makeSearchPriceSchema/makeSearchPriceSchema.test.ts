@@ -16,24 +16,28 @@ describe('search price schema', () => {
     it('when input less than maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20', minPrice: '10' }
       const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+
       expect(result).toEqual(values)
     })
 
     it('when input equal than maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20', minPrice: '20' }
       const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+
       expect(result).toEqual(values)
     })
 
     it('when input less than decimal maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20,15', minPrice: '10' }
       const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+
       expect(result).toEqual(values)
     })
 
     it('when input equal than decimal maximum price input', async () => {
       const values = { ...initialValues, maxPrice: '20,15', minPrice: '20,15' }
       const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+
       expect(result).toEqual(values)
     })
   })
@@ -41,6 +45,7 @@ describe('search price schema', () => {
   it('should match decimal minimum price when input less than maximum price input', async () => {
     const values = { ...initialValues, maxPrice: '20', minPrice: '10,50' }
     const result = await makeSearchPriceSchema(MAX_PRICE.toString()).validate(values)
+
     expect(result).toEqual(values)
   })
 

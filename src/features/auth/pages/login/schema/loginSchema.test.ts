@@ -9,6 +9,7 @@ describe('loginSchema', () => {
       password: 'user@AZERTY123',
     }
     const result = await loginSchema.validate(values)
+
     expect(result).toEqual(values)
   })
 
@@ -17,6 +18,7 @@ describe('loginSchema', () => {
       email: 'not an email',
       password: 'user@AZERTY123',
     })
+
     await expect(result).rejects.toEqual(
       new ValidationError(
         'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
@@ -29,6 +31,7 @@ describe('loginSchema', () => {
       email: '',
       password: 'user@AZERTY123',
     })
+
     await expect(result).rejects.toEqual(
       new ValidationError(
         'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
@@ -41,6 +44,7 @@ describe('loginSchema', () => {
       email: 'bene_18@example.com',
       password: '',
     })
+
     await expect(result).rejects.toEqual(new ValidationError('Mot de passe obligatoire'))
   })
 })

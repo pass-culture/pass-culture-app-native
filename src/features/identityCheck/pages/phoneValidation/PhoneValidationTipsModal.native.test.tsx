@@ -6,6 +6,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 describe('<PhoneValidationTipsModal />', () => {
   it('should match snapshot', () => {
     render(<PhoneValidationTipsModal isVisible dismissModal={jest.fn()} onGoBack={jest.fn()} />)
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -19,6 +20,7 @@ describe('<PhoneValidationTipsModal />', () => {
     const gotItButton = screen.getByText('J’ai compris')
 
     fireEvent.press(gotItButton)
+
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 })

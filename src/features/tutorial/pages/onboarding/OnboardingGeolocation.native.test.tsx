@@ -14,6 +14,7 @@ jest.mock('libs/geolocation/LocationWrapper', () => ({
 describe('OnboardingGeolocation', () => {
   it('should render correctly', () => {
     render(<OnboardingGeolocation />)
+
     expect(screen).toMatchSnapshot()
   })
 

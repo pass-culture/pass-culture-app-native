@@ -33,6 +33,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 describe('useCategoryIdMapping', () => {
   it('should match category id mapping', () => {
     const { result } = renderHook(useCategoryIdMapping)
+
     expect(result.current).toEqual(categoryIdMappingSnap)
   })
 })
@@ -40,6 +41,7 @@ describe('useCategoryIdMapping', () => {
 describe('useSubcategoriesMapping', () => {
   it('should match subcategories mapping', () => {
     const { result } = renderHook(useSubcategoriesMapping)
+
     expect(result.current).toEqual(subcategoriesMappingSnap)
   })
 })
@@ -47,6 +49,7 @@ describe('useSubcategoriesMapping', () => {
 describe('useSearchGroupLabelMapping', () => {
   it('should match search group label mapping', () => {
     const { result } = renderHook(useSearchGroupLabelMapping)
+
     expect(result.current).toEqual(useSearchGroupLabelMappingSnap)
   })
 })
@@ -54,6 +57,7 @@ describe('useSearchGroupLabelMapping', () => {
 describe('useCategoryHomeLabelMapping', () => {
   it('should match category Home label mapping', () => {
     const { result } = renderHook(useCategoryHomeLabelMapping)
+
     expect(result.current).toEqual(useCategoryHomeLabelMappingSnap)
   })
 })
@@ -61,6 +65,7 @@ describe('useCategoryHomeLabelMapping', () => {
 describe('useGenreTypeMapping', () => {
   it('should match category Home label mapping', () => {
     const { result } = renderHook(useGenreTypeMapping)
+
     expect(result.current).toEqual(useGenreTypeMappingFixture)
   })
 })

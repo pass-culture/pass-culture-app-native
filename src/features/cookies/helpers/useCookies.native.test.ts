@@ -39,6 +39,7 @@ describe('useCookies', () => {
       user: undefined,
     })
   })
+
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)
   })
@@ -100,6 +101,7 @@ describe('useCookies', () => {
       })
 
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
       expect(cookiesConsent).toEqual({
         buildVersion: Package.build,
         deviceId,
@@ -179,6 +181,7 @@ describe('useCookies', () => {
       })
 
       const cookiesConsent = await storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
+
       expect(cookiesConsent?.choiceDatetime).toEqual(TODAY.toISOString())
     })
 
@@ -198,6 +201,7 @@ describe('useCookies', () => {
       await superFlushWithAct()
 
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
       expect(cookiesConsent).toEqual({
         userId: FAKE_USER_ID,
         deviceId,
@@ -221,6 +225,7 @@ describe('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
         expect(cookiesConsent).toEqual({
           buildVersion: Package.build,
           userId: FAKE_USER_ID,
@@ -253,6 +258,7 @@ describe('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
         expect(cookiesConsent).toEqual({
           buildVersion: Package.build,
           userId: FAKE_USER_ID,
@@ -275,6 +281,7 @@ describe('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
         expect(cookiesConsent).toEqual({
           buildVersion: Package.build,
           userId: FAKE_USER_ID,
@@ -314,6 +321,7 @@ describe('useCookies', () => {
         })
 
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
         expect(cookiesConsent).toEqual({
           buildVersion: Package.build,
           userId: secondUserId,
@@ -402,7 +410,8 @@ describe('useCookies', () => {
       const SET_COOKIE_CONSENT = 1
       const SET_USER_ID_AFTERLOGIN = 1
       const API_CALLED_TIMES = SET_COOKIE_CONSENT + SET_USER_ID_AFTERLOGIN
-      expect(api.postNativeV1CookiesConsent).toBeCalledTimes(API_CALLED_TIMES)
+
+      expect(api.postNativeV1CookiesConsent).toHaveBeenCalledTimes(API_CALLED_TIMES)
     })
 
     describe('when can not log cookies consent choice', () => {

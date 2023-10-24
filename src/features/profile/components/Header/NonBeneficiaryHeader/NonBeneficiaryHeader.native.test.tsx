@@ -53,6 +53,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     beforeEach(() => {
       mockNextSubscriptionStep = mockStep
     })
+
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
       server.use(
         rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>

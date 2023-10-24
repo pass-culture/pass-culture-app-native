@@ -17,7 +17,7 @@ describe('CategoriesButtons', () => {
   it('should display categories', () => {
     render(<CategoriesButtons onPressCategory={jest.fn()} />)
 
-    expect(screen.queryAllByRole('button').length).toEqual(14)
+    expect(screen.queryAllByRole('button')).toHaveLength(14)
   })
 
   it('should call given callBack on press', () => {

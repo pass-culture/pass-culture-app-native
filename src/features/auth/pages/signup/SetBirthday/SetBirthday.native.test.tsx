@@ -52,7 +52,7 @@ describe('<SetBirthday />', () => {
     const continueButton = screen.getByTestId('Continuer')
     fireEvent.press(continueButton)
 
-    expect(props.goToNextStep).toBeCalledWith({
+    expect(props.goToNextStep).toHaveBeenCalledWith({
       birthdate: formatDateToISOStringWithoutTime(ELIGIBLE_AGE_DATE),
     })
   })
@@ -95,6 +95,7 @@ describe('<SetBirthday />', () => {
     render(<SetBirthday {...propsWithPreviousBirthdate} />)
 
     const datePicker = screen.getByTestId('date-picker-spinner-native')
+
     expect(datePicker.props.date).toBe(new Date('1994-12-11').getTime())
   })
 })

@@ -18,6 +18,7 @@ jest.mock('features/auth/context/AuthContext')
 describe('<BeneficiaryRequestSent />', () => {
   it('should render correctly', () => {
     render(<BeneficiaryRequestSent />)
+
     expect(screen).toMatchSnapshot()
   })
 

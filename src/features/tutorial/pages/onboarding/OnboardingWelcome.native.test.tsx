@@ -9,6 +9,7 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 describe('OnboardingWelcome', () => {
   it('should render correctly', () => {
     render(<OnboardingWelcome />)
+
     expect(screen).toMatchSnapshot()
   })
 

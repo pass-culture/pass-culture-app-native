@@ -11,6 +11,7 @@ const AGES = [15, 16, 17, 18]
 describe('OnboardingAgeInformation', () => {
   it.each(AGES)('should render null in web', (age) => {
     const { container } = renderOnboardingAgeInformation({ age })
+
     expect(container).toBeEmptyDOMElement()
   })
 })

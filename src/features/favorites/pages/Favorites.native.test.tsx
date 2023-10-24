@@ -34,12 +34,14 @@ describe('<Favorites/>', () => {
 
   it('should show non connected page when not logged in', () => {
     renderFavorites({ isLoggedIn: false })
+
     expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
   })
 
   it('should render offline page when not connected', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderFavorites({ isLoggedIn: true })
+
     expect(screen.queryByText('Pas de réseau internet')).toBeOnTheScreen()
   })
 })

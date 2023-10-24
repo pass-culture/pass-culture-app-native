@@ -15,6 +15,7 @@ jest.unmock('libs/hooks/useWhiteStatusBar')
 describe('<GenericErrorPage />', () => {
   it('should render correctly', () => {
     render(<GenericErrorPage title="GenericErrorPage" icon={BicolorPhonePending} />)
+
     expect(screen).toMatchSnapshot()
   })
 })

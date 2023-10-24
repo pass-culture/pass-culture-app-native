@@ -32,6 +32,7 @@ describe('AutocompleteOffer component', () => {
 
     it('should display "Suggestions"', () => {
       render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
+
       expect(screen.getByText('Suggestions')).toBeOnTheScreen()
     })
   })
@@ -43,6 +44,7 @@ describe('AutocompleteOffer component', () => {
 
     it('should not display "Suggestions"', () => {
       render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
+
       expect(screen.queryByText('Suggestions')).not.toBeOnTheScreen()
     })
   })

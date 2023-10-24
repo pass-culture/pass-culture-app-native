@@ -23,5 +23,5 @@ export const fetchOffersModules = async ({
     isUserUnderage,
   })
 
-  return await multipleQueries(queries)
+  return multipleQueries(queries)
 }

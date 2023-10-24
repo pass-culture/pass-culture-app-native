@@ -24,6 +24,7 @@ describe('buildFetchVenuesQueryParameters', () => {
     'should correcty format FetchVenues parameters : $params',
     ({ params, expected }: { params: FetchVenuesParameters; expected: AlgoliaQueryParameters }) => {
       const result = buildFetchVenuesQueryParameters(params)
+
       expect(result).toEqual(expected)
     }
   )

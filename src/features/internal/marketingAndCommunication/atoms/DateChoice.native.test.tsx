@@ -22,6 +22,6 @@ describe('<DateChoice />', () => {
     const datePicker = screen.getByTestId('date-picker-spinner-native')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
-    expect(onChange).toBeCalledWith(ELIGIBLE_AGE_DATE)
+    expect(onChange).toHaveBeenCalledWith(ELIGIBLE_AGE_DATE)
   })
 })

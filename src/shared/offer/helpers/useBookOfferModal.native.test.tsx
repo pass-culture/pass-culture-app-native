@@ -33,6 +33,7 @@ describe('useOfferModal', () => {
     const { result } = renderHook(() =>
       useBookOfferModal({ offerId: 1000, from: StepperOrigin.OFFER })
     )
+
     expect(result.current.OfferModal).toBeNull()
   })
 

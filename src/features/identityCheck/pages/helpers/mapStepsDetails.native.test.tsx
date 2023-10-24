@@ -46,6 +46,7 @@ const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay']
     subtitle: 'Confirmation',
   },
 ]
+
 describe('mapStepsDetails', () => {
   const stepsConfig: StepConfig[] = [
     {
@@ -134,14 +135,16 @@ describe('mapStepsDetails', () => {
     },
   ]
 
-  it('should map steps info from the back with steps config from the front ', () => {
+  it('should map steps info from the back with steps config from the front', () => {
     const result = mapStepsDetails(stepsToComplete, stepsConfig)
+
     expect(result).toEqual(expectedStepsDetails)
   })
 
   it('should only return steps when the associated config exists in-app', () => {
     const result = mapStepsDetails(stepsToComplete, stepsConfig)
-    expect(stepsToComplete.length).toEqual(4)
-    expect(result.length).toEqual(3)
+
+    expect(stepsToComplete).toHaveLength(4)
+    expect(result).toHaveLength(3)
   })
 })

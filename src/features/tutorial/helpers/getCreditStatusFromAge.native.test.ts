@@ -14,6 +14,7 @@ describe('getCreditStatusFromAge', () => {
     'should return statuses $expectedStatus for $userAge-year-old',
     ({ userAge, expectedStatus }) => {
       const statuses = AGES.map((age) => getCreditStatusFromAge(userAge, age))
+
       expect(statuses).toEqual(expectedStatus)
     }
   )

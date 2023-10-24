@@ -16,6 +16,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 describe('<SetCity/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(<SetCity />)
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -28,6 +29,7 @@ describe('<SetCity/>', () => {
       })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

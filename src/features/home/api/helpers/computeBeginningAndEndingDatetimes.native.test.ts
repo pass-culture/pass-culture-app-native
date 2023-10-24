@@ -11,6 +11,7 @@ const mockedNextFriday3pm = '2022-12-02T14:00+00:00'
 const mockedNextFriday4pmCET = '2022-12-02T15:00+00:00'
 const mockedNextSunday = '2022-12-04T23:59+00:00'
 const mockedNextMonth = '2022-12-30T00:00+00:00'
+
 describe('computeBeginningAndEndingDatetime', () => {
   it.each`
     beginningDatetime  | endingDatetime               | expectedResult
@@ -24,6 +25,7 @@ describe('computeBeginningAndEndingDatetime', () => {
         beginningDatetime,
         endingDatetime,
       })
+
       expect(result).toMatchObject(expectedResult)
     }
   )
@@ -32,6 +34,7 @@ describe('computeBeginningAndEndingDatetime', () => {
     const result = computeBeginningAndEndingDatetimes({
       upcomingWeekendEvent: true,
     })
+
     expect(result).toMatchObject({
       beginningDatetime: mockedNextFriday3pm,
       endingDatetime: mockedNextSunday,
@@ -56,6 +59,7 @@ describe('computeBeginningAndEndingDatetime', () => {
     const result = computeBeginningAndEndingDatetimes({
       eventDuringNextXDays: 2,
     })
+
     expect(result).toMatchObject({
       beginningDatetime: mockedToday,
       endingDatetime: mockedInTwoDays,
@@ -66,6 +70,7 @@ describe('computeBeginningAndEndingDatetime', () => {
     const result = computeBeginningAndEndingDatetimes({
       currentWeekEvent: true,
     })
+
     expect(result).toMatchObject({
       beginningDatetime: mockedToday,
       endingDatetime: mockedNextSunday,
@@ -95,6 +100,7 @@ describe('computeBeginningAndEndingDatetime', () => {
         eventDuringNextXDays,
         currentWeekEvent,
       })
+
       expect(result).toMatchObject(expectedResult)
     }
   )

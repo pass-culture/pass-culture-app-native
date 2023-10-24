@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 describe('IdentityCheckPendingBadge', () => {
   it('should display correct message', () => {
     render(<IdentityCheckPendingBadge />)
+
     expect(screen.queryByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
   })
 })

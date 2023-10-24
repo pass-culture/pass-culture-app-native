@@ -37,7 +37,7 @@ describe('getStateFromPath()', () => {
 
     await waitFor(() => {
       expect(state).toEqual(expectedState)
-      expect(analytics.logConsultOffer).toBeCalledWith({ offerId: 777, from: 'deeplink' })
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId: 777, from: 'deeplink' })
     })
   })
 
@@ -60,14 +60,14 @@ describe('getStateFromPath()', () => {
         )
 
         await waitFor(() => {
-          expect(storeUtmParams).toBeCalledWith({
+          expect(storeUtmParams).toHaveBeenCalledWith({
             campaign: 'push_offre_local',
             content: 'content',
             gen: 'marketing',
             source: 'push',
             medium: 'batch',
           })
-          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
             traffic_campaign: 'push_offre_local',
             traffic_content: 'content',
             traffic_gen: 'marketing',
@@ -84,11 +84,11 @@ describe('getStateFromPath()', () => {
         )
 
         await waitFor(() => {
-          expect(storeUtmParams).toBeCalledWith({
+          expect(storeUtmParams).toHaveBeenCalledWith({
             campaign: 'push_offre',
             gen: 'marketing',
           })
-          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
             traffic_campaign: 'push_offre',
             traffic_content: undefined,
             traffic_gen: 'marketing',
@@ -102,8 +102,8 @@ describe('getStateFromPath()', () => {
         customGetStateFromPath('offre/1188', linking.config)
 
         await waitFor(() => {
-          expect(storeUtmParams).not.toBeCalled()
-          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
+          expect(storeUtmParams).not.toHaveBeenCalled()
+          expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
             traffic_campaign: undefined,
             traffic_content: undefined,
             traffic_gen: undefined,
@@ -133,7 +133,7 @@ describe('getStateFromPath()', () => {
 
         await waitFor(() => {
           expect(storeUtmParams).not.toHaveBeenCalled()
-          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
             traffic_campaign: undefined,
             traffic_content: undefined,
             traffic_gen: undefined,

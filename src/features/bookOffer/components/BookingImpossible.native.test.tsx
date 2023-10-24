@@ -55,9 +55,11 @@ describe('<BookingImpossible />', () => {
         )
       )
     })
+
     afterAll(() => {
       server.resetHandlers()
     })
+
     it('should render without CTAs', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))

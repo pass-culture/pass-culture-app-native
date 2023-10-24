@@ -48,6 +48,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
+
     expect(privacyPolicyTitle).not.toBeInTheDocument()
   })
 
@@ -57,6 +58,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
 
     const privacyPolicyTitle = await screen.findByText('Respect de ta vie privée')
+
     expect(privacyPolicyTitle).toBeInTheDocument()
   })
 
@@ -65,6 +67,7 @@ describe('<RootNavigator />', () => {
 
     renderRootNavigator()
     await act(async () => {})
+
     expect(await screen.findByText('Accéder au menu de navigation')).toBeInTheDocument()
   })
 
@@ -77,6 +80,7 @@ describe('<RootNavigator />', () => {
     await screen.findByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
+
     expect(quickAccessButton).not.toBeInTheDocument()
   })
 })

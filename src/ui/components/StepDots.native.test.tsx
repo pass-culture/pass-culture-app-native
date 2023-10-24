@@ -11,9 +11,11 @@ describe('<StepDots />', () => {
       renderThreeStepsFirstIsCurrent()
 
       const dots = screen.getAllByTestId('dot-icon')
-      expect(dots.length).toBe(3)
+
+      expect(dots).toHaveLength(3)
 
       const firstDot = dots[0]
+
       expect(firstDot.props.borderColor).toEqual(theme.colors.primary)
       expect(firstDot.props.width).toEqual(12)
     })
@@ -32,6 +34,7 @@ describe('<StepDots />', () => {
     it('should render first step properly', () => {
       renderThreeStepsSecondIsCurrent()
       const firstDot = screen.getAllByTestId('dot-icon')[0]
+
       expect(firstDot.props.borderColor).toEqual(theme.colors.greenValid)
       expect(firstDot.props.width).toEqual(8)
     })
@@ -39,6 +42,7 @@ describe('<StepDots />', () => {
     it('should render second step properly', () => {
       renderThreeStepsSecondIsCurrent()
       const secondDot = screen.getAllByTestId('dot-icon')[1]
+
       expect(secondDot.props.borderColor).toEqual(theme.colors.primary)
       expect(secondDot.props.width).toEqual(12)
     })
@@ -46,6 +50,7 @@ describe('<StepDots />', () => {
     it('should render third step properly', () => {
       renderThreeStepsSecondIsCurrent()
       const thirdDot = screen.getAllByTestId('dot-icon')[2]
+
       expect(thirdDot.props.borderColor).toEqual(theme.colors.greyDark)
       expect(thirdDot.props.width).toEqual(8)
     })
@@ -64,6 +69,7 @@ describe('<StepDots />', () => {
     it('should render second and third steps properly', () => {
       renderThreeStepsLastIsCurrent()
       const thirdDot = screen.getAllByTestId('dot-icon')[2]
+
       expect(thirdDot.props.borderColor).toEqual(theme.colors.primary)
       expect(thirdDot.props.width).toEqual(12)
     })

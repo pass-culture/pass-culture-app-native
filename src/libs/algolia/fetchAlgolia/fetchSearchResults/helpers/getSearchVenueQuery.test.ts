@@ -11,6 +11,7 @@ describe('getVenuesQuery', () => {
         offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('LIVRES_PAPIER')
     })
 
@@ -20,6 +21,7 @@ describe('getVenuesQuery', () => {
         offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('LIVRES_PAPIER')
     })
 
@@ -29,6 +31,7 @@ describe('getVenuesQuery', () => {
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('LIVRES')
     })
 
@@ -37,6 +40,7 @@ describe('getVenuesQuery', () => {
         ...SearchQueryParametersFixture,
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('')
     })
   })
@@ -50,6 +54,7 @@ describe('getVenuesQuery', () => {
         query: 'fnac',
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('LIVRES_PAPIER fnac')
     })
 
@@ -60,6 +65,7 @@ describe('getVenuesQuery', () => {
         query: 'fnac',
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('LIVRES_PAPIER fnac')
     })
 
@@ -70,6 +76,7 @@ describe('getVenuesQuery', () => {
         query: 'fnac',
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('LIVRES fnac')
     })
 
@@ -79,6 +86,7 @@ describe('getVenuesQuery', () => {
         query: 'fnac',
       }
       const venuesQuery = getSearchVenueQuery(parameters)
+
       expect(venuesQuery).toEqual('fnac')
     })
   })

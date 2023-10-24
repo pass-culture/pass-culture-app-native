@@ -15,6 +15,7 @@ describe('<PageWithHeader/>', () => {
         onGoBack={mockGoBack}
       />
     )
+
     expect(renderAPI).toMatchSnapshot()
   })
 })

@@ -20,16 +20,19 @@ describe('NumberOfResults component', () => {
 
     expect(toJSON()).not.toBeOnTheScreen()
   })
+
   it('should correctly format the number of hit when single', () => {
     render(<NumberOfResults nbHits={1} />)
 
     expect(screen.getByText('1 résultat')).toBeOnTheScreen()
   })
+
   it('should correctly format the number of hit when plural', () => {
     render(<NumberOfResults nbHits={2} />)
 
     expect(screen.getByText('2 résultats')).toBeOnTheScreen()
   })
+
   it('should correctly format the number of hit when more than 1 000', () => {
     render(<NumberOfResults nbHits={1234} />)
 

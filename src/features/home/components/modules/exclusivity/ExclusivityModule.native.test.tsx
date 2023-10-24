@@ -35,6 +35,7 @@ const props: ExclusivityModuleProps = {
 describe('ExclusivityModule component', () => {
   it('should render ExclusivityOffer component when an offer id is provided', () => {
     render(<ExclusivityModule {...props} />)
+
     expect(screen.getByTestId('Image d’Adèle')).toBeOnTheScreen()
   })
 
@@ -46,6 +47,7 @@ describe('ExclusivityModule component', () => {
 
   it('should render ExclusivityBanner component when no offer id nor url is provided', () => {
     render(<ExclusivityModule {...props} offerId={undefined} />)
+
     expect(screen.getByTestId('exclusivity-banner')).toBeOnTheScreen()
   })
 })

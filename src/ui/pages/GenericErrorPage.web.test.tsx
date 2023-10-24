@@ -17,6 +17,7 @@ describe('<GenericErrorPage />', () => {
     const renderAPI = render(
       <GenericErrorPage title="GenericErrorPage" icon={BicolorPhonePending} />
     )
+
     expect(renderAPI).toMatchSnapshot()
   })
 })

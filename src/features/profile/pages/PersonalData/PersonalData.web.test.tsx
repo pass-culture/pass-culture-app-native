@@ -15,6 +15,7 @@ describe('<PersonalData/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<PersonalData />)
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

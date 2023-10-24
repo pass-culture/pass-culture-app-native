@@ -34,6 +34,7 @@ describe('getIconAndWording', () => {
     }
   )
 })
+
 describe('AccessibilityAtom', () => {
   it('should display the validIcon when isValid is true', () => {
     render(<AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />)
@@ -41,6 +42,7 @@ describe('AccessibilityAtom', () => {
     expect(screen.queryByTestId('invalidTestId')).not.toBeOnTheScreen()
     expect(screen.queryByTestId('validTestId')).toBeOnTheScreen()
   })
+
   it('should displat the invalidIcon when isValid is false', () => {
     render(<AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />)
 

@@ -45,6 +45,7 @@ describe('<AccountSecurityBuffer/>', () => {
     renderAccountSecurityBuffer()
 
     const LOADING_TEXT = 'Chargement en cours...'
+
     expect(await screen.findByText(LOADING_TEXT)).toBeOnTheScreen()
   })
 
@@ -107,6 +108,7 @@ describe('<AccountSecurityBuffer/>', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<Component />))
 
+      // eslint-disable-next-line testing-library/prefer-explicit-assert
       await screen.findAllByText('Error')
     })
 

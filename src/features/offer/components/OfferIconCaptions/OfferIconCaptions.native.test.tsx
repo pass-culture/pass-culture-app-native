@@ -122,26 +122,30 @@ describe('<OfferIconCaptions />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should show Icon isDuo for duo offers and for beneficiary users', async () => {
+    renderOfferIconCaptions({
+      isDuo: true,
+      isBeneficiary: true,
+    })
+
+    expect(await screen.findByText(/À deux !/)).toBeOnTheScreen()
+  })
+
   it.each`
-    duo      | beneficiary | show
-    ${true}  | ${true}     | ${'show'}
-    ${false} | ${true}     | ${'not show'}
-    ${true}  | ${false}    | ${'not show'}
-    ${false} | ${false}    | ${'not show'}
+    duo      | beneficiary
+    ${false} | ${true}
+    ${true}  | ${false}
+    ${false} | ${false}
   `(
-    'should $show Icon isDuo for Duo=$duo offers for beneficiary=$beneficiary users',
-    async ({ show, duo, beneficiary }) => {
+    'should not show Icon isDuo for Duo=$duo offers for beneficiary=$beneficiary users',
+    async ({ duo, beneficiary }) => {
       renderOfferIconCaptions({
         isDuo: duo,
         isBeneficiary: beneficiary,
       })
 
       await waitFor(() => {
-        if (show === 'show') {
-          expect(screen.queryByText(/À deux !/)).toBeOnTheScreen()
-        } else {
-          expect(screen.queryByText(/À deux !!/)).not.toBeOnTheScreen()
-        }
+        expect(screen.queryByText(/À deux !!/)).not.toBeOnTheScreen()
       })
     }
   )
@@ -163,6 +167,7 @@ describe('<OfferIconCaptions />', () => {
     renderOfferIconCaptions({ isDuo, stocks, isBeneficiary })
 
     const euro = await screen.findByTestId('caption-iconPrice')
+
     expect(euro.props.children).toEqual(expectedDisplayedPrice)
   })
 })

@@ -17,6 +17,7 @@ describe('PushNotificationsModal', () => {
         onRequestPermission={onRequestPermission}
       />
     )
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -29,8 +30,9 @@ describe('PushNotificationsModal', () => {
       />
     )
     fireEvent.press(screen.getByText('Autoriser les notifications'))
+
     expect(analytics.logOpenNotificationSettings).toHaveBeenCalledTimes(1)
     expect(onRequestPermission).toHaveBeenCalledTimes(1)
-    expect(onDismiss).not.toBeCalled()
+    expect(onDismiss).not.toHaveBeenCalled()
   })
 })

@@ -22,6 +22,7 @@ describe('CalendarPicker web component', () => {
       />
     )
     const button = screen.getByText('Valider la date')
+
     expect(button).toBeInTheDocument()
   })
 
@@ -36,6 +37,7 @@ describe('CalendarPicker web component', () => {
     )
     const button = screen.getByText('Valider la date')
     fireEvent.click(button)
+
     expect(button).toBeInTheDocument()
     expect(mockHideCalendar).toHaveBeenCalledTimes(1)
   })
@@ -51,6 +53,7 @@ describe('CalendarPicker web component', () => {
     )
     const button = screen.getByText('Valider la date')
     fireEvent.click(button)
+
     expect(button).toBeInTheDocument()
     expect(mockHideCalendar).toHaveBeenCalledTimes(1)
     expect(mockSetSelectedDate).toHaveBeenCalledTimes(1)

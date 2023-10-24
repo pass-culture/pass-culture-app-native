@@ -152,6 +152,7 @@ describe('getInstalledApps', () => {
           }
         })
         const result = await getInstalledApps()
+
         expect(result).toEqual([])
       })
 

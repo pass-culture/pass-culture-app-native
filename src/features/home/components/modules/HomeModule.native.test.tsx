@@ -192,6 +192,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(videoModuleFixture)
 
     await screen.findByText('Découvre Lujipeka')
+
     expect(screen.getByTestId('mobile-video-module')).toBeOnTheScreen()
   })
 
@@ -209,6 +210,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedOffersModule, defaultData)
 
     await act(async () => {})
+
     expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
   })
 
@@ -216,6 +218,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedVenuesModule, defaultDataVenues)
 
     await act(async () => {})
+
     expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
   })
 })

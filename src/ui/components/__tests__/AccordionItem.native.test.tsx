@@ -15,11 +15,13 @@ describe('AccordionItem', () => {
   it("should be closed by default - we don't see the children", () => {
     renderAccordion()
     const accordionBody = screen.getByTestId('accordionBody')
+
     expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
   })
 
   it('should display the children after pressing on the title', async () => {
     renderAccordion()
+
     expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
     act(() => {
@@ -46,6 +48,7 @@ describe('AccordionItem', () => {
   it('correct arrow animation,', async () => {
     renderAccordion()
     const accordionArrow = screen.getByTestId('accordionArrow')
+
     // ArrowNext (right) + 90° => arrow facing up.
     expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${Math.PI / 2}rad` })
 

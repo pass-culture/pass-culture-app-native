@@ -26,6 +26,7 @@ describe('LocationWidget', () => {
     await act(async () => {
       jest.advanceTimersByTime(1000)
     })
+
     expect(
       screen.getByText(
         'Configure ta position et découvre les offres dans la zone géographique de ton choix.'

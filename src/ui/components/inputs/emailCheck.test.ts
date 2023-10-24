@@ -8,6 +8,7 @@ describe('isEmailValid function', () => {
     'prenomnom@exam-ple.com',
   ])('should accept a well formated email: %s', (email) => {
     const isValid = isEmailValid(email)
+
     expect(isValid).toEqual(true)
   })
 
@@ -20,6 +21,7 @@ describe('isEmailValid function', () => {
     'prenom@nom@example.com', // double @
   ])('should reject a well formated email: %s', (email) => {
     const isValid = isEmailValid(email)
+
     expect(isValid).toEqual(false)
   })
 })

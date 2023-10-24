@@ -73,7 +73,7 @@ export const safeFetch = async (
   }
 
   if (options.credentials === 'omit') {
-    return await fetch(url, runtimeOptions)
+    return fetch(url, runtimeOptions)
   }
 
   // @ts-expect-error
@@ -114,7 +114,7 @@ export const safeFetch = async (
     }
   }
 
-  return await fetch(url, runtimeOptions)
+  return fetch(url, runtimeOptions)
 }
 
 const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
@@ -201,9 +201,9 @@ const refreshAccessTokenWithRetriesOnError = async (
 const extractResponseBody = async (response: Response): Promise<string> => {
   const contentType = response.headers.get('content-type')
   if (contentType?.includes('application/json')) {
-    return await response.json()
+    return response.json()
   }
-  return await response.text()
+  return response.text()
 }
 
 export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {

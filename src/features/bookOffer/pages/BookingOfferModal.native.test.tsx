@@ -138,6 +138,7 @@ describe('<BookingOfferModalComponent />', () => {
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
     fireEvent.press(dismissModalButton)
+
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
     expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_OFFER_ID', payload: mockOffer.id })
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
@@ -149,23 +150,27 @@ describe('<BookingOfferModalComponent />', () => {
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
     fireEvent.press(dismissModalButton)
+
     expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SET_OFFER_ID', payload: 20 })
   })
 
   it('should not log event BookingProcessStart when modal is not visible', () => {
     render(<BookingOfferModalComponent visible={false} offerId={20} />)
+
     expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
   })
 
   it('should log event BookingProcessStart when modal opens', () => {
     const offerId = 30
     render(<BookingOfferModalComponent visible offerId={offerId} />)
+
     expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerId)
   })
 
   it('should show AlreadyBooked when isEndedUsedBooking is true', () => {
     const offerId = 30
     render(<BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />)
+
     expect(screen.queryByText('Tu as déjà réservé :')).toBeOnTheScreen()
     expect(
       screen.queryByTestId(`Nouvelle fenêtre : Pourquoi limiter les réservations\u00a0?`)
@@ -234,11 +239,13 @@ describe('<BookingOfferModalComponent />', () => {
 
   it('should display modal without prices by categories', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
+
     expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeOnTheScreen()
   })
 
   it('should not display modal with prices by categories', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
+
     expect(screen.queryByTestId('modalWithPricesByCategories')).not.toBeOnTheScreen()
   })
 
@@ -267,11 +274,13 @@ describe('<BookingOfferModalComponent />', () => {
     it('should display modal with prices by categories', () => {
       mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
       render(<BookingOfferModalComponent visible offerId={20} />)
+
       expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
     })
 
     it('should not display modal without prices by categories', () => {
       render(<BookingOfferModalComponent visible offerId={20} />)
+
       expect(screen.queryByTestId('modalWithoutPricesByCategories')).not.toBeOnTheScreen()
     })
   })
@@ -295,6 +304,7 @@ describe('<BookingOfferModalComponent />', () => {
       it('should dismiss the modal on success', () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
+
         expect(mockDismissModal).toHaveBeenCalledTimes(1)
       })
 
@@ -309,6 +319,7 @@ describe('<BookingOfferModalComponent />', () => {
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
+
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
           ...apiRecoParams,
           bookingId: 1,
@@ -322,6 +333,7 @@ describe('<BookingOfferModalComponent />', () => {
       it('should log confirmation booking when offer not booked from a similar offer', () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
+
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({ bookingId: 1, offerId: 20 })
       })
 
@@ -347,6 +359,7 @@ describe('<BookingOfferModalComponent />', () => {
       it('should log campaign tracker when booking is complete', () => {
         render(<BookingOfferModalComponent visible offerId={mockOffer.id} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
+
         expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
           af_offer_id: mockOffer.id,
           af_booking_id: mockOffer.stocks[0].id,
@@ -358,6 +371,7 @@ describe('<BookingOfferModalComponent />', () => {
       it('should navigate to booking confirmation when booking is complete', () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
+
         expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: 20, bookingId: 1 })
       })
     })

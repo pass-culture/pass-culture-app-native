@@ -58,10 +58,12 @@ describe('useItinerary', () => {
 
     // @ts-expect-error: precedent expect garanties what follows
     const wazeAlertButton = alertMock.mock.calls[0][2][1]
+
     expect(wazeAlertButton.text).toBe('Waze')
 
     // @ts-expect-error: same reason
     wazeAlertButton.onPress()
+
     expect(navigate).toHaveBeenCalledWith('48.85837, 2.294481', { app: 'waze' })
   })
 
@@ -74,6 +76,7 @@ describe('useItinerary', () => {
 
     await waitFor(() => {
       result.current.navigateTo(address)
+
       expect(alertMock).toHaveBeenCalledWith(
         'Voir l’itinéraire',
         'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',
@@ -139,6 +142,7 @@ describe('useItinerary', () => {
 
     await waitFor(() => {
       result.current.navigateTo(address)
+
       expect(alertMock).toHaveBeenCalledWith(
         'Voir l’itinéraire',
         'Choisissez l’application pour vous rendre sur le lieu de l’offre\u00a0:',

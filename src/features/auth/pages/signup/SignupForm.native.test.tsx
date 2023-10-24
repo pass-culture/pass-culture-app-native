@@ -69,6 +69,7 @@ describe('Signup Form', () => {
       await screen.findByText('Crée-toi un compte')
 
       const goBackButton = screen.queryByText('Quitter')
+
       expect(goBackButton).not.toBeOnTheScreen()
     })
 
@@ -157,7 +158,7 @@ describe('Signup Form', () => {
       const goBackButton = await screen.findByTestId('Revenir en arrière')
       fireEvent.press(goBackButton)
 
-      expect(mockGoBack).toBeCalledTimes(1)
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
     it('should go to the previous step when go back icon is press from second step', async () => {
@@ -177,6 +178,7 @@ describe('Signup Form', () => {
       })
 
       const firstStepTitle = await screen.findByText('Crée-toi un compte')
+
       expect(firstStepTitle).toBeOnTheScreen()
     })
 

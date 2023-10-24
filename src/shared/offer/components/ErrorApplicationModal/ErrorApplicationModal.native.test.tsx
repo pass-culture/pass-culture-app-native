@@ -22,8 +22,8 @@ describe('<ErrorApplicationModal />', () => {
 
     fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
 
-    expect(hideModal).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(hideModal).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
   })
 
   it('should log analytics when clicking on close button with label "Aller vers la section profil', async () => {

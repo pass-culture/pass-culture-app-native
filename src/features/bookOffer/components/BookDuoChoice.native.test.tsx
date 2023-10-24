@@ -65,6 +65,7 @@ describe('BookDuoChoice', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
   })
+
   it("should show 'crédit insuffisant' if not enough credit", () => {
     mockCreditOffer = 0
     render(<BookDuoChoice />)

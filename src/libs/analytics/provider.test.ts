@@ -16,9 +16,11 @@ describe('analyticsProvider - logEvent', () => {
   afterEach(() => {
     storage.clear('location_type')
   })
+
   describe('with firebase', () => {
     it('should log event when firebase event name is specified', async () => {
       await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
         locationType: undefined,
@@ -33,6 +35,7 @@ describe('analyticsProvider - logEvent', () => {
       await storage.saveString('location_type', locationType)
 
       await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
         locationType: locationType,
@@ -43,6 +46,7 @@ describe('analyticsProvider - logEvent', () => {
       await storage.clear('location_type')
 
       await analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, EVENT_PARAMS)
+
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
         locationType: undefined,
@@ -57,6 +61,7 @@ describe('analyticsProvider - logEvent', () => {
 
     it('should log screen view when logScreenView is called', () => {
       analytics.logScreenView(SCREEN_NAME)
+
       expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME)
     })
   })
@@ -64,6 +69,7 @@ describe('analyticsProvider - logEvent', () => {
   describe('with amplitude', () => {
     it('should log event when amplitude event name is specified', () => {
       analytics.logEvent({ amplitude: AmplitudeEvent.ONBOARDING_STARTED }, EVENT_PARAMS)
+
       expect(amplitude.logEvent).toHaveBeenCalledWith(
         AmplitudeEvent.ONBOARDING_STARTED,
         EVENT_PARAMS
@@ -72,11 +78,13 @@ describe('analyticsProvider - logEvent', () => {
 
     it('should not log event when amplitude event name is not specified', () => {
       analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER })
+
       expect(amplitude.logEvent).not.toHaveBeenCalledWith()
     })
 
     it('should not log event when logScreenView is called', () => {
       analytics.logScreenView(SCREEN_NAME)
+
       expect(amplitude.logEvent).not.toHaveBeenCalledWith()
     })
   })

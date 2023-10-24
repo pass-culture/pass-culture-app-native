@@ -68,6 +68,7 @@ describe('<OfferBody />', () => {
 
       const expectedUrl = `${getOfferUrl(offerId, 'social_media')}&utm_source=WhatsApp`
       const expectedMessage = `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
+
       expect(openURLSpy).toHaveBeenNthCalledWith(
         1,
         `https://api.whatsapp.com/send?text=${encodeURIComponent(expectedMessage)}`

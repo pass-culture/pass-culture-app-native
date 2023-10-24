@@ -12,6 +12,7 @@ describe('getVideoPlayerDimensions', () => {
 
     expect(dimensions).toEqual({ playerHeight: 219.375, playerWidth: 390 })
   })
+
   it('should return a width and heigth for desktop view', () => {
     const isDesktopViewport = true
     const windowWidth = desktopWidthMock

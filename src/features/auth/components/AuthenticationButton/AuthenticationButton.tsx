@@ -24,7 +24,6 @@ type Props = {
   linkColor?: ColorsEnum
   onAdditionalPress?: () => void
   children?: never
-  preventCancellation?: boolean
 } & (LoginProps | SignupProps)
 
 export const AuthenticationButton: FunctionComponent<Props> = ({

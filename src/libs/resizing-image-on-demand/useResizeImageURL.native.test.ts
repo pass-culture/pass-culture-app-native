@@ -32,6 +32,7 @@ describe('useResizeImageURL hook', () => {
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=327&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
     expect(result.current).toEqual(expectedImageURL)
   })
 
@@ -44,6 +45,7 @@ describe('useResizeImageURL hook', () => {
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=432&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
     expect(result.current).toEqual(expectedImageURL)
   })
 
@@ -54,6 +56,7 @@ describe('useResizeImageURL hook', () => {
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=654&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
     expect(result.current).toEqual(expectedImageURL)
   })
 
@@ -73,6 +76,7 @@ describe('useResizeImageURL hook', () => {
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=200&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
     expect(result.current).toEqual(expectedImageURL)
   })
 
@@ -82,6 +86,7 @@ describe('useResizeImageURL hook', () => {
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=200&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
     expect(result.current).toEqual(expectedImageURL)
   })
 
@@ -92,6 +97,7 @@ describe('useResizeImageURL hook', () => {
 
     const expectedImageURL =
       'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=400&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
     expect(result.current).toEqual(expectedImageURL)
   })
 })

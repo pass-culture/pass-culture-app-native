@@ -28,21 +28,25 @@ describe('bookingHelpers', () => {
     describe('should return false', () => {
       it('when step is date selection & date not selected', () => {
         const buttonState = getButtonState(defaultBookingState)
+
         expect(buttonState).toEqual(false)
       })
 
       it('when step is hour selection & hour & stock not selected', () => {
         const buttonState = getButtonState({ ...defaultBookingState, step: Step.HOUR })
+
         expect(buttonState).toEqual(false)
       })
 
       it('when step is price selection & stock not selected', () => {
         const buttonState = getButtonState({ ...defaultBookingState, step: Step.PRICE })
+
         expect(buttonState).toEqual(false)
       })
 
       it('when step is quantity selection & quantity not selected', () => {
         const buttonState = getButtonState({ ...defaultBookingState, step: Step.DUO })
+
         expect(buttonState).toEqual(false)
       })
     })
@@ -50,6 +54,7 @@ describe('bookingHelpers', () => {
     describe('should return true', () => {
       it('when step is date selection & date selected', () => {
         const buttonState = getButtonState({ ...defaultBookingState, date: new Date() })
+
         expect(buttonState).toEqual(true)
       })
 
@@ -60,6 +65,7 @@ describe('bookingHelpers', () => {
             step: Step.HOUR,
             hour: '2023-03-01T20:00:00Z',
           })
+
           expect(buttonState).toEqual(true)
         })
 
@@ -69,6 +75,7 @@ describe('bookingHelpers', () => {
             step: Step.HOUR,
             stockId: 1,
           })
+
           expect(buttonState).toEqual(true)
         })
 
@@ -79,6 +86,7 @@ describe('bookingHelpers', () => {
             hour: '2023-03-01T20:00:00Z',
             stockId: 1,
           })
+
           expect(buttonState).toEqual(true)
         })
       })
@@ -89,6 +97,7 @@ describe('bookingHelpers', () => {
           step: Step.PRICE,
           stockId: 1,
         })
+
         expect(buttonState).toEqual(true)
       })
 
@@ -98,6 +107,7 @@ describe('bookingHelpers', () => {
           step: Step.DUO,
           quantity: 1,
         })
+
         expect(buttonState).toEqual(true)
       })
     })
@@ -107,11 +117,13 @@ describe('bookingHelpers', () => {
     describe('when prices by categories feature flag desactivated', () => {
       it('should return "Valider ces options" when button is enabled', () => {
         const wordingButton = getButtonWording(false, true, Step.DATE)
+
         expect(wordingButton).toEqual('Valider ces options')
       })
 
       it('should return "Choisir les options" when button is disabled', () => {
         const wordingButton = getButtonWording(false, false, Step.DATE)
+
         expect(wordingButton).toEqual('Choisir les options')
       })
     })
@@ -119,21 +131,25 @@ describe('bookingHelpers', () => {
     describe('when prices by categories feature flag activated', () => {
       it('should return "Valider la date" when step is date selection', () => {
         const wordingButton = getButtonWording(true, false, Step.DATE)
+
         expect(wordingButton).toEqual('Valider la date')
       })
 
       it('should return "Valider lʼhoraire" when step is hour selection', () => {
         const wordingButton = getButtonWording(true, false, Step.HOUR)
+
         expect(wordingButton).toEqual('Valider lʼhoraire')
       })
 
       it('should return "Valider le prix" when step is price selection', () => {
         const wordingButton = getButtonWording(true, false, Step.PRICE)
+
         expect(wordingButton).toEqual('Valider le prix')
       })
 
       it('should return "Finaliser ma réservation" when step is quantity selection', () => {
         const wordingButton = getButtonWording(true, false, Step.DUO)
+
         expect(wordingButton).toEqual('Finaliser ma réservation')
       })
     })
@@ -142,21 +158,25 @@ describe('bookingHelpers', () => {
   describe('getHourWording', () => {
     it('should return "crédit insuffisant" when user has not enough credit', () => {
       const hourWording = getHourWording(2000, true, false, true)
+
       expect(hourWording).toEqual('crédit insuffisant')
     })
 
     it('should return "dès 20\u00a0€" when offer is bookable, its price is 20 and has several prices', () => {
       const hourWording = getHourWording(2000, true, true, true)
+
       expect(hourWording).toEqual('dès 20\u00a0€')
     })
 
     it('should return "20\u00a0€" when offer is bookable, its price is 20 and has not several prices', () => {
       const hourWording = getHourWording(2000, true, true, false)
+
       expect(hourWording).toEqual('20\u00a0€')
     })
 
     it('should return "épuisé" when offer is not bookable', () => {
       const hourWording = getHourWording(2000, false, true, false)
+
       expect(hourWording).toEqual('épuisé')
     })
   })
@@ -165,16 +185,19 @@ describe('bookingHelpers', () => {
 describe('getPriceWording', () => {
   it('should return "Épuisé" when stock is sold out', () => {
     const priceWording = getPriceWording({ ...stock1, isSoldOut: true }, 25000)
+
     expect(priceWording).toEqual('Épuisé')
   })
 
   it('should return "Crédit insuffisant" when offer price > user credit', () => {
     const priceWording = getPriceWording(stock1, 2500)
+
     expect(priceWording).toEqual('Crédit insuffisant')
   })
 
   it('should return an empty string when stock is not sold out', () => {
     const priceWording = getPriceWording({ ...stock1, remainingQuantity: 1 }, 25000)
+
     expect(priceWording).toEqual('')
   })
 })
@@ -194,12 +217,14 @@ describe('getPreviousStep', () => {
       { ...defaultBookingState, step: Step.HOUR },
       offerResponseSnap.stocks
     )
+
     expect(previousStep).toEqual(Step.DATE)
   })
 
   describe('should return to hour step', () => {
     it('when current step is price', () => {
       const previousStep = getPreviousStep({ ...defaultBookingState, step: Step.PRICE }, mockStocks)
+
       expect(previousStep).toEqual(Step.HOUR)
     })
 
@@ -209,6 +234,7 @@ describe('getPreviousStep', () => {
         [stock1],
         true
       )
+
       expect(previousStep).toEqual(Step.HOUR)
     })
 
@@ -216,6 +242,7 @@ describe('getPreviousStep', () => {
       const previousStep = getPreviousStep({ ...defaultBookingState, step: Step.CONFIRMATION }, [
         stock1,
       ])
+
       expect(previousStep).toEqual(Step.HOUR)
     })
   })
@@ -227,6 +254,7 @@ describe('getPreviousStep', () => {
         mockStocks,
         true
       )
+
       expect(previousStep).toEqual(Step.PRICE)
     })
 
@@ -235,6 +263,7 @@ describe('getPreviousStep', () => {
         { ...defaultBookingState, step: Step.CONFIRMATION, hour: '2023-04-01T18:00:00Z' },
         mockStocks
       )
+
       expect(previousStep).toEqual(Step.PRICE)
     })
   })
@@ -245,6 +274,7 @@ describe('getPreviousStep', () => {
       mockStocks,
       true
     )
+
     expect(previousStep).toEqual(Step.DUO)
   })
 })
@@ -252,6 +282,7 @@ describe('getPreviousStep', () => {
 describe('getSortedHoursFromDate', () => {
   it('should return an array of sorted hours from date', () => {
     const sortedHours = getSortedHoursFromDate(mockStocks, '2023-04-01')
+
     expect(sortedHours).toEqual([
       '2023-04-01T18:00:00Z',
       '2023-04-01T18:00:00Z',
@@ -264,6 +295,7 @@ describe('getSortedHoursFromDate', () => {
 describe('getStockSortedByPriceFromHour', () => {
   it('should return an array of stocks from highest to lowest price from hour', () => {
     const stocks = getStockSortedByPriceFromHour(mockStocks, '2023-04-01T18:00:00Z')
+
     expect(stocks).toEqual([stock2, stock4, stock3])
   })
 })
@@ -271,6 +303,7 @@ describe('getStockSortedByPriceFromHour', () => {
 describe('sortByDateStringPredicate', () => {
   it('should return -1 when dates not defined', () => {
     const predicate = sortByDateStringPredicate(undefined, undefined)
+
     expect(predicate).toEqual(-1)
   })
 })
@@ -283,6 +316,7 @@ describe('getDistinctPricesFromAllStock', () => {
       stock3,
       stock4,
     ])
+
     expect(distinctPrices).toEqual([22000, 10000, 19000])
   })
 
@@ -293,6 +327,7 @@ describe('getDistinctPricesFromAllStock', () => {
       stock3,
       stock4,
     ])
+
     expect(distinctPrices).not.toEqual([22000, 22000, 10000, 19000])
   })
 })
@@ -300,6 +335,7 @@ describe('getDistinctPricesFromAllStock', () => {
 describe('getStockWithCategory', () => {
   it('should return an empty array when stock not defined', () => {
     const stockWithCategory = getStockWithCategory()
+
     expect(stockWithCategory).toEqual([])
   })
 
@@ -310,6 +346,7 @@ describe('getStockWithCategory', () => {
       stock3,
       stock4,
     ])
+
     expect(stockWithCategory).toEqual([stock2, stock3, stock4])
   })
 
@@ -319,6 +356,7 @@ describe('getStockWithCategory', () => {
       new Date('2023-04-01T20:00:00Z'),
       '2023-04-01T20:00:00Z'
     )
+
     expect(stockWithCategory).toEqual([stock1])
   })
 
@@ -332,6 +370,7 @@ describe('getStockWithCategory', () => {
       ],
       new Date('2023-04-01T20:00:00Z')
     )
+
     expect(stockWithCategory).toEqual([
       { ...stock2, beginningDatetime: '2023-04-01T20:00:00Z' },
       stock3,

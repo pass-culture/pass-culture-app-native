@@ -11,35 +11,35 @@ describe('<AuthenticationButton />', () => {
     render(<AuthenticationButton type="login" />)
 
     const connectButton = screen.getByRole('link')
-    await fireEvent.press(connectButton)
+    fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('Login', {})
+    expect(navigate).toHaveBeenCalledWith('Login', {})
   })
 
   it('should navigate to the signup page when is type signup', async () => {
     render(<AuthenticationButton type="signup" />)
 
     const connectButton = screen.getByRole('link')
-    await fireEvent.press(connectButton)
+    fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('SignupForm', {})
+    expect(navigate).toHaveBeenCalledWith('SignupForm', {})
   })
 
-  it('should navigate with additionnal params when defined for login', () => {
+  it('should navigate with additional params when defined for login', () => {
     render(<AuthenticationButton type="login" params={NAV_PARAMS} />)
 
     const connectButton = screen.getByRole('link')
     fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('Login', { ...NAV_PARAMS })
+    expect(navigate).toHaveBeenCalledWith('Login', { ...NAV_PARAMS })
   })
 
-  it('should navigate with additionnal params when defined for signup', () => {
+  it('should navigate with additional params when defined for signup', () => {
     render(<AuthenticationButton type="signup" params={NAV_PARAMS} />)
 
     const connectButton = screen.getByRole('link')
     fireEvent.press(connectButton)
 
-    expect(navigate).toBeCalledWith('SignupForm', { ...NAV_PARAMS })
+    expect(navigate).toHaveBeenCalledWith('SignupForm', { ...NAV_PARAMS })
   })
 })

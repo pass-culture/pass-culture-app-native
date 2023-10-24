@@ -29,7 +29,7 @@ const onlineData: TestData[] = [...offlineData, ...additionalData]
 mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
 describe('usePersistQuery', () => {
-  beforeEach(async () => await AsyncStorage.removeItem(queryKey))
+  beforeEach(async () => AsyncStorage.removeItem(queryKey))
 
   describe('without initial local data', () => {
     it('should save distant data locally', async () => {
@@ -41,10 +41,10 @@ describe('usePersistQuery', () => {
       await flushAllPromisesWithAct()
 
       const persistDataStr = await AsyncStorage.getItem(queryKey)
+
       expect(persistDataStr).toBeTruthy()
-      if (typeof persistDataStr === 'string') {
-        expect(JSON.parse(persistDataStr)).toEqual(onlineData)
-      }
+
+      expect(JSON.parse(persistDataStr as string)).toEqual(onlineData)
     })
 
     it('should fail to save distant data locally and log to sentry', async () => {
@@ -58,8 +58,9 @@ describe('usePersistQuery', () => {
       await flushAllPromisesWithAct()
 
       const persistDataStr = await AsyncStorage.getItem(queryKey)
+
       expect(persistDataStr).toBeFalsy()
-      expect(eventMonitoring.captureException).toBeCalledWith(error, {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
         extra: { queryKey, data: onlineData },
       })
     })
@@ -74,7 +75,9 @@ describe('usePersistQuery', () => {
 
     it('should show offline data first, then online data', async () => {
       const persistDataStr = await AsyncStorage.getItem(queryKey)
+
       expect(persistDataStr).toBeTruthy()
+
       renderHook(() => usePersistQuery(queryKey, queryFn), {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -82,6 +85,7 @@ describe('usePersistQuery', () => {
 
       // Console error displayed when offline mode
       jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
+
       expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(offlineData))
 
       await flushAllPromisesWithAct()
@@ -92,7 +96,9 @@ describe('usePersistQuery', () => {
     it('should fail to read local data and log to sentry', async () => {
       const error = new Error('READING_REJECTED')
       const persistDataStr = await AsyncStorage.getItem(queryKey)
+
       expect(persistDataStr).toBeTruthy()
+
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
       renderHook(() => usePersistQuery(queryKey, queryFn), {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -101,7 +107,7 @@ describe('usePersistQuery', () => {
 
       await flushAllPromisesWithAct()
 
-      expect(eventMonitoring.captureException).toBeCalledWith(error, {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
         extra: { queryKey },
       })
     })

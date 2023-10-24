@@ -23,6 +23,7 @@ describe('<ForgottenPassword/>', () => {
       })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

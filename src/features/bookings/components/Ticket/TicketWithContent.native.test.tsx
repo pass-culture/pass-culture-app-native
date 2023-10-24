@@ -9,6 +9,7 @@ const booking = bookingsSnap.ongoing_bookings[1]
 describe('<TicketWithContent/>', () => {
   it('should render properly', () => {
     render(<TicketWithContent booking={booking} />)
+
     expect(screen).toMatchSnapshot()
   })
 })

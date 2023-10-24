@@ -38,6 +38,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 
 describe('<SuspendedAccountUponUserRequest />', () => {
   const queryClient = useQueryClient()
+
   it('should match snapshot', () => {
     render(<SuspendedAccountUponUserRequest />)
 
@@ -51,13 +52,14 @@ describe('<SuspendedAccountUponUserRequest />', () => {
 
     fireEvent.press(screen.getByText('Réactiver mon compte'))
 
-    expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccountuponuserrequest')
+    expect(analytics.logAccountReactivation).toHaveBeenCalledWith('suspendedaccountuponuserrequest')
 
     useMutationCallbacks.onSuccess()
     await waitFor(() => {
       queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
         expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
       )
+
       expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
     })
   })
@@ -69,7 +71,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
 
     fireEvent.press(screen.getByText('Réactiver mon compte'))
 
-    expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccountuponuserrequest')
+    expect(analytics.logAccountReactivation).toHaveBeenCalledWith('suspendedaccountuponuserrequest')
 
     const response = {
       content: { message: 'Une erreur s’est produite pendant la réactivation.' },
@@ -96,7 +98,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
       )
-      expect(mockSignOut).toBeCalledTimes(1)
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 })

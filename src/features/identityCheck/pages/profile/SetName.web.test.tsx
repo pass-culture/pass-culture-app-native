@@ -27,6 +27,7 @@ describe('<SetName/>', () => {
       })
 
       const results = await checkAccessibilityFor(container)
+
       expect(results).toHaveNoViolations()
     })
   })

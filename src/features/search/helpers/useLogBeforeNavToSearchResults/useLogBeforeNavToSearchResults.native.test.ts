@@ -13,6 +13,7 @@ describe('useLogBeforeNavToSearchResults', () => {
   it('should clear the previous search state', () => {
     const { result } = renderHook(() => useLogBeforeNavToSearchResults({ from: 'bookings' }))
     result.current()
+
     expect(mockDispatch).toHaveBeenCalledTimes(1)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT' })
   })
@@ -20,6 +21,7 @@ describe('useLogBeforeNavToSearchResults', () => {
   it("should log the analytics event 'DiscoverOffers'", () => {
     const { result } = renderHook(() => useLogBeforeNavToSearchResults({ from: 'bookings' }))
     result.current()
+
     expect(analytics.logDiscoverOffers).toHaveBeenNthCalledWith(1, 'bookings')
   })
 })

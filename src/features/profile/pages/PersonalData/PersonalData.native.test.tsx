@@ -92,7 +92,7 @@ describe('PersonalData', () => {
     const modifyButton = screen.getByTestId('Modifier mot de passe')
     fireEvent.press(modifyButton)
 
-    expect(navigate).toBeCalledWith('ChangePassword', undefined)
+    expect(navigate).toHaveBeenCalledWith('ChangePassword', undefined)
   })
 
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
@@ -106,7 +106,7 @@ describe('PersonalData', () => {
 
     await waitFor(() => {
       expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
+      expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
     })
   })
 
@@ -130,6 +130,7 @@ describe('PersonalData', () => {
     } as UserProfileResponse)
 
     fireEvent.press(screen.getByTestId('Modifier e-mail'))
+
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
   })

@@ -26,11 +26,13 @@ const DummyComponent: React.FC = () => {
     </TouchableOpacity>
   )
 }
+
 describe('AnimatedIcon', () => {
   it('should display only the first color before animation', () => {
     render(<DummyComponent />)
     const initialContainer = screen.getByTestId('initial-icon-container')
     const finalContainer = screen.getByTestId('final-icon-container')
+
     expect(initialContainer.style.opacity).toBe('1')
     expect(finalContainer.style.opacity).toBe('0')
   })
@@ -43,6 +45,7 @@ describe('AnimatedIcon', () => {
     await waitFor(() => {
       expect(finalContainer.style.opacity).toBe('1')
     })
+
     expect(initialContainer.style.opacity).toBe('0')
   })
 })

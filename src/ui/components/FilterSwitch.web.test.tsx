@@ -14,6 +14,6 @@ describe('<FilterSwitch />', () => {
     fireEvent.focus(Switch)
     fireEvent.keyDown(Switch, { key: 'Spacebar' })
 
-    expect(toggle).toBeCalledTimes(1)
+    expect(toggle).toHaveBeenCalledTimes(1)
   })
 })
