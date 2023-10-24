@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NonEligibleModal should render correctly for onboarding non-eligible over 18  1`] = `
+exports[`NonEligibleModal should render correctly for onboarding non-eligible over 18 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
@@ -887,7 +887,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
 </Modal>
 `;
 
-exports[`NonEligibleModal should render correctly for profile tutorial non-eligible over 18  1`] = `
+exports[`NonEligibleModal should render correctly for profile tutorial non-eligible over 18 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
@@ -1282,7 +1282,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
 </Modal>
 `;
 
-exports[`NonEligibleModal should render correctly for profile tutorial non-eligible under 15  1`] = `
+exports[`NonEligibleModal should render correctly for profile tutorial non-eligible under 15 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
