@@ -365,21 +365,25 @@ describe('categoriesHelpers', () => {
   describe('getNbResultsFacetLabel', () => {
     it('should display "+10000" when the number of result facets is greater than 10000', () => {
       const result = getNbResultsFacetLabel(10001)
+
       expect(result).toEqual('+10000')
     })
 
     it('should display the exact number of result facets is less than 10000', () => {
       const result = getNbResultsFacetLabel(5)
+
       expect(result).toEqual('5')
     })
 
     it('should display "0" when the number of result facets is equal to 0', () => {
       const result = getNbResultsFacetLabel(0)
+
       expect(result).toEqual('0')
     })
 
     it('should return undefined when the number of result facets is undefined', () => {
       const result = getNbResultsFacetLabel(undefined)
+
       expect(result).toEqual(undefined)
     })
   })
