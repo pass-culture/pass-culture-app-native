@@ -3,6 +3,9 @@ import React, { useMemo, useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { VenueTypeCodeKey } from 'api/gen'
+import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
@@ -15,25 +18,27 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
 import { useLocation } from 'libs/geolocation'
-import { formatDates, getDisplayPrice } from 'libs/parsers'
+import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
+import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
+import { getSpacing, MARGIN_DP, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   venueId: number
   layout?: Layout
+  playlists?: GTLPlaylistResponse
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) => {
+export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readonly<Props>) {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useLocation()
@@ -124,22 +129,44 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
     return <React.Fragment></React.Fragment>
   }
 
+  const shouldDisplayGtlPlaylist =
+    [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
+      venue.venueTypeCode as VenueTypeCode
+    ) && Boolean(playlists?.length)
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <PassPlaylist
-        testID="offersModuleList"
-        title="Offres"
-        TitleComponent={PlaylistTitle}
-        data={hits}
-        itemHeight={itemHeight}
-        itemWidth={itemWidth}
-        onPressSeeMore={onPressSeeMore}
-        renderItem={renderItem}
-        titleSeeMoreLink={showSeeMore ? searchNavConfig : undefined}
-        renderFooter={renderFooter}
-        keyExtractor={keyExtractor}
-      />
+      {shouldDisplayGtlPlaylist ? (
+        <React.Fragment>
+          <Row>
+            <PlaylistTitleText testID="allGtlPlaylistsTitle">Offres disponibles</PlaylistTitleText>
+            <SeeMoreWithEye
+              title="Offres disponibles"
+              titleSeeMoreLink={searchNavConfig}
+              onPressSeeMore={onPressSeeMore as () => void}
+            />
+          </Row>
+          <Spacer.Column numberOfSpaces={6} />
+          {playlists?.slice(0, 20).map((playlist) => (
+            <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
+          ))}
+        </React.Fragment>
+      ) : (
+        <PassPlaylist
+          testID="offersModuleList"
+          title="Offres disponibles"
+          TitleComponent={PlaylistTitleText}
+          data={hits}
+          itemHeight={itemHeight}
+          itemWidth={itemWidth}
+          onPressSeeMore={onPressSeeMore}
+          renderItem={renderItem}
+          titleSeeMoreLink={showSeeMore ? searchNavConfig : undefined}
+          renderFooter={renderFooter}
+          keyExtractor={keyExtractor}
+        />
+      )}
       <MarginContainer>
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
@@ -156,4 +183,10 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
 const MarginContainer = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
-const PlaylistTitle = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+const PlaylistTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
+
+const Row = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginHorizontal: getSpacing(6),
+})

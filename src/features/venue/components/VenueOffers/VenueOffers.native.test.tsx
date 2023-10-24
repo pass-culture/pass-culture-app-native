@@ -1,8 +1,11 @@
+import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
+import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -19,7 +22,11 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('react-query')
 
-jest.mock('features/venue/api/useVenue')
+let mockVenue = venueResponseSnap
+jest.mock('features/venue/api/useVenue', () => ({
+  useVenue: () => ({ data: mockVenue }),
+}))
+
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
@@ -52,7 +59,102 @@ const defaultParams = {
   timeRange: null,
 }
 
+const playlists: GTLPlaylistResponse = [
+  {
+    title: 'Test',
+    offers: {
+      hits: [
+        {
+          offer: {
+            name: 'Mon abonnement bibliothèque',
+            subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+          },
+          venue: mockVenue,
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '12',
+        },
+        {
+          offer: {
+            name: 'Mon abonnement médiathèque',
+            subcategoryId: SubcategoryIdEnum.ABO_MEDIATHEQUE,
+          },
+          venue: mockVenue,
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '13',
+        },
+        {
+          offer: {
+            name: 'Mon abonnement livres numériques',
+            subcategoryId: SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
+          },
+          venue: mockVenue,
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '14',
+        },
+        {
+          offer: {
+            name: 'Mon abonnement ludothèque',
+            subcategoryId: SubcategoryIdEnum.ABO_LUDOTHEQUE,
+          },
+          venue: mockVenue,
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '15',
+        },
+        {
+          offer: {
+            name: 'Mon abonnement concert',
+            subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
+          },
+          venue: mockVenue,
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '16',
+        },
+        {
+          offer: {
+            name: 'Mon abonnement jeu vidéo',
+            subcategoryId: SubcategoryIdEnum.ABO_JEU_VIDEO,
+          },
+          venue: mockVenue,
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '17',
+        },
+      ],
+      page: 0,
+      nbPages: 1,
+      nbHits: 1,
+      hitsPerPage: 25,
+      processingTimeMS: 1,
+      exhaustiveNbHits: true,
+      query: '',
+      params: '',
+    } as SearchResponse<Offer>,
+    layout: 'one-item-medium',
+    entryId: '2xUlLBRfxdk6jeYyJszunX',
+  },
+]
+
 describe('<VenueOffers />', () => {
+  afterEach(() => {
+    mockVenue = venueResponseSnap
+  })
   it('should render correctly', () => {
     render(<VenueOffers venueId={venueId} />)
     expect(screen).toMatchSnapshot()
@@ -104,5 +206,43 @@ describe('<VenueOffers />', () => {
     render(<VenueOffers venueId={venueId} />)
     fireEvent.press(screen.getByText('Voir toutes les offres'))
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
+  })
+
+  describe('should display all gtl playlists', () => {
+    it('When there are gtl playlists associated to the venue and venue type is distribution store', () => {
+      mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE }
+      render(<VenueOffers venueId={mockVenue.id} playlists={playlists} />)
+
+      expect(screen.getByTestId('allGtlPlaylistsTitle')).toBeOnTheScreen()
+    })
+
+    it('When there are gtl playlists associated to the venue and venue type is book store', () => {
+      mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE }
+      render(<VenueOffers venueId={mockVenue.id} playlists={playlists} />)
+
+      expect(screen.getByTestId('allGtlPlaylistsTitle')).toBeOnTheScreen()
+    })
+  })
+
+  describe('should not display all gtl playlists', () => {
+    it('When there are not gtl playlists associated to the venue and venue type is distribution store', () => {
+      mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE }
+      render(<VenueOffers venueId={mockVenue.id} />)
+
+      expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
+    })
+
+    it('When there are not gtl playlists associated to the venue and venue type is book store', () => {
+      mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE }
+      render(<VenueOffers venueId={mockVenue.id} />)
+
+      expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
+    })
+
+    it('When there are gtl playlists associated to the venue and venue type is not distributon or book store', () => {
+      render(<VenueOffers venueId={mockVenue.id} playlists={playlists} />)
+
+      expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
+    })
   })
 })

@@ -3,7 +3,6 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
-import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
@@ -120,7 +119,7 @@ export function VenueBody({ venueId, onScroll, playlists }: Props) {
 
       {/* Offres */}
       <SectionWithDivider visible={shouldShowVenueOffers}>
-        <VenueOffers venueId={venueId} />
+        <VenueOffers venueId={venueId} playlists={playlists} />
       </SectionWithDivider>
 
       {/* Où */}
@@ -170,14 +169,6 @@ export function VenueBody({ venueId, onScroll, playlists }: Props) {
         </AccordionItem>
       </SectionWithDivider>
 
-      <SectionWithDivider visible={Boolean(playlists?.length)}>
-        <GtlPlaylistWrapper>
-          {playlists?.map((playlist) => (
-            <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
-          )) ?? <React.Fragment />}
-        </GtlPlaylistWrapper>
-      </SectionWithDivider>
-
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>
@@ -215,8 +206,4 @@ const IconContainer = styled.View({
 const StyledText = styled(Typo.Caption)({
   flexShrink: 1,
   textTransform: 'capitalize',
-})
-
-const GtlPlaylistWrapper = styled.View({
-  paddingTop: getSpacing(6),
 })
