@@ -33,41 +33,44 @@ describe('SupportedBrowsersGate', () => {
     ${'isInstagram'}      | ${'Instagram'}     | ${200}
     ${'isBrave'}          | ${'Brave'}         | ${98}
     ${'isChromium'}       | ${'Chromium'}      | ${0}
-  `('', ({ browserProperty, browserName, minimalSupportedVersion }) => {
-    beforeAll(() => {
-      defaultDeviceMock[browserProperty] = true
-      defaultDeviceMock.browserName = browserName
-    })
+  `(
+    '$browserName v$minimalSupportedVersion',
+    ({ browserProperty, browserName, minimalSupportedVersion }) => {
+      beforeAll(() => {
+        defaultDeviceMock[browserProperty] = true
+        defaultDeviceMock.browserName = browserName
+      })
 
-    afterAll(() => {
-      defaultDeviceMock[browserProperty] = false
-      defaultDeviceMock.browserName = 'none'
-      defaultDeviceMock.browserVersion = undefined
-    })
+      afterAll(() => {
+        defaultDeviceMock[browserProperty] = false
+        defaultDeviceMock.browserName = 'none'
+        defaultDeviceMock.browserVersion = undefined
+      })
 
-    it(`should support ${browserName} for versions ${minimalSupportedVersion} and above`, () => {
-      defaultDeviceMock.browserVersion = minimalSupportedVersion
+      it(`should support ${browserName} for versions ${minimalSupportedVersion} and above`, () => {
+        defaultDeviceMock.browserVersion = minimalSupportedVersion
 
-      render(<SupportedBrowsersGate />)
+        render(<SupportedBrowsersGate />)
 
-      expect(
-        screen.queryByText(
-          `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${minimalSupportedVersion}) n’est pas à jour`
-        )
-      ).not.toBeOnTheScreen()
-    })
+        expect(
+          screen.queryByText(
+            `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${minimalSupportedVersion}) n’est pas à jour`
+          )
+        ).not.toBeOnTheScreen()
+      })
 
-    it(`should not support ${browserName} for versions below ${minimalSupportedVersion}`, () => {
-      const unsupportedVersion = minimalSupportedVersion - 1
-      defaultDeviceMock.browserVersion = unsupportedVersion
+      it(`should not support ${browserName} for versions below ${minimalSupportedVersion}`, () => {
+        const unsupportedVersion = minimalSupportedVersion - 1
+        defaultDeviceMock.browserVersion = unsupportedVersion
 
-      render(<SupportedBrowsersGate />)
+        render(<SupportedBrowsersGate />)
 
-      expect(
-        screen.getByText(
-          `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${unsupportedVersion}) n’est pas à jour`
-        )
-      ).toBeOnTheScreen()
-    })
-  })
+        expect(
+          screen.getByText(
+            `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${unsupportedVersion}) n’est pas à jour`
+          )
+        ).toBeOnTheScreen()
+      })
+    }
+  )
 })
