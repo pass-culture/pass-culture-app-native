@@ -5,8 +5,17 @@ import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
-import { RowData, SearchListItem } from 'features/search/components/SearchListItem.web'
-import { LIST_ITEM_HEIGHT } from 'features/search/constants'
+import {
+  footerPlaceholder,
+  headerPlaceholder,
+  RowData,
+  SearchListItem,
+} from 'features/search/components/SearchListItem.web'
+import {
+  LIST_ITEM_HEIGHT,
+  SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END,
+  SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START,
+} from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
 import { SearchListProps } from 'features/search/types'
@@ -106,7 +115,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
           const isNearToBottom = scrollTop + clientHeight >= scrollHeight - LOAD_MORE_THRESHOLD
 
           if (isNearToBottom && !isFetchingNextPage) {
-            onEndReached?.()
+            onEndReached()
           }
         }
       },
@@ -125,7 +134,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
        * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
        * guess what we want to draw.
        */
-      items: [{}, ...hits.offers, {}],
+      items: [headerPlaceholder, ...hits.offers, footerPlaceholder],
       userData,
       venuesUserData,
       nbHits,
@@ -150,8 +159,14 @@ export const SearchList = forwardRef<never, SearchListProps>(
       listRef.current?.scrollToItem(0)
     }, [])
 
+    const itemSizeFn = useCallback(
+      (index: number) =>
+        getItemSize(index, hits.venues.length, isGeolocated, data.items.length, userData),
+      [data.items.length, hits.venues.length, isGeolocated, userData]
+    )
+
     return (
-      <RootContainer onLayout={onLayout} testID="searchResultsFlatlist">
+      <SearchResultList onLayout={onLayout} testID="searchResultsList">
         {nbHits ? (
           <React.Fragment>
             <VariableSizeList
@@ -159,9 +174,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
               key={rerenderKey}
               innerElementType="ul"
               itemData={data}
-              itemSize={(index) =>
-                getItemSize(index, hits.venues.length, isGeolocated, data.items.length, userData)
-              }
+              itemSize={itemSizeFn}
               height={availableHeight}
               itemCount={data.items.length}
               outerRef={outerListRef}
@@ -173,9 +186,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
             <ScrollToTopContainer style={{ opacity }}>
               <Container onPress={handleScrollToTopPress}>
                 <StyledLinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 0, y: 1 }}
-                  colors={['#bf275f', '#5a0d80']}>
+                  start={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START}
+                  end={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END}>
                   <ScrollToTopIcon />
                 </StyledLinearGradient>
               </Container>
@@ -184,14 +196,14 @@ export const SearchList = forwardRef<never, SearchListProps>(
         ) : (
           <NoSearchResult />
         )}
-      </RootContainer>
+      </SearchResultList>
     )
   }
 )
 
 SearchList.displayName = 'SearchListWeb'
 
-const RootContainer = styled(View)({
+const SearchResultList = styled(View)({
   flex: 1,
 })
 
@@ -207,7 +219,9 @@ const ScrollToTopContainer = styled(Animated.View)(({ theme }) => ({
 
 const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
-const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [theme.colors.primary, theme.colors.secondary],
+}))(({ theme }) => ({
   backgroundColor: theme.colors.primary,
   borderRadius: theme.borderRadius.button,
   alignItems: 'center',

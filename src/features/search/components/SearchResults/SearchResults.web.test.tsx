@@ -49,7 +49,7 @@ describe('SearchResults component', () => {
   it('should render correctly', async () => {
     const renderAPI = render(<SearchResults />)
     await act(async () => {}) // fix 3 warnings "Warning: An update to %s inside a test was not wrapped in act" for PriceModal, LocationModal and DatesHoursModal
-    await screen.findByTestId('searchResultsFlatlist')
+    await screen.findByTestId('searchResultsList')
 
     expect(renderAPI).toMatchSnapshot()
   })
