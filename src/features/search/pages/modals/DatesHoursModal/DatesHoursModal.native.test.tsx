@@ -57,18 +57,13 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      let component = screen.toJSON()
-
-      expect(component).not.toContain('CalendarPicker')
-      expect(component).toContain('NoCalendar')
+      expect(screen.queryByText('Choisis une date')).not.toBeOnTheScreen()
 
       await act(async () => {
         fireEvent.press(screen.getByText('Date précise'))
       })
-      component = screen.toJSON()
 
-      expect(component).toContain('CalendarPicker')
-      expect(component).not.toContain('NoCalendar')
+      expect(screen.getByText('Choisis une date')).toBeOnTheScreen()
     })
 
     it("the correct date when picking 'Date précise'", async () => {
@@ -110,19 +105,13 @@ describe('<DatesHoursModal/>', () => {
       fireEvent.press(radioButton)
     })
 
-    const withCalendar = screen.toJSON()
-
-    expect(withCalendar).toContain('CalendarPicker')
-    expect(withCalendar).not.toContain('NoCalendar')
+    expect(screen.getByText('Choisis une date')).toBeOnTheScreen()
 
     await act(async () => {
       fireEvent.press(radioButton)
     })
 
-    const withoutCalendar = screen.toJSON()
-
-    expect(withoutCalendar).toContain('CalendarPicker')
-    expect(withoutCalendar).not.toContain('NoCalendar')
+    expect(screen.getByText('Choisis une date')).toBeOnTheScreen()
   })
 
   describe('should desactivate', () => {
