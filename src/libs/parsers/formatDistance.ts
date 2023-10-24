@@ -6,8 +6,8 @@ const EARTH_RADIUS_KM = 6378.137
 export const getHumanizeRelativeDistance = (
   userLat?: number | null,
   userLng?: number | null,
-  venueLat?: number,
-  venueLng?: number
+  venueLat?: number | null,
+  venueLng?: number | null
 ): string | undefined => {
   if (!userLat || !userLng || !venueLat || !venueLng) return
 
@@ -42,5 +42,5 @@ export const humanizeDistance = (distance: number) => {
 export const formatDistance = (coords: Geoloc, position: Position): string | undefined => {
   if (!position) return
 
-  return getHumanizeRelativeDistance(coords.lat, coords.lng, position.latitude, position.longitude)
+  return getHumanizeRelativeDistance(position.latitude, position.longitude, coords.lat, coords.lng)
 }
