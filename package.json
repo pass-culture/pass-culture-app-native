@@ -37,7 +37,7 @@
     "android:testing": "react-native run-android --variant=apptestingDebug --appId=app.passculture.testing",
     "appcenter:install": "./scripts/appcenter-download-release.sh",
     "build": "SHOW_DUPLICATES_PLUGIN=${SHOW_DUPLICATES_PLUGIN:-true} node web/scripts/build.js",
-    "build-storybook": "build-storybook --static-dir ./public",
+    "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider build-storybook --static-dir ./public",
     "build:development": "ENV=development yarn build",
     "build:integration": "ENV=integration yarn build",
     "build:production": "ENV=production yarn build",
