@@ -230,11 +230,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           }
         >
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -383,11 +383,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             visible={false}
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -417,11 +417,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             }
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -570,11 +570,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             visible={false}
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -604,11 +604,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             }
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -757,11 +757,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             visible={false}
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -791,11 +791,11 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             }
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
@@ -944,26 +944,16 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             visible={false}
           />
           <View
-            numberOfSpaces={4}
+            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 16,
+                  "height": 24,
                 },
               ]
             }
           />
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </RCTScrollView>

@@ -106,7 +106,6 @@ export const SearchFilter: React.FC = () => {
               </SectionWrapper>
             )
           })}
-          <Spacer.Column numberOfSpaces={2} />
         </VerticalUl>
       </ScrollView>
       <BlurHeader height={headerHeight} />
@@ -128,9 +127,9 @@ const SectionWrapper: React.FunctionComponent<{
   return (
     <StyledLi>
       {isFirstSectionItem ? null : <Separator />}
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={6} />
       {children}
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={6} />
     </StyledLi>
   )
 }
