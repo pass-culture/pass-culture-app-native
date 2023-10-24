@@ -9,6 +9,10 @@ const mockUseGeolocation = jest.mocked(useLocation)
 
 const position = { latitude: 90, longitude: 90 }
 const offerPosition = { lat: 31, long: 56 }
+const undefinedOfferPosition = {
+  lat: undefined,
+  lng: undefined,
+}
 
 describe('useDistance()', () => {
   it('should call useLocation and formatDistance when geolocation is on', () => {
@@ -26,6 +30,11 @@ describe('useDistance()', () => {
 
     expect(useLocation).toHaveBeenCalledWith()
     expect(formatDistance).not.toHaveBeenCalled()
+
+    useDistance(undefinedOfferPosition)
+
+    expect(useLocation).toHaveBeenCalledWith()
+    expect(formatDistance(undefinedOfferPosition, position)).toEqual(undefined)
   })
 
   it('should return undefined when position is null', () => {

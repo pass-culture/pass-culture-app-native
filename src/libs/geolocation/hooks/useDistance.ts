@@ -6,7 +6,6 @@ export const useDistance = (offerPosition: {
   lng?: number | null
 }): string | undefined => {
   const { userPosition } = useLocation()
-  // TODO(voisinhugo): check if !offerPosition check is useful - add data validation from API if needed
-  if (!userPosition || !offerPosition) return undefined
+  if (!userPosition) return undefined
   return formatDistance(offerPosition, userPosition)
 }
