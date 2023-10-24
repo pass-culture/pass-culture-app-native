@@ -294,15 +294,30 @@ describe('formatDates', () => {
     expect(formatDates(undefined)).toEqual(undefined)
   })
 
+  it('should return undefined when empty array is given', () => {
+    expect(formatDates([])).toEqual(undefined)
+  })
+
+  it('should return undefined when given dates are past', () => {
+    const dates = [OCTOBER_5_2020, OCTOBER_5_2020]
+    const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
+
+    expect(formatDates(timestampsInSeconds)).toEqual(undefined)
+  })
+
+  it('should return "Dès le" when given dates are future and different', () => {
+    const dates = [DECEMBER_5_2020, NOVEMBER_12_2020]
+    const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
+
+    expect(formatDates(timestampsInSeconds)).toEqual('Dès le 12 novembre 2020')
+  })
+
   it.each`
     dates                                   | expected
-    ${[]}                                   | ${undefined}
     ${[NOVEMBER_12_2020]}                   | ${'12 novembre 2020'}
     ${[NOVEMBER_12_2020, NOVEMBER_12_2020]} | ${'12 novembre 2020'}
     ${[DECEMBER_5_2020]}                    | ${'5 décembre 2020'}
-    ${[DECEMBER_5_2020, NOVEMBER_12_2020]}  | ${'Dès le 12 novembre 2020'}
     ${[DECEMBER_5_2020, -NOVEMBER_12_2020]} | ${'5 décembre 2020'}
-    ${[OCTOBER_5_2020, OCTOBER_5_2020]}     | ${undefined}
     ${[OCTOBER_5_2020, NOVEMBER_12_2020]}   | ${'12 novembre 2020'}
   `('formatDates($dates) \t= $expected', ({ dates, expected }) => {
     const timestampsInSeconds = dates.map((date: Date) => date.valueOf())
