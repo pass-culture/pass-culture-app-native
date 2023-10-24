@@ -18,6 +18,7 @@ import {
   sortByIdDesc,
 } from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useLocation, Position } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { storage } from 'libs/storage'
@@ -143,6 +144,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       )}
       <Container>
         <FlatList
+          accessibilityRole={AccessibilityRole.LIST}
           listAs="ul"
           itemAs="li"
           ref={flatListRef}
