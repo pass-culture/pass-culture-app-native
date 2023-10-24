@@ -11,7 +11,7 @@ describe('accessibilityList', () => {
     ${[<Typo.Body key={1}>Item</Typo.Body>]}                                      | ${0}
     ${[<Typo.Body key={1}>Item</Typo.Body>, <Typo.Body key={2}>Item</Typo.Body>]} | ${1}
   `(
-    'it should render $itemList.length items and $numberOfSeparator separators',
+    'should render $itemList.length items and $numberOfSeparator separators',
     ({ itemList, numberOfSeparator }) => {
       const Separator = <Spacer.Column numberOfSpaces={6} testID="accessibility-list-separator" />
 
