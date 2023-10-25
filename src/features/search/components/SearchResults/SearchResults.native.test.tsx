@@ -377,6 +377,19 @@ describe('SearchResults component', () => {
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
     })
 
+    it('should open the venue modal when pressing the venue filter button', async () => {
+      render(<SearchResults />)
+      const venueButton = screen.getByTestId('venueButtonLabel')
+
+      await act(async () => {
+        fireEvent.press(venueButton)
+      })
+
+      expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
+        'Trouver un point de vente'
+      )
+    })
+
     it('should display venueButtonLabel in venue filter if a venue is selected', async () => {
       mockSearchState = {
         ...searchState,
