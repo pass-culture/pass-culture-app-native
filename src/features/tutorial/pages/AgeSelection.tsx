@@ -27,7 +27,7 @@ const ageButtons: { age?: EligibleAges }[] = [
 ]
 
 const onBeforeNavigate = async (type: TutorialTypes, age?: EligibleAges) => {
-  analytics.logSelectAge({ userStatus: age ?? OTHER, from: type })
+  analytics.logSelectAge({ age: age ?? OTHER, from: type })
   age && (await storage.saveObject('user_age', age))
 }
 

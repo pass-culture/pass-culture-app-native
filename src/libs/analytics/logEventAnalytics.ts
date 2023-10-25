@@ -546,13 +546,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MY_BOOKING }, { offerId }),
-  logSelectAge: ({ userStatus, from }: { userStatus: number | string; from: TutorialTypes }) =>
+  logSelectAge: ({ age, from }: { age: number | string; from: TutorialTypes }) =>
     analytics.logEvent(
       {
         amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
         firebase: AnalyticsEvent.SELECT_AGE,
       },
-      { from, userStatus }
+      { age, from }
     ),
   logSelectIdStatusClicked: (type: IDStatus) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SELECT_ID_STATUS_CLICKED }, { type }),
