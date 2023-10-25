@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
-
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
@@ -13,13 +13,13 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour } from 'features/search/enums'
+import { FilterBehaviour, LocationType } from 'features/search/enums'
+import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import {
   FILTER_TYPES,
   useAppliedFilters,
 } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
-import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { usePrevious } from 'features/search/helpers/usePrevious'
@@ -42,6 +42,7 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 const ANIMATION_DURATION = 700
 
@@ -69,6 +70,10 @@ export const SearchResults: React.FC = () => {
   const { user } = useAuthContext()
   const { userPosition } = useLocation()
   const previousUserPosition = usePrevious(userPosition)
+
+  const isVenue = () => {
+    return searchState.locationFilter.locationType === LocationType.VENUE
+  }
 
   // Execute log only on initial search fetch
   const previousIsLoading = usePrevious(isLoading)
@@ -113,6 +118,7 @@ export const SearchResults: React.FC = () => {
     showModal: showDatesHoursModal,
     hideModal: hideDatesHoursModal,
   } = useModal(false)
+
   const hasPosition = useHasPosition()
 
   const activeFiltersCount = useFilterCount(searchState)
@@ -176,6 +182,8 @@ export const SearchResults: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
+  const shouldDisplayOnlyVenue = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -208,15 +216,24 @@ export const SearchResults: React.FC = () => {
             <StyledLi>
               <FilterButton activeFilters={activeFiltersCount} />
             </StyledLi>
-            <StyledLi>
-              <SingleFilterButton
-                label={hasPosition ? locationLabel : 'Localisation'}
-                testID="locationButton"
-                onPress={showLocationModal}
-                isSelected={hasPosition}
-              />
-            </StyledLi>
 
+            <StyledLi>
+              {shouldDisplayOnlyVenue ? (
+                <SingleFilterButton
+                  label={isVenue() ? locationLabel : 'Point de vente'}
+                  testID="venueButton"
+                  onPress={showLocationModal}
+                  isSelected={isVenue()}
+                />
+              ) : (
+                <SingleFilterButton
+                  label={hasPosition ? locationLabel : 'Localisation'}
+                  testID="locationButton"
+                  onPress={showLocationModal}
+                  isSelected={hasPosition}
+                />
+              )}
+            </StyledLi>
             <StyledLi>
               <SingleFilterButton
                 label="Catégories"
