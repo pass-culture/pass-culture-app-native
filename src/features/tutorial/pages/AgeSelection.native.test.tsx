@@ -61,7 +61,7 @@ describe('AgeSelection', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: age,
+        age: age,
         from: TutorialTypes.ONBOARDING,
       })
     })
@@ -73,7 +73,7 @@ describe('AgeSelection', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: 'other',
+        age: 'other',
         from: TutorialTypes.ONBOARDING,
       })
     })
@@ -123,7 +123,7 @@ describe('AgeSelection', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: age,
+        age: age,
         from: TutorialTypes.PROFILE_TUTORIAL,
       })
     })
