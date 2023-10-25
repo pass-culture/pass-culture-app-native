@@ -182,7 +182,7 @@ exports[`SearchResults component should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Partout : Filtre sélectionné"
+              accessibilityLabel="Point de vente : Filtre sélectionné"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -228,7 +228,7 @@ exports[`SearchResults component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Partout : Filtre sélectionné"
+              testID="Point de vente : Filtre sélectionné"
             >
               <Text
                 style={
@@ -241,9 +241,9 @@ exports[`SearchResults component should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="locationButtonLabel"
+                testID="venueButtonLabel"
               >
-                Partout
+                Point de vente
               </Text>
               <View
                 numberOfSpaces={1}
@@ -258,11 +258,11 @@ exports[`SearchResults component should render correctly 1`] = `
               <View
                 accessibilityLabel="Filtre sélectionné"
                 height={16}
-                testID="locationButtonIcon"
+                testID="venueButtonIcon"
                 width={16}
               >
                 <Text>
-                  locationButtonIcon-SVG-Mock
+                  venueButtonIcon-SVG-Mock
                 </Text>
               </View>
             </View>

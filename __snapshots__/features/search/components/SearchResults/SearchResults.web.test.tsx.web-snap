@@ -343,19 +343,19 @@ exports[`SearchResults component should render correctly 1`] = `
                 role="listitem"
               >
                 <button
-                  aria-label="Partout : Filtre sélectionné"
+                  aria-label="Point de vente : Filtre sélectionné"
                   class="c3 c4 sc-dcJsrY c4"
-                  data-testid="Partout : Filtre sélectionné"
+                  data-testid="Point de vente : Filtre sélectionné"
                   tabindex="0"
-                  title="Partout : Filtre sélectionné"
+                  title="Point de vente : Filtre sélectionné"
                   type="button"
                 >
                   <div
                     class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    data-testid="locationButtonLabel"
+                    data-testid="venueButtonLabel"
                     dir="ltr"
                   >
-                    Partout
+                    Point de vente
                   </div>
                   <div
                     class="css-view-175oi2r r-width-10g5efv"
@@ -363,13 +363,13 @@ exports[`SearchResults component should render correctly 1`] = `
                   <div
                     aria-label="Filtre sélectionné"
                     class="css-view-175oi2r"
-                    data-testid="locationButtonIcon"
+                    data-testid="venueButtonIcon"
                   >
                     <div
                       class="css-text-1rynq56"
                       dir="ltr"
                     >
-                      locationButtonIcon-SVG-Mock
+                      venueButtonIcon-SVG-Mock
                     </div>
                   </div>
                 </button>
@@ -866,19 +866,19 @@ exports[`SearchResults component should render correctly 1`] = `
               role="listitem"
             >
               <button
-                aria-label="Partout : Filtre sélectionné"
+                aria-label="Point de vente : Filtre sélectionné"
                 class="c3 c4 sc-dcJsrY c4"
-                data-testid="Partout : Filtre sélectionné"
+                data-testid="Point de vente : Filtre sélectionné"
                 tabindex="0"
-                title="Partout : Filtre sélectionné"
+                title="Point de vente : Filtre sélectionné"
                 type="button"
               >
                 <div
                   class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                  data-testid="locationButtonLabel"
+                  data-testid="venueButtonLabel"
                   dir="ltr"
                 >
-                  Partout
+                  Point de vente
                 </div>
                 <div
                   class="css-view-175oi2r r-width-10g5efv"
@@ -886,13 +886,13 @@ exports[`SearchResults component should render correctly 1`] = `
                 <div
                   aria-label="Filtre sélectionné"
                   class="css-view-175oi2r"
-                  data-testid="locationButtonIcon"
+                  data-testid="venueButtonIcon"
                 >
                   <div
                     class="css-text-1rynq56"
                     dir="ltr"
                   >
-                    locationButtonIcon-SVG-Mock
+                    venueButtonIcon-SVG-Mock
                   </div>
                 </div>
               </button>
