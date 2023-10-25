@@ -221,9 +221,9 @@ describe('SearchResults component', () => {
         fireEvent.press(priceButton)
       })
 
-      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
-
-      expect(fullscreenModalScrollView).toBeOnTheScreen()
+      expect(screen.getByTestId('fullscreenModalScrollView')).toHaveTextContent(
+        'Uniquement les offres gratuites'
+      )
     })
 
     it('should display an icon and change color in prices filter button when has prices filter selected', async () => {
@@ -432,7 +432,7 @@ describe('SearchResults component', () => {
       expect(screen.queryByTestId('Dates & heures')).toBeOnTheScreen()
     })
 
-    it('should open the type filter modal when pressing the type filter button', async () => {
+    it('should open the Date&Hour filter Modal when pressing the date&hour filter button', async () => {
       render(<SearchResults />)
       const datesHoursButton = screen.getByTestId('Dates & heures')
 
@@ -440,9 +440,9 @@ describe('SearchResults component', () => {
         fireEvent.press(datesHoursButton)
       })
 
-      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
-
-      expect(fullscreenModalScrollView).toBeOnTheScreen()
+      expect(screen.getByTestId('fullscreenModalScrollView')).toHaveTextContent(
+        'Seules les sorties seront affichées'
+      )
     })
 
     it.each`
