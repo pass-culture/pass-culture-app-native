@@ -14,6 +14,7 @@ import { SingleFilterButton } from 'features/search/components/Buttons/SingleFil
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
+import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import {
   FILTER_TYPES,
@@ -25,7 +26,6 @@ import { useLocationType } from 'features/search/helpers/useLocationType/useLoca
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
-import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { analytics } from 'libs/analytics'
@@ -43,6 +43,7 @@ import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 
 const ANIMATION_DURATION = 700
 
@@ -112,6 +113,11 @@ export const SearchResults: React.FC = () => {
     visible: locationModalVisible,
     showModal: showLocationModal,
     hideModal: hideLocationModal,
+  } = useModal(false)
+  const {
+    visible: venueModalVisible,
+    showModal: showVenueModal,
+    hideModal: hideVenueModal,
   } = useModal(false)
   const {
     visible: datesHoursModalVisible,
@@ -222,7 +228,7 @@ export const SearchResults: React.FC = () => {
                 <SingleFilterButton
                   label={isVenue() ? locationLabel : 'Point de vente'}
                   testID="venueButton"
-                  onPress={showLocationModal}
+                  onPress={showVenueModal}
                   isSelected={isVenue()}
                 />
               ) : (
@@ -332,6 +338,7 @@ export const SearchResults: React.FC = () => {
         hideModal={hideLocationModal}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
+      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
       <DatesHoursModal
         title="Dates & heures"
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
