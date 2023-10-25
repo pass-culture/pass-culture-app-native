@@ -117,6 +117,7 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
       desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
+      noPadding={true}
       style={
         [
           {
@@ -136,9 +137,6 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
             "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
             "width": "100%",
           },
         ]
@@ -146,402 +144,199 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
       testID="modalContainer"
     >
       <View
-        onLayout={[Function]}
+        nativeID="testUuidV4"
         style={
           [
             {
-              "display": "flex",
               "flexDirection": "row",
-              "justifyContent": "center",
               "width": "100%",
             },
           ]
         }
-        testID="modalHeader"
+        testID="customModalHeader"
       >
         <View
-          justifyContent="left"
           style={
             [
               {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
-          }
-        >
-          <Text
-            nativeID="testUuidV4"
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
-                },
-              ]
-            }
-            testID="modalHeaderTitle"
-          >
-            Localisation
-          </Text>
-        </View>
-        <View
-          justifyContent="right"
-          style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
+                "paddingBottom": 16,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 16,
+                "width": "100%",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Fermer la modale"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
-            }
-            testID="Fermer la modale"
-          >
-            <View
-              height={20}
-              testID="rightIcon"
-              width={20}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <RCTScrollView
-        onContentSizeChange={[Function]}
-        scrollEnabled={true}
-        style={
-          [
-            {
-              "width": "100%",
-            },
-          ]
-        }
-        testID="fullscreenModalScrollView"
-      >
-        <View>
-          <View
-            numberOfSpaces={6}
             style={
               [
                 {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={false}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <View
-                fill="none"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="#eb0055"
-                style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Utiliser ma position actuelle
-              </Text>
-            </View>
-          </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 1,
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
                   "width": "100%",
                 },
               ]
             }
-          />
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={false}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
+            testID="modalHeader"
           >
             <View
+              justifyContent="left"
               style={
                 [
                   {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <View
-                fill="none"
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="#161617"
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Choisir une localisation
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "height": 4,
+                    "height": 28,
+                    "justifyContent": "flex-start",
+                    "width": 28,
                   },
                 ]
               }
             />
-            <Text
+            <View
               style={
                 [
                   {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
+                    "paddingHorizontal": 12,
+                    "zIndex": 1,
                   },
                 ]
               }
             >
-              Ville, code postal, adresse
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={8}
-            style={
-              [
-                {
-                  "height": 32,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                },
-              ]
-            }
-          >
+              <Text
+                numberOfLines={2}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+                testID="modalHeaderTitle"
+              >
+                Localisation
+              </Text>
+            </View>
             <View
-              accessibilityLabel="Valider la localisation"
+              justifyContent="right"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "height": 28,
+                    "justifyContent": "flex-end",
+                    "width": 28,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Fermer la modale"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Fermer la modale"
+              >
+                <View
+                  height={20}
+                  testID="rightIcon"
+                  width={20}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "width": "100%",
+            },
+          ]
+        }
+        testID="fullscreenModalView"
+      >
+        <RCTScrollView
+          style={
+            [
+              {
+                "paddingHorizontal": 24,
+              },
+            ]
+          }
+        >
+          <View>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityRole="button"
               accessibilityState={
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": true,
+                  "disabled": undefined,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -554,9 +349,9 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   "text": undefined,
                 }
               }
-              accessible={true}
+              accessible={false}
               collapsable={false}
-              focusable={false}
+              focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -566,46 +361,285 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
                   "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
                   "userSelect": "auto",
-                  "width": "100%",
                 }
               }
-              testID="Valider la localisation"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Valider la localisation
+                <View
+                  fill="none"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="#eb0055"
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Utiliser ma position actuelle
+                </Text>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="none"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="#161617"
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Choisir une localisation
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Ville, code postal, adresse
               </Text>
             </View>
+            <View
+              numberOfSpaces={8}
+              style={
+                [
+                  {
+                    "height": 32,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Valider la localisation"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Valider la localisation"
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Valider la localisation
+                </Text>
+              </View>
+            </View>
           </View>
-        </View>
-      </RCTScrollView>
+        </RCTScrollView>
+      </View>
     </View>
   </View>
 </Modal>

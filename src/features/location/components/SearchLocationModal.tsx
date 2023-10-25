@@ -17,13 +17,14 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
-import { Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 const DEFAULT_RADIUS = 50
 const DEFAULT_DIGITAL_OFFERS_SELECTION = false
@@ -169,88 +170,107 @@ export const SearchLocationModal = ({
   return (
     <AppModal
       visible={visible}
-      title="Localisation"
-      rightIconAccessibilityLabel="Fermer la modale"
-      rightIcon={Close}
-      onRightIconPress={onClose}
+      title=""
+      noPadding
       isUpToStatusBar
-      scrollEnabled
+      scrollEnabled={false}
       onModalHide={onModalHideRef.current}
-      keyboardShouldPersistTaps="handled">
-      <Spacer.Column numberOfSpaces={6} />
-      <LocationModalButton
-        onPress={selectLocationMode(LocationMode.GEOLOCATION)}
-        icon={PositionFilled}
-        color={geolocationModeColor}
-        title="Utiliser ma position actuelle"
-        subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
-      />
-      {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <LocationSearchFilters
-            aroundRadius={aroundRadius}
-            onValuesChange={onValuesChange}
-            includeDigitalOffers={includeDigitalOffers}
-            setIncludeDigitalOffers={setIncludeDigitalOffers}
+      keyboardShouldPersistTaps="handled"
+      customModalHeader={
+        <HeaderContainer>
+          <ModalHeader
+            title="Localisation"
+            rightIconAccessibilityLabel="Fermer la modale"
+            rightIcon={Close}
+            onRightIconPress={onClose}
           />
-        </React.Fragment>
-      )}
-      <Spacer.Column numberOfSpaces={6} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={6} />
-      <LocationModalButton
-        onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
-        icon={MagnifyingGlassFilled}
-        color={customLocationModeColor}
-        title="Choisir une localisation"
-        subtitle={LOCATION_PLACEHOLDER}
-      />
-      {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
-        <React.Fragment>
-          <LocationSearchInput
-            selectedPlace={selectedPlace}
-            setSelectedPlace={setSelectedPlace}
-            placeQuery={placeQuery}
-            setPlaceQuery={setPlaceQuery}
-            onResetPlace={onResetPlace}
-            onSetSelectedPlace={onPlaceSelection}
-          />
-          <Spacer.Column numberOfSpaces={4} />
-          {!!selectedPlace && (
+        </HeaderContainer>
+      }>
+      <StyledScrollView>
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.GEOLOCATION)}
+          icon={PositionFilled}
+          color={geolocationModeColor}
+          title="Utiliser ma position actuelle"
+          subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
+        />
+        {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
               aroundRadius={aroundRadius}
               onValuesChange={onValuesChange}
               includeDigitalOffers={includeDigitalOffers}
               setIncludeDigitalOffers={setIncludeDigitalOffers}
             />
-          )}
-        </React.Fragment>
-      )}
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonContainer>
-        <ButtonPrimary
-          wording="Valider la localisation"
-          disabled={!selectedPlace && selectedLocationMode !== LocationMode.GEOLOCATION}
-          onPress={onSubmit}
+          </React.Fragment>
+        )}
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
+          icon={MagnifyingGlassFilled}
+          color={customLocationModeColor}
+          title="Choisir une localisation"
+          subtitle={LOCATION_PLACEHOLDER}
         />
-      </ButtonContainer>
-      <Spacer.Column numberOfSpaces={8} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>Tu peux aussi choisir un point de vente précis</Typo.Body>
-      <Spacer.Column numberOfSpaces={1} />
-      <ButtonTertiaryBlack
-        wording="Trouver un point de vente"
-        icon={LocationBuildingFilled}
-        onPress={onPressShowVenueModal}
-        justifyContent="flex-start"
-      />
-      <Spacer.Column numberOfSpaces={keyboardHeight / 4} />
+        {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+          <React.Fragment>
+            <LocationSearchInput
+              selectedPlace={selectedPlace}
+              setSelectedPlace={setSelectedPlace}
+              placeQuery={placeQuery}
+              setPlaceQuery={setPlaceQuery}
+              onResetPlace={onResetPlace}
+              onSetSelectedPlace={onPlaceSelection}
+            />
+            <Spacer.Column numberOfSpaces={4} />
+            {!!selectedPlace && (
+              <LocationSearchFilters
+                aroundRadius={aroundRadius}
+                onValuesChange={onValuesChange}
+                includeDigitalOffers={includeDigitalOffers}
+                setIncludeDigitalOffers={setIncludeDigitalOffers}
+              />
+            )}
+          </React.Fragment>
+        )}
+        <Spacer.Column numberOfSpaces={8} />
+        <ButtonContainer>
+          <ButtonPrimary
+            wording="Valider la localisation"
+            disabled={!selectedPlace && selectedLocationMode !== LocationMode.GEOLOCATION}
+            onPress={onSubmit}
+          />
+        </ButtonContainer>
+        <Spacer.Column numberOfSpaces={8} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={4} />
+        <Typo.Body>Tu peux aussi choisir un point de vente précis</Typo.Body>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonTertiaryBlack
+          wording="Trouver un point de vente"
+          icon={LocationBuildingFilled}
+          onPress={onPressShowVenueModal}
+          justifyContent="flex-start"
+        />
+        <Spacer.Column numberOfSpaces={keyboardHeight / 4} />
+      </StyledScrollView>
     </AppModal>
   )
 }
 
 const ButtonContainer = styled.View({
   alignItems: 'center',
+})
+
+const StyledScrollView = styled.ScrollView({
+  paddingHorizontal: getSpacing(6),
+})
+
+const HeaderContainer = styled.View({
+  padding: getSpacing(4),
+  width: '100%',
 })
