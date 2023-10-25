@@ -8,13 +8,12 @@ import { SearchResults } from 'features/search/components/SearchResults/SearchRe
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchState, UserData } from 'features/search/types'
+import { SearchState, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
-import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
@@ -100,11 +99,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const Kourou: SuggestedPlace = {
-  label: 'Kourou',
-  info: 'Guyane',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
-}
 const venue: Venue = mockedSuggestedVenues[0]
 
 jest.useFakeTimers({ legacyFakeTimers: true })
@@ -375,45 +369,46 @@ describe('SearchResults component', () => {
     })
   })
 
-  describe('Location filter', () => {
-    it('should display location filter button', async () => {
-      mockPosition = null
-
+  describe('Venue filter', () => {
+    it('should display "Point de vente" in venue filter if no venue selected', async () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('Localisation')).toBeOnTheScreen()
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
     })
 
-    it.each`
-      locationType               | locationFilter                                                                   | position            | locationButtonLabel
-      ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
-      ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Localisation'}
-      ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
-      ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-      ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-      ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
-      ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
-    `(
-      'should display $locationButtonLabel in location filter button label when location type is $locationType and position is $position',
-      async ({
-        locationFilter,
-        position,
-        locationButtonLabel,
-      }: {
-        locationFilter: LocationFilter
-        position: Position
-        locationButtonLabel: string
-      }) => {
-        mockPosition = position
-        mockSearchState = { ...searchState, locationFilter }
-
-        render(<SearchResults />)
-        await act(async () => {})
-
-        expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
+    it('should display venueButtonLabel in venue filter if a venue is selected', async () => {
+      mockSearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.VENUE, venue },
       }
-    )
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
+    })
+
+    it('should display "Point de vente" in venue filter if location type is AROUND_ME', async () => {
+      mockSearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+      }
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+    })
+
+    it('should display "Point de vente" in venue filter if location type is EVERYWHERE', async () => {
+      mockSearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.EVERYWHERE },
+      }
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+    })
   })
 
   describe('Dates and hours filter', () => {
