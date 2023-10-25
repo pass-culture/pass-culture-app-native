@@ -461,6 +461,16 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
         />
       </View>
     </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
   </View>,
 ]
 `;
