@@ -115,8 +115,9 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
         />
       ) : null}
       <StyledTouchable
+        testID="Ouvrir la modale de localisation depuis le widget"
         onPress={showLocationModal}
-        accessibilityLabel="Ouvrir la modale de localisation"
+        accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
         <IconContainer isActive={isWidgetHighlighted}>
           {isWidgetHighlighted ? <LocationPointerFilled /> : <LocationPointerNotFilled />}

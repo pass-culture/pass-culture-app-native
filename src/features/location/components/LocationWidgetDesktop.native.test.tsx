@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
+import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { useLocation } from 'libs/geolocation'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -16,16 +16,16 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('libs/geolocation')
 const mockUseGeolocation = useLocation as jest.Mock
 
-describe('LocationSearchWidget', () => {
+describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({
       isGeolocated: true,
       isCustomPosition: true,
       place: { label: 'test' },
     })
-    render(<LocationSearchWidget />)
+    render(<LocationWidgetDesktop />)
 
-    const button = screen.getByTestId('Ouvrir la modale de localisation depuis la recherche')
+    const button = screen.getByTestId('Ouvrir la modale de localisation depuis le titre')
 
     fireEvent.press(button)
 
@@ -45,7 +45,7 @@ describe('LocationSearchWidget', () => {
         place: null,
       })
 
-      render(<LocationSearchWidget />)
+      render(<LocationWidgetDesktop />)
 
       expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
       expect(screen.getByText('Ma position')).toBeOnTheScreen()
@@ -66,7 +66,7 @@ describe('LocationSearchWidget', () => {
         userPosition: null,
       })
 
-      render(<LocationSearchWidget />)
+      render(<LocationWidgetDesktop />)
 
       expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
       expect(screen.getByText('Me localiser')).toBeOnTheScreen()
@@ -81,7 +81,7 @@ describe('LocationSearchWidget', () => {
       userPosition: null,
     })
 
-    render(<LocationSearchWidget />)
+    render(<LocationWidgetDesktop />)
 
     expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
     expect(screen.getByText('my place')).toBeOnTheScreen()
