@@ -13,6 +13,7 @@ import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
@@ -20,6 +21,8 @@ import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues
 import { Offer } from 'shared/offer/types'
 import { fireEvent, render, act, screen } from 'tests/utils'
 import { theme } from 'theme'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-query')
 
@@ -100,12 +103,13 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const venue: Venue = mockedSuggestedVenues[0]
+
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: Venue = mockedSuggestedVenues[0]
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 
@@ -286,7 +290,7 @@ describe('SearchResults component', () => {
       })
     })
 
-    describe('when user is logged in and benificiary with no credit', () => {
+    describe('when user is logged in and beneficiary with no credit', () => {
       beforeEach(() => {
         mockUseAuthContext.mockReturnValueOnce({
           isLoggedIn: false,
@@ -378,7 +382,6 @@ describe('SearchResults component', () => {
   describe('Location filter', () => {
     it('should display location filter button', async () => {
       mockPosition = null
-
       render(<SearchResults />)
       await act(async () => {})
 
@@ -407,13 +410,58 @@ describe('SearchResults component', () => {
       }) => {
         mockPosition = position
         mockSearchState = { ...searchState, locationFilter }
-
         render(<SearchResults />)
         await act(async () => {})
 
         expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
       }
     )
+  })
+
+  describe('Venue filter', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if no venue selected', async () => {
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+    })
+
+    it('when ENABLE_APP_LOCATION featureFlag, should display venueButtonLabel in venue filter if a venue is selected', async () => {
+      mockSearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.VENUE, venue },
+      }
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
+    })
+
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if location type is AROUND_ME', async () => {
+      mockSearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+      }
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+    })
+
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if location type is EVERYWHERE', async () => {
+      mockSearchState = {
+        ...searchState,
+        locationFilter: { locationType: LocationType.EVERYWHERE },
+      }
+      render(<SearchResults />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+    })
   })
 
   describe('Dates and hours filter', () => {
