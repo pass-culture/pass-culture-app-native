@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ScrollView, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,11 +11,11 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -65,18 +65,15 @@ export const FavoritesSorts: React.FC = () => {
   }
 
   return (
-    <Container>
-      <PageHeaderSecondary title="Trier" />
-      <StyledScrollView>
+    <SecondaryPageWithBlurHeader headerTitle="Trier" onGoBack={goBack}>
+      <View>
         <Spacer.Column numberOfSpaces={4} />
-
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
           <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>
             Trier par
           </Typo.Title4>
         </TitleContainer>
-
         <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
           <VerticalUl>
             {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
@@ -99,25 +96,13 @@ export const FavoritesSorts: React.FC = () => {
             })}
           </VerticalUl>
         </View>
-      </StyledScrollView>
-
+      </View>
       <ButtonContainer>
         <ButtonPrimary wording="Valider" onPress={onValidation} center />
       </ButtonContainer>
-    </Container>
+    </SecondaryPageWithBlurHeader>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
-
-const StyledScrollView = styled(ScrollView)({
-  flexGrow: 1,
-  paddingLeft: getSpacing(8),
-  paddingRight: getSpacing(5),
-})
 
 const TitleContainer = styled.View({
   flexDirection: 'row',
