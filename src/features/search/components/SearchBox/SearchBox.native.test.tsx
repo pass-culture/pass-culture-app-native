@@ -355,6 +355,25 @@ describe('SearchBox component', () => {
       )
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
+
+    it('should reset input when user click on reset icon when being on the search results view when isDesktopViewport', async () => {
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'Some text' } })
+      renderSearchBox(true)
+
+      const resetIcon = screen.getByTestId('Réinitialiser la recherche')
+      await act(async () => {
+        fireEvent.press(resetIcon)
+      })
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
+          query: '',
+          view: SearchView.Results,
+        })
+      )
+      expect(mockClear).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should execute a search if input is not empty', async () => {
