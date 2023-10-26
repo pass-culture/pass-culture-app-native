@@ -34,8 +34,9 @@ export const LocationSearchWidget = () => {
 
   return (
     <Container>
+      <Spacer.Row numberOfSpaces={1} />
       <Separator.Vertical />
-      <Spacer.Row numberOfSpaces={2} />
+      <Spacer.Row numberOfSpaces={1} />
       <LocationButton
         onPress={showLocationModal}
         testID="Ouvrir la modale de localisation depuis la recherche">

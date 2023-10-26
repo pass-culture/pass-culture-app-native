@@ -313,7 +313,6 @@ const StyledView = styled.View({
   justifyContent: 'center',
   width: getSpacing(10),
   height: getSpacing(10),
-  marginRight: getSpacing(2),
 })
 
 const FlexView = styled.View({
