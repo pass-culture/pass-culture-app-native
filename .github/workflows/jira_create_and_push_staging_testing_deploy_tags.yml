@@ -12,12 +12,13 @@ permissions:
   contents: read
   id-token: write
 
+env:
+  GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
+  GIT_CONFIG_NAME: ${{ github.actor }}
+
 jobs:
   create_and_push_staging_tag:
     runs-on: [self-hosted, linux, x64, regular]
-    env:
-      GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
-      GIT_CONFIG_NAME: ${{ github.actor }}
     steps:
       - name: Checkout commit hash
         uses: actions/checkout@v4
@@ -39,9 +40,6 @@ jobs:
           git push origin "$TAG_NAME"
   create_and_push_testing_tag:
     runs-on: [self-hosted, linux, x64, regular]
-    env:
-      GIT_CONFIG_EMAIL: github-actions-bot@passculture.app
-      GIT_CONFIG_NAME: ${{ github.actor }}
     steps:
       - uses: actions/checkout@v4
         with:
