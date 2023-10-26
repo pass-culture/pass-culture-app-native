@@ -14,7 +14,6 @@ export const mockDefaultSettings: SettingsResponse = {
   idCheckAddressAutocompletion: true,
   isRecaptchaEnabled: true,
   objectStorageUrl: 'https://localhost-storage',
-  proDisableEventsQrcode: false,
 }
 export const useSettingsContext = jest.fn().mockReturnValue({
   data: mockDefaultSettings,
