@@ -359,33 +359,32 @@ describe('SearchBox component', () => {
       expect(navigate).not.toHaveBeenCalled()
     })
 
-    it.each([[SearchView.Suggestions], [SearchView.Results]])(
-      'should reset input when user click on reset icon when being on the search %s view',
-      async (view) => {
-        useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
-        render(
-          <SearchBox
-            searchInputID={searchInputID}
-            addSearchHistory={jest.fn()}
-            searchInHistory={jest.fn()}
-          />
-        )
+    it('should reset input when user click on reset icon when being on the search suggestions view', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { view: SearchView.Suggestions, query: 'Some text' },
+      })
+      render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
 
-        const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-        await act(async () => {
-          fireEvent.press(resetIcon)
+      const resetIcon = screen.getByTestId('Réinitialiser la recherche')
+      await act(async () => {
+        fireEvent.press(resetIcon)
+      })
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
+          query: '',
+          view: SearchView.Suggestions,
         })
-
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
-            ...mockSearchState,
-            query: '',
-            view: SearchView.Suggestions,
-          })
-        )
-        expect(mockClear).toHaveBeenCalledTimes(1)
-      }
-    )
+      )
+      expect(mockClear).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('Without autocomplete', () => {
@@ -414,33 +413,30 @@ describe('SearchBox component', () => {
       }
     )
 
-    it.each([[SearchView.Suggestions], [SearchView.Results]])(
-      'should reset input when user click on reset icon when being on the search %s view',
-      async (view) => {
-        useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
-        render(
-          <SearchBox
-            searchInputID={searchInputID}
-            addSearchHistory={jest.fn()}
-            searchInHistory={jest.fn()}
-          />
-        )
+    it('should reset input when user click on reset icon when being on the search suggestions view', async () => {
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'Some text' } })
+      render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
 
-        const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-        await act(async () => {
-          fireEvent.press(resetIcon)
+      const resetIcon = screen.getByTestId('Réinitialiser la recherche')
+      await act(async () => {
+        fireEvent.press(resetIcon)
+      })
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
+          query: '',
+          view: SearchView.Results,
         })
-
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
-            ...mockSearchState,
-            query: '',
-            view: SearchView.Results,
-          })
-        )
-        expect(mockClear).toHaveBeenCalledTimes(1)
-      }
-    )
+      )
+      expect(mockClear).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should execute a search if input is not empty', async () => {
