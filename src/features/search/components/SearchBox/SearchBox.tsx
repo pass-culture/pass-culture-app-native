@@ -10,7 +10,7 @@ import {
   TextInput as RNTextInput,
   TextInputSubmitEditingEventData,
 } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -56,7 +56,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
-
+  const { isDesktopViewport } = useTheme()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -239,6 +239,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     ? params?.view === SearchView.Results
     : params === undefined || params.view === SearchView.Landing
 
+  const disableInputClearButton = params?.view === SearchView.Results && !isDesktopViewport
+
   return (
     <RowContainer>
       {!!accessibleHiddenTitle && (
@@ -267,6 +269,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}
               numberOfLinesForLocation={locationType === LocationType.PLACE ? 1 : 2}
+              disableInputClearButton={disableInputClearButton}
             />
           </FlexView>
         </SearchInputA11yContainer>
