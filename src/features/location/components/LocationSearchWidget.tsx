@@ -64,11 +64,11 @@ const Container = styled.View({
 
 const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: theme.icons.sizes.small,
+  size: theme.icons.sizes.extraSmall,
 }))({})
 
 const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.icons.sizes.extraSmall,
 }))``
 
 const LocationTitle = styled(Typo.Caption).attrs({
