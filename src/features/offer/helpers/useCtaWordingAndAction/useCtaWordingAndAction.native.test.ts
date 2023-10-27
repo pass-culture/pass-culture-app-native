@@ -82,6 +82,32 @@ describe('getCtaWordingAndAction', () => {
         wording: 'Accéder au site partenaire',
       })
     })
+
+    it('should display "Accéder au site partenaire" wording when external url and offer is digital and free', () => {
+      const result = getCtaWordingAndAction({
+        isLoggedIn: true,
+        userStatus: { statusType: YoungStatusType.non_eligible },
+        isBeneficiary: false,
+        offer: buildOffer({
+          externalTicketOfficeUrl: 'https://url-externe',
+          isDigital: true,
+          stocks: [{ ...baseOffer.stocks[0], price: 0 }],
+        }),
+        subcategory: buildSubcategory({}),
+        hasEnoughCredit: false,
+        bookedOffers: {},
+        isUnderageBeneficiary: false,
+        bookOffer: () => {},
+        isBookingLoading: false,
+        booking: undefined,
+      })
+
+      expect(result).toEqual({
+        externalNav: { url: 'https://url-externe' },
+        isDisabled: false,
+        wording: 'Accéder au site partenaire',
+      })
+    })
   })
 
   describe('Eligible but non Beneficiary yet', () => {
