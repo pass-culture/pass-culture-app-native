@@ -561,6 +561,11 @@ export interface BookingVenueResponse {
    * @memberof BookingVenueResponse
    */
   publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  timezone: string
 }
 /**
  * @export
@@ -1819,6 +1824,11 @@ export interface OfferVenueResponse {
    * @memberof OfferVenueResponse
    */
   publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  timezone: string
 }
 
 /**
