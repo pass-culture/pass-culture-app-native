@@ -239,7 +239,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     ? params?.view === SearchView.Results
     : params === undefined || params.view === SearchView.Landing
 
-  const disableInputClearButton = params?.view === SearchView.Results && !isDesktopViewport
+  const disableInputClearButton =
+    params?.view === SearchView.Results && !isDesktopViewport && !!enableAppLocation
 
   return (
     <RowContainer>

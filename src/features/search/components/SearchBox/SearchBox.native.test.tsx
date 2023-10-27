@@ -34,6 +34,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics')
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
@@ -339,6 +341,26 @@ describe('SearchBox component', () => {
 
     it('should reset input when user click on reset icon when being on the search suggestions view', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'Some text' } })
+      renderSearchBox()
+
+      const resetIcon = screen.getByTestId('Réinitialiser la recherche')
+      await act(async () => {
+        fireEvent.press(resetIcon)
+      })
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
+          query: '',
+          view: SearchView.Results,
+        })
+      )
+      expect(mockClear).toHaveBeenCalledTimes(1)
+    })
+
+    it('should reset input when user click on reset icon when being on the search results view with feature flag appLocation not enabled', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+      useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'Some text' } })
       renderSearchBox()
 
       const resetIcon = screen.getByTestId('Réinitialiser la recherche')
