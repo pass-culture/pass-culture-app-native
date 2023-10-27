@@ -1,4 +1,5 @@
 import { OfferStockResponse } from 'api/gen'
+import { getTimeZonedDate } from 'libs/parsers'
 
 export enum OfferStatus {
   BOOKABLE = 'BOOKABLE',
@@ -14,11 +15,11 @@ export const formatToKeyDate = (dateString: Date | string) => {
   return `${year}-${month}-${day}`
 }
 
-export const formatHour = (dateString: string | null | undefined): string => {
+export const formatHour = (dateString: string | null | undefined, timezone?: string): string => {
   if (!dateString) return ''
-  const date = new Date(dateString)
+  const date = timezone ? getTimeZonedDate(dateString, timezone) : new Date(dateString)
   const hours = date.getHours()
-  const minutes = ('0' + date.getMinutes()).slice(-2)
+  const minutes = String(date.getMinutes()).padStart(2, '0')
   return `${hours}:${minutes}`
 }
 
