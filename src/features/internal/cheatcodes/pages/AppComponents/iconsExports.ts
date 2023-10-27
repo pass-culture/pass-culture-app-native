@@ -113,6 +113,7 @@ import { TwitterRound } from 'ui/svg/icons/socialNetwork/TwitterRound'
 import { ViberRound } from 'ui/svg/icons/socialNetwork/ViberRound'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
+import { Stock } from 'ui/svg/icons/Stock'
 import { Sun } from 'ui/svg/icons/Sun'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -252,6 +253,7 @@ export const TertiaryAndSmallerIcons = {
   Profile,
   Question,
   SMSFilled,
+  Stock,
   Validate,
   ValidateOff,
 }
