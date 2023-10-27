@@ -5,7 +5,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { OtherOffer } from 'ui/svg/icons/OtherOffer'
+import { Stock } from 'ui/svg/icons/Stock'
 
 type Props = {
   onClose?: VoidFunction
@@ -24,12 +24,7 @@ export const OfferDuo = ({ onClose }: Props) => {
 
   return (
     <React.Fragment>
-      <FilterRow
-        icon={OtherOffer}
-        title="Duo"
-        description={description}
-        onPress={showOfferDuoModal}
-      />
+      <FilterRow icon={Stock} title="Duo" description={description} onPress={showOfferDuoModal} />
       <OfferDuoModal
         title="Duo"
         accessibilityLabel="Ne pas filtrer les offres duo et retourner aux filtres de recherche"
