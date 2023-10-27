@@ -56,7 +56,7 @@ describe('<VenueHeader />', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Venue',
       from: 'venue',
-      venue_id: venueResponseSnap.id,
+      venueId: venueResponseSnap.id,
     })
   })
 })

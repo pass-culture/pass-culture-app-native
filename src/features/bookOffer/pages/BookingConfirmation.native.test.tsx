@@ -114,7 +114,7 @@ describe('<BookingConfirmation />', () => {
       expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
         type: 'Offer',
         from: 'bookingconfirmation',
-        offer_id: mockOfferId,
+        offerId: mockOfferId,
       })
     })
 

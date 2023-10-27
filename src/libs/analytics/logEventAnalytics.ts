@@ -49,8 +49,8 @@ type ConsultHomeParams =
   | HighlightThematicBlockThematicHome
 
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
-  | { type: 'Offer'; offer_id: number }
-  | { type: 'Venue'; venue_id: number }
+  | { type: 'Offer'; offerId: number }
+  | { type: 'Venue'; venueId: number }
   | { type: 'App' }
 )
 
