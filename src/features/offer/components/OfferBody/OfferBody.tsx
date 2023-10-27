@@ -224,7 +224,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   if (!offer) return <React.Fragment></React.Fragment>
   const { accessibility, venue } = offer
-  const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
+  const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId] ?? {}
 
   const showVenueBanner = venue.isPermanent === true
   const fullAddress = showVenueBanner
