@@ -4,11 +4,12 @@ import { Position } from 'libs/geolocation'
 const EARTH_RADIUS_KM = 6378.137
 
 export const getHumanizeRelativeDistance = (
-  userLat?: number | null,
-  userLng?: number | null,
-  venueLat?: number | null,
-  venueLng?: number | null
+  userLocation: Geoloc,
+  venueLocation: Geoloc
 ): string | undefined => {
+  const { lat: userLat, lng: userLng } = userLocation
+  const { lat: venueLat, lng: venueLng } = venueLocation
+
   if (!userLat || !userLng || !venueLat || !venueLng) return
 
   const distanceInMeters = computeDistanceInMeters(venueLat, venueLng, userLat, userLng)
@@ -40,7 +41,17 @@ export const humanizeDistance = (distance: number) => {
 }
 
 export const formatDistance = (coords: Geoloc, position: Position): string | undefined => {
-  if (!position) return
+  if (!position || !coords) return
 
-  return getHumanizeRelativeDistance(position.latitude, position.longitude, coords.lat, coords.lng)
+  const userLocation: Geoloc = {
+    lat: position.latitude,
+    lng: position.longitude,
+  }
+
+  const venueLocation: Geoloc = {
+    lat: coords.lat,
+    lng: coords.lng,
+  }
+
+  return getHumanizeRelativeDistance(userLocation, venueLocation)
 }
