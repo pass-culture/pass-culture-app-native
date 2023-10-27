@@ -16,7 +16,7 @@ jobs:
     runs-on: [self-hosted, linux, x64, regular]
     outputs:
       proxy_version: ${{ steps.proxy-version.outputs.proxy_version }}
-      is_greater_version: ${{ steps.proxy-rollback-protection.outputs.is_greater_version }}
+      is_greater_or_equal_version: ${{ steps.proxy-rollback-protection.outputs.is_greater_or_equal_version }}
       base_tag: ${{ steps.proxy-base-tag.outputs.base_tag }}
     steps:
       - uses: actions/checkout@v4
@@ -36,9 +36,9 @@ jobs:
 
       # The rollback protection use semver-compare-cli from npmregistry, exemple of comparaison
       # 
-      # semver-compare 1.0.0 1.0.1 => exit 0
-      # semver-compare 1.0.1 1.0.0 => exit 1
-      # semver-compare 1.0.0 1.0.0 => exit 0
+      # semver-compare 1.0.0 ge 1.0.1 => exit 1
+      # semver-compare 1.0.1 ge 1.0.0 => exit 0
+      # semver-compare 1.0.0 ge 1.0.0 => exit 0
       #
       # Last exemple shows it is OK to redeploy the same version, this features will be used to support hotfix deployment.
       # Hotfix deployment in passculture-app-native are version such as 1.0.0-1 (hotfix #1 for version 1.0.0)
@@ -48,18 +48,18 @@ jobs:
         run: |
           npm install -g semver-compare-cli
           export current_version=$(cat server/package.json | jq -r .version)
-          export is_greater_version=$(npx semver-compare ${{ steps.proxy-version.outputs.proxy_version }} ${current_version} && echo true || echo false)
-          echo "is_greater_version=$is_greater_version" >> $GITHUB_OUTPUT
+          export is_greater_or_equal_version=$(npx semver-compare ${{ steps.proxy-version.outputs.proxy_version }} ge ${current_version} && echo true || echo false)
+          echo "is_greater_or_equal_version=$is_greater_or_equal_version" >> $GITHUB_OUTPUT
           echo "proxy version is ${{ steps.proxy-version.outputs.proxy_version }}"
           echo "current version is ${current_version}"
-          echo "is greater version: ${is_greater_version}"
+          echo "is greater or equal version: ${is_greater_or_equal_version}"
 
 
       # Since the running proxy server is exposing the version from it's package.json and does not expose the hotfix tag (which is a tag from an existing version)
       # we filter tags by tagger date descending and pick the latest one for a given version, this can be an hotfix, ie: hotfix-staging-1.0.0-1
       # It will later be used by check-server-diff workflow as the latest tag for a given version as the base_sha to diff the "server" directory for changes and decide if a proxy deployment is needed.
       - id: proxy-base-tag
-        if: ${{ inputs.WEBAPP_URL && steps.proxy-rollback-protection.outputs.is_greater_version != 'false' }}
+        if: ${{ inputs.WEBAPP_URL && steps.proxy-rollback-protection.outputs.is_greater_or_equal_version != 'false' }}
         name: Get last git tag that match server proxy version
         run: |
           export base_tag=$(git tag --sort=-taggerdate | grep ${{ steps.proxy-version.outputs.proxy_version }} | head -n1)
