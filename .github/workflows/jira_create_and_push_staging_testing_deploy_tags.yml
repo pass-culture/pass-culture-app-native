@@ -97,11 +97,9 @@ jobs:
           BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
           echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
       - name: Update build number in package.json
-        uses: jossef/action-set-json-field@v2.1
+        uses: sergeysova/jq-action@v2
         with:
-          file: package.json
-          field: build
-          value: ${{ steps.build-number.outputs.build_number }}
+          cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
       - name: Commit changes
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
