@@ -55,9 +55,9 @@ type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
 )
 
 type ScreenshotParams = { from: string } & (
-  | { offer_id?: number }
-  | { venue_id?: number }
-  | { booking_id?: number }
+  | { offerId?: number }
+  | { venueId?: number }
+  | { bookingId?: number }
 )
 
 export type OfferAnalyticsData = {
