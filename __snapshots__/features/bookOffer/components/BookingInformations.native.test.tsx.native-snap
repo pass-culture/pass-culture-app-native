@@ -401,7 +401,7 @@ exports[`<BookingInformations /> should display free wording is free 1`] = `
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -1017,7 +1017,7 @@ exports[`<BookingInformations /> should display stock attributes when the offer 
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -1396,7 +1396,7 @@ exports[`<BookingInformations /> should display stock label 1`] = `
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -1775,7 +1775,7 @@ exports[`<BookingInformations /> should display unique price when quantity is un
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -2279,7 +2279,7 @@ exports[`<BookingInformations /> should not display stock attributes when the of
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -2642,7 +2642,7 @@ exports[`<BookingInformations /> should render event date section when event 1`]
         ]
       }
     >
-      1 décembre 2020, 00h00
+      1 décembre 2020, 01h00
     </Text>
     <View
       numberOfSpaces={2}

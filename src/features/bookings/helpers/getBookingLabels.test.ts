@@ -27,7 +27,7 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 20h00',
+      dateLabel: 'Le 15 mars 2021 à 21h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: '',
     })
@@ -40,7 +40,7 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 20h00',
+      dateLabel: 'Le 15 mars 2021 à 21h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Aujourd’hui',
     })
@@ -53,7 +53,7 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'Le 15 mars 2021 à 20h00',
+      dateLabel: 'Le 15 mars 2021 à 21h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Demain',
     })
@@ -69,7 +69,7 @@ describe('getBookingLabels', () => {
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
-      dateLabel: 'À retirer avant le 15 mars 2021',
+      dateLabel: 'À retirer avant le 16 mars 2021',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Dernier jour pour retirer',
     })

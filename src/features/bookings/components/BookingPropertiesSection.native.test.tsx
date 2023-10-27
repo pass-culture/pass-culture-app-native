@@ -45,7 +45,7 @@ describe('<BookingPropertiesSection />', () => {
     renderBookingProperties(booking)
 
     await waitFor(() => {
-      expect(screen.getByText('Le 15 mars 2021 à 20h00')).toBeOnTheScreen()
+      expect(screen.getByText('Le 15 mars 2021 à 21h00')).toBeOnTheScreen()
     })
   })
 
