@@ -35,11 +35,13 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     onFocus: onFocusProp,
     children,
     isRequiredField,
+    disableClearButton,
   } = customProps
   const { value = '' } = nativeProps
   const searchInputID = props.searchInputID ?? uuidv4()
   const searchInput = useRef<RNTextInput>(null)
   const defaultKeyboardType = Platform.OS === 'web' ? 'web-search' : undefined
+  const showClearButton = value.length > 0 && !disableClearButton
 
   function onFocus() {
     onFocusDefault()
@@ -92,7 +94,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           textStyle={props.textStyle}
         />
         {children}
-        {value.length > 0 && (
+        {!!showClearButton && (
           <Touchable
             hitSlop={hitSlop}
             onPress={onPressRightIcon}
