@@ -71,7 +71,10 @@ export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
       <React.Fragment>
         <Item Icon={Booking} message={name} />
         {!!stock.beginningDatetime && (
-          <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
+          <Item
+            Icon={Calendar}
+            message={formatDate(stock.beginningDatetime, offer.venue.timezone)}
+          />
         )}
         {!!shouldDisplayAddress && (
           <Item Icon={LocationBuilding} message={address} testID="address" />

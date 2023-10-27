@@ -237,7 +237,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
         ]
       }
     >
-      2 mars 2021, 20h00
+      2 mars 2021, 21h00
     </Text>
     <View
       numberOfSpaces={2}
@@ -860,7 +860,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
         ]
       }
     >
-      2 mars 2021, 20h00
+      2 mars 2021, 21h00
     </Text>
     <View
       numberOfSpaces={2}

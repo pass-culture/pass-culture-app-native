@@ -25,7 +25,7 @@ interface Props {
 
 export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo, stocks = [] } = useBookingOffer() ?? {}
+  const { isDuo, stocks = [], venue } = useBookingOffer() ?? {}
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current
@@ -116,7 +116,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
               index={index}
               key={stock.id}
               price={stock.price}
-              hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
+              hour={formatHour(stock.beginningDatetime, venue?.timezone).replace(':', 'h')}
               selected={stock.id === bookingState.stockId}
               onPress={() => selectStock(stock.id)}
               testID={`HourChoice${stock.id}`}

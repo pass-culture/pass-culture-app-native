@@ -8,6 +8,7 @@ import { Booking, BookingProperties } from 'features/bookings/types'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
+  getTimeZonedDate,
   isToday,
   isTomorrow,
 } from 'libs/parsers'
@@ -19,15 +20,26 @@ function getDateLabel(booking: Booking, properties: BookingProperties): string {
     return getBookingLabelForActivationCode(booking)
   }
 
+  const {
+    stock: {
+      beginningDatetime,
+      offer: { venue },
+    },
+  } = booking
+
   if (properties.isEvent) {
-    if (!booking.stock.beginningDatetime) return ''
-    const day = formatToCompleteFrenchDateTime(new Date(booking.stock.beginningDatetime), false)
+    if (!beginningDatetime) return ''
+    const timezonedDate = getTimeZonedDate(beginningDatetime, venue.timezone)
+    const day = formatToCompleteFrenchDateTime(timezonedDate, false)
     return `Le ${day}`
   }
 
   if (properties.isPhysical) {
     if (!booking.expirationDate) return ''
-    const dateLimit = formatToCompleteFrenchDate(new Date(booking.expirationDate), false)
+    const dateLimit = formatToCompleteFrenchDate(
+      getTimeZonedDate(booking.expirationDate, venue.timezone),
+      false
+    )
     return `À retirer avant le ${dateLimit}`
   }
 

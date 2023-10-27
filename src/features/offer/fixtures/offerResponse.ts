@@ -57,6 +57,7 @@ export const offerResponseSnap: OfferResponse = {
     publicName: undefined,
     coordinates: { latitude: 20, longitude: 2 },
     isPermanent: true,
+    timezone: 'Europe/Paris',
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
   metadata: {
