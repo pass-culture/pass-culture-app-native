@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableWithoutFeedback, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CreditStatusTag } from 'features/tutorial/components/CreditStatusTag'
@@ -7,6 +7,7 @@ import { CreditStatus } from 'features/tutorial/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { getBackgroundColor } from 'features/tutorial/helpers/getBackgroundColor'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
+import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
