@@ -5,14 +5,17 @@ import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/typ
 import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { Again } from 'ui/svg/icons/Again'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
@@ -32,6 +35,8 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
 
+  const onResetPress = () => {}
+
   return (
     <AppModal
       visible={visible}
@@ -42,10 +47,11 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
       isUpToStatusBar
       scrollEnabled={false}
       fixedModalBottom={
-        <Center>
-          <ButtonPrimary wording="Rechercher" disabled={!isVenueSelected} onPress={doApplySearch} />
+        <Container>
+          <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
+          <SearchButton wording="Rechercher" disabled={!isVenueSelected} onPress={doApplySearch} />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
-        </Center>
+        </Container>
       }>
       <Spacer.Column numberOfSpaces={10} />
       <SubtitleContainer>
@@ -74,6 +80,11 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
   )
 }
 
+const ResetButton = styledButton(ButtonQuaternaryBlack)({
+  width: 'auto',
+  marginRight: getSpacing(4),
+})
+
 const SubtitleContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
@@ -91,6 +102,13 @@ const KeyboardPlaceholder = styled.View<{ keyboardHeight: number }>(({ keyboardH
   height: keyboardHeight,
 }))
 
-const Center = styled.View({
-  alignItems: 'center',
+const Container = styled.View(({ theme }) => ({
+  flexDirection: theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column',
+  justifyContent: 'center',
+  paddingTop: getSpacing(2),
+}))
+
+const SearchButton = styledButton(ButtonPrimary)({
+  flexGrow: 1,
+  width: 'auto',
 })
