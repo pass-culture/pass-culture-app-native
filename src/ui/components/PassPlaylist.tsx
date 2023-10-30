@@ -1,8 +1,7 @@
 import React, { ComponentProps, ComponentType, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Cover } from 'ui/components/Cover'
-import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
+import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -25,7 +24,6 @@ type Props = Pick<
   subtitle?: string
   TitleComponent?: ComponentType<ComponentProps<typeof DefaultTitle>>
   onPressSeeMore?: () => void
-  coverUrl?: string | null
   renderFooter?: RenderFooterItem
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
 }
@@ -35,7 +33,6 @@ export const PassPlaylist = (props: Props) => {
 
   const { isTouch } = useTheme()
 
-  const showHeader = !!props.coverUrl
   const showTitleSeeMore = !!props.onPressSeeMore && !isTouch
   const showFooterSeeMore = !!props.onPressSeeMore && isTouch
 
@@ -48,12 +45,6 @@ export const PassPlaylist = (props: Props) => {
     height: number
   }
 
-  const renderHeader: RenderHeaderItem = useCallback(
-    ({ width, height }: SizeProps) => (
-      <Cover width={width} height={height} uri={props.coverUrl as string} />
-    ),
-    [props.coverUrl]
-  )
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: SizeProps) => (
       <SeeMore width={width} height={height} onPress={props.onPressSeeMore as () => void} />
@@ -92,7 +83,6 @@ export const PassPlaylist = (props: Props) => {
         itemWidth={props.itemWidth}
         scrollButtonOffsetY={props.itemHeight / 2}
         renderItem={props.renderItem}
-        renderHeader={showHeader ? renderHeader : undefined}
         renderFooter={showFooterSeeMore ? props.renderFooter || renderFooter : undefined}
         keyExtractor={props.keyExtractor}
         onEndReached={props.onEndReached}
