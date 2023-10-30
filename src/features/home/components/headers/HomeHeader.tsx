@@ -121,10 +121,11 @@ export const HomeHeader: FunctionComponent = function () {
               <Title testID="web-location-widget">
                 <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
                 <Spacer.Row numberOfSpaces={6} />
-                <Separator.Vertical />
+                <Separator.Vertical height={getSpacing(6)} />
                 <Spacer.Row numberOfSpaces={4} />
                 <LocationWidgetDesktop />
               </Title>
+              <Spacer.Column numberOfSpaces={1} />
               <Subtitle>{getSubtitle()}</Subtitle>
             </TitleContainer>
           </HeaderContainer>
@@ -169,6 +170,7 @@ const TitleLabel = styled(Typo.Title1)({
 
 const Title = styled.View({
   flexDirection: 'row',
+  alignItems: 'center',
 })
 
 const PageContent = styled.View({
