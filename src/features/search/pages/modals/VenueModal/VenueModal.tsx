@@ -43,11 +43,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
       scrollEnabled={false}
       fixedModalBottom={
         <Center>
-          <ButtonPrimary
-            wording="Valider le point de vente"
-            disabled={!isVenueSelected}
-            onPress={doApplySearch}
-          />
+          <ButtonPrimary wording="Rechercher" disabled={!isVenueSelected} onPress={doApplySearch} />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
         </Center>
       }>
