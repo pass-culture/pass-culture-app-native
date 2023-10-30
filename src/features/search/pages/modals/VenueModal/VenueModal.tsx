@@ -35,7 +35,9 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
 
-  const onResetPress = () => {}
+  const onResetPress = () => {
+    doResetVenue()
+  }
 
   return (
     <AppModal
@@ -49,7 +51,11 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
       fixedModalBottom={
         <Container>
           <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
-          <SearchButton wording="Rechercher" disabled={!isVenueSelected} onPress={doApplySearch} />
+          <SearchButton
+            wording="Rechercher"
+            disabled={!isVenueSelected && !!venueQuery}
+            onPress={doApplySearch}
+          />
           <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
         </Container>
       }>
