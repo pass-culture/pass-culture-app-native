@@ -9,9 +9,12 @@ const Horizontal = styled.View<{ color?: ColorsEnum }>(({ color, theme }) => ({
   backgroundColor: color ?? theme.colors.greyLight,
 }))
 
-const Vertical = styled.View<{ color?: ColorsEnum }>(({ color, theme }) => ({
-  width: 1,
-  backgroundColor: color ?? theme.colors.greySemiDark,
-}))
+const Vertical = styled.View<{ color?: ColorsEnum; height?: number }>(
+  ({ color, theme, height }) => ({
+    width: 1,
+    backgroundColor: color ?? theme.colors.greySemiDark,
+    height: height ?? '100%',
+  })
+)
 
 export const Separator = { Horizontal, Vertical }
