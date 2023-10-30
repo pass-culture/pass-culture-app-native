@@ -158,7 +158,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isFreeDigitalOffer) {
+  if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
     return {
       wording: getDigitalOfferBookingWording(subcategoryId),
       isDisabled: isBookingLoading,
