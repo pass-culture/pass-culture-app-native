@@ -1,4 +1,4 @@
-name: 'Create and push tag from package version'
+name: 'Jira - Create and push staging & testing deploy tags'
 
 on:
   workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
           git config --global user.name "$GIT_CONFIG_NAME"
       - name: Create and push tag from package version
         run: |
-          STAGING_VERSION=${{ steps.package-version.outputs.current-version}}
+          STAGING_VERSION=${{ steps.package-version.outputs.current-version }}
           TAG_NAME=v${STAGING_VERSION}
           git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
@@ -94,14 +94,12 @@ jobs:
           MAJOR=${SEMVER[0]}
           MINOR=${SEMVER[1]}
           PATCH=${SEMVER[2]}
-          BUILD_NUMBER="$((10000000 * MAJOR + 1000 * MINOR + PATCH))"
+          BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
           echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
       - name: Update build number in package.json
-        uses: jossef/action-set-json-field@v2.1
+        uses: sergeysova/jq-action@v2
         with:
-          file: package.json
-          field: build
-          value: ${{ steps.build-number.outputs.build_number}}
+          cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
       - name: Commit changes
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
