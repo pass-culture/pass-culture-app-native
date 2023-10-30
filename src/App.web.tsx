@@ -25,6 +25,7 @@ import { env } from 'libs/environment'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
+import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled'
@@ -54,34 +55,36 @@ export function App() {
             <SafeAreaProvider>
               <ReactQueryClientProvider>
                 <SettingsWrapper>
-                  <AuthWrapper>
-                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                      <E2eContextProvider>
-                        <LocationWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <AppWebHead />
-                                      <OnboardingWrapper>
-                                        <ScreenErrorProvider>
-                                          <Suspense fallback={<LoadingPage />}>
-                                            <AppNavigationContainer />
-                                          </Suspense>
-                                        </ScreenErrorProvider>
-                                      </OnboardingWrapper>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </LocationWrapper>
-                      </E2eContextProvider>
-                    </ErrorBoundary>
-                  </AuthWrapper>
+                  <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                    <AuthWrapper>
+                      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                        <E2eContextProvider>
+                          <LocationWrapper>
+                            <FavoritesWrapper>
+                              <SearchAnalyticsWrapper>
+                                <SearchWrapper>
+                                  <SnackBarProvider>
+                                    <CulturalSurveyContextProvider>
+                                      <SubscriptionContextProvider>
+                                        <AppWebHead />
+                                        <OnboardingWrapper>
+                                          <ScreenErrorProvider>
+                                            <Suspense fallback={<LoadingPage />}>
+                                              <AppNavigationContainer />
+                                            </Suspense>
+                                          </ScreenErrorProvider>
+                                        </OnboardingWrapper>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SnackBarProvider>
+                                </SearchWrapper>
+                              </SearchAnalyticsWrapper>
+                            </FavoritesWrapper>
+                          </LocationWrapper>
+                        </E2eContextProvider>
+                      </ErrorBoundary>
+                    </AuthWrapper>
+                  </GoogleOAuthProvider>
                 </SettingsWrapper>
               </ReactQueryClientProvider>
             </SafeAreaProvider>

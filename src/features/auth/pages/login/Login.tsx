@@ -18,6 +18,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring'
+import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { storage } from 'libs/storage'
@@ -27,6 +28,7 @@ import { PasswordInputController } from 'shared/forms/controllers/PasswordInputC
 import { From } from 'shared/offer/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -216,6 +218,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     analytics.logSignUpClicked({ from: 'login' })
   }, [])
 
+  const googleLogin = useGoogleLogin({
+    onSuccess: ({ code }) => signIn({ authorizationCode: code }),
+    flow: 'auth-code',
+  })
+
   return (
     <React.Fragment>
       {!!isRecaptchaEnabled && (
@@ -263,6 +270,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             disabled={shouldDisableLoginButton}
           />
         </Form.MaxWidth>
+        <ButtonTertiarySecondary onPress={googleLogin} wording="SSO Google" />
         <Spacer.Column numberOfSpaces={8} />
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>

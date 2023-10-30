@@ -2,9 +2,9 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
-import { SigninRequest, SigninResponse } from 'api/gen'
+import { SigninResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
-import { SignInResponseFailure } from 'features/auth/types'
+import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -21,11 +21,15 @@ export const useSignIn = ({
   const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   return useMutation(
-    (body: SigninRequest) =>
-      api.postNativeV1Signin(
+    async (body: LoginRequest) => {
+      if ('authorizationCode' in body) {
+        return api.postNativeV1OauthGoogleAuthorize(body)
+      }
+      return api.postNativeV1Signin(
         { ...body, deviceInfo: enableTrustedDevice ? deviceInfo : undefined },
         { credentials: 'omit' }
-      ),
+      )
+    },
     {
       onSuccess: async (response) => {
         await loginRoutine(response, 'fromLogin')
