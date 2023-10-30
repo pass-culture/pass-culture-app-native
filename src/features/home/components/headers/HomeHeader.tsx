@@ -125,6 +125,7 @@ export const HomeHeader: FunctionComponent = function () {
                 <Spacer.Row numberOfSpaces={4} />
                 <LocationWidgetDesktop />
               </Title>
+              <Spacer.Column numberOfSpaces={1} />
               <Subtitle>{getSubtitle()}</Subtitle>
             </TitleContainer>
           </HeaderContainer>
