@@ -4,7 +4,6 @@ import { adaptOffersModule } from 'libs/contentful/adapters/modules/adaptOffersM
 import {
   additionalAlgoliaParametersWithOffersFixture,
   additionalAlgoliaParametersWithoutOffersFixture,
-  algoliaNatifModuleCoverFixture,
   algoliaNatifModuleFixture,
 } from 'libs/contentful/fixtures/algoliaModules.fixture'
 import { AlgoliaFields, AlgoliaParameters, isAlgoliaContentModel } from 'libs/contentful/types'
@@ -81,23 +80,5 @@ describe('adaptOffersModule', () => {
     }
 
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
-  })
-
-  it('should adapt an offers module with a cover', () => {
-    const rawAlgoliaNatifModule = {
-      ...algoliaNatifModuleFixture,
-      fields: {
-        ...(algoliaNatifModuleFixture.fields as AlgoliaFields),
-        cover: algoliaNatifModuleCoverFixture,
-      },
-    }
-
-    const formattedOffersModuleWithCover: OffersModule = {
-      ...formattedOffersModule,
-      cover:
-        'https://images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
-    }
-
-    expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModuleWithCover)
   })
 })

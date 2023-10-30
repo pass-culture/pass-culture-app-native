@@ -22,7 +22,6 @@ type OffersModuleProps = {
   offersModuleParameters: OffersModuleType['offersModuleParameters']
   displayParameters: OffersModuleType['displayParameters']
   moduleId: string
-  cover?: string | null
   index: number
   homeEntryId: string | undefined
   data: ModuleData | undefined
@@ -31,8 +30,7 @@ type OffersModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { cover, displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } =
-    props
+  const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
   const { position } = useHomePosition()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
@@ -137,7 +135,6 @@ export const OffersModule = (props: OffersModuleProps) => {
       data={playlistItems}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
-      coverUrl={cover ?? null}
       onPressSeeMore={onPressSeeMore}
       titleSeeMoreLink={{ screen: searchTabConfig[0], params: searchTabConfig[1] }}
       renderItem={renderItem}
