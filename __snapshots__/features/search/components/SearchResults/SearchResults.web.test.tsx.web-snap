@@ -477,6 +477,7 @@ exports[`SearchResults component should render correctly 1`] = `
     <div />
     <div />
     <div />
+    <div />
   </body>,
   "container": .c2 {
   font-family: Montserrat-Regular;
