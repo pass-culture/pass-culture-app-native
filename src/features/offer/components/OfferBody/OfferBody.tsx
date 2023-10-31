@@ -13,6 +13,8 @@ import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/O
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
+import { SameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist/component/SameArtistPlaylist'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
@@ -58,9 +60,10 @@ interface Props {
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
   apiRecoParamsOtherCategories?: RecommendationApiParams
+  sameArtistPlaylist?: HitOfferWithArtistAndEan[]
 }
 
-const keyExtractor = (item: Offer) => item.objectID
+export const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
@@ -73,6 +76,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
+  sameArtistPlaylist,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -353,6 +357,17 @@ export const OfferBody: FunctionComponent<Props> = ({
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>
+
+      {!!isArrayNotEmpty(sameArtistPlaylist) && (
+        <SameArtistPlaylist
+          key={offer.id}
+          sameArtistPlaylist={sameArtistPlaylist}
+          itemWidth={itemWidth}
+          itemHeight={itemHeight}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      )}
 
       {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
         <SectionWithDivider testID="sameCategorySimilarOffers" visible>

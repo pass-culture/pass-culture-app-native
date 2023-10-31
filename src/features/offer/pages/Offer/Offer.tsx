@@ -12,6 +12,7 @@ import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
+import { useSameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist/hook/useSameArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
@@ -70,6 +71,21 @@ export const Offer: FunctionComponent = () => {
   })
 
   const { data: offer } = useOffer({ offerId })
+
+  const artist = offer?.extraData?.author
+  const ean = offer?.extraData?.ean
+
+  const { sameArtistPlaylist, refetch } = useSameArtistPlaylist({
+    artist,
+    ean,
+  })
+
+  useEffect(() => {
+    if (artist && ean) {
+      refetch()
+    }
+  }, [artist, ean, refetch])
+
   const { data } = useSubcategories()
 
   const { searchGroupName, nativeCategory } =
@@ -258,6 +274,7 @@ export const Offer: FunctionComponent = () => {
         apiRecoParamsSameCategory={apiRecoParamsSameCategory}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+        sameArtistPlaylist={sameArtistPlaylist}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
       <OfferHeader

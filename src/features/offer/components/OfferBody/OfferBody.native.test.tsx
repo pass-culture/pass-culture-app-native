@@ -8,11 +8,13 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
+  mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -37,6 +39,11 @@ jest.mock('libs/address/useFormatFullAddress')
 let mockSearchHits: Offer[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
+}))
+
+let mockSameArtistPlaylist: Offer[] = []
+jest.mock('features/offer/components/SameArtistPlaylist/hook/useSameArtistPlaylist', () => ({
+  useSameArtistPlaylist: jest.fn(() => mockSameArtistPlaylist),
 }))
 
 const mockSubcategories = placeholderData.subcategories
@@ -219,6 +226,29 @@ describe('<OfferBody />', () => {
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
         })
       })
+    })
+  })
+
+  describe('same artist playlist', () => {
+    beforeAll(() => {
+      mockSameArtistPlaylist = mockedAlgoliaOffersWithSameArtistResponse
+    })
+    it('should display same artist list when offer has some', async () => {
+      renderOfferBody({
+        sameArtistPlaylist: mockSameArtistPlaylist,
+      })
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameArtistPlaylist')).toBeOnTheScreen()
+    })
+
+    it('should not display same artist lists when offer has not it', async () => {
+      renderOfferBody()
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
     })
   })
 
@@ -644,6 +674,7 @@ const renderOfferBody = (
   additionalProps: {
     sameCategorySimilarOffers?: Offer[]
     otherCategoriesSimilarOffers?: Offer[]
+    sameArtistPlaylist?: HitOfferWithArtistAndEan[]
   } = {}
 ) =>
   render(

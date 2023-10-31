@@ -5,11 +5,15 @@ import { BookingsResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
+import * as useSameArtistPlaylist from 'features/offer/components/SameArtistPlaylist/hook/useSameArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { beneficiaryUser } from 'fixtures/user'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import {
+  mockedAlgoliaOffersWithSameArtistResponse,
+  mockedAlgoliaResponse,
+} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -25,6 +29,14 @@ const useSimilarOffersSpy = jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
   .mockImplementation()
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
+
+const useSameArtistPlaylistSpy = jest
+  .spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist')
+  .mockImplementation()
+  .mockReturnValue({
+    sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+    refetch: jest.fn(),
+  })
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -343,6 +355,53 @@ describe('<Offer />', () => {
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
       })
+    })
+  })
+
+  describe('same artist playlist', () => {
+    const offerWithArtistAndEan = {
+      extraData: {
+        author: 'Eiichiro Oda',
+        ean: '9782723492607',
+      },
+    }
+
+    it('should handle provided artist and EAN', async () => {
+      renderOfferPage(undefined, offerWithArtistAndEan)
+
+      await act(async () => {})
+
+      expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
+        artist: 'Eiichiro Oda',
+        ean: '9782723492607',
+      })
+    })
+
+    it('should handle missing artist and EAN', async () => {
+      renderOfferPage()
+
+      await act(async () => {})
+
+      expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
+        artist: undefined,
+        ean: undefined,
+      })
+    })
+
+    it('should call refetch when artist and EAN are provided', async () => {
+      renderOfferPage(undefined, offerWithArtistAndEan)
+
+      await act(async () => {})
+
+      expect(useSameArtistPlaylistSpy.mock.results[0].value.refetch).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not call refetch when artist and EAN are not provided', async () => {
+      renderOfferPage()
+
+      await act(async () => {})
+
+      expect(useSameArtistPlaylistSpy.mock.results[0].value.refetch).not.toHaveBeenCalled()
     })
   })
 
