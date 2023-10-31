@@ -24,7 +24,6 @@ export const VideoErrorView: React.FC<{
 }
 
 const VideoPlayerErrorViewContainer = styled(View)({
-  position: 'absolute',
   borderTopLeftRadius: getSpacing(4),
   borderTopRightRadius: getSpacing(4),
   overflow: 'hidden',
