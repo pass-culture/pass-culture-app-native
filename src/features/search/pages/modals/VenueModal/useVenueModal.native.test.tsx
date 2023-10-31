@@ -27,32 +27,38 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 const dismissModal: VoidFunction = jest.fn()
 const doAfterSearch: VenueModalHookCallback = jest.fn()
 
-const falsyState = {isQueryProvided:false,
-  shouldShowSuggestedVenues:false,
-  isVenueSelected:false,
-  venueQuery:''}
-const inputState = {isQueryProvided:true,
-  shouldShowSuggestedVenues:true,
-  isVenueSelected:false,
-  venueQuery:venue.label}
-const selectedState = {isQueryProvided:true,
-  shouldShowSuggestedVenues:false,
-  isVenueSelected:true,
-  venueQuery:venue.label}
+const falsyState = {
+  isQueryProvided: false,
+  shouldShowSuggestedVenues: false,
+  isVenueSelected: false,
+  venueQuery: '',
+}
+const inputState = {
+  isQueryProvided: true,
+  shouldShowSuggestedVenues: true,
+  isVenueSelected: false,
+  venueQuery: venue.label,
+}
+const selectedState = {
+  isQueryProvided: true,
+  shouldShowSuggestedVenues: false,
+  isVenueSelected: true,
+  venueQuery: venue.label,
+}
 
 describe('useVenueModal', () => {
   it('when start it should return falsy state', () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
-    const {isQueryProvided,
-      shouldShowSuggestedVenues,
-      isVenueSelected,
-      venueQuery} = result.current
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
 
-    expect({isQueryProvided,
+    expect({
+      isQueryProvided,
       shouldShowSuggestedVenues,
       isVenueSelected,
-      venueQuery}).toStrictEqual(falsyState) 
+      venueQuery,
+    }).toStrictEqual(falsyState)
   })
 
   it('when provide a query it should change state for the UI', async () => {
@@ -64,15 +70,15 @@ describe('useVenueModal', () => {
       result.current.doChangeVenue(venue.label)
     })
 
-    const {isQueryProvided,
-      shouldShowSuggestedVenues,
-      isVenueSelected,
-      venueQuery} = result.current
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
 
-    expect({isQueryProvided,
+    expect({
+      isQueryProvided,
       shouldShowSuggestedVenues,
       isVenueSelected,
-      venueQuery}).toStrictEqual(inputState) 
+      venueQuery,
+    }).toStrictEqual(inputState)
   })
 
   it('when select a venue it should change state for the UI', async () => {
@@ -83,15 +89,15 @@ describe('useVenueModal', () => {
       result.current.doSetSelectedVenue(venue)
     })
 
-    const {isQueryProvided,
-      shouldShowSuggestedVenues,
-      isVenueSelected,
-      venueQuery} = result.current
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
 
-    expect({isQueryProvided,
+    expect({
+      isQueryProvided,
       shouldShowSuggestedVenues,
       isVenueSelected,
-      venueQuery}).toStrictEqual(selectedState) 
+      venueQuery,
+    }).toStrictEqual(selectedState)
   })
 
   it('when select a venue and reset it should reset the UI', async () => {
@@ -106,15 +112,15 @@ describe('useVenueModal', () => {
       result.current.doResetVenue()
     })
 
-    const {isQueryProvided,
-      shouldShowSuggestedVenues,
-      isVenueSelected,
-      venueQuery} = result.current
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
 
-    expect({isQueryProvided,
+    expect({
+      isQueryProvided,
       shouldShowSuggestedVenues,
       isVenueSelected,
-      venueQuery}).toStrictEqual(falsyState) 
+      venueQuery,
+    }).toStrictEqual(falsyState)
   })
 
   it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
