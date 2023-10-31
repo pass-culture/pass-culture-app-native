@@ -1,5 +1,3 @@
-import { rest } from 'msw'
-
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import {
@@ -11,7 +9,7 @@ import {
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 import { act, renderHook } from 'tests/utils'
 
 const mockUserId = 1234
@@ -20,17 +18,6 @@ const position = {
   latitude: 6,
   longitude: 22,
 }
-
-server.use(
-  rest.get(`https://recommmendation-endpoint/similar_offers/${mockOfferId}`, (_req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        hits: [],
-      })
-    )
-  })
-)
 
 const respondWith = async (
   body: unknown,
@@ -65,6 +52,12 @@ const algoliaSpy = jest
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
 describe('useSimilarOffers', () => {
+  beforeEach(() => {
+    mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockOfferId}`, {
+      hits: [],
+    })
+  })
+
   it('should call Algolia hook', async () => {
     renderHook(() =>
       useSimilarOffers({
