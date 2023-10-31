@@ -13,7 +13,7 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour } from 'features/search/enums'
+import { FilterBehaviour, LocationType } from 'features/search/enums'
 import {
   FILTER_TYPES,
   useAppliedFilters,
@@ -29,6 +29,8 @@ import { LocationModal } from 'features/search/pages/modals/LocationModal/Locati
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
@@ -69,6 +71,8 @@ export const SearchResults: React.FC = () => {
   const { user } = useAuthContext()
   const { userPosition } = useLocation()
   const previousUserPosition = usePrevious(userPosition)
+
+  const isVenue = searchState.locationFilter.locationType === LocationType.VENUE
 
   // Execute log only on initial search fetch
   const previousIsLoading = usePrevious(isLoading)
@@ -113,6 +117,7 @@ export const SearchResults: React.FC = () => {
     showModal: showDatesHoursModal,
     hideModal: hideDatesHoursModal,
   } = useModal(false)
+
   const hasPosition = useHasPosition()
 
   const activeFiltersCount = useFilterCount(searchState)
@@ -176,6 +181,8 @@ export const SearchResults: React.FC = () => {
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
 
+  const flagOnAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -208,15 +215,24 @@ export const SearchResults: React.FC = () => {
             <StyledLi>
               <FilterButton activeFilters={activeFiltersCount} />
             </StyledLi>
-            <StyledLi>
-              <SingleFilterButton
-                label={hasPosition ? locationLabel : 'Localisation'}
-                testID="locationButton"
-                onPress={showLocationModal}
-                isSelected={hasPosition}
-              />
-            </StyledLi>
 
+            <StyledLi>
+              {flagOnAppLocation ? (
+                <SingleFilterButton
+                  label={isVenue ? locationLabel : 'Point de vente'}
+                  testID="venueButton"
+                  onPress={showLocationModal}
+                  isSelected={isVenue}
+                />
+              ) : (
+                <SingleFilterButton
+                  label={hasPosition ? locationLabel : 'Localisation'}
+                  testID="locationButton"
+                  onPress={showLocationModal}
+                  isSelected={hasPosition}
+                />
+              )}
+            </StyledLi>
             <StyledLi>
               <SingleFilterButton
                 label="Catégories"
