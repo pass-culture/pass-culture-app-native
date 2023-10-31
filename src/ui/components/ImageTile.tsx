@@ -1,7 +1,11 @@
 import React, { useMemo } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { CategoryIdEnum } from 'api/gen'
+import { mapCategoryToIcon } from 'libs/parsers'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
+import { getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
@@ -9,9 +13,14 @@ interface Props {
   height: number
   uri?: string
   onlyTopBorderRadius?: boolean
+  categoryId?: CategoryIdEnum | null
 }
 
+// Special case where theme.icons.sizes is not used
+const PLACEHOLDER_ICON_SIZE = getSpacing(16)
+
 export const ImageTile: React.FC<Props> = (props) => {
+  const theme = useTheme()
   const style = useMemo(
     () => ({
       height: props.height,
@@ -34,9 +43,30 @@ export const ImageTile: React.FC<Props> = (props) => {
       width={props.width}
       testID="tileImage"
     />
-  ) : null
+  ) : (
+    <DefaultImageContainer height={props.height} width={props.width}>
+      <StyledDefaultImagePlaceholder
+        Icon={mapCategoryToIcon(props.categoryId)}
+        backgroundColors={[theme.colors.greyLight, theme.colors.greyMedium]}
+        size={PLACEHOLDER_ICON_SIZE}
+      />
+    </DefaultImageContainer>
+  )
 }
 
 const StyledFastImage = styled(FastImage)(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
+}))
+
+const DefaultImageContainer = styled.View<{ height: number; width: number }>(
+  ({ height, width }) => ({
+    height,
+    width,
+  })
+)
+
+const StyledDefaultImagePlaceholder = styled(DefaultImagePlaceholder)(({ theme }) => ({
+  borderRadius: 0,
+  borderTopLeftRadius: theme.borderRadius.radius,
+  borderTopRightRadius: theme.borderRadius.radius,
 }))

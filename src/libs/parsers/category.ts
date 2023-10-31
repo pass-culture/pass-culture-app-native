@@ -22,7 +22,9 @@ export const MAP_CATEGORY_ID_TO_ICON: {
   [CategoryIdEnum.TECHNIQUE]: categoriesIcons.FineArts,
 }
 
-export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<IconInterface> => {
+export const mapCategoryToIcon = (
+  id: CategoryIdEnum | null | undefined
+): React.FC<IconInterface> => {
   if (id && id in MAP_CATEGORY_ID_TO_ICON) return MAP_CATEGORY_ID_TO_ICON[id]
   return categoriesIcons.FineArts
 }
