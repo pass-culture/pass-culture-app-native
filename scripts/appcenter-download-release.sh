@@ -134,7 +134,6 @@ function android() {
   exit 0
 }
 
-
 function ios() {
   downloadedFile="app-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}.ipa"
 
