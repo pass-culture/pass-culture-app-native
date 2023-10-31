@@ -423,6 +423,19 @@ describe('SearchResults component', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
     })
 
+    it('should open the venue modal when pressing the venue filter button', async () => {
+      render(<SearchResults />)
+
+      await act(async () => {
+        const venueButton = screen.getByRole('button', { name: 'Point de vente' })
+        fireEvent.press(venueButton)
+      })
+
+      expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
+        'Trouver un point de vente'
+      )
+    })
+
     it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if no venue selected', async () => {
       render(<SearchResults />)
       await act(async () => {})
