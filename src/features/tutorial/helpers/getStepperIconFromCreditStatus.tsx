@@ -18,7 +18,8 @@ export const getStepperIconFromCreditStatus = (creditStatus: CreditStatus): Reac
   }
 }
 const AnimatedBicolorUnlock = () => (
-  <StyledLottieView source={OnboardingUnlock} autoPlay loop={false} />
+  // @ts-ignore prop accessibilityHidden is only necessary for web and does not impact the react-native implementation
+  <StyledLottieView source={OnboardingUnlock} autoPlay loop={false} accessibilityHidden />
 )
 
 const GreyLock = styled(Lock).attrs(({ theme }) => ({
