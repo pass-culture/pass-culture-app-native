@@ -1,5 +1,4 @@
 import { HomepageModuleType, OffersModule } from 'features/home/types'
-import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersParams'
 import { AlgoliaContentModel } from 'libs/contentful/types'
 
@@ -14,14 +13,11 @@ export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | n
 
   if (offersList.length === 0) return null
 
-  const coverUrl = buildImageUrl(module.fields.cover?.fields?.image.fields?.file.url)
-
   return {
     type: HomepageModuleType.OffersModule,
     id: module.sys.id,
     title: module.fields.title,
     displayParameters: module.fields.displayParameters.fields,
     offersModuleParameters: offersList,
-    cover: coverUrl,
   }
 }

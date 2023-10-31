@@ -26,7 +26,6 @@ const props = {
     layout: 'one-item-medium',
   } as DisplayParametersFields,
   moduleId: 'fakeModuleId',
-  cover: null,
   position: null,
   homeEntryId: 'fakeEntryId',
   index: 1,
