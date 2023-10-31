@@ -5,17 +5,19 @@ export type OfferLocation = {
   lng?: number | null
 }
 
+export type HitOffer = {
+  dates?: number[]
+  isDigital?: boolean
+  isDuo?: boolean
+  isEducational?: boolean
+  name?: string
+  prices?: number[]
+  subcategoryId: SubcategoryIdEnum
+  thumbUrl?: string
+}
+
 export interface Offer {
-  offer: {
-    dates?: number[]
-    isDigital?: boolean
-    isDuo?: boolean
-    isEducational?: boolean
-    name?: string
-    prices?: number[]
-    subcategoryId: SubcategoryIdEnum
-    thumbUrl?: string
-  }
+  offer: HitOffer
   objectID: string
   _geoloc: OfferLocation
   venue: {
