@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 check_diff() {
   base_sha=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/pass-culture/pass-culture-app-native/pulls?state=closed" | jq --arg sha "$CIRCLE_SHA1" -r '.[]|select(.merge_commit_sha == $sha).base.sha')

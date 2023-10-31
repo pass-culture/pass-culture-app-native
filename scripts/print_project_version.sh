@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -e
+
+set -o errexit
+set -o nounset
+set -o pipefail
 
 print_usage() {
   echo "Usage : ./scripts/print_project_version.sh <path_to_project_root_dir>" >&2

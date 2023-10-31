@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -e
+
+set -o errexit
+set -o nounset
+set -o pipefail
 
 # Test on branch master as baseline
 BASELINE_BRANCH=${BASELINE_BRANCH:="master"}

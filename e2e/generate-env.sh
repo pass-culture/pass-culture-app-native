@@ -2,6 +2,10 @@
 # .env.local.secret generator
 #
 
+set -o errexit
+set -o nounset
+set -o pipefail
+
 SCRIPT_DIR=$(dirname -- "$0")
 
 ANDROID=${ANDROID:-"false"}

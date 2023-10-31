@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 update_build_number_from_package_json_version() {
   # We have to increment the build number because it is used as the versionCode

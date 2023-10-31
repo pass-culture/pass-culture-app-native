@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 X_API_TOKEN="${APPCENTER_USER_API_TOKEN}"
 

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -e
+
+set -o errexit
+set -o nounset
+set -o pipefail
 
 # This file uses custom Docker image to handle generating api.ts until this PR is merged
 # https://github.com/swagger-api/swagger-codegen/pull/11772

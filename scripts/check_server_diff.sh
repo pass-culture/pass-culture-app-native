@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 check_server_diff() {
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)

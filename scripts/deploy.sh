@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
+
 RED='\033[0;31m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
