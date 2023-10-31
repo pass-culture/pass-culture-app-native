@@ -18,10 +18,14 @@ describe('formatDistance', () => {
   `('getHumanizeRelativeDistance($actualDistance) \t= $expected', ({ lat, lng, expected }) => {
     expect(
       getHumanizeRelativeDistance(
-        lat,
-        lng,
-        EiffelTourCoordinates.latitude,
-        EiffelTourCoordinates.longitude
+        {
+          lat: lat,
+          lng: lng,
+        },
+        {
+          lat: EiffelTourCoordinates.latitude,
+          lng: EiffelTourCoordinates.longitude,
+        }
       )
     ).toBe(expected)
   })
