@@ -85,7 +85,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   })
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'endedbookings', offer_id: stock.offer.id })
+    analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: stock.offer.id })
     shareOffer()
     showShareOfferModal()
   }, [stock.offer.id, shareOffer, showShareOfferModal])

@@ -42,13 +42,13 @@ export const onScreenshot = ({
     switch (name) {
       case 'Offer':
       case 'OfferDescription':
-        Object.assign(analyticsParams, { offer_id: id })
+        Object.assign(analyticsParams, { offerId: id })
         break
       case 'Venue':
-        Object.assign(analyticsParams, { venue_id: id })
+        Object.assign(analyticsParams, { venueId: id })
         break
       case 'BookingDetails':
-        Object.assign(analyticsParams, { booking_id: id })
+        Object.assign(analyticsParams, { bookingId: id })
     }
   }
 

@@ -561,6 +561,11 @@ export interface BookingVenueResponse {
    * @memberof BookingVenueResponse
    */
   publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  timezone: string
 }
 /**
  * @export
@@ -1819,6 +1824,11 @@ export interface OfferVenueResponse {
    * @memberof OfferVenueResponse
    */
   publicName?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  timezone: string
 }
 
 /**
@@ -2212,11 +2222,6 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   objectStorageUrl: string
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  proDisableEventsQrcode: boolean
 }
 /**
  * @export

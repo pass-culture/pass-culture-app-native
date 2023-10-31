@@ -16,26 +16,26 @@ describe('useScreenshotListener()', () => {
     })
 
     it.each(['Offer', 'OfferDescription'])(
-      'should log analytics with offer_id when user is on %s page',
+      'should log analytics with offerId when user is on %s page',
       (screenName) => {
         onScreenshot({ isFocused: true, name: screenName, params: { id: 1 } })
 
-        expect(analytics.logScreenshot).toHaveBeenCalledWith({ from: screenName, offer_id: 1 })
+        expect(analytics.logScreenshot).toHaveBeenCalledWith({ from: screenName, offerId: 1 })
       }
     )
 
-    it('should log analytics with venue_id when user is on Venue page', () => {
+    it('should log analytics with venueId when user is on Venue page', () => {
       onScreenshot({ isFocused: true, name: 'Venue', params: { id: 1 } })
 
-      expect(analytics.logScreenshot).toHaveBeenCalledWith({ from: 'Venue', venue_id: 1 })
+      expect(analytics.logScreenshot).toHaveBeenCalledWith({ from: 'Venue', venueId: 1 })
     })
 
-    it('should log analytics with booking_id when user is on BookingDetails page', () => {
+    it('should log analytics with bookingId when user is on BookingDetails page', () => {
       onScreenshot({ isFocused: true, name: 'BookingDetails', params: { id: 1 } })
 
       expect(analytics.logScreenshot).toHaveBeenCalledWith({
         from: 'BookingDetails',
-        booking_id: 1,
+        bookingId: 1,
       })
     })
 

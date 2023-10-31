@@ -188,7 +188,7 @@ describe('OnGoingBookingItem', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'bookings',
-      offer_id: initialBooking.stock.offer.id,
+      offerId: initialBooking.stock.offer.id,
     })
   })
 })

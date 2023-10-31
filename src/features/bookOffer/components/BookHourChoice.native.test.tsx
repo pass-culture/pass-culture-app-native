@@ -119,13 +119,13 @@ describe('BookHourChoice', () => {
     const firstHour = screen.getByTestId('HourChoice148409-label')
     const firstPrice = screen.getByTestId('HourChoice148409-right-text')
 
-    expect(firstHour.props.children).toBe('20h00')
+    expect(firstHour.props.children).toBe('21h00')
     expect(firstPrice.props.children).toBe('24\u00a0€')
 
     const secondHour = screen.getByTestId('HourChoice148411-label')
     const secondPrice = screen.getByTestId('HourChoice148411-right-text')
 
-    expect(secondHour.props.children).toBe('10h00')
+    expect(secondHour.props.children).toBe('11h00')
     expect(secondPrice.props.children).toBe('épuisé')
   })
 

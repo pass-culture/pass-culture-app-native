@@ -83,7 +83,6 @@ export type OffersModule = {
   title: string
   offersModuleParameters: OffersModuleParameters[]
   displayParameters: DisplayParameters
-  cover?: string | null
   data?: ModuleData
 }
 

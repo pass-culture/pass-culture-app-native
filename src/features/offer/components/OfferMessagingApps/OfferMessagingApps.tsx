@@ -17,7 +17,7 @@ export const OfferMessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => 
 
   const messagingAppAnalytics = useCallback(
     (social: Social | 'Other') => {
-      analytics.logShare({ type: 'Offer', offer_id: offerId, from: 'offer', social })
+      analytics.logShare({ type: 'Offer', offerId, from: 'offer', social })
     },
     [offerId]
   )

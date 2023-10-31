@@ -40,7 +40,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const { animationState } = getAnimationState(theme, headerTransition)
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', offer_id: offerId })
+    analytics.logShare({ type: 'Offer', from: 'offer', offerId })
     shareOffer()
     showShareOfferModal()
   }, [offerId, shareOffer, showShareOfferModal])

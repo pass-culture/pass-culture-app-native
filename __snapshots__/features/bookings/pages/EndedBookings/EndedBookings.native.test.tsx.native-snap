@@ -236,6 +236,7 @@ exports[`EndedBookings should render correctly 1`] = `
                 "name": "Maison de la Brique",
                 "postalCode": "93700",
                 "publicName": "Maison de la Brique en mousse",
+                "timezone": "Europe/Paris",
               },
               "withdrawalDetails": null,
             },

@@ -137,6 +137,7 @@ exports[`Bookings should render correctly 1`] = `
                   "id": 2185,
                   "name": "Maison de la Brique",
                   "postalCode": "93700",
+                  "timezone": "Europe/Paris",
                 },
                 "withdrawalDetails": null,
               },
@@ -194,6 +195,7 @@ exports[`Bookings should render correctly 1`] = `
                   "id": 2185,
                   "name": "Maison de la Brique",
                   "postalCode": "93700",
+                  "timezone": "Europe/Paris",
                 },
                 "withdrawalDetails": null,
                 "withdrawalType": "on_site",
@@ -254,7 +256,7 @@ exports[`Bookings should render correctly 1`] = `
           style={null}
         >
           <View
-            accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+            accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -292,7 +294,7 @@ exports[`Bookings should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+            testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
           >
             <View
               size="tall"
@@ -410,7 +412,7 @@ exports[`Bookings should render correctly 1`] = `
                   ]
                 }
               >
-                Le 15 mars 2021 à 20h00
+                Le 15 mars 2021 à 21h00
               </Text>
               <View
                 style={
@@ -536,7 +538,7 @@ exports[`Bookings should render correctly 1`] = `
           style={null}
         >
           <View
-            accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+            accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
             accessibilityRole="link"
             accessibilityState={
               {
@@ -574,7 +576,7 @@ exports[`Bookings should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+            testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
           >
             <View
               size="tall"
@@ -692,7 +694,7 @@ exports[`Bookings should render correctly 1`] = `
                   ]
                 }
               >
-                Le 15 mars 2021 à 20h00
+                Le 15 mars 2021 à 21h00
               </Text>
               <View
                 style={

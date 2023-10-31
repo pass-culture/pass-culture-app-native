@@ -39,6 +39,7 @@ type CustomSearchInputProps = InputProps & {
   children?: React.ReactNode
   isRequiredField?: boolean
   textStyle?: ValueOf<AppThemeType['typography']>
+  disableClearButton?: boolean
 }
 
 export type RNTextInputProps = Pick<
@@ -118,6 +119,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
     isFocusable: props.isFocusable,
     onFocus: props.onFocus,
     isRequiredField: props.isRequiredField,
+    disableClearButton: props.disableClearButton,
   }
 }
 

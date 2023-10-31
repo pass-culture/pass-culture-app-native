@@ -16,7 +16,6 @@ export const homepageList: Homepage[] = [
         url: undefined,
       },
       {
-        cover: undefined,
         displayParameters: {
           layout: 'one-item-medium',
           minOffers: 2,
@@ -30,7 +29,6 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
       {
-        cover: undefined,
         displayParameters: {
           layout: 'two-items',
           minOffers: 2,
@@ -44,7 +42,6 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
       {
-        cover: undefined,
         displayParameters: { layout: 'one-item-medium', minOffers: 1, title: 'Offres du moment' },
         id: '1LgDMVOKdH3agA0WG2LFEr',
         offersModuleParameters: [
@@ -54,7 +51,6 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
       {
-        cover: undefined,
         displayParameters: {
           layout: 'two-items',
           minOffers: 2,
@@ -112,7 +108,6 @@ export const homepageList: Homepage[] = [
         localizationArea: undefined,
       },
       {
-        cover: undefined,
         displayParameters: { layout: 'two-items', minOffers: 2, title: 'A faire à deux' },
         id: '3HnwRT9WtAl8pxywz83sX3',
         offersModuleParameters: [{ hitsPerPage: 10, tags: ['duo'], title: 'Offres duo' }],
@@ -120,8 +115,6 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
       {
-        cover:
-          'https://images.ctfassets.net/2bg01iqy0isv/bRKhK9wmpNkD6l5Zeo71J/cc59c22fe0382b61e831e4693e32826f/1020_Mbapp__2.png',
         displayParameters: {
           layout: 'one-item-medium',
           minOffers: 2,
@@ -133,7 +126,6 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
       {
-        cover: undefined,
         displayParameters: {
           layout: 'two-items',
           minOffers: 2,
@@ -145,7 +137,6 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
       {
-        cover: undefined,
         displayParameters: {
           layout: 'one-item-medium',
           minOffers: 2,

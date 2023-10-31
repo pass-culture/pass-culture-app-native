@@ -1,3 +1,5 @@
+import { utcToZonedTime } from 'date-fns-tz'
+
 // javascript Date can't find them...
 const MONTHS = [
   'janvier',
@@ -208,4 +210,9 @@ export const localizeUTCDate = (someDate: Date | string) => {
   const utcDate = new Date(someDate)
   const timeZoneOffest = new Date(someDate).getTimezoneOffset()
   return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffest)
+}
+
+export function getTimeZonedDate(date: Date | string, timezone: string) {
+  const utcDate = new Date(date)
+  return utcToZonedTime(utcDate, timezone)
 }

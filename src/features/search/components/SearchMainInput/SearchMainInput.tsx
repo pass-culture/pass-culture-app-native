@@ -28,6 +28,7 @@ type FocusProps = {
   isFocusable?: boolean
   isFocus?: boolean
   onFocus?: () => void
+  disableInputClearButton: boolean
 }
 
 type LocationProps = {
@@ -57,6 +58,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     locationLabel,
     onPressLocationButton,
     numberOfLinesForLocation,
+    disableInputClearButton,
     ...props
   }: Props,
   ref
@@ -94,6 +96,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       LeftIcon={MagnifyingGlassIcon}
       inputHeight="regular"
       testID="searchInput"
+      disableClearButton={disableInputClearButton}
       {...props}>
       {renderSearchChildren()}
     </StyledSearchInput>

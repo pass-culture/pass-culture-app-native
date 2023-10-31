@@ -79,7 +79,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: NonEligible.UNDER_15,
+        age: NonEligible.UNDER_15,
         from: TutorialTypes.ONBOARDING,
       })
     })
@@ -91,7 +91,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: NonEligible.OVER_18,
+        age: NonEligible.OVER_18,
         from: TutorialTypes.ONBOARDING,
       })
     })
@@ -173,7 +173,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: NonEligible.UNDER_15,
+        age: NonEligible.UNDER_15,
         from: TutorialTypes.PROFILE_TUTORIAL,
       })
     })
@@ -185,7 +185,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        userStatus: NonEligible.OVER_18,
+        age: NonEligible.OVER_18,
         from: TutorialTypes.PROFILE_TUTORIAL,
       })
     })

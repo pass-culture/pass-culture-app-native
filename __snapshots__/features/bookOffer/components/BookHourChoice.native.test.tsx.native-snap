@@ -37,7 +37,7 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
       }
     >
       <View
-        accessibilityLabel="10h00 épuisé"
+        accessibilityLabel="11h00 épuisé"
         accessibilityRole="radio"
         accessibilityState={
           {
@@ -84,7 +84,7 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="10h00 épuisé"
+        testID="11h00 épuisé"
       >
         <View
           isSelected={false}
@@ -167,7 +167,7 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
                 }
                 testID="HourChoice148411-label"
               >
-                10h00
+                11h00
               </Text>
             </View>
             <Text
@@ -201,7 +201,7 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
       }
     >
       <View
-        accessibilityLabel="20h00 24 €"
+        accessibilityLabel="21h00 24 €"
         accessibilityRole="radio"
         accessibilityState={
           {
@@ -248,7 +248,7 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="20h00 24 €"
+        testID="21h00 24 €"
       >
         <View
           isSelected={false}
@@ -331,7 +331,7 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
                 }
                 testID="HourChoice148409-label"
               >
-                20h00
+                21h00
               </Text>
             </View>
             <Text

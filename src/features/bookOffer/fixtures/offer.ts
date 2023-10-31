@@ -82,6 +82,7 @@ export const mockOffer: OfferResponse = {
     offerer: {
       name: 'Ferme des sarbacanes',
     },
+    timezone: 'Europe/Paris',
     name: 'Cinéma de la fin',
     postalCode: '97310',
     publicName: null,
@@ -170,6 +171,7 @@ export const mockDigitalOffer: OfferResponse = {
     offerer: {
       name: 'Ferme des sarbacanes',
     },
+    timezone: 'Europe/Paris',
     name: 'Cinéma de la fin',
     postalCode: '97310',
     publicName: null,

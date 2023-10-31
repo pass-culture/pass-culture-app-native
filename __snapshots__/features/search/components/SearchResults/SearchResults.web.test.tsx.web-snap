@@ -94,9 +94,9 @@ exports[`SearchResults component should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   height: 32px;
-  background-color: #F1F1F4;
+  background-color: #ffffff;
   border-color: #161617;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 24px;
 }
 
@@ -113,40 +113,6 @@ exports[`SearchResults component should render correctly 1`] = `
 }
 
 .c5 {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  box-sizing: border-box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-color: #161617;
-  border-width: 1px;
-  border-radius: 24px;
-}
-
-.c5:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c5:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -179,24 +145,24 @@ exports[`SearchResults component should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c6:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c6:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c6:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
@@ -343,34 +309,19 @@ exports[`SearchResults component should render correctly 1`] = `
                 role="listitem"
               >
                 <button
-                  aria-label="Partout : Filtre sélectionné"
+                  aria-label="Point de vente"
                   class="c3 c4 sc-dcJsrY c4"
-                  data-testid="Partout : Filtre sélectionné"
+                  data-testid="Point de vente"
                   tabindex="0"
-                  title="Partout : Filtre sélectionné"
+                  title="Point de vente"
                   type="button"
                 >
                   <div
                     class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    data-testid="locationButtonLabel"
+                    data-testid="venueButtonLabel"
                     dir="ltr"
                   >
-                    Partout
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-width-10g5efv"
-                  />
-                  <div
-                    aria-label="Filtre sélectionné"
-                    class="css-view-175oi2r"
-                    data-testid="locationButtonIcon"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      locationButtonIcon-SVG-Mock
-                    </div>
+                    Point de vente
                   </div>
                 </button>
               </li>
@@ -380,7 +331,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Catégories"
-                  class="c3 c5 sc-dcJsrY c5"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Catégories"
                   tabindex="0"
                   title="Catégories"
@@ -401,7 +352,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Prix"
-                  class="c3 c5 sc-dcJsrY c5"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Prix"
                   tabindex="0"
                   title="Prix"
@@ -422,7 +373,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Dates & heures"
-                  class="c3 c5 sc-dcJsrY c5"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Dates & heures"
                   tabindex="0"
                   title="Dates & heures"
@@ -504,7 +455,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Modifier mes filtres"
-                class="c6 c7"
+                class="c5 c6"
                 data-testid="Modifier mes filtres"
                 tabindex="0"
                 type="button"
@@ -618,9 +569,9 @@ exports[`SearchResults component should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   height: 32px;
-  background-color: #F1F1F4;
+  background-color: #ffffff;
   border-color: #161617;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 24px;
 }
 
@@ -637,40 +588,6 @@ exports[`SearchResults component should render correctly 1`] = `
 }
 
 .c5 {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  box-sizing: border-box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-color: #161617;
-  border-width: 1px;
-  border-radius: 24px;
-}
-
-.c5:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c5:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -703,24 +620,24 @@ exports[`SearchResults component should render correctly 1`] = `
   box-sizing: border-box;
 }
 
-.c6:disabled {
+.c5:disabled {
   cursor: initial;
   background: none;
 }
 
-.c6:hover {
+.c5:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c6:hover:disabled {
+.c5:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7:disabled {
+.c6:disabled {
   background-color: #F1F1F4;
 }
 
@@ -866,34 +783,19 @@ exports[`SearchResults component should render correctly 1`] = `
               role="listitem"
             >
               <button
-                aria-label="Partout : Filtre sélectionné"
+                aria-label="Point de vente"
                 class="c3 c4 sc-dcJsrY c4"
-                data-testid="Partout : Filtre sélectionné"
+                data-testid="Point de vente"
                 tabindex="0"
-                title="Partout : Filtre sélectionné"
+                title="Point de vente"
                 type="button"
               >
                 <div
                   class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                  data-testid="locationButtonLabel"
+                  data-testid="venueButtonLabel"
                   dir="ltr"
                 >
-                  Partout
-                </div>
-                <div
-                  class="css-view-175oi2r r-width-10g5efv"
-                />
-                <div
-                  aria-label="Filtre sélectionné"
-                  class="css-view-175oi2r"
-                  data-testid="locationButtonIcon"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    locationButtonIcon-SVG-Mock
-                  </div>
+                  Point de vente
                 </div>
               </button>
             </li>
@@ -903,7 +805,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Catégories"
-                class="c3 c5 sc-dcJsrY c5"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Catégories"
                 tabindex="0"
                 title="Catégories"
@@ -924,7 +826,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Prix"
-                class="c3 c5 sc-dcJsrY c5"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Prix"
                 tabindex="0"
                 title="Prix"
@@ -945,7 +847,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Dates & heures"
-                class="c3 c5 sc-dcJsrY c5"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Dates & heures"
                 tabindex="0"
                 title="Dates & heures"
@@ -1027,7 +929,7 @@ exports[`SearchResults component should render correctly 1`] = `
           >
             <button
               aria-label="Modifier mes filtres"
-              class="c6 c7"
+              class="c5 c6"
               data-testid="Modifier mes filtres"
               tabindex="0"
               type="button"

@@ -2,12 +2,12 @@ import React from 'react'
 
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatToFrenchDate, formatToHour } from 'libs/parsers/formatDates'
+import { formatToFrenchDate, formatToHour, getTimeZonedDate } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const formatDate = (limitDate: string): string => {
-  const limit = new Date(limitDate)
+export const formatDate = (limitDate: string, timezone?: string): string => {
+  const limit = timezone ? getTimeZonedDate(limitDate, timezone) : new Date(limitDate)
   return `${formatToFrenchDate(limit)}, ${formatToHour(limit)}`
 }
 
