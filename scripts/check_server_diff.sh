@@ -6,7 +6,7 @@ set -o pipefail
 
 check_server_diff() {
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  echo $CURRENT_BRANCH
+  echo "$CURRENT_BRANCH"
   if [ "$CURRENT_BRANCH" != "master" ]; then
     echo "Require manual deploy"
     exit 0
