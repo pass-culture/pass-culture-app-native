@@ -85,12 +85,14 @@ export const OfferBody: FunctionComponent<Props> = ({
   const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
+  const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
+  const shouldDisplaySameArtistPlaylist =
+    !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const { userPosition: position } = useLocation()
-
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
   )
@@ -358,7 +360,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </AccordionItem>
       </SectionWithDivider>
 
-      {!!isArrayNotEmpty(sameArtistPlaylist) && (
+      {!!shouldDisplaySameArtistPlaylist && (
         <SameArtistPlaylist
           key={offer.id}
           sameArtistPlaylist={sameArtistPlaylist}

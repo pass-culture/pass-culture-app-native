@@ -41,7 +41,7 @@ jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
 }))
 
-let mockSameArtistPlaylist: Offer[] = []
+let mockSameArtistPlaylist: HitOfferWithArtistAndEan[] = []
 jest.mock('features/offer/components/SameArtistPlaylist/hook/useSameArtistPlaylist', () => ({
   useSameArtistPlaylist: jest.fn(() => mockSameArtistPlaylist),
 }))
@@ -125,7 +125,10 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest
+  .spyOn(useFeatureFlag, 'useFeatureFlag')
+  .mockReturnValue(false)
+  .mockReturnValue(false)
 
 const onScroll = jest.fn()
 
@@ -226,29 +229,6 @@ describe('<OfferBody />', () => {
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
         })
       })
-    })
-  })
-
-  describe('same artist playlist', () => {
-    beforeAll(() => {
-      mockSameArtistPlaylist = mockedAlgoliaOffersWithSameArtistResponse
-    })
-    it('should display same artist list when offer has some', async () => {
-      renderOfferBody({
-        sameArtistPlaylist: mockSameArtistPlaylist,
-      })
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameArtistPlaylist')).toBeOnTheScreen()
-    })
-
-    it('should not display same artist lists when offer has not it', async () => {
-      renderOfferBody()
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
     })
   })
 
@@ -666,6 +646,62 @@ describe('<OfferBody />', () => {
         fromMultivenueOfferId: 146112,
         offerId: 2,
       })
+    })
+  })
+
+  describe('same artist playlist with "wipSameArtistPlaylist" feature flag activated', () => {
+    beforeAll(() => {
+      mockSameArtistPlaylist = mockedAlgoliaOffersWithSameArtistResponse
+    })
+
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(false).mockReturnValueOnce(true)
+    })
+
+    it('should display same artist list when offer has some', async () => {
+      renderOfferBody({
+        sameArtistPlaylist: mockSameArtistPlaylist,
+      })
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameArtistPlaylist')).toBeOnTheScreen()
+    })
+
+    it('should not display same artist lists when offer has not it', async () => {
+      renderOfferBody()
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('same artist playlist with "wipSameArtistPlaylist" feature flag deactivated', () => {
+    beforeAll(() => {
+      mockSameArtistPlaylist = mockedAlgoliaOffersWithSameArtistResponse
+    })
+
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(false).mockReturnValueOnce(false)
+    })
+
+    it('should not display same artist list when offer has some', async () => {
+      renderOfferBody({
+        sameArtistPlaylist: mockSameArtistPlaylist,
+      })
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
+    })
+
+    it('should not display same artist lists when offer has not it', async () => {
+      renderOfferBody()
+
+      await screen.findByText('Envoyer sur Instagram')
+
+      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
     })
   })
 })
