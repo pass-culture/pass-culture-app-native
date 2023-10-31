@@ -21,11 +21,15 @@ const options = {
   onProxyRes: responseInterceptor(metasResponseInterceptor),
 }
 
-const addCanonicalLinkToHTML = (html: string, url: URL): string =>
-  html.replace(
+const addCanonicalLinkToHTML = (html: string, url: URL): string => {
+  const isThematicHome = url.pathname === '/accueil-thematique'
+  const homeIdParams = url.searchParams.get('homeId')
+  const additionalParams = isThematicHome && homeIdParams ? `?homeId=${homeIdParams}` : ''
+  return html.replace(
     '<head>',
-    `<head><link rel="canonical" href="${env.APP_PUBLIC_URL}${url.pathname}" />`
+    `<head><link rel="canonical" href="${env.APP_PUBLIC_URL}${url.pathname}${additionalParams}" />`
   )
+}
 
 const addNoIndexToHTML = (html: string): string =>
   html.replace('<head>', `<head><meta name="robots" content="noindex" />`)
@@ -69,7 +73,7 @@ export async function metasResponseInterceptor(
   }
 
   try {
-    return replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
+    return await replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
   } catch (error) {
     // FIXME(kopax): when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
