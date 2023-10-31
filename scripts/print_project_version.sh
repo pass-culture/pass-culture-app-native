@@ -14,8 +14,8 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 
-VERSION=$(jq -r '.version' "${1}/package.json")
-BUILD=$(jq -r '.build' "${1}/package.json")
+VERSION=$(jq --raw-output '.version' "${1}/package.json")
+BUILD=$(jq --raw-output '.build' "${1}/package.json")
 
 echo "VERSION=$VERSION" >>"${1}/ios/react-native-config.xcconfig"
 echo "BUILD=$BUILD" >>"${1}/ios/react-native-config.xcconfig"
