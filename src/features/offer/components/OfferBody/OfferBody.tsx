@@ -33,7 +33,14 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { formatDates, formatDistance, getDisplayPrice, getFormattedDates } from 'libs/parsers'
+import {
+  capitalizeFirstLetter,
+  extractStockDates,
+  formatDates,
+  formatDistance,
+  getDisplayPrice,
+  getFormattedDates,
+} from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import {
   useCategoryHomeLabelMapping,
@@ -243,22 +250,14 @@ export const OfferBody: FunctionComponent<Props> = ({
         venue.name
       )
 
-  const dates = offer.stocks.reduce<string[]>(
-    (accumulator, stock) =>
-      stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
-    []
-  )
-
+  const dates = extractStockDates(offer)
   const formattedDate = getFormattedDates(dates)
+  const capitalizedFormattedDate = capitalizeFirstLetter(formattedDate)
+
   const shouldDisplayWhenBlock = isEvent && !!formattedDate
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
-
-  const capitalizedFormattedDate =
-    typeof formattedDate === 'string'
-      ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
-      : formattedDate
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 

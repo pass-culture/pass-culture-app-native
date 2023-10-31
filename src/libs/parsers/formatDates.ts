@@ -1,5 +1,7 @@
 import { utcToZonedTime } from 'date-fns-tz'
 
+import { OfferResponse } from 'api/gen'
+
 // javascript Date can't find them...
 const MONTHS = [
   'janvier',
@@ -215,4 +217,19 @@ export const localizeUTCDate = (someDate: Date | string) => {
 export function getTimeZonedDate(date: Date | string, timezone: string) {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
+}
+
+export function extractStockDates(offer: OfferResponse): string[] {
+  return offer.stocks.reduce<string[]>((accumulator, stock) => {
+    if (stock.beginningDatetime) {
+      return [...accumulator, stock.beginningDatetime]
+    }
+    return accumulator
+  }, [])
+}
+
+export function capitalizeFirstLetter(formattedDate: string | number | undefined) {
+  return typeof formattedDate === 'string'
+    ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
+    : formattedDate
 }

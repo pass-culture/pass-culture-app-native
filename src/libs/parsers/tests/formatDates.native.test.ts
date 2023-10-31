@@ -1,6 +1,8 @@
 import mockdate from 'mockdate'
 import timezoneMock from 'timezone-mock'
 
+import { mockOffer } from 'features/bookOffer/fixtures/offer'
+
 import {
   formatDatePeriod,
   formatDateToISOStringWithoutTime,
@@ -14,6 +16,8 @@ import {
   joinArrayElement,
   GroupResult,
   formatGroupedDates,
+  extractStockDates,
+  capitalizeFirstLetter,
 } from '../formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -458,4 +462,111 @@ describe('formatToCompleteFrenchDate()', () => {
       expect(formatToCompleteFrenchDate(date)).toEqual(expectedString)
     }
   )
+})
+
+describe('extractStockDates', () => {
+  it('should return an empty array for an offer without stocks', () => {
+    const offer = { ...mockOffer, stocks: [] }
+    const result = extractStockDates(offer)
+
+    expect(result).toEqual([])
+  })
+
+  it('should return an array of dates for an offer with stocks', () => {
+    const offer = {
+      ...mockOffer,
+      stocks: [
+        {
+          id: 148409,
+          beginningDatetime: '2021-03-02T20:00:00',
+          price: 2400,
+          isExpired: false,
+          isBookable: true,
+          isSoldOut: false,
+          isForbiddenToUnderage: false,
+          features: [],
+        },
+        {
+          id: 148411,
+          beginningDatetime: '2021-03-02T10:00:00',
+          price: 2400,
+          isExpired: false,
+          isBookable: false,
+          isSoldOut: false,
+          isForbiddenToUnderage: false,
+          features: [],
+        },
+      ],
+    }
+    const result = extractStockDates(offer)
+
+    expect(result).toEqual(['2021-03-02T20:00:00', '2021-03-02T10:00:00'])
+  })
+
+  it('should skip stocks without beginningDatetime', () => {
+    const offer = {
+      ...mockOffer,
+      stocks: [
+        {
+          id: 148409,
+          beginningDatetime: '2021-03-02T20:00:00',
+          price: 2400,
+          isExpired: false,
+          isBookable: true,
+          isSoldOut: false,
+          isForbiddenToUnderage: false,
+          features: [],
+        },
+        {
+          id: 148411,
+          beginningDatetime: null,
+          price: 2400,
+          isExpired: false,
+          isBookable: false,
+          isSoldOut: false,
+          isForbiddenToUnderage: false,
+          features: [],
+        },
+        {
+          id: 148410,
+          beginningDatetime: '2021-03-17T20:00:00',
+          isBookable: true,
+          price: 2700,
+          isExpired: false,
+          isForbiddenToUnderage: false,
+          isSoldOut: false,
+          features: [],
+        },
+      ],
+    }
+    const result = extractStockDates(offer)
+
+    expect(result).toEqual(['2021-03-02T20:00:00', '2021-03-17T20:00:00'])
+  })
+})
+
+describe('capitalizeFirstLetter', () => {
+  it('should capitalize the first letter of a string', () => {
+    const result = capitalizeFirstLetter('hello')
+
+    expect(result).toEqual('Hello')
+  })
+
+  it('should handle an empty string', () => {
+    const result = capitalizeFirstLetter('')
+
+    expect(result).toEqual('')
+  })
+
+  it('should handle a non-string input', () => {
+    const result = capitalizeFirstLetter(undefined)
+
+    expect(result).toEqual(undefined)
+  })
+
+  it('should handle a single-character string', () => {
+    const result = capitalizeFirstLetter('x')
+
+    expect(result).toEqual('X')
+  })
 })

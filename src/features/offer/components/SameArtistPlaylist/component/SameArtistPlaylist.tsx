@@ -29,7 +29,7 @@ export function SameArtistPlaylist({
   itemWidth,
   itemHeight,
   keyExtractor,
-}: SameArtistPlaylistProps) {
+}: Readonly<SameArtistPlaylistProps>) {
   return (
     <SectionWithDivider testID="sameArtistPlaylist" visible>
       <Spacer.Column numberOfSpaces={6} />
