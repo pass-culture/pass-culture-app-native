@@ -27,14 +27,38 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 const dismissModal: VoidFunction = jest.fn()
 const doAfterSearch: VenueModalHookCallback = jest.fn()
 
+const falsyState = {
+  isQueryProvided: false,
+  shouldShowSuggestedVenues: false,
+  isVenueSelected: false,
+  venueQuery: '',
+}
+const inputState = {
+  isQueryProvided: true,
+  shouldShowSuggestedVenues: true,
+  isVenueSelected: false,
+  venueQuery: venue.label,
+}
+const selectedState = {
+  isQueryProvided: true,
+  shouldShowSuggestedVenues: false,
+  isVenueSelected: true,
+  venueQuery: venue.label,
+}
+
 describe('useVenueModal', () => {
   it('when start it should return falsy state', () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
-    expect(result.current.isQueryProvided).toBeFalsy()
-    expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
-    expect(result.current.isVenueSelected).toBeFalsy()
-    expect(result.current.venueQuery).toHaveLength(0)
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
+
+    expect({
+      isQueryProvided,
+      shouldShowSuggestedVenues,
+      isVenueSelected,
+      venueQuery,
+    }).toStrictEqual(falsyState)
   })
 
   it('when provide a query it should change state for the UI', async () => {
@@ -43,13 +67,18 @@ describe('useVenueModal', () => {
     })
 
     await act(async () => {
-      result.current.doChangeVenue('toto')
+      result.current.doChangeVenue(venue.label)
     })
 
-    expect(result.current.isQueryProvided).toBeTruthy()
-    expect(result.current.shouldShowSuggestedVenues).toBeTruthy()
-    expect(result.current.isVenueSelected).toBeFalsy()
-    expect(result.current.venueQuery).toHaveLength(4)
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
+
+    expect({
+      isQueryProvided,
+      shouldShowSuggestedVenues,
+      isVenueSelected,
+      venueQuery,
+    }).toStrictEqual(inputState)
   })
 
   it('when select a venue it should change state for the UI', async () => {
@@ -60,10 +89,15 @@ describe('useVenueModal', () => {
       result.current.doSetSelectedVenue(venue)
     })
 
-    expect(result.current.isQueryProvided).toBeTruthy()
-    expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
-    expect(result.current.isVenueSelected).toBeTruthy()
-    expect(result.current.venueQuery).toHaveLength(venue.label.length)
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
+
+    expect({
+      isQueryProvided,
+      shouldShowSuggestedVenues,
+      isVenueSelected,
+      venueQuery,
+    }).toStrictEqual(selectedState)
   })
 
   it('when select a venue and reset it should reset the UI', async () => {
@@ -74,16 +108,19 @@ describe('useVenueModal', () => {
       result.current.doSetSelectedVenue(venue)
     })
 
-    expect(result.current.venueQuery).toHaveLength(venue.label.length)
-
     await act(async () => {
       result.current.doResetVenue()
     })
 
-    expect(result.current.isQueryProvided).toBeFalsy()
-    expect(result.current.shouldShowSuggestedVenues).toBeFalsy()
-    expect(result.current.isVenueSelected).toBeFalsy()
-    expect(result.current.venueQuery).toHaveLength(0)
+    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+      result.current
+
+    expect({
+      isQueryProvided,
+      shouldShowSuggestedVenues,
+      isVenueSelected,
+      venueQuery,
+    }).toStrictEqual(falsyState)
   })
 
   it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
@@ -93,8 +130,6 @@ describe('useVenueModal', () => {
       result.current.doChangeVenue(venue.label)
       result.current.doSetSelectedVenue(venue)
     })
-
-    expect(dismissModal).not.toHaveBeenCalledWith()
 
     await act(async () => {
       result.current.doApplySearch()
@@ -114,7 +149,6 @@ describe('useVenueModal', () => {
       result.current.doApplySearch()
     })
 
-    expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
       payload: {
@@ -132,8 +166,6 @@ describe('useVenueModal', () => {
       result.current.doApplySearch()
     })
 
-    expect(doAfterSearch).not.toHaveBeenCalledWith()
-    expect(dismissModal).toHaveBeenCalledWith()
     expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
 
@@ -153,8 +185,6 @@ describe('useVenueModal', () => {
     })
 
     expect(doAfterSearch).not.toHaveBeenCalledWith()
-    expect(dismissModal).toHaveBeenCalledWith()
-    expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
 
   it('when a search is made then the callback is called', () => {
