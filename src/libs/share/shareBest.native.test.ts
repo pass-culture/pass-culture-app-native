@@ -1,9 +1,11 @@
-import { Platform, Share } from 'react-native'
+import { Platform, Share, Linking } from 'react-native'
 import SocialShare, { Social } from 'react-native-share'
 
 import { share } from 'libs/share/shareBest'
 import { waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
+
+const mockOpenUrl = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
 
 const mockShareSingle = jest.spyOn(SocialShare, 'shareSingle')
 
@@ -33,17 +35,6 @@ describe('share()', () => {
           dialogTitle: 'title',
         }
       )
-    })
-
-    it('should share on Instagram when instagram mode', () => {
-      share({ content: defaultContent, mode: Network.instagram })
-
-      expect(mockShareSingle).toHaveBeenCalledWith({
-        social: Social.Instagram,
-        message: 'Message :\nhttps://www.toto.com',
-        type: 'text',
-        url: undefined,
-      })
     })
   })
 
@@ -79,8 +70,35 @@ describe('share()', () => {
         social: Social.Instagram,
         message: encodeURIComponent('Message :\nhttps://www.toto.com'),
         type: 'text',
-        url: undefined,
       })
+    })
+
+    it('should share on imessage when imessage mode', () => {
+      share({ content: defaultContent, mode: 'iMessage' })
+
+      expect(mockOpenUrl).toHaveBeenCalledWith('sms://&body=Message :\nhttps://www.toto.com')
+    })
+  })
+
+  it('should share on Snapchat when snapchat mode', () => {
+    share({ content: defaultContent, mode: Network.snapchat })
+
+    expect(mockShareSingle).toHaveBeenCalledWith({
+      social: Social.Snapchat,
+      message: 'Message :\n',
+      url: 'https://www.toto.com',
+      type: 'text',
+    })
+  })
+
+  it('should share on Messenger when messenger mode', () => {
+    share({ content: defaultContent, mode: Network.messenger })
+
+    expect(mockShareSingle).toHaveBeenCalledWith({
+      social: Social.Messenger,
+      message: encodeURIComponent('Message :\n'),
+      type: 'text',
+      url: encodeURIComponent('https://www.toto.com'),
     })
   })
 

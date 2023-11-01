@@ -1,14 +1,14 @@
-import { Platform, Share, ShareAction } from 'react-native'
-import SocialShare, { Social } from 'react-native-share'
+import { Linking, Platform, Share, ShareAction } from 'react-native'
+import SocialShare from 'react-native-share'
 
-import { Network } from 'ui/components/ShareMessagingApp'
+import { mapNetworkToSocial, RNShareNetwork } from 'libs/share/mapNetworkToSocial'
 
 type ShareContent = {
   url: string
   body: string
   subject?: string
 }
-type ShareMode = 'default' | `${Network}`
+type ShareMode = 'default' | 'iMessage' | `${RNShareNetwork}`
 
 type Arguments = {
   content: ShareContent
@@ -45,15 +45,24 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
       logAnalyticsEvent?.(shareAction)
     }
     // On web, the share feature is supported by the WebShareModal component.
-  } else if (mode === Network.instagram) {
-    const rawMessage = `${content.body}\u00a0:\n${content.url}`
-    const message = isIos ? encodeURIComponent(rawMessage) : rawMessage
+  } else if (mode === 'iMessage') {
+    await Linking.openURL(`sms://&body=${content.body}\u00a0:\n${content.url}`)
+  } else {
+    const { shouldEncodeURI, supportsURL = true, ...options } = mapNetworkToSocial[mode]
+
+    const rawMessage = supportsURL
+      ? `${content.body}\u00a0:\n`
+      : `${content.body}\u00a0:\n${content.url}`
+    const message = shouldEncodeURI ? encodeURIComponent(rawMessage) : rawMessage
+
+    const rawUrl = supportsURL ? content.url : undefined
+    const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl) : rawUrl
 
     SocialShare.shareSingle({
-      social: Social.Instagram,
+      ...options,
       message,
       type: 'text',
-      url: undefined,
+      url,
     })
   }
 }
