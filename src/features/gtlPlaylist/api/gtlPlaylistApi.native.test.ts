@@ -2,7 +2,6 @@ import { SearchResponse } from '@algolia/client-search'
 
 import { VenueResponse } from 'api/gen'
 import {
-  BASE_URL,
   fetchGTLPlaylists,
   fetchOffersFromGTLPlaylist,
   FetchOffersFromGTLPlaylistProps,
@@ -10,13 +9,14 @@ import {
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
+import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 
 describe('GTL Playlist API', () => {
   describe('fetchGTLPlaylists', () => {
     beforeEach(() => {
-      mockServer.universalGet(`${BASE_URL}/entries`, contentfulGtlPlaylistSnap)
+      mockServer.universalGet(`${CONTENTFUL_BASE_URL}/entries`, contentfulGtlPlaylistSnap)
     })
 
     it('should return correct data', async () => {
