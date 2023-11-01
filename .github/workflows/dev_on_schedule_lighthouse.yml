@@ -23,7 +23,7 @@ jobs:
             v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
       - name: run Lighthouse CI
         run: |
-          yarn global add @lhci/cli@0.11.x
+          yarn dlx add @lhci/cli@0.11.x
           yarn test:lighthouse --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
       - name: Upload lighthouse report to artifacts
         uses: actions/upload-artifact@v3

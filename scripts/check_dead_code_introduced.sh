@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-yarn --silent test:deadcode > scripts/dead_code_current.txt
+yarn run --silent test:deadcode > scripts/dead_code_current.txt
 
 current_dead_code_count=$(wc -l < scripts/dead_code_current.txt)
 snapshot_dead_code_count=$(wc -l < scripts/dead_code_snapshot.txt)
