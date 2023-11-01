@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       versionTo:
-        description: "Nom de la nouvelle release (ex: 1.200.0)"
+        description: 'Nom de la nouvelle release (ex: 1.200.0)'
         required: true
         type: string
   repository_dispatch:
@@ -40,7 +40,7 @@ jobs:
       - name: Setup Node.JS
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: '.nvmrc'
 
       # Necessary for the latest service worker test script
       - name: Install dependencies

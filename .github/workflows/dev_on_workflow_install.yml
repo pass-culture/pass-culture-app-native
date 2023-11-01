@@ -34,7 +34,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - id: gcloud-auth
-        name: "OpenID Connect Authentication"
+        name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           cleanup_credentials: false
@@ -62,14 +62,14 @@ jobs:
             INFRA_PROD_GCP_WORKLOAD_IDENTITY_PROVIDER:passculture-metier-ehp/passculture-main-gcp-workload-identity-provider
             ARTIFACT_REGISTRY_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-main-artifact-registry-service-account
       - id: openid-auth
-        name: "OpenID Connect Authentication"
+        name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ steps.secrets.outputs.INFRA_PROD_GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
-      - name: yarn.lock switch to GCP artifact registry 
+      - name: yarn.lock switch to GCP artifact registry
         run: sed -i -e "s#https://registry.yarnpkg.com/#https://${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/#g" yarn.lock
       - name: Create .npmrc
         run: |
