@@ -396,5 +396,6 @@
     "./jsx-dev-runtime": "./jsx-dev-runtime.js",
     "./jsx-runtime": "./jsx-runtime.js",
     "./": "./"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }
