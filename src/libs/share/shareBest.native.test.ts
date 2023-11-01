@@ -1,8 +1,9 @@
 import { Platform, Share } from 'react-native'
-import SocialShare from 'react-native-share'
+import SocialShare, { Social } from 'react-native-share'
 
 import { share } from 'libs/share/shareBest'
 import { waitFor } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 const mockShareSingle = jest.spyOn(SocialShare, 'shareSingle')
 
@@ -33,6 +34,17 @@ describe('share()', () => {
         }
       )
     })
+
+    it('should share on Instagram when instagram mode', () => {
+      share({ content: defaultContent, mode: Network.instagram })
+
+      expect(mockShareSingle).toHaveBeenCalledWith({
+        social: Social.Instagram,
+        message: 'Message :\nhttps://www.toto.com',
+        type: 'text',
+        url: undefined,
+      })
+    })
   })
 
   describe('on iOS', () => {
@@ -58,6 +70,17 @@ describe('share()', () => {
           subject: 'title',
         }
       )
+    })
+
+    it('should share on Instagram when instagram mode', () => {
+      share({ content: defaultContent, mode: Network.instagram })
+
+      expect(mockShareSingle).toHaveBeenCalledWith({
+        social: Social.Instagram,
+        message: encodeURIComponent('Message :\nhttps://www.toto.com'),
+        type: 'text',
+        url: undefined,
+      })
     })
   })
 

@@ -1,4 +1,5 @@
 import { Platform, Share, ShareAction } from 'react-native'
+import SocialShare, { Social } from 'react-native-share'
 
 import { Network } from 'ui/components/ShareMessagingApp'
 
@@ -44,5 +45,15 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
       logAnalyticsEvent?.(shareAction)
     }
     // On web, the share feature is supported by the WebShareModal component.
+  } else if (mode === Network.instagram) {
+    const rawMessage = `${content.body}\u00a0:\n${content.url}`
+    const message = isIos ? encodeURIComponent(rawMessage) : rawMessage
+
+    SocialShare.shareSingle({
+      social: Social.Instagram,
+      message,
+      type: 'text',
+      url: undefined,
+    })
   }
 }
