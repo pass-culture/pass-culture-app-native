@@ -15,5 +15,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn danger ci
-      - name: Check if pipeline should fail
-        run: (! grep "🔴" .reassure/output.md)
+      - name: Check if render count increased, fail if so
+        run: ./scripts/reassure_test_check.sh
