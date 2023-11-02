@@ -1,14 +1,9 @@
 import { Linking, Platform, Share, ShareAction } from 'react-native'
 import SocialShare from 'react-native-share'
 
-import { mapNetworkToSocial, RNShareNetwork } from 'libs/share/mapNetworkToSocial'
+import { mapNetworkToSocial } from 'libs/share/mapNetworkToSocial'
 
-type ShareContent = {
-  url: string
-  body: string
-  subject?: string
-}
-type ShareMode = 'default' | 'iMessage' | `${RNShareNetwork}`
+import { ShareContent, ShareMode } from './types'
 
 type Arguments = {
   content: ShareContent

@@ -1,16 +1,7 @@
 import { Platform } from 'react-native'
 import { ShareSingleOptions, Social } from 'react-native-share'
 
-export enum RNShareNetwork {
-  googleMessages = 'SMS',
-  instagram = 'Instagram',
-  messenger = 'Messenger',
-  snapchat = 'Snapchat',
-  telegram = 'Telegram',
-  twitter = 'Twitter',
-  viber = 'Viber',
-  whatsapp = 'WhatsApp',
-}
+import { RNShareNetwork } from 'libs/share/types'
 
 export const mapNetworkToSocial: Record<
   RNShareNetwork,
