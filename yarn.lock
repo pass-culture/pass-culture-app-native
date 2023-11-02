@@ -13020,7 +13020,7 @@ __metadata:
     react-native-in-app-review: ^4.3.1
     react-native-intersection-observer: ^0.2.0
     react-native-keychain: ^8.0.0
-    react-native-launch-navigator: ^1.0.8
+    react-native-launch-navigator: 1.0.8
     react-native-linear-gradient: ^2.5.6
     react-native-lottie-splash-screen: ^1.1.2
     react-native-modal: ^13.0.0
@@ -31351,7 +31351,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-launch-navigator@npm:^1.0.8":
+"react-native-launch-navigator@npm:1.0.8":
   version: 1.0.8
   resolution: "react-native-launch-navigator@npm:1.0.8"
   peerDependencies:
