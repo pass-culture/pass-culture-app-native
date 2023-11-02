@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -8,8 +7,8 @@ import { analytics } from 'libs/analytics'
 import { CITIES_API_URL } from 'libs/place'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse } from 'libs/place/useCities'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const POSTAL_CODE = '83570'
@@ -26,7 +25,7 @@ describe('<SetCity/>', () => {
   })
 
   it('should display error message when the user enters a valid postal code but no city found', async () => {
-    mockCitiesApiCall([])
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, [])
     renderSetCity()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -42,7 +41,7 @@ describe('<SetCity/>', () => {
   })
 
   it('should display cities when the user enters a valid postal code', async () => {
-    mockCitiesApiCall(mockedSuggestedCities)
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -56,7 +55,7 @@ describe('<SetCity/>', () => {
 
   it('should save city and navigate to SetAddress when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
-    mockCitiesApiCall(mockedSuggestedCities)
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -85,7 +84,7 @@ describe('<SetCity/>', () => {
 
   it('should log analytics on press Continuer', async () => {
     const city = mockedSuggestedCities[0]
-    mockCitiesApiCall(mockedSuggestedCities)
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -104,12 +103,4 @@ describe('<SetCity/>', () => {
 function renderSetCity() {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<SetCity />))
-}
-
-function mockCitiesApiCall(response: CitiesResponse) {
-  server.use(
-    rest.get<CitiesResponse>(CITIES_API_URL, (_req, res, ctx) =>
-      res(ctx.status(200), ctx.json(response))
-    )
-  )
 }

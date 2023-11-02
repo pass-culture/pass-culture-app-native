@@ -34,7 +34,7 @@ import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
-import { BASE_URL } from 'libs/contentful/fetchHomepageNatifContent'
+import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -168,7 +168,7 @@ export const server = setupServer(
       )
     }
   ),
-  rest.get(`${BASE_URL}/entries`, async (_req, res, ctx) => {
+  rest.get(`${CONTENTFUL_BASE_URL}/entries`, async (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
   }),
   rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>

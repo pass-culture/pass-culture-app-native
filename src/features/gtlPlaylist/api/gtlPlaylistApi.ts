@@ -8,15 +8,14 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
+import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
-const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
-export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
 const PARAMS = `?content_type=gtlPlaylist&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
-const URL = `${BASE_URL}/entries${PARAMS}`
+const URL = `${CONTENTFUL_BASE_URL}/entries${PARAMS}`
 
 export type FetchOffersFromGTLPlaylistProps = {
   position: Position
