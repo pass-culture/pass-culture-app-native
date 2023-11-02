@@ -9,6 +9,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -19,6 +20,9 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 jest.mock('react-query')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
+
+jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+const mockUseFeatureFlag = useFeatureFlag as jest.MockedFunction<typeof useFeatureFlag>
 
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels
@@ -77,6 +81,10 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Venue />', () => {
+  beforeAll(() => {
+    mockUseFeatureFlag.mockReturnValue(false)
+  })
+
   it('should match snapshot', async () => {
     renderVenue(venueId)
     await act(async () => {})
@@ -160,6 +168,20 @@ describe('<Venue />', () => {
       expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
     })
+  })
+})
+
+describe('<Venue /> with new venue body', () => {
+  beforeAll(() => {
+    mockUseFeatureFlag.mockReturnValue(true)
+  })
+
+  it('should match snapshot', async () => {
+    renderVenue(venueId)
+
+    await act(async () => {})
+
+    expect(screen).toMatchSnapshot()
   })
 })
 
