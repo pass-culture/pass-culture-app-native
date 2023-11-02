@@ -8,7 +8,10 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
+import { VenueBodyNew } from 'features/venue/pages/VenueBodyNew/VenueBodyNew'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -26,6 +29,7 @@ export const Venue: FunctionComponent = () => {
       }
     },
   })
+  const shouldUseNewVenuePage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VENUE_PAGE)
 
   useEffect(() => {
     if (params.from === 'deeplink' && venue?.id) {
@@ -48,7 +52,11 @@ export const Venue: FunctionComponent = () => {
   return (
     <Container>
       <VenueWebHeader venue={venue} />
-      <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
+      {shouldUseNewVenuePage ? (
+        <VenueBodyNew />
+      ) : (
+        <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
+      )}
       {/* VenueHeader is called after Body to implement the BlurView for iOS */}
       <VenueHeader
         headerTransition={headerTransition}
