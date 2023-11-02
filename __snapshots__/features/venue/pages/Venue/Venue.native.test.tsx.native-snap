@@ -2959,7 +2959,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               ]
             }
           >
-            Vas-y en bande organisée !
+            Passe le bon plan !
           </Text>
           <View
             style={

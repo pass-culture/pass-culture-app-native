@@ -6,13 +6,10 @@ import { useShareOffer } from 'features/share/helpers/useShareOffer'
 import { analytics } from 'libs/analytics'
 
 type MessagingAppsProps = {
-  isEvent: boolean
   offerId: number
 }
 
-export const OfferMessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
-  const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
-
+export const OfferMessagingApps = ({ offerId }: MessagingAppsProps) => {
   const { share, shareContent } = useShareOffer(offerId, 'social_media')
 
   const messagingAppAnalytics = useCallback(
@@ -26,7 +23,6 @@ export const OfferMessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => 
 
   return (
     <MessagingApps
-      title={title}
       shareContent={shareContent}
       messagingAppAnalytics={messagingAppAnalytics}
       share={share}

@@ -23,7 +23,6 @@ export const VenueMessagingApps = ({ venueId }: MessagingAppsProps) => {
 
   return (
     <MessagingApps
-      title="Vas-y en bande organisée&nbsp;!"
       shareContent={shareContent}
       share={share}
       messagingAppAnalytics={messagingAppAnalytics}
