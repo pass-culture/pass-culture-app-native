@@ -43,6 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: master
           token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
       - name: Author
         run: |
@@ -53,6 +54,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          target-branch: 'master'
           version-type: 'minor'
           skip-commit: 'true'
           skip-tag: 'true'
@@ -63,6 +65,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PACKAGEJSON_DIR: 'server'
         with:
+          target-branch: 'master'
           version-type: 'minor'
           skip-commit: 'true'
           skip-tag: 'true'
@@ -107,7 +110,7 @@ jobs:
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           git add package.json server/package.json
           git commit --message "v${TESTING_VERSION}"
-          git push origin
+          git push origin master
       - name: Create and push testing tag
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
