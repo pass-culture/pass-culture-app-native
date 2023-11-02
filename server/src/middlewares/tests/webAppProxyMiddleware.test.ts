@@ -112,6 +112,18 @@ describe('metasResponseInterceptor', () => {
         expect(response).toMatch(hasCanonicalWith(url))
       })
 
+      it('with home id when url is thematic home', async () => {
+        const url = `${env.APP_PUBLIC_URL}/accueil-thematique?homeId=1324434`
+        const canonicalUrl = new RegExp(
+          `<head>.*?<link rel="canonical" href="${env.APP_PUBLIC_URL}/accueil-thematique\\?homeId=1324434" />.*?</head>`,
+          's'
+        )
+
+        const response = await htmlResponseFor(url)
+
+        expect(response).toMatch(canonicalUrl)
+      })
+
       it("when using `yarn dev` we don't have the host", async () => {
         const response = await htmlResponseFor('/')
 
