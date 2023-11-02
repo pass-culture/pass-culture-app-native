@@ -28,6 +28,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
+import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -111,6 +112,11 @@ export const SearchResults: React.FC = () => {
     visible: locationModalVisible,
     showModal: showLocationModal,
     hideModal: hideLocationModal,
+  } = useModal(false)
+  const {
+    visible: venueModalVisible,
+    showModal: showVenueModal,
+    hideModal: hideVenueModal,
   } = useModal(false)
   const {
     visible: datesHoursModalVisible,
@@ -221,7 +227,7 @@ export const SearchResults: React.FC = () => {
                 <SingleFilterButton
                   label={isVenue ? locationLabel : 'Point de vente'}
                   testID="venueButton"
-                  onPress={showLocationModal}
+                  onPress={showVenueModal}
                   isSelected={isVenue}
                 />
               ) : (
@@ -331,6 +337,7 @@ export const SearchResults: React.FC = () => {
         hideModal={hideLocationModal}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
+      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
       <DatesHoursModal
         title="Dates & heures"
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
