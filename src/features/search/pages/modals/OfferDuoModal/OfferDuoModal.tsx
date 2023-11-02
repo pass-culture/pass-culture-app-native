@@ -33,8 +33,6 @@ export type OfferDuoModalProps = {
 
 const titleId = uuidv4()
 
-const DEFAULT_HEIGHT_MODAL = 500
-
 export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   title,
   accessibilityLabel,
@@ -44,7 +42,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
   onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
-  const { isDesktopViewport, modal } = useTheme()
+  const { modal } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const {
@@ -139,25 +137,22 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
     <AppModal
       visible={isVisible}
       customModalHeader={
-        isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader
-            titleId={titleId}
-            title={title}
-            onGoBack={closeModal}
-            onClose={close}
-            shouldDisplayBackButton={shouldDisplayBackButton}
-            shouldDisplayCloseButton
-          />
-        )
+        <SearchCustomModalHeader
+          titleId={titleId}
+          title={title}
+          onGoBack={closeModal}
+          onClose={close}
+          shouldDisplayBackButton={shouldDisplayBackButton}
+          shouldDisplayCloseButton
+        />
       }
       title={title}
-      isFullscreen
+      isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
       rightIcon={Close}
       onRightIconPress={closeModal}
-      maxHeight={isDesktopViewport ? DEFAULT_HEIGHT_MODAL : undefined}
       fixedModalBottom={
         <SearchFixedModalBottom
           onSearchPress={onSubmit}
