@@ -25,13 +25,11 @@ const Template: ComponentStory<typeof OfferMessagingApps> = (args) => (
 // TODO(PC-17931): Fix this story
 const Default = Template.bind({})
 Default.args = {
-  isEvent: false,
   offerId: 1,
 }
 
 // TODO(PC-17931): Fix this story
 const Event = Template.bind({})
 Event.args = {
-  isEvent: true,
   offerId: 1,
 }

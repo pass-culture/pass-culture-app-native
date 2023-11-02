@@ -13,13 +13,12 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  title: string
   shareContent: ShareContent
   share: () => void
   messagingAppAnalytics: (social: Social | 'Other') => void
 }
 
-export const MessagingApps = ({ title, shareContent, share, messagingAppAnalytics }: Props) => {
+export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Props) => {
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
@@ -36,7 +35,7 @@ export const MessagingApps = ({ title, shareContent, share, messagingAppAnalytic
 
   return (
     <React.Fragment>
-      <StyledTitle4>{title}</StyledTitle4>
+      <StyledTitle4>{'Passe le bon plan\u00a0!'}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps
