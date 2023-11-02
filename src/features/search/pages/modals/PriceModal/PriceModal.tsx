@@ -79,7 +79,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const isOnlyFreeOffersSearchDefaultValue = searchState?.offerIsFree ?? false
 
-  const { isDesktopViewport, modal } = useTheme()
+  const { modal } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   useForHeightKeyboardEvents(setKeyboardHeight)
@@ -239,19 +239,17 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     <AppModal
       visible={isVisible}
       customModalHeader={
-        isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader
-            titleId={titleId}
-            title={title}
-            onGoBack={closeModal}
-            onClose={close}
-            shouldDisplayBackButton={shouldDisplayBackButton}
-            shouldDisplayCloseButton
-          />
-        )
+        <SearchCustomModalHeader
+          titleId={titleId}
+          title={title}
+          onGoBack={closeModal}
+          onClose={close}
+          shouldDisplayBackButton={shouldDisplayBackButton}
+          shouldDisplayCloseButton
+        />
       }
       title={title}
-      isFullscreen
+      isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
@@ -264,8 +262,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           isSearchDisabled={disabled}
           filterBehaviour={filterBehaviour}
         />
-      }
-      shouldScrollToEnd>
+      }>
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
         {!!isLoggedInAndBeneficiary && (
