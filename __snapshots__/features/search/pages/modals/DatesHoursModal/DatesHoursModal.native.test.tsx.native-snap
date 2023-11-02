@@ -115,7 +115,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
   >
     <View
       desktopMaxHeight={1000.5}
-      height={1334}
+      height={1318}
       maxHeight={1334}
       noPadding={true}
       style={
@@ -132,7 +132,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
             "borderTopRightRadius": 20,
             "borderTopStartRadius": 16,
             "flexDirection": "column",
-            "height": 1334,
+            "height": 1318,
             "justifyContent": "center",
             "maxHeight": 1334,
             "maxWidth": 960,
@@ -166,19 +166,14 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
           }
         >
           <View
-            style={
-              {
-                "height": 64,
-              }
-            }
-          />
-          <View
+            height={72}
             style={
               [
                 {
-                  "backgroundColor": "#eb0055",
-                  "position": "absolute",
-                  "top": 0,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 72,
+                  "justifyContent": "space-between",
                   "width": "100%",
                   "zIndex": 1,
                 },
@@ -187,157 +182,121 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
             testID="pageHeader"
           >
             <View
-              customHeight={16}
-              enable={true}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
-            <View
+              positionInHeader="left"
               style={
                 [
                   {
                     "alignItems": "center",
-                    "height": 48,
-                    "justifyContent": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+              testID="back-button-container"
+            />
+            <Text
+              nativeID="testUuidV4"
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
+              Dates & heures
+            </Text>
+            <View
+              positionInHeader="right"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-end",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+              testID="close-button-container"
+            >
               <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "width": "100%",
-                    },
-                  ]
+                accessibilityLabel="Fermer"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Fermer"
               >
                 <View
-                  positionInHeader="left"
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "flex-start",
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                      },
-                    ]
-                  }
-                  testID="back-button-container"
-                />
-                <Text
-                  nativeID="testUuidV4"
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
+                  height={24}
+                  testID="icon-close"
+                  width={24}
                 >
-                  Dates & heures
-                </Text>
-                <View
-                  positionInHeader="right"
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "flex-end",
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                      },
-                    ]
-                  }
-                  testID="close-button-container"
-                >
-                  <View
-                    accessibilityLabel="Fermer"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexGrow": 1,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 40,
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="Fermer"
-                  >
-                    <View
-                      height={24}
-                      testID="icon-close"
-                      width={24}
-                    >
-                      <Text>
-                        icon-close-SVG-Mock
-                      </Text>
-                    </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "display": "none",
-                          },
-                        ]
-                      }
-                    >
-                      Retour
-                    </Text>
-                  </View>
+                  <Text>
+                    icon-close-SVG-Mock
+                  </Text>
                 </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "display": "none",
+                      },
+                    ]
+                  }
+                >
+                  Retour
+                </Text>
               </View>
             </View>
           </View>
@@ -359,6 +318,16 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
       >
         <View>
           <View
+            numberOfSpaces={6}
+            style={
+              [
+                {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
             style={
               [
                 {
@@ -377,16 +346,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                 ]
               }
             >
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 inverseLayout={false}
                 style={
