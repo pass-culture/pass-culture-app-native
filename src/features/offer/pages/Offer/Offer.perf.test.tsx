@@ -1,3 +1,4 @@
+import { rest } from 'msw'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
@@ -6,8 +7,8 @@ import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/ge
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment/__mocks__/envFixtures'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, measurePerformance, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
@@ -18,9 +19,11 @@ useRoute.mockReturnValue({
 })
 
 // We mock server instead of hooks to test the real behavior of the component.
-mockServer.universalGet(
-  `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerResponseSnap.id}`,
-  mockedAlgoliaResponse.hits
+server.use(
+  rest.get(
+    `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerResponseSnap.id}`,
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(mockedAlgoliaResponse.hits))
+  )
 )
 
 // Mock to display one messaging app button
