@@ -47,7 +47,7 @@ export const Venue: FunctionComponent = () => {
 
   const gtlPlaylists = useGTLPlaylists({ venue })
 
-  if (!venue) return <React.Fragment></React.Fragment>
+  if (!venue) return null
 
   return (
     <Container>

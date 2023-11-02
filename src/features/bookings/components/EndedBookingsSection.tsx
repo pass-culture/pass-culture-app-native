@@ -12,7 +12,7 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
   const { endedBookings } = props
 
   if (!endedBookings || endedBookings.length === 0) {
-    return <React.Fragment />
+    return null
   }
 
   const endedBookingsLabel = plural(endedBookings.length, {

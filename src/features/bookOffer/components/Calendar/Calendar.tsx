@@ -35,7 +35,7 @@ LocaleConfig.defaultLocale = 'fr'
 const renderArrow = (direction: string) => {
   if (direction === 'left') return <ArrowPrevious {...accessibilityAndTestId('Mois précédent')} />
   if (direction === 'right') return <ArrowNext {...accessibilityAndTestId('Mois suivant')} />
-  return <React.Fragment />
+  return null
 }
 
 const calendarHeaderStyle = {

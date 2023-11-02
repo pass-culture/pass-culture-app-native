@@ -32,29 +32,27 @@ export const FavoriteListOfferModal: React.FC<Props> = ({
     hideModal()
   }
   return (
-    <React.Fragment>
-      <AppModalWithIllustration
-        Illustration={StyledBicolorTables}
-        title="Crée une liste de favoris&nbsp;!"
-        hideModal={onHideModalPress}
-        onModalHide={shouldSeeSurvey ? showSurveyModal : undefined}
-        visible={visible}>
-        <StyledBody>Trie tes favoris à ta façon et partage les avec tes amis</StyledBody>
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          wording="Créer une liste de favoris"
-          icon={PlusLight}
-          onPress={onCreateFavListPress}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryBlack
-          wording="Non merci"
-          onPress={onHideModalPress}
-          icon={Invalidate}
-          accessibilityLabel="Fermer la modale"
-        />
-      </AppModalWithIllustration>
-    </React.Fragment>
+    <AppModalWithIllustration
+      Illustration={StyledBicolorTables}
+      title="Crée une liste de favoris&nbsp;!"
+      hideModal={onHideModalPress}
+      onModalHide={shouldSeeSurvey ? showSurveyModal : undefined}
+      visible={visible}>
+      <StyledBody>Trie tes favoris à ta façon et partage les avec tes amis</StyledBody>
+      <Spacer.Column numberOfSpaces={6} />
+      <ButtonPrimary
+        wording="Créer une liste de favoris"
+        icon={PlusLight}
+        onPress={onCreateFavListPress}
+      />
+      <Spacer.Column numberOfSpaces={4} />
+      <ButtonTertiaryBlack
+        wording="Non merci"
+        onPress={onHideModalPress}
+        icon={Invalidate}
+        accessibilityLabel="Fermer la modale"
+      />
+    </AppModalWithIllustration>
   )
 }
 

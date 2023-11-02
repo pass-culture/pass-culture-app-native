@@ -48,7 +48,7 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
-  if (!shouldModuleBeDisplayed) return <React.Fragment />
+  if (!shouldModuleBeDisplayed) return null
 
   const analyticsParams: OfferAnalyticsParams = {
     moduleId: props.id,

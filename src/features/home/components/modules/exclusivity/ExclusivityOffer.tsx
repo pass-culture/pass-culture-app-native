@@ -47,7 +47,7 @@ const UnmemoizedExclusivityOffer = ({
     }
   }, [homeEntryId, index, moduleId, shouldDisplayExcluOffer])
 
-  if (!shouldDisplayExcluOffer) return <React.Fragment />
+  if (!shouldDisplayExcluOffer) return null
 
   return (
     <StyledTouchableLink

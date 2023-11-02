@@ -94,16 +94,14 @@ export const SuggestedPlacesOrVenues: FunctionComponent<Props> = ({
         />
       </View>
       {filteredPlaces.length > 0 && (
-        <React.Fragment>
-          <VerticalUl>
-            {filteredPlaces.map((item, index) => (
-              <Li key={keyExtractor(item)}>
-                <Hit hit={item} onPress={() => setSelectedPlaceOrVenue(item)} />
-                {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
-              </Li>
-            ))}
-          </VerticalUl>
-        </React.Fragment>
+        <VerticalUl>
+          {filteredPlaces.map((item, index) => (
+            <Li key={keyExtractor(item)}>
+              <Hit hit={item} onPress={() => setSelectedPlaceOrVenue(item)} />
+              {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
+            </Li>
+          ))}
+        </VerticalUl>
       )}
     </React.Fragment>
   )
@@ -129,9 +127,7 @@ const NoSuggestedPlacesOrVenues = ({ show }: { show: boolean }) =>
         Aucun lieu ne correspond à ta recherche
       </StyledBody>
     </DescriptionErrorTextContainer>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 
 const RefContainer = styled.View({
   flexDirection: 'row',
