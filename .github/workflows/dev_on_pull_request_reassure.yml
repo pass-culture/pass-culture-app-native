@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run performance testing script
-        run: ./scripts/reassure-test.sh
+        run: ./scripts/reassure_test.sh
       - name: Run Danger.js to publish scores in PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn danger ci
-      - name: Check if pipeline should fail
-        run: (! grep "🔴" .reassure/output.md)
+      - name: Check if render count increased, fail if so
+        run: ./scripts/reassure_test_check.sh
