@@ -6,7 +6,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { act, render, screen, waitFor } from 'tests/utils/web'
+import { act, render, screen, waitFor, within } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
 
@@ -22,7 +22,7 @@ jest.mock('react-instantsearch-core', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchInputID = uuidv4()
 
@@ -55,6 +55,7 @@ describe('SearchHeader component', () => {
     )
 
     await act(async () => {
+      await userEvent.tab()
       await userEvent.tab()
       await userEvent.keyboard('{Enter}')
     })
@@ -124,10 +125,45 @@ describe('SearchHeader component', () => {
     await act(async () => {
       await userEvent.tab()
       await userEvent.tab()
+      await userEvent.tab()
     })
 
     const locationFilterButton = screen.getByTestId('Me localiser')
 
     expect(locationFilterButton).toHaveFocus()
+  })
+
+  it('should show Rechercher when no params is given', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
+
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
+    await act(async () => {})
+
+    expect(screen.getByText('Rechercher')).toBeTruthy()
+  })
+
+  it('should show a pin icon when no params is given', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
+
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
+
+    await act(async () => {})
+    const title = within(screen.getByTestId('SearchHeaderTitleContainer'))
+
+    expect(title.getByTestId('location pointer not filled')).toBeTruthy()
   })
 })

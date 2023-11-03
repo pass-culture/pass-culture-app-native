@@ -1,15 +1,20 @@
-import React, { memo } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { memo, useCallback } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { SearchLocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
-import { CreateHistoryItem, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
+import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -26,6 +31,7 @@ export const SearchHeader = memo(function SearchHeader({
   addSearchHistory,
   searchInHistory,
 }: Props) {
+  const { navigate } = useNavigation<UseNavigationType>()
   const subtitle = 'Toutes les offres à portée de main'
   const shouldDisplaySubtitle = !searchView || searchView === SearchView.Landing
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
@@ -33,15 +39,34 @@ export const SearchHeader = memo(function SearchHeader({
   const shouldDisplayLocationWidget =
     enableAppLocation && shouldDisplaySubtitle && !isDesktopViewport
 
+  const onSearch = useCallback(
+    (payload: Partial<SearchState>) => {
+      navigate(...getTabNavConfig('Search', payload))
+    },
+    [navigate]
+  )
+
   return (
     <React.Fragment>
       <Spacer.TopScreen />
       <HeaderContainer>
         <TitleAndWidgetContainer>
-          <TitleContainer>
-            <View {...getHeadingAttrs(1)}>
-              <StyledTitle1 htmlFor={searchInputID}>Rechercher</StyledTitle1>
-            </View>
+          <TitleContainer testID="SearchHeaderTitleContainer">
+            <Title1Wrapper>
+              <StyledTitle1View {...getHeadingAttrs(1)}>
+                <StyledTitle1 htmlFor={searchInputID}>Rechercher</StyledTitle1>
+              </StyledTitle1View>
+
+              {!!isDesktopViewport && (
+                <LocationWidgetDesktopView>
+                  <Spacer.Row numberOfSpaces={6} />
+                  <Separator.Vertical height={getSpacing(6)} />
+                  <Spacer.Row numberOfSpaces={4} />
+                  <SearchLocationWidgetDesktop onSearch={onSearch} />
+                </LocationWidgetDesktopView>
+              )}
+            </Title1Wrapper>
+
             {!!shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
           </TitleContainer>
           {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />}
@@ -81,4 +106,26 @@ const TitleAndWidgetContainer = styled.View({
 
 const TitleContainer = styled.View({
   flexShrink: 1,
+  width: '100%',
+})
+
+const Title1Wrapper = styled.View({
+  flexDirection: 'row',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
+})
+
+const StyledTitle1View = styled.View({
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+  maxWidth: '75%',
+})
+
+const LocationWidgetDesktopView = styled.View({
+  marginTop: getSpacing(1) / 2,
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  maxWidth: '25%',
 })
