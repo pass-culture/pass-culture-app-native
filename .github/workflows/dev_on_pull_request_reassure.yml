@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run performance testing script
-        run: ./scripts/reassure-test.sh
+        run: ./scripts/reassure_test.sh
       - name: Run Danger.js to publish scores in PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
