@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useVenue } from 'features/venue/api/useVenue'
+import { VenueResponse } from 'api/gen'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
@@ -16,18 +16,15 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  venueId: number
+  venue: VenueResponse
   onScroll: () => void
 }
 
-export const VenueBodyNew: FunctionComponent<Props> = ({ venueId, onScroll }) => {
-  const { data: venue } = useVenue(venueId)
-  const { appContentWidth } = useTheme()
-  const { heroBackgroundHeight: backgroundHeight } = useHeroDimensions('venue', !!venue?.bannerUrl)
-
-  if (!venue) return <React.Fragment />
-
+export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
+
+  const { appContentWidth } = useTheme()
+  const { heroBackgroundHeight: backgroundHeight } = useHeroDimensions('venue', !!bannerUrl)
   const imageStyle = { height: backgroundHeight, width: appContentWidth }
 
   const venueFullAddress = formatFullAddress(address, postalCode, city)
@@ -58,9 +55,9 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venueId, onScroll }) =>
         <Typo.Body>{venueFullAddress}</Typo.Body>
         <Spacer.Column numberOfSpaces={3} />
         <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={4} />
+        <Spacer.Column numberOfSpaces={3} />
         <StyledButtonTertiary icon={Duplicate} wording="Copier l’adresse" />
-        <Spacer.Column numberOfSpaces={4} />
+        <Spacer.Column numberOfSpaces={3} />
         <SeeItineraryButton
           externalNav={{
             url: getGoogleMapsItineraryUrl(venueFullAddress),
