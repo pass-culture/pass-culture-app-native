@@ -17,9 +17,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   venueId: number
+  onScroll: () => void
 }
 
-export const VenueBodyNew: FunctionComponent<Props> = ({ venueId }) => {
+export const VenueBodyNew: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const { data: venue } = useVenue(venueId)
   const { appContentWidth } = useTheme()
   const { heroBackgroundHeight: backgroundHeight } = useHeroDimensions('venue', !!venue?.bannerUrl)
@@ -32,7 +33,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venueId }) => {
   const venueFullAddress = formatFullAddress(address, postalCode, city)
 
   return (
-    <Container>
+    <Container onScroll={onScroll} scrollEventThrottle={20} bounces={false}>
       {bannerUrl ? (
         <Image style={imageStyle} resizeMode="cover" url={bannerUrl} />
       ) : (
