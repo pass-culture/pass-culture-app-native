@@ -53,7 +53,7 @@ export const Venue: FunctionComponent = () => {
     <Container>
       <VenueWebHeader venue={venue} />
       {shouldUseNewVenuePage ? (
-        <VenueBodyNew />
+        <VenueBodyNew venueId={venue.id} />
       ) : (
         <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
       )}
