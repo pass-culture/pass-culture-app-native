@@ -75,6 +75,7 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
   const shouldShowSuggestedVenues = isQueryProvided && !selectedVenue
+  const isSearchButtonDisabled = !selectedVenue && !!venueQuery
 
   return {
     doChangeVenue,
@@ -83,8 +84,8 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
     doApplySearch,
     isQueryProvided,
     shouldShowSuggestedVenues,
-    isVenueSelected: !!selectedVenue,
     venueQuery,
+    isSearchButtonDisabled,
   }
 }
 
