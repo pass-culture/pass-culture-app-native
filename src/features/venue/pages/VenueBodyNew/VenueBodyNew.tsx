@@ -34,6 +34,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
       {bannerUrl ? (
         <Image style={imageStyle} resizeMode="cover" url={bannerUrl} />
       ) : (
+        //TODO(PC-25598) Check if we want that behaviour when bannerUrl is missing
         <BackgroundContainer>
           {Array.from({ length: 9 }).map((_, index) => (
             <VenueHeaderBackground key={index} />
