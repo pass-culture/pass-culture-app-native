@@ -3,8 +3,14 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useVenue } from 'features/venue/api/useVenue'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
+import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
+import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { Image } from 'libs/resizing-image-on-demand/Image'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
+import { Separator } from 'ui/components/Separator'
+import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -23,7 +29,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venueId }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
   const imageStyle = { height: backgroundHeight, width: appContentWidth }
 
-  const venueFullAddress = venue.address ? formatFullAddress(address, postalCode, city) : undefined
+  const venueFullAddress = formatFullAddress(address, postalCode, city)
 
   return (
     <Container>
@@ -49,7 +55,19 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venueId }) => {
         <Typo.Caption>Adresse</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Body>{venueFullAddress}</Typo.Body>
+        <Spacer.Column numberOfSpaces={3} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledButtonTertiary icon={Duplicate} wording="Copier l’adresse" />
+        <Spacer.Column numberOfSpaces={4} />
+        <SeeItineraryButton
+          externalNav={{
+            url: getGoogleMapsItineraryUrl(venueFullAddress),
+            address: venueFullAddress,
+          }}
+        />
       </MarginContainer>
+      <Spacer.Column numberOfSpaces={100} />
     </Container>
   )
 }
@@ -58,6 +76,10 @@ const Container = styled.ScrollView({ overflow: 'visible' })
 
 const BackgroundContainer = styled.View({
   flexDirection: 'row',
+})
+
+const StyledButtonTertiary = styledButton(ButtonTertiaryBlack)({
+  justifyContent: 'flex-start',
 })
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``

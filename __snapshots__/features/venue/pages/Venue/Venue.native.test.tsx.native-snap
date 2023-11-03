@@ -5441,7 +5441,245 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
         >
           1 boulevard Poissonnière, 75000 Paris
         </Text>
+        <View
+          numberOfSpaces={3}
+          style={
+            [
+              {
+                "height": 12,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "width": "100%",
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={3}
+          style={
+            [
+              {
+                "height": 12,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Copier l’adresse"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Copier l’adresse"
+        >
+          <View
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={20}
+              testID="button-icon"
+              width={20}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Copier l’adresse
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={3}
+          style={
+            [
+              {
+                "height": 12,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "flex-start",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Voir l’itinéraire"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 20,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Voir l’itinéraire"
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 8,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Voir l’itinéraire
+            </Text>
+          </View>
+        </View>
       </View>
+      <View
+        numberOfSpaces={100}
+        style={
+          [
+            {
+              "height": 400,
+            },
+          ]
+        }
+      />
     </View>
   </RCTScrollView>
   <View
