@@ -2,7 +2,9 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModal as HomeLocationModal } from 'features/location/components/LocationModal'
+import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/geolocation'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -11,11 +13,18 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const LocationWidgetDesktop = () => {
-  const { icons } = useTheme()
+const useLocationForLocationWidgetDesktop = () => {
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
-
   const locationTitle = getLocationTitle(place, userPosition)
+  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const id = 'Ouvrir la modale de localisation depuis le titre'
+
+  return { locationTitle, isWidgetHighlighted, id }
+}
+
+const ILocationWidgetDesktop = ({ children }) => {
+  const { icons } = useTheme()
+  const { locationTitle, isWidgetHighlighted, id } = useLocationForLocationWidgetDesktop()
 
   const {
     visible: locationModalVisible,
@@ -23,14 +32,9 @@ export const LocationWidgetDesktop = () => {
     hideModal: hideLocationModal,
   } = useModal()
 
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
-
   return (
     <React.Fragment>
-      <LocationButton
-        onPress={showLocationModal}
-        testID="Ouvrir la modale de localisation depuis le titre"
-        accessibilityLabel="Ouvrir la modale de localisation depuis le titre">
+      <LocationButton onPress={showLocationModal} testID={id} accessibilityLabel={id}>
         <NotShrunk>
           {isWidgetHighlighted ? (
             <LocationPointerFilled size={icons.sizes.extraSmall} testID="location pointer filled" />
@@ -48,8 +52,43 @@ export const LocationWidgetDesktop = () => {
           <ArrowDown size={icons.sizes.extraSmall} />
         </NotShrunk>
       </LocationButton>
-      <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
+      {children({ visible: locationModalVisible, dismissModal: hideLocationModal })}
     </React.Fragment>
+  )
+}
+
+export const LocationWidgetDesktop = () => (
+  <ILocationWidgetDesktop>
+    {({ visible, dismissModal }) => (
+      <HomeLocationModal visible={visible} dismissModal={dismissModal} />
+    )}
+  </ILocationWidgetDesktop>
+)
+
+export const SearchLocationWidgetDesktop = ({ onSearch }) => {
+  const {
+    visible: venueModalVisible,
+    showModal: showVenueModal,
+    hideModal: hideVenueModal,
+  } = useModal()
+
+  return (
+    <ILocationWidgetDesktop>
+      {({ visible, dismissModal }) => (
+        <React.Fragment>
+          <VenueModal
+            visible={venueModalVisible}
+            dismissModal={hideVenueModal}
+            doAfterSearch={onSearch}
+          />
+          <SearchLocationModal
+            visible={visible}
+            dismissModal={dismissModal}
+            showVenueModal={showVenueModal}
+          />
+        </React.Fragment>
+      )}
+    </ILocationWidgetDesktop>
   )
 }
 
