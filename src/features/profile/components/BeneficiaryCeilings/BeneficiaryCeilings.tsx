@@ -14,7 +14,7 @@ type BeneficiaryCeilingsProps = {
 export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps) {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
-  if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return <React.Fragment />
+  if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return null
   return (
     <React.Fragment>
       {!!domainsCredit.digital && (

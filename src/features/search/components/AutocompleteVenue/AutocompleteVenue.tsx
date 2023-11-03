@@ -31,9 +31,7 @@ export function AutocompleteVenue({ onItemPress, ...props }: AutocompleteVenuePr
         ))}
       </StyledVerticalUl>
     </React.Fragment>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 }
 
 const StyledVerticalUl = styled(VerticalUl)({

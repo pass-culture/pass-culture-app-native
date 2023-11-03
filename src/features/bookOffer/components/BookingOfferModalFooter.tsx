@@ -45,9 +45,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
         disabled={!enabledButton}
       />
     </FooterContainer>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 }
 
 const FooterContainer = styled.View({

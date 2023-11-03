@@ -126,7 +126,7 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
   )
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
-    return <React.Fragment></React.Fragment>
+    return null
   }
 
   const shouldDisplayGtlPlaylist =

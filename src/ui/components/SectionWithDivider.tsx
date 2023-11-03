@@ -18,7 +18,7 @@ export const SectionWithDivider = ({
   onLayout,
   testID,
 }: SectionProps) => {
-  if (!visible) return <React.Fragment></React.Fragment>
+  if (!visible) return null
 
   return (
     <View onLayout={onLayout} testID={testID}>

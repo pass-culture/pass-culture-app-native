@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 
 export const VenueBodyNew: FunctionComponent = () => {
-  return <React.Fragment />
+  return null
 }

@@ -401,18 +401,16 @@ function SearchResultsPlaceHolder() {
   const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
-    <React.Fragment>
-      <Container>
-        <FlatList
-          data={FAVORITE_LIST_PLACEHOLDER}
-          renderItem={renderItem}
-          contentContainerStyle={contentContainerStyle}
-          ListHeaderComponent={ListHeaderComponent}
-          ItemSeparatorComponent={Separator}
-          ListFooterComponent={ListFooterComponent}
-          scrollEnabled={false}
-        />
-      </Container>
-    </React.Fragment>
+    <Container>
+      <FlatList
+        data={FAVORITE_LIST_PLACEHOLDER}
+        renderItem={renderItem}
+        contentContainerStyle={contentContainerStyle}
+        ListHeaderComponent={ListHeaderComponent}
+        ItemSeparatorComponent={Separator}
+        ListFooterComponent={ListFooterComponent}
+        scrollEnabled={false}
+      />
+    </Container>
   )
 }

@@ -101,7 +101,7 @@ type RightLabelProps = {
 const RightLabel = ({ isRequiredField, rightLabel }: RightLabelProps) => {
   if (isRequiredField) return <RequiredLabel />
   if (rightLabel) return <Typo.CaptionNeutralInfo>{rightLabel}</Typo.CaptionNeutralInfo>
-  return <React.Fragment />
+  return null
 }
 
 const IconTouchableOpacity = styledButton(Touchable)({

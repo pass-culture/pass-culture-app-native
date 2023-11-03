@@ -81,25 +81,23 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
 
     const listHeader = useMemo(
       () => (
-        <React.Fragment>
-          <ListHeaderContainer>
-            <Spacer.Column numberOfSpaces={6} />
-            <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionner un lieu</Typo.Title3>
-            <Spacer.Column numberOfSpaces={6} />
-            {!isSharingLocation && (
-              <React.Fragment>
-                <GeolocationBanner
-                  title="Active ta géolocalisation"
-                  subtitle="Pour trouver les lieux autour de toi"
-                  onPress={onPressGeolocPermissionModalButton}
-                />
-                <Spacer.Column numberOfSpaces={6} />
-              </React.Fragment>
-            )}
-            <HeaderMessageText>{headerMessage}</HeaderMessageText>
-            <Spacer.Column numberOfSpaces={2} />
-          </ListHeaderContainer>
-        </React.Fragment>
+        <ListHeaderContainer>
+          <Spacer.Column numberOfSpaces={6} />
+          <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionner un lieu</Typo.Title3>
+          <Spacer.Column numberOfSpaces={6} />
+          {!isSharingLocation && (
+            <React.Fragment>
+              <GeolocationBanner
+                title="Active ta géolocalisation"
+                subtitle="Pour trouver les lieux autour de toi"
+                onPress={onPressGeolocPermissionModalButton}
+              />
+              <Spacer.Column numberOfSpaces={6} />
+            </React.Fragment>
+          )}
+          <HeaderMessageText>{headerMessage}</HeaderMessageText>
+          <Spacer.Column numberOfSpaces={2} />
+        </ListHeaderContainer>
       ),
       [headerMessage, isSharingLocation, onPressGeolocPermissionModalButton]
     )

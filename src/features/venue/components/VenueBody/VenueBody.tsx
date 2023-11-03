@@ -46,7 +46,7 @@ export function VenueBody({ venueId, onScroll, playlists }: Props) {
   const { getPositionOnLayout: setContactAccordionPosition, ScrollTo: contactScrollsTo } =
     useScrollWhenAccordionItemOpens(scrollViewRef)
 
-  if (!venue) return <React.Fragment></React.Fragment>
+  if (!venue) return null
 
   const {
     address,

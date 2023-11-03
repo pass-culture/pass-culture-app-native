@@ -18,7 +18,7 @@ type Props = { categoryId: CategoryIdEnum | null; label: string } & Pick<
 
 export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, label }) => {
   const { isLoggedIn, user: profileInfo } = useAuthContext()
-  if (isLoggedIn && !profileInfo) return <React.Fragment></React.Fragment>
+  if (isLoggedIn && !profileInfo) return null
 
   const { isBeneficiary = false } = profileInfo ?? {}
   const showDuo = isDuo && isBeneficiary

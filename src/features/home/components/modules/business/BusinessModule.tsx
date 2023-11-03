@@ -96,7 +96,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
-  if (!shouldModuleBeDisplayed) return <React.Fragment />
+  if (!shouldModuleBeDisplayed) return null
 
   const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
   return (

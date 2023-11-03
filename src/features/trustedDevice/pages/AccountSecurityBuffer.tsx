@@ -43,5 +43,5 @@ export const AccountSecurityBuffer = () => {
     return <LoadingPage />
   }
 
-  return <React.Fragment />
+  return null
 }
