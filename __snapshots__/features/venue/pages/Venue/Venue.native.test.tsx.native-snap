@@ -5356,6 +5356,92 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
           </Text>
         </View>
       </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <Text
+          accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+          adjustsFontSizeToFit={true}
+          allowFontScaling={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+              },
+            ]
+          }
+        >
+          Le Petit Rintintin 1
+        </Text>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        >
+          Adresse
+        </Text>
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "height": 4,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          1 boulevard Poissonnière, 75000 Paris
+        </Text>
+      </View>
     </View>
   </RCTScrollView>
   <View
