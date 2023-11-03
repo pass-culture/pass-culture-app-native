@@ -4,7 +4,6 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
-import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
@@ -15,6 +14,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
+import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -71,7 +71,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         <View>
-          {!!distance && <StyledDistanceTag distance={distance} />}
+          {!!distance && <StyledDistanceTag label={`à ${distance}`} />}
           {hasVenueImage ? (
             <ImageTile width={width} height={height} uri={imageUri} />
           ) : (
@@ -123,7 +123,7 @@ const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
   })
 )
 
-const StyledDistanceTag = styled(DistanceTag)({
+const StyledDistanceTag = styled(Tag)({
   flex: 1,
   position: 'absolute',
   zIndex: 2,

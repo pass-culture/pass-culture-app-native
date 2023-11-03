@@ -4,26 +4,26 @@ import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
 
-type DistanceTagProps = ViewProps & {
-  distance: string
+type TagProps = ViewProps & {
+  label: string
 }
 
-export function DistanceTag({ distance, ...props }: DistanceTagProps) {
+export function Tag({ label, ...props }: TagProps) {
   return (
     <Wrapper {...props}>
-      <DistanceText>à {distance}</DistanceText>
+      <LabelText>{label}</LabelText>
     </Wrapper>
   )
 }
 
 const Wrapper = styled(View)(({ theme }) => ({
   borderRadius: 6,
-  backgroundColor: theme.colors.black,
+  backgroundColor: theme.colors.greyLight,
   paddingVertical: getSpacing(1),
   paddingHorizontal: getSpacing(2),
   alignSelf: 'baseline',
 }))
 
-const DistanceText = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.white,
+const LabelText = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.black,
 }))

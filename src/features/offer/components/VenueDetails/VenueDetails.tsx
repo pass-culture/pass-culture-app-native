@@ -2,8 +2,8 @@ import React from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { VenueDetail } from 'features/offer/types'
+import { Tag } from 'ui/components/Tag/Tag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -21,7 +21,13 @@ enum Size {
   Large = 'largeSize',
 }
 
-export function VenueDetails({ title, address, distance, isHover, ...props }: VenueDetailsProps) {
+export function VenueDetails({
+  title,
+  address,
+  distance,
+  isHover,
+  ...props
+}: Readonly<VenueDetailsProps>) {
   const height = distance ? Size.Large : Size.Small
 
   return (
@@ -35,7 +41,7 @@ export function VenueDetails({ title, address, distance, isHover, ...props }: Ve
       {distance ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <DistanceTag distance={distance} />
+          <Tag label={`à ${distance}`} />
         </React.Fragment>
       ) : null}
     </Wrapper>
