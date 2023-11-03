@@ -25,14 +25,15 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
 
   const { appContentWidth } = useTheme()
   const { heroBackgroundHeight: backgroundHeight } = useHeroDimensions('venue', !!bannerUrl)
-  const imageStyle = { height: backgroundHeight, width: appContentWidth }
+  const backgroundStyle = { height: backgroundHeight, width: appContentWidth }
 
   const venueFullAddress = formatFullAddress(address, postalCode, city)
+  const venueName = publicName || name
 
   return (
     <Container onScroll={onScroll} scrollEventThrottle={20} bounces={false}>
       {bannerUrl ? (
-        <Image style={imageStyle} resizeMode="cover" url={bannerUrl} />
+        <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
       ) : (
         //TODO(PC-25598) Check if we want that behaviour when bannerUrl is missing
         <BackgroundContainer>
@@ -44,11 +45,11 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
       <Spacer.Column numberOfSpaces={6} />
       <MarginContainer>
         <VenueTitle
-          accessibilityLabel={`Nom du lieu\u00a0: ${publicName || name}`}
+          accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
           numberOfLines={2}
           adjustsFontSizeToFit
           allowFontScaling={false}>
-          {publicName || name}
+          {venueName}
         </VenueTitle>
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Caption>Adresse</Typo.Caption>
