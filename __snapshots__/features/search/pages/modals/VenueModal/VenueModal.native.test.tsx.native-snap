@@ -10,7 +10,7 @@ exports[`VenueModal should render correctly 1`] = `
   deviceWidth={750}
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={false}
-  onBackdropPress={[MockFunction]}
+  onBackdropPress={[Function]}
   onModalHide={[Function]}
   onModalWillHide={[Function]}
   onModalWillShow={[Function]}
@@ -76,7 +76,7 @@ exports[`VenueModal should render correctly 1`] = `
     deviceWidth={750}
     forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
-    onBackdropPress={[MockFunction]}
+    onBackdropPress={[Function]}
     onModalHide={[Function]}
     onModalWillHide={[Function]}
     onModalWillShow={[Function]}
@@ -117,6 +117,7 @@ exports[`VenueModal should render correctly 1`] = `
       desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
+      noPadding={true}
       style={
         [
           {
@@ -136,9 +137,6 @@ exports[`VenueModal should render correctly 1`] = `
             "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 24,
             "width": "100%",
           },
         ]
@@ -146,130 +144,155 @@ exports[`VenueModal should render correctly 1`] = `
       testID="modalContainer"
     >
       <View
-        onLayout={[Function]}
+        nativeID="testUuidV4"
         style={
           [
             {
-              "display": "flex",
               "flexDirection": "row",
-              "justifyContent": "center",
               "width": "100%",
             },
           ]
         }
-        testID="modalHeader"
+        testID="customModalHeader"
       >
         <View
-          justifyContent="left"
           style={
             [
               {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-start",
-                "width": 28,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingHorizontal": 12,
-                "zIndex": 1,
-              },
-            ]
-          }
-        >
-          <Text
-            nativeID="testUuidV4"
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "textAlign": "center",
-                },
-              ]
-            }
-            testID="modalHeaderTitle"
-          >
-            Point de vente
-          </Text>
-        </View>
-        <View
-          justifyContent="right"
-          style={
-            [
-              {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "height": 28,
-                "justifyContent": "flex-end",
-                "width": 28,
+                "paddingBottom": 16,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 16,
+                "width": "100%",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Fermer la modale"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "width": "100%",
+                },
+              ]
             }
-            testID="Fermer la modale"
+            testID="modalHeader"
           >
             <View
-              height={20}
-              testID="rightIcon"
-              width={20}
+              justifyContent="left"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "height": 28,
+                    "justifyContent": "flex-start",
+                    "width": 28,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "center",
+                    "paddingHorizontal": 12,
+                    "zIndex": 1,
+                  },
+                ]
+              }
             >
-              <Text>
-                rightIcon-SVG-Mock
+              <Text
+                numberOfLines={2}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+                testID="modalHeaderTitle"
+              >
+                Localisation
               </Text>
+            </View>
+            <View
+              justifyContent="right"
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "height": 28,
+                    "justifyContent": "flex-end",
+                    "width": 28,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Fermer la modale"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Fermer la modale"
+              >
+                <View
+                  height={20}
+                  testID="rightIcon"
+                  width={20}
+                >
+                  <Text>
+                    rightIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -287,175 +310,187 @@ exports[`VenueModal should render correctly 1`] = `
         }
         testID="fullscreenModalView"
       >
-        <View
-          numberOfSpaces={10}
+        <RCTScrollView
           style={
             [
               {
-                "height": 40,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "paddingHorizontal": 24,
               },
             ]
           }
         >
-          <View
-            fill="none"
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Trouver un point de vente 
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          height="regular"
-          isDisabled={false}
-          isError={false}
-          isFocus={false}
-          style={
-            [
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 22,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "height": 48,
-                "paddingBottom": 0,
-                "paddingLeft": 17,
-                "paddingRight": 17,
-                "paddingTop": 0,
-                "width": "100%",
-              },
-              {
-                "borderRadius": 24,
-                "outlineOffset": 0,
-              },
-            ]
-          }
-          testID="styled-input-container"
-        >
-          <View
-            style={
-              [
-                {
-                  "flexShrink": 0,
-                },
-              ]
-            }
-          >
+          <View>
             <View
-              height={24}
-              width={24}
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
+              <View
+                fill="none"
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Trouver un point de vente 
               </Text>
             </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              height="regular"
+              isDisabled={false}
+              isError={false}
+              isFocus={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "paddingBottom": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
+                    "paddingTop": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "borderRadius": 24,
+                    "outlineOffset": 0,
+                  },
+                ]
+              }
+              testID="styled-input-container"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <TextInput
+                accessibilityHidden={false}
+                autoCorrect={false}
+                editable={true}
+                enablesReturnKeyAutomatically={true}
+                focusable={true}
+                isEmpty={true}
+                nativeID="testUuidV4"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Cinéma, librairie, magasin…"
+                placeholderTextColor="#696A6F"
+                returnKeyType="search"
+                selectionColor="#696A6F"
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Italic",
+                      "fontSize": 15,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                    {},
+                  ]
+                }
+                testID="searchInput"
+                value=""
+              />
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-          <TextInput
-            accessibilityHidden={false}
-            autoCorrect={false}
-            editable={true}
-            enablesReturnKeyAutomatically={true}
-            focusable={true}
-            isEmpty={true}
-            nativeID="testUuidV4"
-            onBlur={[Function]}
-            onChangeText={[Function]}
-            onFocus={[Function]}
-            placeholder="Cinéma, librairie, magasin…"
-            placeholderTextColor="#696A6F"
-            returnKeyType="search"
-            selectionColor="#696A6F"
-            style={
-              [
-                {
-                  "color": "#696A6F",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Italic",
-                  "fontSize": 15,
-                  "height": "100%",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                },
-                {},
-              ]
-            }
-            testID="searchInput"
-            value=""
-          />
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
+        </RCTScrollView>
       </View>
       <View
         style={
@@ -468,92 +503,194 @@ exports[`VenueModal should render correctly 1`] = `
         testID="fixedModalBottom"
       >
         <View
+          paddingBottom={0}
           style={
             [
-              {
-                "alignItems": "center",
-              },
+              {},
             ]
           }
         >
           <View
-            accessibilityLabel="Valider le point de vente"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#F1F1F4",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Valider le point de vente"
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Valider le point de vente
-            </Text>
-          </View>
-          <View
-            keyboardHeight={0}
+            isModal={true}
             style={
               [
                 {
-                  "height": 0,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingHorizontal": 24,
+                  "paddingTop": 8,
                 },
               ]
             }
-          />
+          >
+            <View
+              accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginRight": 16,
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
+              }
+              testID="Réinitialiser"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={16}
+                  testID="button-icon"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Réinitialiser
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Rechercher"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
+              }
+              testID="Rechercher"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Rechercher
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
       <View
