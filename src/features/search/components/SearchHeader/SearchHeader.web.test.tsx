@@ -38,6 +38,7 @@ describe('SearchHeader component', () => {
           searchInHistory={jest.fn()}
         />
       )
+
       await act(async () => {})
 
       expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
