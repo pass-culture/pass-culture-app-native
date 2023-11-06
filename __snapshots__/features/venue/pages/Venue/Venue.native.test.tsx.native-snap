@@ -5258,7 +5258,7 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
   <RCTScrollView
     bounces={false}
     onScroll={[Function]}
-    scrollEventThrottle={20}
+    scrollEventThrottle={16}
     style={
       [
         {

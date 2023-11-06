@@ -31,7 +31,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
   const venueName = publicName || name
 
   return (
-    <Container onScroll={onScroll} scrollEventThrottle={20} bounces={false}>
+    <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {bannerUrl ? (
         <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
       ) : (
