@@ -26,7 +26,7 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { Typo, getSpacing } from 'ui/theme'
 
-const DEFAULT_RADIUS = 50
+export const DEFAULT_RADIUS = 50
 const DEFAULT_DIGITAL_OFFERS_SELECTION = false
 
 interface LocationModalProps {

@@ -30,19 +30,19 @@ const doAfterSearch: VenueModalHookCallback = jest.fn()
 const falsyState = {
   isQueryProvided: false,
   shouldShowSuggestedVenues: false,
-  isVenueSelected: false,
+  isSearchButtonDisabled: false,
   venueQuery: '',
 }
 const inputState = {
   isQueryProvided: true,
   shouldShowSuggestedVenues: true,
-  isVenueSelected: false,
+  isSearchButtonDisabled: true,
   venueQuery: venue.label,
 }
 const selectedState = {
   isQueryProvided: true,
   shouldShowSuggestedVenues: false,
-  isVenueSelected: true,
+  isSearchButtonDisabled: false,
   venueQuery: venue.label,
 }
 
@@ -50,13 +50,13 @@ describe('useVenueModal', () => {
   it('when start it should return falsy state', () => {
     const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
       result.current
 
     expect({
       isQueryProvided,
       shouldShowSuggestedVenues,
-      isVenueSelected,
+      isSearchButtonDisabled,
       venueQuery,
     }).toStrictEqual(falsyState)
   })
@@ -70,13 +70,13 @@ describe('useVenueModal', () => {
       result.current.doChangeVenue(venue.label)
     })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
       result.current
 
     expect({
       isQueryProvided,
       shouldShowSuggestedVenues,
-      isVenueSelected,
+      isSearchButtonDisabled,
       venueQuery,
     }).toStrictEqual(inputState)
   })
@@ -89,13 +89,13 @@ describe('useVenueModal', () => {
       result.current.doSetSelectedVenue(venue)
     })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
       result.current
 
     expect({
       isQueryProvided,
       shouldShowSuggestedVenues,
-      isVenueSelected,
+      isSearchButtonDisabled,
       venueQuery,
     }).toStrictEqual(selectedState)
   })
@@ -112,13 +112,13 @@ describe('useVenueModal', () => {
       result.current.doResetVenue()
     })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isVenueSelected, venueQuery } =
+    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
       result.current
 
     expect({
       isQueryProvided,
       shouldShowSuggestedVenues,
-      isVenueSelected,
+      isSearchButtonDisabled,
       venueQuery,
     }).toStrictEqual(falsyState)
   })

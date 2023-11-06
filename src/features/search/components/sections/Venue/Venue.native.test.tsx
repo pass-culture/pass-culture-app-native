@@ -40,7 +40,7 @@ describe('Venue component', () => {
       fireEvent.press(searchVenueButton)
     })
 
-    const modalButton = screen.getByText('Valider le point de vente')
+    const modalButton = screen.getByText('Rechercher')
 
     expect(modalButton).toBeOnTheScreen()
   })
