@@ -5,6 +5,7 @@ import { LocationModal as HomeLocationModal } from 'features/location/components
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
+import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/geolocation'
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -13,18 +14,52 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-const useLocationForLocationWidgetDesktop = () => {
-  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
-  const locationTitle = getLocationTitle(place, userPosition)
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
-  const id = 'Ouvrir la modale de localisation depuis le titre'
-
-  return { locationTitle, isWidgetHighlighted, id }
+/**
+ * Separation of types... for enforcement...
+ */
+export type useLocationForLocationWidgetDesktopHook = {
+  title: string
+  isWidgetHighlighted: boolean
+  testId: string
 }
 
-const ILocationWidgetDesktop = ({ children }) => {
+export type ILocationWidgetDesktopChildrenProps = {
+  visible: boolean
+  dismissModal: VoidFunction
+}
+
+export type ILocationWidgetDesktopProps = {
+  children: ({ visible, dismissModal }: ILocationWidgetDesktopChildrenProps) => React.ReactNode
+}
+
+type SearchLocationWidgetDesktopProps = {
+  onSearch: (payload: Partial<SearchState>) => void
+}
+
+/**
+ * Expose what is needed by the UI<ILocationWidgetDesktop>
+ */
+export const useLocationForLocationWidgetDesktop = (): useLocationForLocationWidgetDesktopHook => {
+  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const title = getLocationTitle(place, userPosition)
+  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const testId = 'Ouvrir la modale de localisation depuis le titre'
+
+  return { title, isWidgetHighlighted, testId }
+}
+
+/**
+ * The UI is the same so we just need a children as function
+ * that will use modal props defined in
+ * -> so children has to be a modal
+ */
+const ILocationWidgetDesktop: React.FC<ILocationWidgetDesktopProps> = ({ children }) => {
   const { icons } = useTheme()
-  const { locationTitle, isWidgetHighlighted, id } = useLocationForLocationWidgetDesktop()
+  const {
+    title: locationTitle,
+    isWidgetHighlighted,
+    testId,
+  } = useLocationForLocationWidgetDesktop()
 
   const {
     visible: locationModalVisible,
@@ -34,7 +69,7 @@ const ILocationWidgetDesktop = ({ children }) => {
 
   return (
     <React.Fragment>
-      <LocationButton onPress={showLocationModal} testID={id} accessibilityLabel={id}>
+      <LocationButton onPress={showLocationModal} testID={testId} accessibilityLabel={testId}>
         <NotShrunk>
           {isWidgetHighlighted ? (
             <LocationPointerFilled size={icons.sizes.extraSmall} testID="location pointer filled" />
@@ -57,6 +92,9 @@ const ILocationWidgetDesktop = ({ children }) => {
   )
 }
 
+/**
+ * One widget for the home
+ */
 export const LocationWidgetDesktop = () => (
   <ILocationWidgetDesktop>
     {({ visible, dismissModal }) => (
@@ -65,7 +103,10 @@ export const LocationWidgetDesktop = () => (
   </ILocationWidgetDesktop>
 )
 
-export const SearchLocationWidgetDesktop = ({ onSearch }) => {
+/**
+ * One widget for the search
+ */
+export const SearchLocationWidgetDesktop = ({ onSearch }: SearchLocationWidgetDesktopProps) => {
   const {
     visible: venueModalVisible,
     showModal: showVenueModal,
