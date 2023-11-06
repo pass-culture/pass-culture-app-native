@@ -127,7 +127,9 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 
 const useFeatureFlagSpy = jest
   .spyOn(useFeatureFlag, 'useFeatureFlag')
+  // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
   .mockReturnValue(false)
+  // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
   .mockReturnValue(false)
 
 const onScroll = jest.fn()
@@ -655,7 +657,11 @@ describe('<OfferBody />', () => {
     })
 
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(false).mockReturnValueOnce(true)
+      useFeatureFlagSpy
+        // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
+        .mockReturnValueOnce(false)
+        // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
+        .mockReturnValueOnce(true)
     })
 
     it('should display same artist list when offer has some', async () => {
@@ -668,7 +674,7 @@ describe('<OfferBody />', () => {
       expect(screen.queryByTestId('sameArtistPlaylist')).toBeOnTheScreen()
     })
 
-    it('should not display same artist lists when offer has not it', async () => {
+    it('should not display same artist list when offer has not it', async () => {
       renderOfferBody()
 
       await screen.findByText('Envoyer sur Instagram')
@@ -683,7 +689,11 @@ describe('<OfferBody />', () => {
     })
 
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(false).mockReturnValueOnce(false)
+      useFeatureFlagSpy
+        // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
+        .mockReturnValueOnce(false)
+        // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
+        .mockReturnValueOnce(false)
     })
 
     it('should not display same artist list when offer has some', async () => {
@@ -696,7 +706,7 @@ describe('<OfferBody />', () => {
       expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
     })
 
-    it('should not display same artist lists when offer has not it', async () => {
+    it('should not display same artist list when offer has not it', async () => {
       renderOfferBody()
 
       await screen.findByText('Envoyer sur Instagram')

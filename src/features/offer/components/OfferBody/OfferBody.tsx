@@ -70,7 +70,7 @@ interface Props {
   sameArtistPlaylist?: HitOfferWithArtistAndEan[]
 }
 
-export const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
@@ -93,8 +93,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const mapping = useSubcategoriesMapping()
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
-  const shouldDisplaySameArtistPlaylist =
-    !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
+  const shouldDisplaySameArtistPlaylist = !!sameArtistPlaylist && enableSameArtistPlaylist
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
@@ -362,11 +361,10 @@ export const OfferBody: FunctionComponent<Props> = ({
       {!!shouldDisplaySameArtistPlaylist && (
         <SameArtistPlaylist
           key={offer.id}
-          sameArtistPlaylist={sameArtistPlaylist}
+          items={sameArtistPlaylist}
           itemWidth={itemWidth}
           itemHeight={itemHeight}
           renderItem={renderItem}
-          keyExtractor={keyExtractor}
         />
       )}
 

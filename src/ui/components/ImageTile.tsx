@@ -46,7 +46,7 @@ export const ImageTile: React.FC<Props> = (props) => {
   ) : (
     <DefaultImageContainer height={props.height} width={props.width}>
       <StyledDefaultImagePlaceholder
-        Icon={mapCategoryToIcon(props.categoryId)}
+        Icon={mapCategoryToIcon(props.categoryId ?? null)}
         backgroundColors={[theme.colors.greyLight, theme.colors.greyMedium]}
         size={PLACEHOLDER_ICON_SIZE}
       />

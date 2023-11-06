@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 import { HitOffer, Offer } from 'shared/offer/types'
 
 export type FetchOfferByArtist = {
-  artist: string | null | undefined
+  artists: string | null | undefined
   ean: string | null | undefined
 }
 
@@ -17,19 +17,17 @@ export type HitOfferWithArtistAndEan = Offer & {
 }
 
 export const fetchOffersByArtist = async ({
-  artist,
+  artists,
   ean,
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
-  if (!artist || !ean) return []
-
-  const getFirstArtist = artist?.split(' ; ')[0]
+  if (!artists) return []
 
   try {
     const response = await index.search<HitOfferWithArtistAndEan>('', {
       page: 0,
-      filters: `offer.artist:"${getFirstArtist}" AND NOT offer.ean:"${ean}"`,
+      filters: buildAlgoliaFilter({ artists, ean }),
       hitsPerPage: 30,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
@@ -40,4 +38,14 @@ export const fetchOffersByArtist = async ({
     captureAlgoliaError(error)
     return [] as HitOfferWithArtistAndEan[]
   }
+}
+
+export function buildAlgoliaFilter({ artists, ean }: FetchOfferByArtist) {
+  const firstArtist = artists?.split(' ; ')[0]
+
+  if (!ean) {
+    return `offer.artist:"${firstArtist}"`
+  }
+
+  return `offer.artist:"${firstArtist}" AND NOT offer.ean:"${ean}"`
 }

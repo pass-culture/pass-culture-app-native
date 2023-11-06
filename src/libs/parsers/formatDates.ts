@@ -220,12 +220,9 @@ export function getTimeZonedDate(date: Date | string, timezone: string) {
 }
 
 export function extractStockDates(offer: OfferResponse): string[] {
-  return offer.stocks.reduce<string[]>((accumulator, stock) => {
-    if (stock.beginningDatetime) {
-      return [...accumulator, stock.beginningDatetime]
-    }
-    return accumulator
-  }, [])
+  return offer.stocks
+    .map((stock) => stock.beginningDatetime)
+    .filter((date): date is string => date !== null && date !== undefined)
 }
 
 export function capitalizeFirstLetter(formattedDate: string | number | undefined) {

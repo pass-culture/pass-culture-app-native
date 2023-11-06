@@ -372,7 +372,7 @@ describe('<Offer />', () => {
       await act(async () => {})
 
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
-        artist: 'Eiichiro Oda',
+        artists: 'Eiichiro Oda',
         ean: '9782723492607',
       })
     })

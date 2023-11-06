@@ -18,12 +18,12 @@ const fetchOffersByArtistSpy = jest
   .mockResolvedValue(mockedAlgoliaOffersWithSameArtistResponse)
 
 describe('useSameArtistPlaylist', () => {
-  it('should fetch same artist playlist when netInfo is connected', async () => {
+  it('should fetch same artist playlist when user has Internet connection', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     renderHook(
       () =>
         useSameArtistPlaylist({
-          artist: 'Eiichiro Oda',
+          artists: 'Eiichiro Oda',
           ean: '9782723492607',
         }),
       {
@@ -34,18 +34,18 @@ describe('useSameArtistPlaylist', () => {
 
     await waitFor(() => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
-        artist: 'Eiichiro Oda',
+        artists: 'Eiichiro Oda',
         ean: '9782723492607',
       })
     })
   })
 
-  it('should not fetch same artist playlist when netInfo is not connected', async () => {
+  it('should fetch same artist playlist when user has not Internet connection', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderHook(
       () =>
         useSameArtistPlaylist({
-          artist: 'Eiichiro Oda',
+          artists: 'Eiichiro Oda',
           ean: '9782723492607',
         }),
       {
@@ -64,7 +64,7 @@ describe('useSameArtistPlaylist', () => {
     renderHook(
       () =>
         useSameArtistPlaylist({
-          artist: '',
+          artists: '',
           ean: '',
         }),
       {
@@ -74,7 +74,10 @@ describe('useSameArtistPlaylist', () => {
     )
 
     await waitFor(() => {
-      expect(fetchOffersByArtistSpy).not.toHaveBeenCalled()
+      expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
+        artists: '',
+        ean: '',
+      })
     })
   })
 
@@ -83,7 +86,7 @@ describe('useSameArtistPlaylist', () => {
     renderHook(
       () =>
         useSameArtistPlaylist({
-          artist: null,
+          artists: null,
           ean: null,
         }),
       {
@@ -93,7 +96,10 @@ describe('useSameArtistPlaylist', () => {
     )
 
     await waitFor(() => {
-      expect(fetchOffersByArtistSpy).not.toHaveBeenCalled()
+      expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
+        artists: null,
+        ean: null,
+      })
     })
   })
 })

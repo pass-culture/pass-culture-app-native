@@ -72,19 +72,19 @@ export const Offer: FunctionComponent = () => {
 
   const { data: offer } = useOffer({ offerId })
 
-  const artist = offer?.extraData?.author
+  const artists = offer?.extraData?.author
   const ean = offer?.extraData?.ean
 
   const { sameArtistPlaylist, refetch } = useSameArtistPlaylist({
-    artist,
+    artists,
     ean,
   })
 
   useEffect(() => {
-    if (artist && ean) {
+    if (artists && ean) {
       refetch()
     }
-  }, [artist, ean, refetch])
+  }, [artists, ean, refetch])
 
   const { data } = useSubcategories()
 
