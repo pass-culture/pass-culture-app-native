@@ -553,7 +553,7 @@ exports[`<VenueOffers /> should render correctly 1`] = `
                 "onLayout": [Function],
                 "renderItem": [Function],
                 "scrollEnabled": true,
-                "scrollEventThrottle": 200,
+                "scrollEventThrottle": 16,
                 "showsHorizontalScrollIndicator": false,
                 "testID": "offersModuleList",
               },
@@ -583,7 +583,7 @@ exports[`<VenueOffers /> should render correctly 1`] = `
           renderItemContainer={[Function]}
           rowRenderer={[Function]}
           scrollEnabled={true}
-          scrollEventThrottle={200}
+          scrollEventThrottle={16}
           scrollThrottle={16}
           scrollViewProps={
             {

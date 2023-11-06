@@ -83,7 +83,7 @@ exports[`Profile component should render correctly 1`] = `
             <RCTScrollView
               bounces={false}
               onScroll={[Function]}
-              scrollEventThrottle={400}
+              scrollEventThrottle={16}
               testID="profile-scrollview"
             >
               <View>

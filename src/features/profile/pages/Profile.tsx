@@ -137,7 +137,7 @@ const OnlineProfile: React.FC = () => {
         bounces={false}
         ref={scrollViewRef}
         onScroll={onScroll}
-        scrollEventThrottle={400}
+        scrollEventThrottle={16}
         testID="profile-scrollview">
         <ProfileHeader user={user} />
         <ProfileContainer>
