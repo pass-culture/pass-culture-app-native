@@ -4,6 +4,7 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
+import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
@@ -34,10 +35,11 @@ export const fetchMultipleOffers = async ({
 
   try {
     const results = await multipleQueries<Offer>(queries)
+    const searchResponseResults = results.filter(searchResponsePredicate)
 
     return {
-      hits: flatten(results.map(({ hits }) => hits)),
-      nbHits: results.reduce((prev, curr) => prev + curr.nbHits, 0),
+      hits: flatten(searchResponseResults.map(({ hits }) => hits)),
+      nbHits: searchResponseResults.reduce((prev, curr) => prev + curr.nbHits, 0),
     }
   } catch (error) {
     captureAlgoliaError(error)

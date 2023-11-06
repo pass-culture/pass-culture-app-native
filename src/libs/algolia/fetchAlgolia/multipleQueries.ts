@@ -1,4 +1,8 @@
-import { MultipleQueriesQuery, SearchResponse } from '@algolia/client-search'
+import {
+  MultipleQueriesQuery,
+  SearchForFacetValuesResponse,
+  SearchResponse,
+} from '@algolia/client-search'
 import { chunk } from 'lodash'
 
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
@@ -17,7 +21,7 @@ export const multipleQueries = async <Response>(queries: MultipleQueriesQuery[])
         async (queriesChunk) => client.multipleQueries<Response>(queriesChunk)
       )
     )
-    return resultsChunks.reduce<SearchResponse<Response>[]>(
+    return resultsChunks.reduce<(SearchForFacetValuesResponse | SearchResponse<Response>)[]>(
       (prev, curr) => prev.concat(curr.results),
       []
     )

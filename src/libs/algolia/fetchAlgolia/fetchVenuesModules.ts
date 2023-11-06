@@ -3,6 +3,7 @@ import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
+import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 
@@ -14,7 +15,8 @@ export const fetchVenuesModules = async (
 
   try {
     const results = await multipleQueries<AlgoliaVenue>(queries)
-    const algoliaVenuesList = results.map(({ hits: hit }) => hit)
+    const searchResponseResults = results.filter(searchResponsePredicate)
+    const algoliaVenuesList = searchResponseResults.map(({ hits: hit }) => hit)
     return algoliaVenuesList.map((algoliaVenues) => algoliaVenues.map(buildVenue))
   } catch (error) {
     captureAlgoliaError(error)
