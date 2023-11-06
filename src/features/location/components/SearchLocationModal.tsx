@@ -143,9 +143,11 @@ export const SearchLocationModal = ({
 
   const onValuesChange = useCallback(
     (newValues: number[]) => {
-      setAroundRadius(newValues[0])
+      if (visible) {
+        setAroundRadius(newValues[0])
+      }
     },
-    [setAroundRadius]
+    [setAroundRadius, visible]
   )
 
   const onPlaceSelection = (place: SuggestedPlace) => {
