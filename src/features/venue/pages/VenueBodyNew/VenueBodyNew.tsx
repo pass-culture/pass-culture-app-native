@@ -23,9 +23,7 @@ interface Props {
 const FLAT_BACKGROUND_HEIGHT = getSpacing(43)
 
 export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
-  const { publicName, name, address, postalCode, city } = venue
-
-  const bannerUrl = undefined
+  const { bannerUrl, publicName, name, address, postalCode, city } = venue
 
   const { appContentWidth } = useTheme()
   const { top } = useCustomSafeInsets()
