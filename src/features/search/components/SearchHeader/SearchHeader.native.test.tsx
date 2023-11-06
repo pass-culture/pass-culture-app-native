@@ -5,7 +5,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader/SearchHead
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { render, screen, waitFor } from 'tests/utils'
+import { render, screen, waitFor, within } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics')
 
@@ -57,7 +57,9 @@ describe('SearchHeader component', () => {
     renderSearchHeader(false, SearchView.Landing)
 
     await waitFor(() => {
-      expect(screen.queryByText('Ma position')).toBeOnTheScreen()
+      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+
+      expect(insideLocationWidget.queryByText('Ma position')).toBeOnTheScreen()
     })
   })
 
@@ -66,7 +68,9 @@ describe('SearchHeader component', () => {
     renderSearchHeader(false, SearchView.Landing)
 
     await waitFor(() => {
-      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
+      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+
+      expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
     })
   })
 
@@ -75,7 +79,20 @@ describe('SearchHeader component', () => {
     renderSearchHeader(true, SearchView.Landing)
 
     await waitFor(() => {
-      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
+      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+
+      expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true and SearchView is Landing', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderSearchHeader(true, SearchView.Landing)
+
+    await waitFor(() => {
+      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
+
+      expect(searchHeaderTitleContainer.queryByText('Ma position')).toBeOnTheScreen()
     })
   })
 
@@ -84,7 +101,9 @@ describe('SearchHeader component', () => {
     renderSearchHeader(false, SearchView.Results)
 
     await waitFor(() => {
-      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
+      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+
+      expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
     })
   })
 })

@@ -30,13 +30,17 @@ describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should contain a button to go to the search suggestions view',
     async (view) => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
       useRoute.mockReturnValueOnce({ params: { view } })
       render(
         <SearchHeader
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
-        />
+        />,
+        {
+          theme: { isDesktopViewport: true },
+        }
       )
       await act(async () => {})
 
@@ -45,13 +49,17 @@ describe('SearchHeader component', () => {
   )
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />
+      />,
+      {
+        theme: { isDesktopViewport: true },
+      }
     )
 
     await act(async () => {
@@ -72,13 +80,17 @@ describe('SearchHeader component', () => {
   })
 
   it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />
+      />,
+      {
+        theme: { isDesktopViewport: true },
+      }
     )
     await act(async () => {})
 
@@ -90,13 +102,17 @@ describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should not have focus on search main input',
     async (view) => {
-      useRoute.mockReturnValueOnce({ params: { view } }).mockReturnValueOnce({ params: { view } })
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      useRoute.mockReturnValueOnce({ params: { view } })
       render(
         <SearchHeader
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
-        />
+        />,
+        {
+          theme: { isDesktopViewport: true },
+        }
       )
 
       await act(async () => {
@@ -111,15 +127,17 @@ describe('SearchHeader component', () => {
   )
 
   it('should skip focus on search main input, the next focus should be on the location filter button', async () => {
-    useRoute
-      .mockReturnValueOnce({ params: { view: SearchView.Landing } })
-      .mockReturnValueOnce({ params: { view: SearchView.Landing } })
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />
+      />,
+      {
+        theme: { isDesktopViewport: true },
+      }
     )
 
     await act(async () => {
@@ -142,28 +160,52 @@ describe('SearchHeader component', () => {
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />
+      />,
+      {
+        theme: { isDesktopViewport: true },
+      }
     )
     await act(async () => {})
 
     expect(screen.getByText('Rechercher')).toBeTruthy()
   })
 
-  it('should show a pin icon when no params is given', async () => {
+  it('Should show the location button next to title "Rechercher"', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />
+      />,
+      {
+        theme: { isDesktopViewport: true },
+      }
     )
-
     await act(async () => {})
-    const title = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-    expect(title.getByTestId('location pointer not filled')).toBeTruthy()
+    const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
+
+    expect(searchHeaderTitleContainer.getByText('Ma position')).toBeTruthy()
+  })
+
+  it('Should not show location widget in the search input', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />,
+      {
+        theme: { isDesktopViewport: true },
+      }
+    )
+    await act(async () => {})
+
+    const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+
+    expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
   })
 })

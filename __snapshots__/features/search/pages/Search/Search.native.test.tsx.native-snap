@@ -49,26 +49,51 @@ exports[`<Search/> should render Search 1`] = `
           [
             {
               "flexShrink": 1,
+              "width": "100%",
             },
           ]
         }
+        testID="SearchHeaderTitleContainer"
       >
-        <View>
-          <Text
-            htmlFor="testUuidV4"
+        <View
+          style={
+            [
+              {
+                "alignItems": "flex-start",
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+              },
+            ]
+          }
+        >
+          <View
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 26,
-                  "lineHeight": 34,
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "flex-start",
+                  "maxWidth": "75%",
                 },
               ]
             }
           >
-            Rechercher
-          </Text>
+            <Text
+              htmlFor="testUuidV4"
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Black",
+                    "fontSize": 26,
+                    "lineHeight": 34,
+                  },
+                ]
+              }
+            >
+              Rechercher
+            </Text>
+          </View>
         </View>
         <Text
           style={
@@ -86,6 +111,9 @@ exports[`<Search/> should render Search 1`] = `
           Toutes les offres à portée de main
         </Text>
       </View>
+      <View
+        testID="InsideLocationWidget"
+      />
     </View>
     <View
       numberOfSpaces={4}

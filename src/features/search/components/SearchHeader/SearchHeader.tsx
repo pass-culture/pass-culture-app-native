@@ -58,7 +58,7 @@ export const SearchHeader = memo(function SearchHeader({
               </StyledTitle1View>
 
               {!!isDesktopViewport && (
-                <LocationWidgetDesktopView>
+                <LocationWidgetDesktopView testID="LocationWidgetDesktopView">
                   <Spacer.Row numberOfSpaces={6} />
                   <Separator.Vertical height={getSpacing(6)} />
                   <Spacer.Row numberOfSpaces={4} />
@@ -69,7 +69,9 @@ export const SearchHeader = memo(function SearchHeader({
 
             {!!shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
           </TitleContainer>
-          {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />}
+          <View testID="InsideLocationWidget">
+            {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />}
+          </View>
         </TitleAndWidgetContainer>
         <Spacer.Column numberOfSpaces={4} />
         <View>
