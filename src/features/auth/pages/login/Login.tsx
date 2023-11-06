@@ -16,6 +16,8 @@ import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
@@ -48,6 +50,7 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
+  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { data: settings } = useSettingsContext()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -270,7 +273,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             disabled={shouldDisableLoginButton}
           />
         </Form.MaxWidth>
-        <ButtonTertiarySecondary onPress={googleLogin} wording="SSO Google" />
+        {!!enableGoogleSSO && (
+          <ButtonTertiarySecondary onPress={googleLogin} wording="SSO Google" />
+        )}
         <Spacer.Column numberOfSpaces={8} />
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>

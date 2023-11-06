@@ -52,6 +52,17 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 describe('<Login/>', () => {
   beforeEach(() => {
     mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+    simulateSignin200()
+    mockMeApiCall({
+      needsToFillCulturalSurvey: false,
+      showEligibleCard: false,
+    } as UserProfileResponse)
+    mockUsePreviousRoute.mockReturnValue(null)
+    useFeatureFlagSpy.mockReturnValue(false)
+  })
+
+  afterEach(async () => {
+    await storage.clear('has_seen_eligible_card')
   })
 
   it('should render correctly', async () => {
@@ -63,27 +74,21 @@ describe('<Login/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  beforeEach(() => {
-    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
-    simulateSignin200()
-    mockMeApiCall({
-      needsToFillCulturalSurvey: false,
-      showEligibleCard: false,
-    } as UserProfileResponse)
-    mockUsePreviousRoute.mockReturnValue(null)
-  })
+  it('should display sso button when feature flag is active', async () => {
+    // We use this hook twice but due to multiple rerender we have to mock the return value this way
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true)
 
-  afterEach(async () => {
-    await storage.clear('has_seen_eligible_card')
+    renderLogin()
+    await act(() => {})
+
+    expect(screen.getByTestId('SSO Google')).toBeOnTheScreen()
   })
 
   it('should sign in when "Se connecter" is clicked with device info when feature flag is active', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for first render
-    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for Auth Context rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for useDeviceInfo rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for email input rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for password input rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for error message rerender
+    // We use this hook twice but due to multiple rerender we have to mock the return value this way
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true)
 
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
