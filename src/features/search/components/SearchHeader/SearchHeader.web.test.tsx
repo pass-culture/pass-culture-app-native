@@ -22,7 +22,7 @@ jest.mock('react-instantsearch-core', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchInputID = uuidv4()
 
@@ -89,7 +89,7 @@ describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should not have focus on search main input',
     async (view) => {
-      useRoute.mockReturnValueOnce({ params: { view } }).mockReturnValueOnce({ params: { view } })
+      useRoute.mockReturnValueOnce({ params: { view } })
       render(
         <SearchHeader
           searchInputID={searchInputID}
@@ -110,9 +110,7 @@ describe('SearchHeader component', () => {
   )
 
   it('should skip focus on search main input, the next focus should be on the location filter button', async () => {
-    useRoute
-      .mockReturnValueOnce({ params: { view: SearchView.Landing } })
-      .mockReturnValueOnce({ params: { view: SearchView.Landing } })
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
