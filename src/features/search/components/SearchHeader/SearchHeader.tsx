@@ -67,7 +67,10 @@ export const SearchHeader = memo(function SearchHeader({
               )}
             </TitleMainWrapper>
 
-            {!!shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
+            {
+              // eslint-disable-next-line local-rules/no-string-check-before-component
+              shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>
+            }
           </TitleContainer>
           <View testID="InsideLocationWidget">
             {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />}
