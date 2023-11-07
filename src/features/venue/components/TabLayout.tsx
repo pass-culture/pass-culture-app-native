@@ -30,7 +30,7 @@ export const TabLayout = () => {
         ))}
         <Spacer.Row numberOfSpaces={6} />
       </TabContainer>
-      <ExampleText>{selectedTab}</ExampleText>
+      <ExampleText>{`${selectedTab} content`}</ExampleText>
     </Container>
   )
 }

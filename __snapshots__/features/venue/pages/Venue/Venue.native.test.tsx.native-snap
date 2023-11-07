@@ -5974,7 +5974,7 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
               ]
             }
           >
-            Offres disponibles
+            Offres disponibles content
           </Text>
         </View>
       </View>
