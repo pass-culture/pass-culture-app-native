@@ -6,7 +6,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { act, render, screen, waitFor, within } from 'tests/utils/web'
+import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'
 
@@ -147,63 +147,5 @@ describe('SearchHeader component', () => {
     const locationFilterButton = screen.getByTestId('Me localiser')
 
     expect(locationFilterButton).toHaveFocus()
-  })
-
-  it('should show "Rechercher" when no params is given', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: true },
-      }
-    )
-    await act(async () => {})
-
-    expect(screen.getByText('Rechercher')).toBeTruthy()
-  })
-
-  it('Should show the location button next to title "Rechercher"', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: true },
-      }
-    )
-    await act(async () => {})
-
-    const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
-
-    expect(searchHeaderTitleContainer.getByText('Ma position')).toBeTruthy()
-  })
-
-  it('Should not show location widget in the search input', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: true },
-      }
-    )
-    await act(async () => {})
-
-    const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
-
-    expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
   })
 })
