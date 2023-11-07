@@ -16,7 +16,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
     plural: '# résultats',
   })
 
-  if (!nbHits) return <React.Fragment></React.Fragment>
+  if (!nbHits) return null
 
   return (
     <Container accessibilityRole={AccessibilityRole.STATUS}>

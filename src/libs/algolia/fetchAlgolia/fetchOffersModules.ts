@@ -1,5 +1,3 @@
-import { SearchResponse } from '@algolia/client-search'
-
 import { OffersPlaylistParameters } from 'features/home/types'
 import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOffersModulesQueries'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -16,12 +14,12 @@ export const fetchOffersModules = async ({
   paramsList,
   userLocation,
   isUserUnderage,
-}: FetchMultipleOffersArgs): Promise<SearchResponse<Offer>[]> => {
+}: FetchMultipleOffersArgs) => {
   const queries = buildOffersModulesQueries({
     paramsList,
     userLocation,
     isUserUnderage,
   })
 
-  return multipleQueries(queries)
+  return multipleQueries<Offer>(queries)
 }

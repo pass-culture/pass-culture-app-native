@@ -126,4 +126,37 @@ describe('useShowResultsForCategory', () => {
       },
     })
   })
+
+  it('should navigate without isFromHistory param when category selected and previous search was from history', () => {
+    mockSearchState = {
+      ...mockSearchState,
+      isFromHistory: true,
+    }
+    const { result: resultCallback } = renderHook(useShowResultsForCategory)
+
+    resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
+
+    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        beginningDatetime: undefined,
+        date: null,
+        endingDatetime: undefined,
+        hitsPerPage: 20,
+        locationFilter: { locationType: 'EVERYWHERE' },
+        offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+        offerIsDuo: false,
+        offerIsFree: false,
+        offerIsNew: false,
+        offerSubcategories: [],
+        offerTypes: { isDigital: false, isEvent: false, isThing: false },
+        priceRange: [0, 300],
+        query: 'Big flo et Oli',
+        view: SearchView.Results,
+        tags: [],
+        timeRange: null,
+        searchId,
+      },
+      screen: 'Search',
+    })
+  })
 })

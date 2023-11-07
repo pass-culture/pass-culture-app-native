@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { VenueDetails } from 'features/home/components/modules/venues/VenueDetails'
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
-import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { Position } from 'libs/geolocation'
@@ -16,6 +15,7 @@ import { formatDistance, mapVenueTypeToIcon } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
+import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -72,7 +72,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         <View>
-          {!!distance && <StyledDistanceTag testID="distance-tag" distance={distance} />}
+          {!!distance && <StyledDistanceTag testID="distance-tag" label={`à ${distance}`} />}
           {venue.bannerUrl ? (
             <ImageTile width={width} height={height} uri={venue.bannerUrl} />
           ) : (
@@ -126,7 +126,7 @@ const VenueTypeTile = styled.View<{ width: number; height: number }>(
   })
 )
 
-const StyledDistanceTag = styled(DistanceTag)({
+const StyledDistanceTag = styled(Tag)({
   flex: 1,
   position: 'absolute',
   zIndex: 2,

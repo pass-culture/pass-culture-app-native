@@ -162,7 +162,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     [dispatch, hideModal]
   )
 
-  if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
+  if (!selectedStock || typeof quantity !== 'number') return null
 
   const priceInCents = quantity * selectedStock.price
   const formattedPriceWithEuro = formatToFrenchDecimal(priceInCents)

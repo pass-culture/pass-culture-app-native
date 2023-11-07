@@ -222,7 +222,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
-  if (!offer) return <React.Fragment></React.Fragment>
+  if (!offer) return null
   const { accessibility, venue } = offer
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId] ?? {}
 
@@ -327,7 +327,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
-        <OfferMessagingApps offerId={offerId} isEvent={isEvent} />
+        <OfferMessagingApps offerId={offerId} />
       </SectionWithDivider>
 
       <SectionWithDivider

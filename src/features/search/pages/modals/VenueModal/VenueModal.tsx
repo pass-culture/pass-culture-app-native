@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
+import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
+import { FilterBehaviour } from 'features/search/enums'
 import { VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import useVenueModal from 'features/search/pages/modals/VenueModal/useVenueModal'
 import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -25,55 +26,65 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
     doSetSelectedVenue,
     doApplySearch,
     shouldShowSuggestedVenues,
-    isVenueSelected,
     venueQuery,
+    isSearchButtonDisabled,
   } = useVenueModal({ dismissModal, doAfterSearch })
 
-  const [keyboardHeight, setKeyboardHeight] = useState(0)
-  useForHeightKeyboardEvents(setKeyboardHeight)
+  const onResetPress = () => {
+    doResetVenue()
+  }
 
   return (
     <AppModal
       visible={visible}
-      title="Point de vente"
-      rightIconAccessibilityLabel="Fermer la modale"
-      rightIcon={Close}
-      onRightIconPress={dismissModal}
+      title=""
       isUpToStatusBar
       scrollEnabled={false}
-      fixedModalBottom={
-        <Center>
-          <ButtonPrimary
-            wording="Valider le point de vente"
-            disabled={!isVenueSelected}
-            onPress={doApplySearch}
+      noPadding
+      keyboardShouldPersistTaps="handled"
+      customModalHeader={
+        <HeaderContainer>
+          <ModalHeader
+            title="Localisation"
+            rightIconAccessibilityLabel="Fermer la modale"
+            rightIcon={Close}
+            onRightIconPress={dismissModal}
           />
-          <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
-        </Center>
+        </HeaderContainer>
+      }
+      fixedModalBottom={
+        <SearchFixedModalBottom
+          onSearchPress={doApplySearch}
+          onResetPress={onResetPress}
+          isSearchDisabled={isSearchButtonDisabled}
+          filterBehaviour={FilterBehaviour.SEARCH}
+        />
       }>
-      <Spacer.Column numberOfSpaces={10} />
-      <SubtitleContainer>
-        <SearchIcon />
-        <Spacer.Row numberOfSpaces={2} />
-        <Typo.ButtonText>Trouver un point de vente </Typo.ButtonText>
-      </SubtitleContainer>
-      <Spacer.Column numberOfSpaces={4} />
-      <SearchInput
-        autoFocus
-        LeftIcon={StyledMagnifyingGlass}
-        inputHeight="regular"
-        onChangeText={doChangeVenue}
-        onPressRightIcon={doResetVenue}
-        placeholder="Cinéma, librairie, magasin…"
-        value={venueQuery}
-      />
-      {!!shouldShowSuggestedVenues && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <SuggestedVenues query={venueQuery} setSelectedVenue={doSetSelectedVenue} />
-        </React.Fragment>
-      )}
-      <Spacer.Column numberOfSpaces={4} />
+      <StyledScrollView>
+        <Spacer.Column numberOfSpaces={6} />
+        <SubtitleContainer>
+          <SearchIcon />
+          <Spacer.Row numberOfSpaces={2} />
+          <Typo.ButtonText>Trouver un point de vente </Typo.ButtonText>
+        </SubtitleContainer>
+        <Spacer.Column numberOfSpaces={4} />
+        <SearchInput
+          autoFocus
+          LeftIcon={StyledMagnifyingGlass}
+          inputHeight="regular"
+          onChangeText={doChangeVenue}
+          onPressRightIcon={doResetVenue}
+          placeholder="Cinéma, librairie, magasin…"
+          value={venueQuery}
+        />
+        {!!shouldShowSuggestedVenues && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <SuggestedVenues query={venueQuery} setSelectedVenue={doSetSelectedVenue} />
+          </React.Fragment>
+        )}
+        <Spacer.Column numberOfSpaces={4} />
+      </StyledScrollView>
     </AppModal>
   )
 }
@@ -91,10 +102,11 @@ const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const KeyboardPlaceholder = styled.View<{ keyboardHeight: number }>(({ keyboardHeight }) => ({
-  height: keyboardHeight,
+const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  paddingHorizontal: theme.modal.spacing.MD,
 }))
 
-const Center = styled.View({
-  alignItems: 'center',
-})
+const HeaderContainer = styled.View(({ theme }) => ({
+  padding: theme.modal.spacing.SM,
+  width: '100%',
+}))

@@ -701,7 +701,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             ]
           }
         >
-          Partage ce bon plan !
+          Passe le bon plan !
         </Text>
         <View
           style={
@@ -2383,7 +2383,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             ]
           }
         >
-          Vas-y en bande organisée !
+          Passe le bon plan !
         </Text>
         <View
           style={

@@ -136,8 +136,8 @@ e2e/output
 .lighthouseci
 
 # ts-prune
-dead_code_current.txt
-dead_code_master.txt
+scripts/dead_code_current.txt
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+

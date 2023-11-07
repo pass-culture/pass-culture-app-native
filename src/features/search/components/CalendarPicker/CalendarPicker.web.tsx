@@ -36,7 +36,7 @@ LocaleConfig.defaultLocale = 'fr'
 function renderArrow(direction: 'left' | 'right') {
   if (direction === 'left') return <ArrowPrevious />
   if (direction === 'right') return <ArrowNext />
-  return <React.Fragment />
+  return null
 }
 
 const RN_CALENDAR_STYLE: React.ComponentProps<typeof RNCalendar>['style'] = {

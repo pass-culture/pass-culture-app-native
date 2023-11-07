@@ -41,7 +41,7 @@ describe('VenueModal', () => {
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
     fireEvent.press(suggestedVenue)
 
-    const validateButon = screen.getByText('Valider le point de vente')
+    const validateButon = screen.getByText('Rechercher')
     fireEvent.press(validateButon)
 
     expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: mockVenues[0].label })

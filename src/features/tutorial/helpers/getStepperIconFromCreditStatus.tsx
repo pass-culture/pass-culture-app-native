@@ -32,7 +32,9 @@ const MediumGreyLock = styled(Lock).attrs(({ theme }) => ({
 }))({
   marginHorizontal: getSpacing(1.5),
 })
-const StyledLottieView = styled(LottieView)(({ theme }) => ({
+const StyledLottieView = styled(LottieView).attrs({
+  rendererSettings: { accessibilityHidden: true },
+})(({ theme }) => ({
   width: theme.icons.sizes.standard,
   height: theme.icons.sizes.standard,
 }))

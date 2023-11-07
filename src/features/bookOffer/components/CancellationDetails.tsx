@@ -17,7 +17,7 @@ export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
   const offer = useBookingOffer()
 
-  if (!stock || !offer) return <React.Fragment />
+  if (!stock || !offer) return null
 
   const { activationCode, cancellationLimitDatetime: limitDate } = stock
 

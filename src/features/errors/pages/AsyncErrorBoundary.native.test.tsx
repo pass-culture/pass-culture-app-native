@@ -147,7 +147,7 @@ function ComponentWithError() {
   useEffect(() => {
     throw new Error()
   }, [])
-  return <React.Fragment />
+  return null
 }
 
 const renderErrorBoundary = () => {

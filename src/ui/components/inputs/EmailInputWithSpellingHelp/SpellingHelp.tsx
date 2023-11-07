@@ -27,7 +27,7 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
     if (suggestedEmail) onEmailChange(suggestedEmail.full)
   }, [onEmailChange, onSpellingHelpPress, suggestedEmail])
 
-  if (!showBanner) return <React.Fragment />
+  if (!showBanner) return null
 
   return (
     <Container>

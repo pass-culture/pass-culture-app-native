@@ -7,6 +7,7 @@ import { SearchQueryParameters } from 'libs/algolia'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
+import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { env } from 'libs/environment'
@@ -78,11 +79,12 @@ export async function fetchOffersFromGTLPlaylist(
 
   // Fetch all offers
   const allQueries = await multipleQueries<Offer>(queries)
+  const searchResponseQueries = allQueries.filter(searchResponsePredicate)
 
   // Assign offers to playlist list
   return data.map((item, index) => ({
     title: item.fields.displayParameters.fields.title,
-    offers: allQueries[index] ?? { hits: [] },
+    offers: searchResponseQueries[index] ?? { hits: [] },
     layout: item.fields.displayParameters.fields.layout,
     entryId: item.sys.id,
   }))

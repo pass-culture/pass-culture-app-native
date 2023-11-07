@@ -19,7 +19,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 const ExpirationDate: React.FC<{
   expirationDate: string | undefined | null
 }> = ({ expirationDate }) => {
-  if (!expirationDate) return <React.Fragment></React.Fragment>
+  if (!expirationDate) return null
 
   const activationText = `À activer avant le ${formatToFrenchDate(expirationDate)}`
 
@@ -38,7 +38,7 @@ export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
 
   const { quantity } = bookingState
 
-  if (!stock || typeof quantity !== 'number' || !offer) return <React.Fragment />
+  if (!stock || typeof quantity !== 'number' || !offer) return null
 
   const { isDigital, name, venue } = offer
   const fullAddress = formatFullAddressWithVenueName(

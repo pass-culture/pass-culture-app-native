@@ -74,9 +74,7 @@ const NoSuggestedVenues = ({ show }: { show: boolean }) =>
         Aucun point de vente ne correspond à ta recherche
       </StyledBody>
     </DescriptionErrorTextContainer>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 
 const DescriptionErrorTextContainer = styled(Typo.Body)({
   marginTop: getSpacing(6),

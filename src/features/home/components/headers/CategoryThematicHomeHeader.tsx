@@ -17,24 +17,22 @@ export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeade
   imageUrl,
 }) => {
   return (
-    <React.Fragment>
-      <ImageBackground source={{ uri: imageUrl }}>
-        <TextContainer>
-          <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
-          <BlackBackground>
-            <TitleContainer>
-              <Title numberOfLines={2}>{title}</Title>
-              {!!subtitle && (
-                <React.Fragment>
-                  <Subtitle numberOfLines={2}>{subtitle}</Subtitle>
-                  <Spacer.Column numberOfSpaces={1} />
-                </React.Fragment>
-              )}
-            </TitleContainer>
-          </BlackBackground>
-        </TextContainer>
-      </ImageBackground>
-    </React.Fragment>
+    <ImageBackground source={{ uri: imageUrl }}>
+      <TextContainer>
+        <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
+        <BlackBackground>
+          <TitleContainer>
+            <Title numberOfLines={2}>{title}</Title>
+            {!!subtitle && (
+              <React.Fragment>
+                <Subtitle numberOfLines={2}>{subtitle}</Subtitle>
+                <Spacer.Column numberOfSpaces={1} />
+              </React.Fragment>
+            )}
+          </TitleContainer>
+        </BlackBackground>
+      </TextContainer>
+    </ImageBackground>
   )
 }
 

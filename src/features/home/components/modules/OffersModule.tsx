@@ -125,7 +125,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
-  if (!shouldModuleBeDisplayed) return <React.Fragment />
+  if (!shouldModuleBeDisplayed) return null
 
   return (
     <PassPlaylist

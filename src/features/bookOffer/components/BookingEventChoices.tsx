@@ -35,8 +35,7 @@ export const BookingEventChoices: React.FC<Props> = ({
 
   const stocksWithCategory = getStockWithCategory(stocks)
 
-  if (!user) return <React.Fragment />
-
+  if (!user) return null
   const validateOptions = () => {
     dispatch({ type: 'VALIDATE_OPTIONS' })
   }

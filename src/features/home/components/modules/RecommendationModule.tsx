@@ -96,7 +96,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
-  if (!shouldModuleBeDisplayed) return <React.Fragment />
+  if (!shouldModuleBeDisplayed) return null
   return (
     <PassPlaylist
       testID="recommendationModuleList"

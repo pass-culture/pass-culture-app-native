@@ -11,5 +11,5 @@ type FeatureFlagProps = {
 export function FeatureFlag({ featureFlag, children }: FeatureFlagProps) {
   const featureFlagEnabled = useFeatureFlag(featureFlag)
 
-  return featureFlagEnabled ? children : <React.Fragment />
+  return featureFlagEnabled ? children : null
 }

@@ -184,9 +184,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           <HomeBodyPlaceholder />
           <Spacer.TabBar />
         </ScrollView>
-      ) : (
-        <React.Fragment />
-      )}
+      ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatList
           ref={scrollRef}
@@ -219,7 +217,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
         ) : null}
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />
-      {statusBar ?? <React.Fragment />}
+      {statusBar ?? null}
     </Container>
   )
 }

@@ -8,6 +8,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchQueryParameters } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
+import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -50,8 +51,9 @@ export const useGetOffersData = (modules: OffersModule[]) => {
       userLocation: position,
       isUserUnderage,
     })
+    const searchResponseResult = result.filter(searchResponsePredicate)
 
-    return result
+    return searchResponseResult
   }
 
   const offersResultList = useQuery({

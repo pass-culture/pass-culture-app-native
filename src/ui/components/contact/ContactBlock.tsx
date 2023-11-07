@@ -37,7 +37,7 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [website])
 
-  if (!venue || !venue.contact) return <React.Fragment></React.Fragment>
+  if (!venue || !venue.contact) return null
 
   return (
     <Container>

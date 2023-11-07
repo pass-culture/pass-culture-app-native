@@ -56,21 +56,19 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
         <NoSuggestedPlaces show={!hasResults && isQueryProvided} />
       </View>
       {!!hasResults && (
-        <React.Fragment>
-          <VerticalUl>
-            {filteredPlaces.map((item, index) => (
-              <Li key={keyExtractor(item)}>
-                <SuggestedResult
-                  label={item.label}
-                  info={item.info}
-                  Icon={Icon}
-                  onPress={() => setSelectedPlace(item)}
-                />
-                {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
-              </Li>
-            ))}
-          </VerticalUl>
-        </React.Fragment>
+        <VerticalUl>
+          {filteredPlaces.map((item, index) => (
+            <Li key={keyExtractor(item)}>
+              <SuggestedResult
+                label={item.label}
+                info={item.info}
+                Icon={Icon}
+                onPress={() => setSelectedPlace(item)}
+              />
+              {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
+            </Li>
+          ))}
+        </VerticalUl>
       )}
     </React.Fragment>
   )
@@ -81,9 +79,7 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
     <StyledBody accessibilityLiveRegion="assertive">
       Aucune localisation ne correspond à ta recherche
     </StyledBody>
-  ) : (
-    <React.Fragment />
-  )
+  ) : null
 
 const ListIconWrapper = styled.View(({ theme }) => ({
   marginTop: (theme.typography.body.fontSize * 15) / 100,

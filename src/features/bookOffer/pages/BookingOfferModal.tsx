@@ -201,32 +201,30 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   ])
 
   return enablePricesByCategories ? (
-    <React.Fragment>
-      <AppModal
-        testID="modalWithPricesByCategories"
-        noPadding
-        visible={visible}
-        title={title}
-        maxHeight={height - top}
-        modalSpacing={modal.spacing.MD}
-        customModalHeader={
-          <BookingOfferModalHeader
-            onClose={onClose}
-            modalLeftIconProps={modalLeftIconProps}
-            title={title}
-          />
-        }
-        fixedModalBottom={
-          <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
-        }
-        shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
-        {children}
-        <BookingCloseInformation
-          visible={bookingCloseInformationModalVisible}
-          hideModal={hideBookingCloseInformationModal}
+    <AppModal
+      testID="modalWithPricesByCategories"
+      noPadding
+      visible={visible}
+      title={title}
+      maxHeight={height - top}
+      modalSpacing={modal.spacing.MD}
+      customModalHeader={
+        <BookingOfferModalHeader
+          onClose={onClose}
+          modalLeftIconProps={modalLeftIconProps}
+          title={title}
         />
-      </AppModal>
-    </React.Fragment>
+      }
+      fixedModalBottom={
+        <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
+      }
+      shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
+      {children}
+      <BookingCloseInformation
+        visible={bookingCloseInformationModalVisible}
+        hideModal={hideBookingCloseInformationModal}
+      />
+    </AppModal>
   ) : (
     <AppModal
       testID="modalWithoutPricesByCategories"
