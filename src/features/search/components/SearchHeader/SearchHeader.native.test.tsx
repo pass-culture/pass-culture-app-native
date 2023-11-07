@@ -74,6 +74,28 @@ describe('SearchHeader component', () => {
     })
   })
 
+  it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false and searchView is not landing', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderSearchHeader(false, SearchView.Results)
+
+    await waitFor(() => {
+      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+
+      expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false and SearchView is Landing', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderSearchHeader(false, SearchView.Landing)
+
+    await waitFor(() => {
+      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
+
+      expect(searchHeaderTitleContainer.queryByText('Ma position')).not.toBeOnTheScreen()
+    })
+  })
+
   it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true and SearchView is Landing', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     renderSearchHeader(true, SearchView.Landing)
@@ -96,14 +118,14 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false and searchView is not landing', async () => {
+  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true and SearchView is not landing', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(false, SearchView.Results)
+    renderSearchHeader(true, SearchView.Results)
 
     await waitFor(() => {
-      const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
+      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-      expect(insideLocationWidget.queryByText('Ma position')).not.toBeOnTheScreen()
+      expect(searchHeaderTitleContainer.queryByText('Ma position')).toBeOnTheScreen()
     })
   })
 })
