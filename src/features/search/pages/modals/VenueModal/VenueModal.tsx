@@ -28,6 +28,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
     shouldShowSuggestedVenues,
     venueQuery,
     isSearchButtonDisabled,
+    onClose,
   } = useVenueModal({ dismissModal, doAfterSearch })
 
   const onResetPress = () => {
@@ -48,7 +49,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
             title="Localisation"
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
-            onRightIconPress={dismissModal}
+            onRightIconPress={onClose}
           />
         </HeaderContainer>
       }

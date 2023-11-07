@@ -15,6 +15,7 @@ export type VenueModalHook = {
   shouldShowSuggestedVenues: boolean
   venueQuery: string
   isSearchButtonDisabled: boolean
+  onClose: VoidFunction
 }
 
 export type VenueModalHookCallback = (payload: Partial<SearchState>) => void

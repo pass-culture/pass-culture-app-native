@@ -25,6 +25,13 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
   const { dispatch, searchState } = useSearch()
   const { userPosition } = useLocation()
 
+  const onClose = () => {
+    if (searchState.locationFilter.locationType === LocationType.VENUE) {
+      setVenueQuery(searchState.locationFilter.venue.label)
+    }
+    dismissModal()
+  }
+
   const doChangeVenue = useCallback((text: string) => {
     setVenueQuery(text)
     setSelectedVenue(null)
@@ -92,6 +99,7 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
     shouldShowSuggestedVenues,
     venueQuery,
     isSearchButtonDisabled,
+    onClose,
   }
 }
 
