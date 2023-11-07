@@ -224,7 +224,7 @@ exports[`VenueModal should render correctly 1`] = `
                 }
                 testID="modalHeaderTitle"
               >
-                Localisation
+                Point de vente
               </Text>
             </View>
             <View
