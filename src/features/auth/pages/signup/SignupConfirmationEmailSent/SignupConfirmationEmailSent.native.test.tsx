@@ -1,14 +1,12 @@
-import { rest } from 'msw'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
@@ -19,16 +17,12 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-server.use(
-  rest.get(
-    `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40gmail.com`,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
-  )
-)
-
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
     mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
+    mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40gmail.com', {
+      remainingResends: 3,
+    })
   })
 
   it('should open faq webpage when clicking on consult help support', async () => {
