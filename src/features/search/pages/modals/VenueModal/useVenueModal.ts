@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -71,6 +71,12 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
 
     dismissModal()
   }, [dismissModal, dispatch, doAfterSearch, searchState, selectedVenue, userPosition, venueQuery])
+
+  useEffect(() => {
+    if (searchState.locationFilter.locationType === LocationType.VENUE) {
+      setVenueQuery(searchState.locationFilter.venue.label)
+    }
+  }, [searchState.locationFilter])
 
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
