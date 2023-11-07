@@ -92,8 +92,6 @@ export function Slider(props: Props) {
   }
 
   useEffect(() => {
-    if (props.values) setValues(props.values)
-
     let leftCursor: Element, rightCursor: Element
     if (Platform.OS === 'web') {
       if (sliderContainerRef.current) {
