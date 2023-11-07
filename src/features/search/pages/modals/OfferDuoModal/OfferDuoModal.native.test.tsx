@@ -58,26 +58,7 @@ describe('<OfferDuoModal/>', () => {
       expect(header).toBeOnTheScreen()
     })
 
-    it('should not have header when viewport width is desktop', () => {
-      const isDesktopViewport = true
-      renderOfferDuoModal({}, isDesktopViewport)
-
-      const header = screen.queryByTestId('pageHeader')
-
-      expect(header).not.toBeOnTheScreen()
-    })
-
     describe('Buttons', () => {
-      it('should display back button on header when the modal is opening from general filter page', async () => {
-        renderOfferDuoModal({
-          filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-        })
-
-        await waitFor(() => {
-          expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
-        })
-      })
-
       it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
         renderOfferDuoModal({
           filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,

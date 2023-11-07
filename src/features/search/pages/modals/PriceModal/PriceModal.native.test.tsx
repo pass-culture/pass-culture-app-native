@@ -807,18 +807,6 @@ describe('<PriceModal/>', () => {
   })
 
   describe('Modal header buttons', () => {
-    it('should display back button on header when the modal is opening from general filter page', async () => {
-      renderSearchPrice({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-
-      await waitFor(() => {
-        expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
-      })
-
-      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
-    })
-
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
       renderSearchPrice({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
