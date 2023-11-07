@@ -24,7 +24,8 @@ const options = {
 const addCanonicalLinkToHTML = (html: string, url: URL): string => {
   const isThematicHome = url.pathname === '/accueil-thematique'
   const homeIdParams = url.searchParams.get('homeId')
-  const additionalParams = isThematicHome && homeIdParams ? `?homeId=${homeIdParams}` : ''
+  const additionalParams =
+    isThematicHome && homeIdParams ? `?homeId=${encodeURIComponent(homeIdParams)}` : ''
   return html.replace(
     '<head>',
     `<head><link rel="canonical" href="${env.APP_PUBLIC_URL}${url.pathname}${additionalParams}" />`
