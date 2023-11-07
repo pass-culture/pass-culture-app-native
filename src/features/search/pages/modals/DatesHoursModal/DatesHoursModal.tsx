@@ -62,7 +62,7 @@ export const DATE_TYPES: Array<{
   { label: RadioButtonDate.PRECISE_DATE, type: DATE_FILTER_OPTIONS.USER_PICK },
 ]
 
-const DEFAULT_TIME_RANGE: Range<Hour> = [8, 22]
+const DEFAULT_TIME_SELECTED_VALUE: Range<Hour> = [8, 22]
 export const DEFAULT_TIME_VALUE: Range<Hour> = [0, 24]
 
 const titleId = uuidv4()
@@ -199,7 +199,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
     setValueWithValidation('hasSelectedHours', toggleHoursValue)
     setValueWithValidation(
       'selectedHours',
-      toggleHoursValue ? DEFAULT_TIME_RANGE : DEFAULT_TIME_VALUE
+      toggleHoursValue ? DEFAULT_TIME_SELECTED_VALUE : DEFAULT_TIME_VALUE
     )
   }, [getValues, setValueWithValidation])
 
@@ -315,13 +315,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                   testID="hour"
                 />
                 {!!value && (
-                  <Controller
-                    control={control}
-                    name="selectedHours"
-                    render={({ field: { value, onChange } }) => (
-                      <HoursSlider defaultValue={value as [Hour, Hour]} onChange={onChange} />
-                    )}
-                  />
+                  <Controller control={control} name="selectedHours" render={HoursSlider} />
                 )}
               </React.Fragment>
             )}

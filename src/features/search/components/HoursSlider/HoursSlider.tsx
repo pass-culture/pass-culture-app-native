@@ -36,20 +36,23 @@ export type Hour =
   | 24
 
 export type HoursSliderProps = {
-  defaultValue: [Hour, Hour]
-  onChange: (nextHour: [Hour, Hour]) => void
+  value: [Hour, Hour]
+  onChange?: (nextHour: [Hour, Hour]) => void
 }
 
 const MAX_HOUR = 24
 
-export function HoursSlider({ defaultValue, onChange }: Readonly<HoursSliderProps>) {
-  const [internalValue, setInternalValue] = useState<number[]>(defaultValue)
+export function HoursSlider({ field }: { field: HoursSliderProps }) {
+  const { value, onChange } = field
+  const [internalValue, setInternalValue] = useState<number[]>(value)
   const { sliderLength } = useGetFullscreenModalSliderLength()
   const [minHour, maxHour] = internalValue || DEFAULT_TIME_VALUE
   const hoursLabelId = uuidv4()
 
   function handleChange(newValues: ValuesType) {
-    onChange(newValues as [Hour, Hour])
+    if (onChange) {
+      onChange(newValues as [Hour, Hour])
+    }
   }
 
   return (
@@ -62,7 +65,7 @@ export function HoursSlider({ defaultValue, onChange }: Readonly<HoursSliderProp
       <Spacer.Column numberOfSpaces={2} />
       <Slider
         showValues={false}
-        values={defaultValue}
+        values={value}
         max={MAX_HOUR}
         onValuesChange={setInternalValue}
         onValuesChangeFinish={handleChange}

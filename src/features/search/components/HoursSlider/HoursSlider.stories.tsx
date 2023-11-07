@@ -9,15 +9,19 @@ export default {
   component: HoursSlider,
 }
 
-const WrappedTemplate: ComponentStory<typeof HoursSlider> = (props: HoursSliderProps) => (
+const WrappedTemplate: ComponentStory<typeof HoursSlider> = ({
+  field,
+}: {
+  field: HoursSliderProps
+}) => (
   <View style={styles.wrapper}>
-    <HoursSlider {...props} />
+    <HoursSlider field={field} />
   </View>
 )
 
 export const Default = WrappedTemplate.bind({})
 Default.args = {
-  defaultValue: [8, 22],
+  field: { value: [8, 22] },
 }
 
 const styles = StyleSheet.create({
