@@ -149,7 +149,7 @@ describe('SearchHeader component', () => {
     expect(locationFilterButton).toHaveFocus()
   })
 
-  it('should show Rechercher when no params is given', async () => {
+  it('should show "Rechercher" when no params is given', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
 
