@@ -68,4 +68,27 @@ describe('VenueModal', () => {
     // search input's prop 'value' is not showing in the DOM because of forwardRef
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
   })
+
+  it('should be initialized with the venue label when a venue is already selected, input was cleared, modal was closed and then opened', async () => {
+    const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
+    mockedUseSearch // it rerenders multiple(3) time so it needs multiple(3) mocks
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+
+    render(<VenueModal visible dismissModal={dismissModalMock} />)
+
+    await waitForModalToShow()
+    const venueSearchInput = screen.getByTestId('searchInput')
+
+    expect(venueSearchInput.props.value).toEqual(mockVenues[0].label) // because of forwardRef, it's not possible to do a getbytext so we use an expect to be sure that Venue label is there
+
+    const clearInput = screen.getByRole('button', { name: 'Réinitialiser la recherche' })
+    fireEvent.press(clearInput)
+
+    const closeButton = screen.getByRole('button', { name: 'Fermer la modale' })
+    fireEvent.press(closeButton)
+
+    expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
+  })
 })
