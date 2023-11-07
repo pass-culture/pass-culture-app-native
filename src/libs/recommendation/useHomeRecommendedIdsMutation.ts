@@ -24,9 +24,11 @@ export const useHomeRecommendedIdsMutation = () => {
         const responseBody: RecommendedIdsResponse = await response.json()
         return responseBody
       } catch (err) {
-        eventMonitoring.captureException(new Error('Error with recommendation endpoint'), {
+        eventMonitoring.captureMessage('Error with recommendation endpoint', {
+          level: 'info',
           extra: { url: endpointUrl },
         })
+
         return { playlist_recommended_offers: [] }
       }
     }
