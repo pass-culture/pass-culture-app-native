@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
-import { SearchLocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
+import { SearchLocationWidgetDesktop } from 'features/location/components/SearchLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -52,10 +52,10 @@ export const SearchHeader = memo(function SearchHeader({
       <HeaderContainer>
         <TitleAndWidgetContainer>
           <TitleContainer testID="SearchHeaderTitleContainer">
-            <Title1Wrapper>
-              <StyledTitle1View {...getHeadingAttrs(1)}>
-                <StyledTitle1 htmlFor={searchInputID}>Rechercher</StyledTitle1>
-              </StyledTitle1View>
+            <TitleMainWrapper>
+              <StyledTitleMainView {...getHeadingAttrs(1)}>
+                <StyledTitleMainText htmlFor={searchInputID}>Rechercher</StyledTitleMainText>
+              </StyledTitleMainView>
 
               {!!isDesktopViewport && (
                 <LocationWidgetDesktopView testID="LocationWidgetDesktopView">
@@ -65,7 +65,7 @@ export const SearchHeader = memo(function SearchHeader({
                   <SearchLocationWidgetDesktop onSearch={onSearch} />
                 </LocationWidgetDesktopView>
               )}
-            </Title1Wrapper>
+            </TitleMainWrapper>
 
             {!!shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
           </TitleContainer>
@@ -92,7 +92,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
 }))
 
-const StyledTitle1 = styledInputLabel(InputLabel)(({ theme }) => ({
+const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.title1,
 }))
 
@@ -111,13 +111,13 @@ const TitleContainer = styled.View({
   width: '100%',
 })
 
-const Title1Wrapper = styled.View({
+const TitleMainWrapper = styled.View({
   flexDirection: 'row',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
 })
 
-const StyledTitle1View = styled.View({
+const StyledTitleMainView = styled.View({
   alignItems: 'center',
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
