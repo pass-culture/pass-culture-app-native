@@ -21,9 +21,11 @@ export const TabLayout = () => {
         {tabs.map((tab) => (
           <TouchableTab key={tab} onPress={() => setSelectedTab(tab)}>
             <Spacer.Column numberOfSpaces={6} />
-            <TabTitle isSelected={selectedTab === tab}>{tab}</TabTitle>
+            <TabTitleContainer>
+              <TabTitle isSelected={selectedTab === tab}>{tab}</TabTitle>
+            </TabTitleContainer>
             <Spacer.Column numberOfSpaces={2} />
-            {selectedTab === tab && <BarOfSelectedTab />}
+            <BarOfSelectedTab isSelected={selectedTab === tab} />
           </TouchableTab>
         ))}
         <Spacer.Row numberOfSpaces={6} />
@@ -44,7 +46,6 @@ const TabContainer = styled.View({
 const TouchableTab = styled(TouchableOpacity)({
   flex: 1,
   maxWidth: getSpacing(45),
-  alignItems: 'center',
 })
 
 const GreyBar = styled.View(({ theme }) => ({
@@ -55,15 +56,18 @@ const GreyBar = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
+const TabTitleContainer = styled.View({ flexGrow: 1, justifyContent: 'center' })
+
 const TabTitle = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  textAlign: 'center',
   color: isSelected ? theme.colors.primary : theme.colors.greyDark,
 }))
 
-const BarOfSelectedTab = styled.View(({ theme }) => ({
+const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelected }) => ({
   bottom: 0,
   height: getSpacing(1),
   width: '100%',
-  backgroundColor: theme.colors.primary,
+  backgroundColor: isSelected ? theme.colors.primary : 'transparent',
   borderRadius: getSpacing(1),
 }))
 
