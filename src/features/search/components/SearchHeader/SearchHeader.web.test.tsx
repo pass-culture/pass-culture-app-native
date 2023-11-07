@@ -30,17 +30,13 @@ describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should contain a button to go to the search suggestions view',
     async (view) => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       useRoute.mockReturnValueOnce({ params: { view } })
       render(
         <SearchHeader
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
-        />,
-        {
-          theme: { isDesktopViewport: true },
-        }
+        />
       )
       await act(async () => {})
 
@@ -49,21 +45,16 @@ describe('SearchHeader component', () => {
   )
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: true },
-      }
+      />
     )
 
     await act(async () => {
-      await userEvent.tab()
       await userEvent.tab()
       await userEvent.keyboard('{Enter}')
     })
@@ -80,17 +71,13 @@ describe('SearchHeader component', () => {
   })
 
   it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: true },
-      }
+      />
     )
     await act(async () => {})
 
@@ -102,17 +89,13 @@ describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should not have focus on search main input',
     async (view) => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       useRoute.mockReturnValueOnce({ params: { view } })
       render(
         <SearchHeader
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
-        />,
-        {
-          theme: { isDesktopViewport: true },
-        }
+        />
       )
 
       await act(async () => {
@@ -127,21 +110,16 @@ describe('SearchHeader component', () => {
   )
 
   it('should skip focus on search main input, the next focus should be on the location filter button', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-      />,
-      {
-        theme: { isDesktopViewport: true },
-      }
+      />
     )
 
     await act(async () => {
-      await userEvent.tab()
       await userEvent.tab()
       await userEvent.tab()
     })
