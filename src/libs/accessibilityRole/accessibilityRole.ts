@@ -17,5 +17,8 @@ export enum AccessibilityRole {
   RADIOGROUP = 'radiogroup',
   SWITCH = 'switch',
   STATUS = 'none',
+  TAB = 'tab',
+  TABLIST = 'tablist',
+  TABPANEL = 'none',
   TOOLTIP = 'none',
 }

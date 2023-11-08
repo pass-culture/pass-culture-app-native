@@ -2,12 +2,14 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
@@ -72,6 +74,12 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
           }}
         />
       </MarginContainer>
+      <Spacer.Column numberOfSpaces={6} />
+
+      <SectionWithDivider visible>
+        <TabLayout />
+      </SectionWithDivider>
+
       <Spacer.Column numberOfSpaces={100} />
     </Container>
   )
