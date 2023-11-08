@@ -16,7 +16,7 @@ describe('useHomeRecommendedIdsMutation', () => {
     })
   })
 
-  it('should capture an info when fetch call fails', async () => {
+  it('should capture an exception when fetch call fails', async () => {
     mockFetch.mockRejectedValueOnce('some error')
     const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -24,7 +24,7 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
     })
   })
 

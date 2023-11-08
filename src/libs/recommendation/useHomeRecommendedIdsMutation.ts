@@ -19,14 +19,17 @@ export const useHomeRecommendedIdsMutation = () => {
           body: JSON.stringify(requestBodyParams),
         })
         if (!response.ok) {
-          throw new Error('Failed to fetch recommendation')
+          throw new Error('Failed to fetch recommendation (response not ok)')
         }
         const responseBody: RecommendedIdsResponse = await response.json()
+        if (!responseBody.playlist_recommended_offers.length) {
+          throw new Error('playlist_recommended_offers is empty')
+        }
         return responseBody
       } catch (err) {
-        eventMonitoring.captureMessage('Error with recommendation endpoint', {
-          level: 'info',
-          extra: { url: endpointUrl },
+        eventMonitoring.captureException('Error with recommendation endpoint', {
+          level: 'error',
+          extra: { url: endpointUrl, stack: err },
         })
 
         return { playlist_recommended_offers: [] }
