@@ -23,7 +23,10 @@ export const useHomeRecommendedIdsMutation = () => {
         }
         const responseBody: RecommendedIdsResponse = await response.json()
         if (!responseBody.playlist_recommended_offers.length) {
-          throw new Error('playlist_recommended_offers is empty')
+          eventMonitoring.captureMessage('Recommended offers playlist is empty', {
+            level: 'info',
+            extra: { url: endpointUrl },
+          })
         }
         return responseBody
       } catch (err) {

@@ -28,6 +28,26 @@ describe('useHomeRecommendedIdsMutation', () => {
     })
   })
 
+  it('should capture a message when recommendation playlist is empty', async () => {
+    const body = { playlist_recommended_offers: [] }
+    mockFetch.mockResolvedValueOnce(
+      new Response(JSON.stringify(body), {
+        headers: {
+          'content-type': 'application/json',
+        },
+        status: 200,
+      })
+    )
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledTimes(1)
+    })
+  })
+
   it('should return response body if fetch call succeeds', async () => {
     const body = { playlist_recommended_offers: ['102280', '102272', '102249', '102310'] }
     mockFetch.mockResolvedValueOnce(
