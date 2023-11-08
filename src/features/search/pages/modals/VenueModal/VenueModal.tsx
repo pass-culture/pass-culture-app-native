@@ -28,6 +28,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
     shouldShowSuggestedVenues,
     venueQuery,
     isSearchButtonDisabled,
+    onClose,
   } = useVenueModal({ dismissModal, doAfterSearch })
 
   const onResetPress = () => {
@@ -37,7 +38,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
   return (
     <AppModal
       visible={visible}
-      title=""
+      title="Point de vente"
       isUpToStatusBar
       scrollEnabled={false}
       noPadding
@@ -45,10 +46,10 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
-            title="Localisation"
+            title="Point de vente"
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
-            onRightIconPress={dismissModal}
+            onRightIconPress={onClose}
           />
         </HeaderContainer>
       }
