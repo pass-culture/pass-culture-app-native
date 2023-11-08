@@ -507,18 +507,6 @@ describe('<DatesHoursModal/>', () => {
   })
 
   describe('Modal header buttons', () => {
-    it('should display back button on header when the modal is opening from general filter page', async () => {
-      renderDatesHoursModal({
-        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
-      })
-
-      await waitFor(() => {
-        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
-      })
-
-      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
-    })
-
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
       renderDatesHoursModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,

@@ -8,7 +8,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useOffer } from 'features/offer/api/useOffer'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
@@ -115,32 +115,24 @@ export const OfferDescription = () => {
   const photoCredit = image?.credit
 
   const { goBack } = useGoBack('Offer', params)
-
   const helmetTitle = `Détails de l’offre ${name} | pass Culture`
+
   return (
-    <Container>
+    <SecondaryPageWithBlurHeader headerTitle="Description" onGoBack={goBack}>
       <Helmet title={helmetTitle} />
-      <PageHeaderSecondary title="Description" onGoBack={goBack} />
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={2} />
-        <FlatList
-          testID="offer-description-list"
-          data={getContentFromOffer(extraData, description, photoCredit)}
-          renderItem={renderExtraData}
-          ListHeaderComponent={Header}
-          ItemSeparatorComponent={Separator}
-          ListFooterComponent={Footer}
-          showsHorizontalScrollIndicator={false}
-        />
-      </React.Fragment>
-    </Container>
+      <FlatList
+        testID="offer-description-list"
+        data={getContentFromOffer(extraData, description, photoCredit)}
+        renderItem={renderExtraData}
+        ListHeaderComponent={Header}
+        ItemSeparatorComponent={Separator}
+        ListFooterComponent={Footer}
+        showsHorizontalScrollIndicator={false}
+        scrollEnabled={false}
+      />
+    </SecondaryPageWithBlurHeader>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
 
 const MarginContainer = styled.View({ marginHorizontal: getSpacing(6) })
 const Header = () => <Spacer.Column numberOfSpaces={6} />

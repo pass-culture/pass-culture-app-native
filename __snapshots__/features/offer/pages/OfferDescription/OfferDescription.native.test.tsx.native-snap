@@ -1,442 +1,471 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<OfferDescription /> should render 1`] = `
-<View
-  style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+[
   <View
     accessibilityRole="header"
     style={
       [
         {
-          "width": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
         },
       ]
     }
   >
     <View
+      customHeight={16}
+      enable={true}
       style={
-        {
-          "height": 64,
-        }
+        [
+          {
+            "height": 16,
+          },
+        ]
       }
     />
     <View
       style={
         [
           {
-            "backgroundColor": "#eb0055",
-            "position": "absolute",
-            "top": 0,
-            "width": "100%",
-            "zIndex": 1,
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
           },
         ]
       }
     >
       <View
-        customHeight={16}
-        enable={true}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
         style={
           [
             {
               "alignItems": "center",
-              "height": 48,
-              "justifyContent": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
         <View
+          positionInHeader="left"
           style={
             [
               {
                 "alignItems": "center",
+                "flexBasis": 0,
                 "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
               },
             ]
           }
         >
+          Description
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
+            },
+          ]
+        }
+      />
+      <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        ListFooterComponent={[Function]}
+        ListHeaderComponent={[Function]}
+        data={
+          [
+            {
+              "key": "description",
+              "value": [
+                "Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+Tous les détails du film sur AlloCiné: ",
+                <ExternalLink
+                  url="https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
+                />,
+              ],
+            },
+            {
+              "key": "photoCredit",
+              "value": "Author: photo credit author",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEnabled={false}
+        scrollEventThrottle={50}
+        showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={[]}
+        testID="offer-description-list"
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
           <View
-            positionInHeader="left"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-            testID="back-button-container"
+            onLayout={[Function]}
           >
             <View
-              accessibilityLabel="Revenir en arrière"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              numberOfSpaces={6}
               style={
-                {
-                  "alignItems": "center",
-                  "flexGrow": 1,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "maxWidth": 40,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
               }
-              testID="Revenir en arrière"
+            />
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
             >
-              <View
-                height={24}
-                testID="icon-back"
-                width={24}
-              >
-                <Text>
-                  icon-back-SVG-Mock
-                </Text>
-              </View>
               <Text
                 style={
                   [
                     {
-                      "display": "none",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
                     },
                   ]
                 }
               >
-                Retour
+                En détails
               </Text>
-            </View>
-          </View>
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Description
-          </Text>
-          <View
-            positionInHeader="right"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-            testID="close-button-container"
-          />
-        </View>
-      </View>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <RCTScrollView
-    ItemSeparatorComponent={[Function]}
-    ListFooterComponent={[Function]}
-    ListHeaderComponent={[Function]}
-    data={
-      [
-        {
-          "key": "description",
-          "value": [
-            "Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
-Tous les détails du film sur AlloCiné: ",
-            <ExternalLink
-              url="https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
-            />,
-          ],
-        },
-        {
-          "key": "photoCredit",
-          "value": "Author: photo credit author",
-        },
-      ]
-    }
-    getItem={[Function]}
-    getItemCount={[Function]}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
-    showsHorizontalScrollIndicator={false}
-    stickyHeaderIndices={[]}
-    testID="offer-description-list"
-    viewabilityConfigCallbackPairs={[]}
-  >
-    <View>
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            [
-              {
-                "marginHorizontal": 24,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
-            En détails
-          </Text>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
-Tous les détails du film sur AlloCiné: 
-            <Text
-              accessibilityLabel="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
-              accessible={true}
-              onPress={[Function]}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-              testID="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
-            >
               <View
                 numberOfSpaces={1}
                 style={
                   [
                     {
-                      "width": 4,
+                      "height": 4,
                     },
                   ]
                 }
               />
-              <Text>
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
-                  testID="externalSiteIcon"
-                  width={16}
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
+Tous les détails du film sur AlloCiné: 
+                <Text
+                  accessibilityLabel="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
+                  accessible={true}
+                  onPress={[Function]}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="Nouvelle fenêtre : https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                 >
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
                   <Text>
-                    externalSiteIcon-SVG-Mock
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={16}
+                      testID="externalSiteIcon"
+                      width={16}
+                    >
+                      <Text>
+                        externalSiteIcon-SVG-Mock
+                      </Text>
+                    </View>
                   </Text>
-                </View>
+                   https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html
+                </Text>
               </Text>
-               https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html
-            </Text>
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            [
-              {
-                "marginHorizontal": 24,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
-            Crédit photo
-          </Text>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
           <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
           >
-            Author: photo credit author
-          </Text>
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Crédit photo
+              </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Author: photo credit author
+              </Text>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+          >
+            <View
+              numberOfSpaces={32}
+              style={
+                [
+                  {
+                    "height": 128,
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
-      </View>
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          numberOfSpaces={32}
-          style={
-            [
-              {
-                "height": 128,
-              },
-            ]
-          }
-        />
-      </View>
+      </RCTScrollView>
     </View>
-  </RCTScrollView>
-</View>
+  </RCTScrollView>,
+  <View
+    height={65}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 65,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
+      }
+    />
+  </View>,
+]
 `;

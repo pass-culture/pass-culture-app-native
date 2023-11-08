@@ -22,19 +22,7 @@ const hideModal = jest.fn()
 
 describe('<LocationModal/>', () => {
   describe('modal header', () => {
-    it('should have header when viewport width is mobile', async () => {
-      renderLocationModal({ hideModal })
-
-      await act(async () => {}) // Warning: An update to LocationModal inside a test was not wrapped in act(...).
-
-      const header = screen.queryByTestId('pageHeader')
-
-      await waitFor(() => {
-        expect(header).toBeInTheDocument()
-      })
-    })
-
-    it('should not have header when viewport width is desktop', async () => {
+    it('should have header when viewport width is desktop', async () => {
       const isDesktopViewport = true
       renderLocationModal({ hideModal }, isDesktopViewport)
 
@@ -42,7 +30,7 @@ describe('<LocationModal/>', () => {
 
       const header = screen.queryByTestId('pageHeader')
       await waitFor(() => {
-        expect(header).not.toBeInTheDocument()
+        expect(header).toBeInTheDocument()
       })
     })
   })
@@ -51,16 +39,12 @@ describe('<LocationModal/>', () => {
     const isDesktopViewport = true
     renderLocationModal({ hideModal }, isDesktopViewport)
 
-    const closeButton = screen.getByTestId(
-      'Ne pas filtrer sur la localisation et retourner aux résultats'
-    )
     await act(async () => {
+      const closeButton = screen.getByRole('button', { name: 'Fermer' })
       fireEvent.click(closeButton)
     })
 
-    await waitFor(() => {
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   describe('Accessibility', () => {
