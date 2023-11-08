@@ -1909,22 +1909,6 @@ export enum PopOverIcon {
 }
 /**
  * @export
- * @interface ProfileOptionsResponse
- */
-export interface ProfileOptionsResponse {
-  /**
-   * @type {Array<ActivityResponseModel>}
-   * @memberof ProfileOptionsResponse
-   */
-  activities: Array<ActivityResponseModel>
-  /**
-   * @type {Array<SchoolTypeResponseModel>}
-   * @memberof ProfileOptionsResponse
-   */
-  school_types: Array<SchoolTypeResponseModel>
-}
-/**
- * @export
  * @interface ProfileUpdateRequest
  */
 export interface ProfileUpdateRequest {
@@ -2086,27 +2070,6 @@ export interface ResetPasswordResponse {
    * @memberof ResetPasswordResponse
    */
   refreshToken: string
-}
-/**
- * @export
- * @interface SchoolTypeResponseModel
- */
-export interface SchoolTypeResponseModel {
-  /**
-   * @type {string}
-   * @memberof SchoolTypeResponseModel
-   */
-  description?: string | null
-  /**
-   * @type {SchoolTypesIdEnum}
-   * @memberof SchoolTypeResponseModel
-   */
-  id: SchoolTypesIdEnum
-  /**
-   * @type {string}
-   * @memberof SchoolTypeResponseModel
-   */
-  label: string
 }
 /**
  * An enumeration.
@@ -3624,22 +3587,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_profile_options <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionProfileOptions(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/profile_options`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary get_subscription_stepper <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4642,17 +4589,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_profile_options <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getNativeV1SubscriptionProfileOptions(options?: any): Promise<ProfileOptionsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionProfileOptions(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_subscription_stepper <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5311,17 +5247,6 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1SubscriptionProfile(options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionProfile(options)
-  }
-  /**
-    * 
-    * @summary get_profile_options <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getNativeV1SubscriptionProfileOptions(options?: any) {
-    const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).getNativeV1SubscriptionProfileOptions(options)
   }
   /**
     * 
