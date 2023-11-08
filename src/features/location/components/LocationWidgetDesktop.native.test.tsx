@@ -1,8 +1,12 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { useLocation } from 'libs/geolocation'
-import { fireEvent, render, screen } from 'tests/utils'
+import { storage } from 'libs/storage'
+import { act, fireEvent, render, screen } from 'tests/utils'
+
+jest.unmock('@react-navigation/native')
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -23,7 +27,7 @@ describe('LocationWidgetDesktop', () => {
       isCustomPosition: true,
       place: { label: 'test' },
     })
-    render(<LocationWidgetDesktop />)
+    renderLocationWidgetDesktop()
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis le titre')
 
@@ -45,7 +49,7 @@ describe('LocationWidgetDesktop', () => {
         place: null,
       })
 
-      render(<LocationWidgetDesktop />)
+      renderLocationWidgetDesktop()
 
       expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
       expect(screen.getByText('Ma position')).toBeOnTheScreen()
@@ -66,7 +70,7 @@ describe('LocationWidgetDesktop', () => {
         userPosition: null,
       })
 
-      render(<LocationWidgetDesktop />)
+      renderLocationWidgetDesktop()
 
       expect(screen.getByTestId('location pointer not filled')).toBeOnTheScreen()
       expect(screen.getByText('Me localiser')).toBeOnTheScreen()
@@ -81,9 +85,69 @@ describe('LocationWidgetDesktop', () => {
       userPosition: null,
     })
 
-    render(<LocationWidgetDesktop />)
+    renderLocationWidgetDesktop()
 
     expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
     expect(screen.getByText('my place')).toBeOnTheScreen()
   })
+
+  describe('tooltip', () => {
+    afterEach(async () => storageResetDisplayedTooltip())
+
+    it('should hide tooltip when pressing close button', async () => {
+      jest.useFakeTimers({ legacyFakeTimers: true })
+      renderLocationWidgetDesktop()
+
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      const closeButton = screen.getByLabelText('Fermer le tooltip')
+
+      fireEvent.press(closeButton)
+
+      expect(
+        screen.queryByText(
+          'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+        )
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should show tooltip after 1 second and hide 8 seconds after it appeared', async () => {
+      jest.useFakeTimers({ legacyFakeTimers: true })
+      renderLocationWidgetDesktop()
+
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      expect(
+        screen.getByText(
+          'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+        )
+      ).toBeOnTheScreen()
+
+      await act(async () => {
+        jest.advanceTimersByTime(8000)
+      })
+
+      expect(
+        screen.queryByText(
+          'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+        )
+      ).not.toBeOnTheScreen()
+    })
+  })
 })
+
+const renderLocationWidgetDesktop = () => {
+  render(
+    <NavigationContainer>
+      <LocationWidgetDesktop />
+    </NavigationContainer>
+  )
+}
+
+const storageResetDisplayedTooltip = async () => {
+  await storage.saveString('times_location_tooltip_has_been_displayed', '0')
+}
