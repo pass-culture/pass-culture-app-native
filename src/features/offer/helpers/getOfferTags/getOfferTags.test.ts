@@ -30,4 +30,10 @@ describe('getOfferTags', () => {
 
     expect(tags).toEqual(['Cinéma plein air', 'Théâtre', 'Comédie'])
   })
+
+  it('should not return data when it is null or undefined', () => {
+    const tags = getOfferTags('Cinéma plein air', { showType: null, showSubType: undefined })
+
+    expect(tags).toEqual(['Cinéma plein air'])
+  })
 })

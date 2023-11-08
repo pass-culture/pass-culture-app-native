@@ -7,15 +7,20 @@ import { getSpacing } from 'ui/theme'
 
 interface Props {
   tags: string[]
+  tagsLines?: number
 }
 
-const MARGIN_BOTTOM_TAGS = getSpacing(2)
-const TAGS_LINES = 2
+export const MARGIN_BOTTOM_TAGS = getSpacing(2)
 
-export function OfferTags({ tags }: Readonly<Props>) {
+// This component is used to display tags on a number of lines defined as a parameter.
+// If the number of tags to display exceeds this limit, it will not be visible
+export function OfferTags({ tags, tagsLines = 2 }: Readonly<Props>) {
+  // It is used to dynamically calculate the height of a tag
+  // We use it only on the first tag render to avoid unnecessary computations
+  // By limiting its usage in this way, we optimize performance by avoiding unnecessary calculations.
   const tagRef = useRef<View>(null)
-  const [tagHeight, setTagHeight] = useState<number>(0)
-  const maxContainerHeight = tagHeight * TAGS_LINES + MARGIN_BOTTOM_TAGS
+  const [tagHeight, setTagHeight] = useState(0)
+  const maxContainerHeight = (tagHeight + MARGIN_BOTTOM_TAGS) * tagsLines
 
   useLayoutEffect(() => {
     if (tagRef.current) {
@@ -24,10 +29,10 @@ export function OfferTags({ tags }: Readonly<Props>) {
   }, [])
 
   return (
-    <Container maxHeight={maxContainerHeight}>
+    <Container maxHeight={maxContainerHeight} testID="tagsContainer">
       {tags.map((tag, index) => (
         <TagContainer ref={index === 0 ? tagRef : undefined} key={tag}>
-          <StyledTag label={tag} />
+          <Tag label={tag} />
         </TagContainer>
       ))}
     </Container>
@@ -42,9 +47,6 @@ const Container = styled.View<{ maxHeight: number }>(({ maxHeight }) => ({
 }))
 
 const TagContainer = styled(View)({
-  marginBottom: getSpacing(2),
-})
-
-const StyledTag = styled(Tag)({
   marginRight: getSpacing(2),
+  marginBottom: MARGIN_BOTTOM_TAGS,
 })

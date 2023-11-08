@@ -13,20 +13,59 @@ export default meta
 
 const Template: ComponentStory<typeof OfferTags> = (props) => <OfferTags {...props} />
 
-export const WithCustomData = Template.bind({})
-WithCustomData.args = {
-  tags: [
-    'vinyle',
-    'musique',
-    'évènement',
-    'exclu',
-    'famille',
-    'amis',
-    'spectacle',
-    'théâtre',
-    'sortie',
-    'culturelle',
-  ],
+const tagsList = [
+  'vinyle',
+  'musique',
+  'évènement',
+  'exclu',
+  'famille',
+  'amis',
+  'spectacle',
+  'théâtre',
+  'sortie',
+  'culturelle',
+  'cinema',
+  'film',
+  'manga',
+  'concert',
+  'festival',
+  'romance',
+  'spiritualité',
+  'policier',
+  'hip/hop',
+  'classique',
+  'danse',
+  'sport',
+  'artiste',
+  'peinture',
+  'musée',
+  'exposition',
+  'excursion',
+  'découverte',
+  'studio',
+  'mobile',
+  'transport',
+  'voyage',
+  'bibliothèque',
+  'médiathèque',
+  'magasin culturel',
+  'géographie',
+  'histoire',
+  'course',
+  'vêtement',
+  'sorties',
+  'association',
+]
+
+export const WithCustomDataOnTwoLines = Template.bind({})
+WithCustomDataOnTwoLines.args = {
+  tags: tagsList,
+}
+
+export const WithCustomDataOnThreeLines = Template.bind({})
+WithCustomDataOnThreeLines.args = {
+  tags: tagsList,
+  tagsLines: 3,
 }
 
 const offerExtraData: OfferExtraData = { musicType: 'Pop', musicSubType: 'Pop/Rock' }
