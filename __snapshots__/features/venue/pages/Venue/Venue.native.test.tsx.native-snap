@@ -5714,6 +5714,7 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
           }
         >
           <View
+            accessibilityRole="tablist"
             style={
               [
                 {
@@ -5746,13 +5747,14 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
               }
             />
             <View
+              accessibilityRole="tab"
               accessibilityState={
                 {
                   "busy": undefined,
                   "checked": undefined,
                   "disabled": undefined,
                   "expanded": undefined,
-                  "selected": undefined,
+                  "selected": true,
                 }
               }
               accessibilityValue={
@@ -5847,13 +5849,14 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
               />
             </View>
             <View
+              accessibilityRole="tab"
               accessibilityState={
                 {
                   "busy": undefined,
                   "checked": undefined,
                   "disabled": undefined,
                   "expanded": undefined,
-                  "selected": undefined,
+                  "selected": false,
                 }
               }
               accessibilityValue={
@@ -5958,24 +5961,28 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
               }
             />
           </View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginBottom": 24,
-                  "marginLeft": 24,
-                  "marginRight": 24,
-                  "marginTop": 24,
-                },
-              ]
-            }
+          <View
+            accessibilityRole="none"
           >
-            Offres disponibles content
-          </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginBottom": 24,
+                    "marginLeft": 24,
+                    "marginRight": 24,
+                    "marginTop": 24,
+                  },
+                ]
+              }
+            >
+              Offres disponibles content
+            </Text>
+          </View>
         </View>
       </View>
       <View
