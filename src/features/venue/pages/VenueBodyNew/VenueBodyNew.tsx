@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -15,22 +15,15 @@ import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
   venue: VenueResponse
   onScroll: () => void
 }
 
-const FLAT_BACKGROUND_HEIGHT = getSpacing(43)
-
 export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
-
-  const { appContentWidth } = useTheme()
-  const { top } = useCustomSafeInsets()
-  const backgroundHeight = top + FLAT_BACKGROUND_HEIGHT
-  const backgroundStyle = { height: backgroundHeight, width: appContentWidth }
+  const backgroundStyle = useVenueBackgroundStyle()
 
   const venueFullAddress = formatFullAddress(address, postalCode, city)
   const venueName = publicName || name
