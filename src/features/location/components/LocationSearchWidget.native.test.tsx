@@ -1,8 +1,9 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { useLocation } from 'libs/geolocation'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -85,5 +86,26 @@ describe('LocationSearchWidget', () => {
 
     expect(screen.getByTestId('location pointer filled')).toBeOnTheScreen()
     expect(screen.getByText('my place')).toBeOnTheScreen()
+  })
+
+  it('should not display tooltip', async () => {
+    jest.useFakeTimers()
+    render(
+      <NavigationContainer>
+        <LocationSearchWidget />
+      </NavigationContainer>
+    )
+
+    await act(async () => {
+      jest.advanceTimersByTime(1000)
+    })
+
+    expect(
+      screen.queryByText(
+        'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+      )
+    ).not.toBeOnTheScreen()
+
+    expect(screen.queryByRole('tooltip')).not.toBeOnTheScreen()
   })
 })
