@@ -1,5 +1,4 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -7,9 +6,8 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { render, fireEvent, waitFor, act, screen } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
@@ -49,6 +47,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   })
 
   it('should redirect to signup confirmation email sent page WHEN clicking on resend email and response is success', async () => {
+    mockServer.postApiV1('/resend_email_validation', {})
     renderSignupConfirmationExpiredLink()
 
     fireEvent.press(screen.getByText(`Renvoyer l’email`))
@@ -64,11 +63,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   })
 
   it('should NOT redirect to signup confirmation email sent page WHEN clicking on resend email and response is failure', async () => {
-    server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/resend_email_validation', async (req, res, ctx) =>
-        res.once(ctx.status(400))
-      )
-    )
+    mockServer.postApiV1('/resend_email_validation', {
+      responseOptions: { statusCode: 400 },
+    })
     renderSignupConfirmationExpiredLink()
 
     await act(async () => {

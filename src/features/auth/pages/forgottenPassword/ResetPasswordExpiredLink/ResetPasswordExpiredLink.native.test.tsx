@@ -1,5 +1,4 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { rest } from 'msw'
 import React from 'react'
 import * as ReactQueryAPI from 'react-query'
 
@@ -9,9 +8,8 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { render, fireEvent, screen, waitFor, act } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
@@ -23,6 +21,7 @@ jest.mock('features/navigation/navigationRef')
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
+    mockServer.postApiV1('/request_password_reset', {})
     renderResetPasswordExpiredLink()
 
     fireEvent.press(screen.getByText(`Retourner à l’accueil`))
@@ -36,6 +35,9 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
+    mockServer.postApiV1('/request_password_reset', {
+      responseOptions: { statusCode: 204, data: {} },
+    })
     renderResetPasswordExpiredLink()
 
     fireEvent.press(screen.getByText(`Renvoyer l’email`))
@@ -51,11 +53,9 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should NOT redirect to reset password link sent page WHEN clicking on resend email and response is failure', async () => {
-    server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/request_password_reset', async (_req, res, ctx) =>
-        res(ctx.status(401))
-      )
-    )
+    mockServer.postApiV1('/request_password_reset', {
+      responseOptions: { statusCode: 401, data: {} },
+    })
 
     const ResetPasswordExpiredLinkWithBoundary = withAsyncErrorBoundary(ResetPasswordExpiredLink)
     render(
