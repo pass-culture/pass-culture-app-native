@@ -515,7 +515,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                           "flexDirection": "row",
                         },
                         {
-                          "width": 864,
+                          "width": 876,
                         },
                       ]
                     }
@@ -537,7 +537,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                             "backgroundColor": "#eb0055",
                           },
                           {
-                            "width": 432,
+                            "width": 438,
                           },
                         ]
                       }
@@ -561,7 +561,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                             "borderWidth": 2,
                           },
                           {
-                            "width": 432,
+                            "width": 438,
                           },
                         ]
                       }
@@ -578,7 +578,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                             "width": 48,
                           },
                           {
-                            "left": 408,
+                            "left": 414,
                             "top": -24,
                           },
                           undefined,

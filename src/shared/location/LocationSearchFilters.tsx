@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Slider } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
@@ -25,6 +26,7 @@ export const LocationSearchFilters = ({
   const radiusLabelId = uuidv4()
 
   const formatKm = (km: number) => `${km}\u00a0km`
+  const { sliderLength } = useGetFullscreenModalSliderLength(false)
 
   const toggleCheckbox = () => setIncludeDigitalOffers(!includeDigitalOffers)
 
@@ -45,6 +47,7 @@ export const LocationSearchFilters = ({
         minMaxValuesComplement={`\u00a0km`}
         maxLabel="Dans un rayon de&nbsp;:"
         formatValues={formatKm}
+        sliderLength={sliderLength}
         accessibilityLabelledBy={radiusLabelId}
       />
       <Spacer.Column numberOfSpaces={4} />
