@@ -43,7 +43,6 @@ export const renderOfferBody = (
   } = {}
 ) =>
   render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NetInfoWrapper>
         <OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />
