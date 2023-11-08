@@ -9,12 +9,13 @@ interface Props {
 }
 
 export function OfferTitle({ offerName }: Readonly<Props>) {
-  const titleProps = {
-    adjustsFontSizeToFit: true,
-    allowFontScaling: false,
-    ...accessibilityAndTestId(`Nom de l’offre\u00a0: ${offerName}`),
-    ...getHeadingAttrs(1),
-  }
-
-  return <Typo.Title3 {...titleProps}>{offerName}</Typo.Title3>
+  return (
+    <Typo.Title3
+      adjustsFontSizeToFit
+      allowFontScaling={false}
+      {...accessibilityAndTestId(`Nom de l’offre\u00a0: ${offerName}`)}
+      {...getHeadingAttrs(1)}>
+      {offerName}
+    </Typo.Title3>
+  )
 }
