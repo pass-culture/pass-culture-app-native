@@ -17,7 +17,7 @@ exports[`BookingDetails should render correctly 1`] = `
     bounces={false}
     onContentSizeChange={[Function]}
     onScroll={[Function]}
-    scrollEventThrottle={20}
+    scrollEventThrottle={16}
     scrollIndicatorInsets={
       {
         "right": 1,

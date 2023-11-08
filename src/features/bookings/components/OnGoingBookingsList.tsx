@@ -113,7 +113,7 @@ export function OnGoingBookingsList() {
         ItemSeparatorComponent={ItemSeparatorComponent}
         scrollEnabled={hasBookings}
         onScroll={onScroll}
-        scrollEventThrottle={400}
+        scrollEventThrottle={16}
       />
     </Container>
   )

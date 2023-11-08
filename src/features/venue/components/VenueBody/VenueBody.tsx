@@ -78,7 +78,7 @@ export function VenueBody({ venueId, onScroll, playlists }: Props) {
   return (
     <Container
       testID="venue-container"
-      scrollEventThrottle={20}
+      scrollEventThrottle={16}
       scrollIndicatorInsets={scrollIndicatorInsets}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={scrollViewRef as any}

@@ -4,7 +4,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
 <RCTScrollView
   bounces={false}
   onScroll={[MockFunction]}
-  scrollEventThrottle={20}
+  scrollEventThrottle={16}
   scrollIndicatorInsets={
     {
       "right": 1,
@@ -1270,7 +1270,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
 <RCTScrollView
   bounces={false}
   onScroll={[MockFunction]}
-  scrollEventThrottle={20}
+  scrollEventThrottle={16}
   scrollIndicatorInsets={
     {
       "right": 1,

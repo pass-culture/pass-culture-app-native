@@ -167,7 +167,7 @@ export function BookingDetails() {
       <Helmet title={helmetTitle} />
       <ScrollView
         onScroll={onScroll}
-        scrollEventThrottle={20}
+        scrollEventThrottle={16}
         scrollIndicatorInsets={scrollIndicatorInsets}
         onContentSizeChange={(_w: number, h: number) => {
           if (h <= windowHeight) {

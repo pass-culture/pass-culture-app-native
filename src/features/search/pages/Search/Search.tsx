@@ -134,7 +134,7 @@ export function Search() {
               testID="autocompleteScrollView"
               keyboardShouldPersistTaps="handled"
               onScroll={Keyboard.dismiss}
-              scrollEventThrottle={400}>
+              scrollEventThrottle={16}>
               <Spacer.Column numberOfSpaces={4} />
               <SearchHistory
                 history={filteredHistory}
