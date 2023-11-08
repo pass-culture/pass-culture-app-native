@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
-import { TabLayout } from 'features/venue/components/TabLayout'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'

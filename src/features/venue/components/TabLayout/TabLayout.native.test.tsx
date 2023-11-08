@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TabLayout } from 'features/venue/components/TabLayout'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('TabLayout', () => {
