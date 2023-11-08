@@ -71,7 +71,7 @@ export const SearchLocationModal = ({
 
   const getInitialRadiusPlaceValue =
     searchState.locationFilter.locationType === LocationType.PLACE
-      ? searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
+      ? searchState.locationFilter.aroundRadius
       : DEFAULT_RADIUS
 
   const [aroundRadiusPlace, setAroundRadiusPlace] = useState(getInitialRadiusPlaceValue)
