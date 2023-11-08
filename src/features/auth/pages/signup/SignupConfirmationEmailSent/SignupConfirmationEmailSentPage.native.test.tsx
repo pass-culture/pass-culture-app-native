@@ -19,7 +19,6 @@ describe('<SignupConfirmationEmailSentPage />', () => {
     mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40gmail.com', {
       remainingResends: 3,
     })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />))
     await act(async () => {})
 

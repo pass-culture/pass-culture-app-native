@@ -72,7 +72,6 @@ describe('<Search />', () => {
 })
 
 const SearchPage = () =>
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   reactQueryProviderHOC(
     <SearchWrapper>
       <Search />

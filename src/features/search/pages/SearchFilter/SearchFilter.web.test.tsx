@@ -47,7 +47,6 @@ describe('<SearchFilter/>', () => {
 })
 
 const renderSearchFilter = () =>
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   render(reactQueryProviderHOC(<SearchFilter />), {
     theme: { isDesktopViewport: true, isMobileViewport: false },
   })

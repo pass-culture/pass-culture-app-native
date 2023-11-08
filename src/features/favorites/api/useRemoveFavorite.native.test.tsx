@@ -36,7 +36,6 @@ describe('useRemoveFavorite hook', () => {
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>
@@ -65,7 +64,6 @@ describe('useRemoveFavorite hook', () => {
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>

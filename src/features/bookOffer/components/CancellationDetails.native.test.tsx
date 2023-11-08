@@ -49,7 +49,6 @@ describe('<CancellationDetails /> when isDigital = true', () => {
           activationCode: { expirationDate: '2030-02-05T00:00:00Z' },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         render(reactQueryProviderHOC(<CancellationDetails />))
 
         expectNotCancellable()
@@ -68,7 +67,6 @@ describe('<CancellationDetails /> when isDigital = true', () => {
           activationCode: { expirationDate: null },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         render(reactQueryProviderHOC(<CancellationDetails />))
 
         expectNotCancellable()
@@ -85,7 +83,6 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectCancellable()
@@ -99,7 +96,6 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectNotCancellable()
@@ -113,7 +109,6 @@ describe('<CancellationDetails /> when isDigital = true', () => {
         activationCode: null,
       }
       mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<CancellationDetails />))
 
       expectCancellableBefore()

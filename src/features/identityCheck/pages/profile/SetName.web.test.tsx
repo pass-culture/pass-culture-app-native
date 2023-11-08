@@ -19,7 +19,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 describe('<SetName/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<SetName />))
 
       await waitFor(() => {

@@ -713,7 +713,6 @@ function renderBookingDetails({
   onPressBookOffer,
 }: BookingDetailsProps) {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
     )

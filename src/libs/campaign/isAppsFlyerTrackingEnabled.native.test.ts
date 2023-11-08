@@ -78,6 +78,5 @@ describe('isAppsFlyerTrackingEnabled', () => {
 
 const renderUseCookies = () =>
   renderHook(useCookies, {
-    /* eslint-disable local-rules/no-react-query-provider-hoc */
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

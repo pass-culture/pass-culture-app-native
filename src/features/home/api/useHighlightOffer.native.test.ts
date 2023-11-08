@@ -141,7 +141,6 @@ type Params = {
 
 function renderUseHighlightOfferHook(params: Params) {
   return renderHook(() => useHighlightOffer({ id: 'moduleId', ...params }), {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

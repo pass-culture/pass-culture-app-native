@@ -22,7 +22,6 @@ describe('<SignupConfirmationEmailSentPage/>', () => {
         remainingResends: 3,
       })
       const { container } = render(
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />)
       )
       await act(async () => {})

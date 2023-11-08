@@ -296,7 +296,6 @@ describe('HomeHeader', () => {
 
 function renderHomeHeader(isDesktopViewport?: boolean) {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <NavigationContainer>
         <HomeHeader />

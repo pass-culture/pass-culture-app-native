@@ -104,6 +104,5 @@ describe('<SetStatus/>', () => {
 })
 
 function renderSetStatus() {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<SetStatus />))
 }

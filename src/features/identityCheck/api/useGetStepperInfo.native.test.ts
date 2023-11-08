@@ -64,6 +64,5 @@ describe('useGetStepperInfo', () => {
 
 const renderGetStepperInfo = () =>
   renderHook(() => useGetStepperInfo(), {
-    /* eslint-disable local-rules/no-react-query-provider-hoc */
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

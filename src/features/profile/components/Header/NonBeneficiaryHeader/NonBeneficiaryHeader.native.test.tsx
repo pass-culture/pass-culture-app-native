@@ -196,7 +196,6 @@ function renderNonBeneficiaryHeader({
       eligibilityEndDatetime={endDatetime}
     />,
     {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     }
   )

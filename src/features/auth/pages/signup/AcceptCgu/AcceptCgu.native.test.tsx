@@ -236,8 +236,5 @@ describe('<AcceptCgu/>', () => {
 })
 
 function renderAcceptCGU() {
-  return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<AcceptCgu {...props} />)
-  )
+  return render(reactQueryProviderHOC(<AcceptCgu {...props} />))
 }

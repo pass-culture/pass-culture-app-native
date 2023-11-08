@@ -34,7 +34,6 @@ describe('usePersistQuery', () => {
   describe('without initial local data', () => {
     it('should save distant data locally', async () => {
       renderHook(() => usePersistQuery(queryKey, queryFn), {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -51,7 +50,6 @@ describe('usePersistQuery', () => {
       const error = new Error('WRITING_REJECTED')
       jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(error)
       renderHook(() => usePersistQuery(queryKey, queryFn), {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -79,7 +77,6 @@ describe('usePersistQuery', () => {
       expect(persistDataStr).toBeTruthy()
 
       renderHook(() => usePersistQuery(queryKey, queryFn), {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -101,7 +98,6 @@ describe('usePersistQuery', () => {
 
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
       renderHook(() => usePersistQuery(queryKey, queryFn), {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
@@ -126,7 +122,6 @@ describe('usePersistQuery', () => {
               },
             }),
           {
-            // eslint-disable-next-line local-rules/no-react-query-provider-hoc
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )

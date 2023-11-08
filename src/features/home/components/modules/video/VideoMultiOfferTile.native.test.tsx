@@ -50,7 +50,6 @@ function renderMultiOfferTile() {
       analyticsParams={mockAnalyticsParams}
     />,
     {
-      /* eslint-disable local-rules/no-react-query-provider-hoc */
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     }
   )

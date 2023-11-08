@@ -19,7 +19,6 @@ const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 function renderSignupConfirmationExpiredLink() {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <SignupConfirmationExpiredLink
         {...(navigationProps as StackScreenProps<

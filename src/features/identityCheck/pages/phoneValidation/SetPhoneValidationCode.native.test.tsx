@@ -205,7 +205,6 @@ describe('SetPhoneValidationCode', () => {
 
 function renderSetPhoneValidationCode() {
   return render(<SetPhoneValidationCode />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

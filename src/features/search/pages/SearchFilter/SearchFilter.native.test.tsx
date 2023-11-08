@@ -150,5 +150,4 @@ describe('<SearchFilter/>', () => {
   })
 })
 
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))

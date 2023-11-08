@@ -345,7 +345,6 @@ describe('<CookiesConsent/>', () => {
 
 const renderCookiesConsent = () => {
   render(<CookiesConsent visible hideModal={hideModal} />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

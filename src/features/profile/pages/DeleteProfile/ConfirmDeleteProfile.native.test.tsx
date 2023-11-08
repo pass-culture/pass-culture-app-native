@@ -105,8 +105,5 @@ describe('ConfirmDeleteProfile component', () => {
 })
 
 function renderConfirmDeleteProfile() {
-  return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<ConfirmDeleteProfile />)
-  )
+  return render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
 }

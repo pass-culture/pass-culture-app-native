@@ -423,5 +423,4 @@ describe('Signup Form', () => {
 
 const simulateSignupSuccess = () => mockServer.postApiV1('/account', {})
 
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))

@@ -40,7 +40,6 @@ jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const apiValidateEmailSpy = jest.spyOn(api, 'postNativeV1ValidateEmail')
 
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
 
 describe('<AfterSignupEmailValidationBuffer />', () => {

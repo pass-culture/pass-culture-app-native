@@ -37,7 +37,6 @@ mockUseStepperInfo.mockReturnValue({
 describe('<Stepper/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<Stepper />))
       const results = await checkAccessibilityFor(container)
 

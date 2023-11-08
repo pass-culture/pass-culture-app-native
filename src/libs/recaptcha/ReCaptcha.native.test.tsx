@@ -77,7 +77,6 @@ describe('<ReCaptcha />', () => {
 
 function renderReCaptcha(reCaptchaProps: React.ComponentProps<typeof ReCaptcha>) {
   return render(<ReCaptcha {...reCaptchaProps} />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

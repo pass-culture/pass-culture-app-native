@@ -127,7 +127,6 @@ describe('HighlightOfferModule', () => {
 
 const renderHighlightModule = () => {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <HighlightOfferModule {...highlightOfferModuleFixture} index={0} homeEntryId="entryId" />
     )

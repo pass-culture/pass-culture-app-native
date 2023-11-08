@@ -58,8 +58,6 @@ describe('useBookOfferMutation', () => {
 })
 
 const renderUseBookOfferMutation = () =>
-  renderHook(
-    () => useBookOfferMutation(props),
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    { wrapper: ({ children }) => reactQueryProviderHOC(children, setup) }
-  )
+  renderHook(() => useBookOfferMutation(props), {
+    wrapper: ({ children }) => reactQueryProviderHOC(children, setup),
+  })

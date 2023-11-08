@@ -171,7 +171,6 @@ const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode
     },
   })
   render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />
     )

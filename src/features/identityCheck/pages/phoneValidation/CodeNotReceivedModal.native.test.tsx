@@ -155,7 +155,6 @@ describe('<CodeNotReceivedModal />', () => {
 
 function renderCodeNotReceivedModal(props?: Partial<CodeNotReceivedModalProps>) {
   return render(<CodeNotReceivedModal isVisible dismissModal={jest.fn()} {...props} />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

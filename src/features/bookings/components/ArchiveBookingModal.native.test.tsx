@@ -106,6 +106,5 @@ describe('<ArchiveBookingModal />', () => {
 })
 
 function renderArchiveDigitalBookingOfferModal(props: ArchiveBookingModalProps) {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<ArchiveBookingModal {...props} />))
 }

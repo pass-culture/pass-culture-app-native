@@ -222,7 +222,6 @@ describe('<ChangeEmail/>', () => {
   })
 })
 
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
 
 const fillInputs = async ({ email, password }: { email?: string; password?: string }) => {

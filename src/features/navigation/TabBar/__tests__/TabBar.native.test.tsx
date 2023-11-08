@@ -158,8 +158,5 @@ describe('TabBar', () => {
 })
 
 function renderTabBar() {
-  render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<TabBar navigation={navigation} />)
-  )
+  render(reactQueryProviderHOC(<TabBar navigation={navigation} />))
 }

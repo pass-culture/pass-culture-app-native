@@ -211,7 +211,6 @@ describe('SetPhoneNumber', () => {
 
 function renderSetPhoneNumber() {
   return render(<SetPhoneNumber />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

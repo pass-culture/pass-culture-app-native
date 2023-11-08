@@ -32,14 +32,12 @@ describe('VenueOfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const { toJSON } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
 
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
 
     fireEvent.press(screen.getByTestId('tileImage'))
@@ -53,7 +51,6 @@ describe('VenueOfferTile component', () => {
   })
 
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
     fireEvent.press(screen.getByTestId('tileImage'))
 
@@ -65,7 +62,6 @@ describe('VenueOfferTile component', () => {
   })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
     fireEvent.press(screen.getByTestId('tileImage'))
 

@@ -200,7 +200,6 @@ describe('ThematicHome', () => {
 
 const renderThematicHome = () => {
   render(<ThematicHome />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }
