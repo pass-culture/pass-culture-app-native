@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 create_and_push_tag_from_package_json_version() {
   TAG_PREFIX="$1"
