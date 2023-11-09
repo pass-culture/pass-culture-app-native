@@ -26,15 +26,16 @@ interface Props {
 export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
   const backgroundStyle = useVenueBackgroundStyle()
-  const { isDesktopViewport } = useTheme()
+  const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
+  const isLargeScreen = isDesktopViewport || isTabletViewport
 
   const venueFullAddress = formatFullAddress(address, postalCode, city)
   const venueName = publicName || name
 
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
-      {isDesktopViewport ? <Placeholder height={headerHeight} /> : null}
+      {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
       <TopContainer>
         <HeaderContainer>
           {bannerUrl ? (
@@ -88,11 +89,14 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
 
 const Container = styled.ScrollView({ overflow: 'visible' })
 
-const TopContainer = styled.View(({ theme }) => ({
-  flexDirection: theme.isDesktopViewport ? 'row' : 'column',
-  marginTop: theme.isDesktopViewport ? getSpacing(8) : 0,
-  marginHorizontal: theme.isDesktopViewport ? getSpacing(18) : 0,
-}))
+const TopContainer = styled.View(({ theme }) => {
+  const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
+  return {
+    flexDirection: isLargeScreen ? 'row' : 'column',
+    marginTop: isLargeScreen ? getSpacing(8) : 0,
+    marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
+  }
+})
 
 const BackgroundContainer = styled.View({
   flexDirection: 'row',
