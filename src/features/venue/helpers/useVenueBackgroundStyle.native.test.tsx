@@ -9,21 +9,19 @@ import { theme } from 'theme'
 describe('useVenueBackgroundStyle', () => {
   it('should return desktop background style', () => {
     const customTheme = { ...theme, ...computedTheme, isDesktopViewport: true }
-    const { result } = renderHook(() => useVenueBackgroundStyle(), {
+    const { result } = renderHook(useVenueBackgroundStyle, {
       wrapper: ({ children }) => <ThemeProvider theme={customTheme}>{children}</ThemeProvider>,
     })
 
     expect(result.current).toEqual({ height: 232, width: 375, borderRadius: 4 })
   })
 
-  describe('useVenueBackgroundStyle', () => {
-    it('should return mobile background style', () => {
-      const customTheme = { ...theme, ...computedTheme, isDesktopViewport: false }
-      const { result } = renderHook(() => useVenueBackgroundStyle(), {
-        wrapper: ({ children }) => <ThemeProvider theme={customTheme}>{children}</ThemeProvider>,
-      })
-
-      expect(result.current).toEqual({ height: 188, width: 960 })
+  it('should return mobile background style', () => {
+    const customTheme = { ...theme, ...computedTheme, isDesktopViewport: false }
+    const { result } = renderHook(useVenueBackgroundStyle, {
+      wrapper: ({ children }) => <ThemeProvider theme={customTheme}>{children}</ThemeProvider>,
     })
+
+    expect(result.current).toEqual({ height: 188, width: 960 })
   })
 })
