@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-JIRA_TICKET_ID=$(git log --oneline | head -1 | grep -oP "PC-\d+" | head -1)
+set -o errexit
+set -o nounset
+set -o pipefail
+
+JIRA_TICKET_ID=$(git log --oneline | head -1 | grep --only-matching --perl-regexp "PC-\d+" | head -1)
 JIRA_TRANSITION_ID="81" # revue PM
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
@@ -10,7 +14,7 @@ CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 curl -X POST \
   --url "https://passculture.atlassian.net/rest/api/3/issue/${JIRA_TICKET_ID}/transitions" \
-  -u "${JIRA_USER_EMAIL}:${JIRA_API_TOKEN}" \
-  -H "Accept: application/json" \
-  -H "Content-Type: application/json" \
-  -d '{"transition":{"id":"'${JIRA_TRANSITION_ID}'"}}'
+  --user "${JIRA_USER_EMAIL}:${JIRA_API_TOKEN}" \
+  --header "Accept: application/json" \
+  --header "Content-Type: application/json" \
+  --data '{"transition":{"id":"'${JIRA_TRANSITION_ID}'"}}'
