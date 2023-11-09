@@ -24,7 +24,12 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Error with recommendation endpoint',
+        {
+          extra: { url: 'http://passculture.reco', stack: 'some error' },
+        }
+      )
     })
   })
 
@@ -44,7 +49,13 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+        'Recommended offers playlist is empty',
+        {
+          level: 'info',
+          extra: { url: 'http://passculture.reco' },
+        }
+      )
     })
   })
 

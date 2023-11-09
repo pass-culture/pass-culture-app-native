@@ -31,7 +31,6 @@ export const useHomeRecommendedIdsMutation = () => {
         return responseBody
       } catch (err) {
         eventMonitoring.captureException('Error with recommendation endpoint', {
-          level: 'error',
           extra: { url: endpointUrl, stack: err },
         })
 
