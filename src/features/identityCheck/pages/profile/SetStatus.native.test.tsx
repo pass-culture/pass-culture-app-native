@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { CommonActions, dispatch } from '__mocks__/@react-navigation/native'
@@ -8,9 +7,8 @@ import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -41,12 +39,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-server.use(
-  rest.post(env.API_BASE_URL + '/native/v1/subscription/profile', async (_, res, ctx) => {
-    return res(ctx.status(200))
-  })
-)
-
 const mockActivities = ActivityTypesSnap.activities
 jest.mock('features/identityCheck/api/useActivityTypes', () => {
   return {
@@ -62,6 +54,10 @@ jest.mock('features/profile/helpers/useIsUserUnderage')
 const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 
 describe('<SetStatus/>', () => {
+  beforeEach(() => {
+    mockServer.postApiV1('/subscription/profile', {})
+  })
+
   it('should render correctly', async () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
     renderSetStatus()
