@@ -2,6 +2,7 @@ import { Platform } from 'react-native'
 import { Social } from 'react-native-share'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
@@ -608,7 +609,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
-  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep) =>
+  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep | PreValidationSignupStep) =>
     analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),

@@ -163,6 +163,16 @@ describe('<ProfileTutorialAgeInformation />', () => {
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ from: 'Tutorial' })
   })
+
+  it("should log to analytics when pressing 'Créer un compte'", () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    render(<ProfileTutorialAgeInformation {...navProps} />)
+
+    const link = screen.getByText('Créer un compte')
+    fireEvent.press(link)
+
+    expect(analytics.logStepperDisplayed).toHaveBeenCalledWith('Tutorial', 'Email')
+  })
 })
 
 const mockAuthContextForAllRenders = (user?: UserProfileResponse) => {

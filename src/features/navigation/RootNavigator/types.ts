@@ -102,6 +102,7 @@ export enum StepperOrigin {
   PROFILE = 'profile',
   DEEPLINK = 'deeplink',
   OFFER = 'offer',
+  TUTORIAL = 'Tutorial',
   VERIFY_ELIGIBILITY = 'verifyEligibility',
 }
 

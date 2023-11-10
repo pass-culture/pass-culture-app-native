@@ -6,7 +6,9 @@ import styled from 'styled-components/native'
 import { SubscriptionStatus, YoungStatusType } from 'api/gen'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import {
+  StepperOrigin,
   TutorialRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
@@ -33,6 +35,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type Props = StackScreenProps<TutorialRootStackParamList, 'ProfileTutorialAgeInformation'>
 
 const onLoginPress = () => analytics.logLogin({ from: 'Tutorial' })
+const onSignupPress = () =>
+  analytics.logStepperDisplayed(StepperOrigin.TUTORIAL, PreValidationSignupStep.Email)
 
 export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route }: Props) => {
   const { isLoggedIn, user } = useAuthContext()
@@ -82,6 +86,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
               as={ButtonWithLinearGradient}
               wording="Créer un compte"
               navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+              onBeforeNavigate={onSignupPress}
             />
             <Spacer.Column numberOfSpaces={4} />
             <StyledLoginButton onAdditionalPress={onLoginPress} />
