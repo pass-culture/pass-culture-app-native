@@ -80,5 +80,13 @@ describe('<Venue />', () => {
         expect(results).toHaveNoViolations()
       })
     })
+
+    it('should render correctly in web for new version', async () => {
+      mockUseFeatureFlag.mockReturnValueOnce(true)
+      const { container } = render(<Venue />)
+      await act(async () => {})
+
+      expect(container).toMatchSnapshot()
+    })
   })
 })
