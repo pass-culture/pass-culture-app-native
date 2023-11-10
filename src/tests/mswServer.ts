@@ -246,13 +246,18 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
-      const handler = rest.get(url, this.generateMockHandler(url, options, 'GET'))
+      const handler = rest.get(urlWithoutParams, this.generateMockHandler(url, options, 'GET'))
       this.mswServer.use(handler)
     } else {
       const handler = rest.get(
         url,
-        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'GET')
+        this.generateMockHandler(
+          urlWithoutParams,
+          { responseOptions: { data: options as TResponse } },
+          'GET'
+        )
       )
       this.mswServer.use(handler)
     }
