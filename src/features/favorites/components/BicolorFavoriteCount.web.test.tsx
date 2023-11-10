@@ -85,6 +85,5 @@ function renderBicolorFavoriteCount(options: Options = defaultOptions) {
     refetchUser: jest.fn(),
     isUserLoading: false,
   })
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BicolorFavoriteCount />))
 }

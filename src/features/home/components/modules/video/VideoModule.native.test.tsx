@@ -114,7 +114,6 @@ const offerFixture2 = {
 
 function renderVideoModule(isDesktopViewport?: boolean) {
   render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />
     ),

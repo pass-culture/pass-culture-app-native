@@ -85,7 +85,4 @@ describe('<SignupConfirmationEmailSent />', () => {
 })
 
 const renderSignupConfirmationEmailSent = () =>
-  render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
-  )
+  render(reactQueryProviderHOC(<SignupConfirmationEmailSent email="john.doe@gmail.com" />))

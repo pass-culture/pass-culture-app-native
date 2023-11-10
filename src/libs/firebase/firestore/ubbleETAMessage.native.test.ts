@@ -17,7 +17,6 @@ describe('[method] ubbleETAMessage', () => {
 
   it('should retrieve the ubbleETAMessage', async () => {
     const { result } = renderHook(useUbbleETAMessage, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})

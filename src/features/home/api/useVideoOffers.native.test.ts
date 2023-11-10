@@ -35,7 +35,6 @@ describe('useVideoOffers', () => {
     const { result } = renderHook(
       () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
@@ -52,7 +51,6 @@ describe('useVideoOffers', () => {
       () =>
         useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, ['ean1', 'ean2']),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
@@ -68,7 +66,6 @@ describe('useVideoOffers', () => {
     const { result } = renderHook(
       () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )

@@ -51,6 +51,5 @@ function renderBookingDetails(booking: Booking) {
     isError: false,
     error: undefined,
   } as unknown as UseQueryResult<BookingReponse | null>)
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingDetails />))
 }

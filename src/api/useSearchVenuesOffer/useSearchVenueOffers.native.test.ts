@@ -166,7 +166,6 @@ describe('useSearchVenueOffers', () => {
             queryOptions: { enabled: true },
           }),
         {
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
@@ -186,7 +185,6 @@ describe('useSearchVenueOffers', () => {
             queryOptions: { enabled: false },
           }),
         {
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )

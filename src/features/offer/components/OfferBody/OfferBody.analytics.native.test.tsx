@@ -260,6 +260,5 @@ const renderOfferBodyForAnalytics = (
   } = {}
 ) =>
   render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />)
   )

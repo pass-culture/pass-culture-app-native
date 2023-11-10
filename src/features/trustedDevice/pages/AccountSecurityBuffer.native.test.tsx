@@ -105,7 +105,6 @@ describe('<AccountSecurityBuffer/>', () => {
       onError: spy,
     })
     await catchErrorSilently(async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<Component />))
 
       // eslint-disable-next-line testing-library/prefer-explicit-assert
@@ -116,8 +115,4 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 })
 
-const renderAccountSecurityBuffer = () =>
-  render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<AccountSecurityBuffer />)
-  )
+const renderAccountSecurityBuffer = () => render(reactQueryProviderHOC(<AccountSecurityBuffer />))

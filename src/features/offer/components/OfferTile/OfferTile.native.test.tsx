@@ -49,14 +49,12 @@ describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
 
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 
@@ -68,7 +66,6 @@ describe('OfferTile component', () => {
   })
 
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 
@@ -86,7 +83,7 @@ describe('OfferTile component', () => {
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
       apiRecoParams,
     }
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+
     render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 
@@ -101,10 +98,7 @@ describe('OfferTile component', () => {
   })
 
   it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />)
-    )
+    render(reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -129,7 +123,7 @@ describe('OfferTile component', () => {
       height: 100,
       thumbUrl: offer.thumbUrl,
     }
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+
     render(reactQueryProviderHOC(<OfferTile {...propsFromSearchVenuesPlaylist} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 
@@ -142,7 +136,6 @@ describe('OfferTile component', () => {
   })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 

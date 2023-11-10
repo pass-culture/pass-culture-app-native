@@ -63,7 +63,6 @@ describe('<Offer/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockV4.mockReturnValueOnce('offerId')
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<Offer />))
 
       await act(async () => {

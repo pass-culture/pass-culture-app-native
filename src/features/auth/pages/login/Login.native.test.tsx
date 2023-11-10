@@ -572,7 +572,6 @@ const fillInputs = async () => {
 
 function renderLogin() {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <AuthContext.Provider
         value={{

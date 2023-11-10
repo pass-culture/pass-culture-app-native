@@ -18,7 +18,6 @@ afterEach(() => {
 
 describe('<EighteenBirthday />', () => {
   it('should render eighteen birthday', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
     expect(screen).toMatchSnapshot()
@@ -27,14 +26,12 @@ describe('<EighteenBirthday />', () => {
   it('should set `has_seen_eligible_card` to true in storage', async () => {
     expect(await storage.readObject('has_seen_eligible_card')).toBe(null)
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
     expect(await storage.readObject('has_seen_eligible_card')).toBe(true)
   })
 
   it('should navigate to Stepper on button press', () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
     fireEvent.press(screen.getByText('Confirmer mes informations'))
@@ -51,7 +48,6 @@ describe('<EighteenBirthday />', () => {
       isUserLoading: false,
     })
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
     expect(screen.getByText('Vérifie ton identité pour débloquer tes 300 €.')).toBeOnTheScreen()

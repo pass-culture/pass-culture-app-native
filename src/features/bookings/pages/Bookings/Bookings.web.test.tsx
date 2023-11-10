@@ -80,6 +80,5 @@ const renderBookings = (bookings: BookingsResponse) => {
       unknown
     >)
 
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Bookings />))
 }

@@ -26,7 +26,6 @@ server.use(
 describe('<UbbleWebview/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       const { container } = render(reactQueryProviderHOC(<UbbleWebview />))
 
       await act(async () => {

@@ -57,8 +57,5 @@ describe('AccessibleTabBar', () => {
 })
 
 function renderTabBar() {
-  return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<AccessibleTabBar id="tabBarID" />)
-  )
+  return render(reactQueryProviderHOC(<AccessibleTabBar id="tabBarID" />))
 }

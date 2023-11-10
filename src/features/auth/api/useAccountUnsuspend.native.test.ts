@@ -43,6 +43,5 @@ describe('useAccountUnsuspend', () => {
 
 const renderAccountUnsuspendHook = () =>
   renderHook(() => useAccountUnsuspend(onSuccess, onError), {
-    /* eslint-disable local-rules/no-react-query-provider-hoc */
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

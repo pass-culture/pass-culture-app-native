@@ -108,7 +108,6 @@ function renderHeader({
   })
 
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <WebThemeProvider theme={{ ...theme, showTabBar: false }}>
         <ThemeProvider theme={{ ...theme, showTabBar: false }}>

@@ -189,7 +189,6 @@ describe('<HomeModule />', () => {
 
 function renderHomeModule(item: HomepageModule, data?: ModuleData) {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
     )

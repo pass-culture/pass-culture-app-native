@@ -31,7 +31,6 @@ describe('useEndedBookingFromOfferId', () => {
   it('should return an ended booking if existing', async () => {
     const booking = bookingsSnap.ended_bookings[0]
     const { result } = renderHook(() => useEndedBookingFromOfferId(booking.stock.offer.id), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -44,7 +43,6 @@ describe('useEndedBookingFromOfferId', () => {
   it('should not return an ended booking if not existing', async () => {
     const unknownOfferId = 91919191
     const { result } = renderHook(() => useEndedBookingFromOfferId(unknownOfferId), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})

@@ -172,5 +172,4 @@ describe('BusinessModule component', () => {
 })
 
 const renderModule = (props: BusinessModuleProps) =>
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   render(reactQueryProviderHOC(<BusinessModule {...props} />))

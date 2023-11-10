@@ -60,7 +60,6 @@ const renderVideoEndView = async () => {
       homeEntryId="xyz"
     />,
     {
-      /* eslint-disable local-rules/no-react-query-provider-hoc */
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     }
   )

@@ -194,7 +194,6 @@ function renderOfferIconCaptions({
   }
 
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <OfferIconCaptions
         stocks={stocks ?? defaultBookableStocks}

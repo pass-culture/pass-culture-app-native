@@ -36,7 +36,6 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 
 describe('<Offer />', () => {
   it('Performance test for Offer page', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     await measurePerformance(reactQueryProviderHOC(<Offer />), {
       scenario: async () => {
         await screen.findByTestId('offer-container', {}, { timeout: TEST_TIMEOUT_IN_MS })

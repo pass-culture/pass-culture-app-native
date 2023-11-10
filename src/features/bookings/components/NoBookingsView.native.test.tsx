@@ -16,7 +16,6 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 describe('<NoBookingsView />', () => {
   it('should render online no bookings view when netInfo.isConnected is true', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<NoBookingsView />))
 
     expect(screen).toMatchSnapshot()
@@ -24,7 +23,6 @@ describe('<NoBookingsView />', () => {
 
   it('should render offline no bookings view when netInfo.isConnected is false', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<NoBookingsView />))
 
     expect(screen).toMatchSnapshot()
@@ -32,7 +30,6 @@ describe('<NoBookingsView />', () => {
 
   it('should navigate to Search when pressing button and log event', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     render(reactQueryProviderHOC(<NoBookingsView />))
 
     const button = screen.getByText('Découvrir le catalogue')

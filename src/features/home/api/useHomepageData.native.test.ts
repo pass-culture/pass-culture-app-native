@@ -1,5 +1,3 @@
-/* eslint-disable local-rules/no-react-query-provider-hoc */
-
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
 import { Homepage } from 'features/home/types'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'

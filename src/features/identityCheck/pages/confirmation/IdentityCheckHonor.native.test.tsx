@@ -100,6 +100,5 @@ describe('<IdentityCheckHonor/>', () => {
 })
 
 const renderIdentityCheckHonor = () => {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<IdentityCheckHonor />))
 }

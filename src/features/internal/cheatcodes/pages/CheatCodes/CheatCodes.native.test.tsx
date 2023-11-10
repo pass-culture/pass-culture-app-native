@@ -56,6 +56,5 @@ describe('CheatCodes component', () => {
 })
 
 function renderCheatCodes() {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   render(reactQueryProviderHOC(<CheatCodes navigation={navigation} />))
 }

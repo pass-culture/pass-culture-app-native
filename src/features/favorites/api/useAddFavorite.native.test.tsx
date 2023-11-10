@@ -128,7 +128,6 @@ it('should show snack bar when too many favorites when trying to add favorite', 
 const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
   const { result } = renderHook(() => useAddFavorite({ onSuccess }), {
     wrapper: (props) =>
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <FavoritesWrapper>
           <View>{props.children}</View>

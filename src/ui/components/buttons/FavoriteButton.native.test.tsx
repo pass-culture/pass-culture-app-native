@@ -320,8 +320,5 @@ function renderFavoriteButton(options: Options = defaultOptions) {
     )
   )
 
-  return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<FavoriteButton offerId={id} animationState={undefined} />)
-  )
+  return render(reactQueryProviderHOC(<FavoriteButton offerId={id} animationState={undefined} />))
 }

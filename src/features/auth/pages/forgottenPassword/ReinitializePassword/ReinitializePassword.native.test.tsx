@@ -318,8 +318,5 @@ describe('ReinitializePassword Page', () => {
 })
 
 function renderReinitializePassword() {
-  return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<ReinitializePassword />)
-  )
+  return render(reactQueryProviderHOC(<ReinitializePassword />))
 }

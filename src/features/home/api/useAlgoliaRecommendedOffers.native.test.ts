@@ -25,7 +25,6 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should fetch algolia when ids are provided', async () => {
     renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
@@ -35,7 +34,6 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should filter algolia hits', async () => {
     renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
@@ -46,7 +44,6 @@ describe('useAlgoliaRecommendedOffers', () => {
   it('should return undefined when algolia does not return any hit', async () => {
     jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds').mockResolvedValueOnce([])
     const { result } = renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
@@ -57,7 +54,6 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should return undefined when ids are not provided', async () => {
     const { result } = renderHook(() => useAlgoliaRecommendedOffers([], 'abcd'), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -66,7 +62,6 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should call function to preserve ids offer order when shouldPreserveIdsOrder is true', async () => {
     renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', true), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
@@ -76,7 +71,6 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
     renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
@@ -86,7 +80,6 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
     renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', false), {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})

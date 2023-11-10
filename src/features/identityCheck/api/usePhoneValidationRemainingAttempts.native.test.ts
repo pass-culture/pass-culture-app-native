@@ -23,7 +23,6 @@ server.use(
 describe('usePhoneValidationRemainingAttempts', () => {
   it('calls the API and returns the data and isLastAttempt', async () => {
     const { result } = renderHook(usePhoneValidationRemainingAttempts, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

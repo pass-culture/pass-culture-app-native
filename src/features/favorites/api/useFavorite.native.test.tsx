@@ -30,7 +30,6 @@ describe('useFavorite hook', () => {
     })
     const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>
@@ -65,7 +64,6 @@ describe('useFavorite hook', () => {
 
     const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>
