@@ -104,6 +104,11 @@ export interface AccountRequest {
    */
   email: string
   /**
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  firebasePseudoId?: string | null
+  /**
    * @type {boolean}
    * @memberof AccountRequest
    */
@@ -305,7 +310,7 @@ export enum BookingCancellationReasons {
   'FRAUD' = 'FRAUD',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
   'FINANCE_INCIDENT' = 'FINANCE_INCIDENT',
-}
+  }
 /**
  * @export
  * @interface BookingDisplayStatusRequest
@@ -1413,7 +1418,7 @@ export interface NextSubscriptionStepResponse {
    * @memberof NextSubscriptionStepResponse
    */
   nextSubscriptionStep?: SubscriptionStep | null
-  /**
+/**
    * @type {boolean}
    * @memberof NextSubscriptionStepResponse
    */
@@ -2373,7 +2378,7 @@ export enum SubcategoryIdEnum {
   'SPECTACLE_REPRESENTATION' = 'SPECTACLE_REPRESENTATION',
   'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
   'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
-  'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
+'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
   'SUPPORT_PHYSIQUE_MUSIQUE_CD' = 'SUPPORT_PHYSIQUE_MUSIQUE_CD',
   'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE' = 'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE',
   'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
@@ -2455,7 +2460,7 @@ export enum SubcategoryIdEnumv2 {
   'SPECTACLE_REPRESENTATION' = 'SPECTACLE_REPRESENTATION',
   'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
   'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
-  'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
+'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
   'SUPPORT_PHYSIQUE_MUSIQUE_CD' = 'SUPPORT_PHYSIQUE_MUSIQUE_CD',
   'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE' = 'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE',
   'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
@@ -3139,7 +3144,7 @@ export enum VenueTypeCodeKey {
  */
 export enum WithdrawalTypeEnum {
   'by_email' = 'by_email',
-  'no_ticket' = 'no_ticket',
+    'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }
 /**
