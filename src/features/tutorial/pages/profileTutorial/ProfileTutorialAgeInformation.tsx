@@ -6,7 +6,9 @@ import styled from 'styled-components/native'
 import { SubscriptionStatus, YoungStatusType } from 'api/gen'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import {
+  StepperOrigin,
   TutorialRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
@@ -16,6 +18,7 @@ import { TutorialTimelineEighteen } from 'features/tutorial/components/profileTu
 import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineFifteen'
 import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
 import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -30,6 +33,10 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'ProfileTutorialAgeInformation'>
+
+const onLoginPress = () => analytics.logLogin({ from: 'Tutorial' })
+const onSignupPress = () =>
+  analytics.logStepperDisplayed(StepperOrigin.TUTORIAL, PreValidationSignupStep.Email)
 
 export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route }: Props) => {
   const { isLoggedIn, user } = useAuthContext()
@@ -79,9 +86,10 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
               as={ButtonWithLinearGradient}
               wording="Créer un compte"
               navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+              onBeforeNavigate={onSignupPress}
             />
             <Spacer.Column numberOfSpaces={4} />
-            <StyledLoginButton />
+            <StyledLoginButton onAdditionalPress={onLoginPress} />
           </Container>
         ) : null}
         {isEligibleWithoutSubscription && age ? (

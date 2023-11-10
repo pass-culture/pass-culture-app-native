@@ -356,7 +356,10 @@ describe('Profile component', () => {
       const consultTutorialButton = screen.getByText('Comment ça marche\u00a0?')
       fireEvent.press(consultTutorialButton)
 
-      expect(analytics.logConsultTutorial).toHaveBeenNthCalledWith(1, 'profile')
+      expect(analytics.logConsultTutorial).toHaveBeenNthCalledWith(1, {
+        age: 18,
+        from: 'ProfileHelp',
+      })
     })
 
     it('should log event ProfilScrolledToBottom when user reach end of screen', async () => {

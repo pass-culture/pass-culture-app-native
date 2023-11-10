@@ -25,6 +25,8 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
       ? { screen: 'ProfileTutorialAgeInformation', params: { age } }
       : { screen: 'AgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
 
+  const onTutorialClick = () => analytics.logConsultTutorial({ age, from: 'CreditBlock' })
+
   if (isDepositExpired) {
     const onPressExplanationButton = () => {
       showModal()
@@ -52,6 +54,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
         icon={Question}
         wording="Comment ça marche&nbsp;?"
         navigateTo={tutorialNavigateTo}
+        onBeforeNavigate={onTutorialClick}
       />
     </React.Fragment>
   )

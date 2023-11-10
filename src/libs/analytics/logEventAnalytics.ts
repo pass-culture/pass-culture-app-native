@@ -2,6 +2,7 @@ import { Platform } from 'react-native'
 import { Social } from 'react-native-share'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
@@ -223,8 +224,8 @@ export const logEventAnalytics = {
     offer_display_index?: number
     index?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
-  logConsultTutorial: (from: Referrals) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, { from }),
+  logConsultTutorial: (params: { from: string; age?: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, params),
   logConsultVenue: (params: {
     venueId: number
     from: Referrals
@@ -376,6 +377,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLocationToggle: (enabled: boolean) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOCATION_TOGGLE }, { enabled }),
+  logLogin: (params: { from: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.LOGIN }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
   logMailTo: (
     reason:
@@ -606,7 +609,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
-  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep) =>
+  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep | PreValidationSignupStep) =>
     analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
