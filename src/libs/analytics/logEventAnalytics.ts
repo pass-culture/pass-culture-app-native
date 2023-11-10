@@ -376,6 +376,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLocationToggle: (enabled: boolean) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOCATION_TOGGLE }, { enabled }),
+  logLogin: (params: { from: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.LOGIN }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
   logMailTo: (
     reason:

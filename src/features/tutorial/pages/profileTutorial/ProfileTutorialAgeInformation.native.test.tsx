@@ -9,6 +9,7 @@ import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics/__mocks__/provider'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -151,6 +152,16 @@ describe('<ProfileTutorialAgeInformation />', () => {
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen.getByText('Activer mon crédit')).toBeOnTheScreen()
+  })
+
+  it("should log to analytics when pressing 'Se connecter'", () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    render(<ProfileTutorialAgeInformation {...navProps} />)
+
+    const link = screen.getByText('Se connecter')
+    fireEvent.press(link)
+
+    expect(analytics.logLogin).toHaveBeenCalledWith({ from: 'Tutorial' })
   })
 })
 
