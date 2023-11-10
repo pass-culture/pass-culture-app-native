@@ -1,13 +1,11 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 import { renderHook, superFlushWithAct } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
@@ -74,9 +72,5 @@ async function renderUseInitialScreen() {
 }
 
 function mockMeApiCall(response: UserProfileResponse) {
-  server.use(
-    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(response))
-    })
-  )
+  mockServer.getApiV1('/me', response)
 }
