@@ -28,7 +28,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { Form } from 'ui/components/Form'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const searchClient: SearchClient = {
@@ -129,13 +129,14 @@ export function Search() {
             addSearchHistory={addToHistory}
             searchInHistory={setQueryHistoryMemoized}
           />
+          <Spacer.Column numberOfSpaces={2} />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
               testID="autocompleteScrollView"
               keyboardShouldPersistTaps="handled"
               onScroll={Keyboard.dismiss}
               scrollEventThrottle={16}>
-              <Spacer.Column numberOfSpaces={4} />
+              <Spacer.Column numberOfSpaces={2} />
               <SearchHistory
                 history={filteredHistory}
                 queryHistory={queryHistory}
