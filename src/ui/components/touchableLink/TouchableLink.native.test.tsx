@@ -18,14 +18,14 @@ describe('<TouchableLink />', () => {
       render(
         <TouchableLink
           handleNavigation={handleNavigationMock}
-          onBeforeNavigate={() => analytics.logConsultTutorial('profile')}>
+          onBeforeNavigate={() => analytics.logConsultTutorial({ from: 'profile' })}>
           <TouchableLinkContent />
         </TouchableLink>
       )
 
       fireEvent.press(screen.getByText(linkText))
 
-      expect(analytics.logConsultTutorial).toHaveBeenCalledWith('profile')
+      expect(analytics.logConsultTutorial).toHaveBeenCalledWith({ from: 'profile' })
       expect(handleNavigationMock).not.toHaveBeenCalled()
 
       await waitFor(() => {
