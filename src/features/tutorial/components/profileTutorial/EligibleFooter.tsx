@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -32,7 +33,7 @@ export const EligibleFooter: FunctionComponent<Props> = ({ age }) => {
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         as={ButtonWithLinearGradient}
-        navigateTo={{ screen: 'Stepper' }}
+        navigateTo={{ screen: 'Stepper', params: { from: StepperOrigin.TUTORIAL } }}
         wording="Activer mon crédit"
       />
     </React.Fragment>
