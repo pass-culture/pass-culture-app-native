@@ -19,7 +19,7 @@ describe('OfferTags component', () => {
     render(<OfferTags tags={tags} tagsLines={tagsLines} />)
 
     expect(screen.getByTestId('tagsContainer')).toHaveStyle({
-      maxHeight: 64,
+      maxHeight: 56,
     })
   })
 })
