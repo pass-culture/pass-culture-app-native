@@ -11,11 +11,7 @@ import React, {
 import { NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  OptimizedListItemStyle,
-  OptimizedListProps,
-  OptimizedListRef,
-} from 'ui/components/OptimizedList/types'
+import { OptimizedListItemStyle, OptimizedListProps, OptimizedListRef } from './types'
 
 function InternalOptimizedList<T, AD>(
   {
