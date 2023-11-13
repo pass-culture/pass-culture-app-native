@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -13,7 +13,6 @@ import {
 } from 'features/search/constants'
 import { useScrollToBottomOpacity } from 'features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity'
 import { SearchListProps } from 'features/search/types'
-import { useLocation } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { OptimizedList } from 'ui/components/OptimizedList/OptimizedList'
@@ -39,17 +38,6 @@ export function SearchList({
 }: SearchListProps) {
   const listRef = useRef<OptimizedListRef>(null)
 
-  const { isGeolocated } = useLocation()
-
-  /**
-   * The rerender key is used to rerender the `VariableSizeList` component when important changes happen.
-   * Be careful to not add too many things here since it will completely rerender the list, and so scroll to the top.
-   */
-  const rerenderKey = useMemo(
-    () => JSON.stringify({ isGeolocated, nbHits, autoScrollEnabled, onPress }),
-    [isGeolocated, nbHits, autoScrollEnabled, onPress]
-  )
-
   const handleScrollToTopPress = useCallback(() => {
     listRef.current?.scrollToItem(0)
   }, [])
@@ -66,7 +54,6 @@ export function SearchList({
   return nbHits > 0 ? (
     <React.Fragment>
       <OptimizedList
-        key={rerenderKey}
         ref={listRef}
         testID="searchResultsList"
         itemSize={LIST_ITEM_HEIGHT}
