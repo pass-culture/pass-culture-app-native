@@ -22,7 +22,7 @@ export const useHomeRecommendedIdsMutation = () => {
           throw new Error('Failed to fetch recommendation (response not ok)')
         }
         const responseBody: RecommendedIdsResponse = await response.json()
-        if (!responseBody.playlist_recommended_offers.length) {
+        if (responseBody.playlist_recommended_offers.length === 0) {
           eventMonitoring.captureMessage('Recommended offers playlist is empty', {
             level: 'info',
             extra: { url: endpointUrl },
