@@ -79,7 +79,12 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
       <Spacer.Column numberOfSpaces={6} />
 
       <SectionWithDivider visible>
-        <TabLayout />
+        <TabLayout
+          tabPanels={{
+            'Offres disponibles': <Typo.Body>Panel des offres disponibles</Typo.Body>,
+            'Infos pratiques': <Typo.Body>Panel des offres disponibles</Typo.Body>,
+          }}
+        />
       </SectionWithDivider>
 
       <Spacer.Column numberOfSpaces={100} />

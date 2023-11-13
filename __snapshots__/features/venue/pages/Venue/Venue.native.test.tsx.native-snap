@@ -5984,15 +5984,11 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginBottom": 24,
-                    "marginLeft": 24,
-                    "marginRight": 24,
-                    "marginTop": 24,
                   },
                 ]
               }
             >
-              Offres disponibles content
+              Panel des offres disponibles
             </Text>
           </View>
         </View>
