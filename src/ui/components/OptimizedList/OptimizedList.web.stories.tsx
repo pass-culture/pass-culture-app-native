@@ -81,7 +81,7 @@ function FooterWithDeterminedHeight({ onLayout }: OnLayoutProps) {
 export const WithoutHeaderNorFooter = Template.bind({})
 WithoutHeaderNorFooter.args = {
   itemSize: 100,
-  items: generateItems(),
+  items: generateItems(20),
   // @ts-expect-error Storybook is not excellent at handling generic components...
   renderItem: ({ style, item }: RenderItemProps) => {
     return (

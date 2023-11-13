@@ -1,7 +1,13 @@
 import { FlashList } from '@shopify/flash-list'
 import { ListRenderItemInfo } from '@shopify/flash-list/src/FlashListProps'
-import React, { ForwardedRef, forwardRef, ReactElement, useImperativeHandle, useRef } from 'react'
-import { useCallback } from 'react'
+import React, {
+  ForwardedRef,
+  forwardRef,
+  ReactElement,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+} from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
