@@ -192,7 +192,9 @@ const OnlineProfile: React.FC = () => {
                     title="Comment ça marche&nbsp;?"
                     type="navigable"
                     navigateTo={tutorialNavigateTo}
-                    onPress={() => analytics.logConsultTutorial('profile')}
+                    onPress={() =>
+                      analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
+                    }
                     icon={LifeBuoy}
                   />
                 </Li>

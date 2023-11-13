@@ -61,7 +61,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should render without CTAs', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       await screen.findByLabelText('Voir le détail de l’offre')
@@ -70,7 +69,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should log 'BookingImpossibleiOS' on mount", async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       await screen.findByLabelText('Voir le détail de l’offre')
@@ -79,7 +77,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should dismiss modal when clicking on 'Voir le détail de l’offre'", async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       fireEvent.press(await screen.findByText('Voir le détail de l’offre'))
@@ -108,7 +105,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should render with CTAs', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       await screen.findByText(
@@ -119,7 +115,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should send email/push notification when adding to favorites', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       await act(async () => {
@@ -133,7 +128,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should log analytics event when adding to favorites', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       fireEvent.press(screen.getByText('Mettre en favoris'))
@@ -149,7 +143,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it('should change booking step from date to confirmation', async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
       await act(async () => {})
 
@@ -160,7 +153,6 @@ describe('<BookingImpossible />', () => {
     })
 
     it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
       await act(async () => {})
 

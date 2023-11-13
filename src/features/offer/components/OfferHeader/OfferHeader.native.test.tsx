@@ -109,7 +109,6 @@ function renderOfferHeader() {
 
   const animatedValue = new Animated.Value(0)
   render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <OfferHeader
         title="Some very nice offer"

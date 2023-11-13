@@ -136,6 +136,5 @@ describe('<ConsentSettings/>', () => {
 
 const renderConsentSettings = () =>
   render(<ConsentSettings />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

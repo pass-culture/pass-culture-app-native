@@ -21,7 +21,6 @@ describe('<Bookings />', () => {
     storage.saveString('access_token', 'token')
     storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
     await measurePerformance(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <AuthWrapper>
           <Bookings />

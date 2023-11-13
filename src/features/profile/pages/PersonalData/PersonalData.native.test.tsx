@@ -155,6 +155,5 @@ function renderPersonalData(response: UserProfileResponse) {
     refetchUser: jest.fn(),
   })
 
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<PersonalData />))
 }

@@ -86,7 +86,6 @@ describe('GenericHome', () => {
       useShowSkeletonSpy.mockReturnValueOnce(false)
       // home component creation performance transaction + home loading performance transaction
       screen.rerender(
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
         )
@@ -192,7 +191,6 @@ describe('GenericHome page - Analytics', () => {
 
 function renderGenericHome(modules = defaultModules) {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<GenericHome modules={modules} Header={Header} homeId={homeId} />)
   )
 }

@@ -20,7 +20,6 @@ describe('<CookiesConsent/>', () => {
 
 const renderCookiesConsent = async () => {
   const renderAPI = render(<CookiesConsent visible hideModal={jest.fn()} />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
   await flushAllPromisesWithAct()

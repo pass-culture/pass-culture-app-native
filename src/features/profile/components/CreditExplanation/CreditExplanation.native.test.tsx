@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
@@ -35,18 +35,18 @@ describe('<CreditExplanation/>', () => {
   })
 
   describe('With redirection to tutorial', () => {
-    it('should navigate to tutorial when button is triggered', () => {
+    it('should navigate to tutorial when button is triggered', async () => {
       render(<CreditExplanation isDepositExpired={false} age={18} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
-      fireEvent.press(explanationButton)
+      await act(() => fireEvent.press(explanationButton))
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
     })
 
-    it('should navigate to 17 years old tutorial when button is triggered and user is 17', () => {
+    it('should navigate to 17 years old tutorial when button is triggered and user is 17', async () => {
       render(<CreditExplanation isDepositExpired={false} age={17} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
-      fireEvent.press(explanationButton)
+      await act(() => fireEvent.press(explanationButton))
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 17 })
     })
@@ -60,6 +60,15 @@ describe('<CreditExplanation/>', () => {
       fireEvent.press(explanationButton)
 
       expect(analytics.logConsultModalExpiredGrant).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log logConsultTutorial analytics when pressing the button "Comment ça marche ?"', async () => {
+      render(<CreditExplanation isDepositExpired={false} age={18} />)
+
+      const explanationButton = screen.getByText('Comment ça marche ?')
+      fireEvent.press(explanationButton)
+
+      expect(analytics.logConsultTutorial).toHaveBeenCalledWith({ from: 'CreditBlock', age: 18 })
     })
   })
 })

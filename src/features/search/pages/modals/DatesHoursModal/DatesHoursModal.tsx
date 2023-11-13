@@ -82,7 +82,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   onClose,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport, modal } = useTheme()
+  const { modal } = useTheme()
   const { searchState, dispatch } = useSearch()
   const [showCalendarPicker, setShowCalendarPicker] = useState<boolean>(false)
   const { sliderLength } = useGetFullscreenModalSliderLength()
@@ -243,19 +243,17 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
     <AppModal
       visible={isVisible}
       customModalHeader={
-        isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader
-            titleId={titleId}
-            title={title}
-            onGoBack={closeModal}
-            onClose={close}
-            shouldDisplayBackButton={shouldDisplayBackButton}
-            shouldDisplayCloseButton
-          />
-        )
+        <SearchCustomModalHeader
+          titleId={titleId}
+          title={title}
+          onGoBack={closeModal}
+          onClose={close}
+          shouldDisplayBackButton={shouldDisplayBackButton}
+          shouldDisplayCloseButton
+        />
       }
       title={title}
-      isFullscreen
+      isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
@@ -269,6 +267,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
           filterBehaviour={filterBehaviour}
         />
       }>
+      <Spacer.Column numberOfSpaces={6} />
       <FormWrapper>
         <Form.MaxWidth>
           <Controller
@@ -276,7 +275,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
             name="hasSelectedDate"
             render={({ field: { value } }) => (
               <React.Fragment>
-                <Spacer.Column numberOfSpaces={6} />
                 <FilterSwitchWithLabel
                   label="Date"
                   isActive={!!hasSelectedDate}

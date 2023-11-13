@@ -109,7 +109,6 @@ describe('useLoginRoutine', () => {
 
 const renderUseLoginRoutine = async () => {
   const { result } = renderHook(useLoginRoutine, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
   const login = result.current

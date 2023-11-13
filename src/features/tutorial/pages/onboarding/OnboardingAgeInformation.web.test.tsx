@@ -21,8 +21,5 @@ const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
     TutorialRootStackParamList,
     'OnboardingAgeInformation'
   >
-  return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />)
-  )
+  return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))
 }

@@ -28,14 +28,10 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 
 describe('<Venue />', () => {
   it('Performance test for Venue page', async () => {
-    await measurePerformance(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<Venue />),
-      {
-        scenario: async () => {
-          await act(async () => {})
-        },
-      }
-    )
+    await measurePerformance(reactQueryProviderHOC(<Venue />), {
+      scenario: async () => {
+        await act(async () => {})
+      },
+    })
   })
 })

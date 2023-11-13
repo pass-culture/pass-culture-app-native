@@ -204,7 +204,6 @@ describe('AuthContext', () => {
 const renderUseAuthContext = () => {
   const { result } = renderHook(useAuthContext, {
     wrapper: ({ children }) =>
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <NetInfoWrapper>
           <AuthWrapper>{children}</AuthWrapper>

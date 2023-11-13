@@ -102,7 +102,6 @@ describe('<SetAddress/>', () => {
 
 function renderSetAddress() {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <SettingsWrapper>
         <SetAddress />

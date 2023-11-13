@@ -26,6 +26,6 @@ describe('<EligibleFooter />', () => {
 
     fireEvent.press(screen.getByText('Activer mon crédit'))
 
-    expect(navigate).toHaveBeenCalledWith('Stepper', undefined)
+    expect(navigate).toHaveBeenCalledWith('Stepper', { from: 'Tutorial' })
   })
 })

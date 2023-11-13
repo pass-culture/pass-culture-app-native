@@ -58,10 +58,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
     })
 
     const ResetPasswordExpiredLinkWithBoundary = withAsyncErrorBoundary(ResetPasswordExpiredLink)
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<ResetPasswordExpiredLinkWithBoundary {...navigationProps} />)
-    )
+    render(reactQueryProviderHOC(<ResetPasswordExpiredLinkWithBoundary {...navigationProps} />))
 
     await act(async () => {
       fireEvent.press(screen.getByText(`Renvoyer l’email`))
@@ -76,8 +73,5 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 function renderResetPasswordExpiredLink() {
-  render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />)
-  )
+  render(reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />))
 }

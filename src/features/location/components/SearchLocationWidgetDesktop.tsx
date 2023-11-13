@@ -5,6 +5,7 @@ import {
   SearchLocationWidgetDesktopProps,
 } from 'features/location/components/LocationWidgetWrapperDesktop'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
+import { ScreenOrigin } from 'features/location/enums'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -16,7 +17,7 @@ export const SearchLocationWidgetDesktop = ({ onSearch }: SearchLocationWidgetDe
   } = useModal()
 
   return (
-    <LocationWidgetWrapperDesktop>
+    <LocationWidgetWrapperDesktop screenOrigin={ScreenOrigin.SEARCH}>
       {({ visible, dismissModal }) => (
         <React.Fragment>
           <VenueModal

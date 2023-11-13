@@ -90,7 +90,6 @@ describe('<PrivacyPolicy />', () => {
 
 const renderPrivacyPolicy = async () => {
   render(<PrivacyPolicy />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

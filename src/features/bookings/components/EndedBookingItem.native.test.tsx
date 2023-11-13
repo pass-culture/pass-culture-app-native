@@ -147,6 +147,5 @@ describe('EndedBookingItem', () => {
 })
 
 function renderEndedBookingItem(booking: Booking) {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<EndedBookingItem booking={booking} />))
 }

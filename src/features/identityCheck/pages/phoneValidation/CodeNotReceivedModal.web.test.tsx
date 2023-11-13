@@ -20,7 +20,6 @@ describe('<CodeNotReceivedModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(<CodeNotReceivedModal isVisible dismissModal={jest.fn()} />)
       )
 

@@ -36,6 +36,5 @@ describe('useAccountSuspensionDate', () => {
 
 const renderSuspensionDateHook = () =>
   renderHook(() => useAccountSuspensionDate(), {
-    /* eslint-disable local-rules/no-react-query-provider-hoc */
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

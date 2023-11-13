@@ -31,7 +31,6 @@ describe('useFavorites hook', () => {
     })
     const { result } = renderHook(useFavorites, {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>
@@ -58,7 +57,6 @@ describe('useFavorites hook', () => {
 
     const { result } = renderHook(useFavorites, {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>
@@ -80,7 +78,6 @@ describe('useFavorites hook', () => {
 
     const { result } = renderHook(useFavorites, {
       wrapper: (props) =>
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <FavoritesWrapper>
             <View>{props.children}</View>

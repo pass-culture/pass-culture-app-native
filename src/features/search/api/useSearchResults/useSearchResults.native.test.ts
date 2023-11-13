@@ -22,7 +22,6 @@ describe('useSearchResults', () => {
 
     it('should fetch offers, venues and all facets', async () => {
       renderHook(useSearchInfiniteQuery, {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
         initialProps: initialSearchState,
       })
@@ -36,7 +35,6 @@ describe('useSearchResults', () => {
       const { rerender } = renderHook(
         (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
         {
-          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )

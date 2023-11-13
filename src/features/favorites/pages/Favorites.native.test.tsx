@@ -54,6 +54,5 @@ function renderFavorites({ isLoggedIn }: { isLoggedIn: boolean }) {
     refetchUser: jest.fn(),
     isUserLoading: false,
   }))
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Favorites />))
 }

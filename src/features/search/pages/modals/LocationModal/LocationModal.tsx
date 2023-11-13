@@ -104,7 +104,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 }) => {
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport, modal } = useTheme()
+  const { modal } = useTheme()
   const {
     userPosition: position,
     userPositionError: positionError,
@@ -362,16 +362,14 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     <AppModal
       visible={isVisible}
       customModalHeader={
-        isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader
-            titleId={titleId}
-            title={title}
-            onGoBack={closeModal}
-            onClose={close}
-            shouldDisplayBackButton={shouldDisplayBackButton}
-            shouldDisplayCloseButton
-          />
-        )
+        <SearchCustomModalHeader
+          titleId={titleId}
+          title={title}
+          onGoBack={closeModal}
+          onClose={close}
+          shouldDisplayBackButton={shouldDisplayBackButton}
+          shouldDisplayCloseButton
+        />
       }
       title={title}
       isFullscreen
@@ -389,6 +387,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
         />
       }
       keyboardShouldPersistTaps="handled">
+      <Spacer.Column numberOfSpaces={6} />
       <FormWrapper>
         <Form.MaxWidth>
           <Controller

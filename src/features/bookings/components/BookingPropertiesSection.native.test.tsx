@@ -81,6 +81,5 @@ describe('<BookingPropertiesSection />', () => {
 })
 
 function renderBookingProperties(booking: Booking) {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />))
 }

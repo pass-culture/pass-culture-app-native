@@ -1,5 +1,3 @@
-/* eslint-disable local-rules/no-react-query-provider-hoc */
-
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

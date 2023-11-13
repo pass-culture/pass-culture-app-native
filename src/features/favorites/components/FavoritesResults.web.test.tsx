@@ -104,6 +104,5 @@ describe('FavoritesResults component', () => {
 })
 
 function renderFavoritesResults() {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<FavoritesResults />))
 }

@@ -16,7 +16,6 @@ Why ?
 ```jsx
 describe('<MyPage />', () => {
   it('Performance test', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     await measurePerformance(reactQueryProviderHOC(<MyPage />), {
       // Add scenario if necessary
       scenario: async () => {

@@ -31,6 +31,7 @@ import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
+import { Spacer } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -60,7 +61,7 @@ export const CategoriesModal = ({
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { isDesktopViewport, modal } = useTheme()
+  const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
@@ -231,20 +232,18 @@ export const CategoriesModal = ({
   return (
     <AppModal
       customModalHeader={
-        isDesktopViewport ? undefined : (
-          <SearchCustomModalHeader
-            titleId={titleId}
-            title={modalTitle}
-            onGoBack={handleGoBack}
-            onClose={handleClose}
-            shouldDisplayBackButton={shouldDisplayBackButton}
-            shouldDisplayCloseButton
-          />
-        )
+        <SearchCustomModalHeader
+          titleId={titleId}
+          title={modalTitle}
+          onGoBack={handleGoBack}
+          onClose={handleClose}
+          shouldDisplayBackButton={shouldDisplayBackButton}
+          shouldDisplayCloseButton
+        />
       }
       title={modalTitle}
       visible={isVisible}
-      isFullscreen
+      isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}
@@ -261,6 +260,7 @@ export const CategoriesModal = ({
           filterBehaviour={filterBehaviour}
         />
       }>
+      <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
         {currentView === CategoriesModalView.CATEGORIES && (
           <CategoriesSection

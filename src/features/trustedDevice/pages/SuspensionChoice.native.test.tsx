@@ -106,7 +106,6 @@ describe('<SuspensionChoice/>', () => {
 
 function renderSuspensionChoice() {
   return render(<SuspensionChoice />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

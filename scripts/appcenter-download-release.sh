@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 X_API_TOKEN="${APPCENTER_USER_API_TOKEN}"
 
@@ -109,9 +111,9 @@ function android() {
   downloadUrl="${APPCENTER_API_URL}/apps/${APPCENTER_OWNER_NAME}/${appName}/distribution_groups/${APPCENTER_DISTRIBUTION_GROUP_NAME}/releases/${releaseId}"
 
   echo "Downloading ${downloadUrl}"
-  curl -H "X-API-Token: ${X_API_TOKEN}" \
+  curl --header "X-API-Token: ${X_API_TOKEN}" \
     --progress-bar \
-    "$(curl -sS -H "X-API-Token: ${X_API_TOKEN}" "${downloadUrl}" | jq -r '.download_url')" \
+    "$(curl --silent --show-error --header "X-API-Token: ${X_API_TOKEN}" "${downloadUrl}" | jq --raw-output '.download_url')" \
     --output "${downloadedFile}" || die "Version ${TARGET_VERSION} does not exist in ${APPCENTER_ENVIRONMENT} environment ${APPCENTER_PLATFORM}"
 
   if [[ "${INSTALL}" = "true" ]]; then
@@ -132,7 +134,6 @@ function android() {
   exit 0
 }
 
-
 function ios() {
   downloadedFile="app-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}.ipa"
 
@@ -143,9 +144,9 @@ function ios() {
 
   if [[ -n "${TARGET_VERSION}" ]]; then
     releaseId="$(
-      curl -sS \
-        -H "X-API-Token: ${X_API_TOKEN}" \
-        -H "accept: application/json" \
+      curl --silent --show-error \
+        --header "X-API-Token: ${X_API_TOKEN}" \
+        --header "accept: application/json" \
         "${APPCENTER_API_URL}/apps/pass-Culture/${appName}/releases" |
         jq 'map(select(.short_version == "'"${TARGET_VERSION}"'").id)[0]'
     )" || die "Cannot retrieve AppCenter Release ID"
@@ -157,9 +158,9 @@ function ios() {
   downloadUrl="${APPCENTER_API_URL}/apps/${APPCENTER_OWNER_NAME}/${appName}/distribution_groups/${APPCENTER_DISTRIBUTION_GROUP_NAME}/releases/${releaseId}"
 
   echo "Downloading ${downloadUrl}"
-  curl -H "X-API-Token: ${X_API_TOKEN}" \
+  curl --header "X-API-Token: ${X_API_TOKEN}" \
     --progress-bar \
-    "$(curl -sS -H "X-API-Token: ${X_API_TOKEN}" "${downloadUrl}" | jq -r '.download_url')" \
+    "$(curl --silent --show-error --header "X-API-Token: ${X_API_TOKEN}" "${downloadUrl}" | jq --raw-output '.download_url')" \
     --output "${downloadedFile}" || die "Version ${TARGET_VERSION} does not exist in ${APPCENTER_ENVIRONMENT} environment ${APPCENTER_PLATFORM}"
 
   exit 0
