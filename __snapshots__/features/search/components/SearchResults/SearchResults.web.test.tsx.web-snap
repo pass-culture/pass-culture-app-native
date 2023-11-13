@@ -309,11 +309,11 @@ exports[`SearchResults component should render correctly 1`] = `
                 role="listitem"
               >
                 <button
-                  aria-label="Point de vente"
+                  aria-label="Lieu culturel"
                   class="c3 c4 sc-dcJsrY c4"
-                  data-testid="Point de vente"
+                  data-testid="Lieu culturel"
                   tabindex="0"
-                  title="Point de vente"
+                  title="Lieu culturel"
                   type="button"
                 >
                   <div
@@ -321,7 +321,7 @@ exports[`SearchResults component should render correctly 1`] = `
                     data-testid="venueButtonLabel"
                     dir="ltr"
                   >
-                    Point de vente
+                    Lieu culturel
                   </div>
                 </button>
               </li>
@@ -784,11 +784,11 @@ exports[`SearchResults component should render correctly 1`] = `
               role="listitem"
             >
               <button
-                aria-label="Point de vente"
+                aria-label="Lieu culturel"
                 class="c3 c4 sc-dcJsrY c4"
-                data-testid="Point de vente"
+                data-testid="Lieu culturel"
                 tabindex="0"
-                title="Point de vente"
+                title="Lieu culturel"
                 type="button"
               >
                 <div
@@ -796,7 +796,7 @@ exports[`SearchResults component should render correctly 1`] = `
                   data-testid="venueButtonLabel"
                   dir="ltr"
                 >
-                  Point de vente
+                  Lieu culturel
                 </div>
               </button>
             </li>

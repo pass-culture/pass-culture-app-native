@@ -524,7 +524,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     ]
                   }
                 >
-                  Point de vente
+                  Lieu culturel
                 </Text>
               </View>
             </View>

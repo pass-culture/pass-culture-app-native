@@ -38,7 +38,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
   return (
     <AppModal
       visible={visible}
-      title="Point de vente"
+      title="Lieu culturel"
       isUpToStatusBar
       scrollEnabled={false}
       noPadding
@@ -46,7 +46,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
       customModalHeader={
         <HeaderContainer>
           <ModalHeader
-            title="Point de vente"
+            title="Lieu culturel"
             rightIconAccessibilityLabel="Fermer la modale"
             rightIcon={Close}
             onRightIconPress={onClose}
@@ -66,7 +66,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
         <SubtitleContainer>
           <SearchIcon />
           <Spacer.Row numberOfSpaces={2} />
-          <Typo.ButtonText>Trouver un point de vente </Typo.ButtonText>
+          <Typo.ButtonText>Trouver un lieu culturel </Typo.ButtonText>
         </SubtitleContainer>
         <Spacer.Column numberOfSpaces={4} />
         <SearchInput

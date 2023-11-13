@@ -24,7 +24,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const DEFAULT_RADIUS = 50
 const DEFAULT_DIGITAL_OFFERS_SELECTION = false
@@ -250,10 +250,10 @@ export const SearchLocationModal = ({
         <Spacer.Column numberOfSpaces={8} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>Tu peux aussi choisir un point de vente précis</Typo.Body>
+        <Typo.Body>Tu peux aussi choisir un lieu culturel précis</Typo.Body>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonTertiaryBlack
-          wording="Trouver un point de vente"
+          wording="Trouver un lieu culturel"
           icon={LocationBuildingFilled}
           onPress={onPressShowVenueModal}
           justifyContent="flex-start"

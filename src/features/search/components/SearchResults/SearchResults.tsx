@@ -225,7 +225,7 @@ export const SearchResults: React.FC = () => {
             <StyledLi>
               {flagOnAppLocation ? (
                 <SingleFilterButton
-                  label={isVenue ? locationLabel : 'Point de vente'}
+                  label={isVenue ? locationLabel : 'Lieu culturel'}
                   testID="venueButton"
                   onPress={showVenueModal}
                   isSelected={isVenue}

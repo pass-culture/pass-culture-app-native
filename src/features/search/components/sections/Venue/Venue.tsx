@@ -24,7 +24,7 @@ export const Venue = () => {
     <React.Fragment>
       <FilterRow
         icon={LocationBuildingFilled}
-        title="Point de vente"
+        title="Lieu culturel"
         description={venueLabel}
         onPress={showSearchVenueModal}
       />
