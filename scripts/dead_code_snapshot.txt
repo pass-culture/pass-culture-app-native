@@ -363,9 +363,9 @@ src/features/auth/fixtures/fixtures.ts:11 - SEVENTEEN_AGE_DATE
 src/features/bookings/api/index.ts:1 - useUserHasBookings
 src/features/bookings/helpers/expirationDateUtils.ts:18 - getFreeBookingsInSubCategories (used in module)
 src/features/navigation/helpers/index.ts:3 - navigateToBooking
-src/features/navigation/RootNavigator/types.ts:289 - ScreenNavigationProp
-src/features/navigation/RootNavigator/types.ts:314 - NavigateParams (used in module)
-src/features/navigation/RootNavigator/types.ts:319 - AllNavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:290 - ScreenNavigationProp
+src/features/navigation/RootNavigator/types.ts:315 - NavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:320 - AllNavigateParams (used in module)
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
