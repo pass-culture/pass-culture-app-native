@@ -209,7 +209,7 @@ export function Navigation(): React.JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Filtre point de vente" onPress={showVenueModal} />
+            <ButtonPrimary wording="Filtre lieu culturel" onPress={showVenueModal} />
             <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
           </Row>
         </StyledContainer>

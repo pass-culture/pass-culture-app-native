@@ -40,7 +40,7 @@ describe('VenueModal', () => {
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger logEvent "logUserSetVenue" when pressing "Valider le point de vente" button', async () => {
+  it('should trigger logEvent "logUserSetVenue" when pressing "Valider le lieu culturel" button', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
     await waitForModalToShow()
 

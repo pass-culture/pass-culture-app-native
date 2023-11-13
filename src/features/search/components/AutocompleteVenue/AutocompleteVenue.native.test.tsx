@@ -23,10 +23,10 @@ describe('AutocompleteVenue component', () => {
       expect(render(<AutocompleteVenue onItemPress={jest.fn()} />)).toMatchSnapshot()
     })
 
-    it('should display "Points de vente"', () => {
+    it('should display "Lieux culturels"', () => {
       render(<AutocompleteVenue onItemPress={jest.fn()} />)
 
-      expect(screen.getByText('Points de vente')).toBeOnTheScreen()
+      expect(screen.getByText('Lieux culturels')).toBeOnTheScreen()
     })
 
     it('should call `onItemPress` on press', async () => {
@@ -44,10 +44,10 @@ describe('AutocompleteVenue component', () => {
       mockHits = []
     })
 
-    it('should not display "Points de vente"', async () => {
+    it('should not display "Lieux culturels"', async () => {
       render(<AutocompleteVenue onItemPress={jest.fn()} />)
 
-      expect(screen.queryByText('Points de vente')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Lieux culturels')).not.toBeOnTheScreen()
     })
   })
 })

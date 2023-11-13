@@ -1079,7 +1079,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 ]
               }
             >
-              Tu peux aussi choisir un point de vente précis
+              Tu peux aussi choisir un lieu culturel précis
             </Text>
             <View
               numberOfSpaces={1}
@@ -1092,7 +1092,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
               }
             />
             <View
-              accessibilityLabel="Trouver un point de vente"
+              accessibilityLabel="Trouver un lieu culturel"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1138,7 +1138,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Trouver un point de vente"
+              testID="Trouver un lieu culturel"
             >
               <View
                 style={
@@ -1176,7 +1176,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   ]
                 }
               >
-                Trouver un point de vente
+                Trouver un lieu culturel
               </Text>
             </View>
             <View

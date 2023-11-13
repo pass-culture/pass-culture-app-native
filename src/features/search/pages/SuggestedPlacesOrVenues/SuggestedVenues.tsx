@@ -71,7 +71,7 @@ const NoSuggestedVenues = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
       <StyledBody accessibilityLiveRegion="assertive">
-        Aucun point de vente ne correspond à ta recherche
+        Aucun lieu culturel ne correspond à ta recherche
       </StyledBody>
     </DescriptionErrorTextContainer>
   ) : null

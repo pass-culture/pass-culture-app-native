@@ -18,7 +18,7 @@ export function AutocompleteVenue({ onItemPress, ...props }: AutocompleteVenuePr
 
   return hits.length > 0 ? (
     <React.Fragment>
-      <AutocompleteVenueTitleText>Points de vente</AutocompleteVenueTitleText>
+      <AutocompleteVenueTitleText>Lieux culturels</AutocompleteVenueTitleText>
 
       <StyledVerticalUl>
         {hits.map((item) => (
