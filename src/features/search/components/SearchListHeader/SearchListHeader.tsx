@@ -23,6 +23,7 @@ import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
+import { OnLayoutProps } from 'ui/components/OptimizedList/types'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -30,12 +31,13 @@ import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
 
-interface SearchListHeaderProps extends ScrollViewProps {
-  nbHits: number
-  userData: SearchResponse<Offer[]>['userData']
-  venues?: SearchOfferHits['venues']
-  venuesUserData: VenuesUserData
-}
+type SearchListHeaderProps = ScrollViewProps &
+  Partial<OnLayoutProps> & {
+    nbHits: number
+    userData: SearchResponse<Offer[]>['userData']
+    venues?: SearchOfferHits['venues']
+    venuesUserData: VenuesUserData
+  }
 
 const renderVenueItem = (
   {
@@ -59,6 +61,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   userData,
   venues,
   venuesUserData,
+  onLayout,
 }) => {
   const { userPosition: position, showGeolocPermissionModal } = useLocation()
   const { searchState } = useSearch()
@@ -116,7 +119,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     !shouldDisplayAvailableUserDataMessage
 
   return (
-    <View testID="searchListHeader">
+    <View testID="searchListHeader" onLayout={onLayout}>
       {!!shouldDisplayGeolocationButton && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={3} />

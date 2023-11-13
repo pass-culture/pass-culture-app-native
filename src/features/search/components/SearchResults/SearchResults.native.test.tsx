@@ -154,7 +154,7 @@ describe('SearchResults component', () => {
 
     render(<SearchResults />)
 
-    const flashList = screen.getByTestId('searchResultsFlashlist')
+    const flashList = screen.getByTestId('searchResultsList')
 
     await act(() => {})
 
@@ -165,7 +165,7 @@ describe('SearchResults component', () => {
       offers: {
         nbHits: 0,
         hits: [],
-        page: 2,
+        page: 1,
       },
     })
     await act(async () => {
@@ -173,7 +173,7 @@ describe('SearchResults component', () => {
     })
 
     expect(mockFetchNextPage).toHaveBeenCalledTimes(2)
-    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(2, searchId)
+    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1, searchId)
   })
 
   describe('Category filter', () => {

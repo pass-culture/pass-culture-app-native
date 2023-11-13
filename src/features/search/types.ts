@@ -1,5 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
-import React from 'react'
+import { FunctionComponent } from 'react'
 
 import {
   GenreType,
@@ -22,6 +22,7 @@ import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
+import { RenderItemProps } from 'ui/components/OptimizedList/types'
 
 import { LocationType } from './enums'
 
@@ -115,15 +116,14 @@ export interface SearchListProps {
   nbHits: number
   hits: SearchOfferHits
   venuesUserData: VenuesUserData
-  renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
+  renderItem: FunctionComponent<RenderItemProps<Offer, unknown>>
   autoScrollEnabled: boolean
   refreshing: boolean
-  onRefresh: (() => void) | null | undefined
+  onRefresh?: VoidFunction
   isFetchingNextPage: boolean
-  onEndReached: () => void
+  onEndReached: VoidFunction
   userData: SearchResponse<Offer[]>['userData']
-  onScroll?: () => void
-  onPress?: () => void
+  onPress?: VoidFunction
 }
 
 export type AnalyticsParams = {
