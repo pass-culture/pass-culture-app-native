@@ -3,7 +3,6 @@ import {
   getDisplayPriceWithDuoMention,
   formatToFrenchDecimal,
   formatPriceInEuroToDisplayPrice,
-  formatToFrenchDecimalWithIntl,
 } from '../getDisplayPrice'
 
 describe('getDisplayPrice', () => {
@@ -21,9 +20,12 @@ describe('getDisplayPrice', () => {
     ${[200, 1000, 3000]} | ${'Dès 2\u00a0€'}
     ${[-300, 560]}       | ${'5,60\u00a0€'}
     ${[800, 800]}        | ${'8\u00a0€'}
-  `('getDisplayPrice($prices) \t= $expected without Intl', ({ prices, expected }) => {
-    expect(getDisplayPrice(prices)).toBe(expected)
-  })
+  `(
+    'getDisplayPrice($prices) \t= $expected without format price options',
+    ({ prices, expected }) => {
+      expect(getDisplayPrice(prices)).toBe(expected)
+    }
+  )
 
   it.each`
     prices               | expected
@@ -39,8 +41,8 @@ describe('getDisplayPrice', () => {
     ${[200, 1000, 3000]} | ${'Dès 2,00\u00a0€'}
     ${[-300, 560]}       | ${'5,60\u00a0€'}
     ${[800, 800]}        | ${'8,00\u00a0€'}
-  `('getDisplayPrice($prices) \t= $expected with Intl', ({ prices, expected }) => {
-    expect(getDisplayPrice(prices, true)).toBe(expected)
+  `('getDisplayPrice($prices) \t= $expected with format price options', ({ prices, expected }) => {
+    expect(getDisplayPrice(prices, { fractionDigits: 2 })).toBe(expected)
   })
 
   it.each`
@@ -77,12 +79,13 @@ describe('formatToFrenchDecimal()', () => {
     ${-1199}     | ${'-11,99\u00a0€'}
     ${1199.6}    | ${'12,00\u00a0€'}
     ${-1199.6}   | ${'-12,00\u00a0€'}
-  `('formatToFrenchDecimal($priceInCents) \t= $expected', ({ priceInCents, expected }) => {
-    expect(formatToFrenchDecimal(priceInCents)).toBe(expected)
-  })
-})
+  `(
+    'formatToFrenchDecimal($priceInCents) \t= $expected without format price options',
+    ({ priceInCents, expected }) => {
+      expect(formatToFrenchDecimal(priceInCents)).toBe(expected)
+    }
+  )
 
-describe('formatToFrenchDecimalWithIntl()', () => {
   it.each`
     priceInCents | expected
     ${0}         | ${'0,00\u00a0€'}
@@ -98,9 +101,12 @@ describe('formatToFrenchDecimalWithIntl()', () => {
     ${-1199}     | ${'-11,99\u00a0€'}
     ${1199.6}    | ${'12,00\u00a0€'}
     ${-1199.6}   | ${'-12,00\u00a0€'}
-  `('formatToFrenchDecimalWithIntl($priceInCents) \t= $expected', ({ priceInCents, expected }) => {
-    expect(formatToFrenchDecimalWithIntl(priceInCents)).toBe(expected)
-  })
+  `(
+    'formatToFrenchDecimal($priceInCents) \t= $expected with format price options',
+    ({ priceInCents, expected }) => {
+      expect(formatToFrenchDecimal(priceInCents, { fractionDigits: 2 })).toBe(expected)
+    }
+  )
 })
 
 describe('formatPriceInEuroToDisplayPrice()', () => {

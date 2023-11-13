@@ -8,5 +8,5 @@ interface Props {
 }
 
 export function OfferPrice({ prices }: Readonly<Props>) {
-  return <Typo.Title1>{getDisplayPrice(prices, true)}</Typo.Title1>
+  return <Typo.Title1>{getDisplayPrice(prices, { fractionDigits: 2 })}</Typo.Title1>
 }
