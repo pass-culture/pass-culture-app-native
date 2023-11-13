@@ -19,7 +19,7 @@ import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
-import { fireEvent, render, act, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -427,20 +427,20 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
 
       await act(async () => {
-        const venueButton = screen.getByRole('button', { name: 'Point de vente' })
+        const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
         fireEvent.press(venueButton)
       })
 
       expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
-        'Trouver un point de vente'
+        'Trouver un lieu culturel'
       )
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if no venue selected', async () => {
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if no venue selected', async () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
 
     it('when ENABLE_APP_LOCATION featureFlag, should display venueButtonLabel in venue filter if a venue is selected', async () => {
@@ -454,7 +454,7 @@ describe('SearchResults component', () => {
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if location type is AROUND_ME', async () => {
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if location type is AROUND_ME', async () => {
       mockSearchState = {
         ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
@@ -462,10 +462,10 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Point de vente" in venue filter if location type is EVERYWHERE', async () => {
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if location type is EVERYWHERE', async () => {
       mockSearchState = {
         ...searchState,
         locationFilter: { locationType: LocationType.EVERYWHERE },
@@ -473,7 +473,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Point de vente')
+      expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
   })
 

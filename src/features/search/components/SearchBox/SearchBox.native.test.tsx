@@ -130,7 +130,7 @@ describe('SearchBox component', () => {
   it('should call navigate on submit', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await act(async () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -184,7 +184,7 @@ describe('SearchBox component', () => {
   it('should show the text typed by the user', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
     await act(async () => {
       fireEvent(searchInput, 'onChangeText', 'Some text')
     })
@@ -195,7 +195,7 @@ describe('SearchBox component', () => {
   it('should not execute a search if input is empty', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await act(async () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
@@ -287,7 +287,7 @@ describe('SearchBox component', () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
       renderSearchBox()
 
-      const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
@@ -329,7 +329,7 @@ describe('SearchBox component', () => {
         useRoute.mockReturnValueOnce({ params: { view } })
         renderSearchBox()
 
-        const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+        const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
         await act(async () => {
           fireEvent(searchInput, 'onFocus')
@@ -401,7 +401,7 @@ describe('SearchBox component', () => {
   it('should execute a search if input is not empty', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await act(async () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -443,7 +443,7 @@ describe('SearchBox component', () => {
   it('should display suggestions view when focusing search input and no search executed', async () => {
     renderSearchBox()
 
-    const searchInput = screen.getByPlaceholderText('Offre, artiste, point de vente...')
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
     await act(async () => {
       fireEvent(searchInput, 'onFocus')

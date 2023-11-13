@@ -224,7 +224,7 @@ exports[`VenueModal should render correctly 1`] = `
                 }
                 testID="modalHeaderTitle"
               >
-                Point de vente
+                Lieu culturel
               </Text>
             </View>
             <View
@@ -371,7 +371,7 @@ exports[`VenueModal should render correctly 1`] = `
                   ]
                 }
               >
-                Trouver un point de vente 
+                Trouver un lieu culturel 
               </Text>
             </View>
             <View

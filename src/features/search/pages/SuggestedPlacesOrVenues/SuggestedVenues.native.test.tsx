@@ -45,7 +45,7 @@ describe('<SuggestedVenues/>', () => {
 
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
 
-    expect(screen.getByText('Aucun point de vente ne correspond à ta recherche')).toBeOnTheScreen()
+    expect(screen.getByText('Aucun lieu culturel ne correspond à ta recherche')).toBeOnTheScreen()
   })
 
   it('should not show empty component if the query is empty and the results are not loading', () => {
@@ -55,7 +55,7 @@ describe('<SuggestedVenues/>', () => {
     render(<SuggestedVenues query="" setSelectedVenue={mockSetSelectedVenue} />)
 
     expect(
-      screen.queryByText('Aucun point de vente ne correspond à ta recherche')
+      screen.queryByText('Aucun lieu culturel ne correspond à ta recherche')
     ).not.toBeOnTheScreen()
   })
 
@@ -66,7 +66,7 @@ describe('<SuggestedVenues/>', () => {
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
 
     expect(
-      screen.queryByText('Aucun point de vente ne correspond à ta recherche')
+      screen.queryByText('Aucun lieu culturel ne correspond à ta recherche')
     ).not.toBeOnTheScreen()
   })
 })
