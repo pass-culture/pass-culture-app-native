@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -12,7 +12,11 @@ enum Tab {
 }
 const tabs = Object.values(Tab)
 
-export const TabLayout = () => {
+type Props = {
+  tabPanels: Record<Tab, JSX.Element>
+}
+
+export const TabLayout: FunctionComponent<Props> = ({ tabPanels }) => {
   const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
   const tabListRef = useRef(null)
 
@@ -71,9 +75,7 @@ export const TabLayout = () => {
         })}
         <Spacer.Row numberOfSpaces={6} />
       </TabContainer>
-      <View accessibilityRole={AccessibilityRole.TABPANEL}>
-        <ExampleText>{`${selectedTab} content`}</ExampleText>
-      </View>
+      <View accessibilityRole={AccessibilityRole.TABPANEL}>{tabPanels[selectedTab]}</View>
     </Container>
   )
 }
@@ -113,7 +115,3 @@ const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelect
   backgroundColor: isSelected ? theme.colors.primary : 'transparent',
   borderRadius: getSpacing(1),
 }))
-
-const ExampleText = styled(Typo.Body)({
-  margin: getSpacing(6),
-})
