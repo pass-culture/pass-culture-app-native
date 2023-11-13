@@ -6,3 +6,15 @@ export interface Venue {
   venueId: number | null
   _geoloc?: Geoloc
 }
+
+export enum Tab {
+  OFFERS = 'Offres disponibles',
+  INFOS = 'Infos pratiques',
+}
+
+export type TabArrowNavigationProps = {
+  tabListRef: React.MutableRefObject<null>
+  selectedTab: Tab
+  setSelectedTab: (tab: Tab) => void
+  tabs: Tab[]
+}

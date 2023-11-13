@@ -1,15 +1,13 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { Platform, View } from 'react-native'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TouchableTab } from 'features/venue/components/TabLayout/TouchableTab'
+import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
+import { Tab } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-enum Tab {
-  OFFERS = 'Offres disponibles',
-  INFOS = 'Infos pratiques',
-}
 const tabs = Object.values(Tab)
 
 type Props = {
@@ -17,38 +15,10 @@ type Props = {
 }
 
 export const TabLayout: FunctionComponent<Props> = ({ tabPanels }) => {
-  const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
   const tabListRef = useRef(null)
+  const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
 
-  const eventListener = useCallback(
-    // Keyboard navigation with the arrow keys though the tabs
-    // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role#keyboard_interaction
-    (event: KeyboardEvent) => {
-      if (!tabListRef.current) return
-      const htmlRef = tabListRef.current as unknown as HTMLDivElement
-
-      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-        const index = tabs.indexOf(selectedTab)
-        const nextIndex =
-          event.key === 'ArrowRight'
-            ? (index + 1) % tabs.length
-            : (index - 1 + tabs.length) % tabs.length // + length, to avoid -1%length -> -1 instead of 1
-        setSelectedTab(tabs[nextIndex])
-
-        htmlRef?.querySelector<HTMLDivElement>(`[role="tab"][id="${tabs[nextIndex]}"]`)?.focus()
-      }
-    },
-    [selectedTab]
-  )
-
-  useEffect(() => {
-    if (Platform.OS !== 'web') return
-    if (!tabListRef.current) return
-    const htmlRef = tabListRef.current as unknown as HTMLDivElement
-
-    htmlRef.addEventListener('keydown', eventListener)
-    return () => htmlRef.removeEventListener('keydown', eventListener)
-  })
+  useTabArrowNavigation({ tabListRef, selectedTab, setSelectedTab, tabs })
 
   return (
     <Container>
