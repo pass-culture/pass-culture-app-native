@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { useVenue } from 'features/venue/api/useVenue'
+import { VenueResponse } from 'api/gen'
 import { Typo } from 'ui/theme'
 
-export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
-  const { data: venue } = useVenue(venueId)
+export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   const { email, phoneNumber, website } = venue?.contact || {}
 
   return (
