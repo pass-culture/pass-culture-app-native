@@ -1,3 +1,4 @@
+import { ScopeContext } from '@sentry/types'
 import { useMutation } from 'react-query'
 
 import { eventMonitoring } from 'libs/monitoring'
@@ -18,15 +19,23 @@ export const useHomeRecommendedIdsMutation = () => {
           },
           body: JSON.stringify(requestBodyParams),
         })
+        const captureContext: Partial<ScopeContext> = {
+          level: 'info',
+          extra: { url: endpointUrl, status: response.status },
+        }
         if (!response.ok) {
-          throw new Error('Failed to fetch recommendation')
+          eventMonitoring.captureMessage('Recommendation response was not ok', captureContext)
         }
         const responseBody: RecommendedIdsResponse = await response.json()
+        if (responseBody?.playlist_recommended_offers?.length === 0) {
+          eventMonitoring.captureMessage('Recommended offers playlist is empty', captureContext)
+        }
         return responseBody
       } catch (err) {
-        eventMonitoring.captureException(new Error('Error with recommendation endpoint'), {
-          extra: { url: endpointUrl },
+        eventMonitoring.captureException('Error with recommendation endpoint', {
+          extra: { url: endpointUrl, stack: err },
         })
+
         return { playlist_recommended_offers: [] }
       }
     }

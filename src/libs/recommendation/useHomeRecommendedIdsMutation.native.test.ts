@@ -22,7 +22,64 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Error with recommendation endpoint',
+        {
+          extra: { url: 'http://passculture.reco', stack: 'some error' },
+        }
+      )
+    })
+  })
+
+  it('should capture a message if response.ok is not true', async () => {
+    mockFetch.mockResolvedValueOnce(
+      new Response(undefined, {
+        headers: {
+          'content-type': 'application/json',
+        },
+        status: 500,
+      })
+    )
+
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
+
+    await act(async () => {})
+
+    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+      'Recommendation response was not ok',
+      {
+        level: 'info',
+        extra: { url: 'http://passculture.reco', status: 500 },
+      }
+    )
+  })
+
+  it('should capture a message when recommendation playlist is empty', async () => {
+    const body = { playlist_recommended_offers: [] }
+    mockFetch.mockResolvedValueOnce(
+      new Response(JSON.stringify(body), {
+        headers: {
+          'content-type': 'application/json',
+        },
+        status: 200,
+      })
+    )
+    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+        'Recommended offers playlist is empty',
+        {
+          level: 'info',
+          extra: { url: 'http://passculture.reco', status: 200 },
+        }
+      )
     })
   })
 
