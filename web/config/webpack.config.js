@@ -593,6 +593,7 @@ module.exports = function (webpackEnv) {
             'https://www.googletagmanager.com',
             'https://www.gstatic.com/recaptcha/',
             'https://www.google.com/recaptcha/',
+            'https://accounts.google.com/gsi/client',
             'https://oos.eu-west-2.outscale.com/public-ubble-ai/',
             `${process.env.APP_PUBLIC_URL}/static/`,
           ].join(' '),

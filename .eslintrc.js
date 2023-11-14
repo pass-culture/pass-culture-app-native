@@ -56,7 +56,10 @@ module.exports = {
       'error',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-    'unused-imports/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    'unused-imports/no-unused-vars': [
+      'error',
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
@@ -147,6 +150,10 @@ module.exports = {
           {
             name: '@react-native-firebase/remote-config',
             message: 'use libs/firebase/shims/remote-config instead',
+          },
+          {
+            name: '@react-oauth/google',
+            message: 'This library is for web only. Use libs/react-native-google-sso instead',
           },
           {
             name: 'ui/components/modals/enum',

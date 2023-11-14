@@ -18,6 +18,7 @@ describe.each([
   RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS,
   RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION,
   RemoteStoreFeatureFlags.WIP_ENABLE_EMAIL_VALIDATION_RESEND,
+  RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
   RemoteStoreFeatureFlags.WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES,
   RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER,
   RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE,

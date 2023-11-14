@@ -1,28 +1,15 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate, dispatch, CommonActions } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
-import { ValidatePhoneNumberRequest } from 'api/gen'
 import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-
-server.use(
-  rest.post<ValidatePhoneNumberRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/validate_phone_number',
-    (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({}))
-    }
-  )
-)
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -47,6 +34,10 @@ jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () =
 
 describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
+
+  beforeEach(() => {
+    mockServer.postApiV1('/validate_phone_number', {})
+  })
 
   it('should match snapshot', () => {
     renderSetPhoneValidationCode()

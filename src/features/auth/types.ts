@@ -1,3 +1,5 @@
+import { GoogleSigninRequest, SigninRequest } from 'api/gen'
+
 export type SignInResponseFailure = {
   isSuccess: false
   statusCode?: number
@@ -26,3 +28,5 @@ export type PreValidationSignupLastStepProps = {
   signUp: (token: string) => Promise<void>
   previousSignupData: Partial<SignupData>
 }
+
+export type LoginRequest = SigninRequest | GoogleSigninRequest

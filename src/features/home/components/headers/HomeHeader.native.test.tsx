@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 
 import {
@@ -12,12 +11,11 @@ import {
 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
@@ -85,6 +83,7 @@ describe('HomeHeader', () => {
 
       mockUseAvailableCredit.mockReturnValueOnce(credit)
       mockUseAvailableCredit.mockReturnValueOnce(credit)
+      mockGeolocBannerFromBackend()
 
       renderHomeHeader()
       await act(async () => {})
@@ -146,6 +145,7 @@ describe('HomeHeader', () => {
     mockUseAuthContext
       .mockReturnValueOnce(useAuthContextNotLoggedInMock)
       .mockReturnValueOnce(useAuthContextNotLoggedInMock)
+    mockGeolocBannerFromBackend()
 
     renderHomeHeader()
     await act(async () => {})
@@ -154,20 +154,13 @@ describe('HomeHeader', () => {
   })
 
   it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
-    server.use(
-      rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({
-            banner: {
-              name: BannerName.activation_banner,
-              text: 'à dépenser sur l’application',
-              title: 'Débloque tes 1000\u00a0€',
-            },
-          })
-        )
-      )
-    )
+    mockBannerFromBackend({
+      banner: {
+        name: BannerName.activation_banner,
+        text: 'à dépenser sur l’application',
+        title: 'Débloque tes 1000\u00a0€',
+      },
+    })
 
     renderHomeHeader()
 
@@ -177,20 +170,13 @@ describe('HomeHeader', () => {
   })
 
   it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
-    server.use(
-      rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({
-            banner: {
-              name: BannerName.retry_identity_check_banner,
-              title: 'Retente ubble',
-              text: 'pour débloquer ton crédit',
-            },
-          })
-        )
-      )
-    )
+    mockBannerFromBackend({
+      banner: {
+        name: BannerName.retry_identity_check_banner,
+        title: 'Retente ubble',
+        text: 'pour débloquer ton crédit',
+      },
+    })
 
     renderHomeHeader()
 
@@ -200,22 +186,14 @@ describe('HomeHeader', () => {
   })
 
   it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
-    server.use(
-      rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({
-            banner: {
-              name: BannerName.transition_17_18_banner,
-              title: 'Débloque tes 600\u00a0€',
-              text: 'Confirme tes informations',
-            },
-          })
-        )
-      )
-    )
-
-    renderHomeHeader()
+    mockBannerFromBackend({
+      banner: {
+        name: BannerName.transition_17_18_banner,
+        title: 'Débloque tes 600\u00a0€',
+        text: 'Confirme tes informations',
+      },
+    }),
+      renderHomeHeader()
 
     expect(await screen.findByText('Débloque tes 600\u00a0€')).toBeOnTheScreen()
     expect(screen.getByText('Confirme tes informations')).toBeOnTheScreen()
@@ -225,6 +203,7 @@ describe('HomeHeader', () => {
   it('should show LocationWidget when ENABLE_APP_LOCATION is on and when isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockGeolocBannerFromBackend()
 
     renderHomeHeader()
 
@@ -236,6 +215,8 @@ describe('HomeHeader', () => {
   it('should not show LocationWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockGeolocBannerFromBackend()
+
     renderHomeHeader(true)
 
     await waitFor(() => {
@@ -248,6 +229,8 @@ describe('HomeHeader', () => {
   it('should not show LocationWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     useFeatureFlagSpy.mockReturnValueOnce(false)
+    mockGeolocBannerFromBackend()
+
     renderHomeHeader()
 
     await waitFor(() => {
@@ -261,6 +244,7 @@ describe('HomeHeader', () => {
   it('should show LocationTitleWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockGeolocBannerFromBackend()
 
     renderHomeHeader(true)
 
@@ -272,6 +256,8 @@ describe('HomeHeader', () => {
   it('should not show LocationTitleWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockGeolocBannerFromBackend()
+
     renderHomeHeader(false)
 
     await waitFor(() => {
@@ -284,6 +270,8 @@ describe('HomeHeader', () => {
   it('should not show LocationTitleWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     useFeatureFlagSpy.mockReturnValueOnce(false)
+    mockGeolocBannerFromBackend()
+
     renderHomeHeader(true)
 
     await waitFor(() => {
@@ -307,22 +295,32 @@ function renderHomeHeader(isDesktopViewport?: boolean) {
   )
 }
 
-function mockGeolocBannerFromBackend() {
-  server.use(
-    rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (req, res, ctx) => {
-      const isGeolocated = req.url.searchParams.get('isGeolocated')
-      const json =
-        isGeolocated === 'true'
-          ? {}
-          : {
-              banner: {
-                name: BannerName.geolocation_banner,
-                title: 'Géolocalise-toi',
-                text: 'Pour trouver des offres autour de toi.',
-              },
-            }
+const mockBannerFromBackend = (banner: BannerResponse) => {
+  mockServer.getApiV1<BannerResponse>('/banner', {
+    responseOptions: {
+      data: banner,
+    },
+    requestOptions: { persist: true },
+  })
+}
 
-      return res(ctx.status(200), ctx.json(json))
-    })
-  )
+function mockGeolocBannerFromBackend() {
+  mockServer.getApiV1<BannerResponse>('/banner?isGeolocated=true', {
+    responseOptions: {
+      data: {},
+    },
+    requestOptions: { persist: true },
+  })
+  mockServer.getApiV1<BannerResponse>('/banner?isGeolocated=false', {
+    responseOptions: {
+      data: {
+        banner: {
+          name: BannerName.geolocation_banner,
+          title: 'Géolocalise-toi',
+          text: 'Pour trouver des offres autour de toi.',
+        },
+      },
+    },
+    requestOptions: { persist: true },
+  })
 }

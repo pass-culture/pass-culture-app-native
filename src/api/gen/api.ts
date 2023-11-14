@@ -1240,6 +1240,17 @@ export interface GenreTypeModel {
   values: Array<GenreTypeContentModel>
 }
 /**
+ * @export
+ * @interface GoogleSigninRequest
+ */
+export interface GoogleSigninRequest {
+  /**
+   * @type {string}
+   * @memberof GoogleSigninRequest
+   */
+  authorizationCode: string
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1418,7 +1429,7 @@ export interface NextSubscriptionStepResponse {
    * @memberof NextSubscriptionStepResponse
    */
   nextSubscriptionStep?: SubscriptionStep | null
-/**
+  /**
    * @type {boolean}
    * @memberof NextSubscriptionStepResponse
    */
@@ -3920,6 +3931,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary google_auth <POST>
+     * @param {GoogleSigninRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/oauth/google/authorize`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"GoogleSigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary report_offer <POST>
      * @param {number} offer_id 
      * @param {OfferReportRequest} [body] 
@@ -4776,6 +4807,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary google_auth <POST>
+     * @param {GoogleSigninRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options?: any): Promise<SigninResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OauthGoogleAuthorize(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary report_offer <POST>
      * @param {number} offer_id 
      * @param {OfferReportRequest} [body] 
@@ -5433,6 +5476,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1MeFavorites(body?: FavoriteRequest, options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1MeFavorites(body, options)
+  }
+  /**
+    * 
+    * @summary google_auth <POST>
+    * @param {GoogleSigninRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1OauthGoogleAuthorize(body, options)
   }
   /**
     * 

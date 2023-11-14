@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { Text } from 'react-native'
@@ -6,9 +5,8 @@ import { Text } from 'react-native'
 import { useRoute, replace } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { AccountSecurityBuffer } from './AccountSecurityBuffer'
@@ -36,12 +34,10 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should display loading page when is loading', async () => {
-    server.use(
-      rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
-        (_req, res, ctx) => res(ctx.delay(1000))
-      )
-    )
+    mockServer.getApiV1(`/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+      responseOptions: { delay: 1000, statusCode: 200, data: {} },
+      requestOptions: { persist: true },
+    })
     renderAccountSecurityBuffer()
 
     const LOADING_TEXT = 'Chargement en cours...'
@@ -50,12 +46,9 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should navigate to SuspensionChoiceExpiredLink screen when expired token', async () => {
-    server.use(
-      rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
-        (_req, res, ctx) => res(ctx.status(401))
-      )
-    )
+    mockServer.getApiV1(`/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+      responseOptions: { statusCode: 401, data: {} },
+    })
     renderAccountSecurityBuffer()
 
     await waitFor(() => {
@@ -64,12 +57,9 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should navigate to Home when invalid token', async () => {
-    server.use(
-      rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
-        (_req, res, ctx) => res(ctx.status(400))
-      )
-    )
+    mockServer.getApiV1(`/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+      responseOptions: { statusCode: 400, data: {} },
+    })
     renderAccountSecurityBuffer()
 
     await waitFor(() => {
@@ -78,12 +68,7 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should navigate to AccountSecurity screen when valid token', async () => {
-    server.use(
-      rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
-        (_req, res, ctx) => res(ctx.status(200))
-      )
-    )
+    mockServer.getApiV1(`/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {})
     renderAccountSecurityBuffer()
 
     await waitFor(() => {
@@ -92,12 +77,9 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should throw error when unexpected error happens while validating token', async () => {
-    server.use(
-      rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
-        (_req, res, ctx) => res(ctx.status(500))
-      )
-    )
+    mockServer.getApiV1(`/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+      responseOptions: { statusCode: 500 },
+    })
     const spy = jest.fn()
 
     const Component = withErrorBoundary(AccountSecurityBuffer, {
@@ -107,7 +89,6 @@ describe('<AccountSecurityBuffer/>', () => {
     await catchErrorSilently(async () => {
       render(reactQueryProviderHOC(<Component />))
 
-      // eslint-disable-next-line testing-library/prefer-explicit-assert
       await screen.findAllByText('Error')
     })
 
