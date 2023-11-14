@@ -34,5 +34,10 @@ elif [ "$diff_dead_code_count" -gt 0 ]; then
     exit 1
 else
     echo "⬜ The dead code seems unchanged."
-    display_differences_between_dead_code
+    display_differences_between_dead_code || {
+        echo '👏 This means that you have deleted dead code as much as you have introduced new dead code'
+        echo '👀 If the introduced dead code is legit and you tried to update the configuration of ts-prune to ignore it but it does not work 😣'
+        how_to_update_snapshot
+        exit 1
+    }
 fi
