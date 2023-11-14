@@ -143,7 +143,7 @@ export const OFFER_RESPONSE_SNAPSHOT_WITH_DANGEROUS_METADATA = {
   name: '</script><script>alert("you have been pranked")</script>',
   metadata: {
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': ['Product', 'Book</script><script>alert("you have been rekt")</script>'],
     name: '</script><script>alert("you have been pwned")</script>',
     location: {
       '@type': 'Place',

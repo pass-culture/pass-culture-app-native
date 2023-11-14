@@ -21,7 +21,10 @@ jest.mock('../logging', () => jest.requireMock('../__mocks__/logging'))
 
 jest.mock('../../services/apiClient', () => ({
   apiClient: async (type: EntityKeys, id: number) => {
-    if (mockEntityMap[type].API_MODEL_NAME === 'offer' && id !== INTERNAL_SERVER_ERROR_STATUS_CODE) {
+    if (
+      mockEntityMap[type].API_MODEL_NAME === 'offer' &&
+      id !== INTERNAL_SERVER_ERROR_STATUS_CODE
+    ) {
       if (id === mockOfferResponseWithDangerousMetadata.id) {
         return mockOfferResponseWithDangerousMetadata
       }
@@ -83,6 +86,19 @@ describe('metas utils', () => {
     )
   })
 
+  it('should encode metadata in list', async () => {
+    const html = await replaceHtmlMetas(
+      TEST_HTML,
+      `/offre/${OFFER_RESPONSE_SNAPSHOT_WITH_DANGEROUS_METADATA.id}`,
+      'offre' as EntityKeys,
+      OFFER_RESPONSE_SNAPSHOT_WITH_DANGEROUS_METADATA.id
+    )
+
+    expect(html).toContain(
+      '["Product","Book&lt;/script&gt;&lt;script&gt;alert(&quot;you have been rekt&quot;)&lt;/script&gt;"]'
+    )
+  })
+
   it('should encode metadata in meta tags', async () => {
     const html = await replaceHtmlMetas(
       TEST_HTML,
@@ -97,12 +113,14 @@ describe('metas utils', () => {
   })
 
   it('should not break when venue meta have null values', async () => {
-    await expect(replaceHtmlMetas(
-      TEST_HTML,
-      `/offre/${OFFER_RESPONSE_SNAPSHOT_WITH_VENUE_NULL_METADATA.id}`,
-      'offre' as EntityKeys,
-      OFFER_RESPONSE_SNAPSHOT_WITH_VENUE_NULL_METADATA.id
-    )).resolves.not.toThrow()
+    await expect(
+      replaceHtmlMetas(
+        TEST_HTML,
+        `/offre/${OFFER_RESPONSE_SNAPSHOT_WITH_VENUE_NULL_METADATA.id}`,
+        'offre' as EntityKeys,
+        OFFER_RESPONSE_SNAPSHOT_WITH_VENUE_NULL_METADATA.id
+      )
+    ).resolves.not.toThrow()
   })
 
   it(`should return basic html in case of apiClient throwing ${INTERNAL_SERVER_ERROR_STATUS_CODE} status code`, async () => {
