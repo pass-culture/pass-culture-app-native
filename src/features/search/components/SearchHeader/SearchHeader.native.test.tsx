@@ -128,6 +128,17 @@ describe('SearchHeader component', () => {
       expect(searchHeaderTitleContainer.queryByText('Ma position')).toBeOnTheScreen()
     })
   })
+
+  it('should not show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is off and when isDesktopViewport is true', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    renderSearchHeader(true)
+
+    await waitFor(() => {
+      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
+
+      expect(searchHeaderTitleContainer.queryByText('Ma position')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 function renderSearchHeader(isDesktopViewport?: boolean, searchView?: SearchView) {
