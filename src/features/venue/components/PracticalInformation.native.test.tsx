@@ -27,4 +27,10 @@ describe('PracticalInformation', () => {
 
     expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
   })
+
+  it('should display accessibility block', async () => {
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+
+    expect(await screen.findAllByTestId('accessibilityAtomContainer')).not.toHaveLength(0)
+  })
 })
