@@ -76,4 +76,12 @@ describe('<ContactBlock/>', () => {
       venueId,
     })
   })
+
+  it('should display nothing when contact section is empty', () => {
+    render(<ContactBlock venue={{ ...venueResponseSnap, contact: {} }} />)
+
+    expect(screen.queryByText('contact@venue.com')).not.toBeOnTheScreen()
+    expect(screen.queryByText('+33102030405')).not.toBeOnTheScreen()
+    expect(screen.queryByText('https://my@website.com')).not.toBeOnTheScreen()
+  })
 })
