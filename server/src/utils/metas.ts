@@ -149,12 +149,15 @@ export async function replaceHtmlMetas(
   }
 }
 
-type NestedMetadata = string | number | boolean | { [key: string]: NestedMetadata }
+type NestedMetadata = string | number | boolean | string[] | { [key: string]: NestedMetadata }
 type Metadata = Record<string, NestedMetadata>
 
 const encodeWhateverType = (value: NestedMetadata): NestedMetadata => {
   switch (typeof value) {
     case 'object':
+      if (Array.isArray(value)) {
+        return value.map((item) => encode(item))
+      }
       return recursiveEncode(value)
     case 'string':
       return encode(value)
