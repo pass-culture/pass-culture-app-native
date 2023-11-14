@@ -33,4 +33,46 @@ describe('PracticalInformation', () => {
 
     expect(await screen.findAllByTestId('accessibilityAtomContainer')).not.toHaveLength(0)
   })
+
+  it('should not display withdrawal section when no withdrawal info provided', async () => {
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation venue={{ ...venueResponseSnap, withdrawalDetails: undefined }} />
+      )
+    )
+
+    expect(screen.queryByText('How to withdraw, https://test.com')).not.toBeOnTheScreen()
+  })
+
+  it('should not display description section when no description provided', async () => {
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation venue={{ ...venueResponseSnap, description: undefined }} />
+      )
+    )
+
+    expect(
+      screen.queryByText(
+        ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,'
+      )
+    ).not.toBeOnTheScreen()
+  })
+
+  it('should not display contact section when no contacts provided', async () => {
+    render(
+      reactQueryProviderHOC(<PracticalInformation venue={{ ...venueResponseSnap, contact: {} }} />)
+    )
+
+    expect(screen.queryByText('contact@venue.com')).not.toBeOnTheScreen()
+  })
+
+  it('should not display accessibility section when no accessibility info provided', async () => {
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation venue={{ ...venueResponseSnap, accessibility: {} }} />
+      )
+    )
+
+    expect(screen.queryAllByTestId('accessibilityAtomContainer')).toHaveLength(0)
+  })
 })

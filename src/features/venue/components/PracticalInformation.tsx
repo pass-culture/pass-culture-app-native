@@ -9,17 +9,18 @@ import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = { venue: VenueResponse }
-type Section = { title: string; body: JSX.Element }
+type Section = { title: string; body: JSX.Element | null }
+type SectionToDisplay = { title: string; body: JSX.Element }
 
 export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
     {
       title: 'Modalités de retrait',
-      body: <Typo.Body>{venue.withdrawalDetails}</Typo.Body>,
+      body: venue.withdrawalDetails ? <Typo.Body>{venue.withdrawalDetails}</Typo.Body> : null,
     },
     {
       title: 'Description',
-      body: <Typo.Body>{venue.description}</Typo.Body>,
+      body: venue.description ? <Typo.Body>{venue.description}</Typo.Body> : null,
     },
     {
       title: 'Contact',
@@ -30,12 +31,15 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
       body: <AccessibilityBlock {...venue.accessibility} />,
     },
   ]
+  const sectionsToDisplay = sections.filter(
+    (section): section is SectionToDisplay => section.body !== null
+  )
 
   return (
     <Container>
       <Spacer.Column numberOfSpaces={2} />
       <FlatList
-        data={sections}
+        data={sectionsToDisplay}
         renderItem={({ item: section }) => <Section title={section.title}>{section.body}</Section>}
         ItemSeparatorComponent={Separator.Horizontal}
       />
