@@ -9,7 +9,7 @@ interface Props {
   tagsLines?: number
 }
 
-export const MARGIN_BOTTOM_TAGS = getSpacing(2)
+const MARGIN_BOTTOM_TAGS = getSpacing(2)
 
 // This component is used to display tags on a number of lines defined as a parameter.
 // If the number of tags to display exceeds this limit, it will not be visible

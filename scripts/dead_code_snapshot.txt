@@ -61,6 +61,7 @@ src/api/gen/index.ts:2594 - SubscriptionStepDetailsResponse
 src/api/gen/index.ts:2710 - UserProfileEmailUpdate
 src/api/gen/index.ts:2887 - UserSuspensionDateResponse
 src/api/gen/index.ts:2898 - UserSuspensionStatusResponse
+src/api/gen/index.ts:2941 - ValidatePhoneNumberRequest
 src/api/gen/index.ts:2952 - ValidationError
 src/api/gen/index.ts:2958 - ValidationErrorElement
 src/api/gen/index.ts:3193 - DefaultApiFetchParamCreator
