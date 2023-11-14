@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -83,7 +84,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
       <FirstSectionContainer visible>
         <TabLayout
           tabPanels={{
-            'Offres disponibles': <Typo.Body>Panel des offres disponibles</Typo.Body>,
+            'Offres disponibles': <VenueOffersNew venueId={venue.id} />,
             'Infos pratiques': <Typo.Body>Panel des offres disponibles</Typo.Body>,
           }}
         />
