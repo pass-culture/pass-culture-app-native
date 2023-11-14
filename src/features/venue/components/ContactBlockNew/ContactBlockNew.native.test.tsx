@@ -13,35 +13,34 @@ const email = 'contact@venue.com'
 const phoneNumber = '+33102030405'
 const website = 'https://my@website.com'
 
-jest.mock('features/venue/api/useVenue')
 const openMail = jest.spyOn(ContactHelpers, 'openMail')
 const openPhoneNumber = jest.spyOn(ContactHelpers, 'openPhoneNumber')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<ContactBlock/>', () => {
   it('should open external email when the email button is press', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
     fireEvent.press(screen.getByText('contact@venue.com'))
 
     expect(openMail).toHaveBeenNthCalledWith(1, email)
   })
 
   it('should open external phone when the phone button is press', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
     fireEvent.press(screen.getByText('+33102030405'))
 
     expect(openPhoneNumber).toHaveBeenNthCalledWith(1, phoneNumber)
   })
 
   it('should open external website when the website button is press', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
     fireEvent.press(screen.getByText('https://my@website.com'))
 
     expect(openUrl).toHaveBeenNthCalledWith(1, website)
   })
 
   it('should display the email, phoneNumber and website', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
 
     expect(screen.queryByText('contact@venue.com')).toBeOnTheScreen()
     expect(screen.queryByText('+33102030405')).toBeOnTheScreen()
@@ -49,7 +48,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should log event VenueContact when opening email', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
     fireEvent.press(screen.getByText('contact@venue.com'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
@@ -59,7 +58,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should log event VenueContact when opening phone number', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
     fireEvent.press(screen.getByText('+33102030405'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
@@ -69,7 +68,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should log event VenueContact when opening website', () => {
-    render(<ContactBlock venueId={venueId} />)
+    render(<ContactBlock venue={venueResponseSnap} />)
     fireEvent.press(screen.getByText('https://my@website.com'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {

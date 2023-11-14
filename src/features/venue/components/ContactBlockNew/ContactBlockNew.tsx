@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { VenueResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers'
-import { useVenue } from 'features/venue/api/useVenue'
 import { analytics } from 'libs/analytics'
 import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -12,27 +12,26 @@ import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
-  const { data: venue } = useVenue(venueId)
-  const { email, phoneNumber, website } = venue?.contact || {}
+export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
+  const { email, phoneNumber, website } = venue.contact || {}
 
   const onPressMail = useCallback(() => {
     if (!email) return
-    analytics.logVenueContact({ type: 'email', venueId })
+    analytics.logVenueContact({ type: 'email', venueId: venue.id })
     openMail(email)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email])
 
   const onPressPhone = useCallback(() => {
     if (!phoneNumber) return
-    analytics.logVenueContact({ type: 'phoneNumber', venueId })
+    analytics.logVenueContact({ type: 'phoneNumber', venueId: venue.id })
     openPhoneNumber(phoneNumber)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phoneNumber])
 
   const onPressWebsite = useCallback(() => {
     if (!website) return
-    analytics.logVenueContact({ type: 'website', venueId })
+    analytics.logVenueContact({ type: 'website', venueId: venue.id })
     openUrl(website)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [website])

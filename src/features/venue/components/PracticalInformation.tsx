@@ -3,8 +3,8 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { ContactBlock } from 'features/venue/components/ContactBlockNew/ContactBlockNew'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
-import { ContactBlock } from 'ui/components/contact/ContactBlock'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -23,7 +23,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     },
     {
       title: 'Contact',
-      body: <ContactBlock venueId={venue.id} />,
+      body: <ContactBlock venue={venue} />,
     },
     {
       title: 'Accessibilité',
