@@ -1,4 +1,4 @@
-import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
+import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
 
 describe('getOfferTags', () => {
   it('should return the offer subcategory by default', () => {

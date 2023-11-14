@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { render, screen } from 'tests/utils'
 
 describe('<OfferArtists />', () => {

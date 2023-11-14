@@ -2,9 +2,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
-import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
+import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
+import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
 
 const meta: ComponentMeta<typeof OfferArtists> = {
   title: 'features/offer/OfferArtists',

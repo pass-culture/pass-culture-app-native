@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
+import { OfferPrice } from 'features/offerv2/components/OfferPrice/OfferPrice'
 import { render, screen } from 'tests/utils'
 
 describe('<OfferPrice />', () => {

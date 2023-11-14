@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferTags } from 'features/offer/components/OfferTags/OfferTags'
+import { OfferTags } from 'features/offerv2/components/OfferTags/OfferTags'
 import { render, screen } from 'tests/utils'
 
 const tags = ['Tag1', 'Tag2', 'Tag3']
