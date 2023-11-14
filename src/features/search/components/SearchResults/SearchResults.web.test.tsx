@@ -1,3 +1,4 @@
+import { Hit } from '@algolia/client-search'
 import React from 'react'
 
 import {
@@ -6,6 +7,7 @@ import {
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/geolocation'
+import { Offer } from 'shared/offer/types'
 import { act, render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'
@@ -16,21 +18,22 @@ const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
 
-let mockSearchResultsReponse = {
-  data: mockData,
-  hits: { offers: [], venues: mockedAlgoliaVenueResponse.hits },
-  nbHits: 0,
-  isFetching: false,
-  isLoading: false,
-  hasNextPage: mockHasNextPage,
-  fetchNextPage: mockFetchNextPage,
-  isFetchingNextPage: false,
-  refetch: jest.fn(),
-  venuesUserData: [{ venue_playlist_title: 'test' }],
-}
+let mockOffers: Hit<Offer>[] = []
+let mockNbHits = 0
 
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockSearchResultsReponse,
+  useSearchResults: () => ({
+    data: mockData,
+    hits: { offers: mockOffers, venues: mockedAlgoliaVenueResponse.hits },
+    nbHits: mockNbHits,
+    isFetching: false,
+    isLoading: false,
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
+    refetch: jest.fn(),
+    venuesUserData: [{ venue_playlist_title: 'test' }],
+  }),
 }))
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
@@ -66,14 +69,9 @@ describe('SearchResults component', () => {
   })
 
   it('should render correctly', async () => {
-    mockSearchResultsReponse = {
-      ...mockSearchResultsReponse,
-      hits: {
-        ...mockSearchResultsReponse.hits,
-        offers: mockedAlgoliaResponse.hits as never[],
-      },
-      nbHits: mockedAlgoliaResponse.nbHits,
-    }
+    mockOffers = mockedAlgoliaResponse.hits
+    mockNbHits = mockedAlgoliaResponse.nbHits
+
     const renderAPI = render(<SearchResults />)
     await act(async () => {}) // fix 3 warnings "Warning: An update to %s inside a test was not wrapped in act" for PriceModal, LocationModal and DatesHoursModal
     await screen.findByTestId('searchResultsList')
