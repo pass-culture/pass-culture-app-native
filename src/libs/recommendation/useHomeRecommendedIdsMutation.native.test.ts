@@ -33,14 +33,13 @@ describe('useHomeRecommendedIdsMutation', () => {
     })
   })
 
-  it('should throw an error if response.ok is not true', async () => {
-    const body = { ok: false }
+  it('should capture a message if response.ok is not true', async () => {
     mockFetch.mockResolvedValueOnce(
-      new Response(JSON.stringify(body), {
+      new Response(undefined, {
         headers: {
           'content-type': 'application/json',
         },
-        status: 200,
+        status: 500,
       })
     )
 
@@ -49,9 +48,15 @@ describe('useHomeRecommendedIdsMutation', () => {
     })
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
-    await waitFor(() => {
-      expect(useHomeRecommendedIdsMutation).toThrow()
-    })
+    await act(async () => {})
+
+    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+      'Recommendation response was not ok',
+      {
+        level: 'info',
+        extra: { url: 'http://passculture.reco', status: 500 },
+      }
+    )
   })
 
   it('should capture a message when recommendation playlist is empty', async () => {
@@ -74,7 +79,7 @@ describe('useHomeRecommendedIdsMutation', () => {
         'Recommended offers playlist is empty',
         {
           level: 'info',
-          extra: { url: 'http://passculture.reco' },
+          extra: { url: 'http://passculture.reco', status: 200 },
         }
       )
     })
