@@ -21,4 +21,10 @@ describe('PracticalInformation', () => {
       )
     ).toBeOnTheScreen()
   })
+
+  it('should display contact block', async () => {
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+
+    expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
+  })
 })
