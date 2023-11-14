@@ -3,13 +3,13 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { Text } from 'react-native'
 
-import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
+import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Typo } from 'ui/theme'
 
 const meta: ComponentMeta<typeof HeroButtonList> = {
-  title: 'Features/identityCheck/HeroButtonList',
+  title: 'ui/buttons/HeroButtonList',
   component: HeroButtonList,
   decorators: [
     (Story) => (
