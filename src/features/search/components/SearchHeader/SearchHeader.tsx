@@ -59,7 +59,7 @@ export const SearchHeader = memo(function SearchHeader({
               </StyledTitleMainView>
 
               {!!shouldDisplayDesktopLocationWidget && (
-                <LocationWidgetDesktopView testID="LocationWidgetDesktopView">
+                <LocationWidgetDesktopView>
                   <Spacer.Row numberOfSpaces={6} />
                   <Separator.Vertical height={getSpacing(6)} />
                   <Spacer.Row numberOfSpaces={4} />
