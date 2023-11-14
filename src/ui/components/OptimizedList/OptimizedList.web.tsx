@@ -87,7 +87,7 @@ const InternalOptimizedList = <T, AD>(
    * Method that is called to compute rendered item size.
    * Only used on `VariableSizeList` e.g. when a header and/or a footer are passed.
    */
-  const getItemSizeFn = useCallback(
+  const getItemSize = useCallback(
     (index: number) => {
       const isHeader = index === 0 && hasHeader
       const isFooter = index === data.items.length - 1 && hasFooter
@@ -195,7 +195,7 @@ const InternalOptimizedList = <T, AD>(
           ref={listRef}
           innerElementType={VerticalUl}
           itemData={data}
-          itemSize={getItemSizeFn}
+          itemSize={getItemSize}
           height={availableHeight}
           estimatedItemSize={itemSize}
           itemCount={itemCount}

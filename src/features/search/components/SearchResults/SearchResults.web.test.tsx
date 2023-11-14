@@ -70,7 +70,7 @@ describe('SearchResults component', () => {
       ...mockSearchResultsReponse,
       hits: {
         ...mockSearchResultsReponse.hits,
-        offers: mockedAlgoliaResponse.hits as any,
+        offers: mockedAlgoliaResponse.hits as never[],
       },
       nbHits: mockedAlgoliaResponse.nbHits,
     }

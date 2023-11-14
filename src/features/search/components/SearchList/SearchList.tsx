@@ -16,7 +16,7 @@ import { SearchListProps } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { OptimizedList } from 'ui/components/OptimizedList/OptimizedList'
-import { OptimizedListRef } from 'ui/components/OptimizedList/types'
+import { OnLayoutProps, OptimizedListRef } from 'ui/components/OptimizedList/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { getSpacing } from 'ui/theme'
@@ -51,6 +51,33 @@ export function SearchList({
     [handleScrollOpacity]
   )
 
+  const SearchListHeaderComponent = useCallback(
+    ({ onLayout }: OnLayoutProps) => (
+      <SearchListHeader
+        nbHits={nbHits}
+        userData={userData}
+        venues={hits.venues}
+        venuesUserData={venuesUserData}
+        onLayout={onLayout}
+      />
+    ),
+    [hits.venues, nbHits, userData, venuesUserData]
+  )
+
+  const SearchListFooterComponent = useCallback(
+    ({ onLayout }: OnLayoutProps) => (
+      <SearchListFooter
+        isFetchingNextPage={isFetchingNextPage}
+        autoScrollEnabled={autoScrollEnabled}
+        nbHits={nbHits}
+        nbLoadedHits={hits.offers?.length}
+        onPress={onPress}
+        onLayout={onLayout}
+      />
+    ),
+    [autoScrollEnabled, hits.offers?.length, isFetchingNextPage, nbHits, onPress]
+  )
+
   return nbHits > 0 ? (
     <React.Fragment>
       <OptimizedList
@@ -62,25 +89,8 @@ export function SearchList({
         keyExtractor={keyExtractor}
         onEndReached={onEndReached}
         onScroll={handleScroll}
-        headerComponent={({ onLayout }) => (
-          <SearchListHeader
-            nbHits={nbHits}
-            userData={userData}
-            venues={hits.venues}
-            venuesUserData={venuesUserData}
-            onLayout={onLayout}
-          />
-        )}
-        footerComponent={({ onLayout }) => (
-          <SearchListFooter
-            isFetchingNextPage={isFetchingNextPage}
-            autoScrollEnabled={autoScrollEnabled}
-            nbHits={nbHits}
-            nbLoadedHits={hits.offers?.length}
-            onPress={onPress}
-            onLayout={onLayout}
-          />
-        )}
+        headerComponent={SearchListHeaderComponent}
+        footerComponent={SearchListFooterComponent}
         refreshing={refreshing}
         onRefresh={onRefresh}
       />

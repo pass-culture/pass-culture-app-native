@@ -13,7 +13,7 @@ import styled from 'styled-components/native'
 
 import { OptimizedListItemStyle, OptimizedListProps, OptimizedListRef } from './types'
 
-function InternalOptimizedList<T, AD>(
+function InternalOptimizedList<Item, AdditionalData>(
   {
     height,
     renderItem: renderItemProp,
@@ -29,10 +29,10 @@ function InternalOptimizedList<T, AD>(
     onEndReached,
     endReachedThreshold,
     onScroll,
-  }: OptimizedListProps<T, AD>,
+  }: OptimizedListProps<Item, AdditionalData>,
   ref: ForwardedRef<OptimizedListRef>
 ) {
-  const listRef = useRef<FlashList<T>>(null)
+  const listRef = useRef<FlashList<Item>>(null)
 
   useImperativeHandle(ref, () => ({
     scrollToItem(itemIndex: number) {
@@ -44,14 +44,14 @@ function InternalOptimizedList<T, AD>(
   }))
 
   const renderItem = useCallback(
-    (listRenderItemInfo: ListRenderItemInfo<T>) => {
+    (listRenderItemInfo: ListRenderItemInfo<Item>) => {
       return renderItemProp({
         style: {} as OptimizedListItemStyle,
         index: listRenderItemInfo.index,
         item: listRenderItemInfo.item,
         data: {
           items,
-          ...(listRenderItemInfo.extraData as AD),
+          ...(listRenderItemInfo.extraData as AdditionalData),
         },
       })
     },

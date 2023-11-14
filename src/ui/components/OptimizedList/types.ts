@@ -8,11 +8,11 @@ export type OnLayoutProps = { onLayout: (event: LayoutChangeEvent) => void }
 /**
  * Defines the props passed to the `renderItem` prop.
  */
-export type RenderItemProps<T, AD> = {
+export type RenderItemProps<Item, AdditionalData> = {
   /**
    * The data that will be passed to each rendered item. It includes additional data.
    */
-  data: OptimizedListData<T, AD>
+  data: OptimizedListData<Item, AdditionalData>
   /**
    * The index at which the item is rendered.
    */
@@ -29,12 +29,12 @@ export type RenderItemProps<T, AD> = {
   /**
    * The item data currently rendered.
    */
-  item: T
+  item: Item
 }
 
-export type OptimizedListData<T, AD> = { items: T[] } & AD
+export type OptimizedListData<Item, AdditionalData> = { items: Item[] } & AdditionalData
 
-export type OptimizedListProps<T, AD> = {
+export type OptimizedListProps<Item, AdditionalData> = {
   /**
    * This list is optimized to render only items that are visible in the viewport.
    * To avoid computationally intensive operations, you must pass an `itemSize` property.
@@ -43,12 +43,12 @@ export type OptimizedListProps<T, AD> = {
   /**
    * The items that will be processed in a loop and passed to the `renderItem` function.
    */
-  items: T[]
+  items: Item[]
   /**
    * Method that will be called to render every item, including Header and Footer components.
    * @param props Props passed to help you to develop your components.
    */
-  renderItem: (props: RenderItemProps<T, AD>) => JSX.Element | null
+  renderItem: (props: RenderItemProps<Item, AdditionalData>) => JSX.Element | null
   /**
    * If `height` not passed, it will be computed to be full height.
    */
@@ -56,7 +56,7 @@ export type OptimizedListProps<T, AD> = {
   /**
    * This additional data will be passed to every rendered item.
    */
-  additionalData?: AD
+  additionalData?: AdditionalData
   /**
    * Useful only for testing purposes.
    */
@@ -72,7 +72,7 @@ export type OptimizedListProps<T, AD> = {
    * @param item Current item in the loop
    * @param index Current item index
    */
-  keyExtractor?: (item: T, index: number) => string
+  keyExtractor?: (item: Item, index: number) => string
   /**
    * The component that will be placed on top of other items.
    * Often used to show a header that contains a title.
