@@ -246,13 +246,18 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
-      const handler = rest.get(url, this.generateMockHandler(url, options, 'GET'))
+      const handler = rest.get(urlWithoutParams, this.generateMockHandler(url, options, 'GET'))
       this.mswServer.use(handler)
     } else {
       const handler = rest.get(
         url,
-        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'GET')
+        this.generateMockHandler(
+          urlWithoutParams,
+          { responseOptions: { data: options as TResponse } },
+          'GET'
+        )
       )
       this.mswServer.use(handler)
     }
@@ -270,8 +275,9 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
-      const handler = rest.post(url, this.generateMockHandler(url, options, 'POST'))
+      const handler = rest.post(urlWithoutParams, this.generateMockHandler(url, options, 'POST'))
       this.mswServer.use(handler)
     } else {
       const handler = rest.post(
@@ -294,8 +300,12 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
-      const handler = rest.delete(url, this.generateMockHandler(url, options, 'DELETE'))
+      const handler = rest.delete(
+        urlWithoutParams,
+        this.generateMockHandler(url, options, 'DELETE')
+      )
       this.mswServer.use(handler)
     } else {
       const handler = rest.delete(
@@ -318,8 +328,9 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
-      const handler = rest.put(url, this.generateMockHandler(url, options, 'PUT'))
+      const handler = rest.put(urlWithoutParams, this.generateMockHandler(url, options, 'PUT'))
       this.mswServer.use(handler)
     } else {
       const handler = rest.put(
