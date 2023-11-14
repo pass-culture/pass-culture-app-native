@@ -45,6 +45,7 @@ export interface Environment {
   FIREBASE_PROJECTID: string
   FIREBASE_STORAGEBUCKET: string
   GCP_IMAGE_COULD_STORAGE_NAME: string
+  GOOGLE_CLIENT_ID: string
   GOOGLE_PLAY_STORE_URL: string
   IOS_APP_ID: string
   IOS_APP_STORE_ID: string
