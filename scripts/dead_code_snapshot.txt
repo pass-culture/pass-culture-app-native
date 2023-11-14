@@ -53,19 +53,17 @@ src/api/gen/index.ts:1571 - OfferOffererResponse
 src/api/gen/index.ts:1582 - OfferReportReasons
 src/api/gen/index.ts:1593 - OfferReportRequest
 src/api/gen/index.ts:1715 - OfferStockActivationCodeResponse
-src/api/gen/index.ts:1914 - ProfileOptionsResponse
-src/api/gen/index.ts:1982 - ReasonMeta
-src/api/gen/index.ts:2009 - ReportedOffer
-src/api/gen/index.ts:2094 - SchoolTypeResponseModel
-src/api/gen/index.ts:2594 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:2710 - UserProfileEmailUpdate
-src/api/gen/index.ts:2887 - UserSuspensionDateResponse
-src/api/gen/index.ts:2898 - UserSuspensionStatusResponse
-src/api/gen/index.ts:2941 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:2952 - ValidationError
-src/api/gen/index.ts:2958 - ValidationErrorElement
-src/api/gen/index.ts:3193 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4394 - DefaultApiFp
+src/api/gen/index.ts:1966 - ReasonMeta
+src/api/gen/index.ts:1993 - ReportedOffer
+src/api/gen/index.ts:2557 - SubscriptionStepDetailsResponse
+src/api/gen/index.ts:2673 - UserProfileEmailUpdate
+src/api/gen/index.ts:2850 - UserSuspensionDateResponse
+src/api/gen/index.ts:2861 - UserSuspensionStatusResponse
+src/api/gen/index.ts:2904 - ValidatePhoneNumberRequest
+src/api/gen/index.ts:2915 - ValidationError
+src/api/gen/index.ts:2921 - ValidationErrorElement
+src/api/gen/index.ts:3156 - DefaultApiFetchParamCreator
+src/api/gen/index.ts:4341 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
