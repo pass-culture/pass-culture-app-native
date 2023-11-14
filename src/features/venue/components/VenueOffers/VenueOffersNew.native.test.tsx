@@ -68,6 +68,15 @@ describe('<VenueOffersNew />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should be null when no offers', () => {
+    mockUseVenueOffers.mockReturnValueOnce({
+      data: { hits: [], nbHits: 0 },
+    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+    render(<VenueOffersNew venueId={venueId} />)
+
+    expect(screen.toJSON()).toBeNull()
+  })
+
   it('should display "En voir plus" button if they are more hits to see than the one displayed', () => {
     render(<VenueOffersNew venueId={venueId} />)
 
