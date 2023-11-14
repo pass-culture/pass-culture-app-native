@@ -22,23 +22,23 @@ import {
   OptimizedListRef,
 } from './types'
 
-function getData<T, AD>(
-  items: T[],
-  additionalData: AD,
+function getData<Item, AdditionalData>(
+  items: Item[],
+  additionalData: AdditionalData,
   hasHeader: boolean,
   hasFooter: boolean
-): OptimizedListData<T, AD> {
+): OptimizedListData<Item, AdditionalData> {
   const data = [...items]
   const headerPlaceholder = {} as const
   const footerPlaceholder = {} as const
 
-  if (hasHeader) data.unshift(headerPlaceholder as T)
-  if (hasFooter) data.push(footerPlaceholder as T)
+  if (hasHeader) data.unshift(headerPlaceholder as Item)
+  if (hasFooter) data.push(footerPlaceholder as Item)
 
   return { items: data, ...additionalData }
 }
 
-const InternalOptimizedList = <T, AD>(
+const InternalOptimizedList = <Item, AdditionalData>(
   {
     height,
     renderItem: renderItemProp,
@@ -51,7 +51,7 @@ const InternalOptimizedList = <T, AD>(
     endReachedThreshold = 0,
     testID,
     onScroll,
-  }: Readonly<OptimizedListProps<T, AD>>,
+  }: Readonly<OptimizedListProps<Item, AdditionalData>>,
   ref: ForwardedRef<OptimizedListRef>
 ) => {
   const listRef = useRef<VariableSizeList>(null)
@@ -67,7 +67,7 @@ const InternalOptimizedList = <T, AD>(
   /**
    * Define data passed to list component.
    */
-  const data = useMemo<OptimizedListData<T, AD>>(
+  const data = useMemo<OptimizedListData<Item, AdditionalData>>(
     () => getData(items, additionalData, hasHeader, hasFooter),
     [hasFooter, hasHeader, additionalData, items]
   )
@@ -107,7 +107,11 @@ const InternalOptimizedList = <T, AD>(
    * It defines what is rendered for this item.
    */
   const renderItem = useCallback(
-    (renderItemProps: { index: number; style: CSSProperties; data: OptimizedListData<T, AD> }) => {
+    (renderItemProps: {
+      index: number
+      style: CSSProperties
+      data: OptimizedListData<Item, AdditionalData>
+    }) => {
       const isHeader = renderItemProps.index === 0 && hasHeader
       const isFooter = renderItemProps.index === renderItemProps.data.items.length - 1 && hasFooter
 
@@ -234,7 +238,7 @@ const OptimizedListWrapper = styled(View)<{ height?: number }>(({ height }) => (
  * It internally uses `react-window` on web to allow us to virtualize lists,
  * so items that are no visible are not rendered.
  */
-export const OptimizedList = forwardRef(InternalOptimizedList) as <T, AD>(
-  props: OptimizedListProps<T, AD>,
+export const OptimizedList = forwardRef(InternalOptimizedList) as <Item, AdditionalData>(
+  props: OptimizedListProps<Item, AdditionalData>,
   ref: ForwardedRef<OptimizedListRef>
 ) => ReactElement
