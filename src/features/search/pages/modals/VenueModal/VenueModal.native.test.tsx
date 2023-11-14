@@ -7,7 +7,7 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen, waitForModalToShow } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, waitForModalToShow } from 'tests/utils'
 
 const dismissModalMock = jest.fn()
 
@@ -90,5 +90,20 @@ describe('VenueModal', () => {
     fireEvent.press(closeButton)
 
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
+  })
+
+  it('should not display venue suggestion when a venue is already selected before opening the modal', async () => {
+    const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
+    mockedUseSearch // it rerenders multiple(3) time so it needs multiple(3) mocks
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+
+    render(<VenueModal visible dismissModal={dismissModalMock} />)
+
+    await waitForModalToShow()
+    await waitFor(() => {
+      expect(screen.queryByText(mockVenues[0].label)).not.toBeOnTheScreen()
+    })
   })
 })
