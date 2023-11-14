@@ -33,6 +33,8 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
   const venueFullAddress = formatFullAddress(address, postalCode, city)
   const venueName = publicName || name
 
+  const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
+
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
@@ -78,14 +80,14 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <SectionWithDivider visible>
+      <FirstSectionContainer visible>
         <TabLayout
           tabPanels={{
             'Offres disponibles': <Typo.Body>Panel des offres disponibles</Typo.Body>,
             'Infos pratiques': <Typo.Body>Panel des offres disponibles</Typo.Body>,
           }}
         />
-      </SectionWithDivider>
+      </FirstSectionContainer>
 
       <Spacer.Column numberOfSpaces={100} />
     </Container>

@@ -83,7 +83,7 @@ describe('<Venue />', () => {
 
     it('should render correctly in web for new version', async () => {
       mockUseFeatureFlag.mockReturnValueOnce(true)
-      const { container } = render(<Venue />)
+      const { container } = render(<Venue />, { theme: { isDesktopViewport: true } })
       await act(async () => {})
 
       expect(container).toMatchSnapshot()
