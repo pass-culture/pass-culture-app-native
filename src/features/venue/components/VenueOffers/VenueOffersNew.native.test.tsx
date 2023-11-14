@@ -13,13 +13,12 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
-
-jest.mock('react-query')
 
 jest.mock('features/venue/api/useVenue')
 const mockUseVenue = jest.mocked(useVenue)
@@ -63,7 +62,7 @@ describe('<VenueOffersNew />', () => {
   })
 
   it('should render correctly', () => {
-    render(<VenueOffersNew venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
 
     expect(screen).toMatchSnapshot()
   })
@@ -72,13 +71,13 @@ describe('<VenueOffersNew />', () => {
     mockUseVenueOffers.mockReturnValueOnce({
       data: { hits: [], nbHits: 0 },
     } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
-    render(<VenueOffersNew venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
 
     expect(screen.toJSON()).toBeNull()
   })
 
   it('should display "En voir plus" button if they are more hits to see than the one displayed', () => {
-    render(<VenueOffersNew venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
 
     expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
@@ -88,13 +87,13 @@ describe('<VenueOffersNew />', () => {
       data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
-    render(<VenueOffersNew venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
 
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
-    render(<VenueOffersNew venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
 
     fireEvent.press(screen.getByText('En voir plus'))
 
@@ -120,7 +119,7 @@ describe('<VenueOffersNew />', () => {
   })
 
   it(`should log analytics event when clicking "En voir plus" button`, () => {
-    render(<VenueOffersNew venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
     fireEvent.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
