@@ -24,6 +24,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
 
   const validateOptions = useCallback(() => {
     if (step === Step.DATE) {
+      dispatch({ type: 'RESET_HOUR' })
       return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
     }
     if (step === Step.HOUR && hasPricesStep) {

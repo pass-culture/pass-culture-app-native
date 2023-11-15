@@ -50,6 +50,25 @@ describe('BookingOfferModalFooter', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
     })
+
+    it('should reset potential previous hour when date selected', () => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: {
+          offerId: 1,
+          stockId: undefined,
+          step: Step.DATE,
+          quantity: undefined,
+          date: new Date('01/02/2021'),
+          hour: undefined,
+        },
+        dispatch: mockDispatch,
+        dismissModal: jest.fn(),
+      })
+      render(<BookingOfferModalFooter />)
+      fireEvent.press(screen.getByText('Valider la date'))
+
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_HOUR' })
+    })
   })
 
   describe('when current step is hour selection', () => {
