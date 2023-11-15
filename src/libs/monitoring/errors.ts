@@ -26,7 +26,6 @@ export class MonitoringError extends Error {
     }
 
     if (!skipLogging && !shouldBeCapturedAsInfo) {
-      console.error('eventMonitoring.captureException(', this, captureContext, ')')
       eventMonitoring.captureException(this, captureContext)
     }
   }
