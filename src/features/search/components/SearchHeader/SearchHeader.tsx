@@ -36,8 +36,9 @@ export const SearchHeader = memo(function SearchHeader({
   const shouldDisplaySubtitle = !searchView || searchView === SearchView.Landing
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const { isDesktopViewport } = useTheme()
-  const shouldDisplayLocationWidget =
+  const shouldDisplayMobileLocationWidget =
     enableAppLocation && shouldDisplaySubtitle && !isDesktopViewport
+  const shouldDisplayDesktopLocationWidget = enableAppLocation && isDesktopViewport
 
   const onSearch = useCallback(
     (payload: Partial<SearchState>) => {
@@ -57,8 +58,8 @@ export const SearchHeader = memo(function SearchHeader({
                 <StyledTitleMainText htmlFor={searchInputID}>Rechercher</StyledTitleMainText>
               </StyledTitleMainView>
 
-              {!!isDesktopViewport && (
-                <LocationWidgetDesktopView testID="LocationWidgetDesktopView">
+              {!!shouldDisplayDesktopLocationWidget && (
+                <LocationWidgetDesktopView>
                   <Spacer.Row numberOfSpaces={6} />
                   <Separator.Vertical height={getSpacing(6)} />
                   <Spacer.Row numberOfSpaces={4} />
@@ -73,7 +74,9 @@ export const SearchHeader = memo(function SearchHeader({
             }
           </TitleContainer>
           <View testID="InsideLocationWidget">
-            {!!shouldDisplayLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />}
+            {!!shouldDisplayMobileLocationWidget && (
+              <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
+            )}
           </View>
         </TitleAndWidgetContainer>
         <Spacer.Column numberOfSpaces={4} />
