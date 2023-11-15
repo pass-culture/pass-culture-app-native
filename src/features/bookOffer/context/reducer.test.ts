@@ -79,4 +79,17 @@ describe('Book Offer reducer', () => {
 
     expect(newState.hour).toStrictEqual('2023-03-01T20:00:00Z')
   })
+
+  it('should handle RESET_HOUR', () => {
+    let newState = bookOfferReducer(state, {
+      type: 'SELECT_HOUR',
+      payload: '2023-03-01T20:00:00Z',
+    })
+
+    expect(newState.hour).toStrictEqual('2023-03-01T20:00:00Z')
+
+    newState = bookOfferReducer(newState, { type: 'RESET_HOUR' })
+
+    expect(newState.hour).toBeUndefined()
+  })
 })
