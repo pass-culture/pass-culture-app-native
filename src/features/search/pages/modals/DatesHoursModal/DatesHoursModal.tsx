@@ -10,15 +10,17 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CalendarPicker } from 'features/search/components/CalendarPicker/CalendarPicker'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
-import { Hour, HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
+import { HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
-import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
+import {
+  datesHoursSchema,
+  Hour,
+} from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { SearchState, SearchView } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { Range } from 'libs/typesUtils/typeHelpers'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -40,7 +42,7 @@ type DatesHoursModalFormData = {
   selectedDateChoice: DATE_FILTER_OPTIONS
   selectedDate?: Date
   hasSelectedHours: boolean
-  selectedHours: Range<Hour>
+  selectedHours: [Hour, Hour]
 }
 
 export type DatesHoursModalProps = {
@@ -62,8 +64,8 @@ export const DATE_TYPES: Array<{
   { label: RadioButtonDate.PRECISE_DATE, type: DATE_FILTER_OPTIONS.USER_PICK },
 ]
 
-const DEFAULT_TIME_SELECTED_VALUE: Range<Hour> = [8, 22]
-export const DEFAULT_TIME_VALUE: Range<Hour> = [0, 24]
+const DEFAULT_TIME_SELECTED_VALUE: [Hour, Hour] = [8, 22]
+export const DEFAULT_TIME_VALUE: [Hour, Hour] = [0, 24]
 
 const titleId = uuidv4()
 
@@ -90,7 +92,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
         ? new Date(searchState.date?.selectedDate)
         : undefined,
       hasSelectedHours: !!searchState.timeRange,
-      selectedHours: (searchState.timeRange as Range<Hour>) ?? DEFAULT_TIME_VALUE,
+      selectedHours: (searchState.timeRange as [Hour, Hour]) ?? DEFAULT_TIME_VALUE,
     }
   }, [searchState.date, searchState.timeRange])
 

@@ -43,7 +43,7 @@ import { Spacer } from 'ui/theme'
 
 type LocationModalFormData = {
   locationChoice: RadioButtonLocation
-  aroundRadius: number
+  aroundRadius: [number]
   selectedPlaceOrVenue?: Venue | SuggestedPlace
   searchPlaceOrVenue: string
 }
@@ -90,6 +90,12 @@ const getPlaceOrVenueLabel = (searchState: SearchState) => {
   return placeOrVenue?.label ?? ''
 }
 
+function isValidAroundRadius(value: unknown): value is [number] {
+  return (
+    Array.isArray(value) && value.length === 1 && typeof value[0] === 'number' && !isNaN(value[0])
+  )
+}
+
 export const LocationModal: FunctionComponent<LocationModalProps> = ({
   title,
   accessibilityLabel,
@@ -130,8 +136,8 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
       locationChoice: getLocationChoice(searchState.locationFilter.locationType),
       aroundRadius:
         searchState.locationFilter.locationType === LocationType.AROUND_ME
-          ? searchState.locationFilter.aroundRadius || MAX_RADIUS
-          : MAX_RADIUS,
+          ? ([searchState.locationFilter.aroundRadius || MAX_RADIUS] as [number])
+          : ([MAX_RADIUS] as [number]),
       searchPlaceOrVenue: getPlaceOrVenueLabel(searchState),
       selectedPlaceOrVenue: getPlaceOrVenue(searchState),
     }
@@ -183,7 +189,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           ...additionalSearchState,
           locationFilter: {
             locationType: LocationType.AROUND_ME,
-            aroundRadius: getValues('aroundRadius'),
+            aroundRadius: getValues('aroundRadius')[0],
           },
         }
         analytics.logChangeSearchLocation({ type: 'aroundMe' }, searchState.searchId)
@@ -196,12 +202,14 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           : LocationType.VENUE
 
         if (locationType === LocationType.PLACE) {
+          const validAroundRadius = isValidAroundRadius(aroundRadius) ? aroundRadius[0] : MAX_RADIUS
+
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
               locationType: LocationType.PLACE,
               place: selectedPlaceOrVenue as SuggestedPlace,
-              aroundRadius,
+              aroundRadius: validAroundRadius,
             },
           }
           analytics.logChangeSearchLocation({ type: 'place' }, searchState.searchId)
@@ -261,7 +269,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const onResetPress = useCallback(() => {
     reset({
       locationChoice: isGeolocated ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
-      aroundRadius: MAX_RADIUS,
+      aroundRadius: [MAX_RADIUS],
       searchPlaceOrVenue: '',
       selectedPlaceOrVenue: undefined,
     })
@@ -441,16 +449,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                       ) : null}
                       {item.label === RadioButtonLocation.AROUND_ME &&
                       value === RadioButtonLocation.AROUND_ME ? (
-                        <Controller
-                          control={control}
-                          name="aroundRadius"
-                          render={({ field: { value: aroundRadius, onChange } }) => (
-                            <LocationSlider
-                              defaultValue={aroundRadius}
-                              onChange={(v) => onChange(v[0])}
-                            />
-                          )}
-                        />
+                        <Controller control={control} name="aroundRadius" render={LocationSlider} />
                       ) : null}
                       <Spacer.Column numberOfSpaces={6} />
                       {index + 1 < LOCATION_TYPES.length && <Separator.Horizontal />}

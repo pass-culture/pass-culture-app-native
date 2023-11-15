@@ -32,6 +32,10 @@ const DEFAULT_VALUES: ValuesType = [DEFAULT_MIN, DEFAULT_MAX]
 const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
+function isValidValuesType(value: number[]): value is ValuesType {
+  return Array.isArray(value) && (value.length === 1 || value.length === 2)
+}
+
 export function Slider(props: Props) {
   const sliderContainerRef = useRef<View | null>(null)
 
@@ -133,15 +137,17 @@ export function Slider(props: Props) {
 
   const handleValueChange = useCallback(
     (nextValues: number[]) => {
-      props.onValuesChange?.(nextValues as ValuesType)
-      setValues(nextValues as ValuesType)
+      if (!isValidValuesType(nextValues)) return
+      props.onValuesChange?.(nextValues)
+      setValues(nextValues)
     },
     [props]
   )
 
   const handleValueChangeFinish = useCallback(
     (nextValues: number[]) => {
-      props.onValuesChangeFinish?.(nextValues as ValuesType)
+      if (!isValidValuesType(nextValues)) return
+      props.onValuesChangeFinish?.(nextValues)
     },
     [props]
   )

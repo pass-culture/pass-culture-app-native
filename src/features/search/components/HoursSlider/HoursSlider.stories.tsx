@@ -1,8 +1,9 @@
 import { ComponentStory } from '@storybook/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { HoursSlider, HoursSliderProps } from 'features/search/components/HoursSlider/HoursSlider'
+import { Hour } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 
 export default {
   title: 'features/search/HoursSlider',
@@ -13,11 +14,15 @@ const WrappedTemplate: ComponentStory<typeof HoursSlider> = ({
   field,
 }: {
   field: HoursSliderProps
-}) => (
-  <View style={styles.wrapper}>
-    <HoursSlider field={field} />
-  </View>
-)
+}) => {
+  const [value, setValue] = useState<[Hour, Hour]>(field.value)
+
+  return (
+    <View style={styles.wrapper}>
+      <HoursSlider field={{ value: value, onChange: setValue }} />
+    </View>
+  )
+}
 
 export const Default = WrappedTemplate.bind({})
 Default.args = {

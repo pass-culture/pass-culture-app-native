@@ -1,39 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { Hour, hoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { DEFAULT_TIME_VALUE } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
-
-export type Hour =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24
 
 export type HoursSliderProps = {
   value: [Hour, Hour]
@@ -44,14 +18,13 @@ const MAX_HOUR = 24
 
 export function HoursSlider({ field }: { field: HoursSliderProps }) {
   const { value, onChange } = field
-  const [internalValue, setInternalValue] = useState<number[]>(value)
   const { sliderLength } = useGetFullscreenModalSliderLength()
-  const [minHour, maxHour] = internalValue || DEFAULT_TIME_VALUE
+  const [minHour, maxHour] = value || DEFAULT_TIME_VALUE
   const hoursLabelId = uuidv4()
 
   function handleChange(newValues: ValuesType) {
-    if (onChange) {
-      onChange(newValues as [Hour, Hour])
+    if (onChange && hoursSchema.isValidSync(newValues)) {
+      onChange(newValues)
     }
   }
 
@@ -67,7 +40,7 @@ export function HoursSlider({ field }: { field: HoursSliderProps }) {
         showValues={false}
         values={value}
         max={MAX_HOUR}
-        onValuesChange={setInternalValue}
+        onValuesChange={handleChange}
         onValuesChangeFinish={handleChange}
         minLabel="Horaire minimum de sortie&nbsp;:"
         maxLabel="Horaire maximum de sortie&nbsp;:"

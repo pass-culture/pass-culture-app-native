@@ -1,7 +1,74 @@
 import { ValidationError } from 'yup'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
+import {
+  datesHoursSchema,
+  hourSchema,
+  hoursSchema,
+} from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
+
+describe('hourSchema', () => {
+  describe('should fail', () => {
+    it('when value is not a valid hour', async () => {
+      const invalidHours = [25, -1, '8', null, undefined, false]
+      for (const value of invalidHours) {
+        await expect(hourSchema.validate(value)).rejects.toEqual(
+          new ValidationError('Horaire incorrecte')
+        )
+      }
+    })
+  })
+
+  describe('should validate', () => {
+    it('when value is a valid hour', async () => {
+      const validHours = [0, 1, 12, 23]
+      for (const value of validHours) {
+        expect(await hourSchema.validate(value)).toEqual(value)
+      }
+    })
+
+    it('when there is only one value and this is a valid hour', async () => {
+      const validHours = 12
+
+      expect(await hourSchema.validate(validHours)).toEqual(validHours)
+    })
+  })
+})
+
+describe('hoursSchema', () => {
+  describe('should fail', () => {
+    it('when value is not an array of two valid hours', async () => {
+      const invalidValues = [
+        [undefined, null],
+        ['8', '12'],
+      ]
+      for (const value of invalidValues) {
+        await expect(hoursSchema.validate(value)).rejects.toEqual(
+          new ValidationError('Horaires incorrectes')
+        )
+      }
+    })
+  })
+
+  describe('should validate', () => {
+    it('when value is an array of two valid hours', async () => {
+      const validValues = [
+        [0, 1],
+        [12, 15],
+        [23, 22],
+      ]
+      for (const value of validValues) {
+        expect(await hoursSchema.validate(value)).toEqual(value)
+      }
+    })
+
+    it('when we have only un array of two valid hours', async () => {
+      const validValues = [0, 1]
+
+      expect(await hoursSchema.validate(validValues)).toEqual(validValues)
+    })
+  })
+})
 
 describe('datesHoursSchema', () => {
   describe('should fail', () => {

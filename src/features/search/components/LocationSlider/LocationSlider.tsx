@@ -1,25 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
-import { Slider } from 'ui/components/inputs/Slider'
+import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
 export type LocationSliderProps = {
-  defaultValue: number
-  onChange: (nextAroundRadius: number[]) => void
+  value: ValuesType
+  onChange?: (nextAroundRadius: ValuesType) => void
 }
 
 const formatKm = (km: number) => `${km}\u00a0km`
 
-export function LocationSlider({
-  defaultValue = MAX_RADIUS,
-  onChange,
-}: Readonly<LocationSliderProps>) {
-  const [internalValue, setInternalValue] = useState<number[]>([defaultValue])
+export function LocationSlider({ field }: { field: LocationSliderProps }) {
+  const { value = [MAX_RADIUS], onChange } = field
   const radiusLabelId = uuidv4()
   const { sliderLength } = useGetFullscreenModalSliderLength()
 
@@ -28,16 +25,16 @@ export function LocationSlider({
       <Spacer.Column numberOfSpaces={4} />
       <LabelRadiusContainer nativeID={radiusLabelId}>
         <Typo.Body>Dans un rayon de&nbsp;:</Typo.Body>
-        <Typo.ButtonText>{`${internalValue}\u00a0km`}</Typo.ButtonText>
+        <Typo.ButtonText>{`${value}\u00a0km`}</Typo.ButtonText>
       </LabelRadiusContainer>
 
       <Spacer.Column numberOfSpaces={2} />
 
       <Slider
         showValues={false}
-        values={[defaultValue]}
+        values={value}
         max={MAX_RADIUS}
-        onValuesChange={setInternalValue}
+        onValuesChange={onChange}
         onValuesChangeFinish={onChange}
         shouldShowMinMaxValues
         minMaxValuesComplement="&nbsp;km"
