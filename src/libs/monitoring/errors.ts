@@ -20,10 +20,8 @@ export class MonitoringError extends Error {
     if (name) {
       this.name = name
     }
-    console.info('MonitoringError')
 
     if (shouldBeCapturedAsInfo) {
-      console.info('eventMonitoring.captureMessage(', this.message, ', "info")')
       eventMonitoring.captureMessage(this.message, 'info')
     }
 
