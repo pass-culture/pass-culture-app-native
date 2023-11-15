@@ -20,12 +20,15 @@ export class MonitoringError extends Error {
     if (name) {
       this.name = name
     }
+    console.info('MonitoringError')
 
     if (shouldBeCapturedAsInfo) {
+      console.info('eventMonitoring.captureMessage(', this.message, ', "info")')
       eventMonitoring.captureMessage(this.message, 'info')
     }
 
     if (!skipLogging && !shouldBeCapturedAsInfo) {
+      console.error('eventMonitoring.captureException(', this, captureContext, ')')
       eventMonitoring.captureException(this, captureContext)
     }
   }
@@ -47,9 +50,15 @@ export class AsyncError extends MonitoringError {
   retry?: () => Promise<unknown> | void
   constructor(
     message: string,
-    { name = 'AsyncError', captureContext, retry, shouldBeCapturedAsInfo }: AsyncErrorInfo = {}
+    {
+      name = 'AsyncError',
+      captureContext,
+      retry,
+      skipLogging,
+      shouldBeCapturedAsInfo,
+    }: AsyncErrorInfo = {}
   ) {
-    super(message, { name, captureContext, shouldBeCapturedAsInfo })
+    super(message, { name, captureContext, skipLogging, shouldBeCapturedAsInfo })
     this.retry = retry
   }
 }
@@ -68,7 +77,12 @@ export class ScreenError extends AsyncError {
   Screen: ComponentType<ScreenErrorProps>
   constructor(
     message: string,
-    { name = 'ScreenError', Screen, skipLogging, shouldBeCapturedAsInfo }: ScreenErrorInfo
+    {
+      name = 'ScreenError',
+      Screen,
+      skipLogging = true,
+      shouldBeCapturedAsInfo = true,
+    }: ScreenErrorInfo
   ) {
     super(message, { name, skipLogging, shouldBeCapturedAsInfo })
     this.Screen = Screen
@@ -80,7 +94,7 @@ ScreenError.prototype.name = 'ScreenError'
 export class OfferNotFoundError extends ScreenError {
   constructor(
     offerId: number | undefined,
-    { Screen, callback, shouldBeCapturedAsInfo }: ScreenErrorInfo
+    { Screen, callback, shouldBeCapturedAsInfo = true }: ScreenErrorInfo
   ) {
     const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
     super(message, { Screen, callback, shouldBeCapturedAsInfo })
@@ -90,7 +104,7 @@ export class OfferNotFoundError extends ScreenError {
 export class VenueNotFoundError extends ScreenError {
   constructor(
     venueId: number | undefined,
-    { Screen, callback, shouldBeCapturedAsInfo }: ScreenErrorInfo
+    { Screen, callback, shouldBeCapturedAsInfo = true }: ScreenErrorInfo
   ) {
     const message = venueId ? `Venue ${venueId} could not be retrieved` : 'venueId is undefined'
     super(message, { Screen, callback, shouldBeCapturedAsInfo })
