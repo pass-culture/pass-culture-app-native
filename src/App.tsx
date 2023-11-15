@@ -26,6 +26,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
+import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
@@ -68,6 +69,7 @@ const App: FunctionComponent = function () {
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })
+    getIsMaestro().then((isMaestro) => isMaestro && LogBox.ignoreAllLogs())
   }, [])
 
   useEffect(() => {
