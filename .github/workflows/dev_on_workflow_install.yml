@@ -7,10 +7,6 @@ on:
         type: string
         required: true
     secrets:
-      GCP_EHP_REGISTRY_SERVICE_ACCOUNT:
-        required: true
-      GCP_EHP_REGISTRY_WORKLOAD_IDENTITY_PROVIDER:
-        required: true
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
