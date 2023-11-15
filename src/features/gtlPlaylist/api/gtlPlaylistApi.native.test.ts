@@ -100,7 +100,7 @@ describe('GTL Playlist API', () => {
 
       expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
         {
-          indexName: 'algoliaOffersIndexName',
+          indexName: 'algoliaVenueOffersIndexName',
           params: {
             attributesToHighlight: [],
             attributesToRetrieve: [
