@@ -18,14 +18,11 @@ import { SameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
+import { getFormattedAddress } from 'features/offer/helpers/getFormattedAddress/getFormattedAddress'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import {
-  formatFullAddress,
-  formatFullAddressWithVenueName,
-} from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -240,15 +237,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId] ?? {}
 
   const showVenueBanner = venue.isPermanent === true
-  const fullAddress = showVenueBanner
-    ? formatFullAddress(venue.address, venue.postalCode, venue.city)
-    : formatFullAddressWithVenueName(
-        venue.address,
-        venue.postalCode,
-        venue.city,
-        venue.publicName,
-        venue.name
-      )
+  const fullAddress = getFormattedAddress(venue, showVenueBanner)
 
   const dates = extractStockDates(offer)
   const formattedDate = getFormattedDates(dates)
