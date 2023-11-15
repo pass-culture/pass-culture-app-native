@@ -22,16 +22,6 @@ jest.mock('react-native/Libraries/Alert/Alert', () => ({
   alert: jest.fn(),
 }))
 
-/* Links cannot be opened in node.js environment */
-jest.mock('react-native/Libraries/Linking/Linking', () => ({
-  addEventListener: jest.fn(),
-  canOpenURL: jest.fn().mockResolvedValue(true),
-  getInitialURL: jest.fn(),
-  openSettings: jest.fn(),
-  openURL: jest.fn(),
-  removeEventListener: jest.fn(),
-}))
-
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
