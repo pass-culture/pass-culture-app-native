@@ -1,0 +1,4 @@
+appId: app.passculture.staging
+---
+- assertVisible: "Confirme ton email"
+- tapOn: "Confirme ton email"

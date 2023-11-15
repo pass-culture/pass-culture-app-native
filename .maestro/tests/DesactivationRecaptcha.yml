@@ -1,0 +1,15 @@
+appId: 'https://passculture.app/accueil'
+---
+- openLink:
+      link: "https://app.staging.passculture.team/"
+      autoVerify: true
+
+#- tapOn: "Se connecter via Google"
+#- tapOn: "Adresse e-mail ou numéro de téléphone"
+#- inputText: ${PRIVATE_USERNAME}
+#- tapOn: "Suivant"
+#- tapOn: "Saisissez votre mot de passe"
+#- inputText: ${PRIVATE_PASSWORD}
+#- tapOn: "Suivant"
+
+

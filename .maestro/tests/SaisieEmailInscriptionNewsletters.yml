@@ -13,11 +13,15 @@ appId: ${APP_ID}
       when:
           visible: "Revenir en haut de la page"
       file: "reusableFlows/MailNative.yml"
+- swipe:              # This command swipes in the left direction from the middle of the device.
+    direction: DOWN
 - runFlow: reusableFlows/SearchMail.yml # SearchMail Page
 - runFlow:
       when:
           visible: "Afficher le texte des messages précédents"
       file: "reusableFlows/DoublonsMail.yml"
+
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmEmail.yml
 
 - scrollUntilVisible:
     element: "confirmation de l'email"
@@ -29,3 +33,30 @@ appId: ${APP_ID}
 - runFlow: reusableFlows/features/identityCheck/NumberPhone.yml #Number Phone
 
 #ValidationCodePhone
+- runFlow: reusableFlows/StopApp.yml # Stop App
+- runFlow: reusableFlows/LaunchAppGmail.yml # Launch App
+- runFlow:
+    when:
+      visible: "Revenir en haut de la page"
+    file: "reusableFlows/MailNative.yml"
+- swipe:              # This command swipes in the left direction from the middle of the device.
+    direction: DOWN
+- runFlow: reusableFlows/SearchMail.yml # SearchMail Page
+- runFlow:
+    when:
+      visible: "Afficher le texte des messages précédents"
+    file: "reusableFlows/DoublonsMail.yml"
+
+- scrollUntilVisible:
+    element: "Code de validation du téléphone"
+    direction: DOWN
+
+- tapOn: "Code de validation du téléphone"
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+
+
+- copyTextFrom:
+ #   id: "466509 est ton code de confirmation pass Culture"
+    id: ${CODEVALIDPHONE}
+
+- pasteText
