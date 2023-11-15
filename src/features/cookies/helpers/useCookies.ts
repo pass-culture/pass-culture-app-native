@@ -9,10 +9,9 @@ import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoice
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent, ConsentStatus } from 'features/cookies/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { getAppBuildVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
-
-import Package from '../../../../package.json'
 
 const COOKIES_CONSENT_KEY = 'cookies'
 
@@ -50,7 +49,7 @@ export const useCookies = () => {
     const deviceId = await getDeviceId()
 
     const newCookiesChoice: CookiesConsent = {
-      buildVersion: Package.build,
+      buildVersion: getAppBuildVersion(),
       userId: oldCookiesChoice?.userId ?? userProfileInfo?.id,
       deviceId: oldCookiesChoice?.deviceId ?? deviceId,
       choiceDatetime: new Date().toISOString(),
@@ -68,7 +67,7 @@ export const useCookies = () => {
       const newCookiesChoice: CookiesConsent = {
         userId,
         deviceId,
-        buildVersion: Package.build,
+        buildVersion: getAppBuildVersion(),
       }
       await persist(newCookiesChoice)
     } else if (oldCookiesChoice.userId !== userId) {

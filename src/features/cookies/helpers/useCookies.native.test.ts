@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
-import Package from '__mocks__/package.json'
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
@@ -10,10 +9,14 @@ import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTracking
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { eventMonitoring } from 'libs/monitoring'
+import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
+
+const buildVersion = 10010005
+jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -103,7 +106,7 @@ describe('useCookies', () => {
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
       expect(cookiesConsent).toEqual({
-        buildVersion: Package.build,
+        buildVersion,
         deviceId,
         choiceDatetime: TODAY.toISOString(),
         consent: {
@@ -116,7 +119,7 @@ describe('useCookies', () => {
 
     it('should restore cookies consent from the storage', async () => {
       await storage.saveObject(COOKIES_CONSENT_KEY, {
-        buildVersion: Package.build,
+        buildVersion,
         deviceId,
         choiceDatetime: TODAY.toISOString(),
         consent: {
@@ -142,7 +145,7 @@ describe('useCookies', () => {
 
     it('should start tracking accepted cookies when consent is already in storage', async () => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
-        buildVersion: Package.build,
+        buildVersion,
         deviceId,
         choiceDatetime: TODAY.toISOString(),
         consent: {
@@ -227,7 +230,7 @@ describe('useCookies', () => {
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
         expect(cookiesConsent).toEqual({
-          buildVersion: Package.build,
+          buildVersion,
           userId: FAKE_USER_ID,
           deviceId,
           choiceDatetime: TODAY.toISOString(),
@@ -260,7 +263,7 @@ describe('useCookies', () => {
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
         expect(cookiesConsent).toEqual({
-          buildVersion: Package.build,
+          buildVersion,
           userId: FAKE_USER_ID,
           deviceId,
           choiceDatetime: TODAY.toISOString(),
@@ -283,7 +286,7 @@ describe('useCookies', () => {
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
         expect(cookiesConsent).toEqual({
-          buildVersion: Package.build,
+          buildVersion,
           userId: FAKE_USER_ID,
           deviceId,
         })
@@ -323,7 +326,7 @@ describe('useCookies', () => {
         const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
         expect(cookiesConsent).toEqual({
-          buildVersion: Package.build,
+          buildVersion,
           userId: secondUserId,
           deviceId,
           choiceDatetime: TODAY.toISOString(),
@@ -481,7 +484,7 @@ describe('useCookies', () => {
     const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
     expect(cookiesConsent).toEqual({
-      buildVersion: Package.build,
+      buildVersion,
       deviceId: 'device-id-first',
       choiceDatetime: TODAY.toISOString(),
       consent: {

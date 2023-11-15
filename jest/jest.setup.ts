@@ -105,8 +105,6 @@ jest.mock('features/navigation/useGoBack', () =>
 
 jest.mock('libs/jwt')
 
-jest.mock('../package.json')
-
 // Mock files sourced from /public folder (see corresponding /__mock__ folders)
 jest.mock('ui/components/ModuleBanner/backgroundImageSource')
 

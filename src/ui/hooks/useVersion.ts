@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import CodePush from 'react-native-code-push'
 
 import { eventMonitoring } from 'libs/monitoring'
-
-import Package from '../../../package.json'
+import { getAppVersion } from 'libs/packageJson'
 
 export function useVersion() {
   const [codePushLabel, setCodePushLabel] = useState('')
@@ -27,7 +26,7 @@ export function useVersion() {
   // exemple Code Push format : 'v3875' => '3875'
   const shortCodePushLabel = codePushLabel.slice(1)
 
-  let version = `Version\u00A0${Package.version}`
+  let version = `Version\u00A0${getAppVersion()}`
   if (codePushLabel) version += `-${shortCodePushLabel}`
 
   return version

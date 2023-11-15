@@ -1,16 +1,19 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import Package from '__mocks__/package.json'
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics'
+import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+
+const buildVersion = 10010005
+jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const Today = new Date(2022, 9, 29)
@@ -54,7 +57,7 @@ describe('<ConsentSettings/>', () => {
     fireEvent.press(saveChoice)
 
     const storageContent = {
-      buildVersion: Package.build,
+      buildVersion,
       deviceId,
       choiceDatetime: Today.toISOString(),
       consent: {

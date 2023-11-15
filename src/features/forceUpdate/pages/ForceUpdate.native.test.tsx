@@ -3,11 +3,13 @@ import { Linking } from 'react-native'
 
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
+import * as PackageJson from 'libs/packageJson'
 import { fireEvent, render, screen } from 'tests/utils'
 
-import { build } from '../../../../package.json'
-
 import { ForceUpdate } from './ForceUpdate'
+
+const build = 10010005
+jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(build)
 
 describe('<ForceUpdate/>', () => {
   it('should match snapshot', async () => {

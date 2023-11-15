@@ -9,6 +9,7 @@ import { env } from 'libs/environment'
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
+import * as PackageJson from 'libs/packageJson'
 import { mockServer } from 'tests/mswServer'
 
 import {
@@ -23,6 +24,8 @@ import {
   computeTokenRemainingLifetimeInMs,
 } from './apiHelpers'
 import { Configuration, DefaultApi, RefreshResponse } from './gen'
+
+jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
 mockdate.set(CURRENT_DATE)
 

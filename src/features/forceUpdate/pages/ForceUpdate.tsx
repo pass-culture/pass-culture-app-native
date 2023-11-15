@@ -7,6 +7,7 @@ import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBu
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
+import { getAppBuildVersion } from 'libs/packageJson'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -16,14 +17,12 @@ import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
 
-import { build } from '../../../../package.json'
-
 type ForceUpdateProps = {
   resetErrorBoundary: () => void
 }
 
 async function openStore() {
-  await analytics.logClickForceUpdate(build)
+  await analytics.logClickForceUpdate(getAppBuildVersion())
   await openUrl(STORE_LINK)
 }
 
@@ -48,7 +47,7 @@ export const ForceUpdate = ({ resetErrorBoundary }: ForceUpdateProps) => {
   // This one is for when minimalBuildNumber gets back to an older value
   useEffect(() => {
     // it must be false and not null (which means not fetched)
-    if (!!minimalBuildNumber && build >= minimalBuildNumber) {
+    if (!!minimalBuildNumber && getAppBuildVersion() >= minimalBuildNumber) {
       resetErrorBoundary()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
