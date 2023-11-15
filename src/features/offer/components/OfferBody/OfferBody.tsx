@@ -93,7 +93,8 @@ export const OfferBody: FunctionComponent<Props> = ({
   const mapping = useSubcategoriesMapping()
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
-  const shouldDisplaySameArtistPlaylist = !!sameArtistPlaylist && enableSameArtistPlaylist
+  const shouldDisplaySameArtistPlaylist =
+    !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
@@ -358,7 +359,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </AccordionItem>
       </SectionWithDivider>
 
-      {!!shouldDisplaySameArtistPlaylist && (
+      {shouldDisplaySameArtistPlaylist ? (
         <SameArtistPlaylist
           key={offer.id}
           items={sameArtistPlaylist}
@@ -366,7 +367,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           itemHeight={itemHeight}
           renderItem={renderItem}
         />
-      )}
+      ) : null}
 
       {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
         <SectionWithDivider testID="sameCategorySimilarOffers" visible>

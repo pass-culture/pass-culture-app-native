@@ -27,7 +27,6 @@ describe('useSameArtistPlaylist', () => {
           ean: '9782723492607',
         }),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
@@ -49,7 +48,6 @@ describe('useSameArtistPlaylist', () => {
           ean: '9782723492607',
         }),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
@@ -68,7 +66,6 @@ describe('useSameArtistPlaylist', () => {
           ean: '',
         }),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
@@ -90,7 +87,6 @@ describe('useSameArtistPlaylist', () => {
           ean: null,
         }),
       {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )

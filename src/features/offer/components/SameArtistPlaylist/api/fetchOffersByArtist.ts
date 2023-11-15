@@ -43,9 +43,8 @@ export const fetchOffersByArtist = async ({
 export function buildAlgoliaFilter({ artists, ean }: FetchOfferByArtist) {
   const firstArtist = artists?.split(' ; ')[0]
 
-  if (!ean) {
-    return `offer.artist:"${firstArtist}"`
-  }
+  let filterString = `offer.artist:"${firstArtist}"`
+  if (ean) filterString += ` AND NOT offer.ean:"${ean}"`
 
-  return `offer.artist:"${firstArtist}" AND NOT offer.ean:"${ean}"`
+  return filterString
 }
