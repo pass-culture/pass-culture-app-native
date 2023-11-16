@@ -70,6 +70,11 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
     setWidgetWidth(width)
   }
 
+  const onPressLocationButton = () => {
+    hideTooltip()
+    showLocationModal()
+  }
+
   // web resizing on layout
   useEffect(() => {
     if (Platform.OS === 'web' && touchableRef.current) {
@@ -81,6 +86,17 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
   const enableTooltip = screenOrigin === ScreenOrigin.HOME
 
   useEffect(() => {
+    /**
+     * Patch for web: On the web we are not directly geolocated,
+     * we need a little time to recover the user's geolocation.
+     * This condition allows that when the location is retrieved,
+     * the tooltip is directly hidden
+     */
+    if (userPosition) {
+      hideTooltip()
+      return
+    }
+
     if (!enableTooltip) return
 
     const displayTooltipIfNeeded = async () => {
@@ -101,7 +117,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
       clearTimeout(timeoutOff)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
-  }, [])
+  }, [userPosition])
 
   return (
     <React.Fragment>
@@ -115,7 +131,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
       ) : null}
       <LocationButton
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
-        onPress={showLocationModal}
+        onPress={onPressLocationButton}
         testID={testId}
         accessibilityLabel={testId}>
         <NotShrunk>
