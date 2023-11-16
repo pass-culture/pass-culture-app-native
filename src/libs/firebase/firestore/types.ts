@@ -31,6 +31,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_NEW_VENUE_PAGE = 'wipNewVenuePage',
   WIP_OFFER_V2 = 'wipOfferV2',
   WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
-  WIP_SAME_AUTHOR_PLAYLIST = 'wipSameAuthorPlaylist',
+  WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
 }

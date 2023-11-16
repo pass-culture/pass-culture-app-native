@@ -401,6 +401,7 @@ exports[`EndedBookings should render correctly 1`] = `
                     "justifyContent": "center",
                     "width": "100%",
                   },
+                  {},
                 ]
               }
               testID="imagePlaceholder"

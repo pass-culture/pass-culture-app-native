@@ -14,6 +14,7 @@ import {
   joinArrayElement,
   GroupResult,
   formatGroupedDates,
+  capitalizeFirstLetter,
 } from '../formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -458,4 +459,30 @@ describe('formatToCompleteFrenchDate()', () => {
       expect(formatToCompleteFrenchDate(date)).toEqual(expectedString)
     }
   )
+})
+
+describe('capitalizeFirstLetter', () => {
+  it('should capitalize the first letter of a string', () => {
+    const result = capitalizeFirstLetter('hello')
+
+    expect(result).toEqual('Hello')
+  })
+
+  it('should handle an empty string', () => {
+    const result = capitalizeFirstLetter('')
+
+    expect(result).toEqual('')
+  })
+
+  it('should handle a non-string input', () => {
+    const result = capitalizeFirstLetter(undefined)
+
+    expect(result).toEqual(undefined)
+  })
+
+  it('should handle a single-character string', () => {
+    const result = capitalizeFirstLetter('x')
+
+    expect(result).toEqual('X')
+  })
 })

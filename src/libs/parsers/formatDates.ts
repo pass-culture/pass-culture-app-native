@@ -216,3 +216,9 @@ export function getTimeZonedDate(date: Date | string, timezone: string) {
   const utcDate = new Date(date)
   return utcToZonedTime(utcDate, timezone)
 }
+
+export function capitalizeFirstLetter(formattedDate: string | number | undefined) {
+  return typeof formattedDate === 'string'
+    ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
+    : formattedDate
+}
