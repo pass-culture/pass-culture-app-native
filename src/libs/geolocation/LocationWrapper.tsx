@@ -138,7 +138,12 @@ export const LocationWrapper = memo(function LocationWrapper({
 
   useEffect(() => {
     setCustomPosition(place?.geolocation)
-  }, [place?.geolocation, setCustomPosition])
+  }, [
+    place?.geolocation,
+    place?.geolocation?.latitude,
+    place?.geolocation?.longitude,
+    setCustomPosition,
+  ])
 
   useEffect(() => {
     switch (true) {
