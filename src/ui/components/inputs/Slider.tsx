@@ -138,6 +138,7 @@ export function Slider(props: Props) {
   const handleValueChange = useCallback(
     (nextValues: number[]) => {
       if (!isValidValuesType(nextValues)) return
+
       props.onValuesChange?.(nextValues)
       setValues(nextValues)
     },
@@ -147,6 +148,7 @@ export function Slider(props: Props) {
   const handleValueChangeFinish = useCallback(
     (nextValues: number[]) => {
       if (!isValidValuesType(nextValues)) return
+
       props.onValuesChangeFinish?.(nextValues)
     },
     [props]

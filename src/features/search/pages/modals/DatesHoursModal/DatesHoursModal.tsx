@@ -18,6 +18,7 @@ import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import {
   datesHoursSchema,
   Hour,
+  hoursSchema,
 } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { SearchState, SearchView } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
@@ -92,7 +93,9 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
         ? new Date(searchState.date?.selectedDate)
         : undefined,
       hasSelectedHours: !!searchState.timeRange,
-      selectedHours: (searchState.timeRange as [Hour, Hour]) ?? DEFAULT_TIME_VALUE,
+      selectedHours: hoursSchema.isValidSync(searchState.timeRange)
+        ? searchState.timeRange
+        : DEFAULT_TIME_VALUE,
     }
   }, [searchState.date, searchState.timeRange])
 

@@ -8,66 +8,45 @@ import {
 } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 
 describe('hourSchema', () => {
-  describe('should fail', () => {
-    it('when value is not a valid hour', async () => {
-      const invalidHours = [25, -1, '8', null, undefined, false]
-      for (const value of invalidHours) {
-        await expect(hourSchema.validate(value)).rejects.toEqual(
-          new ValidationError('Horaire incorrecte')
-        )
-      }
-    })
+  it.each`
+    value
+    ${25} | ${-1} | ${'8'} | ${null} | ${undefined} | ${false}
+  `('hourSchema should fail when value ($value) is not a valid hour', async ({ value }) => {
+    await expect(hourSchema.validate(value)).rejects.toEqual(
+      new ValidationError('Horaire incorrecte')
+    )
   })
 
-  describe('should validate', () => {
-    it('when value is a valid hour', async () => {
-      const validHours = [0, 1, 12, 23]
-      for (const value of validHours) {
-        expect(await hourSchema.validate(value)).toEqual(value)
-      }
-    })
-
-    it('when there is only one value and this is a valid hour', async () => {
-      const validHours = 12
-
-      expect(await hourSchema.validate(validHours)).toEqual(validHours)
-    })
+  it.each`
+    value
+    ${0}  | ${1} | ${12} | ${23} | ${24}
+  `('hourSchema should validate when value ($value) is a valid hour', ({ value }) => {
+    expect(hourSchema.validateSync(value)).toEqual(value)
   })
 })
 
 describe('hoursSchema', () => {
-  describe('should fail', () => {
-    it('when value is not an array of two valid hours', async () => {
-      const invalidValues = [
-        [undefined, null],
-        ['8', '12'],
-      ]
-      for (const value of invalidValues) {
-        await expect(hoursSchema.validate(value)).rejects.toEqual(
-          new ValidationError('Horaires incorrectes')
-        )
-      }
-    })
-  })
+  it.each`
+    value
+    ${[undefined, null]} | ${['8', '12']}
+  `(
+    'hoursSchema should fail when value ($value) is not an array of two valid hours',
+    async ({ value }) => {
+      await expect(hoursSchema.validate(value)).rejects.toEqual(
+        new ValidationError('Horaires incorrectes')
+      )
+    }
+  )
 
-  describe('should validate', () => {
-    it('when value is an array of two valid hours', async () => {
-      const validValues = [
-        [0, 1],
-        [12, 15],
-        [23, 22],
-      ]
-      for (const value of validValues) {
-        expect(await hoursSchema.validate(value)).toEqual(value)
-      }
-    })
-
-    it('when we have only un array of two valid hours', async () => {
-      const validValues = [0, 1]
-
-      expect(await hoursSchema.validate(validValues)).toEqual(validValues)
-    })
-  })
+  it.each`
+    value
+    ${[0, 1]} | ${[12, 15]} | ${[23, 22]} | ${[0, 24]}
+  `(
+    'hoursSchema should validate when value ($value) is an array of two valid hours',
+    ({ value }) => {
+      expect(hoursSchema.validateSync(value)).toEqual(value)
+    }
+  )
 })
 
 describe('datesHoursSchema', () => {

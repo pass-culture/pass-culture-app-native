@@ -96,6 +96,17 @@ function isValidAroundRadius(value: unknown): value is [number] {
   )
 }
 
+function getValidAroundRadius(searchState: SearchState): [number] {
+  if (searchState.locationFilter.locationType === LocationType.AROUND_ME) {
+    const aroundRadius = searchState.locationFilter.aroundRadius
+    if (typeof aroundRadius === 'number') {
+      return [aroundRadius]
+    }
+  }
+
+  return [MAX_RADIUS]
+}
+
 export const LocationModal: FunctionComponent<LocationModalProps> = ({
   title,
   accessibilityLabel,
@@ -134,10 +145,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const defaultValues = useMemo(() => {
     return {
       locationChoice: getLocationChoice(searchState.locationFilter.locationType),
-      aroundRadius:
-        searchState.locationFilter.locationType === LocationType.AROUND_ME
-          ? ([searchState.locationFilter.aroundRadius || MAX_RADIUS] as [number])
-          : ([MAX_RADIUS] as [number]),
+      aroundRadius: getValidAroundRadius(searchState),
       searchPlaceOrVenue: getPlaceOrVenueLabel(searchState),
       selectedPlaceOrVenue: getPlaceOrVenue(searchState),
     }

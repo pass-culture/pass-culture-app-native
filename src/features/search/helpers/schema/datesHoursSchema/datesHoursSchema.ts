@@ -2,7 +2,7 @@ import { array, boolean, date, mixed, object, string } from 'yup'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 
-export const HOURS = [
+const HOURS = [
   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
 ] as const
 type Hours = typeof HOURS
