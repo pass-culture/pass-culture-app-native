@@ -70,6 +70,11 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
     setWidgetWidth(width)
   }
 
+  const onPressLocationButton = () => {
+    hideTooltip()
+    showLocationModal()
+  }
+
   // web resizing on layout
   useEffect(() => {
     if (Platform.OS === 'web' && touchableRef.current) {
@@ -126,7 +131,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
       ) : null}
       <LocationButton
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}
-        onPress={showLocationModal}
+        onPress={onPressLocationButton}
         testID={testId}
         accessibilityLabel={testId}>
         <NotShrunk>
