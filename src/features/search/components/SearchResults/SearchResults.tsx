@@ -156,7 +156,7 @@ export const SearchResults: React.FC = () => {
   const renderItem = useCallback(
     ({ item, style, index }: RenderItemProps<Offer, unknown>) => {
       return (
-        <Li style={style as ComponentProps<typeof Li>['style']}>
+        <View style={style as ComponentProps<typeof Li>['style']}>
           <StyledHorizontalOfferTile
             offer={item}
             analyticsParams={{
@@ -167,7 +167,7 @@ export const SearchResults: React.FC = () => {
             }}
           />
           <StyledHorizontalSeparator />
-        </Li>
+        </View>
       )
     },
     [searchState.query, searchState.searchId]

@@ -558,130 +558,136 @@ exports[`SearchResults component should render correctly 1`] = `
                 </div>
               </li>
               <li
-                class="css-view-175oi2r r-display-ixj5dj"
-                role="listitem"
+                data-itemindex="1"
                 style="position: absolute; left: 0px; top: 0px; height: 130px; width: 100%;"
               >
                 <div
-                  aria-label="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                  data-testid="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                  style="transition-duration: 0s;"
-                  tabindex="0"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                  />
-                  <div
-                    class="css-view-175oi2r r-width-1janqcz"
-                  />
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    aria-label="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
+                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
+                    data-testid="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
+                    style="transition-duration: 0s;"
+                    tabindex="0"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                      class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
+                    />
+                    <div
+                      class="css-view-175oi2r r-width-1janqcz"
+                    />
+                    <div
+                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     >
                       <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                       >
                         <div
-                          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                          dir="ltr"
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
                         >
-                          La nuit des temps
+                          <div
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            dir="ltr"
+                          >
+                            La nuit des temps
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                        >
+                          <div
+                            class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                            dir="ltr"
+                          >
+                            900+ km
+                          </div>
                         </div>
                       </div>
                       <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                        class="css-view-175oi2r r-height-hdaws3"
+                      />
+                      <div
+                        class="css-view-175oi2r r-height-hdaws3"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                        dir="ltr"
                       >
-                        <div
-                          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                          dir="ltr"
-                        >
-                          900+ km
-                        </div>
+                        0,28 €
                       </div>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                      dir="ltr"
-                    >
-                      0,28 €
                     </div>
                   </div>
+                  <div
+                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
+                  />
                 </div>
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-                />
               </li>
               <li
-                class="css-view-175oi2r r-display-ixj5dj"
-                role="listitem"
+                data-itemindex="2"
                 style="position: absolute; left: 0px; top: 130px; height: 130px; width: 100%;"
               >
                 <div
-                  aria-label="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                  data-testid="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                  style="transition-duration: 0s;"
-                  tabindex="0"
+                  class="css-view-175oi2r"
                 >
                   <div
-                    class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                  />
-                  <div
-                    class="css-view-175oi2r r-width-1janqcz"
-                  />
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    aria-label="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
+                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
+                    data-testid="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
+                    style="transition-duration: 0s;"
+                    tabindex="0"
                   >
                     <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                      class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
+                    />
+                    <div
+                      class="css-view-175oi2r r-width-1janqcz"
+                    />
+                    <div
+                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                     >
                       <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                       >
                         <div
-                          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                          dir="ltr"
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
                         >
-                          I want something more
+                          <div
+                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                            dir="ltr"
+                          >
+                            I want something more
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                        >
+                          <div
+                            class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                            dir="ltr"
+                          >
+                            900+ km
+                          </div>
                         </div>
                       </div>
                       <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                        class="css-view-175oi2r r-height-hdaws3"
+                      />
+                      <div
+                        class="css-view-175oi2r r-height-hdaws3"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                        dir="ltr"
                       >
-                        <div
-                          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                          dir="ltr"
-                        >
-                          900+ km
-                        </div>
+                        0,23 €
                       </div>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                      dir="ltr"
-                    >
-                      0,23 €
                     </div>
                   </div>
+                  <div
+                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
+                  />
                 </div>
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-                />
               </li>
             </ul>
           </div>
@@ -1274,130 +1280,136 @@ exports[`SearchResults component should render correctly 1`] = `
               </div>
             </li>
             <li
-              class="css-view-175oi2r r-display-ixj5dj"
-              role="listitem"
+              data-itemindex="1"
               style="position: absolute; left: 0px; top: 0px; height: 130px; width: 100%;"
             >
               <div
-                aria-label="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                data-testid="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                style="transition-duration: 0s;"
-                tabindex="0"
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                />
-                <div
-                  class="css-view-175oi2r r-width-1janqcz"
-                />
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                  aria-label="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
+                  data-testid="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
+                  style="transition-duration: 0s;"
+                  tabindex="0"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
+                  />
+                  <div
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
+                  <div
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   >
                     <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                        dir="ltr"
+                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
                       >
-                        La nuit des temps
+                        <div
+                          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                          dir="ltr"
+                        >
+                          La nuit des temps
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                      >
+                        <div
+                          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                          dir="ltr"
+                        >
+                          900+ km
+                        </div>
                       </div>
                     </div>
                     <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      dir="ltr"
                     >
-                      <div
-                        class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                        dir="ltr"
-                      >
-                        900+ km
-                      </div>
+                      0,28 €
                     </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-hdaws3"
-                  />
-                  <div
-                    class="css-view-175oi2r r-height-hdaws3"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
-                  >
-                    0,28 €
                   </div>
                 </div>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
+                />
               </div>
-              <div
-                class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-              />
             </li>
             <li
-              class="css-view-175oi2r r-display-ixj5dj"
-              role="listitem"
+              data-itemindex="2"
               style="position: absolute; left: 0px; top: 130px; height: 130px; width: 100%;"
             >
               <div
-                aria-label="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                data-testid="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                style="transition-duration: 0s;"
-                tabindex="0"
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                />
-                <div
-                  class="css-view-175oi2r r-width-1janqcz"
-                />
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                  aria-label="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
+                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
+                  data-testid="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
+                  style="transition-duration: 0s;"
+                  tabindex="0"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                    class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
+                  />
+                  <div
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
+                  <div
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   >
                     <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                        dir="ltr"
+                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
                       >
-                        I want something more
+                        <div
+                          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                          dir="ltr"
+                        >
+                          I want something more
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                      >
+                        <div
+                          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                          dir="ltr"
+                        >
+                          900+ km
+                        </div>
                       </div>
                     </div>
                     <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      dir="ltr"
                     >
-                      <div
-                        class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                        dir="ltr"
-                      >
-                        900+ km
-                      </div>
+                      0,23 €
                     </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-hdaws3"
-                  />
-                  <div
-                    class="css-view-175oi2r r-height-hdaws3"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
-                  >
-                    0,23 €
                   </div>
                 </div>
+                <div
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
+                />
               </div>
-              <div
-                class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-              />
             </li>
           </ul>
         </div>
