@@ -13,14 +13,10 @@ import { LayoutChangeEvent, View } from 'react-native'
 import { FixedSizeList, ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
+import { getFocusedItemIndex } from 'ui/components/OptimizedList/utils'
 import { VerticalUl } from 'ui/components/Ul'
 
-import {
-  OptimizedListData,
-  OptimizedListItemStyle,
-  OptimizedListProps,
-  OptimizedListRef,
-} from './types'
+import { OptimizedListData, OptimizedListProps, OptimizedListRef } from './types'
 
 function getData<Item, AdditionalData>(
   items: Item[],
@@ -48,8 +44,8 @@ const InternalOptimizedList = <Item, AdditionalData>(
     footerComponent: FooterComponent,
     headerComponent: HeaderComponent,
     onEndReached,
-    endReachedThreshold = 0,
-    testID,
+    endReachedThreshold = itemSize * 2,
+    testID = 'optimized-list-wrapper',
     onScroll,
   }: Readonly<OptimizedListProps<Item, AdditionalData>>,
   ref: ForwardedRef<OptimizedListRef>
@@ -141,11 +137,15 @@ const InternalOptimizedList = <Item, AdditionalData>(
         )
       }
 
-      return renderItemProp({
-        ...renderItemProps,
-        style: renderItemProps.style as OptimizedListItemStyle,
-        item: renderItemProps.data.items[renderItemProps.index],
-      })
+      return (
+        <li style={renderItemProps.style} data-itemindex={renderItemProps.index}>
+          {renderItemProp({
+            ...renderItemProps,
+            style: {},
+            item: renderItemProps.data.items[renderItemProps.index],
+          })}
+        </li>
+      )
     },
     [hasHeader, hasFooter, HeaderComponent, FooterComponent, renderItemProp, data.items.length]
   )
@@ -168,7 +168,7 @@ const InternalOptimizedList = <Item, AdditionalData>(
    * Trigger `onScroll` prop if given, and `onEndReached` method if given and reached bottom.
    */
   const handleScroll = useCallback(
-    (scrollProps: ListOnScrollProps) => {
+    async (scrollProps: ListOnScrollProps) => {
       if (onScroll) {
         onScroll(scrollProps.scrollOffset)
       }
@@ -182,7 +182,22 @@ const InternalOptimizedList = <Item, AdditionalData>(
         const isNearToBottom = scrollPositionFromTop >= triggerPosition
 
         if (isNearToBottom) {
-          onEndReached()
+          const focusedItemIndex = getFocusedItemIndex()
+
+          await onEndReached()
+
+          if (focusedItemIndex) {
+            // A timeout of 10ms should be sufficient to allow us to re-focus element.
+            setTimeout(() => {
+              listRef.current?.scrollToItem(focusedItemIndex, 'center')
+              // We need to re-target it as we cannot re-use the current element,
+              // since it was re-created by the library.
+              document
+                .querySelector(`[data-itemindex="${focusedItemIndex}"]`)
+                ?.querySelector('a')
+                ?.focus()
+            }, 10)
+          }
         }
       }
     },
@@ -190,10 +205,7 @@ const InternalOptimizedList = <Item, AdditionalData>(
   )
 
   return (
-    <OptimizedListWrapper
-      onLayout={onLayout}
-      height={height}
-      testID={testID ?? 'optimized-list-wrapper'}>
+    <OptimizedListWrapper onLayout={onLayout} height={height} testID={testID}>
       {HeaderComponent || FooterComponent ? (
         <VariableSizeList
           ref={listRef}

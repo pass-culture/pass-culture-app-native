@@ -88,6 +88,7 @@ export function SearchList({
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         onEndReached={onEndReached}
+        endReachedThreshold={LIST_ITEM_HEIGHT}
         onScroll={handleScroll}
         headerComponent={SearchListHeaderComponent}
         footerComponent={SearchListFooterComponent}

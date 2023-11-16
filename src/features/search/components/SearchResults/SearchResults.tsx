@@ -138,18 +138,18 @@ export const SearchResults: React.FC = () => {
 
   const [lastPage] = data?.pages?.slice(-1) ?? []
 
-  const handleNextPage = useCallback(() => {
+  const handleNextPage = useCallback(async () => {
     if (hasNextPage) {
       if (lastPage?.offers?.page > 0) {
         analytics.logSearchScrollToPage(lastPage.offers.page, params?.searchId)
       }
-      fetchNextPage()
+      await fetchNextPage()
     }
   }, [fetchNextPage, hasNextPage, lastPage?.offers?.page, params?.searchId])
 
-  const onEndReached = useCallback(() => {
+  const onEndReached = useCallback(async () => {
     if (autoScrollEnabled) {
-      handleNextPage()
+      await handleNextPage()
     }
   }, [autoScrollEnabled, handleNextPage])
 

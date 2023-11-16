@@ -98,7 +98,7 @@ export interface SearchListProps {
   refreshing: boolean
   onRefresh?: VoidFunction
   isFetchingNextPage: boolean
-  onEndReached: VoidFunction
+  onEndReached: VoidFunction | (() => Promise<void>)
   userData: SearchResponse<Offer[]>['userData']
   onPress?: VoidFunction
 }
