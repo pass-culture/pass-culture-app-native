@@ -6,7 +6,7 @@ interface Props {
   onChange: (date: Date | undefined) => void
 }
 
-export function DateChoice(props: Props) {
+export function DateChoice(props: Readonly<Props>) {
   const now = new Date()
   return <DateInput defaultSelectedDate={now} minimumDate={now} onChange={props.onChange} />
 }

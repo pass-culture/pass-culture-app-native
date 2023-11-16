@@ -23,7 +23,7 @@ export function CTAButton({
   externalNav,
   navigateTo,
   isFreeDigitalOffer,
-}: CTAButtonProps) {
+}: Readonly<CTAButtonProps>) {
   const { isLoggedIn } = useAuthContext()
   const commonLinkProps = {
     as: ButtonWithLinearGradient,

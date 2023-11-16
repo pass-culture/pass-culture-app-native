@@ -23,7 +23,7 @@ export function StepCard({
   icon,
   type = StepCardType.ACTIVE,
   ...props
-}: StepCardProps) {
+}: Readonly<StepCardProps>) {
   const hasSubtitle = !!subtitle
   const theme = useTheme()
 

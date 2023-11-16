@@ -10,7 +10,7 @@ export function TicketWithContent({
   booking,
   externalBookings,
   testID,
-}: BookingDetailsTicketContentProps) {
+}: Readonly<BookingDetailsTicketContentProps>) {
   return (
     <ThreeShapesTicket testID={testID}>
       <BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />

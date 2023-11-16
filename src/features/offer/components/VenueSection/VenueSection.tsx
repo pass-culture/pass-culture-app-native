@@ -43,7 +43,12 @@ const mergeVenueData =
     ...(prevData ?? {}),
   })
 
-export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner, title }: Props) {
+export function VenueSection({
+  beforeNavigateToItinerary,
+  venue,
+  showVenueBanner,
+  title,
+}: Readonly<Props>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { latitude: lat, longitude: lng } = venue.coordinates

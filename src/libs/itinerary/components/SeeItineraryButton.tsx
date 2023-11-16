@@ -11,7 +11,7 @@ interface Props {
   onPress?: () => void
 }
 
-export function SeeItineraryButton(props: Props) {
+export function SeeItineraryButton(props: Readonly<Props>) {
   return (
     <Container>
       <ExternalTouchableLink

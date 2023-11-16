@@ -21,7 +21,7 @@ interface GtlPlaylistProps {
   playlist: GTLPlaylistResponse[number]
 }
 
-export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
+export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
   const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()

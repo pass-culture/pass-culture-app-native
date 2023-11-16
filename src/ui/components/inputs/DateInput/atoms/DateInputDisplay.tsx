@@ -13,7 +13,7 @@ interface Props {
   isError?: boolean
 }
 
-export function DateInputDisplay({ date, isError }: Props) {
+export function DateInputDisplay({ date, isError }: Readonly<Props>) {
   const dateInputID = uuidv4()
   const label = 'Date de naissance'
   return (

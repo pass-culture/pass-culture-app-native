@@ -8,7 +8,7 @@ const E2eContext = React.createContext<boolean>(false)
 export function E2eContextProvider({
   children,
 }: {
-  children: React.JSX.Element | React.JSX.Element[]
+  children: Readonly<React.JSX.Element | React.JSX.Element[]>
 }) {
   const [isE2e, setIsE2e] = useState<boolean>(false)
   useEffect(() => {

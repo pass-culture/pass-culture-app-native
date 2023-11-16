@@ -44,7 +44,7 @@ export function PriceLine({
   label,
   shouldDisabledStyles = false,
   attributes,
-}: PriceLineProps) {
+}: Readonly<PriceLineProps>) {
   const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption

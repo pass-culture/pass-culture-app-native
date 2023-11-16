@@ -14,7 +14,7 @@ interface Props {
   onPress: (item: Highlighted<HistoryItem>) => void
 }
 
-export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
+export function SearchHistoryItem({ item, queryHistory, onPress }: Readonly<Props>) {
   const shouldDisplaySearchGroupOrNativeCategory = Boolean(
     item.nativeCategoryLabel || item.categoryLabel
   )

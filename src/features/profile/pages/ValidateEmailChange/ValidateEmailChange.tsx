@@ -20,7 +20,10 @@ import { Spacer, Typo } from 'ui/theme'
 
 type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'ValidateEmailChange'>
 
-export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
+export function ValidateEmailChange({
+  route: { params },
+  navigation,
+}: Readonly<ValidateEmailChangeProps>) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 

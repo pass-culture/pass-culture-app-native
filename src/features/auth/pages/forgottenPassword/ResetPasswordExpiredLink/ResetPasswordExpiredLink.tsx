@@ -14,7 +14,7 @@ import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
-export function ResetPasswordExpiredLink(props: Props) {
+export function ResetPasswordExpiredLink(props: Readonly<Props>) {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { email } = props.route.params

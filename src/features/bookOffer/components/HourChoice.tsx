@@ -29,7 +29,7 @@ export function HourChoice({
   hasSeveralPrices,
   features,
   index,
-}: Props) {
+}: Readonly<Props>) {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
   const priceWording = getHourWording(price, isBookable, enoughCredit, hasSeveralPrices)

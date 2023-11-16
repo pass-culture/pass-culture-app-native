@@ -8,7 +8,7 @@ type TicketCodeProps = {
   withdrawalType?: WithdrawalTypeEnum
 }
 
-export function TicketCode({ code, withdrawalType }: TicketCodeProps) {
+export function TicketCode({ code, withdrawalType }: Readonly<TicketCodeProps>) {
   if (withdrawalType === undefined || withdrawalType === WithdrawalTypeEnum.on_site) {
     return <TicketCodeTitle>{code}</TicketCodeTitle>
   }

@@ -41,7 +41,12 @@ const useWaveAnimation = (width: number) => {
 const start = { x: 0, y: 0 }
 const end = { x: 1, y: 0 }
 
-function UnmemoizedSkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
+function UnmemoizedSkeletonTile({
+  width,
+  height,
+  borderRadius,
+  fullWidth,
+}: Readonly<DimensionProps>) {
   const translateX = useWaveAnimation(width)
   const { uniqueColors } = useTheme()
   const colors = [

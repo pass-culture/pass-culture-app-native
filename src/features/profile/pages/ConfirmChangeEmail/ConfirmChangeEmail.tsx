@@ -17,7 +17,10 @@ import { Spacer, Typo } from 'ui/theme'
 
 type ConfirmChangeEmailProps = NativeStackScreenProps<RootStackParamList, 'ConfirmChangeEmail'>
 
-export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmChangeEmailProps) {
+export function ConfirmChangeEmail({
+  route: { params },
+  navigation,
+}: Readonly<ConfirmChangeEmailProps>) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 

@@ -14,7 +14,7 @@ type AutocompleteVenueItemProps = {
   onPress: () => Promise<void>
 }
 
-export function AutocompleteVenueItem({ hit, onPress }: AutocompleteVenueItemProps) {
+export function AutocompleteVenueItem({ hit, onPress }: Readonly<AutocompleteVenueItemProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
 
   async function handlePress() {

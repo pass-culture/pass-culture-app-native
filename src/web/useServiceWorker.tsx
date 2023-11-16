@@ -139,9 +139,9 @@ export function ServiceWorkerProvider({
   fileName,
   registrationOptions,
 }: {
-  children: React.ReactNode
-  fileName: string
-  registrationOptions?: RegistrationOptions
+  children: Readonly<React.ReactNode>
+  fileName: Readonly<string>
+  registrationOptions?: Readonly<RegistrationOptions>
 }) {
   const serviceWorker = useProvideServiceWorker(fileName, registrationOptions)
   return (

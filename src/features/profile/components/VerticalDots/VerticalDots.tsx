@@ -121,7 +121,7 @@ export function VerticalDots({
   testID,
   firstDotSize = dotSize,
   lastDotSize = dotSize,
-}: VerticalDotsProps) {
+}: Readonly<VerticalDotsProps>) {
   const dotCount = getDotCount({
     dotHeight: getDotHeight(dotSize),
     minimumDotSpacing,

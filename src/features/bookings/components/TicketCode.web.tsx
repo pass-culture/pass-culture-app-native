@@ -9,7 +9,7 @@ type TicketCodeProps = {
   withdrawalType?: WithdrawalTypeEnum
 }
 
-export function TicketCode({ code, withdrawalType }: TicketCodeProps) {
+export function TicketCode({ code, withdrawalType }: Readonly<TicketCodeProps>) {
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const copyToClipboard = useCallback(() => {

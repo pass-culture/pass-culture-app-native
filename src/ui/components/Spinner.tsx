@@ -7,7 +7,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 
 const USE_NATIVE_DRIVER = Platform.select({ default: false, ios: true, android: true })
 
-function NotMemoizedSpinner({ size, color, testID }: IconInterface) {
+function NotMemoizedSpinner({ size, color, testID }: Readonly<IconInterface>) {
   const animatedValue = useRef(new Animated.Value(0)).current
   const spin = animatedValue.interpolate({
     inputRange: [0, 1],

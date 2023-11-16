@@ -14,12 +14,14 @@ const imageHeight = getSpacing(24) // ratio 2/3
 const bookingImageWidth = getSpacing(18)
 const bookingImageHeight = getSpacing(28)
 
-function BasePlaceholder(props: {
-  height: number
-  width: number
-  radius?: number
-  fullWidth?: boolean
-}) {
+function BasePlaceholder(
+  props: Readonly<{
+    height: number
+    width: number
+    radius?: number
+    fullWidth?: boolean
+  }>
+) {
   return (
     <SkeletonTile
       borderRadius={props.radius ?? borderRadius}
@@ -30,7 +32,7 @@ function BasePlaceholder(props: {
   )
 }
 
-function TextPlaceholder({ width, height }: { width: number; height?: number }) {
+function TextPlaceholder({ width, height }: Readonly<{ width: number; height?: number }>) {
   return <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
 }
 

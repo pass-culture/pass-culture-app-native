@@ -12,7 +12,7 @@ type ProfileHeaderProps = {
   user?: UserProfileResponse
 }
 
-export function ProfileHeader(props: ProfileHeaderProps) {
+export function ProfileHeader(props: Readonly<ProfileHeaderProps>) {
   const { user } = props
   const { isLoggedIn } = useAuthContext()
 

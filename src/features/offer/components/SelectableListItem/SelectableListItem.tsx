@@ -25,7 +25,7 @@ export function SelectableListItem({
   onSelect,
   render,
   ...props
-}: SelectableListItemProps) {
+}: Readonly<SelectableListItemProps>) {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { onMouseEnter, onMouseLeave, isHover } = useHandleHover()
 

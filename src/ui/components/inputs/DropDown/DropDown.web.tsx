@@ -30,7 +30,7 @@ export function DropDown({
   accessibilityLabel,
   isError = false,
   value,
-}: Props) {
+}: Readonly<Props>) {
   const [isEmpty, setIsEmpty] = useState(!value)
 
   const onChangeDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {

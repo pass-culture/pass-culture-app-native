@@ -52,7 +52,7 @@ export function CategoriesSection<
   onSelect,
   onSubmit,
   value,
-}: CategoriesSectionProps<T, N>) {
+}: Readonly<CategoriesSectionProps<T, N>>) {
   const { data: subcategoriesData } = useSubcategories()
   const displaySearchNbFacetResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS

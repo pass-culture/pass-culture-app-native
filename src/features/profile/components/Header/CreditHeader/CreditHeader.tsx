@@ -33,7 +33,7 @@ export function CreditHeader({
   age,
   domainsCredit,
   depositExpirationDate,
-}: CreditHeaderProps) {
+}: Readonly<CreditHeaderProps>) {
   const { homeEntryIdFreeOffers } = useRemoteConfigContext()
   const depositAmount = useDepositAmountsByAge()
   const incomingCreditLabelsMap: Record<number, { label: string; highlightedLabel: string }> = {

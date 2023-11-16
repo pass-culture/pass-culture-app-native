@@ -11,7 +11,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
 
-export function AlreadyBooked({ offer }: { offer: OfferResponse }) {
+export function AlreadyBooked({ offer }: { offer: Readonly<OfferResponse> }) {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
 
   // Change step to confirmation

@@ -30,7 +30,7 @@ const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
-export function Slider(props: Props) {
+export function Slider(props: Readonly<Props>) {
   const sliderContainerRef = useRef<View | null>(null)
 
   const min = props.min || DEFAULT_MIN

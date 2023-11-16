@@ -14,7 +14,7 @@ import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationExpiredLink'>
 
-export function SignupConfirmationExpiredLink(props: Props) {
+export function SignupConfirmationExpiredLink(props: Readonly<Props>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { email } = props.route.params
   const { refetch: signupConfirmationExpiredLinkQuery, isFetching } = useQuery(

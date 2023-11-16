@@ -21,7 +21,7 @@ export function TicketSwiperControls({
   nextTitle,
   onPressPrev,
   onPressNext,
-}: Props) {
+}: Readonly<Props>) {
   const showPrevButton = currentStep > 1
   const showNextButton = currentStep !== numberOfSteps
 

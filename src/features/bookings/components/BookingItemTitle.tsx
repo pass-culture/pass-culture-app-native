@@ -7,7 +7,7 @@ type Props = {
   title: string
 }
 
-export function BookingItemTitle(props: Props) {
+export function BookingItemTitle(props: Readonly<Props>) {
   return (
     <TitleContainer>
       <ButtonText>{props.title}</ButtonText>

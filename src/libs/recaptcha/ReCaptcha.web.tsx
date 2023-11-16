@@ -22,7 +22,7 @@ const css = `
    }
 `
 
-export function ReCaptcha(props: Props) {
+export function ReCaptcha(props: Readonly<Props>) {
   useCaptcha()
 
   const reCaptchaContainerRef = useRef<HTMLDivElement>(null)

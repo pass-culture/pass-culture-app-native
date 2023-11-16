@@ -25,7 +25,7 @@ type SuspendAccountConfirmationProps = NativeStackScreenProps<
 export function SuspendAccountConfirmation({
   route: { params },
   navigation,
-}: SuspendAccountConfirmationProps) {
+}: Readonly<SuspendAccountConfirmationProps>) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 

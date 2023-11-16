@@ -44,7 +44,7 @@ const CreditText = ({ domainsCredit }: Pick<Props, 'domainsCredit'>) => {
   )
 }
 
-export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Props) {
+export function CreditCeilingsModal({ domainsCredit, visible, hideModal }: Readonly<Props>) {
   return (
     <AppInformationModal
       title="Pourquoi cette limite&nbsp;?"

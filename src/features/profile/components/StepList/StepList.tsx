@@ -35,7 +35,7 @@ function getVariantFromIndex(activeStepIndex: number, stepIndex: number) {
  *   </Step>
  * </StepList>
  */
-export function StepList({ activeStepIndex, children, ...props }: StepListProps) {
+export function StepList({ activeStepIndex, children, ...props }: Readonly<StepListProps>) {
   if (activeStepIndex > children.length - 1) {
     console.warn(
       `[StepList] - Given (\`activeStepIndex\`: ${activeStepIndex}) but children length is ${

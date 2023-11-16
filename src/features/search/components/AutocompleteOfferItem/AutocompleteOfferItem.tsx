@@ -35,7 +35,7 @@ export function AutocompleteOfferItem({
   sendEvent,
   addSearchHistory,
   shouldShowCategory,
-}: AutocompleteOfferItemProps) {
+}: Readonly<AutocompleteOfferItemProps>) {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =

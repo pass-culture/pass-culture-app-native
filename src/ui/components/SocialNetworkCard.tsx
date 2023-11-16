@@ -11,7 +11,7 @@ interface SocialNetworkCardProps {
   network: SocialNetwork
 }
 
-function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
+function SocialNetworkCardComponent(props: Readonly<SocialNetworkCardProps>) {
   const { network } = props
   const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
   const name = network[0].toUpperCase() + network.slice(1)

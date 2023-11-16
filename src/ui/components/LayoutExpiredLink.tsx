@@ -24,7 +24,7 @@ export function LayoutExpiredLink({
   urlFAQ,
   contactSupport,
   customBodyText,
-}: Props) {
+}: Readonly<Props>) {
   return (
     <GenericInfoPage
       title="Oups&nbsp;!"

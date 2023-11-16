@@ -30,7 +30,7 @@ interface Props {
   playlists?: GTLPlaylistResponse
 }
 
-export function VenueBody({ venueId, onScroll, playlists }: Props) {
+export function VenueBody({ venueId, onScroll, playlists }: Readonly<Props>) {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)

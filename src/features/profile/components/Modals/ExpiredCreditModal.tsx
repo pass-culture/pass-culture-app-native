@@ -8,7 +8,7 @@ type Props = {
   hideModal: () => void
 }
 
-export function ExpiredCreditModal({ visible, hideModal }: Props) {
+export function ExpiredCreditModal({ visible, hideModal }: Readonly<Props>) {
   return (
     <AppInformationModal
       title="Mon crédit est expiré, que faire&nbsp;?"

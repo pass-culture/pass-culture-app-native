@@ -11,7 +11,7 @@ type Dimensions = Omit<LayoutRectangle, 'x' | 'y'>
 /**
  * This component is just a full flex wrapper that gives props to `VerticalDotProps`
  */
-export function AutomaticVerticalDots(props: AutomaticVerticalDotsProps) {
+export function AutomaticVerticalDots(props: Readonly<AutomaticVerticalDotsProps>) {
   const [{ width, height }, setDimensions] = useState<Dimensions>({
     width: 0,
     height: 0,

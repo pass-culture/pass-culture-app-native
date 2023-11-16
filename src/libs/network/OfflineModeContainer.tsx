@@ -6,7 +6,7 @@ import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 const THIRTY_SECONDS = 15000
 
-export function OfflineModeContainer({ children }: { children: ReactNode }) {
+export function OfflineModeContainer({ children }: { children: Readonly<ReactNode> }) {
   const netInfo = useNetInfoContext()
   const [show, setShow] = useState(!netInfo.isConnected)
   const isInternetReachable = useRef(netInfo.isInternetReachable)

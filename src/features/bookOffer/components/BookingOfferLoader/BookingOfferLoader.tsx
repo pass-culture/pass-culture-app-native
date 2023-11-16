@@ -9,7 +9,7 @@ type BookingOfferLoaderProps = {
   message?: string
 }
 
-export function BookingOfferLoader({ message }: BookingOfferLoaderProps) {
+export function BookingOfferLoader({ message }: Readonly<BookingOfferLoaderProps>) {
   const theme = useTheme()
 
   return (

@@ -29,7 +29,7 @@ type RadioButtonIconProps = {
   isLoading?: boolean
 }
 
-function RadioButtonIcon({ isSelected, isLoading }: RadioButtonIconProps) {
+function RadioButtonIcon({ isSelected, isLoading }: Readonly<RadioButtonIconProps>) {
   const { isMobileViewport, icons } = useTheme()
   const ValidateOff = isMobileViewport ? ValidateOffIcon : Fragment
 
@@ -44,7 +44,7 @@ function RadioButtonIcon({ isSelected, isLoading }: RadioButtonIconProps) {
   return <ValidateOff />
 }
 
-export function RadioButton(props: RadioButtonProps) {
+export function RadioButton(props: Readonly<RadioButtonProps>) {
   const containerRef = useRef(null)
   const { isMobileViewport } = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()

@@ -11,7 +11,7 @@ type BeneficiaryCeilingsProps = {
   domainsCredit: DomainsCredit
 }
 
-export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps) {
+export function BeneficiaryCeilings({ domainsCredit }: Readonly<BeneficiaryCeilingsProps>) {
   const isUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return null

@@ -11,7 +11,7 @@ type Props = {
   theme: ComputedTheme
 }
 
-export function ThemeProvider({ children, theme }: Props) {
+export function ThemeProvider({ children, theme }: Readonly<Props>) {
   const computedTheme = useComputedTheme(theme)
   return (
     <ThemeProviderWeb theme={computedTheme}>
