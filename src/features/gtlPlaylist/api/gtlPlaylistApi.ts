@@ -53,7 +53,7 @@ export async function fetchOffersFromGTLPlaylist(
 
   // Build a query list to send to Algolia
   const queries = paramList.map((params) => ({
-    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+    indexName: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
