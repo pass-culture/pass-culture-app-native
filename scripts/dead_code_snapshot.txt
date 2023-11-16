@@ -146,14 +146,14 @@ src/libs/monitoring/sentry.ts:12 - SDK_VERSION
 src/libs/parsers/culturalSurveyType.ts:6 - MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON (used in module)
 src/libs/parsers/index.ts:6 - getHumanizeRelativeDistance
 src/libs/parsers/index.ts:33 - humanizeDistance
-src/libs/parsers/index.ts:89 - groupByYearAndMonth
-src/libs/parsers/index.ts:118 - joinArrayElement
-src/libs/parsers/index.ts:133 - formatGroupedDates
-src/libs/parsers/index.ts:42 - decomposeDate
-src/libs/parsers/index.ts:63 - getUniqueSortedTimestamps
-src/libs/parsers/index.ts:82 - GroupResult
-src/libs/parsers/index.ts:173 - formatDatePeriod
-src/libs/parsers/index.ts:211 - localizeUTCDate
+src/libs/parsers/index.ts:87 - groupByYearAndMonth
+src/libs/parsers/index.ts:116 - joinArrayElement
+src/libs/parsers/index.ts:131 - formatGroupedDates
+src/libs/parsers/index.ts:40 - decomposeDate
+src/libs/parsers/index.ts:61 - getUniqueSortedTimestamps
+src/libs/parsers/index.ts:80 - GroupResult
+src/libs/parsers/index.ts:171 - formatDatePeriod
+src/libs/parsers/index.ts:209 - localizeUTCDate
 src/libs/parsers/index.ts:64 - parseTypeHomeLabel
 src/libs/parsers/index.ts:70 - MAP_TYPE_TO_ICON
 src/libs/place/fetchAddresses.ts:4 - buildSuggestedAddresses (used in module)

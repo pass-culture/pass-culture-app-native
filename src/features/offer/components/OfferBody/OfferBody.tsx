@@ -18,6 +18,7 @@ import { SameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
+import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { getFormattedAddress } from 'features/offer/helpers/getFormattedAddress/getFormattedAddress'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
@@ -32,7 +33,6 @@ import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import {
   capitalizeFirstLetter,
-  extractStockDates,
   formatDates,
   formatDistance,
   getDisplayPrice,
