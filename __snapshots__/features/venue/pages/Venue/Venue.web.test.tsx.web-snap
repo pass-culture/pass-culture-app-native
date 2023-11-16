@@ -279,7 +279,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
             <h1
               aria-label="Nom du lieu : Le Petit Rintintin 1"
               aria-level="1"
-              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
               dir="ltr"
               role="heading"
             >

@@ -56,7 +56,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
         <MarginContainer>
           <VenueTitle
             accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
-            numberOfLines={2}
             adjustsFontSizeToFit
             allowFontScaling={false}>
             {venueName}
