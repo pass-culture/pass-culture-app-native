@@ -14,13 +14,14 @@ type HeroButtonListProps = {
   navigateTo: InternalNavigationProps['navigateTo']
   accessibilityLabel?: string
   onBeforeNavigate?: () => void
+  iconProps?: IconInterface
 }
 
 export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
-    color: theme.colors.primary,
-    color2: theme.colors.secondary,
-    size: theme.icons.sizes.standard,
+    color: props.iconProps?.color ?? theme.colors.primary,
+    color2: props.iconProps?.color2 ?? theme.colors.secondary,
+    size: props.iconProps?.size ?? theme.icons.sizes.standard,
   }))``
 
   return (

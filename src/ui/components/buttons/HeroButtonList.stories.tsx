@@ -6,7 +6,11 @@ import { Text } from 'react-native'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
+import { iconSizes } from 'ui/theme/iconSizes'
 
 const meta: ComponentMeta<typeof HeroButtonList> = {
   title: 'ui/buttons/HeroButtonList',
@@ -54,4 +58,11 @@ HeroButtonListWithCaption.args = {
   Title: description2,
   Subtitle: caption,
   icon: BicolorSmartphone,
+}
+export const HeroButtonListWithCustomIconProps = Template.bind({})
+HeroButtonListWithCustomIconProps.args = {
+  Title: description2,
+  Subtitle: caption,
+  icon: LocationPointer,
+  iconProps: { color: ColorsEnum.BLACK, color2: ColorsEnum.BLACK, size: iconSizes.small },
 }
