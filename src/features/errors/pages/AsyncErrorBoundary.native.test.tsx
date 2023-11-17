@@ -130,6 +130,15 @@ describe('AsyncErrorBoundary component', () => {
       expect(eventMonitoring.captureException).not.toHaveBeenCalled()
     })
   })
+
+  describe('should capture message', () => {
+    it('when error is ScreenError', () => {
+      const error = new ScreenError('error', { Screen: MaintenanceErrorPage })
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith()
+    })
+  })
 })
 
 describe('Usage of AsyncErrorBoundary as fallback in ErrorBoundary', () => {
