@@ -1,3 +1,4 @@
+import Clipboard from '@react-native-clipboard/clipboard'
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -39,6 +40,10 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
 
   const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
 
+  const copyToClipboard = () => {
+    Clipboard.setString(`${venueName}, ${venueFullAddress}`)
+  }
+
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
@@ -68,7 +73,11 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
           <Spacer.Column numberOfSpaces={3} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={3} />
-          <StyledButtonTertiary icon={Duplicate} wording="Copier l’adresse" />
+          <StyledButtonTertiary
+            icon={Duplicate}
+            wording="Copier l’adresse"
+            onPress={copyToClipboard}
+          />
           <Spacer.Column numberOfSpaces={3} />
           <SeeItineraryButton
             externalNav={{
