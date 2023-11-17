@@ -4,13 +4,14 @@ import styled from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
+
+import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from './helpers'
 
 export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   const { email, phoneNumber, website } = venue.contact || {}
