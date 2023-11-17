@@ -1,5 +1,5 @@
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
-import React, { ComponentProps, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { FlatList, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -154,9 +154,9 @@ export const SearchResults: React.FC = () => {
   }, [autoScrollEnabled, handleNextPage])
 
   const renderItem = useCallback(
-    ({ item, style, index }: RenderItemProps<Offer, unknown>) => {
+    ({ item, index }: RenderItemProps<Offer, unknown>) => {
       return (
-        <View style={style as ComponentProps<typeof Li>['style']}>
+        <View>
           <StyledHorizontalOfferTile
             offer={item}
             analyticsParams={{

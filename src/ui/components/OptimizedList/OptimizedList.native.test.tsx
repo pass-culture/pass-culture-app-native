@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 
 import { render, screen } from 'tests/utils'
@@ -17,11 +17,11 @@ function renderOptimizedList<T, AD>(props?: Partial<OptimizedListProps<T, AD>>) 
       itemSize={100}
       items={defaultItems as T[]}
       height={500}
-      renderItem={({ index, data, style }: RenderItemProps<T, AD>) => {
+      renderItem={({ index, data }: RenderItemProps<T, AD>) => {
         const item = data.items[index] as typeof defaultItems[number]
 
         return (
-          <Li key={item.name} style={style as ComponentProps<typeof Li>['style']}>
+          <Li key={item.name}>
             <Typo.Body>{item.name}</Typo.Body>
           </Li>
         )

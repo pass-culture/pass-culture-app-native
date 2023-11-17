@@ -11,7 +11,7 @@ import React, {
 import { NativeScrollEvent, NativeSyntheticEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OptimizedListItemStyle, OptimizedListProps, OptimizedListRef } from './types'
+import { OptimizedListProps, OptimizedListRef } from './types'
 
 function InternalOptimizedList<Item, AdditionalData>(
   {
@@ -46,7 +46,6 @@ function InternalOptimizedList<Item, AdditionalData>(
   const renderItem = useCallback(
     (listRenderItemInfo: ListRenderItemInfo<Item>) => {
       return renderItemProp({
-        style: {} as OptimizedListItemStyle,
         index: listRenderItemInfo.index,
         item: listRenderItemInfo.item,
         data: {

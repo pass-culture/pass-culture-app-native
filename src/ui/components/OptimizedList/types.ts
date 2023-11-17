@@ -1,7 +1,5 @@
 import { ComponentType } from 'react'
-import { LayoutChangeEvent, ViewStyle } from 'react-native'
-
-export type OptimizedListItemStyle = ViewStyle
+import { LayoutChangeEvent } from 'react-native'
 
 export type OnLayoutProps = { onLayout: (event: LayoutChangeEvent) => void }
 
@@ -17,15 +15,6 @@ export type RenderItemProps<Item, AdditionalData> = {
    * The index at which the item is rendered.
    */
   index: number
-  /**
-   * This one is super important.
-   * You **must** pass it to your child component since it will contain
-   * properties useful for rendering to the DOM.
-   *
-   * If you encounter any strange rendering problem, it's likely you forgot to pass
-   * to your child component.
-   */
-  style: OptimizedListItemStyle
   /**
    * The item data currently rendered.
    */

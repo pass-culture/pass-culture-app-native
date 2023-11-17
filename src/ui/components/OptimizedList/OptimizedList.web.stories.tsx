@@ -20,6 +20,7 @@ const meta: ComponentMeta<typeof OptimizedList> = {
     headerComponent: { control: { disable: true }, defaultValue: undefined },
     footerComponent: { control: { disable: true }, defaultValue: undefined },
     renderItem: { control: { disable: true } },
+    onRefresh: { control: { disable: true }, defaultValue: undefined },
   },
 }
 
@@ -41,6 +42,10 @@ const Footer = styled(View)(({ theme }) => ({
   height: 50,
   backgroundColor: theme.colors.coralLight,
 }))
+
+const Item = styled.View({
+  height: 100,
+})
 
 const Template: Story = (args) => (
   <Wrapper>
@@ -82,12 +87,14 @@ export const WithoutHeaderNorFooter = Template.bind({})
 WithoutHeaderNorFooter.args = {
   itemSize: 100,
   items: generateItems(20),
+  refreshing: false,
+  onRefresh: action('refresh'),
   // @ts-expect-error Storybook is not excellent at handling generic components...
-  renderItem: ({ style, item }: RenderItemProps) => {
+  renderItem: ({ item }: RenderItemProps) => {
     return (
-      <li style={style} key={item.name}>
-        {item.name}
-      </li>
+      <Item key={item.name}>
+        <Typo.Body>{item.name}</Typo.Body>
+      </Item>
     )
   },
 }
@@ -144,14 +151,12 @@ WithAdditionalData.args = {
   // @ts-expect-error Storybook is not excellent at handling generic components...
   renderItem: ({
     item,
-    style,
+    data,
   }: RenderItemProps<ReturnType<typeof generateItems>[number], typeof additionalData>) => {
     return (
-      <li
-        style={{ ...style, backgroundColor: additionalData.backgroundColor } as any}
-        key={item.name}>
-        {item.name}
-      </li>
+      <Item style={{ backgroundColor: data.backgroundColor }} key={item.name}>
+        <Typo.Body>{item.name}</Typo.Body>
+      </Item>
     )
   },
 }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import React, { createRef, CSSProperties, RefObject } from 'react'
+import React, { createRef, RefObject } from 'react'
 import { View } from 'react-native'
 
 import { act, render, screen } from 'tests/utils/web'
@@ -21,14 +21,10 @@ function renderOptimizedList<T, AD>(
       itemSize={100}
       items={defaultItems as T[]}
       height={500}
-      renderItem={({ index, data, style }: RenderItemProps<T, AD>) => {
+      renderItem={({ index, data }: RenderItemProps<T, AD>) => {
         const item = data.items[index] as typeof defaultItems[number]
 
-        return (
-          <span key={item.name} style={style as CSSProperties}>
-            {item.name}
-          </span>
-        )
+        return <span key={item.name}>{item.name}</span>
       }}
       {...props}
       ref={ref}

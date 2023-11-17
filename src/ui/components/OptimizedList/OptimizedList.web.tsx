@@ -141,7 +141,6 @@ const InternalOptimizedList = <Item, AdditionalData>(
         <li style={renderItemProps.style} data-itemindex={renderItemProps.index}>
           {renderItemProp({
             ...renderItemProps,
-            style: {},
             item: renderItemProps.data.items[renderItemProps.index],
           })}
         </li>
