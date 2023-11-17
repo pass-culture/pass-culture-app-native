@@ -62,7 +62,7 @@ create_sourcemaps() {
 upload_sourcemaps() {
   APP_OS="$1"
   APP_ENV="$2"
-  CODE_PUSH_LABEL="$3"
+  CODE_PUSH_LABEL="${3:-}"
   VERSION=$(jq -r .version package.json)
   BUILD=$(jq -r .build package.json)
 
