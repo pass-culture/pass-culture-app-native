@@ -69,7 +69,7 @@ const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => {
 
   return (
     <StyledTouchableOpacity onPress={onPress} accessibilityLabel={label}>
-      <StyledIcon testID={`Icon ${label}`} />
+      <StyledIcon />
       <Spacer.Row numberOfSpaces={2} />
       <Typo.ButtonText>{label}</Typo.ButtonText>
     </StyledTouchableOpacity>
