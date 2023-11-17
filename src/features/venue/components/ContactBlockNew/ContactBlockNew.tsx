@@ -10,7 +10,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   const { email, phoneNumber, website } = venue.contact || {}
@@ -44,15 +44,23 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
     return null
 
   return (
-    <Container>
-      {!!email && <ContactAtom label={email} onPress={onPressMail} Icon={EmailFilled} />}
+    <React.Fragment>
+      {!!email && (
+        <React.Fragment>
+          <ContactAtom label={email} onPress={onPressMail} Icon={EmailFilled} />
+          <Spacer.Column numberOfSpaces={2} />
+        </React.Fragment>
+      )}
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
-        <ContactAtom label={phoneNumber} onPress={onPressPhone} Icon={PhoneFilled} />
+        <React.Fragment>
+          <ContactAtom label={phoneNumber} onPress={onPressPhone} Icon={PhoneFilled} />
+          <Spacer.Column numberOfSpaces={2} />
+        </React.Fragment>
       )}
       {!!website && (
         <ContactAtom label={website} onPress={onPressWebsite} Icon={ExternalSiteFilled} />
       )}
-    </Container>
+    </React.Fragment>
   )
 }
 
@@ -76,12 +84,7 @@ const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => {
   )
 }
 
-const Container = styled.View({
-  marginVertical: -getSpacing(1),
-})
-
 const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
-  marginVertical: getSpacing(1),
 })
