@@ -22,12 +22,14 @@ const ImagePlaceholderComponent: React.FC<ImagePlaceholderProps> = ({
   size: iconSize,
   borderRadius,
   iconColor,
+  ...props
 }) => {
   if (backgroundColors) {
     return (
       <StyledLinearGradient
         colors={backgroundColors}
         borderRadius={borderRadius as number}
+        {...props}
         testID="imagePlaceholder">
         <Icon testID="categoryIcon" size={iconSize} color={iconColor} />
       </StyledLinearGradient>

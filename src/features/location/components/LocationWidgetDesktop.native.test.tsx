@@ -92,6 +92,14 @@ describe('LocationWidgetDesktop', () => {
   })
 
   describe('tooltip', () => {
+    mockUseGeolocation.mockReturnValue({
+      isGeolocated: true,
+      isCustomPosition: undefined,
+      place: null,
+      userPosition: null,
+      onModalHideRef: jest.fn(),
+    })
+
     afterEach(async () => storageResetDisplayedTooltip())
 
     it('should hide tooltip when pressing close button', async () => {
@@ -113,7 +121,7 @@ describe('LocationWidgetDesktop', () => {
       ).not.toBeOnTheScreen()
     })
 
-    it('should show tooltip after 1 second and hide 8 seconds after it appeared', async () => {
+    it('should show tooltip after 1 second', async () => {
       jest.useFakeTimers({ legacyFakeTimers: true })
       renderLocationWidgetDesktop()
 
@@ -126,10 +134,45 @@ describe('LocationWidgetDesktop', () => {
           'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
         )
       ).toBeOnTheScreen()
+    })
+
+    it('should hide tooltip 8 seconds after it appeared', async () => {
+      jest.useFakeTimers({ legacyFakeTimers: true })
+      renderLocationWidgetDesktop()
+
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      screen.getByText(
+        'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+      )
 
       await act(async () => {
         jest.advanceTimersByTime(8000)
       })
+
+      expect(
+        screen.queryByText(
+          'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+        )
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should hide tooltip when taping “Me localiser”', async () => {
+      jest.useFakeTimers({ legacyFakeTimers: true })
+      renderLocationWidgetDesktop()
+
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      screen.getByText(
+        'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
+      )
+
+      const locationButton = screen.getByText('Me localiser')
+      fireEvent.press(locationButton)
 
       expect(
         screen.queryByText(

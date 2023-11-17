@@ -22,7 +22,7 @@ const kourou: SuggestedPlace = {
 }
 const venue: Venue = mockedSuggestedVenues[0]
 
-describe('fetchSearchResultss', () => {
+describe('fetchSearchResults', () => {
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
     const query = 'searched query'
 

@@ -35,6 +35,7 @@ If you don't see your changes, try to check if the codepush was correctly downlo
 - it displays "no update found": you are up-to-date
 - it shows "New version available on AppCenter" you need to go to http://hyperurl.co/pc-testing
 - it downloads the update and restart the app
+
 </details>
 
 #### Hard deploy (manual)
@@ -78,12 +79,11 @@ Checkout the tag you want to start from.
 #### Hard deploy (when MEP wanted, manual)
 
 - Know which version (and then tag) you want to deploy. If you patched a version Staging, it could be `patch/v1.X.Y`
-
 - `yarn trigger:production:deploy <tag>`
 
 This will create a tag `prod-hard-deploy`. CircleCI will detect the tag and launch the lane `deploy-android-production-hard` & `deploy-ios-production-hard` (see `.circleci/config.yml` file)
 
-### Hotfix
+### Hotfix (this is for production, see 'Patch staging with additional commits' for staging)
 
 #### When
 
@@ -112,7 +112,7 @@ If not urgent, it is better to release a new version.
 
 <details>
   <summary>I don't see my CodePush on staging/prod app</summary>
-  
+
 Check if you can find it on AppCenter. Example for [staging iOS][8].
 
 ![img](./CodePushOnAppCenter.png)

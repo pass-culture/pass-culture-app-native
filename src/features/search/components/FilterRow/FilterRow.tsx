@@ -94,10 +94,10 @@ const TitleAndDescriptionContainer = styled.View(({ theme }) => ({
 const ComplementContainer = styled.View({
   flexShrink: 0,
   justifyContent: 'center',
-  marginRight: getSpacing(3),
+  marginRight: getSpacing(3.5),
 })
 
 const ComplementLabel = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
-  marginLeft: getSpacing(1),
+  marginLeft: getSpacing(2),
 }))

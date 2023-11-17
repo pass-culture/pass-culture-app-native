@@ -13,17 +13,17 @@ import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/O
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
+import { SameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist/component/SameArtistPlaylist'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
+import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
+import { getFormattedAddress } from 'features/offer/helpers/getFormattedAddress/getFormattedAddress'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import {
-  formatFullAddress,
-  formatFullAddressWithVenueName,
-} from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -31,7 +31,13 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { formatDates, formatDistance, getDisplayPrice, getFormattedDates } from 'libs/parsers'
+import {
+  capitalizeFirstLetter,
+  formatDates,
+  formatDistance,
+  getDisplayPrice,
+  getFormattedDates,
+} from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import {
   useCategoryHomeLabelMapping,
@@ -58,6 +64,7 @@ interface Props {
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
   apiRecoParamsOtherCategories?: RecommendationApiParams
+  sameArtistPlaylist?: HitOfferWithArtistAndEan[]
 }
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -73,6 +80,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
+  sameArtistPlaylist,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -81,12 +89,14 @@ export const OfferBody: FunctionComponent<Props> = ({
   const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
+  const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
+  const shouldDisplaySameArtistPlaylist =
+    !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const { userPosition: position } = useLocation()
-
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
   )
@@ -227,32 +237,16 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId] ?? {}
 
   const showVenueBanner = venue.isPermanent === true
-  const fullAddress = showVenueBanner
-    ? formatFullAddress(venue.address, venue.postalCode, venue.city)
-    : formatFullAddressWithVenueName(
-        venue.address,
-        venue.postalCode,
-        venue.city,
-        venue.publicName,
-        venue.name
-      )
+  const fullAddress = getFormattedAddress(venue, showVenueBanner)
 
-  const dates = offer.stocks.reduce<string[]>(
-    (accumulator, stock) =>
-      stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
-    []
-  )
-
+  const dates = extractStockDates(offer)
   const formattedDate = getFormattedDates(dates)
+  const capitalizedFormattedDate = capitalizeFirstLetter(formattedDate)
+
   const shouldDisplayWhenBlock = isEvent && !!formattedDate
   const shouldShowAccessibility = Object.values(accessibility).some(
     (value) => value !== undefined && value !== null
   )
-
-  const capitalizedFormattedDate =
-    typeof formattedDate === 'string'
-      ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
-      : formattedDate
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 
@@ -353,6 +347,16 @@ export const OfferBody: FunctionComponent<Props> = ({
           <AccessibilityBlock {...accessibility} />
         </AccordionItem>
       </SectionWithDivider>
+
+      {shouldDisplaySameArtistPlaylist ? (
+        <SameArtistPlaylist
+          key={offer.id}
+          items={sameArtistPlaylist}
+          itemWidth={itemWidth}
+          itemHeight={itemHeight}
+          renderItem={renderItem}
+        />
+      ) : null}
 
       {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
         <SectionWithDivider testID="sameCategorySimilarOffers" visible>

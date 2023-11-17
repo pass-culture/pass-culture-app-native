@@ -1,6 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Venue /> Accessibility should render correctly in web for new version 1`] = `
+.c0 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c0:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -53,7 +102,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   text-decoration: none;
 }
 
-.c6 {
+.c4 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -67,140 +116,44 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   padding: 0;
 }
 
-.c6:active {
+.c4:active {
   opacity: 0.5;
   outline: none;
 }
 
-.c6:focus {
+.c4:focus {
   outline: auto;
 }
 
-.c6:disabled {
+.c4:disabled {
   cursor: initial;
 }
 
-.c6:hover {
+.c4:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #161617;
   text-decoration-color: #161617;
 }
 
-.c6:hover:disabled {
+.c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
 }
 
 .c5 {
-  height: 96px;
-  width: 76px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  overflow: hidden;
-  cursor: pointer;
-  height: 48px;
-  border-radius: 24px;
-  background-color: #eb0055;
-  background-image: linear-gradient(0.25turn,#eb0055,#320096);
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.c2:disabled {
-  cursor: initial;
-  background: none;
-  color: #696A6F;
-  background-color: #F1F1F4;
-}
-
-.c2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c7 {
   border-radius: 40px;
 }
 
-.c4 {
+.c1 {
   background-color: transparent;
+}
+
+.c2 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 <div>
@@ -209,16 +162,18 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   >
     <div
       class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh r-overflow-bztko3"
-      data-testid="venue-container"
     >
       <div
         class="css-view-175oi2r"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-minHeight-ifefl9"
+          class="css-view-175oi2r r-height-17lwhjb"
+        />
+        <div
+          class="css-view-175oi2r r-flexDirection-18u37iz r-marginHorizontal-1t0hsmj r-marginTop-1v1z2uz"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-position-u8s1d"
+            class="css-view-175oi2r r-alignItems-1awozwy"
           >
             <div
               class="css-view-175oi2r r-flexDirection-18u37iz"
@@ -314,570 +269,24 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
                 </div>
               </div>
             </div>
-            <div
-              class="css-view-175oi2r"
-            >
-              <div
-                class="css-text-1rynq56"
-                dir="ltr"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-height-me5xia"
-          />
-          <div
-            class="css-view-175oi2r r-bottom-1p0dtai r-boxShadow-1whl5w"
-            data-testid="image-container"
-            style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; width: 216px;"
-          >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-borderRadius-1fuqb1j r-height-1pi2tsx r-justifyContent-1777fci r-overflow-1udh08x r-width-13qz1uu"
-              data-testid="imagePlaceholder"
-            >
-              <div
-                class="css-view-175oi2r"
-                data-testid="ImagePlaceholderVenue"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  ImagePlaceholderVenue-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r r-position-u8s1d"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  data-testid="categoryIcon"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    categoryIcon-SVG-Mock
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r r-height-10ptun7"
-        />
-        <div
-          class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1777fci r-marginTop-knv0ih"
-          >
-            <div
-              class="css-view-175oi2r r-marginRight-1d4mawv"
-            >
-              <div
-                aria-label="Adresse"
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textTransform-1ozqkpa"
-              dir="ltr"
-            >
-              1 boulevard Poissonnière, 75000 Paris
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-height-3da1kt"
-          />
-          <h1
-            aria-label="Nom du lieu : Le Petit Rintintin 1"
-            aria-level="1"
-            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-textAlign-q4m81j"
-            data-testid="venueTitle"
-            dir="ltr"
-            role="heading"
-          >
-            Le Petit Rintintin 1
-          </h1>
-          <div
-            class="css-view-175oi2r r-height-10ptun7"
-          />
-        </div>
-        <div
-          class="css-view-175oi2r r-alignItems-1habvwh r-flexDirection-18u37iz"
-        >
-          <div
-            class="css-view-175oi2r r-width-lrsllp"
-          />
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-          >
-            <div
-              class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-            >
-              <div
-                aria-label="Type de lieu"
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
-            <div
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-              data-testid="caption-undefined"
-              dir="ltr"
-            >
-              Autre type de lieu
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-alignSelf-1kihuf0 r-backgroundColor-bg9z1y r-height-f8z0xc r-marginHorizontal-1ybube5 r-width-92ng3h"
-          />
-          <button
-            aria-label="Géolocalisation désactivée"
-            class="c0 c1 sc-iGgWBj c1"
-            data-testid="Géolocalisation désactivée"
-            tabindex="0"
-            title="Géolocalisation désactivée"
-            type="button"
-          >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-            >
-              <div
-                class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-              >
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r r-height-3da1kt"
-              />
-              <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                data-testid="caption-undefined"
-                dir="ltr"
-              >
-                Géolocalisation désactivée
-              </div>
-            </div>
-          </button>
-          <div
-            class="css-view-175oi2r r-width-lrsllp"
-          />
-        </div>
-        <div
-          class="css-view-175oi2r r-paddingBottom-qn3fzs r-paddingLeft-puj83k r-paddingRight-11g3r6m r-paddingTop-1ygmrgt"
-        >
-          <div
-            class="css-view-175oi2r"
-            data-testid="accordionBody"
-            style="overflow-x: hidden; overflow-y: hidden; height: 0px;"
-          >
-            <div
-              class="css-view-175oi2r r-position-u8s1d r-top-ipm5af r-width-13qz1uu"
-              data-testid="descriptionContainer"
-            >
-              <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-width-13qz1uu"
-                dir="ltr"
-              >
-                 
-                <a
-                  aria-label="Nouvelle fenêtre : undefined"
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-1471scf"
-                  data-testid="Nouvelle fenêtre : undefined"
-                  href="https://pass.culture.fr/"
-                  style="transition-duration: 0s;"
-                >
-                  <span
-                    class="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                  >
-                    <div
-                      class="css-view-175oi2r r-display-xoduu5 r-width-10g5efv"
-                    />
-                    <span
-                      class="css-textHasAncestor-1qaijid r-whiteSpace-3s2u2q"
-                    >
-                      <div
-                        aria-label="Nouvelle fenêtre"
-                        class="css-view-175oi2r r-display-xoduu5"
-                        data-testid="externalSiteIcon"
-                      >
-                        <span
-                          class="css-textHasAncestor-1qaijid"
-                        >
-                          externalSiteIcon-SVG-Mock
-                        </span>
-                      </div>
-                    </span>
-                     https://pass.culture.fr/
-                  </span>
-                </a>
-                 lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r"
-        >
-          <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-height-1472mwg"
-          />
-          <div
-            class="css-view-175oi2r r-paddingBottom-qn3fzs"
-          >
-            <div
-              class="css-view-175oi2r r-maxHeight-wpvnvn r-overflow-1udh08x"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-marginHorizontal-1hy1u7s"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
-                  data-testid="playlistTitle"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Offres disponibles
-                </h2>
-                <div
-                  class="css-view-175oi2r r-width-1janqcz"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-bg9z1y r-height-z80fyv r-width-92ng3h"
-                />
-                <div
-                  class="css-view-175oi2r r-width-16eto9q"
-                />
-                <div
-                  aria-label="Voir plus d’offres de la sélection Offres disponibles"
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-                  data-testid="Voir plus d’offres de la sélection Offres disponibles"
-                  style="transition-duration: 0s;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-width-1jg9483"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                    dir="ltr"
-                  >
-                    Voir tout
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-            <div
-              class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
-            >
-              <div
-                class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                data-testid="offersModuleList"
-              >
-                <div
-                  class="css-view-175oi2r r-flexDirection-18u37iz"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-view-175oi2r r-width-lrsllp"
-                    />
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-view-175oi2r"
-                      role="heading"
-                    >
-                      <div
-                        aria-label="Offre Titane - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                        data-testid="Offre Titane - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexDirection-1d5kdc7"
-                        >
-                          <div
-                            class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
-                          >
-                            <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              dir="ltr"
-                            >
-                              Titane - VF
-                            </div>
-                            <div
-                              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              dir="ltr"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              data-testid="priceIsDuo"
-                              dir="ltr"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
-                            >
-                              <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  data-testid="categoryImageCaption"
-                                  dir="ltr"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </h3>
-                    <div
-                      class="css-view-175oi2r r-width-1janqcz"
-                    />
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-view-175oi2r"
-                      role="heading"
-                    >
-                      <div
-                        aria-label="Offre Bac Nord - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                        data-testid="Offre Bac Nord - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexDirection-1d5kdc7"
-                        >
-                          <div
-                            class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
-                          >
-                            <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              dir="ltr"
-                            >
-                              Bac Nord - VF
-                            </div>
-                            <div
-                              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              dir="ltr"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              data-testid="priceIsDuo"
-                              dir="ltr"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
-                            >
-                              <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  data-testid="categoryImageCaption"
-                                  dir="ltr"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </h3>
-                    <div
-                      class="css-view-175oi2r r-width-1janqcz"
-                    />
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexDirection-18u37iz"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-view-175oi2r"
-                      role="heading"
-                    >
-                      <div
-                        aria-label="Offre Black Widow - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                        data-testid="Offre Black Widow - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexDirection-1d5kdc7"
-                        >
-                          <div
-                            class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
-                          >
-                            <div
-                              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              dir="ltr"
-                            >
-                              Black Widow - VF
-                            </div>
-                            <div
-                              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              dir="ltr"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                              data-testid="priceIsDuo"
-                              dir="ltr"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
-                            >
-                              <div
-                                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  data-testid="categoryImageCaption"
-                                  dir="ltr"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </h3>
-                  </div>
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-view-175oi2r r-width-lrsllp"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
-          >
-            <button
-              aria-label="Voir toutes les offres"
-              class="c2"
-              data-testid="Voir toutes les offres"
-              type="button"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-              >
-                <div
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-paddingBottom-xd6kpl r-paddingLeft-1m04atk r-paddingRight-1pyaxff r-paddingTop-tskmnb"
-                  dir="ltr"
-                >
-                  Voir toutes les offres
-                </div>
-              </div>
-            </button>
           </div>
           <div
             class="css-view-175oi2r r-height-1472mwg"
           />
-        </div>
-        <div
-          class="css-view-175oi2r"
-        >
-          <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
           <div
             class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
           >
-            <div
-              class="css-view-175oi2r r-height-1472mwg"
-            />
-            <h2
-              aria-level="2"
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
+            <h1
+              aria-label="Nom du lieu : Le Petit Rintintin 1"
+              aria-level="1"
+              class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
               dir="ltr"
               role="heading"
             >
-              Où ?
-            </h2>
+              Le Petit Rintintin 1
+            </h1>
             <div
-              class="css-view-175oi2r r-height-10ptun7"
+              class="css-view-175oi2r r-height-3da1kt"
             />
             <div
               class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
@@ -889,26 +298,58 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
               class="css-view-175oi2r r-height-hdaws3"
             />
             <div
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textTransform-1ozqkpa"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
               dir="ltr"
             >
               1 boulevard Poissonnière, 75000 Paris
             </div>
             <div
-              class="css-view-175oi2r r-height-10ptun7"
+              class="css-view-175oi2r r-height-tbmifm"
             />
             <div
-              class="css-view-175oi2r r-backgroundColor-bg9z1y r-height-109y4c4"
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
             />
             <div
-              class="css-view-175oi2r r-height-1472mwg"
+              class="css-view-175oi2r r-height-tbmifm"
+            />
+            <button
+              aria-label="Copier l’adresse"
+              class="c0 c1 c2"
+              data-testid="Copier l’adresse"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-view-175oi2r r-flexShrink-1q142lx"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  data-testid="button-icon"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    button-icon-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                dir="ltr"
+              >
+                Copier l’adresse
+              </div>
+            </button>
+            <div
+              class="css-view-175oi2r r-height-tbmifm"
             />
             <div
               class="css-view-175oi2r r-alignItems-1habvwh"
             >
               <a
                 aria-label="Voir l’itinéraire"
-                class="c3 c4"
+                class="c3 c1"
                 data-testid="Voir l’itinéraire"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
@@ -938,709 +379,379 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
                 </div>
               </a>
             </div>
-            <div
-              class="css-view-175oi2r r-height-1472mwg"
-            />
           </div>
         </div>
         <div
-          class="css-view-175oi2r"
-        >
-          <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
-          >
-            <h2
-              aria-level="2"
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-paddingBottom-1l7z4oj r-paddingTop-1ygmrgt"
-              dir="ltr"
-              role="heading"
-            >
-              Passe le bon plan !
-            </h2>
-            <div
-              class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
-            >
-              <ul
-                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-justifyContent-1h0z5md r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-                role="list"
-              >
-                <li
-                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
-                  role="listitem"
-                >
-                  <button
-                    class="c0 c5 sc-gsFSXq c5"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-3da1kt"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                        data-testid="caption-undefined"
-                        dir="ltr"
-                      >
-                        Envoyer sur
-WhatsApp
-                      </div>
-                    </div>
-                  </button>
-                </li>
-                <li
-                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
-                  role="listitem"
-                >
-                  <button
-                    class="c0 c5 sc-gsFSXq c5"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-3da1kt"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                        data-testid="caption-undefined"
-                        dir="ltr"
-                      >
-                        Envoyer sur
-Telegram
-                      </div>
-                    </div>
-                  </button>
-                </li>
-                <li
-                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
-                  role="listitem"
-                >
-                  <button
-                    class="c0 c5 sc-gsFSXq c5"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-3da1kt"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                        data-testid="caption-undefined"
-                        dir="ltr"
-                      >
-                        Envoyer sur
-Twitter
-                      </div>
-                    </div>
-                  </button>
-                </li>
-                <li
-                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
-                  role="listitem"
-                >
-                  <button
-                    class="c0 c5 sc-gsFSXq c5"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
-                      >
-                        <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1fuqb1j r-borderWidth-rs99b7 r-height-h3s6tt r-justifyContent-1777fci r-width-rwqe4o"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              undefined-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-3da1kt"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                        data-testid="caption-undefined"
-                        dir="ltr"
-                      >
-                        Plus
-d’options
-                      </div>
-                    </div>
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-          </div>
-        </div>
+          class="css-view-175oi2r r-height-1472mwg"
+        />
         <div
-          class="css-view-175oi2r"
+          class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
         >
           <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+            class="css-view-175oi2r r-width-13qz1uu"
           >
             <div
-              aria-expanded="false"
-              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              data-testid="accordionTouchable"
-              role="button"
-              style="transition-duration: 0s;"
-              tabindex="0"
+              class="css-view-175oi2r r-flexDirection-18u37iz"
+              role="tablist"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-cursor-1loqt21 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingHorizontal-1guathk r-paddingVertical-tvv088"
+                class="css-view-175oi2r r-backgroundColor-14a9t8x r-bottom-1p0dtai r-height-hdaws3 r-position-u8s1d r-width-13qz1uu"
+              />
+              <div
+                class="css-view-175oi2r r-width-lrsllp"
+              />
+              <div
+                aria-selected="true"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-15yupfm"
+                id="Offres disponibles"
+                role="tab"
+                style="transition-duration: 0s;"
+                tabindex="0"
               >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-1wz9ltz r-flexShrink-1wbh5a2 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Modalités de retrait
-                </h2>
                 <div
-                  class="css-view-175oi2r"
-                  data-testid="accordionArrow"
-                  style="transform: rotateZ(1.5707963267948966rad);"
+                  class="css-view-175oi2r r-height-1472mwg"
+                />
+                <div
+                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
                 >
                   <div
-                    class="css-view-175oi2r"
+                    class="css-text-1rynq56 r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                    dir="ltr"
                   >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
+                    Offres disponibles
                   </div>
                 </div>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="css-view-175oi2r r-backgroundColor-bdcx94 r-borderRadius-z2wwpe r-bottom-1p0dtai r-height-hdaws3 r-width-13qz1uu"
+                />
               </div>
+              <div
+                aria-selected="false"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-15yupfm"
+                id="Infos pratiques"
+                role="tab"
+                style="transition-duration: 0s;"
+                tabindex="-1"
+              >
+                <div
+                  class="css-view-175oi2r r-height-1472mwg"
+                />
+                <div
+                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Infos pratiques
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="css-view-175oi2r r-backgroundColor-1niwhzg r-borderRadius-z2wwpe r-bottom-1p0dtai r-height-hdaws3 r-width-13qz1uu"
+                />
+              </div>
+              <div
+                class="css-view-175oi2r r-width-lrsllp"
+              />
             </div>
-          </div>
-          <div
-            class="css-view-175oi2r"
-            data-testid="accordionBody"
-            style="overflow-x: hidden; overflow-y: hidden; height: 0px;"
-          >
             <div
-              class="css-view-175oi2r r-bottom-1p0dtai r-display-hvic4v r-paddingBottom-qn3fzs r-paddingHorizontal-1guathk r-paddingTop-wk8lta r-position-u8s1d r-width-13qz1uu"
-              data-testid="accordionBodyContainer"
+              class="css-view-175oi2r"
+              role="tabpanel"
             >
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                dir="ltr"
+                class="css-view-175oi2r r-height-1472mwg"
+              />
+              <div
+                class="css-view-175oi2r r-paddingBottom-qn3fzs"
               >
-                How to withdraw, 
-                <a
-                  aria-label="Nouvelle fenêtre : undefined"
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-1471scf"
-                  data-testid="Nouvelle fenêtre : undefined"
-                  href="https://test.com"
-                  style="transition-duration: 0s;"
+                <div
+                  class="css-view-175oi2r r-maxHeight-wpvnvn r-overflow-1udh08x"
                 >
-                  <span
-                    class="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-marginHorizontal-1hy1u7s"
                   >
+                    <h2
+                      aria-level="2"
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                      data-testid="playlistTitle"
+                      dir="ltr"
+                      role="heading"
+                    >
+                      Toutes les offres
+                    </h2>
                     <div
-                      class="css-view-175oi2r r-display-xoduu5 r-width-10g5efv"
+                      class="css-view-175oi2r r-width-1janqcz"
                     />
-                    <span
-                      class="css-textHasAncestor-1qaijid r-whiteSpace-3s2u2q"
+                    <div
+                      class="css-view-175oi2r r-backgroundColor-bg9z1y r-height-z80fyv r-width-92ng3h"
+                    />
+                    <div
+                      class="css-view-175oi2r r-width-16eto9q"
+                    />
+                    <div
+                      aria-label="Voir plus d’offres de la sélection Toutes les offres"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      data-testid="Voir plus d’offres de la sélection Toutes les offres"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
                     >
                       <div
-                        aria-label="Nouvelle fenêtre"
-                        class="css-view-175oi2r r-display-xoduu5"
-                        data-testid="externalSiteIcon"
+                        class="css-view-175oi2r"
                       >
-                        <span
-                          class="css-textHasAncestor-1qaijid"
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
                         >
-                          externalSiteIcon-SVG-Mock
-                        </span>
+                          undefined-SVG-Mock
+                        </div>
                       </div>
-                    </span>
-                     https://test.com
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r"
-        >
-          <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-          >
-            <div
-              aria-expanded="false"
-              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              data-testid="accordionTouchable"
-              role="button"
-              style="transition-duration: 0s;"
-              tabindex="0"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-cursor-1loqt21 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingHorizontal-1guathk r-paddingVertical-tvv088"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-1wz9ltz r-flexShrink-1wbh5a2 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Accessibilité
-                </h2>
+                      <div
+                        class="css-view-175oi2r r-width-1jg9483"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        dir="ltr"
+                      >
+                        Voir tout
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
-                  class="css-view-175oi2r"
-                  data-testid="accordionArrow"
-                  style="transform: rotateZ(1.5707963267948966rad);"
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <div
+                  class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r"
+                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                    data-testid="offersModuleList"
                   >
                     <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
+                      class="css-view-175oi2r r-flexDirection-18u37iz"
                     >
-                      undefined-SVG-Mock
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-width-lrsllp"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-view-175oi2r"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Offre Titane - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                            data-testid="Offre Titane - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            >
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Titane - VF
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-view-175oi2r"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Offre Bac Nord - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                            data-testid="Offre Bac Nord - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            >
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Bac Nord - VF
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-view-175oi2r"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Offre Black Widow - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                            data-testid="Offre Black Widow - VF    Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            >
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Black Widow - VF
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                      </div>
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-width-lrsllp"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r"
-            data-testid="accordionBody"
-            style="overflow-x: hidden; overflow-y: hidden; height: 0px;"
-          >
-            <div
-              class="css-view-175oi2r r-bottom-1p0dtai r-display-hvic4v r-paddingBottom-qn3fzs r-paddingHorizontal-1guathk r-paddingTop-wk8lta r-position-u8s1d r-width-13qz1uu"
-              data-testid="accordionBodyContainer"
-            >
               <div
-                class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep"
-              >
-                <ul
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflow-bztko3 r-paddingLeft-gy4na3"
-                  role="list"
-                >
-                  <li
-                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-1b7u577"
-                    role="listitem"
-                  >
-                    <div
-                      aria-label="Handicap visuel : Accessible"
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-minHeight-adacv"
-                        data-testid="accessibilityFrame"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r r-bottom-17gicss r-position-u8s1d"
-                        >
-                          <div
-                            aria-label="Accessible"
-                            class="css-view-175oi2r"
-                            data-testid="validTestId"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              validTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-10ptun7"
-                      />
-                      <div
-                        class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-lz04qo"
-                        data-testid="Handicap visuel"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
-                          dir="ltr"
-                        >
-                          Handicap visuel
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-1b7u577"
-                    role="listitem"
-                  >
-                    <div
-                      aria-label="Handicap psychique ou cognitif : Non accessible"
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-minHeight-adacv"
-                        data-testid="accessibilityFrame"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r r-bottom-17gicss r-position-u8s1d"
-                        >
-                          <div
-                            aria-label="Non accessible"
-                            class="css-view-175oi2r"
-                            data-testid="invalidTestId"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              invalidTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-10ptun7"
-                      />
-                      <div
-                        class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-lz04qo"
-                        data-testid="Handicap psychique ou cognitif"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
-                          dir="ltr"
-                        >
-                          Handicap psychique ou cognitif
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-1b7u577"
-                    role="listitem"
-                  >
-                    <div
-                      aria-label="Handicap moteur : Non accessible"
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-minHeight-adacv"
-                        data-testid="accessibilityFrame"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r r-bottom-17gicss r-position-u8s1d"
-                        >
-                          <div
-                            aria-label="Non accessible"
-                            class="css-view-175oi2r"
-                            data-testid="invalidTestId"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              invalidTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-10ptun7"
-                      />
-                      <div
-                        class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-lz04qo"
-                        data-testid="Handicap moteur"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
-                          dir="ltr"
-                        >
-                          Handicap moteur
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-61z16t"
-                    role="listitem"
-                  >
-                    <div
-                      aria-label="Handicap auditif : Non accessible"
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                      data-testid="accessibilityAtomContainer"
-                      role="img"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-aspectRatio-1ujkv8a r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-minHeight-adacv"
-                        data-testid="accessibilityFrame"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                        />
-                        <div
-                          class="css-view-175oi2r r-bottom-17gicss r-position-u8s1d"
-                        >
-                          <div
-                            aria-label="Non accessible"
-                            class="css-view-175oi2r"
-                            data-testid="invalidTestId"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              invalidTestId-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-10ptun7"
-                      />
-                      <div
-                        class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-lz04qo"
-                        data-testid="Handicap auditif"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-paddingHorizontal-1479rh3 r-textAlign-q4m81j"
-                          dir="ltr"
-                        >
-                          Handicap auditif
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                class="css-view-175oi2r r-height-1472mwg"
+              />
             </div>
           </div>
         </div>
         <div
-          class="css-view-175oi2r"
-        >
-          <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-          >
-            <div
-              aria-expanded="false"
-              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              data-testid="accordionTouchable"
-              role="button"
-              style="transition-duration: 0s;"
-              tabindex="0"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-cursor-1loqt21 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingHorizontal-1guathk r-paddingVertical-tvv088"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-1wz9ltz r-flexShrink-1wbh5a2 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Contact
-                </h2>
-                <div
-                  class="css-view-175oi2r"
-                  data-testid="accordionArrow"
-                  style="transform: rotateZ(1.5707963267948966rad);"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r"
-            data-testid="accordionBody"
-            style="overflow-x: hidden; overflow-y: hidden; height: 0px;"
-          >
-            <div
-              class="css-view-175oi2r r-bottom-1p0dtai r-display-hvic4v r-paddingBottom-qn3fzs r-paddingHorizontal-1guathk r-paddingTop-wk8lta r-position-u8s1d r-width-13qz1uu"
-              data-testid="accordionBodyContainer"
-            >
-              <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                dir="ltr"
-              >
-                contact@venue.com
-              </div>
-              <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                dir="ltr"
-              >
-                +33102030405
-              </div>
-              <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                dir="ltr"
-              >
-                https://my@website.com
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r"
-        >
-          <div
-            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-height-1472mwg"
-          />
-        </div>
+          class="css-view-175oi2r r-height-cqilzk"
+        />
       </div>
     </div>
     <div
@@ -1665,7 +776,7 @@ d’options
         />
         <button
           aria-label="Revenir en arrière"
-          class="c6 c7 sc-eldPxv c7"
+          class="c4 c5 sc-eldPxv c5"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -1737,7 +848,7 @@ d’options
         />
         <button
           aria-label="Partager"
-          class="c6 c7 sc-eldPxv c7"
+          class="c4 c5 sc-eldPxv c5"
           data-testid="Partager"
           tabindex="0"
           title="Partager"

@@ -115,7 +115,7 @@ exports[`<LocationModal/> should render modal correctly after animation and with
   >
     <View
       desktopMaxHeight={1000.5}
-      height={1334}
+      height={1318}
       maxHeight={1334}
       noPadding={true}
       style={
@@ -132,7 +132,7 @@ exports[`<LocationModal/> should render modal correctly after animation and with
             "borderTopRightRadius": 20,
             "borderTopStartRadius": 16,
             "flexDirection": "column",
-            "height": 1334,
+            "height": 1318,
             "justifyContent": "center",
             "maxHeight": 1334,
             "maxWidth": 960,

@@ -5976,20 +5976,1940 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
           <View
             accessibilityRole="none"
           >
-            <Text
+            <View
+              numberOfSpaces={6}
               style={
                 [
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 24,
                   },
                 ]
               }
             >
-              Panel des offres disponibles
-            </Text>
+              <View
+                style={
+                  [
+                    {
+                      "maxHeight": 68,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "marginHorizontal": 24,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 20,
+                          "lineHeight": 24,
+                        },
+                      ]
+                    }
+                    testID="playlistTitle"
+                  >
+                    Toutes les offres
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "position": "relative",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={{}}
+                >
+                  <RCTScrollView
+                    ItemSeparatorComponent={
+                      {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            "width: 16px;",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    ListFooterComponent={
+                      {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            "width: 24px;",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    ListHeaderComponent={
+                      {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            "width: 24px;",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    applyWindowCorrection={[Function]}
+                    canChangeSize={true}
+                    contentContainerStyle={
+                      {
+                        "backgroundColor": undefined,
+                        "minHeight": 1,
+                        "minWidth": 1,
+                        "paddingBottom": 0,
+                        "paddingTop": 0,
+                      }
+                    }
+                    contentHeight={250}
+                    contentWidth={576}
+                    data={
+                      [
+                        {
+                          "_geoloc": {
+                            "lat": 47.8898,
+                            "lng": -2.83593,
+                          },
+                          "objectID": "223342",
+                          "offer": {
+                            "dates": [
+                              1629312300,
+                              1629485100,
+                              1629657900,
+                            ],
+                            "isDigital": false,
+                            "isDuo": true,
+                            "name": "Titane - VF",
+                            "prices": [
+                              0,
+                              0,
+                              0,
+                            ],
+                            "subcategoryId": "CINE_PLEIN_AIR",
+                            "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                          },
+                          "venue": {},
+                        },
+                        {
+                          "_geoloc": {
+                            "lat": 47.8898,
+                            "lng": -2.83593,
+                          },
+                          "objectID": "223338",
+                          "offer": {
+                            "dates": [
+                              1629312300,
+                              1629485100,
+                              1629657900,
+                            ],
+                            "isDigital": false,
+                            "isDuo": true,
+                            "name": "Bac Nord - VF",
+                            "prices": [
+                              0,
+                              0,
+                              0,
+                            ],
+                            "subcategoryId": "CINE_PLEIN_AIR",
+                            "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                          },
+                          "venue": {},
+                        },
+                        {
+                          "_geoloc": {
+                            "lat": 47.8898,
+                            "lng": -2.83593,
+                          },
+                          "objectID": "223339",
+                          "offer": {
+                            "dates": [
+                              1629312300,
+                              1629485100,
+                              1629657900,
+                            ],
+                            "isDigital": false,
+                            "isDuo": true,
+                            "name": "Black Widow - VF",
+                            "prices": [
+                              0,
+                              0,
+                              0,
+                            ],
+                            "subcategoryId": "CINE_PLEIN_AIR",
+                            "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                          },
+                          "venue": {},
+                        },
+                        {
+                          "dataFooter": true,
+                        },
+                      ]
+                    }
+                    dataProvider={
+                      DataProvider {
+                        "_data": [
+                          {
+                            "_geoloc": {
+                              "lat": 47.8898,
+                              "lng": -2.83593,
+                            },
+                            "objectID": "223342",
+                            "offer": {
+                              "dates": [
+                                1629312300,
+                                1629485100,
+                                1629657900,
+                              ],
+                              "isDigital": false,
+                              "isDuo": true,
+                              "name": "Titane - VF",
+                              "prices": [
+                                0,
+                                0,
+                                0,
+                              ],
+                              "subcategoryId": "CINE_PLEIN_AIR",
+                              "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                            },
+                            "venue": {},
+                          },
+                          {
+                            "_geoloc": {
+                              "lat": 47.8898,
+                              "lng": -2.83593,
+                            },
+                            "objectID": "223338",
+                            "offer": {
+                              "dates": [
+                                1629312300,
+                                1629485100,
+                                1629657900,
+                              ],
+                              "isDigital": false,
+                              "isDuo": true,
+                              "name": "Bac Nord - VF",
+                              "prices": [
+                                0,
+                                0,
+                                0,
+                              ],
+                              "subcategoryId": "CINE_PLEIN_AIR",
+                              "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                            },
+                            "venue": {},
+                          },
+                          {
+                            "_geoloc": {
+                              "lat": 47.8898,
+                              "lng": -2.83593,
+                            },
+                            "objectID": "223339",
+                            "offer": {
+                              "dates": [
+                                1629312300,
+                                1629485100,
+                                1629657900,
+                              ],
+                              "isDigital": false,
+                              "isDuo": true,
+                              "name": "Black Widow - VF",
+                              "prices": [
+                                0,
+                                0,
+                                0,
+                              ],
+                              "subcategoryId": "CINE_PLEIN_AIR",
+                              "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                            },
+                            "venue": {},
+                          },
+                          {
+                            "dataFooter": true,
+                          },
+                        ],
+                        "_firstIndexToProcess": 3,
+                        "_hasStableIds": true,
+                        "_requiresDataChangeHandling": true,
+                        "_size": 4,
+                        "getStableId": [Function],
+                        "rowHasChanged": [Function],
+                      }
+                    }
+                    disableRecycling={false}
+                    estimatedItemSize={144}
+                    extendedState={{}}
+                    externalScrollView={[Function]}
+                    finalRenderAheadOffset={187.5}
+                    forceNonDeterministicRendering={true}
+                    getItemLayout={[Function]}
+                    horizontal={true}
+                    initialOffset={0}
+                    initialRenderIndex={0}
+                    isHorizontal={true}
+                    keyExtractor={[Function]}
+                    layoutProvider={
+                      GridLayoutProviderWithProps {
+                        "_acceptableRelayoutDelta": 1,
+                        "_getHeightOrWidth": [Function],
+                        "_getLayoutTypeForIndex": [Function],
+                        "_getSpan": [Function],
+                        "_hasExpired": false,
+                        "_isHorizontal": true,
+                        "_lastLayoutManager": GridLayoutManager {
+                          "_acceptableRelayoutDelta": 1,
+                          "_getSpan": [Function],
+                          "_isGridHorizontal": true,
+                          "_isHorizontal": true,
+                          "_layoutProvider": [Circular],
+                          "_layouts": [
+                            {
+                              "height": 250,
+                              "type": 0,
+                              "width": 144,
+                              "x": 0,
+                              "y": 0,
+                            },
+                            {
+                              "height": 250,
+                              "type": 0,
+                              "width": 144,
+                              "x": 144,
+                              "y": 0,
+                            },
+                            {
+                              "height": 250,
+                              "type": 0,
+                              "width": 144,
+                              "x": 288,
+                              "y": 0,
+                            },
+                            {
+                              "height": 250,
+                              "type": 0,
+                              "width": 144,
+                              "x": 432,
+                              "y": 0,
+                            },
+                          ],
+                          "_maxSpan": 1,
+                          "_renderWindowSize": {
+                            "height": 250,
+                            "width": 800,
+                          },
+                          "_totalHeight": 250,
+                          "_totalWidth": 576,
+                          "_window": {
+                            "height": 250,
+                            "width": 800,
+                          },
+                        },
+                        "_maxSpan": 1,
+                        "_renderWindowSize": {
+                          "height": 250,
+                          "width": 800,
+                        },
+                        "_setLayoutForType": [Function],
+                        "_tempDim": {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "averageWindow": AverageWindow {
+                          "currentAverage": 144,
+                          "currentCount": 1,
+                          "inputValues": [
+                            144,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                          ],
+                          "nextIndex": 1,
+                        },
+                        "defaultEstimatedItemSize": 100,
+                        "layoutObject": {
+                          "size": undefined,
+                          "span": undefined,
+                        },
+                        "props": {
+                          "ItemSeparatorComponent": {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                "width: 16px;",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          },
+                          "ListFooterComponent": {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                "width: 24px;",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          },
+                          "ListHeaderComponent": {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                "width: 24px;",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          },
+                          "data": [
+                            {
+                              "_geoloc": {
+                                "lat": 47.8898,
+                                "lng": -2.83593,
+                              },
+                              "objectID": "223342",
+                              "offer": {
+                                "dates": [
+                                  1629312300,
+                                  1629485100,
+                                  1629657900,
+                                ],
+                                "isDigital": false,
+                                "isDuo": true,
+                                "name": "Titane - VF",
+                                "prices": [
+                                  0,
+                                  0,
+                                  0,
+                                ],
+                                "subcategoryId": "CINE_PLEIN_AIR",
+                                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                              },
+                              "venue": {},
+                            },
+                            {
+                              "_geoloc": {
+                                "lat": 47.8898,
+                                "lng": -2.83593,
+                              },
+                              "objectID": "223338",
+                              "offer": {
+                                "dates": [
+                                  1629312300,
+                                  1629485100,
+                                  1629657900,
+                                ],
+                                "isDigital": false,
+                                "isDuo": true,
+                                "name": "Bac Nord - VF",
+                                "prices": [
+                                  0,
+                                  0,
+                                  0,
+                                ],
+                                "subcategoryId": "CINE_PLEIN_AIR",
+                                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                              },
+                              "venue": {},
+                            },
+                            {
+                              "_geoloc": {
+                                "lat": 47.8898,
+                                "lng": -2.83593,
+                              },
+                              "objectID": "223339",
+                              "offer": {
+                                "dates": [
+                                  1629312300,
+                                  1629485100,
+                                  1629657900,
+                                ],
+                                "isDigital": false,
+                                "isDuo": true,
+                                "name": "Black Widow - VF",
+                                "prices": [
+                                  0,
+                                  0,
+                                  0,
+                                ],
+                                "subcategoryId": "CINE_PLEIN_AIR",
+                                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                              },
+                              "venue": {},
+                            },
+                            {
+                              "dataFooter": true,
+                            },
+                          ],
+                          "drawDistance": 187.5,
+                          "estimatedItemSize": 144,
+                          "getItemLayout": [Function],
+                          "horizontal": true,
+                          "keyExtractor": [Function],
+                          "numColumns": 1,
+                          "onEndReached": undefined,
+                          "onEndReachedThreshold": 0.2,
+                          "onLayout": [Function],
+                          "renderItem": [Function],
+                          "scrollEnabled": true,
+                          "scrollEventThrottle": 16,
+                          "showsHorizontalScrollIndicator": false,
+                          "testID": "offersModuleList",
+                        },
+                        "renderWindowInsets": {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shouldRefreshWithAnchoring": true,
+                      }
+                    }
+                    maxRenderAhead={562.5}
+                    numColumns={1}
+                    onEndReached={[Function]}
+                    onEndReachedThreshold={0}
+                    onEndReachedThresholdRelative={0.2}
+                    onItemLayout={[Function]}
+                    onLayout={[Function]}
+                    onScroll={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onSizeChanged={[Function]}
+                    onVisibleIndicesChanged={[Function]}
+                    removeClippedSubviews={false}
+                    renderAheadOffset={0}
+                    renderAheadStep={187.5}
+                    renderContentContainer={[Function]}
+                    renderItem={[Function]}
+                    renderItemContainer={[Function]}
+                    rowRenderer={[Function]}
+                    scrollEnabled={true}
+                    scrollEventThrottle={16}
+                    scrollThrottle={16}
+                    scrollViewProps={
+                      {
+                        "contentContainerStyle": {
+                          "backgroundColor": undefined,
+                          "minHeight": 1,
+                          "minWidth": 1,
+                          "paddingBottom": 0,
+                          "paddingTop": 0,
+                        },
+                        "onLayout": [Function],
+                        "onScrollBeginDrag": [Function],
+                        "refreshControl": undefined,
+                        "style": {
+                          "minHeight": 1,
+                          "minWidth": 1,
+                        },
+                      }
+                    }
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      {
+                        "minHeight": 1,
+                        "minWidth": 1,
+                      }
+                    }
+                    suppressBoundedSizeException={true}
+                    testID="offersModuleList"
+                    windowCorrectionConfig={
+                      {
+                        "applyToInitialOffset": true,
+                        "applyToItemScroll": true,
+                        "value": {
+                          "endCorrection": 0,
+                          "startCorrection": 0,
+                          "windowShift": -1,
+                        },
+                      }
+                    }
+                  >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "flexDirection": "row",
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            {
+                              "paddingLeft": 0,
+                              "paddingTop": 0,
+                            }
+                          }
+                        />
+                        <View
+                          style={
+                            [
+                              undefined,
+                              undefined,
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "width": 24,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                        <AutoLayoutView
+                          enableInstrumentation={false}
+                          horizontal={true}
+                          onBlankAreaEvent={[Function]}
+                          onLayout={[Function]}
+                          renderAheadOffset={0}
+                          scrollOffset={0}
+                          style={
+                            {
+                              "height": 250,
+                              "width": 576,
+                            }
+                          }
+                          windowSize={800}
+                        >
+                          <CellContainer
+                            index={1}
+                            onLayout={[Function]}
+                            style={
+                              {
+                                "alignItems": "stretch",
+                                "flexDirection": "row",
+                                "height": 250,
+                                "left": 144,
+                                "position": "absolute",
+                                "top": 0,
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                }
+                              }
+                            >
+                              <View>
+                                <View
+                                  accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityRole="link"
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    [
+                                      {
+                                        "textDecorationColor": "black",
+                                        "textDecorationLine": "none",
+                                        "textDecorationStyle": "solid",
+                                      },
+                                      {
+                                        "borderRadius": 8,
+                                        "height": 288,
+                                        "marginVertical": 4,
+                                      },
+                                    ]
+                                  }
+                                  testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                >
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "flexDirection": "column-reverse",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      imageWidth={144}
+                                      style={
+                                        [
+                                          {
+                                            "marginTop": 8,
+                                            "maxWidth": 144,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        numberOfLines={2}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#161617",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Bac Nord - VF
+                                      </Text>
+                                      <Text
+                                        numberOfLines={1}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Dès le 18 août 2021
+                                      </Text>
+                                      <Text
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                        testID="priceIsDuo"
+                                      >
+                                        Gratuit
+                                      </Text>
+                                    </View>
+                                    <View>
+                                      <View
+                                        style={
+                                          [
+                                            {
+                                              "overflow": "hidden",
+                                            },
+                                            [
+                                              {
+                                                "backgroundColor": "#F1F1F4",
+                                              },
+                                              {
+                                                "borderTopLeftRadius": 8,
+                                                "borderTopRightRadius": 8,
+                                                "height": 192,
+                                                "width": 144,
+                                              },
+                                            ],
+                                          ]
+                                        }
+                                      >
+                                        <FastImageView
+                                          defaultSource={null}
+                                          resizeMode="cover"
+                                          source={
+                                            {
+                                              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "bottom": 0,
+                                              "left": 0,
+                                              "position": "absolute",
+                                              "right": 0,
+                                              "top": 0,
+                                            }
+                                          }
+                                          testID="tileImage"
+                                        />
+                                      </View>
+                                      <View
+                                        height={24}
+                                        style={
+                                          [
+                                            {
+                                              "alignItems": "center",
+                                              "backgroundColor": "#161617",
+                                              "borderBottomLeftRadius": 8,
+                                              "borderBottomRightRadius": 8,
+                                              "flexDirection": "row",
+                                              "height": 24,
+                                              "width": 144,
+                                            },
+                                          ]
+                                        }
+                                        width={144}
+                                      >
+                                        <View
+                                          style={
+                                            [
+                                              {
+                                                "alignItems": "center",
+                                                "flexBasis": 0,
+                                                "flexGrow": 1,
+                                                "flexShrink": 1,
+                                                "justifyContent": "center",
+                                                "paddingHorizontal": 2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            numberOfLines={1}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#ffffff",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                            testID="categoryImageCaption"
+                                          >
+                                            Cinéma
+                                          </Text>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                            <View
+                              leadingItem={
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223338",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Bac Nord - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  },
+                                  "venue": {},
+                                }
+                              }
+                              style={
+                                [
+                                  {
+                                    "width": 16,
+                                  },
+                                ]
+                              }
+                              trailingItem={
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223339",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Black Widow - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                  },
+                                  "venue": {},
+                                }
+                              }
+                            />
+                          </CellContainer>
+                          <CellContainer
+                            index={2}
+                            onLayout={[Function]}
+                            style={
+                              {
+                                "alignItems": "stretch",
+                                "flexDirection": "row",
+                                "height": 250,
+                                "left": 288,
+                                "position": "absolute",
+                                "top": 0,
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                }
+                              }
+                            >
+                              <View>
+                                <View
+                                  accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityRole="link"
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    [
+                                      {
+                                        "textDecorationColor": "black",
+                                        "textDecorationLine": "none",
+                                        "textDecorationStyle": "solid",
+                                      },
+                                      {
+                                        "borderRadius": 8,
+                                        "height": 288,
+                                        "marginVertical": 4,
+                                      },
+                                    ]
+                                  }
+                                  testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                >
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "flexDirection": "column-reverse",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      imageWidth={144}
+                                      style={
+                                        [
+                                          {
+                                            "marginTop": 8,
+                                            "maxWidth": 144,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        numberOfLines={2}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#161617",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Black Widow - VF
+                                      </Text>
+                                      <Text
+                                        numberOfLines={1}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Dès le 18 août 2021
+                                      </Text>
+                                      <Text
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                        testID="priceIsDuo"
+                                      >
+                                        Gratuit
+                                      </Text>
+                                    </View>
+                                    <View>
+                                      <View
+                                        style={
+                                          [
+                                            {
+                                              "overflow": "hidden",
+                                            },
+                                            [
+                                              {
+                                                "backgroundColor": "#F1F1F4",
+                                              },
+                                              {
+                                                "borderTopLeftRadius": 8,
+                                                "borderTopRightRadius": 8,
+                                                "height": 192,
+                                                "width": 144,
+                                              },
+                                            ],
+                                          ]
+                                        }
+                                      >
+                                        <FastImageView
+                                          defaultSource={null}
+                                          resizeMode="cover"
+                                          source={
+                                            {
+                                              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "bottom": 0,
+                                              "left": 0,
+                                              "position": "absolute",
+                                              "right": 0,
+                                              "top": 0,
+                                            }
+                                          }
+                                          testID="tileImage"
+                                        />
+                                      </View>
+                                      <View
+                                        height={24}
+                                        style={
+                                          [
+                                            {
+                                              "alignItems": "center",
+                                              "backgroundColor": "#161617",
+                                              "borderBottomLeftRadius": 8,
+                                              "borderBottomRightRadius": 8,
+                                              "flexDirection": "row",
+                                              "height": 24,
+                                              "width": 144,
+                                            },
+                                          ]
+                                        }
+                                        width={144}
+                                      >
+                                        <View
+                                          style={
+                                            [
+                                              {
+                                                "alignItems": "center",
+                                                "flexBasis": 0,
+                                                "flexGrow": 1,
+                                                "flexShrink": 1,
+                                                "justifyContent": "center",
+                                                "paddingHorizontal": 2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            numberOfLines={1}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#ffffff",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                            testID="categoryImageCaption"
+                                          >
+                                            Cinéma
+                                          </Text>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                            <View
+                              leadingItem={
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223339",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Black Widow - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                  },
+                                  "venue": {},
+                                }
+                              }
+                              style={
+                                [
+                                  {
+                                    "width": 16,
+                                  },
+                                ]
+                              }
+                              trailingItem={
+                                {
+                                  "dataFooter": true,
+                                }
+                              }
+                            />
+                          </CellContainer>
+                          <CellContainer
+                            index={0}
+                            onLayout={[Function]}
+                            style={
+                              {
+                                "alignItems": "stretch",
+                                "flexDirection": "row",
+                                "height": 250,
+                                "left": 0,
+                                "position": "absolute",
+                                "top": 0,
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                }
+                              }
+                            >
+                              <View>
+                                <View
+                                  accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityRole="link"
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    [
+                                      {
+                                        "textDecorationColor": "black",
+                                        "textDecorationLine": "none",
+                                        "textDecorationStyle": "solid",
+                                      },
+                                      {
+                                        "borderRadius": 8,
+                                        "height": 288,
+                                        "marginVertical": 4,
+                                      },
+                                    ]
+                                  }
+                                  testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                >
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "flexDirection": "column-reverse",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      imageWidth={144}
+                                      style={
+                                        [
+                                          {
+                                            "marginTop": 8,
+                                            "maxWidth": 144,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        numberOfLines={2}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#161617",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Titane - VF
+                                      </Text>
+                                      <Text
+                                        numberOfLines={1}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Dès le 18 août 2021
+                                      </Text>
+                                      <Text
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                        testID="priceIsDuo"
+                                      >
+                                        Gratuit
+                                      </Text>
+                                    </View>
+                                    <View>
+                                      <View
+                                        style={
+                                          [
+                                            {
+                                              "overflow": "hidden",
+                                            },
+                                            [
+                                              {
+                                                "backgroundColor": "#F1F1F4",
+                                              },
+                                              {
+                                                "borderTopLeftRadius": 8,
+                                                "borderTopRightRadius": 8,
+                                                "height": 192,
+                                                "width": 144,
+                                              },
+                                            ],
+                                          ]
+                                        }
+                                      >
+                                        <FastImageView
+                                          defaultSource={null}
+                                          resizeMode="cover"
+                                          source={
+                                            {
+                                              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "bottom": 0,
+                                              "left": 0,
+                                              "position": "absolute",
+                                              "right": 0,
+                                              "top": 0,
+                                            }
+                                          }
+                                          testID="tileImage"
+                                        />
+                                      </View>
+                                      <View
+                                        height={24}
+                                        style={
+                                          [
+                                            {
+                                              "alignItems": "center",
+                                              "backgroundColor": "#161617",
+                                              "borderBottomLeftRadius": 8,
+                                              "borderBottomRightRadius": 8,
+                                              "flexDirection": "row",
+                                              "height": 24,
+                                              "width": 144,
+                                            },
+                                          ]
+                                        }
+                                        width={144}
+                                      >
+                                        <View
+                                          style={
+                                            [
+                                              {
+                                                "alignItems": "center",
+                                                "flexBasis": 0,
+                                                "flexGrow": 1,
+                                                "flexShrink": 1,
+                                                "justifyContent": "center",
+                                                "paddingHorizontal": 2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            numberOfLines={1}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#ffffff",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 16,
+                                                },
+                                              ]
+                                            }
+                                            testID="categoryImageCaption"
+                                          >
+                                            Cinéma
+                                          </Text>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                            <View
+                              leadingItem={
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223342",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Titane - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  },
+                                  "venue": {},
+                                }
+                              }
+                              style={
+                                [
+                                  {
+                                    "width": 16,
+                                  },
+                                ]
+                              }
+                              trailingItem={
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223338",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Bac Nord - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  },
+                                  "venue": {},
+                                }
+                              }
+                            />
+                          </CellContainer>
+                          <CellContainer
+                            index={3}
+                            onLayout={[Function]}
+                            style={
+                              {
+                                "alignItems": "stretch",
+                                "flexDirection": "row",
+                                "height": 250,
+                                "left": 432,
+                                "position": "absolute",
+                                "top": 0,
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                {
+                                  "flexDirection": "column",
+                                }
+                              }
+                            >
+                              <View
+                                height={216}
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "height": 216,
+                                      "justifyContent": "center",
+                                      "width": 144,
+                                    },
+                                  ]
+                                }
+                                width={144}
+                              >
+                                <View
+                                  numberOfSpaces={2}
+                                  style={
+                                    [
+                                      {
+                                        "height": 8,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <View
+                                  accessibilityLabel="En voir plus"
+                                  accessibilityRole="link"
+                                  accessibilityState={
+                                    {
+                                      "busy": undefined,
+                                      "checked": undefined,
+                                      "disabled": undefined,
+                                      "expanded": undefined,
+                                      "selected": undefined,
+                                    }
+                                  }
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  collapsable={false}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    {
+                                      "alignItems": "center",
+                                      "opacity": 1,
+                                      "userSelect": "auto",
+                                    }
+                                  }
+                                  testID="En voir plus"
+                                >
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "flexDirection": "row",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      numberOfSpaces={16}
+                                      style={
+                                        [
+                                          {
+                                            "width": 64,
+                                          },
+                                        ]
+                                      }
+                                    />
+                                    <View
+                                      style={
+                                        [
+                                          {
+                                            "alignItems": "center",
+                                            "aspectRatio": 1,
+                                            "backgroundColor": "#ffffff",
+                                            "borderColor": "#F1F1F4",
+                                            "borderRadius": 32,
+                                            "borderStyle": "solid",
+                                            "borderWidth": 1,
+                                            "height": 64,
+                                            "justifyContent": "center",
+                                            "shadowColor": "#161617",
+                                            "shadowOffset": {
+                                              "height": 8,
+                                              "width": 0,
+                                            },
+                                            "shadowOpacity": 0.15,
+                                            "shadowRadius": 12,
+                                            "width": 64,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        height={32}
+                                        width={32}
+                                      >
+                                        <Text>
+                                          undefined-SVG-Mock
+                                        </Text>
+                                      </View>
+                                    </View>
+                                    <View
+                                      numberOfSpaces={16}
+                                      style={
+                                        [
+                                          {
+                                            "width": 64,
+                                          },
+                                        ]
+                                      }
+                                    />
+                                  </View>
+                                  <View
+                                    numberOfSpaces={2}
+                                    style={
+                                      [
+                                        {
+                                          "height": 8,
+                                        },
+                                      ]
+                                    }
+                                  />
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "flexDirection": "row",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#eb0055",
+                                            "fontFamily": "Montserrat-Bold",
+                                            "fontSize": 15,
+                                            "lineHeight": 20,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      En voir plus
+                                    </Text>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </CellContainer>
+                        </AutoLayoutView>
+                        <CellContainer
+                          index={-1}
+                          style={
+                            [
+                              undefined,
+                              undefined,
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "width": 24,
+                                },
+                              ]
+                            }
+                          />
+                        </CellContainer>
+                        <View
+                          style={
+                            {
+                              "paddingBottom": 0,
+                              "paddingRight": 0,
+                            }
+                          }
+                        />
+                        <View
+                          pointerEvents="none"
+                          style={
+                            {
+                              "opacity": 0,
+                            }
+                          }
+                        >
+                          <View>
+                            <View
+                              accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                              accessibilityRole="link"
+                              accessibilityValue={
+                                {
+                                  "max": undefined,
+                                  "min": undefined,
+                                  "now": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                [
+                                  {
+                                    "textDecorationColor": "black",
+                                    "textDecorationLine": "none",
+                                    "textDecorationStyle": "solid",
+                                  },
+                                  {
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "marginVertical": 4,
+                                  },
+                                ]
+                              }
+                              testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            >
+                              <View
+                                style={
+                                  [
+                                    {
+                                      "flexDirection": "column-reverse",
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  imageWidth={144}
+                                  style={
+                                    [
+                                      {
+                                        "marginTop": 8,
+                                        "maxWidth": 144,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    numberOfLines={2}
+                                    style={
+                                      [
+                                        {
+                                          "color": "#161617",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Bac Nord - VF
+                                  </Text>
+                                  <Text
+                                    numberOfLines={1}
+                                    style={
+                                      [
+                                        {
+                                          "color": "#696A6F",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    Dès le 18 août 2021
+                                  </Text>
+                                  <Text
+                                    style={
+                                      [
+                                        {
+                                          "color": "#696A6F",
+                                          "fontFamily": "Montserrat-SemiBold",
+                                          "fontSize": 12,
+                                          "lineHeight": 16,
+                                        },
+                                      ]
+                                    }
+                                    testID="priceIsDuo"
+                                  >
+                                    Gratuit
+                                  </Text>
+                                </View>
+                                <View>
+                                  <View
+                                    style={
+                                      [
+                                        {
+                                          "overflow": "hidden",
+                                        },
+                                        [
+                                          {
+                                            "backgroundColor": "#F1F1F4",
+                                          },
+                                          {
+                                            "borderTopLeftRadius": 8,
+                                            "borderTopRightRadius": 8,
+                                            "height": 192,
+                                            "width": 144,
+                                          },
+                                        ],
+                                      ]
+                                    }
+                                  >
+                                    <FastImageView
+                                      defaultSource={null}
+                                      resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "bottom": 0,
+                                          "left": 0,
+                                          "position": "absolute",
+                                          "right": 0,
+                                          "top": 0,
+                                        }
+                                      }
+                                      testID="tileImage"
+                                    />
+                                  </View>
+                                  <View
+                                    height={24}
+                                    style={
+                                      [
+                                        {
+                                          "alignItems": "center",
+                                          "backgroundColor": "#161617",
+                                          "borderBottomLeftRadius": 8,
+                                          "borderBottomRightRadius": 8,
+                                          "flexDirection": "row",
+                                          "height": 24,
+                                          "width": 144,
+                                        },
+                                      ]
+                                    }
+                                    width={144}
+                                  >
+                                    <View
+                                      style={
+                                        [
+                                          {
+                                            "alignItems": "center",
+                                            "flexBasis": 0,
+                                            "flexGrow": 1,
+                                            "flexShrink": 1,
+                                            "justifyContent": "center",
+                                            "paddingHorizontal": 2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        numberOfLines={1}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#ffffff",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 16,
+                                            },
+                                          ]
+                                        }
+                                        testID="categoryImageCaption"
+                                      >
+                                        Cinéma
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>

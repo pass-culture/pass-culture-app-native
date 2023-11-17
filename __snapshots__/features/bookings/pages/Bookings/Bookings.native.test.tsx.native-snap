@@ -346,6 +346,7 @@ exports[`Bookings should render correctly 1`] = `
                       "justifyContent": "center",
                       "width": "100%",
                     },
+                    {},
                   ]
                 }
                 testID="imagePlaceholder"
@@ -628,6 +629,7 @@ exports[`Bookings should render correctly 1`] = `
                       "justifyContent": "center",
                       "width": "100%",
                     },
+                    {},
                   ]
                 }
                 testID="imagePlaceholder"

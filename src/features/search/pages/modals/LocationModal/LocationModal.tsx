@@ -372,7 +372,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
         />
       }
       title={title}
-      isFullscreen
+      isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
       rightIconAccessibilityLabel={accessibilityLabel}

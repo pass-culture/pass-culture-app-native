@@ -143,16 +143,19 @@ const Label = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, th
 
 const ComplementLabel = styled(Typo.Caption)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.greyDark,
-  marginLeft: getSpacing(1),
+  marginLeft: getSpacing(2),
   flexShrink: 0,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
-  flex: 0.1,
+  flexShrink: 1,
+  flexBasis: 0,
+  flexGrow: theme.isMobileViewport ? 0.1 : undefined,
   justifyContent: 'center',
   alignItems: 'flex-end',
   width: theme.icons.sizes.smaller,
   height: theme.icons.sizes.smaller,
+  marginLeft: theme.isDesktopViewport ? getSpacing(2) : undefined,
 }))
 
 const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({

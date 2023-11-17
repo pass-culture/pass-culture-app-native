@@ -99,6 +99,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
               height={height - IMAGE_CAPTION_HEIGHT}
               uri={offer.thumbUrl}
               onlyTopBorderRadius
+              categoryId={offer.categoryId}
             />
             <ImageCaption
               height={IMAGE_CAPTION_HEIGHT}

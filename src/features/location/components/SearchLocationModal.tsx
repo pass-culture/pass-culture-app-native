@@ -64,17 +64,18 @@ export const SearchLocationModal = ({
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const getInitialRadiusValue = () => {
-    if (
-      searchState.locationFilter.locationType === LocationType.PLACE ||
-      searchState.locationFilter.locationType === LocationType.AROUND_ME
-    ) {
-      return searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
-    }
-    return DEFAULT_RADIUS
-  }
+  const getInitialAroundMeRadiusValue =
+    searchState.locationFilter.locationType === LocationType.AROUND_ME
+      ? searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
+      : DEFAULT_RADIUS
 
-  const [aroundRadius, setAroundRadius] = useState(getInitialRadiusValue)
+  const getInitialRadiusPlaceValue =
+    searchState.locationFilter.locationType === LocationType.PLACE
+      ? searchState.locationFilter.aroundRadius
+      : DEFAULT_RADIUS
+
+  const [aroundRadiusPlace, setAroundRadiusPlace] = useState(getInitialRadiusPlaceValue)
+  const [aroundMeRadius, setAroundMeRadius] = useState(getInitialAroundMeRadiusValue)
   const [includeDigitalOffers, setIncludeDigitalOffers] = useState(
     searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION
   )
@@ -117,7 +118,11 @@ export const SearchLocationModal = ({
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
-          locationFilter: { place: selectedPlace, locationType: LocationType.PLACE, aroundRadius },
+          locationFilter: {
+            place: selectedPlace,
+            locationType: LocationType.PLACE,
+            aroundRadius: aroundRadiusPlace,
+          },
           includeDigitalOffers,
         },
       })
@@ -127,7 +132,7 @@ export const SearchLocationModal = ({
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: aroundMeRadius },
           includeDigitalOffers,
         },
       })
@@ -136,18 +141,27 @@ export const SearchLocationModal = ({
   }
 
   const onClose = () => {
-    setAroundRadius(getInitialRadiusValue)
+    setAroundMeRadius(getInitialAroundMeRadiusValue)
+    setAroundRadiusPlace(getInitialRadiusPlaceValue)
     setIncludeDigitalOffers(searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION)
     dismissModal()
   }
 
-  const onValuesChange = useCallback(
+  const onAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
-        setAroundRadius(newValues[0])
+        setAroundRadiusPlace(newValues[0])
       }
     },
-    [setAroundRadius, visible]
+    [visible, setAroundRadiusPlace]
+  )
+  const onAroundMeRadiusValueChange = useCallback(
+    (newValues: number[]) => {
+      if (visible) {
+        setAroundMeRadius(newValues[0])
+      }
+    },
+    [visible, setAroundMeRadius]
   )
 
   const onPlaceSelection = (place: SuggestedPlace) => {
@@ -201,8 +215,8 @@ export const SearchLocationModal = ({
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
-              aroundRadius={aroundRadius}
-              onValuesChange={onValuesChange}
+              aroundRadius={aroundMeRadius}
+              onValuesChange={onAroundMeRadiusValueChange}
               includeDigitalOffers={includeDigitalOffers}
               setIncludeDigitalOffers={setIncludeDigitalOffers}
             />
@@ -231,8 +245,8 @@ export const SearchLocationModal = ({
             <Spacer.Column numberOfSpaces={4} />
             {!!selectedPlace && (
               <LocationSearchFilters
-                aroundRadius={aroundRadius}
-                onValuesChange={onValuesChange}
+                aroundRadius={aroundRadiusPlace}
+                onValuesChange={onAroundRadiusPlaceValueChange}
                 includeDigitalOffers={includeDigitalOffers}
                 setIncludeDigitalOffers={setIncludeDigitalOffers}
               />
