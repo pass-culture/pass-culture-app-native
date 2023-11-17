@@ -17,7 +17,7 @@ type HeroButtonListProps = {
   iconProps?: IconInterface
 }
 
-export const HeroButtonList: FunctionComponent<HeroButtonListProps> = (props) => {
+export function HeroButtonList(props: Readonly<HeroButtonListProps>) {
   const Icon = styled(props.icon).attrs(({ theme }) => ({
     color: props.iconProps?.color ?? theme.colors.primary,
     color2: props.iconProps?.color2 ?? theme.colors.secondary,
