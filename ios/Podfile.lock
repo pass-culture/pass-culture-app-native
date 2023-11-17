@@ -637,6 +637,8 @@ PODS:
     - React
   - RNCAsyncStorage (1.17.11):
     - React-Core
+  - RNCClipboard (1.12.1):
+    - React-Core
   - RNDeviceInfo (10.3.0):
     - React-Core
   - RNFastImage (8.6.3):
@@ -791,6 +793,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNBatchPush (from `../node_modules/@batch.com/react-native-plugin`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
@@ -978,6 +981,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@batch.com/react-native-plugin"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNCClipboard:
+    :path: "../node_modules/@react-native-clipboard/clipboard"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFastImage:
@@ -1119,6 +1124,7 @@ SPEC CHECKSUMS:
   ReactCommon: fc9d1da17fa902910dcba550a54c16e7e1c70d2c
   RNBatchPush: 6f2a3fe76aab9e6fa42cfe058418925ac80fdb84
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
+  RNCClipboard: d77213bfa269013bf4b857b7a9ca37ee062d8ef1
   RNDeviceInfo: 4701f0bf2a06b34654745053db0ce4cb0c53ada7
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNFBAnalytics: 774973f4b8aacd5e12a4d59754739af564e6b6ba
