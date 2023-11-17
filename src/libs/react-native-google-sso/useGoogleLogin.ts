@@ -8,7 +8,9 @@ export const useGoogleLogin =
   ({ onSuccess }: UseGoogleLoginOptionsAuthCodeFlow) =>
   async () => {
     try {
-      await GoogleSignin.hasPlayServices()
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      })
       const { serverAuthCode, scopes = [] } = await GoogleSignin.signIn()
       if (onSuccess && serverAuthCode) {
         onSuccess({ code: serverAuthCode, scope: scopes.join(' ') })
