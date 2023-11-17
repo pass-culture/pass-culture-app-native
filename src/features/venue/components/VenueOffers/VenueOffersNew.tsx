@@ -3,13 +3,10 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { TabParamList } from 'features/navigation/TabBar/types'
-import { SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
-import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
+import { useVenueOffersSearchNavigateTo } from 'features/venue/helpers/useVenueOffersSearchNavigateTo'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
@@ -34,20 +31,8 @@ export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useLocation()
-  const venueSearchParams: TabParamList['Search'] = useVenueSearchParameters(venueId)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
-
-  const searchTabNavConfig = getTabNavConfig('Search', {
-    ...venueSearchParams,
-    previousView: SearchView.Results,
-    view: SearchView.Results,
-  })
-
-  const searchNavConfig = {
-    screen: searchTabNavConfig[0],
-    params: searchTabNavConfig[1],
-    withPush: true,
-  }
+  const searchNavConfig = useVenueOffersSearchNavigateTo(venueId)
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
