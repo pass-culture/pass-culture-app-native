@@ -1,11 +1,10 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useMemo, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabParamList } from 'features/navigation/TabBar/types'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -35,39 +34,21 @@ export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useLocation()
-  const defaultSearchParams = useVenueSearchParameters(venueId)
+  const venueSearchParams: TabParamList['Search'] = useVenueSearchParameters(venueId)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
 
-  const searchTabNavConfig = useMemo(() => {
-    const venueSearchParams: TabParamList['Search'] = venue
-      ? {
-          locationFilter: {
-            ...defaultSearchParams.locationFilter,
-            locationType: LocationType.VENUE,
-            venue: {
-              ...(defaultSearchParams.locationFilter.locationType === LocationType.VENUE
-                ? defaultSearchParams.locationFilter.venue
-                : {}),
-              label: venue.name,
-              info: venue.city ?? '',
-              venueId: venue.id,
-            },
-          },
-        }
-      : {}
+  const searchTabNavConfig = getTabNavConfig('Search', {
+    ...venueSearchParams,
+    previousView: SearchView.Results,
+    view: SearchView.Results,
+  })
 
-    return getTabNavConfig('Search', {
-      ...defaultSearchParams,
-      ...venueSearchParams,
-      previousView: SearchView.Results,
-      view: SearchView.Results,
-    })
-  }, [defaultSearchParams, venue])
   const searchNavConfig = {
     screen: searchTabNavConfig[0],
     params: searchTabNavConfig[1],
     withPush: true,
   }
+
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
   const mapping = useCategoryIdMapping()
