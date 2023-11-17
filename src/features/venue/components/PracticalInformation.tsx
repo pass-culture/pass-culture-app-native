@@ -1,3 +1,4 @@
+import isEmpty from 'lodash/isEmpty'
 import React, { Fragment, FunctionComponent } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
@@ -9,36 +10,38 @@ import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = { venue: VenueResponse }
-type Section = { title: string; body: JSX.Element | null }
-type SectionToDisplay = { title: string; body: JSX.Element }
+type Section = { title: string; body: JSX.Element; isDisplayed: boolean }
 
 export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
     {
       title: 'Modalités de retrait',
-      body: venue.withdrawalDetails ? <Typo.Body>{venue.withdrawalDetails}</Typo.Body> : null,
+      body: <Typo.Body>{venue.withdrawalDetails}</Typo.Body>,
+      isDisplayed: !!venue.withdrawalDetails,
     },
     {
       title: 'Description',
-      body: venue.description ? <Typo.Body>{venue.description}</Typo.Body> : null,
+      body: <Typo.Body>{venue.description}</Typo.Body>,
+      isDisplayed: !!venue.description,
     },
     {
       title: 'Contact',
       body: <ContactBlock venue={venue} />,
+      isDisplayed: !!venue.contact && !isEmpty(venue.contact),
     },
     {
       title: 'Accessibilité',
       body: <AccessibilityBlock {...venue.accessibility} />,
+      isDisplayed: !!venue.accessibility && !isEmpty(venue.accessibility),
     },
   ]
-  const sectionsToDisplay = sections.filter(
-    (section): section is SectionToDisplay => section.body !== null
-  )
+  const sectionsToDisplay = sections.filter((section) => section.isDisplayed)
 
   return (
     <Container>
       <Spacer.Column numberOfSpaces={2} />
       <FlatList
+        scrollEnabled={false}
         data={sectionsToDisplay}
         renderItem={({ item: section }) => <Section title={section.title}>{section.body}</Section>}
         ItemSeparatorComponent={Separator.Horizontal}
