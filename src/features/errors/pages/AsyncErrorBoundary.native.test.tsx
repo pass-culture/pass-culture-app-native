@@ -133,10 +133,10 @@ describe('AsyncErrorBoundary component', () => {
 
   describe('should capture message', () => {
     it('when error is ScreenError', () => {
-      const error = new ScreenError('error', { Screen: MaintenanceErrorPage })
+      const error = new ScreenError('error-1', { Screen: MaintenanceErrorPage })
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith()
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith('error-1', 'info')
     })
   })
 })
