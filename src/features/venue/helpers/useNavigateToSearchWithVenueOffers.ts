@@ -3,7 +3,7 @@ import { TabParamList } from 'features/navigation/TabBar/types'
 import { SearchView } from 'features/search/types'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 
-export const useVenueOffersSearchNavigateTo = (venueId: number) => {
+export const useNavigateToSearchWithVenueOffers = (venueId: number) => {
   const venueSearchParams: TabParamList['Search'] = useVenueSearchParameters(venueId)
   const searchTabNavConfig = getTabNavConfig('Search', {
     ...venueSearchParams,

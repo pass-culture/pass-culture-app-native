@@ -5,7 +5,7 @@ import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import * as useVenueOffersSearchNavigateTo from 'features/venue/helpers/useVenueOffersSearchNavigateTo'
+import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const defaultParams: SearchState = {
@@ -35,18 +35,20 @@ const defaultParams: SearchState = {
   },
 } as SearchState
 
-jest.spyOn(useVenueOffersSearchNavigateTo, 'useVenueOffersSearchNavigateTo').mockReturnValue({
-  screen: 'TabNavigator',
-  params: {
-    screen: 'Search',
+jest
+  .spyOn(useNavigateToSearchWithVenueOffers, 'useNavigateToSearchWithVenueOffers')
+  .mockReturnValue({
+    screen: 'TabNavigator',
     params: {
-      ...defaultParams,
-      previousView: SearchView.Results,
-      view: SearchView.Results,
+      screen: 'Search',
+      params: {
+        ...defaultParams,
+        previousView: SearchView.Results,
+        view: SearchView.Results,
+      },
     },
-  },
-  withPush: true,
-})
+    withPush: true,
+  })
 
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {

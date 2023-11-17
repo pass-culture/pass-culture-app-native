@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useVenueOffersSearchNavigateTo } from 'features/venue/helpers/useVenueOffersSearchNavigateTo'
+import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
-  const searchNavConfig = useVenueOffersSearchNavigateTo(venueId)
+  const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)
   return (
     <React.Fragment>
       <CallToActionContainer testID="CTA-button">

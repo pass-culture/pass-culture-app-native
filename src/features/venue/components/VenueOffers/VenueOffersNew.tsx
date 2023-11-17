@@ -6,7 +6,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
-import { useVenueOffersSearchNavigateTo } from 'features/venue/helpers/useVenueOffersSearchNavigateTo'
+import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
@@ -32,7 +32,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props
   const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
-  const searchNavConfig = useVenueOffersSearchNavigateTo(venueId)
+  const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
