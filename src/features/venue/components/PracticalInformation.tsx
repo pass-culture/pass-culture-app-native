@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty'
 import React, { Fragment, FunctionComponent } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, ListRenderItemInfo } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -43,13 +43,17 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
       <FlatList
         scrollEnabled={false}
         data={sectionsToDisplay}
-        renderItem={({ item: section }) => <Section title={section.title}>{section.body}</Section>}
+        renderItem={renderItem}
         ItemSeparatorComponent={Separator.Horizontal}
       />
       <Spacer.Column numberOfSpaces={2} />
     </Container>
   )
 }
+
+const renderItem = ({ item: section }: ListRenderItemInfo<Section>) => (
+  <Section title={section.title}>{section.body}</Section>
+)
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
