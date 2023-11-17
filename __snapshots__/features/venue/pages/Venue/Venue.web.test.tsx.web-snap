@@ -962,7 +962,6 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
     </div>
     <div
       class="css-view-175oi2r r-alignItems-1awozwy r-marginHorizontal-1hy1u7s"
-      data-testid="CTA-button"
     >
       <button
         aria-label="Rechercher une offre"

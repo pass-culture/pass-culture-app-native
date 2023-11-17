@@ -15,7 +15,7 @@ export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)
   return (
     <React.Fragment>
-      <CallToActionContainer testID="CTA-button">
+      <CallToActionContainer>
         <InternalTouchableLink
           navigateTo={searchNavConfig}
           as={ButtonPrimary}

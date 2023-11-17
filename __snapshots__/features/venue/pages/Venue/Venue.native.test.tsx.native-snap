@@ -8327,7 +8327,6 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
         },
       ]
     }
-    testID="CTA-button"
   >
     <View
       accessibilityLabel="Rechercher une offre"
