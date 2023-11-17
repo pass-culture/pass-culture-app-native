@@ -5394,6 +5394,7 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
           style={
             [
               {
+                "flexShrink": 1,
                 "marginHorizontal": 24,
               },
             ]
@@ -5403,7 +5404,6 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
             accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
             adjustsFontSizeToFit={true}
             allowFontScaling={false}
-            numberOfLines={2}
             style={
               [
                 {

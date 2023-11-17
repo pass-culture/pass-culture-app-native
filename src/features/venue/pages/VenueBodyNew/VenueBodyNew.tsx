@@ -56,7 +56,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
         <MarginContainer>
           <VenueTitle
             accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
-            numberOfLines={2}
             adjustsFontSizeToFit
             allowFontScaling={false}>
             {venueName}
@@ -122,6 +121,7 @@ const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
+  flexShrink: 1,
 })
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
