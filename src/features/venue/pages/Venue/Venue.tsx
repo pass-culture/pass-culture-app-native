@@ -6,6 +6,7 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
+import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
 import { VenueBodyNew } from 'features/venue/pages/VenueBodyNew/VenueBodyNew'
@@ -63,6 +64,7 @@ export const Venue: FunctionComponent = () => {
         title={venue.publicName || venue.name}
         venueId={venue.id}
       />
+      {!!shouldUseNewVenuePage && <VenueCTA venueId={venue.id} />}
     </Container>
   )
 }
