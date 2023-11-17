@@ -16,7 +16,11 @@ module.exports = {
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
   },
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
-  setupFiles: ['<rootDir>/jest/jest.setup.ts', 'react-native-gesture-handler/jestSetup.js'],
+  setupFiles: [
+    '<rootDir>/jest/jest.setup.ts',
+    'react-native-gesture-handler/jestSetup.js',
+    '@react-native-google-signin/google-signin/jest/build/setup.js',
+  ],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
     '^.+\\.[jt]sx?$': 'babel-jest',
@@ -54,5 +58,5 @@ module.exports = {
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
-  testTimeout: 10_000
+  testTimeout: 10_000,
 }

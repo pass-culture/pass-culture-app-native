@@ -1,3 +1,4 @@
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -76,6 +77,11 @@ const App: FunctionComponent = function () {
     initAlgoliaAnalytics()
     BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
+    GoogleSignin.configure({
+      webClientId: env.GOOGLE_CLIENT_ID,
+      iosClientId: env.GOOGLE_IOS_CLIENT_ID,
+      offlineAccess: true,
+    })
   }, [])
 
   const navigation = React.useRef()

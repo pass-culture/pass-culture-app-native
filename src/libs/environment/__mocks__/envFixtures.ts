@@ -50,6 +50,8 @@ export const env: Environment = {
   FIREBASE_STORAGEBUCKET: 'FIREBASE_STORAGEBUCKET',
   GCP_IMAGE_COULD_STORAGE_NAME: 'localhost-storage-v2',
   GOOGLE_CLIENT_ID: 'GOOGLE_CLIENT_ID',
+  GOOGLE_IOS_CLIENT_ID: 'GOOGLE_IOS_CLIENT_ID',
+  GOOGLE_IOS_REVERSED_CLIENT_ID: 'GOOGLE_IOS_REVERSED_CLIENT_ID',
   GOOGLE_PLAY_STORE_URL:
     'https://play.google.com/store/apps/details?id=app.passculture.webapp&hl=fr',
   IOS_APP_ID: 'app.ios',
