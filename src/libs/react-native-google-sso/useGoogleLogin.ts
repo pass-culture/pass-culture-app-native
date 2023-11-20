@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 // eslint-disable-next-line no-restricted-imports
 import { UseGoogleLoginOptionsAuthCodeFlow } from '@react-oauth/google'

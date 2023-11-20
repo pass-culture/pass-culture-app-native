@@ -1,4 +1,3 @@
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -38,6 +37,7 @@ import { ReactNavigationInstrumentation } from 'libs/monitoring/sentry'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
+import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
@@ -77,7 +77,7 @@ const App: FunctionComponent = function () {
     initAlgoliaAnalytics()
     BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
-    GoogleSignin.configure({
+    configureGoogleSignin({
       webClientId: env.GOOGLE_CLIENT_ID,
       iosClientId: env.GOOGLE_IOS_CLIENT_ID,
       offlineAccess: true,
