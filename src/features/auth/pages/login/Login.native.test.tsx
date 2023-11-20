@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'

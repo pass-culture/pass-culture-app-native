@@ -152,6 +152,10 @@ module.exports = {
             message: 'use libs/firebase/shims/remote-config instead',
           },
           {
+            name: '@react-native-google-signin/google-signin',
+            message: 'This library is for native only. Use libs/react-native-google-sso instead',
+          },
+          {
             name: '@react-oauth/google',
             message: 'This library is for web only. Use libs/react-native-google-sso instead',
           },
