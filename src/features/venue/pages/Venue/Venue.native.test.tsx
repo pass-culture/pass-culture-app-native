@@ -2,10 +2,11 @@ import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { SearchView } from 'features/search/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
@@ -13,7 +14,15 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { act, bottomScrollEvent, fireEvent, middleScrollEvent, render, screen } from 'tests/utils'
+import {
+  act,
+  bottomScrollEvent,
+  fireEvent,
+  middleScrollEvent,
+  render,
+  screen,
+  waitFor,
+} from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -172,6 +181,24 @@ describe('<Venue />', () => {
 })
 
 describe('<Venue /> with new venue body', () => {
+  const defaultParams = {
+    beginningDatetime: undefined,
+    date: null,
+    endingDatetime: undefined,
+    hitsPerPage: 30,
+    offerCategories: [],
+    offerSubcategories: [],
+    offerIsDuo: false,
+    offerIsFree: false,
+    offerIsNew: false,
+    offerTypes: { isDigital: false, isEvent: false, isThing: false },
+    priceRange: [0, 300],
+    query: '',
+    view: SearchView.Landing,
+    tags: [],
+    timeRange: null,
+  }
+
   beforeAll(() => {
     mockUseFeatureFlag.mockReturnValue(true)
   })
@@ -182,6 +209,32 @@ describe('<Venue /> with new venue body', () => {
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should search the offers associated when pressing "Rechercher une offre"', async () => {
+    renderVenue(venueId)
+
+    fireEvent.press(screen.getByText('Rechercher une offre'))
+
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...defaultParams,
+          locationFilter: {
+            locationType: 'VENUE',
+            venue: {
+              geolocation: { latitude: 48.87004, longitude: 2.3785 },
+              info: 'Paris',
+              label: 'Le Petit Rintintin 1',
+              venueId: 5543,
+            },
+          },
+          view: SearchView.Results,
+          previousView: SearchView.Results,
+        },
+        screen: 'Search',
+      })
+    })
   })
 })
 

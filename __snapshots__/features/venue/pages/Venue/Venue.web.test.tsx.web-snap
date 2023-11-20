@@ -50,6 +50,55 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   text-decoration: none;
 }
 
+.c6 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c6:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c3 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -100,6 +149,10 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
 .c3:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c7:disabled {
+  background-color: #F1F1F4;
 }
 
 .c4 {
@@ -907,6 +960,45 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
         class="css-view-175oi2r r-height-3da1kt"
       />
     </div>
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-marginHorizontal-1hy1u7s"
+    >
+      <button
+        aria-label="Rechercher une offre"
+        class="c6 c7"
+        data-testid="Rechercher une offre"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-view-175oi2r r-flexShrink-1q142lx"
+        >
+          <div
+            class="css-view-175oi2r"
+            data-testid="button-icon"
+          >
+            <div
+              class="css-text-1rynq56"
+              dir="ltr"
+            >
+              button-icon-SVG-Mock
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+          dir="ltr"
+        >
+          Rechercher une offre
+        </div>
+      </button>
+      <div
+        class="css-view-175oi2r r-height-1472mwg"
+      />
+    </div>
+    <div
+      class="css-view-175oi2r r-height-3da1kt"
+    />
   </div>
 </div>
 `;
