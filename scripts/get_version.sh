@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o nounset
-set -o pipefail
+set -e
 
 VERSION=$(yarn --silent json -f package.json version)

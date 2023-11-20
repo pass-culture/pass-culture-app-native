@@ -4,10 +4,10 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-yarn --silent test:deadcode >scripts/dead_code_current.txt
+yarn --silent test:deadcode > scripts/dead_code_current.txt
 
-current_dead_code_count=$(wc -l <scripts/dead_code_current.txt)
-snapshot_dead_code_count=$(wc -l <scripts/dead_code_snapshot.txt)
+current_dead_code_count=$(wc -l < scripts/dead_code_current.txt)
+snapshot_dead_code_count=$(wc -l < scripts/dead_code_snapshot.txt)
 diff_dead_code_count=$((current_dead_code_count - snapshot_dead_code_count))
 
 function display_differences_between_dead_code() {

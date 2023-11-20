@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o nounset
-set -o pipefail
-
 IS_DB_INITIALIZED=$(echo "select name from feature where name = 'ENABLE_UBBLE'" | pgcli -U postgres -h pc-postgres-e2e -d pass_culture | grep '| ENABLE_UBBLE |')
 
 if [[ -z "$IS_DB_INITIALIZED" ]]; then

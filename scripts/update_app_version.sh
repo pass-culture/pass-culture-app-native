@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-set -o errexit
-set -o nounset
-set -o pipefail
+set -e
 
 update_app_version() {
   yarn version --"$2" --no-git-tag-version
