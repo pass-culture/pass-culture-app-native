@@ -4,9 +4,9 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
-import * as ContactHelpers from 'ui/components/contact/helpers'
 
 import { ContactBlock } from './ContactBlockNew'
+import * as ContactHelpers from './helpers'
 
 const venueId = venueResponseSnap.id
 const email = 'contact@venue.com'
