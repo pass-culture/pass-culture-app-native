@@ -24,6 +24,21 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
+  useSearchResults: () => ({
+    data: mockData,
+    hits: [],
+    nbHits: 0,
+    isFetching: false,
+    isLoading: false,
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
+  }),
+}))
+
 describe('Category component', () => {
   it('should render correctly', () => {
     expect(render(<Category />)).toMatchSnapshot()
