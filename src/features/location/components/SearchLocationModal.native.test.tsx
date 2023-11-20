@@ -6,6 +6,7 @@ import {
   DEFAULT_RADIUS,
   SearchLocationModal,
 } from 'features/location/components/SearchLocationModal'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
@@ -15,13 +16,13 @@ import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import {
+  act,
   fireEvent,
   render,
   screen,
+  waitFor,
   waitForModalToHide,
   waitForModalToShow,
-  act,
-  waitFor,
 } from 'tests/utils'
 
 const mockRadiusPlace = 37
@@ -65,6 +66,12 @@ jest.mock('libs/place', () => ({
 const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+}))
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
 }))
 
 describe('SearchLocationModal', () => {
@@ -162,6 +169,54 @@ describe('SearchLocationModal', () => {
     await waitForModalToShow()
 
     expect(screen.getByText('Paramètres de localisation')).toBeOnTheScreen()
+  })
+
+  it('should navigate to Search page with place params when the user has selected a custom position', async () => {
+    renderSearchLocationModal()
+
+    await waitForModalToShow()
+
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    fireEvent.changeText(searchInput, mockPlaces[0].label)
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    const validateButon = screen.getByText('Valider la localisation')
+    fireEvent.press(validateButon)
+
+    expect(mockNavigate).toHaveBeenCalledWith(
+      ...getTabNavConfig('Search', {
+        ...mockSearchState,
+        locationFilter: {
+          place: mockPlaces[0],
+          locationType: LocationType.PLACE,
+          aroundRadius: DEFAULT_RADIUS,
+        },
+        includeDigitalOffers: false,
+      })
+    )
+  })
+
+  it('should navigate to Search page with geolocation params when user is in geolocation mode', async () => {
+    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+
+    renderSearchLocationModal()
+    await waitForModalToShow()
+
+    const validateButon = screen.getByText('Valider la localisation')
+    fireEvent.press(validateButon)
+
+    expect(mockNavigate).toHaveBeenCalledWith(
+      ...getTabNavConfig('Search', {
+        ...mockSearchState,
+        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+        includeDigitalOffers: false,
+      })
+    )
   })
 
   describe('PlaceRadius', () => {
