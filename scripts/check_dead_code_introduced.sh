@@ -15,6 +15,7 @@ function display_differences_between_dead_code() {
 }
 
 function how_to_update_snapshot() {
+    echo 'If you have `(used in module)` that means that you probably have a useless `export`'
     echo '⏺️ Please run `yarn test:deadcode:update`'
     echo 'More informations https://en.wikipedia.org/wiki/Software_testing#Output_comparison_testing'
 }
