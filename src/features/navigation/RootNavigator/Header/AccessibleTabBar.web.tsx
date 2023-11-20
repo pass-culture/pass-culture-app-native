@@ -8,12 +8,14 @@ import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRoute
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 
 export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { tabRoutes } = useTabNavigationContext()
   const currentRoute = useCurrentRoute()
+  const { searchState } = useSearch()
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
@@ -22,7 +24,8 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
       <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {
-            const tabNavConfig = getTabNavConfig(route.name)
+            const params = route.name === 'Search' ? searchState : undefined
+            const tabNavConfig = getTabNavConfig(route.name, params)
             return (
               <LinkContainer key={route.name}>
                 <TabBarComponent

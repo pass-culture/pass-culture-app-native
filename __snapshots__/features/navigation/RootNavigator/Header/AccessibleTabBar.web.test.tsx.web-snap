@@ -31,12 +31,12 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
               >
-                <div
+                <a
                   aria-current="page"
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Accueil"
+                  href="/TabNavigator/Home"
                   style="transition-duration: 0s;"
-                  tabindex="0"
                 >
                   <div
                     class="css-view-175oi2r"
@@ -74,17 +74,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                   <div
                     class="css-view-175oi2r r-height-hdaws3"
                   />
-                </div>
+                </a>
               </li>
               <li
                 class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
               >
-                <div
+                <a
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Rechercher des offres"
+                  href="/TabNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&offerIsNew=false&offerTypes=%5Bobject%20Object%5D&priceRange&query=&timeRange&view=Landing"
                   style="transition-duration: 0s;"
-                  tabindex="0"
                 >
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -108,17 +108,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
-                </div>
+                </a>
               </li>
               <li
                 class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
               >
-                <div
+                <a
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Mes réservations"
+                  href="/TabNavigator/Bookings"
                   style="transition-duration: 0s;"
-                  tabindex="0"
                 >
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -142,17 +142,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
-                </div>
+                </a>
               </li>
               <li
                 class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
               >
-                <div
+                <a
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Favoris"
+                  href="/TabNavigator/Favorites"
                   style="transition-duration: 0s;"
-                  tabindex="0"
                 >
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -176,17 +176,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
-                </div>
+                </a>
               </li>
               <li
                 class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 role="listitem"
               >
-                <div
+                <a
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Mon profil"
+                  href="/TabNavigator/Profile"
                   style="transition-duration: 0s;"
-                  tabindex="0"
                 >
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -210,7 +210,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                   <div
                     class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   />
-                </div>
+                </a>
               </li>
             </ul>
             <div
@@ -251,12 +251,12 @@ exports[`AccessibleTabBar renders correctly 1`] = `
               class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
             >
-              <div
+              <a
                 aria-current="page"
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Accueil"
+                href="/TabNavigator/Home"
                 style="transition-duration: 0s;"
-                tabindex="0"
               >
                 <div
                   class="css-view-175oi2r"
@@ -294,17 +294,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 <div
                   class="css-view-175oi2r r-height-hdaws3"
                 />
-              </div>
+              </a>
             </li>
             <li
               class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
             >
-              <div
+              <a
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Rechercher des offres"
+                href="/TabNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&offerIsNew=false&offerTypes=%5Bobject%20Object%5D&priceRange&query=&timeRange&view=Landing"
                 style="transition-duration: 0s;"
-                tabindex="0"
               >
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -328,17 +328,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
-              </div>
+              </a>
             </li>
             <li
               class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
             >
-              <div
+              <a
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Mes réservations"
+                href="/TabNavigator/Bookings"
                 style="transition-duration: 0s;"
-                tabindex="0"
               >
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -362,17 +362,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
-              </div>
+              </a>
             </li>
             <li
               class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
             >
-              <div
+              <a
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Favoris"
+                href="/TabNavigator/Favorites"
                 style="transition-duration: 0s;"
-                tabindex="0"
               >
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -396,17 +396,17 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
-              </div>
+              </a>
             </li>
             <li
               class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="listitem"
             >
-              <div
+              <a
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Mon profil"
+                href="/TabNavigator/Profile"
                 style="transition-duration: 0s;"
-                tabindex="0"
               >
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -430,7 +430,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 <div
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 />
-              </div>
+              </a>
             </li>
           </ul>
           <div
