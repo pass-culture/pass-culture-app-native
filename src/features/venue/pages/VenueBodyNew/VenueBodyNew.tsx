@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
@@ -44,7 +45,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
           {bannerUrl ? (
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           ) : (
-            //TODO(PC-25598) Check if we want that behaviour when bannerUrl is missing
+            //TODO(PC-25598) Check if we want that behavior when bannerUrl is missing
             <BackgroundContainer>
               {Array.from({ length: 9 }).map((_, index) => (
                 <VenueHeaderBackground key={index} />
@@ -84,7 +85,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
         <TabLayout
           tabPanels={{
             'Offres disponibles': <VenueOffersNew venueId={venue.id} />,
-            'Infos pratiques': <Typo.Body>Panel des offres disponibles</Typo.Body>,
+            'Infos pratiques': <PracticalInformation venue={venue} />,
           }}
         />
       </FirstSectionContainer>

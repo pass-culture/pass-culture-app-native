@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContactBlock/> should match snapshot 1`] = `
+<div>
+  <div
+    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+    dir="ltr"
+  >
+    contact@venue.com
+  </div>
+  <div
+    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+    dir="ltr"
+  >
+    +33102030405
+  </div>
+  <div
+    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+    dir="ltr"
+  >
+    https://my@website.com
+  </div>
+</div>
+`;
