@@ -15,6 +15,7 @@ import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { Highlighted, HistoryItem, SearchState, SearchView } from 'features/search/types'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
@@ -58,7 +59,7 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch, searchState } = useSearch()
-  const { userPosition } = useLocation()
+  const { userPosition, setPlace } = useLocation()
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -66,6 +67,13 @@ export function Search() {
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
   }, [dispatch, params])
+
+  useEffect(() => {
+    if (params?.locationFilter?.locationType === LocationType.PLACE) {
+      setPlace(params.locationFilter.place)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const currentFilters = params?.locationFilter
 

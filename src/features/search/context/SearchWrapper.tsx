@@ -37,7 +37,9 @@ export const SearchWrapper = memo(function SearchWrapper({
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
 
-    if (isCustomPosition && place) {
+    if (searchState.locationFilter.locationType === LocationType.VENUE) {
+      return
+    } else if (isCustomPosition && place) {
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {

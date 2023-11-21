@@ -19,6 +19,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { SuggestedPlace } from 'libs/place'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -186,6 +187,21 @@ mockUseSearchHistory.mockReturnValue({
 
 const searchId = uuidv4()
 
+const mockedPlace: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
+
+const mockSetPlace = jest.fn()
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
+    setPlace: mockSetPlace,
+    place: mockedPlace,
+    onModalHideRef: jest.fn(),
+  }),
+}))
+
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -205,6 +221,23 @@ describe('<Search/>', () => {
       type: 'SET_STATE',
       payload: {},
     })
+  })
+
+  it('should setPlace in location context when there is a place in the uri params', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationType.PLACE,
+          place: mockedPlace,
+        },
+      },
+    })
+
+    render(<Search />)
+
+    await act(async () => {})
+
+    expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
   })
 
   describe('When search view is suggestions', () => {

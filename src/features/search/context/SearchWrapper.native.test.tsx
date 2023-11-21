@@ -63,6 +63,24 @@ describe('SearchWrapper', () => {
 
     expect(screen.getByText(LocationType.AROUND_ME)).toBeOnTheScreen()
   })
+
+  it('should not update locationType when searchState is set with a venue', async () => {
+    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+
+    renderDummyComponent()
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('SetVenue'))
+    })
+
+    screen.getByText(LocationType.VENUE)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('SetPlace'))
+    })
+
+    expect(screen.getByText(LocationType.VENUE)).toBeOnTheScreen()
+  })
 })
 
 const renderDummyComponent = () => {
@@ -77,13 +95,33 @@ const renderDummyComponent = () => {
 
 const DummyComponent = () => {
   const { setPlace } = useLocation()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
 
   return (
     <React.Fragment>
       <Text>{searchState.locationFilter.locationType}</Text>
       <Button title="SetPlace" onPress={() => setPlace(mockPlace)} />
       <Button title="UnSetPlace" onPress={() => setPlace(null)} />
+      <Button
+        title="SetVenue"
+        onPress={() =>
+          dispatch({
+            type: 'SET_LOCATION_FILTERS',
+            payload: {
+              locationFilter: {
+                locationType: LocationType.VENUE,
+                venue: {
+                  _geoloc: { lat: 48.94083, lng: 2.47987 },
+                  info: 'Paris',
+                  label: 'La librairie quantique DATA',
+                  venueId: 9384,
+                },
+              },
+              includeDigitalOffers: false,
+            },
+          })
+        }
+      />
     </React.Fragment>
   )
 }
