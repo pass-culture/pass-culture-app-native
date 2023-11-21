@@ -1,6 +1,6 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
+import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
 
 describe('getOfferArtists', () => {
   it('should return undefined when offer has not artists', () => {

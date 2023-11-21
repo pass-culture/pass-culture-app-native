@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
+import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 import { render, screen } from 'tests/utils'
 
 describe('OfferTitle', () => {

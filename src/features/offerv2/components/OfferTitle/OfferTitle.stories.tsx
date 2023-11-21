@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
+import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 
 const meta: ComponentMeta<typeof OfferTitle> = {
   title: 'features/offer/OfferTitle',
