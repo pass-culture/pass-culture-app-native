@@ -231,13 +231,21 @@ describe('[api] helpers', () => {
       expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
     })
 
-    it('needs authentication response when there is no access token', async () => {
+    it('should refresh access token when it is unknown and refresh token is valid', async () => {
       mockGetTokenStatus.mockReturnValueOnce('unknown')
+      const expectedResponse = await respondWith('some api response')
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
 
       const response = await safeFetch(apiUrl, {}, api)
 
-      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
-      expect(mockFetch).not.toHaveBeenCalled()
+      const refreshAccessTokenCalls = 1
+      const apiURLCalls = 1
+
+      expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
+
+      expect(response).toEqual(expectedResponse)
     })
 
     it('needs authentication response when there is no refresh token', async () => {

@@ -81,14 +81,11 @@ export const safeFetch = async (
   const token = authorizationHeader.replace('Bearer ', '')
   const accessTokenStatus = getTokenStatus(token)
 
-  if (accessTokenStatus === 'unknown') {
-    return createNeedsAuthenticationResponse(url)
-  }
-
-  // If the token is expired, we refresh it before calling the backend
-  if (accessTokenStatus === 'expired') {
+  // If the token is expired or unknown, we refresh it before calling the backend
+  if (accessTokenStatus === 'expired' || accessTokenStatus === 'unknown') {
     try {
       const { result: newAccessToken, error } = await refreshAccessToken(api)
+
       if (error === REFRESH_TOKEN_IS_EXPIRED_ERROR) {
         return RefreshTokenExpiredResponse
       }
