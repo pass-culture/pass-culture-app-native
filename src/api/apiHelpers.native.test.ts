@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { captureException } from '@sentry/react-native'
 import mockdate from 'mockdate'
 import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
@@ -258,6 +259,18 @@ describe('[api] helpers', () => {
       expect(mockFetch).not.toHaveBeenCalled()
     })
 
+    it('log exception to sentry when there is no refresh token', async () => {
+      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetRefreshToken.mockResolvedValueOnce(null)
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      expect(captureException).toHaveBeenCalledWith(
+        new Error('safeFetch Erreur lors de la récupération du refresh token'),
+        { extra: { url: '/native/v1/me' } }
+      )
+    })
+
     it('needs authentication response when cannot get refresh token', async () => {
       mockGetTokenStatus.mockReturnValueOnce('expired')
       mockGetRefreshToken.mockRejectedValueOnce(new Error())
@@ -265,6 +278,17 @@ describe('[api] helpers', () => {
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
       expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+    })
+
+    it('log exception to sentry when cannot get refresh token', async () => {
+      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetRefreshToken.mockRejectedValueOnce(new Error('Error'))
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      expect(captureException).toHaveBeenCalledWith(new Error('safeFetch Error: Error'), {
+        extra: { url: '/native/v1/me' },
+      })
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
@@ -504,13 +528,6 @@ describe('[api] helpers', () => {
     it('should navigate to login when access token is invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith('NeedsAuthenticationResponse', {
-        extra: {
-          status: 401,
-          statusText: 'NeedsAuthenticationResponse',
-          url: apiUrl,
-        },
-      })
       expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
       expect(result).toEqual({})
     })

@@ -91,7 +91,9 @@ export const safeFetch = async (
       }
 
       if (error) {
-        eventMonitoring.captureException(new Error(`safeFetch ${error}`))
+        eventMonitoring.captureException(new Error(`safeFetch ${error}`), {
+          extra: { url },
+        })
         return createNeedsAuthenticationResponse(url)
       }
 
@@ -106,7 +108,9 @@ export const safeFetch = async (
       // Here we are supposed to be logged-in (calling an authenticated endpoint)
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
-      eventMonitoring.captureException(new Error(`safeFetch ${error}`))
+      eventMonitoring.captureException(new Error(`safeFetch ${error}`), {
+        extra: { url },
+      })
       return createNeedsAuthenticationResponse(url)
     }
   }
@@ -241,14 +245,6 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationStatus.status &&
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    eventMonitoring.captureMessage(NeedsAuthenticationStatus.statusText, {
-      extra: {
-        url: await response.text(),
-        status: response.status,
-        statusText: response.statusText,
-      },
-    })
-
     navigateToLogin()
     return {}
   }
