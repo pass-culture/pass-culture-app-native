@@ -108,7 +108,7 @@ describe('[method] maintenanceStatus', () => {
       maintenanceStatusListener(mockedCallBack)
       onNext(docSnapshot)
 
-      // expect(mockedCallBack).not.toBeCalled()
+      // expect(mockedCallBack).not.toHaveBeenCalled()
       expect(mockedCallBack).toHaveBeenCalledWith({
         status: 'ON',
         message:
