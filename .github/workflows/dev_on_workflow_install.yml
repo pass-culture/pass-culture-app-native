@@ -36,6 +36,7 @@ jobs:
       - name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
+          cleanup_credentials: false
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: 'Set up Cloud SDK'
@@ -62,6 +63,7 @@ jobs:
         name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
+          cleanup_credentials: true
           workload_identity_provider: ${{ steps.secrets.outputs.INFRA_PROD_GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
       - name: 'Set up Cloud SDK'
@@ -77,6 +79,7 @@ jobs:
           EOF
       - name: Install dependencies
         run: yarn install
+      # necessary for post upload step in case of gcp artifact creation
       - name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
