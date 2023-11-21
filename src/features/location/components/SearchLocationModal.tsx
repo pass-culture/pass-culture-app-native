@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
@@ -6,6 +7,8 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
@@ -59,6 +62,7 @@ export const SearchLocationModal = ({
     showGeolocPermissionModal,
     isCurrentLocationMode,
   } = useLocationModal(visible)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { searchState, dispatch } = useSearch()
 
@@ -127,6 +131,17 @@ export const SearchLocationModal = ({
         },
       })
       analytics.logUserSetLocation('search')
+      navigate(
+        ...getTabNavConfig('Search', {
+          ...searchState,
+          locationFilter: {
+            place: selectedPlace,
+            locationType: LocationType.PLACE,
+            aroundRadius: aroundRadiusPlace,
+          },
+          includeDigitalOffers,
+        })
+      )
     } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
       setPlaceGlobally(null)
       dispatch({
@@ -136,6 +151,13 @@ export const SearchLocationModal = ({
           includeDigitalOffers,
         },
       })
+      navigate(
+        ...getTabNavConfig('Search', {
+          ...searchState,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: aroundMeRadius },
+          includeDigitalOffers,
+        })
+      )
     }
     dismissModal()
   }

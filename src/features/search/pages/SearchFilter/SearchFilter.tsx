@@ -5,15 +5,14 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
-import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
-import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SearchView } from 'features/search/types'
+import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
@@ -33,7 +32,7 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { userPosition: position } = useLocation()
+  const { userPosition: position, isGeolocated, isCustomPosition, place } = useLocation()
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isMobileViewport } = useTheme()
@@ -60,21 +59,60 @@ export const SearchFilter: React.FC = () => {
   }, [navigate, searchState])
 
   const onResetPress = useCallback(() => {
+    const getLocationFilter = (): LocationFilter => {
+      const { locationFilter } = searchState
+      const aroundRadius =
+        locationFilter.locationType === LocationType.EVERYWHERE ||
+        locationFilter.locationType === LocationType.VENUE
+          ? DEFAULT_RADIUS
+          : locationFilter.aroundRadius
+      if (isCustomPosition && place) {
+        return {
+          locationType: LocationType.PLACE,
+          place,
+          aroundRadius: aroundRadius ?? DEFAULT_RADIUS,
+        }
+      } else if (isGeolocated && position) {
+        return {
+          locationType: LocationType.AROUND_ME,
+          aroundRadius,
+        }
+      } else {
+        return { locationType: LocationType.EVERYWHERE }
+      }
+    }
     dispatch({
       type: 'SET_STATE',
       payload: {
-        ...initialSearchState,
-        locationFilter: position
-          ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
-          : { locationType: LocationType.EVERYWHERE },
+        ...searchState,
+        locationFilter: getLocationFilter(),
         minPrice: undefined,
         maxPrice: undefined,
         offerGenreTypes: undefined,
         offerNativeCategories: undefined,
+        beginningDatetime: undefined,
+        date: null,
+        endingDatetime: undefined,
+        offerCategories: [],
+        offerSubcategories: [],
+        offerIsDuo: false,
+        offerIsFree: false,
+        offerIsNew: false,
+        priceRange: null,
+        tags: [],
+        timeRange: null,
       },
     })
     logReinitializeFilters()
-  }, [dispatch, logReinitializeFilters, position])
+  }, [
+    dispatch,
+    isCustomPosition,
+    isGeolocated,
+    logReinitializeFilters,
+    place,
+    position,
+    searchState,
+  ])
 
   const hasDuoOfferToggle = useMemo(() => {
     const isBeneficiary = !!user?.isBeneficiary

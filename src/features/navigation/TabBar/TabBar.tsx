@@ -4,6 +4,7 @@ import React from 'react'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { useSearch } from 'features/search/context/SearchWrapper'
 
 import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
@@ -12,6 +13,7 @@ type Props = Pick<BottomTabBarProps, 'navigation'>
 
 export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()
+  const { searchState } = useSearch()
   return (
     <TabBarContainer>
       {tabRoutes.map((route) => {
@@ -23,7 +25,8 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
             canPreventDefault: true,
           })
           if (!event.defaultPrevented) {
-            const params = route.name === 'Home' ? undefined : route.params
+            let params = route.name === 'Home' ? undefined : route.params
+            params = route.name === 'Search' ? searchState : route.params
             navigation.navigate('TabNavigator', { screen: route.name, params })
           }
         }

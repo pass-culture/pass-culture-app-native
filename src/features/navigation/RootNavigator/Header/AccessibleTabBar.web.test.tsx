@@ -1,12 +1,26 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
+import * as navigationRefAPI from 'features/navigation/navigationRef'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { initialSearchState } from 'features/search/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
+}))
+
+const mockNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
+}))
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
 describe('AccessibleTabBar', () => {
@@ -54,8 +68,25 @@ describe('AccessibleTabBar', () => {
 
     expect(currentPageList).toHaveLength(1)
   })
+
+  it('should call navigate with searchState params on press "Recherche"', async () => {
+    const navigateFromRefSpy = jest.spyOn(navigationRefAPI, 'navigateFromRef')
+    renderTabBar()
+    const searchButton = screen.getByText('Recherche')
+    await act(() => {
+      fireEvent.click(searchButton)
+    })
+
+    expect(navigateFromRefSpy).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
+  })
 })
 
 function renderTabBar() {
-  return render(reactQueryProviderHOC(<AccessibleTabBar id="tabBarID" />))
+  return render(
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <AccessibleTabBar id="tabBarID" />
+      </NavigationContainer>
+    )
+  )
 }

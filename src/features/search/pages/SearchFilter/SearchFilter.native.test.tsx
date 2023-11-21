@@ -2,9 +2,9 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
-import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
@@ -27,6 +27,9 @@ let mockPosition: Position = DEFAULT_POSITION
 jest.mock('libs/geolocation/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
+    isGeolocated: true,
+    isCustomPosition: false,
+    place: null,
   }),
 }))
 
@@ -38,7 +41,7 @@ describe('<SearchFilter/>', () => {
   it('should render correctly', async () => {
     mockSearchState.locationFilter = {
       locationType: LocationType.AROUND_ME,
-      aroundRadius: 100,
+      aroundRadius: DEFAULT_RADIUS,
     }
     renderSearchFilter()
 
@@ -89,7 +92,7 @@ describe('<SearchFilter/>', () => {
     })
   })
 
-  describe('should update the state when pressing the reset button', () => {
+  describe('should update the SearchState, but keep the query, when pressing the reset button', () => {
     it('and position is not null', async () => {
       renderSearchFilter()
 
@@ -101,7 +104,7 @@ describe('<SearchFilter/>', () => {
         type: 'SET_STATE',
         payload: {
           ...initialSearchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
           minPrice: undefined,
           maxPrice: undefined,
           offerGenreTypes: undefined,

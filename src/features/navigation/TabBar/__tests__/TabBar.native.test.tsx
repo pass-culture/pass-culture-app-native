@@ -2,10 +2,12 @@ import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/t
 import { NavigationHelpers, ParamListBase } from '@react-navigation/native'
 import React from 'react'
 
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
   useTabNavigationContext,
 } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { initialSearchState } from 'features/search/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -47,6 +49,11 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
   emit: jest.fn(() => ({ defaultPrevented: false })),
   navigate: jest.fn(),
 }
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
+}))
 
 describe('TabBar', () => {
   beforeEach(() => {
@@ -154,6 +161,14 @@ describe('TabBar', () => {
       screen: 'Profile',
       params: undefined,
     })
+  })
+
+  it('should call navigate with searchState params on press "Recherche"', async () => {
+    renderTabBar()
+    const searchButton = screen.getByText('Recherche')
+    fireEvent.press(searchButton)
+
+    expect(navigation.navigate).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
   })
 })
 
