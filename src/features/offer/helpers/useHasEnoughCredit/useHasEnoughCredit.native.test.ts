@@ -27,13 +27,13 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 
 describe('hasEnoughCredit', () => {
   it.each`
-    domains                | price | domainsCredit                                 | enoughCredit
-    ${[]}                  | ${0}  | ${{}}                                         | ${true}
-    ${[ExpenseDomain.all]} | ${0}  | ${{}}                                         | ${true}
-    ${[ExpenseDomain.all]} | ${0}  | ${{ all: { initial: 10000, remaining: 10 } }} | ${true}
-    ${[ExpenseDomain.all]} | ${0}  | ${{ all: { initial: 10000, remaining: 0 } }}  | ${true}
-  `('any user can book free offers', ({ domains, price, domainsCredit, enoughCredit }) => {
-    expect(hasEnoughCredit(domains, price, domainsCredit)).toEqual(enoughCredit)
+    domains                | price | domainsCredit
+    ${[]}                  | ${0}  | ${{}}
+    ${[ExpenseDomain.all]} | ${0}  | ${{}}
+    ${[ExpenseDomain.all]} | ${0}  | ${{ all: { initial: 10000, remaining: 10 } }}
+    ${[ExpenseDomain.all]} | ${0}  | ${{ all: { initial: 10000, remaining: 0 } }}
+  `('any user can book free offers', ({ domains, price, domainsCredit }) => {
+    expect(hasEnoughCredit(domains, price, domainsCredit)).toBeTruthy()
   })
 
   it('should return true if the price is falsy', () => {
