@@ -24,8 +24,7 @@ export const hasEnoughCredit = (
   })
 }
 
-export const useHasEnoughCredit = (offerId: number): boolean => {
-  const { data: offer } = useOffer({ offerId })
+export const useHasEnoughCredit = (offer?: OfferResponse): boolean => {
   const { user } = useAuthContext()
   if (!offer || !user) return false
 

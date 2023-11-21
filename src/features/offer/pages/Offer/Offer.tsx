@@ -241,7 +241,7 @@ export function Offer() {
     isEndedUsedBooking,
     bottomBannerText,
     isDisabled,
-  } = useCtaWordingAndAction({ offerId, from, searchId }) ?? {}
+  } = useCtaWordingAndAction({ offer, from, searchId }) ?? {}
 
   const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useBookOfferModal({
     modalToDisplay,

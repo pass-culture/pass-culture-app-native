@@ -34,15 +34,20 @@ import { RecommendationApiParams } from 'shared/offer/types'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
-import { useOffer } from '../../api/useOffer'
 import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
+
+type UseGetCtaWordingAndActionProps = {
+  offer?: OfferResponse
+  from?: Referrals
+  searchId?: string
+}
 
 const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
   bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
 ): boolean => bookedOffersIds[offerId] !== undefined
 
-interface Props {
+type Props = {
   isLoggedIn: boolean
   userStatus: YoungStatusResponse
   isBeneficiary: boolean
@@ -60,7 +65,8 @@ interface Props {
   from?: Referrals
   searchId?: string
 }
-interface ICTAWordingAndAction {
+
+export type ICTAWordingAndAction = {
   modalToDisplay?: OfferModal
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
@@ -236,15 +242,11 @@ export const getCtaWordingAndAction = ({
   return undefined
 }
 
-export const useCtaWordingAndAction = (props: {
-  offerId: number
-  from?: Referrals
-  searchId?: string
-}): ICTAWordingAndAction | undefined => {
-  const { offerId, from, searchId } = props
+export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) => {
+  const { offer, from, searchId } = props
+  const offerId = offer?.id || 0
   const { isLoggedIn, user } = useAuthContext()
-  const { data: offer } = useOffer({ offerId })
-  const hasEnoughCredit = useHasEnoughCredit(offerId)
+  const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const mapping = useSubcategoriesMapping()
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
@@ -275,7 +277,7 @@ export const useCtaWordingAndAction = (props: {
     onSuccess(data) {
       analytics.logBookingConfirmation({
         ...apiRecoParams,
-        offerId,
+        offerId: offerId,
         bookingId: data.bookingId,
         fromOfferId,
         fromMultivenueOfferId,
