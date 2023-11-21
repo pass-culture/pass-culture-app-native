@@ -7,9 +7,9 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('@react-native-clipboard/clipboard', () => mockClipboard)
+
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
-
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
@@ -18,10 +18,26 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 const snackBarMessage = 'Copié avec succès\u00a0!'
 const wording = 'Copier l’adresse'
+const textToCopy = 'Le sucre, 69002 LYON'
 
 describe('PressToCopyButton', () => {
-  it('should copy text to Clipboard on press', () => {
-    expect(true).toBe(true)
+  it('should show right text', async () => {
+    renderPressToCopyButton()
+
+    const button = screen.getByText(wording)
+
+    expect(button).toBeTruthy()
+  })
+
+  it('should call setString of clipboard on press', async () => {
+    renderPressToCopyButton()
+    const button = screen.getByText(wording)
+
+    await act(async () => {
+      fireEvent.press(button)
+    })
+
+    expect(mockClipboard.setString).toHaveBeenCalledWith(textToCopy)
   })
 
   it('should show success snack bar', async () => {
@@ -43,6 +59,10 @@ describe('PressToCopyButton', () => {
 
 function renderPressToCopyButton() {
   return render(
-    <PressToCopyButton wording={wording} textToCopy="test" snackBarMessage={snackBarMessage} />
+    <PressToCopyButton
+      wording={wording}
+      textToCopy={textToCopy}
+      snackBarMessage={snackBarMessage}
+    />
   )
 }

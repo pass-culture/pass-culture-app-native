@@ -1,4 +1,3 @@
-import Clipboard from '@react-native-clipboard/clipboard'
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -13,12 +12,9 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { PressToCopyButton } from 'shared/PressToCopyButton/PressToCopyButton'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
-import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -40,10 +36,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
   const venueName = publicName || name
 
   const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
-
-  const copyToClipboard = () => {
-    Clipboard.setString(`${venueName}, ${venueFullAddress}`)
-  }
 
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
@@ -78,11 +70,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
             wording="Copier l’adresse"
             textToCopy={`${venueName}, ${venueFullAddress}`}
             snackBarMessage="L’adresse a bien été copiée"
-          />
-          <StyledButtonTertiary
-            icon={Duplicate}
-            wording="Copier l’adresse"
-            onPress={copyToClipboard}
           />
           <Spacer.Column numberOfSpaces={3} />
           <SeeItineraryButton
@@ -132,10 +119,6 @@ const VenueIcon = styled(Venue).attrs(({ theme }) => ({
 
 const HeaderContainer = styled.View({
   alignItems: 'center',
-})
-
-const StyledButtonTertiary = styledButton(ButtonTertiaryBlack)({
-  justifyContent: 'flex-start',
 })
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
