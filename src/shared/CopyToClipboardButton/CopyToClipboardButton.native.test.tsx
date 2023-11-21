@@ -1,12 +1,12 @@
-import mockClipboard from '@react-native-clipboard/clipboard/jest/clipboard-mock.js'
+import Clipboard from '@react-native-clipboard/clipboard'
 import React from 'react'
 
-import { PressToCopyButton } from 'shared/PressToCopyButton/PressToCopyButton'
+import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-jest.mock('@react-native-clipboard/clipboard', () => mockClipboard)
+jest.mock('@react-native-clipboard/clipboard')
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -20,30 +20,28 @@ const snackBarMessage = 'Copié avec succès\u00a0!'
 const wording = 'Copier l’adresse'
 const textToCopy = 'Le sucre, 69002 LYON'
 
-describe('PressToCopyButton', () => {
+describe('CopyToClipboardButton', () => {
   it('should show right text', async () => {
-    renderPressToCopyButton()
+    renderCopyToClipboardButton()
 
     const button = screen.getByText(wording)
 
     expect(button).toBeTruthy()
   })
 
-  it('should call setString of clipboard on press', async () => {
-    renderPressToCopyButton()
+  it('should copy to clipboard when pressing the button', async () => {
+    renderCopyToClipboardButton()
     const button = screen.getByText(wording)
 
     await act(async () => {
       fireEvent.press(button)
     })
 
-    expect(mockClipboard.setString).toHaveBeenCalledWith(textToCopy)
+    expect(Clipboard.setString).toHaveBeenCalledWith(textToCopy)
   })
 
   it('should show success snack bar', async () => {
-    mockClipboard.setString = jest.fn()
-
-    renderPressToCopyButton()
+    renderCopyToClipboardButton()
     const button = screen.getByText(wording)
 
     await act(async () => {
@@ -57,9 +55,9 @@ describe('PressToCopyButton', () => {
   })
 })
 
-function renderPressToCopyButton() {
+function renderCopyToClipboardButton() {
   return render(
-    <PressToCopyButton
+    <CopyToClipboardButton
       wording={wording}
       textToCopy={textToCopy}
       snackBarMessage={snackBarMessage}

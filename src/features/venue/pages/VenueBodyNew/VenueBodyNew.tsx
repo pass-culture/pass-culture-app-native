@@ -11,7 +11,7 @@ import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { PressToCopyButton } from 'shared/PressToCopyButton/PressToCopyButton'
+import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
@@ -66,7 +66,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
           <Spacer.Column numberOfSpaces={3} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={3} />
-          <PressToCopyButton
+          <CopyToClipboardButton
             wording="Copier l’adresse"
             textToCopy={`${venueName}, ${venueFullAddress}`}
             snackBarMessage="L’adresse a bien été copiée"

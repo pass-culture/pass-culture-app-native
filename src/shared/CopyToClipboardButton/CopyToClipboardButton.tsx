@@ -13,7 +13,7 @@ interface Props {
   snackBarMessage?: string
 }
 
-export const PressToCopyButton: FunctionComponent<Props> = ({
+export const CopyToClipboardButton: FunctionComponent<Props> = ({
   wording,
   textToCopy,
   snackBarMessage,
