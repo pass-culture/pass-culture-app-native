@@ -89,6 +89,8 @@ jest.mock('libs/place', () => ({
 }))
 const mockOnClose = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+
 describe('<LocationModal/>', () => {
   afterEach(() => {
     mockPermissionState = GeolocPermissionState.GRANTED
