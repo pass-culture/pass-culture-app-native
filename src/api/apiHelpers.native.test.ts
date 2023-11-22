@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { captureException } from '@sentry/react-native'
 import mockdate from 'mockdate'
 import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
@@ -265,7 +264,7 @@ describe('[api] helpers', () => {
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(captureException).toHaveBeenCalledWith(
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         new Error('safeFetch Erreur lors de la récupération du refresh token'),
         { extra: { url: '/native/v1/me' } }
       )
@@ -286,9 +285,12 @@ describe('[api] helpers', () => {
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(captureException).toHaveBeenCalledWith(new Error('safeFetch Error: Error'), {
-        extra: { url: '/native/v1/me' },
-      })
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('safeFetch Error: Error'),
+        {
+          extra: { url: '/native/v1/me' },
+        }
+      )
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
