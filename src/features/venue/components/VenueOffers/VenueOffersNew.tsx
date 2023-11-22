@@ -2,6 +2,9 @@ import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { VenueTypeCodeKey } from 'api/gen'
+import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -11,7 +14,7 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
 import { useLocation } from 'libs/geolocation'
-import { formatDates, getDisplayPrice } from 'libs/parsers'
+import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -23,11 +26,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   venueId: number
   layout?: Layout
+  playlists?: GTLPlaylistResponse
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props>) {
+export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Readonly<Props>) {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useLocation()
@@ -64,7 +68,12 @@ export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props
     [position]
   )
 
-  const showSeeMore = nbHits > hits.length
+  const shouldDisplayGtlPlaylist =
+    [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
+      venue?.venueTypeCode as VenueTypeCode
+    ) && Boolean(playlists?.length)
+
+  const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
@@ -91,7 +100,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props
       <Spacer.Column numberOfSpaces={6} />
       <PassPlaylist
         testID="offersModuleList"
-        title="Toutes les offres"
+        title={shouldDisplayGtlPlaylist ? 'Nos recommandations' : 'Toutes les offres'}
         TitleComponent={PlaylistTitleText}
         data={hits}
         itemHeight={itemHeight}
@@ -102,6 +111,13 @@ export function VenueOffersNew({ venueId, layout = 'two-items' }: Readonly<Props
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
       />
+      {shouldDisplayGtlPlaylist ? (
+        <React.Fragment>
+          {playlists?.slice(0, 10).map((playlist) => (
+            <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
+          ))}
+        </React.Fragment>
+      ) : null}
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
