@@ -7903,16 +7903,6 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={100}
-        style={
-          [
-            {
-              "height": 400,
-            },
-          ]
-        }
-      />
     </View>
   </RCTScrollView>
   <View

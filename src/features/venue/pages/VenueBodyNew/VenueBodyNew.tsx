@@ -91,8 +91,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
           }}
         />
       </FirstSectionContainer>
-
-      <Spacer.Column numberOfSpaces={100} />
     </Container>
   )
 }
