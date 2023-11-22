@@ -86,17 +86,17 @@ export const safeFetch = async (
     try {
       const { result: newAccessToken, error } = await refreshAccessToken(api)
 
-      if (error === REFRESH_TOKEN_IS_EXPIRED_ERROR) {
-        return RefreshTokenExpiredResponse
+      switch (error) {
+        case REFRESH_TOKEN_IS_EXPIRED_ERROR:
+          return RefreshTokenExpiredResponse
+        case FAILED_TO_GET_REFRESH_TOKEN_ERROR:
+          return createNeedsAuthenticationResponse(url)
+        case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
+          eventMonitoring.captureException(new Error(`safeFetch ${error}`, { cause: error }), {
+            extra: { url },
+          })
+          return createNeedsAuthenticationResponse(url)
       }
-
-      if (error) {
-        eventMonitoring.captureException(new Error(`safeFetch ${error}`, { cause: error }), {
-          extra: { url },
-        })
-        return createNeedsAuthenticationResponse(url)
-      }
-
       runtimeOptions = {
         ...runtimeOptions,
         headers: {

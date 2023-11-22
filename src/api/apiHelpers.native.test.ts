@@ -258,18 +258,6 @@ describe('[api] helpers', () => {
       expect(mockFetch).not.toHaveBeenCalled()
     })
 
-    it('log exception to sentry when there is no refresh token', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired')
-      mockGetRefreshToken.mockResolvedValueOnce(null)
-
-      await safeFetch(apiUrl, optionsWithAccessToken, api)
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('safeFetch Erreur lors de la récupération du refresh token'),
-        { extra: { url: '/native/v1/me' } }
-      )
-    })
-
     it('needs authentication response when cannot get refresh token', async () => {
       mockGetTokenStatus.mockReturnValueOnce('expired')
       mockGetRefreshToken.mockRejectedValueOnce(new Error())
