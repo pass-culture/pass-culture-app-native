@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -43,5 +43,26 @@ describe('<OfferHeader />', () => {
     })
 
     expect(offerHeaderName.style.opacity).toBe('1')
+  })
+
+  it('should display the share modal when clicking on the share button', async () => {
+    const animatedValue = new Animated.Value(0)
+
+    render(
+      reactQueryProviderHOC(
+        <OfferHeader
+          title="Some very nice offer"
+          headerTransition={animatedValue}
+          offer={mockOffer}
+        />
+      )
+    )
+
+    const shareButton = screen.getByLabelText('Partager')
+    await act(async () => {
+      fireEvent.click(shareButton)
+    })
+
+    expect(screen.getByText('Partager l’offre')).toBeInTheDocument()
   })
 })

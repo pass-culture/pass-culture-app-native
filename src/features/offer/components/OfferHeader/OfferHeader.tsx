@@ -5,8 +5,8 @@ import { useTheme } from 'styled-components/native'
 import { OfferResponse } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useShareOffer } from 'features/share/helpers/useShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { getShareOffer } from 'features/share/helpers/getShareOffer'
+import { WebShareModal } from 'features/share/pages/WebShareModalBest'
 import { analytics } from 'libs/analytics'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -34,7 +34,10 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
   } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { share: shareOffer, shareContent } = useShareOffer(offer.id, 'header')
+  const { share: shareOffer, shareContent } = getShareOffer({
+    offer,
+    utmMedium: 'header',
+  })
 
   const { animationState } = getAnimationState(theme, headerTransition)
 
@@ -66,14 +69,14 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
           </React.Fragment>
         }
       />
-      {shareContent ? (
+      {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      ) : null}
+      )}
     </React.Fragment>
   )
 }
