@@ -66,7 +66,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('E-mail'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture\u00a0!&body=Voici une super offre\u00a0!\nhttps://url.com/offer',
+      'mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture\u00a0!&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
       undefined,
       true
     )

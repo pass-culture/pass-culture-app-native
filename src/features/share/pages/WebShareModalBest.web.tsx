@@ -117,7 +117,9 @@ export const WebShareModal = ({
             <ExternalTouchableLink
               as={ButtonTertiaryBlack}
               externalNav={{
-                url: `mailto:?subject=${subject || body}&body=${body}\n${url}`,
+                url: `mailto:?subject=${subject || body}&body=${encodeURIComponent(
+                  `${body}\n${url}`
+                )}`,
               }}
               wording="E-mail"
               accessibilityLabel="Ouvrir le gestionnaire mail"
@@ -130,7 +132,9 @@ export const WebShareModal = ({
               <NonSocialButtonsItem>
                 <ExternalTouchableLink
                   as={ButtonTertiaryBlack}
-                  externalNav={{ url: `sms:${chooseContact}?&body=${body}: ${url}` }}
+                  externalNav={{
+                    url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(url)}`,
+                  }}
                   wording="SMS"
                   accessibilityLabel="Ouvrir l’application de message"
                   icon={SMSFilled}
