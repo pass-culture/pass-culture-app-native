@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain'
+import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { renderHook } from 'tests/utils'
 
 import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
@@ -46,6 +47,12 @@ describe('useLogoutRoutine', () => {
     await renderUseLogoutRoutine()
 
     expect(queryClient.removeQueries).toHaveBeenCalledWith([query])
+  })
+
+  it('should logout from Google account', async () => {
+    await renderUseLogoutRoutine()
+
+    expect(googleLogout).toHaveBeenCalledTimes(1)
   })
 })
 

@@ -8,6 +8,7 @@ import { clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'
+import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { storage } from 'libs/storage'
 
 export function useLogoutRoutine(): () => Promise<void> {
@@ -24,6 +25,7 @@ export function useLogoutRoutine(): () => Promise<void> {
         queryClient.removeQueries([queryKey])
       })
       await AsyncStorage.multiRemove(LoggedInQueryKeys)
+      await googleLogout()
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {
