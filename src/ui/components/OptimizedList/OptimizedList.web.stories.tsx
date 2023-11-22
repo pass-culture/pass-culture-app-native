@@ -35,12 +35,12 @@ const Wrapper = styled.View({
 
 const Header = styled(View)(({ theme }) => ({
   height: 80,
-  backgroundColor: theme.colors.aquamarine,
+  backgroundColor: theme.colors.greyLight,
 }))
 
 const Footer = styled(View)(({ theme }) => ({
   height: 50,
-  backgroundColor: theme.colors.coralLight,
+  backgroundColor: theme.colors.greyLight,
 }))
 
 const Item = styled.View({
@@ -142,7 +142,7 @@ WithOnEndReached.args = {
 }
 
 const additionalData = {
-  backgroundColor: 'blue',
+  backgroundColor: '#fff200',
 } as const
 export const WithAdditionalData = Template.bind({})
 WithAdditionalData.args = {
