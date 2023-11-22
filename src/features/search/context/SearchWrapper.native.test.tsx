@@ -40,7 +40,7 @@ describe('SearchWrapper', () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('SetPlace'))
+      fireEvent.press(screen.getByText('setPlace'))
     })
 
     expect(screen.getByText(LocationType.PLACE)).toBeOnTheScreen()
@@ -52,13 +52,13 @@ describe('SearchWrapper', () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('SetPlace'))
+      fireEvent.press(screen.getByText('setPlace'))
     })
 
     screen.getByText(LocationType.PLACE)
 
     await act(async () => {
-      fireEvent.press(screen.getByText('UnSetPlace'))
+      fireEvent.press(screen.getByText('unSetPlace'))
     })
 
     expect(screen.getByText(LocationType.AROUND_ME)).toBeOnTheScreen()
@@ -70,16 +70,30 @@ describe('SearchWrapper', () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('SetVenue'))
+      fireEvent.press(screen.getByText('setVenue'))
     })
 
     screen.getByText(LocationType.VENUE)
 
     await act(async () => {
-      fireEvent.press(screen.getByText('SetPlace'))
+      fireEvent.press(screen.getByText('setPlace'))
     })
 
     expect(screen.getByText(LocationType.VENUE)).toBeOnTheScreen()
+  })
+
+  it('should still include digital offers when locationContext is changed', async () => {
+    renderDummyComponent()
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('setPlaceIncludeDigitalOffer'))
+    })
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('unSetPlace'))
+    })
+
+    expect(screen.getByText('isDigitalOffer : true')).toBeOnTheScreen()
   })
 })
 
@@ -100,10 +114,11 @@ const DummyComponent = () => {
   return (
     <React.Fragment>
       <Text>{searchState.locationFilter.locationType}</Text>
-      <Button title="SetPlace" onPress={() => setPlace(mockPlace)} />
-      <Button title="UnSetPlace" onPress={() => setPlace(null)} />
+      <Text>isDigitalOffer : {searchState.includeDigitalOffers?.toString()}</Text>
+      <Button title="setPlace" onPress={() => setPlace(mockPlace)} />
+      <Button title="unSetPlace" onPress={() => setPlace(null)} />
       <Button
-        title="SetVenue"
+        title="setVenue"
         onPress={() =>
           dispatch({
             type: 'SET_LOCATION_FILTERS',
@@ -118,6 +133,22 @@ const DummyComponent = () => {
                 },
               },
               includeDigitalOffers: false,
+            },
+          })
+        }
+      />
+      <Button
+        title="setPlaceIncludeDigitalOffer"
+        onPress={() =>
+          dispatch({
+            type: 'SET_LOCATION_FILTERS',
+            payload: {
+              locationFilter: {
+                locationType: LocationType.PLACE,
+                place: mockPlace,
+                aroundRadius: 50,
+              },
+              includeDigitalOffers: true,
             },
           })
         }
