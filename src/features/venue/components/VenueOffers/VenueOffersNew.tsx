@@ -100,7 +100,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
       <Spacer.Column numberOfSpaces={6} />
       <PassPlaylist
         testID="offersModuleList"
-        title={shouldDisplayGtlPlaylist ? 'Nos recommandations' : 'Toutes les offres'}
+        title="Toutes les offres"
         TitleComponent={PlaylistTitleText}
         data={hits}
         itemHeight={itemHeight}
