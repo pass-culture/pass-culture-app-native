@@ -292,7 +292,7 @@ export function Offer() {
         sameArtistPlaylist={sameArtistPlaylist}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
-      <OfferHeader title={offer.name} headerTransition={headerTransition} offerId={offer.id} />
+      <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">

@@ -109,7 +109,7 @@ function renderOfferHeader() {
       <OfferHeader
         title="Some very nice offer"
         headerTransition={animatedValue}
-        offerId={offerId}
+        offer={mockOffer}
       />
     )
   )

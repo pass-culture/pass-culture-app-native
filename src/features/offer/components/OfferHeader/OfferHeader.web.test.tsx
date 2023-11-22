@@ -2,6 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils/web'
@@ -22,14 +23,13 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 describe('<OfferHeader />', () => {
   it('should fully display the title at the end of the animation', async () => {
     const animatedValue = new Animated.Value(0)
-    const offerId = 116656
 
     render(
       reactQueryProviderHOC(
         <OfferHeader
           title="Some very nice offer"
           headerTransition={animatedValue}
-          offerId={offerId}
+          offer={mockOffer}
         />
       )
     )
