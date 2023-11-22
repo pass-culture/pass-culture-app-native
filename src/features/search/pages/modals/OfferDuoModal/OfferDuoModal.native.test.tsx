@@ -40,6 +40,8 @@ mockUseAuthContext.mockReturnValue({
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
     renderOfferDuoModal()
