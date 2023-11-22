@@ -35,16 +35,16 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should render correctly when shown', () => {
-    const renderAPI = render(<WebShareModal {...defaultProps} />)
+    const { baseElement } = render(<WebShareModal {...defaultProps} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(baseElement).toMatchSnapshot()
   })
 
   it('should render correctly when hidden', () => {
     const props = { ...defaultProps, visible: false }
-    const renderAPI = render(<WebShareModal {...props} />)
+    const { baseElement } = render(<WebShareModal {...props} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(baseElement).toMatchSnapshot()
   })
 
   it('should dismiss the modal on cancel button click', () => {
