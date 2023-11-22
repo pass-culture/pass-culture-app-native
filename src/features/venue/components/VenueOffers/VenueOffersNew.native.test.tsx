@@ -62,7 +62,7 @@ describe('<VenueOffersNew />', () => {
   })
 
   it('should render correctly', () => {
-    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
+    renderVenueOffersNew(venueId)
 
     expect(screen).toMatchSnapshot()
   })
@@ -71,13 +71,13 @@ describe('<VenueOffersNew />', () => {
     mockUseVenueOffers.mockReturnValueOnce({
       data: { hits: [], nbHits: 0 },
     } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
-    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
+    renderVenueOffersNew(venueId)
 
     expect(screen.toJSON()).toBeNull()
   })
 
   it('should display "En voir plus" button if they are more hits to see than the one displayed', () => {
-    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
+    renderVenueOffersNew(venueId)
 
     expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
@@ -87,13 +87,13 @@ describe('<VenueOffersNew />', () => {
       data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
-    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
+    renderVenueOffersNew(venueId)
 
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
-    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
+    renderVenueOffersNew(venueId)
 
     fireEvent.press(screen.getByText('En voir plus'))
 
@@ -119,9 +119,12 @@ describe('<VenueOffersNew />', () => {
   })
 
   it(`should log analytics event when clicking "En voir plus" button`, () => {
-    render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} />))
+    renderVenueOffersNew(venueId)
     fireEvent.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
-})
+
+const renderVenueOffersNew = (venueId: number, playlists?: GTLPlaylistResponse) => {
+  return render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} playlists={playlists} />))
+}
