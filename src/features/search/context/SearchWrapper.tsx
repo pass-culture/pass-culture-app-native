@@ -33,6 +33,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   useEffect(() => {
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
+    const includeDigitalOffers = searchState.includeDigitalOffers ?? false
     if (locationType === LocationType.PLACE || locationType === LocationType.AROUND_ME) {
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
@@ -48,7 +49,7 @@ export const SearchWrapper = memo(function SearchWrapper({
             locationType: LocationType.PLACE,
             aroundRadius,
           },
-          includeDigitalOffers: false,
+          includeDigitalOffers,
         },
       })
     } else if (isGeolocated) {
@@ -56,7 +57,7 @@ export const SearchWrapper = memo(function SearchWrapper({
         type: 'SET_LOCATION_FILTERS',
         payload: {
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
-          includeDigitalOffers: false,
+          includeDigitalOffers,
         },
       })
     }
