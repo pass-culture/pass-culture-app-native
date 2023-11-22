@@ -71,7 +71,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
   const shouldDisplayGtlPlaylist =
     [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
       venue?.venueTypeCode as VenueTypeCode
-    ) && Boolean(playlists?.length)
+    ) && !!playlists?.length
 
   const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined
