@@ -118,7 +118,6 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
           ))}
         </React.Fragment>
       ) : null}
-      <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
