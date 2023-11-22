@@ -3,7 +3,9 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import { SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -16,6 +18,8 @@ import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
+const playlists = gtlPlaylistAlgoliaSnapshot
+const mockVenue = venueResponseSnap
 const venueId = venueResponseSnap.id
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -124,6 +128,49 @@ describe('<VenueOffersNew />', () => {
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
+
+  describe('should display all gtl playlists', () => {
+    it('When there are gtl playlists associated to the venue and venue type is distribution store', () => {
+      doMockUseVenue({ ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE })
+      renderVenueOffersNew(venueId, playlists)
+
+      expect(screen.getByText('GTL playlist')).toBeOnTheScreen()
+    })
+
+    it('When there are gtl playlists associated to the venue and venue type is book store', () => {
+      doMockUseVenue({ ...mockVenue, venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE })
+      renderVenueOffersNew(venueId, playlists)
+
+      expect(screen.getByText('GTL playlist')).toBeOnTheScreen()
+    })
+  })
+
+  describe('should not display all gtl playlists', () => {
+    it('When there are not gtl playlists associated to the venue and venue type is distribution store', () => {
+      doMockUseVenue({ ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE })
+      renderVenueOffersNew(venueId)
+
+      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+    })
+
+    it('When there are not gtl playlists associated to the venue and venue type is book store', () => {
+      doMockUseVenue({ ...mockVenue, venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE })
+      renderVenueOffersNew(venueId)
+
+      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+    })
+
+    it('When there are gtl playlists associated to the venue and venue type is not distributon or book store', () => {
+      renderVenueOffersNew(venueId, playlists)
+
+      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+    })
+  })
+})
+
+const doMockUseVenue = (venue: VenueResponse) => {
+  mockUseVenue.mockReturnValue({ data: venue } as UseQueryResult<VenueResponse, unknown>)
+}
 
 const renderVenueOffersNew = (venueId: number, playlists?: GTLPlaylistResponse) => {
   return render(reactQueryProviderHOC(<VenueOffersNew venueId={venueId} playlists={playlists} />))
