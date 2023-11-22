@@ -563,7 +563,7 @@ describe('<OfferBody />', () => {
         expect(screen.queryByText('Lieu de retrait')).toBeOnTheScreen()
       })
 
-      it('With "Lieu de l’événement" in title when event offer', async () => {
+      it('With "Lieu de l’évènement" in title when event offer', async () => {
         mockUseOffer.mockReturnValueOnce({
           data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.CONCERT },
         })
