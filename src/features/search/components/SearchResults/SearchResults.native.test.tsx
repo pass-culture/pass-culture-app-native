@@ -1,14 +1,16 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchState, UserData } from 'features/search/types'
+import { LocationFilter, SearchState, SearchView, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -433,6 +435,25 @@ describe('SearchResults component', () => {
 
       expect(screen.getByTestId('fullscreenModalView')).toHaveTextContent(
         'Trouver un lieu culturel'
+      )
+    })
+
+    it('should call navigate on press "Rechercher" in venue modal', async () => {
+      render(<SearchResults />)
+
+      await act(async () => {
+        const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
+        fireEvent.press(venueButton)
+      })
+
+      fireEvent.press(screen.getByText('Rechercher'))
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+          view: SearchView.Results,
+        })
       )
     })
 

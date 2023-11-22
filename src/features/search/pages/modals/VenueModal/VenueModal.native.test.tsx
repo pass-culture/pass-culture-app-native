@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'react-native'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import * as SearchWrapper from 'features/search/context/SearchWrapper'
@@ -7,7 +8,7 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen, waitFor, waitForModalToShow } from 'tests/utils'
+import { act, fireEvent, render, screen, waitForModalToShow } from 'tests/utils'
 
 const dismissModalMock = jest.fn()
 
@@ -21,6 +22,10 @@ const mockSearchState: SearchState = {
 jest.mock('libs/place', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: false }),
 }))
+
+jest.unmock('features/search/context/SearchWrapper')
+const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
+mockedUseSearch.mockReturnValue({ searchState: initialSearchState, dispatch: jest.fn() })
 
 describe('VenueModal', () => {
   it('should render correctly', async () => {
@@ -44,21 +49,22 @@ describe('VenueModal', () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
     await waitForModalToShow()
 
-    const searchInput = screen.getByTestId('styled-input-container')
-    fireEvent.changeText(searchInput, mockVenues[0].label)
+    const venueSearchInput = screen.getByTestId('searchInput')
+    fireEvent.changeText(venueSearchInput, mockVenues[0].label)
 
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
     fireEvent.press(suggestedVenue)
 
-    const validateButon = screen.getByText('Rechercher')
-    fireEvent.press(validateButon)
+    const validateButton = screen.getByText('Rechercher')
+    fireEvent.press(validateButton)
 
     expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: mockVenues[0].label })
   })
 
   it('should be initialized with the venue label when a venue is already selected and venue modal is opened', async () => {
-    const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
-    mockedUseSearch.mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+    mockedUseSearch
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
     await waitForModalToShow()
@@ -70,8 +76,8 @@ describe('VenueModal', () => {
   })
 
   it('should be initialized with the venue label when a venue is already selected, input was cleared, modal was closed and then opened', async () => {
-    const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
-    mockedUseSearch // it rerenders multiple(3) time so it needs multiple(3) mocks
+    mockedUseSearch // it rerenders multiple(4) time so it needs multiple(4) mocks
+      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
       .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
       .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
       .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
@@ -93,7 +99,6 @@ describe('VenueModal', () => {
   })
 
   it('should not display venue suggestion when a venue is already selected before opening the modal', async () => {
-    const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
     mockedUseSearch // it rerenders multiple(3) time so it needs multiple(3) mocks
       .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
       .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
@@ -102,8 +107,66 @@ describe('VenueModal', () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
     await waitForModalToShow()
-    await waitFor(() => {
-      expect(screen.queryByText(mockVenues[0].label)).not.toBeOnTheScreen()
+
+    const venueSearchInput = screen.getByTestId('searchInput')
+
+    expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
+  })
+
+  it('should not display a venue label if locationType is no longer a venue', async () => {
+    mockedUseSearch.mockRestore()
+
+    renderDummyComponent()
+
+    const venueSearchInput = screen.getByTestId('searchInput')
+    fireEvent.changeText(venueSearchInput, mockVenues[0].label)
+
+    const suggestedVenue = await screen.findByText(mockVenues[0].label)
+    fireEvent.press(suggestedVenue)
+
+    await act(() => {
+      const validateButton = screen.getByText('Rechercher')
+      fireEvent.press(validateButton)
     })
+
+    expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
+
+    const setLocationTypeEverywhereButton = screen.getByText('setLocationTypeEverywhere')
+    fireEvent.press(setLocationTypeEverywhereButton)
+
+    await act(() => {})
+
+    expect(venueSearchInput.props.value).toEqual('')
   })
 })
+
+const renderDummyComponent = () => {
+  render(
+    <SearchWrapper.SearchWrapper>
+      <DummyComponent />
+    </SearchWrapper.SearchWrapper>
+  )
+}
+
+const DummyComponent = () => {
+  const { dispatch } = SearchWrapper.useSearch()
+  return (
+    <React.Fragment>
+      <VenueModal visible dismissModal={jest.fn()} />
+      <Button
+        title="setLocationTypeEverywhere"
+        onPress={() =>
+          dispatch({
+            type: 'SET_LOCATION_FILTERS',
+            payload: {
+              locationFilter: {
+                locationType: LocationType.EVERYWHERE,
+              },
+              includeDigitalOffers: false,
+            },
+          })
+        }
+      />
+    </React.Fragment>
+  )
+}
