@@ -23,7 +23,7 @@ describe('analytics - logEvent', () => {
         agentType: AgentType.agent_mobile,
         offerId: '123456',
         bookingId: '789',
-        locationType: undefined,
+        locationType: 'undefined',
       })
     })
   })

@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { storage } from 'libs/storage'
+import { act } from 'tests/utils'
 
 const EVENT_PARAMS = { param: 1 }
 const SCREEN_NAME = 'Home'
@@ -23,7 +24,7 @@ describe('analyticsProvider - logEvent', () => {
 
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
-        locationType: undefined,
+        locationType: 'undefined',
       })
     })
 
@@ -49,7 +50,7 @@ describe('analyticsProvider - logEvent', () => {
 
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
-        locationType: undefined,
+        locationType: 'undefined',
       })
     })
 
