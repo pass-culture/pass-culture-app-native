@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-restricted-imports
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
@@ -16,7 +18,7 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { From } from 'shared/offer/enums'
@@ -43,6 +45,7 @@ const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
+const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -109,6 +112,41 @@ describe('<Login/>', () => {
         },
       },
       { credentials: 'omit' }
+    )
+  })
+
+  it('should sign in when SSO Google button is clicked', async () => {
+    // We use this hook twice but due to multiple rerender we have to mock the return value this way
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true)
+    getModelSpy.mockReturnValueOnce('iPhone 13')
+    getSystemNameSpy.mockReturnValueOnce('iOS')
+    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+      accessToken: 'accessToken',
+      refreshToken: 'refreshToken',
+      accountState: AccountState.ACTIVE,
+    })
+
+    renderLogin()
+    await act(() => fireEvent.press(screen.getByTestId('SSO Google')))
+
+    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
+      authorizationCode: 'mockServerAuthCode',
+    })
+  })
+
+  it('should log to Sentry on SSO login error', async () => {
+    // We use this hook twice but due to multiple rerender we have to mock the return value this way
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true)
+    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
+
+    renderLogin()
+    await act(() => fireEvent.press(screen.getByTestId('SSO Google')))
+
+    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+      'Can’t login via Google: GoogleSignIn Error',
+      'info'
     )
   })
 

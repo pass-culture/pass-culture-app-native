@@ -10,4 +10,5 @@
     \"include\": \"https://passculture.app/.well-known/assetlinks.json\"
   }]
   </string>
+  <string name="server_client_id">@string/GOOGLE_CLIENT_ID</string>
 </resources>

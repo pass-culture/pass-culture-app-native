@@ -3,6 +3,7 @@ import { LogBox } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
+import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { render, waitFor } from 'tests/utils'
 
 import { AppWithoutMonitoring } from './App'
@@ -29,6 +30,16 @@ describe('<App /> with mocked RootNavigator', () => {
     renderApp()
 
     expect(campaignTracker.useInit).not.toHaveBeenCalled()
+  })
+
+  it('should configure Google signin on launch', () => {
+    renderApp()
+
+    expect(configureGoogleSignin).toHaveBeenCalledWith({
+      iosClientId: 'GOOGLE_IOS_CLIENT_ID',
+      webClientId: 'GOOGLE_CLIENT_ID',
+      offlineAccess: true,
+    })
   })
 
   it('should disable log box when maestro tests are running', async () => {
