@@ -113,7 +113,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
       />
       {shouldDisplayGtlPlaylist ? (
         <React.Fragment>
-          {playlists?.slice(0, 10).map((playlist) => (
+          {playlists.slice(0, 10).map((playlist) => (
             <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
           ))}
         </React.Fragment>
