@@ -8,22 +8,12 @@ import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
-const isNullOrUndefined = <T,>(value: T | undefined | null) => value === undefined || value === null
-
 export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
   visualDisability,
   audioDisability,
   mentalDisability,
   motorDisability,
 }) => {
-  if (
-    isNullOrUndefined(visualDisability) &&
-    isNullOrUndefined(audioDisability) &&
-    isNullOrUndefined(mentalDisability) &&
-    isNullOrUndefined(motorDisability)
-  )
-    return null
-
   return (
     <Row>
       <StyledUl>
