@@ -162,7 +162,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
 <body>
     <div>
       <div
-        class="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk r-width-13qz1uu"
+        class="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1dqxon3 r-paddingHorizontal-1guathk r-width-13qz1uu"
       >
         <div
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -460,7 +460,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
 
 <div>
     <div
-      class="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1jwulwa r-paddingHorizontal-1guathk r-width-13qz1uu"
+      class="css-view-175oi2r r-alignSelf-1kihuf0 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-overflow-1dqxon3 r-paddingHorizontal-1guathk r-width-13qz1uu"
     >
       <div
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
