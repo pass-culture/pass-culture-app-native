@@ -8,6 +8,7 @@ import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -30,6 +31,22 @@ jest.mock('libs/geolocation/LocationWrapper', () => ({
     isGeolocated: true,
     isCustomPosition: false,
     place: null,
+  }),
+}))
+
+const mockData = placeholderData
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
+  useSearchResults: () => ({
+    data: mockData,
+    hits: [],
+    nbHits: 0,
+    isFetching: false,
+    isLoading: false,
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    isFetchingNextPage: false,
   }),
 }))
 
