@@ -5292,87 +5292,32 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
             style={
               [
                 {
-                  "flexDirection": "row",
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "justifyContent": "center",
+                },
+                {
+                  "height": 188,
+                  "width": 960,
                 },
               ]
             }
+            testID="defaultVenueBackground"
           >
             <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
+              customHeight={16}
+              enable={true}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
             <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-            <View
-              fill="none"
-              height="259"
-              width="375"
+              height={120}
+              width={120}
             >
               <Text>
                 undefined-SVG-Mock

@@ -121,6 +121,7 @@ import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
+import { Venue } from 'ui/svg/icons/Venue'
 import { Wrong } from 'ui/svg/icons/Wrong'
 
 export const SocialNetworkIcons = {
@@ -224,6 +225,7 @@ export const SecondaryAndBiggerIcons = {
   ThumbUp,
   Trash,
   Valid,
+  Venue,
   Wrong,
 }
 
