@@ -70,7 +70,7 @@
     "test:storybook:accessibility": "axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
     "test:unit": "TZ=UTC JEST=true node --no-experimental-fetch --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
-    "test:unit:ci": "yarn test:unit --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit --max-old-space-size=8192 --detectOpenHandles",
+    "test:unit:ci": "yarn test:unit --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit",
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
     "test:unit:web": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --config jest.web.config.js --forceExit  --logHeapUsage",
     "test:unit:web:ci": "yarn test:unit:web --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit",
