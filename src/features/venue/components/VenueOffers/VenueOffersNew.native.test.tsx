@@ -59,10 +59,7 @@ const defaultParams = {
 
 describe('<VenueOffersNew />', () => {
   afterEach(() => {
-    mockUseVenue.mockReturnValue({ data: venueResponseSnap } as UseQueryResult<
-      VenueResponse,
-      unknown
-    >)
+    doMockUseVenue(venueResponseSnap)
   })
 
   it('should render correctly', () => {
