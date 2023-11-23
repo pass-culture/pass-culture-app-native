@@ -59,10 +59,11 @@ describe('analyticsProvider - logEvent', () => {
       expect(firebaseAnalytics.logEvent).not.toHaveBeenCalled()
     })
 
-    it('should log screen view when logScreenView is called', () => {
+    it('should log screen view when logScreenView is called', async () => {
       analytics.logScreenView(SCREEN_NAME)
+      await act(() => {})
 
-      expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME)
+      expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME, 'undefined')
     })
   })
 
