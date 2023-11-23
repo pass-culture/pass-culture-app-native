@@ -92,10 +92,7 @@ export const safeFetch = async (
         case FAILED_TO_GET_REFRESH_TOKEN_ERROR:
           return createNeedsAuthenticationResponse(url)
         case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
-          eventMonitoring.captureException(new Error(`safeFetch ${error}`, { cause: error }), {
-            extra: { url },
-          })
-          return createNeedsAuthenticationResponse(url)
+          throw new Error(UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN)
       }
       runtimeOptions = {
         ...runtimeOptions,
