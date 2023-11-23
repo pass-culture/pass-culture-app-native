@@ -15,6 +15,7 @@ export const analytics: AnalyticsProvider = {
     firebaseAnalytics.disableCollection()
     amplitude.disableCollection()
   },
+
   logScreenView: async (screenName) => {
     const locationType = (await storage.readString('location_type')) ?? 'undefined'
     firebaseAnalytics.logScreenView(screenName, locationType)
@@ -27,6 +28,10 @@ export const analytics: AnalyticsProvider = {
     if (eventName.amplitude) {
       amplitude.logEvent(eventName.amplitude, params)
     }
+  },
+  setEventLocationType: async () => {
+    const locationType = (await storage.readString('location_type')) ?? 'undefined'
+    firebaseAnalytics.setDefaultEventParameters({ locationType })
   },
   ...logEventAnalytics,
 }

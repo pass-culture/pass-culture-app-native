@@ -12,6 +12,7 @@ export type AnalyticsProvider = {
   enableCollection: () => Promise<void>
   logScreenView: (screenName: ScreenNames) => Promise<void>
   logEvent: (eventName: EventName, params?: Record<string, unknown>) => Promise<void>
+  setEventLocationType: () => Promise<void>
 } & typeof logEventAnalytics
 
 export type OfferAnalyticsParams = {

@@ -66,6 +66,15 @@ describe('analyticsProvider - logEvent', () => {
 
       expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME, 'undefined')
     })
+
+    it('should set default event parameters when setEventLocationType is called', async () => {
+      analytics.setEventLocationType()
+      await act(() => {})
+
+      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
+        locationType: 'undefined',
+      })
+    })
   })
 
   describe('with amplitude', () => {
