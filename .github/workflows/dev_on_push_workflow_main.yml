@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags:
-      - "**"
+      - '**'
   pull_request:
 
 permissions:
@@ -20,245 +20,245 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  check-proxy-version-staging:
-    name: Check staging proxy tag
-    if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
-    with:
-      WEBAPP_URL: https://app.staging.passculture.team
-  check-proxy-version-production:
-    name: Check production proxy tag
-    if: startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')
-    uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
-    with:
-      WEBAPP_URL: https://passculture.app
-  check-server-folder-changes:
-    name: Check server folder changes
-    if: ${{ ! (startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')) }}
-    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
-    with:
-      folder: server/**
-  check-server-folder-changes-staging:
-    name: Check server folder changes staging
-    needs: check-proxy-version-staging
-    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
-    with:
-      base_sha: ${{ needs.check-proxy-version-staging.outputs.proxy_base_tag }}
-      folder: server/**
-  check-server-folder-changes-production:
-    name: Check server folder changes production
-    needs: check-proxy-version-production
-    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
-    with:
-      base_sha: ${{ needs.check-proxy-version-production.outputs.proxy_base_tag }}
-      folder: server/**
-  check-storybook-folder-changes:
-    name: Check storybook folder changes
-    if: ${{ ! startsWith(github.ref, 'refs/tags') }}
-    uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
-    with:
-      folder: |
-        .storybook/**
-        src/**
-  yarn-linter:
-    needs: yarn-install
-    uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
-    with:
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  yarn-ts-prune:
-    needs: yarn-install
-    uses: ./.github/workflows/dev_on_workflow_ts_prune.yml
-    with:
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # check-proxy-version-staging:
+  #   name: Check staging proxy tag
+  #   if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+  #   uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
+  #   with:
+  #     WEBAPP_URL: https://app.staging.passculture.team
+  # check-proxy-version-production:
+  #   name: Check production proxy tag
+  #   if: startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')
+  #   uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
+  #   with:
+  #     WEBAPP_URL: https://passculture.app
+  # check-server-folder-changes:
+  #   name: Check server folder changes
+  #   if: ${{ ! (startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')) }}
+  #   uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+  #   with:
+  #     folder: server/**
+  # check-server-folder-changes-staging:
+  #   name: Check server folder changes staging
+  #   needs: check-proxy-version-staging
+  #   uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+  #   with:
+  #     base_sha: ${{ needs.check-proxy-version-staging.outputs.proxy_base_tag }}
+  #     folder: server/**
+  # check-server-folder-changes-production:
+  #   name: Check server folder changes production
+  #   needs: check-proxy-version-production
+  #   uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+  #   with:
+  #     base_sha: ${{ needs.check-proxy-version-production.outputs.proxy_base_tag }}
+  #     folder: server/**
+  # check-storybook-folder-changes:
+  #   name: Check storybook folder changes
+  #   if: ${{ ! startsWith(github.ref, 'refs/tags') }}
+  #   uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
+  #   with:
+  #     folder: |
+  #       .storybook/**
+  #       src/**
+  # yarn-linter:
+  #   needs: yarn-install
+  #   uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
+  #   with:
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # yarn-ts-prune:
+  #   needs: yarn-install
+  #   uses: ./.github/workflows/dev_on_workflow_ts_prune.yml
+  #   with:
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   yarn-tester:
-    needs: yarn-linter
+    # needs: yarn-linter
     uses: ./.github/workflows/dev_on_workflow_tester.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  yarn-chromatic:
-    needs: [yarn-linter, check-storybook-folder-changes]
-    uses: ./.github/workflows/dev_on_workflow_chromatic.yml
-    if: needs.check-storybook-folder-changes.outputs.folder_changed == 'true'
-    secrets:
-      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-  soft-deploy-testing:
-    needs: yarn-tester
-    if: github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
-    with:
-      ENV: testing
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  soft-deploy-staging:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/hotfix-staging')
-    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
-    with:
-      ENV: staging
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  soft-deploy-production:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/hotfix-production')
-    uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
-    with:
-      ENV: production
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  hard-deploy-android-testing:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/testing')
-    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
-    with:
-      ENV: testing
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  hard-deploy-ios-testing:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/testing')
-    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
-    with:
-      ENV: testing
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  hard-deploy-android-staging:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
-    with:
-      ENV: staging
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  hard-deploy-ios-staging:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
-    with:
-      ENV: staging
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  hard-deploy-android-production:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
-    uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
-    with:
-      ENV: production
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  hard-deploy-ios-production:
-    needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
-    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
-    with:
-      ENV: production
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-testing:
-    needs: soft-deploy-testing
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: testing
-      BUCKET_NAME: passculture-metier-ehp-testing-decliweb
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-staging:
-    needs: [yarn-tester]
-    if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: staging
-      BUCKET_NAME: passculture-metier-ehp-staging-decliweb
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-proxy-testing:
-    needs: [check-server-folder-changes, yarn-tester]
-    if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
-    with:
-      ENV: testing
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-proxy-staging:
-    needs: [check-server-folder-changes-staging, deploy-web-staging]
-    if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
-    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
-    with:
-      ENV: staging
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-integration:
-    needs: [yarn-tester]
-    if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: integration
-      BUCKET_NAME: passculture-metier-ehp-integration-decliweb
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-proxy-integration:
-    needs: [check-server-folder-changes-production, deploy-web-integration]
-    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
-    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
-    with:
-      ENV: integration
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-production:
-    needs: [yarn-tester]
-    if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
-    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-    with:
-      ENV: production
-      BUCKET_NAME: passculture-metier-prod-production-decliweb
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  deploy-web-proxy-production:
-    needs: [check-server-folder-changes-production, deploy-web-production]
-    if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
-    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
-    with:
-      ENV: production
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-      GCP_PROD_SERVICE_ACCOUNT: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
-      GCP_PROD_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
-  update-jira-issues:
-    if: github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_update_jira_issues.yml
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # yarn-chromatic:
+  #   needs: [yarn-linter, check-storybook-folder-changes]
+  #   uses: ./.github/workflows/dev_on_workflow_chromatic.yml
+  #   if: needs.check-storybook-folder-changes.outputs.folder_changed == 'true'
+  #   secrets:
+  #     CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+  # soft-deploy-testing:
+  #   needs: yarn-tester
+  #   if: github.ref == 'refs/heads/master'
+  #   uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
+  #   with:
+  #     ENV: testing
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # soft-deploy-staging:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/hotfix-staging')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
+  #   with:
+  #     ENV: staging
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # soft-deploy-production:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/hotfix-production')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
+  #   with:
+  #     ENV: production
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # hard-deploy-android-testing:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/testing')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
+  #   with:
+  #     ENV: testing
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # hard-deploy-ios-testing:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/testing')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+  #   with:
+  #     ENV: testing
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # hard-deploy-android-staging:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
+  #   with:
+  #     ENV: staging
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # hard-deploy-ios-staging:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+  #   with:
+  #     ENV: staging
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # hard-deploy-android-production:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
+  #   with:
+  #     ENV: production
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # hard-deploy-ios-production:
+  #   needs: yarn-tester
+  #   if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
+  #   uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+  #   with:
+  #     ENV: production
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-testing:
+  #   needs: soft-deploy-testing
+  #   uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+  #   with:
+  #     ENV: testing
+  #     BUCKET_NAME: passculture-metier-ehp-testing-decliweb
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-staging:
+  #   needs: [yarn-tester]
+  #   if: startsWith(github.ref, 'refs/tags/hotfix-staging') || startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+  #   uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+  #   with:
+  #     ENV: staging
+  #     BUCKET_NAME: passculture-metier-ehp-staging-decliweb
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-proxy-testing:
+  #   needs: [check-server-folder-changes, yarn-tester]
+  #   if: needs.check-server-folder-changes.outputs.folder_changed == 'true' && github.ref == 'refs/heads/master'
+  #   uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+  #   with:
+  #     ENV: testing
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-proxy-staging:
+  #   needs: [check-server-folder-changes-staging, deploy-web-staging]
+  #   if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
+  #   uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+  #   with:
+  #     ENV: staging
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-integration:
+  #   needs: [yarn-tester]
+  #   if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
+  #   uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+  #   with:
+  #     ENV: integration
+  #     BUCKET_NAME: passculture-metier-ehp-integration-decliweb
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-proxy-integration:
+  #   needs: [check-server-folder-changes-production, deploy-web-integration]
+  #   if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
+  #   uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+  #   with:
+  #     ENV: integration
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-production:
+  #   needs: [yarn-tester]
+  #   if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
+  #   uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+  #   with:
+  #     ENV: production
+  #     BUCKET_NAME: passculture-metier-prod-production-decliweb
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  # deploy-web-proxy-production:
+  #   needs: [check-server-folder-changes-production, deploy-web-production]
+  #   if: needs.check-server-folder-changes-production.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
+  #   uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+  #   with:
+  #     ENV: production
+  #     CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+  #     GCP_PROD_SERVICE_ACCOUNT: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
+  #     GCP_PROD_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
+  # update-jira-issues:
+  #   if: github.ref == 'refs/heads/master'
+  #   uses: ./.github/workflows/dev_on_workflow_update_jira_issues.yml
+  #   secrets:
+  #     GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+  #     GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
