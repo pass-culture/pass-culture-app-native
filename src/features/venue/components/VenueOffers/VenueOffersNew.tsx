@@ -8,6 +8,7 @@ import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
@@ -92,7 +93,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
   )
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
-    return null
+    return <NoOfferPlaceholder />
   }
 
   return (
