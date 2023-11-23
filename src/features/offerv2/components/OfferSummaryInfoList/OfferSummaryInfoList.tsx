@@ -55,7 +55,7 @@ export function OfferSummaryInfoList({ offer }: Readonly<Props>) {
       isDisplayed: isDuo,
       Icon: <Stock size={theme.icons.sizes.small} />,
       title: 'Duo',
-      subtitle: 'Tu peux prendre deux places pour y aller accompagné',
+      subtitle: 'Tu peux prendre deux places',
     },
   ]
 

@@ -112,12 +112,10 @@ describe('<OfferSummaryInfoList />', () => {
     expect(screen.getByText('Duo')).toBeOnTheScreen()
   })
 
-  it('should display "Tu peux prendre deux places pour y aller accompagné" when offer can be booked as a duo', () => {
+  it('should display "Tu peux prendre deux places" when offer can be booked as a duo', () => {
     render(<OfferSummaryInfoList offer={offerResponseSnap} />)
 
-    expect(
-      screen.getByText('Tu peux prendre deux places pour y aller accompagné')
-    ).toBeOnTheScreen()
+    expect(screen.getByText('Tu peux prendre deux places')).toBeOnTheScreen()
   })
 
   it('should not display duo summary information when offer can not be booked as a duo', () => {
