@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
+import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
@@ -23,9 +24,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   venue: VenueResponse
   onScroll: () => void
+  playlists?: GTLPlaylistResponse
 }
 
-export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
+export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playlists }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
   const backgroundStyle = useVenueBackgroundStyle()
   const { isDesktopViewport, isTabletViewport } = useTheme()
@@ -84,13 +86,11 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
       <FirstSectionContainer visible>
         <TabLayout
           tabPanels={{
-            'Offres disponibles': <VenueOffersNew venueId={venue.id} />,
+            'Offres disponibles': <VenueOffersNew venueId={venue.id} playlists={playlists} />,
             'Infos pratiques': <PracticalInformation venue={venue} />,
           }}
         />
       </FirstSectionContainer>
-
-      <Spacer.Column numberOfSpaces={100} />
     </Container>
   )
 }

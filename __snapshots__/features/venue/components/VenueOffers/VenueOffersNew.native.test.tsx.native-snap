@@ -1926,15 +1926,5 @@ exports[`<VenueOffersNew /> should render correctly 1`] = `
       </View>
     </View>
   </View>,
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />,
 ]
 `;
