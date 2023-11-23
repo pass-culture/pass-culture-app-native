@@ -229,88 +229,13 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
             class="css-view-175oi2r r-alignItems-1awozwy"
           >
             <div
-              class="css-view-175oi2r r-flexDirection-18u37iz"
+              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14a9t8x r-justifyContent-1777fci"
+              data-testid="defaultVenueBackground"
+              style="height: 232px; width: 375px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;"
             >
               <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
+                class="css-view-175oi2r r-height-10ptun7"
+              />
               <div
                 class="css-view-175oi2r"
               >

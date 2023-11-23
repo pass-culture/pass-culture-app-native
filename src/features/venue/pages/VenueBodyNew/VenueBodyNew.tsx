@@ -16,7 +16,7 @@ import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlace
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
-import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
+import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -45,12 +45,9 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
           {bannerUrl ? (
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           ) : (
-            //TODO(PC-25598) Check if we want that behavior when bannerUrl is missing
-            <BackgroundContainer>
-              {Array.from({ length: 9 }).map((_, index) => (
-                <VenueHeaderBackground key={index} />
-              ))}
-            </BackgroundContainer>
+            <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
+              <VenueIcon />
+            </EmptyVenueBackground>
           )}
         </HeaderContainer>
         <Spacer.Column numberOfSpaces={6} />
@@ -106,9 +103,16 @@ const TopContainer = styled.View(({ theme }) => {
   }
 })
 
-const BackgroundContainer = styled.View({
-  flexDirection: 'row',
-})
+const EmptyVenueBackground = styled.View(({ theme }) => ({
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: theme.colors.greyLight,
+}))
+
+const VenueIcon = styled(Venue).attrs(({ theme }) => ({
+  size: getSpacing(30),
+  color: theme.colors.greyMedium,
+}))``
 
 const HeaderContainer = styled.View({
   alignItems: 'center',
