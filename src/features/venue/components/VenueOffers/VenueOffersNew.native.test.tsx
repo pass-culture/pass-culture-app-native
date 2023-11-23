@@ -171,7 +171,7 @@ describe('<VenueOffersNew />', () => {
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
 
-    it('When there are gtl playlists associated to the venue and venue type is not distributon or book store', () => {
+    it('When there are gtl playlists associated to the venue and venue type is not distribution or book store', () => {
       renderVenueOffersNew(venueId, playlists)
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
