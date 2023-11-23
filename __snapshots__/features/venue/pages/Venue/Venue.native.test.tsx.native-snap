@@ -5305,6 +5305,17 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
             testID="defaultVenueBackground"
           >
             <View
+              customHeight={16}
+              enable={true}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
               height={120}
               width={120}
             >

@@ -46,6 +46,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll }) => {
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           ) : (
             <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
+              <Spacer.TopScreen />
               <VenueIcon />
             </EmptyVenueBackground>
           )}
