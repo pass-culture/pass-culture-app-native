@@ -81,23 +81,19 @@ export const safeFetch = async (
   const token = authorizationHeader.replace('Bearer ', '')
   const accessTokenStatus = getTokenStatus(token)
 
-  if (accessTokenStatus === 'unknown') {
-    return createNeedsAuthenticationResponse(url)
-  }
-
-  // If the token is expired, we refresh it before calling the backend
-  if (accessTokenStatus === 'expired') {
+  // If the token is expired or unknown, we refresh it before calling the backend
+  if (accessTokenStatus === 'expired' || accessTokenStatus === 'unknown') {
     try {
       const { result: newAccessToken, error } = await refreshAccessToken(api)
-      if (error === REFRESH_TOKEN_IS_EXPIRED_ERROR) {
-        return RefreshTokenExpiredResponse
-      }
 
-      if (error) {
-        eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-        return createNeedsAuthenticationResponse(url)
+      switch (error) {
+        case REFRESH_TOKEN_IS_EXPIRED_ERROR:
+          return RefreshTokenExpiredResponse
+        case FAILED_TO_GET_REFRESH_TOKEN_ERROR:
+          return createNeedsAuthenticationResponse(url)
+        case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
+          throw new Error(UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN)
       }
-
       runtimeOptions = {
         ...runtimeOptions,
         headers: {
@@ -109,7 +105,9 @@ export const safeFetch = async (
       // Here we are supposed to be logged-in (calling an authenticated endpoint)
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
-      eventMonitoring.captureException(new Error(`safeFetch ${error}`))
+      eventMonitoring.captureException(new Error(`safeFetch ${error}`, { cause: error }), {
+        extra: { url },
+      })
       return createNeedsAuthenticationResponse(url)
     }
   }
@@ -244,14 +242,6 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationStatus.status &&
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    eventMonitoring.captureMessage(NeedsAuthenticationStatus.statusText, {
-      extra: {
-        url: await response.text(),
-        status: response.status,
-        statusText: response.statusText,
-      },
-    })
-
     navigateToLogin()
     return {}
   }

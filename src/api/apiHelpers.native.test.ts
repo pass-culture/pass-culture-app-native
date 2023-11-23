@@ -231,13 +231,21 @@ describe('[api] helpers', () => {
       expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
     })
 
-    it('needs authentication response when there is no access token', async () => {
+    it('should refresh access token when it is unknown and refresh token is valid', async () => {
       mockGetTokenStatus.mockReturnValueOnce('unknown')
+      const expectedResponse = await respondWith('some api response')
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
 
       const response = await safeFetch(apiUrl, {}, api)
 
-      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
-      expect(mockFetch).not.toHaveBeenCalled()
+      const refreshAccessTokenCalls = 1
+      const apiURLCalls = 1
+
+      expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
+
+      expect(response).toEqual(expectedResponse)
     })
 
     it('needs authentication response when there is no refresh token', async () => {
@@ -257,6 +265,20 @@ describe('[api] helpers', () => {
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
       expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+    })
+
+    it('log exception to sentry when cannot get refresh token', async () => {
+      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetRefreshToken.mockRejectedValueOnce(new Error('Error'))
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('safeFetch Error: Error'),
+        {
+          extra: { url: '/native/v1/me' },
+        }
+      )
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
@@ -496,13 +518,6 @@ describe('[api] helpers', () => {
     it('should navigate to login when access token is invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith('NeedsAuthenticationResponse', {
-        extra: {
-          status: 401,
-          statusText: 'NeedsAuthenticationResponse',
-          url: apiUrl,
-        },
-      })
       expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
       expect(result).toEqual({})
     })
