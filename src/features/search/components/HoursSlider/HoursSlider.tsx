@@ -10,13 +10,13 @@ import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
 export type HoursSliderProps = {
-  value: [Hour, Hour]
+  value?: [Hour, Hour]
   onChange?: (nextHour: [Hour, Hour]) => void
 }
 
 const MAX_HOUR = 24
 
-export function HoursSlider({ field }: { field: HoursSliderProps }) {
+export function HoursSlider({ field }: Readonly<{ field: HoursSliderProps }>) {
   const { value, onChange } = field
   const { sliderLength } = useGetFullscreenModalSliderLength()
   const [minHour, maxHour] = value || DEFAULT_TIME_VALUE

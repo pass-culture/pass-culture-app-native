@@ -9,13 +9,13 @@ import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
 export type LocationSliderProps = {
-  value: ValuesType
+  value?: ValuesType
   onChange?: (nextAroundRadius: ValuesType) => void
 }
 
 const formatKm = (km: number) => `${km}\u00a0km`
 
-export function LocationSlider({ field }: { field: LocationSliderProps }) {
+export function LocationSlider({ field }: Readonly<{ field: LocationSliderProps }>) {
   const { value = [MAX_RADIUS], onChange } = field
   const radiusLabelId = uuidv4()
   const { sliderLength } = useGetFullscreenModalSliderLength()
@@ -25,7 +25,7 @@ export function LocationSlider({ field }: { field: LocationSliderProps }) {
       <Spacer.Column numberOfSpaces={4} />
       <LabelRadiusContainer nativeID={radiusLabelId}>
         <Typo.Body>Dans un rayon de&nbsp;:</Typo.Body>
-        <Typo.ButtonText>{`${value}\u00a0km`}</Typo.ButtonText>
+        <Typo.ButtonText testID="value-radius">{`${value}\u00a0km`}</Typo.ButtonText>
       </LabelRadiusContainer>
 
       <Spacer.Column numberOfSpaces={2} />

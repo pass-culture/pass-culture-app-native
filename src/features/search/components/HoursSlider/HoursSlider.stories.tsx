@@ -15,7 +15,7 @@ const WrappedTemplate: ComponentStory<typeof HoursSlider> = ({
 }: {
   field: HoursSliderProps
 }) => {
-  const [value, setValue] = useState<[Hour, Hour]>(field.value)
+  const [value, setValue] = useState<[Hour, Hour] | undefined>(field.value)
 
   return (
     <View style={styles.wrapper}>

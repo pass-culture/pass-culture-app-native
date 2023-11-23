@@ -34,4 +34,10 @@ describe('<LocationSlider />', () => {
 
     expect(onChangeMock).toHaveBeenNthCalledWith(1, [50])
   })
+
+  it('should use default value when value is not provided', () => {
+    render(<LocationSlider field={{ onChange: onChangeMock }} />)
+
+    expect(screen.getByTestId(`value-radius`)).toBeOnTheScreen()
+  })
 })

@@ -18,7 +18,7 @@ const WrappedTemplate: ComponentStory<typeof LocationSlider> = ({
 }: {
   field: LocationSliderProps
 }) => {
-  const [value, setValue] = useState<ValuesType>(field.value)
+  const [value, setValue] = useState<ValuesType | undefined>(field.value)
 
   return (
     <View style={styles.wrapper}>
