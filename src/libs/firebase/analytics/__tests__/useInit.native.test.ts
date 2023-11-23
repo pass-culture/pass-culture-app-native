@@ -22,7 +22,14 @@ describe('useInit', () => {
   it('should log analytics setDefaultEventParameters if the campaign date started more than 24 hours later', async () => {
     renderHook(() => useInit())
 
-    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
+    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
+      campaign_date: undefined,
+      utm_campaign: undefined,
+      utm_content: undefined,
+      utm_gen: undefined,
+      utm_medium: undefined,
+      utm_source: undefined,
+    })
   })
 
   it('should not log analytics setDefaultEventParameters if the campaign date started less than 24 hours ago', async () => {

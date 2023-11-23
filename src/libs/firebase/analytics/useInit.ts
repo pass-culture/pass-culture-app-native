@@ -9,7 +9,15 @@ export const setFirebaseParams = (campaignDate?: Date | null) => {
 
   // If the user has clicked on marketing link 24h ago, we want to remove the marketing params
   if (campaignDate && campaignDate < ago24Hours) {
-    firebaseAnalytics.setDefaultEventParameters(undefined)
+    const marketingParams = {
+      utm_campaign: undefined,
+      utm_content: undefined,
+      utm_gen: undefined,
+      utm_medium: undefined,
+      utm_source: undefined,
+      campaign_date: undefined,
+    }
+    firebaseAnalytics.setDefaultEventParameters(marketingParams)
   }
 }
 

@@ -79,7 +79,14 @@ describe('setMarketingParams', () => {
 
       jest.runOnlyPendingTimers()
 
-      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
+      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
+        campaign_date: undefined,
+        utm_campaign: undefined,
+        utm_content: undefined,
+        utm_gen: undefined,
+        utm_medium: undefined,
+        utm_source: undefined,
+      })
     })
   })
 })
