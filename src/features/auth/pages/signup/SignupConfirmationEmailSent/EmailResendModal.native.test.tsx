@@ -1,10 +1,12 @@
+import { rest } from 'msw'
 import React from 'react'
 
 import { api } from 'api/api'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor, waitForModalToShow } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
@@ -113,9 +115,11 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should reset error message when another resend attempt is made', async () => {
-    mockServer.postApiV1('/resend_email_validation', {
-      responseOptions: { statusCode: 500, data: 'error' },
-    })
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/resend_email_validation`, (_req, res, ctx) =>
+        res.once(ctx.status(500), ctx.text('error'))
+      )
+    )
     renderEmailResendModal({})
     await waitFor(() => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
@@ -133,10 +137,16 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should display alert banner when there is no attempt left', async () => {
-    mockServer.postApiV1('/email_validation_remaining_resends/john.doe%40example.com', {
-      remainingResends: 0,
-      counterResetDatetime: '2023-09-30T12:58:04.065652Z',
-    })
+    server.use(
+      rest.get(
+        `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
+        (_req, res, ctx) =>
+          res(
+            ctx.status(200),
+            ctx.json({ remainingResends: 0, counterResetDatetime: '2023-09-30T12:58:04.065652Z' })
+          )
+      )
+    )
     renderEmailResendModal({})
 
     await waitFor(() => {
@@ -151,25 +161,15 @@ describe('<EmailResendModal />', () => {
 
 const onDismissMock = jest.fn()
 const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode?: number }) => {
-  if (emailResendErrorCode) {
-    mockServer.postApiV1('/resend_email_validation', {
-      responseOptions: { statusCode: emailResendErrorCode, data: 'error' },
-      requestOptions: { persist: true },
-    })
-  } else {
-    mockServer.postApiV1('/resend_email_validation', {
-      responseOptions: { statusCode: 200, data: '' },
-      requestOptions: { persist: true },
-    })
-  }
-  mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40example.com', {
-    requestOptions: { persist: true },
-    responseOptions: {
-      data: {
-        remainingResends: 3,
-      },
-    },
-  })
+  server.use(
+    rest.post(`${env.API_BASE_URL}/native/v1/resend_email_validation`, (_req, res, ctx) =>
+      res(ctx.status(emailResendErrorCode ?? 200), ctx.text(emailResendErrorCode ? 'error' : ''))
+    ),
+    rest.get(
+      `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
+      (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
+    )
+  )
   render(
     reactQueryProviderHOC(
       <EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />

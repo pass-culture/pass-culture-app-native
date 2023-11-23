@@ -24,7 +24,7 @@ type DebugOptions = {
   method: SupportedMethod
 }
 
-class MswMockServer
+export class MswMockServer
   implements MockServerInterface<DefaultBodyType, string, string | RegExp | Buffer>
 {
   baseUrl: string

@@ -30,7 +30,7 @@ export async function flushAllPromises() {
   no matter what you do.
   @param times number of times you want to call `flushAllPromises()`. Increment `times` until the warning disappears.
 */
-async function flushAllPromisesTimes(times: number) {
+export async function flushAllPromisesTimes(times: number) {
   for (let i = 0; i < times; i++) {
     await flushAllPromises()
   }
@@ -96,7 +96,7 @@ type RenderOptions = {
   createNodeMock?: (element: React.ReactElement) => any
 }
 
-type CustomRenderOptions = {
+export type CustomRenderOptions = {
   theme?: Partial<DefaultTheme>
 } & RenderOptions
 

@@ -1,18 +1,27 @@
+import { rest } from 'msw'
+
 import { AccountState } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
-import { mockServer } from 'tests/mswServer'
+import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, renderHook } from 'tests/utils'
 
 const expectedResponse = { status: AccountState.SUSPENDED }
 function simulateSuspensionStatus200() {
-  mockServer.getApiV1('/account/suspension_status', expectedResponse)
+  server.use(
+    rest.get(env.API_BASE_URL + '/native/v1/account/suspension_status', async (_, res, ctx) =>
+      res(ctx.status(200), ctx.json(expectedResponse))
+    )
+  )
 }
 
 function simulateSuspensionStatusError() {
-  mockServer.getApiV1('/account/suspension_status', {
-    responseOptions: { statusCode: 400 },
-  })
+  server.use(
+    rest.get(env.API_BASE_URL + '/native/v1/account/suspension_status', async (_, res, ctx) =>
+      res(ctx.status(400))
+    )
+  )
 }
 
 describe('useAccountSuspensionStatus', () => {

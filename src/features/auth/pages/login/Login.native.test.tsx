@@ -1,3 +1,4 @@
+import { rest } from 'msw'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
@@ -5,14 +6,23 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import * as API from 'api/api'
-import { AccountState, FavoriteResponse, SigninResponse, UserProfileResponse } from 'api/gen'
+import {
+  AccountState,
+  FavoriteRequest,
+  SigninRequest,
+  SigninResponse,
+  UserProfileResponse,
+} from 'api/gen'
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -20,8 +30,8 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { From } from 'shared/offer/enums'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
@@ -40,7 +50,14 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
-const apiPostFavoriteSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
+const mockPostFavorite = jest.fn()
+
+server.use(
+  rest.post<FavoriteRequest, EmptyResponse>(
+    `${env.API_BASE_URL}/native/v1/me/favorites`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
+  )
+)
 
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
@@ -51,7 +68,6 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
     simulateSignin200()
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
@@ -361,7 +377,7 @@ describe('<Login/>', () => {
         fireEvent.press(screen.getByText('Se connecter'))
       })
 
-      expect(apiPostFavoriteSpy).toHaveBeenCalledTimes(1)
+      expect(mockPostFavorite).toHaveBeenCalledTimes(1)
     })
 
     it('should log analytics when adding the previous offer to favorites', async () => {
@@ -592,64 +608,106 @@ function renderLogin() {
 }
 
 function mockMeApiCall(response: UserProfileResponse) {
-  mockServer.getApiV1<UserProfileResponse>('/me', response)
+  server.use(
+    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(response))
+    })
+  )
 }
 
 function mockSuspensionStatusApiCall(status: string) {
-  mockServer.getApiV1('/account/suspension_status', status)
+  server.use(
+    rest.get<UserProfileResponse>(
+      env.API_BASE_URL + '/native/v1/account/suspension_status',
+      (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json({ status }))
+      }
+    )
+  )
 }
 
 function simulateSignin200(accountState = AccountState.ACTIVE) {
-  mockServer.postApiV1<SigninResponse>('/signin', {
-    accessToken: 'accessToken',
-    refreshToken: 'refreshToken',
-    accountState,
-  })
+  server.use(
+    rest.post<SigninRequest, SigninResponse>(
+      env.API_BASE_URL + '/native/v1/signin',
+      async (req, res, ctx) =>
+        res(
+          ctx.status(200),
+          ctx.json({
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState,
+          })
+        )
+    )
+  )
 }
 
 function simulateSigninWrongCredentials() {
-  mockServer.postApiV1('/signin', {
-    responseOptions: {
-      statusCode: 400,
-      data: {
-        general: ['Identifiant ou Mot de passe incorrect'],
-      },
-    },
-  })
+  server.use(
+    rest.post<SigninRequest, SigninResponse>(
+      env.API_BASE_URL + '/native/v1/signin',
+      async (_req, res, ctx) =>
+        res(
+          ctx.status(400),
+          ctx.json({
+            general: ['Identifiant ou Mot de passe incorrect'],
+          })
+        )
+    )
+  )
 }
 
 function simulateSigninRateLimitExceeded() {
-  mockServer.postApiV1('/signin', {
-    responseOptions: {
-      statusCode: 429,
-      data: {
-        general: ['Nombre de tentative de connexion dépassé. Veuillez réessayer dans 1 minute.'],
-      },
-    },
-  })
+  server.use(
+    rest.post<SigninRequest, SigninResponse>(
+      env.API_BASE_URL + '/native/v1/signin',
+      async (_req, res, ctx) =>
+        res(
+          ctx.status(429),
+          ctx.json({
+            general: [
+              'Nombre de tentative de connexion dépassé. Veuillez réessayer dans 1 minute.',
+            ],
+          })
+        )
+    )
+  )
 }
 
 function simulateSigninEmailNotValidated() {
-  mockServer.postApiV1('/signin', {
-    responseOptions: {
-      statusCode: 400,
-      data: {
-        code: 'EMAIL_NOT_VALIDATED',
-        general: ['L’email n’a pas été validé.'],
-      },
-    },
-  })
+  server.use(
+    rest.post<SigninRequest, SigninResponse>(
+      env.API_BASE_URL + '/native/v1/signin',
+      async (_req, res, ctx) =>
+        res(
+          ctx.status(400),
+          ctx.json({
+            code: 'EMAIL_NOT_VALIDATED',
+            general: ['L’email n’a pas été validé.'],
+          })
+        )
+    )
+  )
 }
 
 function simulateSigninNetworkFailure() {
-  mockServer.postApiV1('/signin', {
-    responseOptions: {
-      statusCode: 'network-error',
-      data: 'Network request failed',
-    },
-  })
+  server.use(
+    rest.post<SigninRequest, SigninResponse>(
+      env.API_BASE_URL + '/native/v1/signin',
+      async (req, res) => res.networkError('Network request failed')
+    )
+  )
 }
 
 function simulateAddToFavorites() {
-  mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+  server.use(
+    rest.post<EmptyResponse>(
+      `${env.API_BASE_URL}/native/v1/me/favorites`,
+      (_req, response, ctx) => {
+        mockPostFavorite()
+        return response.once(ctx.status(200), ctx.json(favoriteResponseSnap))
+      }
+    )
+  )
 }

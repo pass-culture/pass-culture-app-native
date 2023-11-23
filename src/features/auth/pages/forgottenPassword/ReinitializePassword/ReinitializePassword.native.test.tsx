@@ -1,3 +1,4 @@
+import { rest } from 'msw'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
@@ -9,9 +10,10 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
+import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -98,11 +100,6 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should request password reinitialization on connect button', async () => {
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
-
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -127,10 +124,6 @@ describe('ReinitializePassword Page', () => {
     // Due to multiple renders we need to mock the feature flag many times
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(true)
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
 
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
@@ -160,10 +153,14 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should connect the user when password is successfully reset', async () => {
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
+        res.once(
+          ctx.status(200),
+          ctx.json({ accessToken: 'accessToken', refreshToken: 'refreshToken' })
+        )
+      )
+    )
 
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
@@ -190,10 +187,6 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should redirect to home page when password is successfully reset', async () => {
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -211,10 +204,6 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should log analytics with default from value "forgottenpassword" when password is successfully reset', async () => {
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -237,11 +226,6 @@ describe('ReinitializePassword Page', () => {
   it('should log analytics with from params value when password is successfully reset', async () => {
     ROUTE_PARAMS.from = 'accountsecurity'
     renderReinitializePassword()
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
-
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
     await act(async () => {
@@ -261,10 +245,6 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should show success snack bar when password is successfully reset', async () => {
-    mockServer.postApiV1('/reset_password', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-    })
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -285,7 +265,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should show error snack bar when reinitialize password request fails', async () => {
-    mockServer.postApiV1('/reset_password', { responseOptions: { statusCode: 400 } })
+    simulateResetPasswordError()
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -319,4 +299,12 @@ describe('ReinitializePassword Page', () => {
 
 function renderReinitializePassword() {
   return render(reactQueryProviderHOC(<ReinitializePassword />))
+}
+
+function simulateResetPasswordError() {
+  server.use(
+    rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
+      res.once(ctx.status(400))
+    )
+  )
 }

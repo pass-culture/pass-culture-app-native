@@ -176,11 +176,20 @@ export const server = setupServer(
   )
 )
 
-function requestPasswordResetSuccess() {
+export function requestPasswordResetSuccess() {
   return rest.post<RequestPasswordResetRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
     (_req, res, ctx) => {
       return res(ctx.status(204))
+    }
+  )
+}
+
+export function requestPasswordResetFail(errorCode?: number) {
+  return rest.post<RequestPasswordResetRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/request_password_reset',
+    (_req, res, ctx) => {
+      return res(ctx.status(errorCode ?? 400), ctx.json({}))
     }
   )
 }
