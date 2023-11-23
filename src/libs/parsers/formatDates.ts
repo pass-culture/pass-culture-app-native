@@ -218,7 +218,11 @@ export function getTimeZonedDate(date: Date | string, timezone: string) {
 }
 
 export function capitalizeFirstLetter(formattedDate: string | number | undefined) {
+  if (formattedDate === undefined) {
+    return undefined
+  }
+
   return typeof formattedDate === 'string'
     ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
-    : formattedDate
+    : String(formattedDate)
 }
