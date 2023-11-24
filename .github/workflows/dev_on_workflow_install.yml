@@ -44,7 +44,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
