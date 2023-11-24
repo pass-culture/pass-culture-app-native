@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import React from 'react'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
-import { DateData, Theme } from 'react-native-calendars/src/types'
+import { Theme } from 'react-native-calendars/src/types'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
@@ -16,6 +16,7 @@ import {
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
+import { eventMonitoring } from 'libs/monitoring'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { dayNames, dayNamesShort } from 'shared/date/days'
 import { monthNames, monthNamesShort } from 'shared/date/months'
@@ -101,6 +102,44 @@ export const Calendar: React.FC<Props> = ({
   const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
 
+  const DayComponentWrapper: React.ComponentProps<typeof RNCalendar>['dayComponent'] = ({
+    date,
+    marking = defaultMarking,
+  }) => /* NOSONAR Not extract because it depends on the RNCalendar entry */ {
+    // problem in the definition of marking in the library:
+    // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
+    const { price, status, selected } = marking as Marking
+
+    // This case is normally not possible. We add a Sentry log to ensure this
+    if (!date) {
+      eventMonitoring.captureException('Calendar displayed without selectable day', {
+        extra: { offerId, stocks, markedDates, minDate, selectDay, date, marking },
+      })
+      return null
+    }
+
+    if (selected && offerId) {
+      analytics.logBookingOfferConfirmDates(offerId)
+    }
+
+    const onPress = selectDay({ date, selected, status, enablePricesByCategories })
+
+    return (
+      <Container onPress={onPress} disabled={!onPress}>
+        <DayComponent
+          status={status}
+          selected={selected}
+          date={date}
+          enablePricesByCategories={enablePricesByCategories}
+        />
+        {typeof price === 'number' ? (
+          <Caption status={status}>{getDayDescription(price, hasSeveralPrices)}</Caption>
+        ) : (
+          <Spacer.Column numberOfSpaces={getSpacing(1)} />
+        )}
+      </Container>
+    )
+  }
   return (
     <RNCalendar
       style={RNCalendarTheme}
@@ -112,35 +151,7 @@ export const Calendar: React.FC<Props> = ({
       renderArrow={renderArrow}
       theme={calendarHeaderStyle}
       markedDates={markedDates}
-      dayComponent={
-        (({ date, marking = defaultMarking }: { date: DateData; marking: unknown }) => {
-          // problem in the definition of marking in the library:
-          // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
-          const { price, status, selected } = marking as Marking
-
-          if (selected && offerId) {
-            analytics.logBookingOfferConfirmDates(offerId)
-          }
-
-          const onPress = selectDay({ date, selected, status, enablePricesByCategories })
-
-          return (
-            <Container onPress={onPress} disabled={!onPress}>
-              <DayComponent
-                status={status}
-                selected={selected}
-                date={date}
-                enablePricesByCategories={enablePricesByCategories}
-              />
-              {typeof price === 'number' ? (
-                <Caption status={status}>{getDayDescription(price, hasSeveralPrices)}</Caption>
-              ) : (
-                <Spacer.Column numberOfSpaces={getSpacing(1)} />
-              )}
-            </Container>
-          )
-        }) as React.ComponentType
-      }
+      dayComponent={DayComponentWrapper}
     />
   )
 }
