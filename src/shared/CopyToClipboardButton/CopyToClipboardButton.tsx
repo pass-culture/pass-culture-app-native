@@ -18,14 +18,14 @@ export const CopyToClipboardButton: FunctionComponent<Props> = ({
   textToCopy,
   snackBarMessage,
 }) => {
-  const copyToClipboard = () => {
-    try {
-      Clipboard.setString(textToCopy)
+  const copyToClipboard = async () => {
+    Clipboard.setString(textToCopy)
+    if ((await Clipboard.getString()) === textToCopy) {
       showSuccessSnackBar({
         message: snackBarMessage || 'Copié\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,
       })
-    } catch (error) {
+    } else {
       showErrorSnackBar({
         message: 'Une erreur est survenue, veuillez réessayer',
         timeout: SNACK_BAR_TIME_OUT,

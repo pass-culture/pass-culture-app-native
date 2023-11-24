@@ -16,15 +16,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
 }))
-const snackBarMessage = 'Copié avec succès\u00a0!'
+const successSnackBarMessage = 'Copié avec succès\u00a0!'
+const errorSnackBarMessage = 'Une erreur est survenue, veuillez réessayer'
 const wording = 'Copier l’adresse'
 const textToCopy = 'Le sucre, 69002 LYON'
 
 describe('CopyToClipboardButton', () => {
-  afterAll(() => {
-    jest.resetAllMocks()
-  })
-
   it('should show right text', async () => {
     renderCopyToClipboardButton()
 
@@ -44,16 +41,34 @@ describe('CopyToClipboardButton', () => {
     expect(Clipboard.setString).toHaveBeenCalledWith(textToCopy)
   })
 
-  it('should show success snack bar', async () => {
+  it('should show success snack bar if text is copied', async () => {
     renderCopyToClipboardButton()
     const button = screen.getByText(wording)
+
+    Clipboard.getString = jest.fn().mockReturnValue(textToCopy)
 
     await act(async () => {
       fireEvent.press(button)
     })
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: snackBarMessage,
+      message: successSnackBarMessage,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
+
+  it('should show error snack bar if text has not been copied', async () => {
+    renderCopyToClipboardButton()
+    const button = screen.getByText(wording)
+
+    Clipboard.getString = jest.fn().mockReturnValue('text')
+
+    await act(async () => {
+      fireEvent.press(button)
+    })
+
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: errorSnackBarMessage,
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
@@ -64,7 +79,7 @@ function renderCopyToClipboardButton() {
     <CopyToClipboardButton
       wording={wording}
       textToCopy={textToCopy}
-      snackBarMessage={snackBarMessage}
+      snackBarMessage={successSnackBarMessage}
     />
   )
 }
