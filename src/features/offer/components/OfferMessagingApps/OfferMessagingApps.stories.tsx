@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 
 import { OfferMessagingApps } from './OfferMessagingApps'
@@ -25,11 +26,11 @@ const Template: ComponentStory<typeof OfferMessagingApps> = (args) => (
 // TODO(PC-17931): Fix this story
 const Default = Template.bind({})
 Default.args = {
-  offerId: 1,
+  offer: offerResponseSnap,
 }
 
 // TODO(PC-17931): Fix this story
 const Event = Template.bind({})
 Event.args = {
-  offerId: 1,
+  offer: offerResponseSnap,
 }
