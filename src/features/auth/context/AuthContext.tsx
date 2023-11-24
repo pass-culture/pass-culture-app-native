@@ -15,13 +15,12 @@ import { getTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { getAppVersion } from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
 import { getAge } from 'shared/user/getAge'
-
-import { version as appVersion } from '../../../../package.json'
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 export interface IAuthContext {
@@ -138,7 +137,7 @@ export const AuthWrapper = memo(function AuthWrapper({
       ...partialUser,
       ...(user.birthDate ? { age: getAge(user.birthDate) } : {}),
       status: user.status?.statusType, // eligible, beneficiaire, suspendu, etc
-      appVersion,
+      appVersion: getAppVersion(),
     })
     amplitude.setUserId(user.id.toString())
   }, [user])

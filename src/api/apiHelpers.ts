@@ -9,10 +9,9 @@ import { Headers } from 'libs/fetch'
 import { decodeAccessToken, getTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
+import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
-
-import Package from '../../package.json'
 
 import { DefaultApi } from './gen'
 
@@ -63,7 +62,7 @@ export const safeFetch = async (
     ...options,
     headers: {
       ...options.headers,
-      'app-version': Package.version,
+      'app-version': getAppVersion(),
       'code-push-id': await getCodePushId(),
       'commit-hash': env.COMMIT_HASH,
       'device-id': await getDeviceId(),

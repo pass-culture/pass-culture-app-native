@@ -5,10 +5,12 @@ import {
   useIsCookiesListUpToDate,
 } from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import * as Firestore from 'libs/firebase/firestore/getCookiesLastUpdate'
+import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { renderHook, waitFor } from 'tests/utils'
 
-import Package from '../../../../package.json'
+const buildVersion = 10010005
+jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 const MILLISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000
 const COOKIES_CONSENT_KEY = 'cookies'
@@ -21,7 +23,7 @@ mockdate.set(TODAY)
 
 const defaultMockFirestore: CookiesLastUpdate = {
   lastUpdated: TODAY,
-  lastUpdateBuildVersion: Package.build,
+  lastUpdateBuildVersion: buildVersion,
 }
 
 const mockFirestore = jest
@@ -33,7 +35,7 @@ describe('isCookiesListUpToDate', () => {
 
   it('should be false if no consent date', async () => {
     storage.saveObject(COOKIES_CONSENT_KEY, {
-      buildVersion: Package.build,
+      buildVersion: buildVersion,
     })
 
     const { result } = renderHook(useIsCookiesListUpToDate)
@@ -59,7 +61,7 @@ describe('isCookiesListUpToDate', () => {
     'should be false if user has made choice before last list update',
     async (choiceDatetime) => {
       storage.saveObject(COOKIES_CONSENT_KEY, {
-        buildVersion: Package.build - 1,
+        buildVersion: buildVersion - 1,
         choiceDatetime: choiceDatetime.toISOString(),
       })
 
@@ -83,7 +85,7 @@ describe('isCookiesListUpToDate', () => {
 
   it('should be true if user has made choice after last list update', async () => {
     storage.saveObject(COOKIES_CONSENT_KEY, {
-      buildVersion: Package.build,
+      buildVersion: buildVersion,
       choiceDatetime: TODAY,
     })
 
@@ -96,11 +98,11 @@ describe('isCookiesListUpToDate', () => {
   it('should be true if current app version does not contain cookies update', async () => {
     mockFirestore.mockResolvedValueOnce({
       ...defaultMockFirestore,
-      lastUpdateBuildVersion: Package.build + 1,
+      lastUpdateBuildVersion: buildVersion + 1,
     })
 
     storage.saveObject(COOKIES_CONSENT_KEY, {
-      buildVersion: Package.build,
+      buildVersion: buildVersion,
       choiceDatetime: TODAY,
     })
 
@@ -114,7 +116,7 @@ describe('isCookiesListUpToDate', () => {
     mockFirestore.mockResolvedValueOnce({ ...defaultMockFirestore, lastUpdated: TOMORROW })
 
     storage.saveObject(COOKIES_CONSENT_KEY, {
-      buildVersion: Package.build,
+      buildVersion: buildVersion,
       choiceDatetime: TODAY,
     })
 

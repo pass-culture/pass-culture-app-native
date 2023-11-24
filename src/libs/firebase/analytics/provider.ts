@@ -8,8 +8,7 @@ import {
   EVENT_PAGE_VIEW_PARAM_KEY,
 } from 'libs/firebase/analytics/constants'
 import firebaseAnalyticsModule from 'libs/firebase/shims/analytics'
-
-import { version } from '../../../../package.json'
+import { getAppVersion } from 'libs/packageJson'
 
 import { AnalyticsProvider } from './types'
 
@@ -49,7 +48,7 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
     const newParams = params ? prepareLogEventParams(params) : {}
     newParams['agentType'] = AGENT_TYPE
     if (Platform.OS === 'web') {
-      newParams['app_version'] = version
+      newParams['app_version'] = getAppVersion()
       newParams['app_revision'] = env.COMMIT_HASH
     }
     return firebaseAnalytics.logEvent(name, newParams)

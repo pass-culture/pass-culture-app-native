@@ -1,9 +1,11 @@
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
+import * as PackageJson from 'libs/packageJson'
 import { act, renderHook } from 'tests/utils'
 
-import { build } from '../../../../../package.json'
+const buildVersion = 10010005
+jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 jest.mock('@react-native-firebase/firestore')
 
@@ -39,11 +41,11 @@ describe.each([
   )
 
   it.each`
-    firebaseFeatureFlag | minimalBuildNumber | expected
-    ${false}            | ${undefined}       | ${'disabled when firestore minimalBuildNumber is undefined'}
-    ${false}            | ${build + 1}       | ${'disabled when build number is below firestore minimalBuildNumber'}
-    ${true}             | ${build}           | ${'enabled when build number is equal to firestore minimalBuildNumber'}
-    ${true}             | ${build - 1}       | ${'enabled when build number is greater than firestore minimalBuildNumber'}
+    firebaseFeatureFlag | minimalBuildNumber  | expected
+    ${false}            | ${undefined}        | ${'disabled when firestore minimalBuildNumber is undefined'}
+    ${false}            | ${buildVersion + 1} | ${'disabled when build number is below firestore minimalBuildNumber'}
+    ${true}             | ${buildVersion}     | ${'enabled when build number is equal to firestore minimalBuildNumber'}
+    ${true}             | ${buildVersion - 1} | ${'enabled when build number is greater than firestore minimalBuildNumber'}
   `(
     `should be $expected`,
     async ({

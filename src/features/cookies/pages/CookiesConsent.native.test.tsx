@@ -1,7 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import Package from '__mocks__/package.json'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as SetMarketingParams from 'features/cookies/helpers/setMarketingParams'
 import * as Tracking from 'features/cookies/helpers/startTracking'
@@ -10,9 +9,13 @@ import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign/__mocks__'
+import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, act, screen } from 'tests/utils'
+
+const buildVersion = 10010005
+jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const hideModal = jest.fn()
@@ -69,7 +72,7 @@ describe('<CookiesConsent/>', () => {
       })
 
       const storageContent = {
-        buildVersion: Package.build,
+        buildVersion,
         deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
@@ -148,7 +151,7 @@ describe('<CookiesConsent/>', () => {
       })
 
       const storageContent = {
-        buildVersion: Package.build,
+        buildVersion,
         deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {
@@ -224,7 +227,7 @@ describe('<CookiesConsent/>', () => {
       })
 
       const storageContent = {
-        buildVersion: Package.build,
+        buildVersion,
         deviceId,
         choiceDatetime: Today.toISOString(),
         consent: {

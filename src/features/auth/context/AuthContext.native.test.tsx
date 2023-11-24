@@ -15,6 +15,7 @@ import { saveRefreshToken, clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
+import * as PackageJson from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -27,6 +28,8 @@ jest.unmock('libs/jwt')
 jest.unmock('libs/keychain')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
+
+jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000

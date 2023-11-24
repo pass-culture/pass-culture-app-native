@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
 import { getCookiesLastUpdate } from 'libs/firebase/firestore/getCookiesLastUpdate'
-
-import Package from '../../../../package.json'
+import { getAppBuildVersion } from 'libs/packageJson'
 
 export interface CookiesLastUpdate {
   lastUpdated: Date
@@ -41,7 +40,7 @@ export const useIsCookiesListUpToDate = () => {
   }
 
   // If app is updated with new cookies
-  if (Package.build >= lastUpdateBuildVersion) {
+  if (getAppBuildVersion() >= lastUpdateBuildVersion) {
     // And cookies consent indicates an older version, then the list is outdated
     if (consentBuildVersion < lastUpdateBuildVersion) {
       return false

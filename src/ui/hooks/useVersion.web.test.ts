@@ -1,6 +1,10 @@
+import * as PackageJson from 'libs/packageJson'
 import { renderHook } from 'tests/utils/web'
 
 import { useVersion } from './useVersion'
+
+const appVersion = '1.10.5'
+jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue(appVersion)
 
 describe('useVersion', () => {
   it('should return only the version on web', () => {

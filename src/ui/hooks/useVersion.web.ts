@@ -1,5 +1,5 @@
-import Package from '../../../package.json'
+import { getAppVersion } from 'libs/packageJson'
 
 export function useVersion() {
-  return `Version\u00A0${Package.version}`
+  return `Version\u00A0${getAppVersion()}`
 }

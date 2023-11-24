@@ -2,8 +2,7 @@ import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
 
 import { env } from 'libs/environment'
-
-import { version, build } from '../../../package.json'
+import { getAppBuildVersion, getAppVersion } from 'libs/packageJson'
 
 import * as SentryModule from './sentry'
 
@@ -18,11 +17,11 @@ export async function getSentryConfig() {
     // silent fail
   }
 
-  let release = `${version}-${Platform.OS}`
+  let release = `${getAppVersion()}-${Platform.OS}`
   if (update) {
     release += `+codepush:${update.label}`
   }
-  const dist = `${build}-${Platform.OS}`
+  const dist = `${getAppBuildVersion()}-${Platform.OS}`
 
   return {
     dsn: env.SENTRY_DSN,
