@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
@@ -149,7 +150,7 @@ const ContentContainer = styled.View(({ theme }) => ({
   flex: 1,
   paddingHorizontal: getSpacing(6),
   maxWidth: theme.contentPage.maxWidth,
-  overflow: 'scroll',
+  overflow: Platform.OS === 'web' ? 'auto' : 'scroll',
   width: '100%',
 }))
 
