@@ -11,12 +11,10 @@ import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
-import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -68,7 +66,11 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
           <Spacer.Column numberOfSpaces={3} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={3} />
-          <StyledButtonTertiary icon={Duplicate} wording="Copier l’adresse" />
+          <CopyToClipboardButton
+            wording="Copier l’adresse"
+            textToCopy={`${venueName}, ${venueFullAddress}`}
+            snackBarMessage="L’adresse a bien été copiée"
+          />
           <Spacer.Column numberOfSpaces={3} />
           <SeeItineraryButton
             externalNav={{
@@ -117,10 +119,6 @@ const VenueIcon = styled(Venue).attrs(({ theme }) => ({
 
 const HeaderContainer = styled.View({
   alignItems: 'center',
-})
-
-const StyledButtonTertiary = styledButton(ButtonTertiaryBlack)({
-  justifyContent: 'flex-start',
 })
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
