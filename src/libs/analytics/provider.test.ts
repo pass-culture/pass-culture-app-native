@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 import { storage } from 'libs/storage'
+import { act } from 'tests/utils'
 
 const EVENT_PARAMS = { param: 1 }
 const SCREEN_NAME = 'Home'
@@ -23,7 +24,7 @@ describe('analyticsProvider - logEvent', () => {
 
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
-        locationType: undefined,
+        locationType: 'undefined',
       })
     })
 
@@ -49,7 +50,7 @@ describe('analyticsProvider - logEvent', () => {
 
       expect(firebaseAnalytics.logEvent).toHaveBeenCalledWith(AnalyticsEvent.CONSULT_OFFER, {
         ...EVENT_PARAMS,
-        locationType: undefined,
+        locationType: 'undefined',
       })
     })
 
@@ -59,10 +60,20 @@ describe('analyticsProvider - logEvent', () => {
       expect(firebaseAnalytics.logEvent).not.toHaveBeenCalled()
     })
 
-    it('should log screen view when logScreenView is called', () => {
+    it('should log screen view when logScreenView is called', async () => {
       analytics.logScreenView(SCREEN_NAME)
+      await act(() => {})
 
-      expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME)
+      expect(firebaseAnalytics.logScreenView).toHaveBeenCalledWith(SCREEN_NAME, 'undefined')
+    })
+
+    it('should set default event parameters when setEventLocationType is called', async () => {
+      analytics.setEventLocationType()
+      await act(() => {})
+
+      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
+        locationType: 'undefined',
+      })
     })
   })
 

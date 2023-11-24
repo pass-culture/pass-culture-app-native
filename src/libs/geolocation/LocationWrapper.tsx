@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react'
 import { Linking } from 'react-native'
 
+import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
@@ -157,6 +158,7 @@ export const LocationWrapper = memo(function LocationWrapper({
         storage.clear('location_type')
         break
     }
+    analytics.setEventLocationType()
   }, [isGeolocated, isCustomPosition])
 
   const value = useMemo(

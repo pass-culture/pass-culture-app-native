@@ -6,5 +6,6 @@ export const analytics: AnalyticsProvider = {
   disableCollection: jest.fn(),
   logScreenView: jest.fn(),
   logEvent: jest.fn(),
+  setEventLocationType: jest.fn(),
   ...logEventAnalytics,
 }
