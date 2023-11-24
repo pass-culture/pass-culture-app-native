@@ -22,7 +22,13 @@ describe('useInit', () => {
   it('should log analytics setDefaultEventParameters if the campaign date started more than 24 hours later', async () => {
     renderHook(() => useInit())
 
-    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(undefined)
+    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
+      traffic_campaign: undefined,
+      traffic_content: undefined,
+      traffic_gen: undefined,
+      traffic_medium: undefined,
+      traffic_source: undefined,
+    })
   })
 
   it('should not log analytics setDefaultEventParameters if the campaign date started less than 24 hours ago', async () => {

@@ -36,10 +36,11 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
   async setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
   },
-  async logScreenView(screenName) {
+  async logScreenView(screenName, locationType) {
     firebaseAnalytics.logEvent(EVENT_PAGE_VIEW_NAME, {
       [EVENT_PAGE_VIEW_PARAM_KEY]: screenName,
       screen_class: screenName,
+      locationType,
     })
   },
   async logLogin({ method }) {
