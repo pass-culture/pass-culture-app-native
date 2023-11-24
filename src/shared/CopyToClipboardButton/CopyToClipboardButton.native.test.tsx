@@ -21,6 +21,10 @@ const wording = 'Copier l’adresse'
 const textToCopy = 'Le sucre, 69002 LYON'
 
 describe('CopyToClipboardButton', () => {
+  afterAll(() => {
+    jest.resetAllMocks()
+  })
+
   it('should show right text', async () => {
     renderCopyToClipboardButton()
 
