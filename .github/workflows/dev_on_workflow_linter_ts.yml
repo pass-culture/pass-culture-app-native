@@ -30,7 +30,7 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -55,7 +55,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |

@@ -30,7 +30,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -39,7 +39,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+      - uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: .jest/cache
@@ -59,7 +59,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -68,7 +68,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+      - uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: .jest/cache
@@ -100,7 +100,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the proxy node_modules
         id: yarn-modules-cache-proxy
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.0
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
