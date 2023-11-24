@@ -27,8 +27,7 @@ export const InstalledMessagingApps = ({ shareContent, messagingAppAnalytics }: 
         <MessagingAppButton
           key={network}
           network={network}
-          shareMessage={shareContent.body}
-          shareUrl={`${shareContent.url}&utm_source=${network}`}
+          shareContent={shareContent}
           onPressAnalytics={messagingAppAnalytics}
         />
       ))}
