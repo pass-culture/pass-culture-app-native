@@ -204,7 +204,7 @@ const InternalOptimizedList = <Item, AdditionalData>(
   )
 
   return (
-    <OptimizedListWrapper onLayout={onLayout} height={height} testID={testID}>
+    <OptimizedListWrapper id="wrapper" onLayout={onLayout} height={height} testID={testID}>
       {HeaderComponent || FooterComponent ? (
         <VariableSizeList
           ref={listRef}
@@ -216,6 +216,7 @@ const InternalOptimizedList = <Item, AdditionalData>(
           itemCount={itemCount}
           onScroll={handleScroll}
           outerRef={outerListRef}
+          outerElementType={OuterElement}
           width="100%">
           {renderItem}
         </VariableSizeList>
@@ -230,6 +231,7 @@ const InternalOptimizedList = <Item, AdditionalData>(
           itemCount={itemCount}
           onScroll={handleScroll}
           outerRef={outerListRef}
+          outerElementType={OuterElement}
           width="100%">
           {renderItem}
         </FixedSizeList>
@@ -253,3 +255,11 @@ export const OptimizedList = forwardRef(InternalOptimizedList) as <Item, Additio
   props: OptimizedListProps<Item, AdditionalData>,
   ref: ForwardedRef<OptimizedListRef>
 ) => ReactElement
+
+/**
+ * This component is used to wrap the list, so we can define a tabIndex and fix accessibility issues.
+ */
+const OuterElement = forwardRef<HTMLDivElement, Record<string, unknown>>((props, ref) => (
+  <div {...props} ref={ref} tabIndex={0} />
+))
+OuterElement.displayName = 'OptimizedListOuterElement'

@@ -78,10 +78,6 @@ exports[`SearchResults component should render correctly 1`] = `
   text-decoration: none;
 }
 
-.c5 {
-  overflow: hidden;
-}
-
 .c4 {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
@@ -114,6 +110,10 @@ exports[`SearchResults component should render correctly 1`] = `
 .c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c5 {
+  overflow: hidden;
 }
 
 <body>
@@ -358,6 +358,7 @@ exports[`SearchResults component should render correctly 1`] = `
         >
           <div
             style="position: relative; height: 0px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
+            tabindex="0"
           >
             <ul
               class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -697,7 +698,7 @@ exports[`SearchResults component should render correctly 1`] = `
           style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
         >
           <button
-            class="c3 c5 sc-kpDqfm c5"
+            class="c3 c5 sc-cwHptR c5"
             tabindex="0"
             type="button"
           >
@@ -801,10 +802,6 @@ exports[`SearchResults component should render correctly 1`] = `
   text-decoration: none;
 }
 
-.c5 {
-  overflow: hidden;
-}
-
 .c4 {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
@@ -837,6 +834,10 @@ exports[`SearchResults component should render correctly 1`] = `
 .c4:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c5 {
+  overflow: hidden;
 }
 
 <div>
@@ -1080,6 +1081,7 @@ exports[`SearchResults component should render correctly 1`] = `
       >
         <div
           style="position: relative; height: 0px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
+          tabindex="0"
         >
           <ul
             class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -1419,7 +1421,7 @@ exports[`SearchResults component should render correctly 1`] = `
         style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
       >
         <button
-          class="c3 c5 sc-kpDqfm c5"
+          class="c3 c5 sc-cwHptR c5"
           tabindex="0"
           type="button"
         >
