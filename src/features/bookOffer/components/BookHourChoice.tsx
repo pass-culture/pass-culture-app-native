@@ -2,9 +2,9 @@ import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
 import { View } from 'react-native'
 
-import { OfferStockResponse } from 'api/gen'
+import { OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
-import { Step } from 'features/bookOffer/context/reducer'
+import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getSortedHoursFromDate,
@@ -21,6 +21,85 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   enablePricesByCategories?: boolean
+}
+
+function getHourChoiceWhenMultiplePrices(
+  stocks: OfferStockResponse[],
+  selectedDate: string | undefined,
+  bookingState: BookingState,
+  selectHour: (hour: string, stockFromHour: OfferStockResponse[]) => void,
+  offerCredit: number
+) {
+  const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
+  const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
+  return distinctHours.map((hour, index) => {
+    const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
+    const filteredAvailableStocksFromHourBookable = filteredAvailableStocksFromHour.filter(
+      (stock) => stock.isBookable
+    )
+    const stocksToGetMinPrice =
+      filteredAvailableStocksFromHourBookable.length > 0
+        ? filteredAvailableStocksFromHourBookable
+        : filteredAvailableStocksFromHour
+    const minPriceStock = stocksToGetMinPrice.reduce((acc, curr) => {
+      if (acc.price < curr.price) return acc
+      return curr
+    })
+
+    const isBookable = filteredAvailableStocksFromHourBookable.length > 0
+    const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
+    return (
+      <HourChoice
+        index={index}
+        key={hour}
+        price={minPriceStock.price}
+        hour={formatHour(hour).replace(':', 'h')}
+        selected={hour === bookingState.hour}
+        onPress={() => selectHour(hour, filteredAvailableStocksFromHour)}
+        testID={`HourChoice${hour}`}
+        isBookable={isBookable}
+        offerCredit={offerCredit}
+        hasSeveralPrices={hasSeveralPrices}
+        features={minPriceStock.features}
+      />
+    )
+  })
+}
+
+function getHourChoiceForSingleStock(
+  stocks: OfferStockResponse[],
+  selectedDate: string | undefined,
+  venue: OfferVenueResponse | undefined,
+  bookingState: BookingState,
+  selectStock: (stockId: number) => void,
+  offerCredit: number
+) {
+  return stocks
+    .filter(({ beginningDatetime }) => {
+      if (beginningDatetime === undefined || beginningDatetime === null) return false
+      return selectedDate && beginningDatetime
+        ? formatToKeyDate(beginningDatetime) === selectedDate
+        : false
+    })
+    .sort(
+      (a, b) =>
+        //@ts-expect-error : stocks with no beginningDatetime was filtered
+        new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
+    )
+    .map((stock, index) => (
+      <HourChoice
+        index={index}
+        key={stock.id}
+        price={stock.price}
+        hour={formatHour(stock.beginningDatetime, venue?.timezone).replace(':', 'h')}
+        selected={stock.id === bookingState.stockId}
+        onPress={() => selectStock(stock.id)}
+        testID={`HourChoice${stock.id}`}
+        isBookable={stock.isBookable}
+        offerCredit={offerCredit}
+        features={stock.features}
+      />
+    ))
 }
 
 export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
@@ -64,67 +143,22 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const filteredStocks = useMemo(
     () => {
       if (hasPotentialPricesStep) {
-        const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
-        const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
-        return distinctHours.map((hour, index) => {
-          const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
-          const filteredAvailableStocksFromHourBookable = filteredAvailableStocksFromHour.filter(
-            (stock) => stock.isBookable
-          )
-          const stocksToGetMinPrice =
-            filteredAvailableStocksFromHourBookable.length > 0
-              ? filteredAvailableStocksFromHourBookable
-              : filteredAvailableStocksFromHour
-          const minPriceStock = stocksToGetMinPrice.reduce((acc, curr) => {
-            if (acc.price < curr.price) return acc
-            return curr
-          })
-
-          const isBookable = filteredAvailableStocksFromHourBookable.length > 0
-          const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
-          return (
-            <HourChoice
-              index={index}
-              key={hour}
-              price={minPriceStock.price}
-              hour={formatHour(hour).replace(':', 'h')}
-              selected={hour === bookingState.hour}
-              onPress={() => selectHour(hour, filteredAvailableStocksFromHour)}
-              testID={`HourChoice${hour}`}
-              isBookable={isBookable}
-              offerCredit={offerCredit}
-              hasSeveralPrices={hasSeveralPrices}
-              features={minPriceStock.features}
-            />
-          )
-        })
+        return getHourChoiceWhenMultiplePrices(
+          stocks,
+          selectedDate,
+          bookingState,
+          selectHour,
+          offerCredit
+        )
       } else {
-        return stocks
-          .filter(({ beginningDatetime }) => {
-            if (beginningDatetime === undefined || beginningDatetime === null) return false
-            return selectedDate && beginningDatetime
-              ? formatToKeyDate(beginningDatetime) === selectedDate
-              : false
-          })
-          .sort(
-            (a, b) =>
-              //@ts-expect-error : stocks with no beginningDatetime was filtered
-              new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
-          )
-          .map((stock, index) => (
-            <HourChoice
-              index={index}
-              key={stock.id}
-              price={stock.price}
-              hour={formatHour(stock.beginningDatetime, venue?.timezone).replace(':', 'h')}
-              selected={stock.id === bookingState.stockId}
-              onPress={() => selectStock(stock.id)}
-              testID={`HourChoice${stock.id}`}
-              isBookable={stock.isBookable}
-              offerCredit={offerCredit}
-              features={stock.features}
-            />
-          ))
+        return getHourChoiceForSingleStock(
+          stocks,
+          selectedDate,
+          venue,
+          bookingState,
+          selectStock,
+          offerCredit
+        )
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
