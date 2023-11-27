@@ -7,7 +7,6 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
@@ -27,14 +26,19 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   venueId: number
   layout?: Layout
+  venueOffers?: { hits: Offer[]; nbHits: number }
   playlists?: GTLPlaylistResponse
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Readonly<Props>) {
+export function VenueOffersNew({
+  venueId,
+  layout = 'two-items',
+  venueOffers,
+  playlists,
+}: Readonly<Props>) {
   const { data: venue } = useVenue(venueId)
-  const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)

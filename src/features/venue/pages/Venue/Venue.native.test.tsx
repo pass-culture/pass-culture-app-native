@@ -247,9 +247,6 @@ describe('<Venue /> with new venue body', () => {
     mockUseVenueOffers.mockReturnValueOnce({
       data: { hits: [], nbHits: 0 },
     } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
-    mockUseVenueOffers.mockReturnValueOnce({
-      data: { hits: [], nbHits: 0 },
-    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
     gtlPLaylistSpy.mockResolvedValueOnce([])
     gtlPLaylistSpy.mockResolvedValueOnce([])
 
