@@ -1,12 +1,17 @@
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { HitOffer, Offer } from 'shared/offer/types'
 
-export type FetchOfferByArtist = {
+type ArtistsAndEan = {
   artists: string | null | undefined
   ean: string | null | undefined
+}
+
+export type FetchOfferByArtist = ArtistsAndEan & {
+  searchGroupName: SearchGroupNameEnumv2 | undefined
 }
 
 export type HitOfferWithArtistAndEan = Offer & {
@@ -19,10 +24,11 @@ export type HitOfferWithArtistAndEan = Offer & {
 export const fetchOffersByArtist = async ({
   artists,
   ean,
+  searchGroupName,
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
-  if (!artists) return []
+  if (!artists || searchGroupName !== SearchGroupNameEnumv2.LIVRES) return []
 
   try {
     const response = await index.search<HitOfferWithArtistAndEan>('', {
@@ -40,7 +46,7 @@ export const fetchOffersByArtist = async ({
   }
 }
 
-export function buildAlgoliaFilter({ artists, ean }: FetchOfferByArtist) {
+export function buildAlgoliaFilter({ artists, ean }: ArtistsAndEan) {
   const firstArtist = artists?.split(' ; ')[0]
 
   let filterString = `offer.artist:"${firstArtist}"`

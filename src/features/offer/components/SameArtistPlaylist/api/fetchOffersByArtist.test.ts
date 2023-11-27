@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   buildAlgoliaFilter,
   fetchOffersByArtist,
@@ -12,8 +13,12 @@ const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
 
 describe('fetchOffersByArtist', () => {
-  it('should execute the query if both artist and ean are provided', async () => {
-    await fetchOffersByArtist({ artists: 'Eiichiro Oda', ean: '9782723492607' })
+  it('should execute the query if artist, ean are provided and searchGroupName is a book', async () => {
+    await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      ean: '9782723492607',
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+    })
 
     expect(search).toHaveBeenCalledWith('', {
       page: 0,
@@ -24,14 +29,18 @@ describe('fetchOffersByArtist', () => {
     })
   })
 
-  it('should not execute the query if both artist and ean are missing', async () => {
-    await fetchOffersByArtist({ artists: '', ean: '' })
+  it('should not execute the query if artist, ean, searchGroupName are missing', async () => {
+    await fetchOffersByArtist({ artists: '', ean: '', searchGroupName: undefined })
 
     expect(search).not.toHaveBeenCalled()
   })
 
-  it('should execute the query with only artist', async () => {
-    await fetchOffersByArtist({ artists: 'Eiichiro Oda', ean: '' })
+  it('should execute the query if artist is provided and searchGroupName is a book', async () => {
+    await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      ean: '',
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+    })
 
     expect(search).toHaveBeenCalledWith('', {
       page: 0,
@@ -43,7 +52,27 @@ describe('fetchOffersByArtist', () => {
   })
 
   it('should not execute the query with only ean', async () => {
-    await fetchOffersByArtist({ artists: '', ean: '9782723492607' })
+    await fetchOffersByArtist({ artists: '', ean: '9782723492607', searchGroupName: undefined })
+
+    expect(search).not.toHaveBeenCalled()
+  })
+
+  it('should not execute the query if artist, ean are provided and searchGroupName is not a book', async () => {
+    await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      ean: '9782723492607',
+      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+    })
+
+    expect(search).not.toHaveBeenCalled()
+  })
+
+  it('should not execute the query if artist is provided and searchGroupName is not a book', async () => {
+    await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      ean: '',
+      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+    })
 
     expect(search).not.toHaveBeenCalled()
   })

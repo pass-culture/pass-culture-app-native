@@ -9,14 +9,14 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useSameArtistPlaylist = ({ artists, ean }: FetchOfferByArtist) => {
+export const useSameArtistPlaylist = ({ artists, ean, searchGroupName }: FetchOfferByArtist) => {
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
 
   const { data, refetch } = useQuery(
     [QueryKeys.SAME_ARTIST_PLAYLIST],
     () => {
-      return fetchOffersByArtist({ artists, ean })
+      return fetchOffersByArtist({ artists, ean, searchGroupName })
     },
     { enabled: !!netInfo.isConnected }
   )

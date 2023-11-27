@@ -62,31 +62,14 @@ export const Offer: FunctionComponent = () => {
     BatchUser.trackEvent(BatchEvent.hasSeenConcertForSurvey)
   })
 
-  const { data: offerResponse } = useOffer({ offerId })
+  const { data: offer } = useOffer({ offerId })
+  const { data } = useSubcategories()
 
   const logConsultWholeOffer = useFunctionOnce(() => {
-    if (offerResponse) {
-      analytics.logConsultWholeOffer(offerResponse.id)
+    if (offer) {
+      analytics.logConsultWholeOffer(offer.id)
     }
   })
-
-  const { data: offer } = useOffer({ offerId })
-
-  const artists = offer?.extraData?.author
-  const ean = offer?.extraData?.ean
-
-  const { sameArtistPlaylist, refetch } = useSameArtistPlaylist({
-    artists,
-    ean,
-  })
-
-  useEffect(() => {
-    if (artists && ean) {
-      refetch()
-    }
-  }, [artists, ean, refetch])
-
-  const { data } = useSubcategories()
 
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
@@ -97,6 +80,21 @@ export const Offer: FunctionComponent = () => {
       categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
+
+  const artists = offer?.extraData?.author
+  const ean = offer?.extraData?.ean
+
+  const { sameArtistPlaylist, refetch } = useSameArtistPlaylist({
+    artists,
+    ean,
+    searchGroupName,
+  })
+
+  useEffect(() => {
+    if (artists && ean) {
+      refetch()
+    }
+  }, [artists, ean, refetch])
 
   const {
     similarOffers: otherCategoriesSimilarOffers,
@@ -262,11 +260,11 @@ export const Offer: FunctionComponent = () => {
     showOfferModal()
   }
 
-  if (!offerResponse) return null
+  if (!offer) return null
 
   return (
     <Container>
-      <OfferWebHead offer={offerResponse} />
+      <OfferWebHead offer={offer} />
       <OfferBody
         offerId={offerId}
         onScroll={onScroll}
@@ -277,11 +275,7 @@ export const Offer: FunctionComponent = () => {
         sameArtistPlaylist={sameArtistPlaylist}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
-      <OfferHeader
-        title={offerResponse.name}
-        headerTransition={headerTransition}
-        offerId={offerResponse.id}
-      />
+      <OfferHeader title={offer.name} headerTransition={headerTransition} offerId={offer.id} />
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">

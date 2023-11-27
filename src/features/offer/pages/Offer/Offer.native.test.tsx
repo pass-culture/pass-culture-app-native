@@ -374,6 +374,7 @@ describe('<Offer />', () => {
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
         artists: 'Eiichiro Oda',
         ean: '9782723492607',
+        searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     })
 
@@ -383,8 +384,9 @@ describe('<Offer />', () => {
       await act(async () => {})
 
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
-        artist: undefined,
+        artists: undefined,
         ean: undefined,
+        searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     })
 
