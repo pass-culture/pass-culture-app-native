@@ -3856,133 +3856,85 @@ d’options
             testID="accordionBodyContainer"
           >
             <View
+              accessibilityRole="list"
               style={
                 [
                   {
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "overflow": "visible",
+                    "paddingLeft": 0,
+                    "width": "100%",
                   },
                 ]
               }
             >
               <View
-                accessibilityRole="list"
+                accessibilityRole="none"
+                rightSpacingValue={40}
                 style={
                   [
                     {
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "overflow": "visible",
-                      "paddingLeft": 0,
+                      "display": "flex",
+                      "maxWidth": 64,
                     },
                   ]
                 }
               >
                 <View
-                  accessibilityRole="none"
-                  rightSpacingValue={12}
+                  accessibilityLabel="Handicap visuel : Accessible"
+                  accessibilityRole="image"
                   style={
                     [
                       {
-                        "display": "flex",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 12,
+                        "alignItems": "center",
                       },
                     ]
                   }
+                  testID="accessibilityAtomContainer"
                 >
                   <View
-                    accessibilityLabel="Handicap visuel : Accessible"
-                    accessibilityRole="image"
                     style={
                       [
                         {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "alignItems": "center",
+                          "borderColor": "#CBCDD2",
+                          "borderRadius": 8,
+                          "borderWidth": 1,
+                          "height": 48,
+                          "width": 48,
                         },
                       ]
                     }
-                    testID="accessibilityAtomContainer"
+                    testID="accessibilityFrame"
                   >
                     <View
                       style={
                         [
                           {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "borderColor": "#CBCDD2",
-                            "borderRadius": 8,
-                            "borderWidth": 1,
-                            "minHeight": 64,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
-                      testID="accessibilityFrame"
+                    />
+                    <View
+                      fill="#161617"
+                      height={24}
+                      width={24}
                     >
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        fill="#161617"
-                        height={32}
-                        width={32}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        style={
-                          [
-                            {
-                              "bottom": -12,
-                              "position": "absolute",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Accessible"
-                          height={24}
-                          testID="validTestId"
-                          width={24}
-                        >
-                          <Text>
-                            validTestId-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
                     </View>
                     <View
-                      numberOfSpaces={4}
                       style={
                         [
                           {
-                            "height": 16,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -3991,274 +3943,130 @@ d’options
                       style={
                         [
                           {
-                            "marginBottom": 16,
-                            "marginHorizontal": -4,
+                            "bottom": -8,
+                            "position": "absolute",
                           },
                         ]
                       }
-                      testID="Handicap visuel"
                     >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
+                      <View
+                        accessibilityLabel="Accessible"
+                        height={16}
+                        testID="validTestId"
+                        width={16}
                       >
-                        Handicap visuel
-                      </Text>
+                        <Text>
+                          validTestId-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  accessibilityRole="none"
-                  rightSpacingValue={12}
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 12,
-                      },
-                    ]
-                  }
-                >
                   <View
-                    accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
-                    accessibilityRole="image"
+                    numberOfSpaces={4}
                     style={
                       [
                         {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "height": 16,
                         },
                       ]
                     }
-                    testID="accessibilityAtomContainer"
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "marginBottom": 16,
+                          "marginHorizontal": -4,
+                        },
+                      ]
+                    }
+                    testID="Handicap visuel"
                   >
-                    <View
+                    <Text
                       style={
                         [
                           {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "borderColor": "#CBCDD2",
-                            "borderRadius": 8,
-                            "borderWidth": 1,
-                            "minHeight": 64,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
                           },
                         ]
                       }
-                      testID="accessibilityFrame"
                     >
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        fill="#161617"
-                        height={32}
-                        width={32}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        style={
-                          [
-                            {
-                              "bottom": -12,
-                              "position": "absolute",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non accessible"
-                          fill="#696A6F"
-                          height={24}
-                          testID="invalidTestId"
-                          width={24}
-                        >
-                          <Text>
-                            invalidTestId-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "marginBottom": 16,
-                            "marginHorizontal": -4,
-                          },
-                        ]
-                      }
-                      testID="Handicap psychique ou cognitif"
-                    >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
-                      >
-                        Handicap psychique ou cognitif
-                      </Text>
-                    </View>
+                      Handicap visuel
+                    </Text>
                   </View>
                 </View>
+              </View>
+              <View
+                accessibilityRole="none"
+                rightSpacingValue={40}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "maxWidth": 64,
+                    },
+                  ]
+                }
+              >
                 <View
-                  accessibilityRole="none"
-                  rightSpacingValue={12}
+                  accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
+                  accessibilityRole="image"
                   style={
                     [
                       {
-                        "display": "flex",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 12,
+                        "alignItems": "center",
                       },
                     ]
                   }
+                  testID="accessibilityAtomContainer"
                 >
                   <View
-                    accessibilityLabel="Handicap moteur : Non accessible"
-                    accessibilityRole="image"
                     style={
                       [
                         {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "alignItems": "center",
+                          "borderColor": "#CBCDD2",
+                          "borderRadius": 8,
+                          "borderWidth": 1,
+                          "height": 48,
+                          "width": 48,
                         },
                       ]
                     }
-                    testID="accessibilityAtomContainer"
+                    testID="accessibilityFrame"
                   >
                     <View
                       style={
                         [
                           {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "borderColor": "#CBCDD2",
-                            "borderRadius": 8,
-                            "borderWidth": 1,
-                            "minHeight": 64,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
-                      testID="accessibilityFrame"
+                    />
+                    <View
+                      fill="#161617"
+                      height={24}
+                      width={24}
                     >
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        fill="#161617"
-                        height={32}
-                        width={32}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        style={
-                          [
-                            {
-                              "bottom": -12,
-                              "position": "absolute",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non accessible"
-                          fill="#696A6F"
-                          height={24}
-                          testID="invalidTestId"
-                          width={24}
-                        >
-                          <Text>
-                            invalidTestId-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
                     </View>
                     <View
-                      numberOfSpaces={4}
                       style={
                         [
                           {
-                            "height": 16,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -4267,136 +4075,131 @@ d’options
                       style={
                         [
                           {
-                            "marginBottom": 16,
-                            "marginHorizontal": -4,
+                            "bottom": -8,
+                            "position": "absolute",
                           },
                         ]
                       }
-                      testID="Handicap moteur"
                     >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
+                      <View
+                        accessibilityLabel="Non accessible"
+                        fill="#696A6F"
+                        height={16}
+                        testID="invalidTestId"
+                        width={16}
                       >
-                        Handicap moteur
-                      </Text>
+                        <Text>
+                          invalidTestId-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  accessibilityRole="none"
-                  rightSpacingValue={0}
-                  style={
-                    [
-                      {
-                        "display": "flex",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "marginRight": 0,
-                      },
-                    ]
-                  }
-                >
                   <View
-                    accessibilityLabel="Handicap auditif : Non accessible"
-                    accessibilityRole="image"
+                    numberOfSpaces={4}
                     style={
                       [
                         {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
+                          "height": 16,
                         },
                       ]
                     }
-                    testID="accessibilityAtomContainer"
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "marginBottom": 16,
+                          "marginHorizontal": -4,
+                        },
+                      ]
+                    }
+                    testID="Handicap psychique ou cognitif"
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Handicap psychique ou cognitif
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityRole="none"
+                rightSpacingValue={40}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "maxWidth": 64,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Handicap moteur : Non accessible"
+                  accessibilityRole="image"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                      },
+                    ]
+                  }
+                  testID="accessibilityAtomContainer"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#CBCDD2",
+                          "borderRadius": 8,
+                          "borderWidth": 1,
+                          "height": 48,
+                          "width": 48,
+                        },
+                      ]
+                    }
+                    testID="accessibilityFrame"
                   >
                     <View
                       style={
                         [
                           {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "borderColor": "#CBCDD2",
-                            "borderRadius": 8,
-                            "borderWidth": 1,
-                            "minHeight": 64,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
-                      testID="accessibilityFrame"
+                    />
+                    <View
+                      fill="#161617"
+                      height={24}
+                      width={24}
                     >
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        fill="#161617"
-                        height={32}
-                        width={32}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          [
-                            {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        style={
-                          [
-                            {
-                              "bottom": -12,
-                              "position": "absolute",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non accessible"
-                          fill="#696A6F"
-                          height={24}
-                          testID="invalidTestId"
-                          width={24}
-                        >
-                          <Text>
-                            invalidTestId-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
                     </View>
                     <View
-                      numberOfSpaces={4}
                       style={
                         [
                           {
-                            "height": 16,
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
@@ -4405,30 +4208,195 @@ d’options
                       style={
                         [
                           {
-                            "marginBottom": 16,
-                            "marginHorizontal": -4,
+                            "bottom": -8,
+                            "position": "absolute",
                           },
                         ]
                       }
-                      testID="Handicap auditif"
                     >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                              "paddingHorizontal": 1,
-                              "textAlign": "center",
-                            },
-                          ]
-                        }
+                      <View
+                        accessibilityLabel="Non accessible"
+                        fill="#696A6F"
+                        height={16}
+                        testID="invalidTestId"
+                        width={16}
                       >
-                        Handicap auditif
+                        <Text>
+                          invalidTestId-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      [
+                        {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "marginBottom": 16,
+                          "marginHorizontal": -4,
+                        },
+                      ]
+                    }
+                    testID="Handicap moteur"
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Handicap moteur
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                accessibilityRole="none"
+                rightSpacingValue={0}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "maxWidth": 64,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Handicap auditif : Non accessible"
+                  accessibilityRole="image"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                      },
+                    ]
+                  }
+                  testID="accessibilityAtomContainer"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#CBCDD2",
+                          "borderRadius": 8,
+                          "borderWidth": 1,
+                          "height": 48,
+                          "width": 48,
+                        },
+                      ]
+                    }
+                    testID="accessibilityFrame"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      fill="#161617"
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        [
+                          {
+                            "bottom": -8,
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Non accessible"
+                        fill="#696A6F"
+                        height={16}
+                        testID="invalidTestId"
+                        width={16}
+                      >
+                        <Text>
+                          invalidTestId-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    numberOfSpaces={4}
+                    style={
+                      [
+                        {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "marginBottom": 16,
+                          "marginHorizontal": -4,
+                        },
+                      ]
+                    }
+                    testID="Handicap auditif"
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "paddingHorizontal": 1,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Handicap auditif
+                    </Text>
                   </View>
                 </View>
               </View>
