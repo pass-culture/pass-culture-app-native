@@ -1,6 +1,7 @@
 import React from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { Slider } from './Slider'
 
@@ -67,6 +68,19 @@ describe('<Slider />', () => {
       )
 
       expect(screen.queryByText('100\u00a0km')).toBeOnTheScreen()
+    })
+
+    it('should call onValuesChange when slider value changes', async () => {
+      const mockOnValuesChange = jest.fn()
+
+      render(<Slider values={[0, 100]} onValuesChange={mockOnValuesChange} showValues />)
+
+      await act(async () => {
+        const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+        slider.props.onValuesChange([50])
+      })
+
+      expect(mockOnValuesChange).toHaveBeenCalledWith([50])
     })
   })
 })

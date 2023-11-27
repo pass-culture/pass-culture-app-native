@@ -1,7 +1,76 @@
 import { ValidationError } from 'yup'
 
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { datesHoursSchema } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
+import {
+  datesHoursSchema,
+  hourSchema,
+  hoursSchema,
+} from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
+
+describe('hourSchema', () => {
+  it.each([25, -1, '8', null, undefined, false])(
+    'hourSchema should fail when value (%s) is not a valid hour',
+    (value) => {
+      expect(() => hourSchema.validateSync(value)).toThrow(
+        new ValidationError('Horaire incorrecte')
+      )
+    }
+  )
+
+  it.each([0, 1, 12, 23, 24])(
+    'hourSchema should validate when value ($value) is a valid hour',
+    (value) => {
+      expect(hourSchema.validateSync(value)).toEqual(value)
+    }
+  )
+})
+
+describe('hoursSchema', () => {
+  it.each([
+    [undefined, null],
+    ['8', '12'],
+    [2, false],
+  ])(
+    'hoursSchema should fail when value (%s) is not an array of two valid hours',
+    (value1, value2) => {
+      const value = [value1, value2]
+
+      expect(() => hoursSchema.validateSync(value)).toThrow(
+        new ValidationError('Horaires incorrectes')
+      )
+    }
+  )
+
+  it('hoursSchema should fail when we have 1 value', () => {
+    const value = [1]
+
+    expect(() => hoursSchema.validateSync(value)).toThrow(
+      new ValidationError('Horaires incorrectes')
+    )
+  })
+
+  it('hoursSchema should fail when we have 3 value', () => {
+    const value = [1, 2, 3]
+
+    expect(() => hoursSchema.validateSync(value)).toThrow(
+      new ValidationError('Horaires incorrectes')
+    )
+  })
+
+  it.each([
+    [0, 1],
+    [12, 15],
+    [23, 22],
+    [0, 24], //this is not an error we really want a time slot between 0h to 24h
+  ])(
+    'hoursSchema should validate when value ($value) is an array of two valid hours',
+    (value1, value2) => {
+      const value = [value1, value2]
+
+      expect(hoursSchema.validateSync(value)).toEqual(value)
+    }
+  )
+})
 
 describe('datesHoursSchema', () => {
   describe('should fail', () => {

@@ -8,6 +8,7 @@ import {
 } from 'features/location/components/SearchLocationModal'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
+import * as useSearch from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
@@ -56,17 +57,19 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 >
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
+jest.mock('libs/place', () => ({
+  usePlaces: () => ({ data: mockPlaces, isLoading: false }),
+}))
+
+const mockDispatch = jest.fn()
 const mockSearchState: SearchState = {
   ...initialSearchState,
   locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
 }
-jest.mock('libs/place', () => ({
-  usePlaces: () => ({ data: mockPlaces, isLoading: false }),
-}))
-const mockDispatch = jest.fn()
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
-}))
+
+const useSearchSpy = jest
+  .spyOn(useSearch, 'useSearch')
+  .mockReturnValue({ searchState: mockSearchState, dispatch: mockDispatch })
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
@@ -220,7 +223,7 @@ describe('SearchLocationModal', () => {
   })
 
   describe('PlaceRadius', () => {
-    it("should equal default if it wasn't set previously", async () => {
+    it("should display default radius if it wasn't set previously", async () => {
       renderSearchLocationModal()
       await waitForModalToShow()
 
@@ -240,7 +243,7 @@ describe('SearchLocationModal', () => {
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
 
-    it('should equal SearchState radius value if PlaceRadius was set and saved previously', async () => {
+    it('should call searchContext dispatch with mockRadiusPlace when pressing "Valider la localisation"', async () => {
       renderSearchLocationModal()
       await waitForModalToShow()
 
@@ -260,18 +263,51 @@ describe('SearchLocationModal', () => {
         slider.props.onValuesChange([mockRadiusPlace])
       })
 
-      const validateButon = screen.getByText('Valider la localisation')
-      fireEvent.press(validateButon)
+      fireEvent.press(screen.getByText('Valider la localisation'))
 
-      fireEvent.press(screen.getByLabelText('Fermer la modale'))
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: {
+          includeDigitalOffers: false,
+          locationFilter: {
+            aroundRadius: mockRadiusPlace,
+            locationType: LocationType.PLACE,
+            place: mockPlaces[0],
+          },
+        },
+        type: 'SET_LOCATION_FILTERS',
+      })
+    })
 
-      const mockOpenModalButton = screen.getByText('Open modal')
-      fireEvent.press(mockOpenModalButton)
+    it('should be init with the correct value located in the SearchState', async () => {
+      useSearchSpy.mockReturnValueOnce({
+        searchState: {
+          ...initialSearchState,
+          locationFilter: {
+            place: mockPlaces[0],
+            locationType: LocationType.PLACE,
+            aroundRadius: mockRadiusPlace,
+          },
+        },
+        dispatch: mockDispatch,
+      })
+
+      renderSearchLocationModal()
+      await waitForModalToShow()
+      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      fireEvent.press(openLocationModalButton)
+
+      const searchInput = screen.getByTestId('styled-input-container')
+      await act(async () => {
+        fireEvent.changeText(searchInput, mockPlaces[0].label)
+      })
+
+      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      fireEvent.press(suggestedPlace)
 
       expect(screen.getByText(radiusWithKm(mockRadiusPlace))).toBeOnTheScreen()
     })
 
-    it('should equal default even if an AroundMeRadius was set previously', async () => {
+    it('should display default radius even if an AroundMeRadius was set previously', async () => {
       renderSearchLocationModal()
       await waitForModalToShow()
 
@@ -294,7 +330,7 @@ describe('SearchLocationModal', () => {
   })
 
   describe('AroundMeRadius', () => {
-    it("should equal default if it wasn't set previously", async () => {
+    it("should display default radius if it wasn't set previously", async () => {
       renderSearchLocationModal()
       await waitForModalToShow()
 
@@ -305,7 +341,7 @@ describe('SearchLocationModal', () => {
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
 
-    it('should equal SearchState radius value if AroundMeRadius was set and saved previously', async () => {
+    it('should call searchContext dispatch with mockAroundMeRadius when pressing "Valider la localisation"', async () => {
       renderSearchLocationModal()
       await waitForModalToShow()
 
@@ -313,18 +349,40 @@ describe('SearchLocationModal', () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChange([mockAroundMeRadius])
       })
-      const validateButon = screen.getByText('Valider la localisation')
-      fireEvent.press(validateButon)
 
-      fireEvent.press(screen.getByLabelText('Fermer la modale'))
+      fireEvent.press(screen.getByText('Valider la localisation'))
 
-      const mockOpenModalButton = screen.getByText('Open modal')
-      fireEvent.press(mockOpenModalButton)
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: {
+          includeDigitalOffers: false,
+          locationFilter: {
+            aroundRadius: mockAroundMeRadius,
+            locationType: LocationType.AROUND_ME,
+          },
+        },
+        type: 'SET_LOCATION_FILTERS',
+      })
+    })
+
+    it('should be init with the correct value located in the SearchState', async () => {
+      useSearchSpy.mockReturnValueOnce({
+        searchState: {
+          ...initialSearchState,
+          locationFilter: {
+            locationType: LocationType.AROUND_ME,
+            aroundRadius: mockAroundMeRadius,
+          },
+        },
+        dispatch: mockDispatch,
+      })
+
+      renderSearchLocationModal()
+      await waitForModalToShow()
 
       expect(screen.getByText(radiusWithKm(mockAroundMeRadius))).toBeOnTheScreen()
     })
 
-    it('should equal default even if a PlaceRadius was set previously', async () => {
+    it('should display default radius even if a PlaceRadius was set previously', async () => {
       getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)

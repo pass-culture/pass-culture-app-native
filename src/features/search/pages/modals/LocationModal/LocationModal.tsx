@@ -2,20 +2,20 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
-import { Keyboard, TextInput as RNTextInput, View } from 'react-native'
+import { Keyboard, TextInput as RNTextInput } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { LocationSlider } from 'features/search/components/LocationSlider/LocationSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
-import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlacesOrVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlacesOrVenues'
 import { SearchState, SearchView } from 'features/search/types'
@@ -28,7 +28,6 @@ import { Form } from 'ui/components/Form'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { Slider } from 'ui/components/inputs/Slider'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,11 +39,11 @@ import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type LocationModalFormData = {
   locationChoice: RadioButtonLocation
-  aroundRadius: number
+  aroundRadius: [number]
   selectedPlaceOrVenue?: Venue | SuggestedPlace
   searchPlaceOrVenue: string
 }
@@ -64,11 +63,8 @@ const LOCATION_TYPES = [
   { label: RadioButtonLocation.EVERYWHERE, icon: Everywhere },
 ]
 
-const formatKm = (km: number) => `${km}\u00a0km`
-
 const titleId = uuidv4()
 const accessibilityDescribedBy = uuidv4()
-const radiusLabelId = uuidv4()
 
 const getLocationChoice = (locationType: LocationType) => {
   if (locationType === LocationType.EVERYWHERE) {
@@ -94,6 +90,23 @@ const getPlaceOrVenueLabel = (searchState: SearchState) => {
   return placeOrVenue?.label ?? ''
 }
 
+function isValidAroundRadius(value: unknown): value is [number] {
+  return (
+    Array.isArray(value) && value.length === 1 && typeof value[0] === 'number' && !isNaN(value[0])
+  )
+}
+
+function getValidAroundRadius(searchState: SearchState): [number] {
+  if (searchState.locationFilter.locationType === LocationType.AROUND_ME) {
+    const aroundRadius = searchState.locationFilter.aroundRadius
+    if (typeof aroundRadius === 'number') {
+      return [aroundRadius]
+    }
+  }
+
+  return [MAX_RADIUS]
+}
+
 export const LocationModal: FunctionComponent<LocationModalProps> = ({
   title,
   accessibilityLabel,
@@ -114,7 +127,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   } = useLocation()
   const isGeolocated = !!position
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
-  const { sliderLength } = useGetFullscreenModalSliderLength()
 
   const {
     showModal: showGeolocPermissionModal,
@@ -133,10 +145,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const defaultValues = useMemo(() => {
     return {
       locationChoice: getLocationChoice(searchState.locationFilter.locationType),
-      aroundRadius:
-        searchState.locationFilter.locationType === LocationType.AROUND_ME
-          ? searchState.locationFilter.aroundRadius || MAX_RADIUS
-          : MAX_RADIUS,
+      aroundRadius: getValidAroundRadius(searchState),
       searchPlaceOrVenue: getPlaceOrVenueLabel(searchState),
       selectedPlaceOrVenue: getPlaceOrVenue(searchState),
     }
@@ -188,7 +197,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           ...additionalSearchState,
           locationFilter: {
             locationType: LocationType.AROUND_ME,
-            aroundRadius: getValues('aroundRadius'),
+            aroundRadius: getValues('aroundRadius')[0],
           },
         }
         analytics.logChangeSearchLocation({ type: 'aroundMe' }, searchState.searchId)
@@ -201,12 +210,14 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           : LocationType.VENUE
 
         if (locationType === LocationType.PLACE) {
+          const validAroundRadius = isValidAroundRadius(aroundRadius) ? aroundRadius[0] : MAX_RADIUS
+
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
               locationType: LocationType.PLACE,
               place: selectedPlaceOrVenue as SuggestedPlace,
-              aroundRadius,
+              aroundRadius: validAroundRadius,
             },
           }
           analytics.logChangeSearchLocation({ type: 'place' }, searchState.searchId)
@@ -266,7 +277,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const onResetPress = useCallback(() => {
     reset({
       locationChoice: isGeolocated ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
-      aroundRadius: MAX_RADIUS,
+      aroundRadius: [MAX_RADIUS],
       searchPlaceOrVenue: '',
       selectedPlaceOrVenue: undefined,
     })
@@ -346,15 +357,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   )
 
   const disabled = !isValid || (!isValidating && isSubmitting)
-
-  const onValuesChange = useCallback(
-    (newValues: number[]) => {
-      if (isVisible) {
-        setValue('aroundRadius', newValues[0])
-      }
-    },
-    [isVisible, setValue]
-  )
 
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
 
@@ -453,38 +455,10 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                           ) : null}
                         </React.Fragment>
                       ) : null}
-                      {item.label === RadioButtonLocation.AROUND_ME && (
-                        <Controller
-                          control={control}
-                          name="aroundRadius"
-                          render={({ field: { value: aroundRadius } }) => (
-                            <React.Fragment>
-                              {value === RadioButtonLocation.AROUND_ME && (
-                                <View>
-                                  <Spacer.Column numberOfSpaces={4} />
-                                  <LabelRadiusContainer nativeID={radiusLabelId}>
-                                    <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
-                                    <Typo.ButtonText>{`${aroundRadius}\u00a0km`}</Typo.ButtonText>
-                                  </LabelRadiusContainer>
-                                  <Spacer.Column numberOfSpaces={2} />
-                                  <Slider
-                                    showValues={false}
-                                    values={[aroundRadius]}
-                                    max={MAX_RADIUS}
-                                    onValuesChange={onValuesChange}
-                                    shouldShowMinMaxValues
-                                    minMaxValuesComplement={`\u00a0km`}
-                                    maxLabel="Dans un rayon de&nbsp;:"
-                                    sliderLength={sliderLength}
-                                    formatValues={formatKm}
-                                    accessibilityLabelledBy={radiusLabelId}
-                                  />
-                                </View>
-                              )}
-                            </React.Fragment>
-                          )}
-                        />
-                      )}
+                      {item.label === RadioButtonLocation.AROUND_ME &&
+                      value === RadioButtonLocation.AROUND_ME ? (
+                        <Controller control={control} name="aroundRadius" render={LocationSlider} />
+                      ) : null}
                       <Spacer.Column numberOfSpaces={6} />
                       {index + 1 < LOCATION_TYPES.length && <Separator.Horizontal />}
                     </Li>
@@ -511,11 +485,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
 const FormWrapper = styled.View({
   alignItems: 'center',
-})
-
-const LabelRadiusContainer = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
 })
 
 const StyledVerticalUl = styled(VerticalUl)({
