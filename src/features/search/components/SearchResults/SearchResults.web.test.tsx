@@ -61,6 +61,11 @@ jest.mock('features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpa
 }))
 
 describe('SearchResults component', () => {
+  beforeEach(() => {
+    mockOffers = []
+    mockNbHits = 0
+  })
+
   it('should not render list if empty', async () => {
     render(<SearchResults />)
     await act(async () => {}) // fix 3 warnings "Warning: An update to %s inside a test was not wrapped in act" for PriceModal, LocationModal and DatesHoursModal
