@@ -1,19 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
-import { Animated, LayoutChangeEvent, Platform } from 'react-native'
+import React, { useCallback } from 'react'
+import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
+import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/geolocation'
-import { useSplashScreenContext } from 'libs/splashscreen'
-import { storage } from 'libs/storage'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -33,55 +32,19 @@ interface LocationWidgetProps {
 
 export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const touchableRef = React.useRef<HTMLButtonElement>()
-  const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
-  const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
-  const { isSplashScreenHidden } = useSplashScreenContext()
-  const enableTooltip = screenOrigin === ScreenOrigin.HOME
-  const shouldShowHomeLocationModal = enableTooltip
+  const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
   const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const {
+    isTooltipVisible,
+    hideTooltip,
+    widgetWidth,
+    onWidgetLayout,
+    touchableRef,
+    enableTooltip,
+  } = useLocationWidgetTooltip(screenOrigin)
 
   const locationTitle = getLocationTitle(place, userPosition)
-
-  const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
-
-  // native resizing on layout
-  function onWidgetLayout(event: LayoutChangeEvent) {
-    const { width } = event.nativeEvent.layout
-    setWidgetWidth(width)
-  }
-
-  // web resizing on layout
-  useEffect(() => {
-    if (Platform.OS === 'web' && touchableRef.current) {
-      const { width } = touchableRef.current.getBoundingClientRect()
-      setWidgetWidth(width)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!isSplashScreenHidden || !enableTooltip) return
-
-    const displayTooltipIfNeeded = async () => {
-      const timesLocationTooltipHasBeenDisplayed = Number(
-        await storage.readString('times_location_tooltip_has_been_displayed')
-      )
-      setIsTooltipVisible(timesLocationTooltipHasBeenDisplayed < 1 || !userPosition)
-      await storage.saveString(
-        'times_location_tooltip_has_been_displayed',
-        String(timesLocationTooltipHasBeenDisplayed + 1)
-      )
-    }
-    const timeoutOn = setTimeout(displayTooltipIfNeeded, 1000)
-    const timeoutOff = setTimeout(hideTooltip, 9000)
-
-    return () => {
-      clearTimeout(timeoutOn)
-      clearTimeout(timeoutOff)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
-  }, [isSplashScreenHidden])
 
   const {
     visible: locationModalVisible,
