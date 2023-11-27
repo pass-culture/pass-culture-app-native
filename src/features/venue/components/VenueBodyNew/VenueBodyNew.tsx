@@ -94,7 +94,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
         <TabLayout
           tabPanels={{
             'Offres disponibles': (
-              <VenueOffersNew venueId={venue.id} venueOffers={venueOffers} playlists={playlists} />
+              <VenueOffersNew venue={venue} venueOffers={venueOffers} playlists={playlists} />
             ),
             'Infos pratiques': <PracticalInformation venue={venue} />,
           }}
