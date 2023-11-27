@@ -6,7 +6,6 @@
     "christian-kohler.npm-intellisense",
     "christian-kohler.path-intellisense",
     "dsznajder.es7-react-js-snippets",
-    "esbenp.prettier-vscode",
     "timonwong.shellcheck",
     "streetsidesoftware.code-spell-checker",
     "streetsidesoftware.code-spell-checker-french",
@@ -16,8 +15,7 @@
     "yoavbls.pretty-ts-errors",
     "p42ai.refactor",
     "mikestead.dotenv",
-    "rebornix.ruby",
-    "wingrunr21.vscode-ruby",
     "firsttris.vscode-jest-runner",
+    "shopify.ruby-lsp"
   ]
 }
