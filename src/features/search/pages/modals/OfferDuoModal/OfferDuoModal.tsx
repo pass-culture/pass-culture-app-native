@@ -70,8 +70,14 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
 
   const subtitleToggle = 'Seules les sorties seront affichées'
 
-  const ToggleOfferDuoController = useCallback(
-    ({ field: { value } }: { field: ControllerRenderProps<SearchTypeFormData, 'offerIsDuo'> }) => (
+  const ToggleOfferDuoController = useCallback<
+    ({
+      field,
+    }: {
+      field: ControllerRenderProps<SearchTypeFormData, 'offerIsDuo'>
+    }) => React.ReactElement
+  >(
+    ({ field: { value } }) => (
       <React.Fragment>
         <FilterSwitchWithLabel
           isActive={value}

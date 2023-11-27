@@ -78,7 +78,7 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const renderItem: CustomListRenderItem<Offer> = useCallback(
+  const renderItem = useCallback<CustomListRenderItem<Offer>>(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
