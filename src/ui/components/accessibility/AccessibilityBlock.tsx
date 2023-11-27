@@ -25,14 +25,12 @@ export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
     return null
 
   return (
-    <Row>
-      <StyledUl>
-        {renderAccessibilityAtom(visualDisability, HandicapCategory.VISUAL, true)}
-        {renderAccessibilityAtom(mentalDisability, HandicapCategory.MENTAL, true)}
-        {renderAccessibilityAtom(motorDisability, HandicapCategory.MOTOR, true)}
-        {renderAccessibilityAtom(audioDisability, HandicapCategory.AUDIO, false)}
-      </StyledUl>
-    </Row>
+    <StyledUl>
+      {renderAccessibilityAtom(visualDisability, HandicapCategory.VISUAL, true)}
+      {renderAccessibilityAtom(mentalDisability, HandicapCategory.MENTAL, true)}
+      {renderAccessibilityAtom(motorDisability, HandicapCategory.MOTOR, true)}
+      {renderAccessibilityAtom(audioDisability, HandicapCategory.AUDIO, false)}
+    </StyledUl>
   )
 }
 
@@ -42,22 +40,19 @@ const renderAccessibilityAtom = (
   addSpacer: boolean
 ) =>
   !!(disability !== null && disability !== undefined) && (
-    <StyledLi rightSpacingValue={addSpacer ? getSpacing(3) : 0}>
+    <StyledLi rightSpacingValue={addSpacer ? getSpacing(10) : 0}>
       <AccessibilityAtom handicap={handicap} isAccessible={disability} />
     </StyledLi>
   )
 
-const Row = styled.View(({ theme }) => ({
+const StyledUl = styled(Ul)(({ theme }) => ({
   flexDirection: 'row',
-  justifyContent: theme.isMobileViewport ? 'space-between' : 'space-around',
+  overflow: 'visible',
+  width: theme.isMobileViewport ? '100%' : undefined,
+  justifyContent: theme.isMobileViewport ? 'space-between' : 'flex-start',
 }))
 
-const StyledUl = styled(Ul)({
-  flex: 1,
-  overflow: 'visible',
-})
-
-const StyledLi = styled(Li)<{ rightSpacingValue: number }>(({ rightSpacingValue }) => ({
-  flex: 1,
-  marginRight: rightSpacingValue,
+const StyledLi = styled(Li)<{ rightSpacingValue: number }>(({ theme, rightSpacingValue }) => ({
+  marginRight: theme.isDesktopViewport ? rightSpacingValue : undefined,
+  maxWidth: getSpacing(16),
 }))
