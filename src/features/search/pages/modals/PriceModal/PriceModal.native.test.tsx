@@ -37,6 +37,8 @@ jest.mock('react-query')
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
 
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+
 describe('<PriceModal/>', () => {
   beforeAll(() => {
     mockSearchState = { ...searchState, searchId }
