@@ -5,16 +5,13 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { getShareOffer } from './getShareOffer'
 
-jest.mock('react-query')
-jest.mock('features/offer/api/useOffer')
-
 const mockShare = jest
   .spyOn(Share, 'share')
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
 const offer = mockOffer
 
-describe('useShareOffer', () => {
+describe('getShareOffer', () => {
   describe('should display share modal with data from offer', () => {
     it('for ios', async () => {
       Platform.OS = 'ios'
