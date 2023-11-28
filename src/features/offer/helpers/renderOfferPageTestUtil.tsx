@@ -20,7 +20,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-let mockedOffer: Partial<OfferResponse> | undefined = undefined
+let mockedOffer: Partial<OfferResponse> | undefined | null = undefined
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
     data: mockedOffer,
@@ -29,13 +29,27 @@ jest.mock('features/offer/api/useOffer', () => ({
 
 export const offerId = 116656
 
-export function renderOfferPage(
-  fromOfferId?: number,
-  extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
-  openModalOnNavigation?: boolean,
-  isUndefinedOffer?: boolean
-) {
-  mockedOffer = isUndefinedOffer ? undefined : { ...offerResponseSnap, ...extraOffer }
+type MockOffer =
+  | (OfferResponse & {
+      extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+    })
+  | null
+
+type RenderOfferPage = {
+  fromOfferId?: number
+  extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+  openModalOnNavigation?: boolean
+  mockOffer?: MockOffer
+}
+
+export function renderOfferPage({
+  fromOfferId,
+  extraOffer,
+  openModalOnNavigation,
+  mockOffer = { ...offerResponseSnap, ...extraOffer },
+}: RenderOfferPage) {
+  mockedOffer = mockOffer
+
   render(
     reactQueryProviderHOC(
       <NavigationContainer>

@@ -5,12 +5,12 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { HitOffer, Offer } from 'shared/offer/types'
 
-type ArtistsAndEan = {
+type BuildAlgoliaFilterType = {
   artists: string | null | undefined
   ean: string | null | undefined
 }
 
-export type FetchOfferByArtist = ArtistsAndEan & {
+export type FetchOfferByArtist = BuildAlgoliaFilterType & {
   searchGroupName: SearchGroupNameEnumv2 | undefined
 }
 
@@ -46,7 +46,7 @@ export const fetchOffersByArtist = async ({
   }
 }
 
-export function buildAlgoliaFilter({ artists, ean }: ArtistsAndEan) {
+export function buildAlgoliaFilter({ artists, ean }: BuildAlgoliaFilterType) {
   const firstArtist = artists?.split(' ; ')[0]
 
   let filterString = `offer.artist:"${firstArtist}"`
