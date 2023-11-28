@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect } from 'react'
-import { LayoutChangeEvent, Platform } from 'react-native'
+import React from 'react'
+import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useLocationForLocationWidgetDesktop } from 'features/location/components/useLocationForLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
+import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { SearchState } from 'features/search/types'
-import { storage } from 'libs/storage'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -44,15 +44,21 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
   children,
   screenOrigin,
 }) => {
-  const touchableRef = React.useRef<HTMLButtonElement>()
-
   const { icons } = useTheme()
   const {
     title: locationTitle,
     isWidgetHighlighted,
     testId,
-    userPosition,
   } = useLocationForLocationWidgetDesktop()
+
+  const {
+    isTooltipVisible,
+    widgetWidth,
+    hideTooltip,
+    onWidgetLayout,
+    touchableRef,
+    enableTooltip,
+  } = useLocationWidgetTooltip(screenOrigin)
 
   const {
     visible: locationModalVisible,
@@ -60,64 +66,10 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
     hideModal: hideLocationModal,
   } = useModal()
 
-  const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
-  const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
-  const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
-
-  // native resizing on layout
-  function onWidgetLayout(event: LayoutChangeEvent) {
-    const { width } = event.nativeEvent.layout
-    setWidgetWidth(width)
-  }
-
   const onPressLocationButton = () => {
     hideTooltip()
     showLocationModal()
   }
-
-  // web resizing on layout
-  useEffect(() => {
-    if (Platform.OS === 'web' && touchableRef.current) {
-      const { width } = touchableRef.current.getBoundingClientRect()
-      setWidgetWidth(width)
-    }
-  }, [])
-
-  const enableTooltip = screenOrigin === ScreenOrigin.HOME
-
-  useEffect(() => {
-    /**
-     * Patch for web: On the web we are not directly geolocated,
-     * we need a little time to recover the user's geolocation.
-     * This condition allows that when the location is retrieved,
-     * the tooltip is directly hidden
-     */
-    if (userPosition) {
-      hideTooltip()
-      return
-    }
-
-    if (!enableTooltip) return
-
-    const displayTooltipIfNeeded = async () => {
-      const timesLocationTooltipHasBeenDisplayed = Number(
-        await storage.readString('times_location_tooltip_has_been_displayed')
-      )
-      setIsTooltipVisible(timesLocationTooltipHasBeenDisplayed < 1 || !userPosition)
-      await storage.saveString(
-        'times_location_tooltip_has_been_displayed',
-        String(timesLocationTooltipHasBeenDisplayed + 1)
-      )
-    }
-    const timeoutOn = setTimeout(displayTooltipIfNeeded, 1000)
-    const timeoutOff = setTimeout(hideTooltip, 9000)
-
-    return () => {
-      clearTimeout(timeoutOn)
-      clearTimeout(timeoutOff)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
-  }, [userPosition])
 
   return (
     <React.Fragment>
