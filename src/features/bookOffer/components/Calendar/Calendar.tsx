@@ -105,7 +105,7 @@ export const Calendar: React.FC<Props> = ({
   const DayComponentWrapper: React.ComponentProps<typeof RNCalendar>['dayComponent'] = ({
     date,
     marking = defaultMarking,
-  }) => /* NOSONAR Not extract because it depends on the RNCalendar entry */ {
+  }) => {
     // problem in the definition of marking in the library:
     // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
     const { price, status, selected } = marking as Marking
