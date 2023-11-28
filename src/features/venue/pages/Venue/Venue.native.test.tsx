@@ -1,12 +1,14 @@
 import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
+import { UseQueryResult } from 'react-query'
 
 import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { SearchView } from 'features/search/types'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
@@ -29,6 +31,7 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 jest.mock('react-query')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
+const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 const mockUseFeatureFlag = useFeatureFlag as jest.MockedFunction<typeof useFeatureFlag>
@@ -60,7 +63,7 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
+const gtlPLaylistSpy = jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
   {
     title: 'Test',
     offers: {
@@ -235,6 +238,23 @@ describe('<Venue /> with new venue body', () => {
         screen: 'Search',
       })
     })
+  })
+
+  it('should not display "Rechercher une offre" button if there is no offer', async () => {
+    mockUseVenueOffers.mockReturnValueOnce({
+      data: { hits: [], nbHits: 0 },
+    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+    mockUseVenueOffers.mockReturnValueOnce({
+      data: { hits: [], nbHits: 0 },
+    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+    gtlPLaylistSpy.mockResolvedValueOnce([])
+    gtlPLaylistSpy.mockResolvedValueOnce([])
+
+    renderVenue(venueId)
+
+    await act(async () => {})
+
+    expect(screen.queryByText('Rechercher une offre')).not.toBeOnTheScreen()
   })
 })
 

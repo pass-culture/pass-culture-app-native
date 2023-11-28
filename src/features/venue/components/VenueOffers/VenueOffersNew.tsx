@@ -2,12 +2,10 @@ import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
@@ -25,19 +23,23 @@ import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  venueId: number
+  venue: VenueResponse
   layout?: Layout
+  venueOffers?: { hits: Offer[]; nbHits: number }
   playlists?: GTLPlaylistResponse
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Readonly<Props>) {
-  const { data: venue } = useVenue(venueId)
-  const { data: venueOffers } = useVenueOffers(venueId)
+export function VenueOffersNew({
+  venue,
+  layout = 'two-items',
+  venueOffers,
+  playlists,
+}: Readonly<Props>) {
   const { userPosition: position } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
-  const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)
+  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue.id)
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
@@ -75,7 +77,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
     ) && !!playlists?.length
 
   const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
-  const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined
+  const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
 
@@ -85,7 +87,7 @@ export function VenueOffersNew({ venueId, layout = 'two-items', playlists }: Rea
         width={width}
         height={height}
         navigateTo={showSeeMore ? searchNavConfig : undefined}
-        onPress={() => analytics.logVenueSeeMoreClicked(venueId)}
+        onPress={() => analytics.logVenueSeeMoreClicked(venue.id)}
       />
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
