@@ -18,14 +18,12 @@ interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   offerId: number
-  searchId?: string
 }
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
-export const OfferHeader: React.FC<Props> = (props) => {
-  const { headerTransition, offerId, title } = props
+export function OfferHeader({ headerTransition, title, offerId }: Readonly<Props>) {
   const theme = useTheme()
 
   const {

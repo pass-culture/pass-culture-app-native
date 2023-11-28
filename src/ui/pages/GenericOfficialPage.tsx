@@ -1,33 +1,27 @@
-import React, { ReactNode, useMemo, FunctionComponent } from 'react'
+import React, { ReactNode, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { AnimationObject } from 'ui/animations/type'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
-import { IconInterface } from 'ui/svg/icons/types'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  headerGoBack?: boolean
-  onGoBackPress?: () => void
   noIndex?: boolean
   flex?: boolean
-  animation?: AnimationObject
-  icon?: FunctionComponent<IconInterface>
   title: string
   buttons?: Array<ReactNode>
   children: React.ReactNode
 }
 
-export const GenericOfficialPage: FunctionComponent<Props> = ({
+export function GenericOfficialPage({
   children,
   noIndex = true,
   title,
   flex = true,
   buttons,
-}) => {
+}: Readonly<Props>) {
   const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
 

@@ -29,7 +29,9 @@ export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
     debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
   }
 
-  return useCallback(({ date, selected, status, enablePricesByCategories }: Props) => {
+  return useCallback<
+    ({ date, selected, status, enablePricesByCategories }: Props) => (() => void) | undefined
+  >(({ date, selected, status, enablePricesByCategories }) => {
     if (selected) return selectDate(date, enablePricesByCategories)
     if (status === OfferStatus.BOOKABLE) return selectDate(date, enablePricesByCategories)
     return undefined
