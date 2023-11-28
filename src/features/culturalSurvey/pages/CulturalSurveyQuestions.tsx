@@ -68,9 +68,6 @@ export const CulturalSurveyQuestions = ({
     }
   }, [currentQuestion, answers])
 
-  if (!culturalSurveyQuestionsData?.questions) {
-    throw new Error('should have questions to show')
-  }
   const onSuccess = () => {
     dispatch({
       type: 'FLUSH_ANSWERS',
@@ -88,7 +85,7 @@ export const CulturalSurveyQuestions = ({
     onError,
   })
 
-  const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
+  const culturalSurveyQuestion = culturalSurveyQuestionsData?.questions?.find(
     (question) => question.id === route.params.question
   )
 
