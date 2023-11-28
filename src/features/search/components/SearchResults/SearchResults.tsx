@@ -168,8 +168,10 @@ export const SearchResults: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage])
 
-  const renderItem = useCallback(
-    ({ item: hit, index }: { item: Offer; index: number }) => (
+  const renderItem = useCallback<
+    ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
+  >(
+    ({ item: hit, index }) => (
       <StyledHorizontalOfferTile
         offer={hit}
         analyticsParams={{

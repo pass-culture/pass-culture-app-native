@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingReponse } from 'api/gen'
@@ -18,13 +18,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export type BookingDetailsTicketContentProps = {
   booking: BookingReponse
   externalBookings?: SeatWithQrCodeProps
-  testID?: string
 }
 
-export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicketContentProps> = ({
+export function BookingDetailsTicketContent({
   booking,
   externalBookings,
-}) => {
+}: Readonly<BookingDetailsTicketContentProps>) {
   const { completedUrl } = booking
   const { offer, beginningDatetime } = booking.stock
   const {

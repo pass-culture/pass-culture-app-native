@@ -12,6 +12,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
+import { Offer } from 'shared/offer/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
@@ -22,10 +23,16 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   venue: VenueResponse
   onScroll: () => void
+  venueOffers?: { hits: Offer[]; nbHits: number }
   playlists?: GTLPlaylistResponse
 }
 
-export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playlists }) => {
+export const VenueBodyNew: FunctionComponent<Props> = ({
+  venue,
+  onScroll,
+  venueOffers,
+  playlists,
+}) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
   const backgroundStyle = useVenueBackgroundStyle()
   const { isDesktopViewport, isTabletViewport } = useTheme()
@@ -86,7 +93,9 @@ export const VenueBodyNew: FunctionComponent<Props> = ({ venue, onScroll, playli
       <FirstSectionContainer visible>
         <TabLayout
           tabPanels={{
-            'Offres disponibles': <VenueOffersNew venueId={venue.id} playlists={playlists} />,
+            'Offres disponibles': (
+              <VenueOffersNew venue={venue} venueOffers={venueOffers} playlists={playlists} />
+            ),
             'Infos pratiques': <PracticalInformation venue={venue} />,
           }}
         />

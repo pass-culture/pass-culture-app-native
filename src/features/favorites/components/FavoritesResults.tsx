@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
@@ -89,8 +89,8 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     flatListRef?.current?.scrollToOffset({ animated: true, offset: 0 })
   }, [favoritesState.sortBy])
 
-  const renderItem = useCallback(
-    ({ item: favorite }: { item: FavoriteResponse }) => {
+  const renderItem = useCallback<ListRenderItem<FavoriteResponse>>(
+    ({ item: favorite }) => {
       if (!user || !credit) return <FavoriteHitPlaceholder />
       return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
     },

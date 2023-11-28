@@ -5,11 +5,12 @@ import styled from 'styled-components/native'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
+import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
-import { VenueBodyNew } from 'features/venue/pages/VenueBodyNew/VenueBodyNew'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -22,6 +23,7 @@ const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.ha
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
+  const { data: venueOffers } = useVenueOffers(params.id)
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const { headerTransition, onScroll } = useOpacityTransition({
     listener: ({ nativeEvent }) => {
@@ -50,11 +52,20 @@ export const Venue: FunctionComponent = () => {
 
   if (!venue) return null
 
+  const hasSomeOffers = (venueOffers && venueOffers.hits.length > 0) || gtlPlaylists?.length > 0
+
+  const shouldDisplayCTA = shouldUseNewVenuePage && hasSomeOffers
+
   return (
     <Container>
       <VenueWebHeader venue={venue} />
       {shouldUseNewVenuePage ? (
-        <VenueBodyNew venue={venue} onScroll={onScroll} playlists={gtlPlaylists} />
+        <VenueBodyNew
+          venue={venue}
+          onScroll={onScroll}
+          playlists={gtlPlaylists}
+          venueOffers={venueOffers}
+        />
       ) : (
         <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
       )}
@@ -64,7 +75,7 @@ export const Venue: FunctionComponent = () => {
         title={venue.publicName || venue.name}
         venueId={venue.id}
       />
-      {!!shouldUseNewVenuePage && <VenueCTA venueId={venue.id} />}
+      {!!shouldDisplayCTA && <VenueCTA venueId={venue.id} />}
     </Container>
   )
 }

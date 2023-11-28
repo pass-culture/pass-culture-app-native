@@ -20,7 +20,7 @@ export const useVenueOffers = (venueId: number) => {
   const { setCurrentQueryID } = useSearchAnalyticsState()
 
   return useQuery(
-    [QueryKeys.VENUE_OFFERS, venueId],
+    [QueryKeys.VENUE_OFFERS, venueId, params.locationFilter.locationType],
     () =>
       fetchOffers({
         parameters: { ...params, page: 0 },

@@ -6,6 +6,9 @@ import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 
+const START_OFFSET = 1000
+const TOOLTIP_DISPLAY_DURATION = 8000
+
 export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
   const touchableRef = React.useRef<HTMLButtonElement>()
 
@@ -61,8 +64,9 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
         String(timesLocationTooltipHasBeenDisplayed + 1)
       )
     }
-    const timeoutOn = setTimeout(displayTooltipIfNeeded, 1000)
-    const timeoutOff = setTimeout(hideTooltip, 9000)
+
+    const timeoutOn = setTimeout(displayTooltipIfNeeded, START_OFFSET)
+    const timeoutOff = setTimeout(hideTooltip, START_OFFSET + TOOLTIP_DISPLAY_DURATION)
 
     return () => {
       clearTimeout(timeoutOn)

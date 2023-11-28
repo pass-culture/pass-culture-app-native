@@ -281,7 +281,6 @@ export const Offer: FunctionComponent = () => {
         title={offerResponse.name}
         headerTransition={headerTransition}
         offerId={offerResponse.id}
-        searchId={searchId}
       />
       {!!wording && (
         <React.Fragment>
