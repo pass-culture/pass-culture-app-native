@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 import { Social } from 'react-native-share'
 
-import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
-import { analytics } from 'libs/analytics'
-import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { VenueResponse } from 'api/gen'
+import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
+import { getShareVenue } from 'features/share/helpers/getShareVenue'
+import { analytics } from 'libs/analytics'
 
 type MessagingAppsProps = {
   venue: VenueResponse

@@ -42,6 +42,11 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
     // On web, the share feature is supported by the WebShareModal component.
   } else if (mode === 'iMessage') {
     await Linking.openURL(`sms://&body=${content.body}\u00a0:\n${content.url}`)
+  } else if (!isNative) {
+    const { webUrl } = mapNetworkToSocial[mode]
+    const message = encodeURIComponent(`${content.body}\u00a0:\n${content.url}`)
+
+    Linking.openURL(webUrl + message)
   } else {
     const { shouldEncodeURI, supportsURL = true, ...options } = mapNetworkToSocial[mode]
 
