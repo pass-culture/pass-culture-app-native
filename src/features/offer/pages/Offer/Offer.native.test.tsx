@@ -138,6 +138,21 @@ describe('<Offer />', () => {
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
 
+  it('should not display offer container when offer is not found', async () => {
+    mockUseAuthContext.mockImplementationOnce(() => ({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    }))
+
+    renderOfferPage(undefined, undefined, undefined, true)
+
+    await act(async () => {})
+
+    expect(screen.queryByTestId('offer-container')).not.toBeOnTheScreen()
+  })
+
   describe('with similar offers', () => {
     it('should pass offer venue position to `useSimilarOffers`', async () => {
       renderOfferPage()
@@ -211,6 +226,23 @@ describe('<Offer />', () => {
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
         })
       })
+    })
+
+    it('should trigger logConsultWholeOffer only once when scrolling to the bottom of the component', async () => {
+      renderOfferPage()
+      const scrollView = screen.getByTestId('offer-container')
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenNthCalledWith(1, offerId)
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenNthCalledWith(1, offerId)
     })
 
     describe('When there is only same category similar offers playlist', () => {

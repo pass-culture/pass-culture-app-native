@@ -32,9 +32,10 @@ export const offerId = 116656
 export function renderOfferPage(
   fromOfferId?: number,
   extraOffer?: Partial<Omit<OfferResponse, 'id'>>,
-  openModalOnNavigation?: boolean
+  openModalOnNavigation?: boolean,
+  isUndefinedOffer?: boolean
 ) {
-  mockedOffer = { ...offerResponseSnap, ...extraOffer }
+  mockedOffer = isUndefinedOffer ? undefined : { ...offerResponseSnap, ...extraOffer }
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
