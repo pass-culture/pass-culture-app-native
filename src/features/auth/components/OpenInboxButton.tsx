@@ -10,12 +10,12 @@ export const OpenInboxButton = ({ onAdditionalPress }: { onAdditionalPress?: () 
 
   const onPress = async () => {
     try {
-      await openInbox({ app: 'apple-mail' })
+      await openInbox()
       onAdditionalPress?.()
     } catch (error) {
       showErrorSnackBar({
-        message: `${error}`,
-        // 'Nous n’avons pas réussi à ouvrir votre boîte e-mail. Veuillez l’ouvrir manuellement.',
+        message:
+          'Nous n’avons pas réussi à ouvrir votre boîte e-mail. Veuillez l’ouvrir manuellement.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
