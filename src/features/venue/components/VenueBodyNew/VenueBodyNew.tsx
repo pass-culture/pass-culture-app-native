@@ -5,6 +5,7 @@ import { VenueResponse } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
@@ -100,6 +101,14 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
           }}
         />
       </FirstSectionContainer>
+
+      <Spacer.Column numberOfSpaces={6} />
+
+      <SectionWithDivider visible>
+        <MarginContainer>
+          <VenueMessagingApps venueId={venue.id} />
+        </MarginContainer>
+      </SectionWithDivider>
     </Container>
   )
 }

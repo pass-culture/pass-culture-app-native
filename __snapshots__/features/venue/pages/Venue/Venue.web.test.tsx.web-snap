@@ -50,7 +50,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   text-decoration: none;
 }
 
-.c6 {
+.c8 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -82,19 +82,19 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   box-sizing: border-box;
 }
 
-.c6:disabled {
+.c8:disabled {
   cursor: initial;
   background: none;
 }
 
-.c6:hover {
+.c8:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   -webkit-text-decoration-color: #ffffff;
   text-decoration-color: #ffffff;
 }
 
-.c6:hover:disabled {
+.c8:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -151,7 +151,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   text-decoration: none;
 }
 
-.c7:disabled {
+.c9:disabled {
   background-color: #F1F1F4;
 }
 
@@ -170,7 +170,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
 }
 
 .c4:active {
-  opacity: 0.5;
+  opacity: 0.7;
   outline: none;
 }
 
@@ -194,7 +194,55 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   text-decoration: none;
 }
 
+.c6 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c6:active {
+  opacity: 0.5;
+  outline: none;
+}
+
+.c6:focus {
+  outline: auto;
+}
+
+.c6:disabled {
+  cursor: initial;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c5 {
+  height: 96px;
+  width: 76px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
   border-radius: 40px;
 }
 
@@ -724,6 +772,204 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
             </div>
           </div>
         </div>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+          >
+            <h2
+              aria-level="2"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-paddingBottom-1l7z4oj r-paddingTop-1ygmrgt"
+              dir="ltr"
+              role="heading"
+            >
+              Passe le bon plan !
+            </h2>
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            >
+              <ul
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-justifyContent-1h0z5md r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                role="list"
+              >
+                <li
+                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                  role="listitem"
+                >
+                  <button
+                    class="c4 c5 sc-gsFSXq c5"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-1rynq56"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-height-3da1kt"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                        data-testid="caption-undefined"
+                        dir="ltr"
+                      >
+                        Envoyer sur
+WhatsApp
+                      </div>
+                    </div>
+                  </button>
+                </li>
+                <li
+                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                  role="listitem"
+                >
+                  <button
+                    class="c4 c5 sc-gsFSXq c5"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-1rynq56"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-height-3da1kt"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                        data-testid="caption-undefined"
+                        dir="ltr"
+                      >
+                        Envoyer sur
+Telegram
+                      </div>
+                    </div>
+                  </button>
+                </li>
+                <li
+                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                  role="listitem"
+                >
+                  <button
+                    class="c4 c5 sc-gsFSXq c5"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-text-1rynq56"
+                            dir="ltr"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-height-3da1kt"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                        data-testid="caption-undefined"
+                        dir="ltr"
+                      >
+                        Envoyer sur
+Twitter
+                      </div>
+                    </div>
+                  </button>
+                </li>
+                <li
+                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                  role="listitem"
+                >
+                  <button
+                    class="c4 c5 sc-gsFSXq c5"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1fuqb1j r-borderWidth-rs99b7 r-height-h3s6tt r-justifyContent-1777fci r-width-rwqe4o"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-height-3da1kt"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                        data-testid="caption-undefined"
+                        dir="ltr"
+                      >
+                        Plus
+d’options
+                      </div>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-10ptun7"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -748,7 +994,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
         />
         <button
           aria-label="Revenir en arrière"
-          class="c4 c5 sc-eldPxv c5"
+          class="c6 c7 sc-eldPxv c7"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -820,7 +1066,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
         />
         <button
           aria-label="Partager"
-          class="c4 c5 sc-eldPxv c5"
+          class="c6 c7 sc-eldPxv c7"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -884,7 +1130,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
     >
       <button
         aria-label="Rechercher une offre"
-        class="c6 c7"
+        class="c8 c9"
         data-testid="Rechercher une offre"
         tabindex="0"
         type="button"
