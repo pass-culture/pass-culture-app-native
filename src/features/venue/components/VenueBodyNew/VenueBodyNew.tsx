@@ -75,6 +75,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
               url: getGoogleMapsItineraryUrl(venueFullAddress),
               address: venueFullAddress,
             }}
+            onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
           />
         </MarginContainer>
       </TopContainer>

@@ -74,6 +74,17 @@ describe('<VenueBody />', () => {
     })
   })
 
+  it('should log analytics when pressing Voir l’itinéraire', () => {
+    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+
+    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({
+      venueId: venueResponseSnap.id,
+      from: 'venue',
+    })
+  })
+
   it('should display default background image when no banner for venue', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
     await waitUntilRendered()
