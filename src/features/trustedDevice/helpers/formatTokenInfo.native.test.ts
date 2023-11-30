@@ -63,11 +63,14 @@ describe('formatTokenInfo', () => {
 
   it('should correctly format token info', () => {
     const formattedDate = formatTokenInfo({
-      userId: '1',
-      location: 'Paris',
-      dateCreated: '2023-06-09T14:15:00Z',
-      os: 'iOS',
-      source: 'iPhone 13',
+      exp: 1_701_938_018,
+      user_id: 1,
+      data: {
+        location: 'Paris',
+        dateCreated: '2023-06-09T14:15:00Z',
+        os: 'iOS',
+        source: 'iPhone 13',
+      },
     })
 
     expect(formattedDate).toEqual({
