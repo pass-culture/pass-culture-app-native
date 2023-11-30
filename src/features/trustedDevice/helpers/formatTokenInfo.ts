@@ -5,7 +5,7 @@ import { formatToHour } from 'libs/parsers'
 const UNKNOWN_VALUE_TEXT = 'Indéterminé'
 
 export const formatTokenInfo = (tokenInfo?: TokenInfo) => {
-  const { location, os, source, dateCreated } = tokenInfo ?? {}
+  const { location, os, source, dateCreated } = tokenInfo?.data ?? {}
 
   return {
     location: location || UNKNOWN_VALUE_TEXT,
