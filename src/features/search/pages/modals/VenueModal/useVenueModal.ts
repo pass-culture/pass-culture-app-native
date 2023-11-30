@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
+import { getLocationFilterFromLocationContext } from 'features/search/helpers/getLocationFilterFromLocationContext/getLocationFilterFromLocationContext'
 import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
-import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
@@ -55,19 +55,13 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
 
   const doApplySearch = useCallback(() => {
     if (!venueQuery) {
-      let locationFilter: LocationFilter = { locationType: LocationType.EVERYWHERE }
-      if (isCustomPosition && place) {
-        locationFilter = {
-          place,
-          locationType: LocationType.PLACE,
-          aroundRadius: DEFAULT_RADIUS,
-        }
-      } else if (isGeolocated) {
-        locationFilter = { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS }
-      }
       const payload: Partial<SearchState> = {
         ...searchState,
-        locationFilter,
+        locationFilter: getLocationFilterFromLocationContext({
+          isGeolocated,
+          isCustomPosition,
+          place,
+        }),
         view: SearchView.Results,
       }
       dispatch({
