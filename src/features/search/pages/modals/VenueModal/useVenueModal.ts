@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'

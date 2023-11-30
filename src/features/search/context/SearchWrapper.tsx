@@ -1,6 +1,6 @@
 import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
