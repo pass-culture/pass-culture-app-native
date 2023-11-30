@@ -1,27 +1,20 @@
 import { SearchResponse } from '@algolia/client-search'
-import React from 'react'
+import { FunctionComponent } from 'react'
 
 import {
   GenreType,
   GenreTypeContentModel,
   NativeCategoryIdEnumv2,
-  NativeCategoryResponseModelv2,
   SearchGroupNameEnumv2,
-  SearchGroupResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { Referrals } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
-import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
-import {
-  MappedGenreTypes,
-  MappedNativeCategories,
-  MappingTree,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
+import { RenderItemProps } from 'ui/components/OptimizedList/types'
 
 import { LocationType } from './enums'
 
@@ -82,17 +75,8 @@ export interface SearchState {
   isFromHistory?: boolean
 }
 
-export type OfferTypes = keyof SearchState['offerTypes']
-
 export type UserData = {
   message: string
-}
-
-export type CategoriesModalFormProps = {
-  category: SearchGroupResponseModelv2
-  nativeCategory: NativeCategoryResponseModelv2 | null
-  genreType: OfferGenreType | null
-  currentView: CategoriesModalView
 }
 
 export type DescriptionContext = {
@@ -100,40 +84,23 @@ export type DescriptionContext = {
   nativeCategory: NativeCategoryIdEnumv2 | null
   genreType: string | null
 }
-export type CategoriesViewData =
-  | NativeCategoryResponseModelv2
-  | SearchGroupResponseModelv2
-  | OfferGenreType
 
-export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
-
-export type VenueUserTitleRule = { venue_playlist_title: string }
-export type VenueUserData = VenueUserTitleRule | undefined
+type VenueUserTitleRule = { venue_playlist_title: string }
+type VenueUserData = VenueUserTitleRule | undefined
 export type VenuesUserData = VenueUserData[] | undefined
 
 export interface SearchListProps {
   nbHits: number
   hits: SearchOfferHits
   venuesUserData: VenuesUserData
-  renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
+  renderItem: FunctionComponent<RenderItemProps<Offer, unknown>>
   autoScrollEnabled: boolean
   refreshing: boolean
-  onRefresh: (() => void) | null | undefined
+  onRefresh?: VoidFunction
   isFetchingNextPage: boolean
-  onEndReached: () => void
+  onEndReached: VoidFunction | (() => Promise<void>)
   userData: SearchResponse<Offer[]>['userData']
-  onScroll?: () => void
-  onPress?: () => void
-}
-
-export type AnalyticsParams = {
-  from: Referrals
-  query?: string
-  index?: number
-  searchId?: string
-  moduleName?: string
-  moduleId?: string
-  homeEntryId?: string
+  onPress?: VoidFunction
 }
 
 export type CreateHistoryItem = {

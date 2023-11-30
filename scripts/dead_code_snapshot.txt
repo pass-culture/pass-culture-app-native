@@ -69,13 +69,6 @@ src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOp
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:34 - Response (used in module)
 src/features/identityCheck/types.ts:37 - NextScreenOrStep
-src/features/search/types.ts:85 - OfferTypes
-src/features/search/types.ts:91 - CategoriesModalFormProps
-src/features/search/types.ts:103 - CategoriesViewData
-src/features/search/types.ts:108 - MappedData
-src/features/search/types.ts:110 - VenueUserTitleRule (used in module)
-src/features/search/types.ts:111 - VenueUserData (used in module)
-src/features/search/types.ts:129 - AnalyticsParams
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)
