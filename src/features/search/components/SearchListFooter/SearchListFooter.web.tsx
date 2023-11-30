@@ -2,6 +2,7 @@ import React from 'react'
 import { ActivityIndicator, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { OnLayoutProps } from 'ui/components/OptimizedList/types'
 import { More } from 'ui/svg/icons/More'
@@ -26,14 +27,14 @@ export const SearchListFooter = ({
   const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
 
   return isFetchingNextPage && nbLoadedHits < nbHits ? (
-    <View onLayout={onLayout}>
+    <View accessibilityRole={AccessibilityRole.LISTITEM} onLayout={onLayout}>
       <Spacer.Column numberOfSpaces={4} />
       <ActivityIndicator testID="activity-indicator" />
       <Spacer.Column numberOfSpaces={4} />
       <Footer testID="footer" />
     </View>
   ) : (
-    <Footer onLayout={onLayout}>
+    <Footer accessibilityRole={AccessibilityRole.LISTITEM} onLayout={onLayout}>
       {showMoreButton ? (
         <ButtonSecondary
           mediumWidth
