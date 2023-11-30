@@ -11,11 +11,9 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -27,7 +25,6 @@ export interface BusinessModuleProps {
   subtitle?: string
   index: number
   image: string
-  leftIcon?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
@@ -39,7 +36,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     analyticsTitle: title,
     title: firstLine,
     subtitle: secondLine,
-    leftIcon,
     image: imageURL,
     url,
     homeEntryId,
@@ -117,9 +113,6 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
             width={imageWidth}
             testID="imageBusiness">
             <Container>
-              <IconContainer>
-                {leftIcon ? <StyledImage url={leftIcon} /> : <IdeaIcon />}
-              </IconContainer>
               <TextContainer>
                 <ButtonText testID="firstLine">{firstLine}</ButtonText>
                 <StyledBody numberOfLines={2}>{secondLine}</StyledBody>
@@ -159,12 +152,6 @@ const ImageContainer = styled.View(({ theme }) => ({
   maxHeight: LENGTH_XS,
 }))
 
-const StyledImage = styled(Image)(({ theme }) => ({
-  width: getSpacing(14),
-  height: getSpacing(14),
-  tintColor: theme.colors.white,
-}))
-
 const StyledImageBackground = styled(ImageBackground)<{ width: number; height: number }>(
   (props) => ({
     height: props.height,
@@ -186,6 +173,7 @@ const TextContainer = styled.View({
   flexDirection: 'column',
   paddingVertical: getSpacing(1),
   paddingHorizontal: getSpacing(0.5),
+  paddingLeft: getSpacing(4),
 })
 
 const IconContainer = styled.View({
@@ -202,10 +190,6 @@ const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
-
-const IdeaIcon = styled(Idea).attrs(({ theme }) => ({
-  color: theme.colors.white,
-}))``
 
 const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   color: theme.colors.white,

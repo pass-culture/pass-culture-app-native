@@ -24,7 +24,6 @@ export const formattedBusinessModule: BusinessModule = {
   url: 'https://passculture.app/creation-compte',
   image:
     'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
-  leftIcon: undefined,
   localizationArea: {
     latitude: 2,
     longitude: 40,

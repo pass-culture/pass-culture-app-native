@@ -7,7 +7,6 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (module.fields?.image.fields === undefined) return null
 
-  const leftIcon = buildImageUrl(module.fields.leftIcon?.fields?.file.url)
   const localizationArea = buildLocalization(
     module.fields.latitude,
     module.fields.longitude,
@@ -20,7 +19,6 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
     image: buildImageUrl(module.fields.image.fields.file.url),
     title: module.fields.firstLine,
     subtitle: module.fields.secondLine,
-    leftIcon,
     url: module.fields.url,
     shouldTargetNotConnectedUsers: module.fields.targetNotConnectedUsersOnly,
     localizationArea,
