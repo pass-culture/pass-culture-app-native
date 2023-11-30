@@ -25,6 +25,7 @@ export interface BusinessModuleProps {
   subtitle?: string
   index: number
   image: string
+  imageWeb?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
@@ -37,6 +38,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     title: firstLine,
     subtitle: secondLine,
     image: imageURL,
+    imageWeb: imageWebURL,
     url,
     homeEntryId,
     index,
@@ -45,7 +47,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     localizationArea,
   } = props
   const isDisabled = !url
-  const { appContentWidth } = useTheme()
+  const { appContentWidth, isDesktopViewport } = useTheme()
   const { isLoggedIn, user, isUserLoading } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = Math.min(
@@ -95,6 +97,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   if (!shouldModuleBeDisplayed) return null
 
   const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
+  const imageToDisplay = isDesktopViewport && imageWebURL ? imageWebURL : imageURL
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
@@ -108,7 +112,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
         accessibilityLabel={accessibilityLabel}>
         <ImageContainer>
           <StyledImageBackground
-            url={imageURL}
+            url={imageToDisplay}
             height={imageHeight}
             width={imageWidth}
             testID="imageBusiness">
@@ -172,7 +176,7 @@ const TextContainer = styled.View({
   flex: 1,
   flexDirection: 'column',
   paddingVertical: getSpacing(1),
-  paddingHorizontal: getSpacing(0.5),
+  paddingRight: getSpacing(0.5),
   paddingLeft: getSpacing(4),
 })
 

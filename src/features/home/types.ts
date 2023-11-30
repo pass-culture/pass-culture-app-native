@@ -125,6 +125,7 @@ export type BusinessModule = {
   id: string
   analyticsTitle: string
   image: string
+  imageWeb?: string
   title?: string
   subtitle?: string
   url?: string

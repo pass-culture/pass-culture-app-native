@@ -124,8 +124,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
                   "flexDirection": "column",
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "paddingHorizontal": 2,
                   "paddingLeft": 16,
+                  "paddingRight": 2,
                   "paddingVertical": 4,
                 },
               ]
@@ -161,6 +161,408 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
             >
               secondLine
             </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      [
+        {
+          "width": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`BusinessModule component should display mobile image if web image not given from contentful and isDesktopViewport is true 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "row",
+        "paddingBottom": 24,
+      },
+    ]
+  }
+>
+  <View
+    numberOfSpaces={6}
+    style={
+      [
+        {
+          "width": 24,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabel="firstLine secondLine"
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "disabled": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "borderRadius": 8,
+            "maxHeight": 144,
+            "overflow": "hidden",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityIgnoresInvertColors={true}
+        style={
+          [
+            {
+              "backgroundColor": "#eb0055",
+              "height": 144,
+              "justifyContent": "center",
+              "width": 912,
+            },
+          ]
+        }
+      >
+        <Image
+          source={
+            {
+              "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              {
+                "height": 144,
+                "width": 912,
+              },
+              undefined,
+            ]
+          }
+          testID="imageBusiness"
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingHorizontal": 6,
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingLeft": 16,
+                  "paddingRight": 2,
+                  "paddingVertical": 4,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              testID="firstLine"
+            >
+              firstLine
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              secondLine
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "height": 56,
+                  "justifyContent": "center",
+                  "width": 56,
+                },
+              ]
+            }
+          >
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    numberOfSpaces={6}
+    style={
+      [
+        {
+          "width": 24,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`BusinessModule component should display web image if given from contentful and isDesktopViewport is true 1`] = `
+<View
+  style={
+    [
+      {
+        "flexDirection": "row",
+        "paddingBottom": 24,
+      },
+    ]
+  }
+>
+  <View
+    numberOfSpaces={6}
+    style={
+      [
+        {
+          "width": 24,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabel="firstLine secondLine"
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "disabled": false,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "borderRadius": 8,
+            "maxHeight": 144,
+            "overflow": "hidden",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityIgnoresInvertColors={true}
+        style={
+          [
+            {
+              "backgroundColor": "#eb0055",
+              "height": 144,
+              "justifyContent": "center",
+              "width": 912,
+            },
+          ]
+        }
+      >
+        <Image
+          source={
+            {
+              "uri": "https://images.ctfassets.net/2bg01iqy0isv/1jedJLjdDiypJqBtO1sjH0/185ee9e6428229a15d4c047b862a95f8/image_web.jpeg",
+            }
+          }
+          style={
+            [
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              {
+                "height": 144,
+                "width": 912,
+              },
+              undefined,
+            ]
+          }
+          testID="imageBusiness"
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingHorizontal": 6,
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexBasis": 0,
+                  "flexDirection": "column",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingLeft": 16,
+                  "paddingRight": 2,
+                  "paddingVertical": 4,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              testID="firstLine"
+            >
+              firstLine
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              secondLine
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "height": 56,
+                  "justifyContent": "center",
+                  "width": 56,
+                },
+              ]
+            }
+          >
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -304,8 +706,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
                   "flexDirection": "column",
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "paddingHorizontal": 2,
                   "paddingLeft": 16,
+                  "paddingRight": 2,
                   "paddingVertical": 4,
                 },
               ]

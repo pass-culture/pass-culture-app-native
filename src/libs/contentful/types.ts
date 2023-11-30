@@ -288,6 +288,7 @@ interface BusinessFields {
   firstLine?: string
   secondLine?: string
   image: Image
+  imageWeb?: Image
   url?: string
   targetNotConnectedUsersOnly?: boolean
   latitude?: number
