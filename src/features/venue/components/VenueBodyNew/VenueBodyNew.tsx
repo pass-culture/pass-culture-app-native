@@ -90,6 +90,16 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
             ),
             'Infos pratiques': <PracticalInformation venue={venue} />,
           }}
+          onTabChange={{
+            'Offres disponibles': () =>
+              analytics.logConsultVenueOffers({
+                venueId: venue.id,
+              }),
+            'Infos pratiques': () =>
+              analytics.logConsultPracticalInformations({
+                venueId: venue.id,
+              }),
+          }}
         />
       </FirstSectionContainer>
 

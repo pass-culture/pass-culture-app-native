@@ -224,6 +224,8 @@ export const logEventAnalytics = {
     offer_display_index?: number
     index?: number
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
+  logConsultPracticalInformations: (params: { venueId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_PRACTICAL_INFORMATIONS }, params),
   logConsultTutorial: (params: { from: string; age?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, params),
   logConsultVenue: (params: {
@@ -234,6 +236,8 @@ export const logEventAnalytics = {
     homeEntryId?: string
     searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
+  logConsultVenueOffers: (params: { venueId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_OFFERS }, params),
   logConsultVideo: (params: { from: Referrals; moduleId: string; homeEntryId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>

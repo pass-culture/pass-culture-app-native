@@ -117,6 +117,24 @@ describe('<VenueBody />', () => {
       url: undefined,
     })
   })
+
+  it('should log event when pressing on Infos pratiques tab', () => {
+    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+
+    fireEvent.press(screen.getByText('Infos pratiques'))
+
+    expect(analytics.logConsultPracticalInformations).toHaveBeenCalledWith({
+      venueId: venueResponseSnap.id,
+    })
+  })
+
+  it('should log event when pressing on Offres disponibles tab', () => {
+    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+
+    fireEvent.press(screen.getByText('Offres disponibles'))
+
+    expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueResponseSnap.id })
+  })
 })
 
 const waitUntilRendered = async () => {
