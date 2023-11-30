@@ -4,7 +4,11 @@ import React from 'react'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
+import { getLocationFilterFromLocationContext } from 'features/search/helpers/getLocationFilterFromLocationContext/getLocationFilterFromLocationContext'
+import { useLocation } from 'libs/geolocation'
 
 import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
@@ -13,7 +17,19 @@ type Props = Pick<BottomTabBarProps, 'navigation'>
 
 export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()
-  const { searchState } = useSearch()
+  const {
+    searchState: { locationFilter: previousLocationFilter },
+  } = useSearch()
+  const { isGeolocated, isCustomPosition, place } = useLocation()
+
+  const locationFilter =
+    previousLocationFilter.locationType === LocationType.VENUE
+      ? getLocationFilterFromLocationContext({
+          isGeolocated,
+          isCustomPosition,
+          place,
+        })
+      : previousLocationFilter
   return (
     <TabBarContainer>
       {tabRoutes.map((route) => {
@@ -26,7 +42,8 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
           })
           if (!event.defaultPrevented) {
             let params = route.name === 'Home' ? undefined : route.params
-            params = route.name === 'Search' ? searchState : route.params
+            params =
+              route.name === 'Search' ? { ...initialSearchState, locationFilter } : route.params
             navigation.navigate('TabNavigator', { screen: route.name, params })
           }
         }
