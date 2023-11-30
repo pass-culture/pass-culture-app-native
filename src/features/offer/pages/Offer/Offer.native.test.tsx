@@ -89,7 +89,7 @@ describe('<Offer />', () => {
   })
 
   it('animates on scroll', async () => {
-    renderOfferPage()
+    renderOfferPage({})
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
@@ -110,7 +110,7 @@ describe('<Offer />', () => {
       user: undefined,
     })
 
-    renderOfferPage()
+    renderOfferPage({})
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -128,7 +128,7 @@ describe('<Offer />', () => {
       isUserLoading: false,
     }))
 
-    renderOfferPage()
+    renderOfferPage({})
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -138,9 +138,24 @@ describe('<Offer />', () => {
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
 
+  it('should not display offer container when offer is not found', async () => {
+    mockUseAuthContext.mockImplementationOnce(() => ({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    }))
+
+    renderOfferPage({ mockOffer: null })
+
+    await act(async () => {})
+
+    expect(screen.queryByTestId('offer-container')).not.toBeOnTheScreen()
+  })
+
   describe('with similar offers', () => {
     it('should pass offer venue position to `useSimilarOffers`', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(async () => {})
 
@@ -166,7 +181,7 @@ describe('<Offer />', () => {
         apiRecoParams,
       })
 
-      renderOfferPage()
+      renderOfferPage({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -190,7 +205,7 @@ describe('<Offer />', () => {
     it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
       useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
-      renderOfferPage()
+      renderOfferPage({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -213,6 +228,23 @@ describe('<Offer />', () => {
       })
     })
 
+    it('should trigger logConsultWholeOffer only once when scrolling to the bottom of the component', async () => {
+      renderOfferPage({})
+      const scrollView = screen.getByTestId('offer-container')
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenNthCalledWith(1, offerId)
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenNthCalledWith(1, offerId)
+    })
+
     describe('When there is only same category similar offers playlist', () => {
       beforeAll(() => {
         useSimilarOffersSpy.mockReturnValueOnce({
@@ -223,7 +255,7 @@ describe('<Offer />', () => {
       })
 
       it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferPage()
+        renderOfferPage({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -239,7 +271,7 @@ describe('<Offer />', () => {
       })
 
       it('should not log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferPage()
+        renderOfferPage({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -264,7 +296,7 @@ describe('<Offer />', () => {
       })
 
       it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferPage()
+        renderOfferPage({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -280,7 +312,7 @@ describe('<Offer />', () => {
       })
 
       it('should not log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferPage()
+        renderOfferPage({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -304,7 +336,7 @@ describe('<Offer />', () => {
         similarOffers: mockedAlgoliaResponse.hits,
         apiRecoParams,
       })
-      renderOfferPage()
+      renderOfferPage({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -336,7 +368,7 @@ describe('<Offer />', () => {
       })
       const fromOfferId = 1
       const offerId = 116656
-      renderOfferPage(fromOfferId)
+      renderOfferPage({ fromOfferId })
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -367,29 +399,31 @@ describe('<Offer />', () => {
     }
 
     it('should handle provided artist and EAN', async () => {
-      renderOfferPage(undefined, offerWithArtistAndEan)
+      renderOfferPage({ extraOffer: offerWithArtistAndEan })
 
       await act(async () => {})
 
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
         artists: 'Eiichiro Oda',
         ean: '9782723492607',
+        searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     })
 
     it('should handle missing artist and EAN', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(async () => {})
 
       expect(useSameArtistPlaylistSpy).toHaveBeenNthCalledWith(1, {
-        artist: undefined,
+        artists: undefined,
         ean: undefined,
+        searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     })
 
     it('should call refetch when artist and EAN are provided', async () => {
-      renderOfferPage(undefined, offerWithArtistAndEan)
+      renderOfferPage({ extraOffer: offerWithArtistAndEan })
 
       await act(async () => {})
 
@@ -397,7 +431,7 @@ describe('<Offer />', () => {
     })
 
     it('should not call refetch when artist and EAN are not provided', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(async () => {})
 
@@ -417,7 +451,7 @@ describe('<Offer />', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue(newLocal)
     const fromOfferId = 1
-    renderOfferPage(fromOfferId, undefined, true)
+    renderOfferPage({ fromOfferId, openModalOnNavigation: true })
 
     await act(async () => {})
 
@@ -457,7 +491,7 @@ describe('<Offer />', () => {
       )
     )
 
-    renderOfferPage(mockedBookingApi.id)
+    renderOfferPage({ fromOfferId: mockedBookingApi.id })
 
     fireEvent.press(screen.getByText('Voir les disponibilités'))
 
@@ -510,7 +544,7 @@ describe('<Offer />', () => {
         // eslint-disable-next-line local-rules/independent-mocks
         mockUseAuthContext.mockReturnValue(newLocal)
 
-        renderOfferPage(undefined, offerDigitalAndFree)
+        renderOfferPage({ extraOffer: offerDigitalAndFree })
 
         await act(async () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
@@ -544,7 +578,7 @@ describe('<Offer />', () => {
         // eslint-disable-next-line local-rules/independent-mocks
         mockUseAuthContext.mockReturnValue(newLocal)
 
-        renderOfferPage(undefined, offerDigitalAndFree)
+        renderOfferPage({ extraOffer: offerDigitalAndFree })
 
         await act(async () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
@@ -570,7 +604,7 @@ describe('<Offer />', () => {
         // eslint-disable-next-line local-rules/independent-mocks
         mockUseAuthContext.mockReturnValue(newLocal)
 
-        renderOfferPage(undefined, offerDigitalAndFree)
+        renderOfferPage({ extraOffer: offerDigitalAndFree })
 
         await act(async () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
@@ -607,7 +641,7 @@ describe('<Offer />', () => {
         // eslint-disable-next-line local-rules/independent-mocks
         mockUseAuthContext.mockReturnValue(newLocal)
 
-        renderOfferPage(undefined, offerDigitalAndFree)
+        renderOfferPage({ extraOffer: offerDigitalAndFree })
 
         await act(async () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
@@ -642,7 +676,7 @@ describe('<Offer />', () => {
         // eslint-disable-next-line local-rules/independent-mocks
         mockUseAuthContext.mockReturnValue(newLocal)
 
-        renderOfferPage(undefined, offerDigitalAndFree)
+        renderOfferPage({ extraOffer: offerDigitalAndFree })
 
         await act(async () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
@@ -676,7 +710,7 @@ describe('<Offer />', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseAuthContext.mockReturnValue(newLocal)
 
-      renderOfferPage(undefined, offerDigitalAndFree)
+      renderOfferPage({ extraOffer: offerDigitalAndFree })
 
       await act(async () => {
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
@@ -727,7 +761,7 @@ describe('When offer is digital and free and already booked', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue(newLocal)
 
-    renderOfferPage(undefined, offerDigitalAndFree)
+    renderOfferPage({ extraOffer: offerDigitalAndFree })
 
     await act(async () => {
       fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))

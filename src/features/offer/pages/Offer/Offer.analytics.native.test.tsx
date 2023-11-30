@@ -39,7 +39,7 @@ describe('<Offer /> - Analytics', () => {
   }
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
-    renderOfferPage()
+    renderOfferPage({})
     const scrollView = screen.getByTestId('offer-container')
 
     await act(async () => {
@@ -56,7 +56,7 @@ describe('<Offer /> - Analytics', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" only once', async () => {
-    renderOfferPage()
+    renderOfferPage({})
     const scrollView = screen.getByTestId('offer-container')
     await act(async () => {
       // 1st scroll to bottom => trigger
@@ -79,7 +79,7 @@ describe('<Offer /> - Analytics', () => {
 
   describe('Batch trigger', () => {
     it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(() => {})
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -88,7 +88,7 @@ describe('<Offer /> - Analytics', () => {
     })
 
     it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(() => {})
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
@@ -97,7 +97,7 @@ describe('<Offer /> - Analytics', () => {
     })
 
     it('should trigger has_seen_offer_for_survey event on scroll to bottom', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), bottomScrollEvent)
@@ -106,7 +106,7 @@ describe('<Offer /> - Analytics', () => {
     })
 
     it('should not trigger has_seen_offer_for_survey event on scroll to middle', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), middleScrollEvent)
@@ -115,7 +115,7 @@ describe('<Offer /> - Analytics', () => {
     })
 
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
-      renderOfferPage()
+      renderOfferPage({})
 
       await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), bottomScrollEvent)
@@ -135,7 +135,7 @@ describe('<Offer /> - Analytics', () => {
     ])(
       'should not trigger has_seen_offer_for_survey event for uneligible offer type %s',
       async (subcategoryId) => {
-        renderOfferPage(undefined, { subcategoryId })
+        renderOfferPage({ extraOffer: { subcategoryId } })
 
         await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -153,7 +153,7 @@ describe('<Offer /> - Analytics', () => {
     `(
       'should trigger has_seen_offer_for_survey and specific batch event for offer type $subcategoryId',
       async ({ subcategoryId, expectedBatchEvent }) => {
-        renderOfferPage(undefined, { subcategoryId })
+        renderOfferPage({ extraOffer: { subcategoryId } })
 
         await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)

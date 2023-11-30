@@ -1,3 +1,4 @@
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useSameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist/hook/useSameArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -25,6 +26,7 @@ describe('useSameArtistPlaylist', () => {
         useSameArtistPlaylist({
           artists: 'Eiichiro Oda',
           ean: '9782723492607',
+          searchGroupName: SearchGroupNameEnumv2.LIVRES,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -35,17 +37,19 @@ describe('useSameArtistPlaylist', () => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: 'Eiichiro Oda',
         ean: '9782723492607',
+        searchGroupName: SearchGroupNameEnumv2.LIVRES,
       })
     })
   })
 
-  it('should fetch same artist playlist when user has not Internet connection', async () => {
+  it('should not fetch same artist playlist when user has not Internet connection', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderHook(
       () =>
         useSameArtistPlaylist({
           artists: 'Eiichiro Oda',
           ean: '9782723492607',
+          searchGroupName: SearchGroupNameEnumv2.LIVRES,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -57,13 +61,14 @@ describe('useSameArtistPlaylist', () => {
     })
   })
 
-  it('should not fetch same artist playlist when artist and ean are missing', async () => {
+  it('should not fetch same artist playlist when artist, ean, searchGroupName are missing', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     renderHook(
       () =>
         useSameArtistPlaylist({
           artists: '',
           ean: '',
+          searchGroupName: undefined,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -74,17 +79,19 @@ describe('useSameArtistPlaylist', () => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: '',
         ean: '',
+        searchGroupName: undefined,
       })
     })
   })
 
-  it('should handle null artist and null ean gracefully', async () => {
+  it('should handle null or undefined values for artist, ean, and searchGroupName', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
     renderHook(
       () =>
         useSameArtistPlaylist({
           artists: null,
           ean: null,
+          searchGroupName: undefined,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -95,6 +102,7 @@ describe('useSameArtistPlaylist', () => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: null,
         ean: null,
+        searchGroupName: undefined,
       })
     })
   })
