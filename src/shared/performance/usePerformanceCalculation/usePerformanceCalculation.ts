@@ -1,3 +1,4 @@
+import '@sentry/tracing'
 import { Transaction } from '@sentry/types'
 
 import { eventMonitoring } from 'libs/monitoring'
@@ -7,6 +8,9 @@ import {
 } from 'shared/performance/helpers/performanceHelpers'
 
 const transactions: Transaction[] = []
+
+// This is a workaround; see https://github.com/getsentry/sentry-javascript/issues/4731
+// Check for updates, maybe they have a fix
 
 // Start the hook in the first line of a component
 // usePerformanceCalculation().start(PERFORMANCE_TRANSACTION_NAME)
