@@ -7,8 +7,9 @@ import Share, { Social } from 'react-native-share'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -55,6 +56,22 @@ describe('<VenueBody />', () => {
     expect(Clipboard.setString).toHaveBeenCalledWith(
       'Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris'
     )
+  })
+
+  it('should log analytics when copying address', async () => {
+    Clipboard.getString = jest
+      .fn()
+      .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
+    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+
+    fireEvent.press(screen.getByText('Copier l’adresse'))
+
+    await waitFor(() => {
+      expect(analytics.logCopyAddress).toHaveBeenCalledWith({
+        venueId: venueResponseSnap.id,
+        from: 'venue',
+      })
+    })
   })
 
   it('should display default background image when no banner for venue', async () => {

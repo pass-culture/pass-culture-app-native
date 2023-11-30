@@ -54,6 +54,7 @@ export enum AnalyticsEvent {
   CONTINUE_SET_EMAIL = 'ContinueSetEmail',
   CONTINUE_SET_PASSWORD = 'ContinueSetPassword',
   CONTINUE_SIGNUP = 'ContinueSignup',
+  COPY_ADDRESS = 'CopyAddress',
   CULTURAL_SURVEY_SCROLLED_TO_BOTTOM = 'CulturalSurveyScrolledToBottom',
   DISCOVER_OFFERS = 'DiscoverOffers',
   DISMISS_ACCOUNT_SECURITY = 'DismissAccountSecurity',

@@ -265,6 +265,8 @@ export const logEventAnalytics = {
       firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD,
     }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
+  logCopyAddress: (params: { from: Referrals; venueId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.COPY_ADDRESS }, params),
   logCulturalSurveyScrolledToBottom: (params: { questionId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>

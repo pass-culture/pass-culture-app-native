@@ -59,6 +59,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logContinueSetEmail: jest.fn(),
   logContinueSetPassword: jest.fn(),
   logContinueSignup: jest.fn(),
+  logCopyAddress: jest.fn(),
   logCulturalSurveyScrolledToBottom: jest.fn(),
   logDiscoverOffers: jest.fn(),
   logDismissAccountSecurity: jest.fn(),
