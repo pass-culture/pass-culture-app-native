@@ -786,7 +786,7 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
           >
             <h2
               aria-level="2"
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-paddingBottom-1l7z4oj r-paddingTop-1ygmrgt"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-paddingBottom-1l7z4oj r-paddingTop-1ygmrgt"
               dir="ltr"
               role="heading"
             >
