@@ -90,12 +90,22 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: Position = DEFAULT_POSITION
+let mockIsGeolocated = false
+let mockIsCustomPosition = false
+const mockPlace: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
 const mockShowGeolocPermissionModal = jest.fn()
 
 jest.mock('libs/geolocation/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    isGeolocated: mockIsGeolocated,
+    isCustomPosition: mockIsCustomPosition,
+    place: mockPlace,
   }),
 }))
 
@@ -127,6 +137,8 @@ describe('SearchResults component', () => {
     mockSearchState = searchState
     mockPosition = DEFAULT_POSITION
     mockUserData = []
+    mockIsGeolocated = false
+    mockIsCustomPosition = false
   })
 
   it('should render correctly', async () => {
@@ -451,7 +463,51 @@ describe('SearchResults component', () => {
       expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...mockSearchState,
+          locationFilter: { locationType: LocationType.EVERYWHERE },
+          view: SearchView.Results,
+        })
+      )
+    })
+
+    it('should call navigate on press "Rechercher" in venue modal with geolocation mode', async () => {
+      mockIsGeolocated = true
+      render(<SearchResults />)
+
+      await act(async () => {
+        const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
+        fireEvent.press(venueButton)
+      })
+
+      fireEvent.press(screen.getByText('Rechercher'))
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
           locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+          view: SearchView.Results,
+        })
+      )
+    })
+
+    it('should call navigate on press "Rechercher" in venue modal with the selected place', async () => {
+      mockIsCustomPosition = true
+      render(<SearchResults />)
+
+      await act(async () => {
+        const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
+        fireEvent.press(venueButton)
+      })
+
+      fireEvent.press(screen.getByText('Rechercher'))
+
+      expect(navigate).toHaveBeenCalledWith(
+        ...getTabNavConfig('Search', {
+          ...mockSearchState,
+          locationFilter: {
+            locationType: LocationType.PLACE,
+            aroundRadius: DEFAULT_RADIUS,
+            place: mockPlace,
+          },
           view: SearchView.Results,
         })
       )
