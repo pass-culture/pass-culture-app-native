@@ -16,6 +16,7 @@ import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/C
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
+import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
@@ -32,6 +33,7 @@ import { env } from 'libs/environment'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
+import { useFunctionOnce } from 'libs/hooks'
 import { eventMonitoring } from 'libs/monitoring'
 import { ReactNavigationInstrumentation } from 'libs/monitoring/sentry'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
@@ -42,6 +44,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
+import { usePerformanceCalculation } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -85,6 +88,12 @@ const App: FunctionComponent = function () {
   }, [])
 
   const navigation = React.useRef()
+
+  const { start } = usePerformanceCalculation()
+  const startPerfHomeLoadingOnce = useFunctionOnce(() => start(PERFORMANCE_HOME_LOADING))
+  const startPerfHomeCreationOnce = useFunctionOnce(() => start(PERFORMANCE_HOME_CREATION))
+  startPerfHomeCreationOnce()
+  startPerfHomeLoadingOnce()
 
   return (
     <RemoteConfigProvider>
