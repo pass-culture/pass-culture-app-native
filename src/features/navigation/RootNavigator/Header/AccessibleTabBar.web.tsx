@@ -8,14 +8,30 @@ import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRoute
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
+import { getLocationFilterFromLocationContext } from 'features/search/helpers/getLocationFilterFromLocationContext/getLocationFilterFromLocationContext'
+import { useLocation } from 'libs/geolocation'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 
 export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { tabRoutes } = useTabNavigationContext()
   const currentRoute = useCurrentRoute()
-  const { searchState } = useSearch()
+  const {
+    searchState: { locationFilter: previousLocationFilter },
+  } = useSearch()
+  const { isGeolocated, isCustomPosition, place } = useLocation()
+
+  const locationFilter =
+    previousLocationFilter.locationType === LocationType.VENUE
+      ? getLocationFilterFromLocationContext({
+          isGeolocated,
+          isCustomPosition,
+          place,
+        })
+      : previousLocationFilter
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
@@ -24,7 +40,8 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
       <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {
-            const params = route.name === 'Search' ? searchState : undefined
+            const params =
+              route.name === 'Search' ? { ...initialSearchState, locationFilter } : undefined
             const tabNavConfig = getTabNavConfig(route.name, params)
             return (
               <LinkContainer key={route.name}>
