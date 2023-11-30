@@ -3,11 +3,9 @@ import jwtDecode from 'jwt-decode'
 import { eventMonitoring } from 'libs/monitoring'
 
 export type TokenInfo = {
-  dateCreated: string
-  userId: string
-  location?: string
-  os?: string
-  source?: string
+  exp: number
+  user_id: number
+  data: { dateCreated: string; location?: string; os?: string; source?: string }
 }
 
 export const getTokenInfo = (token: string): TokenInfo | undefined => {
