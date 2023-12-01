@@ -32,6 +32,24 @@ describe('fetchOffersByArtist', () => {
     })
   })
 
+  it('should execute the query with artist, ean and searchGroupName but without venueLocation if offer is a book', async () => {
+    await fetchOffersByArtist({
+      artists: 'Eiichiro Oda',
+      ean: '9782723492607',
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      venueLocation: undefined,
+    })
+
+    expect(search).toHaveBeenCalledWith('', {
+      page: 0,
+      filters: `offer.artist:"Eiichiro Oda" AND NOT offer.ean:"9782723492607"`,
+      hitsPerPage: 30,
+      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
+      attributesToHighlight: [],
+      aroundRadius: 'all',
+    })
+  })
+
   it('should not execute the query if artist, ean, searchGroupName are missing', async () => {
     await fetchOffersByArtist({
       artists: '',

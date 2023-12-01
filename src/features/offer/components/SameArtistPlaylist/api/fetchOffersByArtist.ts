@@ -41,8 +41,10 @@ export const fetchOffersByArtist = async ({
       hitsPerPage: 30,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
-      aroundRadius: convertKmToMeters(DEFAULT_RADIUS),
-      aroundLatLng: `${venueLocation?.latitude}, ${venueLocation?.longitude}`,
+      aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
+      aroundLatLng: venueLocation
+        ? `${venueLocation?.latitude}, ${venueLocation?.longitude}`
+        : undefined,
     })
 
     return response.hits
