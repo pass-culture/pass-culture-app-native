@@ -1,12 +1,10 @@
 import { Platform } from 'react-native'
 
 import { OfferResponse, OfferVenueResponse } from 'api/gen'
-import { useOffer } from 'features/offer/api/useOffer'
 import { formatShareOfferMessage } from 'features/share/helpers/formatShareOfferMessage'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { ShareOutput } from 'features/share/types'
 import { share } from 'libs/share'
-import { getOfferLocationName } from 'shared/offer/helpers/getOfferLocationName'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 const doNothingFn = () => {
@@ -17,17 +15,6 @@ const shareTitle = 'Je t’invite à découvrir une super offre sur le pass Cult
 const shareOptions = {
   subject: shareTitle, // iOS only
   dialogTitle: shareTitle, // android only
-}
-
-export const useShareOffer = (offerId: number, utmMedium: string): ShareOutput => {
-  const { data: offer } = useOffer({ offerId })
-
-  return getShareOffer({
-    offerId: offer?.id,
-    offerName: offer?.name,
-    venueName: offer ? getOfferLocationName(offer.venue, offer.isDigital) : undefined,
-    utmMedium,
-  })
 }
 
 type PartialOffer = {
