@@ -5227,6 +5227,11 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
     bounces={false}
     onScroll={[Function]}
     scrollEventThrottle={16}
+    scrollIndicatorInsets={
+      {
+        "right": 1,
+      }
+    }
     style={
       [
         {
