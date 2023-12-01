@@ -101,7 +101,9 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.ScrollView({ overflow: 'visible' })
+const Container = styled.ScrollView.attrs({ scrollIndicatorInsets: { right: 1 } })({
+  overflow: 'visible',
+})
 
 const TopContainer = styled.View(({ theme }) => {
   const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
