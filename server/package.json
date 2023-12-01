@@ -1,7 +1,7 @@
 {
   "name": "@pass-culture/web-proxy",
   "description": "Express proxy for pass-culture-app-native Web Application",
-  "version": "1.267.2",
+  "version": "1.267.3",
   "private": true,
   "main": "build/src/index.js",
   "author": {
