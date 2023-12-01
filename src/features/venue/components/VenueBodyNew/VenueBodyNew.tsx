@@ -5,18 +5,17 @@ import { VenueResponse } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { VenueBanner } from 'features/venue/components/VenueBodyNew/VenueBanner'
+import { VenueMessagingApps } from 'features/venue/components/VenueMessagingAppsNew/VenueMessagingAppsNew'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
-import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { Image } from 'libs/resizing-image-on-demand/Image'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Offer } from 'shared/offer/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
-import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,7 +33,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
   playlists,
 }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
-  const backgroundStyle = useVenueBackgroundStyle()
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
@@ -48,16 +46,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
       <TopContainer>
-        <HeaderContainer>
-          {bannerUrl ? (
-            <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
-          ) : (
-            <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
-              <Spacer.TopScreen />
-              <VenueIcon />
-            </EmptyVenueBackground>
-          )}
-        </HeaderContainer>
+        <VenueBanner bannerUrl={bannerUrl} />
         <Spacer.Column numberOfSpaces={6} />
         <MarginContainer>
           <VenueTitle
@@ -100,6 +89,14 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
           }}
         />
       </FirstSectionContainer>
+
+      <Spacer.Column numberOfSpaces={6} />
+
+      <SectionWithDivider visible>
+        <MarginContainer>
+          <VenueMessagingApps venueId={venue.id} />
+        </MarginContainer>
+      </SectionWithDivider>
     </Container>
   )
 }
@@ -113,21 +110,6 @@ const TopContainer = styled.View(({ theme }) => {
     marginTop: isLargeScreen ? getSpacing(8) : 0,
     marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
   }
-})
-
-const EmptyVenueBackground = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: theme.colors.greyLight,
-}))
-
-const VenueIcon = styled(Venue).attrs(({ theme }) => ({
-  size: getSpacing(30),
-  color: theme.colors.greyMedium,
-}))``
-
-const HeaderContainer = styled.View({
-  alignItems: 'center',
 })
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
