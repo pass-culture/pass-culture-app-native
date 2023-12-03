@@ -17,6 +17,10 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
+  useIsMailAppAvailableIOS: jest.fn(() => true),
+}))
+
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
     mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })

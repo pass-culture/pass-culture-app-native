@@ -8,7 +8,7 @@ import { useIsMailAppAvailableIOS } from './useIsMailAppAvailableIOS'
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 describe('useIsMailAppAvailableIOS', () => {
-  it('should set isAnyMailAppAvailable to true when at least one mail app is available', async () => {
+  it('should set isMailAppAvailable to true when at least one mail app is available', async () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     const { result } = renderUseIsMailAppAvailableIOS()
 
@@ -17,7 +17,7 @@ describe('useIsMailAppAvailableIOS', () => {
     })
   })
 
-  it('should set isAnyMailAppAvailable to false when no mail apps are available', async () => {
+  it('should set isMailAppAvailable to false when no mail apps are available', async () => {
     canOpenURLSpy.mockResolvedValueOnce(false)
     const { result } = renderUseIsMailAppAvailableIOS()
 

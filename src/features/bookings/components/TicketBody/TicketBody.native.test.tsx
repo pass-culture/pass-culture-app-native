@@ -13,6 +13,10 @@ const initialProps = {
   qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
 }
 
+jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
+  useIsMailAppAvailableIOS: jest.fn(() => true),
+}))
+
 describe('TicketBody', () => {
   describe('<QrCode/> display', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
