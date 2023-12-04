@@ -164,14 +164,14 @@ describe('<Offer />', () => {
         expect.objectContaining({
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           offerId: offerResponseSnap.id,
-          position: { longitude: 90, latitude: 90 },
+          position: { longitude: 90.4773245, latitude: 90.4773245 },
         })
       )
       expect(useSimilarOffersSpy).toHaveBeenCalledWith(
         expect.objectContaining({
           categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           offerId: offerResponseSnap.id,
-          position: { longitude: 90, latitude: 90 },
+          position: { longitude: 90.4773245, latitude: 90.4773245 },
         })
       )
     })
