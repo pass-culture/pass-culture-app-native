@@ -43,7 +43,7 @@ export const fetchOffersByArtist = async ({
       attributesToHighlight: [], // We disable highlighting because we don't need it
       aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
       aroundLatLng: venueLocation
-        ? `${venueLocation?.latitude}, ${venueLocation?.longitude}`
+        ? `${venueLocation.latitude}, ${venueLocation.longitude}`
         : undefined,
     })
 
