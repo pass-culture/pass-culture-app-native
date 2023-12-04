@@ -17,7 +17,7 @@ import { CampaignTracker } from './types'
 // https://support.appsflyer.com/hc/en-us/articles/207032066-iOS-SDK-V6-X-integration-guide-for-developers#integration-33-configuring-app-tracking-transparency-att-support
 const TIME_TO_WAIT_FOR_ATT_CONSENT = 60 // in seconds
 
-function useInit(hasAcceptedMarketingCookie: boolean) {
+function init(hasAcceptedMarketingCookie: boolean) {
   // We do not init appsflyer or display ATT if user refuses marketing cookies
   if (!hasAcceptedMarketingCookie) return
 
@@ -80,6 +80,6 @@ function startAppsFlyer(enabled: boolean) {
 export const campaignTracker: CampaignTracker = {
   logEvent,
   getUserId,
-  useInit,
+  init,
   startAppsFlyer,
 }

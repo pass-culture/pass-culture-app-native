@@ -21,6 +21,6 @@ function startAppsFlyer() {
 export const campaignTracker: CampaignTracker = {
   logEvent,
   getUserId,
-  useInit,
+  init: useInit,
   startAppsFlyer,
 }

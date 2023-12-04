@@ -6,13 +6,13 @@ const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
 describe('campaignTracker', () => {
   it('should not request ATT when init parameter is false', async () => {
-    campaignTracker.useInit(false)
+    campaignTracker.init(false)
 
     expect(mockrequestIDFATrackingConsent).not.toHaveBeenCalled()
   })
 
   it('should request ATT when init parameter is true', async () => {
-    campaignTracker.useInit(true)
+    campaignTracker.init(true)
 
     expect(mockrequestIDFATrackingConsent).toHaveBeenCalledTimes(1)
   })

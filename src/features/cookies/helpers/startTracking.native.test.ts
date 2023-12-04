@@ -20,7 +20,7 @@ describe('startTracking', () => {
 
     expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
     expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
-    expect(campaignTracker.useInit).toHaveBeenCalledWith(true)
+    expect(campaignTracker.init).toHaveBeenCalledWith(true)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })

@@ -9,7 +9,7 @@ export const startTracking = (enabled: boolean) => {
   if (enabled) {
     amplitude.enableCollection()
     firebaseAnalytics.enableCollection()
-    campaignTracker.useInit(true)
+    campaignTracker.init(true)
     campaignTracker.startAppsFlyer(true)
     Batch.optIn()
   } else {
