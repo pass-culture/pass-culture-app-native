@@ -3,10 +3,10 @@ import { SearchOptions } from '@algolia/client-search'
 import {
   GenreType,
   GenreTypeContentModel,
-  VenueResponse,
   NativeCategoryIdEnumv2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
+  VenueResponse,
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
@@ -29,7 +29,6 @@ export type LocationFilter =
   | { locationType: LocationType.EVERYWHERE }
   | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
   | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
-  | { locationType: LocationType.VENUE; venue: Venue }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 
@@ -46,7 +45,7 @@ export type SearchQueryParameters = {
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean
-  locationFilter?: LocationFilter
+  locationFilter: LocationFilter
   maxPossiblePrice?: string
   maxPrice?: string
   minBookingsThreshold?: number
@@ -73,6 +72,7 @@ export type SearchQueryParameters = {
   tags: string[]
   timeRange: Range<number> | null
   includeDigitalOffers?: boolean
+  venue?: Venue
 }
 
 export const transformHit = transformOfferHit
