@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 
-import { OfferBookingButton } from 'features/offer/components/OfferBookingButton/OfferBookingButton'
+import { OfferBookingButton } from 'features/offerv2/components/OfferBookingButton/OfferBookingButton'
 
 const meta: ComponentMeta<typeof OfferBookingButton> = {
   title: 'features/offer/OfferBookingButton',

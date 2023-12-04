@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferBookingButton } from 'features/offer/components/OfferBookingButton/OfferBookingButton'
+import { OfferBookingButton } from 'features/offerv2/components/OfferBookingButton/OfferBookingButton'
 import { render, screen } from 'tests/utils'
 
 describe('<OfferBookingButton />', () => {
@@ -41,9 +41,16 @@ describe('<OfferBookingButton />', () => {
   })
 
   it("shouldn't return the button if we don't have wording for it", () => {
-    const noWording = { ...mockCtaWordingAndAction, wording: undefined }
-    render(<OfferBookingButton ctaWordingAndAction={noWording} />)
+    const withoutWording = { ...mockCtaWordingAndAction, wording: undefined }
+    render(<OfferBookingButton ctaWordingAndAction={withoutWording} />)
 
     expect(screen.queryByText('Réserver l’offre')).toBeNull()
+  })
+
+  it("shouldn't return the bottom banner if we don't have it", () => {
+    const withoutBottomBanner = { ...mockCtaWordingAndAction, bottomBannerText: undefined }
+    render(<OfferBookingButton ctaWordingAndAction={withoutBottomBanner} />)
+
+    expect(screen.queryByText('Attention !')).toBeNull()
   })
 })

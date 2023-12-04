@@ -41,7 +41,11 @@ export function OfferBookingButton({
           />
         </CallToActionContainer>
 
-        {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}
+        {bottomBannerText ? (
+          <StyledBottomBanner text={bottomBannerText} />
+        ) : (
+          <Spacer.BottomScreen />
+        )}
       </BlurryWrapper>
     </StickyWrapper>
   )
@@ -51,5 +55,9 @@ const CallToActionContainer = styled.View({
   paddingHorizontal: getSpacing(4),
   marginTop: getSpacing(4),
   marginBottom: getSpacing(8),
+  width: '100%',
+})
+
+const StyledBottomBanner = styled(BottomBanner)({
   width: '100%',
 })
