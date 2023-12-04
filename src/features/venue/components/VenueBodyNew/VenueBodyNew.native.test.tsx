@@ -74,8 +74,9 @@ describe('<VenueBody />', () => {
     })
   })
 
-  it('should log analytics when pressing Voir l’itinéraire', () => {
+  it('should log analytics when pressing Voir l’itinéraire', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Voir l’itinéraire'))
 
@@ -118,8 +119,9 @@ describe('<VenueBody />', () => {
     })
   })
 
-  it('should log event when pressing on Infos pratiques tab', () => {
+  it('should log event when pressing on Infos pratiques tab', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
 
@@ -128,8 +130,9 @@ describe('<VenueBody />', () => {
     })
   })
 
-  it('should log event when pressing on Offres disponibles tab', () => {
+  it('should log event when pressing on Offres disponibles tab', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))
 
