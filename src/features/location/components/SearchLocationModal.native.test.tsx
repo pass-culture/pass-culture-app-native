@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { Button } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
-import {
-  DEFAULT_RADIUS,
-  SearchLocationModal,
-} from 'features/location/components/SearchLocationModal'
+import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'

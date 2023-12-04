@@ -412,6 +412,7 @@ describe('<Offer />', () => {
         artists: 'Eiichiro Oda',
         ean: '9782723492607',
         searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        venueLocation: { latitude: 20, longitude: 2 },
       })
     })
 
@@ -424,6 +425,7 @@ describe('<Offer />', () => {
         artists: undefined,
         ean: undefined,
         searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        venueLocation: { latitude: 20, longitude: 2 },
       })
     })
 

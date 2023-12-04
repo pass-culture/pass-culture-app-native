@@ -87,11 +87,13 @@ export function Offer() {
 
   const artists = offer?.extraData?.author
   const ean = offer?.extraData?.ean
+  const venueLocation = offer?.venue?.coordinates
 
   const { sameArtistPlaylist, refetch } = useSameArtistPlaylist({
     artists,
     ean,
     searchGroupName,
+    venueLocation,
   })
 
   useEffect(() => {

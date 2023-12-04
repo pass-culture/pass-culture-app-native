@@ -260,7 +260,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Lieu culturel"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Lieu culturel"
                   tabindex="0"
                   title="Lieu culturel"
@@ -281,7 +281,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Catégories"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Catégories"
                   tabindex="0"
                   title="Catégories"
@@ -302,7 +302,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Prix"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Prix"
                   tabindex="0"
                   title="Prix"
@@ -323,7 +323,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Dates & heures"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Dates & heures"
                   tabindex="0"
                   title="Dates & heures"
@@ -698,7 +698,7 @@ exports[`SearchResults component should render correctly 1`] = `
           style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
         >
           <button
-            class="c3 c5 sc-cwHptR c5"
+            class="c3 c5 sc-kpDqfm c5"
             tabindex="0"
             type="button"
           >
@@ -983,7 +983,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Lieu culturel"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Lieu culturel"
                 tabindex="0"
                 title="Lieu culturel"
@@ -1004,7 +1004,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Catégories"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Catégories"
                 tabindex="0"
                 title="Catégories"
@@ -1025,7 +1025,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Prix"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Prix"
                 tabindex="0"
                 title="Prix"
@@ -1046,7 +1046,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Dates & heures"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Dates & heures"
                 tabindex="0"
                 title="Dates & heures"
@@ -1421,7 +1421,7 @@ exports[`SearchResults component should render correctly 1`] = `
         style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
       >
         <button
-          class="c3 c5 sc-cwHptR c5"
+          class="c3 c5 sc-kpDqfm c5"
           tabindex="0"
           type="button"
         >
