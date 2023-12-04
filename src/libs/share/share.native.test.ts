@@ -1,7 +1,7 @@
 import { Share } from 'react-native'
 
 import { analytics } from 'libs/analytics'
-import { share } from 'libs/share'
+import { share } from 'libs/share/share'
 import { waitFor } from 'tests/utils'
 
 const defaultContent = { message: 'Message', messageWithoutLink: 'Message' }

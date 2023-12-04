@@ -4,7 +4,7 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 import { share } from 'libs/share/shareBest'
 import { ShareContent } from 'libs/share/types'
 
-export function getVenueUrl(id: number, utmMedium: string) {
+function getVenueUrl(id: number, utmMedium: string) {
   const path = getScreenPath('Venue', { id })
   return `${WEBAPP_V2_URL}${path}?utm_gen=product&utm_campaign=share_venue&utm_medium=${utmMedium}`
 }

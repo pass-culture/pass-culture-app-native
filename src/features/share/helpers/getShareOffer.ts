@@ -4,7 +4,7 @@ import { OfferResponse, OfferVenueResponse } from 'api/gen'
 import { formatShareOfferMessage } from 'features/share/helpers/formatShareOfferMessage'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { ShareOutput } from 'features/share/types'
-import { share } from 'libs/share'
+import { share } from 'libs/share/share'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 const doNothingFn = () => {
