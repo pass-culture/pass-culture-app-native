@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200,
     backgroundImage:
-      "url('https://img.freepik.com/photos-gratuite/peinture-lac-montagne-montagne-arriere-plan_188544-9126.jpg?w=1380&t=st=1701705399~exp=1701705999~hmac=c2bf28443a351fb39a524c2fb4603030acdca56b8d6d165a5dccaf922265f073')",
+      'url("https://img.freepik.com/photos-gratuite/peinture-lac-montagne-montagne-arriere-plan_188544-9126.jpg?w=1380&t=st=1701705399~exp=1701705999~hmac=c2bf28443a351fb39a524c2fb4603030acdca56b8d6d165a5dccaf922265f073")',
     backgroundSize: 'cover',
     position: 'relative',
   },
@@ -40,7 +40,7 @@ Default.args = {
 export const IsFreeDigitalOfferAndIsLoggedIn = Template.bind({})
 IsFreeDigitalOfferAndIsLoggedIn.args = {
   ctaWordingAndAction: {
-    wording: "C'est gratuit",
+    wording: 'C’est gratuit',
     isDisabled: false,
   },
   isFreeDigitalOffer: true,
