@@ -17,8 +17,9 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+let mockIsMailAppAvailable = true
 jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
-  useIsMailAppAvailableIOS: jest.fn(() => true),
+  useIsMailAppAvailableIOS: jest.fn(() => mockIsMailAppAvailable),
 }))
 
 describe('<SignupConfirmationEmailSent />', () => {
@@ -45,17 +46,28 @@ describe('<SignupConfirmationEmailSent />', () => {
 
   it('should open mail app when clicking on check email button', async () => {
     renderSignupConfirmationEmailSent()
-    await act(async () => {})
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
-    fireEvent.press(checkEmailsButton)
+    await act(async () => {
+      fireEvent.press(checkEmailsButton)
+    })
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when clicking on check email button', async () => {
+  it('should not show the button to open mail if no mail app is available', async () => {
+    mockIsMailAppAvailable = false
     renderSignupConfirmationEmailSent()
+    await act(async () => {})
 
+    const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
+
+    expect(checkEmailsButton).toBeNull()
+  })
+
+  it('should log analytics when clicking on check email button', async () => {
+    mockIsMailAppAvailable = true
+    renderSignupConfirmationEmailSent()
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     await act(async () => fireEvent.press(checkEmailsButton))
 

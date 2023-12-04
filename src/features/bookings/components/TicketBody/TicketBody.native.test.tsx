@@ -13,8 +13,9 @@ const initialProps = {
   qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
 }
 
+let mockIsMailAppAvailable = true
 jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
-  useIsMailAppAvailableIOS: jest.fn(() => true),
+  useIsMailAppAvailableIOS: jest.fn(() => mockIsMailAppAvailable),
 }))
 
 describe('TicketBody', () => {
@@ -80,6 +81,25 @@ describe('TicketBody', () => {
         )
 
         expect(screen.queryByTestId('withdrawal-info')).toBeOnTheScreen()
+      })
+    })
+
+    describe('Consulter mes e-mails display', () => {
+      it('should show the button to open mail', async () => {
+        render(<TicketBody {...initialProps} withdrawalType={undefined} />)
+
+        const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
+
+        expect(checkEmailsButton).toBeNull()
+      })
+
+      it('should not show the button to open mail if no mail app is available', async () => {
+        mockIsMailAppAvailable = false
+        render(<TicketBody {...initialProps} withdrawalType={undefined} />)
+
+        const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
+
+        expect(checkEmailsButton).toBeNull()
       })
     })
   })
