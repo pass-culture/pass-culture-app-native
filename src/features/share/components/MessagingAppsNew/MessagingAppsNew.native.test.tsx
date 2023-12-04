@@ -3,16 +3,15 @@ import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
 
 import { MessagingApps } from 'features/share/components/MessagingAppsNew/MessagingAppsNew'
-import { ShareContent } from 'libs/share'
+import { ShareContent } from 'libs/share/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
 const defaultShareContent: ShareContent = {
-  message: 'message url',
-  messageWithoutLink: 'message',
-  title: 'title',
+  body: 'message',
+  subject: 'title',
   url: 'url',
 }
 
