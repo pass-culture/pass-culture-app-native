@@ -242,12 +242,12 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
   align-items: center;
 }
 
-.c7 {
-  border-radius: 40px;
-}
-
 .c1 {
   background-color: transparent;
+}
+
+.c7 {
+  border-radius: 40px;
 }
 
 .c2 {
@@ -998,7 +998,7 @@ d’options
         />
         <button
           aria-label="Revenir en arrière"
-          class="c6 c7 sc-eldPxv c7"
+          class="c6 c7 sc-fPXMVe c7"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -1070,7 +1070,7 @@ d’options
         />
         <button
           aria-label="Partager"
-          class="c6 c7 sc-eldPxv c7"
+          class="c6 c7 sc-fPXMVe c7"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
