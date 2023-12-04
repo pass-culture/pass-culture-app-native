@@ -74,12 +74,13 @@ export function Offer() {
     }
   })
 
+  const { latitude, longitude } = userPosition ?? {}
   const roundedPosition: Position = useMemo(() => {
     return {
-      latitude: Number(userPosition?.latitude.toFixed(3)),
-      longitude: Number(userPosition?.longitude.toFixed(3)),
+      latitude: Number(latitude?.toFixed(3)),
+      longitude: Number(longitude?.toFixed(3)),
     }
-  }, [userPosition?.latitude, userPosition?.longitude])
+  }, [latitude, longitude])
 
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}

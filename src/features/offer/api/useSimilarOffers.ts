@@ -105,6 +105,8 @@ export const useSimilarOffers = ({
   const fetchApiReco = useCallback(async () => {
     if (
       !similarOffersEndpoint ||
+      // These conditions help avoid multiple unnecessary API calls
+      // So we have a call only when the excluded or included category changes as well as the position
       (categoryExcluded && hasSameCategoryExcluded && hasSamePosition) ||
       (categoryIncluded && hasSameCategoryIncluded && hasSamePosition)
     ) {
