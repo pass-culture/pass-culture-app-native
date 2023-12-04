@@ -1,5 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -18,7 +18,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { useLocation } from 'libs/geolocation'
+import { Position, useLocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -74,15 +74,15 @@ export function Offer() {
     }
   })
 
+  const roundedPosition: Position = useMemo(() => {
+    return {
+      latitude: Number(userPosition?.latitude.toFixed(3)),
+      longitude: Number(userPosition?.longitude.toFixed(3)),
+    }
+  }, [userPosition?.latitude, userPosition?.longitude])
+
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
-  const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
-    useSimilarOffers({
-      offerId,
-      position: offer?.venue.coordinates,
-      categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
-    })
-  const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
   const artists = offer?.extraData?.author
   const ean = offer?.extraData?.ean
@@ -102,7 +102,7 @@ export function Offer() {
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
       offerId: offer?.id,
-      position: userPosition,
+      position: userPosition ? roundedPosition : undefined,
       categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
@@ -112,7 +112,7 @@ export function Offer() {
     apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
     offerId: offer?.id,
-    position: userPosition,
+    position: userPosition ? roundedPosition : undefined,
     categoryExcluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     searchGroupList: data?.searchGroups,
   })
