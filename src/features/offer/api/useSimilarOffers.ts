@@ -98,16 +98,15 @@ export const useSimilarOffers = ({
   const previousPosition = usePrevious(position)
   const previousCategoryExcluded = usePrevious(categoryExcluded)
   const previousCategoryIncluded = usePrevious(categoryIncluded)
+  const hasSameCategoryExcluded = categoryExcluded === previousCategoryExcluded
+  const hasSameCategoryIncluded = categoryIncluded === previousCategoryIncluded
+  const hasSamePosition = JSON.stringify(previousPosition) === JSON.stringify(position)
 
   const fetchApiReco = useCallback(async () => {
     if (
       !similarOffersEndpoint ||
-      (categoryExcluded &&
-        categoryExcluded === previousCategoryExcluded &&
-        JSON.stringify(previousPosition) === JSON.stringify(position)) ||
-      (categoryIncluded &&
-        categoryIncluded === previousCategoryIncluded &&
-        JSON.stringify(previousPosition) === JSON.stringify(position))
+      (categoryExcluded && hasSameCategoryExcluded && hasSamePosition) ||
+      (categoryIncluded && hasSameCategoryIncluded && hasSamePosition)
     ) {
       return
     }
@@ -116,10 +115,9 @@ export const useSimilarOffers = ({
   }, [
     categoryExcluded,
     categoryIncluded,
-    position,
-    previousCategoryExcluded,
-    previousCategoryIncluded,
-    previousPosition,
+    hasSameCategoryExcluded,
+    hasSameCategoryIncluded,
+    hasSamePosition,
     similarOffersEndpoint,
   ])
 
