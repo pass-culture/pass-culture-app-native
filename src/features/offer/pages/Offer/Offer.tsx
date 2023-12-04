@@ -4,6 +4,7 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -44,6 +45,7 @@ const getPlaylistsHeight = (numberOfPlaylists: number) => {
 
 export function Offer() {
   const route = useRoute<UseRouteType<'Offer'>>()
+  const { isLoggedIn } = useAuthContext()
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const trackEventHasSeenOfferForSurveyOnce = useFunctionOnce(trackEventHasSeenOfferForSurvey)
   const offerId = route.params?.id
@@ -301,6 +303,7 @@ export function Offer() {
               externalNav={externalNav}
               isDisabled={isDisabled}
               isFreeDigitalOffer={isFreeDigitalOffer}
+              isLoggedIn={isLoggedIn}
             />
             <Spacer.Column numberOfSpaces={bottomBannerText ? 4.5 : 6} />
           </CallToActionContainer>
