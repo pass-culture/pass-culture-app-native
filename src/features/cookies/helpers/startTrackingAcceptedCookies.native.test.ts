@@ -50,7 +50,7 @@ describe('startTrackingAcceptedCookies', () => {
     const appsFlyersAccepted = COOKIES_BY_CATEGORY.marketing
     startTrackingAcceptedCookies(appsFlyersAccepted)
 
-    expect(campaignTracker.useInit).toHaveBeenCalledWith(true)
+    expect(campaignTracker.init).toHaveBeenCalledWith(true)
   })
 
   it('should enable AppsFlyers when marketing cookies are accepted', () => {
@@ -84,7 +84,7 @@ describe('startTrackingAcceptedCookies', () => {
     ]
     startTrackingAcceptedCookies(marketingRefused)
 
-    expect(campaignTracker.useInit).toHaveBeenCalledWith(false)
+    expect(campaignTracker.init).toHaveBeenCalledWith(false)
   })
 
   it('should disable AppsFlyers when marketing cookies are refused', () => {

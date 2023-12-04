@@ -115,7 +115,7 @@ describe('<CookiesConsent/>', () => {
         fireEvent.press(acceptAllButton)
       })
 
-      expect(campaignTracker.useInit).toHaveBeenNthCalledWith(1, true)
+      expect(campaignTracker.init).toHaveBeenNthCalledWith(1, true)
     })
 
     it('should save UTM params', async () => {
@@ -183,7 +183,7 @@ describe('<CookiesConsent/>', () => {
         fireEvent.press(declineAllButton)
       })
 
-      expect(campaignTracker.useInit).not.toHaveBeenCalled()
+      expect(campaignTracker.init).not.toHaveBeenCalled()
     })
 
     it('should not set marketing params', async () => {

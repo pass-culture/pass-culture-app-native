@@ -29,7 +29,7 @@ describe('<App /> with mocked RootNavigator', () => {
   it('should not init AppsFlyer on launch', () => {
     renderApp()
 
-    expect(campaignTracker.useInit).not.toHaveBeenCalled()
+    expect(campaignTracker.init).not.toHaveBeenCalled()
   })
 
   it('should configure Google signin on launch', () => {

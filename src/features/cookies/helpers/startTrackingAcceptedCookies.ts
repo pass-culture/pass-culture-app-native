@@ -29,7 +29,7 @@ export const startTrackingAcceptedCookies = (acceptedCookies: Cookies) => {
     : firebaseAnalytics.disableCollection()
 
   const acceptedAppsFlyers = acceptedCookies.includes(CookieNameEnum.APPSFLYER)
-  campaignTracker.useInit(acceptedAppsFlyers)
+  campaignTracker.init(acceptedAppsFlyers)
   campaignTracker.startAppsFlyer(acceptedAppsFlyers)
 
   const acceptedAmplitude = acceptedCookies.includes(CookieNameEnum.AMPLITUDE)

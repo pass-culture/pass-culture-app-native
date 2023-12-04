@@ -41,14 +41,14 @@ describe('<VenueBody />', () => {
 
   it('should display full venue address', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
-    waitUntilRendered()
+    await waitUntilRendered()
 
     expect(screen.getByText('1 boulevard Poissonnière, 75000 Paris')).toBeOnTheScreen()
   })
 
   it('should copy the whole address when pressing the copy button', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
-    waitUntilRendered()
+    await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Copier l’adresse'))
 
@@ -59,14 +59,14 @@ describe('<VenueBody />', () => {
 
   it('should display default background image when no banner for venue', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
-    waitUntilRendered()
+    await waitUntilRendered()
 
     expect(screen.getByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })
 
   it('should display withdrawal details', async () => {
     render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
-    waitUntilRendered()
+    await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
 
