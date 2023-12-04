@@ -5,6 +5,8 @@ import { Action, initialSearchState, searchReducer } from 'features/search/conte
 import { LocationType } from 'features/search/enums'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/geolocation'
 
 interface ISearchContext {
@@ -19,6 +21,7 @@ export const SearchWrapper = memo(function SearchWrapper({
 }: {
   children: React.JSX.Element
 }) {
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const maxPrice = useMaxPrice()
   const priceRange: [number, number] = [0, maxPrice]
 
@@ -31,6 +34,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   const { isCustomPosition, place, isGeolocated } = useLocation()
 
   useEffect(() => {
+    if (!enableAppLocation) return
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
     const includeDigitalOffers = searchState.includeDigitalOffers ?? false
