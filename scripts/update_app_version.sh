@@ -3,8 +3,10 @@
 set -e
 
 update_app_version() {
-  yarn version --"$2" --no-git-tag-version
-  yarn version --"$2" --no-git-tag-version --cwd server
+  yarn version "$2"
+  cd server
+  yarn version "$2"
+  cd ..
 
   source ./scripts/get_version.sh
   ./scripts/update_build_number_from_package_json_version.sh
