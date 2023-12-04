@@ -6,6 +6,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -61,15 +62,24 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
+    beforeEach(() => {
+      mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockedOffer.id}`, {
+        hits: [],
+      })
+      mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockedOffer.id}`, {
+        hits: [],
+      })
+    })
+
     it('should not have basic accessibility issues', async () => {
       mockV4.mockReturnValueOnce('offerId')
       const { container } = render(reactQueryProviderHOC(<Offer />))
 
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
+      await act(async () => {})
 
-        expect(results).toHaveNoViolations()
-      })
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
     })
   })
 })

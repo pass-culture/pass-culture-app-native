@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
+import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
-import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
+import { usePrevious } from 'features/search/helpers/usePrevious'
 import { env } from 'libs/environment'
+import { Position } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 type WithIncludeCategoryProps = {
   categoryIncluded: SearchGroupNameEnumv2
@@ -21,13 +21,14 @@ type WithExcludeCategoryProps = {
 
 type Props = (WithIncludeCategoryProps | WithExcludeCategoryProps) & {
   offerId?: number
-  position?: Coordinates
+  position?: Position
+  searchGroupList?: SearchGroupResponseModelv2[]
 }
 
 export const getSimilarOffersEndpoint = (
   offerId?: number,
   userId?: number,
-  position?: Coordinates,
+  position?: Position,
   categories?: SearchGroupNameEnumv2[]
 ): string | undefined => {
   if (!offerId) return
@@ -84,25 +85,43 @@ export const useSimilarOffers = ({
   position,
   categoryIncluded,
   categoryExcluded,
+  searchGroupList,
 }: Props) => {
-  const { data } = useSubcategories()
-
   const categories: SearchGroupNameEnumv2[] = useMemo(
-    () => getCategories(data?.searchGroups, categoryIncluded, categoryExcluded),
-    [categoryExcluded, categoryIncluded, data?.searchGroups]
+    () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
+    [categoryExcluded, categoryIncluded, searchGroupList]
   )
 
   const { user: profile } = useAuthContext()
-  // API called when offer position loaded
-  const isLoadedOfferPosition = getIsLoadedOfferPosition(position)
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
   const [apiRecoResponse, setApiRecoResponse] = useState<SimilarOffersResponse>()
+  const previousPosition = usePrevious(position)
+  const previousCategoryExcluded = usePrevious(categoryExcluded)
+  const previousCategoryIncluded = usePrevious(categoryIncluded)
 
   const fetchApiReco = useCallback(async () => {
-    if (!similarOffersEndpoint || !isLoadedOfferPosition) return
+    if (
+      !similarOffersEndpoint ||
+      (categoryExcluded &&
+        categoryExcluded === previousCategoryExcluded &&
+        JSON.stringify(previousPosition) === JSON.stringify(position)) ||
+      (categoryIncluded &&
+        categoryIncluded === previousCategoryIncluded &&
+        JSON.stringify(previousPosition) === JSON.stringify(position))
+    ) {
+      return
+    }
 
     setApiRecoResponse(await getApiRecoSimilarOffers(similarOffersEndpoint))
-  }, [isLoadedOfferPosition, similarOffersEndpoint])
+  }, [
+    categoryExcluded,
+    categoryIncluded,
+    position,
+    previousCategoryExcluded,
+    previousCategoryIncluded,
+    previousPosition,
+    similarOffersEndpoint,
+  ])
 
   useEffect(() => {
     fetchApiReco()
