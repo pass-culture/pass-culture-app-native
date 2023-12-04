@@ -58,16 +58,20 @@ describe('useSimilarOffers', () => {
     })
   })
 
-  it('should call Algolia hook', async () => {
+  it('should call Algolia hook with category included', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
+        position,
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
     await act(async () => {
       expect(algoliaSpy).toHaveBeenCalledTimes(1)
     })
+  })
+
+  it('should call Algolia hook with category excluded', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
@@ -76,7 +80,7 @@ describe('useSimilarOffers', () => {
       })
     )
     await act(async () => {
-      expect(algoliaSpy).toHaveBeenCalledTimes(2)
+      expect(algoliaSpy).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -100,18 +104,7 @@ describe('useSimilarOffers', () => {
     expect(fetchApiRecoSpy).not.toHaveBeenCalled()
   })
 
-  it('should not call similair offers API when offer provided and offer position not loaded', () => {
-    renderHook(() =>
-      useSimilarOffers({
-        offerId: mockOfferId,
-        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-      })
-    )
-
-    expect(fetchApiRecoSpy).not.toHaveBeenCalled()
-  })
-
-  it('should call similar offers API when offer id provided and shared offer position loaded', async () => {
+  it('should call similar offers API when offer id provided and user share his position', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
@@ -121,20 +114,26 @@ describe('useSimilarOffers', () => {
     )
     await act(async () => {})
 
-    expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
+    expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
+      1,
+      'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA'
+    )
   })
 
-  it('should call similar offers API when offer id provided and shared offer position not loaded', async () => {
+  it('should call similar offers API when offer id provided and user not share his position', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        position: { latitude: null, longitude: null },
+        position: null,
       })
     )
     await act(async () => {})
 
-    expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
+    expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
+      1,
+      'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&categories=FILMS_SERIES_CINEMA'
+    )
   })
 })
 
@@ -157,10 +156,7 @@ describe('getSimilarOffersEndpoint', () => {
     })
 
     it('without latitude and longitude query params when there are null', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, {
-        latitude: null,
-        longitude: null,
-      })
+      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, null)
 
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`

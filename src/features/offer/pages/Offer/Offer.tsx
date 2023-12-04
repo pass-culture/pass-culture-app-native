@@ -1,5 +1,5 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -18,6 +18,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { Position, useLocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -41,7 +42,7 @@ const getPlaylistsHeight = (numberOfPlaylists: number) => {
   return PLAYLIST_HEIGHT * numberOfPlaylists
 }
 
-export const Offer: FunctionComponent = () => {
+export function Offer() {
   const route = useRoute<UseRouteType<'Offer'>>()
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const trackEventHasSeenOfferForSurveyOnce = useFunctionOnce(trackEventHasSeenOfferForSurvey)
@@ -62,6 +63,8 @@ export const Offer: FunctionComponent = () => {
     BatchUser.trackEvent(BatchEvent.hasSeenConcertForSurvey)
   })
 
+  const { userPosition } = useLocation()
+
   const { data: offer } = useOffer({ offerId })
   const { data } = useSubcategories()
 
@@ -71,15 +74,16 @@ export const Offer: FunctionComponent = () => {
     }
   })
 
+  const { latitude, longitude } = userPosition ?? {}
+  const roundedPosition: Position = useMemo(() => {
+    return {
+      latitude: Number(latitude?.toFixed(3)),
+      longitude: Number(longitude?.toFixed(3)),
+    }
+  }, [latitude, longitude])
+
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
-  const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
-    useSimilarOffers({
-      offerId,
-      position: offer?.venue.coordinates,
-      categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
-    })
-  const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
   const artists = offer?.extraData?.author
   const ean = offer?.extraData?.ean
@@ -96,13 +100,22 @@ export const Offer: FunctionComponent = () => {
     }
   }, [artists, ean, refetch])
 
+  const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
+    useSimilarOffers({
+      offerId: offer?.id,
+      position: userPosition ? roundedPosition : undefined,
+      categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
+    })
+  const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
+
   const {
     similarOffers: otherCategoriesSimilarOffers,
     apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
-    offerId,
-    position: offer?.venue.coordinates,
+    offerId: offer?.id,
+    position: userPosition ? roundedPosition : undefined,
     categoryExcluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
+    searchGroupList: data?.searchGroups,
   })
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 

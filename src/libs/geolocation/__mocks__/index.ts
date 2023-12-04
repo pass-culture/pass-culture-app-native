@@ -15,7 +15,7 @@ export const setCustomPosition = jest.fn()
 const setPlace = jest.fn()
 
 const locationContext: ILocationContext = {
-  userPosition: { longitude: 90, latitude: 90 },
+  userPosition: { longitude: 90.4773245, latitude: 90.4773245 },
   userPositionError: null,
   customPosition: null,
   setCustomPosition,

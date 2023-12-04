@@ -154,21 +154,26 @@ describe('<Offer />', () => {
   })
 
   describe('with similar offers', () => {
-    it('should pass offer venue position to `useSimilarOffers`', async () => {
+    it('should pass user position to `useSimilarOffers`', async () => {
       renderOfferPage({})
 
       await act(async () => {})
 
-      expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(1, {
-        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        offerId: offerResponseSnap.id,
-        position: offerResponseSnap.venue.coordinates,
-      })
-      expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(2, {
-        categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        offerId: offerResponseSnap.id,
-        position: offerResponseSnap.venue.coordinates,
-      })
+      expect(useSimilarOffersSpy).toHaveBeenCalledWith(
+        // allows you to check that the call was made at least once with these parameters
+        expect.objectContaining({
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          offerId: offerResponseSnap.id,
+          position: { longitude: 90.477, latitude: 90.477 },
+        })
+      )
+      expect(useSimilarOffersSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          offerId: offerResponseSnap.id,
+          position: { longitude: 90.477, latitude: 90.477 },
+        })
+      )
     })
 
     it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
