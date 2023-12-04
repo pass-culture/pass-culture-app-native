@@ -6,6 +6,7 @@ import { SearchState, SearchView } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const defaultParams: SearchState = {
@@ -75,5 +76,13 @@ describe('<VenueCTA />', () => {
         screen: 'Search',
       })
     })
+  })
+
+  it('should log event when pressed on', async () => {
+    render(<VenueCTA venueId={venueResponseSnap.id} />)
+
+    fireEvent.press(screen.getByText('Rechercher une offre'))
+
+    expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(venueResponseSnap.id)
   })
 })

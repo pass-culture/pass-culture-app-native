@@ -9,6 +9,7 @@ import { VenueBanner } from 'features/venue/components/VenueBodyNew/VenueBanner'
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingAppsNew/VenueMessagingAppsNew'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
+import { analytics } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
@@ -65,6 +66,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
           <CopyToClipboardButton
             wording="Copier l’adresse"
             textToCopy={`${venueName}, ${venueFullAddress}`}
+            onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
             snackBarMessage="L’adresse a bien été copiée"
           />
           <Spacer.Column numberOfSpaces={3} />
@@ -73,6 +75,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
               url: getGoogleMapsItineraryUrl(venueFullAddress),
               address: venueFullAddress,
             }}
+            onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
           />
         </MarginContainer>
       </TopContainer>
@@ -86,6 +89,16 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
               <VenueOffersNew venue={venue} venueOffers={venueOffers} playlists={playlists} />
             ),
             'Infos pratiques': <PracticalInformation venue={venue} />,
+          }}
+          onTabChange={{
+            'Offres disponibles': () =>
+              analytics.logConsultVenueOffers({
+                venueId: venue.id,
+              }),
+            'Infos pratiques': () =>
+              analytics.logConsultPracticalInformations({
+                venueId: venue.id,
+              }),
           }}
         />
       </FirstSectionContainer>
