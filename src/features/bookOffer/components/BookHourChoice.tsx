@@ -23,7 +23,7 @@ interface Props {
   enablePricesByCategories?: boolean
 }
 
-function getHourChoiceWhenMultiplePrices(
+function getHourChoiceForMultiplePrices(
   stocks: OfferStockResponse[],
   selectedDate: string | undefined,
   bookingState: BookingState,
@@ -143,7 +143,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const filteredStocks = useMemo(
     () => {
       if (hasPotentialPricesStep) {
-        return getHourChoiceWhenMultiplePrices(
+        return getHourChoiceForMultiplePrices(
           stocks,
           selectedDate,
           bookingState,
