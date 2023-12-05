@@ -1,6 +1,5 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
@@ -67,10 +66,7 @@ describe('useFilterCount', () => {
   it('should return the correct number of filter for all location configurations', () => {
     const venueSelected: SearchState = {
       ...initialSearchState,
-      locationFilter: {
-        locationType: LocationType.VENUE,
-        venue: { ...Kourou, venueId },
-      },
+      venue: { ...Kourou, venueId },
     }
 
     expect(renderHook(() => useFilterCount(venueSelected)).result.current).toEqual(1)

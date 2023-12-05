@@ -288,7 +288,7 @@ describe('<SearchListHeader />', () => {
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isGeolocated param = true', () => {
       useRoute.mockReturnValueOnce({
-        params: { searchId, locationFilter: { locationType: LocationType.VENUE } },
+        params: { searchId, venue: mockVenues[0] },
       })
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
@@ -363,7 +363,7 @@ describe('<SearchListHeader />', () => {
 
     it('should not render venue items when we search from venues', () => {
       useRoute.mockReturnValueOnce({
-        params: { locationFilter: { locationType: LocationType.VENUE } },
+        params: { venue: mockVenues[0] },
       })
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 

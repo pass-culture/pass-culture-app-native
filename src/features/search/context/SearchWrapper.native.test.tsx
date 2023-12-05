@@ -38,6 +38,13 @@ const mockPlace: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
+const mockVenue = {
+  _geoloc: { lat: 48.94083, lng: 2.47987 },
+  info: 'Paris',
+  label: 'La librairie quantique DATA',
+  venueId: 9384,
+}
+
 describe('SearchWrapper', () => {
   it('should update locationType with type Place when Location Context is switched to a specified place', async () => {
     renderDummyComponent()
@@ -104,13 +111,13 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setVenue'))
     })
 
-    screen.getByText(LocationType.VENUE)
+    screen.getByText(mockVenue.label)
 
     await act(async () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    expect(screen.getByText(LocationType.VENUE)).toBeOnTheScreen()
+    expect(screen.getByText(mockVenue.label)).toBeOnTheScreen()
   })
 
   it('should still include digital offers when locationContext is changed', async () => {
@@ -145,6 +152,7 @@ const DummyComponent = () => {
   return (
     <React.Fragment>
       <Text>{searchState.locationFilter.locationType}</Text>
+      <Text>{searchState.venue?.label ?? ''}</Text>
       <Text>isDigitalOffer : {searchState.includeDigitalOffers?.toString()}</Text>
       <Button title="setPlace" onPress={() => setPlace(mockPlace)} />
       <Button title="unSetPlace" onPress={() => setPlace(null)} />
@@ -152,19 +160,8 @@ const DummyComponent = () => {
         title="setVenue"
         onPress={() =>
           dispatch({
-            type: 'SET_LOCATION_FILTERS',
-            payload: {
-              locationFilter: {
-                locationType: LocationType.VENUE,
-                venue: {
-                  _geoloc: { lat: 48.94083, lng: 2.47987 },
-                  info: 'Paris',
-                  label: 'La librairie quantique DATA',
-                  venueId: 9384,
-                },
-              },
-              includeDigitalOffers: false,
-            },
+            type: 'SET_VENUE',
+            payload: mockVenue,
           })
         }
       />

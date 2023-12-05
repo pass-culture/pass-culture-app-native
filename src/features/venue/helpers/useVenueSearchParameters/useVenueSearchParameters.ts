@@ -7,32 +7,29 @@ import { useLocation } from 'libs/geolocation'
 
 export const useVenueSearchParameters = (venueId: number): SearchState => {
   const { userPosition: position } = useLocation()
-  const { data: venue } = useVenue(venueId)
+  const { data: dataVenue } = useVenue(venueId)
   const maxPrice = useMaxPrice()
 
   const defaultLocationFilter = position
     ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
     : { locationType: LocationType.EVERYWHERE }
 
-  const locationFilter = (
-    venueId && venue
+  const venue = (
+    venueId && dataVenue
       ? {
-          locationType: LocationType.VENUE,
-          venue: {
-            label: venue.publicName || venue.name,
-            info: venue.city,
-            geolocation: { latitude: venue.latitude, longitude: venue.longitude },
-            venueId,
-          },
+          label: dataVenue.publicName || dataVenue.name,
+          info: dataVenue.city,
+          geolocation: { latitude: dataVenue.latitude, longitude: dataVenue.longitude },
+          venueId,
         }
-      : defaultLocationFilter
-  ) as SearchState['locationFilter']
+      : undefined
+  ) as SearchState['venue']
 
   const params: SearchState = {
     beginningDatetime: undefined,
     endingDatetime: undefined,
     hitsPerPage: 30,
-    locationFilter,
+    locationFilter: defaultLocationFilter as SearchState['locationFilter'],
     offerCategories: [],
     offerSubcategories: [],
     offerIsDuo: false,
@@ -45,7 +42,7 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     timeRange: null,
     view: SearchView.Landing,
     query: '',
+    venue,
   }
-
   return params
 }

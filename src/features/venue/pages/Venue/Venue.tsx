@@ -23,6 +23,7 @@ const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.ha
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
+  const gtlPlaylists = useGTLPlaylists({ venue })
   const { data: venueOffers } = useVenueOffers(params.id)
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const { headerTransition, onScroll } = useOpacityTransition({
@@ -47,8 +48,6 @@ export const Venue: FunctionComponent = () => {
 
     return () => clearTimeout(timeoutId)
   }, [triggerBatch])
-
-  const gtlPlaylists = useGTLPlaylists({ venue })
 
   if (!venue) return null
 

@@ -40,7 +40,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
         parameters: { page, ...searchState },
-        userLocation: position,
+        userPosition: position,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

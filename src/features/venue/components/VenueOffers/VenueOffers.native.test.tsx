@@ -6,6 +6,7 @@ import { UseQueryResult } from 'react-query'
 import { push } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
@@ -57,6 +58,9 @@ const defaultParams = {
   view: SearchView.Landing,
   tags: [],
   timeRange: null,
+  locationFilter: {
+    locationType: LocationType.EVERYWHERE,
+  },
 }
 
 const playlists: GTLPlaylistResponse = [
@@ -187,14 +191,11 @@ describe('<VenueOffers />', () => {
       expect(push).toHaveBeenCalledWith('TabNavigator', {
         params: {
           ...defaultParams,
-          locationFilter: {
-            locationType: 'VENUE',
-            venue: {
-              geolocation: { latitude: 48.87004, longitude: 2.3785 },
-              info: 'Paris',
-              label: 'Le Petit Rintintin 1',
-              venueId: 5543,
-            },
+          venue: {
+            geolocation: { latitude: 48.87004, longitude: 2.3785 },
+            info: 'Paris',
+            label: 'Le Petit Rintintin 1',
+            venueId: 5543,
           },
           view: SearchView.Results,
           previousView: SearchView.Results,

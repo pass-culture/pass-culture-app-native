@@ -1,4 +1,3 @@
-import { LocationType } from 'features/search/enums'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
   buildEanPredicate,
@@ -19,9 +18,9 @@ const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:
 const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 
 export const buildFacetFilters = ({
+  venue,
   eanList,
   isUserUnderage,
-  locationFilter,
   objectIds,
   enableAppLocation,
   offerCategories,
@@ -37,7 +36,7 @@ export const buildFacetFilters = ({
   isFullyDigitalOffersCategory,
 }: Pick<
   SearchQueryParameters,
-  | 'locationFilter'
+  | 'venue'
   | 'offerCategories'
   | 'offerGenreTypes'
   | 'offerGtlLabel'
@@ -113,11 +112,8 @@ export const buildFacetFilters = ({
   if (includeDigitalOffersPredicate && enableAppLocation)
     facetFilters.push(includeDigitalOffersPredicate)
 
-  if (
-    locationFilter?.locationType === LocationType.VENUE &&
-    typeof locationFilter.venue.venueId === 'number'
-  )
-    facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])
+  if (venue && typeof venue.venueId === 'number')
+    facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${venue.venueId}`])
 
   return { facetFilters }
 }

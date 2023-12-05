@@ -74,6 +74,8 @@ let mockPosition: Position = DEFAULT_POSITION
 jest.mock('libs/geolocation/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
+    place: null,
+    onModalHideRef: jest.fn(),
   }),
 }))
 
@@ -118,6 +120,14 @@ describe('SearchBox component', () => {
       type: 'tab',
       stale: false,
     })
+  })
+
+  afterEach(() => {
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+      priceRange: [0, 20],
+    }
   })
 
   it('should render SearchBox', async () => {
@@ -478,8 +488,6 @@ describe('SearchBox component', () => {
     ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
     ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
     ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
-    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
   `(
     'should display $locationButtonLabel in location button label when location type is $locationType and position is $position',
     async ({
@@ -504,6 +512,27 @@ describe('SearchBox component', () => {
     }
   )
 
+  it(`should display Le Petit Rintintin 1 in location button label when a venue is selected`, async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
+
+    mockSearchState = {
+      ...initialSearchState,
+      venue,
+    }
+    mockPosition = null
+    useRoute.mockReturnValueOnce({
+      params: {
+        view: SearchView.Landing,
+        venue,
+      },
+    })
+    renderSearchBox()
+
+    await act(async () => {})
+
+    expect(screen.getByText(venue.label)).toBeOnTheScreen()
+  })
+
   it.each`
     locationType               | locationFilter                                                                   | position            | locationSearchWidgetLabel
     ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
@@ -511,8 +540,6 @@ describe('SearchBox component', () => {
     ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
     ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
     ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
-    ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
   `(
     'should display $locationSearchWidgetLabel in location search widget when location type is $locationType and position is $position',
     async ({
@@ -536,6 +563,18 @@ describe('SearchBox component', () => {
       expect(screen.getByText(locationSearchWidgetLabel)).toBeOnTheScreen()
     }
   )
+
+  it(`should not display Le Petit Rintintin 1 in location search widget when a venue is selected`, async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true).mockReturnValueOnce(true)
+
+    mockSearchState = { ...initialSearchState, venue }
+    useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, venue } })
+    renderSearchBox()
+
+    await act(async () => {})
+
+    expect(screen.queryByText(venue.label)).not.toBeOnTheScreen()
+  })
 
   it('should not display locationSearchWidget when isDesktopViewport = true', async () => {
     jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)

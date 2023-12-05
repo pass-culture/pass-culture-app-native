@@ -1,6 +1,7 @@
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { Position } from 'libs/geolocation'
 
 type SearchVenuePositionType = {
@@ -15,7 +16,11 @@ export function convertKmToMeters(aroundRadiusKm: number | 'all') {
   return aroundRadiusKm * 1000
 }
 
-export function buildSearchVenuePosition(locationFilter?: LocationFilter, userPosition?: Position) {
+export function buildSearchVenuePosition(
+  locationFilter?: LocationFilter,
+  userPosition?: Position,
+  venue?: Venue
+) {
   let searchVenuePosition: SearchVenuePositionType = { aroundRadius: 'all' }
 
   if (userPosition) {
@@ -44,8 +49,8 @@ export function buildSearchVenuePosition(locationFilter?: LocationFilter, userPo
     }
   }
 
-  if (locationFilter?.locationType === LocationType.VENUE && locationFilter?.venue?._geoloc) {
-    const venuePosition = locationFilter?.venue?._geoloc
+  if (venue && venue?._geoloc) {
+    const venuePosition = venue._geoloc
 
     searchVenuePosition = {
       aroundLatLng: `${venuePosition.lat}, ${venuePosition.lng}`,

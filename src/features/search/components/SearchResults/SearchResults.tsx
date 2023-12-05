@@ -14,7 +14,7 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour, LocationType } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import {
   FILTER_TYPES,
   useAppliedFilters,
@@ -76,7 +76,7 @@ export const SearchResults: React.FC = () => {
   const { userPosition } = useLocation()
   const previousUserPosition = usePrevious(userPosition)
 
-  const isVenue = searchState.locationFilter.locationType === LocationType.VENUE
+  const isVenue = !!searchState.venue
 
   // Execute log only on initial search fetch
   const previousIsLoading = usePrevious(isLoading)
@@ -93,7 +93,9 @@ export const SearchResults: React.FC = () => {
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { params } = useRoute<UseRouteType<'Search'>>()
+  // TODO(refacto recherche): after removing location feature flag this can should be deleted
   const { section } = useLocationType(searchState)
+  // TODO(refacto recherche): after removing location feature flag this can should be deleted
   const { label: locationLabel } = useLocationChoice(section)
   const appliedFilters = useAppliedFilters(params ?? searchState)
   const {
@@ -230,7 +232,7 @@ export const SearchResults: React.FC = () => {
             <StyledLi>
               {flagOnAppLocation ? (
                 <SingleFilterButton
-                  label={isVenue ? locationLabel : 'Lieu culturel'}
+                  label={searchState.venue ? searchState.venue.label : 'Lieu culturel'}
                   testID="venueButton"
                   onPress={showVenueModal}
                   isSelected={isVenue}

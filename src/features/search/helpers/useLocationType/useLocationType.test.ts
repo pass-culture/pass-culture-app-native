@@ -14,12 +14,6 @@ const Kourou: SuggestedPlace = {
 }
 
 describe('useLocationType', () => {
-  it('should return search state location filter', () => {
-    const { locationFilter } = useLocationType(mockSearchState)
-
-    expect(locationFilter).toBe(mockSearchState.locationFilter)
-  })
-
   it('should return search state location type', () => {
     const { locationType } = useLocationType(mockSearchState)
 
@@ -29,7 +23,7 @@ describe('useLocationType', () => {
   it('should return PLACE location type section when location type is VENUE', () => {
     const searchState: SearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.VENUE, venue: mockedSuggestedVenues[0] },
+      venue: mockedSuggestedVenues[0],
     }
     const { section } = useLocationType(searchState)
 

@@ -2,7 +2,6 @@ import resolveResponse from 'contentful-resolve-response'
 
 import { VenueResponse } from 'api/gen'
 import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
-import { LocationType } from 'features/search/enums'
 import { SearchQueryParameters } from 'libs/algolia'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -60,13 +59,10 @@ export async function fetchOffersFromGTLPlaylist(
       ...buildOfferSearchParameters(
         {
           ...params,
-          locationFilter: {
-            locationType: LocationType.VENUE,
-            venue: {
-              venueId: venue.id,
-              info: venue.city ?? '',
-              label: venue.name,
-            },
+          venue: {
+            venueId: venue.id,
+            info: venue.city ?? '',
+            label: venue.name,
           },
         },
         position,

@@ -65,7 +65,10 @@ export function Search() {
   const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
+    dispatch({
+      type: 'SET_STATE',
+      payload: params ?? { view: SearchView.Landing },
+    })
   }, [dispatch, params])
 
   useEffect(() => {
@@ -86,11 +89,14 @@ export function Search() {
     return params?.view
   }, [params?.view])
 
-  const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition)
+  const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition, params?.venue)
 
   const currentVenuesIndex = useMemo(() => {
-    return getCurrentVenuesIndex(currentFilters?.locationType)
-  }, [currentFilters?.locationType])
+    return getCurrentVenuesIndex({
+      locationType: currentFilters?.locationType,
+      venue: searchState?.venue,
+    })
+  }, [currentFilters?.locationType, searchState?.venue])
 
   const onVenuePress = useCallback(async (venueId: number) => {
     await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })

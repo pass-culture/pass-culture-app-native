@@ -3,7 +3,6 @@ import { Button } from 'react-native'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import * as SearchWrapper from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -16,7 +15,7 @@ const mockVenues: Venue[] = [{ label: 'venueLabel', info: 'info', venueId: 1234 
 
 const mockSearchState: SearchState = {
   ...initialSearchState,
-  locationFilter: { locationType: LocationType.VENUE, venue: mockVenues[0] },
+  venue: mockVenues[0],
 }
 
 jest.mock('libs/place', () => ({
@@ -113,7 +112,7 @@ describe('VenueModal', () => {
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
   })
 
-  it('should not display a venue label if locationType is no longer a venue', async () => {
+  it('should not display a venue label if a venue is no longer selected', async () => {
     mockedUseSearch.mockRestore()
 
     renderDummyComponent()
@@ -131,8 +130,8 @@ describe('VenueModal', () => {
 
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
 
-    const setLocationTypeEverywhereButton = screen.getByText('setLocationTypeEverywhere')
-    fireEvent.press(setLocationTypeEverywhereButton)
+    const setLocationVenueUndefinedButton = screen.getByText('setLocationVenueUndefined')
+    fireEvent.press(setLocationVenueUndefinedButton)
 
     await act(() => {})
 
@@ -154,16 +153,11 @@ const DummyComponent = () => {
     <React.Fragment>
       <VenueModal visible dismissModal={jest.fn()} />
       <Button
-        title="setLocationTypeEverywhere"
+        title="setLocationVenueUndefined"
         onPress={() =>
           dispatch({
-            type: 'SET_LOCATION_FILTERS',
-            payload: {
-              locationFilter: {
-                locationType: LocationType.EVERYWHERE,
-              },
-              includeDigitalOffers: false,
-            },
+            type: 'SET_VENUE',
+            payload: undefined,
           })
         }
       />

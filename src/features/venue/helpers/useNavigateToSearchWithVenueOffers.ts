@@ -10,7 +10,6 @@ export const useNavigateToSearchWithVenueOffers = (venueId: number) => {
     previousView: SearchView.Results,
     view: SearchView.Results,
   })
-
   return {
     screen: searchTabNavConfig[0],
     params: searchTabNavConfig[1],
