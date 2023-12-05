@@ -113,7 +113,57 @@ exports[`SearchResults component should render correctly 1`] = `
 }
 
 .c5 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6:disabled {
+  background-color: #F1F1F4;
 }
 
 <body>
@@ -353,357 +403,15 @@ exports[`SearchResults component should render correctly 1`] = `
         data-testid="searchResults"
       >
         <div
-          class="css-view-175oi2r r-height-1pi2tsx"
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
           data-testid="searchResultsList"
         >
           <div
-            style="position: relative; height: 0px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
-            tabindex="0"
-          >
-            <ul
-              class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-              role="list"
-              style="height: 650px; width: 100%;"
-            >
-              <li
-                style="position: absolute; left: 0px; top: 0px; height: 0px; width: 100%;"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  data-testid="searchListHeader"
-                >
-                  <div
-                    class="css-view-175oi2r r-height-tbmifm"
-                  />
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <h3
-                      aria-level="3"
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                      dir="ltr"
-                      role="heading"
-                    >
-                      test
-                    </h3>
-                    <div
-                      class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
-                      role="status"
-                    >
-                      <h2
-                        aria-level="2"
-                        class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                        dir="ltr"
-                        role="heading"
-                      >
-                        2 résultats
-                      </h2>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
-                    >
-                      <div
-                        class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                        data-testid="search-venue-list"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexDirection-18u37iz"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-view-175oi2r r-width-lrsllp"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-flexDirection-18u37iz"
-                          >
-                            <h3
-                              aria-level="3"
-                              class="css-view-175oi2r"
-                              role="heading"
-                            >
-                              <div
-                                aria-label="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
-                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
-                                data-testid="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
-                                style="transition-duration: 0s;"
-                                tabindex="0"
-                              >
-                                <div
-                                  class="css-view-175oi2r"
-                                >
-                                  <div
-                                    class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
-                                  >
-                                    <div
-                                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      dir="ltr"
-                                    >
-                                      à 900+ km
-                                    </div>
-                                  </div>
-                                  <div
-                                    class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
-                                  >
-                                    <div
-                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                                      dir="ltr"
-                                    >
-                                      ESPACE CULTUREL LECLERC CHATEAU GONTIER
-                                    </div>
-                                    <div
-                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      dir="ltr"
-                                    >
-                                      CHATEAU-GONTIER-SUR-MAYENNE, 53200
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </h3>
-                            <div
-                              class="css-view-175oi2r r-width-1janqcz"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-flexDirection-18u37iz"
-                          >
-                            <h3
-                              aria-level="3"
-                              class="css-view-175oi2r"
-                              role="heading"
-                            >
-                              <div
-                                aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
-                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
-                                data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
-                                style="transition-duration: 0s;"
-                                tabindex="0"
-                              >
-                                <div
-                                  class="css-view-175oi2r"
-                                >
-                                  <div
-                                    class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
-                                  >
-                                    <div
-                                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      dir="ltr"
-                                    >
-                                      à 900+ km
-                                    </div>
-                                  </div>
-                                  <div
-                                    class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
-                                  >
-                                    <div
-                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                                      dir="ltr"
-                                    >
-                                      CAC - Concarneau Scènes
-                                    </div>
-                                    <div
-                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      dir="ltr"
-                                    >
-                                      CONCARNEAU, 29900
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </h3>
-                          </div>
-                          <div
-                            class="css-view-175oi2r"
-                          >
-                            <div
-                              class="css-view-175oi2r r-width-lrsllp"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-tbmifm"
-                  />
-                  <div
-                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
-                  />
-                  <div
-                    class="css-view-175oi2r r-height-z80fyv"
-                  />
-                  <h3
-                    aria-level="3"
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    Les offres
-                  </h3>
-                  <div
-                    class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
-                    role="status"
-                  >
-                    <h2
-                      aria-level="2"
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                      dir="ltr"
-                      role="heading"
-                    >
-                      4 résultats
-                    </h2>
-                  </div>
-                </div>
-              </li>
-              <li
-                data-itemindex="1"
-                style="position: absolute; left: 0px; top: 0px; height: 130px; width: 100%;"
-              >
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    aria-label="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                    data-testid="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                    style="transition-duration: 0s;"
-                    tabindex="0"
-                  >
-                    <div
-                      class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                    />
-                    <div
-                      class="css-view-175oi2r r-width-1janqcz"
-                    />
-                    <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
-                        >
-                          <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                            dir="ltr"
-                          >
-                            La nuit des temps
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
-                        >
-                          <div
-                            class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                            dir="ltr"
-                          >
-                            900+ km
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-hdaws3"
-                      />
-                      <div
-                        class="css-view-175oi2r r-height-hdaws3"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                        dir="ltr"
-                      >
-                        0,28 €
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-                  />
-                </div>
-              </li>
-              <li
-                data-itemindex="2"
-                style="position: absolute; left: 0px; top: 130px; height: 130px; width: 100%;"
-              >
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    aria-label="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                    data-testid="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                    style="transition-duration: 0s;"
-                    tabindex="0"
-                  >
-                    <div
-                      class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                    />
-                    <div
-                      class="css-view-175oi2r r-width-1janqcz"
-                    />
-                    <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                      >
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
-                        >
-                          <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                            dir="ltr"
-                          >
-                            I want something more
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
-                        >
-                          <div
-                            class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                            dir="ltr"
-                          >
-                            900+ km
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-hdaws3"
-                      />
-                      <div
-                        class="css-view-175oi2r r-height-hdaws3"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                        dir="ltr"
-                      >
-                        0,23 €
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-                  />
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r"
-          style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
-        >
-          <button
-            class="c3 c5 sc-kpDqfm c5"
-            tabindex="0"
-            type="button"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
+            role="status"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-bdcx94 r-borderRadius-1fuqb1j r-height-eu3ka r-justifyContent-1777fci r-overflow-1udh08x r-width-1aockid"
+              class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
             >
               <div
                 class="css-view-175oi2r"
@@ -716,7 +424,51 @@ exports[`SearchResults component should render correctly 1`] = `
                 </div>
               </div>
             </div>
-          </button>
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy"
+            >
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+                dir="ltr"
+                role="heading"
+              >
+                Pas de résultat
+              </h2>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                <span
+                  aria-live="assertive"
+                  class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                >
+                  Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+                </span>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-1472mwg"
+            />
+            <div
+              class="css-view-175oi2r"
+            >
+              <button
+                aria-label="Modifier mes filtres"
+                class="c5 c6"
+                data-testid="Modifier mes filtres"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Modifier mes filtres
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -837,7 +589,57 @@ exports[`SearchResults component should render correctly 1`] = `
 }
 
 .c5 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6:disabled {
+  background-color: #F1F1F4;
 }
 
 <div>
@@ -1076,357 +878,15 @@ exports[`SearchResults component should render correctly 1`] = `
       data-testid="searchResults"
     >
       <div
-        class="css-view-175oi2r r-height-1pi2tsx"
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         data-testid="searchResultsList"
       >
         <div
-          style="position: relative; height: 0px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
-          tabindex="0"
-        >
-          <ul
-            class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-            role="list"
-            style="height: 650px; width: 100%;"
-          >
-            <li
-              style="position: absolute; left: 0px; top: 0px; height: 0px; width: 100%;"
-            >
-              <div
-                class="css-view-175oi2r"
-                data-testid="searchListHeader"
-              >
-                <div
-                  class="css-view-175oi2r r-height-tbmifm"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <h3
-                    aria-level="3"
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    test
-                  </h3>
-                  <div
-                    class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
-                    role="status"
-                  >
-                    <h2
-                      aria-level="2"
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                      dir="ltr"
-                      role="heading"
-                    >
-                      2 résultats
-                    </h2>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
-                  >
-                    <div
-                      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                      data-testid="search-venue-list"
-                    >
-                      <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-view-175oi2r r-width-lrsllp"
-                          />
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexDirection-18u37iz"
-                        >
-                          <h3
-                            aria-level="3"
-                            class="css-view-175oi2r"
-                            role="heading"
-                          >
-                            <div
-                              aria-label="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
-                              data-testid="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
-                              style="transition-duration: 0s;"
-                              tabindex="0"
-                            >
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
-                                >
-                                  <div
-                                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                    dir="ltr"
-                                  >
-                                    à 900+ km
-                                  </div>
-                                </div>
-                                <div
-                                  class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
-                                >
-                                  <div
-                                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                                    dir="ltr"
-                                  >
-                                    ESPACE CULTUREL LECLERC CHATEAU GONTIER
-                                  </div>
-                                  <div
-                                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                    dir="ltr"
-                                  >
-                                    CHATEAU-GONTIER-SUR-MAYENNE, 53200
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </h3>
-                          <div
-                            class="css-view-175oi2r r-width-1janqcz"
-                          />
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-flexDirection-18u37iz"
-                        >
-                          <h3
-                            aria-level="3"
-                            class="css-view-175oi2r"
-                            role="heading"
-                          >
-                            <div
-                              aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
-                              data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
-                              style="transition-duration: 0s;"
-                              tabindex="0"
-                            >
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
-                                >
-                                  <div
-                                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                    dir="ltr"
-                                  >
-                                    à 900+ km
-                                  </div>
-                                </div>
-                                <div
-                                  class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
-                                >
-                                  <div
-                                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                                    dir="ltr"
-                                  >
-                                    CAC - Concarneau Scènes
-                                  </div>
-                                  <div
-                                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                    dir="ltr"
-                                  >
-                                    CONCARNEAU, 29900
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </h3>
-                        </div>
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-view-175oi2r r-width-lrsllp"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-tbmifm"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
-                />
-                <div
-                  class="css-view-175oi2r r-height-z80fyv"
-                />
-                <h3
-                  aria-level="3"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Les offres
-                </h3>
-                <div
-                  class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
-                  role="status"
-                >
-                  <h2
-                    aria-level="2"
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    4 résultats
-                  </h2>
-                </div>
-              </div>
-            </li>
-            <li
-              data-itemindex="1"
-              style="position: absolute; left: 0px; top: 0px; height: 130px; width: 100%;"
-            >
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  aria-label="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                  data-testid="Offre La nuit des temps de la catégorie Toutes les catégories, à 900+ km,  prix 0,28 €. "
-                  style="transition-duration: 0s;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                  />
-                  <div
-                    class="css-view-175oi2r r-width-1janqcz"
-                  />
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                    >
-                      <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                          dir="ltr"
-                        >
-                          La nuit des temps
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                          dir="ltr"
-                        >
-                          900+ km
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                      dir="ltr"
-                    >
-                      0,28 €
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-                />
-              </div>
-            </li>
-            <li
-              data-itemindex="2"
-              style="position: absolute; left: 0px; top: 130px; height: 130px; width: 100%;"
-            >
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  aria-label="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
-                  data-testid="Offre I want something more de la catégorie Toutes les catégories, à 900+ km,  prix 0,23 €. "
-                  style="transition-duration: 0s;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-view-175oi2r r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
-                  />
-                  <div
-                    class="css-view-175oi2r r-width-1janqcz"
-                  />
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                    >
-                      <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-p1x2d1 r-flexShrink-1wbh5a2"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                          dir="ltr"
-                        >
-                          I want something more
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-1f6v60t r-flexShrink-1wbh5a2"
-                      >
-                        <div
-                          class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                          dir="ltr"
-                        >
-                          900+ km
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-view-175oi2r r-height-hdaws3"
-                    />
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                      dir="ltr"
-                    >
-                      0,23 €
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o r-width-iyfy8q"
-                />
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div
-        class="css-view-175oi2r"
-        style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
-      >
-        <button
-          class="c3 c5 sc-kpDqfm c5"
-          tabindex="0"
-          type="button"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
+          role="status"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-bdcx94 r-borderRadius-1fuqb1j r-height-eu3ka r-justifyContent-1777fci r-overflow-1udh08x r-width-1aockid"
+            class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
           >
             <div
               class="css-view-175oi2r"
@@ -1439,7 +899,51 @@ exports[`SearchResults component should render correctly 1`] = `
               </div>
             </div>
           </div>
-        </button>
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy"
+          >
+            <h2
+              aria-level="2"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+              dir="ltr"
+              role="heading"
+            >
+              Pas de résultat
+            </h2>
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+              dir="ltr"
+            >
+              <span
+                aria-live="assertive"
+                class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+              >
+                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+              </span>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-1472mwg"
+          />
+          <div
+            class="css-view-175oi2r"
+          >
+            <button
+              aria-label="Modifier mes filtres"
+              class="c5 c6"
+              data-testid="Modifier mes filtres"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                dir="ltr"
+              >
+                Modifier mes filtres
+              </div>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>,

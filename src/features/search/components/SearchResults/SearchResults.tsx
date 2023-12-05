@@ -1,6 +1,8 @@
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { FlatList, ScrollView, View } from 'react-native'
+import { FlashList } from '@shopify/flash-list'
+import debounce from 'lodash/debounce'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -36,11 +38,11 @@ import { useLocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
-import { RenderItemProps } from 'ui/components/OptimizedList/types'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
-import { Separator } from 'ui/components/Separator'
+import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -50,6 +52,7 @@ const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
+  const searchListRef = useRef<FlatList<Offer> | FlashList<Offer> | null>(null)
   const { navigate } = useNavigation<UseNavigationType>()
   const {
     hasNextPage,
@@ -86,6 +89,8 @@ export const SearchResults: React.FC = () => {
       }
     }
   }, [isLoading, nbHits, previousIsLoading, searchState])
+
+  const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { section } = useLocationType(searchState)
@@ -126,6 +131,21 @@ export const SearchResults: React.FC = () => {
 
   const activeFiltersCount = useFilterCount(searchState)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(
+    // Despite the fact that the useEffect hook being called immediately,
+    // scrollToOffset may not always have an effect for unknown reason,
+    // debouncing scrollToOffset solves it.
+    debounce(
+      useCallback(() => {
+        if (searchListRef?.current) {
+          searchListRef.current.scrollToOffset({ offset: 0, animated: true })
+        }
+      }, [searchListRef])
+    ),
+    [nbHits, searchState]
+  )
+
   const shouldRefetchResults = Boolean(
     (userPosition && !previousUserPosition) || (!userPosition && previousUserPosition)
   )
@@ -136,40 +156,32 @@ export const SearchResults: React.FC = () => {
     }
   }, [refetch, shouldRefetchResults])
 
-  const [lastPage] = data?.pages?.slice(-1) ?? []
+  const onEndReached = useCallback(() => {
+    if (data && hasNextPage) {
+      const [lastPage] = data.pages.slice(-1)
 
-  const handleNextPage = useCallback(async () => {
-    if (hasNextPage) {
-      if (lastPage?.offers?.page > 0) {
+      if (lastPage.offers.page > 0) {
         analytics.logSearchScrollToPage(lastPage.offers.page, params?.searchId)
       }
-      await fetchNextPage()
+      fetchNextPage()
     }
-  }, [fetchNextPage, hasNextPage, lastPage?.offers?.page, params?.searchId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasNextPage])
 
-  const onEndReached = useCallback(async () => {
-    if (autoScrollEnabled) {
-      await handleNextPage()
-    }
-  }, [autoScrollEnabled, handleNextPage])
-
-  const renderItem = useCallback(
-    ({ item, index }: RenderItemProps<Offer, unknown>) => {
-      return (
-        <View>
-          <StyledHorizontalOfferTile
-            offer={item}
-            analyticsParams={{
-              query: searchState.query,
-              index: index,
-              searchId: searchState.searchId,
-              from: 'search',
-            }}
-          />
-          <StyledHorizontalSeparator />
-        </View>
-      )
-    },
+  const renderItem = useCallback<
+    ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
+  >(
+    ({ item: hit, index }) => (
+      <StyledHorizontalOfferTile
+        offer={hit}
+        analyticsParams={{
+          query: searchState.query,
+          index: index,
+          searchId: searchState.searchId,
+          from: 'search',
+        }}
+      />
+    ),
     [searchState.query, searchState.searchId]
   )
 
@@ -193,6 +205,10 @@ export const SearchResults: React.FC = () => {
       : 'Pas de résultat'
   const searchStateQuery = searchState.query.length > 0 ? ` pour ${searchState.query}` : ''
   const helmetTitle = numberOfResults + searchStateQuery + ' | Recherche | pass Culture'
+
+  // We don't want to render it on the web, even if it's not plugged in, since it avoids the user
+  // to press on a working button
+  const shouldRenderScrollToTopButton = nbHits > 0 && Platform.OS !== 'web'
 
   return (
     <React.Fragment>
@@ -272,19 +288,32 @@ export const SearchResults: React.FC = () => {
       </View>
       <Container testID="searchResults">
         <SearchList
+          ref={searchListRef}
           isFetchingNextPage={isFetchingNextPage}
           hits={hits}
           nbHits={nbHits}
           renderItem={renderItem}
           autoScrollEnabled={autoScrollEnabled}
           onEndReached={onEndReached}
+          onScroll={onScroll}
           refreshing={isRefreshing}
           onRefresh={refetch}
-          onPress={handleNextPage}
+          onPress={onEndReached}
           userData={userData}
           venuesUserData={venuesUserData}
         />
       </Container>
+      {shouldRenderScrollToTopButton ? (
+        <ScrollToTopContainer>
+          <ScrollToTopButton
+            transition={scrollButtonTransition}
+            onPress={() => {
+              searchListRef.current?.scrollToOffset({ offset: 0 })
+            }}
+          />
+          <Spacer.BottomScreen />
+        </ScrollToTopContainer>
+      ) : null}
       <CategoriesModal
         accessibilityLabel="Ne pas filtrer sur les catégories et retourner aux résultats"
         isVisible={categoriesModalVisible}
@@ -348,6 +377,13 @@ const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
   marginHorizontal: getSpacing(6),
 })
 
+const Separator = styled.View(({ theme }) => ({
+  height: 2,
+  backgroundColor: theme.colors.greyLight,
+  marginHorizontal: getSpacing(6),
+  marginVertical: getSpacing(4),
+}))
+
 const StyledLi = styled(Li)({
   marginLeft: getSpacing(1),
   marginTop: getSpacing(1),
@@ -358,12 +394,13 @@ const StyledLastLi = styled(StyledLi)({
   marginRight: getSpacing(1),
 })
 
-const StyledHorizontalSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(4),
-  marginHorizontal: getSpacing(6),
-  width: 'auto',
-  height: 2,
-})
+const ScrollToTopContainer = styled.View(({ theme }) => ({
+  alignSelf: 'center',
+  position: 'absolute',
+  right: getSpacing(7),
+  bottom: theme.tabBar.height + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
@@ -381,7 +418,7 @@ function SearchResultsPlaceHolder() {
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
-        ItemSeparatorComponent={StyledHorizontalSeparator}
+        ItemSeparatorComponent={Separator}
         ListFooterComponent={ListFooterComponent}
         scrollEnabled={false}
       />
