@@ -40,14 +40,14 @@ describe('<OfferBookingButton />', () => {
     expect(screen.getByText('Réserver l’offre')).toHaveStyle({ color: '#696A6F' })
   })
 
-  it("shouldn't return the button if we don't have wording for it", () => {
+  it("shouldn't return the button when it hasn't wording", () => {
     const withoutWording = { ...mockCtaWordingAndAction, wording: undefined }
     render(<OfferBookingButton ctaWordingAndAction={withoutWording} />)
 
     expect(screen.queryByText('Réserver l’offre')).toBeNull()
   })
 
-  it("shouldn't return the bottom banner if we don't have it", () => {
+  it("shouldn't return the bottom banner when it is undefined", () => {
     const withoutBottomBanner = { ...mockCtaWordingAndAction, bottomBannerText: undefined }
     render(<OfferBookingButton ctaWordingAndAction={withoutBottomBanner} />)
 

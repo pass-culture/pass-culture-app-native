@@ -29,8 +29,5 @@ const Background = styled.View({
   height: '400px',
   backgroundImage:
     'url("https://img.freepik.com/photos-gratuite/produit-beaute-explosant-couleurs-vibrantes-ia-generatrice-poudre_188544-9687.jpg?size=626&ext=jpg&ga=GA1.1.953763522.1701356022")',
-
-  display: 'flex',
-  flexDirection: 'column',
   justifyContent: 'center',
 })
