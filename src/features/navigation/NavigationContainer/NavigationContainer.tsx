@@ -32,11 +32,7 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
   },
 }
 
-type Props = {
-  onReady?: () => void
-}
-
-export const AppNavigationContainer = ({ onReady }: Props) => {
+export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
 
@@ -77,8 +73,7 @@ export const AppNavigationContainer = ({ onReady }: Props) => {
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
-      theme={getNavThemeConfig(theme)}
-      onReady={onReady}>
+      theme={getNavThemeConfig(theme)}>
       <RootNavigator />
     </NavigationContainer>
   )

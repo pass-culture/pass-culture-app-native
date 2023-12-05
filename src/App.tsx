@@ -33,7 +33,6 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
-import { ReactNavigationInstrumentation } from 'libs/monitoring/sentry'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
@@ -54,8 +53,6 @@ LogBox.ignoreLogs([
   'Cannot update a component',
   'EventEmitter.removeListener',
 ])
-
-const routingInstrumentation = new ReactNavigationInstrumentation()
 
 const App: FunctionComponent = function () {
   useEffect(() => {
@@ -84,8 +81,6 @@ const App: FunctionComponent = function () {
     })
   }, [])
 
-  const navigation = React.useRef()
-
   return (
     <RemoteConfigProvider>
       <ThemeProvider theme={theme}>
@@ -110,15 +105,7 @@ const App: FunctionComponent = function () {
                                           <OnboardingWrapper>
                                             <OfflineModeContainer>
                                               <ScreenErrorProvider>
-                                                <AppNavigationContainer
-                                                  ref={navigation}
-                                                  onReady={() => {
-                                                    // Register the navigation container with the instrumentation
-                                                    routingInstrumentation.registerNavigationContainer(
-                                                      navigation
-                                                    )
-                                                  }}
-                                                />
+                                                <AppNavigationContainer />
                                               </ScreenErrorProvider>
                                             </OfflineModeContainer>
                                           </OnboardingWrapper>
