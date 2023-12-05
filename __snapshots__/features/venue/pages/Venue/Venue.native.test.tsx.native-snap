@@ -5318,6 +5318,20 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
             ]
           }
         >
+          <View
+            maxHeight={56}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "maxHeight": 56,
+                  "overflow": "hidden",
+                },
+              ]
+            }
+            testID="tagsContainer"
+          />
           <Text
             accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
             adjustsFontSizeToFit={true}

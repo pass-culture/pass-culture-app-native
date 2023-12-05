@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -10,13 +10,16 @@ import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
+import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
+import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Offer } from 'shared/offer/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
+import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -41,6 +44,16 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
   const venueFullAddress = formatFullAddress(address, postalCode, city)
   const venueName = publicName || name
 
+  const distanceToVenue = useDistance({ lat: venue.latitude, lng: venue.longitude })
+  const venueTypeLabel =
+    venue.venueTypeCode && venue.venueTypeCode !== VenueTypeCodeKey.ADMINISTRATIVE
+      ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
+      : undefined
+
+  const venueTags = []
+  venueTypeLabel && venueTags.push(venueTypeLabel)
+  distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
+
   const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
 
   return (
@@ -50,6 +63,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
         <VenueBanner bannerUrl={bannerUrl} />
         <Spacer.Column numberOfSpaces={6} />
         <MarginContainer>
+          <InformationTags tags={venueTags} />
           <VenueTitle
             accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
             adjustsFontSizeToFit

@@ -302,6 +302,10 @@ exports[`<Venue /> Accessibility should render correctly in web for new version 
           <div
             class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
           >
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-maxHeight-ormnx7 r-overflow-1udh08x"
+              data-testid="tagsContainer"
+            />
             <h1
               aria-label="Nom du lieu : Le Petit Rintintin 1"
               aria-level="1"

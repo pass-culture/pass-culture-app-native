@@ -5,9 +5,11 @@ import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
+import { ILocationContext, useLocation } from 'libs/geolocation'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
@@ -18,6 +20,9 @@ jest.mock('features/venue/api/useVenue')
 jest.mock('@react-native-clipboard/clipboard')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
+
+jest.mock('libs/geolocation')
+const mockUseGeolocation = jest.mocked(useLocation)
 
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels
@@ -45,6 +50,41 @@ describe('<VenueBody />', () => {
     await waitUntilRendered()
 
     expect(screen.getByText('1 boulevard Poissonnière, 75000 Paris')).toBeOnTheScreen()
+  })
+
+  it('should display venue type', async () => {
+    const culturalCenterVenue: VenueResponse = {
+      ...venueResponseSnap,
+      venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
+    }
+
+    render(<VenueBodyNew venue={culturalCenterVenue} onScroll={jest.fn()} />)
+    await waitUntilRendered()
+
+    expect(screen.getByText('Centre culturel')).toBeOnTheScreen()
+  })
+
+  it('should display distance between user and venue when geolocation is activated', async () => {
+    const userPosition = { latitude: 30, longitude: 30.1 }
+    mockUseGeolocation.mockReturnValueOnce({ userPosition, isGeolocated: true } as ILocationContext)
+    const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
+
+    render(<VenueBodyNew venue={locatedVenue} onScroll={jest.fn()} />)
+    await waitUntilRendered()
+
+    expect(screen.getByText('À 10 km')).toBeOnTheScreen()
+  })
+
+  it('should not display distance between user and venue when geolocation is not activated', async () => {
+    mockUseGeolocation.mockReturnValueOnce({
+      isGeolocated: false,
+    } as ILocationContext)
+    const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
+
+    render(<VenueBodyNew venue={locatedVenue} onScroll={jest.fn()} />)
+    await waitUntilRendered()
+
+    expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
   })
 
   it('should copy the whole address when pressing the copy button', async () => {
