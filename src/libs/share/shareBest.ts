@@ -58,7 +58,7 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
     const rawUrl = supportsURL ? content.url : undefined
     const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl) : rawUrl
 
-    SocialShare.shareSingle({
+    await SocialShare.shareSingle({
       ...options,
       message,
       type: 'text',
