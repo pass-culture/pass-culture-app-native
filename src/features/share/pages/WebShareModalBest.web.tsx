@@ -77,7 +77,7 @@ export const WebShareModal = ({
       externalNav: {
         url: isDesktopDeviceDetectOnWeb
           ? `https://telegram.me/share/msg?url=${url}&text=${body}`
-          : `tg://msg?text=${encodeURIComponent(`${body}\n${url}`)}`,
+          : 'tg://msg?text=' + encodeURIComponent(`${body}\n${url}`),
       },
     },
   ]
