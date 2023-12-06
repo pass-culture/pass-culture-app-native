@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
       - name: Run performance testing script
         run: ./scripts/reassure_test.sh
       - name: Run Danger.js to publish scores in PR
