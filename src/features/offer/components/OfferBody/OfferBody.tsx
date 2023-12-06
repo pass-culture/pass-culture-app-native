@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useRef } from 'react'
-import { ScrollView } from 'react-native'
+import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
@@ -44,6 +44,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer, RecommendationApiParams } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
@@ -60,6 +61,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   offerId: number
   onScroll: () => void
+  handleChangeSameArtistPlaylistDisplay: (inView: boolean) => void
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
@@ -81,12 +83,13 @@ export const OfferBody: FunctionComponent<Props> = ({
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
   sameArtistPlaylist,
+  handleChangeSameArtistPlaylistDisplay,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
-  const scrollViewRef = useRef<ScrollView | null>(null)
+  const scrollViewRef = useRef(null)
   const mapping = useSubcategoriesMapping()
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
@@ -349,13 +352,15 @@ export const OfferBody: FunctionComponent<Props> = ({
       </SectionWithDivider>
 
       {shouldDisplaySameArtistPlaylist ? (
-        <SameArtistPlaylist
-          key={offer.id}
-          items={sameArtistPlaylist}
-          itemWidth={itemWidth}
-          itemHeight={itemHeight}
-          renderItem={renderItem}
-        />
+        <IntersectionObserver onChange={handleChangeSameArtistPlaylistDisplay} threshold="50%">
+          <SameArtistPlaylist
+            key={offer.id}
+            items={sameArtistPlaylist}
+            itemWidth={itemWidth}
+            itemHeight={itemHeight}
+            renderItem={renderItem}
+          />
+        </IntersectionObserver>
       ) : null}
 
       {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
@@ -422,7 +427,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
 const scrollIndicatorInsets = { right: 1 }
 
-const Container = styled.ScrollView({ overflow: 'visible' })
+const Container = styled(IOScrollView)({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
 })
