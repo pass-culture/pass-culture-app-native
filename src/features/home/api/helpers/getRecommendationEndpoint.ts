@@ -1,5 +1,5 @@
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 export const getRecommendationEndpoint = ({
   userId,

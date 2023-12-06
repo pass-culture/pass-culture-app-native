@@ -2,7 +2,7 @@ import { VenuesModuleParameters } from 'features/home/types'
 import { buildVenuesQueryOptions } from 'libs/algolia/fetchAlgolia/buildVenuesQueryOptions'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 type Params = {
   paramsList: VenuesModuleParameters[]

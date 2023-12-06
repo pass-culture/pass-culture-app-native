@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
-import { GeolocPermissionState, useLocation } from 'libs/geolocation'
-import { showGeolocPermissionModal, requestGeolocPermission } from 'libs/geolocation/__mocks__'
+import { GeolocPermissionState, useLocation } from 'libs/location'
+import { showGeolocPermissionModal, requestGeolocPermission } from 'libs/location/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/geolocation')

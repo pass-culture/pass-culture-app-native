@@ -10,7 +10,7 @@ import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferAndVenuesArgs = {

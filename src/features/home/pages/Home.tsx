@@ -8,8 +8,8 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
+import { useLocation } from 'libs/location'
 import { usePerformanceCalculation } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 

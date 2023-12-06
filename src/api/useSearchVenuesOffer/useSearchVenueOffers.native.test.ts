@@ -6,7 +6,7 @@ import {
 } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 

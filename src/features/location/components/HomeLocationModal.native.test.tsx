@@ -3,9 +3,9 @@ import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
-import { getPosition } from 'libs/geolocation/getPosition'
-import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
+import { getPosition } from 'libs/location/getPosition'
+import { requestGeolocPermission } from 'libs/location/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow, act } from 'tests/utils'
 

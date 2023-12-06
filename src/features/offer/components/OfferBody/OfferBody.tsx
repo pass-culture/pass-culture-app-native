@@ -28,9 +28,9 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
-import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useLocation } from 'libs/location'
+import { WhereSection } from 'libs/location/components/WhereSection'
 import {
   capitalizeFirstLetter,
   formatDates,

@@ -21,7 +21,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
   Position,
-} from 'libs/geolocation'
+} from 'libs/location'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import {
   render,

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { BicolorAroundMe as AroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'

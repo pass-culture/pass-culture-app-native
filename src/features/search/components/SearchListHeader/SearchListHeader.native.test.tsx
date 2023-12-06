@@ -8,7 +8,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates } from 'libs/geolocation'
+import { GeoCoordinates } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 import { act, render, screen } from 'tests/utils'
 

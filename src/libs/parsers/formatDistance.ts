@@ -1,5 +1,5 @@
 import { Geoloc } from 'libs/algolia'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 const EARTH_RADIUS_KM = 6378.137
 

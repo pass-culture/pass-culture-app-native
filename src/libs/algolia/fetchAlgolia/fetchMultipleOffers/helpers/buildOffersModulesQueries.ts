@@ -6,7 +6,7 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { OfferModuleQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 type buildOffersModuleQueriesArgs = {
   paramsList: OffersPlaylistParameters[]

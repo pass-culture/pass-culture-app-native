@@ -6,7 +6,7 @@ import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOff
 import { SimilarOffersResponse } from 'features/offer/types'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
 
 type WithIncludeCategoryProps = {

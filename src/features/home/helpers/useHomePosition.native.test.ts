@@ -1,5 +1,5 @@
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 let mockUserPosition: Position = null
 let mockCustomPosition: Position = null

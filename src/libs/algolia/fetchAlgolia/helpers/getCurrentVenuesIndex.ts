@@ -1,7 +1,7 @@
 import { LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 export function getCurrentVenuesIndex({
   locationType,

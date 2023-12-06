@@ -3,7 +3,7 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { LocationFilter } from 'features/search/types'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }

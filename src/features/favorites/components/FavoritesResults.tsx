@@ -19,8 +19,8 @@ import {
 } from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useLocation, Position } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useLocation, Position } from 'libs/location'
 import { storage } from 'libs/storage'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import {

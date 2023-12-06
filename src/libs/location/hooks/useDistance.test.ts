@@ -1,5 +1,5 @@
-import { ILocationContext, useLocation } from 'libs/geolocation'
-import { useDistance } from 'libs/geolocation/hooks/useDistance'
+import { ILocationContext, useLocation } from 'libs/location'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDistance } from 'libs/parsers'
 
 jest.mock('libs/parsers')

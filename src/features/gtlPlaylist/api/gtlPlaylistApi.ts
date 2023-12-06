@@ -11,7 +11,7 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 const PARAMS = `?content_type=gtlPlaylist&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`

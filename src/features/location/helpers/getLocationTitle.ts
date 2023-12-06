@@ -1,4 +1,4 @@
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 
 export const getLocationTitle = (place: SuggestedPlace | null, userPosition: Position) => {

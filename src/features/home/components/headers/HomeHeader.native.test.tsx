@@ -12,7 +12,7 @@ import {
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeolocPermissionState, useLocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/location'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

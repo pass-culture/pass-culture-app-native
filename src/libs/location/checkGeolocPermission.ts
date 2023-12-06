@@ -1,5 +1,5 @@
-import { GeolocPermissionState } from 'libs/geolocation'
-import { ReadGeolocPermission } from 'libs/geolocation/types'
+import { GeolocPermissionState } from 'libs/location'
+import { ReadGeolocPermission } from 'libs/location/types'
 
 // Note : `navigator.permissions` is not yet supported for Safari desktop and mobile :
 // https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility

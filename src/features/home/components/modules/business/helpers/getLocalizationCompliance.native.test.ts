@@ -1,6 +1,6 @@
 import { getLocalizationCompliance } from 'features/home/components/modules/business/helpers/getLocalizationCompliance'
 import { LocationCircleArea } from 'features/home/types'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: Position = DEFAULT_POSITION

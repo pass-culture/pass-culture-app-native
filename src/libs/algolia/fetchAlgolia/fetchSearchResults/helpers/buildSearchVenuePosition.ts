@@ -2,7 +2,7 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 type SearchVenuePositionType = {
   aroundLatLng?: string

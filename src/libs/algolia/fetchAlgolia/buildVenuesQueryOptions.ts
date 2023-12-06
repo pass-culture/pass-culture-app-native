@@ -5,7 +5,7 @@ import { VenuesFacets } from 'libs/algolia/enums'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLocation: Position) => {
   const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params

@@ -13,7 +13,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'

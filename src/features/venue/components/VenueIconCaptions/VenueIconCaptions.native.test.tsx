@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
-import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState } from 'libs/location'
 import { parseType } from 'libs/parsers'
 import { fireEvent, render, screen } from 'tests/utils'
 

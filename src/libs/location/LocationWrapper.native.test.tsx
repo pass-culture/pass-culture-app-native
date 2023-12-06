@@ -1,5 +1,5 @@
-import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission'
-import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { checkGeolocPermission } from 'libs/location/checkGeolocPermission'
+import { requestGeolocPermission } from 'libs/location/requestGeolocPermission'
 import { storage } from 'libs/storage'
 import { act, renderHook, waitFor } from 'tests/utils'
 

@@ -8,7 +8,7 @@ import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchRespons
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchMultipleOffersArgs = {

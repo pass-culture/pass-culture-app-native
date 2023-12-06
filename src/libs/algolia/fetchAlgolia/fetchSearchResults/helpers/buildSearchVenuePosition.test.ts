@@ -6,7 +6,7 @@ import {
   buildSearchVenuePosition,
   convertKmToMeters,
 } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
