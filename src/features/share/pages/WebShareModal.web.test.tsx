@@ -88,7 +88,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('Twitter'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer',
+      'https://twitter.com/intent/tweet?text=Voici une super offre !&url=https%3A%2F%2Furl.com%2Foffer',
       undefined,
       true
     )
@@ -110,7 +110,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('Telegram'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !',
+      'https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre !',
       undefined,
       true
     )

@@ -52,7 +52,9 @@ export const WebShareModal = ({
     {
       label: 'Twitter',
       icon: Twitter,
-      externalNav: { url: `https://twitter.com/intent/tweet?text=${message}&url=${url}` },
+      externalNav: {
+        url: `https://twitter.com/intent/tweet?text=${message}&url=${encodeURIComponent(url)}`,
+      },
     },
     {
       label: 'WhatsApp',
@@ -69,7 +71,7 @@ export const WebShareModal = ({
       icon: Telegram,
       externalNav: {
         url: isDesktopDeviceDetectOnWeb
-          ? `https://telegram.me/share/msg?url=${url}&text=${message}`
+          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url)}&text=${message}`
           : `tg://msg?text=${encodeURIComponent(message + '\n' + url)}`,
       },
     },
