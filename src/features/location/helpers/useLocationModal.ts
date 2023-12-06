@@ -9,7 +9,6 @@ export const useLocationModal = (visible: boolean) => {
   const theme = useTheme()
   const {
     isGeolocated,
-    isCustomPosition,
     place,
     setPlace: setPlaceGlobally,
     onModalHideRef,
@@ -47,12 +46,12 @@ export const useLocationModal = (visible: boolean) => {
 
   const initializeLocationMode = useCallback(() => {
     onModalHideRef.current = undefined
-    if (isCustomPosition) {
+    if (place) {
       setSelectedLocationMode(LocationMode.CUSTOM_POSITION)
     } else {
       setSelectedLocationMode(defaultLocationMode)
     }
-  }, [onModalHideRef, isCustomPosition, setSelectedLocationMode, defaultLocationMode])
+  }, [onModalHideRef, place, setSelectedLocationMode, defaultLocationMode])
 
   useEffect(() => {
     if (visible) {

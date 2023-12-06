@@ -38,16 +38,15 @@ describe('LocationWidgetDesktop', () => {
   })
 
   it.each`
-    isGeolocated | isCustomPosition
-    ${true}      | ${false}
+    isGeolocated | place
+    ${true}      | ${null}
     ${true}      | ${undefined}
   `(
     "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
-    async ({ isGeolocated, isCustomPosition }) => {
+    async ({ isGeolocated, place }) => {
       mockUseGeolocation.mockReturnValueOnce({
         isGeolocated,
-        isCustomPosition,
-        place: null,
+        place,
       })
 
       renderLocationWidgetDesktop()
@@ -58,17 +57,16 @@ describe('LocationWidgetDesktop', () => {
   )
 
   it.each`
-    isGeolocated | isCustomPosition
-    ${false}     | ${false}
+    isGeolocated | place
+    ${false}     | ${null}
     ${false}     | ${undefined}
   `(
     "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
-    async ({ isGeolocated, isCustomPosition }) => {
+    async ({ isGeolocated, place }) => {
       mockUseGeolocation.mockReturnValueOnce({
         isGeolocated,
-        isCustomPosition,
-        place: null,
-        userPosition: null,
+        place,
+        geolocPosition: null,
       })
 
       renderLocationWidgetDesktop()

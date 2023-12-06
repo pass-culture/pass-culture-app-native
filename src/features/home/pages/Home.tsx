@@ -29,7 +29,7 @@ export const Home: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
-  const { setCustomPosition } = useLocation()
+  const { setPlace } = useLocation()
 
   useEffect(() => {
     if (id) {
@@ -37,11 +37,16 @@ export const Home: FunctionComponent = () => {
     }
   }, [id])
 
+  // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
     if (params?.latitude && params?.longitude) {
-      setCustomPosition({ latitude: params.latitude, longitude: params.longitude })
+      setPlace({
+        geolocation: { latitude: params.latitude, longitude: params.longitude },
+        label: 'Custom',
+        info: 'custom',
+      })
     }
-  }, [params?.latitude, params?.longitude, setCustomPosition])
+  }, [params?.latitude, params?.longitude, setPlace])
 
   return (
     <GenericHome

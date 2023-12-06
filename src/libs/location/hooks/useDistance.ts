@@ -5,7 +5,7 @@ export const useDistance = (offerPosition: {
   lat?: number | null
   lng?: number | null
 }): string | undefined => {
-  const { userPosition, customPosition, isCustomPosition } = useLocation()
-  if (!userPosition && !customPosition) return undefined
-  return formatDistance(offerPosition, isCustomPosition ? customPosition : userPosition)
+  const { userPosition, place } = useLocation()
+  if (!userPosition && !place) return undefined
+  return formatDistance(offerPosition, place ? place.geolocation : userPosition)
 }

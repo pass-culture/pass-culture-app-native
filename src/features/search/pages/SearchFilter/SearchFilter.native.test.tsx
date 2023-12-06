@@ -29,7 +29,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
     isGeolocated: true,
-    isCustomPosition: false,
     place: null,
   }),
 }))

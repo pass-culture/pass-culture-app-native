@@ -14,7 +14,7 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
-  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const { isGeolocated, userPosition, place } = useLocation()
 
   const locationTitle = getLocationTitle(place, userPosition)
 
@@ -30,7 +30,7 @@ export const LocationSearchWidget = () => {
     hideModal: hideVenueModal,
   } = useModal()
 
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const isWidgetHighlighted = isGeolocated || !!place
 
   return (
     <Container>
