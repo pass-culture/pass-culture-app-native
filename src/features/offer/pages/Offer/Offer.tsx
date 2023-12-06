@@ -136,6 +136,7 @@ export function Offer() {
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      nbResults: sameCategorySimilarOffers?.length ?? 0,
     })
   })
 
@@ -145,6 +146,9 @@ export function Offer() {
       fromOfferId,
       offerId,
       playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+      nbResults: otherCategoriesSimilarOffers?.length ?? 0,
+    })
+  })
     })
   })
 

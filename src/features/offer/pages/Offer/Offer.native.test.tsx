@@ -198,12 +198,14 @@ describe('<Offer />', () => {
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        nbResults: 4,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        nbResults: 4,
       })
     })
 
@@ -272,6 +274,7 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          nbResults: 4,
         })
       })
 
@@ -313,6 +316,7 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          nbResults: 4,
         })
       })
 
@@ -385,12 +389,14 @@ describe('<Offer />', () => {
         fromOfferId,
         offerId,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        nbResults: 4,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        nbResults: 4,
       })
     })
   })
