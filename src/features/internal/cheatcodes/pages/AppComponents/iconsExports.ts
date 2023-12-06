@@ -97,6 +97,7 @@ import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
+import { Show } from 'ui/svg/icons/Show'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
@@ -254,6 +255,7 @@ export const TertiaryAndSmallerIcons = {
   PlusLight,
   Profile,
   Question,
+  Show,
   SMSFilled,
   Stock,
   Validate,
