@@ -23,8 +23,6 @@ import {
 /* eslint-disable @typescript-eslint/no-empty-function */
 const LocationContext = React.createContext<ILocationContext>({
   userPosition: undefined,
-  customPosition: undefined,
-  setCustomPosition: () => null,
   userPositionError: null,
   permissionState: undefined,
   requestGeolocPermission: async () => {},
@@ -44,14 +42,12 @@ export const LocationWrapper = memo(function LocationWrapper({
   children: React.JSX.Element
 }) {
   const [userPosition, setUserPosition] = useSafeState<Position>(undefined)
-  const [customPosition, setCustomPosition] = useSafeState<Position>(undefined)
   const [place, setPlace] = useSafeState<SuggestedPlace | null>(null)
   const [userPositionError, setUserPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
     undefined
   )
   const isGeolocated = !!userPosition
-  const isCustomPosition = !!customPosition
   const onModalHideRef = useRef<() => void>()
 
   const {
@@ -138,17 +134,8 @@ export const LocationWrapper = memo(function LocationWrapper({
   }, [hideGeolocPermissionModal])
 
   useEffect(() => {
-    setCustomPosition(place?.geolocation)
-  }, [
-    place?.geolocation,
-    place?.geolocation?.latitude,
-    place?.geolocation?.longitude,
-    setCustomPosition,
-  ])
-
-  useEffect(() => {
     switch (true) {
-      case isCustomPosition:
+      case !!place:
         storage.saveString('location_type', 'UserSpecificLocation')
         break
       case isGeolocated:
@@ -159,21 +146,18 @@ export const LocationWrapper = memo(function LocationWrapper({
         break
     }
     analytics.setEventLocationType()
-  }, [isGeolocated, isCustomPosition])
+  }, [isGeolocated, place])
 
   const value = useMemo(
     () => ({
       userPosition,
       userPositionError,
-      customPosition,
       permissionState,
       isGeolocated,
-      isCustomPosition,
       onModalHideRef,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
-      setCustomPosition,
       place,
       setPlace,
       showGeolocPermissionModal,
@@ -181,11 +165,8 @@ export const LocationWrapper = memo(function LocationWrapper({
     [
       userPosition,
       userPositionError,
-      customPosition,
       permissionState,
       isGeolocated,
-      isCustomPosition,
-      setCustomPosition,
       contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,

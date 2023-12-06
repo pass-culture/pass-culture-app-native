@@ -1,4 +1,4 @@
-import { Dispatch, MutableRefObject, SetStateAction } from 'react'
+import { MutableRefObject } from 'react'
 
 import { SuggestedPlace } from 'libs/place'
 
@@ -27,13 +27,10 @@ export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type ILocationContext = {
   isGeolocated: boolean
-  isCustomPosition?: boolean
   place: SuggestedPlace | null
   setPlace: (place: SuggestedPlace | null) => void
   onModalHideRef: MutableRefObject<(() => void) | undefined>
   userPosition: Position
-  customPosition: Position
-  setCustomPosition: Dispatch<SetStateAction<Position>>
   userPositionError: GeolocationError | null
   permissionState: GeolocPermissionState | undefined
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>

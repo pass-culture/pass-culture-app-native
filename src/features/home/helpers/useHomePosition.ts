@@ -1,7 +1,9 @@
-import { useLocation } from 'libs/location'
+import { Position, useLocation } from 'libs/location'
 
 export const useHomePosition = () => {
-  const { userPosition, customPosition } = useLocation()
+  const { userPosition, place } = useLocation()
 
-  return { position: customPosition || userPosition }
+  const placeCoordinates: Position = place?.geolocation
+
+  return { position: placeCoordinates || userPosition }
 }

@@ -371,7 +371,7 @@ describe('[Analytics utils]', () => {
       const locationFilterParam = buildLocationFilterParam(placeTypeSearchState)
 
       expect(locationFilterParam).toEqual(
-        JSON.stringify({ locationType: LocationType.AROUND_PLACE, label: 'Rue de la Paix, Paris' })
+        JSON.stringify({ locationType: 'PLACE', label: 'Rue de la Paix, Paris' })
       )
     })
 
@@ -393,7 +393,7 @@ describe('[Analytics utils]', () => {
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({
-          locationType: LocationType.AROUND_PLACE,
+          locationType: 'PLACE',
           label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Int',
         })
       )

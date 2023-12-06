@@ -31,7 +31,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   }
 
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
-  const { isCustomPosition, place, isGeolocated } = useLocation()
+  const { place, isGeolocated } = useLocation()
 
   useEffect(() => {
     if (!enableAppLocation) return
@@ -44,7 +44,7 @@ export const SearchWrapper = memo(function SearchWrapper({
 
     if (searchState.venue) {
       return
-    } else if (isCustomPosition && place) {
+    } else if (place) {
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
@@ -68,7 +68,7 @@ export const SearchWrapper = memo(function SearchWrapper({
 
     // we don't want to put the searchState in deps (it will create an infinite update loop with the dispatch)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCustomPosition, isGeolocated, place, dispatch])
+  }, [isGeolocated, place, dispatch])
 
   useEffect(() => {
     dispatch({ type: 'PRICE_RANGE', payload: priceRange })

@@ -9,9 +9,9 @@ type useLocationForLocationWidgetDesktopHook = {
 }
 
 export const useLocationForLocationWidgetDesktop = (): useLocationForLocationWidgetDesktopHook => {
-  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const { isGeolocated, userPosition, place } = useLocation()
   const title = getLocationTitle(place, userPosition)
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const isWidgetHighlighted = isGeolocated || !!place
   const testId = 'Ouvrir la modale de localisation depuis le titre'
 
   return { title, isWidgetHighlighted, testId, userPosition }

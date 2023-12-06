@@ -54,10 +54,7 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
   const { locationFilter, venue } = searchState
   if (locationFilter.locationType === LocationType.AROUND_PLACE || venue) {
     const stateWithLocationType = {
-      locationType:
-        locationFilter.locationType === LocationType.AROUND_PLACE
-          ? locationFilter.locationType
-          : 'VENUE',
+      locationType: locationFilter.locationType === LocationType.AROUND_PLACE ? 'PLACE' : 'VENUE',
     }
     const maxLabelLength =
       STRING_VALUE_MAX_LENGTH -

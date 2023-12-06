@@ -32,7 +32,7 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { userPosition: position, isGeolocated, isCustomPosition, place } = useLocation()
+  const { userPosition: position, isGeolocated, place } = useLocation()
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isMobileViewport } = useTheme()
@@ -65,7 +65,7 @@ export const SearchFilter: React.FC = () => {
         locationFilter.locationType === LocationType.EVERYWHERE || venue
           ? DEFAULT_RADIUS
           : locationFilter.aroundRadius
-      if (isCustomPosition && place) {
+      if (place) {
         return {
           locationType: LocationType.AROUND_PLACE,
           place,
@@ -104,15 +104,7 @@ export const SearchFilter: React.FC = () => {
       },
     })
     logReinitializeFilters()
-  }, [
-    dispatch,
-    isCustomPosition,
-    isGeolocated,
-    logReinitializeFilters,
-    place,
-    position,
-    searchState,
-  ])
+  }, [dispatch, isGeolocated, logReinitializeFilters, place, position, searchState])
 
   const hasDuoOfferToggle = useMemo(() => {
     const isBeneficiary = !!user?.isBeneficiary

@@ -34,7 +34,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
-  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const { isGeolocated, userPosition, place } = useLocation()
   const {
     isTooltipVisible,
     hideTooltip,
@@ -58,7 +58,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     hideModal: hideVenueModal,
   } = useModal()
 
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const isWidgetHighlighted = isGeolocated || !!place
 
   const onSearch = useCallback(
     (payload: Partial<SearchState>) => {

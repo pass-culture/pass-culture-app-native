@@ -89,8 +89,8 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: Position = DEFAULT_POSITION
-let mockIsGeolocated = false
-let mockIsCustomPosition = false
+let mockHasGeolocPosition = false
+
 const mockPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -102,8 +102,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
-    isGeolocated: mockIsGeolocated,
-    isCustomPosition: mockIsCustomPosition,
+    hasGeolocPosition: mockHasGeolocPosition,
     place: mockPlace,
   }),
 }))
@@ -136,8 +135,7 @@ describe('SearchResults component', () => {
     mockSearchState = searchState
     mockPosition = DEFAULT_POSITION
     mockUserData = []
-    mockIsGeolocated = false
-    mockIsCustomPosition = false
+    mockHasGeolocPosition = false
   })
 
   it('should render correctly', async () => {
