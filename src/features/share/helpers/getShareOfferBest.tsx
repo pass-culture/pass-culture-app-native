@@ -15,10 +15,10 @@ export const getShareOffer = ({
   offer,
   utmMedium,
 }: Parameters): {
-  share: () => void
+  share: () => Promise<void>
   shareContent: ShareContent | null
 } => {
-  if (!offer) return { share: () => undefined, shareContent: null }
+  if (!offer) return { share: () => new Promise((r) => r()), shareContent: null }
 
   const content = {
     subject: offerShareSubject,

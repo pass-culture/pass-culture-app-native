@@ -17,7 +17,7 @@ describe('getShareVenue', () => {
       Platform.OS = 'ios'
       const { share } = getShareVenue({ venue, utmMedium: 'utm_medium' })
 
-      share()
+      await share()
 
       expect(mockShare).toHaveBeenCalledWith(
         {
@@ -32,7 +32,7 @@ describe('getShareVenue', () => {
       Platform.OS = 'android'
       const { share } = getShareVenue({ venue, utmMedium: 'utm_medium' })
 
-      share()
+      await share()
 
       expect(mockShare).toHaveBeenCalledWith(
         {

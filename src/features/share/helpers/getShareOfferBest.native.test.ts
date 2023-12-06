@@ -17,7 +17,7 @@ describe('getShareOffer', () => {
       Platform.OS = 'ios'
       const { share } = getShareOffer({ offer, utmMedium: 'utm_medium' })
 
-      share()
+      await share()
 
       expect(mockShare).toHaveBeenCalledWith(
         {
@@ -33,7 +33,7 @@ describe('getShareOffer', () => {
       Platform.OS = 'android'
       const { share } = getShareOffer({ offer, utmMedium: 'utm_medium' })
 
-      share()
+      await share()
 
       expect(mockShare).toHaveBeenCalledWith(
         {

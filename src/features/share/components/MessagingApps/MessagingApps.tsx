@@ -14,7 +14,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   shareContent: ShareContent
-  share: () => void
+  share: () => Promise<void>
   messagingAppAnalytics: (social: Social | 'Other') => void
 }
 

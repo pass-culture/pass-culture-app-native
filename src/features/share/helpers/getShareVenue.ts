@@ -18,10 +18,10 @@ export const getShareVenue = ({
   venue,
   utmMedium,
 }: Parameters): {
-  share: () => void
+  share: () => Promise<void>
   shareContent: ShareContent | null
 } => {
-  if (!venue) return { share: () => undefined, shareContent: null }
+  if (!venue) return { share: () => new Promise((r) => r()), shareContent: null }
 
   const url = getVenueUrl(venue.id, utmMedium)
   const venueName = venue.publicName || venue.name
