@@ -9,7 +9,7 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SearchVenueItem } from './SearchVenueItem'
 
 let mockDistance: string | null = null
-jest.mock('libs/geolocation/hooks/useDistance', () => ({
+jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 

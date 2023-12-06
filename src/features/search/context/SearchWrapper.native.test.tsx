@@ -10,20 +10,20 @@ import {
   LocationWrapper,
   useLocation,
 } from 'libs/location'
-import { getPosition } from 'libs/location/getPosition'
+import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
 import { SuggestedPlace } from 'libs/place'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('features/search/context/SearchWrapper')
 
-jest.unmock('libs/geolocation')
+jest.unmock('libs/location')
 
-jest.mock('libs/geolocation/getPosition')
+jest.mock('libs/location/geolocation/getGeolocPosition/getPosition')
 const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
 
-jest.mock('libs/geolocation/requestGeolocPermission')
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 
-jest.mock('libs/geolocation/checkGeolocPermission')
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
   typeof checkGeolocPermission
 >

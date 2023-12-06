@@ -11,8 +11,8 @@ import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
-import { getPosition } from 'libs/location/getPosition'
-import { requestGeolocPermission } from 'libs/location/requestGeolocPermission'
+import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import {
   act,
@@ -39,17 +39,15 @@ const mockPlaces: SuggestedPlace[] = [
 ]
 const showModalMock = jest.fn()
 
-jest.unmock('libs/geolocation')
-
-jest.mock('libs/geolocation/getPosition')
+jest.mock('libs/location/geolocation/getGeolocPosition/getPosition')
 const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
 
-jest.mock('libs/geolocation/requestGeolocPermission')
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestGeolocPermission = requestGeolocPermission as jest.MockedFunction<
   typeof requestGeolocPermission
 >
 
-jest.mock('libs/geolocation/checkGeolocPermission')
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
   typeof checkGeolocPermission
 >

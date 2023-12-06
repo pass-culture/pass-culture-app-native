@@ -12,7 +12,7 @@ import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from '
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockPosition: Position = { latitude: 2, longitude: 40 }
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
   }),

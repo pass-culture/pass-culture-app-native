@@ -4,15 +4,15 @@ import { Linking } from 'react-native'
 import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import { useSafeState } from 'libs/hooks'
-import { getPosition } from 'libs/location/getPosition'
-import { requestGeolocPermission } from 'libs/location/requestGeolocPermission'
+import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
+import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
 
-import { checkGeolocPermission } from './checkGeolocPermission'
-import { GeolocationActivationModal } from './components/GeolocationActivationModal'
-import { GeolocPermissionState } from './enums'
+import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
+import { GeolocPermissionState } from './geolocation/enums'
 import {
   GeolocationError,
   ILocationContext,

@@ -1,0 +1,386 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GeolocationActivationModal should render properly 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
+  statusBarTranslucent={true}
+  testID="modal-geoloc-permission-modal"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={false}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "#00000080",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "height": "100%",
+        "justifyContent": "flex-end",
+        "opacity": 1,
+        "position": "absolute",
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabelledBy="testUuidV4"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 32,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 24,
+          "width": 928,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalHeader"
+    >
+      <View
+        justifyContent="left"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-start",
+              "width": 28,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="modalHeaderTitle"
+        >
+          Paramètres de localisation
+        </Text>
+      </View>
+      <View
+        justifyContent="right"
+        style={
+          [
+            {
+              "alignItems": "flex-start",
+              "flexDirection": "row",
+              "height": 28,
+              "justifyContent": "flex-end",
+              "width": 28,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Fermer la modale"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+              "userSelect": "auto",
+            }
+          }
+          testID="Fermer la modale"
+        >
+          <View
+            height={20}
+            testID="rightIcon"
+            width={20}
+          >
+            <Text>
+              rightIcon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        height={85}
+        testID="BicolorLocationPointer"
+        width={85}
+      >
+        <Text>
+          BicolorLocationPointer-SVG-Mock
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Retrouve toutes les offres autour de chez toi en activant les données de localisation.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu peux activer ou désactiver cette fonctionnalité dans les paramètres de localisation de ton téléphone.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Activer la géolocalisation"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Activer la géolocalisation"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Activer la géolocalisation
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+</Modal>
+`;

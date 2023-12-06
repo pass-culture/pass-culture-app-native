@@ -5,7 +5,7 @@ import { GeolocPermissionState, useLocation } from 'libs/location'
 import { showGeolocPermissionModal, requestGeolocPermission } from 'libs/location/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 
 describe('<GeolocationBanner />', () => {

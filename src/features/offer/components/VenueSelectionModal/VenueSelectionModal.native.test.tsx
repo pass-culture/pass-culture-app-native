@@ -11,7 +11,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 
 describe('<VenueSelectionModal />', () => {

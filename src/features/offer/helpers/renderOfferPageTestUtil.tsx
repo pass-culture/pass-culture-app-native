@@ -8,7 +8,7 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 
 jest.unmock('@react-navigation/native')
 

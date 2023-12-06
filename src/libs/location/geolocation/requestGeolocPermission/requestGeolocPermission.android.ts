@@ -2,7 +2,7 @@ import { PermissionsAndroid } from 'react-native'
 
 import { AskGeolocPermission } from 'libs/location/types'
 
-import { GeolocPermissionState } from './enums'
+import { GeolocPermissionState } from '../enums'
 
 const requestGeolocPermissionSystem: AskGeolocPermission = async () => {
   const permissions = await PermissionsAndroid.requestMultiple([

@@ -1,5 +1,5 @@
-import { GeolocPermissionState } from '../enums'
-import { ReadGeolocPermission } from '../types'
+import { GeolocPermissionState } from 'libs/location/__mocks__'
+import { ReadGeolocPermission } from 'libs/location/types'
 
 export const checkGeolocPermission: ReadGeolocPermission = jest
   .fn()

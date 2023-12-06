@@ -17,7 +17,7 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 
 const mockStartTransaction = jest.fn()
 jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculation', () => ({

@@ -1,7 +1,8 @@
-import { checkGeolocPermission } from './checkGeolocPermission'
-import { GeolocPermissionState } from './enums'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 
-jest.mock('libs/geolocation/checkGeolocPermission', () =>
+import { checkGeolocPermission } from './checkGeolocPermission'
+
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission', () =>
   jest.requireActual('./checkGeolocPermission')
 )
 

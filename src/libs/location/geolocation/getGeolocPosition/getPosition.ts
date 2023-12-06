@@ -3,8 +3,8 @@ import AgonTukGeolocation, {
   PositionError as AgonTukPositionError,
 } from 'react-native-geolocation-service'
 
-import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
-import { GeoCoordinates } from './types'
+import { GeoCoordinates } from '../../types'
+import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from '../enums'
 
 const GET_POSITION_SETTINGS: GeoOptions = {
   enableHighAccuracy: false,

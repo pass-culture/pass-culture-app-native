@@ -39,7 +39,7 @@ const user: UserProfileResponse = {
 const onInAppBooking = jest.fn()
 
 let mockDistance: string | null = null
-jest.mock('libs/geolocation/hooks/useDistance', () => ({
+jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 

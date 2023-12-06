@@ -2,14 +2,14 @@ import React from 'react'
 
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/location'
-import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
+import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const hideGeolocPermissionModal = jest.fn()
 const onPressGeolocPermissionModalButton = jest.fn()
 
 let mockPermissionState = GeolocPermissionState.GRANTED
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
   }),

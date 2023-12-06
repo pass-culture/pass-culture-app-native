@@ -27,7 +27,7 @@ const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetc
 
 const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = jest.mocked(useLocation)
 
 describe('useHighlightOffer', () => {

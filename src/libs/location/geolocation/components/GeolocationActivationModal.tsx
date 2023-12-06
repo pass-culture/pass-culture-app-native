@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/location/enums'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'

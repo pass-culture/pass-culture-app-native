@@ -1,5 +1,5 @@
-import { GeolocPermissionState } from './enums'
-import { AskGeolocPermission } from './types'
+import { AskGeolocPermission } from '../../types'
+import { GeolocPermissionState } from '../enums'
 
 // Note : `navigator.permissions` is not yet supported for Safari desktop and mobile :
 // https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
