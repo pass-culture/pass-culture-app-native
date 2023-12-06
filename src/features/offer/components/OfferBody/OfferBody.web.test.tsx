@@ -73,7 +73,7 @@ describe('<OfferBody />', () => {
       await userEvent.click(await screen.findByText('Envoyer sur WhatsApp'))
 
       const expectedUrl = `${getOfferUrl(offerId, 'social_media')}&utm_source=WhatsApp`
-      const expectedMessage = `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
+      const expectedMessage = `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\u00a0:\n${expectedUrl}`
 
       expect(openURLSpy).toHaveBeenNthCalledWith(
         1,

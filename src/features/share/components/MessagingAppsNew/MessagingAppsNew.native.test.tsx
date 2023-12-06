@@ -48,8 +48,9 @@ describe('<MessagingAppsNew />', () => {
     fireEvent.press(whatsappButton)
 
     expect(mockShareSingle).toHaveBeenCalledWith({
-      message: 'message',
+      message: 'message\u00a0:\n',
       social: Social.Whatsapp,
+      type: 'text',
       url: 'url&utm_source=WhatsApp',
     })
   })

@@ -2,7 +2,7 @@ import { Platform, Share, Linking } from 'react-native'
 import SocialShare, { Social } from 'react-native-share'
 
 import { share } from 'libs/share/shareBest'
-import { Network } from 'ui/components/ShareMessagingApp'
+import { Network } from 'libs/share/types'
 
 const mockOpenUrl = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
 
