@@ -5,7 +5,7 @@ import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import { useSafeState } from 'libs/hooks'
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
-import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import { storage } from 'libs/storage'
@@ -67,7 +67,7 @@ export const LocationWrapper = memo(function LocationWrapper({
 
   const triggerPositionUpdate = useCallback(async () => {
     try {
-      const newPosition = await getPosition()
+      const newPosition = await getGeolocPosition()
       setUserPosition(newPosition)
       setUserPositionError(null)
       return newPosition

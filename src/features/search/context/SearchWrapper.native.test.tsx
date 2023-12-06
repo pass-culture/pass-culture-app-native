@@ -10,7 +10,7 @@ import {
   LocationWrapper,
   useLocation,
 } from 'libs/location'
-import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { SuggestedPlace } from 'libs/place'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -18,8 +18,8 @@ jest.unmock('features/search/context/SearchWrapper')
 
 jest.unmock('libs/location')
 
-jest.mock('libs/location/geolocation/getGeolocPosition/getPosition')
-const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
 
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 
@@ -72,7 +72,7 @@ describe('SearchWrapper', () => {
   })
 
   it('should not update locationType with type geolocation when Location Context is changed (i.e from deeplink) and ENABLE_APP_LOCATION FF is false', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     useFeatureFlagSpy.mockReturnValueOnce(false)
     useFeatureFlagSpy.mockReturnValueOnce(false)
@@ -85,7 +85,7 @@ describe('SearchWrapper', () => {
   })
 
   it('should update locationType with type Around me when Location Context is switched to geolocation', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderDummyComponent()
 
@@ -103,7 +103,7 @@ describe('SearchWrapper', () => {
   })
 
   it('should not update locationType when searchState is set with a venue', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderDummyComponent()
 

@@ -23,7 +23,7 @@ const ERROR_MAPPING: Record<AgonTukPositionError, GeolocPositionError> = {
   [AgonTukPositionError.INTERNAL_ERROR]: GeolocPositionError.INTERNAL_ERROR,
 }
 
-export const getPosition = () =>
+export const getGeolocPosition = () =>
   new Promise<GeoCoordinates>((resolve, reject) => {
     AgonTukGeolocation.getCurrentPosition(
       (position) => {
