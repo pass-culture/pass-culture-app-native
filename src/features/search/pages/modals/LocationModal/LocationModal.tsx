@@ -125,13 +125,13 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { modal } = useTheme()
   const {
-    geolocPosition: position,
-    userPositionError: positionError,
+    geolocPosition,
+    geolocPositionError,
     permissionState,
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useLocation()
-  const isGeolocated = !!position
+  const isGeolocated = !!geolocPosition
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
 
   const {
@@ -315,11 +315,11 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     async (locationChoice: RadioButtonLocation) => {
       if (locationChoice === RadioButtonLocation.AROUND_ME) {
         const grantedButUnknownPosition =
-          position === null && permissionState === GeolocPermissionState.GRANTED
+          geolocPosition === null && permissionState === GeolocPermissionState.GRANTED
         if (grantedButUnknownPosition) {
           return
         }
-        if (position === null) {
+        if (geolocPosition === null) {
           if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
             showGeolocPermissionModal()
             return
@@ -348,7 +348,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     },
     [
       permissionState,
-      position,
+      geolocPosition,
       requestGeolocPermission,
       setValueWithValidation,
       showGeolocPermissionModal,
@@ -404,7 +404,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                         onSelect={() => onSelectLocation(item.label)}
                         isSelected={value === item.label}
                         label={
-                          item.label === RadioButtonLocation.EVERYWHERE && position === null
+                          item.label === RadioButtonLocation.EVERYWHERE && geolocPosition === null
                             ? RadioButtonLocation.NO_LOCATION
                             : item.label
                         }
@@ -464,8 +464,8 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                   ))}
                 </StyledVerticalUl>
                 <InputError
-                  visible={!!positionError}
-                  messageId={positionError?.message}
+                  visible={!!geolocPositionError}
+                  messageId={geolocPositionError?.message}
                   numberOfSpacesTop={1}
                 />
                 <GeolocationActivationModal
