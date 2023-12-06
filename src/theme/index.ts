@@ -272,6 +272,9 @@ export const theme = {
       secondaryWhite: {
         borderColor: ColorsEnum.GREY_LIGHT,
       },
+      secondaryBlack: {
+        borderColor: ColorsEnum.GREY_DARK,
+      },
     },
     disabled: {
       primary: {
@@ -293,6 +296,12 @@ export const theme = {
         borderColor: ColorsEnum.GREY_LIGHT,
         textColor: ColorsEnum.GREY_DARK,
         iconColor: ColorsEnum.GREY_MEDIUM,
+      },
+      secondaryBlack: {
+        backgroundColor: ColorsEnum.GREY_DARK,
+        borderColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.BLACK,
+        iconColor: ColorsEnum.GREY_DARK,
       },
       tertiary: {
         textColor: ColorsEnum.GREY_DARK,
@@ -377,6 +386,18 @@ export const theme = {
       borderColor: ColorsEnum.WHITE,
       borderWidth: getSpacing(0.5),
       outlineColor: ColorsEnum.WHITE,
+    },
+    secondaryBlack: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
+      loadingIconColor: ColorsEnum.GREY_LIGHT,
+      iconColor: ColorsEnum.BLACK,
+      iconSize: iconSizes.small,
+      textColor: ColorsEnum.BLACK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      borderColor: ColorsEnum.BLACK,
+      borderWidth: getSpacing(0.5),
+      outlineColor: ColorsEnum.BLACK,
     },
     tertiary: {
       marginLeft: 0,
