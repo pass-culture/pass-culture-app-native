@@ -22,6 +22,10 @@ import {
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 const LocationContext = React.createContext<ILocationContext>({
+  hasGeolocPosition: false,
+  place: null,
+  setPlace: () => {},
+  onModalHideRef: { current: undefined },
   geolocPosition: undefined,
   geolocPositionError: null,
   permissionState: undefined,
@@ -29,10 +33,6 @@ const LocationContext = React.createContext<ILocationContext>({
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
-  place: null,
-  setPlace: () => {},
-  onModalHideRef: { current: undefined },
-  hasGeolocPosition: false,
 })
 /* eslint-enable @typescript-eslint/no-empty-function */
 
