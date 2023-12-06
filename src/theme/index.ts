@@ -392,7 +392,7 @@ export const theme = {
       marginLeftWithIcon: getSpacing(2),
       loadingIconColor: ColorsEnum.GREY_LIGHT,
       iconColor: ColorsEnum.BLACK,
-      iconSize: iconSizes.small,
+      iconSize: iconSizes.smaller,
       textColor: ColorsEnum.BLACK,
       backgroundColor: ColorsEnum.TRANSPARENT,
       borderColor: ColorsEnum.BLACK,
