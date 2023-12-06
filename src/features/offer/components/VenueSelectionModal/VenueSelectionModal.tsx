@@ -8,8 +8,8 @@ import {
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
-import { GeolocPermissionState, useLocation } from 'libs/geolocation'
-import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
+import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocationActivationModal } from 'libs/location/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'

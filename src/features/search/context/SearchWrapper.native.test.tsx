@@ -9,8 +9,8 @@ import {
   GeolocPermissionState,
   LocationWrapper,
   useLocation,
-} from 'libs/geolocation'
-import { getPosition } from 'libs/geolocation/getPosition'
+} from 'libs/location'
+import { getPosition } from 'libs/location/getPosition'
 import { SuggestedPlace } from 'libs/place'
 import { act, fireEvent, render, screen } from 'tests/utils'
 

@@ -6,7 +6,7 @@ import { NativeCategoryValue } from 'features/search/components/NativeCategoryVa
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useDistance } from 'libs/geolocation/hooks/useDistance'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'

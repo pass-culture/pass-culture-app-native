@@ -12,7 +12,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
   Position,
-} from 'libs/geolocation'
+} from 'libs/location'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>

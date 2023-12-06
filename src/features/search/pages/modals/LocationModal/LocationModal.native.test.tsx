@@ -17,7 +17,7 @@ import {
   GeolocPermissionState,
   GeolocPositionError,
   Position,
-} from 'libs/geolocation'
+} from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'

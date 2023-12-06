@@ -2,7 +2,7 @@ import React from 'react'
 
 import { offerVenueResponseSnap as venue } from 'features/offer/fixtures/offerVenueReponse'
 import { mockedFullAddress as address } from 'libs/address/fixtures/mockedFormatFullAddress'
-import { WhereSection } from 'libs/geolocation/components/WhereSection'
+import { WhereSection } from 'libs/location/components/WhereSection'
 import { fireEvent, render, act, screen } from 'tests/utils'
 
 jest.mock('react-query')

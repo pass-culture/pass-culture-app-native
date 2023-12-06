@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen } from 'tests/utils'
 

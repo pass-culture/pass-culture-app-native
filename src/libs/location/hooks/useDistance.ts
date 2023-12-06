@@ -1,4 +1,4 @@
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { formatDistance } from 'libs/parsers'
 
 export const useDistance = (offerPosition: {

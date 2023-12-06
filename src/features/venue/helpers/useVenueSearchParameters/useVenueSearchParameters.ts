@@ -3,7 +3,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState, SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 
 export const useVenueSearchParameters = (venueId: number): SearchState => {
   const { userPosition: position } = useLocation()

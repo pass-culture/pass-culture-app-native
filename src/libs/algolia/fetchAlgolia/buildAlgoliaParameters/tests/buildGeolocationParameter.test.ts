@@ -5,7 +5,7 @@ import {
   computeAroundRadiusInMeters,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 describe('buildGeolocationParameter', () => {
   const mockedVenue: SearchQueryParameters['venue'] = {

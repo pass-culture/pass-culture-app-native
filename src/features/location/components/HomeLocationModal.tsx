@@ -5,7 +5,7 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState } from 'libs/location'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'

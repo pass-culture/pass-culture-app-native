@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { GeolocPermissionState, useLocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/location'
 import {
   requestGeolocPermission,
   onPressGeolocPermissionModalButton,
-} from 'libs/geolocation/__mocks__'
+} from 'libs/location/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 

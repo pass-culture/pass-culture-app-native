@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useLocation, GeolocPermissionState } from 'libs/geolocation'
+import { useLocation, GeolocPermissionState } from 'libs/location'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'

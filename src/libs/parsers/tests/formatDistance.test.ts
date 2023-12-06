@@ -1,4 +1,4 @@
-import { EiffelTourCoordinates } from 'libs/geolocation/tests.utils'
+import { EiffelTourCoordinates } from 'libs/location/tests.utils'
 
 import { getHumanizeRelativeDistance, formatDistance } from '../formatDistance'
 

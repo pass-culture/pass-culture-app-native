@@ -2,7 +2,7 @@ import React from 'react'
 
 import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 import { act, render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'

@@ -10,9 +10,9 @@ import * as useSearch from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
-import { getPosition } from 'libs/geolocation/getPosition'
-import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
+import { getPosition } from 'libs/location/getPosition'
+import { requestGeolocPermission } from 'libs/location/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import {
   act,

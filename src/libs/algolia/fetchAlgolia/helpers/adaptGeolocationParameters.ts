@@ -1,6 +1,6 @@
 import { LocationType } from 'features/search/enums'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 export const adaptGeolocationParameters = (
   geolocation: Position,

@@ -14,8 +14,8 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
+import { useLocation } from 'libs/location'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,

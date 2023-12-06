@@ -5,7 +5,7 @@ import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationW
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'

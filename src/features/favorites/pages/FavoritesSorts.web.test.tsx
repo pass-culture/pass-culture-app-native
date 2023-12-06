@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { GeolocPermissionState, GeolocationError, GeoCoordinates, Position } from 'libs/geolocation'
+import { GeolocPermissionState, GeolocationError, GeoCoordinates, Position } from 'libs/location'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>

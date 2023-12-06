@@ -12,7 +12,7 @@ import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNa
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'

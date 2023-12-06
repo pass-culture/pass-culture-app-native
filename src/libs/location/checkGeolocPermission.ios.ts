@@ -1,6 +1,6 @@
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions'
 
-import { ReadGeolocPermission } from 'libs/geolocation/types'
+import { ReadGeolocPermission } from 'libs/location/types'
 
 import { GeolocPermissionState } from './enums'
 

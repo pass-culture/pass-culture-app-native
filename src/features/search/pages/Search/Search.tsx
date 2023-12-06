@@ -24,7 +24,7 @@ import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurr
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'

@@ -2,7 +2,7 @@
 import { Platform } from 'react-native'
 import { checkMultiple, Permission, PERMISSIONS } from 'react-native-permissions'
 
-import { checkGeolocPermission } from 'libs/geolocation/checkGeolocPermission.android'
+import { checkGeolocPermission } from 'libs/location/checkGeolocPermission.android'
 
 import { GeolocPermissionState } from './enums'
 

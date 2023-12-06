@@ -1,5 +1,5 @@
 import { LocationCircleArea } from 'features/home/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { computeDistanceInMeters } from 'libs/parsers'
 
 export const getLocalizationCompliance = (

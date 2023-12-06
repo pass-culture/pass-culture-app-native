@@ -1,5 +1,5 @@
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
-import { Position, useLocation } from 'libs/geolocation'
+import { Position, useLocation } from 'libs/location'
 
 type useLocationForLocationWidgetDesktopHook = {
   title: string

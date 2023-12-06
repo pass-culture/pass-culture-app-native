@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()

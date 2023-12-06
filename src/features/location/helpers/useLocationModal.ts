@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { LocationMode } from 'features/location/enums'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 
 export const useLocationModal = (visible: boolean) => {
