@@ -12,9 +12,9 @@ import {
   venueWithNoAddressResponseSnap,
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
+import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 

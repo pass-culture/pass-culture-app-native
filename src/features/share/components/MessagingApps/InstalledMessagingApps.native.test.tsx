@@ -4,8 +4,8 @@ import Share, { Social } from 'react-native-share'
 
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { eventMonitoring } from 'libs/monitoring'
+import { Network } from 'libs/share/types'
 import { render, screen, act, fireEvent } from 'tests/utils'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 import { InstalledMessagingApps } from './InstalledMessagingApps'
 
@@ -60,7 +60,7 @@ describe('<InstalledMessagingApps />', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
       message: encodeURIComponent(
-        'Retrouve cette offre sur le passCulture\nhttps://passculture.app/accueil?utm_gen=product&utm_campaign=share_offer&utm_source=Instagram'
+        'Retrouve cette offre sur le passCulture\u00a0:\nhttps://passculture.app/accueil?utm_gen=product&utm_campaign=share_offer&utm_source=Instagram'
       ),
       type: 'text',
       url: undefined,
@@ -77,7 +77,8 @@ describe('<InstalledMessagingApps />', () => {
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Whatsapp,
-      message: 'Retrouve cette offre sur le passCulture',
+      message: 'Retrouve cette offre sur le passCulture\u00a0:\n',
+      type: 'text',
       url: 'https://passculture.app/accueil?utm_gen=product&utm_campaign=share_offer&utm_source=WhatsApp',
     })
   })

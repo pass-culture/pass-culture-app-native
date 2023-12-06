@@ -1,6 +1,6 @@
 import { Linking, Platform } from 'react-native'
 
-import { Network } from 'ui/components/ShareMessagingApp'
+import { Network } from 'libs/share/types'
 
 const canOpenURL = async (url: string): Promise<boolean> =>
   Platform.OS === 'web' || (await Linking.canOpenURL(url))

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Network } from 'libs/share/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { IconWithCaption } from 'ui/components/IconWithCaption'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -37,18 +38,6 @@ export const ShareMessagingApp: React.FC<ShareMessagingAppProps> = ({
       <IconWithCaption Icon={StyledIcon} caption={caption + LINE_BREAK + network} />
     </MessagingAppButtonContainer>
   )
-}
-
-export enum Network {
-  googleMessages = 'SMS',
-  imessage = 'iMessage',
-  instagram = 'Instagram',
-  messenger = 'Messenger',
-  snapchat = 'Snapchat',
-  telegram = 'Telegram',
-  twitter = 'Twitter',
-  viber = 'Viber',
-  whatsapp = 'WhatsApp',
 }
 
 const mapNetworkToRoundIcon: Record<Network, React.FC<AccessibleIcon>> = {

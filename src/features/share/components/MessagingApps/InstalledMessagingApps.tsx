@@ -4,8 +4,7 @@ import { Social } from 'react-native-share'
 import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { MessagingAppButton } from 'features/share/components/MessagingApps/MessagingAppButton'
 import { eventMonitoring } from 'libs/monitoring'
-import { ShareContent } from 'libs/share/types'
-import { Network } from 'ui/components/ShareMessagingApp'
+import { Network, ShareContent } from 'libs/share/types'
 
 type Props = {
   shareContent: ShareContent
