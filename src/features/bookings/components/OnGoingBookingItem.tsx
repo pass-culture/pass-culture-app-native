@@ -10,8 +10,8 @@ import {
   isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
-import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { getShareOffer } from 'features/share/helpers/getShareOfferBest'
+import { WebShareModal } from 'features/share/pages/WebShareModalBest'
 import { analytics } from 'libs/analytics'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -50,9 +50,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
   } = useModal(false)
 
   const { share: shareOffer, shareContent } = getShareOffer({
-    offerId: stock.offer.id,
-    offerName: stock.offer.name,
-    venueName: stock.offer.venue.name,
+    offer: stock.offer,
     utmMedium: 'booking',
   })
 

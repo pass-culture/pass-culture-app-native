@@ -5,8 +5,8 @@ import { BookingCancellationReasons } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
-import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { getShareOffer } from 'features/share/helpers/getShareOfferBest'
+import { WebShareModal } from 'features/share/pages/WebShareModalBest'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -78,9 +78,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   } = useModal(false)
 
   const { share: shareOffer, shareContent } = getShareOffer({
-    offerId: stock.offer.id,
-    offerName: stock.offer.name,
-    venueName: stock.offer.venue.name,
+    offer: stock.offer,
     utmMedium: 'ended_booking',
   })
 
