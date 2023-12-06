@@ -44,7 +44,7 @@ export const SearchLocationModal = ({
   showVenueModal,
 }: LocationModalProps) => {
   const {
-    isGeolocated,
+    hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
     selectedPlace,
@@ -231,7 +231,7 @@ export const SearchLocationModal = ({
           icon={PositionFilled}
           color={geolocationModeColor}
           title="Utiliser ma position actuelle"
-          subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
+          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
         {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
           <React.Fragment>

@@ -90,7 +90,6 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: Position = DEFAULT_POSITION
 let mockHasGeolocPosition = false
-
 const mockPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',

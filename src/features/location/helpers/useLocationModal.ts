@@ -8,7 +8,7 @@ import { SuggestedPlace } from 'libs/place'
 export const useLocationModal = (visible: boolean) => {
   const theme = useTheme()
   const {
-    isGeolocated,
+    hasGeolocPosition,
     place,
     setPlace: setPlaceGlobally,
     onModalHideRef,
@@ -19,7 +19,7 @@ export const useLocationModal = (visible: boolean) => {
 
   const [placeQuery, setPlaceQuery] = useState('')
   const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null)
-  const defaultLocationMode = isGeolocated ? LocationMode.GEOLOCATION : LocationMode.NONE
+  const defaultLocationMode = hasGeolocPosition ? LocationMode.GEOLOCATION : LocationMode.NONE
 
   const [selectedLocationMode, setSelectedLocationMode] =
     useState<LocationMode>(defaultLocationMode)
@@ -66,7 +66,7 @@ export const useLocationModal = (visible: boolean) => {
   }, [visible, initializeLocationMode])
 
   return {
-    isGeolocated,
+    hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
     selectedPlace,

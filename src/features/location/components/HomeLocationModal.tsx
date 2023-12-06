@@ -26,7 +26,7 @@ const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
 export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const {
-    isGeolocated,
+    hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
     selectedPlace,
@@ -113,7 +113,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
           icon={PositionFilled}
           color={geolocationModeColor}
           title="Utiliser ma position actuelle"
-          subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
+          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />

@@ -22,7 +22,7 @@ const locationContext: ILocationContext = {
   triggerPositionUpdate,
   showGeolocPermissionModal,
   onPressGeolocPermissionModalButton,
-  isGeolocated: true,
+  hasGeolocPosition: true,
   onModalHideRef: { current: undefined },
   place: null,
   setPlace,
