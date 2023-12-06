@@ -74,7 +74,7 @@ describe('useFilterCount', () => {
     const placeSelected: SearchState = {
       ...initialSearchState,
       locationFilter: {
-        locationType: LocationType.PLACE,
+        locationType: LocationType.AROUND_PLACE,
         place: Kourou,
         aroundRadius: 20,
       },

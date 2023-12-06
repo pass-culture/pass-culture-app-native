@@ -356,7 +356,7 @@ describe('[Analytics utils]', () => {
 
     it('should return location type and the name of the place in a string when type is PLACE', () => {
       const placeType: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationType.AROUND_PLACE,
         place: {
           label: 'Rue de la Paix, Paris',
           info: 'Paris',
@@ -371,13 +371,13 @@ describe('[Analytics utils]', () => {
       const locationFilterParam = buildLocationFilterParam(placeTypeSearchState)
 
       expect(locationFilterParam).toEqual(
-        JSON.stringify({ locationType: LocationType.PLACE, label: 'Rue de la Paix, Paris' })
+        JSON.stringify({ locationType: LocationType.AROUND_PLACE, label: 'Rue de la Paix, Paris' })
       )
     })
 
     it('should return location type and the truncated name of the place in a string when type is PLACE', () => {
       const placeType: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationType.AROUND_PLACE,
         place: {
           label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Intérêt, Paris',
           info: 'Paris',
@@ -393,7 +393,7 @@ describe('[Analytics utils]', () => {
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Int',
         })
       )

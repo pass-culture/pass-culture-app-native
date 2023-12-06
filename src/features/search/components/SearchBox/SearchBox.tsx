@@ -285,7 +285,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}
-              numberOfLinesForLocation={locationType === LocationType.PLACE ? 1 : 2}
+              numberOfLinesForLocation={locationType === LocationType.AROUND_PLACE ? 1 : 2}
               disableInputClearButton={disableInputClearButton}
             />
           </FlexView>

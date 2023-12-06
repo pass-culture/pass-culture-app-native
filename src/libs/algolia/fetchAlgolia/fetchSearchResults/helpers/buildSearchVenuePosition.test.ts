@@ -24,7 +24,7 @@ const aroundMeFilter: LocationFilter = {
 }
 const everywhereFilter: LocationFilter = { locationType: LocationType.EVERYWHERE }
 const placeFilter: LocationFilter = {
-  locationType: LocationType.PLACE,
+  locationType: LocationType.AROUND_PLACE,
   place: Kourou,
   aroundRadius: MAX_RADIUS,
 }

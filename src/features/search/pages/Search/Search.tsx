@@ -72,7 +72,7 @@ export function Search() {
   }, [dispatch, params])
 
   useEffect(() => {
-    if (params?.locationFilter?.locationType === LocationType.PLACE) {
+    if (params?.locationFilter?.locationType === LocationType.AROUND_PLACE) {
       setPlace(params.locationFilter.place)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -33,7 +33,7 @@ interface SelectedDate {
 export type LocationFilter =
   | { locationType: LocationType.EVERYWHERE }
   | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
+  | { locationType: LocationType.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
 
 export enum SearchView {
   Landing = 'Landing',

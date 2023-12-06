@@ -74,7 +74,7 @@ export const SearchLocationModal = ({
       : DEFAULT_RADIUS
 
   const getInitialRadiusPlaceValue =
-    searchState.locationFilter.locationType === LocationType.PLACE
+    searchState.locationFilter.locationType === LocationType.AROUND_PLACE
       ? searchState.locationFilter.aroundRadius
       : DEFAULT_RADIUS
 
@@ -124,7 +124,7 @@ export const SearchLocationModal = ({
         payload: {
           locationFilter: {
             place: selectedPlace,
-            locationType: LocationType.PLACE,
+            locationType: LocationType.AROUND_PLACE,
             aroundRadius: aroundRadiusPlace,
           },
           includeDigitalOffers,
@@ -136,7 +136,7 @@ export const SearchLocationModal = ({
           ...searchState,
           locationFilter: {
             place: selectedPlace,
-            locationType: LocationType.PLACE,
+            locationType: LocationType.AROUND_PLACE,
             aroundRadius: aroundRadiusPlace,
           },
           includeDigitalOffers,

@@ -299,7 +299,7 @@ describe('fetchSearchResults', () => {
       parameters: {
         query,
         locationFilter: {
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           place: kourou,
           aroundRadius: MAX_RADIUS,
         },
@@ -376,7 +376,7 @@ describe('fetchSearchResults', () => {
       parameters: {
         query,
         locationFilter: {
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           place: kourou,
           aroundRadius: MAX_RADIUS,
         },

@@ -123,13 +123,17 @@ describe('Search reducer', () => {
     const newState = searchReducer(
       {
         ...state,
-        locationFilter: { locationType: LocationType.PLACE, aroundRadius: 10, place: Kourou },
+        locationFilter: {
+          locationType: LocationType.AROUND_PLACE,
+          aroundRadius: 10,
+          place: Kourou,
+        },
       },
       action
     )
 
     expect(newState.locationFilter).toStrictEqual({
-      locationType: LocationType.PLACE,
+      locationType: LocationType.AROUND_PLACE,
       aroundRadius: 30,
       place: Kourou,
     })
@@ -332,7 +336,11 @@ describe('Search reducer', () => {
     const newState = searchReducer(
       {
         ...state,
-        locationFilter: { aroundRadius: 20, locationType: LocationType.PLACE, place: Kourou },
+        locationFilter: {
+          aroundRadius: 20,
+          locationType: LocationType.AROUND_PLACE,
+          place: Kourou,
+        },
       },
       { type: 'SET_LOCATION_EVERYWHERE' }
     )
@@ -347,7 +355,7 @@ describe('Search reducer', () => {
     })
 
     expect(newState.locationFilter).toStrictEqual({
-      locationType: LocationType.PLACE,
+      locationType: LocationType.AROUND_PLACE,
       place: Kourou,
       aroundRadius: 100,
     })

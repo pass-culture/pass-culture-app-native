@@ -29,7 +29,7 @@ export const buildGeolocationParameter = ({
 
   if (venue) return
 
-  if (locationFilter.locationType === LocationType.PLACE) {
+  if (locationFilter.locationType === LocationType.AROUND_PLACE) {
     if (!locationFilter.place.geolocation) return
     return {
       aroundLatLng: `${locationFilter.place.geolocation.latitude}, ${locationFilter.place.geolocation.longitude}`,
