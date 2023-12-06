@@ -38,7 +38,7 @@ export const SearchWrapper = memo(function SearchWrapper({
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
     const includeDigitalOffers = searchState.includeDigitalOffers ?? false
-    if (locationType === LocationType.PLACE || locationType === LocationType.AROUND_ME) {
+    if (locationType === LocationType.AROUND_PLACE || locationType === LocationType.AROUND_ME) {
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
 
@@ -50,7 +50,7 @@ export const SearchWrapper = memo(function SearchWrapper({
         payload: {
           locationFilter: {
             place: place,
-            locationType: LocationType.PLACE,
+            locationType: LocationType.AROUND_PLACE,
             aroundRadius,
           },
           includeDigitalOffers,

@@ -227,7 +227,7 @@ describe('<Search/>', () => {
     useRoute.mockReturnValueOnce({
       params: {
         locationFilter: {
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           place: mockedPlace,
         },
       },

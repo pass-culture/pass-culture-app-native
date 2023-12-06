@@ -482,12 +482,12 @@ describe('SearchBox component', () => {
   )
 
   it.each`
-    locationType               | locationFilter                                                                   | position            | locationButtonLabel
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
-    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    locationType                 | locationFilter                                                                          | position            | locationButtonLabel
+    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${null}             | ${'Me localiser'}
+    ${LocationType.AROUND_ME}    | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
   `(
     'should display $locationButtonLabel in location button label when location type is $locationType and position is $position',
     async ({
@@ -534,12 +534,12 @@ describe('SearchBox component', () => {
   })
 
   it.each`
-    locationType               | locationFilter                                                                   | position            | locationSearchWidgetLabel
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
-    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    locationType                 | locationFilter                                                                          | position            | locationSearchWidgetLabel
+    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${null}             | ${'Me localiser'}
+    ${LocationType.AROUND_ME}    | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
   `(
     'should display $locationSearchWidgetLabel in location search widget when location type is $locationType and position is $position',
     async ({

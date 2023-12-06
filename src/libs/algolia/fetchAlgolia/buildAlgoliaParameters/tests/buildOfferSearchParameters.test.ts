@@ -83,7 +83,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return parameters with geolocation filter when locationFilter is specified', () => {
     const locationFilter = {
-      locationType: LocationType.PLACE,
+      locationType: LocationType.AROUND_PLACE,
       place: {
         label: 'Paris',
         info: 'infoPlace',

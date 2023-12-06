@@ -30,12 +30,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 describe('useLocationChoice', () => {
   it.each`
-    locationType               | locationFilter                                                                   | position            | hasPositionValue
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${true}
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${false}
-    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${true}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${true}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${true}
+    locationType                 | locationFilter                                                                          | position            | hasPositionValue
+    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${true}
+    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${null}             | ${false}
+    ${LocationType.AROUND_ME}    | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${true}
+    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${true}
+    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${true}
   `(
     'should return $hasPositionValue when location type is $locationType and position is $position',
     ({

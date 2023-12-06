@@ -22,7 +22,7 @@ describe('getCurrentVenuesIndex', () => {
     expect(result).toEqual(venuesIndexSearch)
   })
 
-  it.each([LocationType.AROUND_ME, LocationType.PLACE])(
+  it.each([LocationType.AROUND_ME, LocationType.AROUND_PLACE])(
     'should return algoliaVenuesIndexPlaylistSearch when locationType is %s',
     (locationType) => {
       const result = getCurrentVenuesIndex({ locationType })

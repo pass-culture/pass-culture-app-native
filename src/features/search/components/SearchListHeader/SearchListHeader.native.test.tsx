@@ -263,11 +263,11 @@ describe('<SearchListHeader />', () => {
     })
 
     it.each`
-      locationFilter                                                                   | isGeolocated | locationType
-      ${undefined}                                                                     | ${false}     | ${undefined}
-      ${{ locationType: LocationType.EVERYWHERE }}                                     | ${false}     | ${LocationType.EVERYWHERE}
-      ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${true}      | ${LocationType.AROUND_ME}
-      ${{ locationType: LocationType.PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationType.PLACE}
+      locationFilter                                                                          | isGeolocated | locationType
+      ${undefined}                                                                            | ${false}     | ${undefined}
+      ${{ locationType: LocationType.EVERYWHERE }}                                            | ${false}     | ${LocationType.EVERYWHERE}
+      ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}      | ${LocationType.AROUND_ME}
+      ${{ locationType: LocationType.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationType.AROUND_PLACE}
     `(
       'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
       ({ locationFilter, isGeolocated }) => {

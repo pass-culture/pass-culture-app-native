@@ -10,7 +10,7 @@ import { BicolorLocationPointer as LocationPointer } from 'ui/svg/icons/BicolorL
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export const useLocationChoice = (
-  section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
+  section: LocationType.AROUND_PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
   const { searchState } = useSearch()
   const { userPosition: position } = useLocation()
@@ -36,13 +36,13 @@ export const useLocationChoice = (
   }
 
   const label =
-    searchState.locationFilter.locationType === LocationType.PLACE
+    searchState.locationFilter.locationType === LocationType.AROUND_PLACE
       ? searchState.locationFilter.place.label
       : 'Choisir un lieu'
 
   return {
     Icon: LocationPointer,
     label,
-    isSelected: searchState.locationFilter.locationType === LocationType.PLACE,
+    isSelected: searchState.locationFilter.locationType === LocationType.AROUND_PLACE,
   }
 }

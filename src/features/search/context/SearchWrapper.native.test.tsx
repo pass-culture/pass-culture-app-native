@@ -53,7 +53,7 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    expect(screen.getByText(LocationType.PLACE)).toBeOnTheScreen()
+    expect(screen.getByText(LocationType.AROUND_PLACE)).toBeOnTheScreen()
   })
 
   it('should not update locationType with type Place when Location Context is changed and ENABLE_APP_LOCATION FF is false', async () => {
@@ -68,7 +68,7 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    expect(screen.queryByText(LocationType.PLACE)).not.toBeOnTheScreen()
+    expect(screen.queryByText(LocationType.AROUND_PLACE)).not.toBeOnTheScreen()
   })
 
   it('should not update locationType with type geolocation when Location Context is changed (i.e from deeplink) and ENABLE_APP_LOCATION FF is false', async () => {
@@ -93,7 +93,7 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    screen.getByText(LocationType.PLACE)
+    screen.getByText(LocationType.AROUND_PLACE)
 
     await act(async () => {
       fireEvent.press(screen.getByText('unSetPlace'))
@@ -172,7 +172,7 @@ const DummyComponent = () => {
             type: 'SET_LOCATION_FILTERS',
             payload: {
               locationFilter: {
-                locationType: LocationType.PLACE,
+                locationType: LocationType.AROUND_PLACE,
                 place: mockPlace,
                 aroundRadius: 50,
               },

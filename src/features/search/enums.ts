@@ -18,7 +18,7 @@ export enum DATE_FILTER_OPTIONS {
 export enum LocationType {
   AROUND_ME = 'AROUND_ME',
   EVERYWHERE = 'EVERYWHERE',
-  PLACE = 'PLACE',
+  AROUND_PLACE = 'AROUND_PLACE',
 }
 
 export enum CategoriesModalView {

@@ -27,17 +27,17 @@ describe('useLocationType', () => {
     }
     const { section } = useLocationType(searchState)
 
-    expect(section).toBe(LocationType.PLACE)
+    expect(section).toBe(LocationType.AROUND_PLACE)
   })
 
   it('should return PLACE location type section when location type is PLACE', () => {
     const searchState: SearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: 100 },
+      locationFilter: { locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: 100 },
     }
     const { section } = useLocationType(searchState)
 
-    expect(section).toBe(LocationType.PLACE)
+    expect(section).toBe(LocationType.AROUND_PLACE)
   })
 
   it.each`

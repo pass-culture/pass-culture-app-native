@@ -15,7 +15,7 @@ describe('buildGeolocationParameter', () => {
   }
 
   const locationFilterPlace: SearchQueryParameters['locationFilter'] = {
-    locationType: LocationType.PLACE,
+    locationType: LocationType.AROUND_PLACE,
     place: {
       label: 'Place',
       info: 'infoPlace',
@@ -125,19 +125,19 @@ describe('computeAroundRadiusInMeters', () => {
   })
 
   it('should return UNLIMITED_RADIUS when aroundRadius is null', () => {
-    const result = computeAroundRadiusInMeters(null, LocationType.PLACE)
+    const result = computeAroundRadiusInMeters(null, LocationType.AROUND_PLACE)
 
     expect(result).toEqual(RADIUS_FILTERS.UNLIMITED_RADIUS)
   })
 
   it('should return RADIUS_IN_METERS_FOR_NO_OFFERS when aroundRadius is 0', () => {
-    const result = computeAroundRadiusInMeters(0, LocationType.PLACE)
+    const result = computeAroundRadiusInMeters(0, LocationType.AROUND_PLACE)
 
     expect(result).toEqual(RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS)
   })
 
   it('should compute radius in meters for non-zero aroundRadius', () => {
-    const result = computeAroundRadiusInMeters(5, LocationType.PLACE)
+    const result = computeAroundRadiusInMeters(5, LocationType.AROUND_PLACE)
 
     expect(result).toEqual(5000)
   })

@@ -67,7 +67,7 @@ export const SearchFilter: React.FC = () => {
           : locationFilter.aroundRadius
       if (isCustomPosition && place) {
         return {
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           place,
           aroundRadius: aroundRadius ?? DEFAULT_RADIUS,
         }

@@ -40,7 +40,10 @@ export function buildSearchVenuePosition(
     }
   }
 
-  if (locationFilter?.locationType === LocationType.PLACE && locationFilter?.place?.geolocation) {
+  if (
+    locationFilter?.locationType === LocationType.AROUND_PLACE &&
+    locationFilter?.place?.geolocation
+  ) {
     const placePosition = locationFilter?.place?.geolocation
 
     searchVenuePosition = {

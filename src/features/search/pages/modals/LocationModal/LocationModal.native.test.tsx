@@ -162,10 +162,10 @@ describe('<LocationModal/>', () => {
   })
 
   it.each`
-    locationFilter                                                                   | label                                        | locationType
-    ${{ locationType: LocationType.EVERYWHERE }}                                     | ${RadioButtonLocation.EVERYWHERE}            | ${LocationType.EVERYWHERE}
-    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${RadioButtonLocation.AROUND_ME}             | ${LocationType.AROUND_ME}
-    ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE}
+    locationFilter                                                                          | label                                        | locationType
+    ${{ locationType: LocationType.EVERYWHERE }}                                            | ${RadioButtonLocation.EVERYWHERE}            | ${LocationType.EVERYWHERE}
+    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${RadioButtonLocation.AROUND_ME}             | ${LocationType.AROUND_ME}
+    ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.AROUND_PLACE}
   `(
     'should select $label radio button by default when location type search state is $locationType',
     async ({
@@ -405,7 +405,11 @@ describe('<LocationModal/>', () => {
     it('should reset search input place or venue when pressing reset button', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: 10 },
+        locationFilter: {
+          locationType: LocationType.AROUND_PLACE,
+          place: Kourou,
+          aroundRadius: 10,
+        },
       }
       renderLocationModal()
 
@@ -467,7 +471,7 @@ describe('<LocationModal/>', () => {
   describe('should preserve', () => {
     it('the selected place when closing the modal', async () => {
       const locationFilter: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationType.AROUND_PLACE,
         place: Kourou,
         aroundRadius: 10,
       }
@@ -777,7 +781,7 @@ describe('<LocationModal/>', () => {
     //ICI
     it('should log ChangeSearchLocation event and navigate with place location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
       const locationFilter: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationType.AROUND_PLACE,
         place: mockPlaces[0],
         aroundRadius: MAX_RADIUS,
       }

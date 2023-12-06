@@ -68,7 +68,7 @@ describe('useLocationChoice', () => {
       ...initialSearchState,
       venue,
     }
-    const { Icon, label, isSelected } = useLocationChoice(LocationType.PLACE)
+    const { Icon, label, isSelected } = useLocationChoice(LocationType.AROUND_PLACE)
 
     expect(Icon).toEqual(LocationBuilding)
     expect(label).toEqual(venue.label)
@@ -78,9 +78,13 @@ describe('useLocationChoice', () => {
   it('should return an object with LocationPointer icon, name place label and isSelected boolean when LocationType is PLACE with place', () => {
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS },
+      locationFilter: {
+        locationType: LocationType.AROUND_PLACE,
+        place: Kourou,
+        aroundRadius: MAX_RADIUS,
+      },
     }
-    const { Icon, label, isSelected } = useLocationChoice(LocationType.PLACE)
+    const { Icon, label, isSelected } = useLocationChoice(LocationType.AROUND_PLACE)
 
     expect(Icon).toEqual(LocationPointer)
     expect(label).toEqual(Kourou.label)

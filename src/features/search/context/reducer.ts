@@ -143,7 +143,7 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         locationFilter: {
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           place: action.payload.place,
           aroundRadius: action.payload.aroundRadius ?? MAX_RADIUS,
         },

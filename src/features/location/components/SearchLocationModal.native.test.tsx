@@ -192,7 +192,7 @@ describe('SearchLocationModal', () => {
         ...mockSearchState,
         locationFilter: {
           place: mockPlaces[0],
-          locationType: LocationType.PLACE,
+          locationType: LocationType.AROUND_PLACE,
           aroundRadius: DEFAULT_RADIUS,
         },
         includeDigitalOffers: false,
@@ -266,7 +266,7 @@ describe('SearchLocationModal', () => {
           includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockRadiusPlace,
-            locationType: LocationType.PLACE,
+            locationType: LocationType.AROUND_PLACE,
             place: mockPlaces[0],
           },
         },
@@ -280,7 +280,7 @@ describe('SearchLocationModal', () => {
           ...initialSearchState,
           locationFilter: {
             place: mockPlaces[0],
-            locationType: LocationType.PLACE,
+            locationType: LocationType.AROUND_PLACE,
             aroundRadius: mockRadiusPlace,
           },
         },

@@ -85,7 +85,7 @@ const getLocationChoice = (searchState: SearchState) => {
 const getPlaceOrVenue = (searchState: SearchState) => {
   if (searchState.venue) {
     return searchState.venue
-  } else if (searchState.locationFilter.locationType === LocationType.PLACE) {
+  } else if (searchState.locationFilter.locationType === LocationType.AROUND_PLACE) {
     return searchState.locationFilter.place
   } else {
     return undefined
@@ -216,7 +216,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
-              locationType: LocationType.PLACE,
+              locationType: LocationType.AROUND_PLACE,
               place: selectedPlaceOrVenue as SuggestedPlace,
               aroundRadius: validAroundRadius,
             },

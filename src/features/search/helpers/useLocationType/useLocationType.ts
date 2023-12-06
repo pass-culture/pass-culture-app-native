@@ -6,7 +6,7 @@ export function useLocationType(searchState: SearchState) {
 
   const { locationType } = locationFilter
 
-  const section = venue ? LocationType.PLACE : locationType
+  const section = venue ? LocationType.AROUND_PLACE : locationType
 
   return { locationType, section }
 }

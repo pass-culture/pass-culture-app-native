@@ -52,10 +52,12 @@ export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_
 
 export const buildLocationFilterParam = (searchState: SearchState) => {
   const { locationFilter, venue } = searchState
-  if (locationFilter.locationType === LocationType.PLACE || venue) {
+  if (locationFilter.locationType === LocationType.AROUND_PLACE || venue) {
     const stateWithLocationType = {
       locationType:
-        locationFilter.locationType === LocationType.PLACE ? locationFilter.locationType : 'VENUE',
+        locationFilter.locationType === LocationType.AROUND_PLACE
+          ? locationFilter.locationType
+          : 'VENUE',
     }
     const maxLabelLength =
       STRING_VALUE_MAX_LENGTH -
@@ -64,7 +66,7 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
     const customLocationFilter = {
       ...stateWithLocationType,
       label:
-        locationFilter.locationType === LocationType.PLACE
+        locationFilter.locationType === LocationType.AROUND_PLACE
           ? locationFilter.place.label.slice(0, maxLabelLength)
           : venue?.label.slice(0, maxLabelLength),
     }
