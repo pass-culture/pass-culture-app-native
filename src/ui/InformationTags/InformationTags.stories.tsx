@@ -2,16 +2,16 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { OfferExtraData } from 'api/gen'
-import { OfferTags } from 'features/offerv2/components/OfferTags/OfferTags'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
+import { InformationTags } from 'ui/InformationTags/InformationTags'
 
-const meta: ComponentMeta<typeof OfferTags> = {
-  title: 'features/offer/OfferTags',
-  component: OfferTags,
+const meta: ComponentMeta<typeof InformationTags> = {
+  title: 'ui/InformationTags',
+  component: InformationTags,
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferTags> = (props) => <OfferTags {...props} />
+const Template: ComponentStory<typeof InformationTags> = (props) => <InformationTags {...props} />
 
 const tagsList = [
   'vinyle',
