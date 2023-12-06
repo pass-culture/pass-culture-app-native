@@ -34,7 +34,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
-  const { isGeolocated, userPosition, place } = useLocation()
+  const { isGeolocated, geolocPosition, place } = useLocation()
   const {
     isTooltipVisible,
     hideTooltip,
@@ -44,7 +44,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     enableTooltip,
   } = useLocationWidgetTooltip(screenOrigin)
 
-  const locationTitle = getLocationTitle(place, userPosition)
+  const locationTitle = getLocationTitle(place, geolocPosition)
 
   const {
     visible: locationModalVisible,

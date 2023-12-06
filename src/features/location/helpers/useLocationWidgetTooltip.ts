@@ -19,7 +19,7 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 
-  const { userPosition } = useLocation()
+  const { geolocPosition } = useLocation()
 
   const enableTooltip = screenOrigin === ScreenOrigin.HOME
 
@@ -47,7 +47,7 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
      * This condition allows that when the location is retrieved,
      * the tooltip is directly hidden
      */
-    if (userPosition) {
+    if (geolocPosition) {
       hideTooltip()
       return
     }
@@ -58,7 +58,7 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
       const timesLocationTooltipHasBeenDisplayed = Number(
         await storage.readString('times_location_tooltip_has_been_displayed')
       )
-      setIsTooltipVisible(timesLocationTooltipHasBeenDisplayed < 1 || !userPosition)
+      setIsTooltipVisible(timesLocationTooltipHasBeenDisplayed < 1 || !geolocPosition)
       await storage.saveString(
         'times_location_tooltip_has_been_displayed',
         String(timesLocationTooltipHasBeenDisplayed + 1)
@@ -73,7 +73,7 @@ export const useLocationWidgetTooltip = (screenOrigin: ScreenOrigin) => {
       clearTimeout(timeoutOff)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
-  }, [isNativeSplashScreenHidden, userPosition])
+  }, [isNativeSplashScreenHidden, geolocPosition])
 
   return {
     isTooltipVisible,

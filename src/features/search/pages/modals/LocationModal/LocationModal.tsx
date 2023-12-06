@@ -125,7 +125,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { modal } = useTheme()
   const {
-    userPosition: position,
+    geolocPosition: position,
     userPositionError: positionError,
     permissionState,
     requestGeolocPermission,

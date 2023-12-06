@@ -23,7 +23,7 @@ const UNDEFINED_OFFER_POSITION = {
 describe('useDistance()', () => {
   it('should call useLocation and formatDistance when geolocation is on', () => {
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseGeolocation.mockReturnValue({ userPosition: DEFAULT_POSITION } as ILocationContext)
+    mockUseGeolocation.mockReturnValue({ geolocPosition: DEFAULT_POSITION } as ILocationContext)
     useDistance(OFFER_POSITION)
 
     expect(formatDistance).toHaveBeenCalledWith(OFFER_POSITION, DEFAULT_POSITION)
@@ -32,7 +32,7 @@ describe('useDistance()', () => {
   it('should call useLocation and formatDistance when geolocation is off but user set a custom position', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseGeolocation.mockReturnValue({
-      userPosition: null,
+      geolocPosition: null,
       place: DEFAULT_PLACE,
     } as ILocationContext)
     useDistance(OFFER_POSITION)
@@ -43,7 +43,7 @@ describe('useDistance()', () => {
   it('should return undefined when no offerPosition given', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseGeolocation.mockReturnValue({
-      userPosition: DEFAULT_POSITION,
+      geolocPosition: DEFAULT_POSITION,
       place: DEFAULT_PLACE,
     } as ILocationContext)
 
@@ -53,7 +53,7 @@ describe('useDistance()', () => {
   it('should return undefined when user position and custom position are null', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseGeolocation.mockReturnValue({
-      userPosition: null,
+      geolocPosition: null,
       place: null,
     } as ILocationContext)
 

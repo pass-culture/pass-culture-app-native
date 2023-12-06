@@ -60,7 +60,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
 }) => {
-  const { userPosition: position, showGeolocPermissionModal } = useLocation()
+  const { geolocPosition, showGeolocPermissionModal } = useLocation()
   const { searchState } = useSearch()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const enableVenuesInSearchResults = useFeatureFlag(
@@ -107,7 +107,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   }, [logVenuePlaylistDisplayedOnSearchResultsOnce, shouldDisplayVenuesPlaylist])
 
   const shouldDisplayGeolocationButton =
-    position === null &&
+    geolocPosition === null &&
     params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage

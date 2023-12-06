@@ -28,7 +28,7 @@ export type SearchOfferHits = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
@@ -40,7 +40,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
         parameters: { page, ...searchState },
-        userPosition: position,
+        userPosition: geolocPosition,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

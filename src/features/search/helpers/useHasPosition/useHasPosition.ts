@@ -5,11 +5,11 @@ import { useLocation } from 'libs/location'
 // TODO(refacto recherche): after removing location feature flag this can should be deleted
 export const useHasPosition = () => {
   const { searchState } = useSearch()
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
 
   const isEverywhereSearch =
     searchState.locationFilter?.locationType === LocationType.EVERYWHERE && !searchState.venue
-  const isGeolocatedUser = !!position
+  const isGeolocatedUser = !!geolocPosition
 
   return !isEverywhereSearch || (isGeolocatedUser && isEverywhereSearch)
 }

@@ -37,7 +37,7 @@ export function VenueOffersNew({
   venueOffers,
   playlists,
 }: Readonly<Props>) {
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue.id)
 
@@ -68,7 +68,7 @@ export function VenueOffersNew({
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position]
+    [geolocPosition]
   )
 
   const shouldDisplayGtlPlaylist =

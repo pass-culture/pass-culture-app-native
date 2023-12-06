@@ -22,7 +22,7 @@ let mockPosition: Position = { latitude: 2, longitude: 40 }
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
   }),
 }))
 

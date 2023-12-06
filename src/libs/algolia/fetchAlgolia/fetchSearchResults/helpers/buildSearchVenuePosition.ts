@@ -18,24 +18,24 @@ export function convertKmToMeters(aroundRadiusKm: number | 'all') {
 
 export function buildSearchVenuePosition(
   locationFilter?: LocationFilter,
-  userPosition?: Position,
+  geolocPosition?: Position,
   venue?: Venue
 ) {
   let searchVenuePosition: SearchVenuePositionType = { aroundRadius: 'all' }
 
-  if (userPosition) {
+  if (geolocPosition) {
     if (locationFilter?.locationType === LocationType.AROUND_ME) {
       const aroundRadius = locationFilter.aroundRadius ?? 'all'
 
       searchVenuePosition = {
-        aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
+        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
         aroundRadius: convertKmToMeters(aroundRadius),
       }
     }
     if (locationFilter?.locationType === LocationType.EVERYWHERE) {
       searchVenuePosition = {
         ...searchVenuePosition,
-        aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
+        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
       }
     }
   }

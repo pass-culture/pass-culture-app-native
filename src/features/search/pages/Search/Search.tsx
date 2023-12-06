@@ -59,7 +59,7 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch, searchState } = useSearch()
-  const { userPosition, setPlace } = useLocation()
+  const { geolocPosition, setPlace } = useLocation()
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -89,7 +89,11 @@ export function Search() {
     return params?.view
   }, [params?.view])
 
-  const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition, params?.venue)
+  const searchVenuePosition = buildSearchVenuePosition(
+    currentFilters,
+    geolocPosition,
+    params?.venue
+  )
 
   const currentVenuesIndex = useMemo(
     () =>

@@ -77,7 +77,7 @@ describe('LocationSearchWidget', () => {
       isGeolocated: true,
       isCustomPosition: true,
       place: { label: 'my place' },
-      userPosition: null,
+      geolocPosition: null,
     })
 
     render(<LocationSearchWidget />)

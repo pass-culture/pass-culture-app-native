@@ -40,12 +40,12 @@ export const humanizeDistance = (distance: number) => {
   return `${distanceKm > 900 ? '900+' : distanceKm} km`
 }
 
-export const formatDistance = (coords: Geoloc, position: Position): string | undefined => {
-  if (!position || !coords) return
+export const formatDistance = (coords: Geoloc, userPosition: Position): string | undefined => {
+  if (!userPosition || !coords) return
 
   const userLocation: Geoloc = {
-    lat: position.latitude,
-    lng: position.longitude,
+    lat: userPosition.latitude,
+    lng: userPosition.longitude,
   }
 
   const venueLocation: Geoloc = {

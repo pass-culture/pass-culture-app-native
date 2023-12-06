@@ -7,7 +7,7 @@ const mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
   }),
 }))
 
@@ -27,7 +27,7 @@ describe('getLocalizationCompliance', () => {
   afterEach(jest.resetAllMocks)
 
   it.each`
-    moduleLocationArea             | userPosition    | expected_result
+    moduleLocationArea             | geolocPosition  | expected_result
     ${undefined}                   | ${undefined}    | ${true}
     ${undefined}                   | ${mockPosition} | ${true}
     ${locationAreaWithUserInside}  | ${undefined}    | ${false}
@@ -38,14 +38,14 @@ describe('getLocalizationCompliance', () => {
     'should replace {email} by $email in $url when necessary',
     ({
       moduleLocationArea,
-      userPosition,
+      geolocPosition,
       expected_result,
     }: {
       moduleLocationArea: LocationCircleArea
-      userPosition: Position
+      geolocPosition: Position
       expected_result: boolean
     }) => {
-      expect(getLocalizationCompliance(moduleLocationArea, userPosition)).toEqual(expected_result)
+      expect(getLocalizationCompliance(moduleLocationArea, geolocPosition)).toEqual(expected_result)
     }
   )
 })

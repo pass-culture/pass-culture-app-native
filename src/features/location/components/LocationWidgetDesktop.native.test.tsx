@@ -81,7 +81,7 @@ describe('LocationWidgetDesktop', () => {
       isGeolocated: true,
       isCustomPosition: true,
       place: { label: 'my place' },
-      userPosition: null,
+      geolocPosition: null,
     })
 
     renderLocationWidgetDesktop()
@@ -95,7 +95,7 @@ describe('LocationWidgetDesktop', () => {
       isGeolocated: true,
       isCustomPosition: undefined,
       place: null,
-      userPosition: null,
+      geolocPosition: null,
       onModalHideRef: jest.fn(),
     })
 
