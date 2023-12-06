@@ -28,6 +28,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40gmail.com', {
       remainingResends: 3,
     })
+    mockIsMailAppAvailable = true
   })
 
   it('should open faq webpage when clicking on consult help support', async () => {
@@ -66,7 +67,6 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should log analytics when clicking on check email button', async () => {
-    mockIsMailAppAvailable = true
     renderSignupConfirmationEmailSent()
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     await act(async () => fireEvent.press(checkEmailsButton))

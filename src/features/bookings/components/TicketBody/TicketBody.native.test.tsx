@@ -19,6 +19,10 @@ jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
 }))
 
 describe('TicketBody', () => {
+  beforeEach(() => {
+    mockIsMailAppAvailable = true
+  })
+
   describe('<QrCode/> display', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
       render(<TicketBody {...initialProps} />)

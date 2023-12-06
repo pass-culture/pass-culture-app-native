@@ -32,11 +32,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
 }) => {
   const isMailAppAvailable = useIsMailAppAvailableIOS()
   const shouldDisplayOpenInboxButton = () => {
-    if (Platform.OS === 'ios') {
-      return isMailAppAvailable
-    } else {
-      return true
-    }
+    return Platform.OS === 'ios' ? isMailAppAvailable : true
   }
   return (
     <React.Fragment>

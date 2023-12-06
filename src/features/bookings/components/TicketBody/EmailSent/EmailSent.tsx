@@ -19,7 +19,7 @@ export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
   const shouldDisplayOpenInboxButton = () => {
     if (Platform.OS === 'ios') return isMailAppAvailable
     if (Platform.OS === 'web') return false
-    else return true
+    return true
   }
   return (
     <TicketContainer testID="withdrawal-info-email">

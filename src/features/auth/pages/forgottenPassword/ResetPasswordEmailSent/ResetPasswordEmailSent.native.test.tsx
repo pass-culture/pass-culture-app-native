@@ -22,8 +22,11 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
 }
 
 describe('<ResetPasswordEmailSent />', () => {
-  it('should match snapshot', () => {
+  beforeEach(() => {
     mockIsMailAppAvailable = true
+  })
+
+  it('should match snapshot', () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
 
     expect(screen).toMatchSnapshot()
@@ -48,8 +51,6 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should open mail app when clicking on check email button', async () => {
-    mockIsMailAppAvailable = true
-
     render(<ResetPasswordEmailSent route={routeMock} />)
 
     const checkEmailsButton = await screen.findByText('Consulter mes e-mails')

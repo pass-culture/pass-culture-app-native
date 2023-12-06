@@ -11,6 +11,10 @@ jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
 }))
 
 describe('<EmailSent/>', () => {
+  beforeEach(() => {
+    mockIsMailAppAvailable = true
+  })
+
   it('should display the button "Consulter mes e-mails"', () => {
     render(<EmailSent offerDate={offerDate} />)
 

@@ -37,8 +37,7 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
   }
 
   const shouldDisplayOpenInboxButton = () => {
-    if (Platform.OS === 'ios') return isMailAppAvailable
-    else return true
+    return Platform.OS === 'ios' ? isMailAppAvailable : true
   }
 
   return (
