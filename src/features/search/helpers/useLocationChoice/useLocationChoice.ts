@@ -13,12 +13,12 @@ export const useLocationChoice = (
   section: LocationType.AROUND_PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
 ): { Icon: React.FC<BicolorIconInterface>; label: string; isSelected: boolean } => {
   const { searchState } = useSearch()
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
 
   if (section === LocationType.EVERYWHERE)
     return {
       Icon: Everywhere,
-      label: position === null ? '' : 'Partout',
+      label: geolocPosition === null ? '' : 'Partout',
       isSelected: searchState.locationFilter.locationType === LocationType.EVERYWHERE,
     }
 

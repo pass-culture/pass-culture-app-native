@@ -17,7 +17,7 @@ const Kourou: SuggestedPlace = {
 }
 const venue: Venue = mockedSuggestedVenues[0]
 
-const userPosition: Position = { latitude: 66, longitude: 66 }
+const geolocPosition: Position = { latitude: 66, longitude: 66 }
 const aroundMeFilter: LocationFilter = {
   locationType: LocationType.AROUND_ME,
   aroundRadius: MAX_RADIUS,
@@ -32,25 +32,25 @@ const placeFilter: LocationFilter = {
 describe('buildSearchVenuePosition', () => {
   describe('When user shares his position', () => {
     it('should return user position and around radius when location filter is around me', () => {
-      const searchVenuePosition = buildSearchVenuePosition(aroundMeFilter, userPosition)
+      const searchVenuePosition = buildSearchVenuePosition(aroundMeFilter, geolocPosition)
 
       expect(searchVenuePosition).toEqual({
-        aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
+        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
 
     it('should return user position and around radius at "all" when location filter is everywhere', () => {
-      const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, userPosition)
+      const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, geolocPosition)
 
       expect(searchVenuePosition).toEqual({
-        aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
+        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
         aroundRadius: 'all',
       })
     })
 
     it('should return venue position and around radius when location filter is venue', () => {
-      const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, userPosition, venue)
+      const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, geolocPosition, venue)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
@@ -59,7 +59,7 @@ describe('buildSearchVenuePosition', () => {
     })
 
     it('should return place position and around radius when location filter is place', () => {
-      const searchVenuePosition = buildSearchVenuePosition(placeFilter, userPosition)
+      const searchVenuePosition = buildSearchVenuePosition(placeFilter, geolocPosition)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
@@ -74,7 +74,7 @@ describe('buildSearchVenuePosition', () => {
       }
       const searchVenuePosition = buildSearchVenuePosition(
         aroundMeWithoutAroundRadius,
-        userPosition
+        geolocPosition
       )
 
       expect(searchVenuePosition.aroundRadius).toEqual('all')

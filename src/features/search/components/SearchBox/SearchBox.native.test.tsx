@@ -73,7 +73,7 @@ let mockPosition: Position = DEFAULT_POSITION
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
     place: null,
     onModalHideRef: jest.fn(),
   }),

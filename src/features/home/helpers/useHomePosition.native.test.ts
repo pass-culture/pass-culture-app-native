@@ -2,11 +2,11 @@ import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 
-let mockUserPosition: Position = null
+let mockGeolocPosition: Position = null
 let mockPlace: SuggestedPlace | null = null
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockUserPosition,
+    geolocPosition: mockGeolocPosition,
     place: mockPlace,
   }),
 }))
@@ -14,18 +14,18 @@ jest.mock('libs/location/LocationWrapper', () => ({
 describe('useHomePosition', () => {
   afterEach(() => {
     mockPlace = null
-    mockUserPosition = null
+    mockGeolocPosition = null
   })
 
   it.each`
-    userPosition                     | placePosition                    | expectedPosition
+    geolocPosition                   | placePosition                    | expectedPosition
     ${{ latitude: 1, longitude: 1 }} | ${{ latitude: 2, longitude: 2 }} | ${{ latitude: 2, longitude: 2 }}
     ${{ latitude: 1, longitude: 1 }} | ${null}                          | ${{ latitude: 1, longitude: 1 }}
   `(
-    'returns $expectedPosition for userPosition : $userPosition and placePosition : $placePosition',
-    ({ userPosition, placePosition, expectedPosition }) => {
+    'returns $expectedPosition for geolocPosition : $geolocPosition and placePosition : $placePosition',
+    ({ geolocPosition, placePosition, expectedPosition }) => {
       mockPlace = { geolocation: placePosition, label: 'label', info: 'info' }
-      mockUserPosition = userPosition
+      mockGeolocPosition = geolocPosition
 
       const { position } = useHomePosition()
 

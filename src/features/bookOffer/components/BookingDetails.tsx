@@ -78,7 +78,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   )
 
   const { onScroll: onScrollModal } = useOpacityTransition()
-  const { userPosition: position } = useLocation()
+  const { geolocPosition: position } = useLocation()
   const defaultSearchVenueOffers = {
     offerId: 0,
     venueId: undefined,

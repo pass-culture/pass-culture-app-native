@@ -35,7 +35,7 @@ describe('useLocation()', () => {
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
-        expect(result.current.userPosition).toBe(MOCK_POSITION)
+        expect(result.current.geolocPosition).toBe(MOCK_POSITION)
         expect(onSubmit).toHaveBeenCalledTimes(1)
         expect(onRefusal).not.toHaveBeenCalled()
         expect(onAcceptance).toHaveBeenCalledTimes(1)
@@ -49,7 +49,7 @@ describe('useLocation()', () => {
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
-        expect(result.current.userPosition).toBe(null)
+        expect(result.current.geolocPosition).toBe(null)
         expect(onSubmit).toHaveBeenCalledTimes(1)
         expect(onRefusal).toHaveBeenCalledTimes(1)
         expect(onAcceptance).not.toHaveBeenCalled()
@@ -63,7 +63,7 @@ describe('useLocation()', () => {
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-        expect(result.current.userPosition).toBe(null)
+        expect(result.current.geolocPosition).toBe(null)
         expect(onSubmit).toHaveBeenCalledTimes(1)
         expect(onRefusal).toHaveBeenCalledTimes(1)
         expect(onAcceptance).not.toHaveBeenCalled()
@@ -77,7 +77,7 @@ describe('useLocation()', () => {
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
-        expect(result.current.userPosition).toBe(MOCK_POSITION)
+        expect(result.current.geolocPosition).toBe(MOCK_POSITION)
         expect(onSubmit).toHaveBeenCalledTimes(1)
         expect(onRefusal).not.toHaveBeenCalled()
         expect(onAcceptance).toHaveBeenCalledTimes(1)
@@ -92,7 +92,7 @@ describe('useLocation()', () => {
 
       await waitFor(() => {
         expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-        expect(result.current.userPosition).toBe(null)
+        expect(result.current.geolocPosition).toBe(null)
         expect(onSubmit).toHaveBeenCalledTimes(1)
         expect(onRefusal).toHaveBeenCalledTimes(1)
         expect(onAcceptance).not.toHaveBeenCalled()
@@ -147,7 +147,7 @@ describe('useLocation()', () => {
       expect(localStorageLocationType).toEqual('UserGeolocation')
     })
 
-    it('should clear location_type async storage when neither place nor userPosition are set', async () => {
+    it('should clear location_type async storage when neither place nor geolocPosition are set', async () => {
       mockPermissionResult(GeolocPermissionState.DENIED)
       const { result } = renderLocationHook()
       await act(async () => {

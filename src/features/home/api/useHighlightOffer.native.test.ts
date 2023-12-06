@@ -66,7 +66,7 @@ describe('useHighlightOffer', () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
-        userPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
+        geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
       } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
@@ -83,7 +83,7 @@ describe('useHighlightOffer', () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
-        userPosition: { latitude: 1, longitude: 1 },
+        geolocPosition: { latitude: 1, longitude: 1 },
       } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
@@ -100,7 +100,7 @@ describe('useHighlightOffer', () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
-        userPosition: undefined,
+        geolocPosition: undefined,
       } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
@@ -117,7 +117,7 @@ describe('useHighlightOffer', () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
-        userPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
+        geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
       } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])

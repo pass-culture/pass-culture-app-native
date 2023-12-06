@@ -100,7 +100,7 @@ const mockShowGeolocPermissionModal = jest.fn()
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
     hasGeolocPosition: mockHasGeolocPosition,
     place: mockPlace,
@@ -592,7 +592,7 @@ describe('SearchResults component', () => {
     render(<SearchResults />)
     await act(async () => {})
 
-    // previousUserPosition is empty in first rendering
+    // previousGeolocPosition is empty in first rendering
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
     screen.rerender(<SearchResults />)

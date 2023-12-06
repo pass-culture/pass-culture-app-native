@@ -73,8 +73,8 @@ export const SearchResults: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
-  const { userPosition } = useLocation()
-  const previousUserPosition = usePrevious(userPosition)
+  const { geolocPosition } = useLocation()
+  const previousGeolocPosition = usePrevious(geolocPosition)
 
   const isVenue = !!searchState.venue
 
@@ -149,7 +149,7 @@ export const SearchResults: React.FC = () => {
   )
 
   const shouldRefetchResults = Boolean(
-    (userPosition && !previousUserPosition) || (!userPosition && previousUserPosition)
+    (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
   )
 
   useEffect(() => {

@@ -6,11 +6,11 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { useLocation } from 'libs/location'
 
 export const useVenueSearchParameters = (venueId: number): SearchState => {
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
   const { data: dataVenue } = useVenue(venueId)
   const maxPrice = useMaxPrice()
 
-  const defaultLocationFilter = position
+  const defaultLocationFilter = geolocPosition
     ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
     : { locationType: LocationType.EVERYWHERE }
 

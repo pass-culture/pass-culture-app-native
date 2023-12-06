@@ -1,9 +1,9 @@
 import { Position, useLocation } from 'libs/location'
 
 export const useHomePosition = () => {
-  const { userPosition, place } = useLocation()
+  const { geolocPosition, place } = useLocation()
 
   const placeCoordinates: Position = place?.geolocation
 
-  return { position: placeCoordinates || userPosition }
+  return { position: placeCoordinates || geolocPosition }
 }

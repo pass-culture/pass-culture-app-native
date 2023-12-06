@@ -17,7 +17,7 @@ const mockPositionError: GeolocationError | null = null
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
     userPositionError: mockPositionError,
     triggerPositionUpdate: jest.fn(),
     showGeolocPermissionModal: jest.fn(),
