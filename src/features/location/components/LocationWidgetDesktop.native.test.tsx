@@ -24,8 +24,7 @@ const mockUseGeolocation = useLocation as jest.Mock
 describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({
-      isGeolocated: true,
-      isCustomPosition: true,
+      hasGeolocPosition: true,
       place: { label: 'test' },
     })
     renderLocationWidgetDesktop()
@@ -38,14 +37,14 @@ describe('LocationWidgetDesktop', () => {
   })
 
   it.each`
-    isGeolocated | place
-    ${true}      | ${null}
-    ${true}      | ${undefined}
+    hasGeolocPosition | place
+    ${true}           | ${null}
+    ${true}           | ${undefined}
   `(
     "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
-    async ({ isGeolocated, place }) => {
+    async ({ hasGeolocPosition, place }) => {
       mockUseGeolocation.mockReturnValueOnce({
-        isGeolocated,
+        hasGeolocPosition,
         place,
       })
 
@@ -57,14 +56,14 @@ describe('LocationWidgetDesktop', () => {
   )
 
   it.each`
-    isGeolocated | place
-    ${false}     | ${null}
-    ${false}     | ${undefined}
+    hasGeolocPosition | place
+    ${false}          | ${null}
+    ${false}          | ${undefined}
   `(
     "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
-    async ({ isGeolocated, place }) => {
+    async ({ hasGeolocPosition, place }) => {
       mockUseGeolocation.mockReturnValueOnce({
-        isGeolocated,
+        hasGeolocPosition,
         place,
         geolocPosition: null,
       })
@@ -78,8 +77,7 @@ describe('LocationWidgetDesktop', () => {
 
   it('should render a filled location pointer and label of the place if the user has selected a custom place', async () => {
     mockUseGeolocation.mockReturnValueOnce({
-      isGeolocated: true,
-      isCustomPosition: true,
+      hasGeolocPosition: true,
       place: { label: 'my place' },
       geolocPosition: null,
     })
@@ -92,8 +90,7 @@ describe('LocationWidgetDesktop', () => {
 
   describe('tooltip', () => {
     mockUseGeolocation.mockReturnValue({
-      isGeolocated: true,
-      isCustomPosition: undefined,
+      hasGeolocPosition: true,
       place: null,
       geolocPosition: null,
       onModalHideRef: jest.fn(),

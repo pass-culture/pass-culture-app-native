@@ -26,7 +26,7 @@ export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type ILocationContext = {
-  isGeolocated: boolean
+  hasGeolocPosition: boolean
   place: SuggestedPlace | null
   setPlace: (place: SuggestedPlace | null) => void
   onModalHideRef: MutableRefObject<(() => void) | undefined>

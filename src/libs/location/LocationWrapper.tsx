@@ -32,7 +32,7 @@ const LocationContext = React.createContext<ILocationContext>({
   place: null,
   setPlace: () => {},
   onModalHideRef: { current: undefined },
-  isGeolocated: false,
+  hasGeolocPosition: false,
 })
 /* eslint-enable @typescript-eslint/no-empty-function */
 
@@ -47,7 +47,7 @@ export const LocationWrapper = memo(function LocationWrapper({
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
     undefined
   )
-  const isGeolocated = !!geolocPosition
+  const hasGeolocPosition = !!geolocPosition
   const onModalHideRef = useRef<() => void>()
 
   const {
@@ -138,7 +138,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       case !!place:
         storage.saveString('location_type', 'UserSpecificLocation')
         break
-      case isGeolocated:
+      case hasGeolocPosition:
         storage.saveString('location_type', 'UserGeolocation')
         break
       default:
@@ -146,14 +146,14 @@ export const LocationWrapper = memo(function LocationWrapper({
         break
     }
     analytics.setEventLocationType()
-  }, [isGeolocated, place])
+  }, [hasGeolocPosition, place])
 
   const value = useMemo(
     () => ({
       geolocPosition,
       geolocPositionError,
       permissionState,
-      isGeolocated,
+      hasGeolocPosition,
       onModalHideRef,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
@@ -166,7 +166,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       geolocPosition,
       geolocPositionError,
       permissionState,
-      isGeolocated,
+      hasGeolocPosition,
       contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,

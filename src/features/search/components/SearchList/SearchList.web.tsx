@@ -93,7 +93,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const [availableHeight, setAvailableHeight] = useState(0)
     const outerListRef = useRef<HTMLDivElement>(null)
     const listRef = useRef<VariableSizeList<RowData>>(null)
-    const { isGeolocated } = useLocation()
+    const { hasGeolocPosition } = useLocation()
     const { searchState } = useSearch()
 
     /**
@@ -151,8 +151,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
      * Be careful to not add too many things here since it will completely rerender the list, and so scroll to the top.
      */
     const rerenderKey = useMemo(
-      () => JSON.stringify({ isGeolocated, nbHits, autoScrollEnabled, onPress }),
-      [isGeolocated, nbHits, autoScrollEnabled, onPress]
+      () => JSON.stringify({ isGeolocated: hasGeolocPosition, nbHits, autoScrollEnabled, onPress }),
+      [hasGeolocPosition, nbHits, autoScrollEnabled, onPress]
     )
 
     const handleScrollToTopPress = useCallback(() => {
@@ -161,8 +161,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
 
     const itemSizeFn = useCallback(
       (index: number) =>
-        getItemSize(index, hits.venues.length, isGeolocated, data.items.length, userData),
-      [data.items.length, hits.venues.length, isGeolocated, userData]
+        getItemSize(index, hits.venues.length, hasGeolocPosition, data.items.length, userData),
+      [data.items.length, hits.venues.length, hasGeolocPosition, userData]
     )
 
     return (
