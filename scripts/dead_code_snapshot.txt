@@ -86,7 +86,7 @@ src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
 src/libs/algolia/index.ts:28 - LocationFilter
-src/libs/algolia/index.ts:34 - OfferGenreType
+src/libs/algolia/index.ts:33 - OfferGenreType
 src/libs/algolia/index.ts:102 - AlgoliaQueryParameters
 src/libs/algolia/index.ts:111 - FetchOfferParameters
 src/libs/algolia/index.ts:119 - OfferModuleQuery
