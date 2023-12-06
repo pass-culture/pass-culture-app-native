@@ -12,7 +12,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 }))
 
 const mockDistance: string | null = null
-jest.mock('libs/geolocation/hooks/useDistance', () => ({
+jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 

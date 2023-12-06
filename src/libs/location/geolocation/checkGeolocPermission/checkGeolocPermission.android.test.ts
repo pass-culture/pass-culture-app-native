@@ -2,11 +2,10 @@
 import { Platform } from 'react-native'
 import { checkMultiple, Permission, PERMISSIONS } from 'react-native-permissions'
 
-import { checkGeolocPermission } from 'libs/location/checkGeolocPermission.android'
+import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission.android'
+import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 
-import { GeolocPermissionState } from './enums'
-
-jest.mock('libs/geolocation/checkGeolocPermission', () =>
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission', () =>
   jest.requireActual('./checkGeolocPermission')
 )
 

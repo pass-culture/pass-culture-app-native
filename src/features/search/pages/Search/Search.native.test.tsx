@@ -194,7 +194,7 @@ const mockedPlace: SuggestedPlace = {
 }
 
 const mockSetPlace = jest.fn()
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     setPlace: mockSetPlace,
     place: mockedPlace,

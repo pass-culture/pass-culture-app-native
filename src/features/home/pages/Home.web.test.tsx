@@ -15,7 +15,7 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 

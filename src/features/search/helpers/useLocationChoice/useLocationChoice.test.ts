@@ -20,7 +20,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 let mockPosition: Position = { latitude: 2, longitude: 40 }
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
   }),

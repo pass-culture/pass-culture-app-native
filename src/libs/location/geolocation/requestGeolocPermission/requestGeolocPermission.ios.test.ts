@@ -1,10 +1,11 @@
 import { Platform } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 
-import { GeolocPermissionState } from './enums'
+import { GeolocPermissionState } from '../enums'
+
 import { requestGeolocPermission } from './requestGeolocPermission.ios'
 
-jest.mock('libs/geolocation/requestGeolocPermission', () =>
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission', () =>
   jest.requireActual('./requestGeolocPermission')
 )
 

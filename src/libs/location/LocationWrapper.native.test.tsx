@@ -1,10 +1,10 @@
-import { checkGeolocPermission } from 'libs/location/checkGeolocPermission'
-import { requestGeolocPermission } from 'libs/location/requestGeolocPermission'
+import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { storage } from 'libs/storage'
 import { act, renderHook, waitFor } from 'tests/utils'
 
-import { GeolocPermissionState, GeolocPositionError } from './enums'
-import { getPosition } from './getPosition'
+import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
+import { getPosition } from './geolocation/getGeolocPosition/getPosition'
 import { LocationWrapper, useLocation } from './LocationWrapper'
 import { GeolocationError } from './types'
 

@@ -1,7 +1,9 @@
 import { getPosition } from './getPosition'
 import { EiffelTourCoordinates } from './tests.utils'
 
-jest.mock('libs/geolocation/getPosition', () => jest.requireActual('./getPosition'))
+jest.mock('libs/location/geolocation/getGeolocPosition/getPosition', () =>
+  jest.requireActual('./getPosition')
+)
 
 describe('getPosition()', () => {
   it('should resolve with the geolocation', async () => {

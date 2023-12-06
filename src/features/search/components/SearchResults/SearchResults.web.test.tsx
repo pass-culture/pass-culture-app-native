@@ -36,7 +36,7 @@ const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: Position = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,

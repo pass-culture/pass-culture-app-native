@@ -52,7 +52,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
   }),

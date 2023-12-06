@@ -27,7 +27,7 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 jest.mock('shared/user/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
 

@@ -93,7 +93,7 @@ src/libs/algolia/index.ts:119 - OfferModuleQuery
 src/libs/algolia/index.ts:176 - GenreTypeFacetData
 src/libs/analytics/index.ts:6 - isCloseToEndHorizontal
 src/libs/analytics/index.ts:10 - AnalyticsProvider
-src/libs/geolocation/index.ts:10 - requestGeolocPermission (used in module)
+src/libs/location/index.ts:10 - requestGeolocPermission (used in module)
 src/libs/hooks/index.ts:5 - useIsMounted (used in module)
 src/libs/jwt/fixtures.ts:2 - defaultDecodedToken (used in module)
 src/libs/monitoring/sentry.ts:1 - Breadcrumb

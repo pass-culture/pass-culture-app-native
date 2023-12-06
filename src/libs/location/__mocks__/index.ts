@@ -1,10 +1,10 @@
-import { GeolocPermissionState } from '../enums'
+import { GeolocPermissionState } from '../geolocation/enums'
 import { ILocationContext } from '../types'
 export {
   GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocPermissionState,
   GeolocPositionError,
-} from '../enums'
+} from '../geolocation/enums'
 export type { GeoCoordinates, GeolocationError, ILocationContext } from '../types'
 
 export const requestGeolocPermission = jest.fn()

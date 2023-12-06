@@ -1,5 +1,6 @@
-import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from './enums'
-import { GeoCoordinates } from './types'
+import { GeoCoordinates } from 'libs/location/types'
+
+import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPositionError } from '../enums'
 
 const GET_POSITION_SETTINGS = {
   enableHighAccuracy: false,

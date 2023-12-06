@@ -4,7 +4,7 @@ import { formatDistance } from 'libs/parsers'
 
 jest.mock('libs/parsers')
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = jest.mocked(useLocation)
 
 const position = { latitude: 90, longitude: 90 }

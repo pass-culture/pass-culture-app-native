@@ -18,7 +18,7 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 
 describe('LocationWidgetDesktop', () => {

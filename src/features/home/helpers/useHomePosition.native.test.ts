@@ -3,7 +3,7 @@ import { Position } from 'libs/location'
 
 let mockUserPosition: Position = null
 let mockCustomPosition: Position = null
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockUserPosition,
     customPosition: mockCustomPosition,
