@@ -16,7 +16,7 @@ const setPlace = jest.fn()
 
 const locationContext: ILocationContext = {
   geolocPosition: { longitude: 90.4773245, latitude: 90.4773245 },
-  userPositionError: null,
+  geolocPositionError: null,
   permissionState: GeolocPermissionState.GRANTED,
   requestGeolocPermission,
   triggerPositionUpdate,
