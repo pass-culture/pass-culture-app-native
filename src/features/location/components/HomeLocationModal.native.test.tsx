@@ -4,7 +4,7 @@ import { Button } from 'react-native'
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
-import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow, act } from 'tests/utils'
@@ -13,8 +13,8 @@ const hideModalMock = jest.fn()
 
 jest.unmock('libs/location')
 
-jest.mock('libs/location/geolocation/getGeolocPosition/getPosition')
-const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
 
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestGeolocPermission = requestGeolocPermission as jest.MockedFunction<
@@ -75,7 +75,7 @@ describe('HomeLocationModal', () => {
   })
 
   it('should highlight geolocation button if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderHomeLocationModal()
     await waitForModalToShow()
@@ -84,7 +84,7 @@ describe('HomeLocationModal', () => {
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderHomeLocationModal()
     await waitForModalToShow()

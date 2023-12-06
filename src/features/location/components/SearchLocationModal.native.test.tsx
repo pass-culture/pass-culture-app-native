@@ -11,7 +11,7 @@ import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
-import { getPosition } from 'libs/location/geolocation/getGeolocPosition/getPosition'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import {
@@ -39,8 +39,8 @@ const mockPlaces: SuggestedPlace[] = [
 ]
 const showModalMock = jest.fn()
 
-jest.mock('libs/location/geolocation/getGeolocPosition/getPosition')
-const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
 
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestGeolocPermission = requestGeolocPermission as jest.MockedFunction<
@@ -111,7 +111,7 @@ describe('SearchLocationModal', () => {
   })
 
   it('should highlight geolocation button if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
     await waitForModalToShow()
@@ -120,7 +120,7 @@ describe('SearchLocationModal', () => {
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
     await waitForModalToShow()
@@ -201,7 +201,7 @@ describe('SearchLocationModal', () => {
   })
 
   it('should navigate to Search page with geolocation params when user is in geolocation mode', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
     await waitForModalToShow()
@@ -379,7 +379,7 @@ describe('SearchLocationModal', () => {
     })
 
     it('should display default radius even if a PlaceRadius was set previously', async () => {
-      getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+      getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 

@@ -48,7 +48,7 @@ jest.mock('libs/analytics/provider')
 jest.mock('libs/appState')
 
 /* See the corresponding mocks in libs/location/geolocation/__mocks__ */
-jest.mock('libs/location/geolocation/getGeolocPosition/getPosition')
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 

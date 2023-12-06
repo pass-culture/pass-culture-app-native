@@ -28,7 +28,7 @@ export function getWebGeolocErrorFromCode(errorCode: number): GeolocPositionErro
   return GeolocPositionError.POSITION_UNAVAILABLE
 }
 
-export const getPosition = () =>
+export const getGeolocPosition = () =>
   new Promise<GeoCoordinates>((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
