@@ -14,7 +14,7 @@ const shareUrl = 'https://passculture.app/accueil?utm_gen=product&utm_campaign=s
 const logShareMock = jest.fn()
 
 const props = {
-  shareContent: { body: shareMessage, url: shareUrl },
+  shareContent: { body: shareMessage, url: new URL(shareUrl) },
   messagingAppAnalytics: logShareMock,
 }
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')

@@ -11,7 +11,7 @@ const mockShareSingle = jest.spyOn(SocialShare, 'shareSingle')
 const shareMockReturnValue = { action: Share.sharedAction, activityType: 'copy' }
 const shareMock = jest.spyOn(Share, 'share').mockResolvedValue(shareMockReturnValue)
 
-const defaultContent = { body: 'Message', url: 'https://www.toto.com' }
+const defaultContent = { body: 'Message', url: new URL('https://www.toto.com/') }
 
 describe('share()', () => {
   describe('on Android', () => {
@@ -22,14 +22,14 @@ describe('share()', () => {
     it('should share with native dialog when default mode', async () => {
       await share({ content: defaultContent, mode: 'default' })
 
-      expect(shareMock).toHaveBeenCalledWith({ message: 'Message :\nhttps://www.toto.com' }, {})
+      expect(shareMock).toHaveBeenCalledWith({ message: 'Message :\nhttps://www.toto.com/' }, {})
     })
 
     it('should share with a title in the native dialog when default mode and title provided', async () => {
       await share({ content: { ...defaultContent, subject: 'title' }, mode: 'default' })
 
       expect(shareMock).toHaveBeenCalledWith(
-        { message: 'Message :\nhttps://www.toto.com', title: 'title' },
+        { message: 'Message :\nhttps://www.toto.com/', title: 'title' },
         {
           dialogTitle: 'title',
         }
@@ -46,7 +46,7 @@ describe('share()', () => {
       await share({ content: defaultContent, mode: 'default' })
 
       expect(shareMock).toHaveBeenCalledWith(
-        { message: 'Message :\n', url: 'https://www.toto.com' },
+        { message: 'Message :\n', url: 'https://www.toto.com/' },
         {}
       )
     })
@@ -55,7 +55,7 @@ describe('share()', () => {
       await share({ content: { ...defaultContent, subject: 'title' }, mode: 'default' })
 
       expect(shareMock).toHaveBeenCalledWith(
-        { message: 'Message :\n', url: 'https://www.toto.com' },
+        { message: 'Message :\n', url: 'https://www.toto.com/' },
         {
           subject: 'title',
         }
@@ -67,7 +67,7 @@ describe('share()', () => {
 
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Social.Instagram,
-        message: encodeURIComponent('Message :\nhttps://www.toto.com'),
+        message: encodeURIComponent('Message :\nhttps://www.toto.com/'),
         type: 'text',
       })
     })
@@ -75,7 +75,7 @@ describe('share()', () => {
     it('should share on imessage when imessage mode', async () => {
       await share({ content: defaultContent, mode: 'iMessage' })
 
-      expect(mockOpenUrl).toHaveBeenCalledWith('sms://&body=Message :\nhttps://www.toto.com')
+      expect(mockOpenUrl).toHaveBeenCalledWith('sms://&body=Message :\nhttps://www.toto.com/')
     })
   })
 
@@ -85,7 +85,7 @@ describe('share()', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Snapchat,
       message: 'Message :\n',
-      url: 'https://www.toto.com',
+      url: 'https://www.toto.com/',
       type: 'text',
     })
   })
@@ -97,7 +97,7 @@ describe('share()', () => {
       social: Social.Messenger,
       message: encodeURIComponent('Message :\n'),
       type: 'text',
-      url: encodeURIComponent('https://www.toto.com'),
+      url: encodeURIComponent('https://www.toto.com/'),
     })
   })
 

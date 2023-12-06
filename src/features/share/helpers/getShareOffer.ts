@@ -48,7 +48,7 @@ export const getShareOffer = ({
   const shareMessage = Platform.OS === 'android' ? messageWithLink : messageWithoutLink
 
   const shareContent = {
-    url: shareUrl,
+    url: shareUrl.toString(),
     messageWithoutLink,
     message: shareMessage,
     title: shareTitle,

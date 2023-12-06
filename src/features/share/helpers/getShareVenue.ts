@@ -6,7 +6,11 @@ import { ShareContent } from 'libs/share/types'
 
 function getVenueUrl(id: number, utmMedium: string) {
   const path = getScreenPath('Venue', { id })
-  return `${WEBAPP_V2_URL}${path}?utm_gen=product&utm_campaign=share_venue&utm_medium=${utmMedium}`
+  const url = new URL(path, WEBAPP_V2_URL)
+  url.searchParams.append('utm_gen', 'product')
+  url.searchParams.append('utm_campaign', 'share_venue')
+  url.searchParams.append('utm_medium', utmMedium)
+  return url
 }
 
 type Parameters = {
