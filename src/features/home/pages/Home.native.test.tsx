@@ -19,13 +19,26 @@ const mockUseHomepageData = useHomepageData as jest.Mock
 
 jest.mock('libs/geolocation')
 
-const mockStartTransaction = jest.fn()
-jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculation', () => ({
-  usePerformanceCalculation: () => ({
-    start: mockStartTransaction,
-    finish: jest.fn(),
-  }),
-}))
+const mockStartTransaction = jest.fn((s: string) => {
+  s.toUpperCase()
+})
+const mockFinishTransaction = jest.fn((s: string) => {
+  s.toUpperCase()
+})
+jest.mock('shared/performance/transactions', () => {
+  const originalModule = jest.requireActual('shared/performance/transactions')
+
+  return {
+    __esModule: true,
+    ...originalModule,
+    startTransaction: (s: string) => {
+      mockStartTransaction(s)
+    },
+    finishTransaction: (s: string) => {
+      mockFinishTransaction(s)
+    },
+  }
+})
 
 describe('Home page', () => {
   useRoute.mockReturnValue({ params: undefined })
@@ -60,7 +73,7 @@ describe('Home page', () => {
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
 
-  it('should start Sentry performance transaction to measure component creation and home loading', async () => {
+  it('should end Sentry performance transaction to measure component creation and home loading', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
     mockUseHomepageData.mockReturnValueOnce({
       modules: [formattedVenuesModule],
@@ -70,8 +83,8 @@ describe('Home page', () => {
     renderHome()
     await act(async () => {})
 
-    expect(mockStartTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
-    expect(mockStartTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')
+    expect(mockFinishTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
+    expect(mockFinishTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')
   })
 })
 
