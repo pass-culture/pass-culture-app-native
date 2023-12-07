@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version-file: '.nvmrc'
       - name: Setup yarn
         run: npm install -g yarn
       - name: Setup java
@@ -95,7 +95,7 @@ jobs:
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - name: Post to a Slack channel
         id: slack
-        if: ${{ steps.sentry_and_deploy.outputs.status == 'failure' }}
+        if: ${{ steps.sentry_and_deploy.outputs.status == 'failure' || inputs.ENV == 'staging' }}
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native

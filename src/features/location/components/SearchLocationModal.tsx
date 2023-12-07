@@ -9,6 +9,7 @@ import { LocationMode } from 'features/location/enums'
 import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
@@ -29,7 +30,6 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
-export const DEFAULT_RADIUS = 50
 const DEFAULT_DIGITAL_OFFERS_SELECTION = false
 
 interface LocationModalProps {

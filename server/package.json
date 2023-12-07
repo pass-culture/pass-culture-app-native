@@ -1,7 +1,7 @@
 {
   "name": "@pass-culture/web-proxy",
   "description": "Express proxy for pass-culture-app-native Web Application",
-  "version": "1.267.2",
+  "version": "1.269.0",
   "private": true,
   "main": "build/src/index.js",
   "author": {
@@ -15,7 +15,7 @@
     "url": "https://github.com/pass-culture/pass-culture-app-native.git"
   },
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "scripts": {
     "build": "tsc --build && cp package.json build",

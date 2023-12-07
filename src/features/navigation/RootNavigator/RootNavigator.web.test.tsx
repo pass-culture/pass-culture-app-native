@@ -12,7 +12,6 @@ import { RootNavigator } from './RootNavigator'
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
 const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
 
-jest.mock('features/share/helpers/useShareOffer')
 jest.mock('features/cookies/helpers/useIsCookiesListUpToDate')
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))

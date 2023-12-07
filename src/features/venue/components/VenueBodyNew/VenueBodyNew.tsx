@@ -1,22 +1,25 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { VenueBanner } from 'features/venue/components/VenueBodyNew/VenueBanner'
+import { VenueMessagingApps } from 'features/venue/components/VenueMessagingAppsNew/VenueMessagingAppsNew'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
-import { useVenueBackgroundStyle } from 'features/venue/helpers/useVenueBackgroundStyle'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
+import { analytics } from 'libs/analytics'
+import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { Image } from 'libs/resizing-image-on-demand/Image'
+import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Offer } from 'shared/offer/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
-import { Venue } from 'ui/svg/icons/Venue'
+import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,7 +37,6 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
   playlists,
 }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
-  const backgroundStyle = useVenueBackgroundStyle()
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
@@ -42,24 +44,26 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
   const venueFullAddress = formatFullAddress(address, postalCode, city)
   const venueName = publicName || name
 
+  const distanceToVenue = useDistance({ lat: venue.latitude, lng: venue.longitude })
+  const venueTypeLabel =
+    venue.venueTypeCode && venue.venueTypeCode !== VenueTypeCodeKey.ADMINISTRATIVE
+      ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
+      : undefined
+
+  const venueTags = []
+  venueTypeLabel && venueTags.push(venueTypeLabel)
+  distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
+
   const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
 
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
       <TopContainer>
-        <HeaderContainer>
-          {bannerUrl ? (
-            <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
-          ) : (
-            <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
-              <Spacer.TopScreen />
-              <VenueIcon />
-            </EmptyVenueBackground>
-          )}
-        </HeaderContainer>
+        <VenueBanner bannerUrl={bannerUrl} />
         <Spacer.Column numberOfSpaces={6} />
         <MarginContainer>
+          <InformationTags tags={venueTags} />
           <VenueTitle
             accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
             adjustsFontSizeToFit
@@ -76,6 +80,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
           <CopyToClipboardButton
             wording="Copier l’adresse"
             textToCopy={`${venueName}, ${venueFullAddress}`}
+            onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
             snackBarMessage="L’adresse a bien été copiée"
           />
           <Spacer.Column numberOfSpaces={3} />
@@ -84,6 +89,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
               url: getGoogleMapsItineraryUrl(venueFullAddress),
               address: venueFullAddress,
             }}
+            onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
           />
         </MarginContainer>
       </TopContainer>
@@ -98,13 +104,33 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
             ),
             'Infos pratiques': <PracticalInformation venue={venue} />,
           }}
+          onTabChange={{
+            'Offres disponibles': () =>
+              analytics.logConsultVenueOffers({
+                venueId: venue.id,
+              }),
+            'Infos pratiques': () =>
+              analytics.logConsultPracticalInformations({
+                venueId: venue.id,
+              }),
+          }}
         />
       </FirstSectionContainer>
+
+      <Spacer.Column numberOfSpaces={6} />
+
+      <SectionWithDivider visible>
+        <MarginContainer>
+          <VenueMessagingApps venueId={venue.id} />
+        </MarginContainer>
+      </SectionWithDivider>
     </Container>
   )
 }
 
-const Container = styled.ScrollView({ overflow: 'visible' })
+const Container = styled.ScrollView.attrs({ scrollIndicatorInsets: { right: 1 } })({
+  overflow: 'visible',
+})
 
 const TopContainer = styled.View(({ theme }) => {
   const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
@@ -113,21 +139,6 @@ const TopContainer = styled.View(({ theme }) => {
     marginTop: isLargeScreen ? getSpacing(8) : 0,
     marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
   }
-})
-
-const EmptyVenueBackground = styled.View(({ theme }) => ({
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: theme.colors.greyLight,
-}))
-
-const VenueIcon = styled(Venue).attrs(({ theme }) => ({
-  size: getSpacing(30),
-  color: theme.colors.greyMedium,
-}))``
-
-const HeaderContainer = styled.View({
-  alignItems: 'center',
 })
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``

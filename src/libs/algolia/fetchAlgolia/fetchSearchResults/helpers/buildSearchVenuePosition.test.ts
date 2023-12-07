@@ -28,10 +28,6 @@ const placeFilter: LocationFilter = {
   place: Kourou,
   aroundRadius: MAX_RADIUS,
 }
-const venueFilter: LocationFilter = {
-  locationType: LocationType.VENUE,
-  venue,
-}
 
 describe('buildSearchVenuePosition', () => {
   describe('When user shares his position', () => {
@@ -54,7 +50,7 @@ describe('buildSearchVenuePosition', () => {
     })
 
     it('should return venue position and around radius when location filter is venue', () => {
-      const searchVenuePosition = buildSearchVenuePosition(venueFilter, userPosition)
+      const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, userPosition, venue)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
@@ -103,7 +99,7 @@ describe('buildSearchVenuePosition', () => {
     })
 
     it('should return venue position and around radius when location filter is venue', () => {
-      const searchVenuePosition = buildSearchVenuePosition(venueFilter)
+      const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, undefined, venue)
 
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,

@@ -45,6 +45,7 @@ export const buildOfferSearchParameters = (
     tags = [],
     timeRange = null,
     includeDigitalOffers = false,
+    venue,
   }: Parameters,
   userLocation: Position,
   isUserUnderage: boolean,
@@ -53,7 +54,7 @@ export const buildOfferSearchParameters = (
   ...buildFacetFilters({
     eanList,
     isUserUnderage,
-    locationFilter,
+    venue,
     objectIds,
     offerCategories,
     offerGenreTypes,
@@ -83,6 +84,7 @@ export const buildOfferSearchParameters = (
   }),
   ...buildGeolocationParameter({
     locationFilter,
+    venue,
     userLocation,
     isFullyDigitalOffersCategory,
     enableAppLocation,

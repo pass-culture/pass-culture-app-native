@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
@@ -18,6 +19,7 @@ export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
       <CallToActionContainer>
         <InternalTouchableLink
           navigateTo={searchNavConfig}
+          onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueId)}
           as={ButtonPrimary}
           wording="Rechercher une offre"
           icon={SmallMagnyfinGlass}

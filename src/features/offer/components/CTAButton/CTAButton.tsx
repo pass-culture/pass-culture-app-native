@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -14,6 +13,7 @@ type CTAButtonProps = {
   externalNav?: ExternalNavigationProps['externalNav']
   navigateTo?: InternalNavigationProps['navigateTo']
   isFreeDigitalOffer?: boolean
+  isLoggedIn?: boolean
 }
 
 export function CTAButton({
@@ -23,8 +23,8 @@ export function CTAButton({
   externalNav,
   navigateTo,
   isFreeDigitalOffer,
+  isLoggedIn,
 }: CTAButtonProps) {
-  const { isLoggedIn } = useAuthContext()
   const commonLinkProps = {
     as: ButtonWithLinearGradient,
     wording: wording,

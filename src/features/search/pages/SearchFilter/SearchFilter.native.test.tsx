@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'

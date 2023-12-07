@@ -3,6 +3,7 @@ import { Button, Text } from 'react-native'
 
 import { SearchWrapper, useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import {
   checkGeolocPermission,
   GeolocPermissionState,
@@ -29,10 +30,19 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
 const mockPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
+
+const mockVenue = {
+  _geoloc: { lat: 48.94083, lng: 2.47987 },
+  info: 'Paris',
+  label: 'La librairie quantique DATA',
+  venueId: 9384,
 }
 
 describe('SearchWrapper', () => {
@@ -44,6 +54,34 @@ describe('SearchWrapper', () => {
     })
 
     expect(screen.getByText(LocationType.PLACE)).toBeOnTheScreen()
+  })
+
+  it('should not update locationType with type Place when Location Context is changed and ENABLE_APP_LOCATION FF is false', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    renderDummyComponent()
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('setPlace'))
+    })
+
+    expect(screen.queryByText(LocationType.PLACE)).not.toBeOnTheScreen()
+  })
+
+  it('should not update locationType with type geolocation when Location Context is changed (i.e from deeplink) and ENABLE_APP_LOCATION FF is false', async () => {
+    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    renderDummyComponent()
+
+    await act(async () => {})
+
+    expect(screen.queryByText(LocationType.AROUND_ME)).not.toBeOnTheScreen()
   })
 
   it('should update locationType with type Around me when Location Context is switched to geolocation', async () => {
@@ -73,13 +111,13 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setVenue'))
     })
 
-    screen.getByText(LocationType.VENUE)
+    screen.getByText(mockVenue.label)
 
     await act(async () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    expect(screen.getByText(LocationType.VENUE)).toBeOnTheScreen()
+    expect(screen.getByText(mockVenue.label)).toBeOnTheScreen()
   })
 
   it('should still include digital offers when locationContext is changed', async () => {
@@ -114,6 +152,7 @@ const DummyComponent = () => {
   return (
     <React.Fragment>
       <Text>{searchState.locationFilter.locationType}</Text>
+      <Text>{searchState.venue?.label ?? ''}</Text>
       <Text>isDigitalOffer : {searchState.includeDigitalOffers?.toString()}</Text>
       <Button title="setPlace" onPress={() => setPlace(mockPlace)} />
       <Button title="unSetPlace" onPress={() => setPlace(null)} />
@@ -121,19 +160,8 @@ const DummyComponent = () => {
         title="setVenue"
         onPress={() =>
           dispatch({
-            type: 'SET_LOCATION_FILTERS',
-            payload: {
-              locationFilter: {
-                locationType: LocationType.VENUE,
-                venue: {
-                  _geoloc: { lat: 48.94083, lng: 2.47987 },
-                  info: 'Paris',
-                  label: 'La librairie quantique DATA',
-                  venueId: 9384,
-                },
-              },
-              includeDigitalOffers: false,
-            },
+            type: 'SET_VENUE',
+            payload: mockVenue,
           })
         }
       />

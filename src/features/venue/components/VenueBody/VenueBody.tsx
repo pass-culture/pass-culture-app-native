@@ -135,7 +135,7 @@ export function VenueBody({ venueId, onScroll, playlists }: Props) {
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
-        <VenueMessagingApps venueId={venueId} />
+        <VenueMessagingApps venue={venue} />
       </SectionWithDivider>
 
       {/* Modalités de retrait */}

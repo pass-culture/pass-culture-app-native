@@ -4,8 +4,9 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useShareOffer } from 'features/share/helpers/useShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { useOffer } from 'features/offer/api/useOffer'
+import { getShareOffer } from 'features/share/helpers/getShareOfferBest'
+import { WebShareModal } from 'features/share/pages/WebShareModalBest'
 import { analytics } from 'libs/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -23,7 +24,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-  const { share: shareOffer, shareContent } = useShareOffer(params.offerId, 'post_booking')
+  const { data: offer } = useOffer({ offerId: params.offerId })
+  const { share: shareOffer, shareContent } = getShareOffer({
+    offer,
+    utmMedium: 'post_booking',
+  })
   const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0

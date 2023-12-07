@@ -12,8 +12,8 @@ import { analytics } from 'libs/analytics'
 import { ChangeSearchLocationParam } from 'libs/analytics/logEventAnalytics'
 import {
   GeoCoordinates,
-  GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocationError,
+  GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocPermissionState,
   GeolocPositionError,
   Position,
@@ -96,6 +96,7 @@ describe('<LocationModal/>', () => {
     mockPermissionState = GeolocPermissionState.GRANTED
     mockPosition = DEFAULT_POSITION
     mockPositionError = null
+    mockSearchState = searchState
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
@@ -165,7 +166,6 @@ describe('<LocationModal/>', () => {
     ${{ locationType: LocationType.EVERYWHERE }}                                     | ${RadioButtonLocation.EVERYWHERE}            | ${LocationType.EVERYWHERE}
     ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${RadioButtonLocation.AROUND_ME}             | ${LocationType.AROUND_ME}
     ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE}
-    ${{ locationType: LocationType.VENUE, venue }}                                   | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.VENUE}
   `(
     'should select $label radio button by default when location type search state is $locationType',
     async ({
@@ -187,6 +187,19 @@ describe('<LocationModal/>', () => {
       expect(radioButton.props.accessibilityState).toEqual({ checked: true })
     }
   )
+
+  it('should select $label radio button by default when location type search state is $locationType', async () => {
+    mockSearchState = { ...mockSearchState, venue }
+    renderLocationModal()
+
+    await waitFor(() => {
+      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+    })
+
+    const radioButton = screen.getByTestId(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)
+
+    expect(radioButton.props.accessibilityState).toEqual({ checked: true })
+  })
 
   it('should display error message when select Autour de moi radio button when position is null', async () => {
     mockPosition = null
@@ -418,13 +431,9 @@ describe('<LocationModal/>', () => {
 
   describe('search reset', () => {
     it('should reset the location search input when pressing the reset icon', async () => {
-      const locationFilter: LocationFilter = {
-        locationType: LocationType.VENUE,
-        venue: mockVenues[0],
-      }
       mockSearchState = {
         ...mockSearchState,
-        locationFilter,
+        venue: mockVenues[0],
       }
       renderLocationModal()
 
@@ -482,13 +491,9 @@ describe('<LocationModal/>', () => {
     })
 
     it('the selected venue when closing the modal', async () => {
-      const locationFilter: LocationFilter = {
-        locationType: LocationType.VENUE,
-        venue: mockVenues[0],
-      }
       mockSearchState = {
         ...mockSearchState,
-        locationFilter,
+        venue: mockVenues[0],
       }
       renderLocationModal()
 
@@ -730,11 +735,7 @@ describe('<LocationModal/>', () => {
     )
 
     it('should log ChangeSearchLocation event and navigate with venue location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
-      const locationFilter: LocationFilter = {
-        locationType: LocationType.VENUE,
-        venue: mockVenues[0],
-      }
-      mockSearchState = { ...mockSearchState, locationFilter }
+      mockSearchState = { ...mockSearchState, venue: mockVenues[0] }
       renderLocationModal()
 
       const radioButton = screen.getByTestId('Choisir un lieu')
@@ -767,12 +768,13 @@ describe('<LocationModal/>', () => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
           ...mockSearchState,
-          locationFilter,
+          venue: mockVenues[0],
         },
         screen: 'Search',
       })
     })
 
+    //ICI
     it('should log ChangeSearchLocation event and navigate with place location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
       const locationFilter: LocationFilter = {
         locationType: LocationType.PLACE,

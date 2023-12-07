@@ -2,7 +2,7 @@ import { Hit } from '@algolia/client-search'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
-import { MAX_RADIUS, sortCategories, addOrRemove } from 'features/search/helpers/reducer.helpers'
+import { addOrRemove, MAX_RADIUS, sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia'
@@ -29,6 +29,7 @@ export const initialSearchState: SearchState = {
   tags: [],
   timeRange: null,
   view: SearchView.Landing,
+  venue: undefined,
 }
 
 export type Action =
@@ -53,7 +54,7 @@ export type Action =
   | { type: 'SET_LOCATION_EVERYWHERE' }
   | { type: 'SET_LOCATION_AROUND_ME'; payload?: number }
   | { type: 'SET_LOCATION_PLACE'; payload: { aroundRadius?: number; place: SuggestedPlace } }
-  | { type: 'SET_LOCATION_VENUE'; payload: Venue }
+  | { type: 'SET_VENUE'; payload?: Venue }
   | { type: 'SET_QUERY'; payload: string }
   | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
   | {
@@ -147,10 +148,10 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
           aroundRadius: action.payload.aroundRadius ?? MAX_RADIUS,
         },
       }
-    case 'SET_LOCATION_VENUE':
+    case 'SET_VENUE':
       return {
         ...state,
-        locationFilter: { locationType: LocationType.VENUE, venue: action.payload },
+        venue: action.payload,
       }
     case 'SET_QUERY':
       return { ...state, query: action.payload }

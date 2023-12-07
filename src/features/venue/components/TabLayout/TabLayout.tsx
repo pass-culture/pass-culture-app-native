@@ -12,13 +12,19 @@ const tabs = Object.values(Tab)
 
 type Props = {
   tabPanels: Record<Tab, JSX.Element>
+  onTabChange?: Record<Tab, () => void>
 }
 
-export const TabLayout: FunctionComponent<Props> = ({ tabPanels }) => {
+export const TabLayout: FunctionComponent<Props> = ({ tabPanels, onTabChange }) => {
   const tabListRef = useRef(null)
   const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
 
-  useTabArrowNavigation({ tabListRef, selectedTab, setSelectedTab, tabs })
+  const onTabPress = (tab: Tab) => {
+    setSelectedTab(tab)
+    onTabChange?.[tab]?.()
+  }
+
+  useTabArrowNavigation({ tabListRef, selectedTab, setSelectedTab: onTabPress, tabs })
 
   return (
     <Container>
@@ -32,7 +38,7 @@ export const TabLayout: FunctionComponent<Props> = ({ tabPanels }) => {
             <StyledTouchableTab
               id={tab}
               key={tab}
-              onPress={() => setSelectedTab(tab)}
+              onPress={() => onTabPress(tab)}
               selected={isSelected}>
               <Spacer.Column numberOfSpaces={6} />
               <TabTitleContainer>

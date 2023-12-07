@@ -1,10 +1,12 @@
 import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/geolocation'
 
 interface ISearchContext {
@@ -19,6 +21,7 @@ export const SearchWrapper = memo(function SearchWrapper({
 }: {
   children: React.JSX.Element
 }) {
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const maxPrice = useMaxPrice()
   const priceRange: [number, number] = [0, maxPrice]
 
@@ -31,6 +34,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   const { isCustomPosition, place, isGeolocated } = useLocation()
 
   useEffect(() => {
+    if (!enableAppLocation) return
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
     const includeDigitalOffers = searchState.includeDigitalOffers ?? false
@@ -38,7 +42,7 @@ export const SearchWrapper = memo(function SearchWrapper({
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
 
-    if (searchState.locationFilter.locationType === LocationType.VENUE) {
+    if (searchState.venue) {
       return
     } else if (isCustomPosition && place) {
       dispatch({

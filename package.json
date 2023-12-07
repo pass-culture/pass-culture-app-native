@@ -7,11 +7,11 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.267.2",
-  "build": 10267002,
+  "version": "1.269.0",
+  "build": 10269000,
   "private": true,
   "engines": {
-    "node": ">=16.13"
+    "node": ">=20.10"
   },
   "homepage": ".",
   "browserslist": {

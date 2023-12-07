@@ -11,12 +11,12 @@ interface Props {
 
 const PADDING_VERTICAL = getSpacing(4)
 
-export const BottomBanner = ({ text }: Props) => {
+export const BottomBanner = ({ text, ...props }: Props) => {
   const { bottom } = useSafeAreaInsets()
   const paddingBottom = bottom !== 0 ? bottom : PADDING_VERTICAL
 
   return (
-    <Container paddingBottom={paddingBottom}>
+    <Container paddingBottom={paddingBottom} {...props}>
       <IconContainer>
         <BicolorWarning />
       </IconContainer>

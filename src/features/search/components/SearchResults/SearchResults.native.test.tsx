@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -90,12 +89,22 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: Position = DEFAULT_POSITION
+let mockIsGeolocated = false
+let mockIsCustomPosition = false
+const mockPlace: SuggestedPlace = {
+  label: 'Kourou',
+  info: 'Guyane',
+  geolocation: { longitude: -52.669736, latitude: 5.16186 },
+}
 const mockShowGeolocPermissionModal = jest.fn()
 
 jest.mock('libs/geolocation/LocationWrapper', () => ({
   useLocation: () => ({
     userPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    isGeolocated: mockIsGeolocated,
+    isCustomPosition: mockIsCustomPosition,
+    place: mockPlace,
   }),
 }))
 
@@ -127,6 +136,8 @@ describe('SearchResults component', () => {
     mockSearchState = searchState
     mockPosition = DEFAULT_POSITION
     mockUserData = []
+    mockIsGeolocated = false
+    mockIsCustomPosition = false
   })
 
   it('should render correctly', async () => {
@@ -397,8 +408,6 @@ describe('SearchResults component', () => {
       ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
       ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
       ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-      ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${DEFAULT_POSITION} | ${venue.label}
-      ${LocationType.VENUE}      | ${{ locationType: LocationType.VENUE, venue }}                                   | ${null}             | ${venue.label}
     `(
       'should display $locationButtonLabel in location filter button label when location type is $locationType and position is $position',
       async ({
@@ -418,6 +427,14 @@ describe('SearchResults component', () => {
         expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
       }
     )
+  })
+
+  it(`should display ${venue.label} in location filter button label when a venue is selected`, async () => {
+    mockSearchState = { ...searchState, venue }
+    render(<SearchResults />)
+    await act(async () => {})
+
+    expect(screen.queryByText(venue.label)).toBeOnTheScreen()
   })
 
   describe('Venue filter', () => {
@@ -451,13 +468,13 @@ describe('SearchResults component', () => {
       expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...mockSearchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+          locationFilter: { locationType: LocationType.EVERYWHERE },
           view: SearchView.Results,
         })
       )
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if no venue selected', async () => {
+    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if no venue is selected', async () => {
       render(<SearchResults />)
       await act(async () => {})
 
@@ -467,7 +484,7 @@ describe('SearchResults component', () => {
     it('when ENABLE_APP_LOCATION featureFlag, should display venueButtonLabel in venue filter if a venue is selected', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.VENUE, venue },
+        venue,
       }
       render(<SearchResults />)
       await act(async () => {})

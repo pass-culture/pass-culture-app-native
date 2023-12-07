@@ -75,6 +75,47 @@ export const businessNatifModuleFixture: BusinessContentModel = {
         },
       },
     },
+    imageWeb: {
+      sys: {
+        space: {
+          sys: {
+            type: 'Link',
+            linkType: 'Space',
+            id: '2bg01iqy0isv',
+          },
+        },
+        id: '1jedJLjdDiypJqBtO1sjH0',
+        type: 'Asset',
+        createdAt: '2022-11-10T17:15:29.312Z',
+        updatedAt: '2022-11-10T17:19:54.202Z',
+        environment: {
+          sys: {
+            id: 'testing',
+            type: 'Link',
+            linkType: 'Environment',
+          },
+        },
+        revision: 3,
+        locale: 'en-US',
+      },
+      fields: {
+        title: 'image web',
+        description: '',
+        file: {
+          url: '//images.ctfassets.net/2bg01iqy0isv/1jedJLjdDiypJqBtO1sjH0/185ee9e6428229a15d4c047b862a95f8/image_web.jpeg',
+
+          details: {
+            size: 100095,
+            image: {
+              width: 560,
+              height: 800,
+            },
+          },
+          fileName: '17-insta-1080x1350_560x800.jpg',
+          contentType: 'image/jpeg',
+        },
+      },
+    },
     url: 'https://passculture.app/creation-compte',
     targetNotConnectedUsersOnly: true,
     latitude: 2,

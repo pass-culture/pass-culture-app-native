@@ -1,5 +1,4 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { VenueModalHookCallback } from 'features/search/pages/modals/VenueModal/type'
 import { SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -153,7 +152,7 @@ describe('useVenueModal', () => {
       type: 'SET_STATE',
       payload: {
         ...initialSearchState,
-        locationFilter: { locationType: LocationType.VENUE, venue: venue },
+        venue: venue,
         view: SearchView.Results,
       },
     })
@@ -207,7 +206,7 @@ describe('useVenueModal', () => {
 
     expect(doAfterSearch).toHaveBeenCalledWith({
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.VENUE, venue: venue },
+      venue: venue,
       view: SearchView.Results,
     })
   })

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Animated } from 'react-native'
+import { Share } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -19,6 +20,8 @@ import {
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
+
+const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -92,16 +95,34 @@ describe('<OfferHeader />', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'offer',
-      offerId: offerId,
+      offerId: mockOffer.id,
     })
+  })
+
+  it('should share when clicking on the share button', async () => {
+    renderOfferHeader()
+
+    const shareButton = screen.getByLabelText('Partager')
+    await act(async () => {
+      fireEvent.press(shareButton)
+    })
+
+    expect(mockShare).toHaveBeenCalledWith(
+      {
+        message:
+          'Retrouve "Sous les étoiles de Paris - VF" chez "PATHE BEAUGRENELLE" sur le pass Culture\u00a0:\n',
+        url: 'https://webapp-v2.example.com/offre/116656?utm_gen=product&utm_campaign=share_offer&utm_medium=header',
+      },
+      { subject: 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!' }
+    )
   })
 })
 
-const offerId = 116656
+const mockOffer = offerResponseSnap
 
 function renderOfferHeader() {
   mockServer.getApiV1('/me/favorites', paginatedFavoritesResponseSnap)
-  mockServer.getApiV1<OfferResponse>(`/offer/${offerId}`, offerResponseSnap)
+  mockServer.getApiV1<OfferResponse>(`/offer/${mockOffer.id}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(
@@ -109,7 +130,7 @@ function renderOfferHeader() {
       <OfferHeader
         title="Some very nice offer"
         headerTransition={animatedValue}
-        offerId={offerId}
+        offer={mockOffer}
       />
     )
   )

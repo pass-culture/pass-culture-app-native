@@ -27,6 +27,7 @@ describe('useSameArtistPlaylist', () => {
           artists: 'Eiichiro Oda',
           ean: '9782723492607',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
+          venueLocation: { latitude: 47.65904, longitude: -2.75922 },
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -38,6 +39,7 @@ describe('useSameArtistPlaylist', () => {
         artists: 'Eiichiro Oda',
         ean: '9782723492607',
         searchGroupName: SearchGroupNameEnumv2.LIVRES,
+        venueLocation: { latitude: 47.65904, longitude: -2.75922 },
       })
     })
   })
@@ -50,6 +52,7 @@ describe('useSameArtistPlaylist', () => {
           artists: 'Eiichiro Oda',
           ean: '9782723492607',
           searchGroupName: SearchGroupNameEnumv2.LIVRES,
+          venueLocation: { latitude: 47.65904, longitude: -2.75922 },
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -69,6 +72,7 @@ describe('useSameArtistPlaylist', () => {
           artists: '',
           ean: '',
           searchGroupName: undefined,
+          venueLocation: undefined,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -80,6 +84,7 @@ describe('useSameArtistPlaylist', () => {
         artists: '',
         ean: '',
         searchGroupName: undefined,
+        venueLocation: undefined,
       })
     })
   })
@@ -92,6 +97,7 @@ describe('useSameArtistPlaylist', () => {
           artists: null,
           ean: null,
           searchGroupName: undefined,
+          venueLocation: undefined,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -103,6 +109,7 @@ describe('useSameArtistPlaylist', () => {
         artists: null,
         ean: null,
         searchGroupName: undefined,
+        venueLocation: undefined,
       })
     })
   })

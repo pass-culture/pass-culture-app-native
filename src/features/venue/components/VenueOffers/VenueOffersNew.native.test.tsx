@@ -5,6 +5,7 @@ import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
+import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -13,7 +14,7 @@ import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const playlists = gtlPlaylistAlgoliaSnapshot
 const mockVenue = venueResponseSnap
@@ -48,6 +49,9 @@ const defaultParams = {
   view: SearchView.Landing,
   tags: [],
   timeRange: null,
+  locationFilter: {
+    locationType: LocationType.EVERYWHERE,
+  },
 }
 
 const venueOffersMock = { hits: VenueOffersResponseSnap, nbHits: 4 }
@@ -94,24 +98,21 @@ describe('<VenueOffersNew />', () => {
 
     fireEvent.press(screen.getByText('En voir plus'))
 
-    await waitFor(() => {
-      expect(push).toHaveBeenCalledWith('TabNavigator', {
-        params: {
-          ...defaultParams,
-          locationFilter: {
-            locationType: 'VENUE',
-            venue: {
-              geolocation: { latitude: 48.87004, longitude: 2.3785 },
-              info: 'Paris',
-              label: 'Le Petit Rintintin 1',
-              venueId: 5543,
-            },
-          },
-          view: SearchView.Results,
-          previousView: SearchView.Results,
+    await act(() => {})
+
+    expect(push).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        ...defaultParams,
+        venue: {
+          geolocation: { latitude: 48.87004, longitude: 2.3785 },
+          info: 'Paris',
+          label: 'Le Petit Rintintin 1',
+          venueId: 5543,
         },
-        screen: 'Search',
-      })
+        view: SearchView.Results,
+        previousView: SearchView.Results,
+      },
+      screen: 'Search',
     })
   })
 

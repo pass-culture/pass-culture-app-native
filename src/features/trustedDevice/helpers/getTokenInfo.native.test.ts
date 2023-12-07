@@ -4,7 +4,7 @@ import { eventMonitoring } from 'libs/monitoring'
 jest.unmock('jwt-decode')
 
 const VALID_TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibG9jYXRpb24iOiJQYXJpcyIsImRhdGVDcmVhdGVkIjoiMjAyMy0wNi0wOVQxMDowMDowMFoiLCJvcyI6ImlPUyIsIm1vZGVsIjoiaVBob25lIDEzIn0.J2AwZ3nfOLDwMscfGUaI9pt470TBQ9NOaZDycA0EDtM'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJkYXRhIjp7ImRhdGVDcmVhdGVkIjoiMjAyMy0wNi0wOVQxMDowMDowMFoiLCJsb2NhdGlvbiI6IlBhcmlzIiwib3MiOiJpT1MiLCJzb3VyY2UiOiJpUGhvbmUgMTMifSwiZXhwIjoxNzAxOTM4MDE4fQ.quizgw61p4gX_B2Liz-WdoJlWadTx9kHMPKoEV_5tHI'
 const INVALID_TOKEN = 'abc'
 
 describe('getTokenInfo', () => {
@@ -12,11 +12,14 @@ describe('getTokenInfo', () => {
     const tokenInfo = getTokenInfo(VALID_TOKEN)
 
     expect(tokenInfo).toEqual({
-      userId: '1',
-      location: 'Paris',
-      dateCreated: '2023-06-09T10:00:00Z',
-      os: 'iOS',
-      model: 'iPhone 13',
+      exp: 1_701_938_018,
+      user_id: 1,
+      data: {
+        location: 'Paris',
+        dateCreated: '2023-06-09T10:00:00Z',
+        os: 'iOS',
+        source: 'iPhone 13',
+      },
     })
   })
 

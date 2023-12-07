@@ -5,11 +5,11 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
 import { LocationFilter, SearchView } from 'features/search/types'
@@ -60,10 +60,9 @@ export const SearchFilter: React.FC = () => {
 
   const onResetPress = useCallback(() => {
     const getLocationFilter = (): LocationFilter => {
-      const { locationFilter } = searchState
+      const { locationFilter, venue } = searchState
       const aroundRadius =
-        locationFilter.locationType === LocationType.EVERYWHERE ||
-        locationFilter.locationType === LocationType.VENUE
+        locationFilter.locationType === LocationType.EVERYWHERE || venue
           ? DEFAULT_RADIUS
           : locationFilter.aroundRadius
       if (isCustomPosition && place) {
@@ -86,6 +85,7 @@ export const SearchFilter: React.FC = () => {
       payload: {
         ...searchState,
         locationFilter: getLocationFilter(),
+        venue: undefined,
         minPrice: undefined,
         maxPrice: undefined,
         offerGenreTypes: undefined,

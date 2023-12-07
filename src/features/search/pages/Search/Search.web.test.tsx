@@ -2,7 +2,6 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState } from 'features/search/types'
@@ -10,14 +9,14 @@ import { Venue } from 'features/venue/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { checkAccessibilityFor, render, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 const venue: Venue = mockedSuggestedVenues[0]
 
 const mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-  locationFilter: { locationType: LocationType.VENUE, venue },
+  venue,
   priceRange: [0, 20],
 }
 

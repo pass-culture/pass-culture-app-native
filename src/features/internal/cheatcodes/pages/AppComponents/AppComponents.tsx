@@ -39,7 +39,6 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
-import { ClippedTag } from 'ui/components/ClippedTag'
 import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
@@ -290,12 +289,6 @@ export const AppComponents: FunctionComponent = () => {
 
         {/* Tags */}
         <AccordionItem title="Tags">
-          <ClippedTag
-            label="Musée du Louvre"
-            onPress={onButtonPress}
-            iconAccessibilityLabel="Enlever le lieu"
-          />
-          <Spacer.Column numberOfSpaces={getSpacing(2)} />
           <Text>
             The text in SlantTag is always straight. Developers should play on slantAngle to include
             whole text in tag

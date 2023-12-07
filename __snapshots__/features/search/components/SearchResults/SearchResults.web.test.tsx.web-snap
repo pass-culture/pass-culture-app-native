@@ -78,6 +78,40 @@ exports[`SearchResults component should render correctly 1`] = `
   text-decoration: none;
 }
 
+.c4 {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 32px;
+  background-color: #ffffff;
+  border-color: #161617;
+  border-width: 1px;
+  border-radius: 24px;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -130,40 +164,6 @@ exports[`SearchResults component should render correctly 1`] = `
 
 .c6:disabled {
   background-color: #F1F1F4;
-}
-
-.c4 {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  box-sizing: border-box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-color: #161617;
-  border-width: 1px;
-  border-radius: 24px;
-}
-
-.c4:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c4:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
 }
 
 <body>
@@ -310,7 +310,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Lieu culturel"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Lieu culturel"
                   tabindex="0"
                   title="Lieu culturel"
@@ -331,7 +331,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Catégories"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Catégories"
                   tabindex="0"
                   title="Catégories"
@@ -352,7 +352,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Prix"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Prix"
                   tabindex="0"
                   title="Prix"
@@ -373,7 +373,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Dates & heures"
-                  class="c3 c4 sc-dhKdcB c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Dates & heures"
                   tabindex="0"
                   title="Dates & heures"
@@ -554,6 +554,40 @@ exports[`SearchResults component should render correctly 1`] = `
   text-decoration: none;
 }
 
+.c4 {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 32px;
+  background-color: #ffffff;
+  border-color: #161617;
+  border-width: 1px;
+  border-radius: 24px;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c4:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c5 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -606,40 +640,6 @@ exports[`SearchResults component should render correctly 1`] = `
 
 .c6:disabled {
   background-color: #F1F1F4;
-}
-
-.c4 {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  box-sizing: border-box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-color: #161617;
-  border-width: 1px;
-  border-radius: 24px;
-}
-
-.c4:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c4:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
 }
 
 <div>
@@ -785,7 +785,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Lieu culturel"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Lieu culturel"
                 tabindex="0"
                 title="Lieu culturel"
@@ -806,7 +806,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Catégories"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Catégories"
                 tabindex="0"
                 title="Catégories"
@@ -827,7 +827,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Prix"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Prix"
                 tabindex="0"
                 title="Prix"
@@ -848,7 +848,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Dates & heures"
-                class="c3 c4 sc-dhKdcB c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Dates & heures"
                 tabindex="0"
                 title="Dates & heures"

@@ -8,13 +8,10 @@ import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/geolocation'
 
 describe('buildGeolocationParameter', () => {
-  const locationFilterVenue: SearchQueryParameters['locationFilter'] = {
-    locationType: LocationType.VENUE,
-    venue: {
-      label: 'Venue',
-      info: 'infoVenue',
-      venueId: 123,
-    },
+  const mockedVenue: SearchQueryParameters['venue'] = {
+    label: 'Venue',
+    info: 'infoVenue',
+    venueId: 123,
   }
 
   const locationFilterPlace: SearchQueryParameters['locationFilter'] = {
@@ -45,7 +42,7 @@ describe('buildGeolocationParameter', () => {
   }
 
   it('should return undefined for venue location type', () => {
-    const result = buildGeolocationParameter({ locationFilter: locationFilterVenue, userLocation })
+    const result = buildGeolocationParameter({ venue: mockedVenue, userLocation })
 
     expect(result).toBeUndefined()
   })

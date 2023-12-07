@@ -1,13 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/location/components/SearchLocationModal'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { useLocation } from 'libs/geolocation'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 /**
@@ -23,17 +20,16 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
   const { dispatch, searchState } = useSearch()
-  const { userPosition } = useLocation()
 
   useEffect(() => {
-    if (searchState.locationFilter.locationType !== LocationType.VENUE) {
+    if (!searchState.venue) {
       setVenueQuery('')
     }
-  }, [searchState.locationFilter.locationType])
+  }, [searchState.venue])
 
   const onClose = () => {
-    if (searchState.locationFilter.locationType === LocationType.VENUE) {
-      setVenueQuery(searchState.locationFilter.venue.label)
+    if (searchState.venue) {
+      setVenueQuery(searchState.venue.label)
     }
     dismissModal()
   }
@@ -54,43 +50,27 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
   }, [])
 
   const doApplySearch = useCallback(() => {
-    if (!venueQuery) {
-      const payload: Partial<SearchState> = {
-        ...searchState,
-        locationFilter: userPosition
-          ? { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS }
-          : { locationType: LocationType.EVERYWHERE },
-        view: SearchView.Results,
-      }
-      dispatch({
-        type: 'SET_STATE',
-        payload,
-      })
-      doAfterSearch?.(payload)
+    const payload: Partial<SearchState> = {
+      ...searchState,
+      venue: selectedVenue ?? undefined,
+      view: SearchView.Results,
     }
-    if (selectedVenue) {
-      const payload: Partial<SearchState> = {
-        ...searchState,
-        locationFilter: { locationType: LocationType.VENUE, venue: selectedVenue },
-        view: SearchView.Results,
-      }
-      dispatch({
-        type: 'SET_STATE',
-        payload,
-      })
-      analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
-      doAfterSearch?.(payload)
-    }
+    dispatch({
+      type: 'SET_STATE',
+      payload,
+    })
+    if (selectedVenue) analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
+    doAfterSearch?.(payload)
 
     dismissModal()
-  }, [dismissModal, dispatch, doAfterSearch, searchState, selectedVenue, userPosition, venueQuery])
+  }, [dismissModal, dispatch, doAfterSearch, searchState, selectedVenue])
 
   useEffect(() => {
-    if (searchState.locationFilter.locationType === LocationType.VENUE) {
-      setVenueQuery(searchState.locationFilter.venue.label)
-      setSelectedVenue(searchState.locationFilter.venue)
+    if (searchState.venue) {
+      setVenueQuery(searchState.venue.label)
+      setSelectedVenue(searchState.venue)
     }
-  }, [searchState.locationFilter])
+  }, [searchState.venue])
 
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery

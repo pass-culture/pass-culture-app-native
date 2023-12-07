@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useMemo, useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,6 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -19,7 +18,7 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
 import { useLocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
-import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -50,17 +49,11 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
       ...params,
       ...(venue
         ? {
-            locationFilter: {
-              ...params.locationFilter,
-              locationType: LocationType.VENUE,
-              venue: {
-                ...(params.locationFilter.locationType === LocationType.VENUE
-                  ? params.locationFilter.venue
-                  : {}),
-                label: venue.name,
-                info: venue.city ?? '',
-                venueId: venue.id,
-              },
+            venue: {
+              ...(params.venue ?? {}),
+              label: venue.name,
+              info: venue.city ?? '',
+              venueId: venue.id,
             },
           }
         : {}),

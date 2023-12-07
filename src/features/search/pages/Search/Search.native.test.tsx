@@ -29,7 +29,7 @@ const venue: Venue = mockedSuggestedVenues[0]
 const mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-  locationFilter: { locationType: LocationType.VENUE, venue },
+  venue,
   priceRange: [0, 20],
 }
 

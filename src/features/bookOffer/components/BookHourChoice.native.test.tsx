@@ -195,6 +195,74 @@ describe('BookHourChoice when prices by category feature flag activated and ther
 
     expect(screen.getByText('épuisé')).toBeOnTheScreen()
   })
+
+  it('should set the hour selected when pressing hour item', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+
+    fireEvent.press(screen.getByText('20h00'))
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SELECT_HOUR',
+      payload: '2023-04-01T20:00:00Z',
+    })
+  })
+
+  it('should set the stock selected when pressing hour item and there is only one stock', () => {
+    mockOffer = {
+      ...mockOffer,
+      stocks: [stock1],
+    }
+
+    render(<BookHourChoice enablePricesByCategories />)
+
+    fireEvent.press(screen.getByText('22h00'))
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SELECT_STOCK',
+      payload: 18758,
+    })
+  })
+
+  it('should not set the stock selected when pressing hour item and there are several stock', () => {
+    mockOffer = {
+      ...mockOffer,
+      stocks: [stock1, { ...stock1, price: 22000, priceCategoryLabel: 'Pelouse or' }],
+    }
+    render(<BookHourChoice enablePricesByCategories />)
+
+    fireEvent.press(screen.getByText('20h00'))
+
+    expect(mockDispatch).not.toHaveBeenCalledWith({
+      type: 'SELECT_STOCK',
+      payload: 18758,
+    })
+  })
+
+  it('should set the quantity at 1 when pressing hour item and offer is not duo', () => {
+    mockOffer = {
+      ...mockOffer,
+      isDuo: false,
+    }
+    render(<BookHourChoice enablePricesByCategories />)
+
+    fireEvent.press(screen.getByText('20h00'))
+
+    expect(mockDispatch).not.toHaveBeenCalledWith(1, {
+      type: 'SELECT_QUANTITY',
+      payload: 1,
+    })
+  })
+
+  it('should not set the quantity at 1 when pressing hour item and offer is duo', () => {
+    render(<BookHourChoice enablePricesByCategories />)
+
+    fireEvent.press(screen.getByText('20h00'))
+
+    expect(mockDispatch).not.toHaveBeenCalledWith(1, {
+      type: 'SELECT_QUANTITY',
+      payload: 1,
+    })
+  })
 })
 
 describe('BookHourChoice when prices by category feature flag activated and there is only one stock', () => {

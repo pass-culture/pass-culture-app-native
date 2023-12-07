@@ -2,20 +2,19 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferAccessibilityResponse } from 'api/gen'
+import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { AccessibilityAtom } from 'ui/components/accessibility/AccessibilityAtom'
 import { HandicapCategory } from 'ui/components/accessibility/AccessibilityAtom.service'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
-const isNullOrUndefined = <T,>(value: T | undefined | null) => value === undefined || value === null
-
-export const AccessibilityBlock: React.FC<OfferAccessibilityResponse> = ({
+export function AccessibilityBlock({
   visualDisability,
   audioDisability,
   mentalDisability,
   motorDisability,
-}) => {
+}: Readonly<OfferAccessibilityResponse>) {
   if (
     isNullOrUndefined(visualDisability) &&
     isNullOrUndefined(audioDisability) &&

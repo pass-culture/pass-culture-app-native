@@ -501,7 +501,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             >
                               <a
                                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
-                                href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https://url.com/offer"
+                                href="https://twitter.com/intent/tweet?text=Voici une super offre !&url=https%3A%2F%2Furl.com%2Foffer"
                                 style="transition-duration: 0s;"
                               >
                                 <div
@@ -561,7 +561,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                             >
                               <a
                                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexGrow-16y2uox r-minWidth-1gwld19"
-                                href="https://telegram.me/share/msg?url=https://url.com/offer&text=Voici une super offre !"
+                                href="https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre !"
                                 style="transition-duration: 0s;"
                               >
                                 <div

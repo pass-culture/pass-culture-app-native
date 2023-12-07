@@ -1,6 +1,6 @@
 import { Share } from 'react-native'
 
-import { share } from 'libs/share'
+import { share } from 'libs/share/share'
 
 const defaultContent = { message: 'Message', messageWithoutLink: 'Message' }
 const defaultOptions = {}

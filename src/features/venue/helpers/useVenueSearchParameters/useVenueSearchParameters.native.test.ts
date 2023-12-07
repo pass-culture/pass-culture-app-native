@@ -43,17 +43,14 @@ describe('useVenueSearchParameters', () => {
     })
   })
 
-  it('should retrieve the locationFilter filtered on venue if available', () => {
+  it('should retrieve the the venue if available', () => {
     const { result } = renderHook(() => useVenueSearchParameters(venue.id))
 
-    expect(result.current.locationFilter).toEqual({
-      locationType: LocationType.VENUE,
-      venue: {
-        info: 'Paris',
-        label: 'Le Petit Rintintin 1',
-        geolocation: { latitude: venue.latitude, longitude: venue.longitude },
-        venueId: 5543,
-      },
+    expect(result.current.venue).toEqual({
+      info: 'Paris',
+      label: 'Le Petit Rintintin 1',
+      geolocation: { latitude: venue.latitude, longitude: venue.longitude },
+      venueId: 5543,
     })
   })
 

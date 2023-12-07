@@ -10,17 +10,20 @@ import { Duplicate } from 'ui/svg/icons/Duplicate'
 interface Props {
   wording: string
   textToCopy: string
+  onCopy?: () => void
   snackBarMessage?: string
 }
 
 export const CopyToClipboardButton: FunctionComponent<Props> = ({
   wording,
   textToCopy,
+  onCopy,
   snackBarMessage,
 }) => {
   const copyToClipboard = async () => {
     Clipboard.setString(textToCopy)
     if ((await Clipboard.getString()) === textToCopy) {
+      onCopy?.()
       showSuccessSnackBar({
         message: snackBarMessage || 'Copié\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,
