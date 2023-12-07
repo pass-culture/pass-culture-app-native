@@ -11,11 +11,9 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -27,7 +25,7 @@ export interface BusinessModuleProps {
   subtitle?: string
   index: number
   image: string
-  leftIcon?: string
+  imageWeb?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
@@ -39,8 +37,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     analyticsTitle: title,
     title: firstLine,
     subtitle: secondLine,
-    leftIcon,
     image: imageURL,
+    imageWeb: imageWebURL,
     url,
     homeEntryId,
     index,
@@ -49,7 +47,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     localizationArea,
   } = props
   const isDisabled = !url
-  const { appContentWidth } = useTheme()
+  const { appContentWidth, isDesktopViewport } = useTheme()
   const { isLoggedIn, user, isUserLoading } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
   const imageHeight = Math.min(
@@ -99,6 +97,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
   if (!shouldModuleBeDisplayed) return null
 
   const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
+  const imageToDisplay = isDesktopViewport && imageWebURL ? imageWebURL : imageURL
+
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
@@ -112,14 +112,11 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
         accessibilityLabel={accessibilityLabel}>
         <ImageContainer>
           <StyledImageBackground
-            url={imageURL}
+            url={imageToDisplay}
             height={imageHeight}
             width={imageWidth}
             testID="imageBusiness">
             <Container>
-              <IconContainer>
-                {leftIcon ? <StyledImage url={leftIcon} /> : <IdeaIcon />}
-              </IconContainer>
               <TextContainer>
                 <ButtonText testID="firstLine">{firstLine}</ButtonText>
                 <StyledBody numberOfLines={2}>{secondLine}</StyledBody>
@@ -159,12 +156,6 @@ const ImageContainer = styled.View(({ theme }) => ({
   maxHeight: LENGTH_XS,
 }))
 
-const StyledImage = styled(Image)(({ theme }) => ({
-  width: getSpacing(14),
-  height: getSpacing(14),
-  tintColor: theme.colors.white,
-}))
-
 const StyledImageBackground = styled(ImageBackground)<{ width: number; height: number }>(
   (props) => ({
     height: props.height,
@@ -185,7 +176,8 @@ const TextContainer = styled.View({
   flex: 1,
   flexDirection: 'column',
   paddingVertical: getSpacing(1),
-  paddingHorizontal: getSpacing(0.5),
+  paddingRight: getSpacing(0.5),
+  paddingLeft: getSpacing(4),
 })
 
 const IconContainer = styled.View({
@@ -202,10 +194,6 @@ const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
-
-const IdeaIcon = styled(Idea).attrs(({ theme }) => ({
-  color: theme.colors.white,
-}))``
 
 const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   color: theme.colors.white,

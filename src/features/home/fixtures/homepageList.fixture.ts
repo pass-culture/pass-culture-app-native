@@ -73,7 +73,6 @@ export const homepageList: Homepage[] = [
         id: 'K2yYJkeX30OoepIooo2Um',
         image:
           'https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
-        leftIcon: undefined,
         shouldTargetNotConnectedUsers: undefined,
         subtitle: 'En répondant à notre rapide questionnaire',
         title: 'Donne ton avis...',
@@ -86,7 +85,6 @@ export const homepageList: Homepage[] = [
         id: '24FUVnnPPJ9v7JHkO7eaXK',
         image:
           'https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
-        leftIcon: undefined,
         shouldTargetNotConnectedUsers: true,
         subtitle: 'Consulte notre FAQ\u00a0!',
         title: 'En savoir plus sur le pass Culture',
@@ -99,7 +97,6 @@ export const homepageList: Homepage[] = [
         id: '24FUVnnPPJ9v7JHkO7eaID',
         image:
           'https://images.ctfassets.net/2bg01iqy0isv/6kgALLZ7PL6vYubjvE8s0c/8e545d3312343d25c776c3cded9e2784/Capture_d___e__cran_2020-07-22_a___12.24.11.png',
-        leftIcon: undefined,
         shouldTargetNotConnectedUsers: false,
         subtitle: 'Si tu as 18 ans, bénéficie de 300\u00a0€.',
         title: 'Crée un compte\u00a0!',

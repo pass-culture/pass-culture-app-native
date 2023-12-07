@@ -26,10 +26,11 @@ const props: BusinessModuleProps = {
   title: 'firstLine',
   subtitle: 'secondLine',
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',
+  imageWeb:
+    'https://images.ctfassets.net/2bg01iqy0isv/1jedJLjdDiypJqBtO1sjH0/185ee9e6428229a15d4c047b862a95f8/image_web.jpeg',
   url: 'url',
   moduleId: 'module-id',
   shouldTargetNotConnectedUsers: undefined,
-  leftIcon: undefined,
   homeEntryId: 'abcd',
   index: 1,
   localizationArea: undefined,
@@ -44,21 +45,23 @@ describe('BusinessModule component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should render correctly - with leftIcon provided', () => {
-    const { toJSON } = renderModule({
-      ...props,
-      leftIcon:
-        'https://images.ctfassets.net/2bg01iqy0isv/1Sh2Ter3f4GgW9m926jqB5/83adbbd38e399d0089ff7b8f0efadf4c/Europe.png',
-    })
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should disable click when no URL', () => {
     const { toJSON } = renderModule({
       ...props,
       url: undefined,
     })
+
+    expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should display web image if given from contentful and isDesktopViewport is true', () => {
+    const { toJSON } = renderModule(props, true)
+
+    expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('should display mobile image if web image not given from contentful and isDesktopViewport is true', () => {
+    const { toJSON } = renderModule({ ...props, imageWeb: undefined }, true)
 
     expect(toJSON()).toMatchSnapshot()
   })
@@ -171,5 +174,7 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderModule = (props: BusinessModuleProps) =>
-  render(reactQueryProviderHOC(<BusinessModule {...props} />))
+const renderModule = (props: BusinessModuleProps, isDesktopViewport?: boolean) =>
+  render(reactQueryProviderHOC(<BusinessModule {...props} />), {
+    theme: { isDesktopViewport: isDesktopViewport ?? false },
+  })

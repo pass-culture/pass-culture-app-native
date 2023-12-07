@@ -125,9 +125,9 @@ export type BusinessModule = {
   id: string
   analyticsTitle: string
   image: string
+  imageWeb?: string
   title?: string
   subtitle?: string
-  leftIcon?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
