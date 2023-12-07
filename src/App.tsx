@@ -44,7 +44,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
-import { usePerformanceCalculation } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
+import { startTransaction } from 'shared/performance/transactions'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -89,9 +89,10 @@ const App: FunctionComponent = function () {
 
   const navigation = React.useRef()
 
-  const { start } = usePerformanceCalculation()
-  const startPerfHomeLoadingOnce = useFunctionOnce(() => start(PERFORMANCE_HOME_LOADING))
-  const startPerfHomeCreationOnce = useFunctionOnce(() => start(PERFORMANCE_HOME_CREATION))
+  const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
+  const startPerfHomeCreationOnce = useFunctionOnce(() =>
+    startTransaction(PERFORMANCE_HOME_CREATION)
+  )
   startPerfHomeCreationOnce()
   startPerfHomeLoadingOnce()
 
