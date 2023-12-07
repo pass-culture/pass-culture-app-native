@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { useIsMailAppAvailableIOS } from 'features/auth/helpers/useIsMailAppAvailableIOS'
+import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { getEmailMessage } from 'features/bookings/components/TicketBody/ticketBodyMessages'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { Email } from 'ui/svg/icons/Email'
@@ -15,16 +14,12 @@ type Props = {
 
 export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
   const emailMessage = getEmailMessage(offerDate)
-  const isMailAppAvailable = useIsMailAppAvailableIOS()
-  const shouldDisplayOpenInboxButton = () => {
-    if (Platform.OS === 'ios') return isMailAppAvailable
-    if (Platform.OS === 'web') return false
-    return true
-  }
+  const isMailAppAvailable = useIsMailAppAvailable()
+
   return (
     <TicketContainer testID="withdrawal-info-email">
       <WithDrawalContainer testID="withdrawal-info-email-msg">{emailMessage}</WithDrawalContainer>
-      {!!shouldDisplayOpenInboxButton() && (
+      {!!isMailAppAvailable && (
         <ButtonWithLinearGradient
           wording="Consulter mes e-mails"
           onPress={(_event) => {

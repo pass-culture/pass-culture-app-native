@@ -14,8 +14,8 @@ const initialProps = {
 }
 
 let mockIsMailAppAvailable = true
-jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
-  useIsMailAppAvailableIOS: jest.fn(() => mockIsMailAppAvailable),
+jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
+  useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
 }))
 
 describe('TicketBody', () => {

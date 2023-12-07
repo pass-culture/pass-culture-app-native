@@ -1,11 +1,14 @@
-import { captureException } from '@sentry/react-native'
 import { useEffect, useState } from 'react'
-import { Linking } from 'react-native'
+import { Linking, Platform } from 'react-native'
 
-export const useIsMailAppAvailableIOS = (): boolean => {
-  const [isMailAppAvailable, setIsMailAppAvailable] = useState<boolean>(false)
+import { eventMonitoring } from 'libs/monitoring'
+
+export const useIsMailAppAvailable = (): boolean => {
+  const isAndroid = Platform.OS === 'android'
+  const [isMailAppAvailable, setIsMailAppAvailable] = useState<boolean>(isAndroid)
 
   const checkMailAppAvailability = async () => {
+    if (isAndroid) return
     try {
       for (const emailAppLink of emailAppLinks) {
         if (await Linking.canOpenURL(emailAppLink)) {
@@ -13,10 +16,8 @@ export const useIsMailAppAvailableIOS = (): boolean => {
           return
         }
       }
-      setIsMailAppAvailable(false)
     } catch (error) {
-      captureException(`Error checking mail app availability: ${error}`)
-      setIsMailAppAvailable(false)
+      eventMonitoring.captureException(`Error checking mail app availability: ${error}`)
     }
   }
 

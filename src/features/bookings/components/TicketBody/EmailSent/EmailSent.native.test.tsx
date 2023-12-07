@@ -6,8 +6,8 @@ import { render, screen } from 'tests/utils'
 const offerDate = new Date(2022, 11, 17)
 
 let mockIsMailAppAvailable = true
-jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
-  useIsMailAppAvailableIOS: jest.fn(() => mockIsMailAppAvailable),
+jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
+  useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
 }))
 
 describe('<EmailSent/>', () => {

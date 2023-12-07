@@ -11,8 +11,8 @@ import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 jest.mock('features/navigation/helpers')
 
 let mockIsMailAppAvailable = true
-jest.mock('features/auth/helpers/useIsMailAppAvailableIOS', () => ({
-  useIsMailAppAvailableIOS: jest.fn(() => mockIsMailAppAvailable),
+jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
+  useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
 }))
 
 const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
