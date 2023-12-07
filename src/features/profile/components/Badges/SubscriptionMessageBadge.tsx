@@ -26,22 +26,19 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
 
   if (!callToActionTitle || !callToActionLink) return null
 
-  const shouldOpenInbox = !!callToActionLink && checkShouldOpenInbox(callToActionLink) // NOSONAR // Component tested in Storybook
+  const shouldOpenInbox = !!callToActionLink && checkShouldOpenInbox(callToActionLink)
 
-  // prettier-ignore
-  const sharedButtonProps = { // NOSONAR
+  const sharedButtonProps = {
     wording: callToActionTitle,
     numberOfLines: 2,
     justifyContent: 'flex-start' as BaseButtonProps['justifyContent'],
     inline: true as BaseButtonProps['inline'],
   }
 
-  // prettier-ignore
-  return ( // NOSONAR
+  return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-      {/* prettier-ignore */}
-      {isMailAppAvailable && shouldOpenInbox ? ( // NOSONAR
+      {isMailAppAvailable && shouldOpenInbox ? (
         <ButtonQuaternarySecondary
           onPress={openInbox}
           icon={matchSubscriptionMessageIconToSvg(callToActionIcon, EmailFilled)}
@@ -60,7 +57,8 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
   )
 }
 
-export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
+// prettier-ignore
+export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => { // NOSONAR
   const { callToAction, popOverIcon, userMessage, updatedAt } = subscriptionMessage
 
   const icon = !callToAction?.callToActionIcon
