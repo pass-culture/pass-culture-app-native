@@ -1,13 +1,12 @@
 import React from 'react'
 
 import { MessagingApps } from 'features/share/components/MessagingAppsNew/MessagingAppsNew'
-import { ShareContent } from 'libs/share'
+import { ShareContent } from 'libs/share/types'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 const defaultShareContent: ShareContent = {
-  message: 'message url',
-  messageWithoutLink: 'message',
-  title: 'title',
+  body: 'message',
+  subject: 'title',
   url: 'url',
 }
 

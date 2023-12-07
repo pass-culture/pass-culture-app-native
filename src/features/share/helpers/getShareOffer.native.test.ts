@@ -1,11 +1,9 @@
 import { Platform, Share } from 'react-native'
 
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { act, renderHook } from 'tests/utils'
-import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
+import { act } from 'tests/utils'
 
-import { getShareOffer, useShareOffer } from './useShareOffer'
+import { getShareOffer } from './getShareOffer'
 
 jest.mock('react-query')
 jest.mock('features/offer/api/useOffer')
@@ -15,56 +13,6 @@ const mockShare = jest
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
 const shareTitle = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
-const shareOptions = {
-  subject: shareTitle,
-  dialogTitle: shareTitle,
-}
-
-const shareMessage =
-  'Retrouve "Je ne sais pas ce que je dis" chez "Cinéma de la fin" sur le pass Culture'
-
-const shareContentIos = {
-  message: shareMessage,
-  messageWithoutLink: shareMessage,
-  url: `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
-  title: shareTitle,
-}
-
-const shareContentAndroid = {
-  message:
-    shareMessage +
-    DOUBLE_LINE_BREAK +
-    `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
-  messageWithoutLink: shareMessage,
-  url: `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`,
-  title: shareTitle,
-}
-
-describe('useShareOffer', () => {
-  describe('should display share modal with data from offer', () => {
-    const offer = mockOffer
-
-    it('for ios', async () => {
-      Platform.OS = 'ios'
-      const { result } = renderHook(() => useShareOffer(offer.id, 'utm_medium'))
-
-      const { share } = result.current
-      await act(async () => share())
-
-      expect(mockShare).toHaveBeenNthCalledWith(1, shareContentIos, shareOptions)
-    })
-
-    it('for android', async () => {
-      Platform.OS = 'android'
-      const { result } = renderHook(() => useShareOffer(offer.id, 'utm_medium'))
-
-      const { share } = result.current
-      await act(async () => share())
-
-      expect(mockShare).toHaveBeenNthCalledWith(1, shareContentAndroid, shareOptions)
-    })
-  })
-})
 
 describe('getShareOffer', () => {
   describe('should do nothing when data are incomplete', () => {

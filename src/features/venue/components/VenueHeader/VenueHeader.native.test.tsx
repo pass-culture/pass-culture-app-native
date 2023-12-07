@@ -68,7 +68,7 @@ function renderVenueHeader() {
       <VenueHeader
         headerTransition={animatedValue}
         title={venueResponseSnap.name}
-        venueId={venueResponseSnap.id}
+        venue={venueResponseSnap}
       />
     )
   )

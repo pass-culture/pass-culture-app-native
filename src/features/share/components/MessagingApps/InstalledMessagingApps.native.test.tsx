@@ -13,7 +13,10 @@ const shareMessage = 'Retrouve cette offre sur le passCulture'
 const shareUrl = 'https://passculture.app/accueil?utm_gen=product&utm_campaign=share_offer'
 const logShareMock = jest.fn()
 
-const props = { shareMessage, shareUrl, messagingAppAnalytics: logShareMock }
+const props = {
+  shareContent: { body: shareMessage, url: shareUrl },
+  messagingAppAnalytics: logShareMock,
+}
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const getInstalledAppsMock = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps')

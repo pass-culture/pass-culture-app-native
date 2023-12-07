@@ -4,12 +4,12 @@ import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { MessagingAppContainer } from 'features/share/components/MessagingApps/MessagingAppContainer'
 import { eventMonitoring } from 'libs/monitoring'
+import { ShareContent } from 'libs/share/types'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 type MessagingAppsButtonProps = {
   network: Network
-  shareMessage: string
-  shareUrl: string
+  shareContent: ShareContent
   onPressAnalytics: (social: Social) => void
 }
 
@@ -17,8 +17,7 @@ const isWeb = Platform.OS === 'web'
 
 export const MessagingAppButton = ({
   network,
-  shareMessage,
-  shareUrl,
+  shareContent,
   onPressAnalytics,
 }: MessagingAppsButtonProps) => {
   const {
@@ -29,8 +28,10 @@ export const MessagingAppButton = ({
     ...options
   } = mapNetworkToSocial[network]
 
+  const shareUrl = `${shareContent.url}&utm_source=${network}`
+
   // Message has to be concatenated with url if url option is not supported, and in web
-  const message = supportsURL && !isWeb ? shareMessage : shareMessage + '\n' + shareUrl
+  const message = supportsURL && !isWeb ? shareContent.body : shareContent.body + '\n' + shareUrl
   const encodedMessage = encodeURIComponent(message)
 
   const onPress = async () => {

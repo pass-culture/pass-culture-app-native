@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 
 import { InstalledMessagingApps } from 'features/share/components/MessagingApps/InstalledMessagingApps'
 import { MessagingAppContainer } from 'features/share/components/MessagingApps/MessagingAppContainer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { ShareContent } from 'libs/share'
+import { WebShareModal } from 'features/share/pages/WebShareModalBest'
+import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
@@ -14,7 +14,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   shareContent: ShareContent
-  share: () => void
+  share: () => Promise<void>
   messagingAppAnalytics: (social: Social | 'Other') => void
 }
 
@@ -39,8 +39,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps
-            shareMessage={shareContent.messageWithoutLink}
-            shareUrl={shareContent.url}
+            shareContent={shareContent}
             messagingAppAnalytics={messagingAppAnalytics}
           />
           <MessagingAppContainer>

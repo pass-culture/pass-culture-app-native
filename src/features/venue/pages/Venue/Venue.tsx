@@ -73,7 +73,7 @@ export const Venue: FunctionComponent = () => {
       <VenueHeader
         headerTransition={headerTransition}
         title={venue.publicName || venue.name}
-        venueId={venue.id}
+        venue={venue}
       />
       {!!shouldDisplayCTA && <VenueCTA venueId={venue.id} />}
     </Container>

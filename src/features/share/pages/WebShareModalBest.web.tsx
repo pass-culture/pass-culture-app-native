@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { WebShareModalProps } from 'features/share/types'
 // We are in a .web file, with a specific behavior depending on the device
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -10,6 +9,7 @@ import {
   isMobileDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
+import { ShareContent } from 'libs/share/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Li } from 'ui/components/Li'
@@ -28,6 +28,13 @@ import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { getSpacingString, Spacer } from 'ui/theme'
 
+export interface WebShareModalProps {
+  visible: boolean
+  headerTitle: string
+  shareContent: ShareContent
+  dismissModal: () => void
+}
+
 export const WebShareModal = ({
   visible,
   headerTitle,
@@ -35,7 +42,7 @@ export const WebShareModal = ({
   dismissModal,
 }: WebShareModalProps) => {
   const { showSuccessSnackBar } = useSnackBarContext()
-  const { message, url = '' } = shareContent
+  const { subject, body, url } = shareContent
   const socialButtonProps = [
     {
       label: 'Facebook',
@@ -46,14 +53,14 @@ export const WebShareModal = ({
           'u=' +
           encodeURIComponent(url) +
           '&quote=' +
-          encodeURIComponent(message),
+          encodeURIComponent(body),
       },
     },
     {
       label: 'Twitter',
       icon: Twitter,
       externalNav: {
-        url: `https://twitter.com/intent/tweet?text=${message}&url=${encodeURIComponent(url)}`,
+        url: `https://twitter.com/intent/tweet?text=${body}&url=${encodeURIComponent(url)}`,
       },
     },
     {
@@ -63,7 +70,7 @@ export const WebShareModal = ({
         url:
           (isDesktopDeviceDetectOnWeb
             ? 'https://api.whatsapp.com/send?text='
-            : 'whatsapp://send?text=') + encodeURIComponent(message + '\n' + url),
+            : 'whatsapp://send?text=') + encodeURIComponent(`${body}\n${url}`),
       },
     },
     {
@@ -71,8 +78,8 @@ export const WebShareModal = ({
       icon: Telegram,
       externalNav: {
         url: isDesktopDeviceDetectOnWeb
-          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url)}&text=${message}`
-          : `tg://msg?text=${encodeURIComponent(message + '\n' + url)}`,
+          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url)}&text=${body}`
+          : 'tg://msg?text=' + encodeURIComponent(`${body}\n${url}`),
       },
     },
   ]
@@ -111,7 +118,11 @@ export const WebShareModal = ({
           <NonSocialButtonsItem>
             <ExternalTouchableLink
               as={ButtonTertiaryBlack}
-              externalNav={{ url: 'mailto:' + '' + '?subject=' + message + '&body=' + url }}
+              externalNav={{
+                url: `mailto:?subject=${subject || body}&body=${encodeURIComponent(
+                  `${body}\n${url}`
+                )}`,
+              }}
               wording="E-mail"
               accessibilityLabel="Ouvrir le gestionnaire mail"
               icon={EmailFilled}
@@ -123,7 +134,9 @@ export const WebShareModal = ({
               <NonSocialButtonsItem>
                 <ExternalTouchableLink
                   as={ButtonTertiaryBlack}
-                  externalNav={{ url: `sms:${chooseContact}?&body=${message}: ${url}` }}
+                  externalNav={{
+                    url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(url)}`,
+                  }}
                   wording="SMS"
                   accessibilityLabel="Ouvrir l’application de message"
                   icon={SMSFilled}

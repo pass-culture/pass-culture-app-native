@@ -2,10 +2,11 @@ import React, { useCallback } from 'react'
 import { Animated } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
+import { OfferResponse } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useShareOffer } from 'features/share/helpers/useShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModal'
+import { getShareOffer } from 'features/share/helpers/getShareOfferBest'
+import { WebShareModal } from 'features/share/pages/WebShareModalBest'
 import { analytics } from 'libs/analytics'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -17,13 +18,13 @@ import { Spacer } from 'ui/theme'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
-  offerId: number
+  offer: OfferResponse
 }
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
-export function OfferHeader({ headerTransition, title, offerId }: Readonly<Props>) {
+export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>) {
   const theme = useTheme()
 
   const {
@@ -33,15 +34,18 @@ export function OfferHeader({ headerTransition, title, offerId }: Readonly<Props
   } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { share: shareOffer, shareContent } = useShareOffer(offerId, 'header')
+  const { share: shareOffer, shareContent } = getShareOffer({
+    offer,
+    utmMedium: 'header',
+  })
 
   const { animationState } = getAnimationState(theme, headerTransition)
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', offerId })
+    analytics.logShare({ type: 'Offer', from: 'offer', offerId: offer.id })
     shareOffer()
     showShareOfferModal()
-  }, [offerId, shareOffer, showShareOfferModal])
+  }, [offer.id, shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>
@@ -61,18 +65,18 @@ export function OfferHeader({ headerTransition, title, offerId }: Readonly<Props
               finalColor={theme.colors.black}
             />
             <Spacer.Row numberOfSpaces={3} />
-            <FavoriteButton animationState={animationState} offerId={offerId} />
+            <FavoriteButton animationState={animationState} offerId={offer.id} />
           </React.Fragment>
         }
       />
-      {shareContent ? (
+      {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      ) : null}
+      )}
     </React.Fragment>
   )
 }
