@@ -194,11 +194,13 @@ const mockedPlace: SuggestedPlace = {
 }
 
 const mockSetPlace = jest.fn()
+
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     setPlace: mockSetPlace,
     place: mockedPlace,
     onModalHideRef: jest.fn(),
+    isCurrentLocationMode: jest.fn(),
   }),
 }))
 

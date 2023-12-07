@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
-import { LocationMode } from 'features/location/enums'
-import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -32,17 +32,25 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     selectedPlace,
     setSelectedPlace,
     setSelectedLocationMode,
-    geolocationModeColor,
-    customLocationModeColor,
     onSetSelectedPlace,
     onResetPlace,
-    setPlaceGlobally,
+    setPlace: setPlaceGlobally,
     onModalHideRef,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
     isCurrentLocationMode,
-  } = useLocationModal(visible)
+  } = useLocation()
+
+  const theme = useTheme()
+
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
+    ? theme.colors.primary
+    : theme.colors.black
+
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)

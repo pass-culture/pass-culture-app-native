@@ -26,6 +26,7 @@ describe('LocationWidgetDesktop', () => {
     mockUseGeolocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'test' },
+      isCurrentLocationMode: jest.fn(),
     })
     renderLocationWidgetDesktop()
 
@@ -46,6 +47,7 @@ describe('LocationWidgetDesktop', () => {
       mockUseGeolocation.mockReturnValueOnce({
         hasGeolocPosition,
         place,
+        isCurrentLocationMode: jest.fn(),
       })
 
       renderLocationWidgetDesktop()
@@ -66,6 +68,7 @@ describe('LocationWidgetDesktop', () => {
         hasGeolocPosition,
         place,
         geolocPosition: null,
+        isCurrentLocationMode: jest.fn(),
       })
 
       renderLocationWidgetDesktop()
@@ -80,6 +83,7 @@ describe('LocationWidgetDesktop', () => {
       hasGeolocPosition: true,
       place: { label: 'my place' },
       geolocPosition: null,
+      isCurrentLocationMode: jest.fn(),
     })
 
     renderLocationWidgetDesktop()
@@ -94,6 +98,7 @@ describe('LocationWidgetDesktop', () => {
       place: null,
       geolocPosition: null,
       onModalHideRef: jest.fn(),
+      isCurrentLocationMode: jest.fn(),
     })
 
     afterEach(async () => storageResetDisplayedTooltip())

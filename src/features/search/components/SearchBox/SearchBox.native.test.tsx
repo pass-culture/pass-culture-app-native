@@ -76,6 +76,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     geolocPosition: mockPosition,
     place: null,
     onModalHideRef: jest.fn(),
+    isCurrentLocationMode: jest.fn(),
   }),
 }))
 

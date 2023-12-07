@@ -3,6 +3,9 @@ import React, { memo, useContext, useEffect, useMemo, useRef } from 'react'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
+import { useLocationMode } from 'libs/location/hooks/useLocationMode'
+import { usePlace } from 'libs/location/hooks/usePlace'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { storage } from 'libs/storage'
 
@@ -22,6 +25,15 @@ const LocationContext = React.createContext<ILocationContext>({
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
+  selectedLocationMode: LocationMode.NONE,
+  setSelectedLocationMode: () => null,
+  isCurrentLocationMode: () => false,
+  onResetPlace: () => null,
+  onSetSelectedPlace: () => null,
+  selectedPlace: null,
+  setSelectedPlace: () => null,
+  placeQuery: '',
+  setPlaceQuery: () => null,
 })
 /* eslint-enable @typescript-eslint/no-empty-function */
 
@@ -45,6 +57,17 @@ export const LocationWrapper = memo(function LocationWrapper({
   } = useGeolocation()
 
   const onModalHideRef = useRef<() => void>()
+  const { selectedLocationMode, setSelectedLocationMode, isCurrentLocationMode } = useLocationMode({
+    hasGeolocPosition,
+  })
+  const {
+    onResetPlace,
+    onSetSelectedPlace,
+    selectedPlace,
+    setSelectedPlace,
+    placeQuery,
+    setPlaceQuery,
+  } = usePlace()
 
   useEffect(() => {
     switch (true) {
@@ -74,6 +97,15 @@ export const LocationWrapper = memo(function LocationWrapper({
       place,
       setPlace,
       showGeolocPermissionModal,
+      selectedLocationMode,
+      setSelectedLocationMode,
+      isCurrentLocationMode,
+      onResetPlace,
+      onSetSelectedPlace,
+      selectedPlace,
+      setSelectedPlace,
+      placeQuery,
+      setPlaceQuery,
     }),
     [
       geolocPosition,
@@ -86,6 +118,15 @@ export const LocationWrapper = memo(function LocationWrapper({
       place,
       setPlace,
       showGeolocPermissionModal,
+      selectedLocationMode,
+      setSelectedLocationMode,
+      isCurrentLocationMode,
+      onResetPlace,
+      onSetSelectedPlace,
+      selectedPlace,
+      setSelectedPlace,
+      placeQuery,
+      setPlaceQuery,
     ]
   )
   return (

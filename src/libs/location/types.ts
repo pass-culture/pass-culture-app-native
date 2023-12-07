@@ -1,8 +1,14 @@
-import { MutableRefObject } from 'react'
+import { Dispatch, MutableRefObject, SetStateAction } from 'react'
 
 import { SuggestedPlace } from 'libs/place'
 
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
+
+export enum LocationMode {
+  GEOLOCATION = 'geolocation',
+  CUSTOM_POSITION = 'custom_position',
+  NONE = 'none',
+}
 
 export type GeolocationError = {
   type: GeolocPositionError
@@ -37,4 +43,13 @@ export type ILocationContext = {
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void
   onPressGeolocPermissionModalButton: () => void
+  selectedLocationMode: LocationMode
+  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
+  isCurrentLocationMode: (target: LocationMode) => boolean
+  selectedPlace: SuggestedPlace | null
+  setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
+  onSetSelectedPlace: (place: SuggestedPlace) => void
+  onResetPlace: () => void
+  placeQuery: string
+  setPlaceQuery: Dispatch<SetStateAction<string>>
 }
