@@ -60,10 +60,9 @@ export const SearchFilter: React.FC = () => {
 
   const onResetPress = useCallback(() => {
     const getLocationFilter = (): LocationFilter => {
-      const { locationFilter } = searchState
+      const { locationFilter, venue } = searchState
       const aroundRadius =
-        locationFilter.locationType === LocationType.EVERYWHERE ||
-        locationFilter.locationType === LocationType.VENUE
+        locationFilter.locationType === LocationType.EVERYWHERE || venue
           ? DEFAULT_RADIUS
           : locationFilter.aroundRadius
       if (isCustomPosition && place) {
@@ -86,6 +85,7 @@ export const SearchFilter: React.FC = () => {
       payload: {
         ...searchState,
         locationFilter: getLocationFilter(),
+        venue: undefined,
         minPrice: undefined,
         maxPrice: undefined,
         offerGenreTypes: undefined,

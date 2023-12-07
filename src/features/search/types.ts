@@ -34,7 +34,6 @@ export type LocationFilter =
   | { locationType: LocationType.EVERYWHERE }
   | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
   | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
-  | { locationType: LocationType.VENUE; venue: Venue }
 
 export enum SearchView {
   Landing = 'Landing',
@@ -80,6 +79,7 @@ export interface SearchState {
   minBookingsThreshold?: number
   includeDigitalOffers?: boolean
   isFromHistory?: boolean
+  venue?: Venue
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']

@@ -21,12 +21,6 @@ const defaultBuildFacetFilterParam = {
   },
 }
 
-const place = {
-  label: 'Kourou',
-  info: 'Guyane',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
-}
-
 describe('buildFacetFilters', () => {
   it('should return null when offer categories is empty and offer is duo = false', () => {
     // @ts-ignore: Normally impossible but condition present
@@ -143,44 +137,11 @@ describe('buildFacetFilters', () => {
   it('should return default and venue facets when location filter with venue specified', () => {
     const facetFilters = buildFacetFilters({
       ...defaultBuildFacetFilterParam,
-      locationFilter: { locationType: LocationType.VENUE, venue: mockedSuggestedVenues[0] },
+      venue: mockedSuggestedVenues[0],
     })
 
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
-    })
-  })
-
-  it('should return only default facet when location filter is everywhere', () => {
-    const facetFilters = buildFacetFilters({
-      ...defaultBuildFacetFilterParam,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
-    })
-
-    expect(facetFilters).toEqual({
-      facetFilters: [['offer.isEducational:false']],
-    })
-  })
-
-  it('should return only default facet when location filter is around me', () => {
-    const facetFilters = buildFacetFilters({
-      ...defaultBuildFacetFilterParam,
-      locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 100 },
-    })
-
-    expect(facetFilters).toEqual({
-      facetFilters: [['offer.isEducational:false']],
-    })
-  })
-
-  it('should return only default facet when location filter is place', () => {
-    const facetFilters = buildFacetFilters({
-      ...defaultBuildFacetFilterParam,
-      locationFilter: { locationType: LocationType.PLACE, place, aroundRadius: 100 },
-    })
-
-    expect(facetFilters).toEqual({
-      facetFilters: [['offer.isEducational:false']],
     })
   })
 

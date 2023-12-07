@@ -1,9 +1,8 @@
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { initialSearchState, Action, searchReducer } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
+import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { SuggestedPlace } from 'libs/place'
 
@@ -354,17 +353,17 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle SET_LOCATION_VENUE', () => {
+  it('should handle SET_VENUE', () => {
     const venue = {
       label: 'La petite librairie',
       info: 'Michel Léon',
       geolocation: Kourou.geolocation,
       venueId: 5959,
     }
-    const action: Action = { type: 'SET_LOCATION_VENUE', payload: venue }
+    const action: Action = { type: 'SET_VENUE', payload: venue }
 
     const newState = searchReducer(state, action)
 
-    expect(newState.locationFilter).toStrictEqual({ locationType: LocationType.VENUE, venue })
+    expect(newState).toStrictEqual({ ...state, venue })
   })
 })

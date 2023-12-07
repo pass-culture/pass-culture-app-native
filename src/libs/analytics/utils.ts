@@ -1,7 +1,7 @@
-import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { LocationType } from 'features/search/enums'
-import { LocationFilter, SearchState } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 
@@ -50,13 +50,12 @@ const STRING_VALUE_MAX_LENGTH = 100
 const LOCATION_LABEL_KEY_LENGTH = 11
 export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
 
-export const buildLocationFilterParam = (locationFilter: LocationFilter) => {
-  if (
-    locationFilter.locationType === LocationType.PLACE ||
-    locationFilter.locationType === LocationType.VENUE
-  ) {
+export const buildLocationFilterParam = (searchState: SearchState) => {
+  const { locationFilter, venue } = searchState
+  if (locationFilter.locationType === LocationType.PLACE || venue) {
     const stateWithLocationType = {
-      locationType: locationFilter.locationType,
+      locationType:
+        locationFilter.locationType === LocationType.PLACE ? locationFilter.locationType : 'VENUE',
     }
     const maxLabelLength =
       STRING_VALUE_MAX_LENGTH -
@@ -67,7 +66,7 @@ export const buildLocationFilterParam = (locationFilter: LocationFilter) => {
       label:
         locationFilter.locationType === LocationType.PLACE
           ? locationFilter.place.label.slice(0, maxLabelLength)
-          : locationFilter.venue.label.slice(0, maxLabelLength),
+          : venue?.label.slice(0, maxLabelLength),
     }
     return JSON.stringify(customLocationFilter)
   }
@@ -76,7 +75,7 @@ export const buildLocationFilterParam = (locationFilter: LocationFilter) => {
 
 export const buildPerformSearchState = (searchState: SearchState) => {
   const state: PerformSearchState = {
-    searchLocationFilter: buildLocationFilterParam(searchState.locationFilter),
+    searchLocationFilter: buildLocationFilterParam(searchState),
     searchId: searchState.searchId,
     searchView: searchState.view,
   }

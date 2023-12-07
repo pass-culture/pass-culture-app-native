@@ -62,7 +62,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const [query, setQuery] = useState<string>(params?.query ?? '')
-  const { locationFilter, section, locationType } = useLocationType(searchState)
+  const { section, locationType } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
   const {
@@ -170,7 +170,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
       pushWithSearch(
         {
-          locationFilter,
+          locationFilter: searchState.locationFilter,
+          venue: searchState.venue,
         },
         {
           reset: true,
@@ -182,7 +183,15 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     }
 
     setQuery('')
-  }, [appEnableAutocomplete, dispatch, goBack, locationFilter, params, pushWithSearch])
+  }, [
+    appEnableAutocomplete,
+    dispatch,
+    goBack,
+    searchState.locationFilter,
+    params,
+    pushWithSearch,
+    searchState.venue,
+  ])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -193,13 +202,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
       addSearchHistory({ query: queryText })
-      const { offerCategories, priceRange } = searchState
       const searchId = uuidv4()
       const partialSearchState: Partial<SearchState> = {
         query: queryText,
-        locationFilter,
-        offerCategories,
-        priceRange,
+        locationFilter: searchState.locationFilter,
+        venue: searchState.venue,
+        offerCategories: searchState.offerCategories,
+        priceRange: searchState.priceRange,
         view: SearchView.Results,
         searchId,
         isAutocomplete: undefined,
@@ -207,7 +216,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
       pushWithSearch(partialSearchState)
     },
-    [addSearchHistory, locationFilter, pushWithSearch, searchState]
+    [
+      addSearchHistory,
+      pushWithSearch,
+      searchState.locationFilter,
+      searchState.venue,
+      searchState.offerCategories,
+      searchState.priceRange,
+    ]
   )
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])

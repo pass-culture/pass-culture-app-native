@@ -10,16 +10,16 @@ const venueSearchParamsMock: SearchState = {
   endingDatetime: undefined,
   hitsPerPage: 30,
   locationFilter: {
-    locationType: LocationType.VENUE,
-    venue: {
-      label: venueResponseSnap.publicName || '',
-      info: venueResponseSnap.city || '',
-      _geoloc: {
-        lat: venueResponseSnap.latitude,
-        lng: venueResponseSnap.longitude,
-      },
-      venueId: venueResponseSnap.id,
+    locationType: LocationType.EVERYWHERE,
+  },
+  venue: {
+    label: venueResponseSnap.publicName || '',
+    info: venueResponseSnap.city || '',
+    _geoloc: {
+      lat: venueResponseSnap.latitude,
+      lng: venueResponseSnap.longitude,
     },
+    venueId: venueResponseSnap.id,
   },
   offerCategories: [],
   offerSubcategories: [],

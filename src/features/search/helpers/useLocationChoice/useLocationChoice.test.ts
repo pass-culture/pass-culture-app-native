@@ -66,7 +66,7 @@ describe('useLocationChoice', () => {
   it('should return an object with LocationBuilding icon, name venue label and isSelected boolean when LocationType is PLACE withe venue', () => {
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.VENUE, venue },
+      venue,
     }
     const { Icon, label, isSelected } = useLocationChoice(LocationType.PLACE)
 

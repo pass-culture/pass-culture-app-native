@@ -66,8 +66,14 @@ const LOCATION_TYPES = [
 const titleId = uuidv4()
 const accessibilityDescribedBy = uuidv4()
 
-const getLocationChoice = (locationType: LocationType) => {
-  if (locationType === LocationType.EVERYWHERE) {
+const getLocationChoice = (searchState: SearchState) => {
+  const {
+    locationFilter: { locationType },
+    venue,
+  } = searchState
+  if (venue) {
+    return RadioButtonLocation.CHOOSE_PLACE_OR_VENUE
+  } else if (locationType === LocationType.EVERYWHERE) {
     return RadioButtonLocation.EVERYWHERE
   } else if (locationType === LocationType.AROUND_ME) {
     return RadioButtonLocation.AROUND_ME
@@ -77,8 +83,8 @@ const getLocationChoice = (locationType: LocationType) => {
 }
 
 const getPlaceOrVenue = (searchState: SearchState) => {
-  if (searchState.locationFilter.locationType === LocationType.VENUE) {
-    return searchState.locationFilter.venue
+  if (searchState.venue) {
+    return searchState.venue
   } else if (searchState.locationFilter.locationType === LocationType.PLACE) {
     return searchState.locationFilter.place
   } else {
@@ -144,7 +150,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
   const defaultValues = useMemo(() => {
     return {
-      locationChoice: getLocationChoice(searchState.locationFilter.locationType),
+      locationChoice: getLocationChoice(searchState),
       aroundRadius: getValidAroundRadius(searchState),
       searchPlaceOrVenue: getPlaceOrVenueLabel(searchState),
       selectedPlaceOrVenue: getPlaceOrVenue(searchState),
@@ -190,6 +196,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
         additionalSearchState = {
           ...additionalSearchState,
           locationFilter: { locationType: LocationType.EVERYWHERE },
+          venue: undefined,
         }
         analytics.logChangeSearchLocation({ type: 'everywhere' }, searchState.searchId)
       } else if (locationChoice === RadioButtonLocation.AROUND_ME) {
@@ -199,17 +206,11 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
             locationType: LocationType.AROUND_ME,
             aroundRadius: getValues('aroundRadius')[0],
           },
+          venue: undefined,
         }
         analytics.logChangeSearchLocation({ type: 'aroundMe' }, searchState.searchId)
       } else if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
-        const locationType = Object.prototype.hasOwnProperty.call(
-          selectedPlaceOrVenue,
-          'geolocation'
-        )
-          ? LocationType.PLACE
-          : LocationType.VENUE
-
-        if (locationType === LocationType.PLACE) {
+        if (Object.prototype.hasOwnProperty.call(selectedPlaceOrVenue, 'geolocation')) {
           const validAroundRadius = isValidAroundRadius(aroundRadius) ? aroundRadius[0] : MAX_RADIUS
 
           additionalSearchState = {
@@ -219,15 +220,13 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
               place: selectedPlaceOrVenue as SuggestedPlace,
               aroundRadius: validAroundRadius,
             },
+            venue: undefined,
           }
           analytics.logChangeSearchLocation({ type: 'place' }, searchState.searchId)
         } else {
           additionalSearchState = {
             ...additionalSearchState,
-            locationFilter: {
-              locationType: LocationType.VENUE,
-              venue: selectedPlaceOrVenue as Venue,
-            },
+            venue: selectedPlaceOrVenue as Venue,
           }
           analytics.logChangeSearchLocation(
             {

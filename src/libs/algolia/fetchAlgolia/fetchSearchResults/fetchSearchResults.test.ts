@@ -13,7 +13,7 @@ jest.mock('algoliasearch')
 
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
-const userLocation = { latitude: 42, longitude: 43 }
+const userPosition = { latitude: 42, longitude: 43 }
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -28,7 +28,7 @@ describe('fetchSearchResults', () => {
 
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      userLocation: null,
+      userPosition: null,
       isUserUnderage: false,
     })
 
@@ -91,7 +91,7 @@ describe('fetchSearchResults', () => {
         query,
         locationFilter: { locationType: LocationType.EVERYWHERE },
       } as SearchQueryParameters,
-      userLocation: null,
+      userPosition: null,
       isUserUnderage: false,
     })
 
@@ -154,7 +154,7 @@ describe('fetchSearchResults', () => {
         query,
         locationFilter: { locationType: LocationType.EVERYWHERE },
       } as SearchQueryParameters,
-      userLocation,
+      userPosition,
       isUserUnderage: false,
     })
 
@@ -227,7 +227,7 @@ describe('fetchSearchResults', () => {
         query,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
       } as SearchQueryParameters,
-      userLocation,
+      userPosition,
       isUserUnderage: false,
     })
 
@@ -304,7 +304,7 @@ describe('fetchSearchResults', () => {
           aroundRadius: MAX_RADIUS,
         },
       } as SearchQueryParameters,
-      userLocation,
+      userPosition,
       isUserUnderage: false,
     })
 
@@ -381,7 +381,7 @@ describe('fetchSearchResults', () => {
           aroundRadius: MAX_RADIUS,
         },
       } as SearchQueryParameters,
-      userLocation: null,
+      userPosition: null,
       isUserUnderage: false,
     })
 
@@ -452,12 +452,9 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: {
-          locationType: LocationType.VENUE,
-          venue,
-        },
+        venue,
       } as SearchQueryParameters,
-      userLocation,
+      userPosition,
       isUserUnderage: false,
     })
 
@@ -524,12 +521,9 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: {
-          locationType: LocationType.VENUE,
-          venue,
-        },
+        venue,
       } as SearchQueryParameters,
-      userLocation: null,
+      userPosition: null,
       isUserUnderage: false,
     })
 

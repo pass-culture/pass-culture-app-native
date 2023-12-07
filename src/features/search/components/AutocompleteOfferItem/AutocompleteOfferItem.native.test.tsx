@@ -6,28 +6,27 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import {
   mockHit,
-  mockHitSeveralCategoriesWithoutAssociationToNativeCategory,
   mockHitSeveralCategoriesWithAssociationToNativeCategory,
-  mockHitWithOnlyCategory,
-  mockHitWithoutCategoryAndNativeCategory,
+  mockHitSeveralCategoriesWithoutAssociationToNativeCategory,
+  mockHitUnknownCategory,
   mockHitUnknownNativeCategory,
   mockHitUnknownNativeCategoryAndCategory,
-  mockHitUnknownCategory,
+  mockHitWithOnlyCategory,
+  mockHitWithoutCategoryAndNativeCategory,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, fireEvent, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const venue: Venue = mockedSuggestedVenues[0]
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
-  locationFilter: { locationType: LocationType.VENUE, venue },
+  venue,
   priceRange: [0, 20],
 }
 
@@ -50,7 +49,7 @@ describe('AutocompleteOfferItem component', () => {
   beforeEach(() => {
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.VENUE, venue },
+      venue,
       priceRange: [0, 20],
     }
   })
@@ -92,7 +91,11 @@ describe('AutocompleteOfferItem component', () => {
         ...getTabNavConfig('Search', {
           ...initialSearchState,
           query: mockHit.query,
+          isFromHistory: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
           locationFilter: mockSearchState.locationFilter,
+          venue: mockSearchState.venue,
           priceRange: mockSearchState.priceRange,
           view: SearchView.Results,
           searchId,
@@ -136,6 +139,7 @@ describe('AutocompleteOfferItem component', () => {
           ...initialSearchState,
           query: mockHit.query,
           locationFilter: mockSearchState.locationFilter,
+          venue: mockSearchState.venue,
           priceRange: mockSearchState.priceRange,
           view: SearchView.Results,
           searchId,
@@ -167,6 +171,7 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
             offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
             locationFilter: mockSearchState.locationFilter,
+            venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
             view: SearchView.Results,
             searchId,
@@ -193,6 +198,7 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES],
             offerNativeCategories: [NativeCategoryIdEnumv2.ARTS_VISUELS],
             locationFilter: mockSearchState.locationFilter,
+            venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
             view: SearchView.Results,
             searchId,
@@ -218,6 +224,7 @@ describe('AutocompleteOfferItem component', () => {
             query: mockHitSeveralCategoriesWithoutAssociationToNativeCategory.query,
             offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
             locationFilter: mockSearchState.locationFilter,
+            venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
             view: SearchView.Results,
             searchId,
@@ -243,6 +250,7 @@ describe('AutocompleteOfferItem component', () => {
             query: mockHitWithOnlyCategory.query,
             offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
             locationFilter: mockSearchState.locationFilter,
+            venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
             view: SearchView.Results,
             searchId,
@@ -269,6 +277,7 @@ describe('AutocompleteOfferItem component', () => {
             offerCategories: [],
             offerNativeCategories: undefined,
             locationFilter: mockSearchState.locationFilter,
+            venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
             view: SearchView.Results,
             searchId,
@@ -294,6 +303,7 @@ describe('AutocompleteOfferItem component', () => {
             query: mockHitWithOnlyCategory.query,
             offerCategories: [],
             locationFilter: mockSearchState.locationFilter,
+            venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
             view: SearchView.Results,
             searchId,
@@ -324,6 +334,7 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
+            venue: mockSearchState.venue,
           })
         )
       })

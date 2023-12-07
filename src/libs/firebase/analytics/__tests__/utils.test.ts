@@ -1,9 +1,9 @@
 import { NativeScrollEvent } from 'react-native'
 
-import { GenreType, SearchGroupNameEnumv2, NativeCategoryIdEnumv2 } from 'api/gen'
+import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
 
 const TODAY = new Date(2023, 0, 3)
@@ -296,7 +296,11 @@ describe('[Analytics utils]', () => {
       const everywhereType: LocationFilter = {
         locationType: LocationType.EVERYWHERE,
       }
-      const locationFilterParam = buildLocationFilterParam(everywhereType)
+      const everywhereTypeSearchState: SearchState = {
+        ...initialSearchState,
+        locationFilter: everywhereType,
+      }
+      const locationFilterParam = buildLocationFilterParam(everywhereTypeSearchState)
 
       expect(locationFilterParam).toEqual(JSON.stringify(everywhereType))
     })
@@ -306,41 +310,45 @@ describe('[Analytics utils]', () => {
         locationType: LocationType.AROUND_ME,
         aroundRadius: 100,
       }
-      const locationFilterParam = buildLocationFilterParam(aroundMeType)
+      const aroundMeTypeSearchState: SearchState = {
+        ...initialSearchState,
+        locationFilter: aroundMeType,
+      }
+      const locationFilterParam = buildLocationFilterParam(aroundMeTypeSearchState)
 
       expect(locationFilterParam).toEqual(JSON.stringify(aroundMeType))
     })
 
     it('should return location type and the name of the venue in a string when type is VENUE', () => {
-      const venueType: LocationFilter = {
-        locationType: LocationType.VENUE,
+      const venueTypeSearchState: SearchState = {
+        ...initialSearchState,
         venue: {
           label: 'Accor Arena',
           info: 'Salle de spectacle, Paris',
           venueId: 1,
         },
       }
-      const locationFilterParam = buildLocationFilterParam(venueType)
+      const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)
 
       expect(locationFilterParam).toEqual(
-        JSON.stringify({ locationType: LocationType.VENUE, label: 'Accor Arena' })
+        JSON.stringify({ locationType: 'VENUE', label: 'Accor Arena' })
       )
     })
 
     it('should return location type and the truncated name of the venue in a string when type is VENUE', () => {
-      const venueType: LocationFilter = {
-        locationType: LocationType.VENUE,
+      const venueTypeSearchState: SearchState = {
+        ...initialSearchState,
         venue: {
           label: 'Accor Arena, la MEILLEURE salle de France avec une acoustique incroyable',
           info: 'Salle de spectacle, Paris',
           venueId: 1,
         },
       }
-      const locationFilterParam = buildLocationFilterParam(venueType)
+      const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({
-          locationType: LocationType.VENUE,
+          locationType: 'VENUE',
           label: 'Accor Arena, la MEILLEURE salle de France avec une acoustique inc',
         })
       )
@@ -356,7 +364,11 @@ describe('[Analytics utils]', () => {
         },
         aroundRadius: 100,
       }
-      const locationFilterParam = buildLocationFilterParam(placeType)
+      const placeTypeSearchState = {
+        ...initialSearchState,
+        locationFilter: placeType,
+      }
+      const locationFilterParam = buildLocationFilterParam(placeTypeSearchState)
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({ locationType: LocationType.PLACE, label: 'Rue de la Paix, Paris' })
@@ -373,7 +385,11 @@ describe('[Analytics utils]', () => {
         },
         aroundRadius: 100,
       }
-      const locationFilterParam = buildLocationFilterParam(placeType)
+      const placeTypeSearchState = {
+        ...initialSearchState,
+        locationFilter: placeType,
+      }
+      const locationFilterParam = buildLocationFilterParam(placeTypeSearchState)
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({

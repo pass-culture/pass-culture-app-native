@@ -7,6 +7,7 @@ import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -200,6 +201,7 @@ describe('<Venue /> with new venue body', () => {
     view: SearchView.Landing,
     tags: [],
     timeRange: null,
+    locationFilter: { locationType: LocationType.EVERYWHERE },
   }
 
   beforeAll(() => {
@@ -223,16 +225,13 @@ describe('<Venue /> with new venue body', () => {
       expect(push).toHaveBeenCalledWith('TabNavigator', {
         params: {
           ...defaultParams,
-          locationFilter: {
-            locationType: 'VENUE',
-            venue: {
-              geolocation: { latitude: 48.87004, longitude: 2.3785 },
-              info: 'Paris',
-              label: 'Le Petit Rintintin 1',
-              venueId: 5543,
-            },
-          },
           view: SearchView.Results,
+          venue: {
+            label: 'Le Petit Rintintin 1',
+            info: 'Paris',
+            geolocation: { latitude: 48.87004, longitude: 2.3785 },
+            venueId: 5543,
+          },
           previousView: SearchView.Results,
         },
         screen: 'Search',

@@ -19,7 +19,6 @@ export enum LocationType {
   AROUND_ME = 'AROUND_ME',
   EVERYWHERE = 'EVERYWHERE',
   PLACE = 'PLACE',
-  VENUE = 'VENUE',
 }
 
 export enum CategoriesModalView {

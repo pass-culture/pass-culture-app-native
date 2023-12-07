@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Venue } from 'features/search/components/sections/Venue/Venue'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 let mockSearchState = initialSearchState
@@ -18,10 +17,7 @@ describe('Venue component', () => {
   it('should display the venue label when a venue is selected', async () => {
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: {
-        locationType: LocationType.VENUE,
-        venue: { label: 'Venue label', info: 'info', venueId: 123 },
-      },
+      venue: { label: 'Venue label', info: 'info', venueId: 123 },
     }
     render(<Venue />)
 
