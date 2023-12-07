@@ -38,7 +38,7 @@ export function OfferVenueBlock({
       <Typo.Title3>{title}</Typo.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
-      <StyleSeparator />
+      <StyledSeparator />
       <Spacer.Column numberOfSpaces={6} />
 
       <Typo.ButtonText>{venueName}</Typo.ButtonText>
@@ -63,7 +63,7 @@ export function OfferVenueBlock({
       ) : null}
 
       <Spacer.Column numberOfSpaces={6} />
-      <StyleSeparator />
+      <StyledSeparator />
       <Spacer.Column numberOfSpaces={4} />
 
       <Spacer.Column numberOfSpaces={2} />
@@ -107,7 +107,7 @@ export function OfferVenueBlock({
   )
 }
 
-const StyleSeparator = styled(Separator.Horizontal)(({ theme }) => ({
+const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))
 
