@@ -1,5 +1,5 @@
 import { GeolocPermissionState } from '../geolocation/enums'
-import { ILocationContext } from '../types'
+import { ILocationContext, LocationMode } from '../types'
 export {
   GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocPermissionState,
@@ -13,6 +13,12 @@ export const showGeolocPermissionModal = jest.fn()
 export const onPressGeolocPermissionModalButton = jest.fn()
 export const setCustomPosition = jest.fn()
 const setPlace = jest.fn()
+const setSelectedLocationMode = jest.fn()
+const isCurrentLocationMode = jest.fn()
+const onResetPlace = jest.fn()
+const onSetSelectedPlace = jest.fn()
+const setSelectedPlace = jest.fn()
+const setPlaceQuery = jest.fn()
 
 const locationContext: ILocationContext = {
   geolocPosition: { longitude: 90.4773245, latitude: 90.4773245 },
@@ -26,6 +32,15 @@ const locationContext: ILocationContext = {
   onModalHideRef: { current: undefined },
   place: null,
   setPlace,
+  selectedLocationMode: LocationMode.GEOLOCATION,
+  setSelectedLocationMode,
+  isCurrentLocationMode,
+  onResetPlace,
+  onSetSelectedPlace,
+  selectedPlace: null,
+  setSelectedPlace,
+  placeQuery: '',
+  setPlaceQuery,
 }
 
 export const useLocation = jest.fn().mockReturnValue(locationContext)

@@ -1,19 +1,18 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { Keyboard } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { LocationMode } from 'features/location/enums'
-import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/location'
+import { GeolocPermissionState, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -51,22 +50,31 @@ export const SearchLocationModal = ({
     setSelectedPlace,
     selectedLocationMode,
     setSelectedLocationMode,
-    geolocationModeColor,
-    customLocationModeColor,
     onSetSelectedPlace,
     onResetPlace,
-    setPlaceGlobally,
+    setPlace: setPlaceGlobally,
     onModalHideRef,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
     isCurrentLocationMode,
-  } = useLocationModal(visible)
+  } = useLocation()
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { searchState, dispatch } = useSearch()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+
+  const theme = useTheme()
+
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
+    ? theme.colors.primary
+    : theme.colors.black
+
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const getInitialAroundMeRadiusValue =
     searchState.locationFilter.locationType === LocationType.AROUND_ME
