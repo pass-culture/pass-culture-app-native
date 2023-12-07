@@ -202,14 +202,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
       addSearchHistory({ query: queryText })
-      const { offerCategories, priceRange } = searchState
       const searchId = uuidv4()
       const partialSearchState: Partial<SearchState> = {
         query: queryText,
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
-        offerCategories,
-        priceRange,
+        offerCategories: searchState.offerCategories,
+        priceRange: searchState.priceRange,
         view: SearchView.Results,
         searchId,
         isAutocomplete: undefined,
@@ -217,7 +216,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
       pushWithSearch(partialSearchState)
     },
-    [addSearchHistory, pushWithSearch, searchState]
+    [
+      addSearchHistory,
+      pushWithSearch,
+      searchState.locationFilter,
+      searchState.venue,
+      searchState.offerCategories,
+      searchState.priceRange,
+    ]
   )
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])

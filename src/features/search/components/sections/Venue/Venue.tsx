@@ -14,7 +14,7 @@ export const Venue = () => {
     hideModal: hideSearchVenueModal,
   } = useModal(false)
 
-  const venueLabel = searchState.venue ? searchState.venue.label : undefined
+  const venueLabel = searchState?.venue?.label
 
   return (
     <React.Fragment>

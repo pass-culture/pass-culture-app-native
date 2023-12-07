@@ -15,9 +15,9 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     : { locationType: LocationType.EVERYWHERE }
 
   const venue = (
-    venueId && dataVenue
+    venueId && !!dataVenue
       ? {
-          label: dataVenue.publicName || dataVenue.name,
+          label: dataVenue.publicName ?? dataVenue.name,
           info: dataVenue.city,
           geolocation: { latitude: dataVenue.latitude, longitude: dataVenue.longitude },
           venueId,

@@ -91,12 +91,14 @@ export function Search() {
 
   const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition, params?.venue)
 
-  const currentVenuesIndex = useMemo(() => {
-    return getCurrentVenuesIndex({
-      locationType: currentFilters?.locationType,
-      venue: searchState?.venue,
-    })
-  }, [currentFilters?.locationType, searchState?.venue])
+  const currentVenuesIndex = useMemo(
+    () =>
+      getCurrentVenuesIndex({
+        locationType: currentFilters?.locationType,
+        venue: searchState?.venue,
+      }),
+    [currentFilters?.locationType, searchState?.venue]
+  )
 
   const onVenuePress = useCallback(async (venueId: number) => {
     await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
