@@ -57,8 +57,7 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
   )
 }
 
-// prettier-ignore
-export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => { // NOSONAR
+export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
   const { callToAction, popOverIcon, userMessage, updatedAt } = subscriptionMessage
 
   const icon = !callToAction?.callToActionIcon
