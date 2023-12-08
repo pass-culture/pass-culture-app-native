@@ -23,7 +23,7 @@ jobs:
     runs-on: [self-hosted, linux, x64, big]
     steps:
       - uses: actions/checkout@v4
-      - name: "OpenID Connect Authentication"
+      - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -55,7 +55,7 @@ jobs:
     runs-on: [self-hosted, linux, x64, big]
     steps:
       - uses: actions/checkout@v4
-      - name: "OpenID Connect Authentication"
+      - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -99,7 +99,10 @@ jobs:
     runs-on: [self-hosted, linux, x64, big]
     steps:
       - uses: actions/checkout@v4
-      - name: "OpenID Connect Authentication"
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -141,7 +144,7 @@ jobs:
       - yarn_test_proxy
       - yarn_test_web
     steps:
-      - name: "OpenID Connect Authentication"
+      - name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
