@@ -63,7 +63,7 @@ const mockSearchState: SearchState = {
   locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
 }
 
-const useSearchSpy = jest
+jest
   .spyOn(useSearch, 'useSearch')
   .mockReturnValue({ searchState: mockSearchState, dispatch: mockDispatch })
 
@@ -274,35 +274,6 @@ describe('SearchLocationModal', () => {
       })
     })
 
-    it('should be init with the correct value located in the SearchState', async () => {
-      useSearchSpy.mockReturnValueOnce({
-        searchState: {
-          ...initialSearchState,
-          locationFilter: {
-            place: mockPlaces[0],
-            locationType: LocationType.AROUND_PLACE,
-            aroundRadius: mockRadiusPlace,
-          },
-        },
-        dispatch: mockDispatch,
-      })
-
-      renderSearchLocationModal()
-      await waitForModalToShow()
-      const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
-
-      const searchInput = screen.getByTestId('styled-input-container')
-      await act(async () => {
-        fireEvent.changeText(searchInput, mockPlaces[0].label)
-      })
-
-      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-      fireEvent.press(suggestedPlace)
-
-      expect(screen.getByText(radiusWithKm(mockRadiusPlace))).toBeOnTheScreen()
-    })
-
     it('should display default radius even if an AroundMeRadius was set previously', async () => {
       renderSearchLocationModal()
       await waitForModalToShow()
@@ -358,24 +329,6 @@ describe('SearchLocationModal', () => {
         },
         type: 'SET_LOCATION_FILTERS',
       })
-    })
-
-    it('should be init with the correct value located in the SearchState', async () => {
-      useSearchSpy.mockReturnValueOnce({
-        searchState: {
-          ...initialSearchState,
-          locationFilter: {
-            locationType: LocationType.AROUND_ME,
-            aroundRadius: mockAroundMeRadius,
-          },
-        },
-        dispatch: mockDispatch,
-      })
-
-      renderSearchLocationModal()
-      await waitForModalToShow()
-
-      expect(screen.getByText(radiusWithKm(mockAroundMeRadius))).toBeOnTheScreen()
     })
 
     it('should display default radius even if a PlaceRadius was set previously', async () => {

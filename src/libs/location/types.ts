@@ -52,4 +52,8 @@ export type ILocationContext = {
   onResetPlace: () => void
   placeQuery: string
   setPlaceQuery: Dispatch<SetStateAction<string>>
+  aroundPlaceRadius: number
+  setAroundPlaceRadius: Dispatch<SetStateAction<number>>
+  aroundMeRadius: number
+  setAroundMeRadius: Dispatch<SetStateAction<number>>
 }

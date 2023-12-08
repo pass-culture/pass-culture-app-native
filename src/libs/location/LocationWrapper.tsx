@@ -1,8 +1,10 @@
 import React, { memo, useContext, useEffect, useMemo, useRef } from 'react'
 
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
+import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
 import { useLocationMode } from 'libs/location/hooks/useLocationMode'
 import { usePlace } from 'libs/location/hooks/usePlace'
 import { LocationMode } from 'libs/location/types'
@@ -34,6 +36,10 @@ const LocationContext = React.createContext<ILocationContext>({
   setSelectedPlace: () => null,
   placeQuery: '',
   setPlaceQuery: () => null,
+  aroundPlaceRadius: DEFAULT_RADIUS,
+  setAroundPlaceRadius: () => null,
+  aroundMeRadius: DEFAULT_RADIUS,
+  setAroundMeRadius: () => null,
 })
 /* eslint-enable @typescript-eslint/no-empty-function */
 
@@ -68,6 +74,8 @@ export const LocationWrapper = memo(function LocationWrapper({
     placeQuery,
     setPlaceQuery,
   } = usePlace()
+  const { aroundPlaceRadius, setAroundPlaceRadius, aroundMeRadius, setAroundMeRadius } =
+    useAroundRadius()
 
   useEffect(() => {
     switch (true) {
@@ -106,6 +114,10 @@ export const LocationWrapper = memo(function LocationWrapper({
       setSelectedPlace,
       placeQuery,
       setPlaceQuery,
+      aroundPlaceRadius,
+      setAroundPlaceRadius,
+      aroundMeRadius,
+      setAroundMeRadius,
     }),
     [
       geolocPosition,
@@ -127,6 +139,10 @@ export const LocationWrapper = memo(function LocationWrapper({
       setSelectedPlace,
       placeQuery,
       setPlaceQuery,
+      aroundPlaceRadius,
+      setAroundPlaceRadius,
+      aroundMeRadius,
+      setAroundMeRadius,
     ]
   )
   return (
