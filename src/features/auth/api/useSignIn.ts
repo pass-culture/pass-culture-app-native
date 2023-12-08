@@ -22,13 +22,11 @@ export const useSignIn = ({
 
   return useMutation(
     async (body: LoginRequest) => {
-      if ('authorizationCode' in body) {
-        return api.postNativeV1OauthGoogleAuthorize(body)
+      const requestBody = { ...body, deviceInfo: enableTrustedDevice ? deviceInfo : undefined }
+      if ('authorizationCode' in requestBody) {
+        return api.postNativeV1OauthGoogleAuthorize(requestBody)
       }
-      return api.postNativeV1Signin(
-        { ...body, deviceInfo: enableTrustedDevice ? deviceInfo : undefined },
-        { credentials: 'omit' }
-      )
+      return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
     },
     {
       onSuccess: async (response) => {

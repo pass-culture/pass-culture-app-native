@@ -1249,6 +1249,11 @@ export interface GoogleSigninRequest {
    * @memberof GoogleSigninRequest
    */
   authorizationCode: string
+  /**
+   * @type {TrustedDevice}
+   * @memberof GoogleSigninRequest
+   */
+  deviceInfo?: TrustedDevice | null
 }
 /**
  * An enumeration.
@@ -1429,7 +1434,7 @@ export interface NextSubscriptionStepResponse {
    * @memberof NextSubscriptionStepResponse
    */
   nextSubscriptionStep?: SubscriptionStep | null
-  /**
+/**
    * @type {boolean}
    * @memberof NextSubscriptionStepResponse
    */
@@ -2176,7 +2181,7 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   enableNativeCulturalSurvey: boolean
-  /**
+/**
    * @type {boolean}
    * @memberof SettingsResponse
    */
@@ -2292,7 +2297,7 @@ export enum SubcategoryIdEnum {
   'ABO_LIVRE_NUMERIQUE' = 'ABO_LIVRE_NUMERIQUE',
   'ABO_LUDOTHEQUE' = 'ABO_LUDOTHEQUE',
   'ABO_MEDIATHEQUE' = 'ABO_MEDIATHEQUE',
-  'ABO_MUSEE' = 'ABO_MUSEE',
+'ABO_MUSEE' = 'ABO_MUSEE',
   'ABO_PLATEFORME_MUSIQUE' = 'ABO_PLATEFORME_MUSIQUE',
   'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
   'ABO_PRATIQUE_ART' = 'ABO_PRATIQUE_ART',
@@ -2374,7 +2379,7 @@ export enum SubcategoryIdEnumv2 {
   'ABO_LIVRE_NUMERIQUE' = 'ABO_LIVRE_NUMERIQUE',
   'ABO_LUDOTHEQUE' = 'ABO_LUDOTHEQUE',
   'ABO_MEDIATHEQUE' = 'ABO_MEDIATHEQUE',
-  'ABO_MUSEE' = 'ABO_MUSEE',
+'ABO_MUSEE' = 'ABO_MUSEE',
   'ABO_PLATEFORME_MUSIQUE' = 'ABO_PLATEFORME_MUSIQUE',
   'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
   'ABO_PRATIQUE_ART' = 'ABO_PRATIQUE_ART',
@@ -2837,7 +2842,7 @@ export interface UserReportedOffersResponse {
  */
 export enum UserRole {
   'ADMIN' = 'ADMIN',
-  'BENEFICIARY' = 'BENEFICIARY',
+    'BENEFICIARY' = 'BENEFICIARY',
   'PRO' = 'PRO',
   'NON_ATTACHED_PRO' = 'NON_ATTACHED_PRO',
   'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
@@ -3877,7 +3882,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         options: localVarRequestOptions,
       }
     },
-    /**
+        /**
      * @summary google_auth <POST>
      * @param {GoogleSigninRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4741,7 +4746,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
-    /**
+        /**
      * 
      * @summary google_auth <POST>
      * @param {GoogleSigninRequest} [body] 
@@ -5402,7 +5407,7 @@ export class DefaultApi extends BaseAPI {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1MeFavorites(body, options)
   }
-  /**
+    /**
     * 
     * @summary google_auth <POST>
     * @param {GoogleSigninRequest} [body] 
