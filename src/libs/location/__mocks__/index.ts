@@ -1,3 +1,5 @@
+import { DEFAULT_RADIUS } from 'features/search/constants'
+
 import { GeolocPermissionState } from '../geolocation/enums'
 import { ILocationContext, LocationMode } from '../types'
 export {
@@ -19,6 +21,8 @@ const onResetPlace = jest.fn()
 const onSetSelectedPlace = jest.fn()
 const setSelectedPlace = jest.fn()
 const setPlaceQuery = jest.fn()
+const setAroundPlaceRadius = jest.fn()
+const setAroundMeRadius = jest.fn()
 
 const locationContext: ILocationContext = {
   geolocPosition: { longitude: 90.4773245, latitude: 90.4773245 },
@@ -41,6 +45,10 @@ const locationContext: ILocationContext = {
   setSelectedPlace,
   placeQuery: '',
   setPlaceQuery,
+  aroundPlaceRadius: DEFAULT_RADIUS,
+  setAroundPlaceRadius,
+  aroundMeRadius: DEFAULT_RADIUS,
+  setAroundMeRadius,
 }
 
 export const useLocation = jest.fn().mockReturnValue(locationContext)
