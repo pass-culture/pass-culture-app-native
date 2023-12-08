@@ -28,8 +28,6 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
-const DEFAULT_DIGITAL_OFFERS_SELECTION = false
-
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
@@ -96,10 +94,6 @@ export const SearchLocationModal = ({
   const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
     ? theme.colors.primary
     : theme.colors.black
-
-  const [includeDigitalOffers, setIncludeDigitalOffers] = useState(
-    searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION
-  )
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
@@ -187,7 +181,6 @@ export const SearchLocationModal = ({
   const onClose = () => {
     setAroundMeRadius(DEFAULT_RADIUS)
     setAroundPlaceRadius(DEFAULT_RADIUS)
-    setIncludeDigitalOffers(searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION)
     dismissModal()
   }
 
@@ -261,8 +254,6 @@ export const SearchLocationModal = ({
             <LocationSearchFilters
               aroundRadius={aroundMeRadius}
               onValuesChange={onAroundMeRadiusValueChange}
-              includeDigitalOffers={includeDigitalOffers}
-              setIncludeDigitalOffers={setIncludeDigitalOffers}
             />
           </React.Fragment>
         )}
@@ -291,8 +282,6 @@ export const SearchLocationModal = ({
               <LocationSearchFilters
                 aroundRadius={aroundPlaceRadius}
                 onValuesChange={onAroundRadiusPlaceValueChange}
-                includeDigitalOffers={includeDigitalOffers}
-                setIncludeDigitalOffers={setIncludeDigitalOffers}
               />
             )}
           </React.Fragment>

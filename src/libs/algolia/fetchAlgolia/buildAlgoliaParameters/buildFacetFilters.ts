@@ -1,7 +1,6 @@
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
   buildEanPredicate,
-  buildIncludeDigitalOffersPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -32,7 +31,6 @@ export const buildFacetFilters = ({
   offerSubcategories,
   offerTypes,
   tags,
-  includeDigitalOffers,
   isFullyDigitalOffersCategory,
 }: Pick<
   SearchQueryParameters,
@@ -46,7 +44,6 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'offerTypes'
   | 'tags'
-  | 'includeDigitalOffers'
   | 'isFullyDigitalOffersCategory'
 > & {
   isUserUnderage: boolean
@@ -104,13 +101,6 @@ export const buildFacetFilters = ({
 
   const tagsPredicate = buildTagsPredicate(tags)
   if (tagsPredicate) facetFilters.push(tagsPredicate)
-
-  const includeDigitalOffersPredicate = buildIncludeDigitalOffersPredicate(
-    includeDigitalOffers,
-    isFullyDigitalOffersCategory
-  )
-  if (includeDigitalOffersPredicate && enableAppLocation)
-    facetFilters.push(includeDigitalOffersPredicate)
 
   if (venue && typeof venue.venueId === 'number')
     facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${venue.venueId}`])
