@@ -7,12 +7,12 @@ import { eventMonitoring } from 'libs/monitoring'
 const transactionsRef: { [key: string]: { transaction: Transaction; span: Span } | undefined } = {}
 
 export function startTransaction(name: string) {
-  if (transactionsRef?.[name] !== undefined) {
+  if (transactionsRef[name]) {
     finishTransaction(name)
   }
   const transaction = eventMonitoring.startTransaction({ name })
-  Sentry.getCurrentHub().configureScope((scope) => scope.setSpan(transaction))
-  const span = transaction.startChild({ op: `performance` })
+  Sentry.getCurrentHub()?.configureScope((scope) => scope.setSpan(transaction))
+  const span = transaction?.startChild({ op: 'performance' })
   transactionsRef[name] = { transaction, span }
 }
 

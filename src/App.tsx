@@ -16,7 +16,6 @@ import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/C
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
-import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
@@ -33,9 +32,7 @@ import { env } from 'libs/environment'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
-import { useFunctionOnce } from 'libs/hooks'
 import { eventMonitoring } from 'libs/monitoring'
-import { ReactNavigationInstrumentation } from 'libs/monitoring/sentry'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
@@ -44,7 +41,6 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
-import { startTransaction } from 'shared/performance/transactions'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -57,8 +53,6 @@ LogBox.ignoreLogs([
   'Cannot update a component',
   'EventEmitter.removeListener',
 ])
-
-const routingInstrumentation = new ReactNavigationInstrumentation()
 
 const App: FunctionComponent = function () {
   useEffect(() => {
@@ -87,15 +81,6 @@ const App: FunctionComponent = function () {
     })
   }, [])
 
-  const navigation = React.useRef()
-
-  const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
-  const startPerfHomeCreationOnce = useFunctionOnce(() =>
-    startTransaction(PERFORMANCE_HOME_CREATION)
-  )
-  startPerfHomeCreationOnce()
-  startPerfHomeLoadingOnce()
-
   return (
     <RemoteConfigProvider>
       <ThemeProvider theme={theme}>
@@ -120,15 +105,7 @@ const App: FunctionComponent = function () {
                                           <OnboardingWrapper>
                                             <OfflineModeContainer>
                                               <ScreenErrorProvider>
-                                                <AppNavigationContainer
-                                                  ref={navigation}
-                                                  onReady={() => {
-                                                    // Register the navigation container with the instrumentation
-                                                    routingInstrumentation.registerNavigationContainer(
-                                                      navigation
-                                                    )
-                                                  }}
-                                                />
+                                                <AppNavigationContainer />
                                               </ScreenErrorProvider>
                                             </OfflineModeContainer>
                                           </OnboardingWrapper>

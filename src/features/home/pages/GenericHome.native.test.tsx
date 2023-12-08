@@ -23,17 +23,12 @@ const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
-const mockStartTransaction = jest.fn((s: string) => {
-  s.toUpperCase()
-})
-const mockFinishTransaction = jest.fn((s: string) => {
-  s.toUpperCase()
-})
+const mockStartTransaction = jest.fn()
+const mockFinishTransaction = jest.fn()
 jest.mock('shared/performance/transactions', () => {
   const originalModule = jest.requireActual('shared/performance/transactions')
 
   return {
-    __esModule: true,
     ...originalModule,
     startTransaction: (s: string) => {
       mockStartTransaction(s)

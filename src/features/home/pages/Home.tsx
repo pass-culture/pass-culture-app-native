@@ -4,10 +4,13 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
+import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { startTransaction } from 'shared/performance/transactions'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
@@ -17,6 +20,13 @@ const Header = () => (
 )
 
 export const Home: FunctionComponent = () => {
+  const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
+  const startPerfHomeCreationOnce = useFunctionOnce(() =>
+    startTransaction(PERFORMANCE_HOME_CREATION)
+  )
+  startPerfHomeCreationOnce()
+  startPerfHomeLoadingOnce()
+
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()
