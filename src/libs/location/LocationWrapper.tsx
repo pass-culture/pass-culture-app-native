@@ -27,8 +27,8 @@ const LocationContext = React.createContext<ILocationContext>({
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
-  selectedLocationMode: LocationMode.NONE,
-  setSelectedLocationMode: () => null,
+  tempLocationMode: LocationMode.EVERYWHERE,
+  setTempLocationMode: () => null,
   isCurrentLocationMode: () => false,
   onResetPlace: () => null,
   onSetSelectedPlace: () => null,
@@ -63,7 +63,7 @@ export const LocationWrapper = memo(function LocationWrapper({
   } = useGeolocation()
 
   const onModalHideRef = useRef<() => void>()
-  const { selectedLocationMode, setSelectedLocationMode, isCurrentLocationMode } = useLocationMode({
+  const { tempLocationMode, setTempLocationMode, isCurrentLocationMode } = useLocationMode({
     hasGeolocPosition,
   })
   const {
@@ -105,8 +105,8 @@ export const LocationWrapper = memo(function LocationWrapper({
       place,
       setPlace,
       showGeolocPermissionModal,
-      selectedLocationMode,
-      setSelectedLocationMode,
+      tempLocationMode,
+      setTempLocationMode,
       isCurrentLocationMode,
       onResetPlace,
       onSetSelectedPlace,
@@ -130,8 +130,8 @@ export const LocationWrapper = memo(function LocationWrapper({
       place,
       setPlace,
       showGeolocPermissionModal,
-      selectedLocationMode,
-      setSelectedLocationMode,
+      tempLocationMode,
+      setTempLocationMode,
       isCurrentLocationMode,
       onResetPlace,
       onSetSelectedPlace,

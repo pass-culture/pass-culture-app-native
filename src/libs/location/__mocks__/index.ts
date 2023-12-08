@@ -15,7 +15,7 @@ export const showGeolocPermissionModal = jest.fn()
 export const onPressGeolocPermissionModalButton = jest.fn()
 export const setCustomPosition = jest.fn()
 const setPlace = jest.fn()
-const setSelectedLocationMode = jest.fn()
+const setTempLocationMode = jest.fn()
 const isCurrentLocationMode = jest.fn()
 const onResetPlace = jest.fn()
 const onSetSelectedPlace = jest.fn()
@@ -36,8 +36,8 @@ const locationContext: ILocationContext = {
   onModalHideRef: { current: undefined },
   place: null,
   setPlace,
-  selectedLocationMode: LocationMode.GEOLOCATION,
-  setSelectedLocationMode,
+  tempLocationMode: LocationMode.AROUND_ME,
+  setTempLocationMode,
   isCurrentLocationMode,
   onResetPlace,
   onSetSelectedPlace,

@@ -31,7 +31,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    setSelectedLocationMode,
+    setTempLocationMode,
     onSetSelectedPlace,
     onResetPlace,
     setPlace: setPlaceGlobally,
@@ -44,16 +44,16 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
 
   const theme = useTheme()
 
-  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
     ? theme.colors.primary
     : theme.colors.black
 
-  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
     ? theme.colors.primary
     : theme.colors.black
 
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
+    const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
     if (permissionState === GeolocPermissionState.GRANTED) {
       selectGeoLocationMode()
       setPlaceGlobally(null)
@@ -71,18 +71,18 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     onModalHideRef,
     showGeolocPermissionModal,
     requestGeolocPermission,
-    setSelectedLocationMode,
+    setTempLocationMode,
   ])
 
   const selectLocationMode = useCallback(
     (mode: LocationMode) => () => {
-      if (mode === LocationMode.GEOLOCATION) {
+      if (mode === LocationMode.AROUND_ME) {
         runGeolocationDialogs()
         dismissModal()
       }
-      setSelectedLocationMode(mode)
+      setTempLocationMode(mode)
     },
-    [dismissModal, runGeolocationDialogs, setSelectedLocationMode]
+    [dismissModal, runGeolocationDialogs, setTempLocationMode]
   )
 
   const onSubmit = () => {
@@ -117,7 +117,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.GEOLOCATION)}
+          onPress={selectLocationMode(LocationMode.AROUND_ME)}
           icon={PositionFilled}
           color={geolocationModeColor}
           title="Utiliser ma position actuelle"
@@ -127,13 +127,13 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
+          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
           icon={MagnifyingGlassFilled}
           color={customLocationModeColor}
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
           <LocationSearchInput
             selectedPlace={selectedPlace}
             setSelectedPlace={setSelectedPlace}

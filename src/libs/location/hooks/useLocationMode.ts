@@ -3,27 +3,27 @@ import { useEffect, useState } from 'react'
 import { LocationMode } from 'libs/location/types'
 
 export const useLocationMode = ({ hasGeolocPosition }: { hasGeolocPosition: boolean }) => {
-  const [selectedLocationMode, setSelectedLocationMode] = useState<LocationMode>(LocationMode.NONE)
+  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(LocationMode.EVERYWHERE)
 
   useEffect(() => {
     if (
-      selectedLocationMode === LocationMode.NONE ||
-      selectedLocationMode === LocationMode.GEOLOCATION
+      tempLocationMode === LocationMode.EVERYWHERE ||
+      tempLocationMode === LocationMode.AROUND_ME
     ) {
       if (hasGeolocPosition) {
-        setSelectedLocationMode(LocationMode.GEOLOCATION)
+        setTempLocationMode(LocationMode.AROUND_ME)
       } else {
-        setSelectedLocationMode(LocationMode.NONE)
+        setTempLocationMode(LocationMode.EVERYWHERE)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
 
-  const isCurrentLocationMode = (target: LocationMode) => selectedLocationMode === target
+  const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
   return {
-    selectedLocationMode,
-    setSelectedLocationMode,
+    tempLocationMode,
+    setTempLocationMode,
     isCurrentLocationMode,
   }
 }

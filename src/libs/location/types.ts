@@ -5,9 +5,9 @@ import { SuggestedPlace } from 'libs/place'
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
 
 export enum LocationMode {
-  GEOLOCATION = 'geolocation',
-  CUSTOM_POSITION = 'custom_position',
-  NONE = 'none',
+  AROUND_ME = 'AROUND_ME',
+  AROUND_PLACE = 'AROUND_PLACE',
+  EVERYWHERE = 'EVERYWHERE',
 }
 
 export type GeolocationError = {
@@ -43,8 +43,8 @@ export type ILocationContext = {
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void
   onPressGeolocPermissionModalButton: () => void
-  selectedLocationMode: LocationMode
-  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
+  tempLocationMode: LocationMode
+  setTempLocationMode: Dispatch<SetStateAction<LocationMode>>
   isCurrentLocationMode: (target: LocationMode) => boolean
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
