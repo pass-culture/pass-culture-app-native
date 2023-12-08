@@ -13,7 +13,16 @@ const initialProps = {
   qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
 }
 
+let mockIsMailAppAvailable = true
+jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
+  useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
+}))
+
 describe('TicketBody', () => {
+  beforeEach(() => {
+    mockIsMailAppAvailable = true
+  })
+
   describe('<QrCode/> display', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
       render(<TicketBody {...initialProps} />)
@@ -76,6 +85,25 @@ describe('TicketBody', () => {
         )
 
         expect(screen.queryByTestId('withdrawal-info')).toBeOnTheScreen()
+      })
+    })
+
+    describe('Consulter mes e-mails display', () => {
+      it('should show the button to open mail', async () => {
+        render(<TicketBody {...initialProps} withdrawalType={undefined} />)
+
+        const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
+
+        expect(checkEmailsButton).toBeNull()
+      })
+
+      it('should not show the button to open mail if no mail app is available', async () => {
+        mockIsMailAppAvailable = false
+        render(<TicketBody {...initialProps} withdrawalType={undefined} />)
+
+        const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
+
+        expect(checkEmailsButton).toBeNull()
       })
     })
   })

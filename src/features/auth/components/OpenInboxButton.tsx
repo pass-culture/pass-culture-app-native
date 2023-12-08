@@ -2,7 +2,7 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 
 export const OpenInboxButton = ({ onAdditionalPress }: { onAdditionalPress?: () => void }) => {
   const onPress = async () => {
@@ -10,5 +10,5 @@ export const OpenInboxButton = ({ onAdditionalPress }: { onAdditionalPress?: () 
     onAdditionalPress?.()
   }
 
-  return <ButtonPrimary wording="Consulter mes e-mails" onPress={onPress} icon={Email} />
+  return <ButtonPrimary wording="Consulter mes e-mails" onPress={onPress} icon={EmailFilled} />
 }
