@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { Keyboard } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -48,8 +48,6 @@ export const SearchLocationModal = ({
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    tempLocationMode,
-    setTempLocationMode,
     onSetSelectedPlace,
     onResetPlace,
     setPlace: setPlaceGlobally,
@@ -57,12 +55,32 @@ export const SearchLocationModal = ({
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
-    isCurrentLocationMode,
     aroundPlaceRadius,
     setAroundPlaceRadius,
     aroundMeRadius,
     setAroundMeRadius,
+    selectedLocationMode,
+    setSelectedLocationMode,
+    place,
   } = useLocation()
+  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
+
+  useEffect(() => {
+    if (visible) {
+      setTempLocationMode(selectedLocationMode)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLocationMode, visible])
+
+  useEffect(() => {
+    if (visible) {
+      onModalHideRef.current = undefined
+      setPlaceQuery(place?.label ?? '')
+      setSelectedPlace(place)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible])
 
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -85,14 +103,18 @@ export const SearchLocationModal = ({
   )
 
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
+    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
+    const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
+
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       setPlaceGlobally(null)
+      selectEverywhereMode()
       dismissModal()
       onModalHideRef.current = showGeolocPermissionModal
     } else {
       await requestGeolocPermission({
         onAcceptance: selectGeoLocationMode,
+        onRefusal: selectEverywhereMode,
       })
     }
   }, [
@@ -102,7 +124,7 @@ export const SearchLocationModal = ({
     onModalHideRef,
     showGeolocPermissionModal,
     requestGeolocPermission,
-    setTempLocationMode,
+    setSelectedLocationMode,
   ])
 
   const selectLocationMode = useCallback(
@@ -117,6 +139,7 @@ export const SearchLocationModal = ({
   )
 
   const onSubmit = () => {
+    setSelectedLocationMode(tempLocationMode)
     if (tempLocationMode === LocationMode.AROUND_PLACE && selectedPlace) {
       setPlaceGlobally(selectedPlace)
       dispatch({

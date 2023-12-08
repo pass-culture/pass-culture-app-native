@@ -43,9 +43,8 @@ export type ILocationContext = {
   triggerPositionUpdate: () => void
   showGeolocPermissionModal: () => void
   onPressGeolocPermissionModalButton: () => void
-  tempLocationMode: LocationMode
-  setTempLocationMode: Dispatch<SetStateAction<LocationMode>>
-  isCurrentLocationMode: (target: LocationMode) => boolean
+  selectedLocationMode: LocationMode
+  setSelectedLocationMode: Dispatch<SetStateAction<LocationMode>>
   selectedPlace: SuggestedPlace | null
   setSelectedPlace: Dispatch<SetStateAction<SuggestedPlace | null>>
   onSetSelectedPlace: (place: SuggestedPlace) => void

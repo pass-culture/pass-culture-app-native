@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -29,9 +29,9 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
+    place,
     selectedPlace,
     setSelectedPlace,
-    setTempLocationMode,
     onSetSelectedPlace,
     onResetPlace,
     setPlace: setPlaceGlobally,
@@ -39,8 +39,26 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
-    isCurrentLocationMode,
+    selectedLocationMode,
+    setSelectedLocationMode,
   } = useLocation()
+  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
+
+  useEffect(() => {
+    if (visible) {
+      setTempLocationMode(selectedLocationMode)
+    }
+  }, [selectedLocationMode, visible, setTempLocationMode])
+
+  useEffect(() => {
+    if (visible) {
+      onModalHideRef.current = undefined
+      setPlaceQuery(place?.label ?? '')
+      setSelectedPlace(place)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible])
 
   const theme = useTheme()
 
@@ -53,16 +71,20 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     : theme.colors.black
 
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
+    const selectAroundMeMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
+    const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
+
     if (permissionState === GeolocPermissionState.GRANTED) {
-      selectGeoLocationMode()
+      selectAroundMeMode()
       setPlaceGlobally(null)
     } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       setPlaceGlobally(null)
+      selectEverywhereMode()
       onModalHideRef.current = showGeolocPermissionModal
     } else {
       await requestGeolocPermission({
-        onAcceptance: selectGeoLocationMode,
+        onAcceptance: selectAroundMeMode,
+        onRefusal: selectEverywhereMode,
       })
     }
   }, [
@@ -71,7 +93,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     onModalHideRef,
     showGeolocPermissionModal,
     requestGeolocPermission,
-    setTempLocationMode,
+    setSelectedLocationMode,
   ])
 
   const selectLocationMode = useCallback(
@@ -85,8 +107,9 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     [dismissModal, runGeolocationDialogs, setTempLocationMode]
   )
 
-  const onSubmit = () => {
+  const onSubmitPlace = () => {
     setPlaceGlobally(selectedPlace)
+    setSelectedLocationMode(tempLocationMode)
     analytics.logUserSetLocation('home')
     dismissModal()
   }
@@ -148,7 +171,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
           <ButtonPrimary
             wording="Valider la localisation"
             disabled={!selectedPlace}
-            onPress={onSubmit}
+            onPress={onSubmitPlace}
           />
         </ButtonContainer>
       </StyledScrollView>
