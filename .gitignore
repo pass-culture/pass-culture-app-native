@@ -124,13 +124,7 @@ firebase-debug.log
 # artifacts
 /apps/*
 /logs/*
-appium.log
 .tsbuild
-
-# e2e
-e2e/output
-/credentials.json
-/token.json
 
 # lighthouse
 .lighthouseci
