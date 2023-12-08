@@ -40,6 +40,8 @@ jest.mock('libs/place', () => ({
 
 describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+
     renderHomeLocationModal()
     await waitForModalToShow()
 
