@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
+import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -28,6 +29,8 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
   consultFaqAnalytics,
   openInBoxAnalytics,
 }) => {
+  const isMailAppAvailable = useIsMailAppAvailable()
+
   return (
     <React.Fragment>
       <IllustrationContainer>
@@ -55,7 +58,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       />
       {additionalCTA}
       <Spacer.Column numberOfSpaces={additionalCTA ? 6 : 10} />
-      <OpenInboxButton onAdditionalPress={openInBoxAnalytics} />
+      {!!isMailAppAvailable && <OpenInboxButton onAdditionalPress={openInBoxAnalytics} />}
     </React.Fragment>
   )
 }

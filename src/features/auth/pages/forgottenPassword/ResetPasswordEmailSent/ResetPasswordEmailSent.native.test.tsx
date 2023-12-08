@@ -10,6 +10,11 @@ import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
 jest.mock('features/navigation/helpers')
 
+let mockIsMailAppAvailable = true
+jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
+  useIsMailAppAvailable: jest.fn(() => mockIsMailAppAvailable),
+}))
+
 const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
   key: 'ResetPasswordEmailSent',
   name: 'ResetPasswordEmailSent',
@@ -17,6 +22,10 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
 }
 
 describe('<ResetPasswordEmailSent />', () => {
+  beforeEach(() => {
+    mockIsMailAppAvailable = true
+  })
+
   it('should match snapshot', () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
 
@@ -30,6 +39,15 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(quitButton)
 
     expect(navigate).toHaveBeenCalledWith('Login', undefined)
+  })
+
+  it('should not show the button to open mail if no mail app is available', async () => {
+    mockIsMailAppAvailable = false
+    render(<ResetPasswordEmailSent route={routeMock} />)
+
+    const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
+
+    expect(checkEmailsButton).toBeNull()
   })
 
   it('should open mail app when clicking on check email button', async () => {

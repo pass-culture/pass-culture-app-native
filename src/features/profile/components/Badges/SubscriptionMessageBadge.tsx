@@ -2,6 +2,7 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
 import { SubscriptionMessage } from 'api/gen'
+import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
@@ -19,6 +20,7 @@ type Props = {
   subscriptionMessage: SubscriptionMessage
 }
 const CallToAction = ({ subscriptionMessage }: Props) => {
+  const isMailAppAvailable = useIsMailAppAvailable()
   const { callToActionTitle, callToActionLink, callToActionIcon } =
     subscriptionMessage.callToAction ?? {}
 
@@ -36,7 +38,7 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-      {shouldOpenInbox ? (
+      {isMailAppAvailable && shouldOpenInbox ? (
         <ButtonQuaternarySecondary
           onPress={openInbox}
           icon={matchSubscriptionMessageIconToSvg(callToActionIcon, EmailFilled)}
