@@ -1,7 +1,7 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
-import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
+import { LocationMode } from 'libs/algolia'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 
@@ -52,9 +52,9 @@ export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_
 
 export const buildLocationFilterParam = (searchState: SearchState) => {
   const { locationFilter, venue } = searchState
-  if (locationFilter.locationType === LocationType.AROUND_PLACE || venue) {
+  if (locationFilter.locationType === LocationMode.AROUND_PLACE || venue) {
     const stateWithLocationType = {
-      locationType: locationFilter.locationType === LocationType.AROUND_PLACE ? 'PLACE' : 'VENUE',
+      locationType: locationFilter.locationType === LocationMode.AROUND_PLACE ? 'PLACE' : 'VENUE',
     }
     const maxLabelLength =
       STRING_VALUE_MAX_LENGTH -
@@ -63,7 +63,7 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
     const customLocationFilter = {
       ...stateWithLocationType,
       label:
-        locationFilter.locationType === LocationType.AROUND_PLACE
+        locationFilter.locationType === LocationMode.AROUND_PLACE
           ? locationFilter.place.label.slice(0, maxLabelLength)
           : venue?.label.slice(0, maxLabelLength),
     }

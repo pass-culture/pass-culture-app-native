@@ -1,8 +1,8 @@
 import algoliasearch from 'algoliasearch'
 
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
+import { LocationMode } from 'libs/algolia'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
@@ -89,7 +89,7 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: { locationType: LocationType.EVERYWHERE },
+        locationFilter: { locationType: LocationMode.EVERYWHERE },
       } as SearchQueryParameters,
       userPosition: null,
       isUserUnderage: false,
@@ -152,7 +152,7 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: { locationType: LocationType.EVERYWHERE },
+        locationFilter: { locationType: LocationMode.EVERYWHERE },
       } as SearchQueryParameters,
       userPosition,
       isUserUnderage: false,
@@ -225,7 +225,7 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
       } as SearchQueryParameters,
       userPosition,
       isUserUnderage: false,
@@ -299,7 +299,7 @@ describe('fetchSearchResults', () => {
       parameters: {
         query,
         locationFilter: {
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           place: kourou,
           aroundRadius: MAX_RADIUS,
         },
@@ -376,7 +376,7 @@ describe('fetchSearchResults', () => {
       parameters: {
         query,
         locationFilter: {
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           place: kourou,
           aroundRadius: MAX_RADIUS,
         },

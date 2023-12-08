@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react'
 
 import { LocationChoice } from 'features/search/components/LocationChoice'
-import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
@@ -13,11 +13,11 @@ interface Props {
 }
 
 export const LocationFilterChoice = ({ onChange }: Props) => {
-  const [selected, setSelected] = useState<LocationType>(LocationType.EVERYWHERE)
+  const [selected, setSelected] = useState<LocationMode>(LocationMode.EVERYWHERE)
 
   const onPressEverywhere = useCallback(() => {
-    setSelected(LocationType.EVERYWHERE)
-    onChange({ locationType: LocationType.EVERYWHERE })
+    setSelected(LocationMode.EVERYWHERE)
+    onChange({ locationType: LocationMode.EVERYWHERE })
   }, [onChange])
 
   return (
@@ -28,7 +28,7 @@ export const LocationFilterChoice = ({ onChange }: Props) => {
           label="Partout"
           Icon={Everywhere}
           onPress={onPressEverywhere}
-          isSelected={LocationType.EVERYWHERE === selected}
+          isSelected={LocationMode.EVERYWHERE === selected}
         />
       </Li>
     </VerticalUl>

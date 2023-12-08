@@ -1,7 +1,7 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { SearchState } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
@@ -27,23 +27,23 @@ describe('useLocationType', () => {
     }
     const { section } = useLocationType(searchState)
 
-    expect(section).toBe(LocationType.AROUND_PLACE)
+    expect(section).toBe(LocationMode.AROUND_PLACE)
   })
 
   it('should return PLACE location type section when location type is PLACE', () => {
     const searchState: SearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: 100 },
+      locationFilter: { locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: 100 },
     }
     const { section } = useLocationType(searchState)
 
-    expect(section).toBe(LocationType.AROUND_PLACE)
+    expect(section).toBe(LocationMode.AROUND_PLACE)
   })
 
   it.each`
     type
-    ${LocationType.AROUND_ME}
-    ${LocationType.EVERYWHERE}
+    ${LocationMode.EVERYWHERE}
+    ${LocationMode.EVERYWHERE}
   `('should return $type location type section when location type is $type', ({ locationType }) => {
     const searchState: SearchState = {
       ...initialSearchState,

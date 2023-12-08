@@ -7,13 +7,13 @@ import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -201,7 +201,7 @@ describe('<Venue /> with new venue body', () => {
     view: SearchView.Landing,
     tags: [],
     timeRange: null,
-    locationFilter: { locationType: LocationType.EVERYWHERE },
+    locationFilter: { locationType: LocationMode.EVERYWHERE },
   }
 
   beforeAll(() => {

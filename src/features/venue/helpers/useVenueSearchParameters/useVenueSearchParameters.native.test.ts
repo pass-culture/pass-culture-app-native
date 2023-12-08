@@ -1,9 +1,9 @@
 import { VenueResponse } from 'api/gen'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 import { Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
 let mockPosition: Position = null
@@ -27,7 +27,7 @@ describe('useVenueSearchParameters', () => {
       beginningDatetime: undefined,
       endingDatetime: undefined,
       hitsPerPage: 30,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
       offerCategories: [],
       offerSubcategories: [],
       offerIsDuo: false,
@@ -60,7 +60,7 @@ describe('useVenueSearchParameters', () => {
 
     expect(result.current.locationFilter).toEqual({
       aroundRadius: 100,
-      locationType: LocationType.AROUND_ME,
+      locationType: LocationMode.AROUND_ME,
     })
   })
 
@@ -69,7 +69,7 @@ describe('useVenueSearchParameters', () => {
     const { result } = renderHook(() => useVenueSearchParameters(invalidId))
 
     expect(result.current.locationFilter).toEqual({
-      locationType: LocationType.EVERYWHERE,
+      locationType: LocationMode.EVERYWHERE,
     })
   })
 })

@@ -1,12 +1,12 @@
 import { GenreType, SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
-import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
+import { LocationMode } from 'libs/algolia'
 import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFacetFilters'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 const defaultBuildFacetFilterParam = {
   isUserUnderage: false,
-  locationFilter: { locationType: LocationType.EVERYWHERE } as LocationFilter,
+  locationFilter: { locationType: LocationMode.EVERYWHERE } as LocationFilter,
   objectIds: [],
   offerCategories: [],
   offerGenreTypes: [],

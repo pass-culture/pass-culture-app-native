@@ -22,7 +22,7 @@ import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Bu
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour, LocationType } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { getIsSearchPreviousRoute } from 'features/search/helpers/getIsSearchPreviousRoute/getIsSearchPreviousRoute'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
@@ -31,6 +31,7 @@ import { LocationModal } from 'features/search/pages/modals/LocationModal/Locati
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { LocationMode } from 'libs/location/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -285,7 +286,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               locationLabel={hasPosition ? locationLabel : 'Me localiser'}
               onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}
-              numberOfLinesForLocation={locationType === LocationType.AROUND_PLACE ? 1 : 2}
+              numberOfLinesForLocation={locationType === LocationMode.AROUND_PLACE ? 1 : 2}
               disableInputClearButton={disableInputClearButton}
             />
           </FlexView>

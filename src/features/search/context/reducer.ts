@@ -1,11 +1,12 @@
 import { Hit } from '@algolia/client-search'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { addOrRemove, MAX_RADIUS, sortCategories } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 
 export const initialSearchState: SearchState = {
@@ -13,7 +14,7 @@ export const initialSearchState: SearchState = {
   date: null,
   endingDatetime: undefined,
   hitsPerPage: 20,
-  locationFilter: { locationType: LocationType.EVERYWHERE },
+  locationFilter: { locationType: LocationMode.EVERYWHERE },
   offerCategories: [],
   offerSubcategories: [],
   offerIsDuo: false,
@@ -133,17 +134,17 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         locationFilter: {
-          locationType: LocationType.AROUND_ME,
+          locationType: LocationMode.AROUND_ME,
           aroundRadius: action.payload ?? MAX_RADIUS,
         },
       }
     case 'SET_LOCATION_EVERYWHERE':
-      return { ...state, locationFilter: { locationType: LocationType.EVERYWHERE } }
+      return { ...state, locationFilter: { locationType: LocationMode.EVERYWHERE } }
     case 'SET_LOCATION_PLACE':
       return {
         ...state,
         locationFilter: {
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           place: action.payload.place,
           aroundRadius: action.payload.aroundRadius ?? MAX_RADIUS,
         },

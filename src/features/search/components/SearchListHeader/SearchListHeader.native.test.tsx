@@ -3,12 +3,12 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { act, render, screen } from 'tests/utils'
 
@@ -265,9 +265,9 @@ describe('<SearchListHeader />', () => {
     it.each`
       locationFilter                                                                          | isGeolocated | locationType
       ${undefined}                                                                            | ${false}     | ${undefined}
-      ${{ locationType: LocationType.EVERYWHERE }}                                            | ${false}     | ${LocationType.EVERYWHERE}
-      ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}      | ${LocationType.AROUND_ME}
-      ${{ locationType: LocationType.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationType.AROUND_PLACE}
+      ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}     | ${LocationMode.EVERYWHERE}
+      ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}      | ${LocationMode.AROUND_ME}
+      ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationMode.AROUND_PLACE}
     `(
       'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
       ({ locationFilter, isGeolocated }) => {

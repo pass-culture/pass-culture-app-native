@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
+import { LocationMode } from 'libs/location/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const defaultParams: SearchState = {
@@ -26,7 +26,7 @@ const defaultParams: SearchState = {
   tags: [],
   timeRange: null,
   locationFilter: {
-    locationType: LocationType.EVERYWHERE,
+    locationType: LocationMode.EVERYWHERE,
   },
   venue: {
     geolocation: { latitude: 48.87004, longitude: 2.3785 },

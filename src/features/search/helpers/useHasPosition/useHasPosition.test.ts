@@ -1,9 +1,9 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { LocationFilter } from 'features/search/types'
 import { GeoCoordinates, Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
@@ -30,12 +30,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 describe('useLocationChoice', () => {
   it.each`
-    locationType                 | locationFilter                                                                          | position            | hasPositionValue
-    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${true}
-    ${LocationType.EVERYWHERE}   | ${{ locationType: LocationType.EVERYWHERE }}                                            | ${null}             | ${false}
-    ${LocationType.AROUND_ME}    | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${true}
-    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${true}
-    ${LocationType.AROUND_PLACE} | ${{ locationType: LocationType.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${true}
+    loLocationMode.EVERYWHERE    | locationFilter    LocationMode.EVERYWHERE                                               | position            | hasPositionValue
+    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${true}
+    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${false}
+    ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${true}
+    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${true}
+    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${true}
   `(
     'should return $hasPositionValue when location type is $locationType and position is $position',
     ({

@@ -19,10 +19,10 @@ import {
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
-import { LocationType } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
+import { LocationMode } from 'libs/location/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,7 +48,7 @@ export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
   if (screenName === 'Search') {
     return {
       view: SearchView.Results,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
       noFocus: true,
       from: 'deeplink',
     }

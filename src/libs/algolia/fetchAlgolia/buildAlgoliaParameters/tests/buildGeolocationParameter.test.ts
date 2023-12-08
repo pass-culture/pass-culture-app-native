@@ -1,4 +1,4 @@
-import { LocationType } from 'features/search/enums'
+import { LocationMode } from 'libs/algolia'
 import { RADIUS_FILTERS } from 'libs/algolia/enums'
 import {
   buildGeolocationParameter,
@@ -15,7 +15,7 @@ describe('buildGeolocationParameter', () => {
   }
 
   const locationFilterPlace: SearchQueryParameters['locationFilter'] = {
-    locationType: LocationType.AROUND_PLACE,
+    locationType: LocationMode.AROUND_PLACE,
     place: {
       label: 'Place',
       info: 'infoPlace',
@@ -28,12 +28,12 @@ describe('buildGeolocationParameter', () => {
   }
 
   const locationFilterAroundMe: SearchQueryParameters['locationFilter'] = {
-    locationType: LocationType.AROUND_ME,
+    locationType: LocationMode.AROUND_ME,
     aroundRadius: 5,
   }
 
   const locationFilterEverywhere: SearchQueryParameters['locationFilter'] = {
-    locationType: LocationType.EVERYWHERE,
+    locationType: LocationMode.EVERYWHERE,
   }
 
   const userLocation: Position = {
@@ -119,25 +119,25 @@ describe('buildGeolocationParameter', () => {
 
 describe('computeAroundRadiusInMeters', () => {
   it('should return UNLIMITED_RADIUS when locationType is EVERYWHERE', () => {
-    const result = computeAroundRadiusInMeters(10, LocationType.EVERYWHERE)
+    const result = computeAroundRadiusInMeters(10, LocationMode.EVERYWHERE)
 
     expect(result).toEqual(RADIUS_FILTERS.UNLIMITED_RADIUS)
   })
 
   it('should return UNLIMITED_RADIUS when aroundRadius is null', () => {
-    const result = computeAroundRadiusInMeters(null, LocationType.AROUND_PLACE)
+    const result = computeAroundRadiusInMeters(null, LocationMode.AROUND_PLACE)
 
     expect(result).toEqual(RADIUS_FILTERS.UNLIMITED_RADIUS)
   })
 
   it('should return RADIUS_IN_METERS_FOR_NO_OFFERS when aroundRadius is 0', () => {
-    const result = computeAroundRadiusInMeters(0, LocationType.AROUND_PLACE)
+    const result = computeAroundRadiusInMeters(0, LocationMode.AROUND_PLACE)
 
     expect(result).toEqual(RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS)
   })
 
   it('should compute radius in meters for non-zero aroundRadius', () => {
-    const result = computeAroundRadiusInMeters(5, LocationType.AROUND_PLACE)
+    const result = computeAroundRadiusInMeters(5, LocationMode.AROUND_PLACE)
 
     expect(result).toEqual(5000)
   })

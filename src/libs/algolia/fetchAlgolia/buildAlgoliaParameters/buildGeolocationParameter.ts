@@ -1,5 +1,5 @@
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { LocationMode } from 'libs/algolia'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
@@ -24,12 +24,12 @@ export const buildGeolocationParameter = ({
   if (isFullyDigitalOffersCategory && enableAppLocation) return
   if (!locationFilter)
     locationFilter = userLocation
-      ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
-      : { locationType: LocationType.EVERYWHERE }
+      ? { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }
+      : { locationType: LocationMode.EVERYWHERE }
 
   if (venue) return
 
-  if (locationFilter.locationType === LocationType.AROUND_PLACE) {
+  if (locationFilter.locationType === LocationMode.AROUND_PLACE) {
     if (!locationFilter.place.geolocation) return
     return {
       aroundLatLng: `${locationFilter.place.geolocation.latitude}, ${locationFilter.place.geolocation.longitude}`,
@@ -44,10 +44,10 @@ export const buildGeolocationParameter = ({
   if (
     !enableAppLocation &&
     isFullyDigitalOffersCategory &&
-    locationFilter.locationType === LocationType.AROUND_ME
+    locationFilter.locationType === LocationMode.AROUND_ME
   )
     return
-  if (locationFilter.locationType === LocationType.EVERYWHERE) {
+  if (locationFilter.locationType === LocationMode.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
       aroundRadius: 'all',
@@ -65,9 +65,9 @@ export const buildGeolocationParameter = ({
 
 export const computeAroundRadiusInMeters = (
   aroundRadius: number | null,
-  locationType: LocationType
+  locationType: LocationMode
 ): number | 'all' => {
-  if (locationType === LocationType.EVERYWHERE) return RADIUS_FILTERS.UNLIMITED_RADIUS
+  if (locationType === LocationMode.EVERYWHERE) return RADIUS_FILTERS.UNLIMITED_RADIUS
   if (aroundRadius === null) return RADIUS_FILTERS.UNLIMITED_RADIUS
   if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
   return aroundRadius * 1000

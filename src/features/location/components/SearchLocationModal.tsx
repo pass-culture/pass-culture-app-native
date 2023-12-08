@@ -9,7 +9,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -147,7 +146,7 @@ export const SearchLocationModal = ({
         payload: {
           locationFilter: {
             place: selectedPlace,
-            locationType: LocationType.AROUND_PLACE,
+            locationType: LocationMode.AROUND_PLACE,
             aroundRadius: aroundPlaceRadius,
           },
           includeDigitalOffers,
@@ -159,7 +158,7 @@ export const SearchLocationModal = ({
           ...searchState,
           locationFilter: {
             place: selectedPlace,
-            locationType: LocationType.AROUND_PLACE,
+            locationType: LocationMode.AROUND_PLACE,
             aroundRadius: aroundPlaceRadius,
           },
           includeDigitalOffers,
@@ -170,14 +169,14 @@ export const SearchLocationModal = ({
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: aroundMeRadius },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
           includeDigitalOffers,
         },
       })
       navigate(
         ...getTabNavConfig('Search', {
           ...searchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: aroundMeRadius },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
           includeDigitalOffers,
         })
       )

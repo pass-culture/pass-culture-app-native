@@ -1,4 +1,4 @@
-import { LocationType } from 'features/search/enums'
+import { LocationMode } from 'libs/algolia'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
@@ -13,6 +13,6 @@ export const adaptGeolocationParameters = (
   if (notGeolocatedButRadiusIsProvided || geolocatedButGeolocationIsInvalid) return
 
   return isGeolocated && geolocation
-    ? { locationType: LocationType.AROUND_ME, aroundRadius: aroundRadius || null }
-    : { locationType: LocationType.EVERYWHERE }
+    ? { locationType: LocationMode.AROUND_ME, aroundRadius: aroundRadius || null }
+    : { locationType: LocationMode.EVERYWHERE }
 }

@@ -1,7 +1,7 @@
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { LocationMode } from 'libs/algolia'
 import { Position } from 'libs/location'
 
 type SearchVenuePositionType = {
@@ -24,7 +24,7 @@ export function buildSearchVenuePosition(
   let searchVenuePosition: SearchVenuePositionType = { aroundRadius: 'all' }
 
   if (geolocPosition) {
-    if (locationFilter?.locationType === LocationType.AROUND_ME) {
+    if (locationFilter?.locationType === LocationMode.AROUND_ME) {
       const aroundRadius = locationFilter.aroundRadius ?? 'all'
 
       searchVenuePosition = {
@@ -32,7 +32,7 @@ export function buildSearchVenuePosition(
         aroundRadius: convertKmToMeters(aroundRadius),
       }
     }
-    if (locationFilter?.locationType === LocationType.EVERYWHERE) {
+    if (locationFilter?.locationType === LocationMode.EVERYWHERE) {
       searchVenuePosition = {
         ...searchVenuePosition,
         aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
@@ -41,7 +41,7 @@ export function buildSearchVenuePosition(
   }
 
   if (
-    locationFilter?.locationType === LocationType.AROUND_PLACE &&
+    locationFilter?.locationType === LocationMode.AROUND_PLACE &&
     locationFilter?.place?.geolocation
   ) {
     const placePosition = locationFilter?.place?.geolocation

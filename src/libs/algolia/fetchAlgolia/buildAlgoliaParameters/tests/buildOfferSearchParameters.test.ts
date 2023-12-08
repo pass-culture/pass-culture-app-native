@@ -1,6 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
+import { LocationMode } from 'libs/algolia'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
 
@@ -83,7 +84,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return parameters with geolocation filter when locationFilter is specified', () => {
     const locationFilter = {
-      locationType: LocationType.AROUND_PLACE,
+      locationType: LocationMode.AROUND_PLACE,
       place: {
         label: 'Paris',
         info: 'infoPlace',

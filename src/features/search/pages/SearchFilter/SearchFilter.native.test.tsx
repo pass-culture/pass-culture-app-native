@@ -4,10 +4,10 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -56,7 +56,7 @@ describe('<SearchFilter/>', () => {
 
   it('should render correctly', async () => {
     mockSearchState.locationFilter = {
-      locationType: LocationType.AROUND_ME,
+      locationType: LocationMode.AROUND_ME,
       aroundRadius: DEFAULT_RADIUS,
     }
     renderSearchFilter()
@@ -120,7 +120,7 @@ describe('<SearchFilter/>', () => {
         type: 'SET_STATE',
         payload: {
           ...initialSearchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
           minPrice: undefined,
           maxPrice: undefined,
           offerGenreTypes: undefined,
@@ -141,7 +141,7 @@ describe('<SearchFilter/>', () => {
         type: 'SET_STATE',
         payload: {
           ...initialSearchState,
-          locationFilter: { locationType: LocationType.EVERYWHERE },
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
           minPrice: undefined,
           maxPrice: undefined,
           offerGenreTypes: undefined,

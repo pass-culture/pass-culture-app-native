@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Text } from 'react-native'
 
 import { SearchWrapper, useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import {
   checkGeolocPermission,
@@ -11,6 +10,7 @@ import {
   useLocation,
 } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -53,7 +53,7 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    expect(screen.getByText(LocationType.AROUND_PLACE)).toBeOnTheScreen()
+    expect(screen.getByText(LocationMode.AROUND_PLACE)).toBeOnTheScreen()
   })
 
   it('should not update locationType with type Place when Location Context is changed and ENABLE_APP_LOCATION FF is false', async () => {
@@ -68,7 +68,7 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    expect(screen.queryByText(LocationType.AROUND_PLACE)).not.toBeOnTheScreen()
+    expect(screen.queryByText(LocationMode.AROUND_PLACE)).not.toBeOnTheScreen()
   })
 
   it('should not update locationType with type geolocation when Location Context is changed (i.e from deeplink) and ENABLE_APP_LOCATION FF is false', async () => {
@@ -81,7 +81,7 @@ describe('SearchWrapper', () => {
 
     await act(async () => {})
 
-    expect(screen.queryByText(LocationType.AROUND_ME)).not.toBeOnTheScreen()
+    expect(screen.queryByText(LocationMode.AROUND_ME)).not.toBeOnTheScreen()
   })
 
   it('should update locationType with type Around me when Location Context is switched to geolocation', async () => {
@@ -93,13 +93,13 @@ describe('SearchWrapper', () => {
       fireEvent.press(screen.getByText('setPlace'))
     })
 
-    screen.getByText(LocationType.AROUND_PLACE)
+    screen.getByText(LocationMode.AROUND_PLACE)
 
     await act(async () => {
       fireEvent.press(screen.getByText('unSetPlace'))
     })
 
-    expect(screen.getByText(LocationType.AROUND_ME)).toBeOnTheScreen()
+    expect(screen.getByText(LocationMode.AROUND_ME)).toBeOnTheScreen()
   })
 
   it('should not update locationType when searchState is set with a venue', async () => {
@@ -172,7 +172,7 @@ const DummyComponent = () => {
             type: 'SET_LOCATION_FILTERS',
             payload: {
               locationFilter: {
-                locationType: LocationType.AROUND_PLACE,
+                locationType: LocationMode.AROUND_PLACE,
                 place: mockPlace,
                 aroundRadius: 50,
               },

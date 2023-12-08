@@ -1,12 +1,12 @@
-import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 
 export function useLocationType(searchState: SearchState) {
   const { venue, locationFilter } = searchState
 
   const { locationType } = locationFilter
 
-  const section = venue ? LocationType.AROUND_PLACE : locationType
+  const section = venue ? LocationMode.AROUND_PLACE : locationType
 
   return { locationType, section }
 }
