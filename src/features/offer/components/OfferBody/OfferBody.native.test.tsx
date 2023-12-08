@@ -133,6 +133,7 @@ const useFeatureFlagSpy = jest
   .mockReturnValue(false)
 
 const onScroll = jest.fn()
+const handleChangeSameArtistPlaylistDisplay = jest.fn()
 
 const offerId = mockOffer.id
 
@@ -726,7 +727,12 @@ const renderOfferBody = (
   render(
     reactQueryProviderHOC(
       <NetInfoWrapper>
-        <OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />
+        <OfferBody
+          offerId={offerId}
+          onScroll={onScroll}
+          handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
+          {...additionalProps}
+        />
       </NetInfoWrapper>
     )
   )

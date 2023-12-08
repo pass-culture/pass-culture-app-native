@@ -486,9 +486,10 @@ export const logEventAnalytics = {
       }
     ),
   logPlaylistVerticalScroll: (params: {
+    offerId: number
+    playlistType: PlaylistType
+    nbResults: number
     fromOfferId?: number
-    offerId?: number
-    playlistType?: PlaylistType
   }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),

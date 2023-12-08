@@ -62,7 +62,13 @@ describe('<OfferBody />', () => {
 
   describe('share on social media', () => {
     it('should open url to share on social medium', async () => {
-      render(<OfferBody offerId={offerId} onScroll={jest.fn()} />)
+      render(
+        <OfferBody
+          offerId={offerId}
+          onScroll={jest.fn()}
+          handleChangeSameArtistPlaylistDisplay={jest.fn()}
+        />
+      )
 
       await userEvent.click(await screen.findByText('Envoyer sur WhatsApp'))
 
@@ -76,7 +82,13 @@ describe('<OfferBody />', () => {
     })
 
     it('should open web share modal on "Plus d’options" press', async () => {
-      render(<OfferBody offerId={offerId} onScroll={jest.fn()} />)
+      render(
+        <OfferBody
+          offerId={offerId}
+          onScroll={jest.fn()}
+          handleChangeSameArtistPlaylistDisplay={jest.fn()}
+        />
+      )
 
       await act(async () => {
         const otherButton = screen.getByText('Plus d’options')

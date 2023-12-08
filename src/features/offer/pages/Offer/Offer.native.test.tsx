@@ -1,4 +1,5 @@
 import { rest } from 'msw'
+import { InViewProps } from 'react-native-intersection-observer'
 
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
 import { BookingsResponse, SearchGroupNameEnumv2 } from 'api/gen'
@@ -49,6 +50,23 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
+/**
+ * This mock permit to simulate the visibility of the playlist
+ * it is an alternative solution which allows you to replace the scroll simulation
+ * it's not optimal, if you have better idea don't hesitate to update
+ */
+const mockInView = jest.fn()
+jest.mock('react-native-intersection-observer', () => {
+  const InView = (props: InViewProps) => {
+    mockInView.mockImplementation(props.onChange)
+    return null
+  }
+  return {
+    ...jest.requireActual('react-native-intersection-observer'),
+    InView,
+  }
+})
 
 const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
@@ -198,12 +216,14 @@ describe('<Offer />', () => {
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        nbResults: 4,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        nbResults: 4,
       })
     })
 
@@ -272,6 +292,7 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          nbResults: 4,
         })
       })
 
@@ -313,6 +334,7 @@ describe('<Offer />', () => {
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          nbResults: 4,
         })
       })
 
@@ -385,12 +407,14 @@ describe('<Offer />', () => {
         fromOfferId,
         offerId,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        nbResults: 4,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
         ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        nbResults: 4,
       })
     })
   })
@@ -443,6 +467,43 @@ describe('<Offer />', () => {
       await act(async () => {})
 
       expect(useSameArtistPlaylistSpy.mock.results[0].value.refetch).not.toHaveBeenCalled()
+    })
+
+    it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
+      renderOfferPage({})
+
+      await act(async () => {})
+
+      mockInView(true)
+
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        fromOfferId: undefined,
+        offerId: 116656,
+        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+        nbResults: 30,
+      })
+    })
+
+    it('should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
+      renderOfferPage({})
+
+      await act(async () => {})
+
+      mockInView(true)
+      mockInView(false)
+      mockInView(true)
+
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist', async () => {
+      renderOfferPage({})
+
+      await act(async () => {})
+
+      mockInView(false)
+
+      expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
     })
   })
 
