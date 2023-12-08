@@ -11,18 +11,15 @@ import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   text: string
-  numberOfLines?: number
-  lineHeight?: number
+  numberOfLines: number
+  lineHeight: number
   isExpanded?: boolean
 }
 
-const DEFAULT_NUMBER_OF_LINES = 5
-const DEFAULT_LINE_HEIGHT = 20
-
 export function CollapsibleText({
   text,
-  numberOfLines = DEFAULT_NUMBER_OF_LINES,
-  lineHeight = DEFAULT_LINE_HEIGHT,
+  numberOfLines,
+  lineHeight,
   isExpanded = false,
 }: Readonly<Props>) {
   const [expanded, setExpanded] = useState(isExpanded)
