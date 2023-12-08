@@ -48,8 +48,8 @@ export const SearchLocationModal = ({
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    selectedLocationMode,
-    setSelectedLocationMode,
+    tempLocationMode,
+    setTempLocationMode,
     onSetSelectedPlace,
     onResetPlace,
     setPlace: setPlaceGlobally,
@@ -72,11 +72,11 @@ export const SearchLocationModal = ({
 
   const theme = useTheme()
 
-  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
     ? theme.colors.primary
     : theme.colors.black
 
-  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
     ? theme.colors.primary
     : theme.colors.black
 
@@ -85,7 +85,7 @@ export const SearchLocationModal = ({
   )
 
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
+    const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       setPlaceGlobally(null)
       dismissModal()
@@ -102,22 +102,22 @@ export const SearchLocationModal = ({
     onModalHideRef,
     showGeolocPermissionModal,
     requestGeolocPermission,
-    setSelectedLocationMode,
+    setTempLocationMode,
   ])
 
   const selectLocationMode = useCallback(
     (mode: LocationMode) => () => {
-      if (mode === LocationMode.GEOLOCATION) {
+      if (mode === LocationMode.AROUND_ME) {
         runGeolocationDialogs()
       } else {
-        setSelectedLocationMode(mode)
+        setTempLocationMode(mode)
       }
     },
-    [runGeolocationDialogs, setSelectedLocationMode]
+    [runGeolocationDialogs, setTempLocationMode]
   )
 
   const onSubmit = () => {
-    if (selectedLocationMode === LocationMode.CUSTOM_POSITION && selectedPlace) {
+    if (tempLocationMode === LocationMode.AROUND_PLACE && selectedPlace) {
       setPlaceGlobally(selectedPlace)
       dispatch({
         type: 'SET_LOCATION_FILTERS',
@@ -142,7 +142,7 @@ export const SearchLocationModal = ({
           includeDigitalOffers,
         })
       )
-    } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
+    } else if (tempLocationMode === LocationMode.AROUND_ME) {
       setPlaceGlobally(null)
       dispatch({
         type: 'SET_LOCATION_FILTERS',
@@ -227,13 +227,13 @@ export const SearchLocationModal = ({
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.GEOLOCATION)}
+          onPress={selectLocationMode(LocationMode.AROUND_ME)}
           icon={PositionFilled}
           color={geolocationModeColor}
           title="Utiliser ma position actuelle"
           subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
-        {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
+        {!!isCurrentLocationMode(LocationMode.AROUND_ME) && (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
@@ -248,13 +248,13 @@ export const SearchLocationModal = ({
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
+          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
           icon={MagnifyingGlassFilled}
           color={customLocationModeColor}
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
           <React.Fragment>
             <LocationSearchInput
               selectedPlace={selectedPlace}
@@ -279,7 +279,7 @@ export const SearchLocationModal = ({
         <ButtonContainer>
           <ButtonPrimary
             wording="Valider la localisation"
-            disabled={!selectedPlace && selectedLocationMode !== LocationMode.GEOLOCATION}
+            disabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
             onPress={onSubmit}
           />
         </ButtonContainer>
