@@ -42,6 +42,7 @@ module.exports = {
       '|react-native-permissions' +
       '|react-native-qrcode-svg' +
       '|instantsearch.js' +
+      '|react-native-intersection-observer' +
       ')',
   ],
   verbose: true,

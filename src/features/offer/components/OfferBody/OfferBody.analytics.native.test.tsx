@@ -253,6 +253,7 @@ describe('<OfferBody /> - Analytics', () => {
 })
 
 const onScroll = jest.fn()
+const handleChangeSameArtistPlaylistDisplay = jest.fn()
 const renderOfferBodyForAnalytics = (
   additionalProps: {
     sameCategorySimilarOffers?: Offer[]
@@ -260,5 +261,12 @@ const renderOfferBodyForAnalytics = (
   } = {}
 ) =>
   render(
-    reactQueryProviderHOC(<OfferBody offerId={offerId} onScroll={onScroll} {...additionalProps} />)
+    reactQueryProviderHOC(
+      <OfferBody
+        offerId={offerId}
+        onScroll={onScroll}
+        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
+        {...additionalProps}
+      />
+    )
   )

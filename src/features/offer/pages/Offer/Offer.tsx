@@ -136,6 +136,7 @@ export function Offer() {
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      nbResults: sameCategorySimilarOffers?.length ?? 0,
     })
   })
 
@@ -145,6 +146,16 @@ export function Offer() {
       fromOfferId,
       offerId,
       playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+      nbResults: otherCategoriesSimilarOffers?.length ?? 0,
+    })
+  })
+
+  const logSameArtistPlaylistVerticalScroll = useFunctionOnce(() => {
+    return analytics.logPlaylistVerticalScroll({
+      fromOfferId,
+      offerId,
+      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+      nbResults: sameArtistPlaylist.length,
     })
   })
 
@@ -211,6 +222,12 @@ export function Offer() {
       logSameCategoryPlaylistVerticalScroll,
     ]
   )
+
+  const handleChangeSameArtistPlaylistDisplay = (inView: boolean) => {
+    if (!inView) return
+
+    logSameArtistPlaylistVerticalScroll()
+  }
 
   const scrollEventListener = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -290,6 +307,7 @@ export function Offer() {
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
         sameArtistPlaylist={sameArtistPlaylist}
+        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
       <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
