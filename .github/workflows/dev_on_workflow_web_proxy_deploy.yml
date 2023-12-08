@@ -87,7 +87,7 @@ jobs:
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - name: Post to a Slack channel
         id: slack
-        if: ${{ steps.web_proxy_deploy.outputs.status == 'failure' }}
+        if: ${{ steps.web_proxy_deploy.outputs.status == 'failure' || inputs.ENV == 'staging' }}
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
@@ -97,13 +97,13 @@ jobs:
               "attachments": [
                   {
                       "mrkdwn_in": ["text"],
-                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[ steps.web_proxy_deploy.outputs.status == 'failure'] }}",
+                      "color": "${{ fromJSON('["#36a64f", "#A30002"]')[steps.web_proxy_deploy.outputs.status == 'failure'] }}",
                       "author_name": "${{github.actor}}",
                       "author_link": "https://github.com/${{github.actor}}",
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement web proxy sur `${{ inputs.ENV }}` a ${{ fromJSON('["échoué :boom:", "réussi :rocket:"]')[ steps.web_proxy_deploy.outputs.status == 'failure'] }} :boom:"
+                      "text": "Le déploiement web proxy sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[steps.web_proxy_deploy.outputs.status == 'failure'] }} :boom:"
                   }
               ],
               "unfurl_links": false,
