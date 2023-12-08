@@ -4,12 +4,29 @@
 
 ## Prérequis
 
-- Avoir Xcode 14 ou plus
-- Builder l'app en local
+- Avoir Xcode 14 ou plus (testé avec 15.0 15A240d)
+- Pouvoir builder l'app en local
 
-## Configuration
+> Résumé: Pour lancer les tests Android, vous n'avez qu'a installer la CLI maestro. Pour le web, vous devez avoir le ChromeDriver en plus. C'est la version iOS simulateur qui demande le plus de temps. Il faut installer l'idb, et lui passer l'id du simulateur. Il n'est pas possible de lancer les tests sur un iOS physque pour le moment.
 
-[Documentation d'installation](https://maestro.mobile.dev/getting-started/installing-maestro)
+Tableau récapitulatif des besoins de chaque plateforme pour lancer les tests:
+
+| Support                  | Android Virtuel | Android Physique | iOS Viruel | iOS Physique | Web |
+| ------------------------ | --------------- | ---------------- | ---------- | ------------ | --- |
+| Prise en charge          | ✓               | ✓                | ✓          | ✗            | ✓   |
+| Détection auto du device | ✓               | ✓                | ✗          | -            | -   |
+| CLI                      | ✓               | ✓                | ✓          | -            | ✓   |
+| adb                      | optionnel       | optionnel        | ✗          | -            | ✗   |
+| idb                      | ✗               | ✗                | ✓          | -            | ✗   |
+| idb_companion            | ✗               | ✗                | ✓          | -            | ✗   |
+| ChromeDriver             | ✗               | ✗                | ✗          | -            | ✓   |
+| Build local              | ✓               | ✓                | ✓          | -            | ✗   |
+
+## Installation
+
+[Documentation d'installation complète](https://maestro.mobile.dev/getting-started/installing-maestro)
+
+### Installer la CLI Maestro
 
 Pour installer Maestro sur Mac OS, Linux or Windows :
 
@@ -17,40 +34,117 @@ Pour installer Maestro sur Mac OS, Linux or Windows :
 curl -Ls "https://get.maestro.mobile.dev" | bash
 ```
 
-Connecter un device
+### Installer IDB (pour lancer les tests sur iOS)
+
+Si vous ne l'avez pas déjà fait, installez `idb` (iOS Development Bridge):
 
 ```bash
 brew tap facebook/fb
 brew install facebook/fb/idb-companion
-idb_companion --udid <UDID-du-device-ou-vous-avez-build-lapp-en-local>
 ```
 
-Pour obtenir l'UDID des devices physiques :
+### Installer ADB (pour obtenir des informations sur les devices Android)
+
+IMPORTANT: Vous n'avez pas besoin de `adb` pour lancer les tests. C'est seulement en cas de problèmes que ça pourrait vous être utile pour comprendre ce qu'il se passe.
+
+Si vous ne l'avez pas déjà fait, installez `adb` (Android Debug Bridge).
+
+ADB est installé avec Android Studio. Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à vos variables d'environement.
+
+### Installer ChromeDriver (pour lancer les tests sur le Web)
+
+Regardez la version de Chrome que vous utilisez.
+
+Allez chercher la version de ChromeDriver correspondante [ici](https://googlechromelabs.github.io/chrome-for-testing/#stable).
+
+Sur MacBook, si vous avez une erreur de type `org.openqa.selenium.remote.NoSuchDriverException: Unable to obtain: Capabilities`, il faut que vous installiez Rosetta:
 
 ```bash
-adb devices
+softwareupdate --install-rosetta
 ```
 
-Pour obtenir l'UDID des devices virtuels :
+#### Ajouter ChromeDriver au PATH (optionnel)
+
+Si vous voulez ajouter ChromeDriver à vos variables d'environement pour faciliter son utilisation (sinon il faudra le lancer manuellement, mais à vérifier):
+
+- Déplacez le fichier téléchargé à votre `bin` (on pars du principe que vous allez téléchargé la version arm64 du driver et qu'il est toujours dans vos `/Downloads`).
+
+```
+sudo mv Downloads/chromedriver-mac-arm64/chromedriver /usr/local/bin
+```
+
+- Ajoutez le chemin au fichier téléchargé au `PATH` (ici nous le faisons pour zsh):
+
+```
+nano ~/.zshrc
+export PATH="/usr/local/bin/chromedriver:$PATH"
+```
+
+## Configuration spécifique à iOS
+
+Au moment d'écrire cette documentation, il n'est pas possible de lancer maestro sur un appareil iOS physique.
+
+### Lancez votre build local
+
+Si vous avez déjà l'application buildée localement sur votre emulateur, lancez la commande `yarn start`, et sur le simulateur ouvrez l'application. L'instance de Metro de la command `yarn start` devrait se connecté à votre emulateur. Si vous avez pas déjà buildée, lancez `yarn ios:testing`.
+
+### Obtenir l'UDID des devices virtuels
+
+Avoir le simulateur où vous avez buildé votre application préalablement démarré.
 
 ```bash
 xcrun simctl list
 ```
 
-Il est possible de ne pas ajouter l'UDID pour démarrer les tests, mais il faut sélectionner le device directement dans une liste de devices proposés.
+Dans la sortie de cette commande, descendez à la section `== Devices ==` et trouvez votre device. Il devrait être suivi de la mention `(Booted)` (les autres seront suivis de `(Shutdown)`).
 
-## Run les tests
+Par exemple:
 
 ```bash
-yarn start
+iPhone SE (3rd generation) (0669277D-1C16-461C-86DD-EF81E8C46E03) (Booted)
+```
 
-# Tous les tests natif
+Copiez le UDID de votre simulateur (le contenu des sécondes paranthèses) et executez la prochaine commande:
+
+```
+idb_companion --udid <UDID-du-device-ou-vous-avez-build-lapp-en-local>
+```
+
+Tant que vous ne changez pas de simulateur de test, vous n'aurez pas à refaire la commande ci-dessus.
+
+Vous pouvez procéder au lancement des tests sur iOS!
+
+## Configuration spécifique à Android
+
+### Lancez votre build local
+
+Lancez soit `yarn start` si le build est déjà présent sur votre appareil, sinon `yarn android:testing`.
+
+> La commande `maestro test` va détecter et utiliser automatiquement un émulateur local ou un appareil physique connecté en USB.
+
+Vous êtes prêts pour lancer les tests Maestro Android.
+
+## Configuration spécifique au Web
+
+Les tests sont lancés à partir de testing/staging, vous n'avez pas besoin de lancer l'app web localement.
+
+## Lancer les tests
+
+Il faut avoir soit:
+
+- Un émulateur Android avec l'application lancé localement
+- Un téléphone physique avec l'application lancé localement
+- Un simulateur iOS avec l'application lancé localement
+- Pour le web, les tests se font à partir du site testing/staging
+
+```bash
+# Lancer tous les tests natif
 maestro test .maestro
 
-# Uniquement un test natif spécifique ex: .maestro/native/SignUp.yml
+# Lancer un test natif spécifique ex: .maestro/native/SignUp.yml
 maestro test .maestro/<nomDuTest.yml>
 
-# Uniquement un test web spécifique ex: .maestro/web/Home.yml
+# Lancer un test web spécifique ex: .maestro/web/Home.yml
 maestro test .maestro/<nomDuTest.web.yml>
 ```
 
@@ -63,6 +157,7 @@ maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e 
 ## Listes des devices utilisés pour run les tests e2e
 
 - iPhone 14 Pro && OS 16.6.1
+- iPhone SE (3rd generation) & iOS 17.0
 - Samsung Galaxy S9 (SM-G960F) && OS Android 10
 
 ## Écrire un test
