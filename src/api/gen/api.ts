@@ -12,22 +12,11 @@
  * Do not edit the file manually.
  */
 
-import { Platform } from 'react-native'
 import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
-import { E2E_LOCALHOST_ADDRESS, E2E_LOCALHOST_ADDRESS_ANDROID } from 'libs/e2e/constants'
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from './configuration'
-import { getIsE2e } from 'libs/e2e/getIsE2e'
 
-// To avoid having to distribute e2e custom build, in e2e, we change the basePath to target e2e backend.
-// On Android chrome and Android app, the backend is available on http://10.0.2.2:6001
-// For others, the backend is available on http://127.0.0.1:6001
-const E2E_BASE_URL = `http://${
-(Platform.OS === 'web' && /Android/i.test(navigator.userAgent)) || Platform.OS === 'android'
-? E2E_LOCALHOST_ADDRESS_ANDROID
-: E2E_LOCALHOST_ADDRESS
-}:6001`
 const BASE_PATH = '/'.replace(/\/+$/, '')
 
 /**
@@ -61,8 +50,7 @@ export class BaseAPI {
   }
 
   public getConfiguration = async () => {
-    const isE2e = await getIsE2e()
-    return isE2e ? { ...this.configuration, basePath: E2E_BASE_URL } : this.configuration
+    return this.configuration
   }
 }
 

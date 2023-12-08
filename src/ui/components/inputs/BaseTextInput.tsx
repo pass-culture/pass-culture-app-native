@@ -3,7 +3,6 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useE2eTestId } from 'libs/e2e/useE2eTestId'
 import { AppThemeType } from 'theme'
 
 import { RNTextInputProps } from './types'
@@ -17,7 +16,6 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
   forwardedRef
 ) {
   const inputRef = useRef<RNTextInput>(null)
-  const e2eSelectors = useE2eTestId(testID || 'Champ de texte')
 
   useEffect(() => {
     if (!inputRef?.current) {
@@ -55,7 +53,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
   return (
     <StyledTextInput
       {...props}
-      {...e2eSelectors}
+      testID={testID || 'Champ de texte'}
       autoFocus={nativeAutoFocus ? autoFocus : undefined}
       editable={!props.disabled}
       isEmpty={!props.value}
