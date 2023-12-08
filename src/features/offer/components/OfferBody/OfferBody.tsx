@@ -1,5 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useRef } from 'react'
+import { ScrollView } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -89,7 +90,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
-  const scrollViewRef = useRef(null)
+  const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
