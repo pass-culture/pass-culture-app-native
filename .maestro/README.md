@@ -7,20 +7,20 @@
 - Avoir Xcode 14 ou plus (testé avec 15.0 15A240d)
 - Pouvoir builder l'app en local
 
-> Résumé: Pour lancer les tests Android, vous n'avez qu'a installer la CLI maestro. Pour le web, vous devez avoir le ChromeDriver en plus. C'est la version iOS simulateur qui demande le plus de temps. Il faut installer l'idb, et lui passer l'id du simulateur. Il n'est pas possible de lancer les tests sur un iOS physque pour le moment.
+> Résumé: Pour lancer les tests Android, vous n'avez qu'a installer la CLI maestro. Pour le web, vous devez avoir le ChromeDriver en plus. C'est la version iOS simulateur qui demande le plus de temps. Il faut installer l'idb, et lui passer l'id du simulateur. Il n'est pas possible de lancer les tests sur un iOS physique pour le moment.
 
 Tableau récapitulatif des besoins de chaque plateforme pour lancer les tests:
 
-| Support                  | Android Virtuel | Android Physique | iOS Viruel | iOS Physique | Web |
-| ------------------------ | --------------- | ---------------- | ---------- | ------------ | --- |
-| Prise en charge          | ✓               | ✓                | ✓          | ✗            | ✓   |
-| Détection auto du device | ✓               | ✓                | ✗          | -            | -   |
-| CLI                      | ✓               | ✓                | ✓          | -            | ✓   |
-| adb                      | optionnel       | optionnel        | ✗          | -            | ✗   |
-| idb                      | ✗               | ✗                | ✓          | -            | ✗   |
-| idb_companion            | ✗               | ✗                | ✓          | -            | ✗   |
-| ChromeDriver             | ✗               | ✗                | ✗          | -            | ✓   |
-| Build local              | ✓               | ✓                | ✓          | -            | ✗   |
+| Plateforme               | Android Virtuel | Android Physique | iOS Virtuel | iOS Physique | Web |
+| ------------------------ | --------------- | ---------------- | ----------- | ------------ | --- |
+| Prise en charge          | ✓               | ✓                | ✓           | ✗            | ✓   |
+| Build local              | ✓               | ✓                | ✓           | -            | ✗   |
+| Détection auto du device | ✓               | ✓                | ✗           | -            | -   |
+| CLI                      | ✓               | ✓                | ✓           | -            | ✓   |
+| adb                      | optionnel       | optionnel        | ✗           | -            | ✗   |
+| idb                      | ✗               | ✗                | ✓           | -            | ✗   |
+| idb_companion            | ✗               | ✗                | ✓           | -            | ✗   |
+| ChromeDriver             | ✗               | ✗                | ✗           | -            | ✓   |
 
 ## Installation
 
@@ -45,11 +45,11 @@ brew install facebook/fb/idb-companion
 
 ### Installer ADB (pour obtenir des informations sur les devices Android)
 
-IMPORTANT: Vous n'avez pas besoin de `adb` pour lancer les tests. C'est seulement en cas de problèmes que ça pourrait vous être utile pour comprendre ce qu'il se passe.
+IMPORTANT: Vous n'avez pas directement besoin de `adb` (Android Debug Bridge) pour lancer les tests.
 
-Si vous ne l'avez pas déjà fait, installez `adb` (Android Debug Bridge).
+En installant Android Studio, `platform-tools` (qui inclut `adb`) est installé par défaut.
 
-ADB est installé avec Android Studio. Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à vos variables d'environement.
+Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à vos variables d'environement.
 
 ### Installer ChromeDriver (pour lancer les tests sur le Web)
 
@@ -67,16 +67,19 @@ softwareupdate --install-rosetta
 
 Si vous voulez ajouter ChromeDriver à vos variables d'environement pour faciliter son utilisation (sinon il faudra le lancer manuellement, mais à vérifier):
 
-- Déplacez le fichier téléchargé à votre `bin` (on pars du principe que vous allez téléchargé la version arm64 du driver et qu'il est toujours dans vos `/Downloads`).
+- Déplacez le fichier téléchargé dans `/usr/local/bin`.
+
+La commande ci-dessous part du principe que vous allez téléchargé et décompressé la version arm64 du driver dans `/Downloads`).
 
 ```
 sudo mv Downloads/chromedriver-mac-arm64/chromedriver /usr/local/bin
 ```
 
-- Ajoutez le chemin au fichier téléchargé au `PATH` (ici nous le faisons pour zsh):
+- Ajoutez le chemin au fichier téléchargé au `PATH`:
+
+Mettez la ligne suivante à la fin de de votre fichier de configuration du terminal (~/.zshrc si vous utilisez zsh):
 
 ```
-nano ~/.zshrc
 export PATH="/usr/local/bin/chromedriver:$PATH"
 ```
 
@@ -86,7 +89,7 @@ Au moment d'écrire cette documentation, il n'est pas possible de lancer maestro
 
 ### Lancez votre build local
 
-Si vous avez déjà l'application buildée localement sur votre emulateur, lancez la commande `yarn start`, et sur le simulateur ouvrez l'application. L'instance de Metro de la command `yarn start` devrait se connecté à votre emulateur. Si vous avez pas déjà buildée, lancez `yarn ios:testing`.
+Si vous avez déjà l'application buildée localement sur votre emulateur, lancez la commande `yarn start`, et sur le simulateur ouvrez l'application. L'instance de Metro de la command `yarn start` devrait se connecté à votre emulateur. Si vous avez pas buildée avant, lancez `yarn ios:testing`.
 
 ### Obtenir l'UDID des devices virtuels
 
@@ -135,7 +138,7 @@ Il faut avoir soit:
 - Un émulateur Android avec l'application lancé localement
 - Un téléphone physique avec l'application lancé localement
 - Un simulateur iOS avec l'application lancé localement
-- Pour le web, les tests se font à partir du site testing/staging
+- Pour le web, les tests se font à partir de https://app.testing.passculture.team ou https://app.staging.passculture.team et ne requirent pas de build local.
 
 ```bash
 # Lancer tous les tests natif
