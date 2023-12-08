@@ -7,7 +7,7 @@ import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps>(
-  ({ icon, disabled, textSize, theme, ...rest }) => {
+  ({ icon, disabled, textSize, theme, buttonHeight, ...rest }) => {
     let Icon
 
     if (icon) {
@@ -15,7 +15,10 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
         color: disabled
           ? theme.buttons.disabled.tertiaryBlack.iconColor
           : theme.buttons.tertiaryBlack.iconColor,
-        size: theme.buttons.tertiaryBlack.iconSize,
+        size:
+          buttonHeight === 'extraSmall'
+            ? theme.icons.sizes.extraSmall
+            : theme.buttons.tertiaryBlack.iconSize,
       })``
     }
 
