@@ -1,5 +1,5 @@
-import { LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
+import { LocationMode } from 'libs/algolia'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
@@ -8,7 +8,7 @@ const venuesIndexSearchNewest = 'algoliaVenuesIndexPlaylistSearchNewest'
 
 describe('getCurrentVenuesIndex', () => {
   it("should return algoliaVenuesIndexPlaylistSearchNewest when locationType is EVERYWHERE and user don't share his position", () => {
-    const locationType = LocationType.EVERYWHERE
+    const locationType = LocationMode.EVERYWHERE
     const result = getCurrentVenuesIndex({ locationType })
 
     expect(result).toEqual(venuesIndexSearchNewest)
@@ -16,13 +16,13 @@ describe('getCurrentVenuesIndex', () => {
 
   it('should return algoliaVenuesIndexPlaylistSearch when locationType is EVERYWHERE and user shares his position', () => {
     const userPosition = { latitude: 48.90374, longitude: 2.48171 }
-    const locationType = LocationType.EVERYWHERE
+    const locationType = LocationMode.EVERYWHERE
     const result = getCurrentVenuesIndex({ locationType, userPosition })
 
     expect(result).toEqual(venuesIndexSearch)
   })
 
-  it.each([LocationType.AROUND_ME, LocationType.AROUND_PLACE])(
+  it.each([LocationMode.AROUND_ME, LocationMode.AROUND_PLACE])(
     'should return algoliaVenuesIndexPlaylistSearch when locationType is %s',
     (locationType) => {
       const result = getCurrentVenuesIndex({ locationType })

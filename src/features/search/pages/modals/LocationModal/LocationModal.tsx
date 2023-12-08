@@ -13,7 +13,7 @@ import { LocationSlider } from 'features/search/components/LocationSlider/Locati
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviour, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
@@ -23,6 +23,7 @@ import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { Form } from 'ui/components/Form'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -73,9 +74,9 @@ const getLocationChoice = (searchState: SearchState) => {
   } = searchState
   if (venue) {
     return RadioButtonLocation.CHOOSE_PLACE_OR_VENUE
-  } else if (locationType === LocationType.EVERYWHERE) {
+  } else if (locationType === LocationMode.EVERYWHERE) {
     return RadioButtonLocation.EVERYWHERE
-  } else if (locationType === LocationType.AROUND_ME) {
+  } else if (locationType === LocationMode.AROUND_ME) {
     return RadioButtonLocation.AROUND_ME
   } else {
     return RadioButtonLocation.CHOOSE_PLACE_OR_VENUE
@@ -85,7 +86,7 @@ const getLocationChoice = (searchState: SearchState) => {
 const getPlaceOrVenue = (searchState: SearchState) => {
   if (searchState.venue) {
     return searchState.venue
-  } else if (searchState.locationFilter.locationType === LocationType.AROUND_PLACE) {
+  } else if (searchState.locationFilter.locationType === LocationMode.AROUND_PLACE) {
     return searchState.locationFilter.place
   } else {
     return undefined
@@ -103,7 +104,7 @@ function isValidAroundRadius(value: unknown): value is [number] {
 }
 
 function getValidAroundRadius(searchState: SearchState): [number] {
-  if (searchState.locationFilter.locationType === LocationType.AROUND_ME) {
+  if (searchState.locationFilter.locationType === LocationMode.AROUND_ME) {
     const aroundRadius = searchState.locationFilter.aroundRadius
     if (typeof aroundRadius === 'number') {
       return [aroundRadius]
@@ -195,7 +196,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
       if (locationChoice === RadioButtonLocation.EVERYWHERE) {
         additionalSearchState = {
           ...additionalSearchState,
-          locationFilter: { locationType: LocationType.EVERYWHERE },
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
           venue: undefined,
         }
         analytics.logChangeSearchLocation({ type: 'everywhere' }, searchState.searchId)
@@ -203,7 +204,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
         additionalSearchState = {
           ...additionalSearchState,
           locationFilter: {
-            locationType: LocationType.AROUND_ME,
+            locationType: LocationMode.AROUND_ME,
             aroundRadius: getValues('aroundRadius')[0],
           },
           venue: undefined,
@@ -216,7 +217,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
-              locationType: LocationType.AROUND_PLACE,
+              locationType: LocationMode.AROUND_PLACE,
               place: selectedPlaceOrVenue as SuggestedPlace,
               aroundRadius: validAroundRadius,
             },

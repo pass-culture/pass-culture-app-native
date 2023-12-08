@@ -1,9 +1,9 @@
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState, SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 
 export const useVenueSearchParameters = (venueId: number): SearchState => {
   const { geolocPosition } = useLocation()
@@ -11,8 +11,8 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
   const maxPrice = useMaxPrice()
 
   const defaultLocationFilter = geolocPosition
-    ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
-    : { locationType: LocationType.EVERYWHERE }
+    ? { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }
+    : { locationType: LocationMode.EVERYWHERE }
 
   const venue = (
     venueId && !!dataVenue

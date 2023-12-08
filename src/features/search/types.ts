@@ -19,11 +19,10 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
-
-import { LocationType } from './enums'
 
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
@@ -31,9 +30,9 @@ interface SelectedDate {
 }
 
 export type LocationFilter =
-  | { locationType: LocationType.EVERYWHERE }
-  | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationType.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
+  | { locationType: LocationMode.EVERYWHERE }
+  | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
+  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
 
 export enum SearchView {
   Landing = 'Landing',

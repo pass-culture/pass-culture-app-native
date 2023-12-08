@@ -2,8 +2,9 @@ import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 
 const Today = new Date(2020, 10, 1)
@@ -98,7 +99,7 @@ describe('Search reducer', () => {
   it('should handle RADIUS - nothing if locationType EVERYWHERE', () => {
     const action: Action = { type: 'RADIUS', payload: 30 }
     const newState = searchReducer(
-      { ...state, locationFilter: { locationType: LocationType.EVERYWHERE } },
+      { ...state, locationFilter: { locationType: LocationMode.EVERYWHERE } },
       action
     )
 
@@ -108,12 +109,12 @@ describe('Search reducer', () => {
   it('should handle RADIUS - if locationType AROUND_ME', () => {
     const action: Action = { type: 'RADIUS', payload: 30 }
     const newState = searchReducer(
-      { ...state, locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null } },
+      { ...state, locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null } },
       action
     )
 
     expect(newState.locationFilter).toStrictEqual({
-      locationType: LocationType.AROUND_ME,
+      locationType: LocationMode.AROUND_ME,
       aroundRadius: 30,
     })
   })
@@ -124,7 +125,7 @@ describe('Search reducer', () => {
       {
         ...state,
         locationFilter: {
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           aroundRadius: 10,
           place: Kourou,
         },
@@ -133,7 +134,7 @@ describe('Search reducer', () => {
     )
 
     expect(newState.locationFilter).toStrictEqual({
-      locationType: LocationType.AROUND_PLACE,
+      locationType: LocationMode.AROUND_PLACE,
       aroundRadius: 30,
       place: Kourou,
     })
@@ -329,7 +330,7 @@ describe('Search reducer', () => {
   it('should handle SET_LOCATION_AROUND_ME', () => {
     const newState = searchReducer(state, { type: 'SET_LOCATION_AROUND_ME' })
 
-    expect(newState.locationFilter.locationType).toEqual(LocationType.AROUND_ME)
+    expect(newState.locationFilter.locationType).toEqual(LocationMode.AROUND_ME)
   })
 
   it('should handle SET_LOCATION_EVERYWHERE', () => {
@@ -338,14 +339,14 @@ describe('Search reducer', () => {
         ...state,
         locationFilter: {
           aroundRadius: 20,
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           place: Kourou,
         },
       },
       { type: 'SET_LOCATION_EVERYWHERE' }
     )
 
-    expect(newState.locationFilter.locationType).toEqual(LocationType.EVERYWHERE)
+    expect(newState.locationFilter.locationType).toEqual(LocationMode.EVERYWHERE)
   })
 
   it('should handle SET_LOCATION_PLACE', () => {
@@ -355,7 +356,7 @@ describe('Search reducer', () => {
     })
 
     expect(newState.locationFilter).toStrictEqual({
-      locationType: LocationType.AROUND_PLACE,
+      locationType: LocationMode.AROUND_PLACE,
       place: Kourou,
       aroundRadius: 100,
     })

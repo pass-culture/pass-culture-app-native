@@ -1,6 +1,6 @@
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 
 // TODO(refacto recherche): after removing location feature flag this can should be deleted
 export const useHasPosition = () => {
@@ -8,7 +8,7 @@ export const useHasPosition = () => {
   const { geolocPosition } = useLocation()
 
   const isEverywhereSearch =
-    searchState.locationFilter?.locationType === LocationType.EVERYWHERE && !searchState.venue
+    searchState.locationFilter?.locationType === LocationMode.EVERYWHERE && !searchState.venue
   const isGeolocatedUser = !!geolocPosition
 
   return !isEverywhereSearch || (isGeolocatedUser && isEverywhereSearch)

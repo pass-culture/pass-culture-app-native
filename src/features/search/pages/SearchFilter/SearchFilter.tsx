@@ -11,11 +11,12 @@ import { FilterPageButtons } from 'features/search/components/FilterPageButtons/
 import Section from 'features/search/components/sections'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour, LocationType } from 'features/search/enums'
+import { FilterBehaviour } from 'features/search/enums'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -62,22 +63,22 @@ export const SearchFilter: React.FC = () => {
     const getLocationFilter = (): LocationFilter => {
       const { locationFilter, venue } = searchState
       const aroundRadius =
-        locationFilter.locationType === LocationType.EVERYWHERE || venue
+        locationFilter.locationType === LocationMode.EVERYWHERE || venue
           ? DEFAULT_RADIUS
           : locationFilter.aroundRadius
       if (place) {
         return {
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           place,
           aroundRadius: aroundRadius ?? DEFAULT_RADIUS,
         }
       } else if (hasGeolocPosition && geolocPosition) {
         return {
-          locationType: LocationType.AROUND_ME,
+          locationType: LocationMode.AROUND_ME,
           aroundRadius,
         }
       } else {
-        return { locationType: LocationType.EVERYWHERE }
+        return { locationType: LocationMode.EVERYWHERE }
       }
     }
     dispatch({

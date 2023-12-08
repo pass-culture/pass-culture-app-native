@@ -7,12 +7,12 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import {
   act,
@@ -60,7 +60,7 @@ jest.mock('libs/place', () => ({
 const mockDispatch = jest.fn()
 const mockSearchState: SearchState = {
   ...initialSearchState,
-  locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+  locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
 }
 
 jest
@@ -192,7 +192,7 @@ describe('SearchLocationModal', () => {
         ...mockSearchState,
         locationFilter: {
           place: mockPlaces[0],
-          locationType: LocationType.AROUND_PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           aroundRadius: DEFAULT_RADIUS,
         },
         includeDigitalOffers: false,
@@ -212,7 +212,7 @@ describe('SearchLocationModal', () => {
     expect(mockNavigate).toHaveBeenCalledWith(
       ...getTabNavConfig('Search', {
         ...mockSearchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
         includeDigitalOffers: false,
       })
     )
@@ -266,7 +266,7 @@ describe('SearchLocationModal', () => {
           includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockRadiusPlace,
-            locationType: LocationType.AROUND_PLACE,
+            locationType: LocationMode.AROUND_PLACE,
             place: mockPlaces[0],
           },
         },
@@ -324,7 +324,7 @@ describe('SearchLocationModal', () => {
           includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockAroundMeRadius,
-            locationType: LocationType.AROUND_ME,
+            locationType: LocationMode.AROUND_ME,
           },
         },
         type: 'SET_LOCATION_FILTERS',

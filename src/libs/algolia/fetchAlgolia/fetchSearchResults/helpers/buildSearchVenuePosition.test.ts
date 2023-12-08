@@ -1,7 +1,7 @@
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { LocationMode } from 'libs/algolia'
 import {
   buildSearchVenuePosition,
   convertKmToMeters,
@@ -19,12 +19,12 @@ const venue: Venue = mockedSuggestedVenues[0]
 
 const geolocPosition: Position = { latitude: 66, longitude: 66 }
 const aroundMeFilter: LocationFilter = {
-  locationType: LocationType.AROUND_ME,
+  locationType: LocationMode.AROUND_ME,
   aroundRadius: MAX_RADIUS,
 }
-const everywhereFilter: LocationFilter = { locationType: LocationType.EVERYWHERE }
+const everywhereFilter: LocationFilter = { locationType: LocationMode.EVERYWHERE }
 const placeFilter: LocationFilter = {
-  locationType: LocationType.AROUND_PLACE,
+  locationType: LocationMode.AROUND_PLACE,
   place: Kourou,
   aroundRadius: MAX_RADIUS,
 }

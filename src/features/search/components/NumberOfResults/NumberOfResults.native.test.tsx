@@ -1,14 +1,14 @@
 import React from 'react'
 
-import { LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 import { render, screen } from 'tests/utils'
 
 import { NumberOfResults } from './NumberOfResults'
 
 jest.mock('react-query')
 
-const mockLocationFilter: LocationFilter = { locationType: LocationType.EVERYWHERE }
+const mockLocationFilter: LocationFilter = { locationType: LocationMode.EVERYWHERE }
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { locationFilter: mockLocationFilter } }),

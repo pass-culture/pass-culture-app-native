@@ -5,7 +5,7 @@ import { GeoCoordinates } from 'react-native-geolocation-service'
 import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
+import { LocationMode } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -263,7 +263,7 @@ describe('adaptOffersPlaylistParameters', () => {
 
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
-        locationType: LocationType.AROUND_ME,
+        locationType: LocationMode.AROUND_ME,
         aroundRadius: null,
       })
     })
@@ -281,7 +281,7 @@ describe('adaptOffersPlaylistParameters', () => {
       expect(result?.locationFilter).toStrictEqual({
         ...defaultSearchParameters.locationFilter,
         aroundRadius: 10,
-        locationType: LocationType.AROUND_ME,
+        locationType: LocationMode.AROUND_ME,
       })
     })
 

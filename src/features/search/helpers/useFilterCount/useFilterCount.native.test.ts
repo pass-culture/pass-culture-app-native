@@ -1,9 +1,10 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { DEFAULT_TIME_RANGE, MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates, Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
 import { useFilterCount } from './useFilterCount'
@@ -14,7 +15,7 @@ const venueId = 5959
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
 const fourFilters = {
-  locationFilter: { locationType: LocationType.EVERYWHERE }, // 1 with position shared
+  locationFilter: { locationType: LocationMode.EVERYWHERE }, // 1 with position shared
   minPrice: '1', // 1 for minPrice & maxPrice
   maxPrice: String(MAX_PRICE), // 1 for minPrice & maxPrice
   offerCategories: ['FILMS_SERIES_CINEMA'], // 1
@@ -74,7 +75,7 @@ describe('useFilterCount', () => {
     const placeSelected: SearchState = {
       ...initialSearchState,
       locationFilter: {
-        locationType: LocationType.AROUND_PLACE,
+        locationType: LocationMode.AROUND_PLACE,
         place: Kourou,
         aroundRadius: 20,
       },
@@ -84,7 +85,7 @@ describe('useFilterCount', () => {
 
     const everywhereSelected: SearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
     }
 
     expect(renderHook(() => useFilterCount(everywhereSelected)).result.current).toEqual(1)
@@ -92,7 +93,7 @@ describe('useFilterCount', () => {
     const aroundMeSelected: SearchState = {
       ...initialSearchState,
       locationFilter: {
-        locationType: LocationType.AROUND_ME,
+        locationType: LocationMode.AROUND_ME,
         aroundRadius: 20,
       },
     }
@@ -104,7 +105,7 @@ describe('useFilterCount', () => {
     mockPosition = null
     const everywhereSelected: SearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
     }
 
     expect(renderHook(() => useFilterCount(everywhereSelected)).result.current).toEqual(0)

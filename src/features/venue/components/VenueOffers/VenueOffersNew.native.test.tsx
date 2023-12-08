@@ -5,12 +5,12 @@ import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
+import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -50,7 +50,7 @@ const defaultParams = {
   tags: [],
   timeRange: null,
   locationFilter: {
-    locationType: LocationType.EVERYWHERE,
+    locationType: LocationMode.EVERYWHERE,
   },
 }
 

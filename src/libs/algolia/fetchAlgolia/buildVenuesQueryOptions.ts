@@ -1,6 +1,5 @@
 import { VenuesModuleParameters } from 'features/home/types'
-import { LocationType } from 'features/search/enums'
-import { FiltersArray } from 'libs/algolia'
+import { FiltersArray, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
@@ -11,7 +10,7 @@ export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLoca
   const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
 
   const locationFilter = adaptGeolocationParameters(userLocation, isGeolocated, aroundRadius) ?? {
-    locationType: LocationType.EVERYWHERE,
+    locationType: LocationMode.EVERYWHERE,
   }
 
   const facetFilters: FiltersArray = []

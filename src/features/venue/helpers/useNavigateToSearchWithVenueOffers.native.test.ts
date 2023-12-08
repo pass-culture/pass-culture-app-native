@@ -1,8 +1,8 @@
-import { LocationType } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
+import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
 const venueSearchParamsMock: SearchState = {
@@ -10,7 +10,7 @@ const venueSearchParamsMock: SearchState = {
   endingDatetime: undefined,
   hitsPerPage: 30,
   locationFilter: {
-    locationType: LocationType.EVERYWHERE,
+    locationType: LocationMode.EVERYWHERE,
   },
   venue: {
     label: venueResponseSnap.publicName || '',

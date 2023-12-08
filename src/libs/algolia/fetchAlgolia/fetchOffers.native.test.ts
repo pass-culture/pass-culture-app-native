@@ -1,8 +1,9 @@
 import algoliasearch from 'algoliasearch'
 
 import { GenreType } from 'api/gen'
-import { LocationType, DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
+import { LocationMode } from 'libs/algolia'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -52,7 +53,7 @@ jest.mock('algoliasearch')
 const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
 
-const baseParams = { locationFilter: { locationType: LocationType.EVERYWHERE } }
+const baseParams = { locationFilter: { locationType: LocationMode.EVERYWHERE } }
 
 describe('fetchOffer', () => {
   it('should fetch with provided query and default page number', () => {
@@ -179,7 +180,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
           query,
         } as SearchQueryParameters,
         userLocation,
@@ -203,7 +204,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
           query,
         } as SearchQueryParameters,
         userLocation: null,
@@ -225,7 +226,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
           query,
         } as SearchQueryParameters,
         userLocation,
@@ -249,7 +250,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { aroundRadius: 0, locationType: LocationType.AROUND_ME },
+          locationFilter: { aroundRadius: 0, locationType: LocationMode.AROUND_ME },
           query,
         } as SearchQueryParameters,
         userLocation,
@@ -273,7 +274,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { aroundRadius: null, locationType: LocationType.AROUND_ME },
+          locationFilter: { aroundRadius: null, locationType: LocationMode.AROUND_ME },
           query,
         } as SearchQueryParameters,
         userLocation,
@@ -1429,7 +1430,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
           query,
           offerCategories,
           offerTypes,
@@ -1469,7 +1470,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: null },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
           query,
           offerCategories,
           offerIsDuo,
@@ -1661,7 +1662,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
           query,
           isFullyDigitalOffersCategory: undefined,
         } as SearchQueryParameters,
@@ -1686,7 +1687,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 15 },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
           query,
           isFullyDigitalOffersCategory: true,
         } as SearchQueryParameters,

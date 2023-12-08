@@ -2,12 +2,12 @@ import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 
 interface ISearchContext {
   searchState: SearchState
@@ -38,7 +38,7 @@ export const SearchWrapper = memo(function SearchWrapper({
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
     const includeDigitalOffers = searchState.includeDigitalOffers ?? false
-    if (locationType === LocationType.AROUND_PLACE || locationType === LocationType.AROUND_ME) {
+    if (locationType === LocationMode.AROUND_PLACE || locationType === LocationMode.AROUND_ME) {
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
 
@@ -50,7 +50,7 @@ export const SearchWrapper = memo(function SearchWrapper({
         payload: {
           locationFilter: {
             place: place,
-            locationType: LocationType.AROUND_PLACE,
+            locationType: LocationMode.AROUND_PLACE,
             aroundRadius,
           },
           includeDigitalOffers,
@@ -60,7 +60,7 @@ export const SearchWrapper = memo(function SearchWrapper({
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius },
           includeDigitalOffers,
         },
       })

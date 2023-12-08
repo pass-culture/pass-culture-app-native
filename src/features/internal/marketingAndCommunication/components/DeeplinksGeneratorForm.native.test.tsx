@@ -6,8 +6,8 @@ import {
   getDefaultScreenParams,
 } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -128,7 +128,7 @@ describe('getDefaultScreenParams', () => {
 
     expect(defaultParams).toEqual({
       view: SearchView.Results,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
       noFocus: true,
       from: 'deeplink',
     })
