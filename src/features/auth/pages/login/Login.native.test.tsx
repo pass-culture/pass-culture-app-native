@@ -115,7 +115,7 @@ describe('<Login/>', () => {
     )
   })
 
-  it('should sign in when SSO Google button is clicked', async () => {
+  it('should sign in when SSO Google button is clicked with device info when feature flag is active', async () => {
     // We use this hook twice but due to multiple rerender we have to mock the return value this way
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(true)
@@ -132,6 +132,28 @@ describe('<Login/>', () => {
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
+      deviceInfo: {
+        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+        os: 'iOS',
+        source: 'iPhone 13',
+      },
+    })
+  })
+
+  it('should sign in when SSO Google button is clicked without device info when feature flag is disabled', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true) // The first mock is to display SSO login button
+    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+      accessToken: 'accessToken',
+      refreshToken: 'refreshToken',
+      accountState: AccountState.ACTIVE,
+    })
+
+    renderLogin()
+    await act(() => fireEvent.press(screen.getByTestId('SSO Google')))
+
+    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
+      authorizationCode: 'mockServerAuthCode',
+      deviceInfo: undefined,
     })
   })
 
