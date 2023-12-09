@@ -1,8 +1,8 @@
-import * as Sentry from '@sentry/react-native'
 import '@sentry/tracing'
 import { Span, Transaction } from '@sentry/types'
 
 import { eventMonitoring } from 'libs/monitoring'
+import { getCurrentHub } from 'libs/monitoring/sentry'
 
 const transactionsRef: { [key: string]: { transaction: Transaction; span: Span } | undefined } = {}
 
@@ -11,7 +11,7 @@ export function startTransaction(name: string) {
     finishTransaction(name)
   }
   const transaction = eventMonitoring.startTransaction({ name })
-  Sentry.getCurrentHub()?.configureScope((scope) => scope.setSpan(transaction))
+  getCurrentHub()?.configureScope((scope) => scope.setSpan(transaction))
   const span = transaction?.startChild({ op: 'performance' })
   transactionsRef[name] = { transaction, span }
 }
