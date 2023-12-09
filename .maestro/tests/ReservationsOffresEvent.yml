@@ -1,38 +1,91 @@
 appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
-- runFlow: reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml
+- runFlow:
+    when:
+      visible: "Respect de ta vie privée"
+    file: "reusableFlows/FirstLaunch.yml" # First Launch
+- runFlow:
+    when:
+      visible: "Rechercher des offres"
+    file: "reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml"
+- runFlow:
+    when:
+      visible: "Recherche"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearchWeb.yml"
 - tapOn: "Films, séries, cinéma"
-- tapOn:
-    point: "50%,71%"
+- runFlow:
+    when:
+      visible: ${NOM_OFFRE_PHYSIQUE}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOffer.yml"
+- scrollUntilVisible:
+    element: ${NOM_OFFRE_PHYSIQUE}
+    direction: DOWN
+- tapOn: ${NOM_OFFRE_PHYSIQUE}
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
-- tapOn:
-    id: "Voir tous les filtres\_: 1 filtre actif"
+- runFlow:
+    when:
+      visible: "Rechercher des offres"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml"
+- runFlow:
+    when:
+      visible: "Recherche"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearchWeb.yml"
+
+- tapOn: "Offre, artiste, lieu culturel..."
+- inputText: ${NOM_OFFRE_EVENT}
+- pressKey: Enter
+
+- runFlow:
+    when:
+      visible: "Voir tous les filtres\_: 2 filtres actifs"
+    file: "reusableFlows/components/buttons/SimpleActionButtonTwoFilter.yml"
+- runFlow:
+    when:
+      visible: "Voir tous les filtres\_: 1 filtre actif"
+    file: "reusableFlows/components/buttons/SimpleActionButtonOneFilter.yml"
+
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonDateAndHour.yml
 - runFlow: reusableFlows/components/buttons/SimpleIdButtonSwitchDate.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonThisWeek.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonFilterApply.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
 
 - tapOn:
+    id: "Interrupteur date"
+
+- runFlow:
+    when:
+      visible: "Appliquer le filtre"
+    file: "reusableFlows/components/buttons/SimpleActionButtonFilterApply.yml"
+
+- runFlow:
+    when:
+      visible: "Rechercher"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
+
+#- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
+- tapOn:
     point: "49%,84%"
 - tapOn:
     point: "49%,84%"
+
+- tapOn:
+    text: "Jeu de piste : le cambrioleur de la butte Montmartre"
+    index: 1
+#  text: ${NOM_OFFRE_EVENT}
+#- tapOn: ${NOM_OFFRE_EVENT}
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"
-- tapOn:
-    point: "37%,59%"
+- tapOn: "23"
 - assertVisible: "Valider la date"
 - tapOn: "Valider la date"
 - assertVisible: "Choix des options"
 - assertVisible: "Horaire"
 - tapOn:
     point: "50%,75%"
+
 - assertVisible: "Valider lʼhoraire"
 - tapOn: "Valider lʼhoraire"
 - assertVisible: "Choix des options"
@@ -60,24 +113,46 @@ appId: ${APP_ID}
 - scrollUntilVisible:
       element: "Annuler ma réservation"
       direction: DOWN
+- tapOn: "Annuler ma réservation"
+- tapOn: "Annuler ma réservation"
 - assertVisible: "Réservation annulée"
-- tapOn: "Voir le détail de l’offre"
-
+#- tapOn: "Voir le détail de l’offre"
 - tapOn:
       point: "49%,32%"
 - tapOn:
       point: "50%,34%"
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
-- runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml #PreBookingReservation
-- tapOn: "Confirmer la réservation"
-- runFlow: reusableFlows/features/bookOffer/BookingConfirmationPage.yml #BookingConfirmationPage
+#- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+- assertVisible: "Voir les disponibilités"
+- tapOn: "Voir les disponibilités"
+- tapOn: "23"
+- assertVisible: "Valider la date"
+- tapOn: "Valider la date"
+- assertVisible: "Choix des options"
+- assertVisible: "Horaire"
+- tapOn:
+    point: "50%,75%"
+- assertVisible: "Valider lʼhoraire"
+- tapOn: "Valider lʼhoraire"
+- assertVisible: "Choix des options"
+- tapOn: "Nombre de places"
+- assertVisible: "Solo"
+- assertVisible: "Duo"
+- tapOn:
+    point: "19%,74%"
+- assertVisible: "Finaliser ma réservation"
+- tapOn: "Finaliser ma réservation"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
+- assertVisible: "Réservation confirmée\_!"
+- assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
+    \ sur l’application."
+- assertVisible: "Voir ma réservation"
 - tapOn: "Voir ma réservation"
 - assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
     \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
     \ ou le céder."
 - assertVisible: "Ma réservation"
 - tapOn:
-      id: "final-animated-icon-back"
+    id: "animated-icon-back"
 - assertVisible:
       text: "Mes réservations"
       index: 0

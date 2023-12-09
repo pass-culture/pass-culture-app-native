@@ -1,5 +1,6 @@
 appId: ${APP_ID}
 ---
+
 - scrollUntilVisible:
     element: "Se connecter"
     direction: DOWN

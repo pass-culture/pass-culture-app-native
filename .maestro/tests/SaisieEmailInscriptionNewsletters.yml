@@ -2,7 +2,10 @@ appId: ${APP_ID}
 ---
 # TODO :(PC-25011): Désactiver le reCaptcha par défaut si on run les tests E2E ENABLE_NATIVE_APP_RECAPTCHA
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow:
+    when:
+      visible: "Respect de ta vie privée"
+    file: "reusableFlows/FirstLaunch.yml" # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyFavorite.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonCreateAccount.yml
 - runFlow: reusableFlows/features/profile/AccountCreationPage.yml # Creation Page
@@ -53,10 +56,3 @@ appId: ${APP_ID}
 
 - tapOn: "Code de validation du téléphone"
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-
-
-- copyTextFrom:
- #   id: "466509 est ton code de confirmation pass Culture"
-    id: ${CODEVALIDPHONE}
-
-- pasteText

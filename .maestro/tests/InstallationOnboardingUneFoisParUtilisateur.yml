@@ -2,7 +2,10 @@ appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - tapOn: "Tout refuser"
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml
+- runFlow:
+    when:
+      visible: "C’est parti\_!"
+    file: "reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonPass.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonAge18.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml

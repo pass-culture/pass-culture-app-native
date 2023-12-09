@@ -1,4 +1,5 @@
 appId: ${APP_ID}
 ---
+
 - assertVisible: "Confirmer la réservation"
 - tapOn: "Confirmer la réservation"

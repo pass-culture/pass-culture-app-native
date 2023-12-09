@@ -1,4 +1,4 @@
-appId: 'https://passculture.app/accueil'
+appId: ${APP_ID}
 ---
 - openLink:
       link: "https://app.staging.passculture.team/"

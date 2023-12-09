@@ -26,12 +26,3 @@ appId: com.google.android.gm
 - tapOn:
     text: "Code de validation du téléphone"
     index: 1
-
-#- runFlow: reusableFlows/LaunchApp.yml # Launch App
-
-
-- copyTextFrom:
-#   id: "466509 est ton code de confirmation pass Culture"
-   id: ${CODEVALIDPHONE}
-
-- pasteText
