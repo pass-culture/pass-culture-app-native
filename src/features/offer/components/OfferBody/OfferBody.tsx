@@ -13,9 +13,9 @@ import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
+import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/component/OfferPlaylist'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
-import { SameArtistPlaylist } from 'features/offer/components/SameArtistPlaylist/component/SameArtistPlaylist'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
@@ -53,7 +53,6 @@ import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Hero } from 'ui/components/hero/Hero'
 import { useModal } from 'ui/components/modals/useModal'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordionOpens'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -69,8 +68,6 @@ interface Props {
   apiRecoParamsOtherCategories?: RecommendationApiParams
   sameArtistPlaylist?: HitOfferWithArtistAndEan[]
 }
-
-const keyExtractor = (item: Offer) => item.objectID
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
@@ -354,51 +351,45 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       {shouldDisplaySameArtistPlaylist ? (
         <IntersectionObserver onChange={handleChangeSameArtistPlaylistDisplay} threshold="50%">
-          <SameArtistPlaylist
+          <OfferPlaylist
             key={offer.id}
             items={sameArtistPlaylist}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
             renderItem={renderItem}
+            title="Du même auteur"
+            playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
           />
         </IntersectionObserver>
       ) : null}
 
-      {!!isArrayNotEmpty(sameCategorySimilarOffers) && (
-        <SectionWithDivider testID="sameCategorySimilarOffers" visible>
-          <Spacer.Column numberOfSpaces={6} />
-          <PassPlaylist
-            data={sameCategorySimilarOffers}
-            itemWidth={itemWidth}
-            itemHeight={itemHeight}
-            renderItem={({ item, width, height, playlistType }) =>
-              renderItem({ item, width, height, playlistType }, apiRecoParamsSameCategory)
-            }
-            keyExtractor={keyExtractor}
-            title="Dans la même catégorie"
-            onEndReached={trackingOnHorizontalScroll}
-            playlistType={PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS}
-          />
-        </SectionWithDivider>
-      )}
+      {isArrayNotEmpty(sameCategorySimilarOffers) ? (
+        <OfferPlaylist
+          items={sameCategorySimilarOffers}
+          itemWidth={itemWidth}
+          itemHeight={itemHeight}
+          renderItem={({ item, width, height, playlistType }) =>
+            renderItem({ item, width, height, playlistType }, apiRecoParamsSameCategory)
+          }
+          title="Dans la même catégorie"
+          onEndReached={trackingOnHorizontalScroll}
+          playlistType={PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS}
+        />
+      ) : null}
 
-      {!!isArrayNotEmpty(otherCategoriesSimilarOffers) && (
-        <SectionWithDivider testID="otherCategoriesSimilarOffers" visible>
-          <Spacer.Column numberOfSpaces={6} />
-          <PassPlaylist
-            data={otherCategoriesSimilarOffers}
-            itemWidth={itemWidth}
-            itemHeight={itemHeight}
-            renderItem={({ item, width, height, playlistType }) =>
-              renderItem({ item, width, height, playlistType }, apiRecoParamsOtherCategories)
-            }
-            keyExtractor={keyExtractor}
-            title="Ça peut aussi te plaire"
-            onEndReached={trackingOnHorizontalScroll}
-            playlistType={PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS}
-          />
-        </SectionWithDivider>
-      )}
+      {isArrayNotEmpty(otherCategoriesSimilarOffers) ? (
+        <OfferPlaylist
+          items={otherCategoriesSimilarOffers}
+          itemWidth={itemWidth}
+          itemHeight={itemHeight}
+          renderItem={({ item, width, height, playlistType }) =>
+            renderItem({ item, width, height, playlistType }, apiRecoParamsOtherCategories)
+          }
+          title="Ça peut aussi te plaire"
+          onEndReached={trackingOnHorizontalScroll}
+          playlistType={PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS}
+        />
+      ) : null}
 
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />
