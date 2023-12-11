@@ -5,11 +5,13 @@ import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersData
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModule, OfferModuleParamsInfo } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchQueryParameters } from 'libs/algolia'
+import { AlgoliaLocationFilter, SearchQueryParameters } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -21,10 +23,17 @@ const isSearchQueryParametersArrayWithoutUndefined = (
 ): params is SearchQueryParameters[] => params !== undefined
 
 export const useGetOffersData = (modules: OffersModule[]) => {
-  const { position } = useHomePosition()
+  const { position: userPosition } = useHomePosition()
+  const { selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const transformHits = useTransformOfferHits()
 
-  const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const locationFilter: AlgoliaLocationFilter = adaptAlgoliaLocationFilter({
+    userPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  })
+  const adaptPlaylistParameters = useAdaptOffersPlaylistParameters(locationFilter)
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
 
@@ -48,7 +57,6 @@ export const useGetOffersData = (modules: OffersModule[]) => {
   const offersQuery = async () => {
     const result = await fetchOffersModules({
       paramsList: offersAdaptedPlaylistParametersWithoutUndefined,
-      userLocation: position,
       isUserUnderage,
     })
     const searchResponseResult = result.filter(searchResponsePredicate)
@@ -68,7 +76,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [position?.latitude, position?.longitude])
+  }, [userPosition?.latitude, userPosition?.longitude])
 
   const offersModulesData = mapOffersDataAndModules({
     results: offersResultList,

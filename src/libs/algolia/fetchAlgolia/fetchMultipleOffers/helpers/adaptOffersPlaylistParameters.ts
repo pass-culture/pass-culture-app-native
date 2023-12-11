@@ -3,20 +3,17 @@ import { OffersModuleParameters } from 'features/home/types'
 import { sortCategories } from 'features/search/helpers/reducer.helpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { buildOfferGenreTypesValues } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypesValues'
-import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
-import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/location'
+import { AlgoliaLocationFilter, SearchQueryParameters } from 'libs/algolia/types'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const adaptOffersPlaylistParameters = (
   parameters: OffersModuleParameters,
-  geolocation: Position,
   subcategoryLabelMapping: SubcategoryLabelMapping,
-  genreTypeMapping: GenreTypeMapping
+  genreTypeMapping: GenreTypeMapping,
+  locationFilter: AlgoliaLocationFilter
 ): SearchQueryParameters | undefined => {
-  const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
+  const { priceMin, priceMax } = parameters
 
-  const locationFilter = adaptGeolocationParameters(geolocation, isGeolocated, aroundRadius)
   if (!locationFilter) return
 
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({

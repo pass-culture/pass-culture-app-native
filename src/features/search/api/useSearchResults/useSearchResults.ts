@@ -1,17 +1,16 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash/flatten'
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
-import { AlgoliaVenue, FacetData } from 'libs/algolia'
+import { AlgoliaLocationFilter, AlgoliaVenue, FacetData } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -28,26 +27,34 @@ export type SearchOfferHits = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { geolocPosition } = useLocation()
+  const {
+    geolocPosition,
+    isEverywhereWithNoGeolocPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
-  const previousPageObjectIds = useRef<string[]>([])
-  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
+  const locationFilter: AlgoliaLocationFilter = adaptAlgoliaLocationFilter({
+    userPosition: geolocPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+    venuePosition: searchState.venue?._geoloc,
+  })
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
-        parameters: { page, ...searchState },
-        userPosition: geolocPosition,
+        parameters: { page, ...searchState, locationFilter },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
-        excludedObjectIds: previousPageObjectIds.current,
-        enableAppLocation,
+        isEverywhereWithNoGeolocPosition,
       })
 
-      previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
       return { offers: offersResponse, venues: venuesResponse, facets: facetsResponse }
     },
     // first page is 0

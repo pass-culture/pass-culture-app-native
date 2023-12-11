@@ -1,25 +1,15 @@
 import algoliasearch from 'algoliasearch'
 
-import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
-import { LocationMode } from 'libs/algolia'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 jest.mock('algoliasearch')
 
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
-const userPosition = { latitude: 42, longitude: 43 }
-
-const kourou: SuggestedPlace = {
-  label: 'Kourou',
-  info: 'Guyane',
-  geolocation: { longitude: -52.669726, latitude: 5.16176 },
-}
 const venue: Venue = mockedSuggestedVenues[0]
 
 describe('fetchSearchResults', () => {
@@ -28,8 +18,8 @@ describe('fetchSearchResults', () => {
 
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      userPosition: null,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [
@@ -89,10 +79,9 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: { locationType: LocationMode.EVERYWHERE },
       } as SearchQueryParameters,
-      userPosition: null,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: true,
     })
 
     const expectedResult = [
@@ -152,10 +141,9 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: { locationType: LocationMode.EVERYWHERE },
       } as SearchQueryParameters,
-      userPosition,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [
@@ -225,10 +213,10 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: {
         query,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+        locationFilter: { aroundLatLng: '42, 43', aroundRadius: 100000 },
       } as SearchQueryParameters,
-      userPosition,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [
@@ -299,13 +287,12 @@ describe('fetchSearchResults', () => {
       parameters: {
         query,
         locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: kourou,
-          aroundRadius: MAX_RADIUS,
+          aroundLatLng: '5.16176, -52.669726',
+          aroundRadius: 100000,
         },
       } as SearchQueryParameters,
-      userPosition,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [
@@ -376,13 +363,12 @@ describe('fetchSearchResults', () => {
       parameters: {
         query,
         locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: kourou,
-          aroundRadius: MAX_RADIUS,
+          aroundLatLng: '5.16176, -52.669726',
+          aroundRadius: 100000,
         },
       } as SearchQueryParameters,
-      userPosition: null,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [
@@ -454,8 +440,8 @@ describe('fetchSearchResults', () => {
         query,
         venue,
       } as SearchQueryParameters,
-      userPosition,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [
@@ -523,8 +509,8 @@ describe('fetchSearchResults', () => {
         query,
         venue,
       } as SearchQueryParameters,
-      userPosition: null,
       isUserUnderage: false,
+      isEverywhereWithNoGeolocPosition: false,
     })
 
     const expectedResult = [

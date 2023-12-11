@@ -55,4 +55,5 @@ export type ILocationContext = {
   setAroundPlaceRadius: Dispatch<SetStateAction<number>>
   aroundMeRadius: number
   setAroundMeRadius: Dispatch<SetStateAction<number>>
+  isEverywhereWithNoGeolocPosition: boolean
 }

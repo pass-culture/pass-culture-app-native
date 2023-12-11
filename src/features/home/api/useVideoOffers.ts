@@ -4,12 +4,14 @@ import { useQuery } from 'react-query'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchQueryParameters } from 'libs/algolia'
+import { AlgoliaLocationFilter, SearchQueryParameters } from 'libs/algolia'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -37,8 +39,15 @@ export const useVideoOffers = (
   offerIds?: string[],
   eanList?: string[]
 ) => {
-  const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
-  const { position } = useHomePosition()
+  const { position: userPosition } = useHomePosition()
+  const { selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const locationFilter: AlgoliaLocationFilter = adaptAlgoliaLocationFilter({
+    userPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  })
+  const adaptPlaylistParameters = useAdaptOffersPlaylistParameters(locationFilter)
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
@@ -65,15 +74,14 @@ export const useVideoOffers = (
 
     return fetchOffersByEan({
       eanList,
-      userLocation: position,
       isUserUnderage,
+      locationFilter,
     })
   }
 
   const multipleOffersQuery = async () => {
     const result = await fetchMultipleOffers({
       paramsList: adaptedPlaylistParameters,
-      userLocation: position,
       isUserUnderage,
     })
 
@@ -97,7 +105,7 @@ export const useVideoOffers = (
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [position?.latitude, position?.longitude])
+  }, [userPosition?.latitude, userPosition?.longitude])
 
   const hits = (data?.map(transformHits) as Offer[]) ?? []
 

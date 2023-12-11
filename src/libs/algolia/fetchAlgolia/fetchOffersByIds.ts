@@ -17,8 +17,13 @@ export const fetchOffersByIds = async ({
 }: fetchOffersByIdsArgs): Promise<Offer[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
-    { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
-    null,
+    {
+      ...initialSearchState,
+      locationFilter: undefined,
+      hitsPerPage: objectIds.length,
+      objectIds,
+      query: '',
+    },
     isUserUnderage
   )
 

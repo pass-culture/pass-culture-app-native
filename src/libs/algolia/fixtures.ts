@@ -1,4 +1,3 @@
-import { LocationMode } from 'libs/algolia'
 import { SearchQueryParameters } from 'libs/algolia/types'
 
 export const SearchQueryParametersFixture: SearchQueryParameters = {
@@ -6,7 +5,10 @@ export const SearchQueryParametersFixture: SearchQueryParameters = {
   date: null,
   endingDatetime: undefined,
   hitsPerPage: 20,
-  locationFilter: { locationType: LocationMode.EVERYWHERE },
+  locationFilter: {
+    aroundLatLng: `$48.8566, 2.3522`,
+    aroundRadius: 10000,
+  },
   offerCategories: [],
   offerSubcategories: [],
   offerIsDuo: false,

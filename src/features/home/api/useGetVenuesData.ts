@@ -5,11 +5,13 @@ import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesData
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
+import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useGetVenuesData = (modules: VenuesModule[]) => {
   const { position } = useHomePosition()
+  const { selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
 
   const netInfo = useNetInfoContext()
 
@@ -21,8 +23,15 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
     venuesModuleIds.push(module.id)
   })
 
+  const locationFilterParams = {
+    userPosition: position,
+    selectedLocationMode,
+    aroundPlaceRadius,
+    aroundMeRadius,
+  }
+
   const venuesQuery = async () => {
-    const result = await fetchVenuesModules(venuesParameters, position)
+    const result = await fetchVenuesModules(venuesParameters, locationFilterParams)
     return {
       hits: result,
       moduleId: venuesModuleIds,

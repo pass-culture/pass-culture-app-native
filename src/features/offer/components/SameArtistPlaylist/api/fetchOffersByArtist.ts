@@ -3,7 +3,7 @@ import { DEFAULT_RADIUS } from 'features/search/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import { convertKmToMeters } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
+import { computeAroundRadiusInMeters } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { env } from 'libs/environment'
 import { HitOffer, Offer } from 'shared/offer/types'
 
@@ -41,7 +41,7 @@ export const fetchOffersByArtist = async ({
       hitsPerPage: 30,
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
-      aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
+      aroundRadius: venueLocation ? computeAroundRadiusInMeters(DEFAULT_RADIUS) : 'all',
       aroundLatLng: venueLocation
         ? `${venueLocation.latitude}, ${venueLocation.longitude}`
         : undefined,

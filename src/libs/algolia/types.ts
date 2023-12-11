@@ -15,9 +15,7 @@ import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { Position } from 'libs/location'
 import { VenueTypeCode } from 'libs/parsers'
-import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 interface SelectedDate {
@@ -25,16 +23,9 @@ interface SelectedDate {
   selectedDate: string
 }
 
-export enum LocationMode {
-  AROUND_ME = 'AROUND_ME',
-  EVERYWHERE = 'EVERYWHERE',
-  AROUND_PLACE = 'AROUND_PLACE',
-}
-
-export type LocationFilter =
-  | { locationType: LocationMode.EVERYWHERE }
-  | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
+export type AlgoliaLocationFilter =
+  | { aroundLatLng: string; aroundRadius: 'all' | number }
+  | undefined
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 
@@ -51,7 +42,7 @@ export type SearchQueryParameters = {
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean
-  locationFilter: LocationFilter
+  locationFilter: AlgoliaLocationFilter
   maxPossiblePrice?: string
   maxPrice?: string
   minBookingsThreshold?: number
@@ -112,13 +103,6 @@ export interface AlgoliaQueryParameters {
 export interface FetchVenuesParameters {
   query: string
   attributesToHighlight?: string[]
-}
-export interface FetchOfferParameters {
-  parameters: SearchQueryParameters
-  userLocation: Position
-  isUserUnderage: boolean
-  storeQueryID?: (queryID?: string) => void
-  indexSearch?: string
 }
 
 export interface OfferModuleQuery {

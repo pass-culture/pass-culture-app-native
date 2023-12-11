@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
+import { AlgoliaLocationFilter } from 'libs/algolia'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
+import { LocationMode } from 'libs/location/types'
 
 const fakeOfferId = 283
 
@@ -10,10 +13,15 @@ export const useSomeOfferId = () => {
   const [offerId, setOfferId] = useState<number>(fakeOfferId)
 
   useEffect(() => {
+    const locationFilter: AlgoliaLocationFilter = adaptAlgoliaLocationFilter({
+      userPosition: { latitude: 1, longitude: 1 },
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      aroundMeRadius: null,
+      aroundPlaceRadius: null,
+    })
     fetchOffers({
-      parameters: { ...initialSearchState, page: 1 },
+      parameters: { ...initialSearchState, locationFilter, page: 1 },
       isUserUnderage: false,
-      userLocation: { latitude: 1, longitude: 1 },
     })
       .then((response) => setOfferId(Number.parseInt(response.hits[0].objectID)))
       .catch(() => {

@@ -1,7 +1,5 @@
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
-import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/location'
 
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
@@ -10,7 +8,6 @@ type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   eanList?: string[]
-  enableAppLocation?: boolean
 }
 
 export const buildOfferSearchParameters = (
@@ -20,7 +17,6 @@ export const buildOfferSearchParameters = (
     eanList = [],
     endingDatetime = undefined,
     excludedObjectIds = [],
-    isFullyDigitalOffersCategory = undefined,
     locationFilter,
     maxPossiblePrice = '',
     maxPrice = '',
@@ -46,9 +42,7 @@ export const buildOfferSearchParameters = (
     timeRange = null,
     venue,
   }: Parameters,
-  userLocation: Position,
-  isUserUnderage: boolean,
-  enableAppLocation?: boolean
+  isUserUnderage: boolean
 ) => ({
   ...buildFacetFilters({
     eanList,
@@ -64,8 +58,6 @@ export const buildOfferSearchParameters = (
     offerSubcategories,
     offerTypes,
     tags,
-    isFullyDigitalOffersCategory,
-    enableAppLocation,
   }),
   ...buildNumericFilters({
     beginningDatetime,
@@ -80,12 +72,6 @@ export const buildOfferSearchParameters = (
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({
-    locationFilter,
-    venue,
-    userLocation,
-    isFullyDigitalOffersCategory,
-    enableAppLocation,
-  }),
+  locationFilter,
   ...buildFilters({ excludedObjectIds }),
 })

@@ -6,17 +6,14 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { OfferModuleQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/location'
 
 type buildOffersModuleQueriesArgs = {
   paramsList: OffersPlaylistParameters[]
-  userLocation: Position
   isUserUnderage: boolean
 }
 
 export const buildOffersModulesQueries = ({
   paramsList,
-  userLocation,
   isUserUnderage,
 }: buildOffersModuleQueriesArgs): OfferModuleQuery[] => {
   // We flatten the paramList as an offer module have a list of additionalParameters
@@ -26,7 +23,7 @@ export const buildOffersModulesQueries = ({
       query: params.query,
       params: {
         ...buildHitsPerPage(params.hitsPerPage),
-        ...buildOfferSearchParameters(params, userLocation, isUserUnderage),
+        ...buildOfferSearchParameters(params, isUserUnderage),
         attributesToHighlight: [], // We disable highlighting because we don't need it
         attributesToRetrieve: offerAttributesToRetrieve,
       },

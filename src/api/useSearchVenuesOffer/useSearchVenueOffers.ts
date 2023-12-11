@@ -7,11 +7,13 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
-import { AlgoliaHit, Geoloc } from 'libs/algolia'
+import { AlgoliaHit, AlgoliaLocationFilter, Geoloc } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
@@ -101,12 +103,17 @@ export const useSearchVenueOffers = ({
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
 
+  const locationFilter: AlgoliaLocationFilter = adaptAlgoliaLocationFilter({
+    userPosition: geolocation,
+    selectedLocationMode: LocationMode.EVERYWHERE,
+    aroundMeRadius: null,
+    aroundPlaceRadius: null,
+  })
   const { data, ...infiniteQuery } = useInfiniteQuery<FetchOffersResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, view: undefined, query }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffers({
-        parameters: { ...initialSearchState, query, page, hitsPerPage: 10 },
-        userLocation: geolocation,
+        parameters: { ...initialSearchState, locationFilter, query, page, hitsPerPage: 10 },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

@@ -3,11 +3,6 @@ import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultip
 import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
 
 describe('buildOffersModulesQueries', () => {
-  const userLocation = {
-    latitude: 48.8566,
-    longitude: 2.3522,
-  }
-
   const isUserUnderage = false
 
   const expectedResult = {
@@ -31,7 +26,7 @@ describe('buildOffersModulesQueries', () => {
 
     const paramsList = [[parameters, parameters], [parameters]]
 
-    const queries = buildOffersModulesQueries({ paramsList, userLocation, isUserUnderage })
+    const queries = buildOffersModulesQueries({ paramsList, isUserUnderage })
 
     expect(queries).toEqual([expectedResult, expectedResult, expectedResult])
   })

@@ -21,10 +21,6 @@ describe('GTL Playlist API', () => {
 
     it('should return correct data', async () => {
       const result = await fetchGTLPlaylists({
-        position: {
-          latitude: 2,
-          longitude: 2,
-        },
         isUserUnderage: false,
         venue: {
           name: 'Une librairie',
@@ -83,10 +79,6 @@ describe('GTL Playlist API', () => {
       ],
       {
         isUserUnderage: false,
-        position: {
-          latitude: 2,
-          longitude: 2,
-        },
         venue: {
           name: 'Une librairie',
           id: 123,

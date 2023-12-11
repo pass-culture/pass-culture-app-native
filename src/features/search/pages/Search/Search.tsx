@@ -18,7 +18,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { Highlighted, HistoryItem, SearchState, SearchView } from 'features/search/types'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -59,7 +59,15 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch, searchState } = useSearch()
-  const { geolocPosition, setPlace } = useLocation()
+  const {
+    geolocPosition,
+    setPlace,
+    isEverywhereWithNoGeolocPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+    place,
+  } = useLocation()
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -72,13 +80,11 @@ export function Search() {
   }, [dispatch, params])
 
   useEffect(() => {
-    if (params?.locationFilter?.locationType === LocationMode.AROUND_PLACE) {
-      setPlace(params.locationFilter.place)
+    if (selectedLocationMode === LocationMode.AROUND_PLACE) {
+      setPlace(place)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const currentFilters = params?.locationFilter
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
@@ -89,19 +95,20 @@ export function Search() {
     return params?.view
   }, [params?.view])
 
-  const searchVenuePosition = buildSearchVenuePosition(
-    currentFilters,
-    geolocPosition,
-    params?.venue
-  )
+  const searchVenuePosition = adaptAlgoliaLocationFilter({
+    userPosition: geolocPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+    venuePosition: params?.venue?._geoloc,
+  })
 
   const currentVenuesIndex = useMemo(
     () =>
       getCurrentVenuesIndex({
-        locationType: currentFilters?.locationType,
-        venue: searchState?.venue,
+        isEverywhereWithNoGeolocPosition,
       }),
-    [currentFilters?.locationType, searchState?.venue]
+    [isEverywhereWithNoGeolocPosition]
   )
 
   const onVenuePress = useCallback(async (venueId: number) => {
@@ -170,8 +177,8 @@ export function Search() {
                   <Configure
                     hitsPerPage={5}
                     clickAnalytics
-                    aroundRadius={searchVenuePosition.aroundRadius}
-                    aroundLatLng={searchVenuePosition.aroundLatLng}
+                    aroundRadius={searchVenuePosition?.aroundRadius}
+                    aroundLatLng={searchVenuePosition?.aroundLatLng}
                   />
                   <AutocompleteVenue onItemPress={onVenuePress} />
                 </Index>

@@ -7,12 +7,10 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferArgs = {
   parameters: SearchQueryParameters
-  userLocation: Position
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
@@ -27,13 +25,12 @@ export type FetchOffersResponse = Pick<
 
 export const fetchOffers = async ({
   parameters,
-  userLocation,
   isUserUnderage,
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
   isFromOffer,
 }: FetchOfferArgs): Promise<FetchOffersResponse> => {
-  const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+  const searchParameters = buildOfferSearchParameters(parameters, isUserUnderage)
   const index = client.initIndex(indexSearch)
 
   try {

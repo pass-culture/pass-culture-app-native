@@ -6,11 +6,14 @@ import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
+import { AlgoliaLocationFilter } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
+import { adaptAlgoliaLocationFilter } from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useLocation } from 'libs/location'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -31,8 +34,15 @@ const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
   const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
-  const { position } = useHomePosition()
-  const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
+  const { position: userPosition } = useHomePosition()
+  const { selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const locationFilter: AlgoliaLocationFilter = adaptAlgoliaLocationFilter({
+    userPosition,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  })
+  const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters(locationFilter)
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
@@ -78,7 +88,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
-          distance={formatDistance(item._geoloc, position)}
+          distance={formatDistance(item._geoloc, userPosition)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
@@ -94,7 +104,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, user?.isBeneficiary, labelMapping, mapping]
+    [userPosition, user?.isBeneficiary, labelMapping, mapping]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)

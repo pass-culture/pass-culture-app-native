@@ -3,10 +3,9 @@ import algoliasearch from 'algoliasearch'
 import { GenreType } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { LocationMode } from 'libs/algolia'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
-import { SearchQueryParameters } from 'libs/algolia/types'
+import { AlgoliaLocationFilter, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
@@ -43,25 +42,19 @@ jest.mock('libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/datetime/tim
     mockComputeTimeRangeFromHoursToSeconds(arg),
 }))
 
-const userLocation = {
-  latitude: 42,
-  longitude: 43,
-}
-
 jest.mock('algoliasearch')
 
 const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
 
-const baseParams = { locationFilter: { locationType: LocationMode.EVERYWHERE } }
+const locationFilter: AlgoliaLocationFilter = { aroundLatLng: '42, 43', aroundRadius: 'all' }
 
 describe('fetchOffer', () => {
   it('should fetch with provided query and default page number', () => {
     const query = 'searched query'
 
     fetchOffers({
-      parameters: { ...baseParams, query } as SearchQueryParameters,
-      userLocation: null,
+      parameters: { locationFilter, query } as SearchQueryParameters,
       isUserUnderage: false,
     })
 
@@ -81,8 +74,7 @@ describe('fetchOffer', () => {
     search.mockResolvedValueOnce({ queryID: 'queryID' })
 
     await fetchOffers({
-      parameters: { ...baseParams, query } as SearchQueryParameters,
-      userLocation: null,
+      parameters: { locationFilter, query } as SearchQueryParameters,
       isUserUnderage: false,
       storeQueryID: spyStoreQueryID,
     })
@@ -95,8 +87,7 @@ describe('fetchOffer', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: true,
       })
 
@@ -115,8 +106,7 @@ describe('fetchOffer', () => {
       const offerCategories = ['LECON']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerCategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerCategories } as SearchQueryParameters,
         isUserUnderage: true,
       })
 
@@ -140,8 +130,7 @@ describe('fetchOffer', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -158,132 +147,11 @@ describe('fetchOffer', () => {
 
     it('should fetch without query parameter when no keyword is provided', () => {
       fetchOffers({
-        parameters: { ...baseParams, query: '', page: 0 } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query: '', page: 0 } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
       expect(search).toHaveBeenCalledWith('', {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-  })
-
-  describe('geolocation', () => {
-    it('should fetch with geolocation coordinates when latitude and longitude are provided', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
-          query,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-      })
-    })
-
-    it('should not fetch with geolocation coordinates when latitude and longitude are not valid', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
-          query,
-        } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch offers with geolocation coordinates, when latitude, longitude and radius are provided and search is around me', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
-          query,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 15000,
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius equals zero', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { aroundRadius: 0, locationType: LocationMode.AROUND_ME },
-          query,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 1,
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius is null', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { aroundRadius: null, locationType: LocationMode.AROUND_ME },
-          query,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 'all',
         page: 0,
         attributesToHighlight: [],
         facetFilters: [['offer.isEducational:false']],
@@ -300,8 +168,7 @@ describe('fetchOffer', () => {
       const offerCategories: string[] = []
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerCategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerCategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -320,8 +187,7 @@ describe('fetchOffer', () => {
       const offerCategories = ['LECON']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerCategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerCategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -340,8 +206,7 @@ describe('fetchOffer', () => {
       const offerCategories = ['SPECTACLES', 'LIVRES']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerCategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerCategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -363,8 +228,7 @@ describe('fetchOffer', () => {
       const offerSubcategories = ['CINE_PLEIN_AIR']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerSubcategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerSubcategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -383,8 +247,7 @@ describe('fetchOffer', () => {
       const offerSubcategories = ['CINE_PLEIN_AIR', 'ESCAPE_GAME']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerSubcategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerSubcategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -406,8 +269,7 @@ describe('fetchOffer', () => {
       const offerNativeCategories = ['LIVRES_PAPIER']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerNativeCategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerNativeCategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -426,8 +288,7 @@ describe('fetchOffer', () => {
       const offerNativeCategories = ['LIVRES_PAPIER', 'LIVRES_NUMERIQUE_ET_AUDIO']
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerNativeCategories } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerNativeCategories } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -452,8 +313,7 @@ describe('fetchOffer', () => {
       const offerGenreTypes = [{ key: GenreType.MOVIE, value: 'Drame', name: 'DRAMA' }]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerGenreTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerGenreTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -472,8 +332,7 @@ describe('fetchOffer', () => {
       const offerGenreTypes = [{ key: GenreType.BOOK, value: 'Droit', name: 'Droit' }]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerGenreTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerGenreTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -494,8 +353,7 @@ describe('fetchOffer', () => {
       ]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerGenreTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerGenreTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -514,8 +372,7 @@ describe('fetchOffer', () => {
       const offerGenreTypes = [{ key: GenreType.MUSIC, value: 'Pop', name: 'Pop' }]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerGenreTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerGenreTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -534,8 +391,7 @@ describe('fetchOffer', () => {
       const offerGenreTypes = [{ key: 'UNKNOWN', value: 'Pop', name: 'Pop' }]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerGenreTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerGenreTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -555,8 +411,7 @@ describe('fetchOffer', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -579,8 +434,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -603,8 +457,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -627,8 +480,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -655,8 +507,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -679,8 +530,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -703,8 +553,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -730,8 +579,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -754,8 +602,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -778,8 +625,7 @@ describe('fetchOffer', () => {
       }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerTypes } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -800,8 +646,7 @@ describe('fetchOffer', () => {
       const offerIsDuo = false
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsDuo } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsDuo } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -820,8 +665,7 @@ describe('fetchOffer', () => {
       const offerIsDuo = true
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsDuo } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsDuo } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -842,8 +686,7 @@ describe('fetchOffer', () => {
       const offerIsNew = false
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsNew } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsNew } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -863,8 +706,7 @@ describe('fetchOffer', () => {
       const offerIsNew = true
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsNew } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsNew } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -888,8 +730,7 @@ describe('fetchOffer', () => {
       const offerIsFree = false
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsFree } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsFree } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -909,8 +750,7 @@ describe('fetchOffer', () => {
       const priceRange: Range<number> = [0, 300]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsFree, priceRange } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsFree, priceRange } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -930,8 +770,7 @@ describe('fetchOffer', () => {
       const priceRange: Range<number> = [0, 50]
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerIsFree, priceRange } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, offerIsFree, priceRange } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -950,8 +789,7 @@ describe('fetchOffer', () => {
       const minPrice = '5'
 
       fetchOffers({
-        parameters: { ...baseParams, query, minPrice } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, minPrice } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -969,8 +807,7 @@ describe('fetchOffer', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -989,8 +826,7 @@ describe('fetchOffer', () => {
       const maxPrice = '25'
 
       fetchOffers({
-        parameters: { ...baseParams, query, maxPrice } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, maxPrice } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1008,8 +844,7 @@ describe('fetchOffer', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1036,11 +871,11 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: selectedDate.toISOString() },
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1066,14 +901,14 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: {
               option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
               selectedDate: selectedDate.toISOString(),
             },
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1099,14 +934,14 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: {
               option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
               selectedDate: selectedDate.toISOString(),
             },
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1132,14 +967,14 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: {
               option: DATE_FILTER_OPTIONS.USER_PICK,
               selectedDate: selectedDate.toISOString(),
             },
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1163,8 +998,8 @@ describe('fetchOffer', () => {
         mockComputeTimeRangeFromHoursToSeconds.mockReturnValue([64800, 79200])
 
         fetchOffers({
-          parameters: { ...baseParams, timeRange } as SearchQueryParameters,
-          userLocation: null,
+          parameters: { locationFilter, timeRange } as SearchQueryParameters,
+
           isUserUnderage: false,
         })
 
@@ -1190,12 +1025,12 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: selectedDate.toISOString() },
             timeRange: timeRange as Range<number>,
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1223,7 +1058,7 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: {
               option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
@@ -1231,7 +1066,7 @@ describe('fetchOffer', () => {
             },
             timeRange: timeRange as Range<number>,
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1261,7 +1096,7 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: {
               option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
@@ -1269,7 +1104,7 @@ describe('fetchOffer', () => {
             },
             timeRange: timeRange as Range<number>,
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1299,7 +1134,7 @@ describe('fetchOffer', () => {
 
         fetchOffers({
           parameters: {
-            ...baseParams,
+            locationFilter,
             query,
             date: {
               option: DATE_FILTER_OPTIONS.USER_PICK,
@@ -1307,7 +1142,7 @@ describe('fetchOffer', () => {
             },
             timeRange: timeRange as Range<number>,
           } as SearchQueryParameters,
-          userLocation: null,
+
           isUserUnderage: false,
         })
 
@@ -1336,11 +1171,10 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          ...baseParams,
+          locationFilter,
           date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate },
           offerIsFree,
         } as SearchQueryParameters,
-        userLocation: null,
         isUserUnderage: false,
       })
 
@@ -1363,11 +1197,10 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          ...baseParams,
+          locationFilter,
           timeRange: timeRange as Range<number>,
           offerIsFree,
         } as SearchQueryParameters,
-        userLocation: null,
         isUserUnderage: false,
       })
 
@@ -1393,7 +1226,7 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          ...baseParams,
+          locationFilter,
           date: {
             option: DATE_FILTER_OPTIONS.CURRENT_WEEK_END,
             selectedDate,
@@ -1401,7 +1234,6 @@ describe('fetchOffer', () => {
           timeRange: [18, 22],
           offerIsFree,
         } as SearchQueryParameters,
-        userLocation: null,
         isUserUnderage: false,
       })
 
@@ -1430,13 +1262,12 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
+          locationFilter,
           query,
           offerCategories,
           offerTypes,
           page,
         } as SearchQueryParameters,
-        userLocation: userLocation,
         isUserUnderage: false,
       })
 
@@ -1470,14 +1301,13 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
+          locationFilter,
           query,
           offerCategories,
           offerIsDuo,
           priceRange: priceRange as Range<number>,
           offerTypes,
         } as SearchQueryParameters,
-        userLocation: userLocation,
         isUserUnderage: false,
       })
 
@@ -1505,8 +1335,7 @@ describe('fetchOffer', () => {
       const tags: string[] = []
 
       fetchOffers({
-        parameters: { ...baseParams, tags } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, tags } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1524,8 +1353,7 @@ describe('fetchOffer', () => {
       const tags = ['Semaine du 14 juillet', 'Offre cinema spéciale pass culture']
 
       fetchOffers({
-        parameters: { ...baseParams, tags } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, tags } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1548,8 +1376,7 @@ describe('fetchOffer', () => {
       const hitsPerPage = null
 
       fetchOffers({
-        parameters: { ...baseParams, hitsPerPage } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, hitsPerPage } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1567,8 +1394,7 @@ describe('fetchOffer', () => {
       const hitsPerPage = 5
 
       fetchOffers({
-        parameters: { ...baseParams, hitsPerPage } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, hitsPerPage } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1591,8 +1417,7 @@ describe('fetchOffer', () => {
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
       fetchOffers({
-        parameters: { ...baseParams, query, beginningDatetime } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, beginningDatetime } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1612,8 +1437,7 @@ describe('fetchOffer', () => {
       mockGetFromDate.mockReturnValueOnce(1596240000)
 
       fetchOffers({
-        parameters: { ...baseParams, query, endingDatetime } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query, endingDatetime } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1636,12 +1460,11 @@ describe('fetchOffer', () => {
 
       fetchOffers({
         parameters: {
-          ...baseParams,
+          locationFilter,
           query,
           beginningDatetime,
           endingDatetime,
         } as SearchQueryParameters,
-        userLocation: null,
         isUserUnderage: false,
       })
 
@@ -1656,63 +1479,12 @@ describe('fetchOffer', () => {
     })
   })
 
-  describe('isFullyDigitalOffersCategory & geolocation shared with around me location filter param', () => {
-    it('should fetch with around me parameters when isFullyDigitalOffersCategory is undefined', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
-          query,
-          isFullyDigitalOffersCategory: undefined,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 15000,
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-      })
-    })
-
-    it('should not fetch with around me parameters when isFullyDigitalOffersCategory is undefined', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
-          query,
-          isFullyDigitalOffersCategory: true,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-      })
-    })
-  })
-
   describe('Index name param', () => {
     it('should fetch Algolia offers index when param not provided', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
       })
 
@@ -1723,8 +1495,7 @@ describe('fetchOffer', () => {
       const query = 'searched query'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
         indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
       })
@@ -1738,8 +1509,7 @@ describe('fetchOffer', () => {
       const query = '9782070584628'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
         isFromOffer: true,
       })
@@ -1760,8 +1530,7 @@ describe('fetchOffer', () => {
       const query = '9782070584628'
 
       fetchOffers({
-        parameters: { ...baseParams, query } as SearchQueryParameters,
-        userLocation: null,
+        parameters: { locationFilter, query } as SearchQueryParameters,
         isUserUnderage: false,
         isFromOffer: false,
       })

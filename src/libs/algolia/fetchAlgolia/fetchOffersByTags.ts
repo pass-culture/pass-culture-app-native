@@ -1,22 +1,21 @@
 import { initialSearchState } from 'features/search/context/reducer'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
-import { Position } from 'libs/location'
+import { AlgoliaLocationFilter } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
 type FetchOffersByTagsArgs = {
   tags: string[]
-  userLocation: Position
   isUserUnderage: boolean
+  locationFilter: AlgoliaLocationFilter
 }
 
 export const fetchOffersByTags = async ({
   tags,
-  userLocation,
   isUserUnderage,
+  locationFilter,
 }: FetchOffersByTagsArgs): Promise<Offer[]> => {
   const { hits: offers } = await fetchOffers({
-    parameters: { ...initialSearchState, tags, hitsPerPage: tags.length },
-    userLocation,
+    parameters: { ...initialSearchState, locationFilter, tags, hitsPerPage: tags.length },
     isUserUnderage,
   })
   return offers as Offer[]

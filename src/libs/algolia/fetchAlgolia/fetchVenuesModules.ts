@@ -1,17 +1,26 @@
-import { Venue, VenuesModuleParameters } from 'features/home/types'
+import { Venue } from 'features/home/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import {
+  adaptAlgoliaLocationFilter,
+  AdaptAlgoliaLocationFilterParameters,
+} from 'libs/algolia/fetchAlgolia/helpers/adaptAlgoliaLocationFilter'
 import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
-import { Position } from 'libs/location'
 import { VenueTypeCode } from 'libs/parsers'
 
+export type AlgoliaVenuesModuleParameters = {
+  tags?: string[]
+  venueTypes?: string[]
+  hitsPerPage: number
+}
 export const fetchVenuesModules = async (
-  paramsList: VenuesModuleParameters[],
-  userLocation: Position
+  paramsList: AlgoliaVenuesModuleParameters[],
+  locationFilterParams: AdaptAlgoliaLocationFilterParameters
 ): Promise<Venue[][]> => {
-  const queries = buildVenuesModulesQueries({ paramsList, userLocation })
+  const locationFilter = adaptAlgoliaLocationFilter(locationFilterParams)
+  const queries = buildVenuesModulesQueries(paramsList, locationFilter)
 
   try {
     const results = await multipleQueries<AlgoliaVenue>(queries)

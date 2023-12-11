@@ -21,7 +21,6 @@ export const buildFacetFilters = ({
   eanList,
   isUserUnderage,
   objectIds,
-  enableAppLocation,
   offerCategories,
   offerGenreTypes,
   offerGtlLabel,
@@ -31,7 +30,6 @@ export const buildFacetFilters = ({
   offerSubcategories,
   offerTypes,
   tags,
-  isFullyDigitalOffersCategory,
 }: Pick<
   SearchQueryParameters,
   | 'venue'
@@ -44,12 +42,10 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'offerTypes'
   | 'tags'
-  | 'isFullyDigitalOffersCategory'
 > & {
   isUserUnderage: boolean
   objectIds?: string[]
   eanList?: string[]
-  enableAppLocation?: boolean
 }): null | {
   facetFilters: FiltersArray
 } => {
