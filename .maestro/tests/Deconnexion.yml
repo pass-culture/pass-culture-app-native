@@ -7,10 +7,7 @@ appId: ${APP_ID}
     file: "reusableFlows/FirstLaunch.yml" # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
-# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
-- tapOn:
-    point: "91%,89%"
-#- runFlow: reusableFlows/components/buttons/SimpleActionButtonConnect.yml
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
 - scrollUntilVisible:
