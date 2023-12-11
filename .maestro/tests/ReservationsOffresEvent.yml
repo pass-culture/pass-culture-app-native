@@ -12,7 +12,7 @@ appId: ${APP_ID}
 - runFlow:
     when:
       visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchWeb.yml"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 - tapOn: "Films, séries, cinéma"
 - runFlow:
     when:
@@ -33,7 +33,7 @@ appId: ${APP_ID}
 - runFlow:
     when:
       visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchWeb.yml"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 
 - tapOn: "Offre, artiste, lieu culturel..."
 - inputText: ${NOM_OFFRE_EVENT}

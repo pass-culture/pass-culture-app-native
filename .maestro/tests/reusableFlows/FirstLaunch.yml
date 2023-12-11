@@ -16,9 +16,10 @@ appId: ${APP_ID}
       when:
           visible: "Aller à l’écran suivant"
       file: "components/buttons/SimpleActionButtonNextStep.yml"
-
-- tapOn:
-    id: 'j’ai 18 ans'
+- runFlow:
+    when:
+      visible: "j’ai 18 ans"
+    file: "components/buttons/SimpleActionButtonAge18.yml"
 - runFlow:
       when:
           visible: "Plus tard"

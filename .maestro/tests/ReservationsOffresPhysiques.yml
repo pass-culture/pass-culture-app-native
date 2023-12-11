@@ -12,7 +12,7 @@ appId: ${APP_ID}
 - runFlow:
     when:
       visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchWeb.yml"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 - tapOn: "Films, séries, cinéma"
 
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position (actuellement il est simplement possible de cliquer en connaissant l'offre).
@@ -28,7 +28,7 @@ appId: ${APP_ID}
 - runFlow:
     when:
       visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchWeb.yml"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 - tapOn: "Catégories"
 - tapOn: "Films, séries, cinéma"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
