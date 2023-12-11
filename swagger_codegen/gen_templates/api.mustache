@@ -39,7 +39,7 @@ export class BaseAPI {
     }
   }
 
-  public getConfiguration = async () => {
+  public getConfiguration = () => {
     return this.configuration
   }
 }
@@ -234,7 +234,7 @@ export class {{classname}} extends BaseAPI {
     * @memberof {{classname}}
     */
   public async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return {{classname}}Fp(this, configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options)
   }
   {{/operation}}
