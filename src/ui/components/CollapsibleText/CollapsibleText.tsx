@@ -7,22 +7,23 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { ArrowUp } from 'ui/svg/icons/ArrowUp'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   text: string
+  // Minimum number of lines when collapsible is collapsed.
   numberOfLines: number
   lineHeight: number
-  isExpanded?: boolean
+  isExpandedByDefault?: boolean
 }
 
 export function CollapsibleText({
   text,
   numberOfLines,
   lineHeight,
-  isExpanded = false,
+  isExpandedByDefault = false,
 }: Readonly<Props>) {
-  const [expanded, setExpanded] = useState(isExpanded)
+  const [expanded, setExpanded] = useState(isExpandedByDefault)
   const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
 
   const onPress = () => setExpanded((prevExpanded) => !prevExpanded)
@@ -48,7 +49,7 @@ export function CollapsibleText({
       </Typo.Body>
       {shouldDisplayButton ? (
         <ButtonContainer>
-          <LocationButton
+          <SeeMoreButton
             wording={buttonText}
             onPress={onPress}
             accessibilityLabel={accessibilityLabel}
@@ -64,9 +65,8 @@ export function CollapsibleText({
 const ButtonContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'flex-end',
-  gap: getSpacing(1),
 })
 
-const LocationButton = styledButton(ButtonTertiaryBlack)({
+const SeeMoreButton = styledButton(ButtonTertiaryBlack)({
   maxWidth: 120,
 })

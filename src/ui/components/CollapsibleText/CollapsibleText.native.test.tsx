@@ -23,7 +23,7 @@ describe('<CollapsibleText />', () => {
       render(
         <CollapsibleText
           text={TEXT}
-          isExpanded
+          isExpandedByDefault
           numberOfLines={NUMBER_OF_LINES}
           lineHeight={LINE_HEIGHT}
         />
@@ -36,7 +36,7 @@ describe('<CollapsibleText />', () => {
       render(
         <CollapsibleText
           text={TEXT}
-          isExpanded
+          isExpandedByDefault
           numberOfLines={NUMBER_OF_LINES}
           lineHeight={LINE_HEIGHT}
         />
@@ -53,7 +53,7 @@ describe('<CollapsibleText />', () => {
       render(
         <CollapsibleText
           text={TEXT}
-          isExpanded
+          isExpandedByDefault
           numberOfLines={NUMBER_OF_LINES}
           lineHeight={LINE_HEIGHT}
         />
@@ -70,7 +70,7 @@ describe('<CollapsibleText />', () => {
       render(
         <CollapsibleText
           text={TEXT}
-          isExpanded
+          isExpandedByDefault
           numberOfLines={NUMBER_OF_LINES}
           lineHeight={LINE_HEIGHT}
         />
@@ -89,7 +89,7 @@ describe('<CollapsibleText />', () => {
       render(
         <CollapsibleText
           text={TEXT}
-          isExpanded
+          isExpandedByDefault
           numberOfLines={NUMBER_OF_LINES}
           lineHeight={LINE_HEIGHT}
         />
@@ -108,7 +108,7 @@ describe('<CollapsibleText />', () => {
       render(
         <CollapsibleText
           text={TEXT}
-          isExpanded
+          isExpandedByDefault
           numberOfLines={NUMBER_OF_LINES}
           lineHeight={LINE_HEIGHT}
         />
