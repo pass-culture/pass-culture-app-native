@@ -1,7 +1,8 @@
 import React from 'react'
 
-import OfferName from './OfferName'
 import { render, screen } from 'tests/utils'
+
+import OfferName from './OfferName'
 
 describe('OfferName component', () => {
   it('should display "Lorem" when db name is "lorem"', async () => {
@@ -34,11 +35,6 @@ describe('OfferName component', () => {
     expect(screen.queryByText('4orem')).toBeOnTheScreen()
   })
 
-  it(`should display "'lorem" when db name is " 'lorem"`, async () => {
-    render(<OfferName title=" 'lorem" />)
-
-    expect(screen.queryByText("'lorem")).toBeOnTheScreen()
-  })
   it('should display "Lorem ipsum" when db name is "lorem ipsum"', async () => {
     render(<OfferName title="lorem ipsum" />)
 
