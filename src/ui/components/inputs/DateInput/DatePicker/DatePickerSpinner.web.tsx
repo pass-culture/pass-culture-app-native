@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
 import * as ReactMobilePicker from 'react-mobile-picker'
-import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -20,9 +19,6 @@ interface PickerProps extends ReactMobilePicker.ReactMobilePickerProps {
 
 const birthdateInputErrorId = uuidv4()
 
-const ISO8601_DATE_STRING_RE =
-  /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/gi
-
 export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   defaultSelectedDate,
   maximumDate,
@@ -33,7 +29,6 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   const defaultDate = getDateValuesString(defaultSelectedDate)
   const maximumYear = getDateValuesString(maximumDate ?? new Date()).year
   const [date, setDate] = useState(defaultDate)
-  const [hiddenValue, setHiddenValue] = useState(defaultSelectedDate.toISOString())
 
   const optionGroups = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
@@ -57,27 +52,9 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
-  /**
-   * During e2e, we set the value thanks to the hidden input.
-   * So when a value is typed in the hidden input, the state changes and here we set the date once
-   * the value is a correct date.
-   */
-  useEffect(() => {
-    if (ISO8601_DATE_STRING_RE.test(hiddenValue)) {
-      const nextDate = new Date(hiddenValue)
-
-      setDate(getDateValuesString(nextDate))
-    }
-  }, [hiddenValue])
-
   return (
     <React.Fragment>
       <DateInputDisplay date={birthdate} isError={!!errorMessage} />
-      <HiddenInput
-        testID="hidden-input-birthdate"
-        value={hiddenValue}
-        onChangeText={setHiddenValue}
-      />
       <InputError
         visible={!!errorMessage}
         messageId={errorMessage}
@@ -111,8 +88,3 @@ const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.forms.maxWidth,
 }))
-
-const HiddenInput = styled(TextInput)({
-  width: 1,
-  height: 1,
-})
