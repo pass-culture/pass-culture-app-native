@@ -6,6 +6,7 @@ import { waitFor, renderHook } from 'tests/utils'
 import { useIsMailAppAvailable } from './useIsMailAppAvailable'
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
+canOpenURLSpy.mockResolvedValue(false)
 
 const defaultPlatform = Platform.OS
 
@@ -32,6 +33,7 @@ describe('useIsMailAppAvailable', () => {
     })
 
     it('should be true when at least one mail app is available', async () => {
+      canOpenURLSpy.mockResolvedValueOnce(false)
       canOpenURLSpy.mockResolvedValueOnce(true)
       const { result } = renderUseIsMailAppAvailable()
 
@@ -40,8 +42,7 @@ describe('useIsMailAppAvailable', () => {
       })
     })
 
-    it('should be false when no mail apps are available', async () => {
-      canOpenURLSpy.mockResolvedValueOnce(false)
+    it('should be false on iOS by default', async () => {
       const { result } = renderUseIsMailAppAvailable()
 
       await waitFor(() => {
