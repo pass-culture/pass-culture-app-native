@@ -108,7 +108,6 @@ src/libs/monitoring/sentry.ts:1 - User
 src/libs/monitoring/sentry.ts:1 - UserFeedback
 src/libs/monitoring/sentry.ts:2 - addGlobalEventProcessor
 src/libs/monitoring/sentry.ts:2 - getHubFromCarrier
-src/libs/monitoring/sentry.ts:2 - getCurrentHub
 src/libs/monitoring/sentry.ts:2 - Hub
 src/libs/monitoring/sentry.ts:2 - Scope
 src/libs/monitoring/sentry.ts:2 - setContext
