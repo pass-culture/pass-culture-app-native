@@ -22,7 +22,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { usePerformanceCalculation } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
+import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -95,9 +95,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const theme = useTheme()
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
-  const { finish } = usePerformanceCalculation()
-  const finishPerfHomeLoadingOnce = useFunctionOnce(() => finish(PERFORMANCE_HOME_LOADING))
-  const finishPerfHomeCreationOnce = useFunctionOnce(() => finish(PERFORMANCE_HOME_CREATION))
+  const finishPerfHomeLoadingOnce = useFunctionOnce(() =>
+    finishTransaction(PERFORMANCE_HOME_LOADING)
+  )
+  const finishPerfHomeCreationOnce = useFunctionOnce(() =>
+    finishTransaction(PERFORMANCE_HOME_CREATION)
+  )
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Linking, Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring'
@@ -7,7 +7,7 @@ export const useIsMailAppAvailable = (): boolean => {
   const isAndroid = Platform.OS === 'android'
   const [isMailAppAvailable, setIsMailAppAvailable] = useState<boolean>(isAndroid)
 
-  const checkMailAppAvailability = async () => {
+  const checkMailAppAvailability = useCallback(async () => {
     if (isAndroid) return
     try {
       for (const emailAppLink of emailAppLinks) {
@@ -19,11 +19,11 @@ export const useIsMailAppAvailable = (): boolean => {
     } catch (error) {
       eventMonitoring.captureException(`Error checking mail app availability: ${error}`)
     }
-  }
+  }, [isAndroid])
 
   useEffect(() => {
     checkMailAppAvailability()
-  }, [])
+  }, [checkMailAppAvailability])
 
   return isMailAppAvailable
 }

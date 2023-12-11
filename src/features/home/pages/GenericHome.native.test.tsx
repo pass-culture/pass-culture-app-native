@@ -23,13 +23,21 @@ const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
+const mockStartTransaction = jest.fn()
 const mockFinishTransaction = jest.fn()
-jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculation', () => ({
-  usePerformanceCalculation: () => ({
-    start: jest.fn(),
-    finish: mockFinishTransaction,
-  }),
-}))
+jest.mock('shared/performance/transactions', () => {
+  const originalModule = jest.requireActual('shared/performance/transactions')
+
+  return {
+    ...originalModule,
+    startTransaction: (s: string) => {
+      mockStartTransaction(s)
+    },
+    finishTransaction: (s: string) => {
+      mockFinishTransaction(s)
+    },
+  }
+})
 
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
