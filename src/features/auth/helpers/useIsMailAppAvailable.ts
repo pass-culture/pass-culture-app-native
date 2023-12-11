@@ -1,34 +1,35 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring'
 
 export const useIsMailAppAvailable = (): boolean => {
-  const isAndroid = Platform.OS === 'android'
-  const [isMailAppAvailable, setIsMailAppAvailable] = useState<boolean>(isAndroid)
-
-  const checkMailAppAvailability = useCallback(async () => {
-    if (isAndroid) return
-    try {
-      for (const emailAppLink of emailAppLinks) {
-        if (await Linking.canOpenURL(emailAppLink)) {
-          setIsMailAppAvailable(true)
-          return
-        }
-      }
-    } catch (error) {
-      eventMonitoring.captureException(`Error checking mail app availability: ${error}`)
-    }
-  }, [isAndroid])
+  const [isMailAppAvailable, setIsMailAppAvailable] = useState<boolean>(Platform.OS === 'android')
 
   useEffect(() => {
+    if (Platform.OS === 'android') return
+
+    const checkMailAppAvailability = async () => {
+      try {
+        for (const emailAppLink of emailAppLinks) {
+          if (await Linking.canOpenURL(emailAppLink)) {
+            setIsMailAppAvailable(true)
+            return
+          }
+        }
+      } catch (error) {
+        eventMonitoring.captureException(`Error checking mail app availability: ${error}`)
+      }
+    }
+
     checkMailAppAvailability()
-  }, [checkMailAppAvailability])
+  }, [])
 
   return isMailAppAvailable
 }
 
 const emailAppLinks = [
+  'message://',
   'googlegmail://',
   'inbox-gmail://',
   'readdle-spark://',
@@ -39,5 +40,4 @@ const emailAppLinks = [
   'yandexmail://',
   'fastmail://',
   'protonmail://',
-  'message://',
 ]
