@@ -6,7 +6,6 @@ module.exports = {
       /build\/.*/,
       /server\/.*/,
       /logs\/.*/,
-      /e2e\/.*/,
     ]);
   },
   getTransformModulePath() {

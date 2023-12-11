@@ -20,7 +20,6 @@ import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
-import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
@@ -58,30 +57,28 @@ export function App() {
                   <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
                     <AuthWrapper>
                       <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                        <E2eContextProvider>
-                          <LocationWrapper>
-                            <FavoritesWrapper>
-                              <SearchAnalyticsWrapper>
-                                <SearchWrapper>
-                                  <SnackBarProvider>
-                                    <CulturalSurveyContextProvider>
-                                      <SubscriptionContextProvider>
-                                        <AppWebHead />
-                                        <OnboardingWrapper>
-                                          <ScreenErrorProvider>
-                                            <Suspense fallback={<LoadingPage />}>
-                                              <AppNavigationContainer />
-                                            </Suspense>
-                                          </ScreenErrorProvider>
-                                        </OnboardingWrapper>
-                                      </SubscriptionContextProvider>
-                                    </CulturalSurveyContextProvider>
-                                  </SnackBarProvider>
-                                </SearchWrapper>
-                              </SearchAnalyticsWrapper>
-                            </FavoritesWrapper>
-                          </LocationWrapper>
-                        </E2eContextProvider>
+                        <LocationWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <AppWebHead />
+                                      <OnboardingWrapper>
+                                        <ScreenErrorProvider>
+                                          <Suspense fallback={<LoadingPage />}>
+                                            <AppNavigationContainer />
+                                          </Suspense>
+                                        </ScreenErrorProvider>
+                                      </OnboardingWrapper>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </LocationWrapper>
                       </ErrorBoundary>
                     </AuthWrapper>
                   </GoogleOAuthProvider>

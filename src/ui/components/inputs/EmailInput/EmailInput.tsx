@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { useE2eTestId } from 'libs/e2e/useE2eTestId'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 
@@ -16,8 +15,6 @@ const WithRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, EmailInputP
   { email, onEmailChange, label, ...inputProps },
   forwardedRef
 ) => {
-  const e2eTestId = useE2eTestId('Entrée pour l’email')
-
   return (
     <TextInput
       autoCapitalize="none"
@@ -30,7 +27,7 @@ const WithRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, EmailInputP
       value={email}
       maxLength={120}
       {...inputProps}
-      {...e2eTestId}
+      testID="Entrée pour l’email"
       ref={forwardedRef}
     />
   )

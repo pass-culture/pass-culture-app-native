@@ -2,7 +2,6 @@ import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { useE2eTestId } from 'libs/e2e/useE2eTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -54,8 +53,6 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   const testIdFull = testID ? `Interrupteur ${testID}` : 'Interrupteur'
 
-  const e2eIdentifiers = useE2eTestId(testIdFull)
-
   return (
     <FilterSwitchContainer>
       <HiddenAccessibleText accessibilityHidden>
@@ -72,7 +69,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}
         onBlur={onBlur}
-        {...e2eIdentifiers}>
+        testID={testIdFull}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
             {!!disabled && <Lock />}

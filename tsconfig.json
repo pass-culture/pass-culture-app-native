@@ -37,7 +37,6 @@
     "rn-cli.config.js",
     "coverage/**",
     "./server/**",
-    "./e2e/**"
   ],
   "extends": "@tsconfig/react-native/tsconfig.json"
 }

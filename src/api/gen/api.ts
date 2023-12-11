@@ -12,22 +12,11 @@
  * Do not edit the file manually.
  */
 
-import { Platform } from 'react-native'
 import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
-import { E2E_LOCALHOST_ADDRESS, E2E_LOCALHOST_ADDRESS_ANDROID } from 'libs/e2e/constants'
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from './configuration'
-import { getIsE2e } from 'libs/e2e/getIsE2e'
 
-// To avoid having to distribute e2e custom build, in e2e, we change the basePath to target e2e backend.
-// On Android chrome and Android app, the backend is available on http://10.0.2.2:6001
-// For others, the backend is available on http://127.0.0.1:6001
-const E2E_BASE_URL = `http://${
-(Platform.OS === 'web' && /Android/i.test(navigator.userAgent)) || Platform.OS === 'android'
-? E2E_LOCALHOST_ADDRESS_ANDROID
-: E2E_LOCALHOST_ADDRESS
-}:6001`
 const BASE_PATH = '/'.replace(/\/+$/, '')
 
 /**
@@ -60,9 +49,8 @@ export class BaseAPI {
     }
   }
 
-  public getConfiguration = async () => {
-    const isE2e = await getIsE2e()
-    return isE2e ? { ...this.configuration, basePath: E2E_BASE_URL } : this.configuration
+  public getConfiguration = () => {
+    return this.configuration
   }
 }
 
@@ -5015,7 +5003,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async deleteNativeV1MeFavoritesfavoriteId(favorite_id: number, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).deleteNativeV1MeFavoritesfavoriteId(favorite_id, options)
   }
   /**
@@ -5027,7 +5015,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1AccountSuspendTokenValidationtoken(token: string, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1AccountSuspendTokenValidationtoken(token, options)
   }
   /**
@@ -5038,7 +5026,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1AccountSuspensionDate(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1AccountSuspensionDate(options)
   }
   /**
@@ -5049,7 +5037,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1AccountSuspensionStatus(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1AccountSuspensionStatus(options)
   }
   /**
@@ -5061,7 +5049,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1Banner(isGeolocated?: boolean, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Banner(isGeolocated, options)
   }
   /**
@@ -5072,7 +5060,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1Bookings(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Bookings(options)
   }
   /**
@@ -5083,7 +5071,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1CulturalSurveyQuestions(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1CulturalSurveyQuestions(options)
   }
   /**
@@ -5095,7 +5083,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1EmailValidationRemainingResendsemail(email: string, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1EmailValidationRemainingResendsemail(email, options)
   }
   /**
@@ -5106,7 +5094,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1Me(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Me(options)
   }
   /**
@@ -5117,7 +5105,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1MeFavorites(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeFavorites(options)
   }
   /**
@@ -5128,7 +5116,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1MeFavoritesCount(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeFavoritesCount(options)
   }
   /**
@@ -5139,7 +5127,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1OfferReportReasons(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferReportReasons(options)
   }
   /**
@@ -5151,7 +5139,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1OfferofferId(offer_id: number, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OfferofferId(offer_id, options)
   }
   /**
@@ -5162,7 +5150,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1OffersReports(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1OffersReports(options)
   }
   /**
@@ -5173,7 +5161,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1PhoneValidationRemainingAttempts(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1PhoneValidationRemainingAttempts(options)
   }
   /**
@@ -5184,7 +5172,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1ProfileEmailUpdateStatus(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ProfileEmailUpdateStatus(options)
   }
   /**
@@ -5195,7 +5183,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1ProfileTokenExpiration(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1ProfileTokenExpiration(options)
   }
   /**
@@ -5206,7 +5194,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1Settings(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1Settings(options)
   }
   /**
@@ -5217,7 +5205,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1SubcategoriesV2(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubcategoriesV2(options)
   }
   /**
@@ -5228,7 +5216,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1SubscriptionActivityTypes(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionActivityTypes(options)
   }
   /**
@@ -5239,7 +5227,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1SubscriptionNextStep(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionNextStep(options)
   }
   /**
@@ -5250,7 +5238,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1SubscriptionProfile(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionProfile(options)
   }
   /**
@@ -5261,7 +5249,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1SubscriptionStepper(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1SubscriptionStepper(options)
   }
   /**
@@ -5273,7 +5261,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
   }
   /**
@@ -5285,7 +5273,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1Account(body?: AccountRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Account(body, options)
   }
   /**
@@ -5296,7 +5284,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1AccountSuspend(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountSuspend(options)
   }
   /**
@@ -5308,7 +5296,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1AccountSuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountSuspendForSuspiciousLogin(body, options)
   }
   /**
@@ -5319,7 +5307,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1AccountUnsuspend(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1AccountUnsuspend(options)
   }
   /**
@@ -5331,7 +5319,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1Bookings(body?: BookOfferRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Bookings(body, options)
   }
   /**
@@ -5343,7 +5331,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1BookingsbookingIdCancel(booking_id: number, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1BookingsbookingIdCancel(booking_id, options)
   }
   /**
@@ -5356,7 +5344,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1BookingsbookingIdToggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1BookingsbookingIdToggleDisplay(booking_id, body, options)
   }
   /**
@@ -5368,7 +5356,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ChangePassword(body?: ChangePasswordRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ChangePassword(body, options)
   }
   /**
@@ -5380,7 +5368,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1CookiesConsent(body?: CookieConsentRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1CookiesConsent(body, options)
   }
   /**
@@ -5392,7 +5380,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1CulturalSurveyAnswers(body?: CulturalSurveyAnswersRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1CulturalSurveyAnswers(body, options)
   }
   /**
@@ -5404,7 +5392,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1MeFavorites(body?: FavoriteRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1MeFavorites(body, options)
   }
     /**
@@ -5416,7 +5404,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1OauthGoogleAuthorize(body, options)
   }
   /**
@@ -5429,7 +5417,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1OfferofferIdReport(offer_id: number, body?: OfferReportRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1OfferofferIdReport(offer_id, body, options)
   }
   /**
@@ -5441,7 +5429,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1Profile(body?: UserProfileUpdateRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Profile(body, options)
   }
   /**
@@ -5453,7 +5441,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ProfileEmailUpdateCancel(body?: ChangeBeneficiaryEmailBody, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileEmailUpdateCancel(body, options)
   }
   /**
@@ -5465,7 +5453,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ProfileEmailUpdateConfirm(body?: ChangeBeneficiaryEmailBody, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileEmailUpdateConfirm(body, options)
   }
   /**
@@ -5477,7 +5465,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileUpdateEmail(body, options)
   }
   /**
@@ -5488,7 +5476,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1RefreshAccessToken(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1RefreshAccessToken(options)
   }
   /**
@@ -5500,7 +5488,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1RequestPasswordReset(body?: RequestPasswordResetRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1RequestPasswordReset(body, options)
   }
   /**
@@ -5512,7 +5500,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ResendEmailValidation(body?: ResendEmailValidationRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ResendEmailValidation(body, options)
   }
   /**
@@ -5524,7 +5512,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ResetPassword(body?: ResetPasswordRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ResetPassword(body, options)
   }
   /**
@@ -5535,7 +5523,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ResetRecreditAmountToShow(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ResetRecreditAmountToShow(options)
   }
   /**
@@ -5547,7 +5535,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1SendOfferLinkByPushofferId(offer_id: number, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1SendOfferLinkByPushofferId(offer_id, options)
   }
   /**
@@ -5559,7 +5547,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1SendOfferWebappLinkByEmailofferId(offer_id: number, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1SendOfferWebappLinkByEmailofferId(offer_id, options)
   }
   /**
@@ -5571,7 +5559,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1SendPhoneValidationCode(body?: SendPhoneValidationRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1SendPhoneValidationCode(body, options)
   }
   /**
@@ -5583,7 +5571,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1Signin(body?: SigninRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Signin(body, options)
   }
   /**
@@ -5594,7 +5582,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1SubscriptionHonorStatement(options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1SubscriptionHonorStatement(options)
   }
   /**
@@ -5606,7 +5594,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1SubscriptionProfile(body?: ProfileUpdateRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1SubscriptionProfile(body, options)
   }
   /**
@@ -5618,7 +5606,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1UbbleIdentification(body?: IdentificationSessionRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1UbbleIdentification(body, options)
   }
   /**
@@ -5630,7 +5618,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ValidateEmail(body?: ValidateEmailRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidateEmail(body, options)
   }
   /**
@@ -5642,7 +5630,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postNativeV1ValidatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidatePhoneNumber(body, options)
   }
   /**
@@ -5654,7 +5642,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async putNativeV1ProfileEmailUpdateValidate(body?: ChangeBeneficiaryEmailBody, options?: any) {
-    const configuration = await this.getConfiguration()
+    const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).putNativeV1ProfileEmailUpdateValidate(body, options)
   }
 }

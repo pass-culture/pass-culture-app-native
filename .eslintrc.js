@@ -330,7 +330,6 @@ module.exports = {
     'node_modules',
     '/coverage',
     '/server',
-    '/e2e',
   ],
   // TypeScript files overrides
   overrides: [
