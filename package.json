@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.269.0",
-  "build": 10269000,
+  "version": "1.269.1",
+  "build": 10269001,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -311,7 +311,7 @@
     "jest-junit": "^13.2.0",
     "jest-styled-components": "^7.0.8",
     "jetifier": "^1.6.5",
-    "json": "^10.0.0",
+    "json": "^11.0.0",
     "mailparser": "^3.6.3",
     "metro-react-native-babel-preset": "0.73.10",
     "mini-css-extract-plugin": "^1.5.0",
