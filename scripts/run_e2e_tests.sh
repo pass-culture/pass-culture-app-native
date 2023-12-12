@@ -4,8 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-if [ -z "$1" ] && [ -z "$2" ]
-then
+if [ "$#" -lt 2 ]; then
   echo "Not enough arguments supplied. Please provide platform ('ios', 'android', or 'web) and environment ('testing' or 'staging')."
   exit 1
 elif [[ $1 != "ios" && $1 != "android" && $1 != "web" ]]; then
@@ -18,6 +17,11 @@ fi
 
 platform=$1
 env=$2
+if [ "$#" -eq 2 ]; then
+  tests_path=".maestro/tests"
+else
+  tests_path="$3"
+fi
 
 parse_env_variable () {
   local line
@@ -45,4 +49,4 @@ fi
 
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
-maestro test -e APP_ID="$app_id" -e USERNAME="dev-tests-e2e@passculture.team" -e USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" -e NEW_USERNAME="dev-tests-e2e-new@passculture.team" -e NUMBER_PHONE="0607080910" -e PASSWORD="$password" .maestro/tests/
+maestro test -e APP_ID="$app_id" -e USERNAME="dev-tests-e2e@passculture.team" -e USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" -e NEW_USERNAME="dev-tests-e2e-new@passculture.team" -e NUMBER_PHONE="0607080910" -e PASSWORD="$password" "$tests_path"
