@@ -53,6 +53,9 @@ jobs:
 
   yarn_test_native:
     runs-on: [self-hosted, linux, x64, big]
+    strategy:
+      matrix:
+        shard: [1, 2, 3, 4, 5]
     steps:
       - uses: actions/checkout@v4
       - name: 'OpenID Connect Authentication'
@@ -81,13 +84,51 @@ jobs:
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:ci
+      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
+      - name: Cache the coverage report
+        id: coverage-modules-cache
+        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          path: |
+            coverage/${{ matrix.shard }}.json
+          restore-keys:
+          key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+  report-coverage:
+    runs-on: [self-hosted, linux, x64, regular]
+    needs: yarn_test_native
+    steps:
+      - uses: actions/checkout@v4
+      - name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get Secret
         id: 'sonar_secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Set up Cloud SDK to get gsutils
+        uses: 'google-github-actions/setup-gcloud@v1.1.0'
+        with:
+          version: '>= 416.0.0'
+      - name: 'Get from bucket the differents coverages'
+        run: |
+          mkdir coverage
+          gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' coverage
+          for file in `ls coverage/*tar`; do tar  --use-compress-program='zstd --long=30' -xf $file; done 
+          rm -f coverage/*.tar
+      - name: 'Merge each coverage into one'
+        run: |
+          npx nyc merge coverage coverage/coverage-final.json
+          npx nyc report -t coverage --report-dir coverage --reporter=clover --reporter=lcov
+          rm coverage/[0-9].json
       - name: SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
