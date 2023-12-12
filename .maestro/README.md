@@ -8,7 +8,7 @@
 - Java (testé avec 11.0.20.1 comme préconisé [ici](/doc/installation/Android.md#troubleshooting))
 - Xcode 14 ou plus (testé avec 15.0 15A240d)
 
-## Installation
+## Installation commune à toutes les plateformes
 
 [Documentation d'installation complète](https://maestro.mobile.dev/getting-started/installing-maestro)
 
@@ -34,6 +34,33 @@ Pour installer Maestro sur Mac OS, Linux or Windows :
 curl -Ls "https://get.maestro.mobile.dev" | bash
 ```
 
+## Mise en place spécifique à Android
+
+Emulateur utilisé: - Samsung Galaxy S9 (SM-G960F) && OS Android 10
+Téléphone physique utilisé: Xiaomi Redmi Note 8T (Android 11)
+
+### Installer ADB (optionnel)
+
+IMPORTANT: Vous n'avez pas directement besoin de `adb` (Android Debug Bridge) pour lancer les tests.
+
+Lorsque vous avez installé Android Studio, `platform-tools` (qui inclut `adb`) est installé par défaut.
+
+Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à [vos variables d'environnement](README.md#troubleshooting).
+
+### Lancez votre build local
+
+Lancez `yarn start` si le build est déjà présent sur votre appareil, sinon `yarn android:testing` (ou `yarn android:staging`).
+
+> La commande `maestro test` va détecter et utiliser automatiquement un émulateur local ou un appareil physique connecté en USB.
+
+Vous êtes prêts pour lancer les tests Maestro Android.
+
+## Mise en place spécifique à iOS
+
+Au moment d'écrire cette documentation, il n'est pas possible de lancer maestro sur un appareil iOS physique.
+
+Simulateur utilisé: - iPhone SE (3rd generation) & iOS 17.0
+
 ### Installer IDB (iOS)
 
 Installez `idb` (iOS Development Bridge):
@@ -42,50 +69,6 @@ Installez `idb` (iOS Development Bridge):
 brew tap facebook/fb
 brew install facebook/fb/idb-companion
 ```
-
-### Installer ADB (optionnel - Android)
-
-IMPORTANT: Vous n'avez pas directement besoin de `adb` (Android Debug Bridge) pour lancer les tests.
-
-Lorsque vous avez installer Android Studio, `platform-tools` (qui inclut `adb`) est installé par défaut.
-
-Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à [vos variables d'environnement](README.md#troubleshooting).
-
-### Installer ChromeDriver (Web)
-
-Regardez la version de Chrome que vous utilisez.
-
-Allez chercher la version de ChromeDriver correspondante [ici](https://googlechromelabs.github.io/chrome-for-testing/#stable).
-
-Sur MacBook, si vous avez une erreur de type `org.openqa.selenium.remote.NoSuchDriverException: Unable to obtain: Capabilities`, il faut que vous installiez Rosetta:
-
-```bash
-softwareupdate --install-rosetta
-```
-
-#### Ajouter ChromeDriver au PATH (optionnel)
-
-Si vous êtes obligé de lancer ChromeDriver manuellement à chaque redémarrage de votre ordinateur, vous pouvez ajouter ChromeDriver à vos variables d'environement pour faciliter son utilisation.
-
-- Déplacez le fichier téléchargé dans `/usr/local/bin`.
-
-La commande ci-dessous part du principe que vous allez téléchargé et décompressé la version arm64 du driver dans `/Downloads`.
-
-```
-sudo mv Downloads/chromedriver-mac-arm64/chromedriver /usr/local/bin
-```
-
-- Ajoutez le chemin au fichier téléchargé au `PATH`:
-
-Mettez la ligne suivante à la fin de de votre fichier de configuration du terminal (~/.zshrc si vous utilisez zsh):
-
-```
-export PATH="/usr/local/bin/chromedriver:$PATH"
-```
-
-## Configuration spécifique à iOS
-
-Au moment d'écrire cette documentation, il n'est pas possible de lancer maestro sur un appareil iOS physique.
 
 ### Lancez votre build local
 
@@ -117,26 +100,50 @@ Tant que vous ne changez pas de simulateur de test, vous n'aurez pas à refaire 
 
 Vous pouvez procéder au lancement des tests sur iOS!
 
-## Configuration spécifique à Android
+## Mise en place spécifique au Web
 
-### Lancez votre build local
+### Installer ChromeDriver (Web)
 
-Lancez `yarn start` si le build est déjà présent sur votre appareil, sinon `yarn android:testing` (ou `yarn android:staging`).
+Regardez la version de Chrome que vous utilisez.
 
-> La commande `maestro test` va détecter et utiliser automatiquement un émulateur local ou un appareil physique connecté en USB.
+Allez chercher la version de ChromeDriver correspondante [ici](https://googlechromelabs.github.io/chrome-for-testing/#stable).
 
-Vous êtes prêts pour lancer les tests Maestro Android.
+Sur MacBook, si vous avez une erreur de type `org.openqa.selenium.remote.NoSuchDriverException: Unable to obtain: Capabilities`, il faut que vous installiez Rosetta:
 
-## Configuration spécifique au Web
+```bash
+softwareupdate --install-rosetta
+```
+
+### Ajouter ChromeDriver au PATH (optionnel)
+
+Si vous êtes obligé de lancer ChromeDriver manuellement à chaque redémarrage de votre ordinateur, vous pouvez ajouter ChromeDriver à vos variables d'environement pour faciliter son utilisation.
+
+- Déplacez le fichier téléchargé dans `/usr/local/bin`.
+
+La commande ci-dessous part du principe que vous allez téléchargé et décompressé la version arm64 du driver dans `/Downloads`.
+
+```
+sudo mv Downloads/chromedriver-mac-arm64/chromedriver /usr/local/bin
+```
+
+- Ajoutez le chemin au fichier téléchargé au `PATH`:
+
+Mettez la ligne suivante à la fin de de votre fichier de configuration du terminal (~/.zshrc si vous utilisez zsh):
+
+```
+export PATH="/usr/local/bin/chromedriver:$PATH"
+```
+
+### Configuration supplémentaire
 
 Les tests sont lancés à partir de testing/staging, vous n'avez pas besoin de lancer l'app web localement.
 
-## Lancer les tests
+## Lancement des tests
 
 Il faut avoir soit:
 
 - Un émulateur Android avec l'application buildé localement
-- Un téléphone physique avec l'application buildé localement
+- Un téléphone physique Android avec l'application buildé localement
 - Un simulateur iOS avec l'application buildé localement
 - Pour le web, les tests se font à partir de https://app.testing.passculture.team ou https://app.staging.passculture.team et ne requirent pas de build local.
 
@@ -214,12 +221,6 @@ Dans notre terminal, à la fin du test nous devrions avoir:
 ```bash
 maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e NEW_USERNAME=${NEW_USERNAME} -e NUMBER_PHONE=${NUMBER_PHONE} -e PASSWORD=${PASSWORD} .maestro/
 ```
-
-## Listes des devices utilisés pour run les tests e2e
-
-- iPhone 14 Pro && OS 16.6.1
-- iPhone SE (3rd generation) & iOS 17.0
-- Samsung Galaxy S9 (SM-G960F) && OS Android 10
 
 ## Écrire un test avec Maestro studio
 
