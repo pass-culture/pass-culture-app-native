@@ -4,9 +4,9 @@
 
 ## Prérequis
 
-- Pouvoir builder l'app en local pour Android/iOS (voir comment [ici pour Android](/doc/installation/Android.md), et [là pour iOS](/doc/installation/iOS.md))
-- Java (testé avec 11.0.20.1 comme préconisé [ici](/doc/installation/Android.md#troubleshooting))
-- Xcode 14 ou plus (testé avec 15.0 15A240d)
+- Pouvoir builder l'app en local pour [Android](/doc/installation/Android.md) et [iOS](/doc/installation/iOS.md)
+- Java [11.0.20.1](/doc/installation/Android.md#troubleshooting)
+- Xcode 14 ou plus
 
 ## Installation commune à toutes les plateformes
 
@@ -36,8 +36,9 @@ curl -Ls "https://get.maestro.mobile.dev" | bash
 
 ## Mise en place spécifique à Android
 
-Emulateur utilisé: - Samsung Galaxy S9 (SM-G960F) && OS Android 10
-Téléphone physique utilisé: Xiaomi Redmi Note 8T (Android 11)
+Téléphone à utilisé (virtuel et physique): Samsung Galaxy S9 (SM-G960F) && OS Android 10
+
+Sur téléphone physique, il se peut que vous deviez accepter l'installation via USB de `dev.mobile.maestro` lors du lancement des tests.
 
 ### Installer ADB (optionnel)
 
@@ -57,9 +58,9 @@ Vous êtes prêts pour lancer les tests Maestro Android.
 
 ## Mise en place spécifique à iOS
 
-Au moment d'écrire cette documentation, il n'est pas possible de lancer maestro sur un appareil iOS physique.
+Au moment d'écrire cette documentation, [il n'est pas possible de lancer maestro sur un appareil iOS physique](https://maestro.mobile.dev/getting-started/installing-maestro#connecting-to-your-device).
 
-Simulateur utilisé: - iPhone SE (3rd generation) & iOS 17.0
+Simulateur utilisé: iPhone 14 Pro && OS 16.6.1
 
 ### Installer IDB (iOS)
 
@@ -102,7 +103,7 @@ Vous pouvez procéder au lancement des tests sur iOS!
 
 ## Mise en place spécifique au Web
 
-### Installer ChromeDriver (Web)
+### Installer ChromeDriver
 
 Regardez la version de Chrome que vous utilisez.
 
@@ -148,17 +149,19 @@ Il faut avoir soit:
 - Pour le web, les tests se font à partir de https://app.testing.passculture.team ou https://app.staging.passculture.team et ne requirent pas de build local.
 
 ```bash
-# Lancer tous les tests natif
-maestro test .maestro/tests
+# Commandes pour lancer tous les tests sur les différents environnements et plateformes
+yarn test:e2e:android:staging
+yarn test:e2e:ios:staging
+yarn test:e2e:web:staging
+yarn test:e2e:android:testing
+yarn test:e2e:ios:testing
+yarn test:e2e:web:testing
 
-# Lancer un test natif spécifique ex: .maestro/native/SignUp.yml
-maestro test .maestro/tests/<nomDuTest.yml>
-
-# Lancer un test web spécifique ex: .maestro/web/Home.yml
-maestro test .maestro/tests/<nomDuTest.web.yml>
+# Commande pour lancer un test spécifique
+yarn test:e2e:android:staging .maestro/tests/reusableFlows/LaunchApp.yml
 ```
 
-### Lancer un test simple sur le web
+## Lancer un test simple sur le web
 
 Admettons que nous voulions tester que la version testing du web se lance bien.
 
@@ -186,11 +189,11 @@ La commande ci-dessus lancera une fenêtre Chrome dans lequel on verra la baniè
 
 Dans le terminal d'où nous avons lancer le test, nous devrions voir:
 
-```
- ║
- ║  > Flow
- ║
- ║    ✅  Launch app "https://app.testing.passculture.team" with clear state
+```yml
+║
+║  > Flow
+║
+║    ✅  Launch app "https://app.testing.passculture.team" with clear state
 ```
 
 Le test à été lancé avec succès et a réussi toutes les tâches qu'il devait accomplir.
