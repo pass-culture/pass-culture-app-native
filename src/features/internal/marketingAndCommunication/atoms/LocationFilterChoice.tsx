@@ -1,25 +1,15 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 
 import { LocationChoice } from 'features/search/components/LocationChoice'
-import { LocationFilter } from 'features/search/types'
-import { LocationMode } from 'libs/location/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Spacer } from 'ui/theme'
 
-interface Props {
-  onChange: (locationFilter: LocationFilter) => void
-}
+// The Location choice is always selected in the deeplink generator
+// The marketing team has the habit to see the "Partout" selected, so we keep it hard selected
 
-export const LocationFilterChoice = ({ onChange }: Props) => {
-  const [selected, setSelected] = useState<LocationMode>(LocationMode.EVERYWHERE)
-
-  const onPressEverywhere = useCallback(() => {
-    setSelected(LocationMode.EVERYWHERE)
-    onChange({ locationType: LocationMode.EVERYWHERE })
-  }, [onChange])
-
+export const LocationFilterChoice = () => {
   return (
     <VerticalUl>
       <Li>
@@ -27,8 +17,9 @@ export const LocationFilterChoice = ({ onChange }: Props) => {
         <LocationChoice
           label="Partout"
           Icon={Everywhere}
-          onPress={onPressEverywhere}
-          isSelected={LocationMode.EVERYWHERE === selected}
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
+          onPress={() => {}}
+          isSelected
         />
       </Li>
     </VerticalUl>

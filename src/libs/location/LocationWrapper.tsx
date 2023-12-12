@@ -7,7 +7,7 @@ import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
 import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
 import { useLocationMode } from 'libs/location/hooks/useLocationMode'
 import { usePlace } from 'libs/location/hooks/usePlace'
-import { LocationMode } from 'libs/location/types'
+import { LocationMode, LocationParams } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { storage } from 'libs/storage'
 
@@ -40,6 +40,7 @@ const LocationContext = React.createContext<ILocationContext>({
   aroundMeRadius: DEFAULT_RADIUS,
   setAroundMeRadius: () => null,
   isEverywhereWithNoGeolocPosition: false,
+  locationParams: { locationMode: LocationMode.EVERYWHERE },
 })
 /* eslint-enable @typescript-eslint/no-empty-function */
 
@@ -95,6 +96,19 @@ export const LocationWrapper = memo(function LocationWrapper({
   const isEverywhereWithNoGeolocPosition =
     selectedLocationMode === LocationMode.EVERYWHERE && !geolocPosition
 
+  const locationParams: LocationParams = useMemo(() => {
+    const locationMode = selectedLocationMode
+
+    switch (locationMode) {
+      case LocationMode.AROUND_ME:
+        return { locationMode, aroundRadius: aroundMeRadius }
+      case LocationMode.AROUND_PLACE:
+        return { locationMode, aroundRadius: aroundPlaceRadius, place: place ?? undefined }
+      case LocationMode.EVERYWHERE:
+        return { locationMode }
+    }
+  }, [aroundMeRadius, aroundPlaceRadius, place, selectedLocationMode])
+
   const value = useMemo(
     () => ({
       geolocPosition,
@@ -121,6 +135,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       aroundMeRadius,
       setAroundMeRadius,
       isEverywhereWithNoGeolocPosition,
+      locationParams,
     }),
     [
       geolocPosition,
@@ -146,8 +161,10 @@ export const LocationWrapper = memo(function LocationWrapper({
       aroundMeRadius,
       setAroundMeRadius,
       isEverywhereWithNoGeolocPosition,
+      locationParams,
     ]
   )
+
   return (
     <LocationContext.Provider value={value}>
       {children}

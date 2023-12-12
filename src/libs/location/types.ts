@@ -31,6 +31,12 @@ export type RequestGeolocPermissionParams = {
 export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
+export type LocationParams = {
+  locationMode: LocationMode
+  aroundRadius?: number
+  place?: SuggestedPlace
+}
+
 export type ILocationContext = {
   hasGeolocPosition: boolean
   place: SuggestedPlace | null
@@ -56,4 +62,5 @@ export type ILocationContext = {
   aroundMeRadius: number
   setAroundMeRadius: Dispatch<SetStateAction<number>>
   isEverywhereWithNoGeolocPosition: boolean
+  locationParams: LocationParams
 }

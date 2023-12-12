@@ -6,8 +6,7 @@ import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'
-import { Venue } from 'features/venue/types'
-import { SuggestedPlace } from 'libs/place'
+import { LocationParams } from 'libs/location/types'
 import { From } from 'shared/offer/enums'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
@@ -229,10 +228,11 @@ export type RootStackParamList = {
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
-  LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   PersonalData: undefined
-  SearchFilter: Partial<SearchState>
+  SearchFilter: Partial<SearchState> & {
+    location?: LocationParams
+  }
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SuspendedAccountUponUserRequest: undefined
@@ -260,6 +260,7 @@ export type RootStackParamList = {
   HighlightThematicHomeHeaderCheatcode: undefined
   CategoryThematicHomeHeaderCheatcode: undefined
   ThematicHeaders: undefined
+  Location?: LocationParams
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &

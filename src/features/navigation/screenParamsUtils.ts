@@ -16,7 +16,7 @@ type ScreensRequiringParsing = Extract<
   | 'Search'
   | 'SearchFilter'
   | 'SuspensionChoice'
-  | 'LocationFilter'
+  | 'Location'
   | 'ThematicHome'
 >
 
@@ -37,7 +37,7 @@ const searchParamsParser = {
   hitsPerPage: JSON.parse,
   isAutocomplete: JSON.parse,
   isFullyDigitalOffersCategory: JSON.parse,
-  locationFilter: JSON.parse,
+  location: JSON.parse,
   maxPossiblePrice: JSON.parse,
   maxPrice: JSON.parse,
   minPrice: JSON.parse,
@@ -127,9 +127,10 @@ export const screenParamsParser: ParamsParsers = {
   },
   Search: searchParamsParser,
   SearchFilter: searchParamsParser,
-  LocationFilter: {
-    selectedVenue: JSON.parse,
-    selectedPlace: JSON.parse,
+  Location: {
+    locationMode: JSON.parse,
+    aroundRadius: JSON.parse,
+    place: JSON.parse,
   },
   SuspensionChoice: {
     token: identityFn,
@@ -171,10 +172,7 @@ function parseDataWithISODates(data: any) {
   return JSON.parse(typeof data === 'string' ? data : JSON.stringify(data), reviver)
 }
 
-type ScreensRequiringStringifying = Extract<
-  ScreenNames,
-  'Search' | 'SearchFilter' | 'LocationFilter'
->
+type ScreensRequiringStringifying = Extract<ScreenNames, 'Search' | 'SearchFilter' | 'Location'>
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
     [Param in keyof Required<RouteParams<ParamsList, Screen>>]: (
@@ -190,7 +188,7 @@ const searchParamsStringifier = {
   hitsPerPage: JSON.stringify,
   isAutocomplete: JSON.stringify,
   isFullyDigitalOffersCategory: JSON.stringify,
-  locationFilter: JSON.stringify,
+  location: JSON.stringify,
   maxPossiblePrice: JSON.stringify,
   maxPrice: JSON.stringify,
   minPrice: JSON.stringify,
@@ -218,8 +216,9 @@ const searchParamsStringifier = {
 export const screenParamsStringifier: ParamsStringifiers = {
   Search: searchParamsStringifier,
   SearchFilter: searchParamsStringifier,
-  LocationFilter: {
-    selectedVenue: JSON.stringify,
-    selectedPlace: JSON.stringify,
+  Location: {
+    locationMode: JSON.stringify,
+    aroundRadius: JSON.stringify,
+    place: JSON.stringify,
   },
 }

@@ -1,14 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState, useEffect } from 'react'
 import { Keyboard } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { useSearch } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -61,14 +57,19 @@ export const SearchLocationModal = ({
     place,
   } = useLocation()
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(aroundMeRadius)
+  const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(aroundPlaceRadius)
+
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
   useEffect(() => {
     if (visible) {
       setTempLocationMode(selectedLocationMode)
+      setTempAroundMeRadius(aroundMeRadius)
+      setTempAroundPlaceRadius(aroundPlaceRadius)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLocationMode, visible])
+  }, [selectedLocationMode, aroundMeRadius, aroundPlaceRadius, visible])
 
   useEffect(() => {
     if (visible) {
@@ -78,10 +79,6 @@ export const SearchLocationModal = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
-
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const { searchState, dispatch } = useSearch()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
@@ -133,72 +130,43 @@ export const SearchLocationModal = ({
 
   const onSubmit = () => {
     setSelectedLocationMode(tempLocationMode)
-    if (tempLocationMode === LocationMode.AROUND_PLACE && selectedPlace) {
-      setPlaceGlobally(selectedPlace)
-      dispatch({
-        type: 'SET_LOCATION_FILTERS',
-        payload: {
-          locationFilter: {
-            place: selectedPlace,
-            locationType: LocationMode.AROUND_PLACE,
-            aroundRadius: aroundPlaceRadius,
-          },
-          includeDigitalOffers,
-        },
-      })
-      analytics.logUserSetLocation('search')
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...searchState,
-          locationFilter: {
-            place: selectedPlace,
-            locationType: LocationMode.AROUND_PLACE,
-            aroundRadius: aroundPlaceRadius,
-          },
-          includeDigitalOffers,
-        })
-      )
-    } else if (tempLocationMode === LocationMode.AROUND_ME) {
-      setPlaceGlobally(null)
-      dispatch({
-        type: 'SET_LOCATION_FILTERS',
-        payload: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
-          includeDigitalOffers,
-        },
-      })
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...searchState,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
-          includeDigitalOffers,
-        })
-      )
+    switch (tempLocationMode) {
+      case LocationMode.AROUND_PLACE:
+        setPlaceGlobally(selectedPlace)
+        setAroundPlaceRadius(tempAroundPlaceRadius)
+        setAroundMeRadius(DEFAULT_RADIUS)
+        analytics.logUserSetLocation('search')
+        break
+      case LocationMode.AROUND_ME:
+        setPlaceGlobally(null)
+        setAroundMeRadius(tempAroundMeRadius)
+        setAroundPlaceRadius(DEFAULT_RADIUS)
+        break
+      default:
+        break
     }
     dismissModal()
   }
 
   const onClose = () => {
-    setAroundMeRadius(DEFAULT_RADIUS)
-    setAroundPlaceRadius(DEFAULT_RADIUS)
     dismissModal()
   }
 
   const onAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
-        setAroundPlaceRadius(newValues[0])
+        setTempAroundPlaceRadius(newValues[0])
       }
     },
-    [visible, setAroundPlaceRadius]
+    [visible, setTempAroundPlaceRadius]
   )
   const onAroundMeRadiusValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
-        setAroundMeRadius(newValues[0])
+        setTempAroundMeRadius(newValues[0])
       }
     },
-    [visible, setAroundMeRadius]
+    [visible, setTempAroundMeRadius]
   )
 
   const onPlaceSelection = (place: SuggestedPlace) => {
@@ -252,7 +220,7 @@ export const SearchLocationModal = ({
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
-              aroundRadius={aroundMeRadius}
+              aroundRadius={tempAroundMeRadius}
               onValuesChange={onAroundMeRadiusValueChange}
             />
           </React.Fragment>
@@ -280,7 +248,7 @@ export const SearchLocationModal = ({
             <Spacer.Column numberOfSpaces={4} />
             {!!selectedPlace && (
               <LocationSearchFilters
-                aroundRadius={aroundPlaceRadius}
+                aroundRadius={tempAroundPlaceRadius}
                 onValuesChange={onAroundRadiusPlaceValueChange}
               />
             )}

@@ -20,7 +20,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
@@ -48,8 +48,8 @@ export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
   if (screenName === 'Search') {
     return {
       view: SearchView.Results,
-      locationFilter: { locationType: LocationMode.EVERYWHERE },
       noFocus: true,
+      location: { locationMode: LocationMode.EVERYWHERE },
       from: 'deeplink',
     }
   }
@@ -178,17 +178,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
-    function onChangeLocationFilterChoice(locationFilter: LocationFilter | null) {
-      setScreenParams((prevPageParams) =>
-        !locationFilter
-          ? omit(prevPageParams, name)
-          : {
-              ...prevPageParams,
-              [name]: locationFilter,
-            }
-      )
-    }
-
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
     return (
@@ -239,9 +228,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             <DateChoice onChange={onChangeDate} />
           </PaddingContainer>
         )}
-        {config.type === 'locationFilter' && (
-          <LocationFilterChoice onChange={onChangeLocationFilterChoice} />
-        )}
+        {config.type === 'locationFilter' && <LocationFilterChoice />}
         {!!config.description && (
           <PaddingContainer>
             <StyledCaption>{config.description}</StyledCaption>

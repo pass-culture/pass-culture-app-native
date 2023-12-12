@@ -74,10 +74,10 @@ export const SCREENS_CONFIG: {
       required: false,
       description: 'Une URL de recherche a convertir',
     },
-    locationFilter: {
-      type: 'locationFilter',
+    location: {
+      type: 'location',
       required: false,
-      description: 'Lieu',
+      description: 'Localisation',
     },
     query: {
       type: 'string',

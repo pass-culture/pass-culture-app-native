@@ -2,13 +2,16 @@ import { TabNavigationState } from '@react-navigation/native'
 
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import { SearchState } from 'features/search/types'
+import { LocationParams } from 'libs/location/types'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
   Home: { latitude?: number; longitude?: number; videoModuleId?: string } | undefined
-  Search?: Partial<SearchState>
+  Search?: Partial<SearchState> & {
+    location?: LocationParams
+  }
   Bookings: undefined
   Favorites: undefined
   Profile: undefined
