@@ -62,8 +62,6 @@ const StyledOfferTile = styled.View({
   padding: '5px',
   margin: '5px',
   borderRadius: '5px',
-  display: 'flex',
-  flexDirection: 'column',
   width: '200px',
 })
 
