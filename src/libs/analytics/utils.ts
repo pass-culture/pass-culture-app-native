@@ -1,7 +1,9 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { SearchState } from 'features/search/types'
-import { LocationMode } from 'libs/algolia'
+import { Venue } from 'features/venue/types'
+import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 
@@ -50,11 +52,20 @@ const STRING_VALUE_MAX_LENGTH = 100
 const LOCATION_LABEL_KEY_LENGTH = 11
 export const urlWithValueMaxLength = (url: string) => url.slice(0, STRING_VALUE_MAX_LENGTH)
 
-export const buildLocationFilterParam = (searchState: SearchState) => {
-  const { locationFilter, venue } = searchState
-  if (locationFilter.locationType === LocationMode.AROUND_PLACE || venue) {
+export const buildLocationFilterParam = ({
+  selectedLocationMode,
+  place,
+  venue,
+  aroundMeRadius,
+}: {
+  selectedLocationMode: LocationMode
+  place?: SuggestedPlace
+  venue?: Venue
+  aroundMeRadius?: number
+}) => {
+  if (selectedLocationMode === LocationMode.AROUND_PLACE || venue) {
     const stateWithLocationType = {
-      locationType: locationFilter.locationType === LocationMode.AROUND_PLACE ? 'PLACE' : 'VENUE',
+      locationType: selectedLocationMode === LocationMode.AROUND_PLACE ? 'PLACE' : 'VENUE',
     }
     const maxLabelLength =
       STRING_VALUE_MAX_LENGTH -
@@ -63,18 +74,34 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
     const customLocationFilter = {
       ...stateWithLocationType,
       label:
-        locationFilter.locationType === LocationMode.AROUND_PLACE
-          ? locationFilter.place.label.slice(0, maxLabelLength)
+        selectedLocationMode === LocationMode.AROUND_PLACE
+          ? place?.label.slice(0, maxLabelLength)
           : venue?.label.slice(0, maxLabelLength),
     }
     return JSON.stringify(customLocationFilter)
   }
+  const locationFilter = {
+    locationType: selectedLocationMode,
+    aroundRadius: aroundMeRadius,
+  }
   return JSON.stringify(locationFilter)
 }
 
-export const buildPerformSearchState = (searchState: SearchState) => {
+export const buildPerformSearchState = (
+  searchState: SearchState,
+  locationParams: {
+    selectedLocationMode: LocationMode
+    place?: SuggestedPlace
+    aroundMeRadius?: number
+  }
+) => {
   const state: PerformSearchState = {
-    searchLocationFilter: buildLocationFilterParam(searchState),
+    searchLocationFilter: buildLocationFilterParam({
+      venue: searchState.venue,
+      selectedLocationMode: locationParams.selectedLocationMode,
+      place: locationParams.place,
+      aroundMeRadius: locationParams.aroundMeRadius,
+    }),
     searchId: searchState.searchId,
     searchView: searchState.view,
   }
