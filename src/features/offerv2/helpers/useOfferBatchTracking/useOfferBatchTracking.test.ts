@@ -1,77 +1,154 @@
 import { NativeCategoryIdEnumv2 } from 'api/gen'
 import { useOfferBatchTraking } from 'features/offerv2/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { BatchUser, BatchEvent } from 'libs/react-native-batch'
 import { renderHook } from 'tests/utils'
 
 describe('useOfferBatchTracking', () => {
-  it('should return null when nativeCategory is undefined', () => {
-    const { result } = renderHook(() => useOfferBatchTraking({ nativeCategory: undefined }))
+  it('should return trackEventHasSeenOfferOnce', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+    )
 
-    expect(result.current).toBeNull()
+    expect(result.current?.trackEventHasSeenOfferOnce).toBeInstanceOf(Function)
   })
 
-  describe('When nativeCategory is defined', () => {
-    it('should return trackEventHasSeenOfferOnce', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+  it('should return trackBatchEvent', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+    )
 
-      expect(result.current?.trackEventHasSeenOfferOnce).toBeInstanceOf(Function)
-    })
+    expect(result.current?.trackBatchEvent).toBeInstanceOf(Function)
+  })
 
-    it('should return trackEventHasSeenOfferForSurveyOnce', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+  it('should return true for shouldTriggerBatchSurveyEvent when native category is not eligible for survey', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
+    )
 
-      expect(result.current?.trackEventHasSeenOfferForSurveyOnce).toBeInstanceOf(Function)
-    })
+    expect(result.current?.shouldTriggerBatchSurveyEvent).toBeTruthy()
+  })
 
-    it('should return trackBookOfferForSurveyOnce', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+  it('should call trackEventHasSeenOfferForSurveyOnce', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+    )
 
-      expect(result.current?.trackBookOfferForSurveyOnce).toBeInstanceOf(Function)
-    })
+    result.current?.trackBatchEvent()
 
-    it('should return trackCinemaOfferForSurveyOnce', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+  })
 
-      expect(result.current?.trackCinemaOfferForSurveyOnce).toBeInstanceOf(Function)
-    })
+  it('shoyld call trackEventHasSeenOfferForSurveyOnce only once', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+    )
 
-    it('should return trackCulturalVisitOfferForSurveyOnce', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+    result.current?.trackBatchEvent()
 
-      expect(result.current?.trackCulturalVisitOfferForSurveyOnce).toBeInstanceOf(Function)
-    })
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
 
-    it('should return trackConcertOfferForSurveyOnce', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+    result.current?.trackBatchEvent()
 
-      expect(result.current?.trackConcertOfferForSurveyOnce).toBeInstanceOf(Function)
-    })
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
+  })
 
-    it('should return true for shouldTriggerBatchSurveyEvent when native category is eligible for survey', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
-      )
+  it('should call trackBookOfferForSurveyOnce when native category is LIVRES_PAPIER', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER })
+    )
 
-      expect(result.current?.shouldTriggerBatchSurveyEvent).toBeFalsy()
-    })
+    result.current?.trackBatchEvent()
 
-    it('should return true for shouldTriggerBatchSurveyEvent when native category is not eligible for survey', () => {
-      const { result } = renderHook(() =>
-        useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
-      )
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenBookOfferForSurvey)
+  })
 
-      expect(result.current?.shouldTriggerBatchSurveyEvent).toBeTruthy()
-    })
+  it('shoyld call trackBookOfferForSurveyOnce only once', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER })
+    )
+
+    result.current?.trackBatchEvent()
+
+    // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+  })
+
+  it('should call trackCulturalVisitOfferForSurveyOnce when native category is VISITES_CULTURELLES', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.VISITES_CULTURELLES })
+    )
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCulturalVisitForSurvey)
+  })
+
+  it('shoyld call trackCulturalVisitOfferForSurveyOnce only once', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.VISITES_CULTURELLES })
+    )
+
+    result.current?.trackBatchEvent()
+
+    // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+  })
+
+  it('should call trackConcertOfferForSurveyOnce when native category is CONCERTS_EVENEMENTS', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
+    )
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenConcertForSurvey)
+  })
+
+  it('shoyld call trackConcertOfferForSurveyOnce only once', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
+    )
+
+    result.current?.trackBatchEvent()
+
+    // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+  })
+
+  it('should call trackCinemaOfferForSurveyOnce when native category is SEANCES_DE_CINEMA', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA })
+    )
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCinemaOfferForSurvey)
+  })
+
+  it('shoyld call trackCinemaOfferForSurveyOnce only once', () => {
+    const { result } = renderHook(() =>
+      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA })
+    )
+
+    result.current?.trackBatchEvent()
+
+    // 2 because trackEventHasSeenOfferForSurveyOnce is executed too
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
+
+    result.current?.trackBatchEvent()
+
+    expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2)
   })
 })

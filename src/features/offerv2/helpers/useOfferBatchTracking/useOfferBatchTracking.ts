@@ -1,5 +1,6 @@
+import { useCallback } from 'react'
+
 import { NativeCategoryIdEnumv2 } from 'api/gen'
-import { UseOfferBatchTrackingType } from 'features/offerv2/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchUser, BatchEvent } from 'libs/react-native-batch'
 
@@ -19,22 +20,16 @@ const OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY = [
 ]
 
 type Props = {
-  nativeCategory: NativeCategoryIdEnumv2 | undefined
+  nativeCategory: NativeCategoryIdEnumv2
 }
 
 export type UseOfferBatchTrackingType = {
   trackEventHasSeenOfferOnce: VoidFunction
-  trackEventHasSeenOfferForSurveyOnce: VoidFunction
-  trackBookOfferForSurveyOnce: VoidFunction
-  trackCinemaOfferForSurveyOnce: VoidFunction
-  trackCulturalVisitOfferForSurveyOnce: VoidFunction
-  trackConcertOfferForSurveyOnce: VoidFunction
+  trackBatchEvent: VoidFunction
   shouldTriggerBatchSurveyEvent: boolean
 }
 
-export const useOfferBatchTraking = ({
-  nativeCategory,
-}: Props): UseOfferBatchTrackingType | null => {
+export const useOfferBatchTraking = ({ nativeCategory }: Props): UseOfferBatchTrackingType => {
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const trackEventHasSeenOfferForSurveyOnce = useFunctionOnce(trackEventHasSeenOfferForSurvey)
   const trackBookOfferForSurveyOnce = useFunctionOnce(trackBookOfferForSurvey)
@@ -42,20 +37,39 @@ export const useOfferBatchTraking = ({
   const trackCulturalVisitOfferForSurveyOnce = useFunctionOnce(trackCulturalVisitOfferForSurvey)
   const trackConcertOfferForSurveyOnce = useFunctionOnce(trackConcertOfferForSurvey)
 
-  if (!nativeCategory) {
-    return null
-  }
+  const trackBatchEvent = useCallback(() => {
+    trackEventHasSeenOfferForSurveyOnce()
+
+    if (nativeCategory === NativeCategoryIdEnumv2.LIVRES_PAPIER) {
+      trackBookOfferForSurveyOnce()
+    }
+
+    if (nativeCategory === NativeCategoryIdEnumv2.VISITES_CULTURELLES) {
+      trackCulturalVisitOfferForSurveyOnce()
+    }
+
+    if (nativeCategory === NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS) {
+      trackConcertOfferForSurveyOnce()
+    }
+
+    if (nativeCategory === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA) {
+      trackCinemaOfferForSurveyOnce()
+    }
+  }, [
+    nativeCategory,
+    trackBookOfferForSurveyOnce,
+    trackCinemaOfferForSurveyOnce,
+    trackConcertOfferForSurveyOnce,
+    trackCulturalVisitOfferForSurveyOnce,
+    trackEventHasSeenOfferForSurveyOnce,
+  ])
 
   const shouldTriggerBatchSurveyEvent =
     nativeCategory && OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY.includes(nativeCategory)
 
   return {
     trackEventHasSeenOfferOnce,
-    trackEventHasSeenOfferForSurveyOnce,
-    trackBookOfferForSurveyOnce,
-    trackCinemaOfferForSurveyOnce,
-    trackCulturalVisitOfferForSurveyOnce,
-    trackConcertOfferForSurveyOnce,
+    trackBatchEvent,
     shouldTriggerBatchSurveyEvent,
   }
 }
