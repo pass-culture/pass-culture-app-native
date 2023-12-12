@@ -19,8 +19,6 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
-import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
 
@@ -28,11 +26,6 @@ interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
 }
-
-export type LocationFilter =
-  | { locationType: LocationMode.EVERYWHERE }
-  | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
 
 export enum SearchView {
   Landing = 'Landing',
@@ -47,7 +40,6 @@ export interface SearchState {
   date: SelectedDate | null
   endingDatetime?: string
   hitsPerPage: number | null
-  locationFilter: LocationFilter
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerNativeCategories?: NativeCategoryIdEnumv2[]
