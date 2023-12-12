@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 #AccountDeletionPage
 - assertVisible: "Détails de la réservation"
