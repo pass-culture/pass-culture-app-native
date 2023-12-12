@@ -4,8 +4,8 @@
 
 ## Prérequis
 
-- Pouvoir builder l'app en local pour Android/iOS
-- Java (testé avec 11.0.20.1 2023-08-24 LTS)
+- Pouvoir builder l'app en local pour Android/iOS (voir comment [ici pour Android](/doc/installation/Android.md), et [là pour iOS](/doc/installation/iOS.md))
+- Java (testé avec 11.0.20.1 comme préconisé [ici](/doc/installation/Android.md#troubleshooting))
 - Xcode 14 ou plus (testé avec 15.0 15A240d)
 
 ## Installation
@@ -49,7 +49,7 @@ IMPORTANT: Vous n'avez pas directement besoin de `adb` (Android Debug Bridge) po
 
 Lorsque vous avez installer Android Studio, `platform-tools` (qui inclut `adb`) est installé par défaut.
 
-Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à vos variables d'environement.
+Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à [vos variables d'environnement](README.md#troubleshooting).
 
 ### Installer ChromeDriver (Web)
 
@@ -89,7 +89,7 @@ Au moment d'écrire cette documentation, il n'est pas possible de lancer maestro
 
 ### Lancez votre build local
 
-Si vous avez déjà l'application buildée localement sur votre emulateur, lancez la commande `yarn start`, et sur le simulateur, ouvrez l'application. L'instance de Metro de la command `yarn start` devrait se connecté à votre emulateur. Si vous avez pas buildée avant, lancez `yarn ios:testing`.
+Si vous avez déjà l'application buildée localement sur votre emulateur, lancez la commande `yarn start`, et sur le simulateur, ouvrez l'application. L'instance de Metro de la command `yarn start` devrait se connecté à votre emulateur. Si vous avez pas buildée avant, lancez `yarn ios:testing` ou `yarn ios:staging` selon l'environnement.
 
 ### Obtenir l'UDID des devices virtuels
 
@@ -121,7 +121,7 @@ Vous pouvez procéder au lancement des tests sur iOS!
 
 ### Lancez votre build local
 
-Lancez `yarn start` si le build est déjà présent sur votre appareil, sinon `yarn android:testing`.
+Lancez `yarn start` si le build est déjà présent sur votre appareil, sinon `yarn android:testing` (ou `yarn android:staging`).
 
 > La commande `maestro test` va détecter et utiliser automatiquement un émulateur local ou un appareil physique connecté en USB.
 
