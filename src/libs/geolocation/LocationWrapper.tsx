@@ -71,9 +71,10 @@ export const LocationWrapper = memo(function LocationWrapper({
       setUserPosition(newPosition)
       setUserPositionError(null)
       return newPosition
-    } catch (newPositionError) {
+    } catch (e) {
+      const newPositionError = e as { cause: GeolocationError } | null
       setUserPosition(null)
-      setUserPositionError(newPositionError as GeolocationError)
+      setUserPositionError(newPositionError?.cause ?? null)
       return null
     }
   }, [setUserPosition, setUserPositionError])
