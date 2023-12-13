@@ -85,4 +85,8 @@ FastImage.propTypes = {
   fallback: PropTypes.bool,
 }
 
+FastImageBase.propTypes = {
+  ...ViewPropTypes,
+}
+
 export default FastImage
