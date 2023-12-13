@@ -4,7 +4,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   buildAlgoliaFilter,
   fetchOffersByArtist,
-} from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
+} from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 
 jest.mock('algoliasearch')

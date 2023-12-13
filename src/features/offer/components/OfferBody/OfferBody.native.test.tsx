@@ -8,7 +8,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
@@ -42,7 +42,7 @@ jest.mock('features/offer/api/useSimilarOffers', () => ({
 }))
 
 let mockSameArtistPlaylist: HitOfferWithArtistAndEan[] = []
-jest.mock('features/offer/components/SameArtistPlaylist/hook/useSameArtistPlaylist', () => ({
+jest.mock('features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist', () => ({
   useSameArtistPlaylist: jest.fn(() => mockSameArtistPlaylist),
 }))
 
