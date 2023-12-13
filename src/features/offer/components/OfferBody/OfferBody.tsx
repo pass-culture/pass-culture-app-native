@@ -222,7 +222,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
-      void fetchNextPage()
+      fetchNextPage()
     }
   }, [data, fetchNextPage, hasNextPage])
 
