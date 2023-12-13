@@ -16,8 +16,7 @@ export const isValidFrenchPhoneNumber = (phonenumber: string) => {
   // 687 = Nouvelle-Calédonie
   // 689 = Polynésie française
   return (
-    phonenumber.match(metropolitanFranceReg) !== null ||
-    phonenumber.match(overseasFranceReg) !== null
+    metropolitanFranceReg.exec(phonenumber) !== null || overseasFranceReg.exec(phonenumber) !== null
   )
 }
 
