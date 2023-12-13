@@ -108,9 +108,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           height={height}
           onPress={onPressSeeMore as () => void}
         />
-      ) : (
-        <React.Fragment />
-      )
+      ) : null
     },
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )

@@ -39,9 +39,7 @@ type CulturalSurveyQuestionsProps = StackScreenProps<
   'CulturalSurveyQuestions'
 >
 
-export const CulturalSurveyQuestions = ({
-  route,
-}: CulturalSurveyQuestionsProps): React.JSX.Element => {
+export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps) {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const { push, navigate } = useNavigation<UseNavigationType>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
@@ -96,7 +94,7 @@ export const CulturalSurveyQuestions = ({
     )
   )
 
-  if (!culturalSurveyQuestionsData) return <React.Fragment />
+  if (!culturalSurveyQuestionsData) return null
 
   const navigateToNextQuestion = () => {
     if (isCurrentQuestionLastQuestion) {

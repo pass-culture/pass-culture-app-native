@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { getSpacing } from 'ui/theme'
 interface SectionProps {
   visible: boolean
-  children: React.JSX.Element | React.JSX.Element[]
+  children: React.JSX.Element | (React.JSX.Element | null)[]
   margin?: boolean
   onLayout?: (event: LayoutChangeEvent) => void
   testID?: string
