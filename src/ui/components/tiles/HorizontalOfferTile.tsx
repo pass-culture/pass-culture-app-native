@@ -116,8 +116,6 @@ const Column = styled.View({ flexDirection: 'column', flex: 1 })
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const Name = styled(Typo.ButtonText)``
-
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
   color: theme.colors.greyDark,
