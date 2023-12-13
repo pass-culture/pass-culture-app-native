@@ -28,7 +28,7 @@ Tableau récapitulatif des besoins de chaque plateforme pour lancer les tests:
 
 ### Installer la CLI Maestro
 
-Pour installer Maestro sur Mac OS, Linux or Windows :
+Pour installer Maestro sur Mac OS, Linux ou Windows :
 
 ```bash
 curl -Ls "https://get.maestro.mobile.dev" | bash
@@ -80,12 +80,10 @@ Si vous avez déjà l'application buildée localement sur votre emulateur, lance
 Il faut que le simulateur où vous avez buildé votre application soit démarré.
 
 ```bash
-xcrun simctl list
+xcrun simctl list | grep "(Booted)"
 ```
 
-Dans la sortie de cette commande, descendez à la section `== Devices ==`. Trouvez le device suivi de la mention `(Booted)`.
-
-Par exemple:
+Qui renvoie la ligne du device avec Booted:
 
 ```bash
 iPhone SE (3rd generation) (0669277D-1C16-461C-86DD-EF81E8C46E03) (Booted)
@@ -167,7 +165,7 @@ Admettons que nous voulions tester que la version testing du web se lance bien.
 
 S'il n'existe pas encore, duplicons le fichier `.yml` pour lancer l'application que nous souhaitons tester pour en créer un pour le web.
 
-Le fichier d'origine s'appel `.maestro/tests/reusableFlows/LaunchApp.yml`, créons donc `.maestro/tests/reusableFlows/LaunchApp.web.yml`.
+Le fichier d'origine s'appelle `.maestro/tests/reusableFlows/LaunchApp.yml`, créons donc `.maestro/tests/reusableFlows/LaunchApp.web.yml`.
 
 Dans ce fichier, remplaçons l'application que vise les tests par l'url du site web de testing. Au final nous aurons:
 
