@@ -32,17 +32,17 @@ const _SnackBar = (props: SnackBarProps) => {
 
   const containerRef: AnimatedRef = useRef(null)
   const progressBarContainerRef: AnimatedRef = useRef(null)
-  const [isVisible, setVisible] = useState(props.visible)
+  const [isVisible, setIsVisible] = useState(props.visible)
 
   async function triggerApparitionAnimation() {
-    setVisible(true)
+    setIsVisible(true)
     progressBarContainerRef.current?.fadeInDown?.(animationDuration)
     containerRef.current?.fadeInDown?.(animationDuration)
   }
   async function triggerVanishAnimation() {
     progressBarContainerRef.current?.fadeOutUp?.(animationDuration)
     containerRef.current?.fadeOutUp?.(animationDuration).then(() => {
-      setVisible(false)
+      setIsVisible(false)
     })
   }
 
