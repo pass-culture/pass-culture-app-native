@@ -83,6 +83,7 @@ FastImage.propTypes = {
   onError: PropTypes.func,
   onLoadEnd: PropTypes.func,
   fallback: PropTypes.bool,
+  resizeMode: PropTypes.oneOf(Object.keys(FastImage.resizeMode)),
 }
 
 FastImageBase.propTypes = {
