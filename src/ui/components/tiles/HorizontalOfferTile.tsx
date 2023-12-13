@@ -93,7 +93,7 @@ export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: 
               </Spacer.Flex>
             </React.Fragment>
           ) : (
-            <Name numberOfLines={2}>{offerDetails.name}</Name>
+            <OfferName title={offerDetails.name} />
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
