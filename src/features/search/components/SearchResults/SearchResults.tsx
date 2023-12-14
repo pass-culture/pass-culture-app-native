@@ -93,9 +93,9 @@ export const SearchResults: React.FC = () => {
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   const { params } = useRoute<UseRouteType<'Search'>>()
-  // TODO(refacto recherche): after removing location feature flag this can should be deleted
+  // TODO(PC-25239): after removing location feature flag this can should be deleted
   const { section } = useLocationType(searchState)
-  // TODO(refacto recherche): after removing location feature flag this can should be deleted
+  // TODO(PC-25239): after removing location feature flag this can should be deleted
   const { label: locationLabel } = useLocationChoice(section)
   const appliedFilters = useAppliedFilters(params ?? searchState)
   const {
