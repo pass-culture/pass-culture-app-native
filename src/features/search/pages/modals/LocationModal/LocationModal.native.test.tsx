@@ -376,10 +376,7 @@ describe('<LocationModal/>', () => {
       expect(defaultRadioButton.props.accessibilityState).toEqual({ checked: true })
     })
 
-    // FIXME(kopax-polyconseil): aroundRadius value keep jumping from 50 to 100, if defaultValues is set to fixed value, it stop to jump,
-    //  I assume there's a problem with the mock of mockSearchState.
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('the around me radius value when pressing reset button', async () => {
+    it('the around me radius value when pressing reset button', async () => {
       mockSearchState = {
         ...searchState,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
