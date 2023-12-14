@@ -48,7 +48,7 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
 
     Linking.openURL(webUrl + message)
   } else {
-    const { shouldEncodeURI, supportsURL = true, webUrl: _, ...options } = mapNetworkToSocial[mode]
+    const { shouldEncodeURI, supportsURL, webUrl: _, ...options } = mapNetworkToSocial[mode]
 
     const rawMessage = supportsURL
       ? `${content.body}\u00a0:\n`

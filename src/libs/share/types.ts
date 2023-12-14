@@ -15,4 +15,5 @@ export type ShareContent = {
   body: string
   subject?: string
 }
+
 export type ShareMode = 'default' | `${Network}`
