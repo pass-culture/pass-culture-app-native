@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 #ConfirmationEmailPage
 - assertVisible: "Confirme ton adresse e-mail"
