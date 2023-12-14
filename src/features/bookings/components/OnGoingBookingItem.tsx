@@ -10,7 +10,7 @@ import {
   isBookingInList,
 } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
-import { getShareOffer } from 'features/share/helpers/getShareOfferBest'
+import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModalBest'
 import { analytics } from 'libs/analytics'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
