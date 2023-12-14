@@ -113,7 +113,7 @@ jobs:
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement web sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[steps.web_deploy.outputs.status == 'failure'] }}"
+                      "text": "Le déploiement Web sur `${{ inputs.ENV }}` a ${{ fromJSON('["réussi :rocket:", "échoué :boom:"]')[steps.web_deploy.outputs.status == 'failure'] }}"
                   }
               ],
               "unfurl_links": false,
