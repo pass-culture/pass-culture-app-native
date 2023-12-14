@@ -4,7 +4,7 @@ import { Social } from 'react-native-share'
 import { MessagingAppContainer } from 'features/share/components/MessagingApps/MessagingAppContainer'
 import { eventMonitoring } from 'libs/monitoring'
 import { mapNetworkToSocial } from 'libs/share/mapNetworkToSocial'
-import { share } from 'libs/share/shareBest'
+import { share } from 'libs/share/share'
 import { Network, ShareContent } from 'libs/share/types'
 import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 

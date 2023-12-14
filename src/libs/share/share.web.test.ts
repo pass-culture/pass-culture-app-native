@@ -1,15 +1,17 @@
-import { Share } from 'react-native'
+import { Linking } from 'react-native'
 
 import { share } from 'libs/share/share'
 
-const defaultContent = { message: 'Message', messageWithoutLink: 'Message' }
-const defaultOptions = {}
-const shareMock = jest.spyOn(Share, 'share')
+const mockOpenUrl = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
+
+const defaultContent = { body: 'Message', url: new URL('https://www.toto.com') }
 
 describe('share()', () => {
-  it('should not trigger native share on web', () => {
-    share(defaultContent, defaultOptions)
+  it('should share with whatsapp url if on web and whatsapp mode', () => {
+    share({ content: defaultContent, mode: 'WhatsApp' })
 
-    expect(shareMock).not.toHaveBeenCalled()
+    expect(mockOpenUrl).toHaveBeenCalledWith(
+      'https://api.whatsapp.com/send?text=Message%C2%A0%3A%0Ahttps%3A%2F%2Fwww.toto.com/'
+    )
   })
 })
