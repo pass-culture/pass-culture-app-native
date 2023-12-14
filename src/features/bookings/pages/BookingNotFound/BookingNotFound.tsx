@@ -24,8 +24,8 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 
   async function onPress() {
-    // TODO(kopax): check if this can be removed. https://github.com/tannerlinsley/react-query/releases/tag/v3.32.3
-    // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
+    // TODO(PC-26467): check if this can be removed. https://github.com/tannerlinsley/react-query/releases/tag/v3.32.3
+    // if we reset too fast, it will rerun the failed query, this has no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
   }
