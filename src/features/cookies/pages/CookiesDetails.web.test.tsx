@@ -25,7 +25,7 @@ describe('<CookiesDetails/>', () => {
       await flushAllPromisesWithAct()
       const results = await checkAccessibilityFor(container, {
         rules: {
-          // TODO(LucasBeneston): throw an error because the UUIDV4 mock return "testUuidV4"
+          // TODO(PC-26463): throw an error because the UUIDV4 mock return "testUuidV4"
           'duplicate-id-aria': { enabled: false }, // error: "IDs used in ARIA and labels must be unique (duplicate-id-aria)"
         },
       })
