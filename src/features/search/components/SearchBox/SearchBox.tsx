@@ -147,7 +147,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // To force remove focus on search input
     Keyboard.dismiss()
 
-    // TODO(clesausse): remove this code when new venue page will be create
+    // TODO(PC-25976): remove this code when new venue page will be create
     // when pressing Voir toutes les offres on venue page
     const isSearchPreviousRoute = getIsSearchPreviousRoute(
       navigationRef.getState().routes,
