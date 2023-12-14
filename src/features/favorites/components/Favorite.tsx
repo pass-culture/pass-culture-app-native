@@ -9,7 +9,7 @@ import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteD
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { WebShareModal } from 'features/share/pages/WebShareModalBest'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
