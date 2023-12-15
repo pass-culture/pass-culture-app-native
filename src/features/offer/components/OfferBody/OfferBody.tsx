@@ -305,7 +305,6 @@ export const OfferBody: FunctionComponent<Props> = ({
             showVenueBanner={showVenueBanner}
           />
         )}
-
         {shouldDisplayOtherVenuesAvailableButton ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />
@@ -316,9 +315,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             />
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
-        ) : (
-          <React.Fragment />
-        )}
+        ) : null}
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>

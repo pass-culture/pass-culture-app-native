@@ -38,8 +38,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   }, [website])
 
   if (
-    !venue ||
-    !venue.contact ||
+    !venue?.contact ||
     (!venue.contact.email && !venue.contact.phoneNumber && !venue.contact.website)
   )
     return null

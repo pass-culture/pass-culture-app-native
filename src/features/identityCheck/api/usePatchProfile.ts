@@ -12,7 +12,9 @@ export function usePatchProfile() {
   return useMutation(
     () => {
       const body = getCompleteProfile(profile)
-      return body ? api.postNativeV1SubscriptionProfile(body) : Promise.reject()
+      return body
+        ? api.postNativeV1SubscriptionProfile(body)
+        : Promise.reject(new Error('No body was provided for subscription profile'))
     },
     {
       onError: () =>
