@@ -60,7 +60,7 @@ export type Action =
   | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
   | {
       type: 'SET_LOCATION_FILTERS'
-      payload: { locationFilter: SearchState['locationFilter']; includeDigitalOffers: boolean }
+      payload: { locationFilter: SearchState['locationFilter'] }
     }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
@@ -160,7 +160,6 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       return {
         ...state,
         locationFilter: action.payload.locationFilter,
-        includeDigitalOffers: action.payload.includeDigitalOffers,
       }
     default:
       return state

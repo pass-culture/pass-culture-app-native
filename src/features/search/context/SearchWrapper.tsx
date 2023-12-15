@@ -37,7 +37,6 @@ export const SearchWrapper = memo(function SearchWrapper({
     if (!enableAppLocation) return
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
-    const includeDigitalOffers = searchState.includeDigitalOffers ?? false
     if (locationType === LocationMode.AROUND_PLACE || locationType === LocationMode.AROUND_ME) {
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
@@ -53,7 +52,6 @@ export const SearchWrapper = memo(function SearchWrapper({
             locationType: LocationMode.AROUND_PLACE,
             aroundRadius,
           },
-          includeDigitalOffers,
         },
       })
     } else if (hasGeolocPosition) {
@@ -61,7 +59,6 @@ export const SearchWrapper = memo(function SearchWrapper({
         type: 'SET_LOCATION_FILTERS',
         payload: {
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius },
-          includeDigitalOffers,
         },
       })
     }

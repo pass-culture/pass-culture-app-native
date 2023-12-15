@@ -3,33 +3,25 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
-import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Slider } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
-const DISPLAY_DIGITAL_OFFER_CHECKBOX = false // PC-25854: the location system that we use with algolia prevent us from gathering numeric offer
 const MIN_RADIUS = 0
 const MAX_RADIUS = 100
 
 interface LocationSearchFiltersProps {
   onValuesChange: (newValues: number[]) => void
   aroundRadius: number
-  includeDigitalOffers: boolean
-  setIncludeDigitalOffers: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const LocationSearchFilters = ({
   onValuesChange,
   aroundRadius,
-  includeDigitalOffers,
-  setIncludeDigitalOffers,
 }: LocationSearchFiltersProps) => {
   const radiusLabelId = uuidv4()
 
   const formatKm = (km: number) => `${km}\u00a0km`
   const { sliderLength } = useGetFullscreenModalSliderLength(false)
-
-  const toggleCheckbox = () => setIncludeDigitalOffers(!includeDigitalOffers)
 
   return (
     <React.Fragment>
@@ -51,17 +43,6 @@ export const LocationSearchFilters = ({
         sliderLength={sliderLength}
         accessibilityLabelledBy={radiusLabelId}
       />
-
-      {DISPLAY_DIGITAL_OFFER_CHECKBOX ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Checkbox
-            isChecked={includeDigitalOffers}
-            label="Inclure les offres numériques"
-            onPress={toggleCheckbox}
-          />
-        </React.Fragment>
-      ) : null}
     </React.Fragment>
   )
 }

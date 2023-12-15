@@ -74,7 +74,6 @@ export interface SearchState {
   isAutocomplete?: boolean
   isFullyDigitalOffersCategory?: boolean
   minBookingsThreshold?: number
-  includeDigitalOffers?: boolean
   isFromHistory?: boolean
   venue?: Venue
 }

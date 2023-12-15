@@ -195,7 +195,6 @@ describe('SearchLocationModal', () => {
           locationType: LocationMode.AROUND_PLACE,
           aroundRadius: DEFAULT_RADIUS,
         },
-        includeDigitalOffers: false,
       })
     )
   })
@@ -213,7 +212,6 @@ describe('SearchLocationModal', () => {
       ...getTabNavConfig('Search', {
         ...mockSearchState,
         locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-        includeDigitalOffers: false,
       })
     )
   })
@@ -263,7 +261,6 @@ describe('SearchLocationModal', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: {
-          includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockRadiusPlace,
             locationType: LocationMode.AROUND_PLACE,
@@ -321,7 +318,6 @@ describe('SearchLocationModal', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: {
-          includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockAroundMeRadius,
             locationType: LocationMode.AROUND_ME,
