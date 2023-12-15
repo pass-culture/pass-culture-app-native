@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { VenueResponse } from 'api/gen'
+import { VenueContactModel, VenueResponse } from 'api/gen'
 import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlockNew/helpers'
+import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -20,11 +21,16 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
     })
   }
 
+  const logAnalytics = (type: keyof VenueContactModel) => {
+    analytics.logVenueContact({ type, venueId: venue.id })
+  }
+
   return (
     <React.Fragment>
       {!!email && (
         <ExternalTouchableLink
           externalNav={{ url: `mailto:${email}`, onError: onOpenUrlError }}
+          onBeforeNavigate={() => logAnalytics('email')}
           as={StyledButtonTertiaryBlack}
           wording={email}
           icon={EmailFilled}
@@ -33,6 +39,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
         <ExternalTouchableLink
           externalNav={{ url: `tel:${phoneNumber}`, onError: onOpenUrlError }}
+          onBeforeNavigate={() => logAnalytics('phoneNumber')}
           as={StyledButtonTertiaryBlack}
           wording={phoneNumber}
           icon={PhoneFilled}
@@ -41,6 +48,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
       {!!website && (
         <ExternalTouchableLink
           externalNav={{ url: website, onError: onOpenUrlError }}
+          onBeforeNavigate={() => logAnalytics('website')}
           as={StyledButtonTertiaryBlack}
           wording={website}
           icon={ExternalSiteFilled}
