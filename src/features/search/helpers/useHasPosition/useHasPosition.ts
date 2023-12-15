@@ -2,7 +2,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
 import { useLocation } from 'libs/geolocation'
 
-// TODO(PC-25239): after removing location feature flag this can should be deleted
+// TODO(PC-25239): after removing location feature flag this should be deleted
 export const useHasPosition = () => {
   const { searchState } = useSearch()
   const { userPosition: position } = useLocation()
