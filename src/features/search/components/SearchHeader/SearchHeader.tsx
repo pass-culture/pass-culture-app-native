@@ -1,15 +1,12 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { memo, useCallback } from 'react'
+import React, { memo } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { SearchLocationWidgetDesktop } from 'features/location/components/SearchLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
-import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchView } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -31,7 +28,6 @@ export const SearchHeader = memo(function SearchHeader({
   addSearchHistory,
   searchInHistory,
 }: Props) {
-  const { navigate } = useNavigation<UseNavigationType>()
   const subtitle = 'Toutes les offres à portée de main'
   const shouldDisplaySubtitle = !searchView || searchView === SearchView.Landing
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
@@ -39,13 +35,6 @@ export const SearchHeader = memo(function SearchHeader({
   const shouldDisplayMobileLocationWidget =
     enableAppLocation && shouldDisplaySubtitle && !isDesktopViewport
   const shouldDisplayDesktopLocationWidget = enableAppLocation && isDesktopViewport
-
-  const onSearch = useCallback(
-    (payload: Partial<SearchState>) => {
-      navigate(...getTabNavConfig('Search', payload))
-    },
-    [navigate]
-  )
 
   return (
     <React.Fragment>
@@ -63,7 +52,7 @@ export const SearchHeader = memo(function SearchHeader({
                   <Spacer.Row numberOfSpaces={6} />
                   <Separator.Vertical height={getSpacing(6)} />
                   <Spacer.Row numberOfSpaces={4} />
-                  <SearchLocationWidgetDesktop onSearch={onSearch} />
+                  <SearchLocationWidgetDesktop />
                 </LocationWidgetDesktopView>
               )}
             </TitleMainWrapper>

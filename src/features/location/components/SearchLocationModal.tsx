@@ -16,29 +16,21 @@ import { SuggestedPlace } from 'libs/place'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
-import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
-  showVenueModal: () => void
 }
 
-export const SearchLocationModal = ({
-  visible,
-  dismissModal,
-  showVenueModal,
-}: LocationModalProps) => {
+export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const {
     hasGeolocPosition,
     placeQuery,
@@ -82,8 +74,6 @@ export const SearchLocationModal = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { searchState, dispatch } = useSearch()
-
-  const [keyboardHeight, setKeyboardHeight] = useState(0)
 
   const theme = useTheme()
 
@@ -202,20 +192,6 @@ export const SearchLocationModal = ({
     Keyboard.dismiss()
   }
 
-  const onPressShowVenueModal = () => {
-    dismissModal()
-    onModalHideRef.current = showVenueModal
-  }
-
-  useKeyboardEvents({
-    onBeforeShow(data) {
-      setKeyboardHeight(data.keyboardHeight)
-    },
-    onBeforeHide() {
-      setKeyboardHeight(0)
-    },
-  })
-
   return (
     <AppModal
       visible={visible}
@@ -290,18 +266,6 @@ export const SearchLocationModal = ({
             onPress={onSubmit}
           />
         </ButtonContainer>
-        <Spacer.Column numberOfSpaces={8} />
-        <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={4} />
-        <Typo.Body>Tu peux aussi choisir un lieu culturel précis</Typo.Body>
-        <Spacer.Column numberOfSpaces={1} />
-        <ButtonTertiaryBlack
-          wording="Trouver un lieu culturel"
-          icon={LocationBuildingFilled}
-          onPress={onPressShowVenueModal}
-          justifyContent="flex-start"
-        />
-        <Spacer.Column numberOfSpaces={keyboardHeight / 4} />
       </StyledScrollView>
     </AppModal>
   )

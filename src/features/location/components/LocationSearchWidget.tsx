@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
-import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/location'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
@@ -22,12 +21,6 @@ export const LocationSearchWidget = () => {
     visible: locationModalVisible,
     showModal: showLocationModal,
     hideModal: hideLocationModal,
-  } = useModal()
-
-  const {
-    visible: venueModalVisible,
-    showModal: showVenueModal,
-    hideModal: hideVenueModal,
   } = useModal()
 
   const isWidgetHighlighted = hasGeolocPosition || !!place
@@ -48,12 +41,7 @@ export const LocationSearchWidget = () => {
         <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
-      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-      <SearchLocationModal
-        visible={locationModalVisible}
-        dismissModal={hideLocationModal}
-        showVenueModal={showVenueModal}
-      />
+      <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
     </Container>
   )
 }

@@ -37,7 +37,6 @@ const mockPlaces: SuggestedPlace[] = [
     geolocation: { longitude: -52.669736, latitude: 5.16186 },
   },
 ]
-const showModalMock = jest.fn()
 
 jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
@@ -152,7 +151,6 @@ describe('SearchLocationModal', () => {
             <SearchLocationModal
               visible={visible}
               dismissModal={() => fireEvent.press(screen.getByText('Close'))}
-              showVenueModal={showModalMock}
             />
             <Button title="Close" onPress={() => setVisible(false)} />
           </React.Fragment>
@@ -381,11 +379,7 @@ const SearchLocationModalWithMockButton = () => {
   return (
     <React.Fragment>
       <Button title="Open modal" onPress={() => setVisible(true)} />
-      <SearchLocationModal
-        visible={visible}
-        dismissModal={() => setVisible(false)}
-        showVenueModal={showModalMock}
-      />
+      <SearchLocationModal visible={visible} dismissModal={() => setVisible(false)} />
     </React.Fragment>
   )
 }
