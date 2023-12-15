@@ -3,40 +3,51 @@ import React from 'react'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ContactBlock } from './ContactBlockNew'
-import * as ContactHelpers from './helpers'
 
 const venueId = venueResponseSnap.id
-const email = 'contact@venue.com'
-const phoneNumber = '+33102030405'
-const website = 'https://my@website.com'
 
-const openMail = jest.spyOn(ContactHelpers, 'openMail')
-const openPhoneNumber = jest.spyOn(ContactHelpers, 'openPhoneNumber')
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+}))
+
+const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<ContactBlock/>', () => {
-  it('should open external email when the email button is press', () => {
+  it('should navigate to mail when pressing on email', async () => {
     render(<ContactBlock venue={venueResponseSnap} />)
+
     fireEvent.press(screen.getByText('contact@venue.com'))
 
-    expect(openMail).toHaveBeenNthCalledWith(1, email)
+    await waitFor(() => {
+      expect(openUrlSpy).toHaveBeenCalledWith('mailto:contact@venue.com', undefined, true)
+    })
   })
 
-  it('should open external phone when the phone button is press', () => {
+  it('should navigate to tel when pressing on phoneNumber', async () => {
     render(<ContactBlock venue={venueResponseSnap} />)
+
     fireEvent.press(screen.getByText('+33102030405'))
 
-    expect(openPhoneNumber).toHaveBeenNthCalledWith(1, phoneNumber)
+    await waitFor(() => {
+      expect(openUrlSpy).toHaveBeenCalledWith('tel:+33102030405', undefined, true)
+    })
   })
 
-  it('should open external website when the website button is press', () => {
+  it('should navigate to website when pressing on website adress', async () => {
     render(<ContactBlock venue={venueResponseSnap} />)
+
     fireEvent.press(screen.getByText('https://my@website.com'))
 
-    expect(openUrl).toHaveBeenNthCalledWith(1, website)
+    await waitFor(() => {
+      expect(openUrlSpy).toHaveBeenCalledWith('https://my@website.com', undefined, true)
+    })
   })
 
   it('should display the email, phoneNumber and website', () => {
@@ -74,6 +85,17 @@ describe('<ContactBlock/>', () => {
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
       type: 'website',
       venueId,
+    })
+  })
+
+  it('should show snackbar when error', async () => {
+    render(<ContactBlock venue={venueResponseSnap} />)
+    openUrlSpy.mockRejectedValueOnce(new Error('error'))
+
+    fireEvent.press(screen.getByText('https://my@website.com'))
+
+    await waitFor(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
     })
   })
 
