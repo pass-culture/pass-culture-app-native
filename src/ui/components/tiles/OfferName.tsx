@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { sanitizeOfferName } from 'shared/offer/helpers/sanitizeOfferName'
+import sanitizeTitle from 'shared/offer/helpers/sanitizeTitle'
 import { Typo } from 'ui/theme/typography'
 
 const OfferName = ({ title }: { title?: string }) => {
-  const uiTitle = sanitizeOfferName(title ?? '')
+  if (!title) return null
+  const uiTitle = sanitizeTitle(title)
   return <Name numberOfLines={2}>{uiTitle}</Name>
 }
 const Name = styled(Typo.ButtonText)``
