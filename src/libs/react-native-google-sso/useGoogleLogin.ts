@@ -1,12 +1,11 @@
 // eslint-disable-next-line no-restricted-imports
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
-// eslint-disable-next-line no-restricted-imports
-import { UseGoogleLoginOptionsAuthCodeFlow } from '@react-oauth/google'
 
 import { useOAuthState } from 'features/auth/api/useOAuthState'
 import { eventMonitoring } from 'libs/monitoring'
+import { GoogleLoginOptions } from 'libs/react-native-google-sso/types'
 
-export const useGoogleLogin = ({ onSuccess }: UseGoogleLoginOptionsAuthCodeFlow) => {
+export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
   const { data } = useOAuthState()
 
   if (!data?.oauthStateToken) return
@@ -16,11 +15,10 @@ export const useGoogleLogin = ({ onSuccess }: UseGoogleLoginOptionsAuthCodeFlow)
       await GoogleSignin.hasPlayServices({
         showPlayServicesUpdateDialog: true,
       })
-      const { serverAuthCode, scopes = [] } = await GoogleSignin.signIn()
+      const { serverAuthCode } = await GoogleSignin.signIn()
       if (onSuccess && serverAuthCode) {
         onSuccess({
           code: serverAuthCode,
-          scope: scopes.join(' '),
           state: data.oauthStateToken,
         })
       }
