@@ -28,7 +28,7 @@ export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
             onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueId)}
             as={ButtonPrimary}
             wording="Rechercher une offre"
-            icon={SmallMagnyfinGlass}
+            icon={SmallMagnifyingGlass}
             fullWidth
           />
           <Spacer.Column numberOfSpaces={6} />
@@ -39,7 +39,7 @@ export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
   )
 }
 
-const SmallMagnyfinGlass = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
+const SmallMagnifyingGlass = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
