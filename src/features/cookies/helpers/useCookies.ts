@@ -26,7 +26,7 @@ const removeCookiesConsentAndChoiceDate = async (cookiesChoice: CookiesConsent):
 }
 
 export const useCookies = () => {
-  const [cookiesConsent, setCookiesConsentInternalState] = useState<ConsentStatus>({
+  const [cookiesConsentInternalState, setCookiesConsentInternalState] = useState<ConsentStatus>({
     state: ConsentState.LOADING,
   })
   const { user: userProfileInfo } = useAuthContext()
@@ -80,7 +80,7 @@ export const useCookies = () => {
   }
 
   return {
-    cookiesConsent,
+    cookiesConsent: cookiesConsentInternalState,
     setCookiesConsent,
     setUserId,
   }

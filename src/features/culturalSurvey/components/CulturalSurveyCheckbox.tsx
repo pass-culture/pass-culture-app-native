@@ -18,17 +18,17 @@ type CulturalSurveyCheckboxProps = {
 }
 
 export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
-  const [selected, setIsSelected] = useState(props.selected)
+  const [isSelected, setIsSelected] = useState(props.selected)
 
   const AnswerIcon = props.icon
     ? styled(props.icon).attrs(({ theme }) => ({
-        color: selected ? theme.colors.secondary : theme.colors.greyDark,
-        color2: selected ? theme.colors.primary : theme.colors.greyDark,
+        color: isSelected ? theme.colors.secondary : theme.colors.greyDark,
+        color2: isSelected ? theme.colors.primary : theme.colors.greyDark,
       }))``
     : null
 
   const onPress = () => {
-    setIsSelected(!selected)
+    setIsSelected(!isSelected)
     props.onPress()
   }
 
@@ -36,7 +36,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
     setIsSelected(props.selected)
   }, [props.selected])
 
-  const colors = selected
+  const colors = isSelected
     ? [theme.colors.secondary, theme.colors.primary]
     : [theme.colors.greyMedium, theme.colors.greyMedium]
 
@@ -44,7 +44,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
   return (
     <StyledLinearGradient colors={colors}>
       <AnswerContainer
-        {...accessibleCheckboxProps({ checked: selected, label: accessibilityLabel })}
+        {...accessibleCheckboxProps({ checked: isSelected, label: accessibilityLabel })}
         onPress={onPress}>
         {!!AnswerIcon && (
           <ActivityIconContainer>
@@ -55,7 +55,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
           <Typo.ButtonText>{props.title}</Typo.ButtonText>
           {!!props.subtitle && <Typo.CaptionNeutralInfo>{props.subtitle}</Typo.CaptionNeutralInfo>}
         </DescriptionContainer>
-        {!!selected && (
+        {!!isSelected && (
           <ValidateIconContainer>
             <RedValidate />
           </ValidateIconContainer>
