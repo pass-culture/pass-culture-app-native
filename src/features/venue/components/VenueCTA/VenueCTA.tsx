@@ -3,10 +3,14 @@ import styled from 'styled-components/native'
 
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
+import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { getSpacing, Spacer } from 'ui/theme'
+
+export const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
 interface Props {
   venueId: number
@@ -15,20 +19,23 @@ interface Props {
 export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)
   return (
-    <React.Fragment>
-      <CallToActionContainer>
-        <InternalTouchableLink
-          navigateTo={searchNavConfig}
-          onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueId)}
-          as={ButtonPrimary}
-          wording="Rechercher une offre"
-          icon={SmallMagnyfinGlass}
-          fullWidth
-        />
-        <Spacer.Column numberOfSpaces={6} />
-      </CallToActionContainer>
-      <Spacer.BottomScreen />
-    </React.Fragment>
+    <StickyBottomWrapper>
+      <BlurryWrapper>
+        <CallToActionContainer>
+          <Spacer.Column numberOfSpaces={6} />
+          <InternalTouchableLink
+            navigateTo={searchNavConfig}
+            onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueId)}
+            as={ButtonPrimary}
+            wording="Rechercher une offre"
+            icon={SmallMagnyfinGlass}
+            fullWidth
+          />
+          <Spacer.Column numberOfSpaces={6} />
+        </CallToActionContainer>
+        <Spacer.BottomScreen />
+      </BlurryWrapper>
+    </StickyBottomWrapper>
   )
 }
 
