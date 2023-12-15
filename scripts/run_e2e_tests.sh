@@ -49,4 +49,6 @@ fi
 
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
+ts-node -O '{"module": "commonjs"}' ./scripts/enableNativeRecaptcha.ts "$env" false
 maestro test -e APP_ID="$app_id" -e USERNAME="dev-tests-e2e@passculture.team" -e USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" -e NEW_USERNAME="dev-tests-e2e-new@passculture.team" -e NUMBER_PHONE="0607080910" -e PASSWORD="$password" "$tests_path"
+ts-node -O '{"module": "commonjs"}' ./scripts/enableNativeRecaptcha.ts "$env" true
