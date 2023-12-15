@@ -55,7 +55,9 @@ describe('GenericHome', () => {
       renderGenericHome()
       await act(async () => {})
 
-      expect(screen).toMatchSnapshot()
+      await waitFor(() => {
+        expect(screen).toMatchSnapshot()
+      })
     })
 
     it('should display offline page when not connected', async () => {
@@ -80,7 +82,9 @@ describe('GenericHome', () => {
 
       await act(async () => {})
 
-      expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+      await waitFor(() => {
+        expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+      })
     })
 
     it('should finish home loading performance transaction when home page loaded', async () => {

@@ -30,7 +30,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 describe('useLocationChoice', () => {
   it.each`
-    loLocationMode.EVERYWHERE    | locationFilter    LocationMode.EVERYWHERE                                               | position            | hasPositionValue
+    loLocationType               | locationFilter                                                                          | position            | hasPositionValue
     ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${true}
     ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${false}
     ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${true}
