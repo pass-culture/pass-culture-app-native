@@ -81,7 +81,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
             wording="Copier l’adresse"
             textToCopy={`${venueName}, ${venueFullAddress}`}
             onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-            snackBarMessage="L’adresse a bien été copiée"
+            snackBarMessage="L’adresse a bien été copiée."
           />
           <Spacer.Column numberOfSpaces={3} />
           <SeeItineraryButton

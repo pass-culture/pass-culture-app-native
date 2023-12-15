@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Share as DefaultShare } from 'ui/svg/icons/BicolorShare'
@@ -14,34 +14,8 @@ interface Props {
 }
 
 export const DeeplinkItem = ({ deeplink, before }: Props) => {
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-  const copyToClipboard = useCallback(
-    (url: string) => {
-      try {
-        globalThis.navigator.clipboard.writeText(url)
-        showSuccessSnackBar({
-          message: `${url} à été copié dans ton press-papier\u00a0!`,
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      } catch (error) {
-        if (error instanceof Error)
-          showErrorSnackBar({
-            message: `${url} n’a pas été copié dans ton press-papier\u00a0: ${error.message}`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [deeplink]
-  )
-
-  const copyToClipboardUniversalLink = useCallback(() => {
-    copyToClipboard(deeplink.universalLink)
-  }, [copyToClipboard, deeplink.universalLink])
-
-  const copyToClipboardFirebaseLink = useCallback(() => {
-    copyToClipboard(deeplink.firebaseLink)
-  }, [copyToClipboard, deeplink.firebaseLink])
+  const copyToClipboardUniversalLink = useCopyToClipboard({ textToCopy: deeplink.universalLink })
+  const copyToClipboardFirebaseLink = useCopyToClipboard({ textToCopy: deeplink.firebaseLink })
 
   return (
     <React.Fragment>

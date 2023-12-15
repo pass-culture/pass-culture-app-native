@@ -2,22 +2,17 @@ import React from 'react'
 
 import { DeeplinkItem } from 'features/internal/marketingAndCommunication/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { fireEvent, render, screen } from 'tests/utils/web'
-import {
-  hideSnackBar,
-  showErrorSnackBar,
-  showInfoSnackBar,
-  showSuccessSnackBar,
-} from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { fireEvent, render, screen, act } from 'tests/utils/web'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 const writeText = jest.fn()
-const mockedUseSnackBarContext = useSnackBarContext as jest.MockedFunction<
-  typeof useSnackBarContext
->
-
+const mockShowSuccessSnackBar = jest.fn()
+const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: jest.fn(() => ({})),
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: mockShowSuccessSnackBar,
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
 }))
 
 Object.assign(navigator, {
@@ -32,35 +27,26 @@ describe('<DeeplinkItem />', () => {
     universalLink: 'https://universalLink',
   }
 
-  beforeEach(() => {
-    mockedUseSnackBarContext.mockReturnValue({
-      hideSnackBar,
-      showInfoSnackBar,
-      showSuccessSnackBar,
-      showErrorSnackBar,
-    })
-  })
-
-  it('should copy the universal link to clipboard', () => {
+  it('should copy the universal link to clipboard', async () => {
     render(<DeeplinkItem deeplink={deeplink} />)
 
-    fireEvent.click(screen.getByTestId('Copier'))
+    await act(() => fireEvent.click(screen.getByTestId('Copier')))
 
     expect(writeText).toHaveBeenCalledWith(deeplink.universalLink)
-    expect(showSuccessSnackBar).toHaveBeenCalledWith({
-      message: `${deeplink.universalLink} à été copié dans ton press-papier\u00a0!`,
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Copié\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
-  it('should copy the firebase link to clipboard', () => {
+  it('should copy the firebase link to clipboard', async () => {
     render(<DeeplinkItem deeplink={deeplink} />)
 
-    fireEvent.click(screen.getByTestId('Copier dans le presse-papier'))
+    await act(() => fireEvent.click(screen.getByTestId('Copier dans le presse-papier')))
 
     expect(writeText).toHaveBeenCalledWith(deeplink.firebaseLink)
-    expect(showSuccessSnackBar).toHaveBeenCalledWith({
-      message: `${deeplink.firebaseLink} à été copié dans ton press-papier\u00a0!`,
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Copié\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
     })
   })
