@@ -222,7 +222,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }, [])
 
   const googleLogin = useGoogleLogin({
-    onSuccess: ({ code }) => signIn({ authorizationCode: code }),
+    onSuccess: ({ code, state = '' }) =>
+      signIn({ authorizationCode: code, oauthStateToken: state }),
     flow: 'auth-code',
   })
 

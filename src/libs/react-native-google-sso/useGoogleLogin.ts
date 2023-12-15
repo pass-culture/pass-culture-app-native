@@ -14,7 +14,7 @@ export const useGoogleLogin =
       })
       const { serverAuthCode, scopes = [] } = await GoogleSignin.signIn()
       if (onSuccess && serverAuthCode) {
-        onSuccess({ code: serverAuthCode, scope: scopes.join(' ') })
+        onSuccess({ code: serverAuthCode, scope: scopes.join(' '), state: '' })
       }
     } catch (e) {
       eventMonitoring.captureMessage(`Can’t login via Google: ${e}`, 'info')

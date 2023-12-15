@@ -132,6 +132,7 @@ describe('<Login/>', () => {
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
+      oauthStateToken: '',
       deviceInfo: {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
@@ -153,6 +154,7 @@ describe('<Login/>', () => {
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
+      oauthStateToken: '',
       deviceInfo: undefined,
     })
   })
