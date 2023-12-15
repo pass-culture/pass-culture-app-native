@@ -171,7 +171,7 @@ describe('SnackBar Component', () => {
      * "refresher" updated
      * "visible" goes from true to false
      */
-    // FIXME(anoukhello) find a way to fix this test that fails after react upgrade
+    // FIXME(PC-26461) find a way to fix this test that fails after react upgrade
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should hide the snackbar container when hidden', async () => {
       const timing = jest.spyOn(Animated, 'timing')
@@ -199,7 +199,7 @@ describe('SnackBar Component', () => {
      * "refresher" updated
      * "visible" still the same => props.visible === state.isVisible
      */
-    // FIXME(anoukhello) find a way to fix this test that fails after react upgrade
+    // FIXME(PC-26461) find a way to fix this test that fails after react upgrade
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should reset progressBar animation when visual properties changed', async () => {
       const timing = getAnimatedTimingImplementation()

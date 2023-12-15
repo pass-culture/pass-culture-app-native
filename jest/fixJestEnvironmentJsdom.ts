@@ -6,7 +6,7 @@ export default class FixJSDOMEnvironment extends JSDOMEnvironment {
   constructor(...args: ConstructorParameters<typeof JSDOMEnvironment>) {
     super(...args)
 
-    // FIXME(voisinhugo) https://github.com/jsdom/jsdom/issues/3363#issuecomment-1467894943
+    // FIXME(PC-26466) https://github.com/jsdom/jsdom/issues/3363#issuecomment-1467894943
     this.global.structuredClone = structuredClone
   }
 }

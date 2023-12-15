@@ -58,7 +58,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
       </View>
       <Spacer.Flex flex={1} />
       <View>
-        {/* TODO(anoukhello) use an InternalTouchableLink instead of button */}
+        {/* TODO(PC-26464) use an InternalTouchableLink instead of button */}
         <ButtonPrimary
           onPress={() => {
             analytics.logHasStartedCulturalSurvey()
@@ -69,7 +69,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           wording="Débuter le questionnaire"
         />
         <Spacer.Column numberOfSpaces={3} />
-        {/* TODO(anoukhello) use an InternalTouchableLink instead of button */}
+        {/* TODO(PC-26464) use an InternalTouchableLink instead of button */}
         <ButtonTertiaryBlack
           wording="Plus tard"
           onPress={() => {

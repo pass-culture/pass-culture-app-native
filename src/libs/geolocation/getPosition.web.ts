@@ -48,7 +48,6 @@ export const getPosition = () =>
             break
           case GeolocPositionError.TIMEOUT:
             // Location request timed out
-            // TODO(unknown): we could implement a retry pattern
             reject({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
             break
           default:

@@ -6,7 +6,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
+import { act, fireEvent, render, waitFor, screen, waitForModalToShow } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -30,8 +30,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
 describe('SetPhoneNumber', () => {
-  // FIXME(anoukhello): find a way to get snapshot with modal animation
-  // when keeping visible to true, snapshot is different on every test run on modal animation props opacity and translateY
   it('should match snapshot without modal appearance', async () => {
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
       visible: false,
@@ -46,9 +44,9 @@ describe('SetPhoneNumber', () => {
     })
     renderSetPhoneNumber()
 
-    await waitFor(() => {
-      expect(screen).toMatchSnapshot()
-    })
+    await waitForModalToShow()
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should show modal on first render', async () => {
