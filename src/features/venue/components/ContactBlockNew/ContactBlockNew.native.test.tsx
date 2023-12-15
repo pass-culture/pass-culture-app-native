@@ -4,7 +4,6 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ContactBlock } from './ContactBlockNew'
 
@@ -13,7 +12,7 @@ const venueId = venueResponseSnap.id
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+    showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
 
@@ -89,8 +88,8 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should show snackbar when error', async () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
     openUrlSpy.mockRejectedValueOnce(new Error('error'))
+    render(<ContactBlock venue={venueResponseSnap} />)
 
     fireEvent.press(screen.getByText('https://my@website.com'))
 
