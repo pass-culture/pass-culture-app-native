@@ -2,7 +2,7 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { AccountState, SigninResponse, UserProfileResponse } from 'api/gen'
+import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
@@ -28,8 +28,8 @@ jest.mock('uuid', () => {
 
 jest.mock('@react-oauth/google', () => ({
   ...jest.requireActual('@react-oauth/google'),
-  useGoogleLogin: jest.fn(({ onSuccess }) => {
-    return () => onSuccess({ code: 'ssoAuthorizationCode' })
+  useGoogleLogin: jest.fn(({ onSuccess, ...options }) => {
+    return () => onSuccess({ ...options, code: 'ssoAuthorizationCode', state: 'oauth_state_token' })
   }),
 }))
 
@@ -43,6 +43,9 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 describe('<Login/>', () => {
   beforeEach(() => {
     useFeatureFlagSpy.mockReturnValue(false)
+    mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+      oauthStateToken: 'oauth_state_token',
+    })
   })
 
   describe('Accessibility', () => {
@@ -73,7 +76,9 @@ describe('<Login/>', () => {
     })
     renderLogin()
 
-    await act(async () => fireEvent.click(screen.getByTestId('SSO Google')))
+    const ssoButton = await screen.findByTestId('SSO Google')
+
+    await act(async () => fireEvent.click(ssoButton))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })

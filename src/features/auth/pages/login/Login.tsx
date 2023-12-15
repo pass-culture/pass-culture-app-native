@@ -274,7 +274,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             disabled={shouldDisableLoginButton}
           />
         </Form.MaxWidth>
-        {!!enableGoogleSSO && (
+        {!!(enableGoogleSSO && googleLogin) && (
           <ButtonTertiarySecondary onPress={googleLogin} wording="SSO Google" />
         )}
         <Spacer.Column numberOfSpaces={8} />
