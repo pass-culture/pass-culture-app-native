@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { VenueResponse } from 'api/gen'
+import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlockNew/helpers'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -29,7 +30,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
           icon={EmailFilled}
         />
       )}
-      {!!phoneNumber && (
+      {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
         <ExternalTouchableLink
           externalNav={{ url: `tel:${phoneNumber}`, onError: onOpenUrlError }}
           as={StyledButtonTertiaryBlack}

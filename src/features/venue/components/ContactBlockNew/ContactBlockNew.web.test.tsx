@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { VenueResponse } from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
@@ -56,5 +57,15 @@ describe('<ContactBlock/>', () => {
     await waitFor(() => {
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
     })
+  })
+
+  it('should not show phoneNumber if invalid format', () => {
+    const venueWithInvalidPhoneNumber: VenueResponse = {
+      ...venueResponseSnap,
+      contact: { phoneNumber: '1234567890' },
+    }
+    render(<ContactBlock venue={venueWithInvalidPhoneNumber} />)
+
+    expect(screen.queryByText('1234567890')).not.toBeInTheDocument()
   })
 })
