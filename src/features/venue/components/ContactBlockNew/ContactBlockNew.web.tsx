@@ -1,16 +1,46 @@
 import React from 'react'
 
 import { VenueResponse } from 'api/gen'
-import { Typo } from 'ui/theme'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 
 export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
   const { email, phoneNumber, website } = venue?.contact || {}
 
   return (
     <React.Fragment>
-      {!!email && <Typo.Body>{email}</Typo.Body>}
-      {!!phoneNumber && <Typo.Body>{phoneNumber}</Typo.Body>}
-      {!!website && <Typo.Body>{website}</Typo.Body>}
+      {!!email && (
+        <ExternalTouchableLink
+          externalNav={{ url: `mailto:${email}` }}
+          as={StyledButtonTertiaryBlack}
+          wording={email}
+          icon={EmailFilled}
+        />
+      )}
+      {!!phoneNumber && (
+        <ExternalTouchableLink
+          externalNav={{ url: `tel:${phoneNumber}` }}
+          as={StyledButtonTertiaryBlack}
+          wording={phoneNumber}
+          icon={PhoneFilled}
+        />
+      )}
+      {!!website && (
+        <ExternalTouchableLink
+          externalNav={{ url: website }}
+          as={StyledButtonTertiaryBlack}
+          wording={website}
+          icon={ExternalSiteFilled}
+        />
+      )}
     </React.Fragment>
   )
 }
+
+const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack)({
+  justifyContent: 'flex-start',
+})
