@@ -2,11 +2,19 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ContactBlock } from './ContactBlockNew'
 
 const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
+const mockShowErrorSnackBar = jest.fn()
+
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+}))
 
 describe('<ContactBlock/>', () => {
   it('should match snapshot', () => {
@@ -37,5 +45,16 @@ describe('<ContactBlock/>', () => {
     fireEvent.click(screen.getByText('https://my@website.com'))
 
     expect(openUrlSpy).toHaveBeenCalledWith('https://my@website.com', undefined, true)
+  })
+
+  it('should show snackbar when error', async () => {
+    render(<ContactBlock venue={venueResponseSnap} />)
+    openUrlSpy.mockRejectedValueOnce(new Error('error'))
+
+    fireEvent.click(screen.getByText('https://my@website.com'))
+
+    await waitFor(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
+    })
   })
 })
