@@ -44,7 +44,7 @@ let isFirstChunkError = false
 
 window.onerror = function (error, source) {
   const hasFailedChunk =
-    error.includes("Unexpected token '<'") || error.includes("expected expression, got '<' string")
+    error.includes("Unexpected token '<'") || error.includes("got '<'")
   if (
     !isFirstChunkError &&
     hasFailedChunk &&
