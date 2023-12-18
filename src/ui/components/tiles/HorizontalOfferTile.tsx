@@ -14,7 +14,7 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import OfferName from 'ui/components/tiles/OfferName'
+import { OfferName } from 'ui/components/tiles/OfferName'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Spacer, Typo } from 'ui/theme'
 interface Props {
