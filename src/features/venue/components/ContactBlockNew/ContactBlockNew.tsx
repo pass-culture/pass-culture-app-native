@@ -17,7 +17,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
 
   const onOpenUrlError = () => {
     showErrorSnackBar({
-      message: 'Une erreur est survenue',
+      message: 'Une erreur est survenue.',
     })
   }
 

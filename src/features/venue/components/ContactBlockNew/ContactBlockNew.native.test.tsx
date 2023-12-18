@@ -94,7 +94,7 @@ describe('<ContactBlock/>', () => {
     fireEvent.press(screen.getByText('https://my@website.com'))
 
     await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue.' })
     })
   })
 
