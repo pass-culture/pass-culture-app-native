@@ -35,9 +35,10 @@ export const useGeolocation = () => {
       setGeolocPosition(newPosition)
       setGeolocPositionError(null)
       return newPosition
-    } catch (newPositionError) {
+    } catch (e) {
+      const newPositionError = e as { cause: GeolocationError } | null
       setGeolocPosition(null)
-      setGeolocPositionError(newPositionError as GeolocationError)
+      setGeolocPositionError(newPositionError?.cause ?? null)
       return null
     }
   }, [setGeolocPosition, setGeolocPositionError])
