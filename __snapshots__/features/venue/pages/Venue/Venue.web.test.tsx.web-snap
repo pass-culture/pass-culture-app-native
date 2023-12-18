@@ -974,6 +974,16 @@ d’options
             />
           </div>
         </div>
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-height-1iznev0"
+          />
+        </div>
       </div>
     </div>
     <div
@@ -1130,44 +1140,55 @@ d’options
       />
     </div>
     <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-marginHorizontal-1hy1u7s"
+      class="css-view-175oi2r r-bottom-1p0dtai r-position-u8s1d r-width-13qz1uu"
     >
-      <button
-        aria-label="Rechercher une offre"
-        class="c8 c9"
-        data-testid="Rechercher une offre"
-        tabindex="0"
-        type="button"
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-backdropFilter-1jy2u1p"
       >
         <div
-          class="css-view-175oi2r r-flexShrink-1q142lx"
+          class="css-view-175oi2r r-alignItems-1awozwy r-marginHorizontal-1hy1u7s"
         >
           <div
-            class="css-view-175oi2r"
-            data-testid="button-icon"
+            class="css-view-175oi2r r-height-1472mwg"
+          />
+          <button
+            aria-label="Rechercher une offre"
+            class="c8 c9"
+            data-testid="Rechercher une offre"
+            tabindex="0"
+            type="button"
           >
             <div
-              class="css-text-1rynq56"
+              class="css-view-175oi2r r-flexShrink-1q142lx"
+            >
+              <div
+                class="css-view-175oi2r"
+                data-testid="button-icon"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  button-icon-SVG-Mock
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
               dir="ltr"
             >
-              button-icon-SVG-Mock
+              Rechercher une offre
             </div>
-          </div>
+          </button>
+          <div
+            class="css-view-175oi2r r-height-1472mwg"
+          />
         </div>
         <div
-          class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
-          dir="ltr"
-        >
-          Rechercher une offre
-        </div>
-      </button>
-      <div
-        class="css-view-175oi2r r-height-1472mwg"
-      />
+          class="css-view-175oi2r r-height-3da1kt"
+        />
+      </div>
     </div>
-    <div
-      class="css-view-175oi2r r-height-3da1kt"
-    />
   </div>
 </div>
 `;

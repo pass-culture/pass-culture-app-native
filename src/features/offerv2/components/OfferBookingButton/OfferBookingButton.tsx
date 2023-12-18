@@ -5,7 +5,7 @@ import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanne
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
-import { StickyWrapper } from 'ui/components/StickyWrapper/StickyWrapper'
+import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Spacer, getSpacing } from 'ui/theme'
 
 type OfferBookingButtonProps = {
@@ -27,7 +27,7 @@ export function OfferBookingButton({
   }
 
   return (
-    <StickyWrapper>
+    <StickyBottomWrapper>
       <BlurryWrapper>
         <CallToActionContainer>
           <CTAButton
@@ -47,7 +47,7 @@ export function OfferBookingButton({
           <Spacer.BottomScreen />
         )}
       </BlurryWrapper>
-    </StickyWrapper>
+    </StickyBottomWrapper>
   )
 }
 
