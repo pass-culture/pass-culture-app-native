@@ -33,4 +33,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
   WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
+  WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',
 }
