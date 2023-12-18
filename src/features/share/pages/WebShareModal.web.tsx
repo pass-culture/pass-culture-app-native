@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { WebShareModalProps } from 'features/share/types'
 // We are in a .web file, with a specific behavior depending on the device
 // eslint-disable-next-line no-restricted-imports
 import {
@@ -9,7 +10,6 @@ import {
   isMobileDeviceDetectOnWeb,
 } from 'libs/react-device-detect'
 import { SocialButton } from 'libs/share/SocialButton'
-import { ShareContent } from 'libs/share/types'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -27,13 +27,6 @@ import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { getSpacingString, Spacer } from 'ui/theme'
-
-export interface WebShareModalProps {
-  visible: boolean
-  headerTitle: string
-  shareContent: ShareContent
-  dismissModal: () => void
-}
 
 export const WebShareModal = ({
   visible,
