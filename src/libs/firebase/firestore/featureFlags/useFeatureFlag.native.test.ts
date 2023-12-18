@@ -30,6 +30,7 @@ describe.each([
   RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
   RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST,
   RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
+  RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,
 ])('useFeatureFlag %s', (featureFlag: RemoteStoreFeatureFlags) => {
   beforeAll(() =>
     collection(featureFlag)

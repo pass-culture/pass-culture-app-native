@@ -40,19 +40,18 @@ export const getPosition = () =>
         const errorType = getWebGeolocErrorFromCode(code)
         switch (errorType) {
           case GeolocPositionError.PERMISSION_DENIED:
-            reject(null)
+            reject(new Error(errorType))
             break
-          case GeolocPositionError.POSITION_UNAVAILABLE:
-            // Location provider not available
-            reject({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
-            break
-          case GeolocPositionError.TIMEOUT:
-            // Location request timed out
-            // TODO(unknown): we could implement a retry pattern
-            reject({ type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] })
+          case GeolocPositionError.POSITION_UNAVAILABLE: // Location provider not available
+          case GeolocPositionError.TIMEOUT: // Location request timed out
+            reject(
+              new Error(errorType, {
+                cause: { type: errorType, message: GEOLOCATION_USER_ERROR_MESSAGE[errorType] },
+              })
+            )
             break
           default:
-            reject(null)
+            reject(new Error('Unknown error when getting position'))
             break
         }
       },

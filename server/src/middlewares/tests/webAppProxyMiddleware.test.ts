@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'http'
-
+import { Request } from 'express'
 import {
   OFFER_RESPONSE_SNAPSHOT,
   TEST_HTML,
@@ -64,6 +64,28 @@ describe('metasResponseInterceptor', () => {
       )
 
       expect(unmodifiedResponseBuffer).toEqual(imagePngResponseBuffer)
+    })
+
+    it('should set cache-control public,no-cache and return unmodified response buffer when content-type is text/html and req.url end with .js', async () => {
+      const jsResponseBuffer = Buffer.from('var foo = "bar"')
+      const proxyRes = {
+        headers: {
+          'content-type': 'text/html',
+        },
+      } as IncomingMessage
+      const setHeader = jest.fn()
+      const unmodifiedResponseBuffer = await metasResponseInterceptor(
+        jsResponseBuffer,
+        proxyRes,
+        {
+          path: 'static/js/main.abcdef.chunk.js'
+        } as Request,
+        {
+          setHeader,
+        } as any
+      )
+      expect(setHeader).toBeCalledWith('Cache-Control', 'public,no-cache')
+      expect(unmodifiedResponseBuffer).toEqual(jsResponseBuffer)
     })
 
     it.each([

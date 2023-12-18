@@ -7,7 +7,13 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import * as API from 'api/api'
-import { AccountState, FavoriteResponse, SigninResponse, UserProfileResponse } from 'api/gen'
+import {
+  AccountState,
+  FavoriteResponse,
+  OauthStateResponse,
+  SigninResponse,
+  UserProfileResponse,
+} from 'api/gen'
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
@@ -18,6 +24,7 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
@@ -55,6 +62,9 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 describe('<Login/>', () => {
   beforeEach(() => {
     mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+    mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+      oauthStateToken: 'oauth_state_token',
+    })
     simulateSignin200()
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
@@ -83,9 +93,8 @@ describe('<Login/>', () => {
     useFeatureFlagSpy.mockReturnValue(true)
 
     renderLogin()
-    await act(() => {})
 
-    expect(screen.getByTestId('SSO Google')).toBeOnTheScreen()
+    expect(await screen.findByTestId('SSO Google')).toBeOnTheScreen()
   })
 
   it('should sign in when "Se connecter" is clicked with device info when feature flag is active', async () => {
@@ -128,10 +137,12 @@ describe('<Login/>', () => {
     })
 
     renderLogin()
-    await act(() => fireEvent.press(screen.getByTestId('SSO Google')))
+
+    await act(async () => fireEvent.press(await screen.findByTestId('SSO Google')))
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
+      oauthStateToken: 'oauth_state_token',
       deviceInfo: {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
@@ -141,7 +152,11 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when SSO Google button is clicked without device info when feature flag is disabled', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // The first mock is to display SSO login button
+    // Due to multiple rerender we have to mock the return value this way. We mock the implementation to keep the trusted device FF disabled
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockImplementation(
+      (flag) => flag === RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO
+    )
     mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
@@ -149,10 +164,11 @@ describe('<Login/>', () => {
     })
 
     renderLogin()
-    await act(() => fireEvent.press(screen.getByTestId('SSO Google')))
+    await act(async () => fireEvent.press(await screen.findByTestId('SSO Google')))
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
+      oauthStateToken: 'oauth_state_token',
       deviceInfo: undefined,
     })
   })
@@ -164,7 +180,7 @@ describe('<Login/>', () => {
     jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
 
     renderLogin()
-    await act(() => fireEvent.press(screen.getByTestId('SSO Google')))
+    await act(async () => fireEvent.press(await screen.findByTestId('SSO Google')))
 
     expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
       'Can’t login via Google: GoogleSignIn Error',

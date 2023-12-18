@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http'
 
+import { Request } from 'express'
 import { createProxyMiddleware, responseInterceptor } from 'http-proxy-middleware'
 
 import { env } from '../libs/environment/env'
@@ -41,6 +42,13 @@ export async function metasResponseInterceptor(
   req: IncomingMessage,
   res: ServerResponse
 ) {
+  // When a js chunk is fetched, it is expected to have a content-type: application/javascript
+  // if content-type: text/html, it means the index.html fallback as been returned, in such case, we do not want any cache
+  if (proxyRes.headers['content-type'] === 'text/html' && (req as Request).path?.endsWith('.js')) {
+    // If this is still cached and thus not working, test with no-store instead of no-cache
+    res.setHeader('Cache-Control', 'public,no-cache')
+    return responseBuffer
+  }
   if (proxyRes.headers['content-type'] !== 'text/html') {
     return responseBuffer
   }

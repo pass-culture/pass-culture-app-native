@@ -39,7 +39,6 @@ const UserBlockedSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = 
   )
 }
 
-//TODO(marineshaw): Temporary fix until we agree on a new icon standard
 export const UserBlocked = ({ color, size, accessibilityLabel, testID }: AccessibleIcon) => {
   const theme = useTheme()
   const baseColor = color ?? theme.colors.black

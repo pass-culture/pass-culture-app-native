@@ -83,7 +83,7 @@ export const EduConnectForm = () => {
         `EduConnectForm fail to render Webview. errorDomain: ${errorDomain}, errorCode: ${errorCode}, errorDesc: ${errorDesc}`
       )
     )
-    return <React.Fragment></React.Fragment>
+    return <React.Fragment />
   }
 
   return (
@@ -100,7 +100,7 @@ export const EduConnectForm = () => {
               incognito
             />
           ) : (
-            <React.Fragment></React.Fragment>
+            <React.Fragment />
           )
         }
       />

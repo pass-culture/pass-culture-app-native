@@ -59,10 +59,6 @@ export const Stepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
-  // TODO(yorickeando): this bit was done to ensure that DMS orphans did not have to go through the identity
-  // check process twice if they submitted and validated through DMS before signing up on the app. In the future, after PC-14445,
-  // we will prevent these users from even having to go through the Stepper process, so this extra navigation logic
-  // can be removed.
   useEffect(() => {
     if (subscription?.nextSubscriptionStep === null) {
       refetchUser()

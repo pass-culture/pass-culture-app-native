@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { render, screen } from 'tests/utils'
-import { StickyWrapper } from 'ui/components/StickyWrapper/StickyWrapper'
+import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 
-describe('<StickyWrapper />', () => {
+describe('<StickyBottomWrapper />', () => {
   it('should be sitcky to the bottom', () => {
-    render(<StickyWrapper testID="sticky-wrapper" />)
+    render(<StickyBottomWrapper testID="sticky-wrapper" />)
 
     expect(screen.getByTestId('sticky-wrapper')).toHaveStyle({
       position: 'absolute',

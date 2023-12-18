@@ -101,7 +101,7 @@ export type VenueHit = Pick<
 
 export interface AlgoliaQueryParameters {
   query: string
-  requestOptions?: SearchOptions //TODO(EveJulliard): rajouter RequestOptions au typage.
+  requestOptions?: SearchOptions
 }
 
 export interface FetchVenuesParameters {

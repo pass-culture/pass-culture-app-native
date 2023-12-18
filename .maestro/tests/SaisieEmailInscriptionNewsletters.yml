@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 # TODO :(PC-25011): Désactiver le reCaptcha par défaut si on run les tests E2E ENABLE_NATIVE_APP_RECAPTCHA
 - runFlow: reusableFlows/LaunchApp.yml # Launch App

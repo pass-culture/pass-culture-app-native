@@ -1,91 +1,69 @@
-import React, { useCallback } from 'react'
-import styled from 'styled-components/native'
+import React from 'react'
 
-import { VenueResponse } from 'api/gen'
-import { openUrl } from 'features/navigation/helpers'
+import { VenueContactModel, VenueResponse } from 'api/gen'
+import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlockNew/isValidFrenchPhoneNumber'
 import { analytics } from 'libs/analytics'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
-import { IconInterface } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
-
-import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from './helpers'
 
 export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
-  const { email, phoneNumber, website } = venue.contact || {}
+  const { email, phoneNumber, website } = venue?.contact || {}
+  const { showErrorSnackBar } = useSnackBarContext()
 
-  const onPressMail = useCallback(() => {
-    if (!email) return
-    analytics.logVenueContact({ type: 'email', venueId: venue.id })
-    openMail(email)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [email])
-
-  const onPressPhone = useCallback(() => {
-    if (!phoneNumber) return
-    analytics.logVenueContact({ type: 'phoneNumber', venueId: venue.id })
-    openPhoneNumber(phoneNumber)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phoneNumber])
-
-  const onPressWebsite = useCallback(() => {
-    if (!website) return
-    analytics.logVenueContact({ type: 'website', venueId: venue.id })
-    openUrl(website)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [website])
+  const onOpenUrlError = () => {
+    showErrorSnackBar({
+      message: 'Une erreur est survenue.',
+    })
+  }
 
   if (
-    !venue ||
-    !venue.contact ||
+    !venue?.contact ||
     (!venue.contact.email && !venue.contact.phoneNumber && !venue.contact.website)
   )
     return null
 
+  const logAnalytics = (type: keyof VenueContactModel) => {
+    analytics.logVenueContact({ type, venueId: venue.id })
+  }
+
   return (
     <React.Fragment>
       {!!email && (
-        <React.Fragment>
-          <ContactAtom label={email} onPress={onPressMail} Icon={EmailFilled} />
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        <ExternalTouchableLink
+          externalNav={{ url: `mailto:${email}`, onError: onOpenUrlError }}
+          onBeforeNavigate={() => logAnalytics('email')}
+          as={StyledButtonTertiaryBlack}
+          wording={email}
+          icon={EmailFilled}
+        />
       )}
       {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
-        <React.Fragment>
-          <ContactAtom label={phoneNumber} onPress={onPressPhone} Icon={PhoneFilled} />
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        <ExternalTouchableLink
+          externalNav={{ url: `tel:${phoneNumber}`, onError: onOpenUrlError }}
+          onBeforeNavigate={() => logAnalytics('phoneNumber')}
+          as={StyledButtonTertiaryBlack}
+          wording={phoneNumber}
+          icon={PhoneFilled}
+        />
       )}
       {!!website && (
-        <ContactAtom label={website} onPress={onPressWebsite} Icon={ExternalSiteFilled} />
+        <ExternalTouchableLink
+          externalNav={{ url: website, onError: onOpenUrlError }}
+          onBeforeNavigate={() => logAnalytics('website')}
+          as={StyledButtonTertiaryBlack}
+          wording={website}
+          icon={ExternalSiteFilled}
+        />
       )}
     </React.Fragment>
   )
 }
 
-type ContactAtomProps = {
-  label: string
-  onPress: () => void
-  Icon: React.FC<IconInterface>
-}
-
-const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.icons.sizes.small,
-  }))``
-
-  return (
-    <StyledTouchableOpacity onPress={onPress} accessibilityLabel={label}>
-      <StyledIcon />
-      <Spacer.Row numberOfSpaces={2} />
-      <Typo.ButtonText>{label}</Typo.ButtonText>
-    </StyledTouchableOpacity>
-  )
-}
-
-const StyledTouchableOpacity = styled(TouchableOpacity)({
-  flexDirection: 'row',
-  alignItems: 'center',
+const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack)({
+  justifyContent: 'flex-start',
 })

@@ -49,7 +49,7 @@ export function buildSearchVenuePosition(
     }
   }
 
-  if (venue && venue?._geoloc) {
+  if (venue?._geoloc) {
     const venuePosition = venue._geoloc
 
     searchVenuePosition = {

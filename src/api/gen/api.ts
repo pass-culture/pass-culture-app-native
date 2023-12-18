@@ -1242,6 +1242,11 @@ export interface GoogleSigninRequest {
    * @memberof GoogleSigninRequest
    */
   deviceInfo?: TrustedDevice | null
+  /**
+   * @type {string}
+   * @memberof GoogleSigninRequest
+   */
+  oauthStateToken: string
 }
 /**
  * An enumeration.
@@ -1448,6 +1453,17 @@ export interface NotificationSubscriptions {
    * @memberof NotificationSubscriptions
    */
   marketingPush: boolean
+}
+/**
+ * @export
+ * @interface OauthStateResponse
+ */
+export interface OauthStateResponse {
+  /**
+   * @type {string}
+   * @memberof OauthStateResponse
+   */
+  oauthStateToken: string
 }
 /**
  * @export
@@ -3377,6 +3393,22 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary google_oauth_state <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1OauthState(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/oauth/state`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary report_offer_reasons <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4460,6 +4492,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary google_oauth_state <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1OauthState(options?: any): Promise<OauthStateResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1OauthState(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary report_offer_reasons <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5118,6 +5161,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1MeFavoritesCount(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeFavoritesCount(options)
+  }
+  /**
+    * 
+    * @summary google_oauth_state <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1OauthState(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1OauthState(options)
   }
   /**
     * 

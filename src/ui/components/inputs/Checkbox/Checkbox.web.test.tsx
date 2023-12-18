@@ -79,7 +79,7 @@ describe('<Checkbox />', () => {
       expect(onPressMock).not.toHaveBeenCalled()
     })
 
-    // FIXME(anoukhello) find a way to fix this test that fails after react and RTL upgrades
+    // FIXME(PC-26461) find a way to fix this test that fails after react and RTL upgrades
     // eslint-disable-next-line jest/no-disabled-tests
     describe.skip('when it has focus', () => {
       it('check the box when is unchecked', async () => {

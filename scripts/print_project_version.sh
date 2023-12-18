@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+source "${1}/node_modules/react-native/scripts/find-node-for-xcode.sh"
+
 print_usage() {
   echo "Usage : ./scripts/print_project_version.sh <path_to_project_root_dir>" >&2
 }

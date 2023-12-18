@@ -21,7 +21,7 @@ export type RenderHeaderItem =
   | undefined
 
 export type RenderFooterItem =
-  | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
+  | ((itemDimensions: ItemDimensions) => React.ReactElement<any> | null)
   | undefined
 
 export type CustomListRenderItem<ItemT> = (

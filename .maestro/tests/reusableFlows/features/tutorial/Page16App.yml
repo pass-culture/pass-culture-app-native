@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 
 - assertVisible: "À 16 ans, profite de ton pass Culture\_!"

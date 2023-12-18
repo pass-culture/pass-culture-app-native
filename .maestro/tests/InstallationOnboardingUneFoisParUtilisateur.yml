@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - tapOn: "Tout refuser"
@@ -9,7 +9,7 @@ appId: app.passculture.staging
 - tapOn: "Applications récentes"
 - tapOn: "Tout fermer"
 - launchApp:
-      appId: 'app.passculture.staging'
+      appId: ${APP_ID}
       clearState: false
 - assertVisible: "Bienvenue\_!"
 - assertVisible: "Débloque ton crédit"

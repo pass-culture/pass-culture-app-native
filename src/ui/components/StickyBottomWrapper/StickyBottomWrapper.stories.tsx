@@ -6,22 +6,22 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 
-import { StickyWrapper } from './StickyWrapper'
+import { StickyBottomWrapper } from './StickyBottomWrapper'
 
-const meta: ComponentMeta<typeof StickyWrapper> = {
-  title: 'ui/StickyWrapper',
-  component: StickyWrapper,
+const meta: ComponentMeta<typeof StickyBottomWrapper> = {
+  title: 'ui/StickyBottomWrapper',
+  component: StickyBottomWrapper,
 }
 export default meta
 
-const Template: ComponentStory<typeof StickyWrapper> = (props) => (
+const Template: ComponentStory<typeof StickyBottomWrapper> = (props) => (
   <React.Fragment>
     <InformationWithIcon
       Icon={BicolorWarning}
-      text="To have a correct layout, the parent of StickyWrapper must be in `position: relative;`"
+      text="To have a correct layout, the parent of StickyBottomWrapper must be in `position: relative;`"
     />
     <Background>
-      <StickyWrapper {...props} />
+      <StickyBottomWrapper {...props} />
     </Background>
   </React.Fragment>
 )

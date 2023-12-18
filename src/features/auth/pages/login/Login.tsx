@@ -222,8 +222,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }, [])
 
   const googleLogin = useGoogleLogin({
-    onSuccess: ({ code }) => signIn({ authorizationCode: code }),
-    flow: 'auth-code',
+    onSuccess: ({ code, state = '' }) =>
+      signIn({ authorizationCode: code, oauthStateToken: state }),
   })
 
   return (
@@ -273,7 +273,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             disabled={shouldDisableLoginButton}
           />
         </Form.MaxWidth>
-        {!!enableGoogleSSO && (
+        {!!(enableGoogleSSO && googleLogin) && (
           <ButtonTertiarySecondary onPress={googleLogin} wording="SSO Google" />
         )}
         <Spacer.Column numberOfSpaces={8} />

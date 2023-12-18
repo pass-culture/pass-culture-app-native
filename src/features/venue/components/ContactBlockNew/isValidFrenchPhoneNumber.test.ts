@@ -1,33 +1,4 @@
-import { Linking, Platform } from 'react-native'
-
-import {
-  isValidFrenchPhoneNumber,
-  openPhoneNumber,
-} from 'features/venue/components/ContactBlockNew/helpers'
-import { waitFor } from 'tests/utils'
-
-describe('openPhoneNumber', () => {
-  const openURL = jest.spyOn(Linking, 'openURL').mockResolvedValueOnce(undefined)
-  const phoneNumber = '0610203040'
-
-  it('should navigate phone keyboard with "telprompt:" if is iOS device', async () => {
-    Platform.OS = 'ios'
-    openPhoneNumber(phoneNumber)
-
-    await waitFor(() => {
-      expect(openURL).toHaveBeenCalledWith(`telprompt:${phoneNumber}`)
-    })
-  })
-
-  it('should navigate phone keyboard with "tel:" if is Android device', async () => {
-    Platform.OS = 'android'
-    openPhoneNumber(phoneNumber)
-
-    await waitFor(() => {
-      expect(openURL).toHaveBeenCalledWith(`tel:${phoneNumber}`)
-    })
-  })
-})
+import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlockNew/isValidFrenchPhoneNumber'
 
 describe('isValidFrenchPhoneNumber function', () => {
   it.each([

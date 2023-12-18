@@ -6,6 +6,7 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueBanner } from 'features/venue/components/VenueBodyNew/VenueBanner'
+import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingAppsNew/VenueMessagingAppsNew'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
@@ -81,7 +82,7 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
             wording="Copier l’adresse"
             textToCopy={`${venueName}, ${venueFullAddress}`}
             onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-            snackBarMessage="L’adresse a bien été copiée"
+            snackBarMessage="L’adresse a bien été copiée."
           />
           <Spacer.Column numberOfSpaces={3} />
           <SeeItineraryButton
@@ -123,6 +124,10 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
         <MarginContainer>
           <VenueMessagingApps venueId={venue.id} />
         </MarginContainer>
+      </SectionWithDivider>
+
+      <SectionWithDivider visible>
+        <Spacer.Column numberOfSpaces={VENUE_CTA_HEIGHT_IN_SPACES} />
       </SectionWithDivider>
     </Container>
   )

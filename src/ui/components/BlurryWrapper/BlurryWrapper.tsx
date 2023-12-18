@@ -1,5 +1,6 @@
 import { BlurView } from '@react-native-community/blur'
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 type Props = {
@@ -7,7 +8,9 @@ type Props = {
 }
 
 export function BlurryWrapper({ children }: Props) {
-  return (
+  return Platform.OS === 'android' ? (
+    <TransparentBackground>{children}</TransparentBackground>
+  ) : (
     <StyledBlurry
       blurType="light"
       blurAmount={10}
@@ -24,4 +27,8 @@ const StyledBlurry = styled(BlurView)<{
   reducedTransparencyFallbackColor: string
 }>({
   flex: 1,
+})
+
+const TransparentBackground = styled.View({
+  backgroundColor: 'rgba(255, 255, 255, 0.85)',
 })

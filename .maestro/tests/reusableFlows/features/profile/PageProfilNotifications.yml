@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 - assertVisible: "Notifications"
 - assertVisible: "Tu dois être connecté pour activer les notifications et rester informé\

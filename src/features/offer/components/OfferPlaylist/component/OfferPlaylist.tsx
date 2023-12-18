@@ -1,14 +1,14 @@
 import React from 'react'
 
-import { HitOfferWithArtistAndEan } from 'features/offer/components/SameArtistPlaylist/api/fetchOffersByArtist'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
 import { PlaylistType } from 'features/offer/enums'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Spacer } from 'ui/theme'
 
-interface SameArtistPlaylistProps {
-  items: HitOfferWithArtistAndEan[]
+interface OfferPlaylistProps {
+  items: Offer[] | HitOfferWithArtistAndEan[]
   renderItem: (props: {
     item: Offer
     width: number
@@ -17,18 +17,24 @@ interface SameArtistPlaylistProps {
   }) => React.ReactElement
   itemWidth: number
   itemHeight: number
+  title: string
+  playlistType: PlaylistType
+  onEndReached?: () => void
 }
 
-const keyExtractor = (item: HitOfferWithArtistAndEan) => item.objectID
+const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
 
-export function SameArtistPlaylist({
+export function OfferPlaylist({
   items,
   renderItem,
   itemWidth,
   itemHeight,
-}: Readonly<SameArtistPlaylistProps>) {
+  title,
+  playlistType,
+  onEndReached,
+}: Readonly<OfferPlaylistProps>) {
   return (
-    <SectionWithDivider testID="sameArtistPlaylist" visible>
+    <SectionWithDivider testID={playlistType} visible>
       <Spacer.Column numberOfSpaces={6} />
       <PassPlaylist
         data={items}
@@ -36,8 +42,9 @@ export function SameArtistPlaylist({
         itemHeight={itemHeight}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        title="Du même auteur"
-        playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
+        title={title}
+        playlistType={playlistType}
+        onEndReached={onEndReached}
       />
     </SectionWithDivider>
   )

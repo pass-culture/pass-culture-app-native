@@ -8419,6 +8419,28 @@ d’options
           />
         </View>
       </View>
+      <View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={22}
+          style={
+            [
+              {
+                "height": 88,
+              },
+            ]
+          }
+        />
+      </View>
     </View>
   </RCTScrollView>
   <View
@@ -8818,120 +8840,163 @@ d’options
     style={
       [
         {
-          "alignItems": "center",
-          "marginHorizontal": 24,
+          "bottom": 0,
+          "position": "absolute",
+          "width": "100%",
         },
       ]
     }
   >
-    <View
-      accessibilityLabel="Rechercher une offre"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+    <BlurView
+      blurAmount={10}
+      blurType="light"
+      reducedTransparencyFallbackColor="white"
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
       }
-      testID="Rechercher une offre"
+      testID="blurry-wrapper"
     >
       <View
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "marginHorizontal": 24,
             },
           ]
         }
       >
         <View
-          fill="none"
-          height={24}
-          testID="button-icon"
-          width={24}
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Rechercher une offre"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Rechercher une offre"
         >
-          <Text>
-            button-icon-SVG-Mock
+          <View
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              fill="none"
+              height={24}
+              testID="button-icon"
+              width={24}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Rechercher une offre
           </Text>
         </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
+        customHeight={8}
+        enable={true}
         style={
           [
             {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
+              "height": 8,
             },
           ]
         }
-      >
-        Rechercher une offre
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
+      />
+    </BlurView>
   </View>
-  <View
-    customHeight={8}
-    enable={true}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
 </View>
 `;

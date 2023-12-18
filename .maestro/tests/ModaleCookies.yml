@@ -1,4 +1,4 @@
-appId: app.passculture.staging
+appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - tapOn: "Choisir les cookies"

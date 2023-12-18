@@ -6,8 +6,7 @@ import { render, fireEvent, checkAccessibilityFor, screen } from 'tests/utils/we
 import { WebShareModal } from './WebShareModalBest'
 
 const mockClipboardWriteText = jest.fn()
-// @ts-ignore navigator.clipboard doesn't exist in the tests otherwise
-navigator.clipboard = { writeText: mockClipboardWriteText }
+Object.assign(navigator, { clipboard: { writeText: mockClipboardWriteText } })
 
 const mockDismissModal = jest.fn()
 const defaultProps = {
