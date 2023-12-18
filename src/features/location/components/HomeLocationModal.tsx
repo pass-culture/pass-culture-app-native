@@ -12,6 +12,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -70,6 +71,10 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     ? theme.colors.primary
     : theme.colors.black
 
+  const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
+    ? theme.colors.primary
+    : theme.colors.black
+
   const runGeolocationDialogs = useCallback(async () => {
     const selectAroundMeMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
     const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
@@ -98,13 +103,25 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
 
   const selectLocationMode = useCallback(
     (mode: LocationMode) => () => {
-      if (mode === LocationMode.AROUND_ME) {
-        runGeolocationDialogs()
-        dismissModal()
+      switch (mode) {
+        case LocationMode.AROUND_ME:
+          runGeolocationDialogs()
+          dismissModal()
+          break
+        case LocationMode.AROUND_PLACE:
+          setTempLocationMode(LocationMode.AROUND_PLACE)
+          break
+        case LocationMode.EVERYWHERE:
+          setTempLocationMode(LocationMode.EVERYWHERE)
+          setSelectedLocationMode(LocationMode.EVERYWHERE)
+          dismissModal()
+          break
+
+        default:
+          break
       }
-      setTempLocationMode(mode)
     },
-    [dismissModal, runGeolocationDialogs, setTempLocationMode]
+    [dismissModal, runGeolocationDialogs, setSelectedLocationMode]
   )
 
   const onSubmitPlace = () => {
@@ -166,6 +183,15 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
             onSetSelectedPlace={onSetSelectedPlace}
           />
         )}
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+          icon={BicolorEverywhere}
+          color={everywhereLocationModeColor}
+          title="Partout"
+        />
         <Spacer.Column numberOfSpaces={8} />
         <ButtonContainer>
           <ButtonPrimary

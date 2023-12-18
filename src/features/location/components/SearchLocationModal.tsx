@@ -20,6 +20,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -85,8 +86,12 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     ? theme.colors.primary
     : theme.colors.black
 
+  const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
+    ? theme.colors.primary
+    : theme.colors.black
+
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
+    const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
     const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
 
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
@@ -108,59 +113,90 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     showGeolocPermissionModal,
     requestGeolocPermission,
     setSelectedLocationMode,
+    setTempLocationMode,
   ])
 
-  const selectLocationMode = useCallback(
-    (mode: LocationMode) => () => {
-      if (mode === LocationMode.AROUND_ME) {
+  const selectLocationMode = (mode: LocationMode) => () => {
+    switch (mode) {
+      case LocationMode.AROUND_ME:
         runGeolocationDialogs()
-      } else {
-        setTempLocationMode(mode)
-      }
-    },
-    [runGeolocationDialogs, setTempLocationMode]
-  )
+        break
 
-  const onSubmit = () => {
-    setSelectedLocationMode(tempLocationMode)
-    if (tempLocationMode === LocationMode.AROUND_PLACE && selectedPlace) {
-      setPlaceGlobally(selectedPlace)
-      dispatch({
-        type: 'SET_LOCATION_FILTERS',
-        payload: {
-          locationFilter: {
-            place: selectedPlace,
-            locationType: LocationMode.AROUND_PLACE,
-            aroundRadius: aroundPlaceRadius,
-          },
-        },
-      })
-      analytics.logUserSetLocation('search')
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...searchState,
-          locationFilter: {
-            place: selectedPlace,
-            locationType: LocationMode.AROUND_PLACE,
-            aroundRadius: aroundPlaceRadius,
-          },
-        })
-      )
-    } else if (tempLocationMode === LocationMode.AROUND_ME) {
-      setPlaceGlobally(null)
-      dispatch({
-        type: 'SET_LOCATION_FILTERS',
-        payload: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
-        },
-      })
-      navigate(
-        ...getTabNavConfig('Search', {
-          ...searchState,
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
-        })
-      )
+      case LocationMode.EVERYWHERE:
+        setTempLocationMode(LocationMode.EVERYWHERE)
+        onSubmit(LocationMode.EVERYWHERE)
+        break
+
+      default:
+        setTempLocationMode(mode)
+        break
     }
+  }
+
+  const onSubmit = (mode?: LocationMode) => {
+    const chosenLocationMode = mode ?? tempLocationMode
+    setSelectedLocationMode(chosenLocationMode)
+    switch (chosenLocationMode) {
+      case LocationMode.AROUND_PLACE:
+        if (selectedPlace) {
+          setPlaceGlobally(selectedPlace)
+          dispatch({
+            type: 'SET_LOCATION_FILTERS',
+            payload: {
+              locationFilter: {
+                place: selectedPlace,
+                locationType: LocationMode.AROUND_PLACE,
+                aroundRadius: aroundPlaceRadius,
+              },
+            },
+          })
+          analytics.logUserSetLocation('search')
+          navigate(
+            ...getTabNavConfig('Search', {
+              ...searchState,
+              locationFilter: {
+                place: selectedPlace,
+                locationType: LocationMode.AROUND_PLACE,
+                aroundRadius: aroundPlaceRadius,
+              },
+            })
+          )
+        }
+        break
+
+      case LocationMode.AROUND_ME:
+        setPlaceGlobally(null)
+        dispatch({
+          type: 'SET_LOCATION_FILTERS',
+          payload: {
+            locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
+          },
+        })
+        navigate(
+          ...getTabNavConfig('Search', {
+            ...searchState,
+            locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
+          })
+        )
+        break
+
+      case LocationMode.EVERYWHERE:
+        setPlaceGlobally(null)
+        dispatch({
+          type: 'SET_LOCATION_FILTERS',
+          payload: {
+            locationFilter: { locationType: LocationMode.EVERYWHERE },
+          },
+        })
+        navigate(
+          ...getTabNavConfig('Search', {
+            ...searchState,
+            locationFilter: { locationType: LocationMode.EVERYWHERE },
+          })
+        )
+        break
+    }
+
     dismissModal()
   }
 
@@ -258,12 +294,21 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             )}
           </React.Fragment>
         )}
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+          icon={BicolorEverywhere}
+          color={everywhereLocationModeColor}
+          title="Partout"
+        />
         <Spacer.Column numberOfSpaces={8} />
         <ButtonContainer>
           <ButtonPrimary
             wording="Valider la localisation"
             disabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
-            onPress={onSubmit}
+            onPress={() => onSubmit()}
           />
         </ButtonContainer>
       </StyledScrollView>

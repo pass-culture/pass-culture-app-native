@@ -214,6 +214,24 @@ describe('SearchLocationModal', () => {
     )
   })
 
+  it('should navigate to Search page with everywhere params when the user select "Partout"', async () => {
+    renderSearchLocationModal()
+
+    await waitForModalToShow()
+
+    const selectEverywhereMode = screen.getByText('Partout')
+    fireEvent.press(selectEverywhereMode)
+
+    expect(mockNavigate).toHaveBeenCalledWith(
+      ...getTabNavConfig('Search', {
+        ...mockSearchState,
+        locationFilter: {
+          locationType: LocationMode.EVERYWHERE,
+        },
+      })
+    )
+  })
+
   describe('PlaceRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
       renderSearchLocationModal()

@@ -186,7 +186,7 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
               ]
             }
           >
-            Ma position
+            Me localiser
           </Text>
         </View>
         <Modal
