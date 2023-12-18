@@ -86,14 +86,14 @@ export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: 
           {distanceToOffer ? (
             <React.Fragment>
               <Spacer.Flex flex={0.7}>
-                <OfferName title={offerDetails.name} />
+                <OfferName title={offerDetails.name ?? ''} />
               </Spacer.Flex>
               <Spacer.Flex flex={0.3}>
                 <Distance>{distanceToOffer}</Distance>
               </Spacer.Flex>
             </React.Fragment>
           ) : (
-            <OfferName title={offerDetails.name} />
+            <OfferName title={offerDetails.name ?? ''} />
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
