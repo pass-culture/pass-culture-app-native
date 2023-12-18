@@ -8,6 +8,7 @@ import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -28,7 +29,7 @@ interface LocationWidgetProps {
 export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
-  const { hasGeolocPosition, geolocPosition, place } = useLocation()
+  const { place, selectedLocationMode } = useLocation()
   const {
     isTooltipVisible,
     hideTooltip,
@@ -38,7 +39,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     enableTooltip,
   } = useLocationWidgetTooltip(screenOrigin)
 
-  const locationTitle = getLocationTitle(place, geolocPosition)
+  const locationTitle = getLocationTitle(place, selectedLocationMode)
 
   const {
     visible: locationModalVisible,
@@ -46,7 +47,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     hideModal: hideLocationModal,
   } = useModal()
 
-  const isWidgetHighlighted = hasGeolocPosition || !!place
+  const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   return (
     <React.Fragment>

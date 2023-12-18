@@ -1,18 +1,18 @@
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
-import { Position, useLocation } from 'libs/location'
+import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 
 type useLocationForLocationWidgetDesktopHook = {
   title: string
   isWidgetHighlighted: boolean
   testId: string
-  geolocPosition: Position
 }
 
 export const useLocationForLocationWidgetDesktop = (): useLocationForLocationWidgetDesktopHook => {
-  const { hasGeolocPosition, geolocPosition, place } = useLocation()
-  const title = getLocationTitle(place, geolocPosition)
-  const isWidgetHighlighted = hasGeolocPosition || !!place
+  const { selectedLocationMode, place } = useLocation()
+  const title = getLocationTitle(place, selectedLocationMode)
+  const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
   const testId = 'Ouvrir la modale de localisation depuis le titre'
 
-  return { title, isWidgetHighlighted, testId, geolocPosition }
+  return { title, isWidgetHighlighted, testId }
 }

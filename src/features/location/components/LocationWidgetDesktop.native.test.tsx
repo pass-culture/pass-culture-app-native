@@ -3,6 +3,7 @@ import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -48,6 +49,7 @@ describe('LocationWidgetDesktop', () => {
         hasGeolocPosition,
         place,
         isCurrentLocationMode: jest.fn(),
+        selectedLocationMode: LocationMode.AROUND_ME,
       })
 
       renderLocationWidgetDesktop()
@@ -69,6 +71,7 @@ describe('LocationWidgetDesktop', () => {
         place,
         geolocPosition: null,
         isCurrentLocationMode: jest.fn(),
+        selectedLocationMode: LocationMode.EVERYWHERE,
       })
 
       renderLocationWidgetDesktop()
@@ -84,6 +87,7 @@ describe('LocationWidgetDesktop', () => {
       place: { label: 'my place' },
       geolocPosition: null,
       isCurrentLocationMode: jest.fn(),
+      selectedLocationMode: LocationMode.AROUND_PLACE,
     })
 
     renderLocationWidgetDesktop()
