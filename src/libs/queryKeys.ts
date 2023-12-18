@@ -20,6 +20,7 @@ export enum QueryKeys {
   HOME_VENUES_MODULE = 'homeVenuesModule',
   HOMEPAGE_MODULES = 'homepageModules',
   NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
+  OAUTH_STATE = 'oauthState',
   OFFER = 'offer',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   PHONE_VALIDATION_REMAINING_ATTEMPTS = 'phoneValidationRemainingAttempts',
