@@ -11,7 +11,7 @@ describe('share()', () => {
     share({ content: defaultContent, mode: 'WhatsApp' })
 
     expect(mockOpenUrl).toHaveBeenCalledWith(
-      'https://api.whatsapp.com/send?text=Message%C2%A0%3A%0Ahttps%3A%2F%2Fwww.toto.com/'
+      'https://api.whatsapp.com/send?text=Message%C2%A0%3A%0Ahttps%3A%2F%2Fwww.toto.com%2F'
     )
   })
 })
