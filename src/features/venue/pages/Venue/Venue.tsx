@@ -10,7 +10,7 @@ import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
-import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
+import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -57,7 +57,7 @@ export const Venue: FunctionComponent = () => {
 
   return (
     <Container>
-      <VenueWebHeader venue={venue} />
+      <VenueWebMetaHeader venue={venue} />
       {shouldUseNewVenuePage ? (
         <VenueBodyNew
           venue={venue}
