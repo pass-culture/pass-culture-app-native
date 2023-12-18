@@ -37,7 +37,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 type UseGetCtaWordingAndActionProps = {
-  offer?: OfferResponse
+  offer: OfferResponse
   from?: Referrals
   searchId?: string
 }
@@ -293,8 +293,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const { data: booking } = useOngoingOrEndedBooking(getBookingOfferId(offerId, bookedOffers) ?? 0)
-
-  if (!offer) return
 
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
