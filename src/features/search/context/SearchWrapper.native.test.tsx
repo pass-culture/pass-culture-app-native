@@ -38,19 +38,12 @@ const mockPlace: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-const mockVenue = {
-  _geoloc: { lat: 48.94083, lng: 2.47987 },
-  info: 'Paris',
-  label: 'La librairie quantique DATA',
-  venueId: 9384,
-}
-
 describe('SearchWrapper', () => {
-  it('should update locationType with type Place when Location Context is switched to a specified place', async () => {
+  it('should update locationType with type Around Place when Location Context is switched to a specified place', async () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('setPlace'))
+      fireEvent.press(screen.getByText('setLocationModeAroundPlace'))
     })
 
     expect(screen.getByText(LocationMode.AROUND_PLACE)).toBeOnTheScreen()
@@ -65,7 +58,7 @@ describe('SearchWrapper', () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('setPlace'))
+      fireEvent.press(screen.getByText('setLocationModeAroundPlace'))
     })
 
     expect(screen.queryByText(LocationMode.AROUND_PLACE)).not.toBeOnTheScreen()
@@ -74,6 +67,8 @@ describe('SearchWrapper', () => {
   it('should not update locationType with type geolocation when Location Context is changed (i.e from deeplink) and ENABLE_APP_LOCATION FF is false', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    useFeatureFlagSpy.mockReturnValueOnce(false)
     useFeatureFlagSpy.mockReturnValueOnce(false)
     useFeatureFlagSpy.mockReturnValueOnce(false)
     useFeatureFlagSpy.mockReturnValueOnce(false)
@@ -90,34 +85,32 @@ describe('SearchWrapper', () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('setPlace'))
+      fireEvent.press(screen.getByText('setLocationModeAroundPlace'))
     })
 
     screen.getByText(LocationMode.AROUND_PLACE)
 
     await act(async () => {
-      fireEvent.press(screen.getByText('unSetPlace'))
+      fireEvent.press(screen.getByText('setLocationModeAroundMe'))
     })
 
     expect(screen.getByText(LocationMode.AROUND_ME)).toBeOnTheScreen()
   })
 
-  it('should not update locationType when searchState is set with a venue', async () => {
-    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-
+  it('should update locationType with type Everywhere when Location Context is switched to "Partout""', async () => {
     renderDummyComponent()
 
     await act(async () => {
-      fireEvent.press(screen.getByText('setVenue'))
+      fireEvent.press(screen.getByText('setLocationModeAroundPlace'))
     })
 
-    screen.getByText(mockVenue.label)
+    screen.getByText(LocationMode.AROUND_PLACE)
 
     await act(async () => {
-      fireEvent.press(screen.getByText('setPlace'))
+      fireEvent.press(screen.getByText('setLocationModeEverywhere'))
     })
 
-    expect(screen.getByText(mockVenue.label)).toBeOnTheScreen()
+    expect(screen.getByText(LocationMode.EVERYWHERE)).toBeOnTheScreen()
   })
 })
 
@@ -132,23 +125,25 @@ const renderDummyComponent = () => {
 }
 
 const DummyComponent = () => {
-  const { setPlace } = useLocation()
-  const { searchState, dispatch } = useSearch()
+  const { setPlace, setSelectedLocationMode } = useLocation()
+  const { searchState } = useSearch()
 
+  const setLocationModeAroundPlace = () => {
+    setPlace(mockPlace)
+    setSelectedLocationMode(LocationMode.AROUND_PLACE)
+  }
   return (
     <React.Fragment>
       <Text>{searchState.locationFilter.locationType}</Text>
       <Text>{searchState.venue?.label ?? ''}</Text>
-      <Button title="setPlace" onPress={() => setPlace(mockPlace)} />
-      <Button title="unSetPlace" onPress={() => setPlace(null)} />
+      <Button title="setLocationModeAroundPlace" onPress={setLocationModeAroundPlace} />
       <Button
-        title="setVenue"
-        onPress={() =>
-          dispatch({
-            type: 'SET_VENUE',
-            payload: mockVenue,
-          })
-        }
+        title="setLocationModeEverywhere"
+        onPress={() => setSelectedLocationMode(LocationMode.EVERYWHERE)}
+      />
+      <Button
+        title="setLocationModeAroundMe"
+        onPress={() => setSelectedLocationMode(LocationMode.AROUND_ME)}
       />
     </React.Fragment>
   )

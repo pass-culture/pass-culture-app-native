@@ -1,6 +1,5 @@
 import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
-import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
@@ -31,41 +30,38 @@ export const SearchWrapper = memo(function SearchWrapper({
   }
 
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
-  const { place, hasGeolocPosition } = useLocation()
+  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
 
   useEffect(() => {
     if (!enableAppLocation) return
-    const { locationType } = searchState.locationFilter
-    let aroundRadius = DEFAULT_RADIUS
-    if (locationType === LocationMode.AROUND_PLACE || locationType === LocationMode.AROUND_ME) {
-      aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
-    }
 
-    if (searchState.venue) {
-      return
-    } else if (place) {
-      dispatch({
-        type: 'SET_LOCATION_FILTERS',
-        payload: {
-          locationFilter: {
-            place: place,
-            locationType: LocationMode.AROUND_PLACE,
-            aroundRadius,
-          },
-        },
-      })
-    } else if (hasGeolocPosition) {
-      dispatch({
-        type: 'SET_LOCATION_FILTERS',
-        payload: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius },
-        },
-      })
-    }
+    switch (selectedLocationMode) {
+      case LocationMode.AROUND_ME:
+        dispatch({
+          type: 'SET_LOCATION_AROUND_ME',
+          payload: aroundMeRadius,
+        })
+        break
+      case LocationMode.AROUND_PLACE:
+        if (place)
+          dispatch({
+            type: 'SET_LOCATION_PLACE',
+            payload: {
+              place: place,
+              aroundRadius: aroundPlaceRadius,
+            },
+          })
+        break
+      case LocationMode.EVERYWHERE:
+        dispatch({
+          type: 'SET_LOCATION_EVERYWHERE',
+        })
+        break
 
-    // we don't want to put the searchState in deps (it will create an infinite update loop with the dispatch)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasGeolocPosition, place, dispatch])
+      default:
+        break
+    }
+  }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch, enableAppLocation])
 
   useEffect(() => {
     dispatch({ type: 'PRICE_RANGE', payload: priceRange })
