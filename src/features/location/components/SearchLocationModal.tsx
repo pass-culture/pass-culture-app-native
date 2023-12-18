@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
+import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -15,7 +16,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
@@ -246,6 +246,12 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             onRightIconPress={onClose}
           />
         </HeaderContainer>
+      }
+      fixedModalBottom={
+        <LocationModalFooter
+          onSubmit={() => onSubmit()}
+          isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
+        />
       }>
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
@@ -303,22 +309,10 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
           color={everywhereLocationModeColor}
           title="Partout"
         />
-        <Spacer.Column numberOfSpaces={8} />
-        <ButtonContainer>
-          <ButtonPrimary
-            wording="Valider la localisation"
-            disabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
-            onPress={() => onSubmit()}
-          />
-        </ButtonContainer>
       </StyledScrollView>
     </AppModal>
   )
 }
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
 
 const StyledScrollView = styled.ScrollView({
   paddingHorizontal: getSpacing(6),

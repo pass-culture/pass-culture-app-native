@@ -3,11 +3,11 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
+import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
@@ -43,6 +43,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     selectedLocationMode,
     setSelectedLocationMode,
   } = useLocation()
+
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
@@ -153,6 +154,9 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
             onRightIconPress={onClose}
           />
         </HeaderContainer>
+      }
+      fixedModalBottom={
+        <LocationModalFooter onSubmit={onSubmitPlace} isSubmitDisabled={!selectedPlace} />
       }>
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
@@ -192,22 +196,10 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
           color={everywhereLocationModeColor}
           title="Partout"
         />
-        <Spacer.Column numberOfSpaces={8} />
-        <ButtonContainer>
-          <ButtonPrimary
-            wording="Valider la localisation"
-            disabled={!selectedPlace}
-            onPress={onSubmitPlace}
-          />
-        </ButtonContainer>
       </StyledScrollView>
     </AppModal>
   )
 }
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
 
 const StyledScrollView = styled.ScrollView({
   paddingHorizontal: getSpacing(6),
