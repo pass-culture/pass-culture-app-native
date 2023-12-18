@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -19,6 +20,8 @@ import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
+
+const isWeb = Platform.OS === 'web'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
@@ -58,6 +61,14 @@ export const Venue: FunctionComponent = () => {
   return (
     <Container>
       <VenueWebMetaHeader venue={venue} />
+      {/* On web VenueHeader is called before Body for accessibility navigate order */}
+      {isWeb ? (
+        <VenueHeader
+          headerTransition={headerTransition}
+          title={venue.publicName || venue.name}
+          venue={venue}
+        />
+      ) : null}
       {shouldUseNewVenuePage ? (
         <VenueBodyNew
           venue={venue}
@@ -68,12 +79,14 @@ export const Venue: FunctionComponent = () => {
       ) : (
         <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
       )}
-      {/* VenueHeader is called after Body to implement the BlurView for iOS */}
-      <VenueHeader
-        headerTransition={headerTransition}
-        title={venue.publicName || venue.name}
-        venue={venue}
-      />
+      {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
+      {!isWeb ? (
+        <VenueHeader
+          headerTransition={headerTransition}
+          title={venue.publicName || venue.name}
+          venue={venue}
+        />
+      ) : null}
       {!!shouldDisplayCTA && <VenueCTA venueId={venue.id} />}
     </Container>
   )
