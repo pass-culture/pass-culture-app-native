@@ -20,7 +20,7 @@ on:
 
 jobs:
   web_deploy:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     environment:
       name: ${{ inputs.ENV }}
     steps:
@@ -35,7 +35,7 @@ jobs:
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -80,7 +80,7 @@ jobs:
         run: |
           gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     if: ${{ always() }}
     needs: web_deploy
     steps:

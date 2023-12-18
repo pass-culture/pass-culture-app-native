@@ -20,7 +20,7 @@ env:
 
 jobs:
   yarn-install:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -44,16 +44,16 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
         with:
-          key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
@@ -82,7 +82,7 @@ jobs:
         run: yarn install
 
   bundle-install:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1

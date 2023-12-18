@@ -20,7 +20,7 @@ on:
 
 jobs:
   web_proxy_deploy:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Cloud SDK to get gsutils
@@ -30,14 +30,18 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: 'server/.nvmrc'
-      - name: "OpenID Connect Authentication"
+      - id: gcloud-auth
+        name: "OpenID Connect Authentication"
         uses: 'google-github-actions/auth@v1'
         with:
+          cleanup_credentials: false
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
       - name: Cache the proxy node_modules
         id: yarn-modules-cache-proxy
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -70,7 +74,7 @@ jobs:
             | grep -v $(gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --hide-no-traffic --format="table[no-heading](id)") \
             | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
   slack_notify:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     if: ${{ always() }}
     needs: web_proxy_deploy
     steps:

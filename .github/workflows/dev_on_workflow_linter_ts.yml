@@ -18,50 +18,44 @@ concurrency:
 
 jobs:
   yarn_lint:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: "OpenID Connect Authentication"
-        uses: 'google-github-actions/auth@v1'
+      - name: 'Cache the node_modules'
+        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
         with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Cache the node_modules
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
-        with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:lint
 
   yarn_typescript:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: "OpenID Connect Authentication"
-        uses: 'google-github-actions/auth@v1'
-        with:
-          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
       - run: yarn test:types

@@ -95,6 +95,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -104,6 +105,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/hotfix-staging')
     uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -113,6 +115,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/hotfix-production')
     uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: production
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -122,6 +125,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/testing')
     uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -131,6 +135,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/testing')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: testing
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -140,6 +145,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -149,6 +155,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: staging
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -158,6 +165,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
     uses: ./.github/workflows/dev_on_workflow_environment_android_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: production
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -167,6 +175,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/prod-hard-deploy')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
       ENV: production
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}

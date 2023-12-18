@@ -18,7 +18,7 @@ env:
 
 jobs:
   create_and_push_staging_tag:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout commit hash
         uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
           git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
   create_and_push_testing_tag:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:

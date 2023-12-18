@@ -4,15 +4,18 @@ on:
   schedule:
     - cron: '0 5 * * 1-5' # “At 5AM everyday from Monday through Friday.
 
+env:
+  CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+
 jobs:
   lighthouse:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - uses: actions/cache@v3
+      - uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
         id: yarn-modules-cache
         with:
           path: |
@@ -21,6 +24,9 @@ jobs:
           key: v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ env.CACHE_BUCKET_NAME }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: run Lighthouse CI
         run: |
           yarn global add @lhci/cli@0.11.x
