@@ -12,7 +12,7 @@ import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
@@ -28,7 +28,7 @@ export type SearchOfferHits = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
@@ -40,7 +40,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
         parameters: { page, ...searchState },
-        userPosition: position,
+        userPosition: geolocPosition,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

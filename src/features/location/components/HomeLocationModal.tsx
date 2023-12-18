@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
-import { LocationMode } from 'features/location/enums'
-import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -26,35 +26,65 @@ const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
 export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const {
-    isGeolocated,
+    hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
+    place,
     selectedPlace,
     setSelectedPlace,
-    setSelectedLocationMode,
-    geolocationModeColor,
-    customLocationModeColor,
     onSetSelectedPlace,
     onResetPlace,
-    setPlaceGlobally,
+    setPlace: setPlaceGlobally,
     onModalHideRef,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
-    isCurrentLocationMode,
-  } = useLocationModal(visible)
+    selectedLocationMode,
+    setSelectedLocationMode,
+  } = useLocation()
+  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
+
+  useEffect(() => {
+    if (visible) {
+      setTempLocationMode(selectedLocationMode)
+    }
+  }, [selectedLocationMode, visible, setTempLocationMode])
+
+  useEffect(() => {
+    if (visible) {
+      onModalHideRef.current = undefined
+      setPlaceQuery(place?.label ?? '')
+      setSelectedPlace(place)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible])
+
+  const theme = useTheme()
+
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
+    ? theme.colors.primary
+    : theme.colors.black
+
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
+    const selectAroundMeMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
+    const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
+
     if (permissionState === GeolocPermissionState.GRANTED) {
-      selectGeoLocationMode()
+      selectAroundMeMode()
       setPlaceGlobally(null)
     } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       setPlaceGlobally(null)
+      selectEverywhereMode()
       onModalHideRef.current = showGeolocPermissionModal
     } else {
       await requestGeolocPermission({
-        onAcceptance: selectGeoLocationMode,
+        onAcceptance: selectAroundMeMode,
+        onRefusal: selectEverywhereMode,
       })
     }
   }, [
@@ -68,17 +98,18 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
 
   const selectLocationMode = useCallback(
     (mode: LocationMode) => () => {
-      if (mode === LocationMode.GEOLOCATION) {
+      if (mode === LocationMode.AROUND_ME) {
         runGeolocationDialogs()
         dismissModal()
       }
-      setSelectedLocationMode(mode)
+      setTempLocationMode(mode)
     },
-    [dismissModal, runGeolocationDialogs, setSelectedLocationMode]
+    [dismissModal, runGeolocationDialogs, setTempLocationMode]
   )
 
-  const onSubmit = () => {
+  const onSubmitPlace = () => {
     setPlaceGlobally(selectedPlace)
+    setSelectedLocationMode(tempLocationMode)
     analytics.logUserSetLocation('home')
     dismissModal()
   }
@@ -109,23 +140,23 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.GEOLOCATION)}
+          onPress={selectLocationMode(LocationMode.AROUND_ME)}
           icon={PositionFilled}
           color={geolocationModeColor}
           title="Utiliser ma position actuelle"
-          subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
+          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
+          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
           icon={MagnifyingGlassFilled}
           color={customLocationModeColor}
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
           <LocationSearchInput
             selectedPlace={selectedPlace}
             setSelectedPlace={setSelectedPlace}
@@ -140,7 +171,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
           <ButtonPrimary
             wording="Valider la localisation"
             disabled={!selectedPlace}
-            onPress={onSubmit}
+            onPress={onSubmitPlace}
           />
         </ButtonContainer>
       </StyledScrollView>

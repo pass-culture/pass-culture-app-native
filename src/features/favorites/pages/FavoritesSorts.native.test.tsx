@@ -12,7 +12,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
   Position,
-} from 'libs/geolocation'
+} from 'libs/location'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 jest.mock('features/favorites/context/FavoritesWrapper', () =>
@@ -27,11 +27,11 @@ const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
-    userPosition: mockPosition,
-    userPositionError: mockPositionError,
+    geolocPosition: mockPosition,
+    geolocPositionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
     requestGeolocPermission: mockRequestGeolocPermission,

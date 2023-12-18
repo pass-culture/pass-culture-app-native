@@ -3,25 +3,25 @@ import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
 import { analytics } from 'libs/analytics'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
-import { getPosition } from 'libs/geolocation/getPosition'
-import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place'
 import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow, act } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
-jest.unmock('libs/geolocation')
+jest.unmock('libs/location')
 
-jest.mock('libs/geolocation/getPosition')
-const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
 
-jest.mock('libs/geolocation/requestGeolocPermission')
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestGeolocPermission = requestGeolocPermission as jest.MockedFunction<
   typeof requestGeolocPermission
 >
 
-jest.mock('libs/geolocation/checkGeolocPermission')
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
   typeof checkGeolocPermission
 >
@@ -40,6 +40,8 @@ jest.mock('libs/place', () => ({
 
 describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+
     renderHomeLocationModal()
     await waitForModalToShow()
 
@@ -75,7 +77,7 @@ describe('HomeLocationModal', () => {
   })
 
   it('should highlight geolocation button if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderHomeLocationModal()
     await waitForModalToShow()
@@ -84,7 +86,7 @@ describe('HomeLocationModal', () => {
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderHomeLocationModal()
     await waitForModalToShow()

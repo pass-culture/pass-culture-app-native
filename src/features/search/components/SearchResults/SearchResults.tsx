@@ -34,8 +34,8 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useLocation } from 'libs/location'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -73,8 +73,8 @@ export const SearchResults: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
-  const { userPosition } = useLocation()
-  const previousUserPosition = usePrevious(userPosition)
+  const { geolocPosition } = useLocation()
+  const previousGeolocPosition = usePrevious(geolocPosition)
 
   const isVenue = !!searchState.venue
 
@@ -149,7 +149,7 @@ export const SearchResults: React.FC = () => {
   )
 
   const shouldRefetchResults = Boolean(
-    (userPosition && !previousUserPosition) || (!userPosition && previousUserPosition)
+    (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
   )
 
   useEffect(() => {

@@ -8,8 +8,8 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { useLocation } from 'libs/geolocation'
-import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useFunctionOnce } from 'libs/hooks'
+import { useLocation } from 'libs/location'
 import { startTransaction } from 'shared/performance/transactions'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -29,7 +29,7 @@ export const Home: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
-  const { setCustomPosition } = useLocation()
+  const { setPlace } = useLocation()
 
   useEffect(() => {
     if (id) {
@@ -37,11 +37,16 @@ export const Home: FunctionComponent = () => {
     }
   }, [id])
 
+  // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
     if (params?.latitude && params?.longitude) {
-      setCustomPosition({ latitude: params.latitude, longitude: params.longitude })
+      setPlace({
+        geolocation: { latitude: params.latitude, longitude: params.longitude },
+        label: 'Custom',
+        info: 'custom',
+      })
     }
-  }, [params?.latitude, params?.longitude, setCustomPosition])
+  }, [params?.latitude, params?.longitude, setPlace])
 
   return (
     <GenericHome

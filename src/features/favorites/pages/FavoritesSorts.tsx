@@ -9,7 +9,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState, useLocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/location'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -29,8 +29,8 @@ const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy,
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Favorites'))
   const {
-    userPosition: position,
-    userPositionError: positionError,
+    geolocPosition,
+    geolocPositionError,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
@@ -44,10 +44,10 @@ export const FavoritesSorts: React.FC = () => {
       setStagedSelectedSortBy(sortBy)
     }
     if (sortBy === 'AROUND_ME') {
-      if (!position && permissionState === GeolocPermissionState.GRANTED) {
+      if (!geolocPosition && permissionState === GeolocPermissionState.GRANTED) {
         return
       }
-      if (position) {
+      if (geolocPosition) {
         return updateSortBySelection()
       }
       if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
@@ -87,8 +87,8 @@ export const FavoritesSorts: React.FC = () => {
                     marginVertical={getSpacing(3)}
                   />
                   <InputError
-                    visible={!!(sortBy === 'AROUND_ME' && positionError)}
-                    messageId={positionError?.message}
+                    visible={!!(sortBy === 'AROUND_ME' && geolocPositionError)}
+                    messageId={geolocPositionError?.message}
                     numberOfSpacesTop={1}
                   />
                 </Li>

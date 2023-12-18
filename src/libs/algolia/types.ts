@@ -9,13 +9,13 @@ import {
   VenueResponse,
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { VenueTypeCode } from 'libs/parsers'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
@@ -25,10 +25,16 @@ interface SelectedDate {
   selectedDate: string
 }
 
+export enum LocationMode {
+  AROUND_ME = 'AROUND_ME',
+  EVERYWHERE = 'EVERYWHERE',
+  AROUND_PLACE = 'AROUND_PLACE',
+}
+
 export type LocationFilter =
-  | { locationType: LocationType.EVERYWHERE }
-  | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
+  | { locationType: LocationMode.EVERYWHERE }
+  | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
+  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 
@@ -71,7 +77,6 @@ export type SearchQueryParameters = {
   searchId?: string
   tags: string[]
   timeRange: Range<number> | null
-  includeDigitalOffers?: boolean
   venue?: Venue
 }
 

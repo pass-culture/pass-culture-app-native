@@ -2,7 +2,7 @@ import React from 'react'
 
 import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 import { act, render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'
@@ -36,9 +36,9 @@ const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: Position = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),
 }))

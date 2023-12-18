@@ -30,7 +30,7 @@ import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
-import { LocationWrapper } from 'libs/geolocation'
+import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'

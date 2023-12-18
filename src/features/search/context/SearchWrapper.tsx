@@ -2,12 +2,12 @@ import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 
 interface ISearchContext {
   searchState: SearchState
@@ -31,44 +31,41 @@ export const SearchWrapper = memo(function SearchWrapper({
   }
 
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
-  const { isCustomPosition, place, isGeolocated } = useLocation()
+  const { place, hasGeolocPosition } = useLocation()
 
   useEffect(() => {
     if (!enableAppLocation) return
     const { locationType } = searchState.locationFilter
     let aroundRadius = DEFAULT_RADIUS
-    const includeDigitalOffers = searchState.includeDigitalOffers ?? false
-    if (locationType === LocationType.PLACE || locationType === LocationType.AROUND_ME) {
+    if (locationType === LocationMode.AROUND_PLACE || locationType === LocationMode.AROUND_ME) {
       aroundRadius = searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
     }
 
     if (searchState.venue) {
       return
-    } else if (isCustomPosition && place) {
+    } else if (place) {
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
           locationFilter: {
             place: place,
-            locationType: LocationType.PLACE,
+            locationType: LocationMode.AROUND_PLACE,
             aroundRadius,
           },
-          includeDigitalOffers,
         },
       })
-    } else if (isGeolocated) {
+    } else if (hasGeolocPosition) {
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius },
-          includeDigitalOffers,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius },
         },
       })
     }
 
     // we don't want to put the searchState in deps (it will create an infinite update loop with the dispatch)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCustomPosition, isGeolocated, place, dispatch])
+  }, [hasGeolocPosition, place, dispatch])
 
   useEffect(() => {
     dispatch({ type: 'PRICE_RANGE', payload: priceRange })

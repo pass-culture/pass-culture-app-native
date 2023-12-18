@@ -1,18 +1,18 @@
 import { LocationCircleArea } from 'features/home/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { computeDistanceInMeters } from 'libs/parsers'
 
 export const getLocalizationCompliance = (
   moduleLocationArea?: LocationCircleArea,
-  userPosition?: Position
+  position?: Position
 ) => {
   if (moduleLocationArea) {
-    if (userPosition) {
+    if (position) {
       const distance = computeDistanceInMeters(
         moduleLocationArea.latitude,
         moduleLocationArea.longitude,
-        userPosition.latitude,
-        userPosition.longitude
+        position.latitude,
+        position.longitude
       )
       return distance <= moduleLocationArea.radius * 1000
     } else {

@@ -7,13 +7,13 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -71,11 +71,12 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
     place: null,
     onModalHideRef: jest.fn(),
+    isCurrentLocationMode: jest.fn(),
   }),
 }))
 
@@ -482,12 +483,12 @@ describe('SearchBox component', () => {
   )
 
   it.each`
-    locationType               | locationFilter                                                                   | position            | locationButtonLabel
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
-    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    locationType                 | locationFilter                                                                          | position            | locationButtonLabel
+    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${'Me localiser'}
+    ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
   `(
     'should display $locationButtonLabel in location button label when location type is $locationType and position is $position',
     async ({
@@ -534,12 +535,12 @@ describe('SearchBox component', () => {
   })
 
   it.each`
-    locationType               | locationFilter                                                                   | position            | locationSearchWidgetLabel
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
-    ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Me localiser'}
-    ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-    ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+    locationType                 | locationFilter                                                                          | position            | locationSearchWidgetLabel
+    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
+    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${'Me localiser'}
+    ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
+    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
   `(
     'should display $locationSearchWidgetLabel in location search widget when location type is $locationType and position is $position',
     async ({
@@ -581,13 +582,13 @@ describe('SearchBox component', () => {
 
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
     }
     mockPosition = DEFAULT_POSITION
     useRoute.mockReturnValueOnce({
       params: {
         view: SearchView.Results,
-        locationFilter: { locationType: LocationType.EVERYWHERE },
+        locationFilter: { locationType: LocationMode.EVERYWHERE },
       },
     })
     renderSearchBox()

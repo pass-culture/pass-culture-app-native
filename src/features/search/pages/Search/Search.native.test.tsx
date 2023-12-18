@@ -8,7 +8,6 @@ import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import * as useShowResultsForCategory from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
@@ -18,6 +17,7 @@ import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -194,11 +194,13 @@ const mockedPlace: SuggestedPlace = {
 }
 
 const mockSetPlace = jest.fn()
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     setPlace: mockSetPlace,
     place: mockedPlace,
     onModalHideRef: jest.fn(),
+    isCurrentLocationMode: jest.fn(),
   }),
 }))
 
@@ -227,7 +229,7 @@ describe('<Search/>', () => {
     useRoute.mockReturnValueOnce({
       params: {
         locationFilter: {
-          locationType: LocationType.PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           place: mockedPlace,
         },
       },

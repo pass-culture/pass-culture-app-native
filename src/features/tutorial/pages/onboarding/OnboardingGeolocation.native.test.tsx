@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockRequestGeolocPermission = jest.fn()
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({ requestGeolocPermission: mockRequestGeolocPermission }),
 }))
 

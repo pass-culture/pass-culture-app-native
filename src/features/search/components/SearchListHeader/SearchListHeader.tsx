@@ -10,15 +10,15 @@ import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchR
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
+import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -60,7 +60,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
 }) => {
-  const { userPosition: position, showGeolocPermissionModal } = useLocation()
+  const { geolocPosition, showGeolocPermissionModal } = useLocation()
   const { searchState } = useSearch()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const enableVenuesInSearchResults = useFeatureFlag(
@@ -70,7 +70,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const isGeolocated = useMemo(
     () =>
       Boolean(
-        params?.locationFilter && params?.locationFilter?.locationType !== LocationType.EVERYWHERE
+        params?.locationFilter && params?.locationFilter?.locationType !== LocationMode.EVERYWHERE
       ),
     [params?.locationFilter]
   )
@@ -107,7 +107,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   }, [logVenuePlaylistDisplayedOnSearchResultsOnce, shouldDisplayVenuesPlaylist])
 
   const shouldDisplayGeolocationButton =
-    position === null &&
+    geolocPosition === null &&
     params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage

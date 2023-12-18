@@ -2,8 +2,9 @@ import { NativeScrollEvent } from 'react-native'
 
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { LocationMode } from 'libs/algolia'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
 
 const TODAY = new Date(2023, 0, 3)
@@ -294,7 +295,7 @@ describe('[Analytics utils]', () => {
   describe('buildLocationFilterParam', () => {
     it('should return all location filter param in a string when type is EVERYWHERE', () => {
       const everywhereType: LocationFilter = {
-        locationType: LocationType.EVERYWHERE,
+        locationType: LocationMode.EVERYWHERE,
       }
       const everywhereTypeSearchState: SearchState = {
         ...initialSearchState,
@@ -307,7 +308,7 @@ describe('[Analytics utils]', () => {
 
     it('should return all location filter param in a string when type is AROUND_ME', () => {
       const aroundMeType: LocationFilter = {
-        locationType: LocationType.AROUND_ME,
+        locationType: LocationMode.AROUND_ME,
         aroundRadius: 100,
       }
       const aroundMeTypeSearchState: SearchState = {
@@ -356,7 +357,7 @@ describe('[Analytics utils]', () => {
 
     it('should return location type and the name of the place in a string when type is PLACE', () => {
       const placeType: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationMode.AROUND_PLACE,
         place: {
           label: 'Rue de la Paix, Paris',
           info: 'Paris',
@@ -371,13 +372,13 @@ describe('[Analytics utils]', () => {
       const locationFilterParam = buildLocationFilterParam(placeTypeSearchState)
 
       expect(locationFilterParam).toEqual(
-        JSON.stringify({ locationType: LocationType.PLACE, label: 'Rue de la Paix, Paris' })
+        JSON.stringify({ locationType: 'PLACE', label: 'Rue de la Paix, Paris' })
       )
     })
 
     it('should return location type and the truncated name of the place in a string when type is PLACE', () => {
       const placeType: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationMode.AROUND_PLACE,
         place: {
           label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Intérêt, Paris',
           info: 'Paris',
@@ -393,7 +394,7 @@ describe('[Analytics utils]', () => {
 
       expect(locationFilterParam).toEqual(
         JSON.stringify({
-          locationType: LocationType.PLACE,
+          locationType: 'PLACE',
           label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Int',
         })
       )

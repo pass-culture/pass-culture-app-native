@@ -15,12 +15,6 @@ export enum DATE_FILTER_OPTIONS {
   USER_PICK = 'picked',
 }
 
-export enum LocationType {
-  AROUND_ME = 'AROUND_ME',
-  EVERYWHERE = 'EVERYWHERE',
-  PLACE = 'PLACE',
-}
-
 export enum CategoriesModalView {
   CATEGORIES = 'CATEGORIES',
   NATIVE_CATEGORIES = 'NATIVE_CATEGORIES',

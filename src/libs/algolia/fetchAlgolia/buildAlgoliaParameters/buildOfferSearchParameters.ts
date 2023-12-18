@@ -1,7 +1,7 @@
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
@@ -44,7 +44,6 @@ export const buildOfferSearchParameters = (
     priceRange = null,
     tags = [],
     timeRange = null,
-    includeDigitalOffers = false,
     venue,
   }: Parameters,
   userLocation: Position,
@@ -65,7 +64,6 @@ export const buildOfferSearchParameters = (
     offerSubcategories,
     offerTypes,
     tags,
-    includeDigitalOffers,
     isFullyDigitalOffersCategory,
     enableAppLocation,
   }),

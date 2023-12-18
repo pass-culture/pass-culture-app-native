@@ -22,7 +22,7 @@ import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWr
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
-import { LocationWrapper } from 'libs/geolocation'
+import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
