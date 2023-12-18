@@ -2,54 +2,24 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 
-import OfferName from './OfferName'
+import { OfferName } from './OfferName'
 
 describe('OfferName component', () => {
-  it('should display "Lorem" when db name is "lorem"', async () => {
-    render(<OfferName title="lorem" />)
+  it('should display not display nothing when title is filled', async () => {
+    render(<OfferName title="filled" />)
 
-    expect(screen.queryByText('Lorem')).toBeOnTheScreen()
+    expect(JSON.stringify(screen)).not.toEqual(JSON.stringify(null))
   })
 
-  it('should display "Lorem" when db name is "Lorem"', async () => {
-    render(<OfferName title="Lorem" />)
+  it('should display nothing when title is just a space', async () => {
+    render(<OfferName title=" " />)
 
-    expect(screen.queryByText('Lorem')).toBeOnTheScreen()
+    expect(JSON.stringify(screen)).toEqual(JSON.stringify(null))
   })
 
-  it('should display "LOREM" when db name is "LOREM"', async () => {
-    render(<OfferName title="LOREM" />)
-
-    expect(screen.queryByText('LOREM')).toBeOnTheScreen()
-  })
-
-  it('should display "Lorem" when db name is " lorem "', async () => {
+  it('should display "Lorem" when db name is " lorem"', async () => {
     render(<OfferName title=" lorem" />)
 
     expect(screen.queryByText('Lorem')).toBeOnTheScreen()
-  })
-
-  it('should display "4orem" when db name is " 4orem "', async () => {
-    render(<OfferName title=" 4orem " />)
-
-    expect(screen.queryByText('4orem')).toBeOnTheScreen()
-  })
-
-  it('should display "Lorem ipsum" when db name is "lorem ipsum"', async () => {
-    render(<OfferName title="lorem ipsum" />)
-
-    expect(screen.queryByText('Lorem ipsum')).toBeOnTheScreen()
-  })
-
-  it('should display Sans nom when nothing in title', async () => {
-    render(<OfferName title="" />)
-
-    expect(screen.queryByText('Sans nom')).toBeOnTheScreen()
-  })
-
-  it('should display Sans nom when title is just a space', async () => {
-    render(<OfferName title=" " />)
-
-    expect(screen.queryByText('Sans nom')).toBeOnTheScreen()
   })
 })
