@@ -1,7 +1,8 @@
-const sanitizeTitle = (name: string) => {
-  const trimedName = name.trim() ?? ''
-  const newName = trimedName[0].toUpperCase() + trimedName.slice(1)
-  return newName
+const sanitizeTitle = (title?: string) => {
+  const trimedTitle = title?.trim() ?? ''
+  if (!trimedTitle) return ''
+  const newTitle = trimedTitle[0].toUpperCase() + trimedTitle.slice(1)
+  return newTitle
 }
 
 export default sanitizeTitle

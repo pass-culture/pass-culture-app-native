@@ -40,4 +40,16 @@ describe('OfferName component', () => {
 
     expect(screen.queryByText('Lorem ipsum')).toBeOnTheScreen()
   })
+
+  it('should display Sans nom when nothing in title', async () => {
+    render(<OfferName title="" />)
+
+    expect(screen.queryByText('Sans nom')).toBeOnTheScreen()
+  })
+
+  it('should display Sans nom when title is just a space', async () => {
+    render(<OfferName title=" " />)
+
+    expect(screen.queryByText('Sans nom')).toBeOnTheScreen()
+  })
 })
