@@ -13,7 +13,7 @@ import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
-import { OfferWebHead } from 'features/offer/components/OfferWebHead'
+import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
@@ -298,7 +298,7 @@ export function Offer() {
 
   return (
     <Container>
-      <OfferWebHead offer={offer} />
+      <OfferWebMetaHeader offer={offer} />
       <OfferBody
         offerId={offerId}
         onScroll={onScroll}
