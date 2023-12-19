@@ -14,10 +14,10 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByTestId('Handicap visuel')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap moteur')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap auditif')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap auditif')).toBeOnTheScreen()
   })
 
   it('renders only available handicap information', () => {
@@ -30,10 +30,10 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByTestId('Handicap visuel')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap moteur')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap auditif')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap auditif')).not.toBeOnTheScreen()
   })
 
   it('renders all handicap information when nothing is accessible', () => {
@@ -46,10 +46,10 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByTestId('Handicap visuel')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap moteur')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap auditif')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.queryByText('Handicap auditif')).toBeOnTheScreen()
   })
 
   it('renders nothing when no available handicap information', () => {
@@ -62,9 +62,9 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByTestId('Handicap visuel')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap moteur')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap psychique ou cognitif')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('Handicap auditif')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Handicap moteur')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Handicap psychique ou cognitif')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Handicap auditif')).not.toBeOnTheScreen()
   })
 })
