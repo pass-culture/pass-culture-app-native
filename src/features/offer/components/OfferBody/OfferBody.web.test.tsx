@@ -12,7 +12,6 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('react-query')
-jest.mock('features/offer/api/useOffer')
 
 const mockSubcategories = placeholderData.subcategories
 const mockSearchGroups = placeholderData.searchGroups
@@ -64,7 +63,7 @@ describe('<OfferBody />', () => {
     it('should open url to share on social medium', async () => {
       render(
         <OfferBody
-          offerId={offerId}
+          offer={mockOffer}
           onScroll={jest.fn()}
           handleChangeSameArtistPlaylistDisplay={jest.fn()}
         />
@@ -84,7 +83,7 @@ describe('<OfferBody />', () => {
     it('should open web share modal on "Plus d’options" press', async () => {
       render(
         <OfferBody
-          offerId={offerId}
+          offer={mockOffer}
           onScroll={jest.fn()}
           handleChangeSameArtistPlaylistDisplay={jest.fn()}
         />

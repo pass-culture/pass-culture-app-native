@@ -2,49 +2,27 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Linking, Platform, Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
+import { ReactTestInstance } from 'react-test-renderer'
 
-import { push } from '__mocks__/@react-navigation/native'
-import { navigate } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
-import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { PlaylistType } from 'features/offer/enums'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
-  mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
-jest.mock('api/api')
-jest.unmock('libs/network/NetInfoWrapper')
-jest.mock('shared/user/useAvailableCredit')
-jest.mock('features/auth/context/AuthContext')
 jest.mock('features/offer/api/useOffer')
-jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
-
-let mockSearchHits: Offer[] = []
-jest.mock('features/offer/api/useSimilarOffers', () => ({
-  useSimilarOffers: jest.fn(() => mockSearchHits),
-}))
-
-let mockSameArtistPlaylist: HitOfferWithArtistAndEan[] = []
-jest.mock('features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist', () => ({
-  useSameArtistPlaylist: jest.fn(() => mockSameArtistPlaylist),
-}))
 
 const mockSubcategories = placeholderData.subcategories
 const mockSearchGroups = placeholderData.searchGroups
@@ -63,11 +41,6 @@ const mockNativeShare = jest
   .spyOn(NativeShare, 'share')
   .mockResolvedValue({ action: NativeShare.sharedAction })
 
-const mockUseOffer = jest.fn().mockReturnValue({ data: mockOffer })
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => mockUseOffer(),
-}))
-
 const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true, user: beneficiaryUser })
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
@@ -78,167 +51,51 @@ jest.mock('libs/network/useNetInfo', () => ({
   useNetInfo: () => mockUseNetInfo(),
 }))
 
-const offerVenues = [
-  {
-    title: 'Envie de lire',
-    address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
-    distance: '500 m',
-    offerId: 1,
-    price: 1000,
-  },
-  {
-    title: 'Le Livre Éclaire',
-    address: '75013 Paris, 56 rue de Tolbiac',
-    distance: '1,5 km',
-    offerId: 2,
-    price: 1000,
-  },
-  {
-    title: 'Hachette Livre',
-    address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
-    distance: '2,4 km',
-    offerId: 3,
-    price: 1000,
-  },
-]
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-const mockData = {
-  pages: [
-    {
-      nbHits: 0,
-      hits: [],
-      page: 0,
-    },
-  ],
-}
-let mockVenueList: VenueListItem[] = []
-let mockNbVenueItems = 0
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
-  useSearchVenueOffers: () => ({
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    data: mockData,
-    venueList: mockVenueList,
-    nbVenueItems: mockNbVenueItems,
-    isFetching: false,
-  }),
-}))
-
-const useFeatureFlagSpy = jest
-  .spyOn(useFeatureFlag, 'useFeatureFlag')
-  // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
-  .mockReturnValue(false)
-  // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
-  .mockReturnValue(false)
-
 const onScroll = jest.fn()
 const handleChangeSameArtistPlaylistDisplay = jest.fn()
 
 const offerId = mockOffer.id
 
+const mockSearchHits: Offer[] = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
+
+jest.useFakeTimers({ legacyFakeTimers: true })
+
+const trigger = async (component: ReactTestInstance) => {
+  fireEvent.press(component)
+
+  // The Accessibility accordion is animated so we wait until its fully open before testing the analytics
+  await act(async () => {
+    jest.runAllTimers()
+  })
+}
+
 describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date('2021-01-01'))
-    mockVenueList = []
-    mockNbVenueItems = 0
   })
 
   afterEach(() => {
-    mockVenueList = []
-    mockNbVenueItems = 0
+    mockdate.reset()
   })
 
   it('should match snapshot for physical offer', async () => {
-    renderOfferBody()
+    renderOfferBody({})
     await screen.findByTestId('offer-container')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should match snapshot for digital offer', async () => {
-    mockUseOffer.mockReturnValueOnce({ data: mockDigitalOffer })
-    renderOfferBody()
+    renderOfferBody({ offer: mockDigitalOffer })
     await screen.findByTestId('offer-container')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should show venue banner in where section', async () => {
-    renderOfferBody()
-
-    expect(await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)).toBeOnTheScreen()
-  })
-
-  describe('similar offers', () => {
-    beforeAll(() => {
-      mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
-    })
-
-    it('should not display similar offers lists when offer has not it', async () => {
-      renderOfferBody()
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameCategorySimilarOffers')).not.toBeOnTheScreen()
-      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).not.toBeOnTheScreen()
-    })
-
-    it('should display similar offers list when offer has some', async () => {
-      renderOfferBody({
-        sameCategorySimilarOffers: mockSearchHits,
-        otherCategoriesSimilarOffers: mockSearchHits,
-      })
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeOnTheScreen()
-      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeOnTheScreen()
-    })
-
-    describe('Same category similar offers', () => {
-      it('should navigate to an offer when pressing on it', async () => {
-        renderOfferBody({
-          sameCategorySimilarOffers: mockSearchHits,
-        })
-
-        await screen.findByText('Envoyer sur Instagram')
-
-        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
-
-        expect(push).toHaveBeenCalledWith('Offer', {
-          from: 'offer',
-          fromOfferId: offerId,
-          id: 102280,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-        })
-      })
-    })
-
-    describe('Other categories differents from that of the offer', () => {
-      it('should navigate to an offer when pressing on it', async () => {
-        renderOfferBody({
-          otherCategoriesSimilarOffers: mockSearchHits,
-        })
-
-        await screen.findByText('Envoyer sur Instagram')
-
-        await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
-
-        expect(push).toHaveBeenCalledWith('Offer', {
-          from: 'offer',
-          fromOfferId: offerId,
-          id: 102280,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-        })
-      })
-    })
-  })
-
   describe('share on social media', () => {
     it.each([true, false])(`should always display "Plus d’options" button`, async (hasSocial) => {
       canOpenURLSpy.mockResolvedValueOnce(hasSocial)
-      renderOfferBody()
+      renderOfferBody({})
 
       await waitFor(() => {
         expect(screen.queryByText('Plus d’options')).toBeOnTheScreen()
@@ -247,7 +104,7 @@ describe('<OfferBody />', () => {
 
     it('should open social medium on share button press', async () => {
       canOpenURLSpy.mockResolvedValueOnce(true)
-      renderOfferBody()
+      renderOfferBody({})
 
       await act(async () => {
         const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
@@ -266,6 +123,35 @@ describe('<OfferBody />', () => {
       })
     })
 
+    it('should log when the user shares the offer on a certain medium', async () => {
+      canOpenURLSpy.mockResolvedValueOnce(true)
+      renderOfferBody({})
+
+      const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+      fireEvent.press(socialMediumButton)
+
+      expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+        type: 'Offer',
+        from: 'offer',
+        offerId,
+        social: Network.instagram,
+      })
+    })
+
+    it('should log when the user press "Plus d’options" share button', async () => {
+      renderOfferBody({})
+
+      const otherButton = await screen.findByText('Plus d’options')
+      await act(async () => fireEvent.press(otherButton))
+
+      expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+        type: 'Offer',
+        from: 'offer',
+        offerId,
+        social: 'Other',
+      })
+    })
+
     describe('on Android', () => {
       beforeAll(() => (Platform.OS = 'android'))
 
@@ -275,7 +161,7 @@ describe('<OfferBody />', () => {
         // FIXME(PC-21174): This warning comes from android 'Expected style "elevation: 16px" to be unitless' due to shadow style
         jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
         canOpenURLSpy.mockResolvedValueOnce(true)
-        renderOfferBody()
+        renderOfferBody({})
 
         await act(async () => {
           const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
@@ -298,7 +184,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should open native share modal on "Plus d’options" press', async () => {
-      renderOfferBody()
+      renderOfferBody({})
 
       await act(async () => {
         const otherButton = screen.getByText('Plus d’options')
@@ -311,428 +197,159 @@ describe('<OfferBody />', () => {
 
   describe('Accessibility details', () => {
     it('should not display accessibility when disabilities are not defined', async () => {
-      renderOfferBody()
+      renderOfferBody({})
       await screen.findByTestId('offer-container')
 
       expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
     })
 
     it('should display accessibility when disabilities are defined', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: { ...mockOffer, accessibility: { visualDisability: false, audioDisability: false } },
+      renderOfferBody({
+        offer: { ...mockOffer, accessibility: { visualDisability: false, audioDisability: false } },
       })
-      renderOfferBody()
 
       expect(await screen.findByText('Accessibilité')).toBeTruthy()
+    })
+
+    it('should log that the user has open accessibility modalities only once', async () => {
+      renderOfferBody({
+        offer: {
+          ...mockOffer,
+          accessibility: {
+            audioDisability: true,
+            mentalDisability: true,
+            motorDisability: false,
+            visualDisability: false,
+          },
+        },
+      })
+
+      const accessibilityButton = await screen.findByText('Accessibilité')
+      await trigger(accessibilityButton)
+
+      expect(analytics.logConsultAccessibility).toHaveBeenNthCalledWith(1, {
+        offerId: mockOffer.id,
+      })
+
+      await trigger(accessibilityButton)
+
+      expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
     })
   })
 
   describe('withdrawalDetails', () => {
     it('should display withdrawal details for beneficiary user', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: { ...mockOffer, withdrawalDetails: 'How to withdraw' },
-      })
-      renderOfferBody()
+      renderOfferBody({ offer: { ...mockOffer, withdrawalDetails: 'How to withdraw' } })
 
       expect(await screen.findByText('Modalités de retrait')).toBeTruthy()
     })
 
     it('should not display withdrawal details for non beneficiary user', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: { ...mockOffer, withdrawalDetails: 'How to withdraw' },
-      })
       mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: nonBeneficiaryUser })
-      renderOfferBody()
+      renderOfferBody({ offer: { ...mockOffer, withdrawalDetails: 'How to withdraw' } })
       await screen.findByTestId('offer-container')
 
       expect(screen.queryByText('Modalités de retrait')).not.toBeOnTheScreen()
     })
 
     it('should not display withdrawal details when not specified', async () => {
-      renderOfferBody()
+      renderOfferBody({})
       await screen.findByTestId('offer-container')
 
       expect(screen.queryByText('Modalités de retrait')).not.toBeOnTheScreen()
     })
+
+    it('should log that the user has open withdrawal modalities only once', async () => {
+      renderOfferBody({
+        offer: { ...mockOffer, withdrawalDetails: 'How to withdraw, https://test.com' },
+      })
+
+      const withdrawalButton = await screen.findByText('Modalités de retrait')
+
+      await trigger(withdrawalButton)
+
+      expect(analytics.logConsultWithdrawal).toHaveBeenNthCalledWith(1, {
+        offerId: mockOffer.id,
+      })
+
+      await trigger(withdrawalButton)
+
+      expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should not display distance when no address and go to button', async () => {
-    const venueWithoutAddress = {
-      id: 1,
-      offerer: { name: 'PATHE BEAUGRENELLE' },
-      name: 'PATHE BEAUGRENELLE',
-      coordinates: {},
-      isPermanent: true,
-    }
-    mockUseOffer.mockReturnValueOnce({
-      data: {
-        ...mockOffer,
-        venue: venueWithoutAddress,
-      },
-    })
-    renderOfferBody()
-
+  it('should log when the user has seen the offer after unmount', async () => {
+    renderOfferBody({})
     await screen.findByTestId('offer-container')
 
-    expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Distance')).not.toBeOnTheScreen()
+    expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
+
+    screen.unmount()
+
+    expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
   })
 
-  describe('When wipEnableMultivenueOffer feature flag deactivated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+  it('should log when the user scrolls same categories playlist', async () => {
+    const nativeEventMiddle = {
+      layoutMeasurement: { height: 296 },
+      contentOffset: { x: 200 }, // how far did we scroll
+      contentSize: { height: 296 },
+    }
+    renderOfferBody({
+      additionalProps: {
+        sameCategorySimilarOffers: mockSearchHits,
+      },
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has an EAN', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      renderOfferBody()
+    const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
 
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+    await act(async () => {
+      scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has an EAN', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', async () => {
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should display old venue section', async () => {
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Où\u00a0?')).toBeOnTheScreen()
-    })
-
-    it('should not display new venue section', async () => {
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByTestId('venueCard')).not.toBeOnTheScreen()
-      expect(screen.queryByTestId('venueInfos')).not.toBeOnTheScreen()
-    })
+    expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
   })
 
-  describe('When wipEnableMultivenueOffer feature flag activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should log when the user scrolls other categories playlist', async () => {
+    const nativeEventMiddle = {
+      layoutMeasurement: { height: 296, width: 296 },
+      contentOffset: { x: 200 }, // how far did we scroll
+      contentSize: { height: 296, width: 296 },
+    }
+    renderOfferBody({
+      additionalProps: {
+        otherCategoriesSimilarOffers: mockSearchHits,
+      },
+    })
+    const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
+
+    await act(async () => {
+      scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     })
 
-    it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      mockNbVenueItems = 0
-      mockVenueList = []
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
-      })
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      mockNbVenueItems = 0
-      mockVenueList = []
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an EAN', async () => {
-      mockUseOffer.mockReturnValueOnce({
-        data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
-      })
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', async () => {
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display old venue section', async () => {
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
-    })
-
-    describe('should display new venue section', () => {
-      it('With "Lieu de retrait" in title by default', async () => {
-        mockUseOffer.mockReturnValueOnce({
-          data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
-        })
-        renderOfferBody()
-
-        await screen.findByTestId('offer-container')
-
-        expect(screen.queryByText('Lieu de retrait')).toBeOnTheScreen()
-      })
-
-      it('With "Lieu de l’évènement" in title when event offer', async () => {
-        mockUseOffer.mockReturnValueOnce({
-          data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.CONCERT },
-        })
-        renderOfferBody()
-
-        await screen.findByTestId('offer-container')
-
-        expect(screen.queryByText('Lieu de l’évènement')).toBeOnTheScreen()
-      })
-
-      it('With "Lieu de projection" in title when offer subcategory is "Séances de cinéma"', async () => {
-        mockUseOffer.mockReturnValueOnce({
-          data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
-        })
-        renderOfferBody()
-
-        await screen.findByTestId('offer-container')
-
-        expect(screen.queryByText('Lieu de projection')).toBeOnTheScreen()
-      })
-    })
-
-    it('should navigate to an other offer when user choose an other venue from "Voir d’autres lieux disponibles" button', async () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferBody()
-
-      await screen.findByTestId('offer-container')
-
-      fireEvent.press(screen.getByText('Le Livre Éclaire'))
-      fireEvent.press(screen.getByText('Choisir ce lieu'))
-
-      expect(navigate).toHaveBeenCalledWith('Offer', {
-        fromOfferId: offerId,
-        id: 2,
-        fromMultivenueOfferId: offerId,
-      })
-    })
-
-    it('should log ConsultOffer when new offer venue is selected', async () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
-      mockUseOffer.mockReturnValueOnce({
-        data: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferBody()
-      await screen.findByTestId('offer-container')
-
-      fireEvent.press(screen.getByText('Le Livre Éclaire'))
-      fireEvent.press(screen.getByText('Choisir ce lieu'))
-
-      expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        from: 'offer',
-        fromMultivenueOfferId: 146112,
-        offerId: 2,
-      })
-    })
-  })
-
-  describe('same artist playlist with "wipSameArtistPlaylist" feature flag activated', () => {
-    beforeAll(() => {
-      mockSameArtistPlaylist = mockedAlgoliaOffersWithSameArtistResponse
-    })
-
-    beforeEach(() => {
-      useFeatureFlagSpy
-        // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
-        .mockReturnValueOnce(false)
-        // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
-        .mockReturnValueOnce(true)
-    })
-
-    it('should display same artist list when offer has some', async () => {
-      renderOfferBody({
-        sameArtistPlaylist: mockSameArtistPlaylist,
-      })
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameArtistPlaylist')).toBeOnTheScreen()
-    })
-
-    it('should not display same artist list when offer has not it', async () => {
-      renderOfferBody()
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
-    })
-  })
-
-  describe('same artist playlist with "wipSameArtistPlaylist" feature flag deactivated', () => {
-    beforeAll(() => {
-      mockSameArtistPlaylist = mockedAlgoliaOffersWithSameArtistResponse
-    })
-
-    beforeEach(() => {
-      useFeatureFlagSpy
-        // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
-        .mockReturnValueOnce(false)
-        // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
-        .mockReturnValueOnce(false)
-    })
-
-    it('should not display same artist list when offer has some', async () => {
-      renderOfferBody({
-        sameArtistPlaylist: mockSameArtistPlaylist,
-      })
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
-    })
-
-    it('should not display same artist list when offer has not it', async () => {
-      renderOfferBody()
-
-      await screen.findByText('Envoyer sur Instagram')
-
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
-    })
+    expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
   })
 })
 
-const renderOfferBody = (
-  additionalProps: {
-    sameCategorySimilarOffers?: Offer[]
-    otherCategoriesSimilarOffers?: Offer[]
-    sameArtistPlaylist?: HitOfferWithArtistAndEan[]
-  } = {}
-) =>
+type AdditionalProps = {
+  sameCategorySimilarOffers?: Offer[]
+  otherCategoriesSimilarOffers?: Offer[]
+  sameArtistPlaylist?: HitOfferWithArtistAndEan[]
+}
+
+type RenderOfferBodyProps = {
+  offer?: OfferResponse
+  additionalProps?: AdditionalProps
+}
+
+const renderOfferBody = ({ offer = mockOffer, additionalProps = {} }: RenderOfferBodyProps) =>
   render(
     reactQueryProviderHOC(
-      <NetInfoWrapper>
-        <OfferBody
-          offerId={offerId}
-          onScroll={onScroll}
-          handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
-          {...additionalProps}
-        />
-      </NetInfoWrapper>
+      <OfferBody
+        offer={offer}
+        onScroll={onScroll}
+        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
+        {...additionalProps}
+      />
     )
   )
