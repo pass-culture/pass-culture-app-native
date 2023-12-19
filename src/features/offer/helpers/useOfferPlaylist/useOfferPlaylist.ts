@@ -14,7 +14,7 @@ type Props = {
   searchGroupList?: SearchGroupResponseModelv2[]
 }
 
-export type UseOfferPlaylistType = {
+type UseOfferPlaylistType = {
   sameArtistPlaylist: HitOfferWithArtistAndEan[]
   refetchSameArtistPlaylist: <TPageData>(
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined

@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import { CategoryIdEnum } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { useOfferBodyData } from 'features/offerv2/helpers/useOfferBodyData/useOfferBodyData'
+import { useOfferBodyData } from 'features/offer/helpers/useOfferBodyData/useOfferBodyData'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 

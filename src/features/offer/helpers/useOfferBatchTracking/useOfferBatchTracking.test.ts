@@ -1,5 +1,5 @@
 import { NativeCategoryIdEnumv2 } from 'api/gen'
-import { useOfferBatchTraking } from 'features/offerv2/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { useOfferBatchTraking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { BatchUser, BatchEvent } from 'libs/react-native-batch'
 import { renderHook } from 'tests/utils'
 

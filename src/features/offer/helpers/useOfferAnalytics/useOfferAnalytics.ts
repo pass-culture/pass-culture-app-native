@@ -15,7 +15,7 @@ type Props = {
   fromOfferId?: number
 }
 
-export type UseOfferAnalyticsType = {
+type UseOfferAnalyticsType = {
   logSameCategoryPlaylistVerticalScroll: VoidFunction
   logOtherCategoriesPlaylistVerticalScroll: VoidFunction
   logSameArtistPlaylistVerticalScroll: VoidFunction

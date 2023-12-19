@@ -23,7 +23,7 @@ type Props = {
   nativeCategory: NativeCategoryIdEnumv2
 }
 
-export type UseOfferBatchTrackingType = {
+type UseOfferBatchTrackingType = {
   trackEventHasSeenOfferOnce: VoidFunction
   trackBatchEvent: VoidFunction
   shouldTriggerBatchSurveyEvent: boolean

@@ -2,7 +2,7 @@ import { OfferExtraData, SearchGroupNameEnumv2 } from 'api/gen'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { useOfferPlaylist } from 'features/offerv2/helpers/useOfferPlaylist/useOfferPlaylist'
+import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   moreHitsForSimilarOffersPlaylist,

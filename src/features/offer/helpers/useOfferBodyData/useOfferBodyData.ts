@@ -9,7 +9,7 @@ type Props = {
   offer: OfferResponse
 }
 
-export type UseOfferBodyDataType = {
+type UseOfferBodyDataType = {
   isMultivenueCompatibleOffer: boolean
   categoryId: CategoryIdEnum
   appLabel: string
