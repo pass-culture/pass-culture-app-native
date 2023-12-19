@@ -3,12 +3,31 @@ import SocialShare from 'react-native-share'
 
 import { mapNetworkToSocial } from 'libs/share/mapNetworkToSocial'
 
-import { ShareContent, ShareMode } from './types'
+import { Network, ShareContent, ShareMode } from './types'
 
 type Arguments = {
   content: ShareContent
   mode: ShareMode
   logAnalyticsEvent?: (shareAction: ShareAction) => void
+}
+
+const shareSocial = async ({ content, mode }: { content: ShareContent; mode: `${Network}` }) => {
+  const { shouldEncodeURI, supportsURL, webUrl: _, ...options } = mapNetworkToSocial[mode]
+
+  const rawMessage = supportsURL
+    ? `${content.body}\u00a0:\n`
+    : `${content.body}\u00a0:\n${content.url}`
+  const message = shouldEncodeURI ? encodeURIComponent(rawMessage) : rawMessage
+
+  const rawUrl = supportsURL ? content.url : undefined
+  const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl.toString()) : rawUrl
+
+  await SocialShare.shareSingle({
+    ...options,
+    message,
+    type: 'text',
+    url: url?.toString(),
+  })
 }
 
 export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => {
@@ -48,21 +67,6 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
 
     Linking.openURL(webUrl + message)
   } else {
-    const { shouldEncodeURI, supportsURL, webUrl: _, ...options } = mapNetworkToSocial[mode]
-
-    const rawMessage = supportsURL
-      ? `${content.body}\u00a0:\n`
-      : `${content.body}\u00a0:\n${content.url}`
-    const message = shouldEncodeURI ? encodeURIComponent(rawMessage) : rawMessage
-
-    const rawUrl = supportsURL ? content.url : undefined
-    const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl.toString()) : rawUrl
-
-    await SocialShare.shareSingle({
-      ...options,
-      message,
-      type: 'text',
-      url: url?.toString(),
-    })
+    await shareSocial({ content, mode })
   }
 }
