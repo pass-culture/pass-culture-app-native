@@ -1,6 +1,6 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -13,7 +13,7 @@ import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
-import { OfferWebHead } from 'features/offer/components/OfferWebHead'
+import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
@@ -42,6 +42,8 @@ const PLAYLIST_HEIGHT = 300
 const getPlaylistsHeight = (numberOfPlaylists: number) => {
   return PLAYLIST_HEIGHT * numberOfPlaylists
 }
+
+const isWeb = Platform.OS === 'web'
 
 export function Offer() {
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -298,7 +300,10 @@ export function Offer() {
 
   return (
     <Container>
-      <OfferWebHead offer={offer} />
+      <OfferWebMetaHeader offer={offer} />
+      {isWeb ? (
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
       <OfferBody
         offerId={offerId}
         onScroll={onScroll}
@@ -310,7 +315,9 @@ export function Offer() {
         handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
-      <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      {!isWeb ? (
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">

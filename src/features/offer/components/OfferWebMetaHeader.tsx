@@ -9,7 +9,7 @@ interface Props {
   offer: OfferResponse
 }
 
-export const OfferWebHead = ({ offer }: Props) => (
+export const OfferWebMetaHeader = ({ offer }: Props) => (
   <Helmet>
     <title>{offer.name + ' | pass Culture'}</title>
     <meta name="title" content={offer.name} />

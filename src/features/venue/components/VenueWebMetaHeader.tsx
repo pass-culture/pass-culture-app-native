@@ -9,7 +9,7 @@ interface Props {
   venue: VenueResponse
 }
 
-export const VenueWebHeader = ({ venue }: Props) => (
+export const VenueWebMetaHeader = ({ venue }: Props) => (
   <Helmet>
     <title>{(venue.publicName || venue.name) + ' | pass Culture'}</title>
     <meta name="title" content={venue.publicName || venue.name} />
