@@ -7,8 +7,6 @@ import { OfferContent } from 'features/offer/components/OfferContent/OfferConten
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
-const isWeb = Platform.OS === 'web'
-
 export function Offer() {
   const route = useRoute<UseRouteType<'Offer'>>()
   const offerId = route.params?.id

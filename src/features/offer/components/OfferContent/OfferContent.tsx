@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -13,7 +13,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
-import { OfferWebHead } from 'features/offer/components/OfferWebHead'
+import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferBatchTraking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
@@ -32,6 +32,8 @@ const PLAYLIST_HEIGHT = 300
 const getPlaylistsHeight = (numberOfPlaylists: number) => {
   return PLAYLIST_HEIGHT * numberOfPlaylists
 }
+
+const isWeb = Platform.OS === 'web'
 
 export function OfferContent({
   offer,
@@ -161,7 +163,10 @@ export function OfferContent({
 
   return (
     <Container>
-      <OfferWebHead offer={offer} />
+      <OfferWebMetaHeader offer={offer} />
+      {isWeb ? (
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
       <OfferBody
         offer={offer}
         onScroll={onScroll}
@@ -173,7 +178,9 @@ export function OfferContent({
         handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
-      <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      {!isWeb ? (
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
       <OfferCTAButton offer={offer} trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce} />
     </Container>
   )
