@@ -8,9 +8,9 @@ const shareAppTitle = 'Profite toi aussi de tous les bons plans du pass Culture'
 
 export const shareApp = (utmMedium: string) => {
   const url = new URL('accueil', WEBAPP_V2_URL)
-  url.searchParams.append('utm_gen', 'product')
-  url.searchParams.append('utm_campaign', 'share_app')
-  url.searchParams.append('utm_medium', utmMedium)
+  url.searchParams.set('utm_gen', 'product')
+  url.searchParams.set('utm_campaign', 'share_app')
+  url.searchParams.set('utm_medium', utmMedium)
 
   const shareAppContent = {
     url,
