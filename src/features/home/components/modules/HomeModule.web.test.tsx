@@ -18,7 +18,7 @@ import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -49,9 +49,9 @@ jest.mock('features/auth/context/AuthContext', () => ({
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
   }),
 }))
 

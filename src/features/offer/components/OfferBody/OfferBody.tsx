@@ -29,9 +29,9 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
-import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useLocation } from 'libs/location'
+import { WhereSection } from 'libs/location/components/WhereSection'
 import {
   capitalizeFirstLetter,
   formatDates,
@@ -97,7 +97,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
   )
@@ -115,7 +115,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   } = useSearchVenueOffers({
     offerId,
     venueId: offer?.venue?.id,
-    geolocation: position ?? {
+    geolocation: geolocPosition ?? {
       latitude: offer?.venue?.coordinates?.latitude ?? 0,
       longitude: offer?.venue?.coordinates?.longitude ?? 0,
     },
@@ -174,7 +174,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           categoryId={categoryMapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
-          distance={formatDistance(item._geoloc, position)}
+          distance={formatDistance(item._geoloc, geolocPosition)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
@@ -190,7 +190,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, labelMapping, categoryMapping, offerId]
+    [geolocPosition, labelMapping, categoryMapping, offerId]
   )
 
   const {
@@ -406,7 +406,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={Boolean(position !== null)}
+          isSharingLocation={Boolean(geolocPosition !== null)}
           venueName={offer.venue.publicName || offer.venue.name}
         />
       ) : null}

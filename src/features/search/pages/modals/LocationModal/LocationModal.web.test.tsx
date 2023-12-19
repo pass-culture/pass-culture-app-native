@@ -6,15 +6,15 @@ import {
   LocationModalProps,
 } from 'features/search/pages/modals/LocationModal/LocationModal'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockPosition: Position = { latitude: 2, longitude: 40 }
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
   }),
 }))
 

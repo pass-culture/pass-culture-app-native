@@ -15,7 +15,6 @@ import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { Highlighted, HistoryItem, SearchState, SearchView } from 'features/search/types'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
@@ -24,7 +23,8 @@ import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurr
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
@@ -59,7 +59,7 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch, searchState } = useSearch()
-  const { userPosition, setPlace } = useLocation()
+  const { geolocPosition, setPlace } = useLocation()
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -72,7 +72,7 @@ export function Search() {
   }, [dispatch, params])
 
   useEffect(() => {
-    if (params?.locationFilter?.locationType === LocationType.PLACE) {
+    if (params?.locationFilter?.locationType === LocationMode.AROUND_PLACE) {
       setPlace(params.locationFilter.place)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,7 +89,11 @@ export function Search() {
     return params?.view
   }, [params?.view])
 
-  const searchVenuePosition = buildSearchVenuePosition(currentFilters, userPosition, params?.venue)
+  const searchVenuePosition = buildSearchVenuePosition(
+    currentFilters,
+    geolocPosition,
+    params?.venue
+  )
 
   const currentVenuesIndex = useMemo(
     () =>

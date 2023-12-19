@@ -12,7 +12,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -34,7 +34,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
-  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const { hasGeolocPosition, geolocPosition, place } = useLocation()
   const {
     isTooltipVisible,
     hideTooltip,
@@ -44,7 +44,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     enableTooltip,
   } = useLocationWidgetTooltip(screenOrigin)
 
-  const locationTitle = getLocationTitle(place, userPosition)
+  const locationTitle = getLocationTitle(place, geolocPosition)
 
   const {
     visible: locationModalVisible,
@@ -58,7 +58,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     hideModal: hideVenueModal,
   } = useModal()
 
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const isWidgetHighlighted = hasGeolocPosition || !!place
 
   const onSearch = useCallback(
     (payload: Partial<SearchState>) => {

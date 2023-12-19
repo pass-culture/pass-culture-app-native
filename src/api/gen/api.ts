@@ -320,11 +320,6 @@ export interface BookingOfferExtraData {
    * @memberof BookingOfferExtraData
    */
   ean?: string | null
-  /**
-   * @type {string}
-   * @memberof BookingOfferExtraData
-   */
-  isbn?: string | null
 }
 /**
  * @export
@@ -1249,6 +1244,37 @@ export interface GoogleSigninRequest {
   oauthStateToken: string
 }
 /**
+ * @export
+ * @interface GtlLabels
+ */
+export interface GtlLabels {
+  /**
+   * @type {string}
+   * @memberof GtlLabels
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof GtlLabels
+   */
+  level01Label?: string | null
+  /**
+   * @type {string}
+   * @memberof GtlLabels
+   */
+  level02Label?: string | null
+  /**
+   * @type {string}
+   * @memberof GtlLabels
+   */
+  level03Label?: string | null
+  /**
+   * @type {string}
+   * @memberof GtlLabels
+   */
+  level04Label?: string | null
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1502,6 +1528,11 @@ export interface OfferExtraData {
    */
   author?: string | null
   /**
+   * @type {Array<string>}
+   * @memberof OfferExtraData
+   */
+  cast?: Array<string> | null
+  /**
    * @type {number}
    * @memberof OfferExtraData
    */
@@ -1515,7 +1546,17 @@ export interface OfferExtraData {
    * @type {string}
    * @memberof OfferExtraData
    */
-  isbn?: string | null
+  editeur?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof OfferExtraData
+   */
+  genres?: Array<string> | null
+  /**
+   * @type {GtlLabels}
+   * @memberof OfferExtraData
+   */
+  gtlLabels?: GtlLabels | null
   /**
    * @type {string}
    * @memberof OfferExtraData
@@ -1531,6 +1572,11 @@ export interface OfferExtraData {
    * @memberof OfferExtraData
    */
   performer?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  releaseDate?: string | null
   /**
    * @type {string}
    * @memberof OfferExtraData

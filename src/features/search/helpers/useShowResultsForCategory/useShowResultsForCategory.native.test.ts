@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { navigate as mockNavigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
+import { LocationMode } from 'libs/location/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
@@ -31,7 +31,7 @@ describe('useShowResultsForCategory', () => {
   beforeEach(() => {
     mockSearchState = {
       ...initialSearchState,
-      locationFilter: { locationType: LocationType.EVERYWHERE },
+      locationFilter: { locationType: LocationMode.EVERYWHERE },
       priceRange: [0, 300],
       query: 'Big flo et Oli',
       offerCategories: [SearchGroupNameEnumv2.SPECTACLES], // initialize mock data with expected categories because dispatch is also a mock and won't change the mocked state

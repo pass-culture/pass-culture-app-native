@@ -16,7 +16,7 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -40,7 +40,7 @@ const keyExtractor = (item: Offer) => item.objectID
 export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readonly<Props>) {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
-  const { userPosition: position } = useLocation()
+  const { geolocPosition } = useLocation()
   const params = useVenueSearchParameters(venueId)
   const route = useRoute<UseRouteType<'Offer'>>()
 
@@ -93,7 +93,7 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position]
+    [geolocPosition]
   )
 
   const seeAllOffers = useCallback(() => {

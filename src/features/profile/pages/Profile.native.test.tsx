@@ -21,7 +21,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
   Position,
-} from 'libs/geolocation'
+} from 'libs/location'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import {
   render,
@@ -66,11 +66,11 @@ let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
-    userPosition: mockPosition,
-    userPositionError: mockPositionError,
+    geolocPosition: mockPosition,
+    geolocPositionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),

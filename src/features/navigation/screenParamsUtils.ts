@@ -59,7 +59,6 @@ const searchParamsParser = {
   view: JSON.parse,
   minBookingsThreshold: JSON.parse,
   isFromHistory: JSON.parse,
-  includeDigitalOffers: JSON.parse,
   venue: JSON.parse,
 }
 
@@ -213,7 +212,6 @@ const searchParamsStringifier = {
   view: JSON.stringify,
   minBookingsThreshold: JSON.stringify,
   isFromHistory: JSON.stringify,
-  includeDigitalOffers: JSON.stringify,
   venue: JSON.stringify,
 }
 

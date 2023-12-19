@@ -9,7 +9,7 @@ import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
-import { ILocationContext, useLocation } from 'libs/geolocation'
+import { ILocationContext, useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
@@ -21,8 +21,8 @@ jest.mock('@react-native-clipboard/clipboard')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
-jest.mock('libs/geolocation')
-const mockUseGeolocation = jest.mocked(useLocation)
+jest.mock('libs/location')
+const mockUseLocation = jest.mocked(useLocation)
 
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels
@@ -65,8 +65,11 @@ describe('<VenueBody />', () => {
   })
 
   it('should display distance between user and venue when geolocation is activated', async () => {
-    const userPosition = { latitude: 30, longitude: 30.1 }
-    mockUseGeolocation.mockReturnValueOnce({ userPosition, isGeolocated: true } as ILocationContext)
+    const geolocPosition = { latitude: 30, longitude: 30.1 }
+    mockUseLocation.mockReturnValueOnce({
+      geolocPosition,
+      hasGeolocPosition: true,
+    } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
 
     render(<VenueBodyNew venue={locatedVenue} onScroll={jest.fn()} />)
@@ -76,8 +79,8 @@ describe('<VenueBody />', () => {
   })
 
   it('should not display distance between user and venue when geolocation is not activated', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
-      isGeolocated: false,
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: false,
     } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
 

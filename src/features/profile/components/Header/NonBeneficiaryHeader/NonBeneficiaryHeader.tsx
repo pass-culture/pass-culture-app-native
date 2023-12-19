@@ -11,7 +11,7 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Badges/Sub
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useLocation, GeolocPermissionState } from 'libs/geolocation'
+import { useLocation, GeolocPermissionState } from 'libs/location'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'

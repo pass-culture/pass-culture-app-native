@@ -5,7 +5,7 @@ import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { buildOfferGenreTypesValues } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypesValues'
 import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { GenreTypeMapping, SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const adaptOffersPlaylistParameters = (

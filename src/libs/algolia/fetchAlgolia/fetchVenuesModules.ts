@@ -4,7 +4,7 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { VenueTypeCode } from 'libs/parsers'
 
 export const fetchVenuesModules = async (

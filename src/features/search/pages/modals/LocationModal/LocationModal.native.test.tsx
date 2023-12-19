@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { FilterBehaviour, LocationType, RadioButtonLocation } from 'features/search/enums'
+import { FilterBehaviour, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -17,7 +17,8 @@ import {
   GeolocPermissionState,
   GeolocPositionError,
   Position,
-} from 'libs/geolocation'
+} from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -45,11 +46,11 @@ const mockHideGeolocPermissionModal = jest.fn()
 const mockOnPressGeolocPermissionModalButton = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
-    userPosition: mockPosition,
-    userPositionError: mockPositionError,
+    geolocPosition: mockPosition,
+    geolocPositionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
     hideGeolocPermissionModal: mockHideGeolocPermissionModal,
@@ -162,10 +163,10 @@ describe('<LocationModal/>', () => {
   })
 
   it.each`
-    locationFilter                                                                   | label                                        | locationType
-    ${{ locationType: LocationType.EVERYWHERE }}                                     | ${RadioButtonLocation.EVERYWHERE}            | ${LocationType.EVERYWHERE}
-    ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${RadioButtonLocation.AROUND_ME}             | ${LocationType.AROUND_ME}
-    ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationType.PLACE}
+    locationFilter                                                                          | label                                        | locationType
+    ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${RadioButtonLocation.EVERYWHERE}            | ${LocationMode.EVERYWHERE}
+    ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${RadioButtonLocation.AROUND_ME}             | ${LocationMode.AROUND_ME}
+    ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.CHOOSE_PLACE_OR_VENUE} | ${LocationMode.AROUND_PLACE}
   `(
     'should select $label radio button by default when location type search state is $locationType',
     async ({
@@ -350,7 +351,7 @@ describe('<LocationModal/>', () => {
     it('the location radio group at "Autour de moi" when pressing reset button and position is not null', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 50 },
       }
       renderLocationModal()
 
@@ -379,7 +380,7 @@ describe('<LocationModal/>', () => {
     it('the around me radius value when pressing reset button', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 50 },
       }
       renderLocationModal()
       await act(async () => {
@@ -402,7 +403,11 @@ describe('<LocationModal/>', () => {
     it('should reset search input place or venue when pressing reset button', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.PLACE, place: Kourou, aroundRadius: 10 },
+        locationFilter: {
+          locationType: LocationMode.AROUND_PLACE,
+          place: Kourou,
+          aroundRadius: 10,
+        },
       }
       renderLocationModal()
 
@@ -464,7 +469,7 @@ describe('<LocationModal/>', () => {
   describe('should preserve', () => {
     it('the selected place when closing the modal', async () => {
       const locationFilter: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationMode.AROUND_PLACE,
         place: Kourou,
         aroundRadius: 10,
       }
@@ -592,7 +597,7 @@ describe('<LocationModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
       }
 
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -665,7 +670,7 @@ describe('<LocationModal/>', () => {
       it('with a new radius when changing it with the slider and pressing button', async () => {
         mockSearchState = {
           ...searchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
           view: SearchView.Results,
         }
         renderLocationModal()
@@ -683,7 +688,7 @@ describe('<LocationModal/>', () => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           params: {
             ...mockSearchState,
-            locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: 50 },
+            locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 50 },
             view: SearchView.Results,
           },
           screen: 'Search',
@@ -693,8 +698,8 @@ describe('<LocationModal/>', () => {
 
     it.each`
       locationFilter                                                        | label                             | locationType               | eventType
-      ${{ locationType: LocationType.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationType.EVERYWHERE} | ${{ type: 'everywhere' }}
-      ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationType.AROUND_ME}  | ${{ type: 'aroundMe' }}
+      ${{ locationType: LocationMode.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationMode.EVERYWHERE} | ${{ type: 'everywhere' }}
+      ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationMode.AROUND_ME}  | ${{ type: 'aroundMe' }}
     `(
       'should log ChangeSearchLocation event and navigate with $locationType location type when selecting $label radio button and pressing button',
       async ({
@@ -774,7 +779,7 @@ describe('<LocationModal/>', () => {
     //ICI
     it('should log ChangeSearchLocation event and navigate with place location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
       const locationFilter: LocationFilter = {
-        locationType: LocationType.PLACE,
+        locationType: LocationMode.AROUND_PLACE,
         place: mockPlaces[0],
         aroundRadius: MAX_RADIUS,
       }

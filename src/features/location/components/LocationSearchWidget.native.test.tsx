@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -14,14 +14,13 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('libs/geolocation')
+jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({
-      isGeolocated: true,
-      isCustomPosition: true,
+      hasGeolocPosition: true,
       place: { label: 'test' },
     })
     render(<LocationSearchWidget />)
@@ -34,16 +33,15 @@ describe('LocationSearchWidget', () => {
   })
 
   it.each`
-    isGeolocated | isCustomPosition
-    ${true}      | ${false}
-    ${true}      | ${undefined}
+    hasGeolocPosition | place
+    ${true}           | ${null}
+    ${true}           | ${undefined}
   `(
     "should render a filled location pointer and the text 'Ma position' if the user is geolocated",
-    async ({ isGeolocated, isCustomPosition }) => {
+    async ({ hasGeolocPosition, place }) => {
       mockUseGeolocation.mockReturnValueOnce({
-        isGeolocated,
-        isCustomPosition,
-        place: null,
+        hasGeolocPosition,
+        place,
       })
 
       render(<LocationSearchWidget />)
@@ -54,17 +52,16 @@ describe('LocationSearchWidget', () => {
   )
 
   it.each`
-    isGeolocated | isCustomPosition
-    ${false}     | ${false}
-    ${false}     | ${undefined}
+    hasGeolocPosition | place
+    ${false}          | ${null}
+    ${false}          | ${undefined}
   `(
     "should render a location pointer(not filled ) and the text 'Me localiser' if the user is not geolocated and has not selected a custom position",
-    async ({ isGeolocated, isCustomPosition }) => {
+    async ({ hasGeolocPosition, place }) => {
       mockUseGeolocation.mockReturnValueOnce({
-        isGeolocated,
-        isCustomPosition,
-        place: null,
-        userPosition: null,
+        hasGeolocPosition,
+        place,
+        geolocPosition: null,
       })
 
       render(<LocationSearchWidget />)
@@ -76,10 +73,9 @@ describe('LocationSearchWidget', () => {
 
   it('should render a filled location pointer and label of the place if the user has selected a custom place', async () => {
     mockUseGeolocation.mockReturnValueOnce({
-      isGeolocated: true,
-      isCustomPosition: true,
+      hasGeolocPosition: true,
       place: { label: 'my place' },
-      userPosition: null,
+      geolocPosition: null,
     })
 
     render(<LocationSearchWidget />)

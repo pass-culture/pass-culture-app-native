@@ -7,7 +7,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, SearchView, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -15,7 +14,8 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -89,8 +89,7 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: Position = DEFAULT_POSITION
-let mockIsGeolocated = false
-let mockIsCustomPosition = false
+let mockHasGeolocPosition = false
 const mockPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -98,12 +97,11 @@ const mockPlace: SuggestedPlace = {
 }
 const mockShowGeolocPermissionModal = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
-    isGeolocated: mockIsGeolocated,
-    isCustomPosition: mockIsCustomPosition,
+    hasGeolocPosition: mockHasGeolocPosition,
     place: mockPlace,
   }),
 }))
@@ -136,8 +134,7 @@ describe('SearchResults component', () => {
     mockSearchState = searchState
     mockPosition = DEFAULT_POSITION
     mockUserData = []
-    mockIsGeolocated = false
-    mockIsCustomPosition = false
+    mockHasGeolocPosition = false
   })
 
   it('should render correctly', async () => {
@@ -402,12 +399,12 @@ describe('SearchResults component', () => {
     })
 
     it.each`
-      locationType               | locationFilter                                                                   | position            | locationButtonLabel
-      ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${DEFAULT_POSITION} | ${'Partout'}
-      ${LocationType.EVERYWHERE} | ${{ locationType: LocationType.EVERYWHERE }}                                     | ${null}             | ${'Localisation'}
-      ${LocationType.AROUND_ME}  | ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${DEFAULT_POSITION} | ${'Autour de moi'}
-      ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-      ${LocationType.PLACE}      | ${{ locationType: LocationType.PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
+      locationType                 | locationFilter                                                                          | position            | locationButtonLabel
+      ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
+      ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${'Localisation'}
+      ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
+      ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
+      ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
     `(
       'should display $locationButtonLabel in location filter button label when location type is $locationType and position is $position',
       async ({
@@ -468,7 +465,7 @@ describe('SearchResults component', () => {
       expect(navigate).toHaveBeenCalledWith(
         ...getTabNavConfig('Search', {
           ...mockSearchState,
-          locationFilter: { locationType: LocationType.EVERYWHERE },
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
           view: SearchView.Results,
         })
       )
@@ -495,7 +492,7 @@ describe('SearchResults component', () => {
     it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if location type is AROUND_ME', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
       }
       render(<SearchResults />)
       await act(async () => {})
@@ -506,7 +503,7 @@ describe('SearchResults component', () => {
     it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if location type is EVERYWHERE', async () => {
       mockSearchState = {
         ...searchState,
-        locationFilter: { locationType: LocationType.EVERYWHERE },
+        locationFilter: { locationType: LocationMode.EVERYWHERE },
       }
       render(<SearchResults />)
       await act(async () => {})
@@ -594,7 +591,7 @@ describe('SearchResults component', () => {
     render(<SearchResults />)
     await act(async () => {})
 
-    // previousUserPosition is empty in first rendering
+    // previousGeolocPosition is empty in first rendering
     expect(mockRefetch).toHaveBeenCalledTimes(1)
 
     screen.rerender(<SearchResults />)

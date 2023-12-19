@@ -5,7 +5,7 @@ import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/co
 import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
 import { RecommendedOffersModule } from 'features/home/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'

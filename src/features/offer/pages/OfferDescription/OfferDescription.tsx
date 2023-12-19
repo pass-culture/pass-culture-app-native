@@ -12,7 +12,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-type ExtraDataKeys = keyof Required<Omit<OfferExtraData, 'isbn'>>
+type ExtraDataKeys = keyof Required<OfferExtraData>
 export type ExtendedKeys = ExtraDataKeys | 'description' | 'photoCredit'
 
 type Item =
@@ -34,6 +34,11 @@ const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   stageDirector: 'metteur en scène',
   speaker: 'intervenant',
   visa: 'VISA',
+  cast: 'acteurs',
+  editeur: 'éditeur',
+  genres: 'genres',
+  gtlLabels: 'labels',
+  releaseDate: 'date de sortie',
 }
 
 const KEY_ORDER: { [k in ExtendedKeys]: number } = {
@@ -50,6 +55,11 @@ const KEY_ORDER: { [k in ExtendedKeys]: number } = {
   ean: 10,
   visa: 11,
   photoCredit: 12,
+  cast: 13,
+  editeur: 14,
+  genres: 15,
+  gtlLabels: 16,
+  releaseDate: 17,
 }
 
 const sortExtraData = (itemA: Item, itemB: Item): number =>

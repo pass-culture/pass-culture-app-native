@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
-import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState } from 'libs/location'
 import { parseType } from 'libs/parsers'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -11,7 +11,7 @@ const typeLabelNull = parseType(null)
 const locationCoordinates = { latitude: 2, longitude: 4 }
 
 let mockDistance: string | null
-jest.mock('libs/geolocation/hooks/useDistance', () => ({
+jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 
@@ -19,7 +19,7 @@ const mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
 const mockShowGeolocPermissionModal = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     permissionState: mockPermissionState,
     requestGeolocPermission: mockRequestGeolocPermission,

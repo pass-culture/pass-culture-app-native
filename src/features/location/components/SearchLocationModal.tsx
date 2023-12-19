@@ -1,19 +1,17 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { Keyboard } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { LocationMode } from 'features/location/enums'
-import { useLocationModal } from 'features/location/helpers/useLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -30,8 +28,6 @@ import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
-const DEFAULT_DIGITAL_OFFERS_SELECTION = false
-
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
@@ -44,55 +40,74 @@ export const SearchLocationModal = ({
   showVenueModal,
 }: LocationModalProps) => {
   const {
-    isGeolocated,
+    hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    selectedLocationMode,
-    setSelectedLocationMode,
-    geolocationModeColor,
-    customLocationModeColor,
     onSetSelectedPlace,
     onResetPlace,
-    setPlaceGlobally,
+    setPlace: setPlaceGlobally,
     onModalHideRef,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
-    isCurrentLocationMode,
-  } = useLocationModal(visible)
+    aroundPlaceRadius,
+    setAroundPlaceRadius,
+    aroundMeRadius,
+    setAroundMeRadius,
+    selectedLocationMode,
+    setSelectedLocationMode,
+    place,
+  } = useLocation()
+  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+  const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
+
+  useEffect(() => {
+    if (visible) {
+      setTempLocationMode(selectedLocationMode)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLocationMode, visible])
+
+  useEffect(() => {
+    if (visible) {
+      onModalHideRef.current = undefined
+      setPlaceQuery(place?.label ?? '')
+      setSelectedPlace(place)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible])
+
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { searchState, dispatch } = useSearch()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
 
-  const getInitialAroundMeRadiusValue =
-    searchState.locationFilter.locationType === LocationType.AROUND_ME
-      ? searchState.locationFilter.aroundRadius ?? DEFAULT_RADIUS
-      : DEFAULT_RADIUS
+  const theme = useTheme()
 
-  const getInitialRadiusPlaceValue =
-    searchState.locationFilter.locationType === LocationType.PLACE
-      ? searchState.locationFilter.aroundRadius
-      : DEFAULT_RADIUS
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
+    ? theme.colors.primary
+    : theme.colors.black
 
-  const [aroundRadiusPlace, setAroundRadiusPlace] = useState(getInitialRadiusPlaceValue)
-  const [aroundMeRadius, setAroundMeRadius] = useState(getInitialAroundMeRadiusValue)
-  const [includeDigitalOffers, setIncludeDigitalOffers] = useState(
-    searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION
-  )
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.GEOLOCATION)
+    const selectGeoLocationMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
+    const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
+
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       setPlaceGlobally(null)
+      selectEverywhereMode()
       dismissModal()
       onModalHideRef.current = showGeolocPermissionModal
     } else {
       await requestGeolocPermission({
         onAcceptance: selectGeoLocationMode,
+        onRefusal: selectEverywhereMode,
       })
     }
   }, [
@@ -107,27 +122,27 @@ export const SearchLocationModal = ({
 
   const selectLocationMode = useCallback(
     (mode: LocationMode) => () => {
-      if (mode === LocationMode.GEOLOCATION) {
+      if (mode === LocationMode.AROUND_ME) {
         runGeolocationDialogs()
       } else {
-        setSelectedLocationMode(mode)
+        setTempLocationMode(mode)
       }
     },
-    [runGeolocationDialogs, setSelectedLocationMode]
+    [runGeolocationDialogs, setTempLocationMode]
   )
 
   const onSubmit = () => {
-    if (selectedLocationMode === LocationMode.CUSTOM_POSITION && selectedPlace) {
+    setSelectedLocationMode(tempLocationMode)
+    if (tempLocationMode === LocationMode.AROUND_PLACE && selectedPlace) {
       setPlaceGlobally(selectedPlace)
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
           locationFilter: {
             place: selectedPlace,
-            locationType: LocationType.PLACE,
-            aroundRadius: aroundRadiusPlace,
+            locationType: LocationMode.AROUND_PLACE,
+            aroundRadius: aroundPlaceRadius,
           },
-          includeDigitalOffers,
         },
       })
       analytics.logUserSetLocation('search')
@@ -136,26 +151,23 @@ export const SearchLocationModal = ({
           ...searchState,
           locationFilter: {
             place: selectedPlace,
-            locationType: LocationType.PLACE,
-            aroundRadius: aroundRadiusPlace,
+            locationType: LocationMode.AROUND_PLACE,
+            aroundRadius: aroundPlaceRadius,
           },
-          includeDigitalOffers,
         })
       )
-    } else if (selectedLocationMode === LocationMode.GEOLOCATION) {
+    } else if (tempLocationMode === LocationMode.AROUND_ME) {
       setPlaceGlobally(null)
       dispatch({
         type: 'SET_LOCATION_FILTERS',
         payload: {
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: aroundMeRadius },
-          includeDigitalOffers,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
         },
       })
       navigate(
         ...getTabNavConfig('Search', {
           ...searchState,
-          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: aroundMeRadius },
-          includeDigitalOffers,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
         })
       )
     }
@@ -163,19 +175,18 @@ export const SearchLocationModal = ({
   }
 
   const onClose = () => {
-    setAroundMeRadius(getInitialAroundMeRadiusValue)
-    setAroundRadiusPlace(getInitialRadiusPlaceValue)
-    setIncludeDigitalOffers(searchState.includeDigitalOffers ?? DEFAULT_DIGITAL_OFFERS_SELECTION)
+    setAroundMeRadius(DEFAULT_RADIUS)
+    setAroundPlaceRadius(DEFAULT_RADIUS)
     dismissModal()
   }
 
   const onAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
-        setAroundRadiusPlace(newValues[0])
+        setAroundPlaceRadius(newValues[0])
       }
     },
-    [visible, setAroundRadiusPlace]
+    [visible, setAroundPlaceRadius]
   )
   const onAroundMeRadiusValueChange = useCallback(
     (newValues: number[]) => {
@@ -227,20 +238,18 @@ export const SearchLocationModal = ({
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.GEOLOCATION)}
+          onPress={selectLocationMode(LocationMode.AROUND_ME)}
           icon={PositionFilled}
           color={geolocationModeColor}
           title="Utiliser ma position actuelle"
-          subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
+          subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
-        {!!isCurrentLocationMode(LocationMode.GEOLOCATION) && (
+        {!!isCurrentLocationMode(LocationMode.AROUND_ME) && (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
               aroundRadius={aroundMeRadius}
               onValuesChange={onAroundMeRadiusValueChange}
-              includeDigitalOffers={includeDigitalOffers}
-              setIncludeDigitalOffers={setIncludeDigitalOffers}
             />
           </React.Fragment>
         )}
@@ -248,13 +257,13 @@ export const SearchLocationModal = ({
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
-          onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
+          onPress={selectLocationMode(LocationMode.AROUND_PLACE)}
           icon={MagnifyingGlassFilled}
           color={customLocationModeColor}
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
+        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
           <React.Fragment>
             <LocationSearchInput
               selectedPlace={selectedPlace}
@@ -267,10 +276,8 @@ export const SearchLocationModal = ({
             <Spacer.Column numberOfSpaces={4} />
             {!!selectedPlace && (
               <LocationSearchFilters
-                aroundRadius={aroundRadiusPlace}
+                aroundRadius={aroundPlaceRadius}
                 onValuesChange={onAroundRadiusPlaceValueChange}
-                includeDigitalOffers={includeDigitalOffers}
-                setIncludeDigitalOffers={setIncludeDigitalOffers}
               />
             )}
           </React.Fragment>
@@ -279,7 +286,7 @@ export const SearchLocationModal = ({
         <ButtonContainer>
           <ButtonPrimary
             wording="Valider la localisation"
-            disabled={!selectedPlace && selectedLocationMode !== LocationMode.GEOLOCATION}
+            disabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
             onPress={onSubmit}
           />
         </ButtonContainer>

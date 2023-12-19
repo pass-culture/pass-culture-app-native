@@ -11,8 +11,8 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
 }))
 
 const mockPosition = { latitude: 2, longitude: 40 }
-jest.mock('libs/geolocation', () => ({
-  useLocation: jest.fn(() => ({ userPosition: mockPosition })),
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
 }))
 
 const mockSubcategories = placeholderData.subcategories

@@ -5,7 +5,7 @@ import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationW
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { useLocation } from 'libs/geolocation'
+import { useLocation } from 'libs/location'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -14,9 +14,9 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
-  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const { hasGeolocPosition, geolocPosition, place } = useLocation()
 
-  const locationTitle = getLocationTitle(place, userPosition)
+  const locationTitle = getLocationTitle(place, geolocPosition)
 
   const {
     visible: locationModalVisible,
@@ -30,7 +30,7 @@ export const LocationSearchWidget = () => {
     hideModal: hideVenueModal,
   } = useModal()
 
-  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+  const isWidgetHighlighted = hasGeolocPosition || !!place
 
   return (
     <Container>

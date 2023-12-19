@@ -19,8 +19,8 @@ import {
 } from 'features/favorites/helpers/sorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useLocation, Position } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useLocation, Position } from 'libs/location'
 import { storage } from 'libs/storage'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
@@ -68,7 +68,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
-  const { userPosition: position } = useLocation()
+  const { geolocPosition: position } = useLocation()
   const { data, isLoading, isFetching, refetch } = useFavorites()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)

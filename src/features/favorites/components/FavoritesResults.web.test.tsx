@@ -56,10 +56,9 @@ describe('FavoritesResults component', () => {
 
     await act(async () => {}) // Warning: An update to FavoritesResults inside a test was not wrapped in act(...).
 
-    const button = await screen.findByText('Découvrir le catalogue')
+    await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
 
-    expect(button).toBeInTheDocument()
     expect(sortByButton).not.toBeInTheDocument()
   })
 

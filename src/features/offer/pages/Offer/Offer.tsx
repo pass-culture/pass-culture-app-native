@@ -19,8 +19,8 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { Position, useLocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { Position, useLocation } from 'libs/location'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
@@ -65,7 +65,7 @@ export function Offer() {
     BatchUser.trackEvent(BatchEvent.hasSeenConcertForSurvey)
   })
 
-  const { userPosition } = useLocation()
+  const { geolocPosition } = useLocation()
 
   const { data: offer } = useOffer({ offerId })
   const { data } = useSubcategories()
@@ -76,7 +76,7 @@ export function Offer() {
     }
   })
 
-  const { latitude, longitude } = userPosition ?? {}
+  const { latitude, longitude } = geolocPosition ?? {}
   const roundedPosition: Position = useMemo(() => {
     return {
       latitude: Number(latitude?.toFixed(3)),
@@ -107,7 +107,7 @@ export function Offer() {
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
       offerId: offer?.id,
-      position: userPosition ? roundedPosition : undefined,
+      position: geolocPosition ? roundedPosition : undefined,
       categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
@@ -117,7 +117,7 @@ export function Offer() {
     apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
     offerId: offer?.id,
-    position: userPosition ? roundedPosition : undefined,
+    position: geolocPosition ? roundedPosition : undefined,
     categoryExcluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
     searchGroupList: data?.searchGroups,
   })

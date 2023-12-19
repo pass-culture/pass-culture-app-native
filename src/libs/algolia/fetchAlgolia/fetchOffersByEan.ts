@@ -4,7 +4,7 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
-import { Position } from 'libs/geolocation'
+import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchOffersByEanArgs = {

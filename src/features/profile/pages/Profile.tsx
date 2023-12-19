@@ -17,8 +17,8 @@ import { shareApp } from 'features/share/helpers/shareApp'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { GeolocPermissionState, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { getAge } from 'shared/user/getAge'
@@ -55,8 +55,12 @@ const OnlineProfile: React.FC = () => {
   const locationActivationErrorId = uuidv4()
   const userAge = getAge(user?.birthDate)
 
-  const { userPositionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
-    useLocation()
+  const {
+    geolocPositionError,
+    permissionState,
+    requestGeolocPermission,
+    showGeolocPermissionModal,
+  } = useLocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
@@ -83,7 +87,7 @@ const OnlineProfile: React.FC = () => {
         setIsGeolocSwitchActive(false)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userPositionError, permissionState])
+    }, [geolocPositionError, permissionState])
   )
 
   const switchGeolocation = useCallback(async () => {
@@ -176,8 +180,8 @@ const OnlineProfile: React.FC = () => {
                   toggleLabel="Partager ma position"
                 />
                 <InputError
-                  visible={!!userPositionError}
-                  messageId={userPositionError?.message}
+                  visible={!!geolocPositionError}
+                  messageId={geolocPositionError?.message}
                   numberOfSpacesTop={1}
                   relatedInputId={locationActivationErrorId}
                 />

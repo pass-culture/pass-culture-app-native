@@ -34,48 +34,49 @@ src/api/gen/index.ts:228 - BannerQueryParams
 src/api/gen/index.ts:277 - BookingActivationCodeResponse
 src/api/gen/index.ts:306 - BookingDisplayStatusRequest
 src/api/gen/index.ts:317 - BookingOfferExtraData
-src/api/gen/index.ts:521 - BookingVenueResponse
-src/api/gen/index.ts:598 - CallToActionMessage
-src/api/gen/index.ts:641 - ChangeBeneficiaryEmailBody
-src/api/gen/index.ts:657 - ChangeBeneficiaryEmailResponse
-src/api/gen/index.ts:689 - Consent
-src/api/gen/index.ts:752 - Credit
-src/api/gen/index.ts:854 - CulturalSurveyQuestion
-src/api/gen/index.ts:914 - DepositAmountsByAge
-src/api/gen/index.ts:1014 - EmailValidationRemainingResendsResponse
-src/api/gen/index.ts:1040 - ExternalBookingResponse
-src/api/gen/index.ts:1056 - FavoriteMediationResponse
-src/api/gen/index.ts:1218 - GenreTypeModel
-src/api/gen/index.ts:1280 - HomepageLabelResponseModelv2
-src/api/gen/index.ts:1296 - IdentificationSessionRequest
-src/api/gen/index.ts:1564 - OfferImageResponse
-src/api/gen/index.ts:1580 - OfferOffererResponse
-src/api/gen/index.ts:1591 - OfferReportReasons
-src/api/gen/index.ts:1602 - OfferReportRequest
-src/api/gen/index.ts:1724 - OfferStockActivationCodeResponse
-src/api/gen/index.ts:1975 - ReasonMeta
-src/api/gen/index.ts:2002 - ReportedOffer
-src/api/gen/index.ts:2566 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:2682 - UserProfileEmailUpdate
-src/api/gen/index.ts:2859 - UserSuspensionDateResponse
-src/api/gen/index.ts:2870 - UserSuspensionStatusResponse
-src/api/gen/index.ts:2913 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:2924 - ValidationError
-src/api/gen/index.ts:2930 - ValidationErrorElement
-src/api/gen/index.ts:3165 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4366 - DefaultApiFp
+src/api/gen/index.ts:516 - BookingVenueResponse
+src/api/gen/index.ts:593 - CallToActionMessage
+src/api/gen/index.ts:636 - ChangeBeneficiaryEmailBody
+src/api/gen/index.ts:652 - ChangeBeneficiaryEmailResponse
+src/api/gen/index.ts:684 - Consent
+src/api/gen/index.ts:747 - Credit
+src/api/gen/index.ts:849 - CulturalSurveyQuestion
+src/api/gen/index.ts:909 - DepositAmountsByAge
+src/api/gen/index.ts:1009 - EmailValidationRemainingResendsResponse
+src/api/gen/index.ts:1035 - ExternalBookingResponse
+src/api/gen/index.ts:1051 - FavoriteMediationResponse
+src/api/gen/index.ts:1213 - GenreTypeModel
+src/api/gen/index.ts:1250 - GtlLabels
+src/api/gen/index.ts:1306 - HomepageLabelResponseModelv2
+src/api/gen/index.ts:1322 - IdentificationSessionRequest
+src/api/gen/index.ts:1610 - OfferImageResponse
+src/api/gen/index.ts:1626 - OfferOffererResponse
+src/api/gen/index.ts:1637 - OfferReportReasons
+src/api/gen/index.ts:1648 - OfferReportRequest
+src/api/gen/index.ts:1770 - OfferStockActivationCodeResponse
+src/api/gen/index.ts:2021 - ReasonMeta
+src/api/gen/index.ts:2048 - ReportedOffer
+src/api/gen/index.ts:2612 - SubscriptionStepDetailsResponse
+src/api/gen/index.ts:2728 - UserProfileEmailUpdate
+src/api/gen/index.ts:2905 - UserSuspensionDateResponse
+src/api/gen/index.ts:2916 - UserSuspensionStatusResponse
+src/api/gen/index.ts:2959 - ValidatePhoneNumberRequest
+src/api/gen/index.ts:2970 - ValidationError
+src/api/gen/index.ts:2976 - ValidationErrorElement
+src/api/gen/index.ts:3211 - DefaultApiFetchParamCreator
+src/api/gen/index.ts:4412 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:34 - Response (used in module)
 src/features/identityCheck/types.ts:37 - NextScreenOrStep
-src/features/search/types.ts:83 - OfferTypes
-src/features/search/types.ts:89 - CategoriesModalFormProps
-src/features/search/types.ts:101 - CategoriesViewData
-src/features/search/types.ts:106 - MappedData
-src/features/search/types.ts:108 - VenueUserTitleRule (used in module)
-src/features/search/types.ts:109 - VenueUserData (used in module)
-src/features/search/types.ts:127 - AnalyticsParams
+src/features/search/types.ts:81 - OfferTypes
+src/features/search/types.ts:87 - CategoriesModalFormProps
+src/features/search/types.ts:99 - CategoriesViewData
+src/features/search/types.ts:104 - MappedData
+src/features/search/types.ts:106 - VenueUserTitleRule (used in module)
+src/features/search/types.ts:107 - VenueUserData (used in module)
+src/features/search/types.ts:125 - AnalyticsParams
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)
@@ -85,17 +86,17 @@ src/libs/algolia/algolia.d.ts:53 - AlgoliaFacetsAnalytics (used in module)
 src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
-src/libs/algolia/index.ts:28 - LocationFilter
-src/libs/algolia/index.ts:33 - OfferGenreType
-src/libs/algolia/index.ts:102 - AlgoliaQueryParameters
-src/libs/algolia/index.ts:111 - FetchOfferParameters
-src/libs/algolia/index.ts:119 - OfferModuleQuery
-src/libs/algolia/index.ts:176 - GenreTypeFacetData
+src/libs/algolia/index.ts:34 - LocationFilter
+src/libs/algolia/index.ts:39 - OfferGenreType
+src/libs/algolia/index.ts:107 - AlgoliaQueryParameters
+src/libs/algolia/index.ts:116 - FetchOfferParameters
+src/libs/algolia/index.ts:124 - OfferModuleQuery
+src/libs/algolia/index.ts:181 - GenreTypeFacetData
 src/libs/analytics/index.ts:6 - isCloseToEndHorizontal
 src/libs/analytics/index.ts:10 - AnalyticsProvider
-src/libs/geolocation/index.ts:10 - requestGeolocPermission (used in module)
 src/libs/hooks/index.ts:5 - useIsMounted (used in module)
 src/libs/jwt/fixtures.ts:2 - defaultDecodedToken (used in module)
+src/libs/location/index.ts:15 - requestGeolocPermission (used in module)
 src/libs/monitoring/sentry.ts:1 - Breadcrumb
 src/libs/monitoring/sentry.ts:1 - Request
 src/libs/monitoring/sentry.ts:1 - SdkInfo

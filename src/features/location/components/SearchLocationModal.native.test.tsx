@@ -7,12 +7,12 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
-import { getPosition } from 'libs/geolocation/getPosition'
-import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
+import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 import {
   act,
@@ -39,17 +39,15 @@ const mockPlaces: SuggestedPlace[] = [
 ]
 const showModalMock = jest.fn()
 
-jest.unmock('libs/geolocation')
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
 
-jest.mock('libs/geolocation/getPosition')
-const getPositionMock = getPosition as jest.MockedFunction<typeof getPosition>
-
-jest.mock('libs/geolocation/requestGeolocPermission')
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 const mockRequestGeolocPermission = requestGeolocPermission as jest.MockedFunction<
   typeof requestGeolocPermission
 >
 
-jest.mock('libs/geolocation/checkGeolocPermission')
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
   typeof checkGeolocPermission
 >
@@ -62,10 +60,10 @@ jest.mock('libs/place', () => ({
 const mockDispatch = jest.fn()
 const mockSearchState: SearchState = {
   ...initialSearchState,
-  locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+  locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
 }
 
-const useSearchSpy = jest
+jest
   .spyOn(useSearch, 'useSearch')
   .mockReturnValue({ searchState: mockSearchState, dispatch: mockDispatch })
 
@@ -113,7 +111,7 @@ describe('SearchLocationModal', () => {
   })
 
   it('should highlight geolocation button if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
     await waitForModalToShow()
@@ -122,7 +120,7 @@ describe('SearchLocationModal', () => {
   })
 
   it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
     await waitForModalToShow()
@@ -194,16 +192,15 @@ describe('SearchLocationModal', () => {
         ...mockSearchState,
         locationFilter: {
           place: mockPlaces[0],
-          locationType: LocationType.PLACE,
+          locationType: LocationMode.AROUND_PLACE,
           aroundRadius: DEFAULT_RADIUS,
         },
-        includeDigitalOffers: false,
       })
     )
   })
 
   it('should navigate to Search page with geolocation params when user is in geolocation mode', async () => {
-    getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderSearchLocationModal()
     await waitForModalToShow()
@@ -214,8 +211,7 @@ describe('SearchLocationModal', () => {
     expect(mockNavigate).toHaveBeenCalledWith(
       ...getTabNavConfig('Search', {
         ...mockSearchState,
-        locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-        includeDigitalOffers: false,
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
       })
     )
   })
@@ -265,44 +261,14 @@ describe('SearchLocationModal', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: {
-          includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockRadiusPlace,
-            locationType: LocationType.PLACE,
+            locationType: LocationMode.AROUND_PLACE,
             place: mockPlaces[0],
           },
         },
         type: 'SET_LOCATION_FILTERS',
       })
-    })
-
-    it('should be init with the correct value located in the SearchState', async () => {
-      useSearchSpy.mockReturnValueOnce({
-        searchState: {
-          ...initialSearchState,
-          locationFilter: {
-            place: mockPlaces[0],
-            locationType: LocationType.PLACE,
-            aroundRadius: mockRadiusPlace,
-          },
-        },
-        dispatch: mockDispatch,
-      })
-
-      renderSearchLocationModal()
-      await waitForModalToShow()
-      const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
-
-      const searchInput = screen.getByTestId('styled-input-container')
-      await act(async () => {
-        fireEvent.changeText(searchInput, mockPlaces[0].label)
-      })
-
-      const suggestedPlace = await screen.findByText(mockPlaces[0].label)
-      fireEvent.press(suggestedPlace)
-
-      expect(screen.getByText(radiusWithKm(mockRadiusPlace))).toBeOnTheScreen()
     })
 
     it('should display default radius even if an AroundMeRadius was set previously', async () => {
@@ -352,36 +318,17 @@ describe('SearchLocationModal', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: {
-          includeDigitalOffers: false,
           locationFilter: {
             aroundRadius: mockAroundMeRadius,
-            locationType: LocationType.AROUND_ME,
+            locationType: LocationMode.AROUND_ME,
           },
         },
         type: 'SET_LOCATION_FILTERS',
       })
     })
 
-    it('should be init with the correct value located in the SearchState', async () => {
-      useSearchSpy.mockReturnValueOnce({
-        searchState: {
-          ...initialSearchState,
-          locationFilter: {
-            locationType: LocationType.AROUND_ME,
-            aroundRadius: mockAroundMeRadius,
-          },
-        },
-        dispatch: mockDispatch,
-      })
-
-      renderSearchLocationModal()
-      await waitForModalToShow()
-
-      expect(screen.getByText(radiusWithKm(mockAroundMeRadius))).toBeOnTheScreen()
-    })
-
     it('should display default radius even if a PlaceRadius was set previously', async () => {
-      getPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+      getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 

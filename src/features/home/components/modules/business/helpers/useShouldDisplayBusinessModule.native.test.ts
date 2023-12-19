@@ -1,14 +1,14 @@
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { LocationCircleArea } from 'features/home/types'
-import { GeoCoordinates, Position } from 'libs/geolocation'
+import { GeoCoordinates, Position } from 'libs/location'
 import { renderHook } from 'tests/utils'
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/geolocation/LocationWrapper', () => ({
+jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userPosition: mockPosition,
+    geolocPosition: mockPosition,
   }),
 }))
 
