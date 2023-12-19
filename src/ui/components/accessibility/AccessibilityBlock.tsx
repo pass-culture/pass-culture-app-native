@@ -53,5 +53,5 @@ const StyledUl = styled(Ul)(({ theme }) => ({
 
 const StyledLi = styled(Li)<{ rightSpacingValue: number }>(({ theme, rightSpacingValue }) => ({
   marginRight: theme.isDesktopViewport ? rightSpacingValue : undefined,
-  maxWidth: getSpacing(16),
+  maxWidth: getSpacing(18),
 }))
