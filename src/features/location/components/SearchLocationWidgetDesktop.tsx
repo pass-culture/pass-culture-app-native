@@ -1,36 +1,14 @@
 import React from 'react'
 
-import {
-  LocationWidgetWrapperDesktop,
-  SearchLocationWidgetDesktopProps,
-} from 'features/location/components/LocationWidgetWrapperDesktop'
+import { LocationWidgetWrapperDesktop } from 'features/location/components/LocationWidgetWrapperDesktop'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { ScreenOrigin } from 'features/location/enums'
-import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { useModal } from 'ui/components/modals/useModal'
 
-export const SearchLocationWidgetDesktop = ({ onSearch }: SearchLocationWidgetDesktopProps) => {
-  const {
-    visible: venueModalVisible,
-    showModal: showVenueModal,
-    hideModal: hideVenueModal,
-  } = useModal()
-
+export const SearchLocationWidgetDesktop = () => {
   return (
     <LocationWidgetWrapperDesktop screenOrigin={ScreenOrigin.SEARCH}>
       {({ visible, dismissModal }) => (
-        <React.Fragment>
-          <VenueModal
-            visible={venueModalVisible}
-            dismissModal={hideVenueModal}
-            doAfterSearch={onSearch}
-          />
-          <SearchLocationModal
-            visible={visible}
-            dismissModal={dismissModal}
-            showVenueModal={showVenueModal}
-          />
-        </React.Fragment>
+        <SearchLocationModal visible={visible} dismissModal={dismissModal} />
       )}
     </LocationWidgetWrapperDesktop>
   )

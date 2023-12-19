@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { LOCATION_TITLE_MAX_WIDTH } from 'features/location/components/LocationWidget'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
-import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -14,9 +14,9 @@ import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
-  const { hasGeolocPosition, geolocPosition, place } = useLocation()
+  const { place, selectedLocationMode } = useLocation()
 
-  const locationTitle = getLocationTitle(place, geolocPosition)
+  const locationTitle = getLocationTitle(place, selectedLocationMode)
 
   const {
     visible: locationModalVisible,
@@ -24,13 +24,7 @@ export const LocationSearchWidget = () => {
     hideModal: hideLocationModal,
   } = useModal()
 
-  const {
-    visible: venueModalVisible,
-    showModal: showVenueModal,
-    hideModal: hideVenueModal,
-  } = useModal()
-
-  const isWidgetHighlighted = hasGeolocPosition || !!place
+  const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   return (
     <Container>
@@ -48,12 +42,7 @@ export const LocationSearchWidget = () => {
         <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
       </LocationButton>
-      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-      <SearchLocationModal
-        visible={locationModalVisible}
-        dismissModal={hideLocationModal}
-        showVenueModal={showVenueModal}
-      />
+      <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
     </Container>
   )
 }

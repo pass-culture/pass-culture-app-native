@@ -1,5 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -8,11 +7,8 @@ import { SearchLocationModal } from 'features/location/components/SearchLocation
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -31,10 +27,9 @@ interface LocationWidgetProps {
 }
 
 export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
-  const { hasGeolocPosition, geolocPosition, place } = useLocation()
+  const { place, selectedLocationMode } = useLocation()
   const {
     isTooltipVisible,
     hideTooltip,
@@ -44,7 +39,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     enableTooltip,
   } = useLocationWidgetTooltip(screenOrigin)
 
-  const locationTitle = getLocationTitle(place, geolocPosition)
+  const locationTitle = getLocationTitle(place, selectedLocationMode)
 
   const {
     visible: locationModalVisible,
@@ -52,20 +47,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
     hideModal: hideLocationModal,
   } = useModal()
 
-  const {
-    visible: venueModalVisible,
-    showModal: showVenueModal,
-    hideModal: hideVenueModal,
-  } = useModal()
-
-  const isWidgetHighlighted = hasGeolocPosition || !!place
-
-  const onSearch = useCallback(
-    (payload: Partial<SearchState>) => {
-      navigate(...getTabNavConfig('Search', payload))
-    },
-    [navigate]
-  )
+  const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
   return (
     <React.Fragment>
@@ -90,18 +72,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
       {shouldShowHomeLocationModal ? (
         <HomeLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
       ) : (
-        <React.Fragment>
-          <VenueModal
-            visible={venueModalVisible}
-            dismissModal={hideVenueModal}
-            doAfterSearch={onSearch}
-          />
-          <SearchLocationModal
-            visible={locationModalVisible}
-            dismissModal={hideLocationModal}
-            showVenueModal={showVenueModal}
-          />
-        </React.Fragment>
+        <SearchLocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
       )}
     </React.Fragment>
   )

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -42,6 +43,7 @@ describe('LocationSearchWidget', () => {
       mockUseGeolocation.mockReturnValueOnce({
         hasGeolocPosition,
         place,
+        selectedLocationMode: LocationMode.AROUND_ME,
       })
 
       render(<LocationSearchWidget />)
@@ -62,6 +64,7 @@ describe('LocationSearchWidget', () => {
         hasGeolocPosition,
         place,
         geolocPosition: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
       })
 
       render(<LocationSearchWidget />)
@@ -71,11 +74,12 @@ describe('LocationSearchWidget', () => {
     }
   )
 
-  it('should render a filled location pointer and label of the place if the user has selected a custom place', async () => {
+  it('should render a filled location pointer and label of the place if the user has selected a place', async () => {
     mockUseGeolocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       place: { label: 'my place' },
       geolocPosition: null,
+      selectedLocationMode: LocationMode.AROUND_PLACE,
     })
 
     render(<LocationSearchWidget />)

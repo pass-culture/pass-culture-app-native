@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { useLocationForLocationWidgetDesktop } from 'features/location/components/useLocationForLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
-import { SearchState } from 'features/search/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -29,10 +28,6 @@ type LocationWidgetWrapperDesktopProps = {
     visible,
     dismissModal,
   }: LocationWidgetWrapperDesktopChildrenProps) => React.ReactNode
-}
-
-export type SearchLocationWidgetDesktopProps = {
-  onSearch: (payload: Partial<SearchState>) => void
 }
 
 /**

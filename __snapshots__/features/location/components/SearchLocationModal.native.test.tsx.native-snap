@@ -919,99 +919,11 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 </Text>
               </View>
               <View
-                numberOfSpaces={8}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "height": 32,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Valider la localisation"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Valider la localisation"
-                >
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginLeft": 0,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Valider la localisation
-                  </Text>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={8}
-                style={
-                  [
-                    {
-                      "height": 32,
+                      "height": 24,
                     },
                   ]
                 }
@@ -1028,41 +940,17 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 }
               />
               <View
-                numberOfSpaces={4}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                Tu peux aussi choisir un lieu culturel précis
-              </Text>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "height": 4,
+                      "height": 24,
                     },
                   ]
                 }
               />
               <View
-                accessibilityLabel="Trouver un lieu culturel"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1080,7 +968,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     "text": undefined,
                   }
                 }
-                accessible={true}
+                accessible={false}
                 collapsable={false}
                 focusable={true}
                 onClick={[Function]}
@@ -1092,76 +980,161 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "maxWidth": 500,
-                    "minHeight": 40,
                     "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 2,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="Trouver un lieu culturel"
               >
                 <View
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    fill="none"
-                    height={20}
-                    testID="button-icon"
-                    width={20}
+                    height={24}
+                    width={24}
                   >
                     <Text>
-                      button-icon-SVG-Mock
+                      undefined-SVG-Mock
                     </Text>
                   </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#161617"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Partout
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 8,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Trouver un lieu culturel
-                </Text>
               </View>
-              <View
-                numberOfSpaces={0}
-                style={
-                  [
-                    {
-                      "height": 0,
-                    },
-                  ]
-                }
-              />
             </View>
           </RCTScrollView>
         </View>
+        <View
+          style={
+            [
+              {
+                "width": "100%",
+              },
+            ]
+          }
+          testID="fixedModalBottom"
+        >
+          <View
+            paddingBottom={0}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "paddingHorizontal": 24,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Valider la localisation"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
+              }
+              testID="Valider la localisation"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Valider la localisation
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          customHeight={8}
+          enable={true}
+          style={
+            [
+              {
+                "height": 8,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </Modal>,

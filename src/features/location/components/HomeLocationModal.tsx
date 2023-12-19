@@ -3,15 +3,16 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
+import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
@@ -42,6 +43,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     selectedLocationMode,
     setSelectedLocationMode,
   } = useLocation()
+
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
@@ -67,6 +69,10 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     : theme.colors.black
 
   const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
+    ? theme.colors.primary
+    : theme.colors.black
+
+  const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
     ? theme.colors.primary
     : theme.colors.black
 
@@ -98,13 +104,25 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
 
   const selectLocationMode = useCallback(
     (mode: LocationMode) => () => {
-      if (mode === LocationMode.AROUND_ME) {
-        runGeolocationDialogs()
-        dismissModal()
+      switch (mode) {
+        case LocationMode.AROUND_ME:
+          runGeolocationDialogs()
+          dismissModal()
+          break
+        case LocationMode.AROUND_PLACE:
+          setTempLocationMode(LocationMode.AROUND_PLACE)
+          break
+        case LocationMode.EVERYWHERE:
+          setTempLocationMode(LocationMode.EVERYWHERE)
+          setSelectedLocationMode(LocationMode.EVERYWHERE)
+          dismissModal()
+          break
+
+        default:
+          break
       }
-      setTempLocationMode(mode)
     },
-    [dismissModal, runGeolocationDialogs, setTempLocationMode]
+    [dismissModal, runGeolocationDialogs, setSelectedLocationMode]
   )
 
   const onSubmitPlace = () => {
@@ -136,6 +154,9 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
             onRightIconPress={onClose}
           />
         </HeaderContainer>
+      }
+      fixedModalBottom={
+        <LocationModalFooter onSubmit={onSubmitPlace} isSubmitDisabled={!selectedPlace} />
       }>
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={6} />
@@ -166,22 +187,19 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
             onSetSelectedPlace={onSetSelectedPlace}
           />
         )}
-        <Spacer.Column numberOfSpaces={8} />
-        <ButtonContainer>
-          <ButtonPrimary
-            wording="Valider la localisation"
-            disabled={!selectedPlace}
-            onPress={onSubmitPlace}
-          />
-        </ButtonContainer>
+        <Spacer.Column numberOfSpaces={6} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={6} />
+        <LocationModalButton
+          onPress={selectLocationMode(LocationMode.EVERYWHERE)}
+          icon={BicolorEverywhere}
+          color={everywhereLocationModeColor}
+          title="Partout"
+        />
       </StyledScrollView>
     </AppModal>
   )
 }
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
 
 const StyledScrollView = styled.ScrollView({
   paddingHorizontal: getSpacing(6),
