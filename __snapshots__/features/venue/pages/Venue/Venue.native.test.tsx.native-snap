@@ -3876,7 +3876,7 @@ d’options
                   [
                     {
                       "display": "flex",
-                      "maxWidth": 64,
+                      "maxWidth": 72,
                     },
                   ]
                 }
@@ -3971,34 +3971,22 @@ d’options
                       ]
                     }
                   />
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "marginBottom": 16,
-                          "marginHorizontal": -4,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "paddingHorizontal": 1,
+                          "textAlign": "center",
                         },
                       ]
                     }
-                    testID="Handicap visuel"
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "paddingHorizontal": 1,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      Handicap visuel
-                    </Text>
-                  </View>
+                    Handicap visuel
+                  </Text>
                 </View>
               </View>
               <View
@@ -4008,7 +3996,7 @@ d’options
                   [
                     {
                       "display": "flex",
-                      "maxWidth": 64,
+                      "maxWidth": 72,
                     },
                   ]
                 }
@@ -4104,34 +4092,22 @@ d’options
                       ]
                     }
                   />
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "marginBottom": 16,
-                          "marginHorizontal": -4,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "paddingHorizontal": 1,
+                          "textAlign": "center",
                         },
                       ]
                     }
-                    testID="Handicap psychique ou cognitif"
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "paddingHorizontal": 1,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      Handicap psychique ou cognitif
-                    </Text>
-                  </View>
+                    Handicap psychique ou cognitif
+                  </Text>
                 </View>
               </View>
               <View
@@ -4141,7 +4117,7 @@ d’options
                   [
                     {
                       "display": "flex",
-                      "maxWidth": 64,
+                      "maxWidth": 72,
                     },
                   ]
                 }
@@ -4237,34 +4213,22 @@ d’options
                       ]
                     }
                   />
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "marginBottom": 16,
-                          "marginHorizontal": -4,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "paddingHorizontal": 1,
+                          "textAlign": "center",
                         },
                       ]
                     }
-                    testID="Handicap moteur"
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "paddingHorizontal": 1,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      Handicap moteur
-                    </Text>
-                  </View>
+                    Handicap moteur
+                  </Text>
                 </View>
               </View>
               <View
@@ -4274,7 +4238,7 @@ d’options
                   [
                     {
                       "display": "flex",
-                      "maxWidth": 64,
+                      "maxWidth": 72,
                     },
                   ]
                 }
@@ -4370,34 +4334,22 @@ d’options
                       ]
                     }
                   />
-                  <View
+                  <Text
                     style={
                       [
                         {
-                          "marginBottom": 16,
-                          "marginHorizontal": -4,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "paddingHorizontal": 1,
+                          "textAlign": "center",
                         },
                       ]
                     }
-                    testID="Handicap auditif"
                   >
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "paddingHorizontal": 1,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      Handicap auditif
-                    </Text>
-                  </View>
+                    Handicap auditif
+                  </Text>
                 </View>
               </View>
             </View>
