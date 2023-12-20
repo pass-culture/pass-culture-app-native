@@ -15,7 +15,7 @@ import { Offer } from 'shared/offer/types'
 
 type FetchOfferAndVenuesArgs = {
   parameters: SearchQueryParameters
-  userPosition: Position
+  userLocation: Position
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
@@ -26,7 +26,7 @@ type FetchOfferAndVenuesArgs = {
 
 export const fetchSearchResults = async ({
   parameters,
-  userPosition,
+  userLocation,
   isUserUnderage,
   storeQueryID,
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
@@ -34,14 +34,14 @@ export const fetchSearchResults = async ({
 }: FetchOfferAndVenuesArgs) => {
   const searchParameters = buildOfferSearchParameters(
     parameters,
-    userPosition,
+    userLocation,
     isUserUnderage,
     enableAppLocation
   )
 
   const currentVenuesIndex = getCurrentVenuesIndex({
     locationType: parameters?.locationFilter?.locationType,
-    userPosition,
+    userLocation,
     venue: parameters?.venue,
   })
 
@@ -68,7 +68,7 @@ export const fetchSearchResults = async ({
       params: {
         page: 0,
         ...buildHitsPerPage(35),
-        ...buildSearchVenuePosition(parameters.locationFilter, userPosition, parameters.venue),
+        ...buildSearchVenuePosition(parameters.locationFilter, userLocation, parameters.venue),
         clickAnalytics: true,
       },
     },
@@ -87,7 +87,7 @@ export const fetchSearchResults = async ({
             offerNativeCategories: undefined,
             offerGenreTypes: undefined,
           },
-          userPosition,
+          userLocation,
           isUserUnderage
         ),
       },

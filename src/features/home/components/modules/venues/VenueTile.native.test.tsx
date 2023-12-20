@@ -15,7 +15,7 @@ const props: VenueTileProps = {
   moduleId: 'module-id',
   moduleName: 'le nom du module',
   venue,
-  userPosition: null,
+  userLocation: null,
   width: 100,
   height: 100,
 }
@@ -71,7 +71,7 @@ describe('VenueTile component', () => {
   })
 
   it('should show distance prop when provided', () => {
-    render(<VenueTile {...props} userPosition={{ latitude: 2, longitude: 1 }} />)
+    render(<VenueTile {...props} userLocation={{ latitude: 2, longitude: 1 }} />)
 
     expect(screen.getByTestId('distance-tag')).toBeTruthy()
   })

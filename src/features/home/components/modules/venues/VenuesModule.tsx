@@ -43,7 +43,7 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
-        userPosition={position}
+        userLocation={position}
       />
     ),
     [position, moduleName, moduleId, homeEntryId]

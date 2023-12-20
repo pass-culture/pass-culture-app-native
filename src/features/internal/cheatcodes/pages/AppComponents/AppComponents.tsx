@@ -766,7 +766,7 @@ export const AppComponents: FunctionComponent = () => {
             moduleName="le nom du module"
             height={LENGTH_S}
             width={LENGTH_S * (3 / 2)}
-            userPosition={null}
+            userLocation={null}
             venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
           />
           <VenueTile
@@ -774,7 +774,7 @@ export const AppComponents: FunctionComponent = () => {
             moduleName="le nom du module géolocalisé"
             height={LENGTH_S}
             width={LENGTH_S * (3 / 2)}
-            userPosition={{
+            userLocation={{
               latitude: 50,
               longitude: 51,
             }}

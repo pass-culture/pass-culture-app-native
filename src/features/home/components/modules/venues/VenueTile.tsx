@@ -28,7 +28,7 @@ export interface VenueTileProps {
   homeEntryId?: string
   width: number
   height: number
-  userPosition: Position
+  userLocation: Position
 }
 
 const mergeVenueData =
@@ -41,11 +41,11 @@ const mergeVenueData =
 
 const UnmemoizedVenueTile = (props: VenueTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
-  const { venue, width, height, userPosition } = props
+  const { venue, width, height, userLocation } = props
   const queryClient = useQueryClient()
   const { colors } = useTheme()
 
-  const distance = formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)
+  const distance = formatDistance({ lat: venue.latitude, lng: venue.longitude }, userLocation)
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
 
   function handlePressVenue() {

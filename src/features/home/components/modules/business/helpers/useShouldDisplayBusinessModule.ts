@@ -7,10 +7,10 @@ export function useShouldDisplayBusinessModule(
   connected: boolean,
   moduleLocationArea?: LocationCircleArea
 ) {
-  const { position: userPosition } = useHomePosition()
+  const { position: userLocation } = useHomePosition()
 
   // Target localized users if module is localized (i.e.: latitude, longitude and radius are given in Contentful)
-  const isLocalizationCompliant = getLocalizationCompliance(moduleLocationArea, userPosition)
+  const isLocalizationCompliant = getLocalizationCompliance(moduleLocationArea, userLocation)
 
   // Target both type of users
   if (targetNotConnectedUsersOnly === undefined && isLocalizationCompliant) return true
