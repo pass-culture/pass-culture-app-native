@@ -48,6 +48,7 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
   // @ts-expect-error : ignore type of emit to facilitate testing
   emit: jest.fn(() => ({ defaultPrevented: false })),
   navigate: jest.fn(),
+  setParams: jest.fn(),
 }
 
 const mockSearchState = initialSearchState
@@ -120,7 +121,7 @@ describe('TabBar', () => {
     expect(screen.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
 
-  it('does not reset navigation when clicked on selected tab', () => {
+  it('should navigate again to Profil tab on click Profil tab icon when Profil tab is already selected', () => {
     mockedUseTabNavigationContext.mockReturnValueOnce({
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
@@ -135,11 +136,10 @@ describe('TabBar', () => {
     const profileTab = screen.getByTestId('Mon profil')
     fireEvent.press(profileTab)
 
-    expect(navigation.emit).not.toHaveBeenCalled()
-    expect(navigation.navigate).not.toHaveBeenCalled()
+    expect(navigation.navigate).toHaveBeenCalledTimes(1)
   })
 
-  it('should reset navigation when clicked on selected home tab', async () => {
+  it('should navigate again to Home tab on click Home tab icon when Home tab is already selected', async () => {
     renderTabBar()
 
     expect(screen.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
@@ -147,8 +147,25 @@ describe('TabBar', () => {
     const homeTab = screen.getByTestId('Accueil')
     fireEvent.press(homeTab)
 
-    expect(navigation.emit).toHaveBeenCalledTimes(1)
     expect(navigation.navigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('should reset Search navigation params when clicked on selected Search tab', () => {
+    mockedUseTabNavigationContext.mockReturnValueOnce({
+      setTabNavigationState: jest.fn(),
+      tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
+        ...route,
+        isSelected: route.name === 'Search',
+      })),
+    })
+    renderTabBar()
+
+    screen.getByTestId('Rechercher des offres sélectionné')
+
+    const searchTab = screen.getByTestId('Rechercher des offres')
+    fireEvent.press(searchTab)
+
+    expect(navigation.setParams).toHaveBeenCalledWith(initialSearchState)
   })
 
   it('navigates to Profile on Profile tab click', async () => {

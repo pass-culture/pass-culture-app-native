@@ -4,6 +4,7 @@ import React from 'react'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 
 import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
@@ -14,19 +15,23 @@ type Props = Pick<BottomTabBarProps, 'navigation'>
 export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState } = useSearch()
+  const { locationFilter } = searchState
+
   return (
     <TabBarContainer>
       {tabRoutes.map((route) => {
         const onPress = () => {
-          if (route.isSelected && route.name !== 'Home') return
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          })
-          if (!event.defaultPrevented) {
-            let params = route.name === 'Home' ? undefined : route.params
-            params = route.name === 'Search' ? searchState : route.params
+          if (route.name === 'Search') {
+            if (route.isSelected) {
+              navigation.setParams({
+                ...initialSearchState,
+                locationFilter,
+              })
+            } else {
+              navigation.navigate('TabNavigator', { screen: route.name, params: searchState })
+            }
+          } else {
+            const params = route.name === 'Home' ? undefined : route.params
             navigation.navigate('TabNavigator', { screen: route.name, params })
           }
         }

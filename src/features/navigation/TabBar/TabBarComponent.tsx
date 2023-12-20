@@ -38,7 +38,6 @@ export const TabBarComponent: React.FC<Props> = ({
     navigateTo={navigateTo}
     enableNavigate={enableNavigate}
     onBeforeNavigate={onPress}
-    activeOpacity={1}
     selected={isSelected}
     accessibilityLabel={menu[tabName].accessibilityLabel}
     testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}

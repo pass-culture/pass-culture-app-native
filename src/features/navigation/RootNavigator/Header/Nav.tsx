@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { initialSearchState } from 'features/search/context/reducer'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { theme } from 'theme'
 import { Li } from 'ui/components/Li'
@@ -20,6 +22,9 @@ type Props = {
 
 export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
+  const {
+    searchState: { locationFilter },
+  } = useSearch()
 
   return (
     <NavItemsContainer
@@ -28,22 +33,29 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
       navHeight={height}
       noShadow={noShadow}>
       <Ul>
-        {tabRoutes.map((route, index) => (
-          <StyledLi key={`key-tab-nav-${route.name}`}>
-            {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
-            <NavItem
-              tabName={route.name}
-              isSelected={route.isSelected}
-              BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-              navigateTo={{
-                screen: getTabNavConfig(route.name)[0],
-                params: getTabNavConfig(route.name)[1],
-                fromRef: true,
-                withPush: true,
-              }}
-            />
-          </StyledLi>
-        ))}
+        {tabRoutes.map((route, index) => {
+          let params = undefined
+          if (route.isSelected && route.name === 'Search') {
+            params = { ...initialSearchState, locationFilter }
+          }
+          const tabNavConfig = getTabNavConfig(route.name, params)
+          return (
+            <StyledLi key={`key-tab-nav-${route.name}`}>
+              {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
+              <NavItem
+                tabName={route.name}
+                isSelected={route.isSelected}
+                BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+                navigateTo={{
+                  screen: tabNavConfig[0],
+                  params: tabNavConfig[1],
+                  fromRef: true,
+                  withPush: true,
+                }}
+              />
+            </StyledLi>
+          )
+        })}
       </Ul>
     </NavItemsContainer>
   )
