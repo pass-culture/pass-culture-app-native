@@ -16,12 +16,19 @@ appId: ${APP_ID}
 - tapOn: "Films, séries, cinéma"
 - runFlow:
     when:
+      visible: "Catégories"
+    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+- tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
+- inputText: ${NOM_OFFRE_PHYSIQUE}
+- pressKey: Enter
+- runFlow:
+    when:
       visible: ${NOM_OFFRE_PHYSIQUE}
-    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOffer.yml"
-- scrollUntilVisible:
-    element: ${NOM_OFFRE_PHYSIQUE}
-    direction: DOWN
-- tapOn: ${NOM_OFFRE_PHYSIQUE}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
@@ -36,6 +43,10 @@ appId: ${APP_ID}
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 
 - tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
 - inputText: ${NOM_OFFRE_EVENT}
 - pressKey: Enter
 
@@ -69,7 +80,6 @@ appId: ${APP_ID}
 - tapOn:
     text: ${NOM_OFFRE_EVENT}
     index: 1
-
 - assertVisible: "Visite"
 - assertVisible: "À deux\_!"
 

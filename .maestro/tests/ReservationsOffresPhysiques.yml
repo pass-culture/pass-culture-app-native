@@ -16,7 +16,21 @@ appId: ${APP_ID}
 - tapOn: "Films, séries, cinéma"
 
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position (actuellement il est simplement possible de cliquer en connaissant l'offre).
-- tapOn: ${NOM_OFFRE_PHYSIQUE} # nom de l'offre consultable
+- runFlow:
+    when:
+      visible: "Catégories"
+    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+- tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
+- inputText: ${NOM_OFFRE_PHYSIQUE}
+- pressKey: Enter
+- runFlow:
+    when:
+      visible: ${NOM_OFFRE_PHYSIQUE}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
@@ -31,9 +45,25 @@ appId: ${APP_ID}
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 - tapOn: "Catégories"
 - tapOn: "Films, séries, cinéma"
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
-# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
-- tapOn: ${NOM_OFFRE_PHYSIQUE}  # nom de l'offre consultable
+- runFlow:
+    when:
+      visible: "Catégories"
+    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+- runFlow:
+    when:
+      visible: "Rechercher"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
+- tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
+- inputText: ${NOM_OFFRE_PHYSIQUE}
+- pressKey: Enter
+- runFlow:
+    when:
+      visible: ${NOM_OFFRE_PHYSIQUE}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml

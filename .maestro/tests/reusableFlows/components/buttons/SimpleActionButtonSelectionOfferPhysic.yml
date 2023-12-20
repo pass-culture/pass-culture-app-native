@@ -1,0 +1,5 @@
+appId: ${APP_ID}
+---
+- tapOn:
+    text: ${NOM_OFFRE_PHYSIQUE}
+    index: 1

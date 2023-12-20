@@ -19,8 +19,3 @@ appId: com.google.android.gm
     file: "components/buttons/SimpleActionButtonAccederGmail.yml"
 
 
-#- runFlow:
-#      when:
-#          visible: "OK"
-#      file: "reusableFlows/components/SimpleActionButtonOkGmail.yml"
-

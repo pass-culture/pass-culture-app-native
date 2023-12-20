@@ -16,12 +16,19 @@ appId: ${APP_ID}
 - tapOn: "Films, séries, cinéma"
 - runFlow:
     when:
-      visible: ${NOM_OFFRE_PHYSIQUE}
-    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOffer.yml"
-- scrollUntilVisible:
-    element: ${NOM_OFFRE_PHYSIQUE}
-    direction: DOWN
-- tapOn: ${NOM_OFFRE_PHYSIQUE}
+      visible: "Catégories"
+    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+- tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
+- inputText: ${NOM_OFFRE_EVENT}
+- pressKey: Enter
+- runFlow:
+    when:
+      visible: ${NOM_OFFRE_EVENT}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferEvent.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
@@ -36,6 +43,10 @@ appId: ${APP_ID}
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 
 - tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
 - inputText: ${NOM_OFFRE_EVENT}
 - pressKey: Enter
 
@@ -65,17 +76,9 @@ appId: ${APP_ID}
       visible: "Rechercher"
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
 
-#- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
 - tapOn:
-    point: "49%,84%"
-- tapOn:
-    point: "49%,84%"
-
-- tapOn:
-    text: "Jeu de piste : le cambrioleur de la butte Montmartre"
+    text: ${NOM_OFFRE_EVENT}
     index: 1
-#  text: ${NOM_OFFRE_EVENT}
-#- tapOn: ${NOM_OFFRE_EVENT}
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"
 - tapOn: "23"
