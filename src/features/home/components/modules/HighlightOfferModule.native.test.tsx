@@ -123,6 +123,32 @@ describe('HighlightOfferModule', () => {
       expect(screen.queryByText('28 € - Duo')).not.toBeOnTheScreen()
     })
   })
+
+  it('should display venue publicName if it exists', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+      venue: { publicName: 'publicName' },
+    })
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.getByText('publicName')).toBeOnTheScreen()
+    })
+  })
+
+  it('should fallback on venue name if venue publicName does not exist', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+      venue: { name: 'name', publicName: undefined },
+    })
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.getByText('name')).toBeOnTheScreen()
+    })
+  })
 })
 
 const renderHighlightModule = () => {
