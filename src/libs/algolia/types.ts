@@ -66,11 +66,7 @@ export type SearchQueryParameters = {
   offerIsNew: boolean
   offerNativeCategories?: NativeCategoryIdEnumv2[]
   offerSubcategories: SubcategoryIdEnumv2[]
-  offerTypes: {
-    isDigital: boolean
-    isEvent: boolean
-    isThing: boolean
-  }
+  isDigital: boolean
   page?: number
   priceRange: Range<number> | null
   query: string
