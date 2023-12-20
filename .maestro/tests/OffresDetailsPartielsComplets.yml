@@ -47,7 +47,7 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${NOM_OFFRE_EVENT}
+- inputText: ${EVENT_OFFER}
 - pressKey: Enter
 
 - runFlow:
@@ -78,7 +78,7 @@ appId: ${APP_ID}
 
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par le nom de l'offre
 - tapOn:
-    text: ${NOM_OFFRE_EVENT}
+    text: ${EVENT_OFFER}
     index: 1
 - assertVisible: "Visite"
 - assertVisible: "À deux\_!"

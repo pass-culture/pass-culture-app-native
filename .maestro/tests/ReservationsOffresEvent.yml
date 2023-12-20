@@ -23,11 +23,11 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${NOM_OFFRE_EVENT}
+- inputText: ${EVENT_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${NOM_OFFRE_EVENT}
+      visible: ${EVENT_OFFER}
     file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferEvent.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
@@ -47,7 +47,7 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${NOM_OFFRE_EVENT}
+- inputText: ${EVENT_OFFER}
 - pressKey: Enter
 
 - runFlow:
@@ -77,7 +77,7 @@ appId: ${APP_ID}
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
 
 - tapOn:
-    text: ${NOM_OFFRE_EVENT}
+    text: ${EVENT_OFFER}
     index: 1
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"
