@@ -92,7 +92,7 @@ jobs:
       CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   soft-deploy-testing:
     needs: yarn-tester
-    if: ${{ github.ref == 'refs/heads/master' && !startsWith(github.event.head_commit.message, 'v') }}
+    if: github.ref == 'refs/heads/master'
     uses: ./.github/workflows/dev_on_workflow_environment_soft_deploy.yml
     with:
       ENV: testing
@@ -174,7 +174,7 @@ jobs:
   deploy-web-testing:
     needs: [soft-deploy-testing, hard-deploy-android-testing, hard-deploy-ios-testing]
     # see https://stackoverflow.com/a/66358138 for details
-    if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') }}
+    if: ${{ always() && contains(needs.*.result, 'success') && !contains(needs.*.result, 'failure') && github.ref == 'refs/heads/master'}}
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
     with:
       ENV: testing
