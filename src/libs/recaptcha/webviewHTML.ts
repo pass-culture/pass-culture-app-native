@@ -39,7 +39,11 @@ export const reCaptchaWebviewHTML = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError("${ReCaptchaInternalError.NumberOfRenderRetriesExceeded}");
+                        if (window.navigator.onLine) {
+                            onError("${ReCaptchaInternalError.NumberOfRenderRetriesExceeded}");
+                        } else {
+                            onError("${ReCaptchaInternalError.NetworkError}");
+                        }
                     }
                 }
 

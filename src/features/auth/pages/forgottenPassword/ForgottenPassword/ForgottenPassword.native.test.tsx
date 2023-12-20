@@ -143,6 +143,22 @@ describe('<ForgottenPassword />', () => {
     expect(captureMonitoringError).not.toHaveBeenCalled()
   })
 
+  it('should notifies user on reCAPTCHA network error', async () => {
+    renderForgottenPassword()
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+    simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+
+    expect(
+      screen.getByText(
+        'Un problème est survenu pendant la réinitialisation, vérifie ta connexion internet et réessaie plus tard.'
+      )
+    ).toBeOnTheScreen()
+  })
+
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
     renderForgottenPassword()
 

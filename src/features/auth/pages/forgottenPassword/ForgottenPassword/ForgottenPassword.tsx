@@ -189,8 +189,12 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
       },
       onReCaptchaError(errorCode: ReCaptchaError, error: string | undefined) {
         setValue('isDoingReCaptchaChallenge', false)
-        setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-        if (errorCode !== 'ReCaptchaNetworkError') {
+        if (errorCode === 'ReCaptchaNetworkError') {
+          setCustomError(
+            'Un problème est survenu pendant la réinitialisation, vérifie ta connexion internet et réessaie plus tard.'
+          )
+        } else {
+          setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
           captureMonitoringError(`${errorCode} ${error}`, 'ForgottenPasswordOnRecaptchaError')
         }
       },

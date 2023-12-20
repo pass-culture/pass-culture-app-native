@@ -78,7 +78,11 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        onError("ReCaptchaNumberOfRenderRetriesExceeded");
+                        if (window.navigator.onLine) {
+                            onError("ReCaptchaNumberOfRenderRetriesExceeded");
+                        } else {
+                            onError("ReCaptchaNetworkError");
+                        }
                     }
                 }
 

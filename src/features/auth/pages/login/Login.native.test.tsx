@@ -602,6 +602,22 @@ describe('<Login/>', () => {
       expect(captureMonitoringError).not.toHaveBeenCalled()
     })
 
+    it('should precise when it is a network failure on reCAPTCHA failure', async () => {
+      renderLogin()
+
+      await fillInputs()
+      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+      await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
+
+      expect(
+        screen.queryByText(
+          'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.'
+        )
+      ).toBeOnTheScreen()
+    })
+
     it('should display error message when reCAPTCHA token has expired', async () => {
       renderLogin()
 
