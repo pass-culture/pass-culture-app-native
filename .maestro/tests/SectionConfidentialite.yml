@@ -1,7 +1,6 @@
 appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
     when:
       visible: "Respect de ta vie privée"

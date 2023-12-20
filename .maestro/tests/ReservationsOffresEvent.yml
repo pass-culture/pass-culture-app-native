@@ -117,14 +117,14 @@ appId: ${APP_ID}
       element: "Annuler ma réservation"
       direction: DOWN
 - tapOn: "Annuler ma réservation"
-- tapOn: "Annuler ma réservation"
 - assertVisible: "Réservation annulée"
-#- tapOn: "Voir le détail de l’offre"
+# TODO trouver une solution de ne pas passer par la position - tapOn: "Voir le détail de l’offre"
 - tapOn:
       point: "49%,32%"
 - tapOn:
       point: "50%,34%"
-#- runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
+
+#TODO trouver une solution de ne pas passer par la position - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"
 - tapOn: "23"
