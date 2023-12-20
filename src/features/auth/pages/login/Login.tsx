@@ -179,8 +179,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const onReCaptchaError = useCallback(
     (errorCode: ReCaptchaError, error?: string | undefined) => {
       setIsDoingReCaptchaChallenge(false)
-      setErrorMessage('Un problème est survenu, réessaie plus tard.')
-      if (errorCode !== ReCaptchaInternalError.NetworkError) {
+      if (errorCode === ReCaptchaInternalError.NetworkError) {
+        setErrorMessage(
+          'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.'
+        )
+      } else {
+        setErrorMessage('Un problème est survenu, réessaie plus tard.')
         captureMonitoringError(`${errorCode} ${error}`, 'LoginOnRecaptchaError')
       }
     },
