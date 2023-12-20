@@ -8,7 +8,6 @@ import {
   buildOfferIsDuoPredicate,
   buildOfferNativeCategoriesPredicate,
   buildOfferSubcategoriesPredicate,
-  buildOfferTypesPredicate,
   buildTagsPredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
@@ -29,7 +28,7 @@ export const buildFacetFilters = ({
   offerIsDuo,
   offerNativeCategories,
   offerSubcategories,
-  offerTypes,
+  isDigital,
   tags,
   isFullyDigitalOffersCategory,
 }: Pick<
@@ -42,7 +41,7 @@ export const buildFacetFilters = ({
   | 'offerIsDuo'
   | 'offerNativeCategories'
   | 'offerSubcategories'
-  | 'offerTypes'
+  | 'isDigital'
   | 'tags'
   | 'isFullyDigitalOffersCategory'
 > & {
@@ -53,8 +52,6 @@ export const buildFacetFilters = ({
 }): null | {
   facetFilters: FiltersArray
 } => {
-  if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
-
   const facetFilters = [...defaultFilter]
 
   if (isUserUnderage) facetFilters.push(...underageFilter)
@@ -93,8 +90,10 @@ export const buildFacetFilters = ({
     facetFilters.push(objectIdsPredicate)
   }
 
-  const offerTypesPredicate = buildOfferTypesPredicate(offerTypes)
-  if (offerTypesPredicate) facetFilters.push(...offerTypesPredicate)
+  if (isDigital) {
+    const isDigitalPredicate = [`${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`]
+    facetFilters.push(isDigitalPredicate)
+  }
 
   const offerIsDuoPredicate = buildOfferIsDuoPredicate(offerIsDuo)
   if (offerIsDuoPredicate) facetFilters.push(offerIsDuoPredicate)
