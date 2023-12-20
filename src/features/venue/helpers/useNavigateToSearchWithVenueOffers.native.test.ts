@@ -26,7 +26,7 @@ const venueSearchParamsMock: SearchState = {
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,
-  offerTypes: { isDigital: false, isEvent: false, isThing: false },
+  isDigital: false,
   priceRange: [0, 300],
   tags: [],
   date: null,
