@@ -15,7 +15,7 @@ const defaultProps = {
   shareContent: {
     subject: 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!',
     body: 'Voici une super offre\u00a0!',
-    url: new URL('https://url.com/offer'),
+    url: 'https://url.com/offer',
   },
   dismissModal: mockDismissModal,
 }

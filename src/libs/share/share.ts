@@ -20,13 +20,13 @@ const shareSocial = async ({ content, mode }: { content: ShareContent; mode: `${
   const message = shouldEncodeURI ? encodeURIComponent(rawMessage) : rawMessage
 
   const rawUrl = supportsURL ? content.url : undefined
-  const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl.toString()) : rawUrl
+  const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl) : rawUrl
 
   await SocialShare.shareSingle({
     ...options,
     message,
     type: 'text',
-    url: url?.toString(),
+    url,
   })
 }
 
@@ -39,7 +39,7 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
       const shareContent = isIos
         ? {
             message: `${content.body}\u00a0:\n`,
-            url: content.url.toString(),
+            url: content.url,
           }
         : {
             title: content.subject,

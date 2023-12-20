@@ -7,7 +7,7 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 const defaultShareContent: ShareContent = {
   body: 'message',
   subject: 'title',
-  url: new URL('https://www.toto.com'),
+  url: 'url',
 }
 
 describe('<MessagingAppsNew />', () => {

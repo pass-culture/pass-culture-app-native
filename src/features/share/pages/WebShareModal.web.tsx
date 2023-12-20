@@ -43,7 +43,7 @@ export const WebShareModal = ({
         url:
           'https://www.facebook.com/sharer/sharer.php?' +
           'u=' +
-          encodeURIComponent(url.toString()) +
+          encodeURIComponent(url) +
           '&quote=' +
           encodeURIComponent(body),
       },
@@ -52,9 +52,7 @@ export const WebShareModal = ({
       label: 'Twitter',
       icon: Twitter,
       externalNav: {
-        url: `https://twitter.com/intent/tweet?text=${body}&url=${encodeURIComponent(
-          url.toString()
-        )}`,
+        url: `https://twitter.com/intent/tweet?text=${body}&url=${encodeURIComponent(url)}`,
       },
     },
     {
@@ -72,14 +70,14 @@ export const WebShareModal = ({
       icon: Telegram,
       externalNav: {
         url: isDesktopDeviceDetectOnWeb
-          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url.toString())}&text=${body}`
+          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url)}&text=${body}`
           : 'tg://msg?text=' + encodeURIComponent(`${body}\n${url}`),
       },
     },
   ]
 
   const onCopyPress = useCopyToClipboard({
-    textToCopy: url.toString(),
+    textToCopy: url,
     snackBarMessage: 'Le lien a été copié dans le presse-papier\u00a0!',
     onCopy: dismissModal,
   })
@@ -126,9 +124,7 @@ export const WebShareModal = ({
                 <ExternalTouchableLink
                   as={ButtonTertiaryBlack}
                   externalNav={{
-                    url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(
-                      url.toString()
-                    )}`,
+                    url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(url)}`,
                   }}
                   wording="SMS"
                   accessibilityLabel="Ouvrir l’application de message"

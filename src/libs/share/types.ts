@@ -11,7 +11,7 @@ export enum Network {
 }
 
 export type ShareContent = {
-  url: URL
+  url: string
   body: string
   subject?: string
 }

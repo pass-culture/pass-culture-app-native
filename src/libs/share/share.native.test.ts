@@ -11,7 +11,7 @@ const mockShareSingle = jest.spyOn(SocialShare, 'shareSingle')
 const shareMockReturnValue = { action: Share.sharedAction, activityType: 'copy' }
 const shareMock = jest.spyOn(Share, 'share').mockResolvedValue(shareMockReturnValue)
 
-const defaultContent = { body: 'Message', url: new URL('https://www.toto.com/') }
+const defaultContent = { body: 'Message', url: 'https://www.toto.com/' }
 
 describe('share()', () => {
   describe('on Android', () => {

@@ -7,13 +7,11 @@ import { share } from 'libs/share/share'
 const shareAppTitle = 'Profite toi aussi de tous les bons plans du pass Culture'
 
 export const shareApp = (utmMedium: string) => {
-  const url = new URL('accueil', WEBAPP_V2_URL)
-  url.searchParams.set('utm_gen', 'product')
-  url.searchParams.set('utm_campaign', 'share_app')
-  url.searchParams.set('utm_medium', utmMedium)
+  const url = `${WEBAPP_V2_URL}/accueil`
+  const urlWithUtmParams = `${url}?utm_gen=product&utm_campaign=share_app&utm_medium=${utmMedium}`
 
   const shareAppContent = {
-    url,
+    url: urlWithUtmParams,
     body: shareAppTitle,
     subject: shareAppTitle,
   }

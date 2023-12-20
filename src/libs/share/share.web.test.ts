@@ -4,7 +4,7 @@ import { share } from 'libs/share/share'
 
 const mockOpenUrl = jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined)
 
-const defaultContent = { body: 'Message', url: new URL('https://www.toto.com') }
+const defaultContent = { body: 'Message', url: 'https://www.toto.com/' }
 
 describe('share()', () => {
   it('should share with whatsapp url if on web and whatsapp mode', () => {

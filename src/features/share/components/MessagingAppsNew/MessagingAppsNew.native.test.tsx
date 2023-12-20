@@ -12,7 +12,7 @@ const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 const defaultShareContent: ShareContent = {
   body: 'message',
   subject: 'title',
-  url: new URL('https://www.toto.com'),
+  url: 'url',
 }
 
 describe('<MessagingAppsNew />', () => {
@@ -51,7 +51,7 @@ describe('<MessagingAppsNew />', () => {
       message: 'message\u00a0:\n',
       social: Social.Whatsapp,
       type: 'text',
-      url: 'https://www.toto.com/?utm_source=WhatsApp',
+      url: 'url&utm_source=WhatsApp',
     })
   })
 

@@ -19,13 +19,11 @@ export const MessagingAppButton = ({
   shareContent,
   onPressAnalytics,
 }: MessagingAppsButtonProps) => {
+  const shareUrlWithUtmSource = `${shareContent.url}&utm_source=${network}`
   const onPress = async () => {
     try {
-      const contentUrl = new URL(shareContent.url)
-      contentUrl.searchParams.set('utm_source', network)
-
       onPressAnalytics(mapNetworkToSocial[network].social)
-      await share({ content: { ...shareContent, url: contentUrl }, mode: network })
+      await share({ content: { ...shareContent, url: shareUrlWithUtmSource }, mode: network })
     } catch (e) {
       eventMonitoring.captureException(`MessagingApp click: ${e}`)
     }
