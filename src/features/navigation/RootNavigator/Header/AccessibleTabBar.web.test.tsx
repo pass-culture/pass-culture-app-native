@@ -79,6 +79,23 @@ describe('AccessibleTabBar', () => {
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
   })
+
+  it('should reset params on press "Recherche" when already on Search tab', async () => {
+    const navigateFromRefSpy = jest.spyOn(navigationRefAPI, 'navigateFromRef')
+    renderTabBar()
+    const searchButton = screen.getByText('Recherche')
+    await act(() => {
+      fireEvent.click(searchButton)
+    })
+
+    await act(() => {
+      fireEvent.click(searchButton)
+    })
+
+    expect(navigateFromRefSpy).toHaveBeenCalledWith(
+      ...getTabNavConfig('Search', initialSearchState)
+    )
+  })
 })
 
 function renderTabBar() {
