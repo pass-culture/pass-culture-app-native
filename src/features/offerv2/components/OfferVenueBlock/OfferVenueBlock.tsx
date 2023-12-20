@@ -42,6 +42,7 @@ export function OfferVenueBlock({
       <Spacer.Column numberOfSpaces={6} />
 
       <Typo.ButtonText>{venueName}</Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={1} />
       <Address>{address}</Address>
 
       {distance ? (
