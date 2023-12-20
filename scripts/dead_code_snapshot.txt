@@ -70,13 +70,12 @@ src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOp
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:34 - Response (used in module)
 src/features/identityCheck/types.ts:37 - NextScreenOrStep
-src/features/search/types.ts:81 - OfferTypes
-src/features/search/types.ts:87 - CategoriesModalFormProps
-src/features/search/types.ts:99 - CategoriesViewData
-src/features/search/types.ts:104 - MappedData
-src/features/search/types.ts:106 - VenueUserTitleRule (used in module)
-src/features/search/types.ts:107 - VenueUserData (used in module)
-src/features/search/types.ts:125 - AnalyticsParams
+src/features/search/types.ts:81 - CategoriesModalFormProps
+src/features/search/types.ts:93 - CategoriesViewData
+src/features/search/types.ts:98 - MappedData
+src/features/search/types.ts:100 - VenueUserTitleRule (used in module)
+src/features/search/types.ts:101 - VenueUserData (used in module)
+src/features/search/types.ts:119 - AnalyticsParams
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)
@@ -88,10 +87,10 @@ src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
 src/libs/algolia/index.ts:34 - LocationFilter
 src/libs/algolia/index.ts:39 - OfferGenreType
-src/libs/algolia/index.ts:107 - AlgoliaQueryParameters
-src/libs/algolia/index.ts:116 - FetchOfferParameters
-src/libs/algolia/index.ts:124 - OfferModuleQuery
-src/libs/algolia/index.ts:181 - GenreTypeFacetData
+src/libs/algolia/index.ts:103 - AlgoliaQueryParameters
+src/libs/algolia/index.ts:112 - FetchOfferParameters
+src/libs/algolia/index.ts:120 - OfferModuleQuery
+src/libs/algolia/index.ts:177 - GenreTypeFacetData
 src/libs/analytics/index.ts:6 - isCloseToEndHorizontal
 src/libs/analytics/index.ts:10 - AnalyticsProvider
 src/libs/hooks/index.ts:5 - useIsMounted (used in module)

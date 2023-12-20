@@ -35,7 +35,7 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     offerIsDuo: false,
     offerIsFree: false,
     offerIsNew: false,
-    offerTypes: { isDigital: false, isEvent: false, isThing: false },
+    isDigital: false,
     priceRange: [0, maxPrice],
     tags: [],
     date: null,

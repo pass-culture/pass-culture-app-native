@@ -20,11 +20,7 @@ export const initialSearchState: SearchState = {
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,
-  offerTypes: {
-    isDigital: false,
-    isEvent: false,
-    isThing: false,
-  },
+  isDigital: false,
   priceRange: null,
   query: '',
   tags: [],
@@ -42,7 +38,7 @@ export type Action =
   | { type: 'SET_MAX_PRICE'; payload: string }
   | { type: 'RADIUS'; payload: number }
   | { type: 'TIME_RANGE'; payload: SearchState['timeRange'] }
-  | { type: 'OFFER_TYPE'; payload: keyof SearchState['offerTypes'] }
+  | { type: 'TOGGLE_IS_DIGITAL'; payload: SearchState['isDigital'] }
   | { type: 'SET_CATEGORY'; payload: SearchGroupNameEnumv2[] }
   | { type: 'TOGGLE_CATEGORY'; payload: SearchGroupNameEnumv2 }
   | { type: 'TOGGLE_OFFER_FREE' }
@@ -98,10 +94,10 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'SET_CATEGORY':
       return { ...state, offerCategories: [...action.payload].sort(sortCategories) }
-    case 'OFFER_TYPE':
+    case 'TOGGLE_IS_DIGITAL':
       return {
         ...state,
-        offerTypes: { ...state.offerTypes, [action.payload]: !state.offerTypes[action.payload] },
+        isDigital: action.payload,
       }
     case 'TOGGLE_OFFER_FREE':
       return { ...state, offerIsFree: !state.offerIsFree }

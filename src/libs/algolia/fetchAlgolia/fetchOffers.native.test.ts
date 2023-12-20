@@ -572,14 +572,9 @@ describe('fetchOffer', () => {
 
     it('should fetch with facetFilters when offer is digital', () => {
       const query = 'searched query'
-      const offerTypes = {
-        isDigital: true,
-        isEvent: false,
-        isThing: false,
-      }
 
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
+        parameters: { ...baseParams, query, isDigital: true } as SearchQueryParameters,
         userLocation: null,
         isUserUnderage: false,
       })
@@ -596,189 +591,8 @@ describe('fetchOffer', () => {
 
     it('should fetch with no facetFilters when offer is not digital', () => {
       const query = 'searched query'
-      const offerTypes = {
-        isDigital: false,
-        isEvent: false,
-        isThing: false,
-      }
-
       fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with facetFilters when offer is physical only', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: false,
-        isEvent: false,
-        isThing: true,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.isDigital:false'],
-          ['offer.isThing:true'],
-        ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with facetFilters when offer is event only', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: false,
-        isEvent: true,
-        isThing: false,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.isEvent:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with facetFilters when offer is digital and physical', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: true,
-        isEvent: false,
-        isThing: true,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.isThing:true']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with facetFilters when offer is digital or an event', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: true,
-        isEvent: true,
-        isThing: false,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [
-          ['offer.isEducational:false'],
-          ['offer.isDigital:true', 'offer.isEvent:true'],
-        ],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with facetFilters when offer is physical or an event', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: false,
-        isEvent: true,
-        isThing: true,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false'], ['offer.isDigital:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with no facetFilters when offer is digital, event and thing', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: true,
-        isEvent: true,
-        isThing: true,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
-        userLocation: null,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with no facetFilters when offer is not digital, not event and not thing', () => {
-      const query = 'searched query'
-      const offerTypes = {
-        isDigital: false,
-        isEvent: false,
-        isThing: false,
-      }
-
-      fetchOffers({
-        parameters: { ...baseParams, query, offerTypes } as SearchQueryParameters,
+        parameters: { ...baseParams, query, isDigital: false } as SearchQueryParameters,
         userLocation: null,
         isUserUnderage: false,
       })
@@ -1421,11 +1235,6 @@ describe('fetchOffer', () => {
     it('should fetch with all given search parameters', () => {
       const query = 'searched query'
       const offerCategories = ['LECON', 'MUSEES_VISITES_CULTURELLES']
-      const offerTypes = {
-        isDigital: true,
-        isEvent: false,
-        isThing: false,
-      }
       const page = 2
 
       fetchOffers({
@@ -1433,7 +1242,7 @@ describe('fetchOffer', () => {
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: null },
           query,
           offerCategories,
-          offerTypes,
+          isDigital: true,
           page,
         } as SearchQueryParameters,
         userLocation: userLocation,
@@ -1457,16 +1266,11 @@ describe('fetchOffer', () => {
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     })
 
-    it('should fetch duo & free event offers for categories pratique & spectacle around me', () => {
+    it('should fetch duo offers for categories pratique & spectacle around me', () => {
       const query = ''
       const offerCategories = ['ARTS_LOISIRS_CREATIFS', 'SPECTACLES']
       const offerIsDuo = true
       const priceRange = [5, 40]
-      const offerTypes = {
-        isDigital: false,
-        isEvent: true,
-        isThing: false,
-      }
 
       fetchOffers({
         parameters: {
@@ -1475,7 +1279,7 @@ describe('fetchOffer', () => {
           offerCategories,
           offerIsDuo,
           priceRange: priceRange as Range<number>,
-          offerTypes,
+          isDigital: false,
         } as SearchQueryParameters,
         userLocation: userLocation,
         isUserUnderage: false,
@@ -1486,7 +1290,6 @@ describe('fetchOffer', () => {
         facetFilters: [
           ['offer.isEducational:false'],
           ['offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS', 'offer.searchGroupNamev2:SPECTACLES'],
-          ['offer.isEvent:true'],
           ['offer.isDuo:true'],
         ],
         numericFilters: [['offer.prices: 5 TO 40']],

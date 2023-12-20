@@ -117,11 +117,7 @@ describe('adaptOffersPlaylistParameters', () => {
       hitsPerPage: 5,
       offerIsDuo: true,
       offerIsNew: true,
-      offerTypes: {
-        isDigital: true,
-        isEvent: true,
-        isThing: true,
-      },
+      isDigital: true,
       beginningDatetime: '2020-10-01T00:00+00:00',
       endingDatetime: '2020-10-02T00:00+00:00',
     })
@@ -168,41 +164,7 @@ describe('adaptOffersPlaylistParameters', () => {
 
     expect(result).toStrictEqual({
       ...defaultSearchParameters,
-      offerTypes: { isDigital: true, isEvent: false, isThing: false },
-    })
-  })
-
-  it('should return algolia parameters with isEvent when provided', () => {
-    const parameters = { isEvent: true } as OffersModuleParameters
-    const geolocation = null
-
-    const result = adaptOffersPlaylistParameters(
-      parameters,
-      geolocation,
-      subcategoryLabelMapping,
-      genreTypeMapping
-    )
-
-    expect(result).toStrictEqual({
-      ...defaultSearchParameters,
-      offerTypes: { isDigital: false, isEvent: true, isThing: false },
-    })
-  })
-
-  it('should return algolia parameters with isThing when provided', () => {
-    const parameters = { isThing: true } as OffersModuleParameters
-    const geolocation = null
-
-    const result = adaptOffersPlaylistParameters(
-      parameters,
-      geolocation,
-      subcategoryLabelMapping,
-      genreTypeMapping
-    )
-
-    expect(result).toStrictEqual({
-      ...defaultSearchParameters,
-      offerTypes: { isDigital: false, isEvent: false, isThing: true },
+      isDigital: true,
     })
   })
 

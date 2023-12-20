@@ -14,21 +14,10 @@ const defaultBuildFacetFilterParam = {
   offerNativeCategories: [],
   offerSubcategories: [],
   tags: [],
-  offerTypes: {
-    isDigital: false,
-    isEvent: false,
-    isThing: false,
-  },
+  isDigital: false,
 }
 
 describe('buildFacetFilters', () => {
-  it('should return null when offer categories is empty and offer is duo = false', () => {
-    // @ts-ignore: Normally impossible but condition present
-    const facetFilters = buildFacetFilters({ ...defaultBuildFacetFilterParam, offerTypes: null })
-
-    expect(facetFilters).toEqual(null)
-  })
-
   it('should return isEducational facet by default', () => {
     const facetFilters = buildFacetFilters(defaultBuildFacetFilterParam)
 
@@ -101,14 +90,14 @@ describe('buildFacetFilters', () => {
     })
   })
 
-  it('should return default and offer type facets when at least one of offer types set to true', () => {
+  it('should return default and offer type facets when isDigital: true', () => {
     const facetFilters = buildFacetFilters({
       ...defaultBuildFacetFilterParam,
-      offerTypes: { isEvent: true, isDigital: false, isThing: false },
+      isDigital: true,
     })
 
     expect(facetFilters).toEqual({
-      facetFilters: [['offer.isEducational:false'], ['offer.isEvent:true']],
+      facetFilters: [['offer.isEducational:false'], ['offer.isDigital:true']],
     })
   })
 

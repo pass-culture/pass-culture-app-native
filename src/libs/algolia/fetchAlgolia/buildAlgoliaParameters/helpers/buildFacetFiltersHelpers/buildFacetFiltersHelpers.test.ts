@@ -12,7 +12,6 @@ import {
   buildOfferIsDuoPredicate,
   buildOfferNativeCategoriesPredicate,
   buildOfferSubcategoriesPredicate,
-  buildOfferTypesPredicate,
   buildTagsPredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
 import { eventMonitoring } from 'libs/monitoring'
@@ -152,78 +151,6 @@ describe('buildOfferIsDuoPredicate', () => {
     const offerIsDuoPredicate = buildOfferIsDuoPredicate(false)
 
     expect(offerIsDuoPredicate).toEqual(undefined)
-  })
-})
-
-describe('buildOfferTypesPredicate', () => {
-  it('should return undefined when all offer types are false', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: false,
-      isEvent: false,
-      isThing: false,
-    })
-
-    expect(offerTypesPredicate).toEqual(undefined)
-  })
-
-  it('should return an offer types predicate formatted for Algolia API with isDigital = true when offer is digital, is not an event and a thing', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: true,
-      isEvent: false,
-      isThing: false,
-    })
-
-    expect(offerTypesPredicate).toEqual([['offer.isDigital:true']])
-  })
-
-  it('should return an offer types predicate formatted for Algolia API with isThing = true when offer is digital, is a thing and is not an event', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: true,
-      isEvent: false,
-      isThing: true,
-    })
-
-    expect(offerTypesPredicate).toEqual([['offer.isThing:true']])
-  })
-
-  it('should return an offer types predicate formatted for Algolia API with isDigital = true and isEvent = true when offer is digital, is an event and is not a thing', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: true,
-      isEvent: true,
-      isThing: false,
-    })
-
-    expect(offerTypesPredicate).toEqual([['offer.isDigital:true', 'offer.isEvent:true']])
-  })
-
-  it('should return an offer types predicate formatted for Algolia API with isDigital = false and isThing = true when offer is not digital, is not an event and is a thing', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: false,
-      isEvent: false,
-      isThing: true,
-    })
-
-    expect(offerTypesPredicate).toEqual([['offer.isDigital:false'], ['offer.isThing:true']])
-  })
-
-  it('should return an offer types predicate formatted for Algolia API with isEvent = true when offer is not digital, is not a thing and is an event', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: false,
-      isEvent: true,
-      isThing: false,
-    })
-
-    expect(offerTypesPredicate).toEqual([['offer.isEvent:true']])
-  })
-
-  it('should return an offer types predicate formatted for Algolia API with isDigital = false when offer is not digital, is a thing and is an event', () => {
-    const offerTypesPredicate = buildOfferTypesPredicate({
-      isDigital: false,
-      isEvent: true,
-      isThing: true,
-    })
-
-    expect(offerTypesPredicate).toEqual([['offer.isDigital:false']])
   })
 })
 

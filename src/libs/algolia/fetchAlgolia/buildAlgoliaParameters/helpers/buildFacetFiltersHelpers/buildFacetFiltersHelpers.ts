@@ -59,23 +59,6 @@ export const buildEanPredicate = (eanList: string[]) =>
 export const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
   offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
 
-export const buildOfferTypesPredicate = (
-  offerTypes: SearchQueryParameters['offerTypes']
-): FiltersArray | undefined => {
-  const { isDigital, isEvent, isThing } = offerTypes
-  const DIGITAL = `${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`
-  const EVENT = `${FACETS_FILTERS_ENUM.OFFER_IS_EVENT}:${isEvent}`
-  const THING = `${FACETS_FILTERS_ENUM.OFFER_IS_THING}:${isThing}`
-
-  if ((isDigital && !isEvent && !isThing) || (!isDigital && isEvent && isThing)) return [[DIGITAL]]
-  else if (isDigital && !isEvent && isThing) return [[THING]]
-  else if (isDigital && isEvent && !isThing) return [[DIGITAL, EVENT]]
-  else if (!isDigital && !isEvent && isThing) return [[DIGITAL], [THING]]
-  else if (!isDigital && isEvent && !isThing) return [[EVENT]]
-
-  return undefined
-}
-
 export const buildTagsPredicate = (
   tags: SearchQueryParameters['tags']
 ): FiltersArray[0] | undefined => {

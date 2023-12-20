@@ -191,21 +191,14 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle OFFER_TYPE', () => {
-    // 1. Add isDigital
-    let newState = searchReducer(state, { type: 'OFFER_TYPE', payload: 'isDigital' })
+  it('should handle TOGGLE_IS_DIGITAL', () => {
+    let newState = searchReducer(state, { type: 'TOGGLE_IS_DIGITAL', payload: true })
 
-    expect(newState.offerTypes).toStrictEqual({ isDigital: true, isThing: false, isEvent: false })
+    expect(newState.isDigital).toStrictEqual(true)
 
-    // 2. Add isThing
-    newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isThing' })
+    newState = searchReducer(newState, { type: 'TOGGLE_IS_DIGITAL', payload: false })
 
-    expect(newState.offerTypes).toStrictEqual({ isDigital: true, isThing: true, isEvent: false })
-
-    // 3. Remove isDigital
-    newState = searchReducer(newState, { type: 'OFFER_TYPE', payload: 'isDigital' })
-
-    expect(newState.offerTypes).toStrictEqual({ isDigital: false, isThing: true, isEvent: false })
+    expect(newState.isDigital).toStrictEqual(false)
   })
 
   it('should handle TOGGLE_OFFER_FREE', () => {

@@ -55,11 +55,7 @@ export const adaptOffersPlaylistParameters = (
     offerSubcategories,
     offerIsDuo: parameters.isDuo ?? false,
     offerIsNew: parameters.newestOnly ?? false,
-    offerTypes: {
-      isDigital: parameters.isDigital ?? false,
-      isEvent: parameters.isEvent ?? false,
-      isThing: parameters.isThing ?? false,
-    },
+    isDigital: parameters.isDigital ?? false,
     priceRange: _buildPriceRange({ priceMin, priceMax }),
     tags: parameters.tags ?? [],
     date: null,

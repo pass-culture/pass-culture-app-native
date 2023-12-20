@@ -55,11 +55,7 @@ export interface SearchState {
   offerIsDuo: boolean
   offerIsFree?: boolean
   offerIsNew: boolean
-  offerTypes: {
-    isDigital: boolean
-    isEvent: boolean
-    isThing: boolean
-  }
+  isDigital: boolean
   priceRange: Range<number> | null
   timeRange: Range<number> | null
   tags: string[]
@@ -77,8 +73,6 @@ export interface SearchState {
   isFromHistory?: boolean
   venue?: Venue
 }
-
-export type OfferTypes = keyof SearchState['offerTypes']
 
 export type UserData = {
   message: string
