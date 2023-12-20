@@ -52,7 +52,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const scrollViewRef = useRef<ScrollView | null>(null)
   const { geolocPosition } = useLocation()
 
-  const offerBodyData = useOfferBodyData({ offer })
   const {
     isMultivenueCompatibleOffer,
     categoryId,
@@ -63,7 +62,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayEventDate,
     shouldShowAccessibility,
     venueSectionTitle,
-  } = offerBodyData
+  } = useOfferBodyData({ offer })
 
   const {
     getPositionOnLayout: setAccessibilityAccordionPosition,

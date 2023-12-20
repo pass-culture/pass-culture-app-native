@@ -20,7 +20,7 @@ const OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY = [
 ]
 
 type Props = {
-  nativeCategory: NativeCategoryIdEnumv2
+  offerNativeCategory: NativeCategoryIdEnumv2
 }
 
 type UseOfferBatchTrackingType = {
@@ -29,7 +29,9 @@ type UseOfferBatchTrackingType = {
   shouldTriggerBatchSurveyEvent: boolean
 }
 
-export const useOfferBatchTraking = ({ nativeCategory }: Props): UseOfferBatchTrackingType => {
+export const useOfferBatchTracking = ({
+  offerNativeCategory,
+}: Props): UseOfferBatchTrackingType => {
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const trackEventHasSeenOfferForSurveyOnce = useFunctionOnce(trackEventHasSeenOfferForSurvey)
   const trackBookOfferForSurveyOnce = useFunctionOnce(trackBookOfferForSurvey)
@@ -40,23 +42,23 @@ export const useOfferBatchTraking = ({ nativeCategory }: Props): UseOfferBatchTr
   const trackBatchEvent = useCallback(() => {
     trackEventHasSeenOfferForSurveyOnce()
 
-    if (nativeCategory === NativeCategoryIdEnumv2.LIVRES_PAPIER) {
+    if (offerNativeCategory === NativeCategoryIdEnumv2.LIVRES_PAPIER) {
       trackBookOfferForSurveyOnce()
     }
 
-    if (nativeCategory === NativeCategoryIdEnumv2.VISITES_CULTURELLES) {
+    if (offerNativeCategory === NativeCategoryIdEnumv2.VISITES_CULTURELLES) {
       trackCulturalVisitOfferForSurveyOnce()
     }
 
-    if (nativeCategory === NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS) {
+    if (offerNativeCategory === NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS) {
       trackConcertOfferForSurveyOnce()
     }
 
-    if (nativeCategory === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA) {
+    if (offerNativeCategory === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA) {
       trackCinemaOfferForSurveyOnce()
     }
   }, [
-    nativeCategory,
+    offerNativeCategory,
     trackBookOfferForSurveyOnce,
     trackCinemaOfferForSurveyOnce,
     trackConcertOfferForSurveyOnce,
@@ -65,7 +67,7 @@ export const useOfferBatchTraking = ({ nativeCategory }: Props): UseOfferBatchTr
   ])
 
   const shouldTriggerBatchSurveyEvent =
-    nativeCategory && OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY.includes(nativeCategory)
+    offerNativeCategory && OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY.includes(offerNativeCategory)
 
   return {
     trackEventHasSeenOfferOnce,

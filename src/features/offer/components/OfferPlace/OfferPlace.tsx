@@ -49,7 +49,7 @@ export function OfferPlace({
   } = useModal(false)
 
   const shouldFetchSearchVenueOffers = Boolean(
-    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
+    enableMultivenueOffer && isMultivenueCompatibleOffer && offer.extraData?.ean
   )
 
   const {
@@ -65,12 +65,12 @@ export function OfferPlace({
     isFetchingNextPage,
   } = useSearchVenueOffers({
     offerId: offer.id,
-    venueId: offer?.venue?.id,
+    venueId: offer.venue.id,
     geolocation: geolocPosition ?? {
-      latitude: offer?.venue?.coordinates?.latitude ?? 0,
-      longitude: offer?.venue?.coordinates?.longitude ?? 0,
+      latitude: offer.venue.coordinates.latitude ?? 0,
+      longitude: offer.venue.coordinates.longitude ?? 0,
     },
-    query: offer?.extraData?.ean ?? '',
+    query: offer.extraData?.ean ?? '',
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
 
@@ -89,9 +89,7 @@ export function OfferPlace({
 
   const { onScroll: onScrollModal } = useOpacityTransition()
 
-  const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    shouldFetchSearchVenueOffers && nbVenueItems > 0
-  )
+  const shouldDisplayOtherVenuesAvailableButton = shouldFetchSearchVenueOffers && nbVenueItems > 0
 
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
@@ -156,7 +154,7 @@ export function OfferPlace({
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={Boolean(geolocPosition !== null)}
+          isSharingLocation={geolocPosition !== null}
           venueName={offer.venue.publicName || offer.venue.name}
         />
       ) : null}

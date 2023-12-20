@@ -1,12 +1,12 @@
 import { NativeCategoryIdEnumv2 } from 'api/gen'
-import { useOfferBatchTraking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { BatchUser, BatchEvent } from 'libs/react-native-batch'
 import { renderHook } from 'tests/utils'
 
 describe('useOfferBatchTracking', () => {
   it('should return trackEventHasSeenOfferOnce', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
     )
 
     expect(result.current?.trackEventHasSeenOfferOnce).toBeInstanceOf(Function)
@@ -14,7 +14,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should return trackBatchEvent', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
     )
 
     expect(result.current?.trackBatchEvent).toBeInstanceOf(Function)
@@ -22,7 +22,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should return true for shouldTriggerBatchSurveyEvent when native category is not eligible for survey', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
     )
 
     expect(result.current?.shouldTriggerBatchSurveyEvent).toBeTruthy()
@@ -30,7 +30,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should call trackEventHasSeenOfferForSurveyOnce', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
     )
 
     result.current?.trackBatchEvent()
@@ -40,7 +40,7 @@ describe('useOfferBatchTracking', () => {
 
   it('shoyld call trackEventHasSeenOfferForSurveyOnce only once', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.ABONNEMENTS_MUSEE })
     )
 
     result.current?.trackBatchEvent()
@@ -54,7 +54,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should call trackBookOfferForSurveyOnce when native category is LIVRES_PAPIER', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER })
     )
 
     result.current?.trackBatchEvent()
@@ -64,7 +64,7 @@ describe('useOfferBatchTracking', () => {
 
   it('shoyld call trackBookOfferForSurveyOnce only once', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER })
     )
 
     result.current?.trackBatchEvent()
@@ -79,7 +79,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should call trackCulturalVisitOfferForSurveyOnce when native category is VISITES_CULTURELLES', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.VISITES_CULTURELLES })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.VISITES_CULTURELLES })
     )
 
     result.current?.trackBatchEvent()
@@ -89,7 +89,7 @@ describe('useOfferBatchTracking', () => {
 
   it('shoyld call trackCulturalVisitOfferForSurveyOnce only once', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.VISITES_CULTURELLES })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.VISITES_CULTURELLES })
     )
 
     result.current?.trackBatchEvent()
@@ -104,7 +104,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should call trackConcertOfferForSurveyOnce when native category is CONCERTS_EVENEMENTS', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
     )
 
     result.current?.trackBatchEvent()
@@ -114,7 +114,7 @@ describe('useOfferBatchTracking', () => {
 
   it('shoyld call trackConcertOfferForSurveyOnce only once', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS })
     )
 
     result.current?.trackBatchEvent()
@@ -129,7 +129,7 @@ describe('useOfferBatchTracking', () => {
 
   it('should call trackCinemaOfferForSurveyOnce when native category is SEANCES_DE_CINEMA', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA })
     )
 
     result.current?.trackBatchEvent()
@@ -139,7 +139,7 @@ describe('useOfferBatchTracking', () => {
 
   it('shoyld call trackCinemaOfferForSurveyOnce only once', () => {
     const { result } = renderHook(() =>
-      useOfferBatchTraking({ nativeCategory: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA })
+      useOfferBatchTracking({ offerNativeCategory: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA })
     )
 
     result.current?.trackBatchEvent()

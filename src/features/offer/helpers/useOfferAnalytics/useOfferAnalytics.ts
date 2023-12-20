@@ -33,7 +33,7 @@ export const useOfferAnalytics = ({
   fromOfferId,
 }: Props): UseOfferAnalyticsType => {
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
-    return analytics.logPlaylistVerticalScroll({
+    analytics.logPlaylistVerticalScroll({
       ...apiRecoParamsSameCategory,
       fromOfferId,
       offerId,
@@ -43,7 +43,7 @@ export const useOfferAnalytics = ({
   })
 
   const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
-    return analytics.logPlaylistVerticalScroll({
+    analytics.logPlaylistVerticalScroll({
       ...apiRecoParamsOtherCategories,
       fromOfferId,
       offerId,
@@ -53,7 +53,7 @@ export const useOfferAnalytics = ({
   })
 
   const logSameArtistPlaylistVerticalScroll = useFunctionOnce(() => {
-    return analytics.logPlaylistVerticalScroll({
+    analytics.logPlaylistVerticalScroll({
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
@@ -66,7 +66,7 @@ export const useOfferAnalytics = ({
   })
 
   const logPlaylistHorizontalScroll = useCallback(() => {
-    return analytics.logPlaylistHorizontalScroll(fromOfferId)
+    analytics.logPlaylistHorizontalScroll(fromOfferId)
   }, [fromOfferId])
 
   return {

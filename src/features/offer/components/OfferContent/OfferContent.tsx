@@ -15,7 +15,7 @@ import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCT
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
-import { useOfferBatchTraking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { isCloseToBottom } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -43,13 +43,11 @@ export function OfferContent({
 }: Readonly<Props>) {
   const route = useRoute<UseRouteType<'Offer'>>()
 
-  const fromOfferId = route.params?.fromOfferId
+  const fromOfferId = route.params.fromOfferId
 
-  const offerBatchTracking = useOfferBatchTraking({ nativeCategory: offerNativeCategory })
   const { trackEventHasSeenOfferOnce, trackBatchEvent, shouldTriggerBatchSurveyEvent } =
-    offerBatchTracking
+    useOfferBatchTracking({ offerNativeCategory })
 
-  const offerPlaylist = useOfferPlaylist({ offer, offerSearchGroup, searchGroupList })
   const {
     sameArtistPlaylist,
     refetchSameArtistPlaylist,
@@ -57,28 +55,27 @@ export function OfferContent({
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
     apiRecoParamsOtherCategories,
-  } = offerPlaylist
+  } = useOfferPlaylist({ offer, offerSearchGroup, searchGroupList })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 
-  const offerAnalytics = useOfferAnalytics({
+  const {
+    logSameCategoryPlaylistVerticalScroll,
+    logOtherCategoriesPlaylistVerticalScroll,
+    logSameArtistPlaylistVerticalScroll,
+    logConsultWholeOffer,
+  } = useOfferAnalytics({
     offerId: offer.id,
-    nbSameArtistPlaylist: sameArtistPlaylist?.length ?? 0,
+    nbSameArtistPlaylist: sameArtistPlaylist.length,
     apiRecoParamsSameCategory,
     nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
     apiRecoParamsOtherCategories,
     nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
     fromOfferId,
   })
-  const {
-    logSameCategoryPlaylistVerticalScroll,
-    logOtherCategoriesPlaylistVerticalScroll,
-    logSameArtistPlaylistVerticalScroll,
-    logConsultWholeOffer,
-  } = offerAnalytics
 
-  const artists = offer?.extraData?.author
-  const ean = offer?.extraData?.ean
+  const artists = offer.extraData?.author
+  const ean = offer.extraData?.ean
   useEffect(() => {
     if (artists && ean) {
       refetchSameArtistPlaylist()
@@ -96,11 +93,14 @@ export function OfferContent({
     return () => clearTimeout(timeoutId)
   }, [shouldTriggerBatchSurveyEvent, trackBatchEvent])
 
-  const handleChangeSameArtistPlaylistDisplay = (inView: boolean) => {
-    if (!inView) return
+  const handleChangeSameArtistPlaylistDisplay = useCallback(
+    (inView: boolean) => {
+      if (!inView) return
 
-    logSameArtistPlaylistVerticalScroll()
-  }
+      logSameArtistPlaylistVerticalScroll()
+    },
+    [logSameArtistPlaylistVerticalScroll]
+  )
 
   const handleLogPlaylistVerticalScroll = useCallback(
     (nativeEvent: NativeScrollEvent) => {

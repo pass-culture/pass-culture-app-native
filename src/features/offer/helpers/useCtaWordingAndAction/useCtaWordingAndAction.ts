@@ -244,7 +244,7 @@ export const getCtaWordingAndAction = ({
 
 export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) => {
   const { offer, from, searchId } = props
-  const offerId = offer?.id || 0
+  const offerId = offer.id
   const { isLoggedIn, user } = useAuthContext()
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
@@ -252,12 +252,12 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const apiRecoParams: RecommendationApiParams = route.params?.apiRecoParams
-    ? JSON.parse(route.params?.apiRecoParams)
+  const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
+    ? JSON.parse(route.params.apiRecoParams)
     : undefined
-  const playlistType = route.params?.playlistType
-  const fromOfferId = route.params?.fromOfferId
-  const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
+  const playlistType = route.params.playlistType
+  const fromOfferId = route.params.fromOfferId
+  const fromMultivenueOfferId = route.params.fromMultivenueOfferId
 
   const { refetch: getBookings } = useBookings()
 

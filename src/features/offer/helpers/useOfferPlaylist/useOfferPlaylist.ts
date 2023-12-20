@@ -32,9 +32,9 @@ export const useOfferPlaylist = ({
 }: Props): UseOfferPlaylistType => {
   const { geolocPosition } = useLocation()
 
-  const artists = offer?.extraData?.author
-  const ean = offer?.extraData?.ean
-  const venueLocation = offer?.venue?.coordinates
+  const artists = offer.extraData?.author
+  const ean = offer.extraData?.ean
+  const venueLocation = offer.venue.coordinates
   const { sameArtistPlaylist, refetch: refetchSameArtistPlaylist } = useSameArtistPlaylist({
     artists,
     ean,
@@ -52,7 +52,7 @@ export const useOfferPlaylist = ({
 
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
-      offerId: offer?.id,
+      offerId: offer.id,
       position: geolocPosition ? roundedPosition : undefined,
       categoryIncluded: offerSearchGroup ?? SearchGroupNameEnumv2.NONE,
     })
@@ -61,7 +61,7 @@ export const useOfferPlaylist = ({
     similarOffers: otherCategoriesSimilarOffers,
     apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
-    offerId: offer?.id,
+    offerId: offer.id,
     position: geolocPosition ? roundedPosition : undefined,
     categoryExcluded: offerSearchGroup ?? SearchGroupNameEnumv2.NONE,
     searchGroupList,
