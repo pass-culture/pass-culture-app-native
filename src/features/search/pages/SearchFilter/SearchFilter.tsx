@@ -1,17 +1,15 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useSyncSearchFilter } from 'features/search/helpers/useSyncSearchFilter/useSyncSearchFilter'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
@@ -31,31 +29,26 @@ export const SearchFilter: React.FC = () => {
   useSyncSearchFilter()
   const headerHeight = useGetHeaderHeight()
   const { searchState, dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToSearch } = useNavigateToSearch()
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
   const { geolocPosition, hasGeolocPosition, place } = useLocation()
   const { user } = useAuthContext()
-  const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isMobileViewport } = useTheme()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const oldSearchState = useMemo(() => searchState, [])
   const onGoBack = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...params,
-        view: SearchView.Results,
-      })
-    )
-  }, [navigate, params])
+    navigateToSearch({ ...oldSearchState, view: SearchView.Results })
+  }, [navigateToSearch, oldSearchState])
 
   const onSearchPress = useCallback(() => {
-    const additionalSearchState = {
+    navigateToSearch({
       ...searchState,
       view: SearchView.Results,
-    }
-    navigate(...getTabNavConfig('Search', additionalSearchState))
-  }, [navigate, searchState])
+    })
+  }, [navigateToSearch, searchState])
 
   const onResetPress = useCallback(() => {
     const getLocationFilter = (): LocationFilter => {
