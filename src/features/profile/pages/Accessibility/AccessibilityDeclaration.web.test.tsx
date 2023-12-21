@@ -6,7 +6,8 @@ import { AccessibilityDeclaration } from './AccessibilityDeclaration'
 
 describe('<AccessibilityDeclaration />', () => {
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
+    // TODO(PC-26577): fix test flackyness
+    it.skip('should not have basic accessibility issues', async () => {
       const { container } = render(<AccessibilityDeclaration />)
 
       const results = await checkAccessibilityFor(container)

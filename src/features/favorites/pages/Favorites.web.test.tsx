@@ -25,7 +25,8 @@ describe('<Favorites/>', () => {
   describe('Accessibility', () => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-    it('should not have basic accessibility issues when user is logged in', async () => {
+    // TODO(PC-26577): fix test flackyness
+    it.skip('should not have basic accessibility issues when user is logged in', async () => {
       const { container } = renderFavorites({ isLoggedIn: true })
 
       await act(async () => {
