@@ -150,7 +150,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
-      void fetchNextPage()
+      fetchNextPage()
     }
   }, [data, fetchNextPage, hasNextPage])
 
