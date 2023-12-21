@@ -39,6 +39,7 @@ const LocationContext = React.createContext<ILocationContext>({
   setAroundPlaceRadius: () => null,
   aroundMeRadius: DEFAULT_RADIUS,
   setAroundMeRadius: () => null,
+  userLocation: undefined,
 })
 /* eslint-enable @typescript-eslint/no-empty-function */
 
@@ -91,6 +92,8 @@ export const LocationWrapper = memo(function LocationWrapper({
     analytics.setEventLocationType()
   }, [hasGeolocPosition, place])
 
+  const userLocation = place?.geolocation || geolocPosition
+
   const value = useMemo(
     () => ({
       geolocPosition,
@@ -116,6 +119,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       setAroundPlaceRadius,
       aroundMeRadius,
       setAroundMeRadius,
+      userLocation,
     }),
     [
       geolocPosition,
@@ -140,6 +144,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       setAroundPlaceRadius,
       aroundMeRadius,
       setAroundMeRadius,
+      userLocation,
     ]
   )
   return (
