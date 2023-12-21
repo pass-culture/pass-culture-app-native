@@ -9,6 +9,9 @@ type Parameters = {
   utmMedium: string
 }
 
+const hasVenue = (offer: OfferResponse | BookingOfferResponse | FavoriteOfferResponse) =>
+  Object.keys(offer).includes('venueName') || Object.keys(offer).includes('venue')
+
 const isFavoriteOffer = (
   offer: OfferResponse | BookingOfferResponse | FavoriteOfferResponse
 ): offer is FavoriteOfferResponse => !!Object.keys(offer).includes('venueName')
@@ -24,7 +27,8 @@ export const getShareOffer = ({
   share: () => Promise<void>
   shareContent: ShareContent | null
 } => {
-  if (!offer) return { share: () => new Promise((r) => r()), shareContent: null }
+  if (!offer || !hasVenue(offer))
+    return { share: () => new Promise((r) => r()), shareContent: null }
 
   const content = {
     subject: offerShareSubject,
