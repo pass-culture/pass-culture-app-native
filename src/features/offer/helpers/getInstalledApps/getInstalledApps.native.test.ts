@@ -1,7 +1,7 @@
 /* eslint-disable local-rules/independent-mocks */
 import { Linking, Platform } from 'react-native'
 
-import { Network } from 'ui/components/ShareMessagingApp'
+import { Network } from 'libs/share/types'
 
 import { getInstalledApps, checkIsInstalled } from './getInstalledApps'
 

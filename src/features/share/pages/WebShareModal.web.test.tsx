@@ -13,8 +13,8 @@ const defaultProps = {
   visible: true,
   headerTitle: 'Partager l’offre',
   shareContent: {
-    message: 'Voici une super offre !',
-    messageWithoutLink: 'Message',
+    subject: 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!',
+    body: 'Voici une super offre\u00a0!',
     url: 'https://url.com/offer',
   },
   dismissModal: mockDismissModal,
@@ -34,16 +34,16 @@ describe('<WebShareModal/>', () => {
   })
 
   it('should render correctly when shown', () => {
-    const renderAPI = render(<WebShareModal {...defaultProps} />)
+    const { baseElement } = render(<WebShareModal {...defaultProps} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(baseElement).toMatchSnapshot()
   })
 
   it('should render correctly when hidden', () => {
     const props = { ...defaultProps, visible: false }
-    const renderAPI = render(<WebShareModal {...props} />)
+    const { baseElement } = render(<WebShareModal {...props} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(baseElement).toMatchSnapshot()
   })
 
   it('should dismiss the modal on cancel button click', () => {
@@ -65,7 +65,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('E-mail'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'mailto:?subject=Voici une super offre !&body=https://url.com/offer',
+      'mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture\u00a0!&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
       undefined,
       true
     )
@@ -76,7 +76,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('Facebook'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%20!',
+      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Furl.com%2Foffer&quote=Voici%20une%20super%20offre%C2%A0!',
       undefined,
       true
     )
@@ -87,7 +87,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('Twitter'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?text=Voici une super offre !&url=https%3A%2F%2Furl.com%2Foffer',
+      'https://twitter.com/intent/tweet?text=Voici une super offre\u00a0!&url=https%3A%2F%2Furl.com%2Foffer',
       undefined,
       true
     )
@@ -98,7 +98,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('WhatsApp'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%20!%0Ahttps%3A%2F%2Furl.com%2Foffer',
+      'https://api.whatsapp.com/send?text=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer',
       undefined,
       true
     )
@@ -109,7 +109,7 @@ describe('<WebShareModal/>', () => {
     fireEvent.click(screen.getByText('Telegram'))
 
     expect(openUrl).toHaveBeenCalledWith(
-      'https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre !',
+      'https://telegram.me/share/msg?url=https%3A%2F%2Furl.com%2Foffer&text=Voici une super offre\u00a0!',
       undefined,
       true
     )

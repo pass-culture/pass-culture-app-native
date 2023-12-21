@@ -1,13 +1,22 @@
-import { OfferResponse } from 'api/gen'
+import { BookingOfferResponse, FavoriteOfferResponse, OfferResponse } from 'api/gen'
 import { formatShareOfferMessage } from 'features/share/helpers/formatShareOfferMessage'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
-import { share } from 'libs/share/shareBest'
+import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 
+type Offer = OfferResponse | BookingOfferResponse | FavoriteOfferResponse
 type Parameters = {
-  offer?: OfferResponse
+  offer?: Offer
   utmMedium: string
 }
+
+const hasVenue = (offer: Offer) =>
+  Object.keys(offer).includes('venueName') || Object.keys(offer).includes('venue')
+
+const isFavoriteOffer = (offer: Offer): offer is FavoriteOfferResponse =>
+  !!Object.keys(offer).includes('venueName')
+const getVenueName = (offer: Offer) =>
+  isFavoriteOffer(offer) ? offer.venueName : offer.venue.publicName || offer.venue.name
 
 const offerShareSubject = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
 
@@ -18,13 +27,14 @@ export const getShareOffer = ({
   share: () => Promise<void>
   shareContent: ShareContent | null
 } => {
-  if (!offer) return { share: () => new Promise((r) => r()), shareContent: null }
+  if (!offer || !hasVenue(offer))
+    return { share: () => new Promise((r) => r()), shareContent: null }
 
   const content = {
     subject: offerShareSubject,
     body: formatShareOfferMessage({
       offerName: offer.name,
-      venueName: offer.venue.publicName || offer.venue.name,
+      venueName: getVenueName(offer),
     }),
     url: getOfferUrl(offer?.id, utmMedium),
   }

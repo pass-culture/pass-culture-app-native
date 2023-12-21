@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { InstalledMessagingApps } from 'features/share/components/MessagingApps/InstalledMessagingApps'
 import { MessagingAppContainer } from 'features/share/components/MessagingApps/MessagingAppContainer'
-import { WebShareModal } from 'features/share/pages/WebShareModalBest'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'

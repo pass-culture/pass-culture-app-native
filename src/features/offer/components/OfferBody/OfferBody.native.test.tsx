@@ -21,12 +21,12 @@ import {
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
+import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 jest.mock('api/api')
 jest.unmock('libs/network/NetInfoWrapper')
@@ -259,7 +259,7 @@ describe('<OfferBody />', () => {
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Social.Instagram,
         message: encodeURIComponent(
-          `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
+          `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\u00a0:\n${expectedUrl}`
         ),
         type: 'text',
         url: undefined,
@@ -289,7 +289,7 @@ describe('<OfferBody />', () => {
         expect(mockShareSingle).toHaveBeenCalledWith({
           social: Social.Instagram,
           message: encodeURIComponent(
-            `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
+            `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\u00a0:\n${expectedUrl}`
           ),
           type: 'text',
           url: undefined,

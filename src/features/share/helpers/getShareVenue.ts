@@ -1,7 +1,7 @@
 import { VenueResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { share } from 'libs/share/shareBest'
+import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 
 function getVenueUrl(id: number, utmMedium: string) {

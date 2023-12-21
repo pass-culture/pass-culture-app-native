@@ -1,4 +1,4 @@
-export enum RNShareNetwork {
+export enum Network {
   googleMessages = 'SMS',
   instagram = 'Instagram',
   messenger = 'Messenger',
@@ -7,10 +7,13 @@ export enum RNShareNetwork {
   twitter = 'Twitter',
   viber = 'Viber',
   whatsapp = 'WhatsApp',
+  imessage = 'iMessage',
 }
+
 export type ShareContent = {
   url: string
   body: string
   subject?: string
 }
-export type ShareMode = 'default' | 'iMessage' | `${RNShareNetwork}`
+
+export type ShareMode = 'default' | `${Network}`

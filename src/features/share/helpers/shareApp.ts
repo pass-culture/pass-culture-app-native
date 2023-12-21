@@ -2,7 +2,7 @@ import { Platform, Share, ShareAction } from 'react-native'
 
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
-import { share } from 'libs/share/shareBest'
+import { share } from 'libs/share/share'
 
 const shareAppTitle = 'Profite toi aussi de tous les bons plans du pass Culture'
 

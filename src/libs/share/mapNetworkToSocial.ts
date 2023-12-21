@@ -1,43 +1,54 @@
 import { Platform } from 'react-native'
 import { ShareSingleOptions, Social } from 'react-native-share'
 
-import { RNShareNetwork } from 'libs/share/types'
+import { Network } from 'libs/share/types'
 
-export const mapNetworkToSocial: Record<
-  RNShareNetwork,
-  ShareSingleOptions & {
-    shouldEncodeURI?: boolean
-    supportsURL?: boolean
-    webUrl?: string
-  }
-> = {
-  [RNShareNetwork.instagram]: {
+type NetworkOptions = ShareSingleOptions & {
+  shouldEncodeURI?: boolean
+  supportsURL: boolean
+  webUrl?: string
+}
+
+export const mapNetworkToSocial: Record<Network, NetworkOptions> = {
+  [Network.instagram]: {
     social: Social.Instagram,
-    supportsURL: false,
     shouldEncodeURI: Platform.OS === 'ios',
+    supportsURL: false,
     type: 'text',
   },
-  [RNShareNetwork.messenger]: { social: Social.Messenger, shouldEncodeURI: Platform.OS === 'ios' },
-  [RNShareNetwork.snapchat]: { social: Social.Snapchat },
-  [RNShareNetwork.googleMessages]: {
+  [Network.messenger]: {
+    social: Social.Messenger,
+    shouldEncodeURI: Platform.OS === 'ios',
+    supportsURL: true,
+  },
+  [Network.snapchat]: { social: Social.Snapchat, supportsURL: true },
+  [Network.googleMessages]: {
     social: Social.Sms,
     recipient: '',
+    supportsURL: true,
   },
-  [RNShareNetwork.whatsapp]: {
+  [Network.whatsapp]: {
     social: Social.Whatsapp,
+    supportsURL: true,
     webUrl: 'https://api.whatsapp.com/send?text=',
   },
-  [RNShareNetwork.telegram]: {
+  [Network.telegram]: {
     social: Social.Telegram,
-    webUrl: 'https://telegram.me/share/msg?url=',
     supportsURL: false,
+    webUrl: 'https://telegram.me/share/msg?url=',
   },
-  [RNShareNetwork.viber]: {
+  [Network.viber]: {
     social: Social.Viber,
     supportsURL: false,
   },
-  [RNShareNetwork.twitter]: {
+  [Network.twitter]: {
     social: Social.Twitter,
+    supportsURL: true,
     webUrl: 'https://twitter.com/intent/tweet?text=',
+  },
+  [Network.imessage]: {
+    social: Social.Sms,
+    supportsURL: false,
+    url: 'sms://&body=',
   },
 }

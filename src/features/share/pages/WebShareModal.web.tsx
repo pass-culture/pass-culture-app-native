@@ -34,7 +34,7 @@ export const WebShareModal = ({
   shareContent,
   dismissModal,
 }: WebShareModalProps) => {
-  const { message, url = '' } = shareContent
+  const { subject, body, url } = shareContent
   const socialButtonProps = [
     {
       label: 'Facebook',
@@ -45,14 +45,14 @@ export const WebShareModal = ({
           'u=' +
           encodeURIComponent(url) +
           '&quote=' +
-          encodeURIComponent(message),
+          encodeURIComponent(body),
       },
     },
     {
       label: 'Twitter',
       icon: Twitter,
       externalNav: {
-        url: `https://twitter.com/intent/tweet?text=${message}&url=${encodeURIComponent(url)}`,
+        url: `https://twitter.com/intent/tweet?text=${body}&url=${encodeURIComponent(url)}`,
       },
     },
     {
@@ -62,7 +62,7 @@ export const WebShareModal = ({
         url:
           (isDesktopDeviceDetectOnWeb
             ? 'https://api.whatsapp.com/send?text='
-            : 'whatsapp://send?text=') + encodeURIComponent(message + '\n' + url),
+            : 'whatsapp://send?text=') + encodeURIComponent(`${body}\n${url}`),
       },
     },
     {
@@ -70,8 +70,8 @@ export const WebShareModal = ({
       icon: Telegram,
       externalNav: {
         url: isDesktopDeviceDetectOnWeb
-          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url)}&text=${message}`
-          : `tg://msg?text=${encodeURIComponent(message + '\n' + url)}`,
+          ? `https://telegram.me/share/msg?url=${encodeURIComponent(url)}&text=${body}`
+          : 'tg://msg?text=' + encodeURIComponent(`${body}\n${url}`),
       },
     },
   ]
@@ -107,7 +107,11 @@ export const WebShareModal = ({
           <NonSocialButtonsItem>
             <ExternalTouchableLink
               as={ButtonTertiaryBlack}
-              externalNav={{ url: 'mailto:' + '' + '?subject=' + message + '&body=' + url }}
+              externalNav={{
+                url: `mailto:?subject=${subject || body}&body=${encodeURIComponent(
+                  `${body}\n${url}`
+                )}`,
+              }}
               wording="E-mail"
               accessibilityLabel="Ouvrir le gestionnaire mail"
               icon={EmailFilled}
@@ -119,7 +123,9 @@ export const WebShareModal = ({
               <NonSocialButtonsItem>
                 <ExternalTouchableLink
                   as={ButtonTertiaryBlack}
-                  externalNav={{ url: `sms:${chooseContact}?&body=${message}: ${url}` }}
+                  externalNav={{
+                    url: `sms:${chooseContact}?&body=${body}: ${encodeURIComponent(url)}`,
+                  }}
                   wording="SMS"
                   accessibilityLabel="Ouvrir l’application de message"
                   icon={SMSFilled}

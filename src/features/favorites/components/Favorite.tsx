@@ -131,9 +131,7 @@ export const Favorite: React.FC<Props> = (props) => {
   } = useModal(false)
 
   const { share: shareOffer, shareContent } = getShareOffer({
-    offerId: offer.id,
-    offerName: offer.name,
-    venueName: offer.venueName,
+    offer,
     utmMedium: 'favorite',
   })
 

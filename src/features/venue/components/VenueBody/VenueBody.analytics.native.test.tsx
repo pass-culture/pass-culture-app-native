@@ -5,8 +5,8 @@ import { ReactTestInstance } from 'react-test-renderer'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
+import { Network } from 'libs/share/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 const venueId = venueResponseSnap.id
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')

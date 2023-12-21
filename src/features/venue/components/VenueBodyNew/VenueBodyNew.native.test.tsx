@@ -10,9 +10,9 @@ import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNe
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { ILocationContext, useLocation } from 'libs/location'
+import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -155,7 +155,7 @@ describe('<VenueBody />', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
       message: encodeURIComponent(
-        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
+        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\u00a0:\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
       ),
       type: 'text',
       url: undefined,

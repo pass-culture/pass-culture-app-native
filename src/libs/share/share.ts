@@ -1,38 +1,73 @@
-import { Platform, Share, ShareAction } from 'react-native'
+import { Linking, Platform, Share, ShareAction } from 'react-native'
+import SocialShare from 'react-native-share'
 
-import { analytics } from 'libs/analytics'
+import { mapNetworkToSocial } from 'libs/share/mapNetworkToSocial'
 
-export type ShareContent = {
-  title?: string
-  message: string
-  messageWithoutLink: string
-  url?: string // Works with IOS only
+import { Network, ShareContent, ShareMode } from './types'
+
+type Arguments = {
+  content: ShareContent
+  mode: ShareMode
+  logAnalyticsEvent?: (shareAction: ShareAction) => void
 }
 
-type ShareOptions = Parameters<typeof Share.share>[1]
+const shareSocial = async ({ content, mode }: { content: ShareContent; mode: `${Network}` }) => {
+  const { shouldEncodeURI, supportsURL, webUrl: _, ...options } = mapNetworkToSocial[mode]
 
-export async function share(
-  content: ShareContent,
-  options: ShareOptions,
-  logAnalytics?: boolean
-): Promise<void> {
-  if (Platform.OS === 'ios' || Platform.OS === 'android') {
-    // The only place where it's ok to deactivate the eslint rule is here.
-    // Never use Share.share() outside this module.
-    // eslint-disable-next-line no-restricted-properties
-    const shareAction = await Share.share(content, options)
-    if (logAnalytics) logShareAnalytics(shareAction)
-  }
-  // On web, the share feature is supported by the WebShareModal component.
+  const rawMessage = supportsURL
+    ? `${content.body}\u00a0:\n`
+    : `${content.body}\u00a0:\n${content.url}`
+  const message = shouldEncodeURI ? encodeURIComponent(rawMessage) : rawMessage
+
+  const rawUrl = supportsURL ? content.url : undefined
+  const url = shouldEncodeURI && rawUrl ? encodeURIComponent(rawUrl) : rawUrl
+
+  await SocialShare.shareSingle({
+    ...options,
+    message,
+    type: 'text',
+    url,
+  })
 }
 
-const logShareAnalytics = (shareAction: ShareAction) => {
-  if (Platform.OS === 'ios') {
-    if (shareAction.action === Share.sharedAction) {
-      const activityType = shareAction.activityType?.replace('com.apple.', '') || ''
-      analytics.logHasSharedApp(activityType)
-    } else {
-      analytics.logHasDismissedAppSharingModal()
+export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => {
+  const isIos = Platform.OS === 'ios'
+  const isNative = isIos || Platform.OS === 'android'
+
+  if (mode === 'default') {
+    if (isNative) {
+      const shareContent = isIos
+        ? {
+            message: `${content.body}\u00a0:\n`,
+            url: content.url,
+          }
+        : {
+            title: content.subject,
+            message: `${content.body}\u00a0:\n${content.url}`,
+          }
+
+      const shareOptions = isIos
+        ? {
+            subject: content.subject,
+          }
+        : { dialogTitle: content.subject }
+
+      // The only place where it's ok to deactivate the eslint rule is here.
+      // Never use Share.share() outside this module.
+      // eslint-disable-next-line no-restricted-properties
+      const shareAction = await Share.share(shareContent, shareOptions)
+      logAnalyticsEvent?.(shareAction)
     }
+    // On web, the share feature is supported by the WebShareModal component.
+  } else if (mode === 'iMessage') {
+    const body = encodeURIComponent(`${content.body}\u00a0:\n${content.url}`)
+    await Linking.openURL(`sms://&body=${body}`)
+  } else if (!isNative) {
+    const { webUrl } = mapNetworkToSocial[mode]
+    const message = encodeURIComponent(`${content.body}\u00a0:\n${content.url}`)
+
+    Linking.openURL(webUrl + message)
+  } else {
+    await shareSocial({ content, mode })
   }
 }

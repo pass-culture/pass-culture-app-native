@@ -13,10 +13,10 @@ import {
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { Network } from 'libs/share/types'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 

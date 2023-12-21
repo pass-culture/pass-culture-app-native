@@ -7,10 +7,10 @@ import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/ge
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment/__mocks__/envFixtures'
+import { Network } from 'libs/share/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, measurePerformance, screen } from 'tests/utils'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 useRoute.mockReturnValue({
   params: {

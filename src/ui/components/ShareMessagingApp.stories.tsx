@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { Network } from 'libs/share/types'
 import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
-import { Network } from 'ui/components/ShareMessagingApp'
 
 const meta: ComponentMeta<typeof ShareMessagingApp> = {
   title: 'ui/share/ShareMessagingApp',

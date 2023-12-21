@@ -50,9 +50,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
   } = useModal(false)
 
   const { share: shareOffer, shareContent } = getShareOffer({
-    offerId: stock.offer.id,
-    offerName: stock.offer.name,
-    venueName: stock.offer.venue.name,
+    offer: stock.offer,
     utmMedium: 'booking',
   })
 
