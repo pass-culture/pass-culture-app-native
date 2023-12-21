@@ -135,6 +135,27 @@ describe('OfferTile component', () => {
     })
   })
 
+  it('Analytics - should log ConsultOffer that user opened the offer from the list of same artist', async () => {
+    const propsFromSimilarOffers = {
+      ...props,
+      fromOfferId: 1,
+      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+      apiRecoParams,
+    }
+
+    render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
+    await fireEvent.press(screen.getByTestId('tileImage'))
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      ...apiRecoParams,
+      offerId,
+      fromOfferId: 1,
+      from: 'same_artist_playlist',
+      moduleName: props.moduleName,
+      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+    })
+  })
+
   it('should prepopulate react-query cache when clicking on offer', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))

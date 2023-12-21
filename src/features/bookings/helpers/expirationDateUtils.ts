@@ -15,7 +15,7 @@ export function getEligibleBookingsForArchive(bookings: Booking[]) {
   )
 }
 
-export function getFreeBookingsInSubCategories(bookings: Booking[]) {
+function getFreeBookingsInSubCategories(bookings: Booking[]) {
   return bookings.filter(isFreeBookingInSubcategories)
 }
 
