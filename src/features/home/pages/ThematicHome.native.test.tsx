@@ -4,10 +4,10 @@ import { Platform } from 'react-native'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
+import { useLocation } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
@@ -18,10 +18,10 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
-jest.mock('features/home/helpers/useHomePosition')
-const mockUseHomeposition = useHomePosition as jest.Mock
-mockUseHomeposition.mockReturnValue({
-  position: {
+jest.mock('libs/location/LocationWrapper')
+const mockUserLocation = useLocation as jest.Mock
+mockUserLocation.mockReturnValue({
+  userLocation: {
     latitude: 2,
     longitude: 2,
   },
@@ -179,8 +179,8 @@ describe('ThematicHome', () => {
   })
 
   it('should show geolocation banner when user is not geolocated or located', async () => {
-    mockUseHomeposition.mockReturnValueOnce({
-      position: undefined,
+    mockUserLocation.mockReturnValueOnce({
+      userLocation: undefined,
     })
     renderThematicHome()
 
@@ -190,6 +190,12 @@ describe('ThematicHome', () => {
   })
 
   it('should not show geolocation banner when user is geolocated or located', async () => {
+    mockUserLocation.mockReturnValueOnce({
+      userLocation: {
+        latitude: 2,
+        longitude: 2,
+      },
+    })
     renderThematicHome()
 
     await act(async () => {})

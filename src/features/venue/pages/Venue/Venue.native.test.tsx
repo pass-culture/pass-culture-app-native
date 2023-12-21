@@ -13,7 +13,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { LocationMode } from 'libs/location/types'
+import { LocationMode, Position } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -51,12 +51,10 @@ const venueId = venueResponseSnap.id
 
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
-jest.mock('features/home/helpers/useHomePosition', () => ({
-  useHomePosition: jest.fn().mockReturnValue({
-    position: {
-      latitude: 2,
-      longitude: 2,
-    },
+const mockPosition: Position = undefined
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockPosition,
   }),
 }))
 

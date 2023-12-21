@@ -28,7 +28,7 @@ const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetc
 const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
 jest.mock('libs/location')
-const mockUseGeolocation = jest.mocked(useLocation)
+const mockUseLocation = jest.mocked(useLocation)
 
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
@@ -65,8 +65,9 @@ describe('useHighlightOffer', () => {
     it('should return offer when isGeolocated is true and the distance to the offer is within the radius', async () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
-      mockUseGeolocation.mockReturnValue({
+      mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
+        userLocation: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
       } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
@@ -82,7 +83,7 @@ describe('useHighlightOffer', () => {
     it('should not return offer when isGeolocated is true and the distance to the offer is beyond radius', async () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
-      mockUseGeolocation.mockReturnValue({
+      mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: 1, longitude: 1 },
       } as ILocationContext)
 
@@ -99,7 +100,7 @@ describe('useHighlightOffer', () => {
     it('should not return offer when isGeolocated is true and the user position is not defined', async () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
-      mockUseGeolocation.mockReturnValue({
+      mockUseLocation.mockReturnValue({
         geolocPosition: undefined,
       } as ILocationContext)
 
@@ -116,7 +117,7 @@ describe('useHighlightOffer', () => {
     it('should return offer when isGeolocated is true and around radius is not defined', async () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
-      mockUseGeolocation.mockReturnValue({
+      mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
       } as ILocationContext)
 

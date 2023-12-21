@@ -22,7 +22,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/location'
+import { GeoCoordinates, ILocationContext, Position, useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -51,12 +51,12 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: Position = DEFAULT_POSITION
-
-jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-  }),
-}))
+jest.mock('libs/location/LocationWrapper')
+const mockUseLocation = jest.mocked(useLocation)
+mockUseLocation.mockReturnValue({
+  geolocPosition: mockPosition,
+  userLocation: mockPosition,
+} as ILocationContext)
 
 jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
   useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
