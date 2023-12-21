@@ -1,12 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -26,7 +24,6 @@ const FAQTouchableLinkProps = {
 }
 
 export const CulturalSurveyIntro = (): React.JSX.Element => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
 
   return (
@@ -42,6 +39,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
       <View>
         {Platform.OS === 'web' ? (
           <ExternalTouchableLink
+            key={1}
             externalNav={{
               url: FAQ_LINK_USER_DATA,
             }}
@@ -49,6 +47,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           />
         ) : (
           <InternalTouchableLink
+            key={1}
             navigateTo={{
               screen: 'FAQWebview',
             }}
@@ -58,25 +57,24 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
       </View>
       <Spacer.Flex flex={1} />
       <View>
-        {/* TODO(PC-26464) use an InternalTouchableLink instead of button */}
-        <ButtonPrimary
-          onPress={() => {
-            analytics.logHasStartedCulturalSurvey()
-            navigate('CulturalSurveyQuestions', {
-              question: initialQuestions[0],
-            })
-          }}
+        <InternalTouchableLink
+          key={2}
+          as={ButtonPrimary}
           wording="Débuter le questionnaire"
+          onBeforeNavigate={analytics.logHasStartedCulturalSurvey}
+          navigateTo={{
+            screen: 'CulturalSurveyQuestions',
+            params: { question: initialQuestions[0] },
+          }}
         />
         <Spacer.Column numberOfSpaces={3} />
-        {/* TODO(PC-26464) use an InternalTouchableLink instead of button */}
-        <ButtonTertiaryBlack
+        <InternalTouchableLink
+          key={3}
+          as={ButtonTertiaryBlack}
           wording="Plus tard"
-          onPress={() => {
-            analytics.logHasSkippedCulturalSurvey()
-            navigateToHome()
-          }}
           icon={ClockFilled}
+          onBeforeNavigate={analytics.logHasSkippedCulturalSurvey}
+          navigateTo={navigateToHomeConfig}
         />
       </View>
     </GenericInfoPageWhite>
