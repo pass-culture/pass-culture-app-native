@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute, useNavigationState } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -15,6 +15,8 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 import { SearchFilter } from './SearchFilter'
 
 const mockSearchState = initialSearchState
+useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
+
 const mockStateDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({

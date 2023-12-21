@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -12,6 +12,7 @@ import Section from 'features/search/components/sections'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { useSyncSearchFilter } from 'features/search/helpers/useSyncSearchFilter/useSyncSearchFilter'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
@@ -27,6 +28,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
+  useSyncSearchFilter()
   const headerHeight = useGetHeaderHeight()
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -37,10 +39,6 @@ export const SearchFilter: React.FC = () => {
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isMobileViewport } = useTheme()
-
-  useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: params || { view: SearchView.Landing } })
-  }, [dispatch, params])
 
   const onGoBack = useCallback(() => {
     navigate(
