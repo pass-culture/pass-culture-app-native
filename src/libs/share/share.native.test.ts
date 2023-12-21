@@ -75,7 +75,9 @@ describe('share()', () => {
     it('should share on imessage when imessage mode', async () => {
       await share({ content: defaultContent, mode: 'iMessage' })
 
-      expect(mockOpenUrl).toHaveBeenCalledWith('sms://&body=Message :\nhttps://www.toto.com/')
+      expect(mockOpenUrl).toHaveBeenCalledWith(
+        'sms://&body=Message%C2%A0%3A%0Ahttps%3A%2F%2Fwww.toto.com%2F'
+      )
     })
   })
 
