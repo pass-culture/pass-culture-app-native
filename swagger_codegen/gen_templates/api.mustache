@@ -72,6 +72,9 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
      {{#summary}}
      * @summary {{&summary}}
      {{/summary}}
+     {{#isDeprecated}}
+     * @deprecated
+     {{/isDeprecated}}
      {{#allParams}}
      * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
      {{/allParams}}
@@ -166,6 +169,9 @@ export const {{classname}}Fp = function(api: {{classname}}, configuration?: Conf
      {{#summary}}
      * @summary {{&summary}}
      {{/summary}}
+     {{#isDeprecated}}
+     * @deprecated
+     {{/isDeprecated}}
      {{#allParams}}
      * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
      {{/allParams}}
@@ -194,6 +200,9 @@ export interface {{classname}}Interface {
    {{#summary}}
    * @summary {{&summary}}
    {{/summary}}
+   {{#isDeprecated}}
+   * @deprecated
+   {{/isDeprecated}}
    {{#allParams}}
    * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
    {{/allParams}}
@@ -226,6 +235,9 @@ export class {{classname}} extends BaseAPI {
     {{#summary}}
     * @summary {{&summary}}
     {{/summary}}
+    {{#isDeprecated}}
+    * @deprecated
+    {{/isDeprecated}}
     {{#allParams}}
     * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
     {{/allParams}}
