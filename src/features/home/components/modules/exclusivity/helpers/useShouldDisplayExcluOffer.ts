@@ -1,8 +1,8 @@
 import { useExcluOffer } from 'features/home/api/useExcluOffer'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { ExclusivityModule } from 'features/home/types'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { computeDistanceInMeters } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
@@ -10,7 +10,7 @@ export function useShouldDisplayExcluOffer(
   displayParameters: ExclusivityModule['displayParameters'],
   offerId: number
 ) {
-  const { position } = useHomePosition()
+  const { userLocation } = useLocation()
 
   const maxPrice = useMaxPrice()
   const { data: offer } = useExcluOffer(offerId)
@@ -24,7 +24,7 @@ export function useShouldDisplayExcluOffer(
   if (!displayParameters?.isGeolocated || !displayParameters?.aroundRadius) return true
 
   // Exclu module is geolocated but we don't know the user's location
-  if (!position) return false
+  if (!userLocation) return false
 
   // Exclu module is geolocated and we know the user's location: compute distance to offer
   const { latitude, longitude } = offer.venue.coordinates
@@ -32,8 +32,8 @@ export function useShouldDisplayExcluOffer(
   const distance = computeDistanceInMeters(
     latitude,
     longitude,
-    position.latitude,
-    position.longitude
+    userLocation.latitude,
+    userLocation.longitude
   )
 
   return distance <= 1000 * displayParameters.aroundRadius

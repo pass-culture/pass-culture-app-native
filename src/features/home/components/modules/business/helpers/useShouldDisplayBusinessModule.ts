@@ -1,16 +1,16 @@
 import { getLocalizationCompliance } from 'features/home/components/modules/business/helpers/getLocalizationCompliance'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { LocationCircleArea } from 'features/home/types'
+import { useLocation } from 'libs/location/LocationWrapper'
 
 export function useShouldDisplayBusinessModule(
   targetNotConnectedUsersOnly: boolean | undefined,
   connected: boolean,
   moduleLocationArea?: LocationCircleArea
 ) {
-  const { position: userLocation } = useHomePosition()
+  const { userLocation: position } = useLocation()
 
   // Target localized users if module is localized (i.e.: latitude, longitude and radius are given in Contentful)
-  const isLocalizationCompliant = getLocalizationCompliance(moduleLocationArea, userLocation)
+  const isLocalizationCompliant = getLocalizationCompliance(moduleLocationArea, position)
 
   // Target both type of users
   if (targetNotConnectedUsersOnly === undefined && isLocalizationCompliant) return true

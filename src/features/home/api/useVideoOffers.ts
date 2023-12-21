@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchQueryParameters } from 'libs/algolia'
@@ -10,6 +9,7 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -38,7 +38,7 @@ export const useVideoOffers = (
   eanList?: string[]
 ) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
-  const { position } = useHomePosition()
+  const { userLocation } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
@@ -65,7 +65,7 @@ export const useVideoOffers = (
 
     return fetchOffersByEan({
       eanList,
-      userLocation: position,
+      userLocation,
       isUserUnderage,
     })
   }
@@ -73,7 +73,7 @@ export const useVideoOffers = (
   const multipleOffersQuery = async () => {
     const result = await fetchMultipleOffers({
       paramsList: adaptedPlaylistParameters,
-      userLocation: position,
+      userLocation,
       isUserUnderage,
     })
 
@@ -97,7 +97,7 @@ export const useVideoOffers = (
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [position?.latitude, position?.longitude])
+  }, [userLocation?.latitude, userLocation?.longitude])
 
   const hits = (data?.map(transformHits) as Offer[]) ?? []
 

@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
@@ -11,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -31,7 +31,7 @@ const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
   const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
-  const { position } = useHomePosition()
+  const { userLocation } = useLocation()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -78,7 +78,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
-          distance={formatDistance(item._geoloc, position)}
+          distance={formatDistance(item._geoloc, userLocation)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
@@ -94,7 +94,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, user?.isBeneficiary, labelMapping, mapping]
+    [userLocation, user?.isBeneficiary, labelMapping, mapping]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)

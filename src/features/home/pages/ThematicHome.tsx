@@ -19,12 +19,12 @@ import { Introduction } from 'features/home/components/headers/highlightThematic
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -105,8 +105,8 @@ export const ThematicHome: FunctionComponent = () => {
   startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
-  const { position } = useHomePosition()
-  const isLocated = !!position
+  const { userLocation } = useLocation()
+  const isLocated = !!userLocation
 
   const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 

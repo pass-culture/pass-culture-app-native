@@ -2,14 +2,14 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
+import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useGetVenuesData = (modules: VenuesModule[]) => {
-  const { position } = useHomePosition()
+  const { userLocation } = useLocation()
 
   const netInfo = useNetInfoContext()
 
@@ -22,7 +22,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
   })
 
   const venuesQuery = async () => {
-    const result = await fetchVenuesModules(venuesParameters, position)
+    const result = await fetchVenuesModules(venuesParameters, userLocation)
     return {
       hits: result,
       moduleId: venuesModuleIds,
@@ -41,7 +41,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [position?.latitude, position?.longitude])
+  }, [userLocation?.latitude, userLocation?.longitude])
 
   const venuesModulesData = mapVenuesDataAndModules(venuesResultList)
 
