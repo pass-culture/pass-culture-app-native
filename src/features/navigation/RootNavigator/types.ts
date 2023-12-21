@@ -21,6 +21,7 @@ export type Referrals =
   | 'searchAutoComplete'
   | 'searchVenuePlaylist'
   | 'setemail'
+  | 'same_artist_playlist'
   | 'similar_offer'
   | 'venue'
   | 'video'

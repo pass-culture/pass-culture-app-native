@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { PixelRatio, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
 import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -48,7 +49,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     analytics.logConsultOffer({
       ...apiRecoParams,
       offerId,
-      from: fromOfferId ? 'similar_offer' : analyticsFrom,
+      from: fromOfferId ? determinePlaylistType(playlistType) : analyticsFrom,
       moduleName,
       moduleId,
       venueId,
