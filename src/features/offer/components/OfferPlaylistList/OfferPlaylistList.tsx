@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -14,8 +14,9 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
-import { Offer, RecommendationApiParams } from 'shared/offer/types'
+import { Offer, RecommendationApiParams, SimilarOfferPlaylist } from 'shared/offer/types'
 
 export type OfferPlaylistListProps = {
   offer: OfferResponse
@@ -32,6 +33,60 @@ function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
 }
 
+type PlaylistItemProps = {
+  offer: OfferResponse
+  position: Position
+  categoryMapping: CategoryIdMapping
+  labelMapping: CategoryHomeLabelMapping
+  apiRecoParams?: RecommendationApiParams
+}
+
+type RenderPlaylistItemProps = {
+  item: Offer
+  width: number
+  height: number
+  playlistType?: PlaylistType
+}
+
+const renderPlaylistItem = ({
+  offer,
+  position,
+  categoryMapping,
+  labelMapping,
+  apiRecoParams,
+}: PlaylistItemProps) => {
+  return function RenderItem({ item, width, height, playlistType }: RenderPlaylistItemProps) {
+    const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+
+    return (
+      <OfferTile
+        categoryLabel={labelMapping[item.offer.subcategoryId]}
+        categoryId={categoryMapping[item.offer.subcategoryId]}
+        subcategoryId={item.offer.subcategoryId}
+        offerId={+item.objectID}
+        distance={formatDistance(item._geoloc, position)}
+        name={item.offer.name}
+        date={formatDates(timestampsInMillis)}
+        isDuo={item.offer.isDuo}
+        thumbUrl={item.offer.thumbUrl}
+        price={getDisplayPrice(item.offer.prices)}
+        width={width}
+        height={height}
+        analyticsFrom="offer"
+        fromOfferId={offer.id}
+        playlistType={playlistType}
+        apiRecoParams={apiRecoParams}
+      />
+    )
+  }
+}
+
+const doNothingWithIntersectionObserverYet = () => {
+  // In a first time, we don't use intersection observer to trigger analytics for similar offers playlist
+  // For the moment, we use a calculation compared to the bottom of the component and the position of the playlist
+  return
+}
+
 export function OfferPlaylistList({
   offer,
   position,
@@ -44,103 +99,78 @@ export function OfferPlaylistList({
 }: Readonly<OfferPlaylistListProps>) {
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
+  const categoryMapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
 
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
   const shouldDisplaySameArtistPlaylist =
     !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
 
-  const categoryMapping = useCategoryIdMapping()
-  const labelMapping = useCategoryHomeLabelMapping()
-
-  const trackingOnHorizontalScroll = useCallback(() => {
-    return analytics.logPlaylistHorizontalScroll(fromOfferId)
-  }, [fromOfferId])
+  const trackingOnHorizontalScroll = () => {
+    analytics.logPlaylistHorizontalScroll(fromOfferId)
+  }
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
-  const renderItem = useCallback(
-    (
-      {
-        item,
-        width,
-        height,
-        playlistType,
-      }: {
-        item: Offer
-        width: number
-        height: number
-        playlistType?: PlaylistType
-      },
-      apiRecoParams?: RecommendationApiParams
-    ) => {
-      const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-      return (
-        <OfferTile
-          categoryLabel={labelMapping[item.offer.subcategoryId]}
-          categoryId={categoryMapping[item.offer.subcategoryId]}
-          subcategoryId={item.offer.subcategoryId}
-          offerId={+item.objectID}
-          distance={formatDistance(item._geoloc, position)}
-          name={item.offer.name}
-          date={formatDates(timestampsInMillis)}
-          isDuo={item.offer.isDuo}
-          thumbUrl={item.offer.thumbUrl}
-          price={getDisplayPrice(item.offer.prices)}
-          width={width}
-          height={height}
-          analyticsFrom="offer"
-          fromOfferId={offer.id}
-          playlistType={playlistType}
-          apiRecoParams={apiRecoParams}
-        />
-      )
+  let similarOffersPlaylist: SimilarOfferPlaylist[] = [
+    {
+      type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      title: 'Dans la même catégorie',
+      offers: sameCategorySimilarOffers,
+      apiRecoParams: apiRecoParamsSameCategory,
+      handleChangePlaylistDisplay: doNothingWithIntersectionObserverYet,
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, labelMapping, categoryMapping, offer.id]
-  )
+    {
+      type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+      title: 'Ça peut aussi te plaire',
+      offers: otherCategoriesSimilarOffers,
+      apiRecoParams: apiRecoParamsOtherCategories,
+      handleChangePlaylistDisplay: doNothingWithIntersectionObserverYet,
+    },
+  ]
+
+  if (shouldDisplaySameArtistPlaylist) {
+    similarOffersPlaylist = [
+      {
+        type: PlaylistType.SAME_ARTIST_PLAYLIST,
+        title: 'Du même auteur',
+        offers: sameArtistPlaylist,
+        handleChangePlaylistDisplay: handleChangeSameArtistPlaylistDisplay,
+      },
+      ...similarOffersPlaylist,
+    ]
+  }
+
   return (
     <React.Fragment>
-      {shouldDisplaySameArtistPlaylist ? (
-        <IntersectionObserver onChange={handleChangeSameArtistPlaylistDisplay} threshold="50%">
-          <OfferPlaylist
-            key={offer.id}
-            items={sameArtistPlaylist}
-            itemWidth={itemWidth}
-            itemHeight={itemHeight}
-            renderItem={renderItem}
-            title="Du même auteur"
-            playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
-          />
-        </IntersectionObserver>
-      ) : null}
+      {similarOffersPlaylist.map((playlist) => {
+        if (!isArrayNotEmpty(playlist.offers)) {
+          return null
+        }
 
-      {isArrayNotEmpty(sameCategorySimilarOffers) ? (
-        <OfferPlaylist
-          items={sameCategorySimilarOffers}
-          itemWidth={itemWidth}
-          itemHeight={itemHeight}
-          renderItem={({ item, width, height, playlistType }) =>
-            renderItem({ item, width, height, playlistType }, apiRecoParamsSameCategory)
-          }
-          title="Dans la même catégorie"
-          onEndReached={trackingOnHorizontalScroll}
-          playlistType={PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS}
-        />
-      ) : null}
-
-      {isArrayNotEmpty(otherCategoriesSimilarOffers) ? (
-        <OfferPlaylist
-          items={otherCategoriesSimilarOffers}
-          itemWidth={itemWidth}
-          itemHeight={itemHeight}
-          renderItem={({ item, width, height, playlistType }) =>
-            renderItem({ item, width, height, playlistType }, apiRecoParamsOtherCategories)
-          }
-          title="Ça peut aussi te plaire"
-          onEndReached={trackingOnHorizontalScroll}
-          playlistType={PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS}
-        />
-      ) : null}
+        return (
+          <IntersectionObserver
+            onChange={playlist.handleChangePlaylistDisplay}
+            threshold="50%"
+            key={playlist.type}>
+            <OfferPlaylist
+              items={playlist.offers}
+              itemWidth={itemWidth}
+              itemHeight={itemHeight}
+              renderItem={renderPlaylistItem({
+                offer,
+                position,
+                categoryMapping,
+                labelMapping,
+                apiRecoParams: playlist.apiRecoParams,
+              })}
+              title={playlist.title}
+              onEndReached={trackingOnHorizontalScroll}
+              playlistType={playlist.type}
+            />
+          </IntersectionObserver>
+        )
+      })}
     </React.Fragment>
   )
 }
