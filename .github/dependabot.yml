@@ -3,21 +3,59 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
+    open-pull-requests-limit: 6
     ignore:
       - dependency-name: 'react-native'
       - dependency-name: 'react'
       - dependency-name: 'react-native-web'
     commit-message:
       prefix: '(BSR) chore(deps):'
+    pull_request_template:
+      body: |
+        Ticket : https://passculture.atlassian.net/browse/PC-XXXXX
+
+        ## Checklist
+
+        This PR was opened automatically by Dependabot to update the dependencies.
+        Before merging, please review and follow the checklist below:
+        - [ ] Check that the dependency is still used
+        - [ ] Rebase on master
+        - [ ] Install dependencies
+        - [ ] Update podfile.lock
+        - [ ] Start web version
+        - [ ] Start iOS version
+        - [ ] Start Android version
+        - [ ] Test the use of the dependencie
+
+        ---
     reviewers:
       - 'Lucasbeneston'
 
   - package-ecosystem: 'bundler'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
+    open-pull-requests-limit: 6
     commit-message:
       prefix: '(BSR) chore(deps):'
+    pull_request_template:
+      body: |
+        Ticket : https://passculture.atlassian.net/browse/PC-XXXXX
+
+        ## Checklist
+
+        This PR was opened automatically by Dependabot to update the dependencies.
+        Before merging, please review and follow the checklist below:
+        - [ ] Check that the dependency is still used
+        - [ ] Rebase on master
+        - [ ] Install dependencies
+        - [ ] Update podfile.lock
+        - [ ] Start web version
+        - [ ] Start iOS version
+        - [ ] Start Android version
+        - [ ] Test the use of the dependencie
+
+        ---
     reviewers:
       - 'Lucasbeneston'
