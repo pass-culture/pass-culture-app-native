@@ -4,18 +4,18 @@ import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 
+type Offer = OfferResponse | BookingOfferResponse | FavoriteOfferResponse
 type Parameters = {
-  offer?: OfferResponse | BookingOfferResponse | FavoriteOfferResponse
+  offer?: Offer
   utmMedium: string
 }
 
-const hasVenue = (offer: OfferResponse | BookingOfferResponse | FavoriteOfferResponse) =>
+const hasVenue = (offer: Offer) =>
   Object.keys(offer).includes('venueName') || Object.keys(offer).includes('venue')
 
-const isFavoriteOffer = (
-  offer: OfferResponse | BookingOfferResponse | FavoriteOfferResponse
-): offer is FavoriteOfferResponse => !!Object.keys(offer).includes('venueName')
-const getVenueName = (offer: OfferResponse | BookingOfferResponse | FavoriteOfferResponse) =>
+const isFavoriteOffer = (offer: Offer): offer is FavoriteOfferResponse =>
+  !!Object.keys(offer).includes('venueName')
+const getVenueName = (offer: Offer) =>
   isFavoriteOffer(offer) ? offer.venueName : offer.venue.publicName || offer.venue.name
 
 const offerShareSubject = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
