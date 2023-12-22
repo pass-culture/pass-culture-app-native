@@ -21,8 +21,6 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -83,7 +81,6 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
 export const SignupForm: FunctionComponent = () => {
   const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
-  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   const [stepIndex, setStepIndex] = React.useState(0)
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
@@ -141,7 +138,7 @@ export const SignupForm: FunctionComponent = () => {
       const signupResponse = await signUpApiCall({
         ...signupData,
         token,
-        trustedDevice: enableTrustedDevice ? trustedDevice : undefined,
+        trustedDevice: trustedDevice,
       })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
