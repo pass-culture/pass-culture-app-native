@@ -1,6 +1,6 @@
 import { theme } from 'theme'
 
-import { getMediaQueryFromDimensions } from '../useMediaQuery'
+import { getMediaQueryFromDimensions } from './useMediaQuery'
 
 describe('useMediaQuery native', () => {
   let isMobile = false
