@@ -149,6 +149,19 @@ describe('HighlightOfferModule', () => {
       expect(screen.getByText('name')).toBeOnTheScreen()
     })
   })
+
+  it('should fallback on venue name if venue publicName is an empty string', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+      venue: { name: 'name', publicName: '' },
+    })
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.getByText('name')).toBeOnTheScreen()
+    })
+  })
 })
 
 const renderHighlightModule = () => {

@@ -60,11 +60,12 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
 
   if (!highlightOffer) return null
   const { offer, venue, objectID: highlightOfferId } = highlightOffer
+  const { publicName, name } = venue
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
   const formattedPrice = getDisplayPrice(offer?.prices)
-  const venueName = venue.publicName ?? venue.name
+  const venueName = publicName?.length ? publicName : name
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
   const categoryId = categoryIdMapping[offer.subcategoryId]
   const priceText = offer.isDuo ? `${formattedPrice} - Duo` : formattedPrice
