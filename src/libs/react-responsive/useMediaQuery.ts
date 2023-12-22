@@ -55,39 +55,16 @@ export function getMediaQueryFromDimensions({
   windowWidth,
   windowHeight,
 }: Dimensions) {
-  let mq = undefined
-  const hasWidthMq = !!(minWidth || maxWidth)
-  const hasHeightMq = !!(minHeight || maxHeight)
-
-  if (hasWidthMq) {
-    if (maxWidth !== undefined && minWidth === undefined) {
-      mq = windowWidth <= maxWidth
-    } else if (maxWidth === undefined && minWidth !== undefined) {
-      mq = windowWidth >= minWidth
-    } else if (maxWidth !== undefined && minWidth !== undefined) {
-      mq = windowWidth <= maxWidth && windowWidth >= minWidth
-    } else if (!hasHeightMq) {
-      throw new Error(
-        `useMediaQuery was used without minWidth, maxWidth, minHeight and maxHeight. At least one is necessary`
-      )
-    }
+  if (!minWidth && !maxWidth && !minHeight && !maxHeight) {
+    throw new Error(
+      `useMediaQuery was used without minWidth, maxWidth, minHeight and maxHeight. At least one is necessary`
+    )
   }
 
-  if (hasHeightMq) {
-    if (maxHeight !== undefined && minHeight === undefined) {
-      if (!hasWidthMq || mq === undefined || mq) {
-        mq = windowHeight <= maxHeight
-      }
-    } else if (maxHeight === undefined && minHeight !== undefined) {
-      if (!hasWidthMq || mq === undefined || mq) {
-        mq = windowHeight >= minHeight
-      }
-    } else if (maxHeight !== undefined && minHeight !== undefined) {
-      if (!hasWidthMq || mq === undefined || mq) {
-        mq = windowHeight <= maxHeight && windowHeight >= minHeight
-      }
-    }
-  }
-
-  return mq
+  return (
+    (minWidth === undefined || minWidth <= windowWidth) &&
+    (maxWidth === undefined || windowWidth <= maxWidth) &&
+    (minHeight === undefined || minHeight <= windowHeight) &&
+    (maxHeight === undefined || windowHeight <= maxHeight)
+  )
 }
