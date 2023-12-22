@@ -16,7 +16,6 @@ Il y a plusieurs hack pour résoudre cette erreur :
 
 ```
 it('should not have basic accessibility issues', async () => {
-      mockV4.mockReturnValueOnce('emailInput').mockReturnValueOnce('passwordInput')
       const { container } = render(<ChangeEmail />)
 
       await waitFor(() => {

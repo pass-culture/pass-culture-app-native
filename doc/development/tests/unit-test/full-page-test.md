@@ -94,11 +94,11 @@ If you encounter an error with `duplicate-id-aria` this is due to the global uui
 To correct this error it is necessary to mock uuid in your test file like this:
 
 ```jsx
-const mockV4 = jest.fn()
-jest.mock('uuid', () => ({
-  v1: jest.fn(),
-  v4: jest.fn(mockV4),
-}))
+jest.mock('uuid', () => {
+  let value = 0
+  return {
+    v1: jest.fn(),
+    v4: jest.fn(() => value++),
+  }
+})
 ```
-
-And use `mockV4.mockReturnValueOnce('yourId')` for each uuid needed.
