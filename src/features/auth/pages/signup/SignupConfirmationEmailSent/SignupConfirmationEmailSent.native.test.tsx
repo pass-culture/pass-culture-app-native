@@ -1,6 +1,7 @@
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
+import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -25,9 +26,12 @@ jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
     mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
-    mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40gmail.com', {
-      remainingResends: 3,
-    })
+    mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
+      '/email_validation_remaining_resends/john.doe%40gmail.com',
+      {
+        remainingResends: 3,
+      }
+    )
     mockIsMailAppAvailable = true
   })
 

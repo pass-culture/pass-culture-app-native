@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
@@ -67,7 +67,7 @@ const defaultData: ModuleData = {
 
 describe('<HomeModule />', () => {
   beforeEach(() => {
-    mockServer.getApiV1('/subcategories/v2', {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', {
       ...placeholderData,
     })
   })

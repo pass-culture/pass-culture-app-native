@@ -326,7 +326,6 @@ describe('<Login/>', () => {
 
   it('should redirect to SuspensionScreen WHEN signin is successful for inactive account', async () => {
     simulateSignin200(AccountState.INACTIVE)
-    mockSuspensionStatusApiCall(AccountState.SUSPENDED)
     renderLogin()
 
     await fillInputs()
@@ -685,10 +684,6 @@ function renderLogin() {
 
 function mockMeApiCall(response: UserProfileResponse) {
   mockServer.getApiV1<UserProfileResponse>('/me', response)
-}
-
-function mockSuspensionStatusApiCall(status: string) {
-  mockServer.getApiV1('/account/suspension_status', status)
 }
 
 function simulateSignin200(accountState = AccountState.ACTIVE) {

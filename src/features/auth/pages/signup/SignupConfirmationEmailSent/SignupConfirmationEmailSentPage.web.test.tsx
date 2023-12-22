@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
+import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
@@ -18,9 +19,12 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 describe('<SignupConfirmationEmailSentPage/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40gmail.com', {
-        remainingResends: 3,
-      })
+      mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
+        '/email_validation_remaining_resends/john.doe%40gmail.com',
+        {
+          remainingResends: 3,
+        }
+      )
       const { container } = render(
         reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />)
       )
