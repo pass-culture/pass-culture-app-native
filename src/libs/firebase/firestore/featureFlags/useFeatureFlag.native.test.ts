@@ -23,7 +23,6 @@ describe.each([
   RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
   RemoteStoreFeatureFlags.WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES,
   RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER,
-  RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE,
   RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK,
   RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS,
   RemoteStoreFeatureFlags.WIP_OFFER_V2,

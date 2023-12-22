@@ -13,14 +13,11 @@ import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
-  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
   const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
   const delayedReplace: typeof replace = (...args) => {
@@ -32,14 +29,11 @@ export function AfterSignupEmailValidationBuffer() {
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
   useEffect(() => {
-    // Wait for feature flag state to be fetched from Firestore
-    if (enableTrustedDevice === undefined) return
-    // Wait for device info when feature flag is active
-    if (enableTrustedDevice && !deviceInfo) return
+    if (!deviceInfo) return
 
     beforeEmailValidation()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enableTrustedDevice, enableTrustedDevice && !deviceInfo])
+  }, [deviceInfo])
 
   const loginRoutine = useLoginRoutine()
 
@@ -56,7 +50,7 @@ export function AfterSignupEmailValidationBuffer() {
 
     validateEmail({
       emailValidationToken: params.token,
-      deviceInfo: enableTrustedDevice ? deviceInfo : undefined,
+      deviceInfo,
     })
   }
 

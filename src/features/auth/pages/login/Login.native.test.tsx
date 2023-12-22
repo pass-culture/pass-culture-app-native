@@ -24,7 +24,6 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
@@ -71,7 +70,6 @@ describe('<Login/>', () => {
       showEligibleCard: false,
     } as UserProfileResponse)
     mockUsePreviousRoute.mockReturnValue(null)
-    useFeatureFlagSpy.mockReturnValue(false)
   })
 
   afterEach(async () => {
@@ -97,11 +95,7 @@ describe('<Login/>', () => {
     expect(await screen.findByTestId('SSO Google')).toBeOnTheScreen()
   })
 
-  it('should sign in when "Se connecter" is clicked with device info when feature flag is active', async () => {
-    // We use this hook twice but due to multiple rerender we have to mock the return value this way
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true)
-
+  it('should sign in when "Se connecter" is clicked with device info', async () => {
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
@@ -151,28 +145,6 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should sign in when SSO Google button is clicked without device info when feature flag is disabled', async () => {
-    // Due to multiple rerender we have to mock the return value this way. We mock the implementation to keep the trusted device FF disabled
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockImplementation(
-      (flag) => flag === RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO
-    )
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-      accountState: AccountState.ACTIVE,
-    })
-
-    renderLogin()
-    await act(async () => fireEvent.press(await screen.findByTestId('SSO Google')))
-
-    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-      authorizationCode: 'mockServerAuthCode',
-      oauthStateToken: 'oauth_state_token',
-      deviceInfo: undefined,
-    })
-  })
-
   it('should log to Sentry on SSO login error', async () => {
     // We use this hook twice but due to multiple rerender we have to mock the return value this way
     // eslint-disable-next-line local-rules/independent-mocks
@@ -201,23 +173,6 @@ describe('<Login/>', () => {
     })
 
     expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
-  })
-
-  it('should sign in when "Se connecter" is clicked without device info when feature flag is disabled', async () => {
-    renderLogin()
-    await screen.findByText('Connecte-toi')
-
-    await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
-
-    expect(apiSignInSpy).toHaveBeenCalledWith(
-      {
-        identifier: 'email@gmail.com',
-        password: 'user@AZERTY123',
-        deviceInfo: undefined,
-      },
-      { credentials: 'omit' }
-    )
   })
 
   it('should not open reCAPTCHA challenge modal when clicking on login button when feature flag is disabled', async () => {
@@ -545,7 +500,11 @@ describe('<Login/>', () => {
           identifier: 'email@gmail.com',
           password: 'user@AZERTY123',
           token: 'fakeToken',
-          deviceInfo: undefined,
+          deviceInfo: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'unknown',
+            source: 'none',
+          },
         },
         { credentials: 'omit' }
       )
