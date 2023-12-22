@@ -12,8 +12,6 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { isTimestampExpired } from 'libs/dates'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -40,7 +38,6 @@ export const ReinitializePassword = () => {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const loginRoutine = useLoginRoutine()
   const deviceInfo = useDeviceInfo()
-  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const {
@@ -108,11 +105,11 @@ export const ReinitializePassword = () => {
         resetPassword({
           newPassword,
           resetPasswordToken: route.params.token,
-          deviceInfo: enableTrustedDevice ? deviceInfo : undefined,
+          deviceInfo: deviceInfo,
         })
       }
     },
-    [isValid, resetPassword, route.params.token, enableTrustedDevice, deviceInfo]
+    [isValid, resetPassword, route.params.token, deviceInfo]
   )
 
   if (!isTimestampExpirationVerified) {
