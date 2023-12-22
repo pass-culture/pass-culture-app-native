@@ -8,8 +8,6 @@ import { PageProfileSection } from 'features/profile/components/PageProfileSecti
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -26,7 +24,6 @@ function onEmailChangeClick() {
 
 export function PersonalData() {
   const { user } = useAuthContext()
-  const enableChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL)
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
@@ -51,14 +48,12 @@ export function PersonalData() {
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
-        {!!enableChangeEmail && (
-          <EditButton
-            navigateTo={{ screen: updateEmailRoute }}
-            onPress={onEmailChangeClick}
-            wording="Modifier"
-            accessibilityLabel="Modifier e-mail"
-          />
-        )}
+        <EditButton
+          navigateTo={{ screen: updateEmailRoute }}
+          onPress={onEmailChangeClick}
+          wording="Modifier"
+          accessibilityLabel="Modifier e-mail"
+        />
       </EditContainer>
 
       <StyledSeparator />

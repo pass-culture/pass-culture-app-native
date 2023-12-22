@@ -15,7 +15,6 @@ const mockGet = jest.fn()
 
 describe.each([
   RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR,
-  RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL,
   RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
   RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS,
   RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION,
