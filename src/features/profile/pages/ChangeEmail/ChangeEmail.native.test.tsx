@@ -254,7 +254,7 @@ function simulateUpdateEmailError(code: CHANGE_EMAIL_ERROR_CODE) {
 }
 
 function simulateCurrentEmailChange() {
-  mockServer.getApiV1('/profile/token_expiration', {
+  mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
     expiration: '2021-12-07T13:45:05.812190',
   })
 }

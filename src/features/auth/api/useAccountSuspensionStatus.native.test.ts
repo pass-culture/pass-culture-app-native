@@ -1,4 +1,4 @@
-import { AccountState } from 'api/gen'
+import { AccountState, UserSuspensionStatusResponse } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -6,11 +6,11 @@ import { act, renderHook } from 'tests/utils'
 
 const expectedResponse = { status: AccountState.SUSPENDED }
 function simulateSuspensionStatus200() {
-  mockServer.getApiV1('/account/suspension_status', expectedResponse)
+  mockServer.getApiV1<UserSuspensionStatusResponse>('/account/suspension_status', expectedResponse)
 }
 
 function simulateSuspensionStatusError() {
-  mockServer.getApiV1('/account/suspension_status', {
+  mockServer.getApiV1<UserSuspensionStatusResponse>('/account/suspension_status', {
     responseOptions: { statusCode: 400 },
   })
 }

@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
+import { FavoritesCountResponse } from 'api/gen'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { mockServer } from 'tests/mswServer'
@@ -32,7 +33,7 @@ jest.mock('libs/splashscreen')
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
-    mockServer.getApiV1('/me/favorites/count', { count: 2 })
+    mockServer.getApiV1<FavoritesCountResponse>('/me/favorites/count', { count: 2 })
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {

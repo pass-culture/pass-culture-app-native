@@ -72,5 +72,5 @@ async function renderUseInitialScreen() {
 }
 
 function mockMeApiCall(response: UserProfileResponse) {
-  mockServer.getApiV1('/me', response)
+  mockServer.getApiV1<UserProfileResponse>('/me', response)
 }

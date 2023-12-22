@@ -4,6 +4,7 @@ import DeviceInfo from 'react-native-device-info'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
+import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -27,9 +28,12 @@ mockdate.set(CURRENT_DATE)
 
 describe('Signup Form', () => {
   beforeEach(() => {
-    mockServer.getApiV1('/email_validation_remaining_resends/email%40gmail.com', {
-      remainingResends: 3,
-    })
+    mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
+      '/email_validation_remaining_resends/email%40gmail.com',
+      {
+        remainingResends: 3,
+      }
+    )
   })
 
   it.each`

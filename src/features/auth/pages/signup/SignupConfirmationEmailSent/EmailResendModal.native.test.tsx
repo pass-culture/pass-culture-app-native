@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { api } from 'api/api'
+import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
@@ -162,14 +163,17 @@ const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode
       requestOptions: { persist: true },
     })
   }
-  mockServer.getApiV1('/email_validation_remaining_resends/john.doe%40example.com', {
-    requestOptions: { persist: true },
-    responseOptions: {
-      data: {
-        remainingResends: 3,
+  mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
+    '/email_validation_remaining_resends/john.doe%40example.com',
+    {
+      requestOptions: { persist: true },
+      responseOptions: {
+        data: {
+          remainingResends: 3,
+        },
       },
-    },
-  })
+    }
+  )
   render(
     reactQueryProviderHOC(
       <EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />

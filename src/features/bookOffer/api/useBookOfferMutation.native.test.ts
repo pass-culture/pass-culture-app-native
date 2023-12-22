@@ -1,5 +1,6 @@
 import { QueryClient } from 'react-query'
 
+import { BookingsResponse, BookOfferResponse } from 'api/gen'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,8 +16,8 @@ const setup = (queryClient: QueryClient) => {
 
 describe('useBookOfferMutation', () => {
   it('invalidates userProfile after successfully booking an offer', async () => {
-    mockServer.postApiV1('/bookings', {})
-    mockServer.getApiV1('/bookings', {})
+    mockServer.postApiV1<BookOfferResponse>('/bookings', {})
+    mockServer.getApiV1<BookingsResponse>('/bookings', {})
 
     const { result } = renderUseBookOfferMutation()
 

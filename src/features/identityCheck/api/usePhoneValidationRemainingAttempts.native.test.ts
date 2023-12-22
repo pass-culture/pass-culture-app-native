@@ -11,7 +11,7 @@ const phoneValidationRemainingAttemptsAPIResponse: PhoneValidationRemainingAttem
 
 describe('usePhoneValidationRemainingAttempts', () => {
   it('calls the API and returns the data and isLastAttempt', async () => {
-    mockServer.getApiV1(
+    mockServer.getApiV1<PhoneValidationRemainingAttemptsRequest>(
       '/phone_validation/remaining_attempts',
       phoneValidationRemainingAttemptsAPIResponse
     )

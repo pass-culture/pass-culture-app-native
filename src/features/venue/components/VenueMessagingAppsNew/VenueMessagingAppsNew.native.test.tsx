@@ -2,6 +2,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
 
+import { VenueResponse } from 'api/gen'
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
@@ -14,7 +15,7 @@ const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
-    mockServer.getApiV1(`/venue/${venueResponseSnap.id}`, venueResponseSnap)
+    mockServer.getApiV1<VenueResponse>(`/venue/${venueResponseSnap.id}`, venueResponseSnap)
   })
 
   it('should share on instagram', async () => {

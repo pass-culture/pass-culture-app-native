@@ -41,7 +41,6 @@ src/api/gen/index.ts:684 - Consent
 src/api/gen/index.ts:747 - Credit
 src/api/gen/index.ts:849 - CulturalSurveyQuestion
 src/api/gen/index.ts:909 - DepositAmountsByAge
-src/api/gen/index.ts:1009 - EmailValidationRemainingResendsResponse
 src/api/gen/index.ts:1035 - ExternalBookingResponse
 src/api/gen/index.ts:1051 - FavoriteMediationResponse
 src/api/gen/index.ts:1213 - GenreTypeModel
@@ -57,8 +56,6 @@ src/api/gen/index.ts:2021 - ReasonMeta
 src/api/gen/index.ts:2048 - ReportedOffer
 src/api/gen/index.ts:2612 - SubscriptionStepDetailsResponse
 src/api/gen/index.ts:2728 - UserProfileEmailUpdate
-src/api/gen/index.ts:2905 - UserSuspensionDateResponse
-src/api/gen/index.ts:2916 - UserSuspensionStatusResponse
 src/api/gen/index.ts:2959 - ValidatePhoneNumberRequest
 src/api/gen/index.ts:2970 - ValidationError
 src/api/gen/index.ts:2976 - ValidationErrorElement
