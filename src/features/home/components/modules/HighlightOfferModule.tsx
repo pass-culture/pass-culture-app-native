@@ -59,8 +59,11 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   }, [])
 
   if (!highlightOffer) return null
-  const { offer, venue, objectID: highlightOfferId } = highlightOffer
-  const { publicName, name } = venue
+  const {
+    offer,
+    venue: { publicName, name },
+    objectID: highlightOfferId,
+  } = highlightOffer
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
