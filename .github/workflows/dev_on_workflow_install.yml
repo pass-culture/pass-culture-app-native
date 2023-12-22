@@ -44,7 +44,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
+        uses: pass-culture-github-actions/cache@v1.0.0
         with:
           path: |
             node_modules

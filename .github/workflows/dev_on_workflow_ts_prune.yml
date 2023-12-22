@@ -22,7 +22,7 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
+        uses: pass-culture-github-actions/cache@v1.0.0
         with:
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}

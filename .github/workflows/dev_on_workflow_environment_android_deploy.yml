@@ -30,7 +30,7 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - uses: kopax-polyconseil/gcs-or-azure-cache-action@v3
+      - uses: pass-culture-github-actions/cache@v1.0.0
         id: yarn-modules-cache
         with:
           path: |
