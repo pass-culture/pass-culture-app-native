@@ -2,8 +2,9 @@ version: 2
 updates:
   - package-ecosystem: 'npm'
     directory: '/'
+    open-pull-requests-limit: 6
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
     ignore:
       - dependency-name: 'react-native'
       - dependency-name: 'react'
@@ -15,8 +16,9 @@ updates:
 
   - package-ecosystem: 'bundler'
     directory: '/'
+    open-pull-requests-limit: 6
     schedule:
-      interval: 'weekly'
+      interval: 'daily'
     commit-message:
       prefix: '(BSR) chore(deps):'
     reviewers:
