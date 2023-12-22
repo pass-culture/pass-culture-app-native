@@ -6,6 +6,15 @@ import { checkAccessibilityFor, render, flushAllPromisesWithAct } from 'tests/ut
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
+// Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
+jest.mock('uuid', () => {
+  let value = 0
+  return {
+    v1: jest.fn(),
+    v4: jest.fn(() => value++),
+  }
+})
+
 describe('<CookiesDetails/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
@@ -23,12 +32,7 @@ describe('<CookiesDetails/>', () => {
       )
 
       await flushAllPromisesWithAct()
-      const results = await checkAccessibilityFor(container, {
-        rules: {
-          // TODO(PC-26463): throw an error because the UUIDV4 mock return "testUuidV4"
-          'duplicate-id-aria': { enabled: false }, // error: "IDs used in ARIA and labels must be unique (duplicate-id-aria)"
-        },
-      })
+      const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
     })

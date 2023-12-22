@@ -5,6 +5,7 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { SetPhoneNumber } from './SetPhoneNumber'
 
+// Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
 jest.mock('uuid', () => {
   let value = 0
   return {
