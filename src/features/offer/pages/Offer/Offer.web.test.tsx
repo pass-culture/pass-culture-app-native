@@ -19,11 +19,14 @@ jest.mock('features/offer/api/useOffer', () => ({
   }),
 }))
 
-const mockV4 = jest.fn()
-jest.mock('uuid', () => ({
-  v1: jest.fn(),
-  v4: jest.fn(mockV4),
-}))
+// Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
+jest.mock('uuid', () => {
+  let value = 0
+  return {
+    v1: jest.fn(),
+    v4: jest.fn(() => value++),
+  }
+})
 
 const mockSubcategories = placeholderData.subcategories
 const mockSearchGroups = placeholderData.searchGroups
@@ -72,7 +75,6 @@ describe('<Offer/>', () => {
     })
 
     it('should not have basic accessibility issues', async () => {
-      mockV4.mockReturnValueOnce('offerId')
       const { container } = render(reactQueryProviderHOC(<Offer />))
 
       await act(async () => {})
