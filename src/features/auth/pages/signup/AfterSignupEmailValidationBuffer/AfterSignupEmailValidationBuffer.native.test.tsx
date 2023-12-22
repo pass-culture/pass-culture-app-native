@@ -13,7 +13,6 @@ import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as datesLib from 'libs/dates'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils'
@@ -37,7 +36,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const apiValidateEmailSpy = jest.spyOn(api, 'postNativeV1ValidateEmail')
 
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
@@ -232,24 +230,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       mockServer.postApiV1('/validate_email', {})
     })
 
-    it('should validate email without device info when feature flag is disabled', async () => {
-      renderPage()
-
-      await act(() => {})
-
-      expect(apiValidateEmailSpy).toHaveBeenCalledTimes(1)
-      expect(apiValidateEmailSpy).toHaveBeenCalledWith({
-        deviceInfo: undefined,
-        emailValidationToken: 'reerereskjlmkdlsf',
-      })
-    })
-
-    it('should validate email with device info when feature flag is active', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true) // first render
-      useFeatureFlagSpy.mockReturnValueOnce(true) // second render because of useDeviceInfo
-      useFeatureFlagSpy.mockReturnValueOnce(true) // third render because of useMutation
-      useFeatureFlagSpy.mockReturnValueOnce(true) // fourth render because of useMutation
-
+    it('should validate email with device info', async () => {
       renderPage()
 
       await act(() => {})
