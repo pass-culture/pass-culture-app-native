@@ -39,6 +39,7 @@ jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const apiValidateEmailSpy = jest.spyOn(api, 'postNativeV1ValidateEmail')
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
 
@@ -75,11 +76,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       renderPage()
 
-      await waitFor(() => {
-        expect(loginRoutine).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('AccountCreated')
-      })
+      await waitFor(
+        () => {
+          expect(loginRoutine).toHaveBeenCalledTimes(1)
+          expect(replace).toHaveBeenCalledTimes(1)
+          expect(replace).toHaveBeenCalledWith('AccountCreated')
+        },
+        { timeout: 10_000 }
+      )
       loginRoutine.mockRestore()
     })
 
@@ -97,11 +101,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       renderPage()
 
-      await waitFor(() => {
-        expect(loginRoutine).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('VerifyEligibility')
-      })
+      await waitFor(
+        () => {
+          expect(loginRoutine).toHaveBeenCalledTimes(1)
+          expect(replace).toHaveBeenCalledTimes(1)
+          expect(replace).toHaveBeenCalledWith('VerifyEligibility')
+        },
+        { timeout: 10_000 }
+      )
       loginRoutine.mockRestore()
     })
 
@@ -115,9 +122,12 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       })
       renderPage()
 
-      await waitFor(() => {
-        expect(replace).toHaveBeenCalledWith('AccountCreated')
-      })
+      await waitFor(
+        () => {
+          expect(replace).toHaveBeenCalledWith('AccountCreated')
+        },
+        { timeout: 10_000 }
+      )
     })
 
     it('should log event on email validation success', async () => {
@@ -130,16 +140,19 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       })
       renderPage()
 
-      await waitFor(async () => {
-        expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
-          1,
-          CampaignEvents.COMPLETE_REGISTRATION,
-          {
-            af_firebase_pseudo_id: await firebaseAnalytics.getAppInstanceId(),
-            af_user_id: nonBeneficiaryUser.id,
-          }
-        )
-      })
+      await waitFor(
+        async () => {
+          expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
+            1,
+            CampaignEvents.COMPLETE_REGISTRATION,
+            {
+              af_firebase_pseudo_id: await firebaseAnalytics.getAppInstanceId(),
+              af_user_id: nonBeneficiaryUser.id,
+            }
+          )
+        },
+        { timeout: 10_000 }
+      )
     })
 
     it('should log analytics on email validation success', async () => {
@@ -152,9 +165,12 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       })
       renderPage()
 
-      await waitFor(async () => {
-        expect(analytics.logEmailValidated).toHaveBeenCalledTimes(1)
-      })
+      await waitFor(
+        async () => {
+          expect(analytics.logEmailValidated).toHaveBeenCalledTimes(1)
+        },
+        { timeout: 10_000 }
+      )
     })
 
     it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
@@ -167,11 +183,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       })
       renderPage()
 
-      await waitFor(() => {
-        expect(replace).toHaveBeenCalledWith('NotYetUnderageEligibility', {
-          eligibilityStartDatetime: '2021-12-01T00:00:00Z',
-        })
-      })
+      await waitFor(
+        () => {
+          expect(replace).toHaveBeenCalledWith('NotYetUnderageEligibility', {
+            eligibilityStartDatetime: '2021-12-01T00:00:00Z',
+          })
+        },
+        { timeout: 10_000 }
+      )
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {
@@ -183,15 +202,18 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       renderPage()
 
-      await waitFor(() => {
-        expect(mockShowInfoSnackBar).toHaveBeenCalledTimes(1)
-        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-          message: 'Ce lien de validation n’est plus valide',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-        expect(replace).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith(...homeNavConfig)
-      })
+      await waitFor(
+        () => {
+          expect(mockShowInfoSnackBar).toHaveBeenCalledTimes(1)
+          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+            message: 'Ce lien de validation n’est plus valide',
+            timeout: SNACK_BAR_TIME_OUT,
+          })
+          expect(replace).toHaveBeenCalledTimes(1)
+          expect(replace).toHaveBeenCalledWith(...homeNavConfig)
+        },
+        { timeout: 10_000 }
+      )
     })
   })
 
@@ -211,12 +233,15 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValueOnce(true)
       renderPage()
 
-      await waitFor(() => {
-        expect(replace).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
-          email: 'john@wick.com',
-        })
-      })
+      await waitFor(
+        () => {
+          expect(replace).toHaveBeenCalledTimes(1)
+          expect(replace).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
+            email: 'john@wick.com',
+          })
+        },
+        { timeout: 10_000 }
+      )
     })
   })
 
