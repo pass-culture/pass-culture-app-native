@@ -6,8 +6,6 @@ import { SigninResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export const useSignIn = ({
   onSuccess,
@@ -18,11 +16,10 @@ export const useSignIn = ({
 }) => {
   const loginRoutine = useLoginRoutine()
   const deviceInfo = useDeviceInfo()
-  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   return useMutation(
     async (body: LoginRequest) => {
-      const requestBody = { ...body, deviceInfo: enableTrustedDevice ? deviceInfo : undefined }
+      const requestBody = { ...body, deviceInfo: deviceInfo }
       if ('authorizationCode' in requestBody) {
         return api.postNativeV1OauthGoogleAuthorize(requestBody)
       }
