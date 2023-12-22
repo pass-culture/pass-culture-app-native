@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query'
 
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useLocation } from 'libs/location'
 import { Position } from 'libs/location/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { computeDistanceInMeters } from 'libs/parsers'
@@ -44,7 +44,7 @@ export const useHighlightOffer = ({
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
   const transformOfferHits = useTransformOfferHits()
-  const { position } = useHomePosition()
+  const { userLocation } = useLocation()
 
   const offerByIdQuery = async () => {
     if (!offerId) return undefined
@@ -63,7 +63,7 @@ export const useHighlightOffer = ({
     const result = await fetchOffersByTags({
       tags: [offerTag],
       isUserUnderage,
-      userLocation: position,
+      userLocation,
     })
 
     return result
@@ -74,7 +74,7 @@ export const useHighlightOffer = ({
 
     return fetchOffersByEan({
       eanList: [offerEan],
-      userLocation: position,
+      userLocation,
       isUserUnderage,
     })
   }
@@ -95,7 +95,9 @@ export const useHighlightOffer = ({
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]
 
-  if (shouldDisplayHighlightOffer(position, highlightOffer?._geoloc, isGeolocated, aroundRadius)) {
+  if (
+    shouldDisplayHighlightOffer(userLocation, highlightOffer?._geoloc, isGeolocated, aroundRadius)
+  ) {
     return highlightOffer
   }
   return undefined

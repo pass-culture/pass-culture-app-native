@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { act, renderHook } from 'tests/utils'
 
@@ -10,12 +11,10 @@ import { useGTLPlaylists } from './useGTLPlaylists'
 
 const venue = { name: 'Une librairie', city: 'Jest', id: 123 } as VenueResponse
 
-jest.mock('features/home/helpers/useHomePosition', () => ({
-  useHomePosition: jest.fn().mockReturnValue({
-    position: {
-      latitude: 2,
-      longitude: 2,
-    },
+const mockPosition: Position = { latitude: 2, longitude: 2 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockPosition,
   }),
 }))
 

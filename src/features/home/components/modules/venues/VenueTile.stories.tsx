@@ -32,7 +32,7 @@ const props = {
     ...mockVenues.hits[0],
     bannerUrl: undefined,
   },
-  userPosition: null,
+  userLocation: null,
   height: LENGTH_S,
   width: LENGTH_S * (3 / 2),
 }
@@ -56,7 +56,7 @@ WithImage.args = {
 const WithPosition = Template.bind({})
 WithPosition.args = {
   ...props,
-  userPosition: {
+  userLocation: {
     latitude: 50,
     longitude: 51,
   },

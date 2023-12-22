@@ -5,17 +5,17 @@ import { Position } from 'libs/location'
 
 export function getCurrentVenuesIndex({
   locationType,
-  userPosition,
+  userLocation,
   venue,
 }: {
   locationType?: LocationMode
-  userPosition?: Position
+  userLocation?: Position
   venue?: Venue
 }) {
   const venuesIndexSearch = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH
   const venuesIndexSearchNewest = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST
 
-  if ((!locationType && !venue) || (locationType === LocationMode.EVERYWHERE && !userPosition)) {
+  if ((!locationType && !venue) || (locationType === LocationMode.EVERYWHERE && !userLocation)) {
     return venuesIndexSearchNewest
   }
 

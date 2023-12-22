@@ -13,7 +13,7 @@ jest.mock('algoliasearch')
 
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
-const userPosition = { latitude: 42, longitude: 43 }
+const userLocation = { latitude: 42, longitude: 43 }
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -28,7 +28,7 @@ describe('fetchSearchResults', () => {
 
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      userPosition: null,
+      userLocation: null,
       isUserUnderage: false,
     })
 
@@ -91,7 +91,7 @@ describe('fetchSearchResults', () => {
         query,
         locationFilter: { locationType: LocationMode.EVERYWHERE },
       } as SearchQueryParameters,
-      userPosition: null,
+      userLocation: null,
       isUserUnderage: false,
     })
 
@@ -154,7 +154,7 @@ describe('fetchSearchResults', () => {
         query,
         locationFilter: { locationType: LocationMode.EVERYWHERE },
       } as SearchQueryParameters,
-      userPosition,
+      userLocation,
       isUserUnderage: false,
     })
 
@@ -227,7 +227,7 @@ describe('fetchSearchResults', () => {
         query,
         locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
       } as SearchQueryParameters,
-      userPosition,
+      userLocation,
       isUserUnderage: false,
     })
 
@@ -304,7 +304,7 @@ describe('fetchSearchResults', () => {
           aroundRadius: MAX_RADIUS,
         },
       } as SearchQueryParameters,
-      userPosition,
+      userLocation,
       isUserUnderage: false,
     })
 
@@ -381,7 +381,7 @@ describe('fetchSearchResults', () => {
           aroundRadius: MAX_RADIUS,
         },
       } as SearchQueryParameters,
-      userPosition: null,
+      userLocation: null,
       isUserUnderage: false,
     })
 
@@ -454,7 +454,7 @@ describe('fetchSearchResults', () => {
         query,
         venue,
       } as SearchQueryParameters,
-      userPosition,
+      userLocation,
       isUserUnderage: false,
     })
 
@@ -523,7 +523,7 @@ describe('fetchSearchResults', () => {
         query,
         venue,
       } as SearchQueryParameters,
-      userPosition: null,
+      userLocation: null,
       isUserUnderage: false,
     })
 

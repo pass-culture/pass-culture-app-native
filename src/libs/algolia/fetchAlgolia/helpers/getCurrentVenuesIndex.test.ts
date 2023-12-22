@@ -15,9 +15,9 @@ describe('getCurrentVenuesIndex', () => {
   })
 
   it('should return algoliaVenuesIndexPlaylistSearch when locationType is EVERYWHERE and user shares his position', () => {
-    const userPosition = { latitude: 48.90374, longitude: 2.48171 }
+    const userLocation = { latitude: 48.90374, longitude: 2.48171 }
     const locationType = LocationMode.EVERYWHERE
-    const result = getCurrentVenuesIndex({ locationType, userPosition })
+    const result = getCurrentVenuesIndex({ locationType, userLocation })
 
     expect(result).toEqual(venuesIndexSearch)
   })

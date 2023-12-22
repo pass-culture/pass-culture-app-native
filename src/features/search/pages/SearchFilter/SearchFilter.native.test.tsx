@@ -30,6 +30,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     geolocPosition: mockPosition,
     hasGeolocPosition: true,
     place: null,
+    userLocation: mockPosition,
   }),
 }))
 
@@ -108,8 +109,9 @@ describe('<SearchFilter/>', () => {
     })
   })
 
-  describe('should update the SearchState, but keep the query, when pressing the reset button', () => {
-    it('and position is not null', async () => {
+  describe('should update the SearchState, but keep the query, when pressing the reset button, and position', () => {
+    it('is not null', async () => {
+      mockPosition = DEFAULT_POSITION
       renderSearchFilter()
 
       await act(async () => {
@@ -129,8 +131,8 @@ describe('<SearchFilter/>', () => {
       })
     })
 
-    it('and position is null', async () => {
-      mockPosition = null
+    it('is null', async () => {
+      mockPosition = undefined
       renderSearchFilter()
 
       await act(async () => {

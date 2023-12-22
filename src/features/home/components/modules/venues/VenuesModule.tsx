@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
-import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { LENGTH_S } from 'ui/theme'
@@ -30,7 +30,7 @@ export const VenuesModule = ({
   homeEntryId,
   data,
 }: VenuesModuleProps) => {
-  const { position } = useHomePosition()
+  const { userLocation } = useLocation()
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
 
@@ -43,10 +43,10 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
-        userPosition={position}
+        userLocation={userLocation}
       />
     ),
-    [position, moduleName, moduleId, homeEntryId]
+    [userLocation, moduleName, moduleId, homeEntryId]
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers

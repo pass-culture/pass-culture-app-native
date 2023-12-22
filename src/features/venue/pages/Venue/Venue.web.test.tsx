@@ -28,9 +28,9 @@ jest.mock('uuid', () => ({
 
 const venueId = venueResponseSnap.id
 
-jest.mock('features/home/helpers/useHomePosition', () => ({
-  useHomePosition: jest.fn().mockReturnValue({
-    position: {
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn().mockReturnValue({
+    userLocation: {
       latitude: 2,
       longitude: 2,
     },

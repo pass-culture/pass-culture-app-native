@@ -47,6 +47,7 @@ const locationContext: ILocationContext = {
   setAroundPlaceRadius,
   aroundMeRadius: DEFAULT_RADIUS,
   setAroundMeRadius,
+  userLocation: undefined,
 }
 
 export const useLocation = jest.fn().mockReturnValue(locationContext)
