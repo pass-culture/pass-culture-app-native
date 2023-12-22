@@ -19,7 +19,7 @@ export const useSignIn = ({
 
   return useMutation(
     async (body: LoginRequest) => {
-      const requestBody = { ...body, deviceInfo: deviceInfo }
+      const requestBody = { ...body, deviceInfo }
       if ('authorizationCode' in requestBody) {
         return api.postNativeV1OauthGoogleAuthorize(requestBody)
       }

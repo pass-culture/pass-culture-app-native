@@ -33,7 +33,7 @@ export function AfterSignupEmailValidationBuffer() {
 
     beforeEmailValidation()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!deviceInfo])
+  }, [deviceInfo])
 
   const loginRoutine = useLoginRoutine()
 
@@ -50,7 +50,7 @@ export function AfterSignupEmailValidationBuffer() {
 
     validateEmail({
       emailValidationToken: params.token,
-      deviceInfo: deviceInfo,
+      deviceInfo,
     })
   }
 

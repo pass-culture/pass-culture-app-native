@@ -105,7 +105,7 @@ export const ReinitializePassword = () => {
         resetPassword({
           newPassword,
           resetPasswordToken: route.params.token,
-          deviceInfo: deviceInfo,
+          deviceInfo,
         })
       }
     },
