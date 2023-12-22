@@ -12,12 +12,6 @@ on:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
         required: true
 
-env:
-  GCP_PROJECT_ID: passculture-infra-prod
-  GCP_REGISTRY_ID: pass-culture-npmjs-remote
-  GCP_ZONE: europe-west1
-  GCP_BUCKET_ID: passculture-infra-prod-github-runner-cache
-
 jobs:
   yarn-install:
     runs-on: ubuntu-latest
@@ -54,30 +48,14 @@ jobs:
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           key-file-name: ${{ steps.gcloud-auth.outputs.credentials_file_path }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - name: Get Secret
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+      - name: "Use the artifact registry"
+        uses: pass-culture-github-actions/artifact-registry@v1.0.0
         with:
-          secrets: |-
-            INFRA_PROD_GCP_WORKLOAD_IDENTITY_PROVIDER:passculture-metier-ehp/passculture-main-gcp-workload-identity-provider
-            ARTIFACT_REGISTRY_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-main-artifact-registry-service-account
-      - id: openid-auth
-        name: "OpenID Connect Authentication"
-        uses: 'google-github-actions/auth@v1'
-        with:
-          workload_identity_provider: ${{ steps.secrets.outputs.INFRA_PROD_GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ steps.secrets.outputs.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-      - name: yarn.lock switch to GCP artifact registry 
-        run: sed -i -e "s#https://registry.yarnpkg.com/#https://${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/#g" yarn.lock
-      - name: Create .npmrc
-        run: |
-          cat << EOF > .npmrc
-            registry=https://${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/
-            //${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/:_authToken="$(gcloud auth print-access-token)"
-            //${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/:always-auth=true
-          EOF
+          secret-workload-identity-provider-artifact-registry: passculture-metier-ehp/passculture-main-gcp-workload-identity-provider
+          secret-service-account-artifact-registry: passculture-metier-ehp/passculture-main-artifact-registry-service-account
+          gcp-zone: europe-west1
+          gcp-project-id: passculture-infra-prod
+          gcp-registry-id: pass-culture-npmjs-remote
       - name: Install dependencies
         run: yarn install
 
