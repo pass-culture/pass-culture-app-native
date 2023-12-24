@@ -9,15 +9,13 @@ const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'
 
 describe('ExternalLink', () => {
-  // FIXME(PC-21194): Fix this test (https://passculture.atlassian.net/browse/PC-21194)
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should open given url when text clicked', () => {
+  it('should open given url when text clicked', () => {
     render(<ExternalLink url={someUrl} />)
 
     fireEvent.click(screen.getByText(someUrl))
 
     expect(openURLSpy).toHaveBeenNthCalledWith(1, someUrl)
-    expect(screen.getByText(someUrl)).toHaveAttribute('href', someUrl)
+    expect(screen.getByLabelText(`Nouvelle fenêtre : ${someUrl}`)).toHaveAttribute('href', someUrl)
   })
 
   it('should open given url when text clicked and text not matching url', () => {
