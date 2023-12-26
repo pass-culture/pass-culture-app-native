@@ -3,6 +3,9 @@ name: Install runtime environment and dependencies iOS deploy
 on:
   workflow_call:
     inputs:
+      CACHE_BUCKET_NAME:
+        type: string
+        required: true
       ENV:
         type: string
         required: true
@@ -27,6 +30,18 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Yarn install
         run: yarn install
       - uses: ruby/setup-ruby@v1
@@ -78,7 +93,7 @@ jobs:
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios" ${{ inputs.ENV }}'
 
   slack_notify:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     if: ${{ always() }}
     needs: sentry_and_deploy
     steps:

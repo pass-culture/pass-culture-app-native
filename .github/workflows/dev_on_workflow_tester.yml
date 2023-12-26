@@ -20,7 +20,11 @@ env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 jobs:
   yarn_test_web:
-    runs-on: [self-hosted, linux, x64, big]
+    name: 'Run Web unit tests'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shard: [1, 2, 3]
     steps:
       - uses: actions/checkout@v4
       - name: 'OpenID Connect Authentication'
@@ -33,29 +37,30 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: pass-culture-github-actions/cache@v1.0.0
         with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
             node_modules
             ~/.cache/yarn
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: kopax-polyconseil/gcs-cache-action@v1.0.1
-        with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        with:
           path: .jest/cache
           key: v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:web:ci
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+      - run: yarn test:unit:web:ci  --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   yarn_test_native:
-    runs-on: [self-hosted, linux, x64, big]
+    name: 'Run native unit tests'
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        shard: [1, 2, 3, 4, 5]
+        shard: [1, 2, 3, 4, 5, 6, 7]
     steps:
       - uses: actions/checkout@v4
       - name: 'OpenID Connect Authentication'
@@ -68,7 +73,7 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Cache the node_modules
         id: yarn-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: pass-culture-github-actions/cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -77,7 +82,7 @@ jobs:
           key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+      - uses: pass-culture-github-actions/cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: .jest/cache
@@ -88,7 +93,7 @@ jobs:
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
       - name: Cache the coverage report
         id: coverage-modules-cache
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -96,7 +101,7 @@ jobs:
           restore-keys:
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
   report-coverage:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     needs: yarn_test_native
     steps:
       - uses: actions/checkout@v4
@@ -137,7 +142,7 @@ jobs:
         with:
           projectBaseDir: .
   yarn_test_proxy:
-    runs-on: [self-hosted, linux, x64, big]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -148,12 +153,9 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
       - name: Cache the proxy node_modules
         id: yarn-modules-cache-proxy
-        uses: kopax-polyconseil/gcs-cache-action@v1.0.1
+        uses: pass-culture-github-actions/cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           path: |
@@ -178,7 +180,7 @@ jobs:
         with:
           projectBaseDir: server
   slack_notify:
-    runs-on: [self-hosted, linux, x64, regular]
+    runs-on: ubuntu-latest
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native
