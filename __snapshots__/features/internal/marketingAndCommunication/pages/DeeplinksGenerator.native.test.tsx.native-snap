@@ -329,8 +329,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 0.9,
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 18,
@@ -345,6 +343,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   collapsable={false}
                   style={
                     {
+                      "marginLeft": 8,
                       "transform": [
                         {
                           "rotateZ": "4.71238898038469rad",
@@ -1628,8 +1627,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 0.9,
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 18,
@@ -1644,6 +1641,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   collapsable={false}
                   style={
                     {
+                      "marginLeft": 8,
                       "transform": [
                         {
                           "rotateZ": "4.71238898038469rad",
@@ -1885,8 +1883,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 0.9,
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 18,
@@ -1901,6 +1897,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   collapsable={false}
                   style={
                     {
+                      "marginLeft": 8,
                       "transform": [
                         {
                           "rotateZ": "4.71238898038469rad",
@@ -2615,8 +2612,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 0.9,
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 18,
@@ -2631,6 +2626,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   collapsable={false}
                   style={
                     {
+                      "marginLeft": 8,
                       "transform": [
                         {
                           "rotateZ": "1.5707963267948966rad",
