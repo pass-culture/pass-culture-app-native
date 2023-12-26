@@ -3581,8 +3581,6 @@ d’options
                   [
                     {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 0.9,
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
@@ -3597,6 +3595,7 @@ d’options
                 collapsable={false}
                 style={
                   {
+                    "marginLeft": 8,
                     "transform": [
                       {
                         "rotateZ": "1.5707963267948966rad",
@@ -3788,8 +3787,6 @@ d’options
                   [
                     {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 0.9,
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
@@ -3804,6 +3801,7 @@ d’options
                 collapsable={false}
                 style={
                   {
+                    "marginLeft": 8,
                     "transform": [
                       {
                         "rotateZ": "1.5707963267948966rad",
@@ -4439,8 +4437,6 @@ d’options
                   [
                     {
                       "color": "#161617",
-                      "flexBasis": 0,
-                      "flexGrow": 0.9,
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
@@ -4455,6 +4451,7 @@ d’options
                 collapsable={false}
                 style={
                   {
+                    "marginLeft": 8,
                     "transform": [
                       {
                         "rotateZ": "1.5707963267948966rad",

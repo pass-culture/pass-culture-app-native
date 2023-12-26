@@ -655,8 +655,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 0.9,
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
@@ -684,6 +682,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               collapsable={false}
               style={
                 {
+                  "marginLeft": 8,
                   "transform": [
                     {
                       "rotateZ": "1.5707963267948966rad",
@@ -1021,8 +1020,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 0.9,
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
@@ -1050,6 +1047,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               collapsable={false}
               style={
                 {
+                  "marginLeft": 8,
                   "transform": [
                     {
                       "rotateZ": "1.5707963267948966rad",
@@ -1387,8 +1385,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 0.9,
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
@@ -1416,6 +1412,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               collapsable={false}
               style={
                 {
+                  "marginLeft": 8,
                   "transform": [
                     {
                       "rotateZ": "1.5707963267948966rad",
@@ -1756,8 +1753,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 [
                   {
                     "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 0.9,
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
@@ -1785,6 +1780,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               collapsable={false}
               style={
                 {
+                  "marginLeft": 8,
                   "transform": [
                     {
                       "rotateZ": "1.5707963267948966rad",

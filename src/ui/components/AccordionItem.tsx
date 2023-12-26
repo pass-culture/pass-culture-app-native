@@ -108,9 +108,11 @@ export const AccordionItem = ({
           {...accessibilityProps}>
           <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
             <Title>{title}</Title>
-            <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
+            <StyledArrowAnimatedView
+              style={{ transform: [{ rotateZ: arrowAngle }] }}
+              testID="accordionArrow">
               <ArrowNext />
-            </Animated.View>
+            </StyledArrowAnimatedView>
           </View>
         </StyledTouchableOpacity>
       </SwitchContainer>
@@ -161,8 +163,10 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({ flex: 1, ...touchableFocusOutline(theme, isFocus) }))
 
-const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({
-  flex: '0.9',
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({ flexShrink: 1 })
+
+const StyledArrowAnimatedView = styled(Animated.View)({
+  marginLeft: getSpacing(2),
 })
 
 const StyledAnimatedView = styled(Animated.View)({ overflow: 'hidden' })
