@@ -23,10 +23,10 @@ export const useSameArtistPlaylist = ({
     () => {
       return fetchOffersByArtist({ artists, ean, searchGroupName, venueLocation })
     },
-    { enabled: !!netInfo.isConnected }
+    { enabled: !!netInfo.isConnected, initialData: [] }
   )
 
-  const hits = data?.map(transformHits) as HitOfferWithArtistAndEan[]
+  const sameArtistPlaylist = data?.map(transformHits) as HitOfferWithArtistAndEan[]
 
-  return { sameArtistPlaylist: hits, refetch }
+  return { sameArtistPlaylist, refetchSameArtistPlaylist: refetch }
 }

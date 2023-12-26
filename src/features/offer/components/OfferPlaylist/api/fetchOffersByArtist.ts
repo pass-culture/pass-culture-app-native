@@ -13,8 +13,8 @@ type BuildAlgoliaFilterType = {
 }
 
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
-  searchGroupName: SearchGroupNameEnumv2 | undefined
-  venueLocation: Coordinates | undefined
+  searchGroupName: SearchGroupNameEnumv2
+  venueLocation: Coordinates
 }
 
 export type HitOfferWithArtistAndEan = Offer & {
@@ -50,7 +50,7 @@ export const fetchOffersByArtist = async ({
     return response.hits
   } catch (error) {
     captureAlgoliaError(error)
-    return [] as HitOfferWithArtistAndEan[]
+    return []
   }
 }
 

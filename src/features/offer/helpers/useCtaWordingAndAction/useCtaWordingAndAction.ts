@@ -37,7 +37,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 type UseGetCtaWordingAndActionProps = {
-  offer?: OfferResponse
+  offer: OfferResponse
   from?: Referrals
   searchId?: string
 }
@@ -244,7 +244,7 @@ export const getCtaWordingAndAction = ({
 
 export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) => {
   const { offer, from, searchId } = props
-  const offerId = offer?.id || 0
+  const offerId = offer.id
   const { isLoggedIn, user } = useAuthContext()
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
@@ -252,12 +252,12 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const apiRecoParams: RecommendationApiParams = route.params?.apiRecoParams
-    ? JSON.parse(route.params?.apiRecoParams)
+  const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
+    ? JSON.parse(route.params.apiRecoParams)
     : undefined
-  const playlistType = route.params?.playlistType
-  const fromOfferId = route.params?.fromOfferId
-  const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
+  const playlistType = route.params.playlistType
+  const fromOfferId = route.params.fromOfferId
+  const fromMultivenueOfferId = route.params.fromMultivenueOfferId
 
   const { refetch: getBookings } = useBookings()
 
@@ -293,8 +293,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const { data: booking } = useOngoingOrEndedBooking(getBookingOfferId(offerId, bookedOffers) ?? 0)
-
-  if (!offer) return
 
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
