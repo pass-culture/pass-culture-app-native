@@ -3037,7 +3037,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3114,7 +3115,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3191,7 +3193,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3268,7 +3271,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3345,7 +3349,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3422,7 +3427,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3499,7 +3505,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Réalisé
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3564,11 +3571,11 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             >
               Formation du pôle Communication, Marketing, Recherche
               <Text
-                done={false}
+                done={true}
                 style={
                   [
                     {
-                      "color": "#161617",
+                      "color": "#15884f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -3576,7 +3583,8 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   ]
                 }
               >
-                 - Prochainement
+                 - 
+                Réalisé
               </Text>
             </Text>
           </View>
@@ -3607,6 +3615,1039 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         }
       >
         Plan annuel 2023
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityRole="list"
+        style={
+          [
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Formation des équipes produit aux enjeux de l’accessibilité
+              <Text
+                done={true}
+                style={
+                  [
+                    {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap
+              <Text
+                done={true}
+                style={
+                  [
+                    {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Formation des développeurs du site 
+              <View>
+                <View
+                  accessibilityLabel="https://passculture.pro/"
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "opacity": 1,
+                      "top": 3,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="https://passculture.pro/"
+                >
+                  <View
+                    paddingForIcon={0}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "top": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={16}
+                      testID="button-icon"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                      typography="Caption"
+                    >
+                      https://passculture.pro/
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                done={true}
+                style={
+                  [
+                    {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Certification accessibilité de tous les développeurs internes
+              <Text
+                done={false}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                En cours
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Réalisation d’un audit d’accessibilité du site 
+              <View>
+                <View
+                  accessibilityLabel="https://passculture.pro/"
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "opacity": 1,
+                      "top": 3,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="https://passculture.pro/"
+                >
+                  <View
+                    paddingForIcon={0}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "top": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={16}
+                      testID="button-icon"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                      typography="Caption"
+                    >
+                      https://passculture.pro/
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                done={true}
+                style={
+                  [
+                    {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Création d’un partenariat avec les Maisons Départementales des Personnes Handicapées
+              <Text
+                done={false}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                En cours
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Création d’un groupe de jeunes utilisateurs porteurs de handicap, pour comprendre leur utilisation et leurs pratiques de l’application et du dispositif sur le long terme
+              <Text
+                done={false}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                En cours
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Maquettage d’un nouveau site
+                 
+                <View>
+                  <View
+                    accessibilityLabel="https://pass.culture.fr/"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "top": 3,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="https://pass.culture.fr/"
+                  >
+                    <View
+                      paddingForIcon={0}
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                            "top": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={16}
+                        testID="button-icon"
+                        width={16}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#eb0055",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        typography="Caption"
+                      >
+                        https://pass.culture.fr/
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                 
+                100% accessible
+                <Text
+                  done={false}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                   - 
+                  En cours
+                </Text>
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels
+              <Text
+                done={false}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                En cours
+              </Text>
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 24,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Plan annuel 2024
       </Text>
       <View
         numberOfSpaces={6}

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { ActionPlanTag } from './ActionPlanTag'
+import { ActionPlanStatus, ActionPlanTag } from './ActionPlanTag'
 
 const meta: ComponentMeta<typeof ActionPlanTag> = {
   title: 'features/profile/buttons/ActionPlanTag',
@@ -14,7 +14,12 @@ const Template: ComponentStory<typeof ActionPlanTag> = (props) => <ActionPlanTag
 export const Default = Template.bind({})
 Default.args = {}
 
-export const NotDone = Template.bind({})
-NotDone.args = {
-  done: false,
+export const Ongoing = Template.bind({})
+Ongoing.args = {
+  status: ActionPlanStatus.ONGOING,
+}
+
+export const ToDo = Template.bind({})
+ToDo.args = {
+  status: ActionPlanStatus.TODO,
 }
