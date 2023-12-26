@@ -17,7 +17,7 @@ appId: com.google.android.gm
 - tapOn: "Rechercher dans les messages"
 
 #- inputText: "Code de validation du telephone"
-- inputText: ${MESSAGE}
+- inputText: ${MESSAGE_CODE_VALIDATION_TELEPHONE}
 - scrollUntilVisible:
     element: "Code de validation du téléphone"
     direction: DOWN

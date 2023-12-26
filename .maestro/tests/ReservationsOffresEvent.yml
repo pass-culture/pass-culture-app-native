@@ -123,8 +123,6 @@ appId: ${APP_ID}
       point: "49%,32%"
 - tapOn:
       point: "50%,34%"
-
-#TODO trouver une solution de ne pas passer par la position - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"
 - tapOn: "23"
