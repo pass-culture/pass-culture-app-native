@@ -12,12 +12,14 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
-import { useOfferBodyData } from 'features/offer/helpers/useOfferBodyData/useOfferBodyData'
+import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
+import { getFormattedDates, capitalizeFirstLetter } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Offer, RecommendationApiParams } from 'shared/offer/types'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -51,18 +53,16 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { user } = useAuthContext()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const { geolocPosition } = useLocation()
+  const mapping = useSubcategoriesMapping()
+  const { categoryId, isEvent, appLabel: categoryLabel } = mapping[offer.subcategoryId]
 
-  const {
-    isMultivenueCompatibleOffer,
-    categoryId,
-    appLabel,
-    showVenueBanner,
-    fullAddress,
-    capitalizedFormattedDate,
-    shouldDisplayEventDate,
-    shouldShowAccessibility,
-    venueSectionTitle,
-  } = useOfferBodyData({ offer })
+  const dates = extractStockDates(offer)
+  const formattedDate = getFormattedDates(dates)
+  const capitalizedFormattedDateEvent = capitalizeFirstLetter(formattedDate)
+
+  const shouldShowAccessibility = Object.values(offer.accessibility).some(
+    (value) => value !== undefined && value !== null
+  )
 
   const {
     getPositionOnLayout: setAccessibilityAccordionPosition,
@@ -85,7 +85,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero imageUrl={offer.image?.url} type="offer" categoryId={categoryId || null} />
+      <Hero imageUrl={offer.image?.url} type="offer" categoryId={categoryId} />
       <Spacer.Column numberOfSpaces={4} />
       <LocationCaption venue={offer.venue} isDigital={offer.isDigital} />
       <Spacer.Column numberOfSpaces={2} />
@@ -102,25 +102,18 @@ export const OfferBody: FunctionComponent<Props> = ({
       <OfferIconCaptions
         isDuo={offer.isDuo}
         stocks={offer.stocks}
-        categoryId={categoryId || null}
-        label={appLabel}
+        categoryId={categoryId}
+        label={categoryLabel}
       />
       <OfferPartialDescription description={offer.description ?? ''} id={offer.id} />
       <Spacer.Column numberOfSpaces={4} />
 
-      <SectionWithDivider visible={shouldDisplayEventDate} margin>
+      <SectionWithDivider visible={!!capitalizedFormattedDateEvent} margin>
         <StyledTitle4>Quand&nbsp;?</StyledTitle4>
-        <SectionBody>{capitalizedFormattedDate}</SectionBody>
+        <SectionBody>{capitalizedFormattedDateEvent}</SectionBody>
       </SectionWithDivider>
 
-      <OfferPlace
-        offer={offer}
-        geolocPosition={geolocPosition}
-        isMultivenueCompatibleOffer={isMultivenueCompatibleOffer}
-        showVenueBanner={showVenueBanner}
-        fullAddress={fullAddress}
-        venueSectionTitle={venueSectionTitle}
-      />
+      <OfferPlace offer={offer} geolocPosition={geolocPosition} isEvent={isEvent} />
 
       <SectionWithDivider visible margin>
         <OfferMessagingApps offer={offer} />

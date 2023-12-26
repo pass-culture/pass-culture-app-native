@@ -6,13 +6,14 @@ import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOff
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
+import { getFormattedAddress } from 'features/offer/helpers/getFormattedAddress/getFormattedAddress'
+import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position } from 'libs/location'
 import { WhereSection } from 'libs/location/components/WhereSection'
+import { useMultivenueOffer } from 'shared/multivenueOffer/useMultivenueOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useModal } from 'ui/components/modals/useModal'
@@ -22,22 +23,16 @@ import { Spacer } from 'ui/theme'
 export type OfferPlaceProps = {
   offer: OfferResponse
   geolocPosition: Position
-  isMultivenueCompatibleOffer: boolean
-  showVenueBanner: boolean
-  fullAddress: string
-  venueSectionTitle: string
+  isEvent: boolean
 }
 
-export function OfferPlace({
-  offer,
-  geolocPosition,
-  isMultivenueCompatibleOffer,
-  showVenueBanner,
-  fullAddress,
-  venueSectionTitle,
-}: Readonly<OfferPlaceProps>) {
+export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
-  const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
+  const showVenueBanner = offer.venue.isPermanent === true
+  const fullAddress = getFormattedAddress(offer.venue, showVenueBanner)
+
+  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
+
   const handleBeforeNavigateToItinerary = useCallback(() => {
     analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
   }, [offer.id])
@@ -48,9 +43,7 @@ export function OfferPlace({
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const shouldFetchSearchVenueOffers = Boolean(
-    enableMultivenueOffer && isMultivenueCompatibleOffer && offer.extraData?.ean
-  )
+  const { shouldFetchSearchVenueOffers, enableMultivenueOffer } = useMultivenueOffer(offer)
 
   const {
     hasNextPage,

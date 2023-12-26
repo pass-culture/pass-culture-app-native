@@ -68,14 +68,11 @@ const useFeatureFlagSpy = jest
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   geolocPosition: null,
-  isMultivenueCompatibleOffer: false,
-  showVenueBanner: true,
-  fullAddress: 'Rue de la paix, 75000 Paris',
-  venueSectionTitle: 'Lieu de retrait',
+  isEvent: false,
 }
 
 describe('<OfferPlace />', () => {
-  beforeAll(() => {
+  beforeEach(() => {
     mockdate.set(new Date('2021-01-01'))
     mockVenueList = []
     mockNbVenueItems = 0
@@ -192,7 +189,6 @@ describe('<OfferPlace />', () => {
       mockVenueList = offerVenues
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
@@ -208,7 +204,6 @@ describe('<OfferPlace />', () => {
       mockVenueList = []
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
@@ -222,7 +217,6 @@ describe('<OfferPlace />', () => {
     it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
       })
 
@@ -234,7 +228,6 @@ describe('<OfferPlace />', () => {
       mockVenueList = offerVenues
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -250,7 +243,6 @@ describe('<OfferPlace />', () => {
       mockVenueList = []
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -267,7 +259,6 @@ describe('<OfferPlace />', () => {
 
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
       })
 
@@ -275,13 +266,13 @@ describe('<OfferPlace />', () => {
     })
 
     it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
-      renderOfferPlace({ ...offerPlaceProps, isMultivenueCompatibleOffer: true })
+      renderOfferPlace(offerPlaceProps)
 
       expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display old venue section', () => {
-      renderOfferPlace({ ...offerPlaceProps, isMultivenueCompatibleOffer: true })
+      renderOfferPlace(offerPlaceProps)
 
       expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
     })
@@ -290,7 +281,6 @@ describe('<OfferPlace />', () => {
       it('With "Lieu de retrait" in title by default', () => {
         renderOfferPlace({
           ...offerPlaceProps,
-          isMultivenueCompatibleOffer: true,
           offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
@@ -311,7 +301,6 @@ describe('<OfferPlace />', () => {
 
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -343,7 +332,6 @@ describe('<OfferPlace />', () => {
 
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -368,7 +356,6 @@ describe('<OfferPlace />', () => {
 
       renderOfferPlace({
         ...offerPlaceProps,
-        isMultivenueCompatibleOffer: true,
         offer: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -385,23 +372,9 @@ describe('<OfferPlace />', () => {
   })
 })
 
-const renderOfferPlace = ({
-  offer,
-  geolocPosition,
-  isMultivenueCompatibleOffer,
-  showVenueBanner,
-  fullAddress,
-  venueSectionTitle,
-}: OfferPlaceProps) =>
+const renderOfferPlace = ({ offer, geolocPosition, isEvent }: OfferPlaceProps) =>
   render(
     reactQueryProviderHOC(
-      <OfferPlace
-        offer={offer}
-        geolocPosition={geolocPosition}
-        isMultivenueCompatibleOffer={isMultivenueCompatibleOffer}
-        showVenueBanner={showVenueBanner}
-        fullAddress={fullAddress}
-        venueSectionTitle={venueSectionTitle}
-      />
+      <OfferPlace offer={offer} geolocPosition={geolocPosition} isEvent={isEvent} />
     )
   )
