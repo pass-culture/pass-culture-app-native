@@ -25,11 +25,11 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${NOM_OFFRE_PHYSIQUE}
+- inputText: ${PHYSICAL_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${NOM_OFFRE_PHYSIQUE}
+      visible: ${PHYSICAL_OFFER}
     file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
@@ -58,11 +58,11 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${NOM_OFFRE_PHYSIQUE}
+- inputText: ${PHYSICAL_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${NOM_OFFRE_PHYSIQUE}
+      visible: ${PHYSICAL_OFFER}
     file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation

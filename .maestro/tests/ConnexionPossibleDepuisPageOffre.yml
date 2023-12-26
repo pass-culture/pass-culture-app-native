@@ -15,7 +15,7 @@ appId: ${APP_ID}
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 - tapOn: "Films, séries, cinéma"
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par le nom de l'aoffre
-- tapOn: ${NOM_OFFRE_PHYSIQUE}
+- tapOn: ${PHYSICAL_OFFER}
 - tapOn:
     id: "Réserver l’offre"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConnect.yml
