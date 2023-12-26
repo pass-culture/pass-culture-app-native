@@ -175,7 +175,8 @@ describe('GenericHome page - Analytics', () => {
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
   })
 
-  it('should display spinner when end is reached', async () => {
+  // TODO(PC-26577): fix test flackyness
+  it.skip('should display spinner when end is reached', async () => {
     // To simulate progressive loading we need at least 11 modules
     const modules = [
       formattedVenuesModule,

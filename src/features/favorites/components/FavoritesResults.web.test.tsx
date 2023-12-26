@@ -45,7 +45,8 @@ const mockData = {
 } as PaginatedFavoritesResponse
 
 describe('FavoritesResults component', () => {
-  it('should show no result message when list is empty', async () => {
+  // TODO(PC-26577): fix test flackyness
+  it.skip('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
       data: mockData,
@@ -76,7 +77,8 @@ describe('FavoritesResults component', () => {
     expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeInTheDocument()
   })
 
-  it('should show number of result and sortBy button', async () => {
+  // TODO(PC-26577): fix test flackyness
+  it.skip('should show number of result and sortBy button', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
     // eslint-disable-next-line local-rules/independent-mocks

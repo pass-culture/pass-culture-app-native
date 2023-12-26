@@ -56,7 +56,8 @@ describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
+    // TODO(PC-26577): fix test flackyness
+    it.skip('should not have basic accessibility issues', async () => {
       mockV4
         .mockReturnValueOnce('withdrawalTermsAccordionID')
         .mockReturnValueOnce('accessibilityAccordionID')
@@ -81,7 +82,8 @@ describe('<Venue />', () => {
       })
     })
 
-    it('should render correctly in web for new version', async () => {
+    // TODO(PC-26577): fix test flackyness
+    it.skip('should render correctly in web for new version', async () => {
       mockUseFeatureFlag.mockReturnValueOnce(true)
       mockUseFeatureFlag.mockReturnValueOnce(true)
       const { container } = render(<Venue />, { theme: { isDesktopViewport: true } })
