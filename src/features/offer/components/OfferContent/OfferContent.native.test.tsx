@@ -30,13 +30,11 @@ const useSimilarOffersSpy = jest
   .mockImplementation()
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-const useSameArtistPlaylistSpy = jest
-  .spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist')
-  .mockImplementation()
-  .mockReturnValue({
-    sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-    refetch: jest.fn(),
-  })
+const mockRefetchSameArtistPlaylist = jest.fn()
+jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockReturnValue({
+  sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+  refetchSameArtistPlaylist: mockRefetchSameArtistPlaylist,
+})
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
@@ -45,7 +43,7 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
  * it is an alternative solution which allows you to replace the scroll simulation
  * it's not optimal, if you have better idea don't hesitate to update
  */
-const mockInView = jest.fn()
+const mockInView = mockRefetchSameArtistPlaylist
 jest.mock('react-native-intersection-observer', () => {
   const InView = (props: InViewProps) => {
     mockInView.mockImplementation(props.onChange)
@@ -107,8 +105,8 @@ describe('<OfferContent />', () => {
   beforeEach(() => {
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
+      setIsLoggedIn: mockRefetchSameArtistPlaylist,
+      refetchUser: mockRefetchSameArtistPlaylist,
       isUserLoading: false,
     })
   })
@@ -129,8 +127,8 @@ describe('<OfferContent />', () => {
   it('should log analytics when display authentication modal', async () => {
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
+      setIsLoggedIn: mockRefetchSameArtistPlaylist,
+      refetchUser: mockRefetchSameArtistPlaylist,
       isUserLoading: false,
     }))
 
@@ -375,12 +373,12 @@ describe('<OfferContent />', () => {
       ean: '9782723492607',
     }
 
-    it('should call refetch when artist and EAN are provided', async () => {
+    it('should call refetch when artist and EAN are provided because playlist not refresh correctly when navigate to an other offer', async () => {
       renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
 
       await act(async () => {})
 
-      expect(useSameArtistPlaylistSpy.mock.results[0].value.refetch).toHaveBeenCalledTimes(1)
+      expect(mockRefetchSameArtistPlaylist).toHaveBeenCalledTimes(1)
     })
 
     it('should not call refetch when artist and EAN are not provided', async () => {
@@ -388,7 +386,7 @@ describe('<OfferContent />', () => {
 
       await act(async () => {})
 
-      expect(useSameArtistPlaylistSpy.mock.results[0].value.refetch).not.toHaveBeenCalled()
+      expect(mockRefetchSameArtistPlaylist).not.toHaveBeenCalled()
     })
 
     it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {

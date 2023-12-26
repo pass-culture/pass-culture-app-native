@@ -1,18 +1,24 @@
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum, SubcategoryIdEnumv2 } from 'api/gen'
+import { eventMonitoring } from 'libs/monitoring'
 
 export const getSearchGroupAndNativeCategoryFromSubcategoryId = (
-  data?: SubcategoriesResponseModelv2,
-  subcategoryId?: SubcategoryIdEnum
+  data: SubcategoriesResponseModelv2,
+  subcategoryId: SubcategoryIdEnum
 ) => {
-  if (!data || !subcategoryId) {
-    return
-  }
-
   const subcategory = data.subcategories.find(
     (subcategory) => subcategory.id === (subcategoryId as unknown as SubcategoryIdEnumv2)
   )
 
-  if (!subcategory) return
+  if (!subcategory) {
+    eventMonitoring.captureException('Subcategory not found', {
+      extra: {
+        subcategoryId,
+        subcategories: data.subcategories,
+      },
+    })
+
+    throw new Error('Subcategory not found')
+  }
 
   return {
     searchGroupName: subcategory.searchGroupName,

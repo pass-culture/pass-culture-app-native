@@ -10,8 +10,8 @@ import { Offer, RecommendationApiParams } from 'shared/offer/types'
 
 type Props = {
   offer: OfferResponse
-  offerSearchGroup?: SearchGroupNameEnumv2
-  searchGroupList?: SearchGroupResponseModelv2[]
+  offerSearchGroup: SearchGroupNameEnumv2
+  searchGroupList: SearchGroupResponseModelv2[]
 }
 
 type UseOfferPlaylistType = {
@@ -35,7 +35,7 @@ export const useOfferPlaylist = ({
   const artists = offer.extraData?.author
   const ean = offer.extraData?.ean
   const venueLocation = offer.venue.coordinates
-  const { sameArtistPlaylist, refetch: refetchSameArtistPlaylist } = useSameArtistPlaylist({
+  const { sameArtistPlaylist, refetchSameArtistPlaylist } = useSameArtistPlaylist({
     artists,
     ean,
     searchGroupName: offerSearchGroup,
@@ -43,18 +43,21 @@ export const useOfferPlaylist = ({
   })
 
   const { latitude, longitude } = geolocPosition ?? {}
-  const roundedPosition: Position = useMemo(() => {
-    return {
+  const roundedPosition: Position = useMemo(
+    () => ({
       latitude: Number(latitude?.toFixed(3)),
       longitude: Number(longitude?.toFixed(3)),
-    }
-  }, [latitude, longitude])
+    }),
+    [latitude, longitude]
+  )
+
+  const position = geolocPosition ? roundedPosition : undefined
 
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
       offerId: offer.id,
-      position: geolocPosition ? roundedPosition : undefined,
-      categoryIncluded: offerSearchGroup ?? SearchGroupNameEnumv2.NONE,
+      position,
+      categoryIncluded: offerSearchGroup,
     })
 
   const {
@@ -62,8 +65,8 @@ export const useOfferPlaylist = ({
     apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
     offerId: offer.id,
-    position: geolocPosition ? roundedPosition : undefined,
-    categoryExcluded: offerSearchGroup ?? SearchGroupNameEnumv2.NONE,
+    position,
+    categoryExcluded: offerSearchGroup,
     searchGroupList,
   })
 

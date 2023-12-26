@@ -45,7 +45,7 @@ export interface RecommendationApiParams {
 export type SimilarOfferPlaylist = {
   type: PlaylistType
   title: string
+  handleChangePlaylistDisplay: (inView: boolean) => void
   offers?: Offer[]
   apiRecoParams?: RecommendationApiParams
-  handleChangePlaylistDisplay: (inView: boolean) => void
 }

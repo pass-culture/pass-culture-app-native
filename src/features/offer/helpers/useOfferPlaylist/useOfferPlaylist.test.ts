@@ -40,7 +40,7 @@ const useSameArtistPlaylistSpy = jest
   .mockImplementation()
   .mockReturnValue({
     sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-    refetch: jest.fn(),
+    refetchSameArtistPlaylist: jest.fn(),
   })
 
 jest.mock('libs/location')

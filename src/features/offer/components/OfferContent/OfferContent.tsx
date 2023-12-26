@@ -35,6 +35,8 @@ const getPlaylistsHeight = (numberOfPlaylists: number) => {
 
 const isWeb = Platform.OS === 'web'
 
+const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
+
 export function OfferContent({
   offer,
   offerNativeCategory,
@@ -87,7 +89,7 @@ export function OfferContent({
     if (shouldTriggerBatchSurveyEvent) {
       timeoutId = setTimeout(() => {
         trackBatchEvent()
-      }, 5000)
+      }, DELAY_BEFORE_CONSIDERING_PAGE_SEEN)
     }
 
     return () => clearTimeout(timeoutId)

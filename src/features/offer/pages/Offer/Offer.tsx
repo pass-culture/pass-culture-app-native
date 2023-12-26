@@ -14,10 +14,12 @@ export function Offer() {
   const { data: offer } = useOffer({ offerId })
   const { data: subcategories } = useSubcategories()
 
-  const { searchGroupName, nativeCategory } =
-    getSearchGroupAndNativeCategoryFromSubcategoryId(subcategories, offer?.subcategoryId) || {}
+  if (!offer || !subcategories) return null
 
-  if (!offer || !searchGroupName || !nativeCategory || !subcategories) return null
+  const { searchGroupName, nativeCategory } = getSearchGroupAndNativeCategoryFromSubcategoryId(
+    subcategories,
+    offer.subcategoryId
+  )
 
   return (
     <OfferContent
