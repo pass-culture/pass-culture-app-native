@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
@@ -25,7 +24,7 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venue: Venue = mockedSuggestedVenues[0]
 
-const mockSearchState: SearchState = {
+let mockSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   venue,
@@ -206,6 +205,15 @@ jest.mock('libs/location/LocationWrapper', () => ({
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
+  afterEach(() => {
+    mockSearchState = {
+      ...initialSearchState,
+      offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+      venue,
+      priceRange: [0, 20],
+    }
+  })
+
   it('should render Search', async () => {
     render(<Search />)
 
@@ -260,7 +268,7 @@ describe('<Search/>', () => {
 
   describe('When search view is suggestions', () => {
     beforeEach(() => {
-      useRoute.mockReturnValue({ params: { view: SearchView.Suggestions } })
+      mockSearchState = { ...mockSearchState, view: SearchView.Suggestions }
     })
 
     it('should display offer suggestions', async () => {
@@ -346,7 +354,7 @@ describe('<Search/>', () => {
       expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
     })
 
-    describe('should navigate and execute the search with the history item', () => {
+    describe('should update state and execute the search with the history item', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(<Search />)
@@ -354,9 +362,9 @@ describe('<Search/>', () => {
 
         fireEvent.press(screen.getByText('manga'))
 
-        expect(navigate).toHaveBeenNthCalledWith(
-          1,
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             query: 'manga',
             view: SearchView.Results,
@@ -366,8 +374,8 @@ describe('<Search/>', () => {
             offerGenreTypes: undefined,
             offerNativeCategories: undefined,
             offerCategories: [],
-          })
-        )
+          },
+        })
       })
 
       it('When it has category and native category', async () => {
@@ -377,9 +385,9 @@ describe('<Search/>', () => {
 
         fireEvent.press(screen.getByText('tolkien'))
 
-        expect(navigate).toHaveBeenNthCalledWith(
-          1,
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             query: 'tolkien',
             view: SearchView.Results,
@@ -389,8 +397,8 @@ describe('<Search/>', () => {
             offerGenreTypes: undefined,
             offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES],
             offerCategories: [SearchGroupNameEnumv2.LIVRES],
-          })
-        )
+          },
+        })
       })
 
       it('When it has only a category', async () => {
@@ -400,9 +408,9 @@ describe('<Search/>', () => {
 
         fireEvent.press(screen.getByText('foresti'))
 
-        expect(navigate).toHaveBeenNthCalledWith(
-          1,
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             query: 'foresti',
             view: SearchView.Results,
@@ -412,8 +420,8 @@ describe('<Search/>', () => {
             offerGenreTypes: undefined,
             offerNativeCategories: undefined,
             offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
-          })
-        )
+          },
+        })
       })
     })
   })
@@ -421,7 +429,8 @@ describe('<Search/>', () => {
   it.each([SearchView.Landing, SearchView.Results])(
     'should not display suggestions when search view is not suggestions',
     async (view) => {
-      useRoute.mockReturnValueOnce({ params: { view } })
+      mockSearchState = { ...mockSearchState, view }
+
       render(<Search />)
       await act(async () => {})
 
@@ -441,8 +450,8 @@ describe('<Search/>', () => {
   })
 
   describe('When search not executed', () => {
-    beforeAll(() => {
-      useRoute.mockReturnValue({ params: { view: SearchView.Landing } })
+    beforeEach(() => {
+      mockSearchState = { ...mockSearchState, view: SearchView.Landing }
     })
 
     it('should display categories buttons', async () => {
@@ -471,8 +480,8 @@ describe('<Search/>', () => {
   })
 
   describe('When search executed', () => {
-    beforeAll(() => {
-      useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'la fnac' } })
+    beforeEach(() => {
+      mockSearchState = { ...mockSearchState, view: SearchView.Results, query: 'la fnac' }
     })
 
     it('should show search results', async () => {
@@ -489,24 +498,9 @@ describe('<Search/>', () => {
       fireEvent.press(searchFilterButton)
 
       const navScreen = 'SearchFilter'
-      const params = { query: 'la fnac', view: SearchView.Results }
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith(navScreen, params)
-      })
-    })
-
-    it('should reinitialize the filters from the current one', async () => {
-      render(<Search />)
-
-      const searchFilterButton = screen.getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
-      await act(async () => {
-        fireEvent.press(searchFilterButton)
-      })
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: { query: 'la fnac', view: SearchView.Results },
+        expect(navigate).toHaveBeenCalledWith(navScreen, undefined)
       })
     })
   })

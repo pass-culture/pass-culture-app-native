@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { navigate, useRoute, useNavigationState } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useNavigationState } from '__mocks__/@react-navigation/native'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -14,7 +12,7 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
-const mockSearchState = initialSearchState
+let mockSearchState = initialSearchState
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
 const mockStateDispatch = jest.fn()
@@ -55,12 +53,13 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 describe('<SearchFilter/>', () => {
   afterEach(() => {
     mockPosition = DEFAULT_POSITION
+    mockSearchState = initialSearchState
   })
 
   it('should render correctly', async () => {
-    mockSearchState.locationFilter = {
-      locationType: LocationMode.AROUND_ME,
-      aroundRadius: DEFAULT_RADIUS,
+    mockSearchState = {
+      ...mockSearchState,
+      locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
     }
     renderSearchFilter()
 
@@ -69,51 +68,8 @@ describe('<SearchFilter/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should load url params when opening the general filters page', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
-    })
-    renderSearchFilter()
-    await act(async () => {})
-
-    expect(mockStateDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
-    })
-  })
-
-  describe('should navigate on search results with the current search state', () => {
-    it('when pressing go back', async () => {
-      useRoute.mockReturnValueOnce({ params: initialSearchState })
-      renderSearchFilter()
-
-      await act(async () => {
-        fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { ...initialSearchState, view: SearchView.Results },
-        screen: 'Search',
-      })
-    })
-
-    it('when pressing Rechercher', async () => {
-      renderSearchFilter()
-
-      await act(async () => {
-        fireEvent.press(screen.getByText('Rechercher'))
-      })
-
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { ...mockSearchState, view: SearchView.Results },
-        screen: 'Search',
-      })
-    })
-  })
-
   describe('should update the SearchState, but keep the query, when pressing the reset button, and position', () => {
     it('is not null', async () => {
-      mockPosition = DEFAULT_POSITION
       renderSearchFilter()
 
       await act(async () => {

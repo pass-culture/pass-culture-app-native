@@ -1,4 +1,4 @@
-import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -6,7 +6,7 @@ import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -94,12 +94,11 @@ export const SearchResults: React.FC = () => {
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
-  const { params } = useRoute<UseRouteType<'Search'>>()
   // TODO(PC-25239): after removing location feature flag this should be deleted
   const { section } = useLocationType(searchState)
   // TODO(PC-25239): after removing location feature flag this should be deleted
   const { label: locationLabel } = useLocationChoice(section)
-  const appliedFilters = useAppliedFilters(params ?? searchState)
+  const appliedFilters = useAppliedFilters(searchState)
   const {
     visible: categoriesModalVisible,
     showModal: showCategoriesModal,
@@ -165,7 +164,7 @@ export const SearchResults: React.FC = () => {
       const [lastPage] = data.pages.slice(-1)
 
       if (lastPage.offers.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.offers.page, params?.searchId)
+        analytics.logSearchScrollToPage(lastPage.offers.page, searchState.searchId)
       }
       fetchNextPage()
     }

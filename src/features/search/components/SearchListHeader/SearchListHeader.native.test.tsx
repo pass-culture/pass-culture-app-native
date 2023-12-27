@@ -2,8 +2,10 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { SearchState } from 'features/search/types'
+import { Venue } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/location'
@@ -18,11 +20,13 @@ const searchId = uuidv4()
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
+let mockSelectedLocationMode = LocationMode.EVERYWHERE
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     geolocPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    selectedLocationMode: mockSelectedLocationMode,
   }),
 }))
 
@@ -185,11 +189,22 @@ const kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
+let mockSearchState: SearchState = initialSearchState
+
+const mockDispatch = jest.fn()
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+}))
+
 describe('<SearchListHeader />', () => {
+  afterEach(() => {
+    mockSearchState = initialSearchState
+    mockSelectedLocationMode = LocationMode.EVERYWHERE
+  })
+
   it('should display the number of results', () => {
-    useRoute.mockReturnValueOnce({
-      params: { searchId },
-    })
+    mockSearchState = { ...mockSearchState, searchId }
+
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
     expect(screen.getByText('10 résultats')).toBeOnTheScreen()
@@ -267,9 +282,8 @@ describe('<SearchListHeader />', () => {
   `(
     'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
     ({ locationFilter, isGeolocated }) => {
-      useRoute.mockReturnValueOnce({
-        params: { searchId, locationFilter },
-      })
+      mockSearchState = { ...mockSearchState, searchId, locationFilter }
+      mockSelectedLocationMode = locationFilter?.locationType ?? LocationMode.EVERYWHERE
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
@@ -281,18 +295,14 @@ describe('<SearchListHeader />', () => {
   )
 
   it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isGeolocated param = true', () => {
-    useRoute.mockReturnValueOnce({
-      params: { searchId, venue: mockVenues[0] },
-    })
+    mockSearchState = { ...mockSearchState, searchId, venue: mockVenues[0] as unknown as Venue }
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
     expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
   })
 
   it('should trigger AllTilesSeen log when there are venues', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { searchId },
-    })
+    mockSearchState = { ...mockSearchState, searchId }
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
     const scrollView = screen.getByTestId('search-venue-list')
@@ -329,9 +339,7 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should not trigger AllTilesSeen log when there are not venues', () => {
-    useRoute.mockReturnValueOnce({
-      params: { searchId },
-    })
+    mockSearchState = { ...mockSearchState, searchId }
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
 
     expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()

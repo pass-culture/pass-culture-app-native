@@ -1,7 +1,6 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
-import omit from 'lodash/omit'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-core'
 import {
   Keyboard,
@@ -15,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigationRef } from 'features/navigation/navigationRef'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Buttons/HiddenNavigateToSuggestionsButton'
@@ -58,11 +57,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 }) => {
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const { isDesktopViewport } = useTheme()
-  const { params } = useRoute<UseRouteType<'Search'>>()
   const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
-  const [query, setQuery] = useState<string>(params?.query ?? '')
+  const [query, setQuery] = useState<string>(searchState.query)
   const { section, locationType } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
@@ -80,7 +78,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { data: appSettings } = useSettingsContext()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete
   const isLandingOrResults =
-    params === undefined || params.view === SearchView.Landing || params.view === SearchView.Results
+    searchState.view === SearchView.Landing || searchState.view === SearchView.Results
 
   const pushWithSearch = useCallback(
     (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
@@ -96,7 +94,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   )
 
   const hasEditableSearchInput =
-    params?.view === SearchView.Suggestions || params?.view === SearchView.Results
+    searchState.view === SearchView.Suggestions || searchState.view === SearchView.Results
 
   const hasPosition = useHasPosition()
 
@@ -125,15 +123,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   useEffect(() => {
     // If the user select a value in autocomplete list it must be display in search input
-    if (params?.query) setQuery(params.query)
-  }, [params?.query])
+    if (searchState.query !== query) setQuery(searchState.query)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchState.query])
 
   useEffect(() => {
     if (appEnableAutocomplete === undefined) return
-    if (!params?.noFocus && params?.view === SearchView.Results && !appEnableAutocomplete) {
+    if (!searchState.noFocus && searchState.view === SearchView.Results && !appEnableAutocomplete) {
       inputRef.current?.focus()
     }
-  }, [appEnableAutocomplete, params?.query, params?.view, params?.noFocus])
+  }, [appEnableAutocomplete, searchState.query, searchState.view, searchState.noFocus])
 
   const resetQuery = useCallback(() => {
     inputRef.current?.focus()
@@ -152,20 +151,21 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // when pressing Voir toutes les offres on venue page
     const isSearchPreviousRoute = getIsSearchPreviousRoute(
       navigationRef.getState().routes,
-      params?.previousView
+      searchState.previousView
     )
 
     if (isSearchPreviousRoute) {
       // Only close autocomplete list if open
-      const previousView = params?.previousView ? params?.previousView : SearchView.Landing
+      const { previousView, view } = searchState
       if (
-        params?.view === SearchView.Suggestions &&
+        view === SearchView.Suggestions &&
         previousView !== SearchView.Landing &&
         appEnableAutocomplete
       ) {
         return pushWithSearch({
-          ...params,
+          ...searchState,
           view: SearchView.Results,
+          previousView: view,
         })
       }
 
@@ -173,6 +173,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         {
           locationFilter: searchState.locationFilter,
           venue: searchState.venue,
+          previousView: view,
         },
         {
           reset: true,
@@ -184,15 +185,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     }
 
     setQuery('')
-  }, [
-    appEnableAutocomplete,
-    dispatch,
-    goBack,
-    searchState.locationFilter,
-    params,
-    pushWithSearch,
-    searchState.venue,
-  ])
+  }, [searchState, appEnableAutocomplete, pushWithSearch, dispatch, goBack])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -227,37 +220,28 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     ]
   )
 
-  const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
   const onFocus = useCallback(() => {
-    if (params?.view === SearchView.Suggestions && appEnableAutocomplete) return
+    if (searchState.view === SearchView.Suggestions && appEnableAutocomplete) return
 
     // Avoid the redirection on suggestions view when user is on a results view
     // (not useful in this case because we don't have suggestions)
     // or suggestions view if it's the current view when feature flag desactivated
     if (hasEditableSearchInput && !appEnableAutocomplete) return
 
-    searchInHistory(params?.query ?? '')
+    searchInHistory(searchState.query)
     pushWithSearch({
-      ...paramsWithoutView,
+      ...searchState,
       view: SearchView.Suggestions,
-      previousView: params?.view,
+      previousView: searchState.view,
     })
-  }, [
-    appEnableAutocomplete,
-    hasEditableSearchInput,
-    params?.query,
-    params?.view,
-    paramsWithoutView,
-    pushWithSearch,
-    searchInHistory,
-  ])
+  }, [appEnableAutocomplete, hasEditableSearchInput, pushWithSearch, searchInHistory, searchState])
 
   const showLocationButton = enableAppLocation
-    ? params?.view === SearchView.Results
-    : params === undefined || params.view === SearchView.Landing
+    ? searchState.view === SearchView.Results
+    : searchState.view === SearchView.Landing
 
   const disableInputClearButton =
-    params?.view === SearchView.Results && !isDesktopViewport && !!enableAppLocation
+    searchState.view === SearchView.Results && !isDesktopViewport && !!enableAppLocation
 
   return (
     <RowContainer>

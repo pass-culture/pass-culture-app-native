@@ -1,11 +1,11 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import { SearchState } from 'features/search/types'
+import { OfferGenreType, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia'
 import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -393,13 +393,12 @@ describe('<CategoriesModal/>', () => {
     })
 
     it('should filter on category, native category and genre/type then only on category with all native categories', async () => {
-      useRoute.mockReturnValueOnce({
-        params: {
-          offerCategories: [SearchGroupNameEnumv2.LIVRES],
-          offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-          offerGenreTypes: ['Bandes dessinées'],
-        },
-      })
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+        offerGenreTypes: ['Bandes dessinées'] as unknown as OfferGenreType[],
+      }
       renderCategories()
       fireEvent.press(screen.getByTestId('Revenir en arrière'))
       fireEvent.press(screen.getByTestId('Revenir en arrière'))

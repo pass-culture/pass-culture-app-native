@@ -112,12 +112,12 @@ exports[`SearchBox component should render SearchBox 1`] = `
           />
           <TextInput
             accessibilityDescribedBy="testUuidV4"
-            accessibilityHidden={false}
+            accessibilityHidden={true}
             autoCorrect={false}
             autoFocus={false}
             editable={true}
             enablesReturnKeyAutomatically={true}
-            focusable={true}
+            focusable={false}
             isEmpty={true}
             nativeID="testUuidV4"
             onBlur={[Function]}
@@ -149,6 +149,97 @@ exports[`SearchBox component should render SearchBox 1`] = `
             testID="searchInput"
             value=""
           />
+          <View
+            accessibilityLabel="Partout"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "height": "auto",
+                "justifyContent": "center",
+                "marginLeft": 8,
+                "marginRight": -8,
+                "maxWidth": 142,
+                "minHeight": 32,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
+              }
+            }
+            testID="Partout"
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={16}
+                testID="button-icon"
+                width={16}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              ellipsizeMode="tail"
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "marginLeft": 4,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Partout
+            </Text>
+          </View>
         </View>
       </View>
     </View>

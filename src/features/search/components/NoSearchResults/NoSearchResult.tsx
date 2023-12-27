@@ -1,9 +1,10 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -11,17 +12,17 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function NoSearchResult() {
+  const { searchState } = useSearch()
+
   const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'Search'>>()
-  const query = params?.query
 
   const onPressUpdateFilters = useCallback(() => {
-    navigate('SearchFilter', params ?? {})
-  }, [navigate, params])
+    navigate('SearchFilter', searchState)
+  }, [navigate, searchState])
 
   const mainTitle = 'Pas de résultat'
-  const mainTitleComplement = `pour "${query}"`
-  const descriptionErrorText = query
+  const mainTitleComplement = `pour "${searchState.query}"`
+  const descriptionErrorText = searchState.query
     ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
     : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
 
@@ -32,7 +33,7 @@ export function NoSearchResult() {
       </ContainerNoOffer>
       <ContainerText>
         <MainTitle>{mainTitle}</MainTitle>
-        {!!query && <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>}
+        {!!searchState.query && <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>}
         <DescriptionErrorTextContainer>
           <DescriptionErrorText accessibilityLiveRegion="assertive">
             {descriptionErrorText}
