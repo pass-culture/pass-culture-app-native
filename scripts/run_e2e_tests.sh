@@ -48,10 +48,7 @@ elif [ "$platform" = "web" ]; then
 fi
 
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
-physicalOffer=$(parse_env_variable PHYSICAL_OFFER .maestro/.env.secret)
-eventOffer=$(parse_env_variable EVENT_OFFER .maestro/.env.secret)
-messageCodeValidationTelephone=$(parse_env_variable MESSAGE_CODE_VALIDATION_TELEPHONE .maestro/.env.secret)
 
 ts-node -O '{"module": "commonjs"}' ./scripts/enableNativeRecaptcha.ts "$env" false
-maestro test -e APP_ID="$app_id" -e USERNAME="dev-tests-e2e@passculture.team" -e USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" -e NEW_USERNAME="dev-tests-e2e-new@passculture.team" -e NUMBER_PHONE="0607080910" -e PASSWORD="$password" -e PHYSICAL_OFFER="$physicalOffer" -e EVENT_OFFER="$eventOffer" -e MESSAGE_CODE_VALIDATION_TELEPHONE="$messageCodeValidationTelephone" "$tests_path"
+maestro test -e APP_ID="$app_id" -e USERNAME="dev-tests-e2e@passculture.team" -e USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" -e NEW_USERNAME="dev-tests-e2e-new@passculture.team" -e NUMBER_PHONE="0607080910" -e PASSWORD="$password" -e PHYSICAL_OFFER="OPSIS - 1 MOIS" -e EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" -e MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" "$tests_path"
 ts-node -O '{"module": "commonjs"}' ./scripts/enableNativeRecaptcha.ts "$env" true
