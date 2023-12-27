@@ -49,6 +49,6 @@ fi
 
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
-ts-node -O '{"module": "commonjs"}' ./scripts/enableNativeRecaptcha.ts "$env" false
-maestro test -e APP_ID="$app_id" -e USERNAME="dev-tests-e2e@passculture.team" -e USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" -e NEW_USERNAME="dev-tests-e2e-new@passculture.team" -e NUMBER_PHONE="0607080910" -e PASSWORD="$password" -e PHYSICAL_OFFER="OPSIS - 1 MOIS" -e EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" -e MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" "$tests_path"
-ts-node -O '{"module": "commonjs"}' ./scripts/enableNativeRecaptcha.ts "$env" true
+ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" false
+maestro test --env APP_ID="$app_id" --env USERNAME="dev-tests-e2e@passculture.team" --env USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" --env NEW_USERNAME="dev-tests-e2e-new@passculture.team" --env NUMBER_PHONE="0607080910" --env PASSWORD="$password" --env PHYSICAL_OFFER="OPSIS - 1 MOIS" --env EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" --env MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" "$tests_path"
+ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
