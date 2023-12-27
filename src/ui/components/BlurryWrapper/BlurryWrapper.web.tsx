@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
 export const BlurryWrapper = styled.View({
-  backdropFilter: 'blur(20px)',
+  backdropFilter: 'blur(2px)',
   alignItems: 'center',
 })

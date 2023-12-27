@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
@@ -43,7 +43,11 @@ const SmallMagnifyingGlass = styled(MagnifyingGlassFilled).attrs(({ theme }) => 
   size: theme.icons.sizes.small,
 }))``
 
-const CallToActionContainer = styled.View({
-  marginHorizontal: getSpacing(6),
+const CallToActionContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-})
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  ...(!theme.isMobileViewport && {
+    width: '100%',
+    maxWidth: theme.contentPage.maxWidth,
+  }),
+}))

@@ -13,7 +13,7 @@ export function BlurryWrapper({ children }: Props) {
   ) : (
     <StyledBlurry
       blurType="light"
-      blurAmount={10}
+      blurAmount={1}
       reducedTransparencyFallbackColor="white"
       testID="blurry-wrapper">
       {children}
@@ -30,5 +30,5 @@ const StyledBlurry = styled(BlurView)<{
 })
 
 const TransparentBackground = styled.View({
-  backgroundColor: 'rgba(255, 255, 255, 0.85)',
+  backgroundColor: 'rgba(255, 255, 255, 0.5)',
 })
