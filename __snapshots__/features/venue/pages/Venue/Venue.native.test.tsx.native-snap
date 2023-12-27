@@ -8797,7 +8797,7 @@ d’options
     }
   >
     <BlurView
-      blurAmount={10}
+      blurAmount={1}
       blurType="light"
       reducedTransparencyFallbackColor="white"
       style={
@@ -8821,7 +8821,7 @@ d’options
           [
             {
               "alignItems": "center",
-              "marginHorizontal": 24,
+              "paddingHorizontal": 24,
             },
           ]
         }
