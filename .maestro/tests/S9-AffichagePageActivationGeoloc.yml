@@ -3,7 +3,6 @@ appId: ${APP_ID}
 - launchApp:
     appId: ${APP_ID}
     clearState: true
-#- runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
     when:
       visible: "Tout accepter"
