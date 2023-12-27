@@ -2,9 +2,7 @@ appId: ${APP_ID}
 ---
 - tapOn: "Se connecter"
 - assertVisible: "Connecte-toi"
-- tapOn:
-        id: "Entrée pour l’email"
+- tapOn: "tonadresse@email.com"
 - inputText: ${USERNAME}
-- tapOn:
-        id: "Mot de passe"
+- tapOn: "Ton mot de passe"
 - inputText: ${PASSWORD}

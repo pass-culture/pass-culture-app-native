@@ -1,4 +1,5 @@
 appId: ${APP_ID}
 ---
 #LibelleMail
+
 - tapOn: "STAGING"

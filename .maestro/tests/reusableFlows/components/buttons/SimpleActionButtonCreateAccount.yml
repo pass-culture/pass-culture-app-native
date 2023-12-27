@@ -1,4 +1,5 @@
 appId: ${APP_ID}
 ---
+
 - tapOn: "Créer un compte"
 - assertVisible: "Crée-toi un compte"

@@ -5,9 +5,13 @@ appId: ${APP_ID}
     when:
       visible: "Respect de ta vie privée"
     file: "reusableFlows/FirstLaunch.yml" # First Launch
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonCreateAccount.yml
+- tapOn:
+    text: "Accueil"
+    index: 0
+- assertVisible: "Bienvenue\_!"
+- assertVisible: "Débloque ton crédit"
+- tapOn: "Débloque ton crédit"
 - runFlow: reusableFlows/features/profile/AccountCreationPage.yml # Creation Page
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonExit.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonAbandonRegistration.yml
+- runFlow: reusableFlows/features/auth/CguPage.yml # Cgu Page
+- runFlow: reusableFlows/features/auth/ConfirmationEmailPage.yml # ConfirmationEmail Page
 - runFlow: reusableFlows/StopApp.yml # Stop App

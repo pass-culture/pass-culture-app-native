@@ -1,0 +1,5 @@
+appId: ${APP_ID}
+---
+- tapOn:
+    text: ${EVENT_OFFER}
+    index: 1

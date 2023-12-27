@@ -1,0 +1,4 @@
+appId: ${APP_ID}
+---
+
+- tapOn: "ACCÉDER À GMAIL"

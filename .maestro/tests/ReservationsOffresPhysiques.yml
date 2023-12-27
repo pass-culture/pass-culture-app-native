@@ -1,30 +1,72 @@
 appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
+- runFlow:
+    when:
+      visible: "Respect de ta vie privée"
+    file: "reusableFlows/FirstLaunch.yml" # First Launch
+- runFlow:
+    when:
+      visible: "Rechercher des offres"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml"
+- runFlow:
+    when:
+      visible: "Recherche"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
 - tapOn: "Films, séries, cinéma"
-
-# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position (actuellement il est simplement possible de cliquer en connaissant l'offre).
-- tapOn: SPIDER-MAN NEW GENERATION # nom de l'offre consultable
+- runFlow:
+    when:
+      visible: "Catégories"
+    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+- tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
+- inputText: ${PHYSICAL_OFFER}
+- pressKey: Enter
+- runFlow:
+    when:
+      visible: ${PHYSICAL_OFFER}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml
-- tapOn: "Catégories\_: Filtre sélectionné"
+- runFlow:
+    when:
+      visible: "Rechercher des offres"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml"
+- runFlow:
+    when:
+      visible: "Recherche"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
+- tapOn: "Catégories"
 - tapOn: "Films, séries, cinéma"
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonSearch.yml
-# TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
-- tapOn: SPIDER-MAN NEW GENERATION # nom de l'offre consultable
+- runFlow:
+    when:
+      visible: "Catégories"
+    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+- runFlow:
+    when:
+      visible: "Rechercher"
+    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
+- tapOn: "Offre, artiste, lieu culturel..."
+- runFlow:
+    when:
+      visible: "Réinitialiser la recherche"
+    file: "reusableFlows/features/search/SearchTextReinit.yml"
+- inputText: ${PHYSICAL_OFFER}
+- pressKey: Enter
+- runFlow:
+    when:
+      visible: ${PHYSICAL_OFFER}
+    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
 - runFlow: reusableFlows/features/bookOffer/BookingConfirmationPage.yml # BookingConfirmationPage
 - tapOn: "Voir ma réservation"
-- assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
-    \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
-    \ ou le céder."
 - assertVisible: "Ma réservation"
 - tapOn:
       id: "animated-icon-back"

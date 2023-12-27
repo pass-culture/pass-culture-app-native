@@ -1,0 +1,4 @@
+appId: ${APP_ID}
+---
+- assertVisible: "Confirme ton email"
+- tapOn: "Confirme ton email"

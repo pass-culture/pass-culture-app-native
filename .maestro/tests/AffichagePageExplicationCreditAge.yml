@@ -1,8 +1,14 @@
 appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonAllAccept.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml
+- runFlow:
+    when:
+      visible: "Tout accepter"
+    file: "reusableFlows/components/buttons/SimpleActionButtonAllAccept.yml"
+- runFlow:
+    when:
+      visible: "C’est parti\_!"
+    file: "reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonPass.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonAge15.yml
 - runFlow: reusableFlows/features/tutorial/Page15App.yml # Launch App

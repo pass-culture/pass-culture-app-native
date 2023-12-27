@@ -1,7 +1,10 @@
 appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/features/identityCheck/FirstLaunch.yml # First Launch
+- runFlow:
+    when:
+      visible: "Respect de ta vie privée"
+    file: "reusableFlows/FirstLaunch.yml" # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
 - scrollUntilVisible:
     element: "Confidentialité"
@@ -17,20 +20,12 @@ appId: ${APP_ID}
 - assertVisible: "Suivre le pass Culture"
 
 - tapOn: "Informations légales"
-
 - scrollUntilVisible:
       element: "Conditions Générales d’Utilisation"
       direction: DOWN
 - tapOn: "Conditions Générales d’Utilisation"
 - tapOn: "Retour"
-- tapOn: "Applications récentes"
-- tapOn:
-    id: "com.sec.android.app.launcher:id/snapshot"
-    index: 1
 - tapOn: "Charte de protection des données personnelles"
-- tapOn: "Applications récentes"
-- tapOn:
-    id: "com.sec.android.app.launcher:id/snapshot"
-    index: 0
+- tapOn: "Retour"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBack.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App

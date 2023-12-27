@@ -1,0 +1,6 @@
+# config.yaml
+executionOrder:
+  continueOnFailure: false # default is true
+  flowsOrder:
+    - SaisieEmailInscriptionNewsletters
+    - ValidEmailInscription

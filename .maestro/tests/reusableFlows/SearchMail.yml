@@ -3,11 +3,13 @@ appId: ${APP_ID}
 #SearchMail
 - tapOn: "Ouvrir le panneau de navigation"
 
+- scrollUntilVisible:
+    element: "STAGING"
+    direction: DOWN
+
 - runFlow:
     when:
       visible:
         text: "STAGING"
         index: 0
-    file: "LibelleMail.yml"
-
-- tapOn: "Confirme ton email"
+    file: "components/buttons/SimpleActionButtonDirectoryStaging.yml"

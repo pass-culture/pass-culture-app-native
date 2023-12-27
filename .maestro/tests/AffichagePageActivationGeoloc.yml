@@ -1,9 +1,10 @@
 appId: ${APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonAllAccept.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLetsGo.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonUseMyLocation.yml
+- runFlow:
+    when:
+      visible: "Respect de ta vie privée"
+    file: "reusableFlows/FirstLaunch.yml" # First Launch
 # Geoloc App
 - runFlow:
       when:
