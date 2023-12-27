@@ -64,7 +64,7 @@ export function AccessibilityDeclaration() {
             <InternalTouchableLink
               as={ButtonInsideText}
               typography="Caption"
-              wording="Actions réalisées en 2022"
+              wording="Actions réalisées en 2022 et 2023"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
             />
@@ -75,7 +75,7 @@ export function AccessibilityDeclaration() {
             <InternalTouchableLink
               as={ButtonInsideText}
               typography="Caption"
-              wording="Plans d’actions 2023 - 2024"
+              wording="Plan d’actions 2024"
               icon={PlainArrowNext}
               navigateTo={actionPlanScreen}
             />

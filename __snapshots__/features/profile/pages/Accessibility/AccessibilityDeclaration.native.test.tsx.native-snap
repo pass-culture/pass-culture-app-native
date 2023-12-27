@@ -477,7 +477,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               >
                 <View>
                   <View
-                    accessibilityLabel="Actions réalisées en 2022"
+                    accessibilityLabel="Actions réalisées en 2022 et 2023"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -513,7 +513,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Actions réalisées en 2022"
+                    testID="Actions réalisées en 2022 et 2023"
                   >
                     <View
                       paddingForIcon={0}
@@ -558,7 +558,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         }
                         typography="Caption"
                       >
-                        Actions réalisées en 2022
+                        Actions réalisées en 2022 et 2023
                       </Text>
                     </View>
                   </View>
@@ -639,7 +639,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               >
                 <View>
                   <View
-                    accessibilityLabel="Plans d’actions 2023 - 2024"
+                    accessibilityLabel="Plan d’actions 2024"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -675,7 +675,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Plans d’actions 2023 - 2024"
+                    testID="Plan d’actions 2024"
                   >
                     <View
                       paddingForIcon={0}
@@ -720,7 +720,7 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                         }
                         typography="Caption"
                       >
-                        Plans d’actions 2023 - 2024
+                        Plan d’actions 2024
                       </Text>
                     </View>
                   </View>

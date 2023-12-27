@@ -20,9 +20,12 @@ describe('AccessibilityActionPlan', () => {
   ])('should open $link when clicking help center link', (link) => {
     render(<AccessibilityActionPlan />)
 
-    const linkComponent = screen.getByText(link)
-    fireEvent.press(linkComponent)
+    const linkComponents = screen.getAllByText(link)
+    linkComponents.forEach((link) => {
+      fireEvent.press(link)
+    })
 
+    expect(openURLSpy).toHaveBeenCalledTimes(linkComponents.length)
     expect(openURLSpy).toHaveBeenCalledWith(link, undefined, true)
   })
 })

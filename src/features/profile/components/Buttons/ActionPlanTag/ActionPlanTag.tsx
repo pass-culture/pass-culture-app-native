@@ -3,8 +3,18 @@ import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
 
-export const ActionPlanTag = ({ done = true }: { done?: boolean }) => {
-  return <StyledButtonText done={done}>{done ? ' - Réalisé' : ' - Prochainement'}</StyledButtonText>
+export enum ActionPlanStatus {
+  DONE = 'Réalisé',
+  ONGOING = 'En cours',
+  TODO = 'Prochainement',
+}
+
+export const ActionPlanTag = ({
+  status = ActionPlanStatus.DONE,
+}: {
+  status?: ActionPlanStatus
+}) => {
+  return <StyledButtonText done={status === ActionPlanStatus.DONE}> - {status}</StyledButtonText>
 }
 
 const StyledButtonText = styled(Typo.ButtonText)<{ done: boolean }>(({ theme, done }) => ({
