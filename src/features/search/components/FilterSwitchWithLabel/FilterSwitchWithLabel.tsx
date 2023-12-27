@@ -32,26 +32,24 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
 
   const TitleWithSubtitle = useMemo(
-    () =>
-      function TitleWithSubtitle() {
-        return (
-          <React.Fragment>
-            <StyledInputLabel
-              {...getHeadingAttrs(accessibilityLevel ?? 2)}
-              id={labelID}
-              htmlFor={checkboxID}
-              accessibilityDescribedBy={labelDescriptionID}>
-              {label}
-            </StyledInputLabel>
-            <Spacer.Column numberOfSpaces={1} />
-            {!!subtitle && (
-              <Typo.CaptionNeutralInfo nativeID={labelDescriptionID}>
-                {subtitle}
-              </Typo.CaptionNeutralInfo>
-            )}
-          </React.Fragment>
-        )
-      },
+    () => (
+      <React.Fragment>
+        <StyledInputLabel
+          {...getHeadingAttrs(accessibilityLevel ?? 2)}
+          id={labelID}
+          htmlFor={checkboxID}
+          accessibilityDescribedBy={labelDescriptionID}>
+          {label}
+        </StyledInputLabel>
+        <Spacer.Column numberOfSpaces={1} />
+        {!!subtitle && (
+          <Typo.CaptionNeutralInfo nativeID={labelDescriptionID}>
+            {subtitle}
+          </Typo.CaptionNeutralInfo>
+        )}
+      </React.Fragment>
+    ),
+
     [accessibilityLevel, label, labelID, labelDescriptionID, checkboxID, subtitle]
   )
 
@@ -59,9 +57,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
     <Container inverseLayout={!!isDesktopViewport}>
       {!isDesktopViewport && (
         <React.Fragment>
-          <TitleWrapper>
-            <TitleWithSubtitle />
-          </TitleWrapper>
+          <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
       )}
@@ -78,9 +74,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
       {!!isDesktopViewport && (
         <React.Fragment>
           <Spacer.Row numberOfSpaces={2} />
-          <TitleWrapper>
-            <TitleWithSubtitle />
-          </TitleWrapper>
+          <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>
         </React.Fragment>
       )}
     </Container>
