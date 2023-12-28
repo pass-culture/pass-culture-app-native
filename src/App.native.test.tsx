@@ -12,6 +12,9 @@ jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => (
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
 jest.unmock('libs/network/NetInfoWrapper')
+jest.mock('libs/e2e/getIsMaestro', () => ({
+  getIsMaestro: () => Promise.resolve(true),
+}))
 
 describe('<App /> with mocked RootNavigator', () => {
   it("should override font for Batch's in-app messages", () => {
@@ -43,9 +46,6 @@ describe('<App /> with mocked RootNavigator', () => {
   })
 
   it('should disable log box when maestro tests are running', async () => {
-    jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-      ok: true,
-    } as Response)
     renderApp()
 
     await waitFor(() => {
