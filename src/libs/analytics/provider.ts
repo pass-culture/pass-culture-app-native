@@ -2,6 +2,7 @@
 import { amplitude } from 'libs/amplitude'
 import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsProvider } from 'libs/analytics/types'
+import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
@@ -27,6 +28,15 @@ export const analytics: AnalyticsProvider = {
     }
     if (eventName.amplitude) {
       amplitude.logEvent(eventName.amplitude, params)
+    }
+    if (await getIsMaestro()) {
+      await fetch('http://10.0.2.2:4001', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ analyticsKey: eventName.firebase }),
+      })
     }
   },
   setEventLocationType: async () => {

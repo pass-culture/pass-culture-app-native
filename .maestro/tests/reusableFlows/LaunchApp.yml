@@ -1,5 +1,6 @@
 appId: ${APP_ID}
 ---
+- runScript: ../analytics/clear.js
 - launchApp:
     appId: ${APP_ID}
     clearState: true
