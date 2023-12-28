@@ -2,7 +2,6 @@ import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -110,7 +109,7 @@ describe('<LocationModal/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  describe('should navigate on landing page when location filter modal opened from search box', () => {
+  describe('should set search state on landing page when location filter modal opened from search box', () => {
     it('with the initial state', async () => {
       mockSearchState = searchState
       renderLocationModal()
@@ -124,12 +123,12 @@ describe('<LocationModal/>', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           view: SearchView.Landing,
         },
-        screen: 'Search',
       })
     })
 
@@ -151,13 +150,13 @@ describe('<LocationModal/>', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           locationFilter: { aroundRadius: 100, locationType: 'AROUND_ME' },
           view: SearchView.Landing,
         },
-        screen: 'Search',
       })
     })
   })
@@ -606,7 +605,7 @@ describe('<LocationModal/>', () => {
       })
     })
 
-    it('should navigate when pressing submit button from location filter modal to landing page', async () => {
+    it('should set search state when pressing submit button from location filter modal to landing page', async () => {
       mockSearchState = searchState
       mockSearchState.view = SearchView.Landing
       renderLocationModal({
@@ -626,22 +625,21 @@ describe('<LocationModal/>', () => {
         fireEvent.press(searchButton)
       })
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           locationFilter: {
             aroundRadius: 100,
             locationType: 'AROUND_ME',
           },
-          view: SearchView.Landing,
         },
-        screen: 'Search',
       })
     })
   })
 
   describe('with "Rechercher" button', () => {
-    describe('should navigate on search results', () => {
+    describe('should set search state on search results', () => {
       it('with actual state with no change when pressing button', async () => {
         mockSearchState = {
           ...searchState,
@@ -658,12 +656,12 @@ describe('<LocationModal/>', () => {
           fireEvent.press(searchButton)
         })
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             view: SearchView.Results,
           },
-          screen: 'Search',
         })
       })
 
@@ -685,13 +683,13 @@ describe('<LocationModal/>', () => {
           fireEvent.press(searchButton)
         })
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 50 },
             view: SearchView.Results,
           },
-          screen: 'Search',
         })
       })
     })
@@ -701,7 +699,7 @@ describe('<LocationModal/>', () => {
       ${{ locationType: LocationMode.EVERYWHERE }}                          | ${RadioButtonLocation.EVERYWHERE} | ${LocationMode.EVERYWHERE} | ${{ type: 'everywhere' }}
       ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }} | ${RadioButtonLocation.AROUND_ME}  | ${LocationMode.AROUND_ME}  | ${{ type: 'aroundMe' }}
     `(
-      'should log ChangeSearchLocation event and navigate with $locationType location type when selecting $label radio button and pressing button',
+      'should log ChangeSearchLocation event and set search state with $locationType location type when selecting $label radio button and pressing button',
       async ({
         locationFilter,
         label,
@@ -726,17 +724,17 @@ describe('<LocationModal/>', () => {
 
         expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith(eventType, searchId)
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             locationFilter,
           },
-          screen: 'Search',
         })
       }
     )
 
-    it('should log ChangeSearchLocation event and navigate with venue location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
+    it('should log ChangeSearchLocation event and set search state with venue location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
       mockSearchState = { ...mockSearchState, venue: mockVenues[0] }
       renderLocationModal()
 
@@ -767,17 +765,16 @@ describe('<LocationModal/>', () => {
         searchId
       )
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           venue: mockVenues[0],
         },
-        screen: 'Search',
       })
     })
 
-    //ICI
-    it('should log ChangeSearchLocation event and navigate with place location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
+    it('should log ChangeSearchLocation event and set search state with place location type when selecting "Choisir un lieu" radio button, location/venue and pressing button', async () => {
       const locationFilter: LocationFilter = {
         locationType: LocationMode.AROUND_PLACE,
         place: mockPlaces[0],
@@ -810,12 +807,12 @@ describe('<LocationModal/>', () => {
 
       expect(analytics.logChangeSearchLocation).toHaveBeenCalledWith({ type: 'place' }, searchId)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           locationFilter,
         },
-        screen: 'Search',
       })
     })
   })

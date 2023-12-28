@@ -1,9 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { initialSearchState } from 'features/search/context/reducer'
 import {
@@ -87,8 +85,9 @@ describe('AutocompleteOfferItem component', () => {
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: {
           ...initialSearchState,
           query: mockHit.query,
           isFromHistory: undefined,
@@ -100,8 +99,8 @@ describe('AutocompleteOfferItem component', () => {
           view: SearchView.Results,
           searchId,
           isAutocomplete: true,
-        })
-      )
+        },
+      })
     })
 
     it('should not display the most popular native category of the query suggestion', async () => {
@@ -134,8 +133,9 @@ describe('AutocompleteOfferItem component', () => {
       )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_STATE',
+        payload: {
           ...initialSearchState,
           query: mockHit.query,
           locationFilter: mockSearchState.locationFilter,
@@ -146,8 +146,8 @@ describe('AutocompleteOfferItem component', () => {
           isAutocomplete: true,
           offerNativeCategories: undefined,
           offerGenreTypes: undefined,
-        })
-      )
+        },
+      })
     })
   })
 
@@ -164,8 +164,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHit.query,
             offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
@@ -176,8 +177,8 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
-          })
-        )
+          },
+        })
       })
 
       it('its most popular native category is associated to several categories and is associated to the most popular category', async () => {
@@ -191,8 +192,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithAssociationToNativeCategory.query,
             offerCategories: [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES],
@@ -203,8 +205,8 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
-          })
-        )
+          },
+        })
       })
 
       it('its most popular category when native category associated to several categories and not associated to the most popular category', async () => {
@@ -218,8 +220,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithoutAssociationToNativeCategory.query,
             offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
@@ -229,8 +232,8 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
-          })
-        )
+          },
+        })
       })
 
       it('the most popular category when the suggestion has not native category', async () => {
@@ -244,8 +247,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
             offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
@@ -255,8 +259,8 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
-          })
-        )
+          },
+        })
       })
 
       it('without the most popular category and native category when there are unknown in the app', async () => {
@@ -270,8 +274,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
             offerCategories: [],
@@ -282,8 +287,8 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
-          })
-        )
+          },
+        })
       })
 
       it('without the most popular category when it is unknown in the app', async () => {
@@ -297,8 +302,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
             offerCategories: [],
@@ -308,8 +314,8 @@ describe('AutocompleteOfferItem component', () => {
             view: SearchView.Results,
             searchId,
             isAutocomplete: true,
-          })
-        )
+          },
+        })
       })
 
       it('without the most popular native category but the most popular category when native category is unknown in the app', async () => {
@@ -323,8 +329,9 @@ describe('AutocompleteOfferItem component', () => {
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
-        expect(navigate).toHaveBeenCalledWith(
-          ...getTabNavConfig('Search', {
+        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+          type: 'SET_STATE',
+          payload: {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
             offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
@@ -335,8 +342,8 @@ describe('AutocompleteOfferItem component', () => {
             searchId,
             isAutocomplete: true,
             venue: mockSearchState.venue,
-          })
-        )
+          },
+        })
       })
     })
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
@@ -90,7 +89,7 @@ describe('<CategoriesModal/>', () => {
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
 
-    it('should set the selected category filter on navigate when one is set', async () => {
+    it('should set the selected category filter on touch "Rechercher" when one is set', async () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
@@ -107,14 +106,14 @@ describe('<CategoriesModal/>', () => {
         offerGenreTypes: [],
       }
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })
 
-    it('should set the selected category filter on navigate when none are set', async () => {
+    it('should set the selected category filter on touch "Rechercher" when none are set', async () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
@@ -130,9 +129,9 @@ describe('<CategoriesModal/>', () => {
         offerGenreTypes: [],
       }
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })
@@ -201,7 +200,7 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Catégories')).toBeOnTheScreen()
     })
 
-    it('should navigate with correct search parameters when search button is pressed', async () => {
+    it('should set search state when search button is pressed', async () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Livres papier')
@@ -218,9 +217,9 @@ describe('<CategoriesModal/>', () => {
         offerGenreTypes: [],
       }
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })
@@ -241,9 +240,9 @@ describe('<CategoriesModal/>', () => {
         offerGenreTypes: [],
       }
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })
@@ -325,7 +324,7 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
 
-    it('should navigate with correct search parameters when search button is pressed', async () => {
+    it('should set search state when search button is pressed', async () => {
       renderCategories()
 
       fireEvent.press(screen.getByText('Livres papier'))
@@ -345,9 +344,9 @@ describe('<CategoriesModal/>', () => {
         ],
       }
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })
@@ -369,9 +368,9 @@ describe('<CategoriesModal/>', () => {
         offerGenreTypes: [],
       }
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })
@@ -413,10 +412,11 @@ describe('<CategoriesModal/>', () => {
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
+
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })

@@ -2,7 +2,6 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -72,9 +71,9 @@ describe('SearchHeader component', () => {
       view: SearchView.Suggestions,
     }
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      screen: 'Search',
-      params,
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: params,
     })
   })
 

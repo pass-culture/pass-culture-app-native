@@ -1,11 +1,9 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -140,7 +138,7 @@ describe('SearchBox component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should call navigate on submit', async () => {
+  it('should cset search state on submit', async () => {
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
@@ -149,16 +147,17 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     })
 
-    expect(navigate).toHaveBeenCalledWith(
-      ...getTabNavConfig('Search', {
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
         ...initialSearchState,
         query: 'jazzaza',
         view: SearchView.Results,
         offerCategories: mockSearchState.offerCategories,
         priceRange: mockSearchState.priceRange,
         searchId,
-      })
-    )
+      },
+    })
   })
 
   it('should not show back button when being on the search landing view', async () => {
@@ -213,7 +212,7 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
     })
 
-    expect(navigate).not.toHaveBeenCalled()
+    expect(mockDispatch).not.toHaveBeenCalled()
   })
 
   describe('With autocomplete', () => {
@@ -236,15 +235,16 @@ describe('SearchBox component', () => {
         fireEvent.press(previousButton)
       })
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...initialSearchState,
           view: SearchView.Results,
           previousView: SearchView.Suggestions,
           offerCategories: mockSearchState.offerCategories,
           priceRange: mockSearchState.priceRange,
-        })
-      )
+        },
+      })
     })
 
     it('should redirect on landing view when being on the suggestions view and press back button and previous view is SearchView.Landing view', async () => {
@@ -261,30 +261,14 @@ describe('SearchBox component', () => {
         fireEvent.press(previousButton)
       })
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...initialSearchState,
           view: SearchView.Landing,
           previousView: SearchView.Suggestions,
-        })
-      )
-    })
-
-    it('should not reset location to eveywhere when current and previous views are not identical', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Results,
-        previousView: SearchView.Results,
-      }
-      renderSearchBox()
-
-      const previousButton = screen.getByTestId('Revenir en arrière')
-
-      await act(async () => {
-        fireEvent.press(previousButton)
+        },
       })
-
-      expect(mockDispatch).not.toHaveBeenCalled()
     })
 
     it('should not execute go back when current and previous views are not identical', async () => {
@@ -317,7 +301,7 @@ describe('SearchBox component', () => {
         fireEvent(searchInput, 'onFocus')
       })
 
-      expect(navigate).not.toHaveBeenCalled()
+      expect(mockDispatch).not.toHaveBeenCalled()
     })
 
     it('should reset input when user click on reset icon when being on the search suggestions view', async () => {
@@ -334,13 +318,15 @@ describe('SearchBox component', () => {
         fireEvent.press(resetIcon)
       })
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           query: '',
           view: SearchView.Suggestions,
-        })
-      )
+        },
+      })
+
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
   })
@@ -365,7 +351,7 @@ describe('SearchBox component', () => {
           fireEvent(searchInput, 'onFocus')
         })
 
-        expect(navigate).not.toHaveBeenCalled()
+        expect(mockDispatch).not.toHaveBeenCalled()
       }
     )
 
@@ -383,13 +369,14 @@ describe('SearchBox component', () => {
         fireEvent.press(resetIcon)
       })
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           query: '',
           view: SearchView.Results,
-        })
-      )
+        },
+      })
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
 
@@ -408,13 +395,14 @@ describe('SearchBox component', () => {
         fireEvent.press(resetIcon)
       })
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           query: '',
           view: SearchView.Results,
-        })
-      )
+        },
+      })
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
 
@@ -432,13 +420,14 @@ describe('SearchBox component', () => {
         fireEvent.press(resetIcon)
       })
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           query: '',
           view: SearchView.Results,
-        })
-      )
+        },
+      })
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
   })
@@ -452,16 +441,17 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
     })
 
-    expect(navigate).toHaveBeenCalledWith(
-      ...getTabNavConfig('Search', {
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
         ...initialSearchState,
         query: 'jazzaza',
         view: SearchView.Results,
         offerCategories: mockSearchState.offerCategories,
         priceRange: mockSearchState.priceRange,
         searchId,
-      })
-    )
+      },
+    })
   })
 
   it('should open location modal on location button click', async () => {
@@ -497,15 +487,16 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onFocus')
     })
 
-    expect(navigate).toHaveBeenCalledWith(
-      ...getTabNavConfig('Search', {
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
         ...initialSearchState,
         view: SearchView.Suggestions,
         offerCategories: mockSearchState.offerCategories,
         priceRange: mockSearchState.priceRange,
         previousView: SearchView.Landing,
-      })
-    )
+      },
+    })
   })
 
   it.each([[SearchView.Landing], [SearchView.Suggestions]])(
