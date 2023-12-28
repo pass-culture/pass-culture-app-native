@@ -150,7 +150,7 @@
     "react-mobile-picker": "^0.2.1",
     "react-native": "0.71.13",
     "react-native-animatable": "^1.3.3",
-    "react-native-appsflyer": "^6.4.40",
+    "react-native-appsflyer": "^6.12.2",
     "react-native-calendars": "^1.1284.0",
     "react-native-code-push": "^8.1.0",
     "react-native-date-picker": "4.2.2",
