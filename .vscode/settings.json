@@ -29,4 +29,7 @@
   "liveshare.allowGuestTaskControl": true,
   "liveshare.guestApprovalRequired": true,
   "emmet.showExpandedAbbreviation": "never",
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
