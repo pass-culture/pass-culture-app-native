@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { Keyboard, TextInput as RNTextInput } from 'react-native'
@@ -7,8 +6,6 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationSlider } from 'features/search/components/LocationSlider/LocationSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -18,7 +15,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlacesOrVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlacesOrVenues'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/location'
@@ -123,7 +120,6 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { modal } = useTheme()
   const {
     geolocPosition,
@@ -240,25 +236,14 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
       }
 
       switch (filterBehaviour) {
-        case FilterBehaviour.SEARCH: {
-          navigate(...getTabNavConfig('Search', additionalSearchState))
-          break
-        }
-        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
-          // Workaround: When on the search page and applying filters while entering a search query
-          // or selecting an autocomplete item, the filter wasn't being applied correctly.
-          // So, we navigate to the Search page and set the filter state with the location param.
-          if (searchState.view === SearchView.Landing) {
-            navigate(...getTabNavConfig('Search', additionalSearchState))
-            break
-          }
+        case FilterBehaviour.SEARCH:
+        case FilterBehaviour.APPLY_WITHOUT_SEARCHING:
           dispatch({ type: 'SET_STATE', payload: additionalSearchState })
           break
-        }
       }
       hideModal()
     },
-    [searchState, filterBehaviour, hideModal, getValues, navigate, dispatch]
+    [searchState, filterBehaviour, hideModal, getValues, dispatch]
   )
 
   const closeModal = useCallback(() => {

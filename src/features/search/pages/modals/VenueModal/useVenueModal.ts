@@ -16,7 +16,7 @@ import { useDebounceValue } from 'ui/hooks/useDebounceValue'
  * @param dismissModal callback to close modal passed by parent component
  * @returns
  */
-const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): VenueModalHook => {
+const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook => {
   const [venueQuery, setVenueQuery] = useState('')
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
   const { dispatch, searchState } = useSearch()
@@ -60,10 +60,9 @@ const useVenueModal = ({ dismissModal, doAfterSearch }: VenueModalHookProps): Ve
       payload,
     })
     if (selectedVenue) analytics.logUserSetVenue({ venueLabel: selectedVenue.label })
-    doAfterSearch?.(payload)
 
     dismissModal()
-  }, [dismissModal, dispatch, doAfterSearch, searchState, selectedVenue])
+  }, [dismissModal, dispatch, searchState, selectedVenue])
 
   useEffect(() => {
     if (searchState.venue) {

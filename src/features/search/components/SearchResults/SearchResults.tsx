@@ -1,4 +1,4 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native'
+import { useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -6,8 +6,6 @@ import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
@@ -30,7 +28,6 @@ import { LocationModal } from 'features/search/pages/modals/LocationModal/Locati
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -55,7 +52,6 @@ const MAX_VENUE_CHARACTERS = 20
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlatList<Offer> | FlashList<Offer> | null>(null)
-  const { navigate } = useNavigation<UseNavigationType>()
   const {
     hasNextPage,
     fetchNextPage,
@@ -349,13 +345,7 @@ export const SearchResults: React.FC = () => {
         hideModal={hideLocationModal}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
-      <VenueModal
-        visible={venueModalVisible}
-        dismissModal={hideVenueModal}
-        doAfterSearch={(payload: Partial<SearchState>) =>
-          navigate(...getTabNavConfig('Search', payload))
-        }
-      />
+      <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
       <DatesHoursModal
         title="Dates & heures"
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"

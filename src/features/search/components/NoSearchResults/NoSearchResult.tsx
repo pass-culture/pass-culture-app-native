@@ -1,10 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -13,12 +12,11 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function NoSearchResult() {
   const { searchState } = useSearch()
-
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToSearchFilter } = useNavigateToSearchFilter()
 
   const onPressUpdateFilters = useCallback(() => {
-    navigate('SearchFilter', searchState)
-  }, [navigate, searchState])
+    navigateToSearchFilter(searchState)
+  }, [navigateToSearchFilter, searchState])
 
   const mainTitle = 'Pas de résultat'
   const mainTitleComplement = `pour "${searchState.query}"`

@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React, { useMemo } from 'react'
 import { Keyboard, Text } from 'react-native'
@@ -6,8 +5,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import {
@@ -40,8 +37,7 @@ export function AutocompleteOfferItem({
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
     indexInfos.facets.analytics
-  const { searchState } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { searchState, dispatch } = useSearch()
   const { data } = useSubcategories()
   const searchGroupLabel = useSearchGroupLabel(
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
@@ -116,7 +112,7 @@ export function AutocompleteOfferItem({
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
 
-    navigate(...getTabNavConfig('Search', newSearchState))
+    dispatch({ type: 'SET_STATE', payload: newSearchState })
   }
 
   const shouldDisplayNativeCategory =

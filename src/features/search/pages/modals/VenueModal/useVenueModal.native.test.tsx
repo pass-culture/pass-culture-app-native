@@ -1,5 +1,4 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { VenueModalHookCallback } from 'features/search/pages/modals/VenueModal/type'
 import { SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
@@ -24,7 +23,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const dismissModal: VoidFunction = jest.fn()
-const doAfterSearch: VenueModalHookCallback = jest.fn()
 
 const falsyState = {
   isQueryProvided: false,
@@ -168,59 +166,12 @@ describe('useVenueModal', () => {
     expect(mockStateDispatch).not.toHaveBeenCalledWith()
   })
 
-  it('when nothing is to be search then search cannot be done and no calls is made', async () => {
-    const { result } = renderHook(
-      ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
-      {
-        initialProps: {
-          dismissModal,
-          doAfterSearch: doAfterSearch,
-        },
-      }
-    )
-
-    await act(async () => {
-      result.current.doApplySearch()
-    })
-
-    expect(doAfterSearch).not.toHaveBeenCalledWith()
-  })
-
-  it('when a search is made then the callback is called', () => {
-    const { result } = renderHook(
-      ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
-      {
-        initialProps: {
-          dismissModal,
-          doAfterSearch,
-        },
-      }
-    )
-    act(() => {
-      result.current.doChangeVenue(venue.label)
-      result.current.doSetSelectedVenue(venue)
-    })
-    act(() => {
-      result.current.doApplySearch()
-    })
-
-    expect(doAfterSearch).toHaveBeenCalledWith({
-      ...initialSearchState,
-      venue: venue,
-      view: SearchView.Results,
-    })
-  })
-
   it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
-    const { result } = renderHook(
-      ({ dismissModal, doAfterSearch }) => useVenueModal({ dismissModal, doAfterSearch }),
-      {
-        initialProps: {
-          dismissModal: dismissModal,
-          doAfterSearch,
-        },
-      }
-    )
+    const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
+      initialProps: {
+        dismissModal: dismissModal,
+      },
+    })
 
     await act(() => {
       result.current.doSetSelectedVenue({ label: 'venueLabel', info: 'info', venueId: 1234 })

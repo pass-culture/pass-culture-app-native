@@ -3,7 +3,6 @@ import { Venue } from 'features/venue/types'
 
 export type VenueModalHookProps = {
   dismissModal: VoidFunction
-  doAfterSearch?: VenueModalHookCallback
 }
 
 export type VenueModalHook = {

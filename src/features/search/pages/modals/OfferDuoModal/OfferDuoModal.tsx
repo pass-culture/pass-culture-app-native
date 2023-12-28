@@ -1,11 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { useForm, Controller, ControllerRenderProps } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -43,7 +40,6 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
 }) => {
   const { searchState, dispatch } = useSearch()
   const { modal } = useTheme()
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const {
     handleSubmit,
@@ -121,19 +117,10 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
         view: SearchView.Results,
       }
 
-      switch (filterBehaviour) {
-        case FilterBehaviour.SEARCH: {
-          navigate(...getTabNavConfig('Search', additionalSearchState))
-          break
-        }
-        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
-          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
-          break
-        }
-      }
+      dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       hideModal()
     },
-    [searchState, filterBehaviour, hideModal, navigate, dispatch]
+    [searchState, hideModal, dispatch]
   )
 
   const onSubmit = handleSubmit(search)

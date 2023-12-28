@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { View } from 'react-native'
@@ -7,8 +6,6 @@ import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -59,7 +56,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { isLoggedIn, user } = useAuthContext()
   const availableCredit = useAvailableCredit()
   const formatAvailableCredit = availableCredit?.amount
@@ -114,16 +110,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       }
     }
 
-    switch (filterBehaviour) {
-      case FilterBehaviour.SEARCH: {
-        navigate(...getTabNavConfig('Search', additionalSearchState))
-        break
-      }
-      case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
-        dispatch({ type: 'SET_STATE', payload: additionalSearchState })
-        break
-      }
-    }
+    dispatch({ type: 'SET_STATE', payload: additionalSearchState })
     hideModal()
   }
 

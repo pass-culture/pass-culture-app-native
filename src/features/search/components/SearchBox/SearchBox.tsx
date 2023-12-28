@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-core'
@@ -14,8 +13,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigationRef } from 'features/navigation/navigationRef'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Buttons/HiddenNavigateToSuggestionsButton'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
@@ -58,7 +56,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
   const [query, setQuery] = useState<string>(searchState.query)
   const { section, locationType } = useLocationType(searchState)
@@ -82,15 +79,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   const pushWithSearch = useCallback(
     (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
-      navigate(
-        ...getTabNavConfig('Search', {
+      dispatch({
+        type: 'SET_STATE',
+        payload: {
           ...searchState,
           ...(options.reset ? initialSearchState : {}),
           ...partialSearchState,
-        })
-      )
+        },
+      })
     },
-    [navigate, searchState]
+    [dispatch, searchState]
   )
 
   const hasEditableSearchInput =
