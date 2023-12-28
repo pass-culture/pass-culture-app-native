@@ -252,6 +252,22 @@ appId: your.app.id > Mettre l'ID de l'app que vous voulez tester comme "app.pass
 
 Voici [une liste des commandes](https://maestro.mobile.dev/api-reference/commands) que nous pouvons utiliser pour écrire les tests.
 
+## Tester des trackers
+
+Ajouter ceci dans le scenario de test
+
+```yaml
+- runScript:
+    file: analytics/hasBeenCalled.js
+    env:
+      EXPECTED_ANALYTICS_CALL: 'HasAcceptedAllCookies'
+- assertTrue: ${output.analyticsHasBeenCalled}
+```
+
+### Limites
+
+Le serveur étant très simple, il ne supporte l'exécution que d'un test à la fois
+
 # **Troubleshooting**
 
 ### **Android**
