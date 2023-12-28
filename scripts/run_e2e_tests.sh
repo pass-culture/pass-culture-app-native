@@ -48,7 +48,9 @@ elif [ "$platform" = "web" ]; then
 fi
 
 start_mock_analytics_server() {
-  PORT="$MOCK_ANALYTICS_SERVER_PORT" yarn --cwd .maestro/mock_analytics_server start
+  pushd .maestro/mock_analytics_server
+  yarn install
+  PORT="$MOCK_ANALYTICS_SERVER_PORT" yarn start
 }
 
 start_mock_analytics_server_silently_in_the_background() {
