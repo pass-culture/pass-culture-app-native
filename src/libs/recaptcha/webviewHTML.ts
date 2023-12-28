@@ -10,6 +10,10 @@ export const reCaptchaWebviewHTML = `
             <title>ReCAPTCHA web view</title>
             <script>
                 let numberOfRetryRender = 0;
+                let userAgent = window.navigator.userAgent.toLowerCase();
+                let ios = /iphone|ipod|ipad/.test(userAgent);
+                let android = /android/.test(userAgent);
+                let isOnline = ios ? navigator.onLine : navigator.connection.type !== 'none';
 
                 function sendMessagePayload(payload) { window.ReactNativeWebView.postMessage(JSON.stringify(payload)); }
                 function onClose() { sendMessagePayload({ "message": "close" }); }
@@ -39,7 +43,7 @@ export const reCaptchaWebviewHTML = `
                     } 
                     if (numberOfRetryRender > 15) {
                         clearInterval(readyInterval);
-                        if (window.navigator.onLine) {
+                        if (isOnline) {
                             onError("${ReCaptchaInternalError.NumberOfRenderRetriesExceeded}");
                         } else {
                             onError("${ReCaptchaInternalError.NetworkError}");
