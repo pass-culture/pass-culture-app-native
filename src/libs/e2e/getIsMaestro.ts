@@ -6,7 +6,7 @@ import { env } from 'libs/environment'
 export const getIsMaestro = async () => {
   if (env.ENV === 'production') return false
 
-  const portToTest = Platform.OS === 'android' ? 7001 : 22_087
+  const portToTest = Platform.OS === 'android' ? 8081 : 22_087
   try {
     const response = await fetchWithTimeout(`http://localhost:${portToTest}/status`, {
       mode: 'cors',

@@ -50,5 +50,15 @@ fi
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" false
-maestro test --env APP_ID="$app_id" --env USERNAME="dev-tests-e2e@passculture.team" --env USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" --env NEW_USERNAME="dev-tests-e2e-new@passculture.team" --env NUMBER_PHONE="0607080910" --env PASSWORD="$password" --env PHYSICAL_OFFER="OPSIS - 1 MOIS" --env EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" --env MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" "$tests_path"
+maestro test \
+  --env APP_ID="$app_id" \
+  --env USERNAME="dev-tests-e2e@passculture.team" \
+  --env USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" \
+  --env NEW_USERNAME="dev-tests-e2e-new@passculture.team" \
+  --env NUMBER_PHONE="0607080910" \
+  --env PASSWORD="$password" \
+  --env PHYSICAL_OFFER="OPSIS - 1 MOIS" \
+  --env EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" \
+  --env MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" \
+  "$tests_path"
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
