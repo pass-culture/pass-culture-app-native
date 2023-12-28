@@ -220,7 +220,16 @@ Dans notre terminal, à la fin du test nous devrions avoir:
 ## Lancer les tests avec l'utilisation de variables
 
 ```bash
-maestro test -e USERNAME=${USERNAME} -e USERNAME_UNKNOWN=${USERNAME_UNKNOWN} -e NEW_USERNAME=${NEW_USERNAME} -e NUMBER_PHONE=${NUMBER_PHONE} -e PASSWORD=${PASSWORD} -e PHYSICAL_OFFER=${PHYSICAL_OFFER} -e EVENT_OFFER=${EVENT_OFFER} -e MESSAGE_CODE_VALIDATION_TELEPHONE=${MESSAGE_CODE_VALIDATION_TELEPHONE} .maestro/
+maestro test \
+  --env USERNAME=${USERNAME} \
+  --env USERNAME_UNKNOWN=${USERNAME_UNKNOWN} \
+  --env NEW_USERNAME=${NEW_USERNAME} \
+  --env NUMBER_PHONE=${NUMBER_PHONE} \
+  --env PASSWORD=${PASSWORD} \
+  --env PHYSICAL_OFFER=${PHYSICAL_OFFER} \
+  --env EVENT_OFFER=${EVENT_OFFER} \
+  --env MESSAGE_CODE_VALIDATION_TELEPHONE=${MESSAGE_CODE_VALIDATION_TELEPHONE} \
+  .maestro/
 ```
 
 ## Écrire un test avec Maestro studio
