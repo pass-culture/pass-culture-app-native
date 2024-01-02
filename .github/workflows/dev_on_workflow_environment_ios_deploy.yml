@@ -36,9 +36,9 @@ jobs:
           path: |
             node_modules
             ~/.cache/yarn
-          key: v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
