@@ -30,7 +30,8 @@ export const analytics: AnalyticsProvider = {
       amplitude.logEvent(eventName.amplitude, params)
     }
     if (await getIsMaestro()) {
-      await fetch('http://10.0.2.2:4001', {
+      const MOCK_ANALYTICS_SERVER_URL = 'http://10.0.2.2:4001' // NOSONAR(typescript:S5332) maestro is run locally, we don't use HTTPS
+      await fetch(MOCK_ANALYTICS_SERVER_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
