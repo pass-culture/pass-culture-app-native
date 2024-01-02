@@ -12,7 +12,7 @@ export const reCaptchaWebviewHTML = `
                 let numberOfRetryRender = 0;
                 const userAgent = navigator.userAgent.toLowerCase();
                 const ios = /iphone|ipod|ipad/.test(userAgent);
-                const isOnline = ios ? navigator.onLine : navigator.connection?.type !== 'none';
+                const isOnline = ios ? navigator.onLine : navigator.connection?.type !== "none";
 
                 function sendMessagePayload(payload) { window.ReactNativeWebView.postMessage(JSON.stringify(payload)); }
                 function onClose() { sendMessagePayload({ "message": "close" }); }
