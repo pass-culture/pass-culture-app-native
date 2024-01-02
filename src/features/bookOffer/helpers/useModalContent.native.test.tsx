@@ -5,7 +5,6 @@ import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
@@ -16,8 +15,6 @@ let mockOffer: OfferResponse | undefined = baseOffer
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 let mockStep = Step.DATE
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: jest.fn(() => ({
@@ -143,7 +140,7 @@ describe('useModalContent', () => {
     expect((result.current.children as any).type.name).toBe('BookingEventChoices')
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
-    expect(result.current.title).toBe('Mes options')
+    expect(result.current.title).toBe('Choix des options')
   })
 
   it('shows the confirmation step if the offer is an event', () => {
@@ -170,42 +167,36 @@ describe('useModalContent', () => {
     expect((result.current.children as any).type.name).toBe('BookingEventChoices')
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
-    expect(result.current.title).toBe('Mes options')
+    expect(result.current.title).toBe('Choix des options')
   })
 
-  describe('When prices by categories feature flag activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-    })
-
-    it.each`
-      step                        | idStep
-      ${'hour selection'}         | ${Step.HOUR}
-      ${'number place selection'} | ${Step.DUO}
-    `('should show arrow back on $step when offer is an event', ({ idStep }) => {
-      mockOffer = baseOffer
-      mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
-      mockStep = idStep
-
-      const { result } = renderHook(useModalContent)
-
-      expect((result.current.children as any).type.name).toBe('BookingEventChoices')
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
-      expect(result.current.onLeftIconPress).not.toBeUndefined()
-      expect(result.current.title).toBe('Choix des options')
-    })
-  })
-
-  it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {
+  it.each`
+    step                        | idStep
+    ${'hour selection'}         | ${Step.HOUR}
+    ${'number place selection'} | ${Step.DUO}
+  `('should show arrow back on $step when offer is an event', ({ idStep }) => {
     mockOffer = baseOffer
     mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
-    mockStep = Step.CONFIRMATION
+    mockStep = idStep
 
-    const { result } = renderHook(() => useModalContent(onPressBookOffer, undefined, true))
+    const { result } = renderHook(useModalContent)
 
-    expect((result.current.children as any).type.name).toBe('AlreadyBooked')
-    expect(result.current.onLeftIconPress).toBeUndefined()
-    expect(result.current.title).toBe('Réservation impossible')
+    expect((result.current.children as any).type.name).toBe('BookingEventChoices')
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
+    expect(result.current.onLeftIconPress).not.toBeUndefined()
+    expect(result.current.title).toBe('Choix des options')
   })
+})
+
+it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {
+  mockOffer = baseOffer
+  mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
+  mockStep = Step.CONFIRMATION
+
+  const { result } = renderHook(() => useModalContent(onPressBookOffer, undefined, true))
+
+  expect((result.current.children as any).type.name).toBe('AlreadyBooked')
+  expect(result.current.onLeftIconPress).toBeUndefined()
+  expect(result.current.title).toBe('Réservation impossible')
 })

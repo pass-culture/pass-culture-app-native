@@ -20,28 +20,21 @@ export function getButtonState(bookingState: BookingState) {
   }
 }
 
-export function getButtonWording(enablePricesByCategories: boolean, enabled: boolean, step: Step) {
-  if (enablePricesByCategories) {
-    switch (step) {
-      case Step.DATE:
-        return 'Valider la date'
+export function getButtonWording(step: Step) {
+  switch (step) {
+    case Step.DATE:
+      return 'Valider la date'
 
-      case Step.HOUR:
-        return 'Valider lʼhoraire'
+    case Step.HOUR:
+      return 'Valider lʼhoraire'
 
-      case Step.PRICE:
-        return 'Valider le prix'
+    case Step.PRICE:
+      return 'Valider le prix'
 
-      case Step.DUO:
-        return 'Finaliser ma réservation'
-    }
+    case Step.DUO:
+      return 'Finaliser ma réservation'
   }
-
-  if (enabled) {
-    return 'Valider ces options'
-  }
-
-  return 'Choisir les options'
+  return ''
 }
 
 export function getHourWording(

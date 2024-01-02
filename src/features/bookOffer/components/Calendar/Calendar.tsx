@@ -60,7 +60,6 @@ interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
   offerId: number | undefined
-  enablePricesByCategories?: boolean
   hasSeveralPrices?: boolean
 }
 
@@ -95,7 +94,6 @@ export const Calendar: React.FC<Props> = ({
   stocks,
   userRemainingCredit,
   offerId,
-  enablePricesByCategories,
   hasSeveralPrices,
 }) => {
   const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
@@ -122,16 +120,11 @@ export const Calendar: React.FC<Props> = ({
       analytics.logBookingOfferConfirmDates(offerId)
     }
 
-    const onPress = selectDay({ date, selected, status, enablePricesByCategories })
+    const onPress = selectDay({ date, selected, status })
 
     return (
       <Container onPress={onPress} disabled={!onPress}>
-        <DayComponent
-          status={status}
-          selected={selected}
-          date={date}
-          enablePricesByCategories={enablePricesByCategories}
-        />
+        <DayComponent status={status} selected={selected} date={date} />
         {typeof price === 'number' ? (
           <Caption status={status}>{getDayDescription(price, hasSeveralPrices)}</Caption>
         ) : (

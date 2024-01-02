@@ -13,14 +13,9 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   stocks: OfferStockResponse[]
   userRemainingCredit: number | null
-  enablePricesByCategories?: boolean
 }
 
-export const BookDateChoice = ({
-  stocks,
-  userRemainingCredit,
-  enablePricesByCategories,
-}: Props) => {
+export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const hasSeveralPrices = useMemo(() => {
     const distinctPrices = getDistinctPricesFromAllStock(stocks)
@@ -37,28 +32,18 @@ export const BookDateChoice = ({
 
   return (
     <React.Fragment>
-      {enablePricesByCategories ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={6} />
-          <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
-            Date
-          </Typo.Title3>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.Title4 {...getHeadingAttrs(2)} testID="DateStep">
-            Date
-          </Typo.Title4>
-        </React.Fragment>
-      )}
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={6} />
+        <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
+          Date
+        </Typo.Title3>
+      </React.Fragment>
 
       {bookingState.step === Step.DATE ? (
         <Calendar
           stocks={stocks}
           userRemainingCredit={userRemainingCredit}
           offerId={bookingState.offerId}
-          enablePricesByCategories={enablePricesByCategories}
           hasSeveralPrices={hasSeveralPrices}
         />
       ) : (

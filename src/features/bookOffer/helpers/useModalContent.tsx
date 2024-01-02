@@ -12,8 +12,6 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getPreviousStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -70,21 +68,14 @@ const getNonEventModalContent = (
 }
 
 const getBookingStepModalContent = (
-  enablePricesByCategories: boolean,
   modalLeftIconProps: ModalLeftIconProps,
   stocks: OfferStockResponse[],
   isDuo: boolean
 ): ModalContent => {
   return {
-    title: enablePricesByCategories ? 'Choix des options' : 'Mes options',
+    title: 'Choix des options',
     ...modalLeftIconProps,
-    children: (
-      <BookingEventChoices
-        stocks={stocks}
-        offerIsDuo={isDuo}
-        enablePricesByCategories={enablePricesByCategories}
-      />
-    ),
+    children: <BookingEventChoices stocks={stocks} offerIsDuo={isDuo} />,
   }
 }
 
@@ -111,7 +102,6 @@ export const useModalContent = (
   const { bookingState, dispatch } = useBookingContext()
   const offer = useBookingOffer()
   const mapping = useSubcategoriesMapping()
-  const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
   const bookingStep = bookingState.step ?? Step.DATE
 
   if (!offer) {
@@ -143,7 +133,7 @@ export const useModalContent = (
   }
 
   if (bookingState.step !== Step.CONFIRMATION) {
-    const shouldDisplayBackButton = bookingStep !== Step.DATE && enablePricesByCategories
+    const shouldDisplayBackButton = bookingStep !== Step.DATE
     const bookingStepModalLeftIconProps: ModalLeftIconProps = shouldDisplayBackButton
       ? {
           leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
@@ -156,20 +146,14 @@ export const useModalContent = (
           leftIcon: undefined,
           onLeftIconPress: undefined,
         }
-    return getBookingStepModalContent(
-      !!enablePricesByCategories,
-      bookingStepModalLeftIconProps,
-      stocks,
-      offer.isDuo
-    )
+    return getBookingStepModalContent(bookingStepModalLeftIconProps, stocks, offer.isDuo)
   }
 
   const previousBookingState = getPreviousStep(bookingState, offer?.stocks || [], offer?.isDuo)
   const bookingDetailsModalLeftIconProps: ModalLeftIconProps = {
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,
-    onLeftIconPress: () =>
-      goToPreviousStep(enablePricesByCategories ? previousBookingState : Step.PRE_VALIDATION),
+    onLeftIconPress: () => goToPreviousStep(previousBookingState),
   }
 
   return getBookingDetailsModalContent(

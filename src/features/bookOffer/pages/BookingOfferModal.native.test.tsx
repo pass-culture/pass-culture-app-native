@@ -15,7 +15,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -64,8 +63,6 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 }) as jest.Mock
 
 jest.mock('react-query')
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const useBookOfferMutationSpy = jest.spyOn(useBookOfferMutation, 'useBookOfferMutation')
 
@@ -177,112 +174,20 @@ describe('<BookingOfferModalComponent />', () => {
     ).toBeOnTheScreen()
   })
 
-  describe('when offer is duo', () => {
-    beforeEach(() => {
-      mockUseBookingContext.mockReturnValue({
-        bookingState: {
-          quantity: 1,
-          offerId: mockOffer.id,
-          step: Step.CONFIRMATION,
-        } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
-    })
-
-    it('should show pre-validation screen when pressing arrow back on confirmation screen', () => {
-      render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
-
-      fireEvent.press(screen.getByTestId('Revenir à l’étape précédente'))
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'CHANGE_STEP',
-        payload: Step.PRE_VALIDATION,
-      })
-    })
-  })
-
-  describe('when offer is not duo', () => {
-    beforeEach(() => {
-      mockUseBookingContext.mockReturnValue({
-        bookingState: {
-          quantity: 1,
-          offerId: mockOffer.id,
-          step: Step.CONFIRMATION,
-        } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
-    })
-
-    it('should show pre-validation screen when pressing arrow back on confirmation screen', () => {
-      mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, isDuo: false } })
-      render(<BookingOfferModalComponent visible offerId={baseOffer.id} />)
-
-      fireEvent.press(screen.getByTestId('Revenir à l’étape précédente'))
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'CHANGE_STEP',
-        payload: Step.PRE_VALIDATION,
-      })
-    })
-  })
-
-  it('should not log booking funnel cancellation event when closing the modal', () => {
+  it('should log booking funnel cancellation event when closing the modal', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
     fireEvent.press(dismissModalButton)
 
-    expect(analytics.logCancelBookingFunnel).not.toHaveBeenCalled()
+    expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
   })
 
-  it('should display modal without prices by categories', () => {
+  it('should display modal with prices by categories', () => {
+    mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
     render(<BookingOfferModalComponent visible offerId={20} />)
 
-    expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeOnTheScreen()
-  })
-
-  it('should not display modal with prices by categories', () => {
-    render(<BookingOfferModalComponent visible offerId={20} />)
-
-    expect(screen.queryByTestId('modalWithPricesByCategories')).not.toBeOnTheScreen()
-  })
-
-  describe('when prices by categories feature flag activated', () => {
-    beforeEach(() => {
-      mockUseBookingContext.mockReturnValue({
-        bookingState: {
-          offerId: mockOffer.id,
-          step: Step.DATE,
-        } as BookingState,
-        dismissModal: mockDismissModal,
-        dispatch: mockDispatch,
-      })
-      useFeatureFlagSpy.mockReturnValue(true)
-    })
-
-    it('should log booking funnel cancellation event when closing the modal', () => {
-      render(<BookingOfferModalComponent visible offerId={20} />)
-      const dismissModalButton = screen.getByTestId('Fermer la modale')
-
-      fireEvent.press(dismissModalButton)
-
-      expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
-    })
-
-    it('should display modal with prices by categories', () => {
-      mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
-      render(<BookingOfferModalComponent visible offerId={20} />)
-
-      expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
-    })
-
-    it('should not display modal without prices by categories', () => {
-      render(<BookingOfferModalComponent visible offerId={20} />)
-
-      expect(screen.queryByTestId('modalWithoutPricesByCategories')).not.toBeOnTheScreen()
-    })
+    expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
   })
 
   describe('when booking step is confirmation', () => {

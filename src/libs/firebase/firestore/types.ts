@@ -27,7 +27,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_MULTIVENUE_OFFER = 'wipEnableMultivenueOffer',
   WIP_NEW_VENUE_PAGE = 'wipNewVenuePage',
   WIP_OFFER_V2 = 'wipOfferV2',
-  WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
   WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',

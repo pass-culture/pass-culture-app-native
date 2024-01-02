@@ -3,8 +3,7 @@ export enum Step {
   HOUR = 2,
   PRICE = 3,
   DUO = 4,
-  PRE_VALIDATION = 5,
-  CONFIRMATION = 6,
+  CONFIRMATION = 5,
 }
 
 export const STEP_LABEL: Record<Step, string> = {
@@ -12,7 +11,6 @@ export const STEP_LABEL: Record<Step, string> = {
   [Step.HOUR]: 'Horaire',
   [Step.PRICE]: 'Prix',
   [Step.DUO]: 'Nombre de places',
-  [Step.PRE_VALIDATION]: 'Pré-validation',
   [Step.CONFIRMATION]: 'Confirmation',
 }
 
