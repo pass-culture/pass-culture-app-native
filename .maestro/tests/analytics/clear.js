@@ -1,0 +1,1 @@
+http.delete(MOCK_ANALYTICS_SERVER)
