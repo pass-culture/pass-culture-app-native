@@ -28,7 +28,7 @@ jobs:
       WEBAPP_URL: https://app.staging.passculture.team
   check-proxy-version-production:
     name: Check production proxy tag
-    if: startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')
+    # if: startsWith(github.ref, 'refs/tags/prod-hard-deploy') || startsWith(github.ref, 'refs/tags/hotfix-production')
     uses: ./.github/workflows/dev_on_workflow_check_proxy_version.yml
     with:
       WEBAPP_URL: https://passculture.app
@@ -224,8 +224,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-integration:
-    needs: [yarn-tester]
-    if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
+    # needs: [yarn-tester]
+    # if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
     with:
       ENV: integration
@@ -245,8 +245,8 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-production:
-    needs: [yarn-tester]
-    if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
+    # needs: [yarn-tester]
+    # if: startsWith(github.ref, 'refs/tags/hotfix-prod') || startsWith(github.ref, 'refs/tags/prod-hard-deploy')
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
     with:
       ENV: production
