@@ -6,13 +6,11 @@ import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOff
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
-import { getFormattedAddress } from 'features/offer/helpers/getFormattedAddress/getFormattedAddress'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position } from 'libs/location'
-import { WhereSection } from 'libs/location/components/WhereSection'
 import { useMultivenueOffer } from 'shared/multivenueOffer/useMultivenueOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -29,7 +27,6 @@ export type OfferPlaceProps = {
 export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const showVenueBanner = offer.venue.isPermanent === true
-  const fullAddress = getFormattedAddress(offer.venue, showVenueBanner)
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 
@@ -43,7 +40,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers, enableMultivenueOffer } = useMultivenueOffer(offer)
+  const { shouldFetchSearchVenueOffers } = useMultivenueOffer(offer)
 
   const {
     hasNextPage,
@@ -104,22 +101,13 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
   return (
     <React.Fragment>
       <SectionWithDivider visible={!offer.isDigital} margin>
-        {enableMultivenueOffer ? (
-          <VenueSection
-            beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
-            venue={offer.venue}
-            showVenueBanner={showVenueBanner}
-            title={venueSectionTitle}
-          />
-        ) : (
-          <WhereSection
-            beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
-            venue={offer.venue}
-            address={fullAddress}
-            locationCoordinates={offer.venue.coordinates}
-            showVenueBanner={showVenueBanner}
-          />
-        )}
+        <VenueSection
+          beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
+          venue={offer.venue}
+          showVenueBanner={showVenueBanner}
+          title={venueSectionTitle}
+        />
+
         {shouldDisplayOtherVenuesAvailableButton ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />

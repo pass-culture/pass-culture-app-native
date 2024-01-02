@@ -7,7 +7,6 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -60,11 +59,6 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest
-  .spyOn(useFeatureFlag, 'useFeatureFlag')
-  // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
-  .mockReturnValue(false)
-
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   geolocPosition: null,
@@ -78,297 +72,190 @@ describe('<OfferPlace />', () => {
     mockNbVenueItems = 0
   })
 
-  describe('When wipEnableMultivenueOffer feature flag deactivated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+  it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', () => {
+    mockNbVenueItems = 2
+    mockVenueList = offerVenues
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
     })
 
-    it('should show venue banner in where section', () => {
-      renderOfferPlace(offerPlaceProps)
-
-      expect(screen.getByTestId(`Lieu ${mockOffer.venue.name}`)).toBeOnTheScreen()
-    })
-
-    it('should log when the user press the venue banner', () => {
-      renderOfferPlace(offerPlaceProps)
-
-      fireEvent.press(screen.getByTestId(`Lieu ${mockOffer.venue.name}`))
-
-      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-        venueId: mockOffer.venue.id,
-        from: 'offer',
-      })
-    })
-
-    it('should not display distance when no address and go to button', () => {
-      const venueWithoutAddress = {
-        id: 1,
-        offerer: { name: 'PATHE BEAUGRENELLE' },
-        name: 'PATHE BEAUGRENELLE',
-        coordinates: {},
-        isPermanent: true,
-        timezone: 'Europe/Paris',
-      }
-
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          venue: venueWithoutAddress,
-        },
-      })
-
-      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Distance')).not.toBeOnTheScreen()
-    })
-
-    it('should log when the users consult the itinerary', () => {
-      renderOfferPlace(offerPlaceProps)
-
-      fireEvent.press(screen.getByText('Voir l’itinéraire'))
-
-      expect(analytics.logConsultItinerary).toHaveBeenCalledWith({
-        offerId: mockOffer.id,
-        from: 'offer',
-      })
-    })
-
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has an EAN', () => {
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { ean: '2765410054' },
-        },
-      })
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has an EAN', () => {
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
-      renderOfferPlace(offerPlaceProps)
-
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
-
-    it('should display old venue section', () => {
-      renderOfferPlace(offerPlaceProps)
-
-      expect(screen.queryByText('Où\u00a0?')).toBeOnTheScreen()
-    })
-
-    it('should not display new venue section', () => {
-      renderOfferPlace(offerPlaceProps)
-
-      expect(screen.queryByTestId('venueCard')).not.toBeOnTheScreen()
-      expect(screen.queryByTestId('venueInfos')).not.toBeOnTheScreen()
-    })
+    expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
   })
 
-  describe('When wipEnableMultivenueOffer feature flag activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
+    mockNbVenueItems = 0
+    mockVenueList = []
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
     })
 
-    it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { ean: '2765410054' },
-        },
-      })
+    expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  })
 
-      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
+  it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
-      mockNbVenueItems = 0
-      mockVenueList = []
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { ean: '2765410054' },
-        },
-      })
+    expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  })
 
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  it('should display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
+    mockNbVenueItems = 2
+    mockVenueList = offerVenues
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { ean: '2765410054' },
+      },
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
-      })
+    expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
+  })
 
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  it('should not display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
+    mockNbVenueItems = 0
+    mockVenueList = []
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { ean: '2765410054' },
+      },
     })
 
-    it('should display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
+    expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  })
 
-      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
+  it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an EAN', () => {
+    mockNbVenueItems = 2
+    mockVenueList = offerVenues
+
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
-      mockNbVenueItems = 0
-      mockVenueList = []
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
+    expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  })
 
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
-    })
+  it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
+    renderOfferPlace(offerPlaceProps)
 
-    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an EAN', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
+    expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+  })
 
+  it('should not display old venue section', () => {
+    renderOfferPlace(offerPlaceProps)
+
+    expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
+  })
+
+  describe('should display new venue section', () => {
+    it('With "Lieu de retrait" in title by default', () => {
       renderOfferPlace({
         ...offerPlaceProps,
         offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
       })
 
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Lieu de retrait')).toBeOnTheScreen()
+    })
+  })
+
+  it('should navigate to an other offer when user choose an other venue from "Voir d’autres lieux disponibles" button', () => {
+    const mockShowModal = jest.fn()
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: true,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+    mockNbVenueItems = 2
+    mockVenueList = offerVenues
+
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { ean: '2765410054' },
+      },
     })
 
-    it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
-      renderOfferPlace(offerPlaceProps)
+    fireEvent.press(screen.getByText('Le Livre Éclaire'))
+    fireEvent.press(screen.getByText('Choisir ce lieu'))
 
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
+    expect(navigate).toHaveBeenCalledWith('Offer', {
+      fromOfferId: mockOffer.id,
+      id: 2,
+      fromMultivenueOfferId: mockOffer.id,
+    })
+  })
+
+  it('should log ConsultOffer when new offer venue is selected', () => {
+    const mockShowModal = jest.fn()
+    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+      visible: true,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
     })
 
-    it('should not display old venue section', () => {
-      renderOfferPlace(offerPlaceProps)
+    mockNbVenueItems = 2
+    mockVenueList = offerVenues
 
-      expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { ean: '2765410054' },
+      },
     })
 
-    describe('should display new venue section', () => {
-      it('With "Lieu de retrait" in title by default', () => {
-        renderOfferPlace({
-          ...offerPlaceProps,
-          offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
-        })
+    fireEvent.press(screen.getByText('Le Livre Éclaire'))
+    fireEvent.press(screen.getByText('Choisir ce lieu'))
 
-        expect(screen.queryByText('Lieu de retrait')).toBeOnTheScreen()
-      })
+    expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'offer',
+      fromMultivenueOfferId: 146112,
+      offerId: 2,
     })
+  })
 
-    it('should navigate to an other offer when user choose an other venue from "Voir d’autres lieux disponibles" button', () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
+  it('should log when the users press the change venue modal', () => {
+    mockNbVenueItems = 2
+    mockVenueList = offerVenues
 
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: {
+          ean: '2765410054',
         },
-      })
-
-      fireEvent.press(screen.getByText('Le Livre Éclaire'))
-      fireEvent.press(screen.getByText('Choisir ce lieu'))
-
-      expect(navigate).toHaveBeenCalledWith('Offer', {
-        fromOfferId: mockOffer.id,
-        id: 2,
-        fromMultivenueOfferId: mockOffer.id,
-      })
+      },
     })
 
-    it('should log ConsultOffer when new offer venue is selected', () => {
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
+    fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
 
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { ean: '2765410054' },
-        },
-      })
-
-      fireEvent.press(screen.getByText('Le Livre Éclaire'))
-      fireEvent.press(screen.getByText('Choisir ce lieu'))
-
-      expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        from: 'offer',
-        fromMultivenueOfferId: 146112,
-        offerId: 2,
-      })
-    })
-
-    it('should log when the users press the change venue modal', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferPlace({
-        ...offerPlaceProps,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: {
-            ean: '2765410054',
-          },
-        },
-      })
-
-      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
-
-      expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(mockOffer.id)
-    })
+    expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(mockOffer.id)
   })
 })
 

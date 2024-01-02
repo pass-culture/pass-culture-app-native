@@ -23,7 +23,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_EMAIL_VALIDATION_RESEND = 'wipEnableEmailValidationResend',
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
-  WIP_ENABLE_MULTIVENUE_OFFER = 'wipEnableMultivenueOffer',
   WIP_NEW_VENUE_PAGE = 'wipNewVenuePage',
   WIP_OFFER_V2 = 'wipOfferV2',
   WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',

@@ -16,7 +16,6 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_ENABLE_EMAIL_VALIDATION_RESEND,
     RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
     RemoteStoreFeatureFlags.WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES,
-    RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER,
     RemoteStoreFeatureFlags.WIP_OFFER_V2,
     RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST,
     RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
