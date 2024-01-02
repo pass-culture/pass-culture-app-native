@@ -20,6 +20,8 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
     plural: 'Réservations terminées',
   })
 
+  const renderBadge = () => <Badge value={endedBookings.length} />
+
   return (
     <React.Fragment>
       <Separator.Horizontal />
@@ -28,7 +30,7 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
         <SectionRow
           type="navigable"
           title={endedBookingsLabel}
-          icon={() => <Badge value={endedBookings.length} />}
+          icon={renderBadge}
           navigateTo={{ screen: 'EndedBookings' }}
         />
       </EndedBookingsSectionWrapper>
