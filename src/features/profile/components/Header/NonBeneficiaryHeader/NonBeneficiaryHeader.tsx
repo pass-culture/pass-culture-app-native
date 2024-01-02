@@ -26,6 +26,23 @@ function NonBeneficiaryHeaderComponent({
   eligibilityEndDatetime,
   eligibilityStartDatetime,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
+  return (
+    <React.Fragment>
+      <PageHeader title="Mon profil" />
+      <NonBeneficiaryBanner
+        eligibilityEndDatetime={eligibilityEndDatetime}
+        eligibilityStartDatetime={eligibilityStartDatetime}
+      />
+    </React.Fragment>
+  )
+}
+
+export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
+
+function NonBeneficiaryBanner({
+  eligibilityStartDatetime,
+  eligibilityEndDatetime,
+}: Readonly<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const { data: subscription } = useNextSubscriptionStep()
 
@@ -45,72 +62,61 @@ function NonBeneficiaryHeaderComponent({
   const isUserTooYoungToBeEligible =
     formattedEligibilityStartDatetime && formattedEligibilityStartDatetime > today
 
-  const NonBeneficiaryBanner = () => {
-    if (isUserTooYoungToBeEligible) {
-      return (
-        <BannerContainer>
-          <Spacer.Column numberOfSpaces={2} />
-          <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
-        </BannerContainer>
-      )
-    }
-
-    if (subscription?.subscriptionMessage) {
-      return (
-        <BannerContainer>
-          <SubscriptionMessageBadge subscriptionMessage={subscription.subscriptionMessage} />
-        </BannerContainer>
-      )
-    }
-
-    if (homeBanner?.name === BannerName.activation_banner) {
-      return (
-        <BannerContainer testID="eligibility-banner-container">
-          <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
-          <ActivationBanner
-            title={homeBanner.title}
-            subtitle={homeBanner.text}
-            icon={BicolorUnlock}
-            from={StepperOrigin.PROFILE}
-          />
-        </BannerContainer>
-      )
-    }
-
-    if (homeBanner?.name === BannerName.transition_17_18_banner) {
-      return (
-        <BannerContainer testID="eligibility-banner-container">
-          <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
-          <ActivationBanner
-            title={homeBanner.title}
-            subtitle={homeBanner.text}
-            icon={BirthdayCake}
-            from={StepperOrigin.PROFILE}
-          />
-        </BannerContainer>
-      )
-    }
-    if (subscription?.hasIdentityCheckPending) {
-      return (
-        <BannerContainer>
-          <Spacer.Column numberOfSpaces={2} />
-          <IdentityCheckPendingBadge />
-        </BannerContainer>
-      )
-    }
-
-    return null
+  if (isUserTooYoungToBeEligible) {
+    return (
+      <BannerContainer>
+        <Spacer.Column numberOfSpaces={2} />
+        <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
+      </BannerContainer>
+    )
   }
 
-  return (
-    <React.Fragment>
-      <PageHeader title="Mon profil" />
-      <NonBeneficiaryBanner />
-    </React.Fragment>
-  )
-}
+  if (subscription?.subscriptionMessage) {
+    return (
+      <BannerContainer>
+        <SubscriptionMessageBadge subscriptionMessage={subscription.subscriptionMessage} />
+      </BannerContainer>
+    )
+  }
 
-export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
+  if (homeBanner?.name === BannerName.activation_banner) {
+    return (
+      <BannerContainer testID="eligibility-banner-container">
+        <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
+        <ActivationBanner
+          title={homeBanner.title}
+          subtitle={homeBanner.text}
+          icon={BicolorUnlock}
+          from={StepperOrigin.PROFILE}
+        />
+      </BannerContainer>
+    )
+  }
+
+  if (homeBanner?.name === BannerName.transition_17_18_banner) {
+    return (
+      <BannerContainer testID="eligibility-banner-container">
+        <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
+        <ActivationBanner
+          title={homeBanner.title}
+          subtitle={homeBanner.text}
+          icon={BirthdayCake}
+          from={StepperOrigin.PROFILE}
+        />
+      </BannerContainer>
+    )
+  }
+  if (subscription?.hasIdentityCheckPending) {
+    return (
+      <BannerContainer>
+        <Spacer.Column numberOfSpaces={2} />
+        <IdentityCheckPendingBadge />
+      </BannerContainer>
+    )
+  }
+
+  return null
+}
 
 const BannerContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
