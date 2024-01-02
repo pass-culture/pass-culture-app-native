@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
 import { fireEvent, render, screen } from 'tests/utils/web'
+import { theme } from 'theme'
 import { Typo } from 'ui/theme'
 
 const ExampleText = styled(Typo.Body)``
@@ -63,5 +64,28 @@ describe('TabLayout', () => {
     expect(firstTab).toHaveAttribute('aria-selected', 'true')
     expect(firstTab).toHaveFocus()
     expect(secondTab).toHaveAttribute('aria-selected', 'false')
+  })
+
+  it('should change tab title color on hover', () => {
+    render(<TabLayout tabPanels={tabPanels} />)
+
+    fireEvent.click(screen.getByRole(AccessibilityRole.TAB, { name: 'Offres disponibles' }))
+
+    const secondTabTitle = screen.getByText('Infos pratiques')
+    fireEvent.mouseEnter(secondTabTitle)
+
+    expect(secondTabTitle).toHaveStyle({ color: theme.colors.primary })
+  })
+
+  it('should restore tab title color on hover leave', async () => {
+    render(<TabLayout tabPanels={tabPanels} />)
+
+    fireEvent.click(screen.getByRole(AccessibilityRole.TAB, { name: 'Offres disponibles' }))
+
+    const secondTabTitle = screen.getByText('Infos pratiques')
+    fireEvent.mouseEnter(secondTabTitle)
+    fireEvent.mouseLeave(secondTabTitle)
+
+    expect(secondTabTitle).toHaveStyle({ color: theme.colors.greyDark })
   })
 })

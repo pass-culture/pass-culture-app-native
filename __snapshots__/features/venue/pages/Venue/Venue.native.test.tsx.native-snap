@@ -5700,6 +5700,7 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
                 }
               >
                 <Text
+                  isHover={false}
                   isSelected={true}
                   style={
                     [
@@ -5802,6 +5803,7 @@ exports[`<Venue /> with new venue body should match snapshot 1`] = `
                 }
               >
                 <Text
+                  isHover={false}
                   isSelected={false}
                   style={
                     [

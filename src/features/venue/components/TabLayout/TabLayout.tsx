@@ -1,11 +1,12 @@
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TouchableTab } from 'features/venue/components/TabLayout/TouchableTab'
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
 import { Tab } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const tabs = Object.values(Tab)
@@ -13,6 +14,12 @@ const tabs = Object.values(Tab)
 type Props = {
   tabPanels: Record<Tab, JSX.Element>
   onTabChange?: Record<Tab, () => void>
+}
+
+type InfoTabProps = {
+  tab: Tab
+  selectedTab: Tab
+  onPress: () => void
 }
 
 export const TabLayout: FunctionComponent<Props> = ({ tabPanels, onTabChange }) => {
@@ -31,28 +38,32 @@ export const TabLayout: FunctionComponent<Props> = ({ tabPanels, onTabChange }) 
       <TabContainer accessibilityRole={AccessibilityRole.TABLIST} ref={tabListRef}>
         <GreyBar />
         <Spacer.Row numberOfSpaces={6} />
-        {tabs.map((tab) => {
-          const isSelected = selectedTab === tab
-
-          return (
-            <StyledTouchableTab
-              id={tab}
-              key={tab}
-              onPress={() => onTabPress(tab)}
-              selected={isSelected}>
-              <Spacer.Column numberOfSpaces={6} />
-              <TabTitleContainer>
-                <TabTitle isSelected={isSelected}>{tab}</TabTitle>
-              </TabTitleContainer>
-              <Spacer.Column numberOfSpaces={2} />
-              <BarOfSelectedTab isSelected={isSelected} />
-            </StyledTouchableTab>
-          )
-        })}
+        {tabs.map((tab) => (
+          <InfoTab key={tab} tab={tab} selectedTab={selectedTab} onPress={() => onTabPress(tab)} />
+        ))}
         <Spacer.Row numberOfSpaces={6} />
       </TabContainer>
       <View accessibilityRole={AccessibilityRole.TABPANEL}>{tabPanels[selectedTab]}</View>
     </Container>
+  )
+}
+
+const InfoTab = ({ tab, selectedTab, onPress }: InfoTabProps) => {
+  const isSelected = selectedTab === tab
+  const { isHover, ...webHoverProps } = useHandleHover()
+  const hoverProps = Platform.OS === 'web' ? webHoverProps : {}
+
+  return (
+    <StyledTouchableTab id={tab} onPress={onPress} selected={isSelected} {...hoverProps}>
+      <Spacer.Column numberOfSpaces={6} />
+      <TabTitleContainer>
+        <TabTitle isHover={isHover} isSelected={isSelected}>
+          {tab}
+        </TabTitle>
+      </TabTitleContainer>
+      <Spacer.Column numberOfSpaces={2} />
+      <BarOfSelectedTab isSelected={isSelected} />
+    </StyledTouchableTab>
   )
 }
 
@@ -79,10 +90,12 @@ const GreyBar = styled.View(({ theme }) => ({
 
 const TabTitleContainer = styled.View({ flexGrow: 1, justifyContent: 'center' })
 
-const TabTitle = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  textAlign: 'center',
-  color: isSelected ? theme.colors.primary : theme.colors.greyDark,
-}))
+const TabTitle = styled(Typo.ButtonText)<{ isSelected: boolean; isHover: boolean }>(
+  ({ isSelected, isHover, theme }) => ({
+    textAlign: 'center',
+    color: isSelected || isHover ? theme.colors.primary : theme.colors.greyDark,
+  })
+)
 
 const BarOfSelectedTab = styled.View<{ isSelected: boolean }>(({ theme, isSelected }) => ({
   bottom: 0,
