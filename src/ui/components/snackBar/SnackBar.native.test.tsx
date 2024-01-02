@@ -171,9 +171,7 @@ describe('SnackBar Component', () => {
      * "refresher" updated
      * "visible" goes from true to false
      */
-    // FIXME(PC-26461) find a way to fix this test that fails after react upgrade
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should hide the snackbar container when hidden', async () => {
+    it('should hide the snackbar container when hidden', async () => {
       const timing = jest.spyOn(Animated, 'timing')
 
       let refresher = 1
@@ -185,23 +183,24 @@ describe('SnackBar Component', () => {
 
       const container = screen.getByTestId('snackbar-container')
 
-      expect(container.props.style[0].display).toEqual('none')
       /**
        * It's called twice because of the following function being triggered
        * in triggerApparitionAnimation:
-       * - progressBarContainerRef?.current?.fadeOutUp
-       * - containerRef?.current?.fadeOutUpé@
+       * - progressBarContainerRef.current?.fadeOutUp
+       * - containerRef.current?.fadeOutUp
        */
       expect(timing).toHaveBeenCalledTimes(2)
+
+      await waitFor(() => {
+        expect(container.props.style[0].display).toEqual('none')
+      })
     })
 
     /**
      * "refresher" updated
      * "visible" still the same => props.visible === state.isVisible
      */
-    // FIXME(PC-26461) find a way to fix this test that fails after react upgrade
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should reset progressBar animation when visual properties changed', async () => {
+    it('should reset progressBar animation when visual properties changed', async () => {
       const timing = getAnimatedTimingImplementation()
 
       let refresher = 1
@@ -214,14 +213,14 @@ describe('SnackBar Component', () => {
       const container = screen.getByTestId('snackbar-container')
       const text = screen.getByTestId('snackbar-message')
 
-      expect(container.props.isVisible).toEqual(true)
-      expect(text.props.children).toEqual('a new message')
       /**
        * It's called once because of the following function being triggered
        * in animateProgressBarWidth:
        * - Animated.timing
        */
       expect(timing).toHaveBeenCalledTimes(1)
+      expect(container.props.isVisible).toEqual(true)
+      expect(text.props.children).toEqual('a new message')
     })
 
     it('should reset the timer when "refresher" is updated', async () => {
