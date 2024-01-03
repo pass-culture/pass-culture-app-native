@@ -4,13 +4,15 @@ import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
 import { useVenueBlock } from 'features/offerv2/components/OfferVenueBlock/useVenueBlock'
+import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
+import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
+import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { Tag } from 'ui/components/Tag/Tag'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Show } from 'ui/svg/icons/Show'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -32,6 +34,11 @@ export function OfferVenueBlock({
   venue,
 }: Readonly<Props>) {
   const { venueName, address, onCopyAddressPress } = useVenueBlock({ venue })
+  const venueFullAddress = formatFullAddressStartsWithPostalCode(
+    venue.address,
+    venue.postalCode,
+    venue.city
+  )
 
   return (
     <View>
@@ -80,14 +87,13 @@ export function OfferVenueBlock({
       {onSeeItineraryPress ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <TertiaryButtonWrapper>
-            <ButtonTertiaryBlack
-              inline
-              wording="Voir l’itinéraire"
-              onPress={onSeeItineraryPress}
-              icon={LocationPointer}
-            />
-          </TertiaryButtonWrapper>
+          <SeeItineraryButton
+            externalNav={{
+              url: getGoogleMapsItineraryUrl(venueFullAddress),
+              address: venueFullAddress,
+            }}
+            onPress={onSeeItineraryPress}
+          />
         </React.Fragment>
       ) : null}
 

@@ -11,6 +11,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
 import { mockServer } from 'tests/mswServer'
@@ -28,6 +29,9 @@ const mockSubcategory: Subcategory = {
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
   nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
 }
+
+jest.mock('libs/location')
+const mockUseGeolocation = useLocation as jest.Mock
 
 describe('<OfferContent />', () => {
   beforeEach(() => {
@@ -89,6 +93,27 @@ describe('<OfferContent />', () => {
     renderOfferContent({})
 
     expect(screen.getByText('5,00 €')).toBeOnTheScreen()
+  })
+
+  it('should display venue section', () => {
+    renderOfferContent({})
+
+    expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
+  })
+
+  it('should display venue tag distance when user share his position', () => {
+    mockUseGeolocation.mockReturnValueOnce({
+      hasGeolocPosition: true,
+    })
+    renderOfferContent({})
+
+    expect(screen.getByText('à 7 km')).toBeOnTheScreen()
+  })
+
+  it('should not display venue tag distance when user not share his position', () => {
+    renderOfferContent({})
+
+    expect(screen.queryByText('à 7 km')).not.toBeOnTheScreen()
   })
 })
 

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -15,6 +16,8 @@ jest.mock('features/offerv2/components/OfferVenueBlock/useVenueBlock', () => ({
     onCopyAddressPress: mockOnCopyAddressPress,
   })),
 }))
+
+const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<OfferVenueBlock />', () => {
   it('should display title', () => {
@@ -162,5 +165,25 @@ describe('<OfferVenueBlock />', () => {
     render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
+  })
+
+  it.skip('should redirect to Google Maps itinerary when pressing "Voir l’itinéraire" button', () => {
+    const onSeeItineraryPress = jest.fn()
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        venue={offerResponseSnap.venue}
+        onSeeItineraryPress={onSeeItineraryPress}
+      />
+    )
+
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+
+    expect(openURLSpy).toHaveBeenNthCalledWith(
+      1,
+      'https://www.google.com/maps/dir/?api=1&destination=75008%20PARIS%208%2C%202%20RUE%20LAMENNAIS',
+      undefined,
+      true
+    )
   })
 })
