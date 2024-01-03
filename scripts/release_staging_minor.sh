@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 # When releasing a staging minor, all we do is getting the version from
 # the package.json and pushing the corresponding tag to trigger the CI.

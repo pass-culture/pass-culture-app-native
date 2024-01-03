@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 SOURCEMAPS_DIR="sourcemaps"
 
@@ -63,6 +65,7 @@ upload_sourcemaps() {
   CODE_PUSH_LABEL="${3:-}"
   VERSION=$(jq -r .version package.json)
   BUILD=$(jq -r .build package.json)
+  BUNDLE_FILE_NAME="${BUNDLE_FILE_NAME:-}"
 
   echo "APP_OS: ${APP_OS}"
   echo "APP_ENV: ${APP_ENV}"
@@ -90,7 +93,7 @@ upload_sourcemaps() {
     RELEASE="${VERSION}-${APP_OS}"
 
     # Fix android using wrong source maps (See: https://github.com/getsentry/sentry-react-native/issues/2087)
-    if [[ "${APP_OS}" = "android" ]]; then
+    if [[ "${APP_OS}" = "android" ]] && [[ -n "${BUNDLE_FILE_NAME}" ]]; then
       echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME} -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
       mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
       echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME}.hbc -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"

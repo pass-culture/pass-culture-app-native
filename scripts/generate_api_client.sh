@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-set -e
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+GREEN='\033[0;32m'
+NO_COLOR='\033[0m'
 
 docker run \
     --network="host" \
