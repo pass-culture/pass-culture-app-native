@@ -4,7 +4,10 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
+import {
+  OfferPlaceOld,
+  OfferPlaceOldProps,
+} from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -59,7 +62,7 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
-const offerPlaceProps: OfferPlaceProps = {
+const offerPlaceProps: OfferPlaceOldProps = {
   offer: mockOffer,
   userLocation: null,
   isEvent: false,
@@ -259,9 +262,9 @@ describe('<OfferPlace />', () => {
   })
 })
 
-const renderOfferPlace = ({ offer, userLocation, isEvent }: OfferPlaceProps) =>
+const renderOfferPlace = ({ offer, userLocation, isEvent }: OfferPlaceOldProps) =>
   render(
     reactQueryProviderHOC(
-      <OfferPlace offer={offer} userLocation={userLocation} isEvent={isEvent} />
+      <OfferPlaceOld offer={offer} userLocation={userLocation} isEvent={isEvent} />
     )
   )

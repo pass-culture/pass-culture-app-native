@@ -18,13 +18,13 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Spacer } from 'ui/theme'
 
-export type OfferPlaceProps = {
+export type OfferPlaceOldProps = {
   offer: OfferResponse
   userLocation: Position
   isEvent: boolean
 }
 
-export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlaceProps>) {
+export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPlaceOldProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const showVenueBanner = offer.venue.isPermanent === true
 
