@@ -5,7 +5,7 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Typo } from 'ui/theme'
 
 interface Props {
-  artists: string | null
+  artists: string | undefined
   numberOfLines?: number
 }
 

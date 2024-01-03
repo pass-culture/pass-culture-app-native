@@ -71,6 +71,19 @@ describe('<OfferContent />', () => {
     expect(screen.getByText('Industrial')).toBeOnTheScreen()
     expect(screen.getByText('Vinyles et autres supports')).toBeOnTheScreen()
   })
+
+  it('should display artists', () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      extraData: { stageDirector: 'Marion Cotillard, Leonardo DiCaprio' },
+    }
+    renderOfferContent({
+      offer,
+    })
+
+    expect(screen.getByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>
