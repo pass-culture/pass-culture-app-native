@@ -30,6 +30,7 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
   const onClose = () => {
     if (searchState.venue) {
       setVenueQuery(searchState.venue.label)
+      setSelectedVenue(searchState.venue)
     }
     dismissModal()
   }
