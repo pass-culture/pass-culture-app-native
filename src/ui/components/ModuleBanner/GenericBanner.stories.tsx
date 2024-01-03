@@ -36,13 +36,13 @@ const textExample = ({ withSubtitle = true }) => (
 export const Default = Template.bind({})
 Default.args = {
   children: textExample({}),
-  LeftIcon: Everywhere,
+  LeftIcon: <Everywhere />,
 }
 
 export const WithoutIcon = Template.bind({})
 WithoutIcon.args = {
   children: textExample({}),
-  LeftIcon: Everywhere,
+  LeftIcon: <Everywhere />,
 }
 
 export const WithoutSubtitle = Template.bind({})

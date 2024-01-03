@@ -120,7 +120,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <GeolocationButtonContainer
             onPress={onPress}
             accessibilityLabel="Active ta géolocalisation">
-            <GenericBanner LeftIcon={LocationIcon}>
+            <GenericBanner LeftIcon={<LocationIcon />}>
               <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
               <Spacer.Column numberOfSpaces={1} />
               <Typo.Caption numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Caption>

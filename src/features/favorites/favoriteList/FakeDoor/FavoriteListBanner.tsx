@@ -33,7 +33,7 @@ export const FavoriteListBanner: FunctionComponent = () => {
   return (
     <React.Fragment>
       <StyledTouchableWrapper onPress={onBannerPress}>
-        <StyledBanner dense LeftIcon={BicolorListFav}>
+        <StyledBanner dense LeftIcon={<BicolorListFav />}>
           <Typo.ButtonText>Crée une liste de favoris</Typo.ButtonText>
           <Typo.Body>Trie tes favoris à ta façon et partage-les&nbsp;!</Typo.Body>
         </StyledBanner>

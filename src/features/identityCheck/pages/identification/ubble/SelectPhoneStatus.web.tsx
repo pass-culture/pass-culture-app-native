@@ -17,13 +17,13 @@ export const SelectPhoneStatus: FunctionComponent = () => {
 const buttonList = [
   <HeroButtonList
     Title={<Typo.Body>J’ai un smartphone à proximité</Typo.Body>}
-    icon={BicolorSmartphone}
+    Icon={<BicolorSmartphone />}
     navigateTo={{ screen: 'SelectIDStatus' }}
     key={1}
   />,
   <HeroButtonList
     Title={<Typo.Body>Je n’ai pas de smartphone à proximité</Typo.Body>}
-    icon={BicolorNoPhone}
+    Icon={<BicolorNoPhone />}
     navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } }}
     key={2}
   />,

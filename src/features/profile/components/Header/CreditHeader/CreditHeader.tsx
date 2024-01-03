@@ -88,7 +88,7 @@ export function CreditHeader({
             screen: 'ThematicHome',
             params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
           }}>
-          <GenericBanner LeftIcon={BicolorOffers}>
+          <GenericBanner LeftIcon={<BicolorOffers />}>
             <Typo.ButtonText>L’aventure continue&nbsp;!</Typo.ButtonText>
             <Spacer.Column numberOfSpaces={1} />
             <StyledBody numberOfLines={3}>

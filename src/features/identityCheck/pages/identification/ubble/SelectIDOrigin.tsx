@@ -43,7 +43,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
             <Typo.ButtonText>français</Typo.ButtonText>
           </Text>
         }
-        icon={BicolorFrance}
+        Icon={<BicolorFrance />}
         navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
