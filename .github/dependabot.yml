@@ -23,3 +23,13 @@ updates:
       prefix: '(BSR) chore(deps):'
     reviewers:
       - 'Lucasbeneston'
+
+  - package-ecosystem: 'github-actions'
+    directory: '.github/workflows'
+    open-pull-requests-limit: 6
+    schedule:
+      interval: 'daily'
+    commit-message:
+      prefix: '(BSR) chore(ci):'
+    reviewers:
+      - 'Lucasbeneston'
