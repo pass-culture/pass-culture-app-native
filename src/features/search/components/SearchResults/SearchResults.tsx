@@ -38,6 +38,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
+import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
@@ -49,6 +50,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
+const MAX_VENUE_CHARACTERS = 20
 
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -232,7 +234,11 @@ export const SearchResults: React.FC = () => {
             <StyledLi>
               {flagOnAppLocation ? (
                 <SingleFilterButton
-                  label={searchState.venue ? searchState.venue.label : 'Lieu culturel'}
+                  label={
+                    searchState.venue
+                      ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
+                      : 'Lieu culturel'
+                  }
                   testID="venueButton"
                   onPress={showVenueModal}
                   isSelected={isVenue}
