@@ -46,6 +46,7 @@ const mockData = {
 
 describe('FavoritesResults component', () => {
   // TODO(PC-26577): fix test flackyness
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseFavorites.mockReturnValue({
@@ -78,6 +79,7 @@ describe('FavoritesResults component', () => {
   })
 
   // TODO(PC-26577): fix test flackyness
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should show number of result and sortBy button', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     const mutate = jest.fn()
