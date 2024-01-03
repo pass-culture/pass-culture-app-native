@@ -25,12 +25,16 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: Position = DEFAULT_POSITION
+let mockLocationMode = LocationMode.AROUND_ME
+const mockAroundMeRadius = DEFAULT_RADIUS
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     geolocPosition: mockPosition,
     hasGeolocPosition: true,
     place: null,
     userLocation: mockPosition,
+    selectedLocationMode: mockLocationMode,
+    aroundMeRadius: mockAroundMeRadius,
   }),
 }))
 
@@ -54,6 +58,7 @@ describe('<SearchFilter/>', () => {
   afterEach(() => {
     mockPosition = DEFAULT_POSITION
     mockSearchState = initialSearchState
+    mockLocationMode = LocationMode.AROUND_ME
   })
 
   it('should render correctly', async () => {
@@ -91,6 +96,7 @@ describe('<SearchFilter/>', () => {
 
     it('is null', async () => {
       mockPosition = undefined
+      mockLocationMode = LocationMode.EVERYWHERE
       renderSearchFilter()
 
       await act(async () => {

@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
-import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -16,6 +15,7 @@ import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -33,7 +33,7 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { geolocPosition, hasGeolocPosition, place } = useLocation()
+  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
 
@@ -52,24 +52,20 @@ export const SearchFilter: React.FC = () => {
 
   const onResetPress = useCallback(() => {
     const getLocationFilter = (): LocationFilter => {
-      const { locationFilter, venue } = searchState
-      const aroundRadius =
-        locationFilter.locationType === LocationMode.EVERYWHERE || venue
-          ? DEFAULT_RADIUS
-          : locationFilter.aroundRadius
-      if (place) {
-        return {
-          locationType: LocationMode.AROUND_PLACE,
-          place,
-          aroundRadius: aroundRadius ?? DEFAULT_RADIUS,
-        }
-      } else if (hasGeolocPosition && geolocPosition) {
-        return {
-          locationType: LocationMode.AROUND_ME,
-          aroundRadius,
-        }
-      } else {
-        return { locationType: LocationMode.EVERYWHERE }
+      switch (selectedLocationMode) {
+        case LocationMode.AROUND_PLACE:
+          return {
+            locationType: selectedLocationMode,
+            place: place as SuggestedPlace,
+            aroundRadius: aroundPlaceRadius,
+          }
+        case LocationMode.AROUND_ME:
+          return {
+            locationType: selectedLocationMode,
+            aroundRadius: aroundMeRadius,
+          }
+        case LocationMode.EVERYWHERE:
+          return { locationType: selectedLocationMode }
       }
     }
     dispatch({
@@ -96,7 +92,15 @@ export const SearchFilter: React.FC = () => {
       },
     })
     logReinitializeFilters()
-  }, [dispatch, hasGeolocPosition, logReinitializeFilters, place, geolocPosition, searchState])
+  }, [
+    dispatch,
+    searchState,
+    logReinitializeFilters,
+    selectedLocationMode,
+    place,
+    aroundPlaceRadius,
+    aroundMeRadius,
+  ])
 
   const hasDuoOfferToggle = useMemo(() => {
     const isBeneficiary = !!user?.isBeneficiary
