@@ -114,6 +114,11 @@ describe('<Offer />', () => {
       expect(screen.getByText('À propos')).toBeOnTheScreen()
     })
 
+    it('should display subcategory tag', () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
+    })
   })
 
   it('should display offer v1 page when feature flag is disabled', async () => {
