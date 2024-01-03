@@ -5,6 +5,7 @@ import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylist/
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, screen } from 'tests/utils'
 
@@ -26,6 +27,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     data: mockData,
   }),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Offer />', () => {
   beforeEach(() => {
@@ -98,5 +101,26 @@ describe('<Offer />', () => {
     await act(async () => {})
 
     expect(screen.queryByTestId('offer-container')).toBeOnTheScreen()
+  })
+
+  describe('When offer V2 feature flag enabled', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    it('should display offer v2 page', () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
+    })
+
+  })
+
+  it('should display offer v1 page when feature flag is disabled', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await act(async () => {})
+
+    expect(screen.queryByText('À propos')).toBe(null)
   })
 })

@@ -5,7 +5,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { NativeCategoryIdEnumv2, OfferResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
-import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
+import { OfferContentOld } from 'features/offer/components/OfferContentOld/OfferContentOld'
 import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -99,7 +99,7 @@ const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 
-describe('<OfferContent />', () => {
+describe('<OfferContentOld />', () => {
   beforeEach(() => {
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
@@ -110,7 +110,7 @@ describe('<OfferContent />', () => {
   })
 
   it('animates on scroll', async () => {
-    renderOfferContent({})
+    renderOfferContentOld({})
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
@@ -130,7 +130,7 @@ describe('<OfferContent />', () => {
       isUserLoading: false,
     }))
 
-    renderOfferContent({})
+    renderOfferContentOld({})
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -151,7 +151,7 @@ describe('<OfferContent />', () => {
         apiRecoParams,
       })
 
-      renderOfferContent({})
+      renderOfferContentOld({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -177,7 +177,7 @@ describe('<OfferContent />', () => {
     it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
       useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
-      renderOfferContent({})
+      renderOfferContentOld({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -199,7 +199,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should trigger logConsultWholeOffer when scrolling to the bottom of the component', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -210,7 +210,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should trigger logConsultWholeOffer only once when scrolling to the bottom of the component', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -236,7 +236,7 @@ describe('<OfferContent />', () => {
       })
 
       it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferContent({})
+        renderOfferContentOld({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -253,7 +253,7 @@ describe('<OfferContent />', () => {
       })
 
       it('should not log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferContent({})
+        renderOfferContentOld({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -278,7 +278,7 @@ describe('<OfferContent />', () => {
       })
 
       it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferContent({})
+        renderOfferContentOld({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -295,7 +295,7 @@ describe('<OfferContent />', () => {
       })
 
       it('should not log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
-        renderOfferContent({})
+        renderOfferContentOld({})
         const scrollView = screen.getByTestId('offer-container')
 
         await act(async () => {
@@ -319,7 +319,7 @@ describe('<OfferContent />', () => {
         similarOffers: mockedAlgoliaResponse.hits,
         apiRecoParams,
       })
-      renderOfferContent({})
+      renderOfferContentOld({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -341,7 +341,7 @@ describe('<OfferContent />', () => {
       const fromOfferId = 1
       useRoute.mockReturnValueOnce({ params: { fromOfferId } })
       const offerId = 116656
-      renderOfferContent({})
+      renderOfferContentOld({})
       const scrollView = screen.getByTestId('offer-container')
 
       await act(async () => {
@@ -367,7 +367,7 @@ describe('<OfferContent />', () => {
 
   describe('With same artist playlist', () => {
     it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(async () => {})
 
@@ -382,7 +382,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(async () => {})
 
@@ -394,7 +394,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(async () => {})
 
@@ -405,7 +405,7 @@ describe('<OfferContent />', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
-    renderOfferContent({})
+    renderOfferContentOld({})
     const scrollView = screen.getByTestId('offer-container')
 
     await act(async () => {
@@ -422,7 +422,7 @@ describe('<OfferContent />', () => {
   })
 
   it('should trigger logEvent "ConsultAllOffer" only once', async () => {
-    renderOfferContent({})
+    renderOfferContentOld({})
     const scrollView = screen.getByTestId('offer-container')
     await act(async () => {
       fireEvent.scroll(scrollView, nativeEventBottom)
@@ -440,7 +440,7 @@ describe('<OfferContent />', () => {
 
   describe('Batch trigger', () => {
     it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(() => {})
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -449,7 +449,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(() => {})
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
@@ -458,7 +458,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should trigger has_seen_offer_for_survey event on scroll to bottom', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), nativeEventBottom)
@@ -467,7 +467,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should not trigger has_seen_offer_for_survey event on scroll to middle', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), nativeEventMiddle)
@@ -476,7 +476,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
-      renderOfferContent({})
+      renderOfferContentOld({})
 
       await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), nativeEventBottom)
@@ -496,7 +496,7 @@ describe('<OfferContent />', () => {
     ])(
       'should not trigger has_seen_offer_for_survey event for uneligible offer type %s',
       async (offerNativeCategory) => {
-        renderOfferContent({ offerNativeCategory })
+        renderOfferContentOld({ offerNativeCategory })
 
         await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -514,7 +514,7 @@ describe('<OfferContent />', () => {
     `(
       'should trigger has_seen_offer_for_survey and specific batch event for offer type $offerNativeCategory',
       async ({ offerNativeCategory, expectedBatchEvent }) => {
-        renderOfferContent({ offerNativeCategory })
+        renderOfferContentOld({ offerNativeCategory })
 
         await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -526,20 +526,20 @@ describe('<OfferContent />', () => {
   })
 })
 
-type RenderOfferContentType = {
+type RenderOfferContentOldType = {
   offer?: OfferResponse
   offerNativeCategory?: NativeCategoryIdEnumv2
   offerSearchGroup?: SearchGroupNameEnumv2
 }
 
-function renderOfferContent({
+function renderOfferContentOld({
   offer = offerResponseSnap,
   offerNativeCategory = NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
   offerSearchGroup = SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-}: RenderOfferContentType) {
+}: RenderOfferContentOldType) {
   render(
     reactQueryProviderHOC(
-      <OfferContent
+      <OfferContentOld
         offer={offer}
         offerNativeCategory={offerNativeCategory}
         offerSearchGroup={offerSearchGroup}

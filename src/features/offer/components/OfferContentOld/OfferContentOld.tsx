@@ -37,7 +37,7 @@ const isWeb = Platform.OS === 'web'
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
-export function OfferContent({
+export function OfferContentOld({
   offer,
   offerNativeCategory,
   offerSearchGroup,
