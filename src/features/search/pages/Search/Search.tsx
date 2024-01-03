@@ -22,12 +22,10 @@ import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchR
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { Form } from 'ui/components/Form'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -164,18 +162,15 @@ export function Search() {
                 onPress={onPressHistoryItem}
               />
               <AutocompleteOffer addSearchHistory={addToHistory} />
-              <FeatureFlag
-                featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
-                <Index indexName={currentVenuesIndex}>
-                  <Configure
-                    hitsPerPage={5}
-                    clickAnalytics
-                    aroundRadius={searchVenuePosition.aroundRadius}
-                    aroundLatLng={searchVenuePosition.aroundLatLng}
-                  />
-                  <AutocompleteVenue onItemPress={onVenuePress} />
-                </Index>
-              </FeatureFlag>
+              <Index indexName={currentVenuesIndex}>
+                <Configure
+                  hitsPerPage={5}
+                  clickAnalytics
+                  aroundRadius={searchVenuePosition.aroundRadius}
+                  aroundLatLng={searchVenuePosition.aroundLatLng}
+                />
+                <AutocompleteVenue onItemPress={onVenuePress} />
+              </Index>
               <Spacer.Column numberOfSpaces={3} />
             </StyledScrollView>
           ) : (

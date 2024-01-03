@@ -6,7 +6,6 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
@@ -180,8 +179,6 @@ const mockVenues: AlgoliaVenue[] = [
   },
 ]
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
-
 const kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -249,146 +246,94 @@ describe('<SearchListHeader />', () => {
     expect(bannerContainer.props.style).not.toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
   })
 
-  describe('When wipEnableVenuesInSearchResults feature flag activated', () => {
-    it('should render venue items when there are venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+  it('should render venue items when there are venues', () => {
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
-      expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
-    })
-
-    it('should render venues nbHits', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
-
-      expect(screen.getByText('6 résultats')).toBeOnTheScreen()
-    })
-
-    it.each`
-      locationFilter                                                                          | isGeolocated | locationType
-      ${undefined}                                                                            | ${false}     | ${undefined}
-      ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}     | ${LocationMode.EVERYWHERE}
-      ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}      | ${LocationMode.AROUND_ME}
-      ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationMode.AROUND_PLACE}
-    `(
-      'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
-      ({ locationFilter, isGeolocated }) => {
-        useRoute.mockReturnValueOnce({
-          params: { searchId, locationFilter },
-        })
-        render(
-          <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />
-        )
-
-        expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
-          isGeolocated,
-          searchId: 'testUuidV4',
-          searchNbResults: 6,
-        })
-      }
-    )
-
-    it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isGeolocated param = true', () => {
-      useRoute.mockReturnValueOnce({
-        params: { searchId, venue: mockVenues[0] },
-      })
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
-
-      expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
-    })
-
-    it('should trigger AllTilesSeen log when there are venues', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { searchId },
-      })
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
-
-      const scrollView = screen.getByTestId('search-venue-list')
-      await act(async () => {
-        // 1st scroll to last item => trigger
-        await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-      })
-
-      expect(analytics.logAllTilesSeen).toHaveBeenNthCalledWith(1, {
-        searchId: 'testUuidV4',
-      })
-
-      scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-
-      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
-    })
-
-    it('should not render venue items when there are not venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
-
-      expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
-    })
-
-    it('should not render venues nbHits', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
-
-      expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
-    })
-
-    it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are not venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
-
-      expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
-    })
-
-    it('should not trigger AllTilesSeen log when there are not venues', () => {
-      useRoute.mockReturnValueOnce({
-        params: { searchId },
-      })
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
-
-      expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
-    })
+    expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
   })
 
-  describe('When wipEnableVenuesInSearchResults feature flag deactivated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
-    })
+  it('should render venues nbHits', () => {
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
-    it('should not render venue items when there are venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    expect(screen.getByText('6 résultats')).toBeOnTheScreen()
+  })
 
-      expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
-    })
-
-    it('should not render venues nbHits when there are venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
-
-      expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
-    })
-
-    it('should not render venue items when we search from venues', () => {
+  it.each`
+    locationFilter                                                                          | isGeolocated | locationType
+    ${undefined}                                                                            | ${false}     | ${undefined}
+    ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}     | ${LocationMode.EVERYWHERE}
+    ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}      | ${LocationMode.AROUND_ME}
+    ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationMode.AROUND_PLACE}
+  `(
+    'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
+    ({ locationFilter, isGeolocated }) => {
       useRoute.mockReturnValueOnce({
-        params: { venue: mockVenues[0] },
+        params: { searchId, locationFilter },
       })
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
-      expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
-    })
-
-    it('should not render venues nbHits when there are not venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
-
-      expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
-    })
-
-    it('should not trigger VenuePlaylistDisplayedOnSearchResults log when received venues', () => {
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
-
-      expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
-    })
-
-    it('should not trigger AllTilesSeen log when there are venues', () => {
-      useRoute.mockReturnValueOnce({
-        params: { searchId },
+      expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
+        isGeolocated,
+        searchId: 'testUuidV4',
+        searchNbResults: 6,
       })
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    }
+  )
 
-      expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
+  it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isGeolocated param = true', () => {
+    useRoute.mockReturnValueOnce({
+      params: { searchId, venue: mockVenues[0] },
     })
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
+    expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
+  })
+
+  it('should trigger AllTilesSeen log when there are venues', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { searchId },
+    })
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+
+    const scrollView = screen.getByTestId('search-venue-list')
+    await act(async () => {
+      // 1st scroll to last item => trigger
+      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+    })
+
+    expect(analytics.logAllTilesSeen).toHaveBeenNthCalledWith(1, {
+      searchId: 'testUuidV4',
+    })
+
+    scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not render venue items when there are not venues', () => {
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+
+    expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
+  })
+
+  it('should not render venues nbHits', () => {
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+
+    expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
+  })
+
+  it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are not venues', () => {
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+
+    expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
+  })
+
+  it('should not trigger AllTilesSeen log when there are not venues', () => {
+    useRoute.mockReturnValueOnce({
+      params: { searchId },
+    })
+    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
+
+    expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
   })
 })
