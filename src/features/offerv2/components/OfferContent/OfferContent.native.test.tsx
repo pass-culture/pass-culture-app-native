@@ -84,6 +84,12 @@ describe('<OfferContent />', () => {
 
     expect(screen.getByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
   })
+
+  it('should display prices', () => {
+    renderOfferContent({})
+
+    expect(screen.getByText('5,00 €')).toBeOnTheScreen()
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>
