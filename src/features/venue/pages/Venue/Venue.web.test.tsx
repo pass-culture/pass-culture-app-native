@@ -57,6 +57,7 @@ describe('<Venue />', () => {
 
   describe('Accessibility', () => {
     // TODO(PC-26577): fix test flackyness
+    // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should not have basic accessibility issues', async () => {
       mockV4
         .mockReturnValueOnce('withdrawalTermsAccordionID')
@@ -83,6 +84,7 @@ describe('<Venue />', () => {
     })
 
     // TODO(PC-26577): fix test flackyness
+    // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should render correctly in web for new version', async () => {
       mockUseFeatureFlag.mockReturnValueOnce(true)
       mockUseFeatureFlag.mockReturnValueOnce(true)

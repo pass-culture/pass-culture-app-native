@@ -176,6 +176,7 @@ describe('GenericHome page - Analytics', () => {
   })
 
   // TODO(PC-26577): fix test flackyness
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should display spinner when end is reached', async () => {
     // To simulate progressive loading we need at least 11 modules
     const modules = [
