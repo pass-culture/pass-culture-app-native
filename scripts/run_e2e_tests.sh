@@ -18,9 +18,11 @@ fi
 platform=$1
 env=$2
 if [ "$#" -eq 2 ]; then
-  tests_path=".maestro/tests"
+  rest_of_arguments=".maestro/tests"
 else
-  tests_path="$3"
+  shift
+  shift
+  rest_of_arguments="$*"
 fi
 
 parse_env_variable () {
@@ -70,6 +72,7 @@ MOCK_ANALYTICS_SERVER_PORT=4001
 stop_mock_analytics_server
 start_mock_analytics_server_silently_in_the_background
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" false
+# shellcheck disable=SC2086
 maestro test \
   --env APP_ID="$app_id" \
   --env USERNAME="dev-tests-e2e@passculture.team" \
@@ -81,6 +84,6 @@ maestro test \
   --env EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" \
   --env MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" \
   --env MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \
-  "$tests_path"
+  $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
 stop_mock_analytics_server
