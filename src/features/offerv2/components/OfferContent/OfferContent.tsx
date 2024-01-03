@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
+import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
 import { Subcategory } from 'libs/subcategories/types'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
@@ -14,6 +15,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   return (
     <React.Fragment>
       <InformationTags tags={tags} />
+      <OfferTitle offerName={offer.name} />
       <Typo.Body>À propos</Typo.Body>
     </React.Fragment>
   )

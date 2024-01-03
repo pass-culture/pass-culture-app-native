@@ -33,6 +33,13 @@ describe('<OfferContent />', () => {
   beforeEach(() => {
     mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
   })
+
+  it('should display offer as a title', async () => {
+    renderOfferContent({})
+
+    expect(screen.getByText('Sous les étoiles de Paris - VF')).toBeOnTheScreen()
+  })
+
   it('should display tags', async () => {
     renderOfferContent({})
 
