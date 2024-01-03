@@ -1,4 +1,6 @@
+import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { act } from 'react-test-renderer'
 import styled from 'styled-components'
 
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -66,13 +68,16 @@ describe('TabLayout', () => {
     expect(secondTab).toHaveAttribute('aria-selected', 'false')
   })
 
-  it('should change tab title color on hover', () => {
+  it('should change tab title color on hover', async () => {
     render(<TabLayout tabPanels={tabPanels} />)
 
-    fireEvent.click(screen.getByRole(AccessibilityRole.TAB, { name: 'Offres disponibles' }))
+    await act(() =>
+      userEvent.click(screen.getByRole(AccessibilityRole.TAB, { name: 'Offres disponibles' }))
+    )
 
     const secondTabTitle = screen.getByText('Infos pratiques')
-    fireEvent.mouseEnter(secondTabTitle)
+
+    await act(() => userEvent.hover(secondTabTitle))
 
     expect(secondTabTitle).toHaveStyle({ color: theme.colors.primary })
   })
@@ -80,11 +85,15 @@ describe('TabLayout', () => {
   it('should restore tab title color on hover leave', async () => {
     render(<TabLayout tabPanels={tabPanels} />)
 
-    fireEvent.click(screen.getByRole(AccessibilityRole.TAB, { name: 'Offres disponibles' }))
+    await act(() =>
+      userEvent.click(screen.getByRole(AccessibilityRole.TAB, { name: 'Offres disponibles' }))
+    )
 
     const secondTabTitle = screen.getByText('Infos pratiques')
-    fireEvent.mouseEnter(secondTabTitle)
-    fireEvent.mouseLeave(secondTabTitle)
+    await act(async () => {
+      await userEvent.hover(secondTabTitle)
+      await userEvent.unhover(secondTabTitle)
+    })
 
     expect(secondTabTitle).toHaveStyle({ color: theme.colors.greyDark })
   })
