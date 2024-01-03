@@ -76,6 +76,7 @@ const StyledPointer = styled(Pointer)({
 
 const Background = styled.View(({ theme }) => ({
   flexDirection: 'row',
+  alignItems: 'flex-start',
   width: '100%',
   padding: getSpacing(2),
   paddingLeft: getSpacing(4),
@@ -90,6 +91,7 @@ const StyledText = styled(Typo.Caption)(({ theme }) => ({
 
 const StyledClearContainer = styledButton(Touchable)({
   marginLeft: getSpacing(2),
+  flexShrink: 1,
 })
 
 const StyledClearIcon = styled(Clear).attrs(({ theme }) => ({
