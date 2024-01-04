@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState, useEffect } from 'react'
 import { Keyboard } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -6,8 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics'
@@ -72,9 +69,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const { searchState, dispatch } = useSearch()
+  const { dispatch } = useSearch()
 
   const theme = useTheme()
 
@@ -151,16 +146,6 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             },
           })
           analytics.logUserSetLocation('search')
-          navigate(
-            ...getTabNavConfig('Search', {
-              ...searchState,
-              locationFilter: {
-                place: selectedPlace,
-                locationType: LocationMode.AROUND_PLACE,
-                aroundRadius: aroundPlaceRadius,
-              },
-            })
-          )
         }
         break
 
@@ -172,12 +157,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
           },
         })
-        navigate(
-          ...getTabNavConfig('Search', {
-            ...searchState,
-            locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
-          })
-        )
+
         break
 
       case LocationMode.EVERYWHERE:
@@ -188,12 +168,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             locationFilter: { locationType: LocationMode.EVERYWHERE },
           },
         })
-        navigate(
-          ...getTabNavConfig('Search', {
-            ...searchState,
-            locationFilter: { locationType: LocationMode.EVERYWHERE },
-          })
-        )
+
         break
     }
 
