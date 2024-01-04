@@ -9,15 +9,7 @@ import { RecommendationModule } from 'features/home/components/modules/Recommend
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
-import {
-  HomepageModule,
-  HomepageModuleType,
-  isExclusivityModule,
-  isHighlightOfferModule,
-  ModuleData,
-} from 'features/home/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/types'
 
 const modules = {
   [HomepageModuleType.BusinessModule]: BusinessModule,
@@ -44,16 +36,6 @@ const UnmemoizedModule = ({
   data?: ModuleData
   videoModuleId?: string
 }) => {
-  const enableNewExclusivityBlock = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK
-  )
-
-  if (
-    (isHighlightOfferModule(item) && !enableNewExclusivityBlock) ||
-    (isExclusivityModule(item) && enableNewExclusivityBlock)
-  )
-    return null
-
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const ComponentModule: any = modules[item.type]
   if (!ComponentModule) return null

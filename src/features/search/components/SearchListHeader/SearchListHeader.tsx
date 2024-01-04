@@ -14,8 +14,6 @@ import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -63,9 +61,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const { geolocPosition, showGeolocPermissionModal } = useLocation()
   const { searchState } = useSearch()
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const enableVenuesInSearchResults = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
-  )
 
   const isGeolocated = useMemo(
     () =>
@@ -91,8 +86,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
   const venueTitle = venuesUserData?.[0]?.venue_playlist_title || 'Les lieux culturels'
   const offerTitle = 'Les offres'
-  const shouldDisplayVenuesPlaylist =
-    enableVenuesInSearchResults && !searchState.venue && !params?.venue && !!venues?.length
+  const shouldDisplayVenuesPlaylist = !searchState.venue && !params?.venue && !!venues?.length
 
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()

@@ -16,7 +16,6 @@ import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place'
@@ -169,8 +168,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-
 const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
 
 const mockUseSearchHistory = jest.fn()
@@ -244,7 +241,6 @@ describe('<Search/>', () => {
 
   describe('When search view is suggestions', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
       useRoute.mockReturnValue({ params: { view: SearchView.Suggestions } })
     })
 
@@ -256,18 +252,7 @@ describe('<Search/>', () => {
       expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
     })
 
-    it('should not display venue suggestions when wipEnableVenuesInSearchResults feature flag deactivated', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      useFeatureFlagSpy.mockReturnValue(false)
-      render(<Search />)
-      await act(async () => {})
-
-      expect(screen.queryByTestId('autocompleteVenueItem_1')).not.toBeOnTheScreen()
-      expect(screen.queryByTestId('autocompleteVenueItem_2')).not.toBeOnTheScreen()
-    })
-
-    it('should display venue suggestions when wipEnableVenuesInSearchResults feature flag activated', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+    it('should display venue suggestions', async () => {
       render(<Search />)
       await act(async () => {})
 
@@ -276,7 +261,6 @@ describe('<Search/>', () => {
     })
 
     it('should handle venue press', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<Search />)
       await act(async () => {})
 
@@ -299,7 +283,6 @@ describe('<Search/>', () => {
         },
       }
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<Search />)
       await act(async () => {})
 
