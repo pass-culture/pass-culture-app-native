@@ -24,7 +24,8 @@ update_build_number_from_package_json_version() {
   #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
 
   source ./scripts/get_version.sh
-  SEMVER="${VERSION//./ }"
+  # shellcheck disable=SC2206 # with quotes => `1 272 1` ; with brackets => array `1` `272` `1`
+  SEMVER=(${VERSION//./ })
   MAJOR=${SEMVER[0]}
   MINOR=${SEMVER[1]}
   PATCH=${SEMVER[2]}
