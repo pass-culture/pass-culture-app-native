@@ -6,7 +6,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 
 export const AgeButton: FunctionComponent<AgeButtonProps> = ({
   dense,
-  icon,
+  Icon,
   navigateTo,
   accessibilityLabel,
   enableNavigate,
@@ -19,7 +19,7 @@ export const AgeButton: FunctionComponent<AgeButtonProps> = ({
       onBeforeNavigate={onBeforeNavigate}
       navigateTo={navigateTo}
       accessibilityLabel={accessibilityLabel}>
-      <AgeButtonContainer dense={dense} LeftIcon={icon}>
+      <AgeButtonContainer dense={dense} LeftIcon={Icon}>
         {children}
       </AgeButtonContainer>
     </InternalTouchableLink>
