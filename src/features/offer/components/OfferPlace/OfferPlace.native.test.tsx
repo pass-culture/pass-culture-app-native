@@ -67,7 +67,7 @@ const useFeatureFlagSpy = jest
 
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
-  geolocPosition: null,
+  userLocation: null,
   isEvent: false,
 }
 
@@ -372,9 +372,9 @@ describe('<OfferPlace />', () => {
   })
 })
 
-const renderOfferPlace = ({ offer, geolocPosition, isEvent }: OfferPlaceProps) =>
+const renderOfferPlace = ({ offer, userLocation, isEvent }: OfferPlaceProps) =>
   render(
     reactQueryProviderHOC(
-      <OfferPlace offer={offer} geolocPosition={geolocPosition} isEvent={isEvent} />
+      <OfferPlace offer={offer} userLocation={userLocation} isEvent={isEvent} />
     )
   )
