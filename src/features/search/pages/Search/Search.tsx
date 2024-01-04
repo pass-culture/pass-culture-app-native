@@ -59,7 +59,7 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch, searchState } = useSearch()
-  const { geolocPosition, setPlace } = useLocation()
+  const { geolocPosition, setPlace, setSelectedLocationMode } = useLocation()
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -74,9 +74,12 @@ export function Search() {
   useEffect(() => {
     if (params?.locationFilter?.locationType === LocationMode.AROUND_PLACE) {
       setPlace(params.locationFilter.place)
+      setSelectedLocationMode(LocationMode.AROUND_PLACE)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (params?.locationFilter?.locationType === LocationMode.EVERYWHERE) {
+      setSelectedLocationMode(LocationMode.EVERYWHERE)
+    }
+  }, [params, setSelectedLocationMode, setPlace])
 
   const currentFilters = params?.locationFilter
 
