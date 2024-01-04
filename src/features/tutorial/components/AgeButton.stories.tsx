@@ -24,7 +24,7 @@ const meta: ComponentMeta<typeof AgeButton> = {
   title: 'features/tutorial/AgeButton',
   component: AgeButton,
   argTypes: {
-    icon: selectArgTypeFromObject({
+    Icon: selectArgTypeFromObject({
       BicolorAll,
       NoIcon: undefined,
     }),
@@ -61,7 +61,7 @@ const TextExample = ({ withSubtitle = false }) => (
 const WithIcon = Template.bind({})
 WithIcon.args = {
   children: TextExample({}),
-  icon: BicolorAll,
+  Icon: <BicolorAll />,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
@@ -69,7 +69,7 @@ WithIcon.args = {
 const WithoutIcon = Template.bind({})
 WithoutIcon.args = {
   children: TextExample({}),
-  icon: undefined,
+  Icon: undefined,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
@@ -77,7 +77,7 @@ WithoutIcon.args = {
 const WithSubtitle = Template.bind({})
 WithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
-  icon: BicolorAll,
+  Icon: <BicolorAll />,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
@@ -85,7 +85,7 @@ WithSubtitle.args = {
 const Dense = Template.bind({})
 Dense.args = {
   children: TextExample({}),
-  icon: BicolorAll,
+  Icon: <BicolorAll />,
   dense: true,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
@@ -94,7 +94,7 @@ Dense.args = {
 const DenseWithSubtitle = Template.bind({})
 DenseWithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
-  icon: BicolorAll,
+  Icon: <BicolorAll />,
   dense: true,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
@@ -104,6 +104,6 @@ const DenseWithoutIcon = Template.bind({})
 DenseWithoutIcon.args = {
   children: TextExample({}),
   dense: true,
-  icon: undefined,
+  Icon: undefined,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }

@@ -1,3 +1,5 @@
+import { ReactElement } from 'react'
+
 import { TutorialTypes } from 'features/tutorial/enums'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -9,7 +11,7 @@ export interface AgeButtonProps {
   accessibilityLabel: string
   dense?: boolean
   enableNavigate?: boolean
-  Icon?: React.ElementType
+  Icon?: ReactElement
   navigateTo: InternalNavigationProps['navigateTo']
   onBeforeNavigate?: () => void
   children: React.ReactNode
