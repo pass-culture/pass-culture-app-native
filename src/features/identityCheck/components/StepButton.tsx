@@ -96,16 +96,12 @@ const BaseStyleComponent = styled(View)(({ theme }) => ({
 
 type BaseContainerProps = {
   children: React.ReactNode
-  LeftIcon?: FunctionComponent<IconInterface>
+  LeftIcon?: React.ReactElement
   style?: StyleProp<ViewStyle>
 }
 const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style, children }) => (
   <BaseStyleComponent style={style}>
-    {!!LeftIcon && (
-      <IconContainer>
-        <LeftIcon />
-      </IconContainer>
-    )}
+    {!!LeftIcon && <IconContainer>{LeftIcon}</IconContainer>}
     <ChildrenContainer>{children}</ChildrenContainer>
   </BaseStyleComponent>
 )
