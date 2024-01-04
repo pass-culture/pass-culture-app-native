@@ -45,7 +45,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
       return (
         <AgeButton
           key={age}
-          Icon={<BicolorAll />}
+          Icon={BicolorAll}
           onBeforeNavigate={async () => onBeforeNavigate(type, age)}
           navigateTo={{ screen: AgeInformationScreen, params: { age } }}
           accessibilityLabel={`${startButtonTitle} ${age} ans`}>
