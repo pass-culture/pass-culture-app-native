@@ -65,7 +65,17 @@ describe('PracticalInformation', () => {
   it('should not display accessibility section when no accessibility info provided', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueResponseSnap, accessibility: {} }} />
+        <PracticalInformation
+          venue={{
+            ...venueResponseSnap,
+            accessibility: {
+              audioDisability: null,
+              mentalDisability: null,
+              motorDisability: null,
+              visualDisability: null,
+            },
+          }}
+        />
       )
     )
 
