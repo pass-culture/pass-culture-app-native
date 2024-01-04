@@ -1,12 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
-  formattedExclusivityModule,
   formattedBusinessModule,
   formattedCategoryListModule,
   formattedRecommendedOffersModule,
@@ -16,18 +15,16 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
-import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { env } from 'libs/environment'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, ILocationContext, Position, useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
@@ -35,8 +32,6 @@ const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
 
 const highlightOfferFixture = offersFixture[0]
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
@@ -107,45 +102,13 @@ describe('<HomeModule />', () => {
     })
   })
 
-  it('should display old exclusivity module when feature flag is false', async () => {
-    mockServer.getApiV1<OfferResponse>(`/offer/123456789`, offerResponseSnap)
-
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    renderHomeModule(formattedExclusivityModule)
-
-    // we need to use findAllByLabelText because 'Week-end FRAC' is assigned twice
-    // in alt property for image and touchable link
-    expect(await screen.findAllByLabelText('Week-end FRAC')).not.toHaveLength(0)
-  })
-
-  it('should not display old exclusivity module when feature flag is true', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderHomeModule(formattedExclusivityModule)
-
-    await waitFor(() => {
-      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should show highlight module when feature flag is true', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should display highlightOfferModule', async () => {
     mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
 
     renderHomeModule(highlightOfferModuleFixture)
 
     await act(async () => {
       expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeOnTheScreen()
-    })
-  })
-
-  it('should not show highlight module when feature flag is false', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
-
-    renderHomeModule(highlightOfferModuleFixture)
-
-    await waitFor(() => {
-      expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).not.toBeOnTheScreen()
     })
   })
 
