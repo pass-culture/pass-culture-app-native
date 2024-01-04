@@ -31,11 +31,6 @@ export type StepDetails = StepConfig & {
   stepState: StepButtonState
 }
 
-export type NextScreenOrStep =
-  | { screen: SubscriptionScreen }
-  | { step: DeprecatedIdentityCheckStep | IdentityCheckStep }
-  | null
-
 export enum StepButtonState {
   'COMPLETED' = 'completed',
   'CURRENT' = 'current',

@@ -65,7 +65,6 @@ src/api/gen/index.ts:14 - ConfigurationParameters
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:34 - Response (used in module)
-src/features/identityCheck/types.ts:37 - NextScreenOrStep
 src/features/search/types.ts:81 - CategoriesModalFormProps
 src/features/search/types.ts:93 - CategoriesViewData
 src/features/search/types.ts:98 - MappedData
