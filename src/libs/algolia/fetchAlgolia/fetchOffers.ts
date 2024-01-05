@@ -18,6 +18,7 @@ type FetchOfferArgs = {
   excludedObjectIds?: string[]
   indexSearch?: string
   isFromOffer?: boolean
+  aroundRadius?: number
 }
 
 export type FetchOffersResponse = Pick<
@@ -32,8 +33,15 @@ export const fetchOffers = async ({
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
   isFromOffer,
+  aroundRadius,
 }: FetchOfferArgs): Promise<FetchOffersResponse> => {
-  const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+  const searchParameters = buildOfferSearchParameters(
+    parameters,
+    userLocation,
+    isUserUnderage,
+    undefined,
+    aroundRadius
+  )
   const index = client.initIndex(indexSearch)
 
   try {
