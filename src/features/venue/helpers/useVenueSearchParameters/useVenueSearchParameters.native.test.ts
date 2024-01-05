@@ -11,7 +11,6 @@ jest.mock('libs/location', () => ({
   useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
 }))
 const mockVenue: VenueResponse = venue
-const invalidId = venue.id + 2
 jest.mock('features/venue/api/useVenue', () => ({
   useVenue: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
 }))
@@ -21,7 +20,7 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
 
 describe('useVenueSearchParameters', () => {
   it('should retrieve the default search parameters', () => {
-    const { result } = renderHook(() => useVenueSearchParameters(invalidId))
+    const { result } = renderHook(() => useVenueSearchParameters())
 
     expect(result.current).toEqual({
       beginningDatetime: undefined,
@@ -44,7 +43,7 @@ describe('useVenueSearchParameters', () => {
   })
 
   it('should retrieve the the venue if available', () => {
-    const { result } = renderHook(() => useVenueSearchParameters(venue.id))
+    const { result } = renderHook(() => useVenueSearchParameters(venue))
 
     expect(result.current.venue).toEqual({
       info: 'Paris',
@@ -56,7 +55,7 @@ describe('useVenueSearchParameters', () => {
 
   it('should retrieve the locationFilter filtered around me if no venue - position available', () => {
     mockPosition = { latitude: 48.8, longitude: 2.3 }
-    const { result } = renderHook(() => useVenueSearchParameters(invalidId))
+    const { result } = renderHook(() => useVenueSearchParameters())
 
     expect(result.current.locationFilter).toEqual({
       aroundRadius: 100,
@@ -66,7 +65,7 @@ describe('useVenueSearchParameters', () => {
 
   it('should retrieve the locationFilter filtered everywhere if no venue - position unavailable', () => {
     mockPosition = null
-    const { result } = renderHook(() => useVenueSearchParameters(invalidId))
+    const { result } = renderHook(() => useVenueSearchParameters())
 
     expect(result.current.locationFilter).toEqual({
       locationType: LocationMode.EVERYWHERE,
