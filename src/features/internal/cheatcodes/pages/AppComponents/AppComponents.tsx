@@ -540,7 +540,7 @@ export const AppComponents: FunctionComponent = () => {
                 </Typo.Caption>
               }
               navigateTo={navigateToHomeConfig}
-              icon={BicolorSmartphone}
+              Icon={<BicolorSmartphone />}
             />
             <Spacer.Column numberOfSpaces={1} />
             <HeroButtonList
@@ -552,7 +552,7 @@ export const AppComponents: FunctionComponent = () => {
                 </Text>
               }
               navigateTo={navigateToHomeConfig}
-              icon={BicolorSmartphone}
+              Icon={<BicolorSmartphone />}
             />
             <Spacer.Column numberOfSpaces={1} />
             <SecondButtonList

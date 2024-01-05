@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactElement } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type GenericBannerProps = {
-  LeftIcon?: FunctionComponent<IconInterface>
+  LeftIcon?: ReactElement
   RightIcon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
   children: React.ReactNode
@@ -22,11 +22,7 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
 }) => {
   return (
     <View style={[styles.container, style]}>
-      {!!LeftIcon && (
-        <IconContainer>
-          <LeftIcon />
-        </IconContainer>
-      )}
+      {!!LeftIcon && <IconContainer>{LeftIcon}</IconContainer>}
       <DescriptionContainer>{children}</DescriptionContainer>
       <View>{RightIcon ? <RightIcon /> : <StyledArrowNextIcon />}</View>
     </View>

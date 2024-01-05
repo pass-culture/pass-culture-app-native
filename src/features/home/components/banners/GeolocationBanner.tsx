@@ -29,7 +29,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, o
       // Possibility to use the onPress externally to avoid opening problems in modals
       onPress={onPress ?? onPressGeolocationBanner}
       accessibilityLabel="Active ta géolocalisation">
-      <GenericBanner LeftIcon={LocationIcon}>
+      <GenericBanner LeftIcon={<LocationIcon />}>
         <Typo.ButtonText>{title}</Typo.ButtonText>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Body numberOfLines={2}>{subtitle}</Typo.Body>

@@ -35,7 +35,7 @@ const MainOptionButton = (
   <HeroButtonList
     Title={<Typo.ButtonText>J’ai ma pièce d’identité en cours de validité</Typo.ButtonText>}
     Subtitle={<Typo.Caption>Les copies ne sont pas acceptées</Typo.Caption>}
-    icon={BicolorIdCard}
+    Icon={<BicolorIdCard />}
     navigateTo={{ screen: 'UbbleWebview' }}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
   />

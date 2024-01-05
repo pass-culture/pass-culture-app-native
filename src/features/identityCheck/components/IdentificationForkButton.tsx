@@ -31,7 +31,7 @@ export const IdentificationForkButton: FunctionComponent<IdentificationForkButto
       testID="IdentificationForkButton"
       accessibilityLabel={props.accessibilityLabel}
       onBeforeNavigate={props.onBeforeNavigate}>
-      <GenericBanner LeftIcon={Icon}>
+      <GenericBanner LeftIcon={<Icon />}>
         <TextWrapper>
           {props.Title}
           {!!props.Subtitle && <SubtitleContainer>{props.Subtitle}</SubtitleContainer>}

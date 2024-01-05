@@ -51,18 +51,19 @@ const caption = (
 export const Default = Template.bind({})
 Default.args = {
   Title: description,
-  icon: BicolorSmartphone,
+  Icon: <BicolorSmartphone />,
 }
 export const HeroButtonListWithCaption = Template.bind({})
 HeroButtonListWithCaption.args = {
   Title: description2,
   Subtitle: caption,
-  icon: BicolorSmartphone,
+  Icon: <BicolorSmartphone />,
 }
 export const HeroButtonListWithCustomIconProps = Template.bind({})
 HeroButtonListWithCustomIconProps.args = {
   Title: description2,
   Subtitle: caption,
-  icon: LocationPointer,
-  iconProps: { color: ColorsEnum.BLACK, color2: ColorsEnum.BLACK, size: iconSizes.small },
+  Icon: (
+    <LocationPointer color={ColorsEnum.BLACK} color2={ColorsEnum.BLACK} size={iconSizes.small} />
+  ),
 }

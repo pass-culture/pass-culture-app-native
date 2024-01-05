@@ -78,7 +78,7 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
   const StyleContainer = styleContainer[stepState]
 
   return (
-    <StyleContainer LeftIcon={Icon}>
+    <StyleContainer LeftIcon={<Icon />}>
       <StyledButtonText stepState={stepState}>{label}</StyledButtonText>
       {!!subtitle && <StepSubtitle stepState={stepState}>{subtitle}</StepSubtitle>}
     </StyleContainer>
@@ -96,16 +96,12 @@ const BaseStyleComponent = styled(View)(({ theme }) => ({
 
 type BaseContainerProps = {
   children: React.ReactNode
-  LeftIcon?: FunctionComponent<IconInterface>
+  LeftIcon?: React.ReactElement
   style?: StyleProp<ViewStyle>
 }
 const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style, children }) => (
   <BaseStyleComponent style={style}>
-    {!!LeftIcon && (
-      <IconContainer>
-        <LeftIcon />
-      </IconContainer>
-    )}
+    {!!LeftIcon && <IconContainer>{LeftIcon}</IconContainer>}
     <ChildrenContainer>{children}</ChildrenContainer>
   </BaseStyleComponent>
 )
@@ -131,7 +127,7 @@ const CompletedContainer = styled(DisabledContainer)(({ theme }) => ({
   borderWidth: '2px',
 }))
 
-const styleContainer = {
+const styleContainer: Record<StepButtonState, React.ElementType> = {
   [StepButtonState.COMPLETED]: CompletedContainer,
   [StepButtonState.CURRENT]: CurrentContainer,
   [StepButtonState.DISABLED]: DisabledContainer,
