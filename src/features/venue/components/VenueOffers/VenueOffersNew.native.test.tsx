@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import * as reactQuery from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -19,6 +20,8 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 const playlists = gtlPlaylistAlgoliaSnapshot
 const mockVenue = venueResponseSnap
 const venueId = venueResponseSnap.id
+
+const useIsFetchingSpy = jest.spyOn(reactQuery, 'useIsFetching').mockReturnValue(0)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -68,6 +71,13 @@ describe('<VenueOffersNew />', () => {
     renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should return null if offers are fetching', () => {
+    useIsFetchingSpy.mockReturnValueOnce(1)
+    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+
+    expect(screen.toJSON()).toBeNull()
   })
 
   it('should display placeholder when no offers', () => {

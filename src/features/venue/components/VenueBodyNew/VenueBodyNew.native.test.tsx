@@ -3,6 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
+import * as reactQuery from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -20,6 +21,7 @@ jest.mock('features/venue/api/useVenue')
 jest.mock('@react-native-clipboard/clipboard')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
+jest.spyOn(reactQuery, 'useIsFetching').mockReturnValue(0)
 
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
