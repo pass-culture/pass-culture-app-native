@@ -52,7 +52,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 }) => {
   const { user } = useAuthContext()
   const scrollViewRef = useRef<ScrollView | null>(null)
-  const { geolocPosition } = useLocation()
+  const { userLocation } = useLocation()
   const mapping = useSubcategoriesMapping()
   const { categoryId, isEvent, appLabel: categoryLabel } = mapping[offer.subcategoryId]
 
@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <SectionBody>{capitalizedFormattedDateEvent}</SectionBody>
       </SectionWithDivider>
 
-      <OfferPlace offer={offer} geolocPosition={geolocPosition} isEvent={isEvent} />
+      <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={isEvent} />
 
       <SectionWithDivider visible margin>
         <OfferMessagingApps offer={offer} />
@@ -145,7 +145,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       <OfferPlaylistList
         offer={offer}
-        position={geolocPosition}
+        position={userLocation}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         apiRecoParamsSameCategory={apiRecoParamsSameCategory}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
