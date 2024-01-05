@@ -62,6 +62,18 @@ describe('PracticalInformation', () => {
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
   })
 
+  it('should not display contact section when empty contacts fields provided', async () => {
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation
+          venue={{ ...venueResponseSnap, contact: { email: '', phoneNumber: '' } }}
+        />
+      )
+    )
+
+    expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
+  })
+
   it('should not display accessibility section when no accessibility info provided', async () => {
     render(
       reactQueryProviderHOC(
