@@ -238,12 +238,14 @@ describe('<Venue /> with new venue body', () => {
   })
 
   it('should not display "Rechercher une offre" button if there is no offer', async () => {
-    mockUseVenueOffers.mockReturnValueOnce({
+    const emptyVenueOffers = {
       data: { hits: [], nbHits: 0 },
-    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
-    mockUseVenueOffers.mockReturnValueOnce({
-      data: { hits: [], nbHits: 0 },
-    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>
+    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
+    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
+    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
+    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
+
     gtlPLaylistSpy.mockResolvedValueOnce([])
     gtlPLaylistSpy.mockResolvedValueOnce([])
 

@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
+import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
@@ -43,6 +44,7 @@ export function VenueOffersNew({
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
   const isVenueOfferFetching = useIsFetching(QueryKeys.VENUE_OFFERS)
+  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({ venue })
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
@@ -97,7 +99,7 @@ export function VenueOffersNew({
     [onPressSeeMore]
   )
 
-  if (isVenueOfferFetching) return null
+  if (isVenueOfferFetching || arePlaylistsLoading) return null
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
     return <NoOfferPlaceholder />
