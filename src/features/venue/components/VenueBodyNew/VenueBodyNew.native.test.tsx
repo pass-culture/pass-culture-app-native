@@ -3,9 +3,12 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
+import * as reactQuery from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
+import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
@@ -20,6 +23,10 @@ jest.mock('features/venue/api/useVenue')
 jest.mock('@react-native-clipboard/clipboard')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
+jest.spyOn(reactQuery, 'useIsFetching').mockReturnValue(0)
+jest
+  .spyOn(useGTLPlaylists, 'useGTLPlaylists')
+  .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
 
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)

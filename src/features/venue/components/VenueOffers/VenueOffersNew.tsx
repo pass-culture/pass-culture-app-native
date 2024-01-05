@@ -1,10 +1,12 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
+import { useIsFetching } from 'react-query'
 import styled from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
+import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
@@ -14,6 +16,7 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
 import { useLocation } from 'libs/location'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
+import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -40,6 +43,8 @@ export function VenueOffersNew({
   const { geolocPosition } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
+  const isVenueOfferFetching = useIsFetching(QueryKeys.VENUE_OFFERS)
+  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({ venue })
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
@@ -93,6 +98,8 @@ export function VenueOffersNew({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [onPressSeeMore]
   )
+
+  if (isVenueOfferFetching || arePlaylistsLoading) return null
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
     return <NoOfferPlaceholder />

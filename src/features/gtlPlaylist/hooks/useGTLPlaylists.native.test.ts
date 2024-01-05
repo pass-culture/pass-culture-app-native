@@ -61,7 +61,7 @@ describe('useGTLPlaylists', () => {
   it('should fetch GTL playlists', async () => {
     const { rerender, result } = renderHookWithParams()
 
-    expect(result.current).toEqual([])
+    expect(result.current).toEqual({ gtlPlaylists: [], isLoading: true })
 
     expect(useGTLPlaylistsLibrary.fetchGTLPlaylists).toHaveBeenNthCalledWith(1, {
       isUserUnderage: false,
@@ -82,32 +82,35 @@ describe('useGTLPlaylists', () => {
 
     await act(async () => {})
 
-    expect(result.current).toEqual([
-      {
-        layout: 'one-item-medium',
-        offers: {
-          hits: [
-            {
-              _geoloc: {
-                lat: 2,
-                lng: 2,
+    expect(result.current).toEqual({
+      gtlPlaylists: [
+        {
+          layout: 'one-item-medium',
+          offers: {
+            hits: [
+              {
+                _geoloc: {
+                  lat: 2,
+                  lng: 2,
+                },
+                objectID: '12',
+                offer: {
+                  name: 'Test',
+                  subcategoryId: 'ABO_BIBLIOTHEQUE',
+                },
+                venue: {
+                  address: 'Avenue des Tests',
+                  city: 'Jest',
+                },
               },
-              objectID: '12',
-              offer: {
-                name: 'Test',
-                subcategoryId: 'ABO_BIBLIOTHEQUE',
-              },
-              venue: {
-                address: 'Avenue des Tests',
-                city: 'Jest',
-              },
-            },
-          ],
+            ],
+          },
+          title: 'Test',
+          entryId: '2xUlLBRfxdk6jeYyJszunX',
         },
-        title: 'Test',
-        entryId: '2xUlLBRfxdk6jeYyJszunX',
-      },
-    ])
+      ],
+      isLoading: false,
+    })
   })
 
   it('should not return playlist that contains no offer', async () => {
@@ -126,6 +129,6 @@ describe('useGTLPlaylists', () => {
 
     await act(async () => {})
 
-    expect(result.current).toEqual([])
+    expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
   })
 })
