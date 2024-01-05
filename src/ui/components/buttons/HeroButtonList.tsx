@@ -15,17 +15,24 @@ type HeroButtonListProps = {
   onBeforeNavigate?: () => void
 }
 
-export function HeroButtonList(props: Readonly<HeroButtonListProps>) {
+export function HeroButtonList({
+  Title,
+  Subtitle,
+  Icon,
+  navigateTo,
+  accessibilityLabel,
+  onBeforeNavigate,
+}: Readonly<HeroButtonListProps>) {
   return (
     <InternalTouchableLink
-      navigateTo={props.navigateTo}
+      navigateTo={navigateTo}
       testID="HeroButtonList"
-      accessibilityLabel={props.accessibilityLabel}
-      onBeforeNavigate={props.onBeforeNavigate}>
-      <GenericBanner LeftIcon={props.Icon}>
+      accessibilityLabel={accessibilityLabel}
+      onBeforeNavigate={onBeforeNavigate}>
+      <GenericBanner LeftIcon={Icon}>
         <TextWrapper>
-          {props.Title}
-          {!!props.Subtitle && <SubtitleContainer>{props.Subtitle}</SubtitleContainer>}
+          {Title}
+          {!!Subtitle && <SubtitleContainer>{Subtitle}</SubtitleContainer>}
         </TextWrapper>
       </GenericBanner>
     </InternalTouchableLink>
