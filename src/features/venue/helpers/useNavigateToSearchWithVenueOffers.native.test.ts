@@ -41,7 +41,7 @@ jest
 
 describe('useNavigateToSearchWithVenueOffers', () => {
   it('should give the config according to the venue', () => {
-    const { result } = renderHook(() => useNavigateToSearchWithVenueOffers(venueResponseSnap.id))
+    const { result } = renderHook(() => useNavigateToSearchWithVenueOffers(venueResponseSnap))
 
     expect(result.current).toEqual({
       screen: 'TabNavigator',

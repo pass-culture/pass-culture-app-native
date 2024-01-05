@@ -1,6 +1,7 @@
 import uniqBy from 'lodash/uniqBy'
 import { useQuery } from 'react-query'
 
+import { VenueResponse } from 'api/gen'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
@@ -11,16 +12,16 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-export const useVenueOffers = (venueId: number) => {
+export const useVenueOffers = (venue?: VenueResponse) => {
   const transformHits = useTransformOfferHits()
-  const params = useVenueSearchParameters(venueId)
+  const params = useVenueSearchParameters(venue)
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
 
   const { setCurrentQueryID } = useSearchAnalyticsState()
 
   return useQuery(
-    [QueryKeys.VENUE_OFFERS, venueId, params.locationFilter.locationType],
+    [QueryKeys.VENUE_OFFERS, venue?.id, params.locationFilter.locationType],
     () =>
       fetchOffers({
         parameters: { ...params, page: 0 },
@@ -30,7 +31,7 @@ export const useVenueOffers = (venueId: number) => {
         indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
       }),
     {
-      enabled: !!netInfo.isConnected,
+      enabled: !!(netInfo.isConnected && venue),
       select: ({ hits, nbHits }) => ({
         hits: uniqBy(hits.filter(filterOfferHit).map(transformHits), 'objectID') as Offer[],
         nbHits,

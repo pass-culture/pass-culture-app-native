@@ -27,7 +27,7 @@ export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
   const gtlPlaylists = useGTLPlaylists({ venue })
-  const { data: venueOffers } = useVenueOffers(params.id)
+  const { data: venueOffers } = useVenueOffers(venue)
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const { headerTransition, onScroll } = useOpacityTransition({
     listener: ({ nativeEvent }) => {
@@ -87,7 +87,7 @@ export const Venue: FunctionComponent = () => {
           venue={venue}
         />
       ) : null}
-      {!!shouldDisplayCTA && <VenueCTA venueId={venue.id} />}
+      {!!shouldDisplayCTA && <VenueCTA venue={venue} />}
     </Container>
   )
 }

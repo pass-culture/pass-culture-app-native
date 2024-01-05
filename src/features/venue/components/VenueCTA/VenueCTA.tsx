@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { VenueResponse } from 'api/gen'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
@@ -13,11 +14,11 @@ import { Spacer } from 'ui/theme'
 export const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
 interface Props {
-  venueId: number
+  venue: VenueResponse
 }
 
-export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
-  const searchNavConfig = useNavigateToSearchWithVenueOffers(venueId)
+export const VenueCTA: FunctionComponent<Props> = ({ venue }) => {
+  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
   return (
     <StickyBottomWrapper>
       <BlurryWrapper>
@@ -25,7 +26,7 @@ export const VenueCTA: FunctionComponent<Props> = ({ venueId }) => {
           <Spacer.Column numberOfSpaces={6} />
           <InternalTouchableLink
             navigateTo={searchNavConfig}
-            onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueId)}
+            onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
             as={ButtonPrimary}
             wording="Rechercher une offre"
             icon={SmallMagnifyingGlass}
