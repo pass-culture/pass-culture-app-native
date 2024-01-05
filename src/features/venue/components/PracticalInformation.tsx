@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent } from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueAccessibilityModel, VenueContactModel, VenueResponse } from 'api/gen'
+import { VenueResponse } from 'api/gen'
 import { ContactBlock } from 'features/venue/components/ContactBlockNew/ContactBlockNew'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { Separator } from 'ui/components/Separator'
@@ -10,13 +10,6 @@ import { Spacer, Typo } from 'ui/theme'
 
 type Props = { venue: VenueResponse }
 type Section = { title: string; body: JSX.Element; isDisplayed: boolean }
-
-function checkIfSectionIsEmpty<T>(section: T | null | undefined): boolean {
-  if (!section) return true
-  const sectionValues = Object.keys(section) as (keyof T)[]
-
-  return !sectionValues.some((key) => section[key] !== null || undefined)
-}
 
 export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
@@ -33,14 +26,18 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     {
       title: 'Contact',
       body: <ContactBlock venue={venue} />,
-      isDisplayed: !!venue.contact && !checkIfSectionIsEmpty<VenueContactModel>(venue.contact),
+      isDisplayed:
+        !!venue.contact &&
+        Object.values(venue.contact).some(
+          (value) => value !== null && value !== undefined && value !== ''
+        ),
     },
     {
       title: 'Accessibilité',
       body: <AccessibilityBlock {...venue.accessibility} />,
       isDisplayed:
         !!venue.accessibility &&
-        !checkIfSectionIsEmpty<VenueAccessibilityModel>(venue.accessibility),
+        Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
     },
   ]
   const sectionsToDisplay = sections.filter((section) => section.isDisplayed)
