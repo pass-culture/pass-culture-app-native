@@ -1,4 +1,3 @@
-import isEmpty from 'lodash/isEmpty'
 import React, { Fragment, FunctionComponent } from 'react'
 import { FlatList, ListRenderItemInfo } from 'react-native'
 import styled from 'styled-components/native'
@@ -27,12 +26,14 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     {
       title: 'Contact',
       body: <ContactBlock venue={venue} />,
-      isDisplayed: !!venue.contact && !isEmpty(venue.contact),
+      isDisplayed: !!venue.contact && Object.values(venue.contact).some((value) => !!value),
     },
     {
       title: 'Accessibilité',
       body: <AccessibilityBlock {...venue.accessibility} />,
-      isDisplayed: !!venue.accessibility && !isEmpty(venue.accessibility),
+      isDisplayed:
+        !!venue.accessibility &&
+        Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
     },
   ]
   const sectionsToDisplay = sections.filter((section) => section.isDisplayed)
