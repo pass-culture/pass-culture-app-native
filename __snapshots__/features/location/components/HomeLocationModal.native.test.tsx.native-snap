@@ -396,11 +396,11 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   }
                 />
                 <Text
-                  color="#eb0055"
+                  color="#161617"
                   style={
                     [
                       {
-                        "color": "#eb0055",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -645,11 +645,11 @@ exports[`HomeLocationModal should render correctly if modal visible 1`] = `
                   }
                 />
                 <Text
-                  color="#161617"
+                  color="#eb0055"
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#eb0055",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
