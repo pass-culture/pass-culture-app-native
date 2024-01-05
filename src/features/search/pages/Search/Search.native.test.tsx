@@ -219,17 +219,17 @@ describe('<Search/>', () => {
 
     await screen.findByText('Rechercher')
 
+    await act(() => {})
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should handle coming from "See More" correctly', async () => {
+    useRoute.mockReturnValueOnce({ params: undefined })
     render(<Search />)
     await act(async () => {})
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: {},
-    })
+    expect(mockDispatch).not.toHaveBeenCalled()
   })
 
   it('should setPlace and setLocationMode in location context when there is a place in the uri params', async () => {
@@ -330,13 +330,28 @@ describe('<Search/>', () => {
 
     it('should not display search history when it has not items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory.mockReturnValueOnce({
-        filteredHistory: [],
-        queryHistory: '',
-        addToHistory: jest.fn(),
-        removeFromHistory: jest.fn(),
-        search: jest.fn(),
-      })
+      mockUseSearchHistory
+        .mockReturnValueOnce({
+          filteredHistory: [],
+          queryHistory: '',
+          addToHistory: jest.fn(),
+          removeFromHistory: jest.fn(),
+          search: jest.fn(),
+        })
+        .mockReturnValueOnce({
+          filteredHistory: [],
+          queryHistory: '',
+          addToHistory: jest.fn(),
+          removeFromHistory: jest.fn(),
+          search: jest.fn(),
+        })
+        .mockReturnValueOnce({
+          filteredHistory: [],
+          queryHistory: '',
+          addToHistory: jest.fn(),
+          removeFromHistory: jest.fn(),
+          search: jest.fn(),
+        })
       render(<Search />)
       await act(async () => {})
 
@@ -441,8 +456,12 @@ describe('<Search/>', () => {
 
   describe('When offline', () => {
     it('should display offline page', async () => {
-      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+      mockUseNetInfoContext
+        .mockReturnValueOnce({ isConnected: false })
+        .mockReturnValueOnce({ isConnected: false })
+        .mockReturnValueOnce({ isConnected: false })
       render(<Search />)
+      await act(async () => {})
       await act(async () => {})
 
       expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
