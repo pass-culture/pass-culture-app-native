@@ -90,7 +90,7 @@
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
     "@amplitude/analytics-react-native": "^1.0.1",
-    "@babel/runtime": "^7.23.7",
+    "@babel/runtime": "^7.23",
     "@bam.tech/react-native-config": "^1.4.5",
     "@batch.com/react-native-plugin": "^8.1.2",
     "@hookform/resolvers": "^2.9.11",
@@ -356,7 +356,6 @@
     "workbox-webpack-plugin": "^6.1.5"
   },
   "resolutions": {
-    "@babel/runtime": "^7.23.7",
     "@sentry/hub": "7.8.*",
     "@sentry/utils": "7.62.0",
     "ansi-regex": "^5.0.1",
@@ -374,7 +373,8 @@
     "@react-navigation/core": "6.2.2",
     "react-side-effect": "2.1.2",
     "react-is": "^16.13.1",
-    "@sentry/core": "7.62.0"
+    "@sentry/core": "7.62.0",
+    "@babel/runtime": "^7.23"
   },
   "exports": {
     ".": "./index.js",
