@@ -7,7 +7,6 @@ import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
 import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
 import { usePlace } from 'libs/location/hooks/usePlace'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
 import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
@@ -47,7 +46,6 @@ export const LocationWrapper = memo(function LocationWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const [place, setPlace] = useSafeState<SuggestedPlace | null>(null)
   const [selectedLocationMode, setSelectedLocationMode] = useSafeState<LocationMode>(
     LocationMode.EVERYWHERE
   )
@@ -67,6 +65,8 @@ export const LocationWrapper = memo(function LocationWrapper({
   const onModalHideRef = useRef<() => void>()
 
   const {
+    place,
+    setPlace,
     onResetPlace,
     onSetSelectedPlace,
     selectedPlace,
@@ -92,7 +92,8 @@ export const LocationWrapper = memo(function LocationWrapper({
     analytics.setEventLocationType()
   }, [hasGeolocPosition, place])
 
-  const userLocation = place?.geolocation || geolocPosition
+  const userLocation =
+    selectedLocationMode === LocationMode.AROUND_PLACE ? place?.geolocation : geolocPosition
 
   const value = useMemo(
     () => ({

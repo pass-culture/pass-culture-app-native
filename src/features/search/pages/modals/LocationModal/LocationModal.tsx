@@ -200,6 +200,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
         case RadioButtonLocation.EVERYWHERE:
           setSelectedLocationMode(LocationMode.EVERYWHERE)
           onResetPlace()
+          setPlace(null)
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
@@ -213,6 +214,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           setSelectedLocationMode(LocationMode.AROUND_ME)
           setAroundMeRadius(getValues('aroundRadius')[0])
           onResetPlace()
+          setPlace(null)
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
