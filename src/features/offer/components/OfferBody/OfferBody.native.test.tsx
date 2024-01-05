@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { Linking, Platform, Share as NativeShare } from 'react-native'
+import { Button, Linking, Platform, Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
 import { ReactTestInstance } from 'react-test-renderer'
 
@@ -11,10 +11,21 @@ import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylis
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
+  mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import {
+  checkGeolocPermission,
+  GeolocPermissionState,
+  LocationWrapper,
+  useLocation,
+} from 'libs/location'
+import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
+import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { SuggestedPlace } from 'libs/place/types'
 import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -68,6 +79,19 @@ const trigger = async (component: ReactTestInstance) => {
     jest.runAllTimers()
   })
 }
+
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+const mockGetGeolocPosition = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
+
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+const mockRequestGeolocPermission = requestGeolocPermission as jest.MockedFunction<
+  typeof requestGeolocPermission
+>
+
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
+const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
+  typeof checkGeolocPermission
+>
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -329,6 +353,53 @@ describe('<OfferBody />', () => {
 
     expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
   })
+
+  describe('if a place is selected, offers on the same author playlist', () => {
+    beforeAll(() => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+    })
+
+    it('should have a relative distance to the selected place', async () => {
+      renderOfferBodyDummyComponent({
+        additionalProps: {
+          otherCategoriesSimilarOffers: mockSearchHits,
+          sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+        },
+      })
+      const setPlaceButton = screen.getByText('setPlace')
+
+      await act(async () => {
+        fireEvent.press(setPlaceButton)
+      })
+
+      screen.getByText('Du même auteur')
+      const distanceBetweenParisAndVannes = '397 km'
+
+      expect(screen.getByText(distanceBetweenParisAndVannes)).toBeOnTheScreen()
+    })
+
+    it('should have a relative distance to the selected place and not the geolocposition even if geolocated', async () => {
+      mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+      mockGetGeolocPosition.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+
+      renderOfferBodyDummyComponent({
+        additionalProps: {
+          otherCategoriesSimilarOffers: mockSearchHits,
+          sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
+        },
+      })
+      const setPlaceButton = screen.getByText('setPlace')
+
+      await act(async () => {
+        fireEvent.press(setPlaceButton)
+      })
+      screen.getByText('Du même auteur')
+      const distanceBetweenParisAndVannes = '397 km'
+
+      expect(screen.getByText(distanceBetweenParisAndVannes)).toBeOnTheScreen()
+    })
+  })
 })
 
 type AdditionalProps = {
@@ -353,3 +424,38 @@ const renderOfferBody = ({ offer = mockOffer, additionalProps = {} }: RenderOffe
       />
     )
   )
+
+const renderOfferBodyDummyComponent = ({
+  offer = mockOffer,
+  additionalProps = {},
+}: RenderOfferBodyProps) =>
+  render(
+    reactQueryProviderHOC(
+      <LocationWrapper>
+        <DummyComponent offer={offer} additionalProps={additionalProps} />
+      </LocationWrapper>
+    )
+  )
+
+const DummyComponent = ({ offer = mockOffer, additionalProps = {} }: RenderOfferBodyProps) => {
+  const { setPlace } = useLocation()
+  const mockPlaces: SuggestedPlace[] = [
+    {
+      label: 'Paris',
+      info: 'Ile de france',
+      geolocation: { longitude: 2.3522219, latitude: 48.856614 },
+    },
+  ]
+
+  return (
+    <React.Fragment>
+      <Button title="setPlace" onPress={() => setPlace(mockPlaces[0])} />
+      <OfferBody
+        offer={offer}
+        onScroll={onScroll}
+        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
+        {...additionalProps}
+      />
+    </React.Fragment>
+  )
+}
