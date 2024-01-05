@@ -53,7 +53,7 @@ jest
 
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {
-    render(<VenueCTA venueId={venueResponseSnap.id} />)
+    render(<VenueCTA venue={venueResponseSnap} />)
 
     fireEvent.press(screen.getByText('Rechercher une offre'))
 
@@ -76,7 +76,7 @@ describe('<VenueCTA />', () => {
   })
 
   it('should log event when pressed on', async () => {
-    render(<VenueCTA venueId={venueResponseSnap.id} />)
+    render(<VenueCTA venue={venueResponseSnap} />)
 
     fireEvent.press(screen.getByText('Rechercher une offre'))
 

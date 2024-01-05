@@ -39,7 +39,7 @@ export function VenueOffersNew({
 }: Readonly<Props>) {
   const { geolocPosition } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
-  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue.id)
+  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
 

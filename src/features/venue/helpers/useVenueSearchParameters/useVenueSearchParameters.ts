@@ -1,13 +1,12 @@
+import { VenueResponse } from 'api/gen'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState, SearchView } from 'features/search/types'
-import { useVenue } from 'features/venue/api/useVenue'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 
-export const useVenueSearchParameters = (venueId: number): SearchState => {
+export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState => {
   const { geolocPosition } = useLocation()
-  const { data: dataVenue } = useVenue(venueId)
   const maxPrice = useMaxPrice()
 
   const defaultLocationFilter = geolocPosition
@@ -15,12 +14,12 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     : { locationType: LocationMode.EVERYWHERE }
 
   const venue = (
-    venueId && !!dataVenue
+    dataVenue
       ? {
           label: dataVenue.publicName ?? dataVenue.name,
           info: dataVenue.city,
           geolocation: { latitude: dataVenue.latitude, longitude: dataVenue.longitude },
-          venueId,
+          venueId: dataVenue.id,
         }
       : undefined
   ) as SearchState['venue']

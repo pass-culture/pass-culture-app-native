@@ -39,9 +39,9 @@ const keyExtractor = (item: Offer) => item.objectID
 
 export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readonly<Props>) {
   const { data: venue } = useVenue(venueId)
-  const { data: venueOffers } = useVenueOffers(venueId)
+  const { data: venueOffers } = useVenueOffers(venue)
   const { geolocPosition } = useLocation()
-  const params = useVenueSearchParameters(venueId)
+  const params = useVenueSearchParameters(venue)
   const route = useRoute<UseRouteType<'Offer'>>()
 
   const searchTabNavConfig = useMemo(() => {

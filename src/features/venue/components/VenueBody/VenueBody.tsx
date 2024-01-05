@@ -32,7 +32,7 @@ interface Props {
 
 export function VenueBody({ venueId, onScroll, playlists }: Props) {
   const { data: venue } = useVenue(venueId)
-  const { data: offers } = useVenueOffers(venueId)
+  const { data: offers } = useVenueOffers(venue)
   const scrollViewRef = useRef<ScrollView | null>(null)
 
   const {
