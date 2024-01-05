@@ -194,6 +194,7 @@ const mockedPlace: SuggestedPlace = {
 }
 
 const mockSetPlace = jest.fn()
+const mockSetSelectedLocationMode = jest.fn()
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -201,6 +202,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     place: mockedPlace,
     onModalHideRef: jest.fn(),
     isCurrentLocationMode: jest.fn(),
+    setSelectedLocationMode: mockSetSelectedLocationMode,
   }),
 }))
 
@@ -225,7 +227,7 @@ describe('<Search/>', () => {
     })
   })
 
-  it('should setPlace in location context when there is a place in the uri params', async () => {
+  it('should setPlace and setLocationMode in location context when there is a place in the uri params', async () => {
     useRoute.mockReturnValueOnce({
       params: {
         locationFilter: {
@@ -240,6 +242,23 @@ describe('<Search/>', () => {
     await act(async () => {})
 
     expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
+    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
+  })
+
+  it('should setLocationMode in location context when there is a location type EVERYWHERE in the uri params', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationMode.EVERYWHERE,
+        },
+      },
+    })
+
+    render(<Search />)
+
+    await act(async () => {})
+
+    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
   })
 
   describe('When search view is suggestions', () => {
