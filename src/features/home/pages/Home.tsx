@@ -10,6 +10,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { startTransaction } from 'shared/performance/transactions'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -29,7 +30,8 @@ export const Home: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
-  const { setPlace } = useLocation()
+  const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
+    useLocation()
 
   useEffect(() => {
     if (id) {
@@ -45,8 +47,23 @@ export const Home: FunctionComponent = () => {
         label: 'Custom',
         info: 'custom',
       })
+      setSelectedLocationMode(LocationMode.AROUND_PLACE)
     }
-  }, [params?.latitude, params?.longitude, setPlace])
+  }, [params?.latitude, params?.longitude, setPlace, setSelectedLocationMode])
+
+  useEffect(() => {
+    if (
+      selectedLocationMode === LocationMode.EVERYWHERE ||
+      selectedLocationMode === LocationMode.AROUND_ME
+    ) {
+      if (hasGeolocPosition) {
+        setSelectedLocationMode(LocationMode.AROUND_ME)
+      } else {
+        setSelectedLocationMode(LocationMode.EVERYWHERE)
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasGeolocPosition])
 
   return (
     <GenericHome

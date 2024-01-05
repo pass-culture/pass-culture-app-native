@@ -111,9 +111,15 @@ describe('SearchLocationModal', () => {
 
   it('should highlight geolocation button if geolocation is enabled', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
     renderSearchLocationModal()
     await waitForModalToShow()
+
+    const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
+    await act(() => {
+      fireEvent.press(geolocPositionButton)
+    })
 
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
   })
@@ -199,12 +205,21 @@ describe('SearchLocationModal', () => {
 
   it('should navigate to Search page with geolocation params when user is in geolocation mode', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
     renderSearchLocationModal()
     await waitForModalToShow()
 
+    const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
+    await act(() => {
+      fireEvent.press(geolocPositionButton)
+    })
+
     const validateButon = screen.getByText('Valider la localisation')
-    fireEvent.press(validateButon)
+    await act(() => {
+      fireEvent.press(validateButon)
+    })
 
     expect(mockNavigate).toHaveBeenCalledWith(
       ...getTabNavConfig('Search', {
@@ -288,8 +303,13 @@ describe('SearchLocationModal', () => {
     })
 
     it('should display default radius even if an AroundMeRadius was set previously', async () => {
+      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       renderSearchLocationModal()
       await waitForModalToShow()
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
+      })
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
@@ -311,19 +331,31 @@ describe('SearchLocationModal', () => {
 
   describe('AroundMeRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
+      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       renderSearchLocationModal()
       await waitForModalToShow()
 
-      await waitFor(() => {
-        expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
+      const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
+      await act(() => {
+        fireEvent.press(geolocPositionButton)
       })
+
+      expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })
 
     it('should call searchContext dispatch with mockAroundMeRadius when pressing "Valider la localisation"', async () => {
+      getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+      mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
       renderSearchLocationModal()
       await waitForModalToShow()
+
+      const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
+      await act(() => {
+        fireEvent.press(geolocPositionButton)
+      })
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance

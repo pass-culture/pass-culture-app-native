@@ -40,8 +40,6 @@ jest.mock('libs/place', () => ({
 
 describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
-    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-
     renderHomeLocationModal()
     await waitForModalToShow()
 
@@ -76,11 +74,13 @@ describe('HomeLocationModal', () => {
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should highlight geolocation button if geolocation is enabled', async () => {
+  it('should highlight geolocation button if geolocation is selected', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderHomeLocationModal()
     await waitForModalToShow()
+    const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
+    fireEvent.press(geolocPositionButton)
 
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
   })

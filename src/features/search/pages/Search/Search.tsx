@@ -1,8 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Configure, Index, InstantSearch } from 'react-instantsearch-core'
-import { Keyboard, StatusBar } from 'react-native'
+import { AppState, Keyboard, StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -57,10 +57,19 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch, searchState } = useSearch()
-  const { geolocPosition, setPlace } = useLocation()
+  const { geolocPosition, setPlace, setSelectedLocationMode } = useLocation()
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
   const { navigate } = useNavigation<UseNavigationType>()
+  const [appState, setAppState] = useState(AppState.currentState)
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', setAppState)
+
+    return () => {
+      subscription.remove()
+    }
+  }, [])
 
   useEffect(() => {
     dispatch({
@@ -72,9 +81,15 @@ export function Search() {
   useEffect(() => {
     if (params?.locationFilter?.locationType === LocationMode.AROUND_PLACE) {
       setPlace(params.locationFilter.place)
+      setSelectedLocationMode(LocationMode.AROUND_PLACE)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (params?.locationFilter?.locationType === LocationMode.EVERYWHERE) {
+      setSelectedLocationMode(LocationMode.EVERYWHERE)
+    }
+    if (!params?.venue) {
+      dispatch({ type: 'SET_STATE', payload: { ...searchState, venue: undefined } })
+    }
+  }, [appState])
 
   const currentFilters = params?.locationFilter
 
