@@ -6,12 +6,10 @@ import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatFullAddressWithVenueName } from 'libs/address/useFormatFullAddress'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -26,34 +24,17 @@ const ExpirationDate: React.FC<{
   return <Item Icon={Calendar} message={activationText} />
 }
 
-interface Props {
-  shouldDisplayAddress?: boolean
-}
-
-export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
+export const BookingInformations = () => {
   const { bookingState } = useBookingContext()
   const offer = useBookingOffer()
   const stock = useBookingStock()
   const mapping = useSubcategoriesMapping()
-
   const { quantity } = bookingState
 
   if (!stock || typeof quantity !== 'number' || !offer) return null
 
-  const { isDigital, name, venue } = offer
-  const fullAddress = formatFullAddressWithVenueName(
-    venue.address,
-    venue.postalCode,
-    venue.city,
-    venue.publicName,
-    venue.name
-  )
+  const { isDigital, name } = offer
 
-  const address = (
-    <StyledAddress>
-      <Typo.Caption>{fullAddress}</Typo.Caption>
-    </StyledAddress>
-  )
   const price =
     stock.price > 0 ? (
       <PriceLine
@@ -76,9 +57,6 @@ export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
             message={formatDate(stock.beginningDatetime, offer.venue.timezone)}
           />
         )}
-        {!!shouldDisplayAddress && (
-          <Item Icon={LocationBuilding} message={address} testID="address" />
-        )}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
@@ -88,9 +66,6 @@ export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        {!!shouldDisplayAddress && (
-          <Item Icon={LocationBuilding} message={address} testID="address" />
-        )}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
@@ -139,9 +114,4 @@ const Row = styled.View(({ theme }) => ({
 
 const IconWrapper = styled.View({
   flexShrink: 0,
-})
-
-const StyledAddress = styled(Typo.Body)({
-  textTransform: 'capitalize',
-  alignItems: 'center',
 })

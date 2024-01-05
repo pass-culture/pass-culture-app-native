@@ -149,7 +149,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const stocksWithCategory = useMemo(() => {
     return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
   }, [bookingState.date, bookingState.hour, offer?.stocks])
-  const hasPricesStep = Boolean(stocksWithCategory.length > 1)
+  const hasPricesStep = stocksWithCategory.length > 1
 
   const modalLeftIconProps = {
     leftIcon,

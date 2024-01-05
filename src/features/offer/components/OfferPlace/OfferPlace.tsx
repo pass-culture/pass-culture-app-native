@@ -11,7 +11,7 @@ import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccord
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position } from 'libs/location'
-import { useMultivenueOffer } from 'shared/multivenueOffer/useMultivenueOffer'
+import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/useMultivenueOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useModal } from 'ui/components/modals/useModal'
@@ -40,7 +40,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers } = useMultivenueOffer(offer)
+  const { shouldFetchSearchVenueOffers } = getIsMultivenueCompatibleOffer(offer)
 
   const {
     hasNextPage,

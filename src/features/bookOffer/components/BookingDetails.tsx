@@ -181,30 +181,28 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
       <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
-      <BookingInformations shouldDisplayAddress={false} />
+      <BookingInformations />
       <Spacer.Column numberOfSpaces={6} />
 
-      <React.Fragment>
-        <Separator />
+      <Separator />
 
-        <Spacer.Column numberOfSpaces={6} />
-        <VenueTitleContainer>
-          <VenueTitleText>{venueSectionTitle}</VenueTitleText>
-          {!!shouldDisplayOtherVenuesAvailableButton && (
-            <EditButton
-              wording="Modifier"
-              accessibilityLabel={`Modifier ${venueSectionTitle}`}
-              onPress={showModal}
-            />
-          )}
-        </VenueTitleContainer>
+      <Spacer.Column numberOfSpaces={6} />
+      <VenueTitleContainer>
+        <VenueTitleText>{venueSectionTitle}</VenueTitleText>
+        {!!shouldDisplayOtherVenuesAvailableButton && (
+          <EditButton
+            wording="Modifier"
+            accessibilityLabel={`Modifier ${venueSectionTitle}`}
+            onPress={showModal}
+          />
+        )}
+      </VenueTitleContainer>
 
-        <Spacer.Column numberOfSpaces={4} />
-        <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
-        <Spacer.Column numberOfSpaces={1} />
-        <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
-        <Spacer.Column numberOfSpaces={6} />
-      </React.Fragment>
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+      <Spacer.Column numberOfSpaces={1} />
+      <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+      <Spacer.Column numberOfSpaces={6} />
 
       {!isFreeOfferToArchive && (
         <React.Fragment>

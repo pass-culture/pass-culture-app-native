@@ -33,8 +33,10 @@ export function getButtonWording(step: Step) {
 
     case Step.DUO:
       return 'Finaliser ma réservation'
+
+    default:
+      return ''
   }
-  return ''
 }
 
 export function getHourWording(

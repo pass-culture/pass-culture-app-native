@@ -32,12 +32,10 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
 
   return (
     <React.Fragment>
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
-          Date
-        </Typo.Title3>
-      </React.Fragment>
+      <Spacer.Column numberOfSpaces={6} />
+      <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
+        Date
+      </Typo.Title3>
 
       {bookingState.step === Step.DATE ? (
         <Calendar

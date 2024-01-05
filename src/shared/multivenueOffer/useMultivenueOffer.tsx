@@ -8,7 +8,7 @@ const MULTIVENUE_COMPATIBLE_OFFER = [
 const isMultivenueCompatibleOffer = (offer: OfferResponse): boolean =>
   MULTIVENUE_COMPATIBLE_OFFER.includes(offer.subcategoryId)
 
-export const useMultivenueOffer = (offer: OfferResponse) => {
+export const getIsMultivenueCompatibleOffer = (offer: OfferResponse) => {
   const shouldFetchSearchVenueOffers = Boolean(
     isMultivenueCompatibleOffer(offer) && offer.extraData?.ean
   )
