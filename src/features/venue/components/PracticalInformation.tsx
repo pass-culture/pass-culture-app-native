@@ -26,11 +26,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     {
       title: 'Contact',
       body: <ContactBlock venue={venue} />,
-      isDisplayed:
-        !!venue.contact &&
-        Object.values(venue.contact).some(
-          (value) => value !== null && value !== undefined && value !== ''
-        ),
+      isDisplayed: !!venue.contact && Object.values(venue.contact).some((value) => !!value),
     },
     {
       title: 'Accessibilité',
