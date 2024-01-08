@@ -73,7 +73,7 @@ const optionsWithAccessToken = {
   },
 }
 
-jest.spyOn(jwt, 'decodeAccessToken').mockReturnValue(decodedAccessToken)
+jest.spyOn(jwt, 'decodeToken').mockReturnValue(decodedAccessToken)
 
 jest.spyOn(CodePush, 'getUpdateMetadata').mockResolvedValue(null)
 
@@ -553,7 +553,7 @@ describe('[api] helpers', () => {
 
   describe('computeTokenRemainingLifetimeInMs', () => {
     it('should return undefined when token can not be decoded', () => {
-      jest.spyOn(jwt, 'decodeAccessToken').mockReturnValueOnce(null)
+      jest.spyOn(jwt, 'decodeToken').mockReturnValueOnce(null)
 
       expect(computeTokenRemainingLifetimeInMs('abc')).toBeUndefined()
     })

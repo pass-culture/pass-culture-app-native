@@ -9,7 +9,7 @@ import { CrashTestButton } from 'features/internal/cheatcodes/components/CrashTe
 import { NavigateHomeButton } from 'features/internal/cheatcodes/components/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
-import { decodeAccessToken } from 'libs/jwt'
+import { decodeToken } from 'libs/jwt'
 import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
@@ -36,7 +36,7 @@ const getUserId = async () => {
   if (!accessToken) {
     return null
   }
-  const tokenContent = decodeAccessToken(accessToken)
+  const tokenContent = decodeToken(accessToken)
   return tokenContent?.user_claims?.user_id ?? null
 }
 
