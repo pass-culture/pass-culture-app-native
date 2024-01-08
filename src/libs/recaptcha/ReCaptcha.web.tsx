@@ -61,12 +61,30 @@ export function ReCaptcha(props: Readonly<Props>) {
         return
       }
 
-      if (grecaptcha && !isReCaptchaRendered) {
-        renderGrecaptcha()
+      if (!isReCaptchaRendered && reCaptchaContainer) {
+        grecaptcha.ready(() => {
+          if (grecaptcha.render) {
+            reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
+              sitekey: env.SITE_KEY,
+              callback: onSuccess,
+              'expired-callback': props.onExpire,
+              'error-callback': onRecaptchaErrorCallback,
+              size: 'invisible',
+              theme: 'light',
+            })
+          }
+        })
       }
 
-      if (grecaptcha && isReCaptchaRendered) {
-        executeGrecaptcha(intervalId)
+      if (isReCaptchaRendered) {
+        try {
+          grecaptcha.execute(reCaptchaWidgetRef.current)
+          clearInterval(intervalId)
+        } catch (error) {
+          if (error instanceof Error) {
+            props.onError(ReCaptchaInternalError.UnknownError, 'reCAPTCHA error: ' + error.message)
+          }
+        }
       }
     }, 1000)
 
@@ -75,41 +93,6 @@ export function ReCaptcha(props: Readonly<Props>) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isVisible])
-
-  function renderGrecaptcha() {
-    const { grecaptcha } = window
-    const reCaptchaContainer = reCaptchaContainerRef.current
-    if (!grecaptcha?.ready || !grecaptcha.render || !reCaptchaContainer) {
-      return
-    }
-    grecaptcha.ready(() => {
-      if (grecaptcha.render) {
-        reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
-          sitekey: env.SITE_KEY,
-          callback: onSuccess,
-          'expired-callback': props.onExpire,
-          'error-callback': onRecaptchaErrorCallback,
-          size: 'invisible',
-          theme: 'light',
-        })
-      }
-    })
-  }
-
-  function executeGrecaptcha(intervalId: NodeJS.Timeout) {
-    const { grecaptcha } = window
-    if (!grecaptcha?.execute) {
-      return
-    }
-    try {
-      grecaptcha.execute(reCaptchaWidgetRef.current)
-      clearInterval(intervalId)
-    } catch (error) {
-      if (error instanceof Error) {
-        props.onError(ReCaptchaInternalError.UnknownError, 'reCAPTCHA error: ' + error.message)
-      }
-    }
-  }
 
   return (
     <React.Fragment>
