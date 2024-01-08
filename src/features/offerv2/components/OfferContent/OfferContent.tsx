@@ -1,15 +1,23 @@
-import React, { FunctionComponent } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, useEffect } from 'react'
+import { View } from 'react-native'
+import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
+import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
+import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
+import { OfferPlaylistList } from 'features/offerv2/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferPrice } from 'features/offerv2/components/OfferPrice/OfferPrice'
 import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
-import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
+import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
+import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -21,14 +29,61 @@ type Props = {
 }
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
+  const route = useRoute<UseRouteType<'Offer'>>()
+  const fromOfferId = route.params.fromOfferId
+
   const { userLocation } = useLocation()
   const tags = getOfferTags(subcategory.appLabel, offer.extraData ?? undefined)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
 
+  const {
+    sameArtistPlaylist,
+    refetchSameArtistPlaylist,
+    sameCategorySimilarOffers,
+    apiRecoParamsSameCategory,
+    otherCategoriesSimilarOffers,
+    apiRecoParamsOtherCategories,
+  } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
+
+  const {
+    logSameArtistPlaylistVerticalScroll,
+    logSameCategoryPlaylistVerticalScroll,
+    logOtherCategoriesPlaylistVerticalScroll,
+  } = useOfferAnalytics({
+    offerId: offer.id,
+    nbSameArtistPlaylist: sameArtistPlaylist.length,
+    apiRecoParamsSameCategory,
+    nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
+    apiRecoParamsOtherCategories,
+    nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
+    fromOfferId,
+  })
+
+  const authors = offer.extraData?.author
+  const ean = offer.extraData?.ean
+  useEffect(() => {
+    if (authors && ean) {
+      refetchSameArtistPlaylist()
+    }
+  }, [authors, ean, refetchSameArtistPlaylist])
+
+  const handleChangeSameArtistPlaylistDisplay = useLogScrollHandler(
+    logSameArtistPlaylistVerticalScroll
+  )
+
+  const handleChangeOtherCategoriesPlaylistDisplay = useLogScrollHandler(
+    logOtherCategoriesPlaylistVerticalScroll
+  )
+
+  const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
+    logSameCategoryPlaylistVerticalScroll
+  )
+
   return (
-    <React.Fragment>
-      <Container>
+    <Container testID="offer-container">
+      <InfoContainer>
+        <View style={{ height: 500 }}></View>
         <InformationTags tags={tags} />
 
         <OfferTitle offerName={offer.name} />
@@ -39,15 +94,31 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         <OfferPrice prices={prices} />
         <Spacer.Column numberOfSpaces={6} />
-      </Container>
+      </InfoContainer>
 
       <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
+      <Spacer.Column numberOfSpaces={6} />
+
+      <OfferPlaylistList
+        offer={offer}
+        position={userLocation}
+        sameCategorySimilarOffers={sameCategorySimilarOffers}
+        apiRecoParamsSameCategory={apiRecoParamsSameCategory}
+        otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+        apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+        sameArtistPlaylist={sameArtistPlaylist}
+        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
+        handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
+        handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
+      />
 
       <Typo.Body>À propos</Typo.Body>
-    </React.Fragment>
+    </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled(IOScrollView)({})
+
+const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
 })
