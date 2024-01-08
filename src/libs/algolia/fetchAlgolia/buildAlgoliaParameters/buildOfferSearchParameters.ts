@@ -11,6 +11,7 @@ type Parameters = SearchQueryParameters & {
   excludedObjectIds?: string[]
   eanList?: string[]
   enableAppLocation?: boolean
+  aroundRadius?: number
 }
 
 export const buildOfferSearchParameters = (
@@ -44,7 +45,8 @@ export const buildOfferSearchParameters = (
   }: Parameters,
   userLocation: Position,
   isUserUnderage: boolean,
-  enableAppLocation?: boolean
+  enableAppLocation?: boolean,
+  aroundRadius?: number
 ) => ({
   ...buildFacetFilters({
     eanList,
@@ -82,6 +84,7 @@ export const buildOfferSearchParameters = (
     userLocation,
     isFullyDigitalOffersCategory,
     enableAppLocation,
+    aroundRadius,
   }),
   ...buildFilters({ excludedObjectIds }),
 })

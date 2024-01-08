@@ -42,6 +42,9 @@ type FilterVenueOfferType = {
   venueId: number | undefined
 }
 
+// Radius in meters
+const AROUND_RADIUS = 50 * 1000
+
 export function getVenueList(hits: Offer[], geolocation: Position) {
   const offerVenues: OfferVenueType[] = []
 
@@ -105,8 +108,14 @@ export const useSearchVenueOffers = ({
     [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, view: undefined, query }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffers({
-        parameters: { ...initialSearchState, query, page, hitsPerPage: 10 },
+        parameters: {
+          ...initialSearchState,
+          query,
+          page,
+          hitsPerPage: 10,
+        },
         userLocation: geolocation,
+        aroundRadius: AROUND_RADIUS,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

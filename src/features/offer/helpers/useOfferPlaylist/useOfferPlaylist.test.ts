@@ -7,6 +7,7 @@ import {
   mockedAlgoliaOffersWithSameArtistResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { Position } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { renderHook } from 'tests/utils'
@@ -43,7 +44,12 @@ const useSameArtistPlaylistSpy = jest
     refetchSameArtistPlaylist: jest.fn(),
   })
 
-jest.mock('libs/location')
+const mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockPosition,
+  }),
+}))
 
 describe('useOfferPlaylist', () => {
   describe('When offer is defined', () => {

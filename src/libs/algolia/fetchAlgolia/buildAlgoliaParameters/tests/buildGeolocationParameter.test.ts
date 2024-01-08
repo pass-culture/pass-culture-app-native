@@ -104,7 +104,7 @@ describe('buildGeolocationParameter', () => {
     expect(result).toEqual(expectOutput)
   })
 
-  it('should return geolocation parameter for "all" location type', () => {
+  it('should return geolocation parameter for everywhere location type with "all" around radius', () => {
     const result = buildGeolocationParameter({
       locationFilter: locationFilterEverywhere,
       userLocation,
@@ -113,6 +113,19 @@ describe('buildGeolocationParameter', () => {
     expect(result).toEqual({
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
       aroundRadius: 'all',
+    })
+  })
+
+  it('should return geolocation parameter for everywhere location type with an around radius', () => {
+    const result = buildGeolocationParameter({
+      locationFilter: locationFilterEverywhere,
+      userLocation,
+      aroundRadius: 50000,
+    })
+
+    expect(result).toEqual({
+      aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+      aroundRadius: 50000,
     })
   })
 })

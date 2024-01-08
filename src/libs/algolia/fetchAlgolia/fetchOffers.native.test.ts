@@ -245,6 +245,55 @@ describe('fetchOffer', () => {
       })
     })
 
+    it('should fetch offers with geolocation coordinates, when latitude, longitude are provided and search is everywhere without radius', () => {
+      const query = 'searched query'
+
+      fetchOffers({
+        parameters: {
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
+          query,
+        } as SearchQueryParameters,
+        userLocation,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        aroundLatLng: '42, 43',
+        aroundRadius: 'all',
+        page: 0,
+        attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
+    it('should fetch offers with geolocation coordinates, when latitude, longitude are provided and search is everywhere with radius', () => {
+      const query = 'searched query'
+
+      fetchOffers({
+        parameters: {
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
+          query,
+        } as SearchQueryParameters,
+        userLocation,
+        isUserUnderage: false,
+        aroundRadius: 50000,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        aroundLatLng: '42, 43',
+        aroundRadius: 50000,
+        page: 0,
+        attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+
     it('should fetch offers with geolocation coordinates, when latitude, longitude, search is around me, and radius equals zero', () => {
       const query = 'searched query'
 
