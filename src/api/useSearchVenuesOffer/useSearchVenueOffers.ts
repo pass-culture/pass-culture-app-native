@@ -42,6 +42,7 @@ type FilterVenueOfferType = {
   venueId: number | undefined
 }
 
+// Radius in meters
 const AROUND_RADIUS = 50 * 1000
 
 export function getVenueList(hits: Offer[], geolocation: Position) {
