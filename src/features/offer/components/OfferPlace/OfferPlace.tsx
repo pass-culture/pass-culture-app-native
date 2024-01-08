@@ -22,11 +22,11 @@ import { Spacer } from 'ui/theme'
 
 export type OfferPlaceProps = {
   offer: OfferResponse
-  geolocPosition: Position
+  userLocation: Position
   isEvent: boolean
 }
 
-export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPlaceProps>) {
+export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const showVenueBanner = offer.venue.isPermanent === true
   const fullAddress = getFormattedAddress(offer.venue, showVenueBanner)
@@ -59,7 +59,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
   } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
-    geolocation: geolocPosition ?? {
+    geolocation: userLocation ?? {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
@@ -147,7 +147,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={geolocPosition !== null}
+          isSharingLocation={userLocation !== null}
           venueName={offer.venue.publicName || offer.venue.name}
         />
       ) : null}

@@ -11,6 +11,7 @@ type Params = {
   userLocation: Position
   isFullyDigitalOffersCategory?: SearchQueryParameters['isFullyDigitalOffersCategory']
   enableAppLocation?: boolean
+  aroundRadius?: number
 }
 
 export const buildGeolocationParameter = ({
@@ -19,6 +20,7 @@ export const buildGeolocationParameter = ({
   userLocation,
   isFullyDigitalOffersCategory,
   enableAppLocation,
+  aroundRadius,
 }: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   let locationFilter = providedLocationFilter
   if (isFullyDigitalOffersCategory && enableAppLocation) return
@@ -50,7 +52,7 @@ export const buildGeolocationParameter = ({
   if (locationFilter.locationType === LocationMode.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-      aroundRadius: 'all',
+      aroundRadius: aroundRadius ?? 'all',
     }
   }
 
