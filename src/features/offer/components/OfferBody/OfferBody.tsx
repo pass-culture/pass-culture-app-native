@@ -10,8 +10,8 @@ import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/O
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferPlaceOld } from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
-import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
+import { OfferPlaylistListOld } from 'features/offer/components/OfferPlaylistListOld/OfferPlaylistListOld'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -143,7 +143,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </AccordionItem>
       </SectionWithDivider>
 
-      <OfferPlaylistList
+      <OfferPlaylistListOld
         offer={offer}
         position={userLocation}
         sameCategorySimilarOffers={sameCategorySimilarOffers}

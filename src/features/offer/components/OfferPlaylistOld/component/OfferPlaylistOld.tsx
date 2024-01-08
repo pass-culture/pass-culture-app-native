@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { PlaylistType } from 'features/offer/enums'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Spacer } from 'ui/theme'
 
-interface OfferPlaylistProps {
+interface OfferPlaylistOldProps {
   items: Offer[] | HitOfferWithArtistAndEan[]
   renderItem: (props: {
     item: Offer
@@ -24,7 +24,7 @@ interface OfferPlaylistProps {
 
 const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
 
-export function OfferPlaylist({
+export function OfferPlaylistOld({
   items,
   renderItem,
   itemWidth,
@@ -32,7 +32,7 @@ export function OfferPlaylist({
   title,
   playlistType,
   onEndReached,
-}: Readonly<OfferPlaylistProps>) {
+}: Readonly<OfferPlaylistOldProps>) {
   return (
     <SectionWithDivider testID={playlistType} visible>
       <Spacer.Column numberOfSpaces={6} />

@@ -3,8 +3,8 @@ import React from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
-import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/component/OfferPlaylist'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
+import { OfferPlaylistOld } from 'features/offer/components/OfferPlaylistOld/component/OfferPlaylistOld'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
@@ -18,7 +18,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer, RecommendationApiParams, SimilarOfferPlaylist } from 'shared/offer/types'
 
-export type OfferPlaylistListProps = {
+export type OfferPlaylistListOldProps = {
   offer: OfferResponse
   handleChangeSameArtistPlaylistDisplay: (inView: boolean) => void
   position: Position
@@ -87,7 +87,7 @@ const doNothingWithIntersectionObserverYet = () => {
   return
 }
 
-export function OfferPlaylistList({
+export function OfferPlaylistListOld({
   offer,
   position,
   sameCategorySimilarOffers,
@@ -96,7 +96,7 @@ export function OfferPlaylistList({
   apiRecoParamsOtherCategories,
   sameArtistPlaylist,
   handleChangeSameArtistPlaylistDisplay,
-}: Readonly<OfferPlaylistListProps>) {
+}: Readonly<OfferPlaylistListOldProps>) {
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
@@ -153,7 +153,7 @@ export function OfferPlaylistList({
             onChange={playlist.handleChangePlaylistDisplay}
             threshold="50%"
             key={playlist.type}>
-            <OfferPlaylist
+            <OfferPlaylistOld
               items={playlist.offers}
               itemWidth={itemWidth}
               itemHeight={itemHeight}

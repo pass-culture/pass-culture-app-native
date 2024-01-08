@@ -3,9 +3,9 @@ import React from 'react'
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import {
-  OfferPlaylistList,
-  OfferPlaylistListProps,
-} from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
+  OfferPlaylistListOld,
+  OfferPlaylistListOldProps,
+} from 'features/offer/components/OfferPlaylistListOld/OfferPlaylistListOld'
 import { PlaylistType } from 'features/offer/enums'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -35,7 +35,7 @@ const useFeatureFlagSpy = jest
 
 const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
 
-const offerPlaylistListProps: OfferPlaylistListProps = {
+const offerPlaylistListProps: OfferPlaylistListOldProps = {
   offer: mockOffer,
   position: null,
   handleChangeSameArtistPlaylistDisplay: jest.fn(),
@@ -164,10 +164,10 @@ const renderOfferPlaylistList = ({
   otherCategoriesSimilarOffers,
   sameArtistPlaylist,
   handleChangeSameArtistPlaylistDisplay,
-}: OfferPlaylistListProps) =>
+}: OfferPlaylistListOldProps) =>
   render(
     reactQueryProviderHOC(
-      <OfferPlaylistList
+      <OfferPlaylistListOld
         offer={offer}
         position={position}
         sameCategorySimilarOffers={sameCategorySimilarOffers}

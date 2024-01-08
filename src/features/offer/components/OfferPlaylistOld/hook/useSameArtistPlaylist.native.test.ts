@@ -1,5 +1,5 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
+import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

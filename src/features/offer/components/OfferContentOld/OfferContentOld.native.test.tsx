@@ -6,7 +6,7 @@ import { NativeCategoryIdEnumv2, OfferResponse, SearchGroupNameEnumv2 } from 'ap
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferContentOld } from 'features/offer/components/OfferContentOld/OfferContentOld'
-import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
+import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'

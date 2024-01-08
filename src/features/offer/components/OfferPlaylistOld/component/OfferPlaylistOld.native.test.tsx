@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/component/OfferPlaylist'
+import { OfferPlaylistOld } from 'features/offer/components/OfferPlaylistOld/component/OfferPlaylistOld'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { render, screen } from 'tests/utils'
@@ -9,10 +9,10 @@ const renderItemMock = jest.fn().mockReturnValue(null)
 const itemWidth = 100
 const itemHeight = 50
 
-describe('<OfferPlaylist />', () => {
+describe('<OfferPlaylistOld />', () => {
   it('should display correctly the playlist', async () => {
     render(
-      <OfferPlaylist
+      <OfferPlaylistOld
         items={mockedAlgoliaOffersWithSameArtistResponse}
         renderItem={renderItemMock}
         itemWidth={itemWidth}
@@ -27,7 +27,7 @@ describe('<OfferPlaylist />', () => {
 
   it('should render the playlist title', () => {
     render(
-      <OfferPlaylist
+      <OfferPlaylistOld
         items={mockedAlgoliaOffersWithSameArtistResponse}
         renderItem={renderItemMock}
         itemWidth={itemWidth}
@@ -42,7 +42,7 @@ describe('<OfferPlaylist />', () => {
 
   it('should call the list with the data from the mock', async () => {
     render(
-      <OfferPlaylist
+      <OfferPlaylistOld
         items={mockedAlgoliaOffersWithSameArtistResponse}
         renderItem={renderItemMock}
         itemWidth={itemWidth}

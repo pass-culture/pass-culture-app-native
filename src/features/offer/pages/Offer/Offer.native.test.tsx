@@ -1,7 +1,7 @@
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
-import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
+import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
