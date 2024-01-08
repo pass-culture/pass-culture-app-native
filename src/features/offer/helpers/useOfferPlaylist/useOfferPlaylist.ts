@@ -30,7 +30,7 @@ export const useOfferPlaylist = ({
   offerSearchGroup,
   searchGroupList,
 }: Props): UseOfferPlaylistType => {
-  const { geolocPosition } = useLocation()
+  const { userLocation } = useLocation()
 
   const artists = offer.extraData?.author
   const ean = offer.extraData?.ean
@@ -42,7 +42,7 @@ export const useOfferPlaylist = ({
     venueLocation,
   })
 
-  const { latitude, longitude } = geolocPosition ?? {}
+  const { latitude, longitude } = userLocation ?? {}
   const roundedPosition: Position = useMemo(
     () => ({
       latitude: Number(latitude?.toFixed(3)),
@@ -51,7 +51,7 @@ export const useOfferPlaylist = ({
     [latitude, longitude]
   )
 
-  const position = geolocPosition ? roundedPosition : undefined
+  const position = userLocation ? roundedPosition : undefined
 
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
