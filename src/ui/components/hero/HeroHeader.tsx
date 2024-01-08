@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
@@ -11,6 +12,7 @@ interface Props {
   imageUrl?: string
   imageHeight: number
   type: 'offer' | 'venue'
+  onPress?: VoidFunction
   minHeight?: number
   children?: React.ReactNode
 }
@@ -37,7 +39,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
   const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
   const blurImageStyle = { height: props.imageHeight, width: appContentWidth }
   return (
-    <Container minHeight={props.minHeight}>
+    <Container minHeight={props.minHeight} onPress={props.onPress}>
       <HeroContainer>
         {props.imageUrl ? (
           <Image
@@ -58,7 +60,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
   )
 }
 
-const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
+const Container = styled(TouchableOpacity)<{ minHeight?: number }>(({ minHeight = 0 }) => ({
   alignItems: 'center',
   minHeight,
 }))

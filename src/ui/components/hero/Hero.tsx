@@ -19,8 +19,10 @@ type HeroProps =
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
-export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
-  const { imageUrl, ...placeholderProps } = props
+export const Hero: React.FC<HeroProps & { imageUrl?: string; onPress?: VoidFunction }> = (
+  props
+) => {
+  const { imageUrl, onPress, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions(placeholderProps.type, !!imageUrl)
 
   const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(
@@ -41,7 +43,11 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   )``
 
   return (
-    <HeroHeader type={placeholderProps.type} imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
+    <HeroHeader
+      type={placeholderProps.type}
+      imageHeight={heroBackgroundHeight}
+      imageUrl={imageUrl}
+      onPress={onPress}>
       <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (

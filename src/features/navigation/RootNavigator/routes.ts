@@ -46,6 +46,7 @@ import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDe
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
+import { OfferPreview } from 'features/offer/components/OfferPreview/OfferPreview'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
@@ -90,6 +91,13 @@ export const routes: Route[] = [
     path: 'offre/:id/description',
     deeplinkPaths: ['offer/:id/description', 'offre/description', 'offer/description'],
     options: { title: 'Détails de l’offre' },
+  },
+  {
+    name: 'OfferPreview',
+    component: OfferPreview,
+    path: 'offre/:id/apercu',
+    deeplinkPaths: ['offer/:id/apercu', 'offre/apercu', 'offer/apercu'],
+    options: { title: 'Aperçu de l’offre' },
   },
   {
     name: 'BookingDetails',

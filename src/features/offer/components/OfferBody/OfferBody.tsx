@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
@@ -5,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
@@ -51,6 +53,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   handleChangeSameArtistPlaylistDisplay,
 }) => {
   const { user } = useAuthContext()
+  const { navigate } = useNavigation<UseNavigationType>()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const { userLocation } = useLocation()
   const mapping = useSubcategoriesMapping()
@@ -76,6 +79,10 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   useTrackOfferSeenDuration(offer.id)
 
+  const onPress = () => {
+    navigate('OfferPreview', { id: offer.id })
+  }
+
   return (
     <Container
       testID="offer-container"
@@ -85,7 +92,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero imageUrl={offer.image?.url} type="offer" categoryId={categoryId} />
+      <Hero imageUrl={offer.image?.url} type="offer" categoryId={categoryId} onPress={onPress} />
       <Spacer.Column numberOfSpaces={4} />
       <LocationCaption venue={offer.venue} isDigital={offer.isDigital} />
       <Spacer.Column numberOfSpaces={2} />
