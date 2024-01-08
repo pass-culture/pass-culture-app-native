@@ -21,7 +21,9 @@ export const mapStepsDetails = (
     return stepDetails
   })
 
-  const stepDetailsListWithoutNull = stepDetailsList.filter((step) => step != null) as StepDetails[]
+  const stepDetailsListWithoutNull = stepDetailsList.filter(
+    (step): step is StepDetails => step != null
+  )
   return stepDetailsListWithoutNull
 }
 
