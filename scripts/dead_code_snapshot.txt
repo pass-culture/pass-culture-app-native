@@ -107,7 +107,6 @@ src/libs/monitoring/sentry.ts:2 - Hub
 src/libs/monitoring/sentry.ts:2 - Scope
 src/libs/monitoring/sentry.ts:2 - setContext
 src/libs/monitoring/sentry.ts:2 - setExtra
-src/libs/monitoring/sentry.ts:2 - setExtras
 src/libs/monitoring/sentry.ts:2 - setTag
 src/libs/monitoring/sentry.ts:2 - setTags
 src/libs/monitoring/sentry.ts:3 - BrowserIntegrations

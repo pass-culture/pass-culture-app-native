@@ -11,7 +11,7 @@ import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import { getTokenStatus, getUserIdFromAccessToken } from 'libs/jwt'
+import { decodeToken, getTokenStatus, getUserIdFromAccessToken } from 'libs/jwt'
 import { getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -43,6 +43,13 @@ export const useConnectServicesRequiringUserId = (): ((accessToken: string | nul
         BatchUser.editor().setIdentifier(userId.toString()).save()
         firebaseAnalytics.setUserId(userId)
         eventMonitoring.setUser({ id: userId.toString() })
+
+        const accessTokenExpiration = decodeToken(accessToken)?.exp
+        eventMonitoring.setExtras({
+          accessTokenExpirationDate: accessTokenExpiration
+            ? new Date(accessTokenExpiration * 1000).toISOString()
+            : "can't get access token expiration date",
+        })
         setUserIdToCookiesChoice(userId)
       }
     },
@@ -92,6 +99,12 @@ export const AuthWrapper = memo(function AuthWrapper({
           setIsLoggedIn(true)
           connectServicesRequiringUserId(accessToken)
           if (refreshToken) {
+            const refreshTokenExpiration = decodeToken(refreshToken)?.exp
+            eventMonitoring.setExtras({
+              refreshTokenExpirationDate: refreshTokenExpiration
+                ? new Date(refreshTokenExpiration * 1000).toISOString()
+                : "can't get refresh token expiration date",
+            })
             const remainingLifetimeInMs = computeTokenRemainingLifetimeInMs(refreshToken)
             if (
               remainingLifetimeInMs &&
