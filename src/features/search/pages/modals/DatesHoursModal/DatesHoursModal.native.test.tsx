@@ -390,7 +390,7 @@ describe('<DatesHoursModal/>', () => {
   })
 
   describe('with "Recherche" button', () => {
-    describe('should set search state on search results', () => {
+    describe('should set search state view on search results', () => {
       it('with actual state without change when pressing button', async () => {
         mockSearchState = {
           ...searchState,

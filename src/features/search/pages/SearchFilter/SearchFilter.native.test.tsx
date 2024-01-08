@@ -67,6 +67,7 @@ describe('<SearchFilter/>', () => {
       locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
     }
     renderSearchFilter()
+    await act(() => {})
 
     await screen.findByText('Filtres')
 

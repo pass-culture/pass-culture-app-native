@@ -89,7 +89,7 @@ describe('<CategoriesModal/>', () => {
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
 
-    it('should set the selected category filter on touch "Rechercher" when one is set', async () => {
+    it('should set the selected category filter when search button is pressed and a category was already set', async () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
@@ -113,7 +113,7 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    it('should set the selected category filter on touch "Rechercher" when none are set', async () => {
+    it('should set the selected category filter when search button is pressed and no category was already set', async () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Toutes les catégories')

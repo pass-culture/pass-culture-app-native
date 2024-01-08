@@ -687,7 +687,7 @@ describe('<PriceModal/>', () => {
   })
 
   describe('with "Rechercher" button', () => {
-    describe('should set search state on search results', () => {
+    describe('should set search state view on results', () => {
       it('when pressing button with minimum and maximum prices entered', async () => {
         renderSearchPrice()
 

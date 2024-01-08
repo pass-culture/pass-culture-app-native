@@ -138,7 +138,7 @@ describe('SearchBox component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should cset search state on submit', async () => {
+  it('should set search state on submit', async () => {
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')

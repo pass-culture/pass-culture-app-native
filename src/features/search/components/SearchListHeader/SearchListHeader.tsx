@@ -61,7 +61,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     searchState: { searchId, venue, offerCategories },
   } = useSearch()
 
-  const isGeolocated = useMemo(
+  const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
     [selectedLocationMode]
   )
@@ -69,7 +69,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const logVenuePlaylistDisplayedOnSearchResultsOnce = useFunctionOnce(() =>
     analytics.logVenuePlaylistDisplayedOnSearchResults({
       searchId,
-      isGeolocated,
+      isLocated,
       searchNbResults: venues?.length,
     })
   )

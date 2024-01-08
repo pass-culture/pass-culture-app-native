@@ -193,7 +193,7 @@ describe('<OfferDuoModal/>', () => {
   })
 
   describe('with "Rechercher" button', () => {
-    it('should set search state to Search results when selecting DUO offer and pressing button', async () => {
+    it('should set search state view to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
       const button = screen.getByText('Rechercher')

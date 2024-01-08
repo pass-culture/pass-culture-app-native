@@ -274,27 +274,27 @@ describe('<SearchListHeader />', () => {
   })
 
   it.each`
-    locationFilter                                                                          | isGeolocated | locationType
-    ${undefined}                                                                            | ${false}     | ${undefined}
-    ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}     | ${LocationMode.EVERYWHERE}
-    ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}      | ${LocationMode.AROUND_ME}
-    ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationMode.AROUND_PLACE}
+    locationFilter                                                                          | isLocated | locationType
+    ${undefined}                                                                            | ${false}  | ${undefined}
+    ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}  | ${LocationMode.EVERYWHERE}
+    ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}   | ${LocationMode.AROUND_ME}
+    ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}   | ${LocationMode.AROUND_PLACE}
   `(
-    'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
-    ({ locationFilter, isGeolocated }) => {
+    'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isLocated param = $isLocated',
+    ({ locationFilter, isLocated }) => {
       mockSearchState = { ...mockSearchState, searchId, locationFilter }
       mockSelectedLocationMode = locationFilter?.locationType ?? LocationMode.EVERYWHERE
       render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
-        isGeolocated,
+        isLocated,
         searchId: 'testUuidV4',
         searchNbResults: 6,
       })
     }
   )
 
-  it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isGeolocated param = true', () => {
+  it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isLocated param = true', () => {
     mockSearchState = { ...mockSearchState, searchId, venue: mockVenues[0] as unknown as Venue }
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
