@@ -21,7 +21,7 @@ export const decodeAccessToken = (token: string) => {
   }
 }
 
-export const getUserIdFromAccesstoken = (accessToken: string) => {
+export const getUserIdFromAccessToken = (accessToken: string) => {
   const tokenContent = decodeAccessToken(accessToken)
 
   return tokenContent?.user_claims?.user_id ?? null
