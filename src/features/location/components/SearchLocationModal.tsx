@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState, useEffect } from 'react'
 import { Keyboard } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -6,8 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics'
@@ -53,6 +50,8 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     setSelectedLocationMode,
     place,
   } = useLocation()
+  const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(DEFAULT_RADIUS)
+  const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(DEFAULT_RADIUS)
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
@@ -72,9 +71,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const { searchState, dispatch } = useSearch()
+  const { dispatch } = useSearch()
 
   const theme = useTheme()
 
@@ -140,44 +137,36 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
       case LocationMode.AROUND_PLACE:
         if (selectedPlace) {
           setPlaceGlobally(selectedPlace)
+          setAroundPlaceRadius(tempAroundPlaceRadius)
+          setTempAroundMeRadius(DEFAULT_RADIUS)
           dispatch({
             type: 'SET_LOCATION_FILTERS',
             payload: {
               locationFilter: {
                 place: selectedPlace,
                 locationType: LocationMode.AROUND_PLACE,
-                aroundRadius: aroundPlaceRadius,
+                aroundRadius: tempAroundPlaceRadius,
               },
             },
           })
           analytics.logUserSetLocation('search')
-          navigate(
-            ...getTabNavConfig('Search', {
-              ...searchState,
-              locationFilter: {
-                place: selectedPlace,
-                locationType: LocationMode.AROUND_PLACE,
-                aroundRadius: aroundPlaceRadius,
-              },
-            })
-          )
         }
         break
 
       case LocationMode.AROUND_ME:
         setPlaceGlobally(null)
+        setAroundMeRadius(tempAroundMeRadius)
+        setTempAroundPlaceRadius(DEFAULT_RADIUS)
         dispatch({
           type: 'SET_LOCATION_FILTERS',
           payload: {
-            locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
+            locationFilter: {
+              locationType: LocationMode.AROUND_ME,
+              aroundRadius: tempAroundMeRadius,
+            },
           },
         })
-        navigate(
-          ...getTabNavConfig('Search', {
-            ...searchState,
-            locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: aroundMeRadius },
-          })
-        )
+
         break
 
       case LocationMode.EVERYWHERE:
@@ -188,12 +177,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             locationFilter: { locationType: LocationMode.EVERYWHERE },
           },
         })
-        navigate(
-          ...getTabNavConfig('Search', {
-            ...searchState,
-            locationFilter: { locationType: LocationMode.EVERYWHERE },
-          })
-        )
+
         break
     }
 
@@ -201,26 +185,26 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
   }
 
   const onClose = () => {
-    setAroundMeRadius(DEFAULT_RADIUS)
-    setAroundPlaceRadius(DEFAULT_RADIUS)
+    setTempAroundMeRadius(aroundMeRadius)
+    setTempAroundPlaceRadius(aroundPlaceRadius)
     dismissModal()
   }
 
-  const onAroundRadiusPlaceValueChange = useCallback(
+  const onTempAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
-        setAroundPlaceRadius(newValues[0])
+        setTempAroundPlaceRadius(newValues[0])
       }
     },
-    [visible, setAroundPlaceRadius]
+    [visible, setTempAroundPlaceRadius]
   )
-  const onAroundMeRadiusValueChange = useCallback(
+  const onTempAroundMeRadiusValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
-        setAroundMeRadius(newValues[0])
+        setTempAroundMeRadius(newValues[0])
       }
     },
-    [visible, setAroundMeRadius]
+    [visible, setTempAroundMeRadius]
   )
 
   const onPlaceSelection = (place: SuggestedPlace) => {
@@ -266,8 +250,8 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
-              aroundRadius={aroundMeRadius}
-              onValuesChange={onAroundMeRadiusValueChange}
+              aroundRadius={tempAroundMeRadius}
+              onValuesChange={onTempAroundMeRadiusValueChange}
             />
           </React.Fragment>
         )}
@@ -294,8 +278,8 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
             <Spacer.Column numberOfSpaces={4} />
             {!!selectedPlace && (
               <LocationSearchFilters
-                aroundRadius={aroundPlaceRadius}
-                onValuesChange={onAroundRadiusPlaceValueChange}
+                aroundRadius={tempAroundPlaceRadius}
+                onValuesChange={onTempAroundRadiusPlaceValueChange}
               />
             )}
           </React.Fragment>

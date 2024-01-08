@@ -3,7 +3,6 @@ import React from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import {
@@ -391,7 +390,7 @@ describe('<DatesHoursModal/>', () => {
   })
 
   describe('with "Recherche" button', () => {
-    describe('should navigate on search results', () => {
+    describe('should set search state view on search results', () => {
       it('with actual state without change when pressing button', async () => {
         mockSearchState = {
           ...searchState,
@@ -407,12 +406,12 @@ describe('<DatesHoursModal/>', () => {
           fireEvent.press(searchButton)
         })
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             view: SearchView.Results,
           },
-          screen: 'Search',
         })
       })
 
@@ -439,13 +438,13 @@ describe('<DatesHoursModal/>', () => {
             fireEvent.press(searchButton)
           })
 
-          expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-            params: {
+          expect(mockDispatch).toHaveBeenCalledWith({
+            type: 'SET_STATE',
+            payload: {
               ...mockSearchState,
               date: { selectedDate: TODAY.toISOString(), option: type },
               view: SearchView.Results,
             },
-            screen: 'Search',
           })
         }
       )
@@ -471,13 +470,13 @@ describe('<DatesHoursModal/>', () => {
           fireEvent.press(searchButton)
         })
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             timeRange: [18, 23],
             view: SearchView.Results,
           },
-          screen: 'Search',
         })
       })
 
@@ -497,14 +496,14 @@ describe('<DatesHoursModal/>', () => {
           fireEvent.press(searchButton)
         })
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             beginningDatetime: UNDEFINED_DATE,
             endingDatetime: UNDEFINED_DATE,
             view: SearchView.Results,
           },
-          screen: 'Search',
         })
       })
     })

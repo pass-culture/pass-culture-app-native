@@ -1,11 +1,9 @@
 import { SearchResponse } from '@algolia/client-search'
-import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useMemo } from 'react'
 import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
@@ -58,35 +56,31 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
 }) => {
-  const { geolocPosition, showGeolocPermissionModal } = useLocation()
-  const { searchState } = useSearch()
-  const { params } = useRoute<UseRouteType<'Search'>>()
+  const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
+  const {
+    searchState: { searchId, venue, offerCategories },
+  } = useSearch()
 
-  const isGeolocated = useMemo(
-    () =>
-      Boolean(
-        params?.locationFilter && params?.locationFilter?.locationType !== LocationMode.EVERYWHERE
-      ),
-    [params?.locationFilter]
+  const isLocated = useMemo(
+    () => selectedLocationMode !== LocationMode.EVERYWHERE,
+    [selectedLocationMode]
   )
 
   const logVenuePlaylistDisplayedOnSearchResultsOnce = useFunctionOnce(() =>
     analytics.logVenuePlaylistDisplayedOnSearchResults({
-      searchId: params?.searchId,
-      isGeolocated,
+      searchId,
+      isLocated,
       searchNbResults: venues?.length,
     })
   )
 
-  const logAllTilesSeenOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen({ searchId: params?.searchId })
-  )
+  const logAllTilesSeenOnce = useFunctionOnce(() => analytics.logAllTilesSeen({ searchId }))
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
   const venueTitle = venuesUserData?.[0]?.venue_playlist_title || 'Les lieux culturels'
   const offerTitle = 'Les offres'
-  const shouldDisplayVenuesPlaylist = !searchState.venue && !params?.venue && !!venues?.length
+  const shouldDisplayVenuesPlaylist = !venue && !!venues?.length
 
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()
@@ -102,7 +96,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const shouldDisplayGeolocationButton =
     geolocPosition === null &&
-    params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
+    offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
@@ -143,7 +137,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
               itemHeight={VENUE_ITEM_HEIGHT}
               itemWidth={VENUE_ITEM_WIDTH}
               renderItem={({ item, height, width }) =>
-                renderVenueItem({ item, height, width }, params?.searchId)
+                renderVenueItem({ item, height, width }, searchId)
               }
               renderHeader={undefined}
               renderFooter={undefined}

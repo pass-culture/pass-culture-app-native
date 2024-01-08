@@ -1,10 +1,8 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -30,10 +28,12 @@ jest.mock('react-query')
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState
+const mockDispatch = jest.fn()
+
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -146,9 +146,6 @@ describe('SearchResults component', () => {
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { searchId },
-    })
     mockHits = mockedAlgoliaResponse.hits
     mockNbHits = mockedAlgoliaResponse.nbHits
 
@@ -206,9 +203,10 @@ describe('SearchResults component', () => {
     })
 
     it('should display an icon and change color in category button when has category selected', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
-      })
+      mockSearchState = {
+        ...mockSearchState,
+        offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+      }
       render(<SearchResults />)
       await act(async () => {})
 
@@ -247,9 +245,10 @@ describe('SearchResults component', () => {
     })
 
     it('should display an icon and change color in prices filter button when has prices filter selected', async () => {
-      useRoute.mockReturnValueOnce({
-        params: { minPrice: '5' },
-      })
+      mockSearchState = {
+        ...mockSearchState,
+        minPrice: '5',
+      }
       render(<SearchResults />)
       await act(async () => {})
 
@@ -371,9 +370,11 @@ describe('SearchResults component', () => {
       ${`${SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE} category`} | ${{ offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE] }}
     `('when $filter filter selected and position is null', async ({ params }) => {
       mockPosition = null
-      useRoute.mockReturnValueOnce({
-        params,
-      })
+      mockSearchState = {
+        ...mockSearchState,
+        ...params,
+      }
+
       render(<SearchResults />)
       await act(async () => {})
 
@@ -452,7 +453,7 @@ describe('SearchResults component', () => {
       )
     })
 
-    it('should call navigate on press "Rechercher" in venue modal', async () => {
+    it('should call set search state on press "Rechercher" in venue modal', async () => {
       render(<SearchResults />)
 
       await act(async () => {
@@ -462,13 +463,14 @@ describe('SearchResults component', () => {
 
       fireEvent.press(screen.getByText('Rechercher'))
 
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
           ...mockSearchState,
           locationFilter: { locationType: LocationMode.EVERYWHERE },
           view: SearchView.Results,
-        })
-      )
+        },
+      })
     })
 
     it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if no venue is selected', async () => {
@@ -540,9 +542,10 @@ describe('SearchResults component', () => {
     `(
       'should display an icon and change color in dates and hours filter button when has $type selected',
       async ({ params }: { params: SearchState }) => {
-        useRoute.mockReturnValueOnce({
-          params,
-        })
+        mockSearchState = {
+          ...mockSearchState,
+          ...params,
+        }
         render(<SearchResults />)
         await act(async () => {})
 

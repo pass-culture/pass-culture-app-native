@@ -19,7 +19,7 @@ interface Props extends VenueModalHookProps {
   visible: boolean
 }
 
-export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
+export const VenueModal = ({ visible, dismissModal }: Props) => {
   const {
     doChangeVenue,
     doResetVenue,
@@ -29,7 +29,7 @@ export const VenueModal = ({ visible, dismissModal, doAfterSearch }: Props) => {
     venueQuery,
     isSearchButtonDisabled,
     onClose,
-  } = useVenueModal({ dismissModal, doAfterSearch })
+  } = useVenueModal({ dismissModal })
 
   const onResetPress = () => {
     doResetVenue()

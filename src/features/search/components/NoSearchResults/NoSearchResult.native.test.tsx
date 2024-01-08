@@ -1,14 +1,24 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SearchView } from 'features/search/types'
+import { navigate } from '__mocks__/@react-navigation/native'
+import { initialSearchState } from 'features/search/context/reducer'
+import { SearchState, SearchView } from 'features/search/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { NoSearchResult } from './NoSearchResult'
 
+let mockSearchState: SearchState = initialSearchState
+const mockDispatch = jest.fn()
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+}))
+
 describe('NoSearchResult component', () => {
+  afterEach(() => {
+    mockSearchState = initialSearchState
+  })
+
   it('should show the message without query entered', () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, query: '' } })
     render(<NoSearchResult />)
 
     const text = screen.getByText('Pas de résultat')
@@ -21,9 +31,7 @@ describe('NoSearchResult component', () => {
   })
 
   it('should show the message with query entered', () => {
-    useRoute.mockReturnValueOnce({
-      params: { view: SearchView.Landing, query: 'ZZZZZZ' },
-    })
+    mockSearchState = { ...initialSearchState, view: SearchView.Landing, query: 'ZZZZZZ' }
     render(<NoSearchResult />)
 
     const text = screen.getByText('Pas de résultat')
@@ -43,21 +51,16 @@ describe('NoSearchResult component', () => {
 
     await fireEvent.press(button)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', {})
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', mockSearchState)
   })
 
   it('should redirect to the general filters page when pressing "Modifier mes filtres" button with url params', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { view: SearchView.Landing, query: 'vinyle' },
-    })
+    mockSearchState = { ...initialSearchState, view: SearchView.Landing, query: 'vinyle' }
     render(<NoSearchResult />)
     const button = screen.getByText('Modifier mes filtres')
 
     await fireEvent.press(button)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', {
-      view: SearchView.Landing,
-      query: 'vinyle',
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', mockSearchState)
   })
 })

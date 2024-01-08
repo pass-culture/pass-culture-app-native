@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { Keyboard, TextInput as RNTextInput } from 'react-native'
@@ -7,8 +6,6 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationSlider } from 'features/search/components/LocationSlider/LocationSlider'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -16,6 +13,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, RadioButtonLocation } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlacesOrVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlacesOrVenues'
 import { SearchState, SearchView } from 'features/search/types'
@@ -123,7 +121,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   onClose,
 }) => {
   const { searchState, dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToSearch } = useNavigateToSearch()
   const { modal } = useTheme()
   const {
     geolocPosition,
@@ -131,6 +129,11 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     permissionState,
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
+    setPlace,
+    setSelectedLocationMode,
+    setAroundMeRadius,
+    setAroundPlaceRadius,
+    onResetPlace,
   } = useLocation()
   const isGeolocated = !!geolocPosition
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
@@ -192,56 +195,74 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
   const search = useCallback(
     ({ locationChoice, selectedPlaceOrVenue, aroundRadius }: LocationModalFormData) => {
-      let additionalSearchState: SearchState = { ...searchState }
-      if (locationChoice === RadioButtonLocation.EVERYWHERE) {
-        additionalSearchState = {
-          ...additionalSearchState,
-          locationFilter: { locationType: LocationMode.EVERYWHERE },
-          venue: undefined,
-        }
-        analytics.logChangeSearchLocation({ type: 'everywhere' }, searchState.searchId)
-      } else if (locationChoice === RadioButtonLocation.AROUND_ME) {
-        additionalSearchState = {
-          ...additionalSearchState,
-          locationFilter: {
-            locationType: LocationMode.AROUND_ME,
-            aroundRadius: getValues('aroundRadius')[0],
-          },
-          venue: undefined,
-        }
-        analytics.logChangeSearchLocation({ type: 'aroundMe' }, searchState.searchId)
-      } else if (locationChoice === RadioButtonLocation.CHOOSE_PLACE_OR_VENUE) {
-        if (Object.prototype.hasOwnProperty.call(selectedPlaceOrVenue, 'geolocation')) {
-          const validAroundRadius = isValidAroundRadius(aroundRadius) ? aroundRadius[0] : MAX_RADIUS
-
+      let additionalSearchState: SearchState = { ...searchState, venue: undefined }
+      switch (locationChoice) {
+        case RadioButtonLocation.EVERYWHERE:
+          setSelectedLocationMode(LocationMode.EVERYWHERE)
+          onResetPlace()
+          setPlace(null)
           additionalSearchState = {
             ...additionalSearchState,
             locationFilter: {
-              locationType: LocationMode.AROUND_PLACE,
-              place: selectedPlaceOrVenue as SuggestedPlace,
-              aroundRadius: validAroundRadius,
+              locationType: LocationMode.EVERYWHERE,
             },
-            venue: undefined,
           }
-          analytics.logChangeSearchLocation({ type: 'place' }, searchState.searchId)
-        } else {
+          analytics.logChangeSearchLocation({ type: 'everywhere' }, searchState.searchId)
+          break
+
+        case RadioButtonLocation.AROUND_ME:
+          setSelectedLocationMode(LocationMode.AROUND_ME)
+          setAroundMeRadius(getValues('aroundRadius')[0])
+          onResetPlace()
+          setPlace(null)
           additionalSearchState = {
             ...additionalSearchState,
-            venue: selectedPlaceOrVenue as Venue,
-          }
-          analytics.logChangeSearchLocation(
-            {
-              type: 'venue',
-              venueId: (selectedPlaceOrVenue as Venue).venueId,
+            locationFilter: {
+              locationType: LocationMode.AROUND_ME,
+              aroundRadius: getValues('aroundRadius')[0],
             },
-            searchState.searchId
-          )
-        }
+          }
+          analytics.logChangeSearchLocation({ type: 'aroundMe' }, searchState.searchId)
+          break
+        case RadioButtonLocation.CHOOSE_PLACE_OR_VENUE:
+          if (Object.prototype.hasOwnProperty.call(selectedPlaceOrVenue, 'geolocation')) {
+            const validAroundRadius = isValidAroundRadius(aroundRadius)
+              ? aroundRadius[0]
+              : MAX_RADIUS
+            setSelectedLocationMode(LocationMode.AROUND_PLACE)
+            setPlace(selectedPlaceOrVenue as SuggestedPlace)
+            setAroundPlaceRadius(validAroundRadius)
+            additionalSearchState = {
+              ...additionalSearchState,
+              locationFilter: {
+                locationType: LocationMode.AROUND_PLACE,
+                place: selectedPlaceOrVenue as SuggestedPlace,
+                aroundRadius: validAroundRadius,
+              },
+            }
+            analytics.logChangeSearchLocation({ type: 'place' }, searchState.searchId)
+          } else {
+            additionalSearchState = {
+              ...additionalSearchState,
+              venue: selectedPlaceOrVenue as Venue,
+            }
+            analytics.logChangeSearchLocation(
+              {
+                type: 'venue',
+                venueId: (selectedPlaceOrVenue as Venue).venueId,
+              },
+              searchState.searchId
+            )
+          }
+          break
+
+        default:
+          break
       }
 
       switch (filterBehaviour) {
         case FilterBehaviour.SEARCH: {
-          navigate(...getTabNavConfig('Search', additionalSearchState))
+          navigateToSearch(additionalSearchState)
           break
         }
         case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
@@ -249,16 +270,29 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           // or selecting an autocomplete item, the filter wasn't being applied correctly.
           // So, we navigate to the Search page and set the filter state with the location param.
           if (searchState.view === SearchView.Landing) {
-            navigate(...getTabNavConfig('Search', additionalSearchState))
+            navigateToSearch(additionalSearchState)
             break
           }
           dispatch({ type: 'SET_STATE', payload: additionalSearchState })
           break
         }
       }
+
       hideModal()
     },
-    [searchState, filterBehaviour, hideModal, getValues, navigate, dispatch]
+    [
+      searchState,
+      filterBehaviour,
+      hideModal,
+      setSelectedLocationMode,
+      onResetPlace,
+      setAroundMeRadius,
+      getValues,
+      setPlace,
+      setAroundPlaceRadius,
+      navigateToSearch,
+      dispatch,
+    ]
   )
 
   const closeModal = useCallback(() => {

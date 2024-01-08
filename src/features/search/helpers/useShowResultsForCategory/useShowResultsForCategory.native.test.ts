@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate as mockNavigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
@@ -43,8 +42,9 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
         beginningDatetime: undefined,
         date: null,
         endingDatetime: undefined,
@@ -63,17 +63,17 @@ describe('useShowResultsForCategory', () => {
         timeRange: null,
         searchId,
       },
-      screen: 'Search',
     })
   })
 
-  it('should navigate with isFullyDigitalOffersCategory param when category selected is only online platform', () => {
+  it('should set search state with isFullyDigitalOffersCategory param when category selected is only online platform', () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
 
-    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
         beginningDatetime: undefined,
         date: null,
         endingDatetime: undefined,
@@ -93,7 +93,6 @@ describe('useShowResultsForCategory', () => {
         timeRange: null,
         searchId,
       },
-      screen: 'Search',
     })
   })
 
@@ -127,7 +126,7 @@ describe('useShowResultsForCategory', () => {
     })
   })
 
-  it('should navigate without isFromHistory param when category selected and previous search was from history', () => {
+  it('should set search state without isFromHistory param when category selected and previous search was from history', () => {
     mockSearchState = {
       ...mockSearchState,
       isFromHistory: true,
@@ -136,8 +135,9 @@ describe('useShowResultsForCategory', () => {
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
         beginningDatetime: undefined,
         date: null,
         endingDatetime: undefined,
@@ -156,7 +156,6 @@ describe('useShowResultsForCategory', () => {
         timeRange: null,
         searchId,
       },
-      screen: 'Search',
     })
   })
 })

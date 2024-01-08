@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { FilterButton } from './FilterButton'
@@ -23,19 +22,14 @@ describe('FilterButton', () => {
     })
   })
 
-  it('should navigate with url params filters when pressing filter button', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
-    })
+  it('should navigate with undefined params when pressing filter button', async () => {
     render(<FilterButton activeFilters={1} />)
 
     const filterButton = screen.getByTestId('searchFilterBadge')
     fireEvent.press(filterButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SearchFilter', {
-        offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
-      })
+      expect(navigate).toHaveBeenCalledWith('SearchFilter', undefined)
     })
   })
 

@@ -1,14 +1,11 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { Configure, Index, InstantSearch } from 'react-instantsearch-core'
-import { AppState, Keyboard, StatusBar } from 'react-native'
+import { Keyboard, StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
@@ -16,6 +13,7 @@ import { SearchHeader } from 'features/search/components/SearchHeader/SearchHead
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
+import { useSyncSearch } from 'features/search/helpers/useSyncSearch/useSyncSearch'
 import { Highlighted, HistoryItem, SearchState, SearchView } from 'features/search/types'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
@@ -23,7 +21,6 @@ import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurr
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useLocation } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
@@ -54,67 +51,28 @@ const searchClient: SearchClient = {
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export function Search() {
+  useSyncSearch()
   const netInfo = useNetInfoContext()
-  const { params } = useRoute<UseRouteType<'Search'>>()
-  const { dispatch, searchState } = useSearch()
-  const { geolocPosition, setPlace, setSelectedLocationMode } = useLocation()
+  const { searchState, dispatch } = useSearch()
+  const { geolocPosition } = useLocation()
+  const { locationFilter, view, venue } = searchState
   const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
-  const { navigate } = useNavigation<UseNavigationType>()
-  const [appState, setAppState] = useState(AppState.currentState)
-
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', setAppState)
-
-    return () => {
-      subscription.remove()
-    }
-  }, [])
-
-  useEffect(() => {
-    dispatch({
-      type: 'SET_STATE',
-      payload: params ?? { view: SearchView.Landing },
-    })
-  }, [dispatch, params])
-
-  useEffect(() => {
-    if (params?.locationFilter?.locationType === LocationMode.AROUND_PLACE) {
-      setPlace(params.locationFilter.place)
-      setSelectedLocationMode(LocationMode.AROUND_PLACE)
-    }
-    if (params?.locationFilter?.locationType === LocationMode.EVERYWHERE) {
-      setSelectedLocationMode(LocationMode.EVERYWHERE)
-    }
-    if (!params?.venue) {
-      dispatch({ type: 'SET_STATE', payload: { ...searchState, venue: undefined } })
-    }
-  }, [appState])
-
-  const currentFilters = params?.locationFilter
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
   )
 
-  const currentView = useMemo(() => {
-    return params?.view
-  }, [params?.view])
-
-  const searchVenuePosition = buildSearchVenuePosition(
-    currentFilters,
-    geolocPosition,
-    params?.venue
-  )
+  const searchVenuePosition = buildSearchVenuePosition(locationFilter, geolocPosition, venue)
 
   const currentVenuesIndex = useMemo(
     () =>
       getCurrentVenuesIndex({
-        locationType: currentFilters?.locationType,
-        venue: searchState?.venue,
+        locationType: locationFilter?.locationType,
+        venue,
       }),
-    [currentFilters?.locationType, searchState?.venue]
+    [locationFilter?.locationType, venue]
   )
 
   const onVenuePress = useCallback(async (venueId: number) => {
@@ -138,9 +96,12 @@ export function Search() {
         offerCategories: item.category ? [item.category] : [],
       }
 
-      navigate(...getTabNavConfig('Search', newSearchState))
+      dispatch({
+        type: 'SET_STATE',
+        payload: newSearchState,
+      })
     },
-    [navigate, searchState]
+    [dispatch, searchState]
   )
 
   if (!netInfo.isConnected) {
@@ -158,12 +119,12 @@ export function Search() {
           <Configure hitsPerPage={5} clickAnalytics />
           <SearchHeader
             searchInputID={searchInputID}
-            searchView={currentView}
+            searchView={view}
             addSearchHistory={addToHistory}
             searchInHistory={setQueryHistoryMemoized}
           />
           <Spacer.Column numberOfSpaces={2} />
-          {currentView === SearchView.Suggestions ? (
+          {view === SearchView.Suggestions ? (
             <StyledScrollView
               testID="autocompleteScrollView"
               keyboardShouldPersistTaps="handled"
@@ -189,7 +150,7 @@ export function Search() {
               <Spacer.Column numberOfSpaces={3} />
             </StyledScrollView>
           ) : (
-            <BodySearch view={currentView} />
+            <BodySearch view={view} />
           )}
         </InstantSearch>
       </Form.Flex>
