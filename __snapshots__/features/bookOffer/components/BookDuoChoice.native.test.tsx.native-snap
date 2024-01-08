@@ -7,9 +7,9 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 18,
-          "lineHeight": 22,
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
         },
       ]
     }

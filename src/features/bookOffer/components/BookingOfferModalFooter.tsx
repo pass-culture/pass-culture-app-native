@@ -41,7 +41,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   return step != Step.CONFIRMATION ? (
     <FooterContainer testID="bookingOfferModalFooter">
       <ButtonPrimary
-        wording={getButtonWording(true, enabledButton, bookingState.step)}
+        wording={getButtonWording(bookingState.step)}
         onPress={validateOptions}
         disabled={!enabledButton}
       />

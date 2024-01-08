@@ -1,5 +1,4 @@
-import debounce from 'lodash/debounce'
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo } from 'react'
 import { View } from 'react-native'
 
 import { OfferStockResponse, OfferVenueResponse } from 'api/gen'
@@ -18,10 +17,6 @@ import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/use
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-interface Props {
-  enablePricesByCategories?: boolean
-}
 
 function getHourChoiceForMultiplePrices(
   stocks: OfferStockResponse[],
@@ -102,27 +97,19 @@ function getHourChoiceForSingleStock(
     ))
 }
 
-export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
+export const BookHourChoice = () => {
   const { bookingState, dispatch } = useBookingContext()
   const { isDuo, stocks = [], venue } = useBookingOffer() ?? {}
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
-  const debouncedDispatch = useRef(debounce(dispatch, 300)).current
 
   const selectedDate = bookingState.date ? formatToKeyDate(bookingState.date) : undefined
   const hasPotentialPricesStep =
-    enablePricesByCategories && stocks.filter(getStockWithCategoryFromDate(selectedDate)).length > 1
+    stocks.filter(getStockWithCategoryFromDate(selectedDate)).length > 1
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
     if (!isDuo) {
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
-    }
-    if (enablePricesByCategories) return
-
-    if (bookingState.quantity) {
-      debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.PRE_VALIDATION })
-    } else {
-      debouncedDispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
     }
   }
 
@@ -179,15 +166,9 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
 
   return (
     <React.Fragment>
-      {enablePricesByCategories ? (
-        <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
-          Horaire
-        </Typo.Title3>
-      ) : (
-        <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">
-          Horaire
-        </Typo.Title4>
-      )}
+      <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
+        Horaire
+      </Typo.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
       {bookingState.step === Step.HOUR ? (

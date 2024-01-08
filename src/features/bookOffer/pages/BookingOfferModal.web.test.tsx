@@ -94,15 +94,6 @@ describe('<BookingOfferModal/>', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should not have basic accessibility issues for step "pre validation"', async () => {
-      mockStep = Step.PRE_VALIDATION
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
     it('should not have basic accessibility issues for step "confirmation"', async () => {
       mockStep = Step.CONFIRMATION
       const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)

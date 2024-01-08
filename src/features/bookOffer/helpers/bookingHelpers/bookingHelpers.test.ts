@@ -114,44 +114,34 @@ describe('bookingHelpers', () => {
   })
 
   describe('getButtonWording', () => {
-    describe('when prices by categories feature flag desactivated', () => {
-      it('should return "Valider ces options" when button is enabled', () => {
-        const wordingButton = getButtonWording(false, true, Step.DATE)
+    it('should return "Valider la date" when step is date selection', () => {
+      const wordingButton = getButtonWording(Step.DATE)
 
-        expect(wordingButton).toEqual('Valider ces options')
-      })
-
-      it('should return "Choisir les options" when button is disabled', () => {
-        const wordingButton = getButtonWording(false, false, Step.DATE)
-
-        expect(wordingButton).toEqual('Choisir les options')
-      })
+      expect(wordingButton).toEqual('Valider la date')
     })
 
-    describe('when prices by categories feature flag activated', () => {
-      it('should return "Valider la date" when step is date selection', () => {
-        const wordingButton = getButtonWording(true, false, Step.DATE)
+    it('should return "Valider lʼhoraire" when step is hour selection', () => {
+      const wordingButton = getButtonWording(Step.HOUR)
 
-        expect(wordingButton).toEqual('Valider la date')
-      })
+      expect(wordingButton).toEqual('Valider lʼhoraire')
+    })
 
-      it('should return "Valider lʼhoraire" when step is hour selection', () => {
-        const wordingButton = getButtonWording(true, false, Step.HOUR)
+    it('should return "Valider le prix" when step is price selection', () => {
+      const wordingButton = getButtonWording(Step.PRICE)
 
-        expect(wordingButton).toEqual('Valider lʼhoraire')
-      })
+      expect(wordingButton).toEqual('Valider le prix')
+    })
 
-      it('should return "Valider le prix" when step is price selection', () => {
-        const wordingButton = getButtonWording(true, false, Step.PRICE)
+    it('should return "Finaliser ma réservation" when step is quantity selection', () => {
+      const wordingButton = getButtonWording(Step.DUO)
 
-        expect(wordingButton).toEqual('Valider le prix')
-      })
+      expect(wordingButton).toEqual('Finaliser ma réservation')
+    })
 
-      it('should return "Finaliser ma réservation" when step is quantity selection', () => {
-        const wordingButton = getButtonWording(true, false, Step.DUO)
+    it('should return an empty string when step is confirmation', () => {
+      const wordingButton = getButtonWording(Step.CONFIRMATION)
 
-        expect(wordingButton).toEqual('Finaliser ma réservation')
-      })
+      expect(wordingButton).toEqual('')
     })
   })
 

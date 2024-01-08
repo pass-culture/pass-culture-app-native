@@ -15,16 +15,13 @@ const mockGet = jest.fn()
 
 describe.each([
   RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR,
-  RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL,
   RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
   RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS,
   RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION,
   RemoteStoreFeatureFlags.WIP_ENABLE_EMAIL_VALIDATION_RESEND,
   RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
   RemoteStoreFeatureFlags.WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES,
-  RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER,
   RemoteStoreFeatureFlags.WIP_OFFER_V2,
-  RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
   RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST,
   RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
   RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,

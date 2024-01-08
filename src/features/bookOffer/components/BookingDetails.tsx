@@ -20,8 +20,6 @@ import { EditButton } from 'features/profile/components/Buttons/EditButton/EditB
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -68,14 +66,11 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const loadingMessage = useRotatingText(LOADING_MESSAGES, isLoading)
 
-  const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
-  const shouldFetchSearchVenueOffers = Boolean(
-    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
-  )
+  const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userLocation: position } = useLocation()
@@ -186,32 +181,29 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
       <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
-      <BookingInformations shouldDisplayAddress={!enableMultivenueOffer} />
+      <BookingInformations />
       <Spacer.Column numberOfSpaces={6} />
 
-      {!!enableMultivenueOffer && (
-        <React.Fragment>
-          <Separator />
+      <Separator />
 
-          <Spacer.Column numberOfSpaces={6} />
-          <VenueTitleContainer>
-            <VenueTitleText>{venueSectionTitle}</VenueTitleText>
-            {!!shouldDisplayOtherVenuesAvailableButton && (
-              <EditButton
-                wording="Modifier"
-                accessibilityLabel={`Modifier ${venueSectionTitle}`}
-                onPress={showModal}
-              />
-            )}
-          </VenueTitleContainer>
+      <Spacer.Column numberOfSpaces={6} />
+      <VenueTitleContainer>
+        <VenueTitleText>{venueSectionTitle}</VenueTitleText>
+        {!!shouldDisplayOtherVenuesAvailableButton && (
+          <EditButton
+            wording="Modifier"
+            accessibilityLabel={`Modifier ${venueSectionTitle}`}
+            onPress={showModal}
+          />
+        )}
+      </VenueTitleContainer>
 
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
-          <Spacer.Column numberOfSpaces={1} />
-          <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
-      )}
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+      <Spacer.Column numberOfSpaces={1} />
+      <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+      <Spacer.Column numberOfSpaces={6} />
+
       {!isFreeOfferToArchive && (
         <React.Fragment>
           <Separator />

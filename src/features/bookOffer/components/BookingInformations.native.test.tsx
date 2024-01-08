@@ -228,7 +228,7 @@ describe('<BookingInformations />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should not display address when shouldDisplayAddress = false', () => {
+  it('should not display address', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: true,
@@ -237,7 +237,7 @@ describe('<BookingInformations />', () => {
       stocks: [],
       venue: mockOffer.venue,
     })
-    render(<BookingInformations shouldDisplayAddress={false} />)
+    render(<BookingInformations />)
 
     expect(screen.queryByText('RUE DE CALI')).not.toBeOnTheScreen()
   })

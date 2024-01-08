@@ -6,11 +6,8 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-interface Props {
-  enablePricesByCategories?: boolean
-}
 
-export const BookDuoChoice = ({ enablePricesByCategories }: Props) => {
+export const BookDuoChoice = () => {
   const { bookingState, dispatch } = useBookingContext()
 
   const updateBookingStepToDuo = () => {
@@ -21,15 +18,9 @@ export const BookDuoChoice = ({ enablePricesByCategories }: Props) => {
 
   return (
     <React.Fragment>
-      {enablePricesByCategories ? (
-        <Typo.Title3 {...getHeadingAttrs(3)} testID="DuoStep">
-          Nombre de places
-        </Typo.Title3>
-      ) : (
-        <Typo.Title4 {...getHeadingAttrs(2)} testID="DuoStep">
-          Nombre de places
-        </Typo.Title4>
-      )}
+      <Typo.Title3 {...getHeadingAttrs(3)} testID="DuoStep">
+        Nombre de places
+      </Typo.Title3>
 
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.DUO ? (

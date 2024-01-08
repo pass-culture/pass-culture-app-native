@@ -6,7 +6,6 @@ import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
@@ -21,8 +20,6 @@ const mockedIdentity: Partial<UserProfileResponse> = {
   email: 'rosa.bonheur@gmail.com',
   phoneNumber: '+33685974563',
 }
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-query')
 
@@ -122,8 +119,7 @@ describe('PersonalData', () => {
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
 
-  it('should log modify email when pressing "Modifier" and when feature flag activated', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should log modify email when pressing "Modifier"', () => {
     renderPersonalData({
       ...mockedIdentity,
       isBeneficiary: false,
@@ -133,16 +129,6 @@ describe('PersonalData', () => {
 
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
-  })
-
-  it('should not display the button "Modifier" when feature flag not activated', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    renderPersonalData({
-      ...mockedIdentity,
-      isBeneficiary: false,
-    } as UserProfileResponse)
-
-    expect(screen.queryByTestId('Modifier e-mail')).not.toBeOnTheScreen()
   })
 })
 

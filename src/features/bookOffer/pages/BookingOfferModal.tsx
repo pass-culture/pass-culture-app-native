@@ -19,14 +19,11 @@ import { useOffer } from 'features/offer/api/useOffer'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Close } from 'ui/svg/icons/Close'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface BookingOfferModalComponentProps {
@@ -144,7 +141,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
     useModalContent(onPressBookOffer, isLoading, isEndedUsedBooking)
-  const enablePricesByCategories = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES)
 
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
@@ -153,7 +149,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const stocksWithCategory = useMemo(() => {
     return getStockWithCategory(offer?.stocks, bookingState.date, bookingState.hour)
   }, [bookingState.date, bookingState.hour, offer?.stocks])
-  const hasPricesStep = enablePricesByCategories && Boolean(stocksWithCategory.length > 1)
+  const hasPricesStep = stocksWithCategory.length > 1
 
   const modalLeftIconProps = {
     leftIcon,
@@ -171,8 +167,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     }
   }, [visible, offerId])
 
-  const shouldAddSpacerBetweenHeaderAndContent =
-    !enablePricesByCategories || (enablePricesByCategories && step === Step.CONFIRMATION)
+  const shouldAddSpacerBetweenHeaderAndContent = step === Step.CONFIRMATION
 
   const {
     visible: bookingCloseInformationModalVisible,
@@ -187,7 +182,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     if (isLoading && title.includes('Détails de la réservation')) {
       showBookingCloseInformationModal()
     }
-    if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
+    analytics.logCancelBookingFunnel(step, offerId)
   }, [
     bookingState.offerId,
     offerId,
@@ -195,12 +190,12 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     dismissModal,
     isLoading,
     title,
-    enablePricesByCategories,
+
     step,
     showBookingCloseInformationModal,
   ])
 
-  return enablePricesByCategories ? (
+  return (
     <AppModal
       testID="modalWithPricesByCategories"
       noPadding
@@ -224,19 +219,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         visible={bookingCloseInformationModalVisible}
         hideModal={hideBookingCloseInformationModal}
       />
-    </AppModal>
-  ) : (
-    <AppModal
-      testID="modalWithoutPricesByCategories"
-      animationOutTiming={1}
-      visible={visible}
-      title={title}
-      {...modalLeftIconProps}
-      rightIconAccessibilityLabel="Fermer la modale"
-      rightIcon={Close}
-      onRightIconPress={onClose}
-      shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
-      {children}
     </AppModal>
   )
 }

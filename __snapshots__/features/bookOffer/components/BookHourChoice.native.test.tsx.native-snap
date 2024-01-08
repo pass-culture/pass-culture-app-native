@@ -7,9 +7,9 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 18,
-          "lineHeight": 22,
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
         },
       ]
     }
@@ -365,9 +365,9 @@ exports[`BookHourChoice when hour is already selected should change step to Hour
       [
         {
           "color": "#161617",
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 18,
-          "lineHeight": 22,
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
         },
       ]
     }
