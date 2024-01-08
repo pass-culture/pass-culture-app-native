@@ -22,7 +22,7 @@ const css = `
    }
 `
 
-export function ReCaptcha(props: Props) {
+export function ReCaptcha(props: Readonly<Props>) {
   useCaptcha()
 
   const reCaptchaContainerRef = useRef<HTMLDivElement>(null)
@@ -56,39 +56,17 @@ export function ReCaptcha(props: Props) {
       const { grecaptcha } = window
       const reCaptchaContainer = reCaptchaContainerRef.current
       const isReCaptchaRendered = reCaptchaContainer?.hasChildNodes()
-      if (
-        reCaptchaContainer &&
-        grecaptcha &&
-        grecaptcha.ready &&
-        grecaptcha.render &&
-        grecaptcha.execute
-      ) {
-        if (!isReCaptchaRendered) {
-          grecaptcha.ready(() => {
-            if (grecaptcha.render) {
-              reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
-                sitekey: env.SITE_KEY,
-                callback: onSuccess,
-                'expired-callback': props.onExpire,
-                'error-callback': onRecaptchaErrorCallback,
-                size: 'invisible',
-                theme: 'light',
-              })
-            }
-          })
-        }
-        if (isReCaptchaRendered) {
-          try {
-            grecaptcha.execute(reCaptchaWidgetRef.current)
-            clearInterval(intervalId)
-          } catch (error) {
-            if (error instanceof Error)
-              props.onError(
-                ReCaptchaInternalError.UnknownError,
-                'reCAPTCHA error: ' + error.message
-              )
-          }
-        }
+
+      if (!grecaptcha?.ready || !grecaptcha.render || !grecaptcha.execute) {
+        return
+      }
+
+      if (grecaptcha && !isReCaptchaRendered) {
+        renderGrecaptcha()
+      }
+
+      if (grecaptcha && isReCaptchaRendered) {
+        executeGrecaptcha(intervalId)
       }
     }, 1000)
 
@@ -97,6 +75,41 @@ export function ReCaptcha(props: Props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isVisible])
+
+  function renderGrecaptcha() {
+    const { grecaptcha } = window
+    const reCaptchaContainer = reCaptchaContainerRef.current
+    if (!grecaptcha?.ready || !grecaptcha.render || !reCaptchaContainer) {
+      return
+    }
+    grecaptcha.ready(() => {
+      if (grecaptcha.render) {
+        reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
+          sitekey: env.SITE_KEY,
+          callback: onSuccess,
+          'expired-callback': props.onExpire,
+          'error-callback': onRecaptchaErrorCallback,
+          size: 'invisible',
+          theme: 'light',
+        })
+      }
+    })
+  }
+
+  function executeGrecaptcha(intervalId: NodeJS.Timeout) {
+    const { grecaptcha } = window
+    if (!grecaptcha?.execute) {
+      return
+    }
+    try {
+      grecaptcha.execute(reCaptchaWidgetRef.current)
+      clearInterval(intervalId)
+    } catch (error) {
+      if (error instanceof Error) {
+        props.onError(ReCaptchaInternalError.UnknownError, 'reCAPTCHA error: ' + error.message)
+      }
+    }
+  }
 
   return (
     <React.Fragment>
