@@ -1,9 +1,7 @@
-import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 
 export type VenueModalHookProps = {
   dismissModal: VoidFunction
-  doAfterSearch?: VenueModalHookCallback
 }
 
 export type VenueModalHook = {
@@ -17,5 +15,3 @@ export type VenueModalHook = {
   isSearchButtonDisabled: boolean
   onClose: VoidFunction
 }
-
-export type VenueModalHookCallback = (payload: Partial<SearchState>) => void

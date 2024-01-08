@@ -1,12 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -60,7 +57,6 @@ export const CategoriesModal = ({
   facets,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
 
@@ -185,19 +181,10 @@ export const CategoriesModal = ({
         isFullyDigitalOffersCategory: isFullyDigitalOffersCategory || undefined,
       }
 
-      switch (filterBehaviour) {
-        case FilterBehaviour.SEARCH: {
-          navigate(...getTabNavConfig('Search', additionalSearchState))
-          break
-        }
-        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
-          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
-          break
-        }
-      }
+      dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       hideModal()
     },
-    [data, dispatch, filterBehaviour, hideModal, navigate, searchState]
+    [data, dispatch, hideModal, searchState]
   )
 
   const handleReset = useCallback(() => {

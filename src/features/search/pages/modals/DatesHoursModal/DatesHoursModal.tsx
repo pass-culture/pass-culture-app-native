@@ -1,13 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { Controller, SetValueConfig, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CalendarPicker } from 'features/search/components/CalendarPicker/CalendarPicker'
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
@@ -78,7 +75,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { modal } = useTheme()
   const { searchState, dispatch } = useSearch()
   const [showCalendarPicker, setShowCalendarPicker] = useState<boolean>(false)
@@ -160,19 +156,10 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
         view: SearchView.Results,
       }
 
-      switch (filterBehaviour) {
-        case FilterBehaviour.SEARCH: {
-          navigate(...getTabNavConfig('Search', additionalSearchState))
-          break
-        }
-        case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
-          dispatch({ type: 'SET_STATE', payload: additionalSearchState })
-          break
-        }
-      }
+      dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       hideModal()
     },
-    [hideModal, navigate, searchState, dispatch, filterBehaviour]
+    [hideModal, searchState, dispatch]
   )
 
   const onSubmit = handleSubmit(search)

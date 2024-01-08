@@ -1,7 +1,6 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
@@ -17,7 +16,6 @@ const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 const mockSearchState = searchState
 const mockDispatch = jest.fn()
-
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
@@ -195,7 +193,7 @@ describe('<OfferDuoModal/>', () => {
   })
 
   describe('with "Rechercher" button', () => {
-    it('should navigate to Search results when selecting DUO offer and pressing button', async () => {
+    it('should set search state view to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
       const button = screen.getByText('Rechercher')
@@ -205,13 +203,13 @@ describe('<OfferDuoModal/>', () => {
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             view: SearchView.Results,
             offerIsDuo: true,
           },
-          screen: 'Search',
         })
       })
     })
@@ -224,13 +222,13 @@ describe('<OfferDuoModal/>', () => {
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
             ...mockSearchState,
             view: SearchView.Results,
             offerIsDuo: false,
           },
-          screen: 'Search',
         })
       })
     })

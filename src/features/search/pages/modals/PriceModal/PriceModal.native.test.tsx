@@ -1,7 +1,6 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
@@ -688,7 +687,7 @@ describe('<PriceModal/>', () => {
   })
 
   describe('with "Rechercher" button', () => {
-    describe('should navigate on search results', () => {
+    describe('should set search state view on results', () => {
       it('when pressing button with minimum and maximum prices entered', async () => {
         renderSearchPrice()
 
@@ -708,9 +707,9 @@ describe('<PriceModal/>', () => {
           view: SearchView.Results,
         }
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
 
@@ -734,9 +733,9 @@ describe('<PriceModal/>', () => {
           view: SearchView.Results,
         }
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
 
@@ -757,9 +756,9 @@ describe('<PriceModal/>', () => {
           maxPrice: '0',
         }
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
 
@@ -779,9 +778,9 @@ describe('<PriceModal/>', () => {
           maxPrice: '0',
         }
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
 
@@ -800,9 +799,9 @@ describe('<PriceModal/>', () => {
           minPrice: '1',
         }
 
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: expectedSearchParams,
-          screen: 'Search',
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: expectedSearchParams,
         })
       })
     })

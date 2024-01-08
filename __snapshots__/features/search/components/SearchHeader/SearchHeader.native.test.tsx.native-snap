@@ -344,12 +344,12 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
                 />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
-                  accessibilityHidden={false}
+                  accessibilityHidden={true}
                   autoCorrect={false}
                   autoFocus={false}
                   editable={true}
                   enablesReturnKeyAutomatically={true}
-                  focusable={true}
+                  focusable={false}
                   isEmpty={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}

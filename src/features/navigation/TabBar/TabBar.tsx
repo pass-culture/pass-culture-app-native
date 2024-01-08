@@ -14,7 +14,7 @@ type Props = Pick<BottomTabBarProps, 'navigation'>
 
 export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { locationFilter } = searchState
 
   return (
@@ -23,9 +23,9 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
         const onPress = () => {
           if (route.name === 'Search') {
             if (route.isSelected) {
-              navigation.setParams({
-                ...initialSearchState,
-                locationFilter,
+              dispatch({
+                type: 'SET_STATE',
+                payload: { ...initialSearchState, locationFilter },
               })
             } else {
               navigation.navigate('TabNavigator', { screen: route.name, params: searchState })

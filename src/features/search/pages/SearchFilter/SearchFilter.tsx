@@ -1,22 +1,21 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
-import { DEFAULT_RADIUS } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { useSyncSearchFilter } from 'features/search/helpers/useSyncSearchFilter/useSyncSearchFilter'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -27,58 +26,46 @@ import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
+  useSyncSearchFilter()
   const headerHeight = useGetHeaderHeight()
   const { searchState, dispatch } = useSearch()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateToSearch } = useNavigateToSearch()
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { geolocPosition, hasGeolocPosition, place } = useLocation()
+  const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { user } = useAuthContext()
-  const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isMobileViewport } = useTheme()
 
-  useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: params || { view: SearchView.Landing } })
-  }, [dispatch, params])
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const oldSearchState = useMemo(() => searchState, [])
   const onGoBack = useCallback(() => {
-    navigate(
-      ...getTabNavConfig('Search', {
-        ...params,
-        view: SearchView.Results,
-      })
-    )
-  }, [navigate, params])
+    navigateToSearch({ ...oldSearchState, view: SearchView.Results })
+  }, [navigateToSearch, oldSearchState])
 
   const onSearchPress = useCallback(() => {
-    const additionalSearchState = {
+    navigateToSearch({
       ...searchState,
       view: SearchView.Results,
-    }
-    navigate(...getTabNavConfig('Search', additionalSearchState))
-  }, [navigate, searchState])
+    })
+  }, [navigateToSearch, searchState])
 
   const onResetPress = useCallback(() => {
     const getLocationFilter = (): LocationFilter => {
-      const { locationFilter, venue } = searchState
-      const aroundRadius =
-        locationFilter.locationType === LocationMode.EVERYWHERE || venue
-          ? DEFAULT_RADIUS
-          : locationFilter.aroundRadius
-      if (place) {
-        return {
-          locationType: LocationMode.AROUND_PLACE,
-          place,
-          aroundRadius: aroundRadius ?? DEFAULT_RADIUS,
-        }
-      } else if (hasGeolocPosition && geolocPosition) {
-        return {
-          locationType: LocationMode.AROUND_ME,
-          aroundRadius,
-        }
-      } else {
-        return { locationType: LocationMode.EVERYWHERE }
+      switch (selectedLocationMode) {
+        case LocationMode.AROUND_PLACE:
+          return {
+            locationType: selectedLocationMode,
+            place: place as SuggestedPlace,
+            aroundRadius: aroundPlaceRadius,
+          }
+        case LocationMode.AROUND_ME:
+          return {
+            locationType: selectedLocationMode,
+            aroundRadius: aroundMeRadius,
+          }
+        case LocationMode.EVERYWHERE:
+          return { locationType: selectedLocationMode }
       }
     }
     dispatch({
@@ -105,7 +92,15 @@ export const SearchFilter: React.FC = () => {
       },
     })
     logReinitializeFilters()
-  }, [dispatch, hasGeolocPosition, logReinitializeFilters, place, geolocPosition, searchState])
+  }, [
+    dispatch,
+    searchState,
+    logReinitializeFilters,
+    selectedLocationMode,
+    place,
+    aroundPlaceRadius,
+    aroundMeRadius,
+  ])
 
   const hasDuoOfferToggle = useMemo(() => {
     const isBeneficiary = !!user?.isBeneficiary

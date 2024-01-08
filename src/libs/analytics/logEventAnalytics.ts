@@ -626,14 +626,18 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_VENUE }, { venueLabel }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
-  logVenuePlaylistDisplayedOnSearchResults: (params: {
+  logVenuePlaylistDisplayedOnSearchResults: ({
+    searchId,
+    isLocated,
+    searchNbResults,
+  }: {
     searchId?: string
-    isGeolocated?: boolean
+    isLocated?: boolean
     searchNbResults?: number
   }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS },
-      params
+      { isGeolocated: isLocated, searchId, searchNbResults }
     ),
   logVenueSeeAllOffersClicked: (venueId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED }, { venueId }),

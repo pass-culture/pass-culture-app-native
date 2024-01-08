@@ -52,8 +52,9 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
 }
 
 const mockSearchState = initialSearchState
+const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
 }))
 
 describe('TabBar', () => {
@@ -165,7 +166,7 @@ describe('TabBar', () => {
     const searchTab = screen.getByTestId('Rechercher des offres')
     fireEvent.press(searchTab)
 
-    expect(navigation.setParams).toHaveBeenCalledWith(initialSearchState)
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_STATE', payload: initialSearchState })
   })
 
   it('navigates to Profile on Profile tab click', async () => {

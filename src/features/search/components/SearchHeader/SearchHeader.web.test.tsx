@@ -2,9 +2,8 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
@@ -25,11 +24,21 @@ jest.mock('react-instantsearch-core', () => ({
 
 const searchInputID = uuidv4()
 
+let mockSearchState: SearchState = initialSearchState
+const mockDispatch = jest.fn()
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+}))
+
 describe('SearchHeader component', () => {
+  afterEach(() => {
+    mockSearchState = initialSearchState
+  })
+
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should contain a button to go to the search suggestions view',
     async (view) => {
-      useRoute.mockReturnValueOnce({ params: { view } })
+      mockSearchState = { ...mockSearchState, view }
       render(
         <SearchHeader
           searchInputID={searchInputID}
@@ -44,7 +53,6 @@ describe('SearchHeader component', () => {
   )
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}
@@ -63,14 +71,15 @@ describe('SearchHeader component', () => {
       view: SearchView.Suggestions,
     }
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      screen: 'Search',
-      params,
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: params,
     })
   })
 
   it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
+    mockSearchState = { ...mockSearchState, view: SearchView.Suggestions, query: 'la fnac' }
+
     render(
       <SearchHeader
         searchInputID={searchInputID}
@@ -88,7 +97,8 @@ describe('SearchHeader component', () => {
   it.each([[SearchView.Landing], [SearchView.Results]])(
     'should not have focus on search main input',
     async (view) => {
-      useRoute.mockReturnValueOnce({ params: { view } })
+      mockSearchState = { ...mockSearchState, view }
+
       render(
         <SearchHeader
           searchInputID={searchInputID}
@@ -109,7 +119,6 @@ describe('SearchHeader component', () => {
   )
 
   it('should skip focus on search main input, the next focus should be on the location filter button', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
     render(
       <SearchHeader
         searchInputID={searchInputID}

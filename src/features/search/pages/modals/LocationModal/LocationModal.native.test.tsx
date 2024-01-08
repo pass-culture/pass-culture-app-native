@@ -56,6 +56,11 @@ jest.mock('libs/location/LocationWrapper', () => ({
     hideGeolocPermissionModal: mockHideGeolocPermissionModal,
     onPressGeolocPermissionModalButton: mockOnPressGeolocPermissionModalButton,
     requestGeolocPermission: mockRequestGeolocPermission,
+    setSelectedLocationMode: jest.fn(),
+    setAroundMeRadius: jest.fn(),
+    setAroundPlaceRadius: jest.fn(),
+    setPlace: jest.fn(),
+    onResetPlace: jest.fn(),
   }),
 }))
 
