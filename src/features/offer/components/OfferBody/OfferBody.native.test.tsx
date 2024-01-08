@@ -8,6 +8,7 @@ import { OfferResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
+import { PlaylistType } from 'features/offer/enums'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
@@ -25,6 +26,7 @@ import {
 } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -372,10 +374,10 @@ describe('<OfferBody />', () => {
         fireEvent.press(setPlaceButton)
       })
 
-      screen.getByText('Du même auteur')
+      const sameArtistPlaylist = screen.getByTestId(PlaylistType.SAME_ARTIST_PLAYLIST)
       const distanceBetweenParisAndVannes = '397 km'
 
-      expect(screen.getByText(distanceBetweenParisAndVannes)).toBeOnTheScreen()
+      expect(sameArtistPlaylist).toHaveTextContent(distanceBetweenParisAndVannes)
     })
 
     it('should have a relative distance to the selected place and not the geolocposition even if geolocated', async () => {
@@ -394,10 +396,10 @@ describe('<OfferBody />', () => {
       await act(async () => {
         fireEvent.press(setPlaceButton)
       })
-      screen.getByText('Du même auteur')
+      const sameArtistPlaylist = screen.getByTestId(PlaylistType.SAME_ARTIST_PLAYLIST)
       const distanceBetweenParisAndVannes = '397 km'
 
-      expect(screen.getByText(distanceBetweenParisAndVannes)).toBeOnTheScreen()
+      expect(sameArtistPlaylist).toHaveTextContent(distanceBetweenParisAndVannes)
     })
   })
 })
@@ -438,18 +440,22 @@ const renderOfferBodyDummyComponent = ({
   )
 
 const DummyComponent = ({ offer = mockOffer, additionalProps = {} }: RenderOfferBodyProps) => {
-  const { setPlace } = useLocation()
-  const mockPlaces: SuggestedPlace[] = [
-    {
-      label: 'Paris',
-      info: 'Ile de france',
-      geolocation: { longitude: 2.3522219, latitude: 48.856614 },
-    },
-  ]
+  const { setPlace, setSelectedLocationMode } = useLocation()
+  const mockPlaces: SuggestedPlace = {
+    label: 'Paris',
+    info: 'Ile de france',
+    geolocation: { longitude: 2.3522219, latitude: 48.856614 },
+  }
 
   return (
     <React.Fragment>
-      <Button title="setPlace" onPress={() => setPlace(mockPlaces[0])} />
+      <Button
+        title="setPlace"
+        onPress={() => {
+          setPlace(mockPlaces)
+          setSelectedLocationMode(LocationMode.AROUND_PLACE)
+        }}
+      />
       <OfferBody
         offer={offer}
         onScroll={onScroll}
