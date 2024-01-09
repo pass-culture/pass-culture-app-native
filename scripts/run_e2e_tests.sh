@@ -38,12 +38,15 @@ parse_env_variable () {
   fi
 }
 
+MOCK_ANALYTICS_SERVER_PORT=4001
+
 if [ "$platform" = "ios" ]; then
   app_id=$(parse_env_variable IOS_APP_ID ".env.$env")
   echo "Running iOS tests on $env environment with app id: $app_id"
 elif [ "$platform" = "android" ]; then
   app_id=$(parse_env_variable ANDROID_APP_ID ".env.$env")
   echo "Running Android tests on $env environment with app id: $app_id"
+  adb reverse "tcp:${MOCK_ANALYTICS_SERVER_PORT}" "tcp:${MOCK_ANALYTICS_SERVER_PORT}"
 elif [ "$platform" = "web" ]; then
   app_id=$(parse_env_variable APP_PUBLIC_URL ".env.$env")
   echo "Running Web tests on $env environment with app id: $app_id"
@@ -68,7 +71,6 @@ stop_mock_analytics_server() {
 
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
-MOCK_ANALYTICS_SERVER_PORT=4001
 stop_mock_analytics_server
 start_mock_analytics_server_silently_in_the_background
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" false
