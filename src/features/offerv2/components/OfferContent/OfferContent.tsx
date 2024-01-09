@@ -91,6 +91,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     isNullOrUndefined(offer.accessibility.mentalDisability) &&
     isNullOrUndefined(offer.accessibility.motorDisability)
   )
+  const shouldDisplayAboutBlock = shouldDisplayAccessibilityBlock || !!offer.description
 
   return (
     <Container testID="offer-container">
@@ -107,17 +108,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         <OfferPrice prices={prices} />
         <Spacer.Column numberOfSpaces={6} />
 
-        <Typo.Body>À propos</Typo.Body>
-        {offer.description ? (
+        {shouldDisplayAboutBlock ? (
           <React.Fragment>
-            <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
-            <CollapsibleText
-              text={offer.description}
+            <Typo.Body>À propos</Typo.Body>
+            {offer.description ? (
+              <React.Fragment>
+                <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
+                <CollapsibleText
+                  text={offer.description}
                   numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}></CollapsibleText>
-          </React.Fragment>
-        ) : null}
-        <Spacer.Column numberOfSpaces={8} />
-        {shouldDisplayAccessibilityBlock ? (
+              </React.Fragment>
+            ) : null}
+            <Spacer.Column numberOfSpaces={8} />
+            {shouldDisplayAccessibilityBlock ? (
               <OfferAccessibility accessibility={offer.accessibility} />
             ) : null}
           </React.Fragment>

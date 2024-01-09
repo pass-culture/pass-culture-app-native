@@ -407,8 +407,8 @@ describe('<OfferContent />', () => {
     })
   })
 
-  describe('with description', () => {
-    it('should display description', async () => {
+  describe('with About block', () => {
+    it('should display about block when there is a description', async () => {
       renderOfferContent({
         offer: {
           ...offerResponseSnap,
@@ -418,27 +418,10 @@ describe('<OfferContent />', () => {
 
       await act(async () => {})
 
-      expect(
-        screen.getByText('Cette offre est super cool cool cool cool cool cool')
-      ).toBeOnTheScreen()
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
     })
 
-    it('should not display description when no description', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: null,
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
-    })
-  })
-
-  describe('with accessibility block', () => {
-    it('should display accessibility when disabilities are defined', async () => {
+    it('should display about block when there is an accessibility block', async () => {
       renderOfferContent({
         offer: {
           ...offerResponseSnap,
@@ -453,21 +436,85 @@ describe('<OfferContent />', () => {
 
       await act(async () => {})
 
-      expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
     })
 
-    it('should not display accessibility when disabilities are not defined', async () => {
+    it('should not display about block when there are not description and accessibility block', async () => {
       renderOfferContent({
         offer: {
           ...offerResponseSnap,
+          description: undefined,
           accessibility: {},
         },
       })
 
       await act(async () => {})
 
-      expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
+      expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
+    })
+
+    describe('with description', () => {
+      it('should display description', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            description: 'Cette offre est super cool cool cool cool cool cool',
+          },
+        })
+
+        await act(async () => {})
+
+        expect(
+          screen.getByText('Cette offre est super cool cool cool cool cool cool')
+        ).toBeOnTheScreen()
+      })
+
+      it('should not display description when no description', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            description: null,
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
+      })
+    })
+
+    describe('with accessibility block', () => {
+      it('should display accessibility when disabilities are defined', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            accessibility: {
+              audioDisability: true,
+              mentalDisability: true,
+              motorDisability: false,
+              visualDisability: false,
+            },
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+      })
+
+      it('should not display accessibility when disabilities are not defined', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            accessibility: {},
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
+      })
     })
   })
 })
