@@ -51,7 +51,7 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
   }, [])
 
   const doApplySearch = useCallback(() => {
-    const payload: Partial<SearchState> = {
+    const payload: SearchState = {
       ...searchState,
       venue: selectedVenue ?? undefined,
       view: SearchView.Results,

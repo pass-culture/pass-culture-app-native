@@ -52,7 +52,7 @@ describe('Search reducer', () => {
       ],
       tags: [],
     }
-    const action: Action = { type: 'SET_STATE', payload: parameters }
+    const action: Action = { type: 'SET_STATE', payload: { ...initialSearchState, ...parameters } }
 
     expect(searchReducer(state, action)).toStrictEqual({
       ...initialSearchState,
