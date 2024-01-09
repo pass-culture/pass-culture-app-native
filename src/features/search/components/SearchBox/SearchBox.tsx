@@ -178,7 +178,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         }
       )
     } else {
-      dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
+      dispatch({ type: 'SET_STATE', payload: { ...searchState, venue: undefined } })
       goBack()
     }
 
