@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -13,18 +13,13 @@ type Props = {
   text: string
   // Minimum number of lines when collapsible is collapsed.
   numberOfLines: number
-  lineHeight: number
-  isExpandedByDefault?: boolean
 }
 
-export function CollapsibleText({
-  text,
-  numberOfLines,
-  lineHeight,
-  isExpandedByDefault = false,
-}: Readonly<Props>) {
-  const [expanded, setExpanded] = useState(isExpandedByDefault)
+export function CollapsibleText({ text, numberOfLines }: Readonly<Props>) {
+  const [expanded, setExpanded] = useState(false)
   const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
+  const theme = useTheme()
+  const lineHeight = Number(theme.typography.body.lineHeight.slice(0, -2))
 
   const onPress = () => setExpanded((prevExpanded) => !prevExpanded)
 
