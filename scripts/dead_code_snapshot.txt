@@ -206,7 +206,6 @@ src/libs/react-native-share/index.tsx:39 - ButtonProps
 src/libs/react-native-share/index.tsx:40 - ShareSheetProps
 src/libs/react-native-web-fast-image/index.d.ts:155 - default
 src/libs/react-native-web-fast-image/index.js:93 - default
-src/libs/react-query/queryClient.ts:6 - GLOBAL_STALE_TIME
 src/libs/react-query/usePersistQuery.ts:40 - UsePersistQueryResult (used in module)
 src/tests/utils/web.tsx:17 - flushAllPromises (used in module)
 src/tests/utils/web.tsx:29 - flushAllPromisesTimes (used in module)
