@@ -436,6 +436,40 @@ describe('<OfferContent />', () => {
       expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
     })
   })
+
+  describe('with accessibility block', () => {
+    it('should display accessibility when disabilities are defined', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          accessibility: {
+            audioDisability: true,
+            mentalDisability: true,
+            motorDisability: false,
+            visualDisability: false,
+          },
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+    })
+
+    it('should not display accessibility when disabilities are not defined', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          accessibility: {},
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>

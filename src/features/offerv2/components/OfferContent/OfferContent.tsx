@@ -19,6 +19,8 @@ import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags
 import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
+import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -84,6 +86,13 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     logSameCategoryPlaylistVerticalScroll
   )
 
+  const shouldDisplayAccessibilityBlock = !(
+    isNullOrUndefined(offer.accessibility.visualDisability) &&
+    isNullOrUndefined(offer.accessibility.audioDisability) &&
+    isNullOrUndefined(offer.accessibility.mentalDisability) &&
+    isNullOrUndefined(offer.accessibility.motorDisability)
+  )
+
   return (
     <Container testID="offer-container">
       <InfoContainer>
@@ -110,6 +119,13 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           </React.Fragment>
         ) : null}
         <Spacer.Column numberOfSpaces={8} />
+        {shouldDisplayAccessibilityBlock ? (
+          <React.Fragment>
+            <Typo.ButtonText>Accessibilité de l’offre</Typo.ButtonText>
+            <Spacer.Column numberOfSpaces={4} />
+            <AccessibilityBlock {...offer.accessibility} />
+          </React.Fragment>
+        ) : null}
       </InfoContainer>
 
       <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
