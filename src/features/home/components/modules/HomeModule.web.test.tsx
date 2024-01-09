@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
@@ -13,7 +13,6 @@ import {
   formattedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
-import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
@@ -23,7 +22,7 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 import { HomeModule } from './HomeModule'
 
@@ -76,21 +75,6 @@ describe('<HomeModule />', () => {
   // Test a11y rules on each module instead of testing them on the whole page
   // because it's easier to test them one by one
   describe('Accessibility', () => {
-    it('Exclusivity module should not have basic accessibility issues', async () => {
-      mockServer.getApiV1<OfferResponse>(`/offer/123456789`, offerResponseSnap)
-
-      mockedUseFeatureFlag.mockReturnValueOnce(false)
-      const { container } = renderHomeModule(formattedExclusivityModule)
-
-      // we need to use findAllByLabelText because 'Week-end FRAC' is assigned twice
-      // in alt property for image and touchable link
-      expect(await screen.findAllByLabelText('Week-end FRAC')).not.toHaveLength(0)
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
     it('Highlight module should not have basic accessibility issues', async () => {
       mockedUseFeatureFlag.mockReturnValueOnce(true)
       mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
@@ -104,6 +88,14 @@ describe('<HomeModule />', () => {
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
+    })
+
+    it('should not display old ExclusivityOfferModule', async () => {
+      renderHomeModule(formattedExclusivityModule)
+
+      await waitFor(() => {
+        expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
+      })
     })
 
     it('Business module should not have basic accessibility issues', async () => {
