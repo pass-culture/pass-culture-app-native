@@ -19,6 +19,7 @@ import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags
 import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
+import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -27,6 +28,9 @@ type Props = {
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
 }
+
+const NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK = 5
+const LINE_HEIGHT_OF_DESCRIPTION_BLOCK = 20
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -94,6 +98,18 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         <OfferPrice prices={prices} />
         <Spacer.Column numberOfSpaces={6} />
+
+        <Typo.Body>À propos</Typo.Body>
+        {offer.description ? (
+          <React.Fragment>
+            <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
+            <CollapsibleText
+              text={offer.description}
+              numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}
+              lineHeight={LINE_HEIGHT_OF_DESCRIPTION_BLOCK}></CollapsibleText>
+          </React.Fragment>
+        ) : null}
+        <Spacer.Column numberOfSpaces={8} />
       </InfoContainer>
 
       <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
@@ -111,8 +127,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
         handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
       />
-
-      <Typo.Body>À propos</Typo.Body>
     </Container>
   )
 }

@@ -406,6 +406,36 @@ describe('<OfferContent />', () => {
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
     })
   })
+
+  describe('with description', () => {
+    it('should display description', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          description: 'Cette offre est super cool cool cool cool cool cool',
+        },
+      })
+
+      await act(async () => {})
+
+      expect(
+        screen.getByText('Cette offre est super cool cool cool cool cool cool')
+      ).toBeOnTheScreen()
+    })
+
+    it('should not display description when no description', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          description: null,
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>
