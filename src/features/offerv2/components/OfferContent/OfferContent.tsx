@@ -9,6 +9,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
+import { OfferAccessibility } from 'features/offerv2/components/OfferAccessibility/OfferAccessibility'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { OfferPlaylistList } from 'features/offerv2/components/OfferPlaylistList/OfferPlaylistList'
@@ -20,7 +21,6 @@ import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
-import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -118,10 +118,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         ) : null}
         <Spacer.Column numberOfSpaces={8} />
         {shouldDisplayAccessibilityBlock ? (
-          <React.Fragment>
-            <Typo.ButtonText>Accessibilité de l’offre</Typo.ButtonText>
-            <Spacer.Column numberOfSpaces={4} />
-            <AccessibilityBlock {...offer.accessibility} />
+              <OfferAccessibility accessibility={offer.accessibility} />
+            ) : null}
           </React.Fragment>
         ) : null}
       </InfoContainer>
