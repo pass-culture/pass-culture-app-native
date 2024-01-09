@@ -13,7 +13,10 @@ export const useGetStepperInfo = (): {
   identificationMethods?: SubscriptionStepperResponse['allowedIdentityCheckMethods'] | null
 } => {
   const { data } = useQuery([QueryKeys.STEPPER_INFO], () => api.getNativeV1SubscriptionStepper())
+
+  // TODO(PC-26801): remove this when the bug is fixed
   eventMonitoring.setExtras({ useGetStepperInfoResponse: JSON.stringify(data) })
+
   if (data === undefined) {
     return { stepToDisplay: [], title: '' }
   }
