@@ -25,7 +25,6 @@ export const initialSearchState: SearchState = {
 }
 
 export type Action =
-  | { type: 'INIT' }
   | { type: 'SET_STATE'; payload: SearchState }
   | { type: 'PRICE_RANGE'; payload: SearchState['priceRange'] }
   | { type: 'SELECT_DATE'; payload: Date }
@@ -40,8 +39,6 @@ export type Action =
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
-    case 'INIT':
-      return { ...initialSearchState, view: state.view }
     case 'SET_STATE':
       return action.payload
     case 'PRICE_RANGE':

@@ -13,18 +13,22 @@ const dismissModalMock = jest.fn()
 
 const mockVenues: Venue[] = [{ label: 'venueLabel', info: 'info', venueId: 1234 }]
 
-const mockSearchState: SearchState = {
-  ...initialSearchState,
-  venue: mockVenues[0],
-}
-
 jest.mock('libs/place', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: false }),
 }))
 
+const mockSearchState: SearchState = {
+  ...initialSearchState,
+  venue: mockVenues[0],
+}
+const mockedSearchWrapper = {
+  searchState: mockSearchState,
+  dispatch: jest.fn(),
+  resetSearch: jest.fn(),
+}
 jest.unmock('features/search/context/SearchWrapper')
 const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
-mockedUseSearch.mockReturnValue({ searchState: initialSearchState, dispatch: jest.fn() })
+mockedUseSearch.mockReturnValue(mockedSearchWrapper)
 
 describe('VenueModal', () => {
   it('should render correctly', async () => {
@@ -62,8 +66,8 @@ describe('VenueModal', () => {
 
   it('should be initialized with the venue label when a venue is already selected and venue modal is opened', async () => {
     mockedUseSearch
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper)
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
     await waitForModalToShow()
@@ -76,10 +80,10 @@ describe('VenueModal', () => {
 
   it('should be initialized with the venue label when a venue is already selected, input was cleared, modal was closed and then opened', async () => {
     mockedUseSearch // it rerenders multiple(4) time so it needs multiple(4) mocks
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper)
 
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
@@ -99,9 +103,9 @@ describe('VenueModal', () => {
 
   it('should not display venue suggestion when a venue is already selected before opening the modal', async () => {
     mockedUseSearch // it rerenders multiple(3) time so it needs multiple(3) mocks
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
-      .mockReturnValueOnce({ searchState: mockSearchState, dispatch: jest.fn() })
+      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper)
+      .mockReturnValueOnce(mockedSearchWrapper)
 
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 

@@ -63,7 +63,7 @@ const mockSearchState: SearchState = {
 
 jest
   .spyOn(useSearch, 'useSearch')
-  .mockReturnValue({ searchState: mockSearchState, dispatch: mockDispatch })
+  .mockReturnValue({ searchState: mockSearchState, dispatch: mockDispatch, resetSearch: jest.fn() })
 
 describe('SearchLocationModal', () => {
   it('should render correctly if modal visible', async () => {

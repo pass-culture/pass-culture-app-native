@@ -4,9 +4,9 @@ import { analytics } from 'libs/analytics'
 import { renderHook } from 'tests/utils'
 
 const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
+const mockResetSearch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({ searchState: mockSearchState, resetSearch: mockResetSearch }),
 }))
 
 describe('useLogBeforeNavToSearchResults', () => {
@@ -14,8 +14,7 @@ describe('useLogBeforeNavToSearchResults', () => {
     const { result } = renderHook(() => useLogBeforeNavToSearchResults({ from: 'bookings' }))
     result.current()
 
-    expect(mockDispatch).toHaveBeenCalledTimes(1)
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'INIT' })
+    expect(mockResetSearch).toHaveBeenCalledTimes(1)
   })
 
   it("should log the analytics event 'DiscoverOffers'", () => {

@@ -2,11 +2,11 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useSearch } from 'features/search/context/SearchWrapper'
 
 export const useResetContexts = () => {
-  const { dispatch: dispatchSearch } = useSearch()
+  const { resetSearch } = useSearch()
   const { dispatch: dispatchIdentityCheck } = useSubscriptionContext()
 
   return () => {
-    dispatchSearch({ type: 'INIT' })
+    resetSearch()
     dispatchIdentityCheck({ type: 'INIT' })
   }
 }

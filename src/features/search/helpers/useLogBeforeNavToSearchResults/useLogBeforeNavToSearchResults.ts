@@ -5,11 +5,11 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics'
 
 export const useLogBeforeNavToSearchResults = ({ from }: { from: Referrals }) => {
-  const { dispatch } = useSearch()
+  const { resetSearch } = useSearch()
 
   return useCallback(() => {
     analytics.logDiscoverOffers(from)
-    dispatch({ type: 'INIT' })
+    resetSearch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }

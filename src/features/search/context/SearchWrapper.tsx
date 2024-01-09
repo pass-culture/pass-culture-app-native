@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useMemo, useReducer } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -11,6 +11,7 @@ import { LocationMode } from 'libs/location/types'
 interface ISearchContext {
   searchState: SearchState
   dispatch: React.Dispatch<Action>
+  resetSearch: () => void
 }
 
 const SearchContext = React.createContext<ISearchContext | null>(null)
@@ -68,7 +69,14 @@ export const SearchWrapper = memo(function SearchWrapper({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxPrice])
 
-  const contextValue = useMemo(() => ({ searchState, dispatch }), [searchState, dispatch])
+  const resetSearch = useCallback(() => {
+    dispatch({ type: 'SET_STATE', payload: initialSearchState })
+  }, [])
+
+  const contextValue = useMemo(
+    () => ({ searchState, dispatch, resetSearch }),
+    [searchState, dispatch, resetSearch]
+  )
 
   return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>
 })

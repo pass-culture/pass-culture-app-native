@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 
@@ -20,22 +20,6 @@ describe('Search reducer', () => {
   })
 
   const state = initialSearchState
-
-  it('should handle INIT', () => {
-    let searchState = { view: SearchView.Landing } as SearchState
-
-    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
-      ...initialSearchState,
-      view: SearchView.Landing,
-    })
-
-    searchState = { view: SearchView.Results } as SearchState
-
-    expect(searchReducer(searchState, { type: 'INIT' })).toStrictEqual({
-      ...initialSearchState,
-      view: SearchView.Results,
-    })
-  })
 
   it('should handle SET_STATE', () => {
     const parameters = {
