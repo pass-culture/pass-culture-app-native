@@ -13,7 +13,7 @@ interface AccessToken {
   }
 }
 
-export const decodeAccessToken = (token: string) => {
+export const decodeToken = (token: string) => {
   try {
     return jwtDecode<AccessToken>(token)
   } catch {
@@ -21,8 +21,8 @@ export const decodeAccessToken = (token: string) => {
   }
 }
 
-export const getUserIdFromAccesstoken = (accessToken: string) => {
-  const tokenContent = decodeAccessToken(accessToken)
+export const getUserIdFromAccessToken = (accessToken: string) => {
+  const tokenContent = decodeToken(accessToken)
 
   return tokenContent?.user_claims?.user_id ?? null
 }
@@ -31,7 +31,7 @@ type TokenStatus = 'valid' | 'expired' | 'unknown'
 
 export const getTokenStatus = (token: string | null): TokenStatus => {
   if (!token) return 'unknown'
-  const tokenContent = decodeAccessToken(token)
+  const tokenContent = decodeToken(token)
   if (!tokenContent?.exp) return 'unknown'
   return tokenContent.exp * 1000 > Date.now() ? 'valid' : 'expired'
 }

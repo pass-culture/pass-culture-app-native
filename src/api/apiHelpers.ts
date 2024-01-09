@@ -6,7 +6,7 @@ import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
-import { decodeAccessToken, getTokenStatus } from 'libs/jwt'
+import { decodeToken, getTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppVersion } from 'libs/packageJson'
@@ -204,7 +204,7 @@ const extractResponseBody = async (response: Response): Promise<string> => {
 }
 
 export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
-  const token = decodeAccessToken(encodedToken)
+  const token = decodeToken(encodedToken)
 
   if (token) {
     const tokenExpirationInMs = token.exp * 1000

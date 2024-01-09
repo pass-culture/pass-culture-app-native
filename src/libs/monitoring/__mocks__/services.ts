@@ -7,6 +7,7 @@ export const eventMonitoring: typeof actualErrorMonitoring = {
   captureMessage: jest.fn(),
   init: jest.fn(),
   configureScope: jest.fn(),
+  setExtras: jest.fn(),
   setUser: jest.fn(),
   startTransaction: jest.fn().mockReturnValue({ name: 'transaction1' }),
   withProfiler: jest.fn(),

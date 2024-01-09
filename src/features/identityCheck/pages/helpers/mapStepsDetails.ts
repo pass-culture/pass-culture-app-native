@@ -21,14 +21,21 @@ export const mapStepsDetails = (
     return stepDetails
   })
 
-  const stepDetailsListWithoutNull = stepDetailsList.filter((step) => step != null) as StepDetails[]
+  const stepDetailsListWithoutNull = stepDetailsList.filter(
+    (step): step is StepDetails => step != null
+  )
   return stepDetailsListWithoutNull
 }
 
 const mapCompletionState = (state: SubscriptionStepCompletionState) => {
-  if (state === SubscriptionStepCompletionState.completed) return StepButtonState.COMPLETED
-  if (state === SubscriptionStepCompletionState.current) return StepButtonState.CURRENT
-  if (state === SubscriptionStepCompletionState.disabled) return StepButtonState.DISABLED
-  if (state === SubscriptionStepCompletionState.retry) return StepButtonState.RETRY
-  return StepButtonState.DISABLED
+  switch (state) {
+    case SubscriptionStepCompletionState.completed:
+      return StepButtonState.COMPLETED
+    case SubscriptionStepCompletionState.current:
+      return StepButtonState.CURRENT
+    case SubscriptionStepCompletionState.disabled:
+      return StepButtonState.DISABLED
+    case SubscriptionStepCompletionState.retry:
+      return StepButtonState.RETRY
+  }
 }
