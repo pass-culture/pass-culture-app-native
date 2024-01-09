@@ -66,7 +66,7 @@ jobs:
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: 'Render Sentry Template'
         id: render_template
-        uses: chuhlomin/render-template@v1.6
+        uses: chuhlomin/render-template@v1.9
         with:
           template: templates_github_ci/.sentryclirc
           vars: |
@@ -79,7 +79,7 @@ jobs:
         run: |
           echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > android/keystores/${{ inputs.ENV }}.keystore
       - name: Setup android keystore properties for ${{ inputs.ENV }} environment
-        uses: chuhlomin/render-template@v1.6
+        uses: chuhlomin/render-template@v1.9
         with:
           template: templates_github_ci/${{ inputs.ENV }}.keystore.properties
           vars: |

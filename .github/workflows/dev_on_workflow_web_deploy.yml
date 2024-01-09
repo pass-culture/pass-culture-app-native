@@ -63,7 +63,7 @@ jobs:
           version: '>= 416.0.0'
       - name: 'Render Sentry Template'
         id: render_template
-        uses: chuhlomin/render-template@v1.6
+        uses: chuhlomin/render-template@v1.9
         with:
           template: templates_github_ci/.sentryclirc
           vars: |
