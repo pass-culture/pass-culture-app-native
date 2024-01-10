@@ -12,6 +12,10 @@ on:
       base_sha:
         type: string
         required: false
+      fetch-tags:
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   check-folder-changes:
@@ -23,9 +27,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: ${{ inputs.fetch-tags }}
       - id: folder-check-changed-files
         uses: tj-actions/changed-files@v39
         with:
           base_sha: ${{ inputs.base_sha }}
           files: |
             ${{ inputs.folder }}
+      - name: "Log folder_changed"
+        run: echo folder_changed=${{ steps.folder-check-changed-files.outputs.any_changed }}
