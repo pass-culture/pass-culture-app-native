@@ -154,7 +154,7 @@
     "react-native-appsflyer": "^6.12.2",
     "react-native-calendars": "^1.1284.0",
     "react-native-code-push": "^8.1.0",
-    "react-native-date-picker": "4.2.2",
+    "react-native-date-picker": "^4.3.5",
     "react-native-detector": "^0.2.3",
     "react-native-device-info": "^10.3.0",
     "react-native-email-link": "^1.10.0",
