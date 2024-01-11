@@ -11,11 +11,13 @@ import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useO
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferAccessibility } from 'features/offerv2/components/OfferAccessibility/OfferAccessibility'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
+import { OfferMetadataList } from 'features/offerv2/components/OfferMetadataList/OfferMetadataList'
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { OfferPlaylistList } from 'features/offerv2/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferPrice } from 'features/offerv2/components/OfferPrice/OfferPrice'
 import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
+import { getOfferMetadata } from 'features/offerv2/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
 import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { useLocation } from 'libs/location'
@@ -38,9 +40,11 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const fromOfferId = route.params.fromOfferId
 
   const { userLocation } = useLocation()
-  const tags = getOfferTags(subcategory.appLabel, offer.extraData ?? undefined)
+  const extraData = offer.extraData ?? undefined
+  const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
+  const metadata = getOfferMetadata(extraData)
 
   const {
     sameArtistPlaylist,
@@ -110,7 +114,16 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         {shouldDisplayAboutBlock ? (
           <React.Fragment>
-            <Typo.Body>À propos</Typo.Body>
+            <Typo.Title3>À propos</Typo.Title3>
+            <Spacer.Column numberOfSpaces={4} />
+
+            {metadata.length > 0 ? (
+              <React.Fragment>
+                <OfferMetadataList metadata={metadata} />
+                <Spacer.Column numberOfSpaces={4} />
+              </React.Fragment>
+            ) : null}
+
             {offer.description ? (
               <React.Fragment>
                 <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>

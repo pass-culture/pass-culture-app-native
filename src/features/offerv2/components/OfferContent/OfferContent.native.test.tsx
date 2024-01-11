@@ -516,6 +516,38 @@ describe('<OfferContent />', () => {
         expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
       })
     })
+
+    describe('With offer metadata', () => {
+      it('should display an editor when offer has an editor', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            extraData: {
+              editeur: 'Gallimard',
+            },
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.queryByText('Éditeur :')).toBeOnTheScreen()
+        expect(screen.queryByText('Gallimard')).toBeOnTheScreen()
+      })
+    })
+
+    it('should not display an editor when offer has not an editor', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          extraData: {},
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Éditeur :')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Gallimard')).not.toBeOnTheScreen()
+    })
   })
 })
 
