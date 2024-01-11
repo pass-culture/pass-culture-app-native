@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -28,7 +29,7 @@ export const NotConnectedFavorites = () => (
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm' }}
+          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
           onBeforeNavigate={onBeforeSignupNavigate}
           buttonHeight="tall"
         />

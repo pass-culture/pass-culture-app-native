@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { render, fireEvent, screen } from 'tests/utils'
 
@@ -13,7 +14,10 @@ describe('LoggedOutHeader', () => {
     const signupButton = screen.getByText('Créer un compte')
     await fireEvent.press(signupButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', { preventCancellation: true })
+    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      from: StepperOrigin.PROFILE,
+      preventCancellation: true,
+    })
   })
 
   it('should log analytics when clicking on "Créer un compte"', async () => {

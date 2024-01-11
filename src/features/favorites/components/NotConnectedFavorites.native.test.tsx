@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -19,7 +20,7 @@ describe('NotConnectedFavorites component', () => {
     fireEvent.press(screen.getByText(`Créer un compte`))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SignupForm', undefined)
+      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.FAVORITE })
       expect(analytics.logSignUpFromFavorite).toHaveBeenCalledTimes(1)
       expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'favorite' })
     })

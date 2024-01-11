@@ -253,21 +253,6 @@ export const logEventAnalytics = {
     }),
   logContinueIdentityCheck: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_IDENTITY_CHECK }),
-  logContinueSetBirthday: () =>
-    analytics.logEvent({
-      amplitude: AmplitudeEvent.CONTINUE_SET_BIRTHDAY,
-      firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY,
-    }),
-  logContinueSetEmail: () =>
-    analytics.logEvent({
-      amplitude: AmplitudeEvent.CONTINUE_SET_EMAIL,
-      firebase: AnalyticsEvent.CONTINUE_SET_EMAIL,
-    }),
-  logContinueSetPassword: () =>
-    analytics.logEvent({
-      amplitude: AmplitudeEvent.CONTINUE_SET_PASSWORD,
-      firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD,
-    }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
   logCopyAddress: (params: { from: Referrals; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.COPY_ADDRESS }, params),

@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { analytics } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
@@ -24,7 +25,10 @@ export function LoggedOutHeader() {
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+          navigateTo={{
+            screen: 'SignupForm',
+            params: { from: StepperOrigin.PROFILE, preventCancellation: true },
+          }}
           onBeforeNavigate={onBeforeNavigate}
           fitContentWidth={isDesktopViewport}
         />

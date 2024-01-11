@@ -2,12 +2,14 @@ import mockdate from 'mockdate'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
+import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
@@ -25,6 +27,8 @@ const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
 
 mockdate.set(CURRENT_DATE)
+
+useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
 
 describe('Signup Form', () => {
   beforeEach(() => {
@@ -115,38 +119,6 @@ describe('Signup Form', () => {
         navigateToHomeConfig.params
       )
     })
-
-    it('should log analytics when clicking on close icon', async () => {
-      renderSignupForm()
-
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-
-      const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
-
-      await screen.findAllByText('Mot de passe')
-
-      const quitButton = screen.getByText('Quitter')
-      fireEvent.press(quitButton)
-
-      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
-    })
-
-    it('should call logCancelSignup with Email when quitting after signup modal', async () => {
-      renderSignupForm()
-
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.press(screen.getByText('Continuer'))
-
-      await screen.findAllByText('Mot de passe')
-
-      fireEvent.press(screen.getByText('Quitter'))
-      fireEvent.press(screen.getByText('Abandonner l’inscription'))
-
-      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
-    })
   })
 
   describe('Go back button', () => {
@@ -227,71 +199,96 @@ describe('Signup Form', () => {
     expect(screen.getByText('Confirme ton adresse e-mail')).toBeOnTheScreen()
   })
 
-  it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
-    renderSignupForm()
+  describe('analytics', () => {
+    it('should trigger StepperDisplayed tracker when displaying step', async () => {
+      simulateSignupSuccess()
+      renderSignupForm()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+      expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+        1,
+        StepperOrigin.HOME,
+        PreValidationSignupStep.Email
+      )
 
-    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
-  })
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await act(async () => {
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      })
 
-  it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
-    renderSignupForm()
+      expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+        2,
+        StepperOrigin.HOME,
+        PreValidationSignupStep.Password
+      )
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    await act(async () => {
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
+
+      expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+        3,
+        StepperOrigin.HOME,
+        PreValidationSignupStep.Birthday
+      )
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () => {
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      })
+
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+      )
+
+      expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+        4,
+        StepperOrigin.HOME,
+        PreValidationSignupStep.CGU
+      )
+
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+        5,
+        StepperOrigin.HOME,
+        PreValidationSignupStep.ConfirmationEmailSent
+      )
     })
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-    )
+    it('should log analytics when clicking on close icon', async () => {
+      renderSignupForm()
 
-    expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
-  })
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
 
-  it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
-    renderSignupForm()
+      const continueButton = screen.getByText('Continuer')
+      fireEvent.press(continueButton)
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    await act(async () => {
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      await screen.findAllByText('Mot de passe')
+
+      const quitButton = screen.getByText('Quitter')
+      fireEvent.press(quitButton)
+
+      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
     })
 
-    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(2)
-    expect(analytics.logContinueSetPassword).not.toHaveBeenCalled()
-  })
+    it('should call logCancelSignup with Email when quitting after signup modal', async () => {
+      renderSignupForm()
 
-  it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
-    renderSignupForm()
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      fireEvent.press(screen.getByText('Continuer'))
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+      await screen.findAllByText('Mot de passe')
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance')))
+      fireEvent.press(screen.getByText('Quitter'))
+      fireEvent.press(screen.getByText('Abandonner l’inscription'))
 
-    const datePicker = screen.getByTestId('date-picker-spinner-native')
-    await act(async () =>
-      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-    )
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-    )
-
-    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
-    expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
-    expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
+    })
   })
 
   describe('API', () => {

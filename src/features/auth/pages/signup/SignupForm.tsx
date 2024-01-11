@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -17,6 +18,7 @@ import {
   SignupData,
 } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
@@ -44,7 +46,6 @@ type SignupStepConfig = {
     | React.FunctionComponent<PreValidationSignupLastStepProps>
     | React.FunctionComponent<ConfirmationEmailSentProps>
   accessibilityTitle: string
-  tracker?: () => Promise<void>
 }
 
 const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
@@ -52,19 +53,16 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     name: PreValidationSignupStep.Email,
     Component: SetEmail,
     accessibilityTitle: 'Adresse e-mail',
-    tracker: analytics.logContinueSetEmail,
   },
   {
     name: PreValidationSignupStep.Password,
     Component: SetPassword,
     accessibilityTitle: 'Mot de passe',
-    tracker: analytics.logContinueSetPassword,
   },
   {
     name: PreValidationSignupStep.Birthday,
     Component: SetBirthday,
     accessibilityTitle: 'Date de naissance',
-    tracker: analytics.logContinueSetBirthday,
   },
   {
     name: PreValidationSignupStep.CGU,
@@ -82,6 +80,7 @@ export const SignupForm: FunctionComponent = () => {
   const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
 
+  const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const [stepIndex, setStepIndex] = React.useState(0)
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
   const isFirstStep = stepIndex === 0
@@ -107,9 +106,13 @@ export const SignupForm: FunctionComponent = () => {
   const goToNextStep = (_signupData: Partial<SignupData>) => {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
     setStepIndex((prevStepIndex) => Math.min(SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
-
-    stepConfig.tracker?.()
   }
+
+  useEffect(() => {
+    if (params?.from && stepConfig.name) {
+      analytics.logStepperDisplayed(params.from, stepConfig.name)
+    }
+  }, [params?.from, stepConfig.name])
 
   const headerHeight = useGetHeaderHeight()
 
