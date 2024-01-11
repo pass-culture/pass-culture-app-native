@@ -212,13 +212,10 @@ describe('SearchLocationModal', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: {
-          locationFilter: {
-            aroundRadius: mockRadiusPlace,
-            locationType: LocationMode.AROUND_PLACE,
-            place: mockPlaces[0],
-          },
+          aroundRadius: mockRadiusPlace,
+          place: mockPlaces[0],
         },
-        type: 'SET_LOCATION_FILTERS',
+        type: 'SET_LOCATION_PLACE',
       })
     })
 
@@ -285,13 +282,8 @@ describe('SearchLocationModal', () => {
       fireEvent.press(screen.getByText('Valider la localisation'))
 
       expect(mockDispatch).toHaveBeenCalledWith({
-        payload: {
-          locationFilter: {
-            aroundRadius: mockAroundMeRadius,
-            locationType: LocationMode.AROUND_ME,
-          },
-        },
-        type: 'SET_LOCATION_FILTERS',
+        payload: mockAroundMeRadius,
+        type: 'SET_LOCATION_AROUND_ME',
       })
     })
 

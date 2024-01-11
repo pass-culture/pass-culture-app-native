@@ -65,7 +65,7 @@ export const SearchWrapper = memo(function SearchWrapper({
   }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch, enableAppLocation])
 
   useEffect(() => {
-    dispatch({ type: 'PRICE_RANGE', payload: priceRange })
+    dispatch({ type: 'SET_STATE', payload: { ...searchState, priceRange } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxPrice])
 

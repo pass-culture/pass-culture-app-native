@@ -2,7 +2,6 @@ import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
 
@@ -42,18 +41,6 @@ describe('Search reducer', () => {
     })
   })
 
-  it('should handle PRICE_RANGE', () => {
-    const action: Action = {
-      type: 'PRICE_RANGE',
-      payload: [30, 200] as SearchState['priceRange'],
-    }
-
-    expect(searchReducer(state, action)).toStrictEqual({
-      ...initialSearchState,
-      priceRange: [30, 200],
-    })
-  })
-
   it('should handle SET_LOCATION_AROUND_ME', () => {
     const newState = searchReducer(state, { type: 'SET_LOCATION_AROUND_ME' })
 
@@ -87,19 +74,5 @@ describe('Search reducer', () => {
       place: Kourou,
       aroundRadius: 100,
     })
-  })
-
-  it('should handle SET_VENUE', () => {
-    const venue = {
-      label: 'La petite librairie',
-      info: 'Michel Léon',
-      geolocation: Kourou.geolocation,
-      venueId: 5959,
-    }
-    const action: Action = { type: 'SET_VENUE', payload: venue }
-
-    const newState = searchReducer(state, action)
-
-    expect(newState).toStrictEqual({ ...state, venue })
   })
 })

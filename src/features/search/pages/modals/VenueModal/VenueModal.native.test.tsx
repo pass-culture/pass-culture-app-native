@@ -152,7 +152,7 @@ const renderDummyComponent = () => {
 }
 
 const DummyComponent = () => {
-  const { dispatch } = SearchWrapper.useSearch()
+  const { searchState, dispatch } = SearchWrapper.useSearch()
   return (
     <React.Fragment>
       <VenueModal visible dismissModal={jest.fn()} />
@@ -160,8 +160,8 @@ const DummyComponent = () => {
         title="setLocationVenueUndefined"
         onPress={() =>
           dispatch({
-            type: 'SET_VENUE',
-            payload: undefined,
+            type: 'SET_STATE',
+            payload: { ...searchState, venue: undefined },
           })
         }
       />
