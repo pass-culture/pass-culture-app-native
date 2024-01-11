@@ -59,14 +59,15 @@ export function OfferSummaryInfoList({ offer }: Readonly<Props>) {
     },
   ]
 
+  const displayedSummaryInfoItems = summaryInfoItems.filter((item) => item.isDisplayed)
+  if (displayedSummaryInfoItems.length === 0) return null
+
   return (
     <React.Fragment>
       {!isPermanentVenue ? <Separator.Horizontal testID="topSeparator" /> : null}
-      {summaryInfoItems.map(({ isDisplayed, Icon, title, subtitle }) =>
-        isDisplayed ? (
-          <SummaryInfo key={title} Icon={Icon} title={title} subtitle={subtitle} />
-        ) : null
-      )}
+      {displayedSummaryInfoItems.map(({ Icon, title, subtitle }) => (
+        <SummaryInfo key={title} Icon={Icon} title={title} subtitle={subtitle} />
+      ))}
     </React.Fragment>
   )
 }

@@ -195,6 +195,30 @@ describe('<OfferContent />', () => {
     ).not.toBeOnTheScreen()
   })
 
+  it('should display duo summary info', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      isDuo: true,
+    }
+    renderOfferContent({ offer })
+
+    await act(async () => {})
+
+    expect(screen.getByText('Duo')).toBeOnTheScreen()
+  })
+
+  it('should not display duo summary info', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      isDuo: false,
+    }
+    renderOfferContent({ offer })
+
+    await act(async () => {})
+
+    expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
+  })
+
   it('should display venue section', async () => {
     renderOfferContent({})
 
