@@ -13,6 +13,7 @@ import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 
+import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
 
 function navigateToLogin(params?: Record<string, unknown>) {
@@ -255,21 +256,6 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
 
 export function isApiError(error: unknown): error is ApiError {
   return (error as ApiError).name === 'ApiError'
-}
-
-export class ApiError extends Error {
-  name = 'ApiError'
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content: any
-  statusCode: number
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(statusCode: number, content: any, message?: string) {
-    super(message)
-    this.content = content
-    this.statusCode = statusCode
-  }
 }
 
 export function extractApiErrorMessage(error: unknown) {

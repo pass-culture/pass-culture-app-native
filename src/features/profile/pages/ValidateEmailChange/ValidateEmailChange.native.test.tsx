@@ -4,7 +4,7 @@ import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 import { QueryObserverResult } from 'react-query'
 
 import * as API from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'

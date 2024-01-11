@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components/native'
 
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { useEmailValidationRemainingResends } from 'features/auth/api/useEmailValidationRemainingResend'
 import { useResendEmailValidation } from 'features/auth/api/useResendEmailValidation'
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'

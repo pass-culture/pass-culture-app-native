@@ -10,8 +10,8 @@ import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
 import { mockServer } from 'tests/mswServer'
 
+import { ApiError } from './ApiError'
 import {
-  ApiError,
   removeRefreshedAccessToken,
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
