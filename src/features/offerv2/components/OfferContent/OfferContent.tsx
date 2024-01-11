@@ -16,6 +16,7 @@ import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { OfferPlaylistList } from 'features/offerv2/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferPrice } from 'features/offerv2/components/OfferPrice/OfferPrice'
 import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
+import { OfferVenueButton } from 'features/offerv2/components/OfferVenueButton/OfferVenueButton'
 import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
 import { getOfferMetadata } from 'features/offerv2/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
@@ -113,6 +114,13 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         <OfferPrice prices={prices} />
         <Spacer.Column numberOfSpaces={6} />
+
+        {offer.venue.isPermanent ? (
+          <React.Fragment>
+            <OfferVenueButton venue={offer.venue} />
+            <Spacer.Column numberOfSpaces={8} />
+          </React.Fragment>
+        ) : null}
 
         {shouldDisplayAboutBlock ? (
           <React.Fragment>

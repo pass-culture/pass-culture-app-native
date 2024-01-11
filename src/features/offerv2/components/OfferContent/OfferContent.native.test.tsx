@@ -170,6 +170,31 @@ describe('<OfferContent />', () => {
     expect(screen.getByText('5,00 €')).toBeOnTheScreen()
   })
 
+  it('should display venue button', async () => {
+    renderOfferContent({})
+
+    await act(async () => {})
+
+    expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
+  })
+
+  it('should not display venue button', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      venue: {
+        ...offerResponseSnap.venue,
+        isPermanent: false,
+      },
+    }
+    renderOfferContent({ offer })
+
+    await act(async () => {})
+
+    expect(
+      screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+    ).not.toBeOnTheScreen()
+  })
+
   it('should display venue section', async () => {
     renderOfferContent({})
 
