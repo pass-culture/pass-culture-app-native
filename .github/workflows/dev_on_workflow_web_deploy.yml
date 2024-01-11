@@ -58,7 +58,7 @@ jobs:
           secrets: |-
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: Set up Cloud SDK to get gsutils
-        uses: 'google-github-actions/setup-gcloud@v1.1.0'
+        uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 416.0.0'
       - name: 'Render Sentry Template'
