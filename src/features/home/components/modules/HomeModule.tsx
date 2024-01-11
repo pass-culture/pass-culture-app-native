@@ -9,7 +9,12 @@ import { RecommendationModule } from 'features/home/components/modules/Recommend
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
-import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/types'
+import {
+  isExclusivityModule,
+  HomepageModule,
+  HomepageModuleType,
+  ModuleData,
+} from 'features/home/types'
 
 const modules = {
   [HomepageModuleType.BusinessModule]: BusinessModule,
@@ -37,6 +42,7 @@ const UnmemoizedModule = ({
   videoModuleId?: string
 }) => {
   /* eslint-disable @typescript-eslint/no-explicit-any */
+  if (isExclusivityModule(item)) return null
   const ComponentModule: any = modules[item.type]
   if (!ComponentModule) return null
   return (

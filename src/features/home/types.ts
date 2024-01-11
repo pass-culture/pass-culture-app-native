@@ -313,3 +313,6 @@ export const isVenuesModule = (module: HomepageModule): module is VenuesModule =
 export const isOffersModule = (module: HomepageModule): module is OffersModule => {
   return module.type === HomepageModuleType.OffersModule
 }
+export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
+  return module.type === HomepageModuleType.ExclusivityModule
+}

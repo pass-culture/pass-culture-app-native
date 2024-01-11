@@ -12,6 +12,7 @@ import {
   formattedThematicHighlightModule,
   formattedOffersModule,
   formattedVenuesModule,
+  formattedExclusivityModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
@@ -24,7 +25,7 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
@@ -109,6 +110,14 @@ describe('<HomeModule />', () => {
 
     await act(async () => {
       expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeOnTheScreen()
+    })
+  })
+
+  it('should not display old ExclusivityOfferModule', async () => {
+    renderHomeModule(formattedExclusivityModule)
+
+    await waitFor(() => {
+      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
     })
   })
 
