@@ -34,6 +34,26 @@ describe('PracticalInformation', () => {
     expect(await screen.findAllByTestId('accessibilityAtomContainer')).not.toHaveLength(0)
   })
 
+  it('should display placeholder when no practical information provided', async () => {
+    const venueWithoutPracticalInformation = {
+      ...venueResponseSnap,
+      withdrawalDetails: undefined,
+      description: undefined,
+      contact: undefined,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+    }
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueWithoutPracticalInformation} />))
+
+    expect(
+      screen.getByText('Les infos pratiques ne sont pas encore renseignées pour ce lieu')
+    ).toBeOnTheScreen()
+  })
+
   it('should not display withdrawal section when no withdrawal info provided', async () => {
     render(
       reactQueryProviderHOC(
