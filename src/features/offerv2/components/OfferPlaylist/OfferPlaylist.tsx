@@ -34,7 +34,7 @@ export function OfferPlaylist({
   onEndReached,
 }: Readonly<OfferPlaylistProps>) {
   return (
-    <View testID={playlistType}>
+    <View>
       <Spacer.Column numberOfSpaces={2} />
       <PassPlaylist
         data={items}

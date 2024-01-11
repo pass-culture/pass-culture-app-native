@@ -49,7 +49,7 @@ describe('<OfferPlaylistList />', () => {
       it('should not display same category playlist when offer has not it', () => {
         renderOfferPlaylistList(offerPlaylistListProps)
 
-        expect(screen.queryByTestId('otherCategoriesSimilarOffers')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Dans la même catégorie')).not.toBeOnTheScreen()
       })
 
       it('should display same category playlist when offer has it', () => {
@@ -58,7 +58,7 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
-        expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeOnTheScreen()
+        expect(screen.queryByText('Dans la même catégorie')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {
@@ -82,7 +82,7 @@ describe('<OfferPlaylistList />', () => {
       it('should not display other categories playlist when offer has not it', () => {
         renderOfferPlaylistList(offerPlaylistListProps)
 
-        expect(screen.queryByTestId('otherCategoriesSimilarOffers')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Ça peut aussi te plaire')).not.toBeOnTheScreen()
       })
 
       it('should display other categories playlist when offer has it', () => {
@@ -91,7 +91,7 @@ describe('<OfferPlaylistList />', () => {
           otherCategoriesSimilarOffers: mockSearchHits,
         })
 
-        expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeOnTheScreen()
+        expect(screen.queryByText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {
@@ -125,13 +125,13 @@ describe('<OfferPlaylistList />', () => {
         sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
       })
 
-      expect(screen.queryByTestId('sameArtistPlaylist')).toBeOnTheScreen()
+      expect(screen.queryByText('Du même auteur')).toBeOnTheScreen()
     })
 
     it('should not display same artist list when offer has not it', () => {
       renderOfferPlaylistList(offerPlaylistListProps)
 
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
     })
   })
 
@@ -148,13 +148,13 @@ describe('<OfferPlaylistList />', () => {
         sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
       })
 
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
     })
 
     it('should not display same artist list when offer has not it', () => {
       renderOfferPlaylistList(offerPlaylistListProps)
 
-      expect(screen.queryByTestId('sameArtistPlaylist')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Du même auteur')).not.toBeOnTheScreen()
     })
   })
 })

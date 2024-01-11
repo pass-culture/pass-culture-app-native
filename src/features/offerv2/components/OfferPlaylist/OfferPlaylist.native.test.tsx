@@ -22,7 +22,7 @@ describe('<OfferPlaylist />', () => {
       />
     )
 
-    expect(screen.getByTestId('sameArtistPlaylist')).toBeOnTheScreen()
+    expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
   })
 
   it('should render the playlist title', () => {
