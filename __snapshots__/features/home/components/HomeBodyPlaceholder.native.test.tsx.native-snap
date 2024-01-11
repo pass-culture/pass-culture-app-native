@@ -121,8 +121,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         }
         getItem={[Function]}
         getItemCount={[Function]}
-        handlerTag={1}
-        handlerType="NativeViewGestureHandler"
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
@@ -141,16 +139,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
         viewabilityConfigCallbackPairs={[]}
-        waitFor={
-          [
-            {
-              "current": null,
-            },
-            {
-              "current": null,
-            },
-          ]
-        }
       >
         <View>
           <View
@@ -1171,8 +1159,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         }
         getItem={[Function]}
         getItemCount={[Function]}
-        handlerTag={2}
-        handlerType="NativeViewGestureHandler"
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
@@ -1191,16 +1177,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
         viewabilityConfigCallbackPairs={[]}
-        waitFor={
-          [
-            {
-              "current": null,
-            },
-            {
-              "current": null,
-            },
-          ]
-        }
       >
         <View>
           <View
@@ -2532,8 +2508,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         }
         getItem={[Function]}
         getItemCount={[Function]}
-        handlerTag={3}
-        handlerType="NativeViewGestureHandler"
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
@@ -2552,16 +2526,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
         viewabilityConfigCallbackPairs={[]}
-        waitFor={
-          [
-            {
-              "current": null,
-            },
-            {
-              "current": null,
-            },
-          ]
-        }
       >
         <View>
           <View
@@ -3802,8 +3766,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         }
         getItem={[Function]}
         getItemCount={[Function]}
-        handlerTag={4}
-        handlerType="NativeViewGestureHandler"
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
@@ -3822,16 +3784,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
         viewabilityConfigCallbackPairs={[]}
-        waitFor={
-          [
-            {
-              "current": null,
-            },
-            {
-              "current": null,
-            },
-          ]
-        }
       >
         <View>
           <View
