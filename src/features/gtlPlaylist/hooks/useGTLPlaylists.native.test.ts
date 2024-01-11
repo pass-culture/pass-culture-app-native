@@ -3,6 +3,7 @@ import { SearchResponse } from '@algolia/client-search'
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import * as useGTLPlaylistsLibrary from '../api/gtlPlaylistApi'
@@ -50,10 +51,15 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
 ])
 
 describe('useGTLPlaylists', () => {
-  const renderHookWithParams = () => renderHook(() => useGTLPlaylists({ venue }))
+  const renderHookWithParams = () =>
+    renderHook(() => useGTLPlaylists({ venue }), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
 
   it('should not fetch if no venue given', async () => {
-    renderHook(() => useGTLPlaylists({ venue: undefined }))
+    renderHook(() => useGTLPlaylists({ venue: undefined }), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
 
     expect(useGTLPlaylistsLibrary.fetchGTLPlaylists).not.toHaveBeenCalled()
   })
