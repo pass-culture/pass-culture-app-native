@@ -40,7 +40,7 @@ export const useChangeEmailMutation = ({
       onSuccess: () => {
         showSuccessSnackBar({
           message:
-            'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
+            'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
           timeout: SNACK_BAR_TIME_OUT,
         })
         navigateToProfile()
