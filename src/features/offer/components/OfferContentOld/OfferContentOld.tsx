@@ -11,13 +11,14 @@ import {
 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
+import { OfferCTAButtonOld } from 'features/offer/components/OfferCTAButtonOld/OfferCTAButtonOld'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { isCloseToBottom } from 'libs/analytics'
+import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 type Props = {
@@ -25,6 +26,7 @@ type Props = {
   offerNativeCategory: NativeCategoryIdEnumv2
   offerSearchGroup: SearchGroupNameEnumv2
   searchGroupList: SearchGroupResponseModelv2[]
+  subcategory: Subcategory
 }
 
 const PLAYLIST_HEIGHT = 300
@@ -42,6 +44,7 @@ export function OfferContentOld({
   offerNativeCategory,
   offerSearchGroup,
   searchGroupList,
+  subcategory,
 }: Readonly<Props>) {
   const route = useRoute<UseRouteType<'Offer'>>()
 
@@ -174,7 +177,11 @@ export function OfferContentOld({
       {!isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       ) : null}
-      <OfferCTAButton offer={offer} trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce} />
+      <OfferCTAButtonOld
+        offer={offer}
+        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+        subcategory={subcategory}
+      />
     </Container>
   )
 }

@@ -1,23 +1,28 @@
-import { rest } from 'msw'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
-import { BookingsResponse } from 'api/gen'
+import {
+  BookingsResponse,
+  BookOfferResponse,
+  CategoryIdEnum,
+  HomepageLabelNameEnumv2,
+  NativeCategoryIdEnumv2,
+  OfferResponse,
+  OnlineOfflinePlatformChoicesEnumv2,
+  SearchGroupNameEnumv2,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import {
-  OfferCTAButton,
-  OfferCTAButtonProps,
-} from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { Subcategory } from 'libs/subcategories/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -40,6 +45,16 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
+
+const mockSubcategory: Subcategory = {
+  categoryId: CategoryIdEnum.CINEMA,
+  appLabel: 'Cinéma plein air',
+  searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+  homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
+  isEvent: true,
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+  nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+}
 
 const offerId = offerResponseSnap.id
 
@@ -69,6 +84,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 const offerCTAButtonProps = {
   offer: offerResponseSnap,
   trackEventHasSeenOfferOnce: jest.fn(),
+  subcategory: mockSubcategory,
 }
 
 describe('<OfferCTAButton />', () => {
@@ -82,6 +98,12 @@ describe('<OfferCTAButton />', () => {
   })
 
   it('should open booking modal when login after booking attempt', async () => {
+    mockServer.getApiV1<BookingsResponse>(`/bookings`, {})
+    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, {
+      requestOptions: { persist: true },
+      responseOptions: { data: offerResponseSnap },
+    })
+
     const newLocal = {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
@@ -166,11 +188,9 @@ describe('<OfferCTAButton />', () => {
       ongoing_bookings: [],
     }
 
-    server.use(
-      rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-        res(ctx.status(200), ctx.json(expectedResponse))
-      )
-    )
+    mockServer.getApiV1<BookingsResponse>(`/bookings`, expectedResponse)
+    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+
     const fromOfferId = 1
     useRoute.mockReturnValueOnce({ params: { fromOfferId } })
 
@@ -201,19 +221,16 @@ describe('<OfferCTAButton />', () => {
     }
 
     describe('When booking API response is success', () => {
+      beforeEach(() => {
+        mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApiV1<BookingsResponse>('/bookings', {
+          requestOptions: { persist: true },
+          responseOptions: { data: expectedResponse },
+        })
+        mockServer.postApiV1<BookOfferResponse>(`/bookings`, { bookingId: 123 })
+      })
+
       it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
-        server.use(
-          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-            res(ctx.status(200), ctx.json(expectedResponse))
-          )
-        )
-
-        server.use(
-          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
-            res(ctx.status(200), ctx.json({ bookingId: 123 }))
-          )
-        )
-
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -240,17 +257,6 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should log BookingConfirmation when pressing button to book the offer', async () => {
-        server.use(
-          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-            res(ctx.status(200), ctx.json(expectedResponse))
-          )
-        )
-
-        server.use(
-          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
-            res(ctx.status(200), ctx.json({ bookingId: 123 }))
-          )
-        )
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -307,19 +313,20 @@ describe('<OfferCTAButton />', () => {
     })
 
     describe('When booking API response is error', () => {
+      beforeEach(() => {
+        mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApiV1<BookingsResponse>('/bookings', {
+          requestOptions: { persist: true },
+          responseOptions: { data: expectedResponse },
+        })
+        mockServer.postApiV1<BookOfferResponse>(`/bookings`, {
+          responseOptions: {
+            statusCode: 400,
+          },
+        })
+      })
+
       it('should not direclty redirect to the offer when pressing button to book the offer', async () => {
-        server.use(
-          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-            res(ctx.status(200), ctx.json(expectedResponse))
-          )
-        )
-
-        server.use(
-          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
-            res(ctx.status(400))
-          )
-        )
-
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -346,18 +353,6 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should not log BookingConfirmation when pressing button to book the offer', async () => {
-        server.use(
-          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-            res(ctx.status(200), ctx.json(expectedResponse))
-          )
-        )
-
-        server.use(
-          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
-            res(ctx.status(400))
-          )
-        )
-
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -385,15 +380,16 @@ describe('<OfferCTAButton />', () => {
     })
 
     it('should display an error message when pressing button to book the offer', async () => {
-      server.use(
-        rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-          res(ctx.status(200), ctx.json(expectedResponse))
-        )
-      )
-
-      server.use(
-        rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(400)))
-      )
+      mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApiV1<BookingsResponse>('/bookings', {
+        requestOptions: { persist: true },
+        responseOptions: { data: expectedResponse },
+      })
+      mockServer.postApiV1<BookOfferResponse>(`/bookings`, {
+        responseOptions: {
+          statusCode: 400,
+        },
+      })
 
       // Multiple renders force us to mock auth context as loggedIn user in this test
       // eslint-disable-next-line local-rules/independent-mocks
@@ -442,11 +438,8 @@ describe('<OfferCTAButton />', () => {
     }
 
     it('should directly redirect to the offer when pressing offer access button', async () => {
-      server.use(
-        rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-          res(ctx.status(200), ctx.json(expectedResponse))
-        )
-      )
+      mockServer.getApiV1<BookingsResponse>(`/bookings`, expectedResponse)
+      mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
       // Multiple renders force us to mock auth context as loggedIn user in this test
       // eslint-disable-next-line local-rules/independent-mocks
@@ -475,10 +468,19 @@ describe('<OfferCTAButton />', () => {
   })
 })
 
-function renderOfferCTAButton({ offer, trackEventHasSeenOfferOnce }: OfferCTAButtonProps) {
+type RenderOfferCTAButtonType = Partial<ComponentProps<typeof OfferCTAButton>>
+
+function renderOfferCTAButton({
+  offer = offerResponseSnap,
+  trackEventHasSeenOfferOnce = jest.fn(),
+}: RenderOfferCTAButtonType) {
   render(
     reactQueryProviderHOC(
-      <OfferCTAButton offer={offer} trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce} />
+      <OfferCTAButton
+        offer={offer}
+        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+        subcategory={mockSubcategory}
+      />
     )
   )
 }

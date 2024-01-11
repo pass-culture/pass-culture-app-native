@@ -9,18 +9,21 @@ import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanne
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import { Subcategory } from 'libs/subcategories/types'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { getSpacing, Spacer } from 'ui/theme'
 
-export type OfferCTAButtonProps = {
+export type OfferCTAButtonOldProps = {
   offer: OfferResponse
   trackEventHasSeenOfferOnce: VoidFunction
+  subcategory: Subcategory
 }
 
-export function OfferCTAButton({
+export function OfferCTAButtonOld({
   offer,
   trackEventHasSeenOfferOnce,
-}: Readonly<OfferCTAButtonProps>) {
+  subcategory,
+}: Readonly<OfferCTAButtonOldProps>) {
   const route = useRoute<UseRouteType<'Offer'>>()
   const from = route.params?.from
   const searchId = route.params?.searchId
@@ -38,7 +41,7 @@ export function OfferCTAButton({
     isEndedUsedBooking,
     bottomBannerText,
     isDisabled,
-  } = useCtaWordingAndAction({ offer, from, searchId }) ?? {}
+  } = useCtaWordingAndAction({ offer, from, searchId, subcategory }) ?? {}
 
   const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useBookOfferModal({
     modalToDisplay,

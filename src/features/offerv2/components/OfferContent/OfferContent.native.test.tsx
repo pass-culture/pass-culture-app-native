@@ -616,6 +616,14 @@ describe('<OfferContent />', () => {
       expect(screen.queryByText('Gallimard')).not.toBeOnTheScreen()
     })
   })
+
+  it('should display "Réserver l’offre" button', async () => {
+    renderOfferContent({})
+
+    await act(async () => {})
+
+    expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>

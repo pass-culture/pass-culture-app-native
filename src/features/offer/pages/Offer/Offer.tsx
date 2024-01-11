@@ -40,6 +40,7 @@ export function Offer() {
       offerNativeCategory={nativeCategory}
       offerSearchGroup={searchGroupName}
       searchGroupList={subcategories.searchGroups}
+      subcategory={subcategoriesMapping[offer.subcategoryId]}
     />
   )
 }

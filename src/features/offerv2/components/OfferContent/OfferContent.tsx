@@ -8,9 +8,11 @@ import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
+import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferAccessibility } from 'features/offerv2/components/OfferAccessibility/OfferAccessibility'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
+import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
 import { OfferMetadataList } from 'features/offerv2/components/OfferMetadataList/OfferMetadataList'
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { OfferPlaylistList } from 'features/offerv2/components/OfferPlaylistList/OfferPlaylistList'
@@ -26,6 +28,7 @@ import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -42,6 +45,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const fromOfferId = route.params.fromOfferId
 
   const { userLocation } = useLocation()
+
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
@@ -101,78 +105,97 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const shouldDisplayAboutBlock =
     shouldDisplayAccessibilityBlock || !!offer.description || hasMetadata
 
+  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking({
+    offerNativeCategory: subcategory.nativeCategoryId,
+  })
+
   return (
-    <Container testID="offerv2-container">
-      <InfoContainer>
-        <View style={{ height: 500 }}></View>
-        <InformationTags tags={tags} />
+    <Container>
+      <ScrollViewContainer testID="offerv2-container">
+        <InfoContainer>
+          <View style={{ height: 500 }}></View>
+          <InformationTags tags={tags} />
 
-        <OfferTitle offerName={offer.name} />
-        <Spacer.Column numberOfSpaces={2} />
+          <OfferTitle offerName={offer.name} />
+          <Spacer.Column numberOfSpaces={2} />
 
-        <OfferArtists artists={artists} />
+          <OfferArtists artists={artists} />
+          <Spacer.Column numberOfSpaces={6} />
+
+          <OfferPrice prices={prices} />
+
+          {offer.venue.isPermanent ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <OfferVenueButton venue={offer.venue} />
+            </React.Fragment>
+          ) : null}
+
+          <OfferSummaryInfoList offer={offer} />
+
+          {shouldDisplayAboutBlock ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={8} />
+              <Typo.Title3>À propos</Typo.Title3>
+              <Spacer.Column numberOfSpaces={4} />
+
+              {hasMetadata ? (
+                <React.Fragment>
+                  <OfferMetadataList metadata={metadata} />
+                  <Spacer.Column numberOfSpaces={2} />
+                </React.Fragment>
+              ) : null}
+
+              {offer.description ? (
+                <React.Fragment>
+                  <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
+                  <CollapsibleText
+                    text={offer.description}
+                    numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}></CollapsibleText>
+                </React.Fragment>
+              ) : null}
+              <Spacer.Column numberOfSpaces={8} />
+              {shouldDisplayAccessibilityBlock ? (
+                <OfferAccessibility accessibility={offer.accessibility} />
+              ) : null}
+            </React.Fragment>
+          ) : null}
+        </InfoContainer>
+
+        <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
         <Spacer.Column numberOfSpaces={6} />
 
-        <OfferPrice prices={prices} />
+        <OfferPlaylistList
+          offer={offer}
+          position={userLocation}
+          sameCategorySimilarOffers={sameCategorySimilarOffers}
+          apiRecoParamsSameCategory={apiRecoParamsSameCategory}
+          otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+          apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
+          sameArtistPlaylist={sameArtistPlaylist}
+          handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
+          handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
+          handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
+        />
+        <SectionWithDivider visible>
+          <Spacer.Column numberOfSpaces={22} />
+        </SectionWithDivider>
+      </ScrollViewContainer>
 
-        {offer.venue.isPermanent ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={6} />
-            <OfferVenueButton venue={offer.venue} />
-          </React.Fragment>
-        ) : null}
-
-        <OfferSummaryInfoList offer={offer} />
-
-        {shouldDisplayAboutBlock ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={8} />
-            <Typo.Title3>À propos</Typo.Title3>
-            <Spacer.Column numberOfSpaces={4} />
-
-            {hasMetadata ? (
-              <React.Fragment>
-                <OfferMetadataList metadata={metadata} />
-                <Spacer.Column numberOfSpaces={4} />
-              </React.Fragment>
-            ) : null}
-
-            {offer.description ? (
-              <React.Fragment>
-                <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
-                <CollapsibleText
-                  text={offer.description}
-                  numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}></CollapsibleText>
-              </React.Fragment>
-            ) : null}
-            <Spacer.Column numberOfSpaces={8} />
-            {shouldDisplayAccessibilityBlock ? (
-              <OfferAccessibility accessibility={offer.accessibility} />
-            ) : null}
-          </React.Fragment>
-        ) : null}
-      </InfoContainer>
-
-      <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
-      <Spacer.Column numberOfSpaces={6} />
-
-      <OfferPlaylistList
+      <OfferCTAButton
         offer={offer}
-        position={userLocation}
-        sameCategorySimilarOffers={sameCategorySimilarOffers}
-        apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-        otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-        apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-        sameArtistPlaylist={sameArtistPlaylist}
-        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
-        handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
-        handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
+        subcategory={subcategory}
+        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
       />
     </Container>
   )
 }
 
-const Container = styled(IOScrollView)({})
+const Container = styled.View({
+  flex: 1,
+})
+
+const ScrollViewContainer = styled(IOScrollView)({})
 
 const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
