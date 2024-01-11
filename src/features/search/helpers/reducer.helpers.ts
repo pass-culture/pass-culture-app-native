@@ -13,10 +13,5 @@ export const clampPrice = (priceRange: Range<number> | null | undefined): Range<
   return [min, max]
 }
 
-export const addOrRemove = (array: SearchGroupNameEnumv2[], element: SearchGroupNameEnumv2) => {
-  if (array.includes(element)) return array.filter((el) => el !== element)
-  return [...array, element]
-}
-
 export const sortCategories = (a: SearchGroupNameEnumv2, b: SearchGroupNameEnumv2) =>
   a.localeCompare(b)
