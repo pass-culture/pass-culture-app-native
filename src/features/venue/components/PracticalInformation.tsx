@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { ContactBlock } from 'features/venue/components/ContactBlockNew/ContactBlockNew'
+import { NoInformationPlaceholder } from 'features/venue/components/NoInformationPlaceholder'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
@@ -37,6 +38,10 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     },
   ]
   const sectionsToDisplay = sections.filter((section) => section.isDisplayed)
+
+  if (sectionsToDisplay.length === 0) {
+    return <NoInformationPlaceholder />
+  }
 
   return (
     <Container>
