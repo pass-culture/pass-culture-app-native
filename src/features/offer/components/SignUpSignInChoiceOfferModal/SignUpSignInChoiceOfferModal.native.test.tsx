@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -16,7 +17,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('go to login with offerId in params on button click and log analytics', async () => {
+  it('should go to login with offerId in params on button click and log analytics', async () => {
     render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
 
     const button = screen.getByText('Se connecter')
@@ -29,13 +30,14 @@ describe('SignUpSignInChoiceOfferModal', () => {
     expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
   })
 
-  it('go to signup with offerId in params on click button and log analytics', async () => {
+  it('should go to signup with offerId in params on click button and log analytics', async () => {
     render(<SignUpSignInChoiceOfferModal offerId={OFFER_ID} visible dismissModal={dismissModal} />)
 
     const button = screen.getByText('Créer un compte')
     await fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      from: StepperOrigin.OFFER,
       preventCancellation: true,
       offerId: OFFER_ID,
     })

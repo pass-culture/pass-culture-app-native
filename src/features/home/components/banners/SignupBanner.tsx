@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
@@ -12,7 +13,7 @@ export const SignupBanner = () => {
   return (
     <BannerWithBackground
       leftIcon={StyledBicolorUnlock}
-      navigateTo={{ screen: 'SignupForm' }}
+      navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.HOME } }}
       onBeforeNavigate={onBeforeNavigate}>
       <StyledButtonText>Débloque ton crédit</StyledButtonText>
       <StyledBodyText>Crée ton compte si tu as entre 15 et 18 ans&nbsp;!</StyledBodyText>

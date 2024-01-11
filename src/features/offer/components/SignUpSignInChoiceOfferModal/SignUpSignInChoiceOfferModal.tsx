@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -40,7 +41,10 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true, offerId } }}
+          navigateTo={{
+            screen: 'SignupForm',
+            params: { from: StepperOrigin.OFFER, preventCancellation: true, offerId },
+          }}
           onBeforeNavigate={() => {
             analytics.logSignUpFromOffer(offerId)
             analytics.logSignUpClicked({ from: 'offer_favorite' })

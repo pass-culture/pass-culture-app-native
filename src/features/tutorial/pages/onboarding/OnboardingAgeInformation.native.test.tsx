@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
@@ -49,7 +49,10 @@ describe('OnboardingAgeInformation', () => {
       fireEvent.press(signupButton)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('SignupForm', { preventCancellation: true })
+        expect(navigate).toHaveBeenCalledWith('SignupForm', {
+          from: StepperOrigin.TUTORIAL,
+          preventCancellation: true,
+        })
       })
     }
   )

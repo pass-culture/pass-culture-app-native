@@ -85,7 +85,10 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
             <InternalTouchableLink
               as={ButtonWithLinearGradient}
               wording="Créer un compte"
-              navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+              navigateTo={{
+                screen: 'SignupForm',
+                params: { from: StepperOrigin.TUTORIAL, preventCancellation: true },
+              }}
               onBeforeNavigate={onSignupPress}
             />
             <Spacer.Column numberOfSpaces={4} />

@@ -4,6 +4,7 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import {
+  StepperOrigin,
   TutorialRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
@@ -41,7 +42,10 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element =>
       as={ButtonWithLinearGradient}
       wording="Créer un compte"
       onBeforeNavigate={onSignupPress}
-      navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
+      navigateTo={{
+        screen: 'SignupForm',
+        params: { from: StepperOrigin.TUTORIAL, preventCancellation: true },
+      }}
     />,
     <InternalTouchableLink
       key={2}
