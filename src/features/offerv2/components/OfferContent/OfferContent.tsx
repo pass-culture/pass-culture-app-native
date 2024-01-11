@@ -45,6 +45,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
   const metadata = getOfferMetadata(extraData)
+  const hasMetadata = metadata.length > 0
 
   const {
     sameArtistPlaylist,
@@ -95,7 +96,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     isNullOrUndefined(offer.accessibility.mentalDisability) &&
     isNullOrUndefined(offer.accessibility.motorDisability)
   )
-  const shouldDisplayAboutBlock = shouldDisplayAccessibilityBlock || !!offer.description
+  const shouldDisplayAboutBlock =
+    shouldDisplayAccessibilityBlock || !!offer.description || hasMetadata
 
   return (
     <Container testID="offerv2-container">
@@ -117,7 +119,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <Typo.Title3>À propos</Typo.Title3>
             <Spacer.Column numberOfSpaces={4} />
 
-            {metadata.length > 0 ? (
+            {hasMetadata ? (
               <React.Fragment>
                 <OfferMetadataList metadata={metadata} />
                 <Spacer.Column numberOfSpaces={4} />

@@ -439,12 +439,30 @@ describe('<OfferContent />', () => {
       expect(screen.getByText('À propos')).toBeOnTheScreen()
     })
 
-    it('should not display about block when there are not description and accessibility block', async () => {
+    it('should display about block when there is metadata', async () => {
       renderOfferContent({
         offer: {
           ...offerResponseSnap,
           description: undefined,
           accessibility: {},
+          extraData: {
+            speaker: 'Toto',
+          },
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
+    })
+
+    it('should not display about block when there are not description, accessibility block and metadata', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          description: undefined,
+          accessibility: {},
+          extraData: {},
         },
       })
 
