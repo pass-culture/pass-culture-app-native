@@ -6,7 +6,7 @@ import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
-import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt'
+import { getTokenStatus } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -14,12 +14,11 @@ import { storage } from 'libs/storage'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
-import { refreshAccessTokenWithRetriesOnError } from './refreshAccessTokenWithRetriesOnError'
+import { refreshAccessToken } from './refreshAccessToken'
 import {
   REFRESH_TOKEN_IS_EXPIRED_ERROR,
   FAILED_TO_GET_REFRESH_TOKEN_ERROR,
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
-  Result,
 } from './types'
 
 function navigateToLogin(params?: Record<string, unknown>) {
@@ -119,31 +118,6 @@ export const safeFetch = async (
   }
 
   return fetch(url, runtimeOptions)
-}
-
-let refreshedAccessToken: Promise<Result> | null = null
-
-export const removeRefreshedAccessToken = (): void => {
-  refreshedAccessToken = null
-}
-
-export const refreshAccessToken = async (
-  api: DefaultApi,
-  remainingRetries = 1
-): Promise<Result> => {
-  if (!refreshedAccessToken) {
-    refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
-      (result) => {
-        if (result.result) {
-          const lifetimeInMs = computeTokenRemainingLifetimeInMs(result.result)
-          setTimeout(removeRefreshedAccessToken, lifetimeInMs)
-        }
-        return result
-      }
-    )
-  }
-
-  return refreshedAccessToken
 }
 
 const extractResponseBody = async (response: Response): Promise<string> => {

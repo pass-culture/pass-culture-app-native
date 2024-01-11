@@ -1,5 +1,5 @@
 import { api } from 'api/api'
-import { refreshAccessToken } from 'api/apiHelpers'
+import { refreshAccessToken } from 'api/refreshAccessToken'
 import { env } from 'libs/environment'
 import { getTokenStatus } from 'libs/jwt'
 import { storage } from 'libs/storage'
