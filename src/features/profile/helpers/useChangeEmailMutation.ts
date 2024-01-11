@@ -8,7 +8,11 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { ChangeEmailRequest } from 'features/profile/types'
 import { analytics } from 'libs/analytics'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import {
+  SNACK_BAR_TIME_OUT,
+  SNACK_BAR_TIME_OUT_LONG,
+  useSnackBarContext,
+} from 'ui/components/snackBar/SnackBarContext'
 
 export const useChangeEmailMutation = ({
   setPasswordErrorMessage,
@@ -40,8 +44,8 @@ export const useChangeEmailMutation = ({
       onSuccess: () => {
         showSuccessSnackBar({
           message:
-            'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
-          timeout: SNACK_BAR_TIME_OUT,
+            'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
+          timeout: SNACK_BAR_TIME_OUT_LONG,
         })
         navigateToProfile()
         analytics.logSaveNewMail()

@@ -289,7 +289,10 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
           ]
         }
       >
-        Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
+        Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur
+         
+        email@domain.ext
+         avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
       </Text>
       <View
         numberOfSpaces={4}
@@ -1016,7 +1019,10 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
           ]
         }
       >
-        Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
+        Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur
+         
+        email@domain.ext
+         avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
       </Text>
       <View
         numberOfSpaces={4}

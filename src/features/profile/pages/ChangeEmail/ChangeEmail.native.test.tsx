@@ -8,7 +8,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, superFlushWithAct } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from './ChangeEmail'
@@ -123,8 +123,8 @@ describe('<ChangeEmail/>', () => {
 
       expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
         message:
-          'E-mail envoyé\u00a0! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams.',
-        timeout: SNACK_BAR_TIME_OUT,
+          'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
       })
     })
 
