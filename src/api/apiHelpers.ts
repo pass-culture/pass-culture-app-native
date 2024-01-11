@@ -15,6 +15,12 @@ import { storage } from 'libs/storage'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
+import {
+  REFRESH_TOKEN_IS_EXPIRED_ERROR,
+  FAILED_TO_GET_REFRESH_TOKEN_ERROR,
+  UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
+  Result,
+} from './types'
 
 function navigateToLogin(params?: Record<string, unknown>) {
   navigateFromRef('Login', params)
@@ -114,20 +120,6 @@ export const safeFetch = async (
 
   return fetch(url, runtimeOptions)
 }
-
-const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
-const REFRESH_TOKEN_IS_EXPIRED_ERROR = 'Le refresh token est expiré'
-const UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN =
-  'Une erreur inconnue est survenue lors de la regénération de l’access token'
-type Result =
-  | { result: string; error?: never }
-  | {
-      result?: never
-      error:
-        | typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR
-        | typeof REFRESH_TOKEN_IS_EXPIRED_ERROR
-        | typeof UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN
-    }
 
 let refreshedAccessToken: Promise<Result> | null = null
 
