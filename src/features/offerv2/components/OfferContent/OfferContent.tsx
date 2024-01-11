@@ -94,7 +94,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const shouldDisplayAboutBlock = shouldDisplayAccessibilityBlock || !!offer.description
 
   return (
-    <Container testID="offer-container">
+    <Container testID="offerv2-container">
       <InfoContainer>
         <View style={{ height: 500 }}></View>
         <InformationTags tags={tags} />

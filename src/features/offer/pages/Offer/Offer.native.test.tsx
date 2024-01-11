@@ -111,7 +111,7 @@ describe('<Offer />', () => {
     it('should display offer v2 page', () => {
       renderOfferPage({ mockOffer: offerResponseSnap })
 
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
+      expect(screen.getByTestId('offerv2-container')).toBeOnTheScreen()
     })
 
     it('should display subcategory tag', () => {
@@ -126,6 +126,6 @@ describe('<Offer />', () => {
 
     await act(async () => {})
 
-    expect(screen.queryByText('À propos')).toBe(null)
+    expect(screen.queryByTestId('offerv2-container')).toBe(null)
   })
 })
