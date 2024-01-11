@@ -23,7 +23,7 @@ export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: nu
   const renderPlaceholder = useCallback(() => <OfferTilePlaceholder size={size} />, [size])
 
   return (
-    <Container>
+    <Container testID="OfferPlaylistSkeleton">
       <Spacer.Row numberOfSpaces={6} />
       <View>
         <Spacer.Column numberOfSpaces={1} />

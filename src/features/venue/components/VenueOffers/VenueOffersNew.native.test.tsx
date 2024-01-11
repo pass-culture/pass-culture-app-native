@@ -77,18 +77,18 @@ describe('<VenueOffersNew />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should return null if offers are fetching', () => {
+  it('should display skeleton if offers are fetching', () => {
     useIsFetchingSpy.mockReturnValueOnce(1)
     renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
-    expect(screen.toJSON()).toBeNull()
+    expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
-  it('should return null if playlists are fetching', () => {
+  it('should display skeleton if playlists are fetching', () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({ isLoading: true, gtlPlaylists: [] })
     renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
-    expect(screen.toJSON()).toBeNull()
+    expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
   it('should display placeholder when no offers', () => {
