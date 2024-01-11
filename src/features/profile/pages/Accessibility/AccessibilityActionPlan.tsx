@@ -386,9 +386,6 @@ export function AccessibilityActionPlan() {
           />
           <ActionPlanTag />
         </BulletListItem>
-        <BulletListItem text="Certification accessibilité de tous les développeurs internes">
-          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
-        </BulletListItem>
         <BulletListItem text="Réalisation d’un audit d’accessibilité du site ">
           <ExternalTouchableLink
             as={ButtonInsideText}
