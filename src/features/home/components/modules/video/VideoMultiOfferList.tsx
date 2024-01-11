@@ -25,13 +25,12 @@ export const VideoMultiOfferList: React.FC<OfferListProps> = ({
         ItemSeparatorComponent={ItemSeparatorComponent}
         data={offers}
         renderItem={({ item }) => (
-          <React.Fragment key={item.objectID}>
-            <HorizontalOfferTile
-              offer={item}
-              onPress={hideModal}
-              analyticsParams={analyticsParams}
-            />
-          </React.Fragment>
+          <HorizontalOfferTile
+            key={item.objectID}
+            offer={item}
+            onPress={hideModal}
+            analyticsParams={analyticsParams}
+          />
         )}
       />
       <Spacer.Column numberOfSpaces={4} />
