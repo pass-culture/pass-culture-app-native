@@ -33,7 +33,7 @@ describe('<AuthenticationButton />', () => {
     const connectButton = screen.getByRole('link')
     fireEvent.press(connectButton)
 
-    expect(navigate).toHaveBeenCalledWith('Login', { ...NAV_PARAMS_LOGIN })
+    expect(navigate).toHaveBeenCalledWith('Login', NAV_PARAMS_LOGIN)
   })
 
   it('should navigate with additional params when defined for signup', () => {
@@ -42,6 +42,6 @@ describe('<AuthenticationButton />', () => {
     const connectButton = screen.getByRole('link')
     fireEvent.press(connectButton)
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', { ...NAV_PARAMS_SIGNUP })
+    expect(navigate).toHaveBeenCalledWith('SignupForm', NAV_PARAMS_SIGNUP)
   })
 })

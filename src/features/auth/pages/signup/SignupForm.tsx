@@ -110,7 +110,7 @@ export const SignupForm: FunctionComponent = () => {
 
   useEffect(() => {
     if (params?.from && stepConfig.name) {
-      analytics.logStepperDisplayed(params?.from, stepConfig.name)
+      analytics.logStepperDisplayed(params.from, stepConfig.name)
     }
   }, [params?.from, stepConfig.name])
 

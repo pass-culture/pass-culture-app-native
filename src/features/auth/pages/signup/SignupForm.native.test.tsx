@@ -119,38 +119,6 @@ describe('Signup Form', () => {
         navigateToHomeConfig.params
       )
     })
-
-    it('should log analytics when clicking on close icon', async () => {
-      renderSignupForm()
-
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-
-      const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
-
-      await screen.findAllByText('Mot de passe')
-
-      const quitButton = screen.getByText('Quitter')
-      fireEvent.press(quitButton)
-
-      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
-    })
-
-    it('should call logCancelSignup with Email when quitting after signup modal', async () => {
-      renderSignupForm()
-
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.press(screen.getByText('Continuer'))
-
-      await screen.findAllByText('Mot de passe')
-
-      fireEvent.press(screen.getByText('Quitter'))
-      fireEvent.press(screen.getByText('Abandonner l’inscription'))
-
-      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
-    })
   })
 
   describe('Go back button', () => {
@@ -232,21 +200,8 @@ describe('Signup Form', () => {
   })
 
   describe('analytics', () => {
-    it('should trigger StepperDisplayed tracker when clicking on next step from SetEmail', async () => {
-      renderSignupForm()
-
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-
-      expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-        1,
-        StepperOrigin.HOME,
-        PreValidationSignupStep.Email
-      )
-    })
-
-    it('should trigger StepperDisplayed tracker when clicking on next step from SetPassword', async () => {
+    it('should trigger StepperDisplayed tracker when displaying step', async () => {
+      simulateSignupSuccess()
       renderSignupForm()
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
@@ -294,7 +249,6 @@ describe('Signup Form', () => {
         PreValidationSignupStep.CGU
       )
 
-      simulateSignupSuccess()
       await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
@@ -302,6 +256,38 @@ describe('Signup Form', () => {
         StepperOrigin.HOME,
         PreValidationSignupStep.ConfirmationEmailSent
       )
+    })
+
+    it('should log analytics when clicking on close icon', async () => {
+      renderSignupForm()
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+
+      const continueButton = screen.getByText('Continuer')
+      fireEvent.press(continueButton)
+
+      await screen.findAllByText('Mot de passe')
+
+      const quitButton = screen.getByText('Quitter')
+      fireEvent.press(quitButton)
+
+      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
+    })
+
+    it('should call logCancelSignup with Email when quitting after signup modal', async () => {
+      renderSignupForm()
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      fireEvent.press(screen.getByText('Continuer'))
+
+      await screen.findAllByText('Mot de passe')
+
+      fireEvent.press(screen.getByText('Quitter'))
+      fireEvent.press(screen.getByText('Abandonner l’inscription'))
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
     })
   })
 
