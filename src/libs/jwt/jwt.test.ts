@@ -1,11 +1,15 @@
 import * as jwtDecode from 'jwt-decode'
+import mockdate from 'mockdate'
 
-import { getTokenStatus } from 'libs/jwt'
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt'
 
 jest.unmock('libs/jwt')
+mockdate.set(CURRENT_DATE)
+
+const mockJwtDecode = jest.spyOn(jwtDecode, 'default')
 
 describe('getTokenStatus', () => {
-  const mockJwtDecode = jest.spyOn(jwtDecode, 'default')
   const fakeAccessToken = 'this is a fake access token, because we mock result of jwt-decode'
 
   it('unknown status given no access token', () => {
@@ -44,5 +48,33 @@ describe('getTokenStatus', () => {
     const accessTokenStatus = getTokenStatus(fakeAccessToken)
 
     expect(accessTokenStatus).toBe('valid')
+  })
+})
+
+const tokenRemainingLifetimeInMs = 10 * 60 * 1000
+const decodedAccessToken = {
+  fresh: false,
+  iat: 1689576398,
+  jti: 'a90f96de-185d-4edb-a878-d714eea7ff74',
+  type: 'access',
+  sub: 'bene_18@example.com',
+  nbf: 1689576398,
+  exp: (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000,
+  user_claims: {
+    user_id: 12713,
+  },
+}
+
+describe('computeTokenRemainingLifetimeInMs', () => {
+  it('should return undefined when token can not be decoded', () => {
+    mockJwtDecode.mockReturnValueOnce(null)
+
+    expect(computeTokenRemainingLifetimeInMs('abc')).toBeUndefined()
+  })
+
+  it('should return remaining lifetime in milliseconds', () => {
+    mockJwtDecode.mockReturnValueOnce(decodedAccessToken)
+
+    expect(computeTokenRemainingLifetimeInMs('abc')).toEqual(tokenRemainingLifetimeInMs)
   })
 })

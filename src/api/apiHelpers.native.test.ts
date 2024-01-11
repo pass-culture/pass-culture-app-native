@@ -1,9 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import mockdate from 'mockdate'
 import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
 
-import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import * as jwt from 'libs/jwt'
@@ -21,13 +19,10 @@ import {
   refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
-  computeTokenRemainingLifetimeInMs,
 } from './apiHelpers'
 import { Configuration, DefaultApi, RefreshResponse } from './gen'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
-
-mockdate.set(CURRENT_DATE)
 
 const configuration: Configuration = {
   basePath: env.API_BASE_URL,
@@ -52,19 +47,6 @@ const respondWith = async (
 
 const accessToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTI1NjM1NywianRpIjoiNTFkMjc5OGMtZDc1YS00NjQ1LTg0ZTAtNTgxYmQ3NTQzZGY3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJlbmVfMThAZXhhbXBsZS5jb20iLCJuYmYiOjE2ODkyNTYzNTcsImV4cCI6MTY4OTI1NzI1NywidXNlcl9jbGFpbXMiOnsidXNlcl9pZCI6MTI3MTN9fQ.OW09vfchjTx-0LfZiaAJu8eMd9aftExhxR4bUsgl3xw'
-const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-const decodedAccessToken = {
-  fresh: false,
-  iat: 1689576398,
-  jti: 'a90f96de-185d-4edb-a878-d714eea7ff74',
-  type: 'access',
-  sub: 'bene_18@example.com',
-  nbf: 1689576398,
-  exp: (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000,
-  user_claims: {
-    user_id: 12713,
-  },
-}
 
 const apiUrl = '/native/v1/me'
 const optionsWithAccessToken = {
@@ -73,7 +55,8 @@ const optionsWithAccessToken = {
   },
 }
 
-jest.spyOn(jwt, 'decodeToken').mockReturnValue(decodedAccessToken)
+const tokenRemainingLifetimeInMs = 10 * 60 * 1000
+jest.spyOn(jwt, 'computeTokenRemainingLifetimeInMs').mockReturnValue(tokenRemainingLifetimeInMs)
 
 jest.spyOn(CodePush, 'getUpdateMetadata').mockResolvedValue(null)
 
@@ -548,18 +531,6 @@ describe('[api] helpers', () => {
 
     it('should return false when error code is 400', () => {
       expect(isAPIExceptionCapturedAsInfo(400)).toEqual(false)
-    })
-  })
-
-  describe('computeTokenRemainingLifetimeInMs', () => {
-    it('should return undefined when token can not be decoded', () => {
-      jest.spyOn(jwt, 'decodeToken').mockReturnValueOnce(null)
-
-      expect(computeTokenRemainingLifetimeInMs('abc')).toBeUndefined()
-    })
-
-    it('should return remaining lifetime in milliseconds', () => {
-      expect(computeTokenRemainingLifetimeInMs('abc')).toEqual(tokenRemainingLifetimeInMs)
     })
   })
 })
