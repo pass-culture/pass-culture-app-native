@@ -11,6 +11,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         },
       ]
     }
+    testID="OfferPlaylistSkeleton"
   >
     <View
       numberOfSpaces={6}
@@ -1057,6 +1058,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         },
       ]
     }
+    testID="OfferPlaylistSkeleton"
   >
     <View
       numberOfSpaces={6}
@@ -2417,6 +2419,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         },
       ]
     }
+    testID="OfferPlaylistSkeleton"
   >
     <View
       numberOfSpaces={6}
@@ -3689,6 +3692,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         },
       ]
     }
+    testID="OfferPlaylistSkeleton"
   >
     <View
       numberOfSpaces={6}

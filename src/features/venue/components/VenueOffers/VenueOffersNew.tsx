@@ -20,6 +20,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { OfferPlaylistSkeleton } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { Spacer, Typo } from 'ui/theme'
@@ -99,7 +100,13 @@ export function VenueOffersNew({
     [onPressSeeMore]
   )
 
-  if (isVenueOfferFetching || arePlaylistsLoading) return null
+  if (isVenueOfferFetching || arePlaylistsLoading)
+    return (
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={6} />
+        <OfferPlaylistSkeleton size={itemHeight} numberOfTiles={6} />
+      </React.Fragment>
+    )
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
     return <NoOfferPlaceholder />
