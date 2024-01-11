@@ -68,7 +68,10 @@ describe('[api] helpers', () => {
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
   const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
-  afterEach(removeRefreshedAccessToken)
+  afterEach(() => {
+    mockFetch.mockReset()
+    removeRefreshedAccessToken()
+  })
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
