@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import React, { FunctionComponent, useCallback } from 'react'
+import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
@@ -22,17 +22,28 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
   offerId,
   dismissModal,
 }) => {
-  const theme = useTheme()
+  const closeModal = useCallback(() => {
+    analytics.logQuitFavoriteModalForSignIn(offerId)
+    dismissModal()
+  }, [dismissModal, offerId])
+
+  const signUp = useCallback(() => {
+    analytics.logSignUpFromOffer(offerId)
+    analytics.logSignUpClicked({ from: 'offer_favorite' })
+    dismissModal()
+  }, [dismissModal, offerId])
+
+  const signIn = useCallback(() => {
+    analytics.logSignInFromOffer(offerId)
+    dismissModal()
+  }, [dismissModal, offerId])
 
   return (
     <AppModalWithIllustration
       visible={visible}
       title={'Identifie-toi pour' + LINE_BREAK + 'retrouver tes favoris'}
       Illustration={BicolorUserFavorite}
-      hideModal={() => {
-        analytics.logQuitFavoriteModalForSignIn(offerId)
-        dismissModal()
-      }}>
+      hideModal={closeModal}>
       <StyledBody>
         Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
       </StyledBody>
@@ -45,22 +56,14 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
             screen: 'SignupForm',
             params: { from: StepperOrigin.OFFER, preventCancellation: true, offerId },
           }}
-          onBeforeNavigate={() => {
-            analytics.logSignUpFromOffer(offerId)
-            analytics.logSignUpClicked({ from: 'offer_favorite' })
-            dismissModal()
-          }}
-          fitContentWidth={theme.isDesktopViewport}
+          onBeforeNavigate={signUp}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
         params={{ offerId, preventCancellation: true }}
-        onAdditionalPress={() => {
-          analytics.logSignInFromOffer(offerId)
-          dismissModal()
-        }}
+        onAdditionalPress={signIn}
       />
     </AppModalWithIllustration>
   )
