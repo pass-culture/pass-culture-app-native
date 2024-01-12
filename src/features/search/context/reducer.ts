@@ -25,7 +25,6 @@ export const initialSearchState: SearchState = {
 
 export type Action =
   | { type: 'SET_STATE'; payload: SearchState }
-  | { type: ''; payload: SearchState['priceRange'] }
   | { type: 'SET_LOCATION_EVERYWHERE' }
   | { type: 'SET_LOCATION_AROUND_ME'; payload?: number }
   | { type: 'SET_LOCATION_PLACE'; payload: { aroundRadius?: number; place: SuggestedPlace } }
