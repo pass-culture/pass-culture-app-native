@@ -16,3 +16,7 @@ update:
   customfield_10085: # repository
     - set: "{{ .overrides.customfield_10085 }}"
   {{- end -}}
+  {{if .overrides.customfield_10086 }}
+  customfield_10086: # 'safeToDeploy' flag
+    - set: "{{ .overrides.customfield_10086 }}"
+  {{- end -}}
