@@ -51,7 +51,6 @@ describe('OnboardingAgeInformation', () => {
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('SignupForm', {
           from: StepperOrigin.TUTORIAL,
-          preventCancellation: true,
         })
       })
     }

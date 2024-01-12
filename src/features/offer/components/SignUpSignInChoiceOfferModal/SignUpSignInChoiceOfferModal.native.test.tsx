@@ -24,7 +24,6 @@ describe('SignUpSignInChoiceOfferModal', () => {
     await fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('Login', {
-      preventCancellation: true,
       offerId: OFFER_ID,
     })
     expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
@@ -38,7 +37,6 @@ describe('SignUpSignInChoiceOfferModal', () => {
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {
       from: StepperOrigin.OFFER,
-      preventCancellation: true,
       offerId: OFFER_ID,
     })
     expect(analytics.logSignUpFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)

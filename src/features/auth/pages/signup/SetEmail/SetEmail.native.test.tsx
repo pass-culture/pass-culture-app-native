@@ -170,7 +170,6 @@ describe('<SetEmail />', () => {
     })
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
-      preventCancellation: true,
       offerId: OFFER_ID,
     })
   })

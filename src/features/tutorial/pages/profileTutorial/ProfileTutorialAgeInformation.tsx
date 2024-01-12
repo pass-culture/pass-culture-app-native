@@ -87,7 +87,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
               wording="Créer un compte"
               navigateTo={{
                 screen: 'SignupForm',
-                params: { from: StepperOrigin.TUTORIAL, preventCancellation: true },
+                params: { from: StepperOrigin.TUTORIAL },
               }}
               onBeforeNavigate={onSignupPress}
             />

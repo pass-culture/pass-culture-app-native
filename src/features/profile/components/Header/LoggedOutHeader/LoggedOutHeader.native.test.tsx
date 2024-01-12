@@ -16,7 +16,6 @@ describe('LoggedOutHeader', () => {
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {
       from: StepperOrigin.PROFILE,
-      preventCancellation: true,
     })
   })
 

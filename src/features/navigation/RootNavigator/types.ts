@@ -170,7 +170,7 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  SignupForm: { preventCancellation?: boolean; offerId?: number; from: StepperOrigin } | undefined
+  SignupForm: { offerId?: number; from: StepperOrigin } | undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined
@@ -196,7 +196,6 @@ export type RootStackParamList = {
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
   Login?: {
-    preventCancellation?: boolean
     displayForcedLoginHelpMessage?: boolean
     offerId?: number
     from?: From

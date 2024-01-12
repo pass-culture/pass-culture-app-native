@@ -124,7 +124,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         type="login"
         onAdditionalPress={onLogAnalytics}
         linkColor={theme.colors.secondary}
-        params={{ offerId: params?.offerId, preventCancellation: true }}
+        params={{ offerId: params?.offerId }}
       />
       <Spacer.Column numberOfSpaces={5} />
     </Form.MaxWidth>

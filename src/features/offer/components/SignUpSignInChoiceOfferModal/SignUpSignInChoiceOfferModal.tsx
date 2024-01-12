@@ -54,17 +54,13 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
-            params: { from: StepperOrigin.OFFER, preventCancellation: true, offerId },
+            params: { from: StepperOrigin.OFFER, offerId },
           }}
           onBeforeNavigate={signUp}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton
-        type="login"
-        params={{ offerId, preventCancellation: true }}
-        onAdditionalPress={signIn}
-      />
+      <StyledAuthenticationButton type="login" params={{ offerId }} onAdditionalPress={signIn} />
     </AppModalWithIllustration>
   )
 }
