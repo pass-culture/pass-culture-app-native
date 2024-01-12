@@ -18,8 +18,7 @@ export const refreshAccessToken = async (
     refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
       (result) => {
         if (result.result) {
-          const lifetimeInMs = computeTokenRemainingLifetimeInMs(result.result)
-          setTimeout(removeRefreshedAccessToken, lifetimeInMs)
+          scheduleAccessTokenRemoval(result.result)
         }
         return result
       }
@@ -27,4 +26,9 @@ export const refreshAccessToken = async (
   }
 
   return refreshedAccessToken
+}
+
+export const scheduleAccessTokenRemoval = (accessToken: string): void => {
+  const lifetimeInMs = computeTokenRemainingLifetimeInMs(accessToken)
+  setTimeout(removeRefreshedAccessToken, lifetimeInMs)
 }
