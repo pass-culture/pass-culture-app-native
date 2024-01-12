@@ -62,6 +62,7 @@ type BuildGeolocationParameterParams = {
 }
 
 // @deprecated use buildLocationParameter
+// TODO(PC-25239): try to delete when removing feature flag
 export const deprecatedBuildGeolocationParameter = ({
   locationFilter: providedLocationFilter,
   venue,
