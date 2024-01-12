@@ -4,11 +4,11 @@ import {
   deprecatedBuildGeolocationParameter,
   deprecatedComputeAroundRadiusInMeters,
   buildLocationParameter,
-} from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+} from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
-describe('buildGeolocationParameter', () => {
+describe('buildLocationParameter', () => {
   describe('buildLocationParameter', () => {
     const userLocation: Position = {
       latitude: 48.8566,

@@ -1,7 +1,7 @@
 import { VenuesModuleParameters } from 'features/home/types'
 import { FiltersArray, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
-import { deprecatedBuildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+import { deprecatedBuildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
 import { Position } from 'libs/location'
