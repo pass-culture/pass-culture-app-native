@@ -521,7 +521,7 @@ PODS:
     - react-native-config/App (= 1.4.5)
   - react-native-config/App (1.4.5):
     - React-Core
-  - react-native-date-picker (4.2.2):
+  - react-native-date-picker (4.3.5):
     - React-Core
   - react-native-detector (0.2.3):
     - React
@@ -1097,7 +1097,7 @@ SPEC CHECKSUMS:
   react-native-appsflyer: 202a3a36d7fabe9f36198b45f952b1a91f9b27a0
   react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
-  react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
+  react-native-date-picker: 90d1d60802a20085125657940b944f2bb4e5c113
   react-native-detector: 751696a5534f6bbc11be87515cca3d8d32593d73
   react-native-flipper: ea555c5b21d9d15814999327aecf31b98ac87079
   react-native-flipper-performance-plugin: 42ec5017abd26e7c5a1f527f2db92c14a90cabdb

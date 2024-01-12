@@ -1376,7 +1376,8 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
             }
             testID="date-picker-spinner-native"
             textColor="#161617"
-            theme="auto"
+            theme="light"
+            timeZoneOffsetInMinutes=""
             title="Select date"
           />
           <View
