@@ -9,7 +9,7 @@ type AlgoliaPositionParams = {
   aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS | number
 }
 
-type BuildLocationParameterParams = {
+export type BuildLocationParameterParams = {
   selectedLocationMode: LocationMode
   userLocation: Position
   aroundMeRadius: number
