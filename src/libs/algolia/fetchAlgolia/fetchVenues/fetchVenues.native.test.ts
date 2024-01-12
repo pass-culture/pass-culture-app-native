@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
@@ -40,12 +40,37 @@ describe('fetchVenues', () => {
     visual_disability: false,
     website: 'https://my.website.com',
   }
+  const buildLocationParameterParams = {
+    userLocation: undefined,
+    selectedLocationMode: LocationMode.EVERYWHERE,
+    aroundMeRadius: 50,
+    aroundPlaceRadius: 50,
+  }
 
   it('should fetch venues', () => {
-    fetchVenues({ query: 'queryString' })
+    fetchVenues({
+      query: 'queryString',
+      buildLocationParameterParams,
+    })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
     expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [], facetFilters })
+  })
+
+  it('should fetch venues with a specified position', () => {
+    const userLocation = { latitude: 48.90374, longitude: 2.48171 }
+    fetchVenues({
+      query: 'queryString',
+      buildLocationParameterParams: { ...buildLocationParameterParams, userLocation },
+    })
+
+    expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
+    expect(search).toHaveBeenCalledWith('queryString', {
+      attributesToHighlight: [],
+      facetFilters,
+      aroundLatLng: '48.90374, 2.48171',
+      aroundRadius: 'all',
+    })
   })
 
   it.each`
@@ -65,7 +90,7 @@ describe('fetchVenues', () => {
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)
 
-    const venues = await fetchVenues({ query: 'queryString' })
+    const venues = await fetchVenues({ query: 'queryString', buildLocationParameterParams })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
     expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [], facetFilters })
@@ -75,7 +100,7 @@ describe('fetchVenues', () => {
   it('should catch an error', async () => {
     const error = new Error('Async error')
     search.mockRejectedValueOnce(error)
-    fetchVenues({ query: 'queryString' })
+    fetchVenues({ query: 'queryString', buildLocationParameterParams })
 
     await waitFor(async () => {
       expect(captureAlgoliaError).toHaveBeenCalledWith(error)

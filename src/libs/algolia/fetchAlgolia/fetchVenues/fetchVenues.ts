@@ -10,11 +10,13 @@ import { env } from 'libs/environment'
 export const fetchVenues = async ({
   query,
   attributesToHighlight = [],
+  buildLocationParameterParams,
 }: FetchVenuesParameters): Promise<Venue[]> => {
   const venuesIndex = client.initIndex(env.ALGOLIA_VENUES_INDEX_NAME)
   const algoliaSearchParams = buildFetchVenuesQueryParameters({
     query,
     attributesToHighlight,
+    buildLocationParameterParams,
   })
 
   try {
