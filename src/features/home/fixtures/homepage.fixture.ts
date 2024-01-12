@@ -38,7 +38,6 @@ export const formattedVenuesModule: VenuesModule = {
   id: '105MMz59tftcxXJICXt7ja',
   venuesParameters: {
     title: 'Exemple de playlist de lieux',
-    isGeolocated: false,
     venueTypes: [
       'Bibliothèque ou médiathèque',
       'Arts visuels, arts plastiques et galeries',

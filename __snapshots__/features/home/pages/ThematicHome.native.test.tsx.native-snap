@@ -72,7 +72,6 @@ exports[`ThematicHome should render correctly 1`] = `
               "type": "VenuesModule",
               "venuesParameters": {
                 "hitsPerPage": 15,
-                "isGeolocated": false,
                 "title": "Exemple de playlist de lieux",
                 "venueTypes": [
                   "Bibliothèque ou médiathèque",
