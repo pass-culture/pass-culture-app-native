@@ -1,6 +1,7 @@
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { AccountState } from 'api/gen'
+import * as RefreshAccessTokenAPI from 'api/refreshAccessToken'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
@@ -41,6 +42,11 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: jest.fn(() => ({ resetSearch: mockResetSearch })),
 }))
 
+const scheduleAccessTokenRemovalSpy = jest.spyOn(
+  RefreshAccessTokenAPI,
+  'scheduleAccessTokenRemoval'
+)
+
 describe('useLoginRoutine', () => {
   beforeEach(async () => {
     await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
@@ -65,6 +71,12 @@ describe('useLoginRoutine', () => {
     const accessTokenStorage = await storage.readString('access_token')
 
     expect(accessTokenStorage).toEqual(accessToken)
+  })
+
+  it('should schedule access removal when it expires', async () => {
+    await renderUseLoginRoutine()
+
+    expect(scheduleAccessTokenRemovalSpy).toHaveBeenCalledWith(accessToken)
   })
 
   describe('connectServicesRequiringUserId', () => {
