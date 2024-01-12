@@ -1,11 +1,52 @@
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationMode } from 'libs/algolia'
+import { RADIUS_FILTERS } from 'libs/algolia/enums'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
-import { RADIUS_FILTERS } from '../../enums'
+type AlgoliaPositionParams = {
+  aroundLatLng: string
+  aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS | number
+}
 
-type Params = {
+type BuildLocationParameterParams = {
+  selectedLocationMode: LocationMode
+  userLocation: Position
+  aroundMeRadius: number
+  aroundPlaceRadius: number
+}
+export const buildLocationParameter = ({
+  selectedLocationMode,
+  userLocation,
+  aroundMeRadius,
+  aroundPlaceRadius,
+}: BuildLocationParameterParams): AlgoliaPositionParams | undefined => {
+  if (!userLocation) return
+  const positionParams: AlgoliaPositionParams = {
+    aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+    aroundRadius: RADIUS_FILTERS.UNLIMITED_RADIUS,
+  }
+  switch (selectedLocationMode) {
+    case LocationMode.AROUND_ME:
+      positionParams.aroundRadius = computeAroundRadiusInMeters(aroundMeRadius)
+      break
+    case LocationMode.AROUND_PLACE:
+      positionParams.aroundRadius = computeAroundRadiusInMeters(aroundPlaceRadius)
+      break
+    case LocationMode.EVERYWHERE:
+      break
+  }
+  return positionParams
+}
+
+const computeAroundRadiusInMeters = (
+  aroundRadius: number
+): number | RADIUS_FILTERS.UNLIMITED_RADIUS => {
+  if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
+  return aroundRadius * 1000
+}
+
+type BuildGeolocationParameterParams = {
   locationFilter?: SearchQueryParameters['locationFilter']
   venue?: SearchQueryParameters['venue']
   userLocation: Position
@@ -14,14 +55,15 @@ type Params = {
   aroundRadius?: number
 }
 
-export const buildGeolocationParameter = ({
+// @deprecated use buildLocationParameter
+export const deprecatedBuildGeolocationParameter = ({
   locationFilter: providedLocationFilter,
   venue,
   userLocation,
   isFullyDigitalOffersCategory,
   enableAppLocation,
   aroundRadius,
-}: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
+}: BuildGeolocationParameterParams): AlgoliaPositionParams | undefined => {
   let locationFilter = providedLocationFilter
   if (isFullyDigitalOffersCategory && enableAppLocation) return
   if (!locationFilter)
@@ -35,7 +77,7 @@ export const buildGeolocationParameter = ({
     if (!locationFilter.place.geolocation) return
     return {
       aroundLatLng: `${locationFilter.place.geolocation.latitude}, ${locationFilter.place.geolocation.longitude}`,
-      aroundRadius: computeAroundRadiusInMeters(
+      aroundRadius: deprecatedComputeAroundRadiusInMeters(
         locationFilter.aroundRadius,
         locationFilter.locationType
       ),
@@ -52,23 +94,23 @@ export const buildGeolocationParameter = ({
   if (locationFilter.locationType === LocationMode.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-      aroundRadius: aroundRadius ?? 'all',
+      aroundRadius: aroundRadius ?? RADIUS_FILTERS.UNLIMITED_RADIUS,
     }
   }
 
   return {
     aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
-    aroundRadius: computeAroundRadiusInMeters(
+    aroundRadius: deprecatedComputeAroundRadiusInMeters(
       locationFilter.aroundRadius,
       locationFilter.locationType
     ),
   }
 }
-
-export const computeAroundRadiusInMeters = (
+// @deprecated use computeAroundRadiusInMeters
+export const deprecatedComputeAroundRadiusInMeters = (
   aroundRadius: number | null,
   locationType: LocationMode
-): number | 'all' => {
+): number | RADIUS_FILTERS.UNLIMITED_RADIUS => {
   if (locationType === LocationMode.EVERYWHERE) return RADIUS_FILTERS.UNLIMITED_RADIUS
   if (aroundRadius === null) return RADIUS_FILTERS.UNLIMITED_RADIUS
   if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS

@@ -1,7 +1,7 @@
 import { VenuesModuleParameters } from 'features/home/types'
 import { FiltersArray, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
-import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+import { deprecatedBuildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
 import { Position } from 'libs/location'
@@ -32,7 +32,7 @@ export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLoca
   facetFilters.push(hasAtLeastOneBookableOfferPredicate)
 
   return {
-    ...buildGeolocationParameter({ locationFilter, userLocation }),
+    ...deprecatedBuildGeolocationParameter({ locationFilter, userLocation }),
     ...(facetFilters.length > 0 ? { facetFilters } : {}),
   }
 }
