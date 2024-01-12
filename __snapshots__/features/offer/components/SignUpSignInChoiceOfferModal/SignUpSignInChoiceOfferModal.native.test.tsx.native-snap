@@ -361,7 +361,6 @@ retrouver tes favoris
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "width": "100%",
                     },
                   ]
