@@ -72,6 +72,7 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 
 const StyledButtonContainer = styled.View({
   width: '100%',
+  alignItems: 'center',
 })
 
 const StyledBody = styled(Typo.Body)({
