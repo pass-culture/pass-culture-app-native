@@ -7,9 +7,18 @@ import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { getSpacing, LENGTH_L, LENGTH_M, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
-enum TileSize {
-  M = LENGTH_M,
-  L = LENGTH_L,
+export enum TileSize {
+  MEDIUM = 'Medium',
+  LARGE = 'Large',
+}
+
+const mapTileSizeToDimensions = (size: TileSize): number => {
+  switch (size) {
+    case TileSize.MEDIUM:
+      return LENGTH_M
+    case TileSize.LARGE:
+      return LENGTH_L
+  }
 }
 
 export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: number }> = ({
@@ -20,7 +29,10 @@ export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: nu
     .fill(null)
     .map((_, index: number) => ({ key: index.toString() }))
 
-  const renderPlaceholder = useCallback(() => <OfferTilePlaceholder size={size} />, [size])
+  const renderPlaceholder = useCallback(
+    () => <OfferTilePlaceholder size={mapTileSizeToDimensions(size)} />,
+    [size]
+  )
 
   return (
     <Container testID="OfferPlaylistSkeleton">

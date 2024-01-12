@@ -18,7 +18,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { OfferPlaylistSkeleton } from 'ui/components/placeholders/OfferPlaylistSkeleton'
+import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
@@ -94,7 +94,7 @@ export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props
     return (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={6} />
-        <OfferPlaylistSkeleton size={LENGTH_M} numberOfTiles={6} />
+        <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
       </React.Fragment>
     )
 
