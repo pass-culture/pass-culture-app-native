@@ -97,248 +97,238 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     style={
       [
         {
-          "flexDirection": "row",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "paddingBottom": 40,
         },
       ]
     }
   >
     <View
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "paddingBottom": 40,
-          },
-        ]
+      accessibilityLabel="Créer un compte"
+      accessibilityRole="link"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
       }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "borderRadius": 24,
+          "justifyContent": "center",
+          "opacity": 1,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "userSelect": "auto",
+        }
+      }
+      testID="Créer un compte"
     >
       <View
-        accessibilityLabel="Créer un compte"
-        accessibilityRole="link"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "borderRadius": 24,
-            "justifyContent": "center",
-            "opacity": 1,
-            "overflow": "hidden",
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "userSelect": "auto",
-          }
-        }
-        testID="Créer un compte"
+        height={48}
+        width="100%"
       >
-        <View
-          height={48}
-          width="100%"
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "position": "absolute",
-              },
-            ]
-          }
-        >
-          <Text
-            adjustsFontSizeToFit={true}
-            isDisabled={false}
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "paddingBottom": 8,
-                  "paddingLeft": 8,
-                  "paddingRight": 8,
-                  "paddingTop": 8,
-                },
-              ]
-            }
-          >
-            Créer un compte
-          </Text>
-        </View>
+        <Text>
+          undefined-SVG-Mock
+        </Text>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View
         style={
           [
             {
               "alignItems": "center",
               "flexDirection": "row",
-              "justifyContent": "center",
+              "position": "absolute",
             },
           ]
         }
       >
         <Text
+          adjustsFontSizeToFit={true}
+          isDisabled={false}
+          numberOfLines={1}
           style={
             [
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "textAlign": "center",
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
               },
             ]
           }
         >
-          Déjà un compte ?
+          Créer un compte
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Déjà un compte ?
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "width": 4,
+              },
+            ]
+          }
+        />
+        <View>
           <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "width": 4,
-                },
-              ]
+            accessibilityLabel="Se connecter"
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
-          />
-          <View>
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "opacity": 1,
+                "top": 3,
+                "userSelect": "auto",
+              }
+            }
+            testID="Se connecter"
+          >
             <View
-              accessibilityLabel="Se connecter"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              paddingForIcon={0}
               style={
-                {
-                  "opacity": 1,
-                  "top": 3,
-                  "userSelect": "auto",
-                }
+                [
+                  {
+                    "flexDirection": "row",
+                    "top": 0,
+                  },
+                ]
               }
-              testID="Se connecter"
             >
               <View
-                paddingForIcon={0}
+                fill="#320096"
+                height={20}
+                testID="button-icon"
+                width={20}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={1}
                 style={
                   [
                     {
-                      "flexDirection": "row",
-                      "top": 0,
+                      "width": 4,
                     },
                   ]
                 }
+              />
+              <Text
+                color="#320096"
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                typography="ButtonText"
               >
-                <View
-                  fill="#320096"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  color="#320096"
-                  style={
-                    [
-                      {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                  typography="ButtonText"
-                >
-                  Se connecter
-                </Text>
-              </View>
+                Se connecter
+              </Text>
             </View>
           </View>
-        </Text>
-      </View>
+        </View>
+      </Text>
     </View>
   </View>
   <View

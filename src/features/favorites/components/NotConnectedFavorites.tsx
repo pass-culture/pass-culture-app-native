@@ -24,34 +24,33 @@ export const NotConnectedFavorites = () => (
     icon={BicolorUserFavorite}
     separateIconFromTitle={false}
     mobileBottomFlex={2}>
-    <Row>
-      <ButtonContainer>
-        <InternalTouchableLink
-          as={ButtonWithLinearGradient}
-          wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
-          onBeforeNavigate={onBeforeSignupNavigate}
-          buttonHeight="tall"
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <StyledAuthenticationButton
-          type="login"
-          onAdditionalPress={analytics.logSignInFromFavorite}
-        />
-      </ButtonContainer>
-    </Row>
+    <ButtonContainer>
+      <InternalTouchableLink
+        as={ButtonWithLinearGradient}
+        wording="Créer un compte"
+        navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
+        onBeforeNavigate={onBeforeSignupNavigate}
+        buttonHeight="tall"
+      />
+      <Spacer.Column numberOfSpaces={4} />
+      <StyledAuthenticationButton
+        type="login"
+        onAdditionalPress={analytics.logSignInFromFavorite}
+      />
+    </ButtonContainer>
     <Spacer.BottomScreen />
   </GenericInfoPageWhite>
 )
-
-const Row = styled.View({ flexDirection: 'row' })
 
 const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
   marginBottom: getSpacing(4),
 })
 
-const ButtonContainer = styled.View({ flex: 1, paddingBottom: getSpacing(10) })
+const ButtonContainer = styled.View({
+  flex: 1,
+  paddingBottom: getSpacing(10),
+})
 
 const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
