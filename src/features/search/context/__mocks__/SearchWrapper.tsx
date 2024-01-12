@@ -16,4 +16,5 @@ export const SearchWrapper: typeof ActualSearchWrapper = memo(function SearchWra
 export const useSearch = () => ({
   searchState: initialSearchState,
   dispatch: jest.fn(),
+  resetSearch: jest.fn(),
 })

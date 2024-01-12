@@ -25,7 +25,7 @@ const cookiesChoice: CookiesConsent = {
   },
 }
 
-const mockSearchDispatch = jest.fn()
+const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('api/api')
@@ -38,7 +38,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
+  useSearch: jest.fn(() => ({ resetSearch: mockResetSearch })),
 }))
 
 describe('useLoginRoutine', () => {
@@ -96,7 +96,7 @@ describe('useLoginRoutine', () => {
     it('should reset search context', async () => {
       await renderUseLoginRoutine()
 
-      expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+      expect(mockResetSearch).toHaveBeenCalledTimes(1)
     })
 
     it('should reset identity check context', async () => {

@@ -140,13 +140,10 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
           setAroundPlaceRadius(tempAroundPlaceRadius)
           setTempAroundMeRadius(DEFAULT_RADIUS)
           dispatch({
-            type: 'SET_LOCATION_FILTERS',
+            type: 'SET_LOCATION_PLACE',
             payload: {
-              locationFilter: {
-                place: selectedPlace,
-                locationType: LocationMode.AROUND_PLACE,
-                aroundRadius: tempAroundPlaceRadius,
-              },
+              place: selectedPlace,
+              aroundRadius: tempAroundPlaceRadius,
             },
           })
           analytics.logUserSetLocation('search')
@@ -158,13 +155,8 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
         setAroundMeRadius(tempAroundMeRadius)
         setTempAroundPlaceRadius(DEFAULT_RADIUS)
         dispatch({
-          type: 'SET_LOCATION_FILTERS',
-          payload: {
-            locationFilter: {
-              locationType: LocationMode.AROUND_ME,
-              aroundRadius: tempAroundMeRadius,
-            },
-          },
+          type: 'SET_LOCATION_AROUND_ME',
+          payload: tempAroundMeRadius,
         })
 
         break
@@ -172,10 +164,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
       case LocationMode.EVERYWHERE:
         setPlaceGlobally(null)
         dispatch({
-          type: 'SET_LOCATION_FILTERS',
-          payload: {
-            locationFilter: { locationType: LocationMode.EVERYWHERE },
-          },
+          type: 'SET_LOCATION_EVERYWHERE',
         })
 
         break

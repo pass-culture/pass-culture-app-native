@@ -37,10 +37,10 @@ import { Login } from './Login'
 
 jest.mock('libs/monitoring')
 jest.mock('features/navigation/helpers')
-const mockSearchDispatch = jest.fn()
+const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: jest.fn(() => ({ dispatch: mockSearchDispatch })),
+  useSearch: jest.fn(() => ({ resetSearch: mockResetSearch })),
 }))
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
@@ -194,7 +194,7 @@ describe('<Login/>', () => {
     expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
     expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
     expect(navigateToHome).toHaveBeenCalledTimes(1)
-    expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+    expect(mockResetSearch).toHaveBeenCalledTimes(1)
     expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
   })
 

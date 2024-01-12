@@ -630,7 +630,7 @@ describe('SearchBox component with venue previous route', () => {
     })
   })
 
-  it('should reset location to eveywhere when current and previous views are identical and previous route is Venue', async () => {
+  it('should unselect the venue when current and previous views are identical and previous route is Venue', async () => {
     mockSearchState = {
       ...mockSearchState,
       view: SearchView.Results,
@@ -644,7 +644,10 @@ describe('SearchBox component with venue previous route', () => {
       fireEvent.press(previousButton)
     })
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_LOCATION_EVERYWHERE' })
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: { ...mockSearchState, venue: undefined },
+    })
   })
 
   it('should execute go back when current and previous views are identical and previous route is Venue', async () => {
