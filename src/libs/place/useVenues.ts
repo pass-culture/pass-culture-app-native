@@ -10,18 +10,19 @@ const STALE_TIME_VENUES = 5 * 60 * 1000
 
 export const useVenues = (query: string) => {
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const buildLocationParameterParams = {
+    userLocation,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  }
   const netInfo = useNetInfoContext()
   return useQuery<Venue[]>(
-    [QueryKeys.VENUES, query],
+    [QueryKeys.VENUES, query, buildLocationParameterParams],
     () =>
       fetchVenues({
         query: query,
-        buildLocationParameterParams: {
-          userLocation,
-          selectedLocationMode,
-          aroundMeRadius,
-          aroundPlaceRadius,
-        },
+        buildLocationParameterParams,
       }),
     {
       staleTime: STALE_TIME_VENUES,
