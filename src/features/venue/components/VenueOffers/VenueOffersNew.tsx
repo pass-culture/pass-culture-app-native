@@ -12,35 +12,27 @@ import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOffe
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
-import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
-import { Layout } from 'libs/contentful/types'
 import { useLocation } from 'libs/location'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { OfferPlaylistSkeleton } from 'ui/components/placeholders/OfferPlaylistSkeleton'
+import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
-import { Spacer, Typo } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   venue: VenueResponse
-  layout?: Layout
   venueOffers?: { hits: Offer[]; nbHits: number }
   playlists?: GTLPlaylistResponse
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export function VenueOffersNew({
-  venue,
-  layout = 'two-items',
-  venueOffers,
-  playlists,
-}: Readonly<Props>) {
+export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props>) {
   const { geolocPosition } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
@@ -85,8 +77,6 @@ export function VenueOffersNew({
   const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
-
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: { width: number; height: number }) => (
       <SeeMore
@@ -104,7 +94,7 @@ export function VenueOffersNew({
     return (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={6} />
-        <OfferPlaylistSkeleton size={itemHeight} numberOfTiles={6} />
+        <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
       </React.Fragment>
     )
 
@@ -120,8 +110,8 @@ export function VenueOffersNew({
         title="Toutes les offres"
         TitleComponent={PlaylistTitleText}
         data={hits}
-        itemHeight={itemHeight}
-        itemWidth={itemWidth}
+        itemHeight={LENGTH_M}
+        itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
         onPressSeeMore={onPressSeeMore}
         renderItem={renderItem}
         titleSeeMoreLink={showSeeMore ? searchNavConfig : undefined}
