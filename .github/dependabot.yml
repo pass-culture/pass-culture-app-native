@@ -33,3 +33,13 @@ updates:
       prefix: '(BSR) chore(ci):'
     reviewers:
       - 'Lucasbeneston'
+
+  - package-ecosystem: 'npm'
+    directory: '/server'
+    open-pull-requests-limit: 3
+    schedule:
+      interval: 'daily'
+    commit-message:
+      prefix: '(BSR) chore(ci):'
+    reviewers:
+      - 'Lucasbeneston'
