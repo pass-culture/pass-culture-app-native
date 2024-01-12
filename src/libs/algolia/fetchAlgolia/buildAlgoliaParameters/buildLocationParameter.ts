@@ -12,8 +12,8 @@ type AlgoliaPositionParams = {
 export type BuildLocationParameterParams = {
   selectedLocationMode: LocationMode
   userLocation: Position
-  aroundMeRadius: number
-  aroundPlaceRadius: number
+  aroundMeRadius: number | 'all'
+  aroundPlaceRadius: number | 'all'
 }
 export const buildLocationParameter = ({
   selectedLocationMode,
@@ -28,10 +28,16 @@ export const buildLocationParameter = ({
   }
   switch (selectedLocationMode) {
     case LocationMode.AROUND_ME:
-      positionParams.aroundRadius = computeAroundRadiusInMeters(aroundMeRadius)
+      positionParams.aroundRadius =
+        aroundMeRadius === 'all'
+          ? RADIUS_FILTERS.UNLIMITED_RADIUS
+          : computeAroundRadiusInMeters(aroundMeRadius)
       break
     case LocationMode.AROUND_PLACE:
-      positionParams.aroundRadius = computeAroundRadiusInMeters(aroundPlaceRadius)
+      positionParams.aroundRadius =
+        aroundPlaceRadius === 'all'
+          ? RADIUS_FILTERS.UNLIMITED_RADIUS
+          : computeAroundRadiusInMeters(aroundPlaceRadius)
       break
     case LocationMode.EVERYWHERE:
       break

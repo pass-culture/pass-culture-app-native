@@ -1,17 +1,17 @@
 import { VenuesModuleParameters } from 'features/home/types'
-import { FiltersArray, LocationMode } from 'libs/algolia'
+import { FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
-import { deprecatedBuildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import {
+  buildLocationParameter,
+  BuildLocationParameterParams,
+} from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
-import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
-import { Position } from 'libs/location'
 
-export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLocation: Position) => {
-  const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
-
-  const locationFilter = adaptGeolocationParameters(userLocation, isGeolocated, aroundRadius) ?? {
-    locationType: LocationMode.EVERYWHERE,
-  }
+export const buildVenuesQueryOptions = (
+  params: VenuesModuleParameters,
+  buildLocationParameterParams: BuildLocationParameterParams
+) => {
+  const { tags = [], venueTypes = [] } = params
 
   const facetFilters: FiltersArray = []
 
@@ -32,7 +32,7 @@ export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLoca
   facetFilters.push(hasAtLeastOneBookableOfferPredicate)
 
   return {
-    ...deprecatedBuildGeolocationParameter({ locationFilter, userLocation }),
+    ...buildLocationParameter(buildLocationParameterParams),
     ...(facetFilters.length > 0 ? { facetFilters } : {}),
   }
 }

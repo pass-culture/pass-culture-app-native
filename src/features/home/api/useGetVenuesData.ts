@@ -9,7 +9,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useGetVenuesData = (modules: VenuesModule[]) => {
-  const { userLocation } = useLocation()
+  const { userLocation, selectedLocationMode } = useLocation()
 
   const netInfo = useNetInfoContext()
 
@@ -22,7 +22,12 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
   })
 
   const venuesQuery = async () => {
-    const result = await fetchVenuesModules(venuesParameters, userLocation)
+    const result = await fetchVenuesModules(venuesParameters, {
+      userLocation,
+      selectedLocationMode,
+      aroundMeRadius: 'all',
+      aroundPlaceRadius: 'all',
+    })
     return {
       hits: result,
       moduleId: venuesModuleIds,
