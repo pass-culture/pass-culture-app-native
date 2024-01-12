@@ -1,6 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
 import { AlgoliaVenue } from 'libs/algolia'
+import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { env } from 'libs/environment'
@@ -13,6 +14,8 @@ const search = mockInitIndex('').search as jest.Mock
 jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
+
+const facetFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
 
 describe('fetchVenues', () => {
   const venueFixture: AlgoliaVenue = {
@@ -42,7 +45,7 @@ describe('fetchVenues', () => {
     fetchVenues({ query: 'queryString' })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
-    expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [] })
+    expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [], facetFilters })
   })
 
   it.each`
@@ -65,7 +68,7 @@ describe('fetchVenues', () => {
     const venues = await fetchVenues({ query: 'queryString' })
 
     expect(mockInitIndex).toHaveBeenCalledWith(env.ALGOLIA_VENUES_INDEX_NAME)
-    expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [] })
+    expect(search).toHaveBeenCalledWith('queryString', { attributesToHighlight: [], facetFilters })
     expect(venues).toEqual([expectedResult])
   })
 
