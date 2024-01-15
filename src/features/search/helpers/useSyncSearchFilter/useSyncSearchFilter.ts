@@ -24,12 +24,22 @@ export const useSyncSearchFilter = () => {
         payload: { ...initialSearchState, ...params },
       })
 
-      if (params.locationFilter?.locationType === LocationMode.AROUND_PLACE) {
-        setPlace(params.locationFilter.place)
-        setSelectedLocationMode(LocationMode.AROUND_PLACE)
-      }
-      if (params?.locationFilter?.locationType === LocationMode.EVERYWHERE) {
-        setSelectedLocationMode(LocationMode.EVERYWHERE)
+      switch (params.locationFilter?.locationType) {
+        case LocationMode.AROUND_ME: {
+          setCanSwitchToAroundMe(true)
+          break
+        }
+        case LocationMode.AROUND_PLACE: {
+          setPlace(params.locationFilter.place)
+          setSelectedLocationMode(LocationMode.AROUND_PLACE)
+          break
+        }
+        case LocationMode.EVERYWHERE: {
+          setSelectedLocationMode(LocationMode.EVERYWHERE)
+          break
+        }
+        default:
+          break
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
