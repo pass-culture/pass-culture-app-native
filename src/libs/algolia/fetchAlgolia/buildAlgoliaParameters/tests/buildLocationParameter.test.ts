@@ -26,7 +26,7 @@ describe('buildLocationParameter', () => {
       expect(result).toBeUndefined()
     })
 
-    it('should return a position with a "all" rayon when selectedLocationMode is "EVERYWHERE" and there is a userPosition', () => {
+    it('should return a position with a "all" radius when selectedLocationMode is "EVERYWHERE" and there is a userPosition', () => {
       const result = buildLocationParameter({
         userLocation,
         selectedLocationMode: LocationMode.EVERYWHERE,
@@ -40,7 +40,7 @@ describe('buildLocationParameter', () => {
       })
     })
 
-    it('should return a position with a specified rayon when selectedLocationMode is "AROUND_ME" and there is a userPosition', () => {
+    it('should return a position with a specified radius when selectedLocationMode is "AROUND_ME" and there is a userPosition', () => {
       const result = buildLocationParameter({
         userLocation,
         selectedLocationMode: LocationMode.AROUND_ME,
@@ -54,7 +54,7 @@ describe('buildLocationParameter', () => {
       })
     })
 
-    it('should return a position with a specified rayon when selectedLocationMode is "AROUND_PLACE" and there is a userPosition', () => {
+    it('should return a position with a specified radius when selectedLocationMode is "AROUND_PLACE" and there is a userPosition', () => {
       const result = buildLocationParameter({
         userLocation,
         selectedLocationMode: LocationMode.AROUND_PLACE,
@@ -68,7 +68,7 @@ describe('buildLocationParameter', () => {
       })
     })
 
-    it('should return a position with a minimum rayon when selectedLocationMode is "AROUND_ME", the rayon is 0 and there is a userPosition', () => {
+    it('should return a position with a minimum radius when selectedLocationMode is "AROUND_ME", the radius is 0 and there is a userPosition', () => {
       const result = buildLocationParameter({
         userLocation,
         selectedLocationMode: LocationMode.AROUND_ME,
@@ -82,7 +82,7 @@ describe('buildLocationParameter', () => {
       })
     })
 
-    it('should return a position with a minimum rayon when selectedLocationMode is "AROUND_PLACE", the rayon is 0 and there is a userPosition', () => {
+    it('should return a position with a minimum radius when selectedLocationMode is "AROUND_PLACE", the radius is 0 and there is a userPosition', () => {
       const result = buildLocationParameter({
         userLocation,
         selectedLocationMode: LocationMode.AROUND_PLACE,
