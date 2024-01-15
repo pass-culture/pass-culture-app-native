@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import { UseMutateFunction } from 'react-query'
 
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import {
   OfferResponse,
   FavoriteOfferResponse,

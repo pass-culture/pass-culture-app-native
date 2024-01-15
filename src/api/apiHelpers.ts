@@ -6,14 +6,20 @@ import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
-import { decodeToken, getTokenStatus } from 'libs/jwt'
-import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { getTokenStatus } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 
+import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
+import { refreshAccessToken } from './refreshAccessToken'
+import {
+  REFRESH_TOKEN_IS_EXPIRED_ERROR,
+  FAILED_TO_GET_REFRESH_TOKEN_ERROR,
+  UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
+} from './types'
 
 function navigateToLogin(params?: Record<string, unknown>) {
   navigateFromRef('Login', params)
@@ -114,106 +120,12 @@ export const safeFetch = async (
   return fetch(url, runtimeOptions)
 }
 
-const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
-const REFRESH_TOKEN_IS_EXPIRED_ERROR = 'Le refresh token est expiré'
-const UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN =
-  'Une erreur inconnue est survenue lors de la regénération de l’access token'
-type Result =
-  | { result: string; error?: never }
-  | {
-      result?: never
-      error:
-        | typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR
-        | typeof REFRESH_TOKEN_IS_EXPIRED_ERROR
-        | typeof UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN
-    }
-
-let refreshedAccessToken: Promise<Result> | null = null
-
-export const removeRefreshedAccessToken = (): void => {
-  refreshedAccessToken = null
-}
-
-export const refreshAccessToken = async (
-  api: DefaultApi,
-  remainingRetries = 1
-): Promise<Result> => {
-  if (!refreshedAccessToken) {
-    refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
-      (result) => {
-        if (result.result) {
-          const lifetimeInMs = computeTokenRemainingLifetimeInMs(result.result)
-          setTimeout(removeRefreshedAccessToken, lifetimeInMs)
-        }
-        return result
-      }
-    )
-  }
-
-  return refreshedAccessToken
-}
-
-/**
- * Calls Api to refresh the access token using the in-keychain stored refresh token
- * - on success: Stores the new access token
- * - on error : clear storage propagates error
- */
-const refreshAccessTokenWithRetriesOnError = async (
-  api: DefaultApi,
-  remainingRetries: number
-): Promise<Result> => {
-  const refreshToken = await getRefreshToken()
-  if (refreshToken == null) {
-    await storage.clear('access_token')
-    return { error: FAILED_TO_GET_REFRESH_TOKEN_ERROR }
-  }
-
-  try {
-    const response = await api.postNativeV1RefreshAccessToken({
-      headers: {
-        Authorization: `Bearer ${refreshToken}`,
-      },
-    })
-
-    await storage.saveString('access_token', response.accessToken)
-
-    return { result: response.accessToken }
-  } catch (error) {
-    if (remainingRetries !== 0) {
-      return refreshAccessTokenWithRetriesOnError(api, remainingRetries - 1)
-    }
-
-    await clearRefreshToken()
-    await storage.clear('access_token')
-
-    if (error instanceof ApiError && error.statusCode === 401) {
-      return { error: REFRESH_TOKEN_IS_EXPIRED_ERROR }
-    }
-
-    eventMonitoring.captureException(error)
-    return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }
-  }
-}
-
 const extractResponseBody = async (response: Response): Promise<string> => {
   const contentType = response.headers.get('content-type')
   if (contentType?.includes('application/json')) {
     return response.json()
   }
   return response.text()
-}
-
-export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
-  const token = decodeToken(encodedToken)
-
-  if (token) {
-    const tokenExpirationInMs = token.exp * 1000
-    const currentDateInMs = Date.now()
-    const lifetimeInMs = tokenExpirationInMs - currentDateInMs
-    return lifetimeInMs
-  }
-
-  return undefined
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage
@@ -268,21 +180,6 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
 
 export function isApiError(error: unknown): error is ApiError {
   return (error as ApiError).name === 'ApiError'
-}
-
-export class ApiError extends Error {
-  name = 'ApiError'
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content: any
-  statusCode: number
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(statusCode: number, content: any, message?: string) {
-    super(message)
-    this.content = content
-    this.statusCode = statusCode
-  }
 }
 
 export function extractApiErrorMessage(error: unknown) {

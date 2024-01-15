@@ -1,4 +1,5 @@
 import { SigninResponse } from 'api/gen'
+import { scheduleAccessTokenRemoval } from 'api/refreshAccessToken'
 import {
   useAuthContext,
   useConnectServicesRequiringUserId,
@@ -24,6 +25,7 @@ export function useLoginRoutine() {
     connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
+    scheduleAccessTokenRemoval(response.accessToken)
     firebaseAnalytics.logLogin({ method })
     setIsLoggedIn(true)
     resetContexts()

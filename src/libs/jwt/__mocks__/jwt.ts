@@ -3,3 +3,6 @@ export const getTokenStatus = jest.fn(() => 'valid')
 export const getUserIdFromAccessToken = jest.fn(
   jest.requireActual('libs/jwt').getUserIdFromAccessToken
 )
+export const computeTokenRemainingLifetimeInMs = jest.fn(
+  jest.requireActual('libs/jwt').computeTokenRemainingLifetimeInMs
+)

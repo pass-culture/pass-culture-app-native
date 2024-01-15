@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError, isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
+import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'

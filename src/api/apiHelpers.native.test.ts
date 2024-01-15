@@ -1,9 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import mockdate from 'mockdate'
 import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
 
-import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import * as jwt from 'libs/jwt'
@@ -12,22 +9,18 @@ import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
 import { mockServer } from 'tests/mswServer'
 
+import { ApiError } from './ApiError'
 import {
-  ApiError,
-  removeRefreshedAccessToken,
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
   isAPIExceptionCapturedAsInfo,
-  refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
-  computeTokenRemainingLifetimeInMs,
 } from './apiHelpers'
 import { Configuration, DefaultApi, RefreshResponse } from './gen'
+import { removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
-
-mockdate.set(CURRENT_DATE)
 
 const configuration: Configuration = {
   basePath: env.API_BASE_URL,
@@ -52,19 +45,6 @@ const respondWith = async (
 
 const accessToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTI1NjM1NywianRpIjoiNTFkMjc5OGMtZDc1YS00NjQ1LTg0ZTAtNTgxYmQ3NTQzZGY3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJlbmVfMThAZXhhbXBsZS5jb20iLCJuYmYiOjE2ODkyNTYzNTcsImV4cCI6MTY4OTI1NzI1NywidXNlcl9jbGFpbXMiOnsidXNlcl9pZCI6MTI3MTN9fQ.OW09vfchjTx-0LfZiaAJu8eMd9aftExhxR4bUsgl3xw'
-const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-const decodedAccessToken = {
-  fresh: false,
-  iat: 1689576398,
-  jti: 'a90f96de-185d-4edb-a878-d714eea7ff74',
-  type: 'access',
-  sub: 'bene_18@example.com',
-  nbf: 1689576398,
-  exp: (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000,
-  user_claims: {
-    user_id: 12713,
-  },
-}
 
 const apiUrl = '/native/v1/me'
 const optionsWithAccessToken = {
@@ -73,7 +53,8 @@ const optionsWithAccessToken = {
   },
 }
 
-jest.spyOn(jwt, 'decodeToken').mockReturnValue(decodedAccessToken)
+const tokenRemainingLifetimeInMs = 10 * 60 * 1000
+jest.spyOn(jwt, 'computeTokenRemainingLifetimeInMs').mockReturnValue(tokenRemainingLifetimeInMs)
 
 jest.spyOn(CodePush, 'getUpdateMetadata').mockResolvedValue(null)
 
@@ -83,9 +64,11 @@ describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetTokenStatus = jest.spyOn(jwt, 'getTokenStatus')
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
-  const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
-  afterEach(removeRefreshedAccessToken)
+  afterEach(() => {
+    mockFetch.mockReset()
+    removeRefreshedAccessToken()
+  })
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
@@ -345,109 +328,6 @@ describe('[api] helpers', () => {
     })
   })
 
-  describe('refreshAccessToken', () => {
-    it('should remove access token when there is no refresh token', async () => {
-      mockGetRefreshToken.mockResolvedValueOnce(null)
-
-      await refreshAccessToken(api, 0)
-
-      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
-    })
-
-    it('should return FAILED_TO_GET_REFRESH_TOKEN_ERROR when there is no refresh token', async () => {
-      mockGetRefreshToken.mockResolvedValueOnce(null)
-
-      const result = await refreshAccessToken(api, 0)
-
-      expect(result).toEqual({ error: 'Erreur lors de la récupération du refresh token' })
-    })
-
-    it('should store the new access token when everything is ok', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch.mockResolvedValueOnce(respondWith({ accessToken }))
-
-      await refreshAccessToken(api, 0)
-
-      expect(AsyncStorage.setItem).toHaveBeenCalledWith('access_token', accessToken)
-    })
-
-    it('should return the new access token when everything is ok', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch.mockResolvedValueOnce(respondWith({ accessToken }))
-
-      const result = await refreshAccessToken(api, 0)
-
-      expect(result).toEqual({ result: accessToken })
-    })
-
-    it('should remove tokens when there is an unexpected behavior', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
-
-      await refreshAccessToken(api, 0)
-
-      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
-      expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
-    })
-
-    it('should return UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN when there is an unexpected behavior', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
-
-      const result = await refreshAccessToken(api, 0)
-
-      expect(result).toStrictEqual({
-        error: 'Une erreur inconnue est survenue lors de la regénération de l’access token',
-      })
-    })
-
-    it('should retry to refresh access token when the first call fails', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch
-        .mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
-        .mockResolvedValueOnce(respondWith({ accessToken }))
-
-      const result = await refreshAccessToken(api, 1)
-
-      expect(result).toEqual({ result: accessToken })
-    })
-
-    it('should remove tokens when refresh token is expired', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch.mockResolvedValueOnce(respondWith({ error: 'refresh token is expired' }, 401))
-
-      await refreshAccessToken(api, 0)
-
-      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
-      expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
-    })
-
-    it('should return REFRESH_TOKEN_IS_EXPIRED_ERROR when refresh token is expired', async () => {
-      const password = 'refreshToken'
-      mockGetRefreshToken.mockResolvedValueOnce(password)
-      mockFetch.mockResolvedValueOnce(respondWith({ error: 'refresh token is expired' }, 401))
-
-      const result = await refreshAccessToken(api, 0)
-
-      expect(result).toEqual({ error: 'Le refresh token est expiré' })
-    })
-
-    it("should log to sentry when can't refresh token", async () => {
-      const error = new Error('Error')
-      mockFetch.mockRejectedValueOnce(error)
-
-      await refreshAccessToken(api, 0)
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
-    })
-  })
-
   describe('handleGeneratedApiResponse', () => {
     const navigateFromRef = jest.spyOn(NavigationRef, 'navigateFromRef')
 
@@ -548,18 +428,6 @@ describe('[api] helpers', () => {
 
     it('should return false when error code is 400', () => {
       expect(isAPIExceptionCapturedAsInfo(400)).toEqual(false)
-    })
-  })
-
-  describe('computeTokenRemainingLifetimeInMs', () => {
-    it('should return undefined when token can not be decoded', () => {
-      jest.spyOn(jwt, 'decodeToken').mockReturnValueOnce(null)
-
-      expect(computeTokenRemainingLifetimeInMs('abc')).toBeUndefined()
-    })
-
-    it('should return remaining lifetime in milliseconds', () => {
-      expect(computeTokenRemainingLifetimeInMs('abc')).toEqual(tokenRemainingLifetimeInMs)
     })
   })
 })

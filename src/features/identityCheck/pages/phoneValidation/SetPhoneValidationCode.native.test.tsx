@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, dispatch, CommonActions } from '__mocks__/@react-navigation/native'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,

@@ -6,7 +6,7 @@ import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'

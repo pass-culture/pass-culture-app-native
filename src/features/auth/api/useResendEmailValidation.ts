@@ -1,7 +1,7 @@
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { ResendEmailValidationRequest } from 'api/gen'
 
 export function useResendEmailValidation({
