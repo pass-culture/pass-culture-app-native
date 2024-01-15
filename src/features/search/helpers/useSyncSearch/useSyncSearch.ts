@@ -10,10 +10,19 @@ import { useLocation } from 'libs/location'
 
 export const useSyncSearch = () => {
   const [isLocked, setIsLocked] = useState(false) // we use a locker to avoid glitches caused by params and state changed simultaneously
+  const [canSwitchToAroundMe, setCanSwitchToAroundMe] = useState(false) // we use this flag to authorize the switch to AROUND_ME mode when location type in params is AROUND_ME
+
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { setParams } = useNavigation<UseNavigationType>()
   const { dispatch, searchState } = useSearch()
-  const { setPlace, setSelectedLocationMode } = useLocation()
+  const { setPlace, setSelectedLocationMode, hasGeolocPosition } = useLocation()
+
+  useEffect(() => {
+    if (canSwitchToAroundMe && hasGeolocPosition) {
+      setSelectedLocationMode(LocationMode.AROUND_ME)
+      setCanSwitchToAroundMe(false)
+    }
+  }, [hasGeolocPosition, canSwitchToAroundMe, setSelectedLocationMode])
 
   useEffect(() => {
     if (!isLocked && !!params && !isEqual(params, searchState)) {
