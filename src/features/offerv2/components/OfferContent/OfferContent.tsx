@@ -1,12 +1,14 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect } from 'react'
-import { View } from 'react-native'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
+import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -25,10 +27,13 @@ import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOff
 import { getOfferMetadata } from 'features/offerv2/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
 import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
+import { isCloseToBottom } from 'libs/analytics'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
+import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -40,6 +45,9 @@ type Props = {
 }
 
 const NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK = 5
+const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
+
+const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -67,6 +75,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     logSameArtistPlaylistVerticalScroll,
     logSameCategoryPlaylistVerticalScroll,
     logOtherCategoriesPlaylistVerticalScroll,
+    logConsultWholeOffer,
   } = useOfferAnalytics({
     offerId: offer.id,
     nbSameArtistPlaylist: sameArtistPlaylist.length,
@@ -106,15 +115,53 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const shouldDisplayAboutBlock =
     shouldDisplayAccessibilityBlock || !!offer.description || hasMetadata
 
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking({
-    offerNativeCategory: subcategory.nativeCategoryId,
+  const { trackEventHasSeenOfferOnce, shouldTriggerBatchSurveyEvent, trackBatchEvent } =
+    useOfferBatchTracking({
+      offerNativeCategory: subcategory.nativeCategoryId,
+    })
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    if (shouldTriggerBatchSurveyEvent) {
+      timeoutId = setTimeout(() => {
+        trackBatchEvent()
+      }, DELAY_BEFORE_CONSIDERING_PAGE_SEEN)
+    }
+
+    return () => clearTimeout(timeoutId)
+  }, [shouldTriggerBatchSurveyEvent, trackBatchEvent])
+
+  const scrollEventListener = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (isCloseToBottom(nativeEvent)) {
+        logConsultWholeOffer()
+        if (shouldTriggerBatchSurveyEvent) {
+          trackBatchEvent()
+        }
+      }
+    },
+    [logConsultWholeOffer, shouldTriggerBatchSurveyEvent, trackBatchEvent]
+  )
+
+  const { headerTransition, onScroll } = useOpacityTransition({
+    listener: scrollEventListener,
   })
 
   return (
     <Container>
+      <OfferWebMetaHeader offer={offer} />
+      {isWeb ? (
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
+      <ScrollViewContainer
+        testID="offerv2-container"
+        scrollEventThrottle={16}
+        scrollIndicatorInsets={scrollIndicatorInsets}
+        bounces={false}
+        onScroll={onScroll}>
+        <Hero imageUrl={offer.image?.url} type="offerv2" categoryId={subcategory.categoryId} />
         <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>
-          <View style={{ height: 500 }}></View>
           <InformationTags tags={tags} />
           <Spacer.Column numberOfSpaces={4} />
 
@@ -159,7 +206,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               <Spacer.Column numberOfSpaces={8} />
               {shouldDisplayAccessibilityBlock ? (
                 <React.Fragment>
-                <OfferAccessibility accessibility={offer.accessibility} />
+                  <OfferAccessibility accessibility={offer.accessibility} />
                   <Spacer.Column numberOfSpaces={8} />
                 </React.Fragment>
               ) : null}
@@ -191,7 +238,10 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           <Spacer.Column numberOfSpaces={22} />
         </SectionWithDivider>
       </ScrollViewContainer>
-
+      {/* OfferHeader is called after Body to implement the BlurView for iOS */}
+      {!isWeb ? (
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
       <OfferCTAButton
         offer={offer}
         subcategory={subcategory}
@@ -201,11 +251,13 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   )
 }
 
+const scrollIndicatorInsets = { right: 1 }
+
 const Container = styled.View({
   flex: 1,
 })
 
-const ScrollViewContainer = styled(IOScrollView)({})
+const ScrollViewContainer = styled(IOScrollView)({ overflow: 'visible' })
 
 const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
