@@ -20,13 +20,13 @@ const LINE_HEIGHT = Number(theme.typography.body.lineHeight.slice(0, -2))
 
 describe('<CollapsibleText />', () => {
   it('should not display all text', () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     expect(screen.getByText(TEXT).props.numberOfLines).toEqual(5)
   })
 
   it('should display Voir plus on button text', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout(mockOnLayoutWithButton)
@@ -36,7 +36,7 @@ describe('<CollapsibleText />', () => {
   })
 
   it('should use Étendre le texte in button accessibility label', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout(mockOnLayoutWithButton)
@@ -46,7 +46,7 @@ describe('<CollapsibleText />', () => {
   })
 
   it('should display Voir moins on button text when pressing it', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout(mockOnLayoutWithButton)
@@ -58,7 +58,7 @@ describe('<CollapsibleText />', () => {
   })
 
   it('should display all text when pressing button', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout(mockOnLayoutWithButton)
@@ -70,7 +70,7 @@ describe('<CollapsibleText />', () => {
   })
 
   it('should use Réduire le texte in button accessibility label when pressing button', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout(mockOnLayoutWithButton)
@@ -82,7 +82,7 @@ describe('<CollapsibleText />', () => {
   })
 
   it('should display button when text height is equal to max possible text height to see the button', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout({
@@ -99,7 +99,7 @@ describe('<CollapsibleText />', () => {
   })
 
   it('should not display button when text is less then max possible text height to see the button', async () => {
-    render(<CollapsibleText text={TEXT} numberOfLines={NUMBER_OF_LINES} />)
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     await act(async () => {
       screen.getByText(TEXT).props.onLayout({

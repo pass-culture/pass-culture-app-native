@@ -149,9 +149,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               {offer.description ? (
                 <React.Fragment>
                   <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
-                  <CollapsibleText
-                    text={offer.description}
-                    numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}></CollapsibleText>
+                  <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}>
+                    {offer.description}
+                  </CollapsibleText>
                 </React.Fragment>
               ) : null}
               <Spacer.Column numberOfSpaces={8} />
