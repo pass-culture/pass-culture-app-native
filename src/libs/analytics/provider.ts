@@ -32,7 +32,7 @@ export const analytics: AnalyticsProvider = {
       amplitude.logEvent(eventName.amplitude, params)
     }
     if (await getIsMaestro()) {
-      const host = deviceInfoModule.isEmulatorSync() ? '10.0.2.2' : 'localhost'
+      const host = deviceInfoModule.isEmulatorSync() ? '10.0.2.2' : 'localhost' // NOSONAR(typescript:S5332) maestro is run locally, we don't use HTTPS
       const MOCK_ANALYTICS_SERVER_URL = `http://${host}:4001` // NOSONAR(typescript:S5332) maestro is run locally, we don't use HTTPS
       await fetch(MOCK_ANALYTICS_SERVER_URL, {
         method: 'POST',

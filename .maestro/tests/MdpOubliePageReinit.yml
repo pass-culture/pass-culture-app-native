@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
@@ -12,6 +12,6 @@ appId: ${APP_ID}
 - tapOn: "Mot de passe oublié\_?"
 - assertVisible: "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe\_!"
 - assertVisible: "Adresse e-mail"
-- inputText: ${USERNAME}
+- inputText: ${MAESTRO_USERNAME}
 - tapOn: "Valider"
 - runFlow: reusableFlows/StopApp.yml # Stop App

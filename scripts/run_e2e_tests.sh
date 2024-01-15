@@ -76,16 +76,16 @@ start_mock_analytics_server_silently_in_the_background
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" false
 # shellcheck disable=SC2086
 maestro test \
-  --env APP_ID="$app_id" \
-  --env USERNAME="dev-tests-e2e@passculture.team" \
-  --env USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" \
-  --env NEW_USERNAME="dev-tests-e2e-new@passculture.team" \
-  --env NUMBER_PHONE="0607080910" \
-  --env PASSWORD="$password" \
-  --env PHYSICAL_OFFER="OPSIS - 1 MOIS" \
-  --env EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" \
-  --env MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" \
-  --env MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \
+  --env MAESTRO_APP_ID="$app_id" \
+  --env MAESTRO_USERNAME="axel.renault+test1@passculture.team" \
+  --env MAESTRO_USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" \
+  --env MAESTRO_NEW_USERNAME="dev-tests-e2e-new@passculture.team" \
+  --env MAESTRO_NUMBER_PHONE="0607080910" \
+  --env MAESTRO_PASSWORD="$password" \
+  --env MAESTRO_PHYSICAL_OFFER="OPSIS - 1 MOIS" \
+  --env MAESTRO_EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" \
+  --env MAESTRO_MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" \
+  --env MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \
   $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
 stop_mock_analytics_server

@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 #AccountDeletionConfirmationPage
 - assertVisible: "Veux-tu vraiment supprimer ton compte\_?"

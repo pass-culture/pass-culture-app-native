@@ -1,4 +1,4 @@
-appId: ${APP_ID ?? 'com.sampleapp.appid'}
+appId: ${MAESTRO_APP_ID ?? 'com.sampleapp.appid'}
 jsEngine: graaljs
 name: Sample
 env:

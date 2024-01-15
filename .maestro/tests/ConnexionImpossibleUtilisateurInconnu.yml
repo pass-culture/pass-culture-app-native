@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
@@ -9,10 +9,10 @@ appId: ${APP_ID}
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConnect.yml
 - tapOn:
         id: "Entrée pour l’email"
-- inputText: ${USERNAME_UNKNOWN}
+- inputText: ${MAESTRO_USERNAME_UNKNOWN}
 - tapOn:
         id: "Mot de passe"
-- inputText: ${PASSWORD}
+- inputText: ${MAESTRO_PASSWORD}
 - tapOn: "Se connecter"
 - tapOn: "Se connecter" # pour sortir de la saisie
 - assertVisible: "E-mail ou mot de passe incorrect"
