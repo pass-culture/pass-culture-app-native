@@ -112,10 +112,11 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
   return (
     <Container>
-      <ScrollViewContainer testID="offerv2-container">
+        <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>
           <View style={{ height: 500 }}></View>
           <InformationTags tags={tags} />
+          <Spacer.Column numberOfSpaces={4} />
 
           <OfferTitle offerName={offer.name} />
           <Spacer.Column numberOfSpaces={2} />
@@ -157,7 +158,10 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               ) : null}
               <Spacer.Column numberOfSpaces={8} />
               {shouldDisplayAccessibilityBlock ? (
+                <React.Fragment>
                 <OfferAccessibility accessibility={offer.accessibility} />
+                  <Spacer.Column numberOfSpaces={8} />
+                </React.Fragment>
               ) : null}
             </React.Fragment>
           ) : null}
@@ -167,6 +171,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         <Spacer.Column numberOfSpaces={6} />
 
         <SectionWithDivider visible margin>
+          <Spacer.Column numberOfSpaces={2} />
           <OfferMessagingApps offer={offer} />
         </SectionWithDivider>
 
