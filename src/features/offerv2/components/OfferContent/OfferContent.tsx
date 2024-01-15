@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -164,6 +165,10 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
         <Spacer.Column numberOfSpaces={6} />
+
+        <SectionWithDivider visible margin>
+          <OfferMessagingApps offer={offer} />
+        </SectionWithDivider>
 
         <OfferPlaylistList
           offer={offer}

@@ -108,14 +108,18 @@ describe('<Offer />', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
     })
 
-    it('should display offer v2 page', () => {
+    it('should display offer v2 page', async () => {
       renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await act(async () => {})
 
       expect(screen.getByTestId('offerv2-container')).toBeOnTheScreen()
     })
 
-    it('should display subcategory tag', () => {
+    it('should display subcategory tag', async () => {
       renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await act(async () => {})
 
       expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
     })

@@ -584,8 +584,7 @@ describe('<OfferContent />', () => {
       })
     })
 
-    describe('With offer metadata', () => {
-      it('should display an editor when offer has an editor', async () => {
+    it('should display offer metadata an editor when offer has an editor', async () => {
         renderOfferContent({
           offer: {
             ...offerResponseSnap,
@@ -600,6 +599,13 @@ describe('<OfferContent />', () => {
         expect(screen.queryByText('Éditeur :')).toBeOnTheScreen()
         expect(screen.queryByText('Gallimard')).toBeOnTheScreen()
       })
+
+    it('should display social network section', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
     })
 
     it('should not display an editor when offer has not an editor', async () => {
