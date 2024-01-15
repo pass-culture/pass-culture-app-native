@@ -4,13 +4,12 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
-import { Rectangle } from 'ui/svg/Rectangle'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
 
 interface Props {
   imageUrl?: string
   imageHeight: number
-  type: 'offer' | 'venue'
+  type: 'offer' | 'offerv2' | 'venue'
   minHeight?: number
   children?: React.ReactNode
 }
@@ -51,7 +50,6 @@ export const HeroHeader: React.FC<Props> = (props) => {
         ) : (
           backgroundImage
         )}
-        <Rectangle size={appContentWidth} />
       </HeroContainer>
       {props.children}
     </Container>
@@ -67,4 +65,7 @@ const BackgroundContainer = styled.View({
   flexDirection: 'row',
 })
 
-const HeroContainer = styled.View({ alignItems: 'center', position: 'absolute' })
+const HeroContainer = styled.View({
+  alignItems: 'center',
+  position: 'absolute',
+})
