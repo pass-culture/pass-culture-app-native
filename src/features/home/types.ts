@@ -204,8 +204,6 @@ export type VenuesModule = {
 
 export type VenuesModuleParameters = {
   title: string
-  isGeolocated?: boolean
-  aroundRadius?: number
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number

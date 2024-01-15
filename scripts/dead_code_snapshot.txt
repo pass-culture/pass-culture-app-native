@@ -80,12 +80,12 @@ src/libs/algolia/algolia.d.ts:53 - AlgoliaFacetsAnalytics (used in module)
 src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
-src/libs/algolia/index.ts:34 - LocationFilter
-src/libs/algolia/index.ts:39 - OfferGenreType
-src/libs/algolia/index.ts:103 - AlgoliaQueryParameters
-src/libs/algolia/index.ts:112 - FetchOfferParameters
-src/libs/algolia/index.ts:120 - OfferModuleQuery
-src/libs/algolia/index.ts:177 - GenreTypeFacetData
+src/libs/algolia/index.ts:35 - LocationFilter
+src/libs/algolia/index.ts:40 - OfferGenreType
+src/libs/algolia/index.ts:104 - AlgoliaQueryParameters
+src/libs/algolia/index.ts:114 - FetchOfferParameters
+src/libs/algolia/index.ts:122 - OfferModuleQuery
+src/libs/algolia/index.ts:179 - GenreTypeFacetData
 src/libs/analytics/index.ts:6 - isCloseToEndHorizontal
 src/libs/analytics/index.ts:10 - AnalyticsProvider
 src/libs/hooks/index.ts:5 - useIsMounted (used in module)
