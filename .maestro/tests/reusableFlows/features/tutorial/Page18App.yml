@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "À 18 ans, profite de ton pass Culture\_!"
 - assertVisible: "Comment ça marche\_?"

@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
@@ -23,11 +23,11 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${EVENT_OFFER}
+- inputText: ${MAESTRO_EVENT_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${EVENT_OFFER}
+      visible: ${MAESTRO_EVENT_OFFER}
     file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferEvent.yml"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
@@ -47,7 +47,7 @@ appId: ${APP_ID}
     when:
       visible: "Réinitialiser la recherche"
     file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${EVENT_OFFER}
+- inputText: ${MAESTRO_EVENT_OFFER}
 - pressKey: Enter
 
 - runFlow:
@@ -77,7 +77,7 @@ appId: ${APP_ID}
     file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
 
 - tapOn:
-    text: ${EVENT_OFFER}
+    text: ${MAESTRO_EVENT_OFFER}
     index: 1
 - assertVisible: "Voir les disponibilités"
 - tapOn: "Voir les disponibilités"

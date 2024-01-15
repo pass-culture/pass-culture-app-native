@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 #IdCheckPage
 - assertVisible: "Vérifie ton identité pour débloquer ton crédit"

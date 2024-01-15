@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Notifications"
 - assertVisible: "Tu dois être connecté pour activer les notifications et rester informé\

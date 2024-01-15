@@ -1,4 +1,4 @@
-const response = http.get(MOCK_ANALYTICS_SERVER)
+const response = http.get(MAESTRO_MOCK_ANALYTICS_SERVER)
 const calledAnalytics = json(response.body)
 
 if (!EXPECTED_ANALYTICS_CALL) {

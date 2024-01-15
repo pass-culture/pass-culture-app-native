@@ -1,4 +1,4 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 #NumberPhone
 - tapOn: "Numéro de téléphone"
@@ -32,7 +32,7 @@ appId: ${APP_ID}
     id: "Entrée pour le numéro de téléphone"
 - assertVisible:
       id: "Entrée pour le numéro de téléphone"
-- inputText: ${NUMBER_PHONE}
+- inputText: ${MAESTRO_NUMBER_PHONE}
 
 - assertVisible: "Il te reste "
 - assertVisible: "5 demandes "
