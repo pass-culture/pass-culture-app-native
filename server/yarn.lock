@@ -1059,15 +1059,15 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@happy-dom/jest-environment@^10.11.2":
-  version "10.11.2"
-  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-10.11.2.tgz#04f86f3280de975615dfd069a34b5a4481ae40e1"
-  integrity sha512-I/X0IOz6sONKVycxzA5mS5ELuYjlDTPtcwNUUBQbdlu8LnoPQBrYfuVQcIoXpUa3jbwzWbQkTNRivOO+X+EjLg==
+"@happy-dom/jest-environment@^13.1.4":
+  version "13.1.4"
+  resolved "https://registry.yarnpkg.com/@happy-dom/jest-environment/-/jest-environment-13.1.4.tgz#c12d6b31d7e38547b4e7e92de9c1cb6b5741a8a4"
+  integrity sha512-u1U43eFXgqkdcwtswS68SQzRAp2ecsTDu9LEd6W2iPAZQOWD+3qHBZN8ic3oJNIYaBGetjk6uchORLnWmh+TGQ==
   dependencies:
     "@jest/environment" "^29.4.0"
     "@jest/fake-timers" "^29.4.0"
     "@jest/types" "^29.4.0"
-    happy-dom "10.11.2"
+    happy-dom "13.1.4"
     jest-mock "^29.4.0"
     jest-util "^29.4.0"
 
@@ -3568,10 +3568,10 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-happy-dom@10.11.2:
-  version "10.11.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-10.11.2.tgz#6a299c8943f68f67859919b35ea49818573bdfbe"
-  integrity sha512-rzgmLjLkhyaOdFEyU8CWXzbgyCyM7wJHLqhaoeEVSTyur1fjcUaiNTHx+D4CPaLvx16tGy+SBPd9TVnP/kzL3w==
+happy-dom@13.1.4:
+  version "13.1.4"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.1.4.tgz#26592cb6c764526088473ac0030bd1959375c90d"
+  integrity sha512-f8STa4iuJcpXn7YjgqBEemzinyPAdjlHMxlCNbIERdRIjJO9Z9Cj3XW5LuiEhsURFfl0AOWqj0hQitme4gq+Gg==
   dependencies:
     css.escape "^1.5.1"
     entities "^4.5.0"
