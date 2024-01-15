@@ -31,7 +31,7 @@ describe('OnboardingWelcome', () => {
     fireEvent.press(loginButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', { preventCancellation: true })
+      expect(navigate).toHaveBeenCalledWith('Login', {})
     })
   })
 

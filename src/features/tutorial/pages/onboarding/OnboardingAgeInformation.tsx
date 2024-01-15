@@ -44,7 +44,7 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element =>
       onBeforeNavigate={onSignupPress}
       navigateTo={{
         screen: 'SignupForm',
-        params: { from: StepperOrigin.TUTORIAL, preventCancellation: true },
+        params: { from: StepperOrigin.TUTORIAL },
       }}
     />,
     <InternalTouchableLink

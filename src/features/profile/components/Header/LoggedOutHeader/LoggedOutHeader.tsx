@@ -27,7 +27,7 @@ export function LoggedOutHeader() {
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
-            params: { from: StepperOrigin.PROFILE, preventCancellation: true },
+            params: { from: StepperOrigin.PROFILE },
           }}
           onBeforeNavigate={onBeforeNavigate}
           fitContentWidth={isDesktopViewport}
@@ -35,11 +35,7 @@ export function LoggedOutHeader() {
 
         {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
 
-        <AuthenticationButton
-          type="login"
-          linkColor={colors.secondary}
-          params={{ preventCancellation: true }}
-        />
+        <AuthenticationButton type="login" linkColor={colors.secondary} />
       </Container>
     </HeaderWithGreyContainer>
   )

@@ -59,7 +59,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
-            params: { preventCancellation: true, offerId, from },
+            params: { offerId, from },
           }}
           onBeforeNavigate={signUp}
         />
@@ -68,7 +68,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       <StyledAuthenticationButton
         type="login"
         onAdditionalPress={signIn}
-        params={{ offerId, from, preventCancellation: true }}
+        params={{ offerId, from }}
       />
     </AppModalWithIllustration>
   )
