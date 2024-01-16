@@ -35,7 +35,13 @@ const LOAD_MORE_THRESHOLD = 300
 
 type CustomUserData = Record<'message', string>[] | undefined
 
-function getHeaderSize(userData: CustomUserData, isGeolocated: boolean, venuesCount: number) {
+type GetHeaderSizeType = {
+  userData: CustomUserData
+  isGeolocated: boolean
+  hasVenuesPlaylist: boolean
+}
+
+function getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist }: GetHeaderSizeType) {
   let totalHeight = BASE_HEADER_HEIGHT
 
   if (userData?.[0]?.message) {
@@ -44,29 +50,37 @@ function getHeaderSize(userData: CustomUserData, isGeolocated: boolean, venuesCo
     totalHeight += GEOLOCATION_BUTTON_HEIGHT
   }
 
-  if (venuesCount) {
+  if (hasVenuesPlaylist) {
     totalHeight += VENUES_PLAYLIST_HEIGHT
   }
 
   return totalHeight
 }
 
+type GetItemSizeType = {
+  index: number
+  isGeolocated: boolean
+  itemsCount: number
+  userData: CustomUserData
+  hasVenuesPlaylist: boolean
+}
+
 /**
  * Function called to compute row size.
  * Since the list contains header and footer components, it needs computation.
  */
-function getItemSize(
-  index: number,
-  venuesCount: number,
-  isGeolocated: boolean,
-  itemsCount: number,
-  userData: CustomUserData
-) {
+function getItemSize({
+  index,
+  isGeolocated,
+  itemsCount,
+  userData,
+  hasVenuesPlaylist,
+}: GetItemSizeType) {
   const isHeader = index === 0
   const isFooter = index === itemsCount - 1
 
   if (isHeader) {
-    return getHeaderSize(userData, isGeolocated, venuesCount)
+    return getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist })
   }
 
   if (isFooter) {
@@ -95,6 +109,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
     const listRef = useRef<VariableSizeList<RowData>>(null)
     const { hasGeolocPosition } = useLocation()
     const { searchState } = useSearch()
+    const hasVenuesPlaylist = !searchState.venue && !!hits.venues.length
 
     /**
      * This method will compute maximum height to set list height programatically.
@@ -161,8 +176,14 @@ export const SearchList = forwardRef<never, SearchListProps>(
 
     const itemSizeFn = useCallback(
       (index: number) =>
-        getItemSize(index, hits.venues.length, hasGeolocPosition, data.items.length, userData),
-      [data.items.length, hits.venues.length, hasGeolocPosition, userData]
+        getItemSize({
+          index,
+          isGeolocated: hasGeolocPosition,
+          itemsCount: data.items.length,
+          userData,
+          hasVenuesPlaylist,
+        }),
+      [hasGeolocPosition, data.items.length, userData, hasVenuesPlaylist]
     )
 
     return (
