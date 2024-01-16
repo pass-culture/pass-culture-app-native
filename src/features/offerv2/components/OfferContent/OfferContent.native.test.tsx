@@ -141,6 +141,14 @@ describe('<OfferContent />', () => {
     })
   })
 
+  it('should display offer header', async () => {
+    renderOfferContent({})
+
+    await act(async () => {})
+
+    expect(screen.getByTestId('offerHeaderName')).toBeOnTheScreen()
+  })
+
   it('should animate on scroll', async () => {
     renderOfferContent({})
 
@@ -154,64 +162,601 @@ describe('<OfferContent />', () => {
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
 
-  it('should display offer header', async () => {
+  describe('Tags section', () => {
+    it('should display tags', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
+    })
+
+    it('should display vinyl tag', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+        extraData: { musicType: 'Metal', musicSubType: 'Industrial' },
+      }
+      const subcategory: Subcategory = {
+        categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
+        appLabel: 'Vinyles et autres supports',
+        searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+        homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
+        isEvent: false,
+        onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+        nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
+      }
+
+      renderOfferContent({
+        offer,
+        subcategory,
+      })
+
+      await act(async () => {})
+
+      expect(screen.getByText('Metal')).toBeOnTheScreen()
+      expect(screen.getByText('Industrial')).toBeOnTheScreen()
+      expect(screen.getByText('Vinyles et autres supports')).toBeOnTheScreen()
+    })
+  })
+
+  it('should display offer as a title', async () => {
     renderOfferContent({})
 
     await act(async () => {})
 
-    expect(screen.getByTestId('offerHeaderName')).toBeOnTheScreen()
+    expect(
+      screen.getByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
+    ).toBeOnTheScreen()
   })
 
-  it('should log analytics when display authentication modal', async () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({
-      isLoggedIn: false,
-      setIsLoggedIn: mockRefetchSameArtistPlaylist,
-      refetchUser: mockRefetchSameArtistPlaylist,
-      isUserLoading: false,
-    }))
-
-    renderOfferContent({})
-
-    const bookingOfferButton = await screen.findByText('Réserver l’offre')
-    await act(async () => {
-      fireEvent.press(bookingOfferButton)
+  it('should display artists', async () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      extraData: { stageDirector: 'Marion Cotillard, Leonardo DiCaprio' },
+    }
+    renderOfferContent({
+      offer,
     })
 
-    expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerResponseSnap.id)
+    await act(async () => {})
+
+    expect(screen.getByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
   })
 
-  it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
+  it('should display prices', async () => {
     renderOfferContent({})
-    const scrollView = screen.getByTestId('offerv2-container')
 
-    await act(async () => {
-      fireEvent.scroll(scrollView, nativeEventMiddle)
-    })
+    await act(async () => {})
 
-    expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
-
-    await act(async () => {
-      fireEvent.scroll(scrollView, nativeEventBottom)
-    })
-
-    expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerResponseSnap.id)
+    expect(screen.getByText('5,00 €')).toBeOnTheScreen()
   })
 
-  it('should trigger logEvent "ConsultAllOffer" only once', async () => {
-    renderOfferContent({})
-    const scrollView = screen.getByTestId('offerv2-container')
-    await act(async () => {
-      fireEvent.scroll(scrollView, nativeEventBottom)
+  describe('Venue button section', () => {
+    it('should display venue button', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
     })
 
-    expect(analytics.logConsultWholeOffer).toHaveBeenCalledTimes(1)
+    it('should not display venue button', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        venue: {
+          ...offerResponseSnap.venue,
+          isPermanent: false,
+        },
+      }
+      renderOfferContent({ offer })
 
-    await act(async () => {
-      fireEvent.scroll(scrollView, nativeEventMiddle)
-      fireEvent.scroll(scrollView, nativeEventBottom)
+      await act(async () => {})
+
+      expect(
+        screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+      ).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('Summary info section', () => {
+    it('should display duo info', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        isDuo: true,
+      }
+      renderOfferContent({ offer })
+
+      await act(async () => {})
+
+      expect(screen.getByText('Duo')).toBeOnTheScreen()
     })
 
-    expect(analytics.logConsultWholeOffer).toHaveBeenCalledTimes(1)
+    it('should not display duo info', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        isDuo: false,
+      }
+      renderOfferContent({ offer })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('About section', () => {
+    it('should display about section when offer has a description', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          description: 'Cette offre est super cool cool cool cool cool cool',
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
+    })
+
+    it('should display about section when there is an accessibility section', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          accessibility: {
+            audioDisability: true,
+            mentalDisability: true,
+            motorDisability: false,
+            visualDisability: false,
+          },
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
+    })
+
+    it('should display about section when there is metadata', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          description: undefined,
+          accessibility: {},
+          extraData: {
+            speaker: 'Toto',
+          },
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
+    })
+
+    it('should not display about section when there are not description, accessibility section and metadata', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          description: undefined,
+          accessibility: {},
+          extraData: {},
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
+    })
+
+    describe('Description', () => {
+      it('should display description', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            description: 'Cette offre est super cool cool cool cool cool cool',
+          },
+        })
+
+        await act(async () => {})
+
+        expect(
+          screen.getByText('Cette offre est super cool cool cool cool cool cool')
+        ).toBeOnTheScreen()
+      })
+
+      it('should not display description when no description', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            description: null,
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
+      })
+    })
+
+    describe('Accessibility section', () => {
+      it('should display accessibility when disabilities are defined', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            accessibility: {
+              audioDisability: true,
+              mentalDisability: true,
+              motorDisability: false,
+              visualDisability: false,
+            },
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+      })
+
+      it('should not display accessibility when disabilities are not defined', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            accessibility: {},
+          },
+        })
+
+        await act(async () => {})
+
+        expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
+      })
+    })
+
+    it('should display offer editor when offer has it', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          extraData: {
+            editeur: 'Gallimard',
+          },
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Éditeur :')).toBeOnTheScreen()
+      expect(screen.queryByText('Gallimard')).toBeOnTheScreen()
+    })
+
+    it('should not display offer editor when offer has not it', async () => {
+      renderOfferContent({
+        offer: {
+          ...offerResponseSnap,
+          extraData: {},
+        },
+      })
+
+      await act(async () => {})
+
+      expect(screen.queryByText('Éditeur :')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Gallimard')).not.toBeOnTheScreen()
+    })
+
+    it('should display social network section', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
+    })
+  })
+
+  describe('Venue section', () => {
+    it('should display venue section', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
+    })
+
+    it('should display venue distance tag when user share his position', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByText('à 900+ km')).toBeOnTheScreen()
+    })
+
+    it('should not display venue distance tag when user not share his position', async () => {
+      mockPosition = null
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('Playlist list section', () => {
+    describe('Same artist playlist', () => {
+      const extraData = {
+        author: 'Eiichiro Oda',
+        ean: '9782723492607',
+      }
+
+      it('should display same artist playlist', async () => {
+        renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
+
+        await act(async () => {})
+
+        expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
+      })
+
+      it('should call refetch when artist and EAN are provided because playlist not refresh correctly when navigate to an other offer', async () => {
+        renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
+
+        await act(async () => {})
+
+        expect(mockRefetchSameArtistPlaylist).toHaveBeenCalledTimes(1)
+      })
+
+      it('should not call refetch when artist and EAN are not provided', async () => {
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        expect(mockRefetchSameArtistPlaylist).not.toHaveBeenCalled()
+      })
+
+      it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(true)
+
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+          nbResults: 30,
+        })
+      })
+
+      it('should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(true)
+        mockInView(false)
+        mockInView(true)
+
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+      })
+
+      it('should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist', async () => {
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(false)
+
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('Same category similar offers', () => {
+      it('should display same category similar offers', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
+      })
+
+      it('should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(true)
+
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          nbResults: 4,
+          ...apiRecoParams,
+        })
+      })
+
+      it('should trigger only once time logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(true)
+        mockInView(false)
+        mockInView(true)
+
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+      })
+
+      it('should not trigger logSameCategoryPlaylistVerticalScroll when not scrolling to the playlist', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(false)
+
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('Other categories similar offers', () => {
+      it('should display other categories similar offer', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
+      })
+
+      it('should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(true)
+
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          nbResults: 4,
+          ...apiRecoParams,
+        })
+      })
+
+      it('should trigger only once time logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(true)
+        mockInView(false)
+        mockInView(true)
+
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
+      })
+
+      it('should not trigger logOtherCategoriesPlaylistVerticalScroll when not scrolling to the playlist', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {})
+
+        mockInView(false)
+
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+      })
+    })
+  })
+
+  describe('Offer booking button', () => {
+    it('should display "Réserver l’offre" button', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
+    })
+
+    it('should log analytics when display authentication modal', async () => {
+      mockUseAuthContext.mockImplementationOnce(() => ({
+        isLoggedIn: false,
+        setIsLoggedIn: mockRefetchSameArtistPlaylist,
+        refetchUser: mockRefetchSameArtistPlaylist,
+        isUserLoading: false,
+      }))
+
+      renderOfferContent({})
+
+      const bookingOfferButton = await screen.findByText('Réserver l’offre')
+      await act(async () => {
+        fireEvent.press(bookingOfferButton)
+      })
+
+      expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(
+        1,
+        offerResponseSnap.id
+      )
+    })
+
+    it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
+      renderOfferContent({})
+      const scrollView = screen.getByTestId('offerv2-container')
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventMiddle)
+      })
+
+      expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerResponseSnap.id)
+    })
+
+    it('should trigger logEvent "ConsultAllOffer" only once', async () => {
+      renderOfferContent({})
+      const scrollView = screen.getByTestId('offerv2-container')
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenCalledTimes(1)
+
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventMiddle)
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
+
+      expect(analytics.logConsultWholeOffer).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('Batch trigger', () => {
@@ -299,536 +844,6 @@ describe('<OfferContent />', () => {
         expect(BatchUser.trackEvent).toHaveBeenCalledWith(expectedBatchEvent)
       }
     )
-  })
-
-  it('should display offer as a title', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(
-      screen.getByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
-    ).toBeOnTheScreen()
-  })
-
-  it('should display tags', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
-  })
-
-  it('should display vinyl offer tags', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
-      extraData: { musicType: 'Metal', musicSubType: 'Industrial' },
-    }
-    const subcategory: Subcategory = {
-      categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
-      appLabel: 'Vinyles et autres supports',
-      searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-      homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
-      isEvent: false,
-      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
-    }
-
-    renderOfferContent({
-      offer,
-      subcategory,
-    })
-
-    await act(async () => {})
-
-    expect(screen.getByText('Metal')).toBeOnTheScreen()
-    expect(screen.getByText('Industrial')).toBeOnTheScreen()
-    expect(screen.getByText('Vinyles et autres supports')).toBeOnTheScreen()
-  })
-
-  it('should display artists', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      extraData: { stageDirector: 'Marion Cotillard, Leonardo DiCaprio' },
-    }
-    renderOfferContent({
-      offer,
-    })
-
-    await act(async () => {})
-
-    expect(screen.getByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
-  })
-
-  it('should display prices', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.getByText('5,00 €')).toBeOnTheScreen()
-  })
-
-  it('should display venue button', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
-  })
-
-  it('should not display venue button', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      venue: {
-        ...offerResponseSnap.venue,
-        isPermanent: false,
-      },
-    }
-    renderOfferContent({ offer })
-
-    await act(async () => {})
-
-    expect(
-      screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-    ).not.toBeOnTheScreen()
-  })
-
-  it('should display duo summary info', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      isDuo: true,
-    }
-    renderOfferContent({ offer })
-
-    await act(async () => {})
-
-    expect(screen.getByText('Duo')).toBeOnTheScreen()
-  })
-
-  it('should not display duo summary info', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      isDuo: false,
-    }
-    renderOfferContent({ offer })
-
-    await act(async () => {})
-
-    expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
-  })
-
-  it('should display venue section', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
-  })
-
-  it('should display venue tag distance when user share his position', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.getByText('à 900+ km')).toBeOnTheScreen()
-  })
-
-  it('should not display venue tag distance when user not share his position', async () => {
-    mockPosition = null
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
-  })
-
-  describe('With same artist playlist', () => {
-    const extraData = {
-      author: 'Eiichiro Oda',
-      ean: '9782723492607',
-    }
-
-    it('should display same artist playlist', async () => {
-      renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
-
-      await act(async () => {})
-
-      expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
-    })
-
-    it('should call refetch when artist and EAN are provided because playlist not refresh correctly when navigate to an other offer', async () => {
-      renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
-
-      await act(async () => {})
-
-      expect(mockRefetchSameArtistPlaylist).toHaveBeenCalledTimes(1)
-    })
-
-    it('should not call refetch when artist and EAN are not provided', async () => {
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      expect(mockRefetchSameArtistPlaylist).not.toHaveBeenCalled()
-    })
-
-    it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(true)
-
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-        fromOfferId: undefined,
-        offerId: 116656,
-        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-        nbResults: 30,
-      })
-    })
-
-    it('should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(true)
-      mockInView(false)
-      mockInView(true)
-
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-    })
-
-    it('should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(false)
-
-      expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('With same category similar offers', () => {
-    it('should display same category similar offers', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
-    })
-
-    it('should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(true)
-
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-        fromOfferId: undefined,
-        offerId: 116656,
-        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-        nbResults: 4,
-        ...apiRecoParams,
-      })
-    })
-
-    it('should trigger only once time logSameCategoryPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(true)
-      mockInView(false)
-      mockInView(true)
-
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-    })
-
-    it('should not trigger logSameCategoryPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(false)
-
-      expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('With other categories similar offers', () => {
-    it('should display other categories similar offer', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
-    })
-
-    it('should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(true)
-
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-        fromOfferId: undefined,
-        offerId: 116656,
-        playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-        nbResults: 4,
-        ...apiRecoParams,
-      })
-    })
-
-    it('should trigger only once time logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(true)
-      mockInView(false)
-      mockInView(true)
-
-      expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
-    })
-
-    it('should not trigger logOtherCategoriesPlaylistVerticalScroll when not scrolling to the playlist', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      useSimilarOffersSpy.mockReturnValueOnce({
-        similarOffers: mockedAlgoliaResponse.hits,
-        apiRecoParams,
-      })
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      mockInView(false)
-
-      expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('with About block', () => {
-    it('should display about block when there is a description', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: 'Cette offre est super cool cool cool cool cool cool',
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
-    })
-
-    it('should display about block when there is an accessibility block', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          accessibility: {
-            audioDisability: true,
-            mentalDisability: true,
-            motorDisability: false,
-            visualDisability: false,
-          },
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
-    })
-
-    it('should display about block when there is metadata', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: undefined,
-          accessibility: {},
-          extraData: {
-            speaker: 'Toto',
-          },
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
-    })
-
-    it('should not display about block when there are not description, accessibility block and metadata', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: undefined,
-          accessibility: {},
-          extraData: {},
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
-    })
-
-    describe('with description', () => {
-      it('should display description', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            description: 'Cette offre est super cool cool cool cool cool cool',
-          },
-        })
-
-        await act(async () => {})
-
-        expect(
-          screen.getByText('Cette offre est super cool cool cool cool cool cool')
-        ).toBeOnTheScreen()
-      })
-
-      it('should not display description when no description', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            description: null,
-          },
-        })
-
-        await act(async () => {})
-
-        expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
-      })
-    })
-
-    describe('with accessibility block', () => {
-      it('should display accessibility when disabilities are defined', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            accessibility: {
-              audioDisability: true,
-              mentalDisability: true,
-              motorDisability: false,
-              visualDisability: false,
-            },
-          },
-        })
-
-        await act(async () => {})
-
-        expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
-      })
-
-      it('should not display accessibility when disabilities are not defined', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            accessibility: {},
-          },
-        })
-
-        await act(async () => {})
-
-        expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
-        expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should display offer metadata an editor when offer has an editor', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          extraData: {
-            editeur: 'Gallimard',
-          },
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('Éditeur :')).toBeOnTheScreen()
-      expect(screen.queryByText('Gallimard')).toBeOnTheScreen()
-    })
-
-    it('should display social network section', async () => {
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
-    })
-
-    it('should not display an editor when offer has not an editor', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          extraData: {},
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('Éditeur :')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Gallimard')).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should display "Réserver l’offre" button', async () => {
-    renderOfferContent({})
-
-    await act(async () => {})
-
-    expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
   })
 })
 
