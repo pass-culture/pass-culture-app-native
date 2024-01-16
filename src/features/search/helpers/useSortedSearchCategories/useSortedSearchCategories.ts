@@ -9,9 +9,9 @@ export type OnPressCategory = (pressedCategory: SearchGroupNameEnumv2) => void
 export type MappingOutput = CategoryButtonProps & { position: number | undefined }
 
 export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): number {
-  if (a.position === undefined) return 0
-  if (b.position === undefined) return 0
-  return a.position - b.position
+  const positionA: number = a?.position || 0
+  const positionB: number = b?.position || 0
+  return positionA - positionB
 }
 
 export const useSortedSearchCategories = (
