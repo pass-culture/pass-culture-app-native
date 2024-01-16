@@ -157,7 +157,7 @@ export function Slider(props: Props) {
   return (
     <React.Fragment>
       {!!props.showValues && (
-        <CenteredText width={props.sliderLength}>
+        <CenteredText>
           {values.length === 1 && formatValues(values[0])}
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
         </CenteredText>
@@ -217,7 +217,9 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
       borderWidth: getSpacing(0.5),
     },
     containerStyle: { height: getSpacing(8) },
-    sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
+    sliderLength: sliderLength
+      ? sliderLength - getSpacing(2 * 6)
+      : theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
 })``
 

@@ -11,11 +11,10 @@ exports[`<Slider /> should render correctly 1`] = `
           "fontSize": 15,
           "lineHeight": 20,
           "textAlign": "center",
-          "width": 150,
+          "width": 864,
         },
       ]
     }
-    width={150}
   >
     0 - 100
   </Text>,
@@ -60,7 +59,7 @@ exports[`<Slider /> should render correctly 1`] = `
                 "flexDirection": "row",
               },
               {
-                "width": 150,
+                "width": 102,
               },
             ]
           }
@@ -118,7 +117,7 @@ exports[`<Slider /> should render correctly 1`] = `
                   "backgroundColor": "#eb0055",
                 },
                 {
-                  "width": 150,
+                  "width": 102,
                 },
               ]
             }
