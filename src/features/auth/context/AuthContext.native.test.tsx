@@ -1,5 +1,4 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
@@ -9,7 +8,6 @@ import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
-import { env } from 'libs/environment'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { saveRefreshToken, clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -18,8 +16,8 @@ import { useNetInfo } from 'libs/network/useNetInfo'
 import * as PackageJson from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, renderHook } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
@@ -50,6 +48,10 @@ describe('AuthContext', () => {
   })
 
   describe('useAuthContext', () => {
+    beforeEach(() => {
+      mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+    })
+
     it('should not return user when logged in but no internet connection', async () => {
       mockedUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
       await saveRefreshToken('token')
@@ -62,6 +64,7 @@ describe('AuthContext', () => {
     })
 
     it('should return the user when logged in with internet connection', async () => {
+      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
       await saveRefreshToken('token')
 
       const result = renderUseAuthContext()
@@ -106,6 +109,7 @@ describe('AuthContext', () => {
     })
 
     it('should set user properties to Amplitude events when user is logged in', async () => {
+      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
       await saveRefreshToken('token')
 
       renderUseAuthContext()
@@ -126,11 +130,12 @@ describe('AuthContext', () => {
     })
 
     it('should not set user properties to Amplitude events when user is not logged in', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res(ctx.status(200), ctx.json(nonBeneficiaryUser))
-        )
-      )
+      // mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+      // server.use(
+      //   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+      //     res(ctx.status(200), ctx.json(nonBeneficiaryUser))
+      //   )
+      // )
 
       renderUseAuthContext()
 
@@ -140,11 +145,12 @@ describe('AuthContext', () => {
     })
 
     it('should set user id when user is logged in', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res(ctx.status(200), ctx.json(nonBeneficiaryUser))
-        )
-      )
+      // mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+      // server.use(
+      //   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+      //     res(ctx.status(200), ctx.json(nonBeneficiaryUser))
+      //   )
+      // )
       await saveRefreshToken('token')
 
       renderUseAuthContext()
