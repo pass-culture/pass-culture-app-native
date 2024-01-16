@@ -6,7 +6,7 @@
 
 You can mock the result of `new Date()` as follows:
 
-```tsx
+```ts
 const Today = new Date(2020, 10, 1)
 
 describe('Favorites reducer', () => {
@@ -20,7 +20,7 @@ describe('Favorites reducer', () => {
 
 To test as an authenticated person, you can mock `useAuthContext` as follows:
 
-```tsx
+```ts
 import { useAuthContext } from 'features/auth/context/AuthContext'
 
 jest.mock('features/auth/AuthContext')
@@ -40,7 +40,7 @@ mockUseAuthContext.mockReturnValueOnce({
 
 When the tested component use route params through `useRoute` hook, `params` can be mocked as follows:
 
-```tsx
+```ts
 import { useRoute } from '__mocks__/@react-navigation/native'
 
 // later
@@ -60,33 +60,33 @@ They are two types of call: the one to our backend `api/native/v1` and the other
 
 1. Call to our API with data in response
 
-```
+```ts
 mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
-      expiration: undefined,
-    })
+  expiration: undefined,
+})
 ```
 
 2. Call to our API but we want the response to persist for more than one call (here the data is empty)
 
-```
+```ts
 mockServer.postApiV1('/change_password', {
-      responseOptions: { data: {} },
-      requestOptions: { persist: true },
-    })
+  responseOptions: { data: {} },
+  requestOptions: { persist: true },
+})
 ```
 
 3. Call to our API but the response is an error
 
-```
+```ts
 mockServer.postApiV1('/profile/update_email', {
-    responseOptions: { statusCode: 400, data: { code: 'INVALID_PASSWORD' } },
-  })
+  responseOptions: { statusCode: 400, data: { code: 'INVALID_PASSWORD' } },
+})
 ```
 
 4. Call to another API than our `native/v1` (the url needs to be full)
 
-```
+```ts
 mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockOfferId}`, {
-      hits: [],
-    })
+  hits: [],
+})
 ```
