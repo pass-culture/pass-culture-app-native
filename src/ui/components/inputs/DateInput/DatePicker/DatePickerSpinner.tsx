@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -9,19 +9,14 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
+  date,
   onChange,
   defaultSelectedDate,
   errorMessage,
   maximumDate,
   minimumDate,
 }) => {
-  const [date, setDate] = useState<Date>()
   const birthdateInputErrorId = uuidv4()
-
-  useEffect(() => {
-    onChange(date || defaultSelectedDate)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date])
 
   return (
     <React.Fragment>
@@ -36,7 +31,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
         date={date || defaultSelectedDate}
-        onDateChange={setDate}
+        onDateChange={onChange}
         mode="date"
         locale="fr-FR"
         maximumDate={maximumDate}

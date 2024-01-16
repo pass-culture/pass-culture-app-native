@@ -53,6 +53,6 @@ describe('<DatePickerDropDown />', () => {
     fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '1994' } })
 
     expect(props.onChange).toHaveBeenNthCalledWith(1, undefined) // first render trigger useEffect
-    expect(props.onChange).toHaveBeenNthCalledWith(2, new Date('1994-01-01T00:00:00.000Z'))
+    expect(props.onChange).toHaveBeenNthCalledWith(4, new Date('1994-01-01T00:00:00.000Z'))
   })
 })

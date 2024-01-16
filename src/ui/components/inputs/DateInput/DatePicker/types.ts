@@ -1,11 +1,11 @@
 export type DatePickerProps = {
+  date?: Date
+  onChange: (date?: Date) => void
   defaultSelectedDate: Date
   previousBirthdateProvided?: string
   minimumDate: Date
   maximumDate?: Date
-  onChange: (date?: Date) => void
   errorMessage?: string | null
   accessibilityDescribedBy?: string
   isDisabled?: boolean
-  chidren?: never
 }

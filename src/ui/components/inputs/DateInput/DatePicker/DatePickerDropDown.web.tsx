@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInputDesktop } from 'ui/components/inputs/DateInput/atoms/DateInputDesktop.web'
@@ -8,25 +8,20 @@ import { Spacer } from 'ui/theme'
 
 export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
   onChange,
+  date,
   minimumDate,
   maximumDate,
   defaultSelectedDate,
   previousBirthdateProvided,
   errorMessage,
 }) => {
-  const [date, setDate] = useState<Date | undefined>()
-
   const birthdateInputErrorId = uuidv4()
-
-  useEffect(() => {
-    onChange(date)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date])
 
   return (
     <React.Fragment>
       <DateInputDesktop
-        onChange={setDate}
+        date={date}
+        onChange={onChange}
         minimumDate={minimumDate}
         maximumDate={maximumDate}
         defaultSelectedDate={defaultSelectedDate}

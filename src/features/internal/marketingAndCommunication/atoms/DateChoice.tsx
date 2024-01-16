@@ -6,7 +6,14 @@ interface Props {
   onChange: (date: Date | undefined) => void
 }
 
-export function DateChoice(props: Props) {
+export function DateChoice({ onChange }: Props) {
+  const [date, setDate] = React.useState<Date>()
+  const onDateChange = (date: Date | undefined) => {
+    onChange(date)
+    setDate(date)
+  }
   const now = new Date()
-  return <DateInput defaultSelectedDate={now} minimumDate={now} onChange={props.onChange} />
+  return (
+    <DateInput defaultSelectedDate={now} minimumDate={now} date={date} onChange={onDateChange} />
+  )
 }
