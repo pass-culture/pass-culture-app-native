@@ -15,7 +15,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta property=\\"og:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
     <meta property=\\"og:description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
-    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/google_places/google_places_9.jpeg\\" />
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png\\" />
     <meta property=\\"og:image:alt\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
@@ -24,7 +24,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta name=\\"twitter:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
     <meta name=\\"twitter:description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
-    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/google_places/google_places_9.jpeg\\" />
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png\\" />
     <meta name=\\"twitter:image:alt\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
