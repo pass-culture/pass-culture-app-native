@@ -196,6 +196,7 @@ const mockedPlace: SuggestedPlace = {
 
 const mockSetPlace = jest.fn()
 const mockSetSelectedLocationMode = jest.fn()
+let mockHasGeolocPosition = false
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -204,6 +205,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     onModalHideRef: jest.fn(),
     isCurrentLocationMode: jest.fn(),
     setSelectedLocationMode: mockSetSelectedLocationMode,
+    hasGeolocPosition: mockHasGeolocPosition,
   }),
 }))
 
@@ -238,38 +240,59 @@ describe('<Search/>', () => {
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
-  it('should setPlace and setLocationMode in location context when there is a place in the uri params', async () => {
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: mockedPlace,
+  describe('When URI params contains', () => {
+    it('a place, it should setPlace and setLocationMode in location context', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          locationFilter: {
+            locationType: LocationMode.AROUND_PLACE,
+            place: mockedPlace,
+          },
         },
-      },
+      })
+
+      render(<Search />)
+
+      await act(async () => {})
+
+      expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
+      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
     })
 
-    render(<Search />)
-
-    await act(async () => {})
-
-    expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
-    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
-  })
-
-  it('should setLocationMode in location context when there is a location type EVERYWHERE in the uri params', async () => {
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.EVERYWHERE,
+    it('AROUND-ME, and hasGeolocPosition is true, it should setLocationMode to AROUND-ME in location context', async () => {
+      mockHasGeolocPosition = true
+      useRoute.mockReturnValueOnce({
+        params: {
+          locationFilter: {
+            locationType: LocationMode.AROUND_ME,
+          },
         },
-      },
+      })
+
+      render(<Search />)
+
+      await act(async () => {})
+
+      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
     })
 
-    render(<Search />)
+    it("AROUND-ME, and hasGeolocPosition is false, it shouldn't setLocationMode to AROUND-ME in location context", async () => {
+      mockHasGeolocPosition = false
 
-    await act(async () => {})
+      useRoute.mockReturnValueOnce({
+        params: {
+          locationFilter: {
+            locationType: LocationMode.AROUND_ME,
+          },
+        },
+      })
 
-    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
+      render(<Search />)
+
+      await act(async () => {})
+
+      expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
+    })
   })
 
   describe('When search is focus on suggestions', () => {
