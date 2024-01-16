@@ -1,5 +1,4 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 
 import {
@@ -11,9 +10,8 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -55,20 +53,13 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-      server.use(
-        rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              banner: {
-                name: BannerName.activation_banner,
-                text: 'à dépenser sur l’application',
-                title: 'Débloque tes 1000\u00a0€',
-              },
-            })
-          )
-        )
-      )
+      mockServer.getApiV1<BannerResponse>('/banner', {
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
 
       renderNonBeneficiaryHeader({
         startDatetime: '2021-03-30T00:00Z',
@@ -83,20 +74,13 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-      server.use(
-        rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              banner: {
-                name: BannerName.transition_17_18_banner,
-                text: 'à dépenser sur l’application',
-                title: 'Débloque tes 400\u00a0€',
-              },
-            })
-          )
-        )
-      )
+      mockServer.getApiV1<BannerResponse>('/banner', {
+        banner: {
+          name: BannerName.transition_17_18_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 400\u00a0€',
+        },
+      })
 
       renderNonBeneficiaryHeader({
         startDatetime: '2021-03-30T00:00Z',
@@ -113,6 +97,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<IdentityCheckPendingBadge/>', () => {
     it('should display identity check message if hasIdentityCheckPending is true', async () => {
+      mockServer.getApiV1<BannerResponse>('/banner', {})
       mockNextSubscriptionStep = {
         ...mockStep,
         hasIdentityCheckPending: true,
@@ -131,6 +116,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<SubscriptionMessageBadge/>', () => {
     it('should render the subscription message if there is one', async () => {
+      mockServer.getApiV1<BannerResponse>('/banner', {})
       mockNextSubscriptionStep = {
         ...mockStep,
         subscriptionMessage: mockedSubscriptionMessage,
@@ -148,6 +134,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<YoungerBadge/>', () => {
     it('should render the younger badge for user under 15 years old', async () => {
+      mockServer.getApiV1<BannerResponse>('/banner', {})
       renderNonBeneficiaryHeader({
         startDatetime: '2021-03-31T00:00Z',
         endDatetime: '2022-03-31T00:00Z',
@@ -161,6 +148,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   describe('<React.Fragment />', () => {
     it('should not display banner or badge when user is beneficiary', async () => {
+      mockServer.getApiV1<BannerResponse>('/banner', {})
       mockNextSubscriptionStep = {
         ...mockStep,
         hasIdentityCheckPending: false,
