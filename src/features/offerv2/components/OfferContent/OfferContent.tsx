@@ -44,7 +44,6 @@ type Props = {
   subcategory: Subcategory
 }
 
-const NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK = 5
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
 const isWeb = Platform.OS === 'web'
@@ -59,8 +58,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
-  const metadata = getOfferMetadata(extraData)
-  const hasMetadata = metadata.length > 0
 
   const {
     sameArtistPlaylist,
@@ -105,15 +102,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
     logSameCategoryPlaylistVerticalScroll
   )
-
-  const shouldDisplayAccessibilityBlock = !(
-    isNullOrUndefined(offer.accessibility.visualDisability) &&
-    isNullOrUndefined(offer.accessibility.audioDisability) &&
-    isNullOrUndefined(offer.accessibility.mentalDisability) &&
-    isNullOrUndefined(offer.accessibility.motorDisability)
-  )
-  const shouldDisplayAboutBlock =
-    shouldDisplayAccessibilityBlock || !!offer.description || hasMetadata
 
   const { trackEventHasSeenOfferOnce, shouldTriggerBatchSurveyEvent, trackBatchEvent } =
     useOfferBatchTracking({
@@ -181,37 +169,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           ) : null}
 
           <OfferSummaryInfoList offer={offer} />
-
-          {shouldDisplayAboutBlock ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={8} />
-              <Typo.Title3>À propos</Typo.Title3>
-              <Spacer.Column numberOfSpaces={4} />
-
-              {hasMetadata ? (
-                <React.Fragment>
-                  <OfferMetadataList metadata={metadata} />
-                  <Spacer.Column numberOfSpaces={2} />
-                </React.Fragment>
-              ) : null}
-
-              {offer.description ? (
-                <React.Fragment>
-                  <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
-                  <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_BLOCK}>
-                    {offer.description}
-                  </CollapsibleText>
-                </React.Fragment>
-              ) : null}
-              <Spacer.Column numberOfSpaces={8} />
-              {shouldDisplayAccessibilityBlock ? (
-                <React.Fragment>
-                  <OfferAccessibility accessibility={offer.accessibility} />
-                  <Spacer.Column numberOfSpaces={8} />
-                </React.Fragment>
-              ) : null}
-            </React.Fragment>
-          ) : null}
+          <OfferAbout offer={offer} />
         </InfoContainer>
 
         <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />

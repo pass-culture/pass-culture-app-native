@@ -286,173 +286,6 @@ describe('<OfferContent />', () => {
     })
   })
 
-  describe('About section', () => {
-    it('should display about section when offer has a description', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: 'Cette offre est super cool cool cool cool cool cool',
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
-    })
-
-    it('should display about section when there is an accessibility section', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          accessibility: {
-            audioDisability: true,
-            mentalDisability: true,
-            motorDisability: false,
-            visualDisability: false,
-          },
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
-    })
-
-    it('should display about section when there is metadata', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: undefined,
-          accessibility: {},
-          extraData: {
-            speaker: 'Toto',
-          },
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.getByText('À propos')).toBeOnTheScreen()
-    })
-
-    it('should not display about section when there are not description, accessibility section and metadata', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          description: undefined,
-          accessibility: {},
-          extraData: {},
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
-    })
-
-    describe('Description', () => {
-      it('should display description', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            description: 'Cette offre est super cool cool cool cool cool cool',
-          },
-        })
-
-        await act(async () => {})
-
-        expect(
-          screen.getByText('Cette offre est super cool cool cool cool cool cool')
-        ).toBeOnTheScreen()
-      })
-
-      it('should not display description when no description', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            description: null,
-          },
-        })
-
-        await act(async () => {})
-
-        expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
-      })
-    })
-
-    describe('Accessibility section', () => {
-      it('should display accessibility when disabilities are defined', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            accessibility: {
-              audioDisability: true,
-              mentalDisability: true,
-              motorDisability: false,
-              visualDisability: false,
-            },
-          },
-        })
-
-        await act(async () => {})
-
-        expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
-      })
-
-      it('should not display accessibility when disabilities are not defined', async () => {
-        renderOfferContent({
-          offer: {
-            ...offerResponseSnap,
-            accessibility: {},
-          },
-        })
-
-        await act(async () => {})
-
-        expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
-        expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should display offer editor when offer has it', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          extraData: {
-            editeur: 'Gallimard',
-          },
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('Éditeur :')).toBeOnTheScreen()
-      expect(screen.queryByText('Gallimard')).toBeOnTheScreen()
-    })
-
-    it('should not display offer editor when offer has not it', async () => {
-      renderOfferContent({
-        offer: {
-          ...offerResponseSnap,
-          extraData: {},
-        },
-      })
-
-      await act(async () => {})
-
-      expect(screen.queryByText('Éditeur :')).not.toBeOnTheScreen()
-      expect(screen.queryByText('Gallimard')).not.toBeOnTheScreen()
-    })
-
-    it('should display social network section', async () => {
-      renderOfferContent({})
-
-      await act(async () => {})
-
-      expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
-    })
-  })
-
   describe('Venue section', () => {
     it('should display venue section', async () => {
       renderOfferContent({})
@@ -478,6 +311,14 @@ describe('<OfferContent />', () => {
 
       expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
     })
+  })
+
+  it('should display social network section', async () => {
+    renderOfferContent({})
+
+    await act(async () => {})
+
+    expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
   })
 
   describe('Playlist list section', () => {
