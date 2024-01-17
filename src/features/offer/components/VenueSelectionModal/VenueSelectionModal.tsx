@@ -56,11 +56,9 @@ export function VenueSelectionModal({
   const { top } = useCustomSafeInsets()
 
   const handleSubmit = useCallback(() => {
-    /**
-     * `selectedVenue` would always be there since submit is disabled otherwise,
-     * but TypeScript can't understand this so a check is necessary.
-     */
-    onSubmit(selectedVenue as number)
+    if (selectedVenue !== undefined) {
+      onSubmit(selectedVenue)
+    }
   }, [onSubmit, selectedVenue])
 
   const customHeader = useMemo(() => {
