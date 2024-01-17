@@ -5,15 +5,11 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
-import { api } from 'api/api'
-import { AccountState, FavoriteResponse } from 'api/gen'
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { SignInResponseFailure } from 'features/auth/types'
-import { useAddFavorite } from 'features/favorites/api'
-import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -23,11 +19,8 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
-import { storage } from 'libs/storage'
-import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { From } from 'shared/offer/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
@@ -74,16 +67,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
 
-  const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
-    if (data?.offer?.id) {
-      analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
-    }
-  }, [])
-
-  const { mutate: addFavorite } = useAddFavorite({
-    onSuccess: onAddFavoriteSuccess,
-  })
-
   useEffect(() => {
     if (params?.displayForcedLoginHelpMessage) {
       showInfoSnackBar({
@@ -93,54 +76,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       })
     }
   }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
-
-  const offerId = params?.offerId
-  const handleSigninSuccess = useCallback(
-    async (accountState: AccountState) => {
-      try {
-        if (props.doNotNavigateOnSigninSuccess) {
-          return
-        }
-        if (accountState !== AccountState.ACTIVE) {
-          return navigate('SuspensionScreen')
-        }
-
-        const user = await api.getNativeV1Me()
-        const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
-
-        if (user?.recreditAmountToShow) {
-          navigate('RecreditBirthdayNotification')
-        } else if (!hasSeenEligibleCard && user.showEligibleCard) {
-          navigate('EighteenBirthday')
-        } else if (shouldShowCulturalSurvey(user)) {
-          navigate('CulturalSurveyIntro')
-        } else if (offerId) {
-          switch (params.from) {
-            case From.BOOKING:
-              navigate('Offer', { id: offerId, openModalOnNavigation: true })
-              return
-
-            case From.FAVORITE:
-              addFavorite({ offerId })
-              navigate('Offer', { id: offerId })
-              return
-          }
-        } else {
-          navigateToHome()
-        }
-      } catch {
-        setErrorMessage('Il y a eu un problème. Tu peux réessayer plus tard')
-      }
-    },
-    [
-      offerId,
-      navigate,
-      props.doNotNavigateOnSigninSuccess,
-      setErrorMessage,
-      params?.from,
-      addFavorite,
-    ]
-  )
 
   const handleSigninFailure = useCallback(
     (response: SignInResponseFailure) => {
@@ -161,7 +96,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   )
 
   const { mutate: signIn, isLoading } = useSignIn({
-    onSuccess: (response) => handleSigninSuccess(response.accountState),
+    doNotNavigateOnSigninSuccess: props.doNotNavigateOnSigninSuccess,
+    params,
+    setErrorMessage,
     onFailure: handleSigninFailure,
   })
 
