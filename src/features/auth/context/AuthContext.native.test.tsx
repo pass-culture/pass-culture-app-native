@@ -130,13 +130,6 @@ describe('AuthContext', () => {
     })
 
     it('should not set user properties to Amplitude events when user is not logged in', async () => {
-      // mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
-      // server.use(
-      //   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-      //     res(ctx.status(200), ctx.json(nonBeneficiaryUser))
-      //   )
-      // )
-
       renderUseAuthContext()
 
       await act(async () => {})
@@ -145,12 +138,6 @@ describe('AuthContext', () => {
     })
 
     it('should set user id when user is logged in', async () => {
-      // mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
-      // server.use(
-      //   rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-      //     res(ctx.status(200), ctx.json(nonBeneficiaryUser))
-      //   )
-      // )
       await saveRefreshToken('token')
 
       renderUseAuthContext()

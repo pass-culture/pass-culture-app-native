@@ -51,8 +51,6 @@ export function NotificationSettings() {
 
   // refresh state on page focus
   useEffect(() => {
-    // console.log('refreshPermissionAndStates')
-
     refreshPermissionAndStates(user)
   }, [route.key, user])
 
@@ -143,12 +141,6 @@ export function NotificationSettings() {
 
   const allowEmails = state.allowEmails ?? user?.subscriptions?.marketingEmail ?? isLoggedIn
   const pushSwitchEnabled = Boolean(state.pushPermission === 'granted' && state.allowPush)
-
-  // console.log({
-  //   disabled: !state.emailTouched && !state.pushTouched,
-  //   email: state.emailTouched,
-  //   push: state.pushTouched,
-  // })
 
   return (
     <PageProfileSection title="Notifications">
