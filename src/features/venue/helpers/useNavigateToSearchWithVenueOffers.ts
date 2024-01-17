@@ -8,7 +8,6 @@ export const useNavigateToSearchWithVenueOffers = (venue: VenueResponse) => {
   const venueSearchParams: TabParamList['Search'] = useVenueSearchParameters(venue)
   const searchTabNavConfig = getTabNavConfig('Search', {
     ...venueSearchParams,
-    previousView: SearchView.Results,
     view: SearchView.Results,
   })
   return {
