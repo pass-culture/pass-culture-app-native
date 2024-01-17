@@ -1,20 +1,34 @@
+import { useNavigation } from '@react-navigation/native'
+import { useCallback } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
-import { SigninResponse } from 'api/gen'
+import { AccountState, FavoriteResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
+import { useAddFavorite } from 'features/favorites/api'
+import { navigateToHome } from 'features/navigation/helpers'
+import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
+import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
+import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { From } from 'shared/offer/enums'
 
 export const useSignIn = ({
-  onSuccess,
+  params,
+  doNotNavigateOnSigninSuccess,
+  setErrorMessage,
   onFailure,
 }: {
-  onSuccess: (response: SigninResponse) => void
+  params: RootStackParamList['Login' | 'SignupForm']
+  doNotNavigateOnSigninSuccess?: boolean
   onFailure: (error: SignInResponseFailure) => void
+  setErrorMessage?: (message: string) => void
 }) => {
   const loginRoutine = useLoginRoutine()
+  const onSuccess = useHandleSigninSuccess(params, doNotNavigateOnSigninSuccess, setErrorMessage)
   const deviceInfo = useDeviceInfo()
 
   return useMutation(
@@ -28,7 +42,7 @@ export const useSignIn = ({
     {
       onSuccess: async (response) => {
         await loginRoutine(response, 'fromLogin')
-        onSuccess(response)
+        onSuccess(response.accountState)
       },
       onError: (error) => {
         const errorResponse: SignInResponseFailure = { isSuccess: false }
@@ -41,5 +55,65 @@ export const useSignIn = ({
         onFailure(errorResponse)
       },
     }
+  )
+}
+
+const useHandleSigninSuccess = (
+  params?: RootStackParamList['Login' | 'SignupForm'],
+  doNotNavigateOnSigninSuccess?: boolean,
+  setErrorMessage?: (message: string) => void
+) => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
+    if (data?.offer?.id) {
+      analytics.logHasAddedOfferToFavorites({ from: 'login', offerId: data.offer.id })
+    }
+  }, [])
+
+  const { mutate: addFavorite } = useAddFavorite({
+    onSuccess: onAddFavoriteSuccess,
+  })
+
+  const offerId = params?.offerId
+
+  return useCallback(
+    async (accountState: AccountState) => {
+      try {
+        if (doNotNavigateOnSigninSuccess) {
+          return
+        }
+        if (accountState !== AccountState.ACTIVE) {
+          return navigate('SuspensionScreen')
+        }
+
+        const user = await api.getNativeV1Me()
+        const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
+
+        if (user?.recreditAmountToShow) {
+          navigate('RecreditBirthdayNotification')
+        } else if (!hasSeenEligibleCard && user.showEligibleCard) {
+          navigate('EighteenBirthday')
+        } else if (shouldShowCulturalSurvey(user)) {
+          navigate('CulturalSurveyIntro')
+        } else if (offerId) {
+          switch (params.from) {
+            case From.BOOKING:
+              navigate('Offer', { id: offerId, openModalOnNavigation: true })
+              return
+
+            case From.FAVORITE:
+              addFavorite({ offerId })
+              navigate('Offer', { id: offerId })
+              return
+          }
+        } else {
+          navigateToHome()
+        }
+      } catch {
+        setErrorMessage?.('Il y a eu un problème. Tu peux réessayer plus tard')
+      }
+    },
+    [offerId, navigate, doNotNavigateOnSigninSuccess, setErrorMessage, params?.from, addFavorite]
   )
 }

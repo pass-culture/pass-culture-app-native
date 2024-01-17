@@ -101,6 +101,7 @@ import { Show } from 'ui/svg/icons/Show'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
+import { Google } from 'ui/svg/icons/socialNetwork/Google'
 import { IMessageRound } from 'ui/svg/icons/socialNetwork/IMessage'
 import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
 import { InstagramRound } from 'ui/svg/icons/socialNetwork/InstagramRound'
@@ -127,6 +128,7 @@ import { Wrong } from 'ui/svg/icons/Wrong'
 
 export const SocialNetworkIcons = {
   Facebook,
+  Google,
   IMessageRound,
   Instagram,
   InstagramRound,

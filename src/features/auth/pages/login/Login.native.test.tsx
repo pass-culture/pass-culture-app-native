@@ -85,14 +85,15 @@ describe('<Login/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display sso button when feature flag is active', async () => {
+  it('should render correctly when feature flag is enabled', async () => {
     // We use this hook twice but due to multiple rerender we have to mock the return value this way
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(true)
 
     renderLogin()
+    await act(() => {})
 
-    expect(await screen.findByTestId('SSO Google')).toBeOnTheScreen()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should sign in when "Se connecter" is clicked with device info', async () => {
@@ -118,7 +119,7 @@ describe('<Login/>', () => {
     )
   })
 
-  it('should sign in when SSO Google button is clicked with device info when feature flag is active', async () => {
+  it('should sign in when SSO button is clicked with device info when feature flag is active', async () => {
     // We use this hook twice but due to multiple rerender we have to mock the return value this way
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(true)
@@ -132,7 +133,7 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('SSO Google')))
+    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
@@ -152,7 +153,7 @@ describe('<Login/>', () => {
     jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
 
     renderLogin()
-    await act(async () => fireEvent.press(await screen.findByTestId('SSO Google')))
+    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
 
     expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
       'Can’t login via Google: GoogleSignIn Error',

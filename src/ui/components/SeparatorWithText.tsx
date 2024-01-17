@@ -3,16 +3,23 @@ import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface SeparatorWithTextProps {
   label: string
+  backgroundColor?: ColorsEnum
 }
-export const SeparatorWithText: FunctionComponent<SeparatorWithTextProps> = ({ label }) => {
+
+export const SeparatorWithText: FunctionComponent<SeparatorWithTextProps> = ({
+  label,
+  backgroundColor,
+}) => {
   return (
     <Container>
-      <StyledSeparator />
+      <StyledSeparator backgroundColor={backgroundColor} />
       <StyledLabel>{label}</StyledLabel>
-      <StyledSeparator />
+      <StyledSeparator backgroundColor={backgroundColor} />
     </Container>
   )
 }
@@ -27,7 +34,9 @@ const StyledLabel = styled(Typo.Caption)({
   marginHorizontal: getSpacing(2.5),
 })
 
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.greySemiDark,
-}))
+const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsEnum }>(
+  ({ theme, backgroundColor }) => ({
+    flex: 1,
+    backgroundColor: backgroundColor ?? theme.colors.greySemiDark,
+  })
+)
