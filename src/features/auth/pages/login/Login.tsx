@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -16,17 +17,16 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring'
-import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
@@ -162,11 +162,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     analytics.logSignUpClicked({ from: 'login' })
   }, [])
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: ({ code, state = '' }) =>
-      signIn({ authorizationCode: code, oauthStateToken: state }),
-  })
-
   return (
     <React.Fragment>
       {!!isRecaptchaEnabled && (
@@ -214,10 +209,17 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             disabled={shouldDisableLoginButton}
           />
         </Form.MaxWidth>
-        {!!(enableGoogleSSO && googleLogin) && (
-          <ButtonTertiarySecondary onPress={googleLogin} wording="SSO Google" />
+        {enableGoogleSSO ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <StyledSeparatorWithText label="ou" />
+            <Spacer.Column numberOfSpaces={4} />
+            <SSOButton type="login" onSuccess={signIn} />
+            <Spacer.Column numberOfSpaces={10} />
+          </React.Fragment>
+        ) : (
+          <Spacer.Column numberOfSpaces={8} />
         )}
-        <Spacer.Column numberOfSpaces={8} />
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
     </React.Fragment>
@@ -233,4 +235,8 @@ const ButtonContainer = styled.View(({ theme }) => ({
 const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.colors.secondary,
   type: 'signup',
+}))``
+
+const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
+  backgroundColor: theme.colors.greyMedium,
 }))``

@@ -2,21 +2,17 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
+import { OauthStateResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
-import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
-
-jest.mock('features/navigation/helpers')
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
 jest.mock('uuid', () => {
@@ -27,23 +23,15 @@ jest.mock('uuid', () => {
   }
 })
 
-jest.mock('@react-oauth/google', () => ({
-  ...jest.requireActual('@react-oauth/google'),
-  useGoogleLogin: jest.fn(({ onSuccess, ...options }) => {
-    return () => onSuccess({ ...options, code: 'ssoAuthorizationCode', state: 'oauth_state_token' })
-  }),
-}))
-
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    useFeatureFlagSpy.mockReturnValue(false)
     mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
@@ -60,28 +48,6 @@ describe('<Login/>', () => {
         expect(results).toHaveNoViolations()
       })
     })
-  })
-
-  it('should redirect to home when google login is successful', async () => {
-    // We have to mock the return value this way due to multiple rerenders
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true)
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
-      accessToken: 'accessToken',
-      refreshToken: 'refreshToken',
-      accountState: AccountState.ACTIVE,
-    })
-    mockServer.getApiV1<UserProfileResponse>('/me', {
-      ...nonBeneficiaryUser,
-      needsToFillCulturalSurvey: false,
-    })
-    renderLogin()
-
-    const ssoButton = await screen.findByTestId('SSO Google')
-
-    await act(async () => fireEvent.click(ssoButton))
-
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should display forced login help message when the query param is given', async () => {
