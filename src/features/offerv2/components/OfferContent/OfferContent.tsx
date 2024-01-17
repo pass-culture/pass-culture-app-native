@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
 import { IOScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -13,10 +13,9 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
-import { OfferAccessibility } from 'features/offerv2/components/OfferAccessibility/OfferAccessibility'
+import { OfferAbout } from 'features/offerv2/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
-import { OfferMetadataList } from 'features/offerv2/components/OfferMetadataList/OfferMetadataList'
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { OfferPlaylistList } from 'features/offerv2/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferPrice } from 'features/offerv2/components/OfferPrice/OfferPrice'
@@ -24,19 +23,16 @@ import { OfferSummaryInfoList } from 'features/offerv2/components/OfferSummaryIn
 import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offerv2/components/OfferVenueButton/OfferVenueButton'
 import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
-import { getOfferMetadata } from 'features/offerv2/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
 import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { isCloseToBottom } from 'libs/analytics'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
-import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse
@@ -150,30 +146,25 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         <Hero imageUrl={offer.image?.url} type="offerv2" categoryId={subcategory.categoryId} />
         <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>
-          <InformationTags tags={tags} />
-          <Spacer.Column numberOfSpaces={4} />
-
-          <OfferTitle offerName={offer.name} />
-          <Spacer.Column numberOfSpaces={2} />
-
-          <OfferArtists artists={artists} />
-          <Spacer.Column numberOfSpaces={6} />
+          <GroupWithoutGap>
+            <InformationTags tags={tags} />
+            <Spacer.Column numberOfSpaces={4} />
+            <OfferTitle offerName={offer.name} />
+            <OfferArtists artists={artists} />
+          </GroupWithoutGap>
 
           <OfferPrice prices={prices} />
 
-          {offer.venue.isPermanent ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
-              <OfferVenueButton venue={offer.venue} />
-            </React.Fragment>
-          ) : null}
+          <GroupWithoutGap>
+            {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
+            <OfferSummaryInfoList offer={offer} />
+          </GroupWithoutGap>
 
-          <OfferSummaryInfoList offer={offer} />
           <OfferAbout offer={offer} />
         </InfoContainer>
 
         <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={8} />
 
         <SectionWithDivider visible margin>
           <Spacer.Column numberOfSpaces={2} />
@@ -192,9 +183,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
           handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
         />
-        <SectionWithDivider visible>
-          <Spacer.Column numberOfSpaces={22} />
-        </SectionWithDivider>
+        <Spacer.Column numberOfSpaces={22} />
       </ScrollViewContainer>
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
       {!isWeb ? (
@@ -219,4 +208,7 @@ const ScrollViewContainer = styled(IOScrollView)({ overflow: 'visible' })
 
 const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
+  gap: getSpacing(6),
 })
+
+const GroupWithoutGap = View

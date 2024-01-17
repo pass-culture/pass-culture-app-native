@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   artists: string | undefined
@@ -23,4 +23,5 @@ export function OfferArtists({ artists, numberOfLines = 2 }: Readonly<Props>) {
 
 const ArtistsText = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.greyDark,
+  marginTop: getSpacing(2),
 }))
