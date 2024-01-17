@@ -1,29 +1,16 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Platform } from 'react-native'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { SearchView } from 'features/search/types'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { getSpacing } from 'ui/theme'
 import { displayOnFocus } from 'ui/web/displayOnFocus/displayOnFocus'
 
-export const HiddenNavigateToSuggestionsButton = () => {
-  const { searchState, dispatch } = useSearch()
-
-  const navigateToSuggestions = useCallback(() => {
-    dispatch({
-      type: 'SET_STATE',
-      payload: {
-        ...searchState,
-        view: SearchView.Suggestions,
-      },
-    })
-  }, [dispatch, searchState])
-
-  return (
-    <HiddenAccessibleButton onPress={navigateToSuggestions} wording="Recherche par mots-clés" />
-  )
+export const HiddenSuggestionsButton = () => {
+  const { showSuggestions, isFocusOnSuggestions } = useSearch()
+  if (isFocusOnSuggestions) return null
+  return <HiddenAccessibleButton onPress={showSuggestions} wording="Recherche par mots-clés" />
 }
 
 const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary))<{

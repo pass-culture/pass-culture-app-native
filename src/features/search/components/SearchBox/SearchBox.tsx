@@ -15,7 +15,7 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Buttons/HiddenNavigateToSuggestionsButton'
+import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -55,7 +55,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 }) => {
   const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const { isDesktopViewport } = useTheme()
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
+    useSearch()
   const { goBack } = useGoBack(...homeNavConfig)
   const [query, setQuery] = useState<string>(searchState.query)
   const { section, locationType } = useLocationType(searchState)
@@ -74,8 +75,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ).current
   const { data: appSettings } = useSettingsContext()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete
-  const isLandingOrResults =
-    searchState.view === SearchView.Landing || searchState.view === SearchView.Results
 
   const pushWithSearch = useCallback(
     (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
@@ -254,13 +253,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             </StyledView>
           )}
           <FlexView>
-            {!!isLandingOrResults && <HiddenNavigateToSuggestionsButton />}
+            <HiddenSuggestionsButton />
             <SearchMainInput
               ref={inputRef}
               searchInputID={searchInputID}
               query={query}
               setQuery={setQuery}
-              isFocusable={!isLandingOrResults}
+              isFocusable={isFocusOnSuggestions}
               onSubmitQuery={onSubmitQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
