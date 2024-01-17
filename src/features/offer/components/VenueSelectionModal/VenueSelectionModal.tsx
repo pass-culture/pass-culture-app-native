@@ -25,7 +25,7 @@ type VenueSelectionModalProps = Pick<
   nbHits: number
   isFetchingNextPage: boolean
   title: string
-  onSubmit: (selectedOfferId: number) => void
+  onSubmit: (selectedVenueId: number) => void
   onClosePress: VoidFunction
   onEndReached?: () => void
   venueName?: string
@@ -50,18 +50,18 @@ export function VenueSelectionModal({
   venueName,
   isSharingLocation,
 }: VenueSelectionModalProps) {
-  const [selectedOffer, setSelectedOffer] = useState<number>()
+  const [selectedVenue, setSelectedVenue] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const venueListRef = useRef<FlatList<VenueListItem>>(null)
   const { top } = useCustomSafeInsets()
 
   const handleSubmit = useCallback(() => {
     /**
-     * `selectedOffer` would always be there since submit is disabled otherwise,
+     * `selectedVenue` would always be there since submit is disabled otherwise,
      * but TypeScript can't understand this so a check is necessary.
      */
-    onSubmit(selectedOffer as number)
-  }, [onSubmit, selectedOffer])
+    onSubmit(selectedVenue as number)
+  }, [onSubmit, selectedVenue])
 
   const customHeader = useMemo(() => {
     return (
@@ -107,7 +107,7 @@ export function VenueSelectionModal({
           <ButtonPrimary
             wording="Choisir ce lieu"
             onPress={handleSubmit}
-            disabled={!selectedOffer}
+            disabled={!selectedVenue}
           />
         </BottomWrapper>
       }
@@ -120,9 +120,9 @@ export function VenueSelectionModal({
         />
       </View>
       <VenueSelectionList
-        onItemSelect={setSelectedOffer}
+        onItemSelect={setSelectedVenue}
         items={items}
-        selectedItem={selectedOffer}
+        selectedItem={selectedVenue}
         onEndReached={onEndReached}
         refreshing={refreshing}
         onRefresh={onRefresh}
