@@ -423,7 +423,7 @@ describe('MappingTree', () => {
         },
       },
       [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
-        label: 'Films, séries, cinéma',
+        label: 'Cinéma, films et séries',
         children: {
           [NativeCategoryIdEnumv2.CARTES_CINEMA]: {
             label: 'Cartes cinéma',

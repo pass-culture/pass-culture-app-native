@@ -715,7 +715,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Films, séries, cinéma"
+        accessibilityLabel="Cinéma, films et séries"
         accessibilityRole="checkbox"
         accessibilityState={
           {
@@ -760,7 +760,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="Films, séries, cinéma"
+        testID="Cinéma, films et séries"
       >
         <View
           numberOfSpaces={5}
@@ -787,7 +787,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
             ]
           }
         >
-          Films, séries, cinéma
+          Cinéma, films et séries
         </Text>
         <View
           numberOfSpaces={5}

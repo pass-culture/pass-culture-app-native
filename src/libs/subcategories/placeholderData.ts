@@ -763,7 +763,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     { name: SearchGroupNameEnumv2.CONCERTS_FESTIVALS, value: 'Concerts & festivals' },
     { name: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES, value: 'Conférences & rencontres' },
     { name: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE, value: 'Évènements en ligne' },
-    { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Films, séries, cinéma' },
+    { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Cinéma, films et séries' },
     { name: SearchGroupNameEnumv2.INSTRUMENTS, value: 'Instruments de musique' },
     { name: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS, value: 'Jeux & jeux vidéos' },
     { name: SearchGroupNameEnumv2.LIVRES, value: 'Livres' },

@@ -59,7 +59,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
+      expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
       expect(screen.getByText('Musées & visites culturelles')).toBeOnTheScreen()
       expect(screen.getByText('Jeux & jeux vidéos')).toBeOnTheScreen()
     })
@@ -69,7 +69,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
@@ -78,13 +78,13 @@ describe('<CategoriesModal/>', () => {
       mockData = {
         ...mockData,
         searchGroups: [
-          { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Films, séries, cinéma' },
+          { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Cinéma, films et séries' },
         ],
       }
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.queryByText('Films, séries, cinéma')).toBeOnTheScreen()
+      expect(screen.queryByText('Cinéma, films et séries')).toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
