@@ -11,7 +11,7 @@ import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccord
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position } from 'libs/location'
-import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/useMultivenueOffer'
+import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/getIsMultivenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { useModal } from 'ui/components/modals/useModal'

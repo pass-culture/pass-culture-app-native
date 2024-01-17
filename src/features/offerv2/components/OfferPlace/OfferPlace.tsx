@@ -14,7 +14,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { Position } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
-import { useMultivenueOffer } from 'shared/multivenueOffer/useMultivenueOffer'
+import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/getIsMultivenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -63,7 +63,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers } = useMultivenueOffer(offer)
+  const { shouldFetchSearchVenueOffers } = getIsMultivenueCompatibleOffer(offer)
 
   const {
     hasNextPage,

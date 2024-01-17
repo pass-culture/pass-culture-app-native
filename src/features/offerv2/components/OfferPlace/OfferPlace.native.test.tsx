@@ -68,7 +68,7 @@ jest
 
 const offerPlaceProps: OfferPlaceOldProps = {
   offer: mockOffer,
-  geolocPosition: null,
+  userLocation: null,
   isEvent: false,
 }
 
