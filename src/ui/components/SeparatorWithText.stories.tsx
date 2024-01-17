@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { theme } from 'theme'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 
 const meta: ComponentMeta<typeof SeparatorWithText> = {
@@ -16,4 +17,10 @@ const Template: ComponentStory<typeof SeparatorWithText> = (props) => (
 export const Default = Template.bind({})
 Default.args = {
   label: 'label',
+}
+
+export const CustomBackgroundColor = Template.bind({})
+CustomBackgroundColor.args = {
+  label: 'label',
+  backgroundColor: theme.colors.greyMedium,
 }
