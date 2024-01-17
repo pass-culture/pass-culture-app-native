@@ -72,9 +72,9 @@ describe('<VenueBody />', () => {
   })
 
   it('should display distance between user and venue when geolocation is activated', async () => {
-    const geolocPosition = { latitude: 30, longitude: 30.1 }
+    const userLocation = { latitude: 30, longitude: 30.1 }
     mockUseLocation.mockReturnValueOnce({
-      geolocPosition,
+      userLocation,
       hasGeolocPosition: true,
     } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }

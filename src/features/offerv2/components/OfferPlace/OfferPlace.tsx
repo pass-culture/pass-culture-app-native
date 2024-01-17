@@ -22,7 +22,7 @@ import { Spacer } from 'ui/theme'
 
 type OfferPlaceProps = {
   offer: OfferResponse
-  geolocPosition: Position
+  userLocation: Position
   isEvent: boolean
 }
 
@@ -44,12 +44,12 @@ const mergeVenueData =
     ...(prevData ?? {}),
   })
 
-export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPlaceProps>) {
+export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
-  const { latitude, longitude } = geolocPosition ?? {}
-  const distanceToLocation = useDistance({ lat: latitude, lng: longitude })
+  const { latitude: lat, longitude: lng } = offer.venue.coordinates
+  const distanceToLocation = useDistance({ lat, lng })
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 
@@ -79,7 +79,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
   } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
-    geolocation: geolocPosition ?? {
+    geolocation: userLocation ?? {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
@@ -162,7 +162,7 @@ export function OfferPlace({ offer, geolocPosition, isEvent }: Readonly<OfferPla
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={geolocPosition !== null}
+          isSharingLocation={userLocation !== null}
           venueName={offer.venue.publicName || offer.venue.name}
         />
       ) : null}

@@ -163,7 +163,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           <OfferAbout offer={offer} />
         </InfoContainer>
 
-        <OfferPlace offer={offer} geolocPosition={userLocation} isEvent={subcategory.isEvent} />
+        <OfferPlace offer={offer} userLocation={userLocation} isEvent={subcategory.isEvent} />
         <Spacer.Column numberOfSpaces={8} />
 
         <SectionWithDivider visible margin>

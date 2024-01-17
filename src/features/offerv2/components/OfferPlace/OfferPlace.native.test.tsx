@@ -426,11 +426,11 @@ type RenderOfferPlaceType = Partial<ComponentProps<typeof OfferPlace>>
 
 const renderOfferPlace = ({
   offer = mockOffer,
-  geolocPosition,
+  userLocation,
   isEvent = false,
 }: RenderOfferPlaceType) =>
   render(
     reactQueryProviderHOC(
-      <OfferPlace offer={offer} geolocPosition={geolocPosition} isEvent={isEvent} />
+      <OfferPlace offer={offer} userLocation={userLocation} isEvent={isEvent} />
     )
   )
