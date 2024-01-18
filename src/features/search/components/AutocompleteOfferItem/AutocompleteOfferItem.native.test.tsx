@@ -30,7 +30,11 @@ let mockSearchState: SearchState = {
 
 const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockDispatch,
+    hideSuggestions: jest.fn(),
+  }),
 }))
 
 jest.mock('libs/subcategories/useSubcategories', () => ({
