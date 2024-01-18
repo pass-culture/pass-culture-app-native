@@ -18,8 +18,8 @@ export const useSameArtistPlaylist = ({
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
 
-  const { data, refetch } = useQuery(
-    [QueryKeys.SAME_ARTIST_PLAYLIST],
+  const { data } = useQuery(
+    [QueryKeys.SAME_ARTIST_PLAYLIST, ean],
     () => {
       return fetchOffersByArtist({ artists, ean, searchGroupName, venueLocation })
     },
@@ -28,5 +28,5 @@ export const useSameArtistPlaylist = ({
 
   const sameArtistPlaylist = data?.map(transformHits) as HitOfferWithArtistAndEan[]
 
-  return { sameArtistPlaylist, refetchSameArtistPlaylist: refetch }
+  return { sameArtistPlaylist }
 }
