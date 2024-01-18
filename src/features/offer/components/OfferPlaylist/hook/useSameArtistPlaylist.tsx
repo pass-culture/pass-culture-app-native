@@ -19,7 +19,7 @@ export const useSameArtistPlaylist = ({
   const transformHits = useTransformOfferHits()
 
   const { data, refetch } = useQuery(
-    [QueryKeys.SAME_ARTIST_PLAYLIST],
+    [QueryKeys.SAME_ARTIST_PLAYLIST, ean],
     () => {
       return fetchOffersByArtist({ artists, ean, searchGroupName, venueLocation })
     },
