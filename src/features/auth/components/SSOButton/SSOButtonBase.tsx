@@ -16,7 +16,7 @@ type Props = {
   }) => void
 }
 
-export const SSOButton = ({ type, onSuccess }: Props) => {
+export const SSOButtonBase = ({ type, onSuccess }: Props) => {
   const googleLogin = useGoogleLogin({
     onSuccess: ({ code, state = '' }) =>
       onSuccess({ authorizationCode: code, oauthStateToken: state }),

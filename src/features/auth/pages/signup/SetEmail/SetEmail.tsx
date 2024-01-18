@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -139,7 +139,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
           <Spacer.Column numberOfSpaces={4} />
           <StyledSeparatorWithText label="ou" />
           <Spacer.Column numberOfSpaces={4} />
-          <SSOButton type="signup" onSuccess={signIn} />
+          <SSOButtonBase type="signup" onSuccess={signIn} />
           <Spacer.Column numberOfSpaces={10} />
         </React.Fragment>
       ) : (

@@ -8,11 +8,11 @@ import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthPro
 // eslint-disable-next-line import/no-unresolved
 import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-import { SSOButton } from './SSOButton'
+import { SSOButtonBase } from './SSOButtonBase'
 
-const meta: ComponentMeta<typeof SSOButton> = {
+const meta: ComponentMeta<typeof SSOButtonBase> = {
   title: 'Features/auth/SSOButton',
-  component: SSOButton,
+  component: SSOButtonBase,
   decorators: [
     useQueryDecorator,
     (Story) => (
@@ -29,7 +29,7 @@ const meta: ComponentMeta<typeof SSOButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SSOButton> = (props) => <SSOButton {...props} />
+const Template: ComponentStory<typeof SSOButtonBase> = (props) => <SSOButtonBase {...props} />
 
 export const Login = Template.bind({})
 Login.args = {

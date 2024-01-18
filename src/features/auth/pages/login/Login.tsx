@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
+import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { SignInResponseFailure } from 'features/auth/types'
@@ -214,7 +214,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             <Spacer.Column numberOfSpaces={4} />
             <StyledSeparatorWithText label="ou" />
             <Spacer.Column numberOfSpaces={4} />
-            <SSOButton type="login" onSuccess={signIn} />
+            <SSOButtonBase type="login" onSuccess={signIn} />
             <Spacer.Column numberOfSpaces={10} />
           </React.Fragment>
         ) : (
