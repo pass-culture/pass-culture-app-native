@@ -11,7 +11,6 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSyncSearch } from 'features/search/helpers/useSyncSearch/useSyncSearch'
-import { SearchView } from 'features/search/types'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -46,7 +45,7 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 export function Search() {
   useSyncSearch()
   const netInfo = useNetInfoContext()
-  const { searchState } = useSearch()
+  const { searchState, isFocusOnSuggestions } = useSearch()
   const { view } = searchState
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
@@ -76,7 +75,7 @@ export function Search() {
             searchInHistory={setQueryHistoryMemoized}
           />
           <Spacer.Column numberOfSpaces={4} />
-          {view === SearchView.Suggestions ? (
+          {isFocusOnSuggestions ? (
             <SearchSuggestions
               queryHistory={queryHistory}
               addToHistory={addToHistory}
