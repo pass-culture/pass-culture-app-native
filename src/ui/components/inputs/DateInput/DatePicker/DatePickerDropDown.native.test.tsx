@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MINIMUM_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
+import { MINIMUM_DATE, DEFAULT_SELECTED_DATE, MAXIMUM_DATE } from 'features/auth/fixtures/fixtures'
 import { render } from 'tests/utils'
 import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown'
 
@@ -8,6 +8,7 @@ const props = {
   onChange: jest.fn(),
   defaultSelectedDate: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
+  maximumDate: MAXIMUM_DATE,
 }
 
 describe('<DatePickerDropDown />', () => {

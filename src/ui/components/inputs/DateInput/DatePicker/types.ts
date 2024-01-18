@@ -4,7 +4,7 @@ export type DatePickerProps = {
   defaultSelectedDate: Date
   previousBirthdateProvided?: string
   minimumDate: Date
-  maximumDate?: Date
+  maximumDate: Date
   errorMessage?: string | null
   accessibilityDescribedBy?: string
   isDisabled?: boolean

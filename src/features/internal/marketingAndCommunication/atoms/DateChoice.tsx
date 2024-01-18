@@ -14,6 +14,12 @@ export function DateChoice({ onChange }: Props) {
   }
   const now = new Date()
   return (
-    <DateInput defaultSelectedDate={now} minimumDate={now} date={date} onChange={onDateChange} />
+    <DateInput
+      maximumDate={new Date(now.getFullYear() + 100)}
+      minimumDate={now}
+      defaultSelectedDate={now}
+      date={date}
+      onChange={onDateChange}
+    />
   )
 }
