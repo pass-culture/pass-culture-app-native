@@ -15,6 +15,7 @@ import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Show } from 'ui/svg/icons/Show'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   distance?: string
@@ -42,7 +43,7 @@ export function OfferVenueBlock({
 
   return (
     <View>
-      <Typo.Title3>{title}</Typo.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
       <StyledSeparator />

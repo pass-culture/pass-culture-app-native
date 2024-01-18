@@ -8,6 +8,7 @@ import { getOfferMetadata } from 'features/offerv2/helpers/getOfferMetadata/getO
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   offer: OfferResponse
@@ -32,7 +33,7 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
   return shouldDisplayAboutSection ? (
     <View>
       <Spacer.Column numberOfSpaces={2} />
-      <Typo.Title3>À propos</Typo.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>À propos</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
 
       {hasMetadata ? (
