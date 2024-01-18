@@ -25,6 +25,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const {
     searchState: { locationFilter },
   } = useSearch()
+  const { hideSuggestions } = useSearch()
 
   return (
     <NavItemsContainer
@@ -46,6 +47,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
                 tabName={route.name}
                 isSelected={route.isSelected}
                 BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+                onBeforeNavigate={route.name === 'Search' ? hideSuggestions : undefined}
                 navigateTo={{
                   screen: tabNavConfig[0],
                   params: tabNavConfig[1],

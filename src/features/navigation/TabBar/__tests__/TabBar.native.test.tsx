@@ -54,7 +54,11 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockDispatch,
+    hideSuggestions: jest.fn(),
+  }),
 }))
 
 describe('TabBar', () => {
