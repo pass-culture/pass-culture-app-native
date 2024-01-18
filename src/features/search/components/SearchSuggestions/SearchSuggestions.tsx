@@ -37,7 +37,7 @@ export const SearchSuggestions = ({
   removeFromHistory,
   filteredHistory,
 }: SearchSuggestionsParams) => {
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch, hideSuggestions } = useSearch()
   const { geolocPosition } = useLocation()
   const { locationFilter, venue } = searchState
 
@@ -73,8 +73,9 @@ export const SearchSuggestions = ({
         type: 'SET_STATE',
         payload: newSearchState,
       })
+      hideSuggestions()
     },
-    [dispatch, searchState]
+    [dispatch, searchState, hideSuggestions]
   )
 
   return (
