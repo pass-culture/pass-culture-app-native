@@ -32,7 +32,8 @@ export const fetchOffersByArtist = async ({
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
-  if (!artists || searchGroupName !== SearchGroupNameEnumv2.LIVRES) return []
+  if (!artists || artists === 'collectif' || searchGroupName !== SearchGroupNameEnumv2.LIVRES)
+    return []
 
   try {
     const response = await index.search<HitOfferWithArtistAndEan>('', {
