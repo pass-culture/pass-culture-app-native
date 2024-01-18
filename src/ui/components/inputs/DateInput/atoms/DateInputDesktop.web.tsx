@@ -3,16 +3,10 @@ import styled from 'styled-components/native'
 
 import { getDateValuesString } from 'shared/date/getDateValuesString'
 import { monthNames } from 'shared/date/months'
-import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
+import { DatePickerProps, PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
-
-type InitialDateProps = {
-  day?: string
-  month?: string
-  year?: string
-}
 
 export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   defaultSelectedDate,
@@ -25,7 +19,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
 }) => {
   const { day, month, year } = getDefaultDateValues(previousBirthdateProvided)
 
-  const [date, setDate] = useState<InitialDateProps>({
+  const [date, setDate] = useState<PartialDate>({
     day,
     month,
     year,
@@ -35,7 +29,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   const minimumYear = minimumDate.getFullYear()
   const { optionGroups } = useDatePickerOptions({ date, maximumYear, minimumYear })
 
-  const onPartialDateChange = (key: keyof InitialDateProps) => (value: string) => {
+  const onPartialDateChange = (key: keyof PartialDate) => (value: string) => {
     setDate((prevDateValues) => ({ ...prevDateValues, [key]: value }))
   }
 
@@ -89,7 +83,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   )
 }
 
-const getDefaultDateValues = (previousBirthdate?: string): InitialDateProps => {
+const getDefaultDateValues = (previousBirthdate?: string): PartialDate => {
   if (!previousBirthdate)
     return {
       day: undefined,
@@ -106,7 +100,7 @@ const getDefaultDateValues = (previousBirthdate?: string): InitialDateProps => {
   }
 }
 
-const getValidDate = (date: InitialDateProps) => {
+const getValidDate = (date: PartialDate) => {
   if (!date.year || !date.month || !date.day) return
 
   const dateMonth = monthNames.indexOf(date.month)

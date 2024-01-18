@@ -9,3 +9,9 @@ export type DatePickerProps = {
   accessibilityDescribedBy?: string
   isDisabled?: boolean
 }
+
+export type PartialDate = {
+  year?: string
+  month?: string
+  day?: string
+}

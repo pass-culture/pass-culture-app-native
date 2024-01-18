@@ -4,15 +4,10 @@ import { dayNumbers } from 'shared/date/days'
 import { getDatesInMonth } from 'shared/date/getDatesInMonth'
 import { getPastYears } from 'shared/date/getPastYears'
 import { monthNames as monthNamesLong, monthNamesShort } from 'shared/date/months'
-
-export type DeconstructedDate = {
-  year?: string
-  month?: string
-  day?: string
-}
+import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 
 type Args = {
-  date: DeconstructedDate
+  date: PartialDate
   minimumYear: number
   maximumYear: string
   monthNamesType?: 'long' | 'short'
