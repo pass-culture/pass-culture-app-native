@@ -41,7 +41,6 @@ const useSameArtistPlaylistSpy = jest
   .mockImplementation()
   .mockReturnValue({
     sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-    refetchSameArtistPlaylist: jest.fn(),
   })
 
 const mockPosition: Position = { latitude: 90.4773245, longitude: 90.4773245 }
@@ -63,18 +62,6 @@ describe('useOfferPlaylist', () => {
       )
 
       expect(result.current?.sameArtistPlaylist).toEqual(mockedAlgoliaOffersWithSameArtistResponse)
-    })
-
-    it('should return refetch same artist playlist function', () => {
-      const { result } = renderHook(() =>
-        useOfferPlaylist({
-          offer,
-          offerSearchGroup,
-          searchGroupList,
-        })
-      )
-
-      expect(result.current?.refetchSameArtistPlaylist).toEqual(expect.any(Function))
     })
 
     it('should return same category similar offers playlist', () => {

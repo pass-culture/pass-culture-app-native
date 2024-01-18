@@ -18,7 +18,6 @@ jest
 
 jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockImplementation().mockReturnValue({
   sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-  refetchSameArtistPlaylist: jest.fn(),
 })
 
 let mockData: SubcategoriesResponseModelv2 | undefined = placeholderData

@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from 'react-query'
 
 import { OfferResponse, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -16,9 +15,6 @@ type Props = {
 
 type UseOfferPlaylistType = {
   sameArtistPlaylist: HitOfferWithArtistAndEan[]
-  refetchSameArtistPlaylist: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
-  ) => Promise<QueryObserverResult<HitOfferWithArtistAndEan[], unknown>>
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
@@ -35,7 +31,7 @@ export const useOfferPlaylist = ({
   const artists = offer.extraData?.author
   const ean = offer.extraData?.ean
   const venueLocation = offer.venue.coordinates
-  const { sameArtistPlaylist, refetchSameArtistPlaylist } = useSameArtistPlaylist({
+  const { sameArtistPlaylist } = useSameArtistPlaylist({
     artists,
     ean,
     searchGroupName: offerSearchGroup,
@@ -72,7 +68,6 @@ export const useOfferPlaylist = ({
 
   return {
     sameArtistPlaylist,
-    refetchSameArtistPlaylist,
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
