@@ -3,27 +3,20 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
-import {
-  BookingsResponse,
-  CategoryIdEnum,
-  HomepageLabelNameEnumv2,
-  NativeCategoryIdEnumv2,
-  OnlineOfflinePlatformChoicesEnumv2,
-  SearchGroupNameEnumv2,
-} from 'api/gen'
+import { BookingsResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import {
   OfferCTAButtonOld,
   OfferCTAButtonOldProps,
 } from 'features/offer/components/OfferCTAButtonOld/OfferCTAButtonOld'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -48,16 +41,6 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
-
-const mockSubcategory: Subcategory = {
-  categoryId: CategoryIdEnum.CINEMA,
-  appLabel: 'Cinéma plein air',
-  searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-  homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
-  isEvent: true,
-  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-  nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-}
 
 const offerId = offerResponseSnap.id
 

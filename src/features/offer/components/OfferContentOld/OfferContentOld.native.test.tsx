@@ -2,19 +2,13 @@ import React from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import {
-  CategoryIdEnum,
-  HomepageLabelNameEnumv2,
-  NativeCategoryIdEnumv2,
-  OfferResponse,
-  OnlineOfflinePlatformChoicesEnumv2,
-  SearchGroupNameEnumv2,
-} from 'api/gen'
+import { NativeCategoryIdEnumv2, OfferResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferContentOld } from 'features/offer/components/OfferContentOld/OfferContentOld'
 import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
 import {
@@ -25,20 +19,9 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { Subcategory } from 'libs/subcategories/types'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-
-const mockSubcategory: Subcategory = {
-  categoryId: CategoryIdEnum.CINEMA,
-  appLabel: 'Cinéma plein air',
-  searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-  homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
-  isEvent: true,
-  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-  nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-}
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>

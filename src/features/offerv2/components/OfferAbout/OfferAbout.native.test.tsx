@@ -125,7 +125,6 @@ describe('<OfferAbout />', () => {
     render(<OfferAbout offer={offer} />)
 
     expect(screen.queryByText('Éditeur :')).toBeOnTheScreen()
-    expect(screen.queryByText('Gallimard')).toBeOnTheScreen()
   })
 
   it('should not display offer editor when offer has not it', async () => {

@@ -15,6 +15,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { PlaylistType } from 'features/offer/enums'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -33,16 +34,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, fireEvent } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
-
-const mockSubcategory: Subcategory = {
-  categoryId: CategoryIdEnum.CINEMA,
-  appLabel: 'Cinéma plein air',
-  searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-  homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
-  isEvent: true,
-  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-  nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-}
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -76,7 +67,6 @@ const apiRecoParams: RecommendationApiParams = {
 
 const useSimilarOffersSpy = jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
-  .mockImplementation()
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 const mockRefetchSameArtistPlaylist = jest.fn()
@@ -674,7 +664,7 @@ describe('<OfferContent />', () => {
       ${NativeCategoryIdEnumv2.LIVRES_PAPIER}       | ${BatchEvent.hasSeenBookOfferForSurvey}
       ${NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS} | ${BatchEvent.hasSeenConcertForSurvey}
     `(
-      'should trigger has_seen_offer_for_survey and specific batch event for offer type $offerNativeCategory',
+      'should trigger $expectedBatchEvent batch event for offer type $nativeCategoryId',
       async ({ nativeCategoryId, expectedBatchEvent }) => {
         renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
 

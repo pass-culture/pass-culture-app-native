@@ -150,7 +150,12 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <InformationTags tags={tags} />
             <Spacer.Column numberOfSpaces={4} />
             <OfferTitle offerName={offer.name} />
-            <OfferArtists artists={artists} />
+            {artists ? (
+              <React.Fragment>
+                <Spacer.Column numberOfSpaces={2} />
+                <OfferArtists artists={artists} />
+              </React.Fragment>
+            ) : null}
           </GroupWithoutGap>
 
           <OfferPrice prices={prices} />

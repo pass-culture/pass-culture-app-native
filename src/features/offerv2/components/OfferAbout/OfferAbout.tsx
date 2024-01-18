@@ -49,9 +49,9 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
           <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
             {offer.description}
           </CollapsibleText>
+          <Spacer.Column numberOfSpaces={8} />
         </React.Fragment>
       ) : null}
-      <Spacer.Column numberOfSpaces={8} />
       {shouldDisplayAccessibilitySection ? (
         <React.Fragment>
           <OfferAccessibility accessibility={offer.accessibility} />
