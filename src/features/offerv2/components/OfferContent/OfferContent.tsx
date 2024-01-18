@@ -57,7 +57,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
   const {
     sameArtistPlaylist,
-    refetchSameArtistPlaylist,
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
@@ -78,14 +77,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
     fromOfferId,
   })
-
-  const authors = offer.extraData?.author
-  const ean = offer.extraData?.ean
-  useEffect(() => {
-    if (authors && ean) {
-      refetchSameArtistPlaylist()
-    }
-  }, [authors, ean, refetchSameArtistPlaylist])
 
   const handleChangeSameArtistPlaylistDisplay = useLogScrollHandler(
     logSameArtistPlaylistVerticalScroll

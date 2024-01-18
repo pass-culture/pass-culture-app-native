@@ -69,10 +69,8 @@ const useSimilarOffersSpy = jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-const mockRefetchSameArtistPlaylist = jest.fn()
 jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockReturnValue({
   sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
-  refetchSameArtistPlaylist: mockRefetchSameArtistPlaylist,
 })
 
 /**
@@ -125,8 +123,8 @@ describe('<OfferContent />', () => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
-      setIsLoggedIn: mockRefetchSameArtistPlaylist,
-      refetchUser: mockRefetchSameArtistPlaylist,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
       isUserLoading: false,
     })
   })
@@ -326,22 +324,6 @@ describe('<OfferContent />', () => {
         expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
       })
 
-      it('should call refetch when artist and EAN are provided because playlist not refresh correctly when navigate to an other offer', async () => {
-        renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
-
-        await act(async () => {})
-
-        expect(mockRefetchSameArtistPlaylist).toHaveBeenCalledTimes(1)
-      })
-
-      it('should not call refetch when artist and EAN are not provided', async () => {
-        renderOfferContent({})
-
-        await act(async () => {})
-
-        expect(mockRefetchSameArtistPlaylist).not.toHaveBeenCalled()
-      })
-
       it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
         renderOfferContent({})
 
@@ -537,8 +519,8 @@ describe('<OfferContent />', () => {
     it('should log analytics when display authentication modal', async () => {
       mockUseAuthContext.mockImplementationOnce(() => ({
         isLoggedIn: false,
-        setIsLoggedIn: mockRefetchSameArtistPlaylist,
-        refetchUser: mockRefetchSameArtistPlaylist,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
         isUserLoading: false,
       }))
 
