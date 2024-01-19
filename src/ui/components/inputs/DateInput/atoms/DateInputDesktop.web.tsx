@@ -15,9 +15,8 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   onChange,
   accessibilityDescribedBy,
   errorMessage,
-  previousBirthdateProvided,
 }) => {
-  const { day, month, year } = getDefaultDateValues(previousBirthdateProvided)
+  const { day, month, year } = getDefaultDateValues(defaultSelectedDate)
 
   const [date, setDate] = useState<PartialDate>({
     day,
@@ -83,20 +82,18 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   )
 }
 
-const getDefaultDateValues = (previousBirthdate?: string): PartialDate => {
-  if (!previousBirthdate)
+const getDefaultDateValues = (initialDate?: Date): PartialDate => {
+  if (!initialDate)
     return {
       day: undefined,
       month: undefined,
       year: undefined,
     }
 
-  const birthDate = new Date(previousBirthdate)
-
   return {
-    day: birthDate.getUTCDate().toString(),
-    month: monthNames.at(birthDate.getUTCMonth()),
-    year: birthDate.getUTCFullYear().toString(),
+    day: initialDate.getUTCDate().toString(),
+    month: monthNames.at(initialDate.getUTCMonth()),
+    year: initialDate.getUTCFullYear().toString(),
   }
 }
 
