@@ -73,9 +73,20 @@ describe('fetchOffersByArtist', () => {
     expect(search).not.toHaveBeenCalled()
   })
 
-  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "collectif"', async () => {
+  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIF"', async () => {
     await fetchOffersByArtist({
-      artists: 'collectif',
+      artists: 'COLLECTIF',
+      ean: '',
+      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
+    })
+
+    expect(search).not.toHaveBeenCalled()
+  })
+
+  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIFS"', async () => {
+    await fetchOffersByArtist({
+      artists: 'COLLECTIFS',
       ean: '',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       venueLocation: { latitude: 47.65904, longitude: -2.75922 },
