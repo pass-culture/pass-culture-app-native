@@ -13,7 +13,7 @@ const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
 
 describe('fetchOffersByArtist', () => {
-  it('should execute the query if artist, ean are provided and searchGroupName is a book', async () => {
+  it('should execute the query if artist, ean are provided, searchGroupName is a book, and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       ean: '9782723492607',
@@ -32,7 +32,7 @@ describe('fetchOffersByArtist', () => {
     })
   })
 
-  it('should execute the query if artist is provided and searchGroupName is a book', async () => {
+  it('should execute the query if artist is provided,searchGroupName is a book, and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       ean: '',
@@ -51,7 +51,7 @@ describe('fetchOffersByArtist', () => {
     })
   })
 
-  it('should not execute the query if artist, ean are provided and searchGroupName is not a book', async () => {
+  it('should not execute the query if artist, ean are provided,searchGroupName is not a book and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       ean: '9782723492607',
@@ -62,9 +62,31 @@ describe('fetchOffersByArtist', () => {
     expect(search).not.toHaveBeenCalled()
   })
 
-  it('should not execute the query if artist is provided and searchGroupName is not a book', async () => {
+  it('should not execute the query if artist is provided, searchGroupName is not a book and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
+      ean: '',
+      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
+    })
+
+    expect(search).not.toHaveBeenCalled()
+  })
+
+  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIF"', async () => {
+    await fetchOffersByArtist({
+      artists: 'COLLECTIF',
+      ean: '',
+      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      venueLocation: { latitude: 47.65904, longitude: -2.75922 },
+    })
+
+    expect(search).not.toHaveBeenCalled()
+  })
+
+  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIFS"', async () => {
+    await fetchOffersByArtist({
+      artists: 'COLLECTIFS',
       ean: '',
       searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       venueLocation: { latitude: 47.65904, longitude: -2.75922 },
