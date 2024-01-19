@@ -230,7 +230,7 @@ describe('SearchBox component', () => {
       mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
     })
 
-    it('should un focus from suggestion when being focus on the suggestions and press back button', async () => {
+    it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
       mockIsFocusOnSuggestions = true
       mockSearchState = {
         ...mockSearchState,
