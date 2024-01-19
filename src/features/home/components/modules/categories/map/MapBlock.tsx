@@ -12,10 +12,13 @@ interface FilterProps {
 }
 
 const title = 'Afficher la carte'
+const image = {
+  uri: 'https://img.freepik.com/vecteurs-libre/carte-coloree-ville-rues-parc_23-2148318250.jpg?w=1480&t=st=1705708024~exp=1705708624~hmac=b1a56fbab0b621e58969d70fee0ffe8a817ce77947bedf5c7ff31dde6a3817ae',
+}
 
 export const MapBlock: FunctionComponent = () => (
   <StyledInternalTouchableLink navigateTo={{ screen: 'Dora' }}>
-    <ImageBackground source={require('/Users/tanguy/Documents/pass-culture-app-native/assets/images/Carte.png')}>
+    <ImageBackground source={image}>
       <ContainerWithFilter filter={{ color: theme.colors.black, opacity: 0.2 }}>
         <StyledTitle numberOfLines={2}>{title}</StyledTitle>
       </ContainerWithFilter>
@@ -29,7 +32,7 @@ const ContainerWithFilter = styled.View<{ filter: FilterProps }>(({ filter }) =>
   backgroundColor: colorAlpha(filter.color, filter.opacity),
   flex: 1,
   borderRadius: theme.borderRadius.radius,
-  justifyContent: 'flex-end'
+  justifyContent: 'flex-end',
 }))
 
 const StyledTitle = styled(Typo.ButtonText)({

@@ -22,6 +22,7 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { Dora } from 'features/home/pages/Dora'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
@@ -67,7 +68,6 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { Route } from './types'
-import { Dora } from 'features/home/pages/Dora'
 
 export const routes: Route[] = [
   ...accessibilityRoutes,
