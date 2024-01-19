@@ -1,5 +1,4 @@
 // eslint-disable-next-line no-restricted-imports
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
@@ -24,7 +23,7 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { From } from 'shared/offer/enums'
@@ -144,21 +143,6 @@ describe('<Login/>', () => {
         source: 'iPhone 13',
       },
     })
-  })
-
-  it('should log to Sentry on SSO login error', async () => {
-    // We use this hook twice but due to multiple rerender we have to mock the return value this way
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true)
-    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
-
-    renderLogin()
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
-
-    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
-      'Can’t login via Google: GoogleSignIn Error',
-      'info'
-    )
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {

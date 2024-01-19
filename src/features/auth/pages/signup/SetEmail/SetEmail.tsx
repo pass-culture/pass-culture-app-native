@@ -5,7 +5,6 @@ import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import { useTheme } from 'styled-components/native'
 
-import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
@@ -64,14 +63,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     },
     resolver: yupResolver(setEmailSchema),
     mode: 'onSubmit',
-  })
-
-  const { mutate: signIn } = useSignIn({
-    params,
-    onFailure: () => {
-      // TODO(PC-26915): Handle SSO error
-      return
-    },
   })
 
   const onLogAnalytics = useCallback(() => {
@@ -139,7 +130,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
           <Spacer.Column numberOfSpaces={4} />
           <StyledSeparatorWithText label="ou" />
           <Spacer.Column numberOfSpaces={4} />
-          <SSOButton type="signup" onSuccess={signIn} />
+          <SSOButton type="signup" />
           <Spacer.Column numberOfSpaces={10} />
         </React.Fragment>
       ) : (

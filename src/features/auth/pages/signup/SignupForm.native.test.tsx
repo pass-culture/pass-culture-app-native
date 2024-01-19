@@ -19,9 +19,6 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
-}))
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')

@@ -1,18 +1,13 @@
 import React from 'react'
-import DeviceInfo from 'react-native-device-info'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import * as API from 'api/api'
-import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
-import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
@@ -24,9 +19,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
-const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
-const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const defaultProps = {
   goToNextStep: jest.fn(),
@@ -255,12 +247,6 @@ describe('<SetEmail />', () => {
   })
 
   describe('SSO', () => {
-    beforeEach(() => {
-      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
-        oauthStateToken: 'oauth_state_token',
-      })
-    })
-
     afterEach(() => {
       useFeatureFlagSpy.mockReturnValue(false)
     })
@@ -274,41 +260,11 @@ describe('<SetEmail />', () => {
     })
 
     it('should display SSO button when FF is enabled', async () => {
-      // We use this hook for SSO and trusted device, and due to multiple rerender we have to mock the return value this way
-      // eslint-disable-next-line local-rules/independent-mocks
-      useFeatureFlagSpy.mockReturnValue(true)
+      useFeatureFlagSpy.mockReturnValueOnce(true)
 
       renderSetEmail()
 
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
-    })
-
-    it('should sign in with device info when sso button is clicked', async () => {
-      // We use this hook for SSO and trusted device, and due to multiple rerender we have to mock the return value this way
-      // eslint-disable-next-line local-rules/independent-mocks
-      useFeatureFlagSpy.mockReturnValue(true)
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
-      mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
-        accessToken: 'accessToken',
-        refreshToken: 'refreshToken',
-        accountState: AccountState.ACTIVE,
-      })
-      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
-
-      renderSetEmail()
-
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
-
-      expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-        authorizationCode: 'mockServerAuthCode',
-        oauthStateToken: 'oauth_state_token',
-        deviceInfo: {
-          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          os: 'iOS',
-          source: 'iPhone 13',
-        },
-      })
     })
   })
 })

@@ -16,9 +16,6 @@ jest.mock('uuid', () => {
   }
 })
 
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
-}))
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const realUseState = React.useState

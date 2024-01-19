@@ -1,32 +1,23 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
-import { useGoogleLogin } from 'libs/react-native-google-sso/useGoogleLogin'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Google } from 'ui/svg/icons/socialNetwork/Google'
+import { useSignIn } from 'features/auth/api/useSignIn'
+import { SignInResponseFailure } from 'features/auth/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+
+import { SSOButtonBase } from './SSOButtonBase'
 
 type Props = {
   type: 'signup' | 'login'
-  onSuccess: ({
-    authorizationCode,
-    oauthStateToken,
-  }: {
-    authorizationCode: string
-    oauthStateToken: string
-  }) => void
+  onSignInFailure?: (error: SignInResponseFailure) => void
 }
 
-export const SSOButton = ({ type, onSuccess }: Props) => {
-  const googleLogin = useGoogleLogin({
-    onSuccess: ({ code, state = '' }) =>
-      onSuccess({ authorizationCode: code, oauthStateToken: state }),
+export const SSOButton = ({ type, onSignInFailure }: Props) => {
+  const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const { mutate: signIn } = useSignIn({
+    params,
+    onFailure: (error) => onSignInFailure?.(error),
   })
 
-  const buttonWording = `${type === 'login' ? 'Se connecter' : 'S’inscrire'} avec Google`
-
-  return <StyledButton wording={buttonWording} icon={Google} onPress={googleLogin} />
+  return <SSOButtonBase type={type} onSuccess={signIn} />
 }
-
-const StyledButton = styledButton(ButtonSecondaryBlack)(({ theme }) => ({
-  borderColor: theme.colors.greyMedium,
-}))
