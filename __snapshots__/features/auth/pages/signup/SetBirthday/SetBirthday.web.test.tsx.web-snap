@@ -94,10 +94,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c3 {
-  font-family: Montserrat-Italic;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
-  color: #696A6F;
+  color: #161617;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -120,10 +120,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c6 {
-  font-family: Montserrat-Italic;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
-  color: #696A6F;
+  color: #161617;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -146,10 +146,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c7 {
-  font-family: Montserrat-Italic;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
-  color: #696A6F;
+  color: #161617;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -257,9 +257,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                     <option
                       class="c4"
                       value=""
-                    >
-                      JJ
-                    </option>
+                    />
                     <option
                       class="c4"
                       data-testid="select-option"
@@ -525,9 +523,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                     <option
                       class="c4"
                       value=""
-                    >
-                      Mois
-                    </option>
+                    />
                     <option
                       class="c4"
                       data-testid="select-option"
@@ -660,9 +656,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                     <option
                       class="c4"
                       value=""
-                    >
-                      AAAA
-                    </option>
+                    />
                     <option
                       class="c4"
                       data-testid="select-option"
@@ -1553,10 +1547,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c3 {
-  font-family: Montserrat-Italic;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
-  color: #696A6F;
+  color: #161617;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -1579,10 +1573,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c6 {
-  font-family: Montserrat-Italic;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
-  color: #696A6F;
+  color: #161617;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -1605,10 +1599,10 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c7 {
-  font-family: Montserrat-Italic;
+  font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
-  color: #696A6F;
+  color: #161617;
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -1715,9 +1709,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   <option
                     class="c4"
                     value=""
-                  >
-                    JJ
-                  </option>
+                  />
                   <option
                     class="c4"
                     data-testid="select-option"
@@ -1983,9 +1975,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   <option
                     class="c4"
                     value=""
-                  >
-                    Mois
-                  </option>
+                  />
                   <option
                     class="c4"
                     data-testid="select-option"
@@ -2118,9 +2108,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
                   <option
                     class="c4"
                     value=""
-                  >
-                    AAAA
-                  </option>
+                  />
                   <option
                     class="c4"
                     data-testid="select-option"

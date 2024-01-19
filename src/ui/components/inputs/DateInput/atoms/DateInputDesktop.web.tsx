@@ -43,7 +43,6 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
         <DropDown
           value={date.day}
           label="Jour"
-          placeholder="JJ"
           options={optionGroups.day}
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
@@ -56,7 +55,6 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
         <DropDown
           value={date.month}
           label="Mois"
-          placeholder="Mois"
           options={optionGroups.month}
           onChange={onPartialDateChange('month')}
           noBorderRadiusRight
@@ -70,7 +68,6 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
         <DropDown
           value={date.year}
           label="Année"
-          placeholder="AAAA"
           options={optionGroups.year}
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
