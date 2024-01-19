@@ -20,7 +20,7 @@ import { SearchMainInput } from 'features/search/components/SearchMainInput/Sear
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { getIsSearchPreviousRoute } from 'features/search/helpers/getIsSearchPreviousRoute/getIsSearchPreviousRoute'
+import { getIsVenuePreviousRoute } from 'features/search/helpers/getIsVenuePreviousRoute/getIsVenuePreviousRoute'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
@@ -58,7 +58,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
   const { goBack } = useGoBack(...homeNavConfig)
-  const [query, setQuery] = useState<string>(searchState.query)
+  const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const { section, locationType } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
@@ -76,6 +76,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { data: appSettings } = useSettingsContext()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete
 
+  const setQuery = useCallback(
+    (value: string) => {
+      setDisplayedQuery(value)
+      if (appEnableAutocomplete) {
+        debounceSetAutocompleteQuery(value)
+        searchInHistory(value)
+      }
+    },
+    [setDisplayedQuery, appEnableAutocomplete, debounceSetAutocompleteQuery, searchInHistory]
+  )
   const pushWithSearch = useCallback(
     (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
       dispatch({
@@ -90,28 +100,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     [dispatch, searchState]
   )
 
-  const hasEditableSearchInput =
-    searchState.view === SearchView.Suggestions || searchState.view === SearchView.Results
+  const hasEditableSearchInput = isFocusOnSuggestions || searchState.view === SearchView.Results
 
   const hasPosition = useHasPosition()
-
-  // Track when the value coming from the React state changes to synchronize
-  // it with InstantSearch.
-  useEffect(() => {
-    if (autocompleteQuery !== query && appEnableAutocomplete) {
-      debounceSetAutocompleteQuery(query)
-      searchInHistory(query)
-    }
-    // avoid conflicts when local autocomplete query state is updating
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, debounceSetAutocompleteQuery])
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
   useEffect(() => {
     // We bypass the state update if the input is focused to avoid concurrent
     // updates when typing.
-    if (!inputRef.current?.isFocused() && autocompleteQuery !== query) {
+    if (!inputRef.current?.isFocused() && autocompleteQuery !== displayedQuery) {
       setQuery(autocompleteQuery)
     }
     // avoid conflicts when local query state is updating
@@ -120,7 +118,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   useEffect(() => {
     // If the user select a value in autocomplete list it must be display in search input
-    if (searchState.query !== query) setQuery(searchState.query)
+    if (searchState.query !== displayedQuery) setQuery(searchState.query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchState.query])
 
@@ -136,53 +134,52 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     clear()
     setQuery('')
     searchInHistory('')
-    const view = appEnableAutocomplete ? SearchView.Suggestions : SearchView.Results
-    pushWithSearch({ query: '', view })
-  }, [clear, appEnableAutocomplete, pushWithSearch, searchInHistory])
+    if (appEnableAutocomplete) {
+      showSuggestions()
+    } else {
+      hideSuggestions()
+      pushWithSearch({ query: '', view: SearchView.Results })
+    }
+  }, [
+    clear,
+    setQuery,
+    searchInHistory,
+    appEnableAutocomplete,
+    showSuggestions,
+    hideSuggestions,
+    pushWithSearch,
+  ])
 
   const onPressArrowBack = useCallback(() => {
     // To force remove focus on search input
     Keyboard.dismiss()
 
-    // TODO(PC-25976): remove this code when new venue page will be create
-    // when pressing Voir toutes les offres on venue page
-    const isSearchPreviousRoute = getIsSearchPreviousRoute(
-      navigationRef.getState().routes,
-      searchState.previousView
-    )
+    const isVenuePreviousRoute = getIsVenuePreviousRoute(navigationRef.getState().routes)
 
-    if (isSearchPreviousRoute) {
-      // Only close autocomplete list if open
-      const { previousView, view } = searchState
-      if (
-        view === SearchView.Suggestions &&
-        previousView !== SearchView.Landing &&
-        appEnableAutocomplete
-      ) {
-        return pushWithSearch({
-          ...searchState,
-          view: SearchView.Results,
-          previousView: view,
+    switch (true) {
+      case isFocusOnSuggestions && searchState.view === SearchView.Results:
+        setQuery(searchState.query)
+        hideSuggestions()
+        break
+      case isFocusOnSuggestions && searchState.view === SearchView.Landing:
+        setQuery('')
+        hideSuggestions()
+        break
+      case isVenuePreviousRoute:
+        dispatch({
+          type: 'SET_STATE',
+          payload: { ...searchState, view: SearchView.Landing, venue: undefined },
         })
-      }
-
-      pushWithSearch(
-        {
-          locationFilter: searchState.locationFilter,
-          venue: searchState.venue,
-          previousView: view,
-        },
-        {
-          reset: true,
-        }
-      )
-    } else {
-      dispatch({ type: 'SET_STATE', payload: { ...searchState, venue: undefined } })
-      goBack()
+        goBack()
+        break
+      case searchState.view === SearchView.Results:
+        setQuery('')
+        dispatch({ type: 'SET_STATE', payload: { ...searchState, view: SearchView.Landing } })
+        break
+      default:
+        break
     }
-
-    setQuery('')
-  }, [searchState, appEnableAutocomplete, pushWithSearch, dispatch, goBack])
+  }, [isFocusOnSuggestions, searchState, setQuery, hideSuggestions, dispatch, goBack])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -194,6 +191,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // price range depending on their available credit.
       addSearchHistory({ query: queryText })
       const searchId = uuidv4()
+
       const partialSearchState: Partial<SearchState> = {
         query: queryText,
         locationFilter: searchState.locationFilter,
@@ -206,32 +204,35 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         isFromHistory: undefined,
       }
       pushWithSearch(partialSearchState)
+      hideSuggestions()
     },
     [
       addSearchHistory,
-      pushWithSearch,
       searchState.locationFilter,
       searchState.venue,
       searchState.offerCategories,
       searchState.priceRange,
+      pushWithSearch,
+      hideSuggestions,
     ]
   )
 
   const onFocus = useCallback(() => {
-    if (searchState.view === SearchView.Suggestions && appEnableAutocomplete) return
-
+    if (isFocusOnSuggestions && appEnableAutocomplete) return
     // Avoid the redirection on suggestions view when user is on a results view
     // (not useful in this case because we don't have suggestions)
-    // or suggestions view if it's the current view when feature flag desactivated
+    // or suggestions view if it's the current view when feature flag deactivated
     if (hasEditableSearchInput && !appEnableAutocomplete) return
-
     searchInHistory(searchState.query)
-    pushWithSearch({
-      ...searchState,
-      view: SearchView.Suggestions,
-      previousView: searchState.view,
-    })
-  }, [appEnableAutocomplete, hasEditableSearchInput, pushWithSearch, searchInHistory, searchState])
+    showSuggestions()
+  }, [
+    appEnableAutocomplete,
+    hasEditableSearchInput,
+    isFocusOnSuggestions,
+    searchInHistory,
+    searchState.query,
+    showSuggestions,
+  ])
 
   const showLocationButton = enableAppLocation
     ? searchState.view === SearchView.Results
@@ -257,7 +258,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             <SearchMainInput
               ref={inputRef}
               searchInputID={searchInputID}
-              query={query}
+              query={displayedQuery}
               setQuery={setQuery}
               isFocusable={isFocusOnSuggestions}
               onSubmitQuery={onSubmitQuery}
