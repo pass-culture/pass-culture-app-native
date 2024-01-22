@@ -235,11 +235,14 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ])
 
   const showLocationButton = enableAppLocation
-    ? searchState.view === SearchView.Results
+    ? searchState.view === SearchView.Results && !isFocusOnSuggestions
     : searchState.view === SearchView.Landing
 
   const disableInputClearButton =
-    searchState.view === SearchView.Results && !isDesktopViewport && !!enableAppLocation
+    searchState.view === SearchView.Results &&
+    !isFocusOnSuggestions &&
+    !isDesktopViewport &&
+    !!enableAppLocation
 
   return (
     <RowContainer>
