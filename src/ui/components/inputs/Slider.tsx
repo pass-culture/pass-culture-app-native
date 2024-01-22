@@ -221,13 +221,11 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
 
 const CenteredText = styled(Typo.ButtonText)<{ shouldShowMinMaxValues?: boolean; width?: number }>({
   textAlign: 'center',
-  boxSizing: 'border-box',
   width: '100%',
 })
 
 const SliderComponentWrapper = styled.View<{ sliderLength?: number }>(({ sliderLength }) => ({
   width: sliderLength ? sliderLength : '100%',
-  boxSizing: 'border-box',
   alignItems: 'center',
 }))
 
@@ -245,7 +243,6 @@ const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
 const SliderWrapper = styled(View)(({ theme }) => ({
   paddingLeft: theme.slider.markerSize / 2,
   paddingRight: theme.slider.markerSize / 2,
-  boxSizing: 'border-box',
   alignItems: 'center',
   width: '100%',
 }))

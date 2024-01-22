@@ -6,7 +6,6 @@ exports[`<Slider /> should render correctly 1`] = `
     [
       {
         "alignItems": "center",
-        "boxSizing": "border-box",
         "width": "100%",
       },
     ]
@@ -16,7 +15,6 @@ exports[`<Slider /> should render correctly 1`] = `
     style={
       [
         {
-          "boxSizing": "border-box",
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,
@@ -44,7 +42,6 @@ exports[`<Slider /> should render correctly 1`] = `
       [
         {
           "alignItems": "center",
-          "boxSizing": "border-box",
           "paddingLeft": 18,
           "paddingRight": 18,
           "width": "100%",
