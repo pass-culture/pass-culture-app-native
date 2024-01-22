@@ -13,6 +13,7 @@ import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockRespon
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { env } from 'libs/environment'
+import { Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -72,6 +73,7 @@ jest.mock('libs/subcategories', () => ({
 }))
 mockUseSubcategoriesMapping.mockReturnValue({
   EVENEMENT_PATRIMOINE: { isEvent: true },
+  LIVRE_PAPIER: { isEvent: false },
 })
 
 const spyLogOfferConversion = jest.fn()
@@ -85,6 +87,11 @@ server.use(
   )
 )
 const mockOnPressBookOffer = jest.fn()
+
+let mockUserLocation: Position = undefined
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({ userLocation: mockUserLocation })),
+}))
 
 const offerVenues = [
   {
@@ -142,6 +149,7 @@ describe('<BookingDetails />', () => {
   afterEach(() => {
     mockVenueList = []
     mockNbVenueItems = 0
+    mockUserLocation = undefined
   })
 
   describe('with initial state', () => {
@@ -559,6 +567,85 @@ describe('<BookingDetails />', () => {
     })
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_OFFER', payload: 2 })
+  })
+
+  describe('when user share their position', () => {
+    beforeEach(() => {
+      mockUseBookingOffer.mockReturnValue({
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: {
+          ean: '2765410054',
+        },
+      })
+    })
+
+    it('should display "Lieux disponibles autour de moi"', async () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+      mockUserLocation = { latitude: 0, longitude: 0 }
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Modifier'))
+      })
+
+      expect(screen.getByText('Lieux disponibles autour de moi')).toBeOnTheScreen()
+    })
+
+    it('should not display "Lieux à proximité de “Cinéma de la fin”"', async () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+      mockUserLocation = { latitude: 0, longitude: 0 }
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+      await act(async () => {
+        fireEvent.press(screen.getByText('Modifier'))
+      })
+
+      expect(screen.queryByText('Lieux à proximité de “Cinéma de la fin”')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe("when user doesn't share their position", () => {
+    beforeEach(() => {
+      mockUseBookingOffer.mockReturnValue({
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: {
+          ean: '2765410054',
+        },
+      })
+    })
+
+    it('should not display "Lieux disponibles autour de moi"', async () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+      mockUserLocation = null
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Modifier'))
+      })
+
+      expect(screen.queryByText('Lieux disponibles autour de moi')).not.toBeOnTheScreen()
+    })
+
+    it('should display "Lieux à proximité de “Cinéma de la fin”"', async () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+      mockUserLocation = null
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Modifier'))
+      })
+
+      expect(screen.getByText('Lieux à proximité de “Cinéma de la fin”')).toBeOnTheScreen()
+    })
   })
 })
 

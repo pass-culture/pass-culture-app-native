@@ -260,6 +260,94 @@ describe('<OfferPlace />', () => {
 
     expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(mockOffer.id)
   })
+
+  describe('when user share their position', () => {
+    it('should display "Lieux disponibles autour de moi"', () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferPlace({
+        userLocation: { latitude: 0, longitude: 0 },
+        isEvent: false,
+        offer: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: {
+            ean: '2765410054',
+          },
+        },
+      })
+
+      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+
+      expect(screen.getByText('Lieux disponibles autour de moi')).toBeOnTheScreen()
+    })
+
+    it('should not display "Lieux à proximité de “Cinéma de la fin”"', () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferPlace({
+        userLocation: { latitude: 0, longitude: 0 },
+        isEvent: false,
+        offer: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: {
+            ean: '2765410054',
+          },
+        },
+      })
+
+      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+
+      expect(screen.queryByText('Lieux à proximité de “Cinéma de la fin”')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe("when user doesn't share their position", () => {
+    it('should not display "Lieux disponibles autour de moi"', () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferPlace({
+        userLocation: null,
+        isEvent: false,
+        offer: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: {
+            ean: '2765410054',
+          },
+        },
+      })
+
+      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+
+      expect(screen.queryByText('Lieux disponibles autour de moi')).not.toBeOnTheScreen()
+    })
+
+    it('should display "Lieux à proximité de “Cinéma de la fin”"', () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferPlace({
+        userLocation: null,
+        isEvent: false,
+        offer: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: {
+            ean: '2765410054',
+          },
+        },
+      })
+
+      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+
+      expect(screen.getByText('Lieux à proximité de “Cinéma de la fin”')).toBeOnTheScreen()
+    })
+  })
 })
 
 const renderOfferPlace = ({ offer, userLocation, isEvent }: OfferPlaceOldProps) =>
