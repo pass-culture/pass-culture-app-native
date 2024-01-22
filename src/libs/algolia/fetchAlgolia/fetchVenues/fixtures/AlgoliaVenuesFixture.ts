@@ -24,10 +24,10 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     venue_type: 'VISUAL_ARTS',
     visual_disability: false,
     website: 'https://my.website.com',
-    _geoloc: { lat: 50, lng: 50 },
+    _geoloc: { lat: 48.8, lng: 2.34 },
   },
   {
-    _geoloc: { lat: 50, lng: 50 },
+    _geoloc: { lat: 48.85, lng: 2.35 },
     audio_disability: false,
     banner_url:
       'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/venues/CBQA_1678748459',

@@ -1,11 +1,17 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import MapView from 'react-native-maps'
+import MapView, { Marker } from 'react-native-maps'
+import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { Venue } from 'features/venue/types'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
+import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
+import { algoliaVenuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/AlgoliaVenuesFixture'
 import { useLocation } from 'libs/location'
-import { useVenues } from 'libs/place'
+import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Bookstore } from 'ui/svg/icons/bicolor/Bookstore'
@@ -44,22 +50,10 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 //     return [] as Venue[]
 //   }
 // }
-// const STALE_TIME_VENUES = 5 * 60 * 1000
-
-// const useVenues = (query: string, userLocation: Position) => {
-//   const netInfo = useNetInfoContext()
-//   return useQuery<Venue[]>(
-//     [QueryKeys.VENUES, query],
-//     () => fetchVenues({ query: query }, userLocation),
-//     {
-//       staleTime: STALE_TIME_VENUES,
-//       enabled: !!netInfo.isConnected && query.length > 0,
-//     }
-//   )
-// }
+const STALE_TIME_VENUES = 5 * 60 * 1000
 
 export const Dora: FunctionComponent = () => {
-  const { userLocation } = useLocation()
+  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
   const [centerPosition, setCenterPosition] = useState({
@@ -69,8 +63,38 @@ export const Dora: FunctionComponent = () => {
     longitudeDelta: 0.08,
   })
 
-  const { data: venues, refetch } = useVenues('cinema')
-  //   if (!venues) return null
+  const buildLocationParameterParams = {
+    userLocation,
+    selectedLocationMode,
+    aroundMeRadius,
+    aroundPlaceRadius,
+  }
+
+  const useVenues = (query: string) => {
+    const netInfo = useNetInfoContext()
+    return useQuery<Venue[]>(
+      [QueryKeys.VENUES, query],
+      () =>
+        fetchVenues({
+          query: '',
+          buildLocationParameterParams,
+        }),
+      {
+        staleTime: STALE_TIME_VENUES,
+        enabled: !!netInfo.isConnected && query.length > 0,
+      }
+    )
+  }
+
+  const { data, refetch } = useVenues('')
+
+  const venues = adaptAlgoliaVenues(algoliaVenuesFixture)
+
+  // const { data: venues, refetch } = useVenues('cinema')
+  // if (!venues) return null
+
+  // const venue = venues?.[0]
+  console.log({ venues })
   return (
     <React.Fragment>
       <PageHeaderSecondary title="Carte des lieux" shouldDisplayBackButton />
@@ -80,19 +104,19 @@ export const Dora: FunctionComponent = () => {
         rotateEnabled={false}
         onRegionChangeComplete={setCenterPosition}
         showsUserLocation>
-        {/* {venues.map((venue) => (
+        {venues.map((venue) => (
           <Marker
-            key={venue.venueId}
+            key={venue?.venueId}
             coordinate={{
               latitude: venue?._geoloc?.lat ?? 0,
               longitude: venue?._geoloc?.lng ?? 0,
             }}
-            onPress={() => navigate('Venue', { id: venue.venueId ?? 0 })}>
+            onPress={() => navigate('Venue', { id: venue?.venueId ?? 0 })}>
             <StyledMarkerView>
               <StyledBookstore size={20} />
             </StyledMarkerView>
           </Marker>
-        ))} */}
+        ))}
       </StyledMapView>
       <StyledView top={top}>
         <StyledPrimaryButton wording="Rechercher dans cette zone" onPress={() => refetch()} />

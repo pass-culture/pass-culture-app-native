@@ -7,6 +7,7 @@ import { SearchResults } from 'features/search/components/SearchResults/SearchRe
 import { useShowResultsForCategory } from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
 import { useLocation } from 'libs/location'
+import { useVenues } from 'libs/place'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,7 +19,8 @@ type BodySearchProps = {
 export const BodySearch = memo(function BodySearch({ view }: BodySearchProps) {
   const showResultsForCategory = useShowResultsForCategory()
   const { userLocation } = useLocation()
-
+  const { data: venues } = useVenues('')
+  console.log({ venues })
   if (view === SearchView.Results) {
     return <SearchResults />
   }
