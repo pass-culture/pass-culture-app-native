@@ -28,8 +28,11 @@ type VenueSelectionModalProps = Pick<
   onSubmit: (selectedVenueId: number) => void
   onClosePress: VoidFunction
   onEndReached?: () => void
-  venueName?: string
   isSharingLocation?: boolean
+  subTitle: string
+  rightIconAccessibilityLabel: string
+  validateButtonLabel: string
+  headerMessage: string
 }
 
 const HEIGHT_CONTAINER = getSpacing(6)
@@ -47,8 +50,11 @@ export function VenueSelectionModal({
   nbLoadedHits,
   nbHits,
   isFetchingNextPage,
-  venueName,
   isSharingLocation,
+  subTitle,
+  rightIconAccessibilityLabel,
+  validateButtonLabel,
+  headerMessage,
 }: VenueSelectionModalProps) {
   const [selectedVenue, setSelectedVenue] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -98,12 +104,12 @@ export function VenueSelectionModal({
       noPadding
       rightIcon={Close}
       onRightIconPress={onClosePress}
-      rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
+      rightIconAccessibilityLabel={rightIconAccessibilityLabel}
       customModalHeader={customHeader}
       fixedModalBottom={
         <BottomWrapper>
           <ButtonPrimary
-            wording="Choisir ce lieu"
+            wording={validateButtonLabel}
             onPress={handleSubmit}
             disabled={!selectedVenue}
           />
@@ -132,7 +138,8 @@ export function VenueSelectionModal({
         nbHits={nbHits}
         isFetchingNextPage={isFetchingNextPage}
         isSharingLocation={isSharingLocation}
-        venueName={venueName}
+        subTitle={subTitle}
+        headerMessage={headerMessage}
       />
     </AppModal>
   )
