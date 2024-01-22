@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
@@ -98,6 +98,15 @@ export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPl
     [hideChangeVenueModal, navigate, offer.id]
   )
 
+  const venueName = offer.venue.publicName || offer.venue.name
+  const headerMessage = useMemo(
+    () =>
+      userLocation !== null
+        ? 'Lieux disponibles autour de moi'
+        : `Lieux à proximité de “${venueName}”`,
+    [userLocation, venueName]
+  )
+
   return (
     <React.Fragment>
       <SectionWithDivider visible={!offer.isDigital} margin>
@@ -136,7 +145,10 @@ export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPl
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
           isSharingLocation={userLocation !== null}
-          venueName={offer.venue.publicName || offer.venue.name}
+          subTitle="Sélectionner un lieu"
+          rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
+          validateButtonLabel="Choisir ce lieu"
+          headerMessage={headerMessage}
         />
       ) : null}
     </React.Fragment>
