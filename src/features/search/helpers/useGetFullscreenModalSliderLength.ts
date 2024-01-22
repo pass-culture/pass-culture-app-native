@@ -1,10 +1,10 @@
 import { useTheme } from 'styled-components'
 
 export function useGetFullscreenModalSliderLength(hasFormWidthLimit = true) {
-  const { isDesktopViewport, forms, slider, modal } = useTheme()
-  const baseSliderContainerWidth = hasFormWidthLimit ? forms.maxWidth : modal.desktopMaxWidth
-
+  const { isDesktopViewport, forms, modal, appContentWidth } = useTheme()
+  const deviceMaxWidth = isDesktopViewport ? modal.desktopMaxWidth : appContentWidth
+  const whiteAroundScreenWidth = modal.spacing.MD * 2
   return {
-    sliderLength: isDesktopViewport ? baseSliderContainerWidth - slider.markerSize : undefined,
+    sliderLength: (hasFormWidthLimit ? forms.maxWidth : deviceMaxWidth) - whiteAroundScreenWidth,
   }
 }

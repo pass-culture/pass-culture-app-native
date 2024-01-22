@@ -2,6 +2,7 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
+import { DefaultTheme } from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -155,7 +156,7 @@ export function Slider(props: Props) {
   )
 
   return (
-    <React.Fragment>
+    <SliderComponentWrapper>
       {!!props.showValues && (
         <CenteredText>
           {values.length === 1 && formatValues(values[0])}
@@ -163,10 +164,7 @@ export function Slider(props: Props) {
         </CenteredText>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <SliderWrapper
-        ref={setStyledViewRef}
-        testID="slider"
-        shouldShowMinMaxValues={shouldShowMinMaxValues}>
+      <SliderWrapper ref={setStyledViewRef} testID="slider">
         <StyledMultiSlider
           values={values}
           allowOverlap
@@ -181,13 +179,13 @@ export function Slider(props: Props) {
       {!!shouldShowMinMaxValues && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
-          <MinMaxContainer>
+          <MinMaxContainer sliderLength={props.sliderLength}>
             <MinMaxValue>{`${min}${minMaxValuesComplement}`}</MinMaxValue>
             <MinMaxValue>{`${max}${minMaxValuesComplement}`}</MinMaxValue>
           </MinMaxContainer>
         </React.Fragment>
       )}
-    </React.Fragment>
+    </SliderComponentWrapper>
   )
 }
 
@@ -217,28 +215,51 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
       borderWidth: getSpacing(0.5),
     },
     containerStyle: { height: getSpacing(8) },
-    sliderLength: sliderLength
-      ? sliderLength - getSpacing(2 * 6)
-      : theme.appContentWidth - getSpacing(2 * 2 * 6),
+    sliderLength: getSliderLength(theme, sliderLength),
   }
 })``
 
-const CenteredText = styled(Typo.ButtonText)<{ width?: number }>(({ width, theme }) => ({
-  width: width ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
+const CenteredText = styled(Typo.ButtonText)<{ shouldShowMinMaxValues?: boolean; width?: number }>({
   textAlign: 'center',
+  boxSizing: 'border-box',
+  width: '100%',
+})
+
+const SliderComponentWrapper = styled.View<{ sliderLength?: number }>(({ sliderLength }) => ({
+  width: sliderLength ? sliderLength : '100%',
+  boxSizing: 'border-box',
+  alignItems: 'center',
 }))
 
-const MinMaxContainer = styled.View({
+const MinMaxContainer = styled.View<{ sliderLength?: number }>(({ sliderLength, theme }) => ({
   flexDirection: 'row',
+  content: ' ',
   justifyContent: 'space-between',
-})
+  width: getSliderInfosLength(theme, sliderLength),
+}))
 
 const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(
-  ({ shouldShowMinMaxValues, theme }) => ({
-    ...(shouldShowMinMaxValues && { paddingLeft: theme.slider.markerSize / 2 }),
-  })
-)
+const SliderWrapper = styled(View)(({ theme }) => ({
+  paddingLeft: theme.slider.markerSize / 2,
+  paddingRight: theme.slider.markerSize / 2,
+  boxSizing: 'border-box',
+  alignItems: 'center',
+  width: '100%',
+}))
+
+function getSliderMarkerSize(theme: DefaultTheme): number {
+  return theme.slider.markerSize
+}
+
+function getSliderLength(theme: DefaultTheme, sliderLength?: number): number {
+  return sliderLength
+    ? sliderLength - theme.slider.markerSize
+    : theme.appContentWidth - 2 * theme.modal.spacing.MD - getSliderMarkerSize(theme)
+}
+
+function getSliderInfosLength(theme: DefaultTheme, sliderLength?: number): number {
+  return getSliderLength(theme, sliderLength) + getSliderMarkerSize(theme)
+}

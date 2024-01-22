@@ -11,6 +11,13 @@ export default meta
 
 const Template: ComponentStory<typeof Slider> = (props) => <Slider {...props} />
 
+const TemplateWrapped: ComponentStory<typeof Slider> = (props) => (
+  // eslint-disable-next-line react-native/no-inline-styles
+  <div style={{ width: '375px' }}>
+    <Slider {...props} />
+  </div>
+)
+
 export const DefaultSlider = Template.bind({})
 
 export const SliderWithValues = Template.bind({})
@@ -27,6 +34,16 @@ SliderWithMinMaxValues.args = {
   showValues: false,
   shouldShowMinMaxValues: true,
   minMaxValuesComplement: `\u00a0km`,
+}
+
+export const MobileSliderWithMinMaxValues = TemplateWrapped.bind({})
+MobileSliderWithMinMaxValues.args = {
+  values: [50],
+  max: 100,
+  showValues: false,
+  shouldShowMinMaxValues: true,
+  minMaxValuesComplement: `\u00a0km`,
+  sliderLength: 375,
 }
 
 export const SliderWithFormattedValues = Template.bind({})
