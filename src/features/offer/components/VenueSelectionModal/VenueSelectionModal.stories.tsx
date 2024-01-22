@@ -11,10 +11,12 @@ const meta: ComponentMeta<typeof VenueSelectionModal> = {
   args: {
     isVisible: true,
     title: 'Lieu de retrait',
+    subTitle: 'Sélectionner un lieu',
     onSubmit: action('selected'),
     onClosePress: action('close modal'),
     onRefresh: action('refresh'),
     refreshing: false,
+    validateButtonLabel: 'Choisir ce lieu',
   },
   argTypes: {
     onSubmit: { control: { disable: true } },
@@ -34,8 +36,8 @@ const DynamicTemplate: ComponentStory<typeof VenueSelectionModal> = (props) => {
 
 export const WithUserPosition = DynamicTemplate.bind({})
 WithUserPosition.args = {
+  headerMessage: 'Lieux disponibles autour de moi',
   isSharingLocation: true,
-  venueName: 'Fnac',
   items: [
     {
       title: 'Envie de lire',
@@ -60,8 +62,8 @@ WithUserPosition.args = {
 
 export const WithoutUserPosition = DynamicTemplate.bind({})
 WithoutUserPosition.args = {
+  headerMessage: 'Lieux à proximité de "Fnac"',
   isSharingLocation: false,
-  venueName: 'Fnac',
   items: [
     {
       title: 'Envie de lire',

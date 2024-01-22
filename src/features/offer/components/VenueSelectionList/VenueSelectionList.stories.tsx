@@ -17,7 +17,13 @@ const DynamicTemplate: ComponentStory<typeof VenueSelectionList> = (props) => {
   const [selectedItem, setSelectedItem] = useState<number>()
 
   return (
-    <VenueSelectionList {...props} selectedItem={selectedItem} onItemSelect={setSelectedItem} />
+    <VenueSelectionList
+      {...props}
+      subTitle="Sélectionner un lieu"
+      selectedItem={selectedItem}
+      onItemSelect={setSelectedItem}
+      headerMessage='Lieux à proximité de "undefined"'
+    />
   )
 }
 
