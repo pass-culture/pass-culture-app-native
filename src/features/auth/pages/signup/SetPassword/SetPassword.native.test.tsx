@@ -29,6 +29,12 @@ describe('SetPassword Page', () => {
     expect(screen.getByText('12 caractères')).toBeOnTheScreen()
   })
 
+  it('should not display "Obligatoire"', () => {
+    render(<SetPassword {...props} />)
+
+    expect(screen.queryByText('Obligatoire')).toBeNull()
+  })
+
   it('should disable the submit button when password is incorrect', () => {
     render(<SetPassword {...props} />)
 
