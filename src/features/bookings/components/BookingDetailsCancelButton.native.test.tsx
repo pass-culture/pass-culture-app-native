@@ -148,12 +148,12 @@ describe('<BookingDetailsCancelButton />', () => {
     expect(screen.queryByTestId('cancel-annulation-message')).not.toBeOnTheScreen()
   })
 
-  describe("When it's an offer category to archieve and it's not free", () => {
+  describe("When it's an offer category to archive and it's not free", () => {
     it('should not display expiration date message', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
 
       renderBookingDetailsCancelButton(booking)
 
@@ -164,7 +164,7 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
 
       renderBookingDetailsCancelButton(booking)
 
@@ -177,7 +177,7 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.stock.price = 0
       booking.totalAmount = 0
 
@@ -190,7 +190,7 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.stock.price = 0
       booking.totalAmount = 0
 
@@ -203,7 +203,7 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.stock.price = 1000
       booking.totalAmount = 0
 
@@ -216,7 +216,7 @@ describe('<BookingDetailsCancelButton />', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.stock.price = 1000
       booking.totalAmount = 0
 

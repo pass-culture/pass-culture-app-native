@@ -54,13 +54,13 @@ src/api/gen/index.ts:1648 - OfferReportRequest
 src/api/gen/index.ts:1770 - OfferStockActivationCodeResponse
 src/api/gen/index.ts:2021 - ReasonMeta
 src/api/gen/index.ts:2048 - ReportedOffer
-src/api/gen/index.ts:2612 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:2728 - UserProfileEmailUpdate
-src/api/gen/index.ts:2959 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:2970 - ValidationError
-src/api/gen/index.ts:2976 - ValidationErrorElement
-src/api/gen/index.ts:3211 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4412 - DefaultApiFp
+src/api/gen/index.ts:2608 - SubscriptionStepDetailsResponse
+src/api/gen/index.ts:2724 - UserProfileEmailUpdate
+src/api/gen/index.ts:2955 - ValidatePhoneNumberRequest
+src/api/gen/index.ts:2966 - ValidationError
+src/api/gen/index.ts:2972 - ValidationErrorElement
+src/api/gen/index.ts:3207 - DefaultApiFetchParamCreator
+src/api/gen/index.ts:4408 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
