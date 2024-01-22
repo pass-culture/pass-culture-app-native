@@ -30,7 +30,6 @@ export const fetchVenues = async ({
 
     const rawVenues = adaptGenericAlgoliaTypes(rawAlgoliaVenuesResponse)
     const adaptedVenues = adaptAlgoliaVenues(rawVenues)
-    console.log(adaptedVenues)
     return adaptedVenues
   } catch (error) {
     captureAlgoliaError(error)

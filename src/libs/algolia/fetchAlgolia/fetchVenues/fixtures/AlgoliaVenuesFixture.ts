@@ -1,6 +1,88 @@
 import { AlgoliaVenue } from 'libs/algolia/types'
 
-export const algoliaVenuesFixture: AlgoliaVenue[] = [
+const randomVenue = () => {
+  return {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: {
+      lat: 48.8513409 - 0.05 + Math.random() / 10,
+      lng: 2.339999 - 0.05 + Math.random() / 10,
+    },
+  }
+}
+
+const randomVenues = Array(20).fill(null).map(randomVenue)
+export const algoliaVenuesFixture: AlgoliaVenue[] = randomVenues.concat([
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
   {
     audio_disability: false,
     banner_url: null,
@@ -49,4 +131,204 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     visual_disability: false,
     website: 'https://my.website.com',
   },
-]
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+  {
+    audio_disability: false,
+    banner_url: null,
+    city: 'Paris',
+    postalCode: '75000',
+    description: 'Focus campaign accept save both each.',
+    email: 'contact@venue.com',
+    facebook: null,
+
+    instagram: 'http://instagram.com/@venue',
+
+    mental_disability: false,
+    motor_disability: false,
+    name: 'Cinéma de la fin',
+    objectID: '4197',
+    offerer_name: 'Lieu non dit',
+    phone_number: '+33102030405',
+    snapchat: null,
+
+    twitter: null,
+    venue_type: 'VISUAL_ARTS',
+    visual_disability: false,
+    website: 'https://my.website.com',
+    _geoloc: { lat: 48.8, lng: 2.34 },
+  },
+])

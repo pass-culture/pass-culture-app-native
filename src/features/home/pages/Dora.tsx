@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
-import MapView, { Marker } from 'react-native-maps'
+import MapView from 'react-native-map-clustering'
+import { Marker } from 'react-native-maps'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Venue } from 'features/venue/types'
-import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
-import { algoliaVenuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/AlgoliaVenuesFixture'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -52,6 +51,13 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 // }
 const STALE_TIME_VENUES = 5 * 60 * 1000
 
+const INITIAL_REGION = {
+  latitude: 48.8513409,
+  longitude: 2.339999,
+  latitudeDelta: 15.5,
+  longitudeDelta: 15.5,
+}
+
 export const Dora: FunctionComponent = () => {
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -72,8 +78,9 @@ export const Dora: FunctionComponent = () => {
 
   const useVenues = (query: string) => {
     const netInfo = useNetInfoContext()
+
     return useQuery<Venue[]>(
-      [QueryKeys.VENUES, query],
+      [QueryKeys.VENUES, query, buildLocationParameterParams],
       () =>
         fetchVenues({
           query: '',
@@ -81,20 +88,13 @@ export const Dora: FunctionComponent = () => {
         }),
       {
         staleTime: STALE_TIME_VENUES,
-        enabled: !!netInfo.isConnected && query.length > 0,
+        enabled: !!netInfo.isConnected,
       }
     )
   }
 
-  const { data, refetch } = useVenues('')
+  const { data: venues = [] } = useVenues('')
 
-  const venues = adaptAlgoliaVenues(algoliaVenuesFixture)
-
-  // const { data: venues, refetch } = useVenues('cinema')
-  // if (!venues) return null
-
-  // const venue = venues?.[0]
-  console.log({ venues })
   return (
     <React.Fragment>
       <PageHeaderSecondary title="Carte des lieux" shouldDisplayBackButton />
@@ -103,6 +103,11 @@ export const Dora: FunctionComponent = () => {
         initialRegion={centerPosition}
         rotateEnabled={false}
         onRegionChangeComplete={setCenterPosition}
+        spiralEnabled
+        spiderLineColor="royalblue"
+        clusterColor="#FF5733"
+        clusterTextColor="FFFF"
+        // renderCluster={}
         showsUserLocation>
         {venues.map((venue) => (
           <Marker
@@ -119,7 +124,7 @@ export const Dora: FunctionComponent = () => {
         ))}
       </StyledMapView>
       <StyledView top={top}>
-        <StyledPrimaryButton wording="Rechercher dans cette zone" onPress={() => refetch()} />
+        <StyledPrimaryButton wording="Rechercher dans cette zone" />
       </StyledView>
     </React.Fragment>
   )
