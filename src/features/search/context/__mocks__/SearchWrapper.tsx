@@ -17,4 +17,7 @@ export const useSearch = () => ({
   searchState: initialSearchState,
   dispatch: jest.fn(),
   resetSearch: jest.fn(),
+  showSuggestions: jest.fn(),
+  hideSuggestions: jest.fn(),
+  isFocusOnSuggestions: false,
 })

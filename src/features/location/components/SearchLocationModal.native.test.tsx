@@ -61,9 +61,14 @@ const mockSearchState: SearchState = {
   locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
 }
 
-jest
-  .spyOn(useSearch, 'useSearch')
-  .mockReturnValue({ searchState: mockSearchState, dispatch: mockDispatch, resetSearch: jest.fn() })
+jest.spyOn(useSearch, 'useSearch').mockReturnValue({
+  searchState: mockSearchState,
+  dispatch: mockDispatch,
+  resetSearch: jest.fn(),
+  isFocusOnSuggestions: false,
+  showSuggestions: jest.fn(),
+  hideSuggestions: jest.fn(),
+})
 
 describe('SearchLocationModal', () => {
   it('should render correctly if modal visible', async () => {

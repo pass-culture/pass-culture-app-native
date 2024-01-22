@@ -25,6 +25,9 @@ const mockedSearchWrapper = {
   searchState: mockSearchState,
   dispatch: jest.fn(),
   resetSearch: jest.fn(),
+  hideSuggestions: jest.fn(),
+  showSuggestions: jest.fn(),
+  isFocusOnSuggestions: false,
 }
 jest.unmock('features/search/context/SearchWrapper')
 const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')

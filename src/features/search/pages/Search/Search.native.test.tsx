@@ -32,9 +32,14 @@ let mockSearchState: SearchState = {
 }
 
 const mockDispatch = jest.fn()
-
+let mockIsFocusOnSuggestions = false
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockDispatch,
+    isFocusOnSuggestions: mockIsFocusOnSuggestions,
+    hideSuggestions: jest.fn(),
+  }),
 }))
 
 jest.mock('react-query')
@@ -212,6 +217,7 @@ describe('<Search/>', () => {
       venue,
       priceRange: [0, 20],
     }
+    mockIsFocusOnSuggestions = false
   })
 
   it('should render Search', async () => {
@@ -266,9 +272,9 @@ describe('<Search/>', () => {
     expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.EVERYWHERE)
   })
 
-  describe('When search view is suggestions', () => {
+  describe('When search is focus on suggestions', () => {
     beforeEach(() => {
-      mockSearchState = { ...mockSearchState, view: SearchView.Suggestions }
+      mockIsFocusOnSuggestions = true
     })
 
     it('should display offer suggestions', async () => {

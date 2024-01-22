@@ -37,7 +37,7 @@ export function AutocompleteOfferItem({
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
     indexInfos.facets.analytics
-  const { searchState, dispatch } = useSearch()
+  const { searchState, dispatch, hideSuggestions } = useSearch()
   const { data } = useSubcategories()
   const searchGroupLabel = useSearchGroupLabel(
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
@@ -111,8 +111,8 @@ export function AutocompleteOfferItem({
       nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0].value : undefined,
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
-
     dispatch({ type: 'SET_STATE', payload: newSearchState })
+    hideSuggestions()
   }
 
   const shouldDisplayNativeCategory =

@@ -131,7 +131,6 @@ describe('<VenueOffersNew />', () => {
           venueId: 5543,
         },
         view: SearchView.Results,
-        previousView: SearchView.Results,
       },
       screen: 'Search',
     })

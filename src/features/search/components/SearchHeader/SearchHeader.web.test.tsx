@@ -26,13 +26,21 @@ const searchInputID = uuidv4()
 
 let mockSearchState: SearchState = initialSearchState
 const mockDispatch = jest.fn()
+const mockShowSuggestions = jest.fn()
+let mockIsFocusOnSuggestions = false
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockDispatch,
+    showSuggestions: mockShowSuggestions,
+    isFocusOnSuggestions: mockIsFocusOnSuggestions,
+  }),
 }))
 
 describe('SearchHeader component', () => {
   afterEach(() => {
     mockSearchState = initialSearchState
+    mockIsFocusOnSuggestions = false
   })
 
   it.each([[SearchView.Landing], [SearchView.Results]])(
@@ -52,7 +60,7 @@ describe('SearchHeader component', () => {
     }
   )
 
-  it('should navigate to the search suggestion view when focusing then activating the button', async () => {
+  it('should focus on suggestion when focusing and pressing enter', async () => {
     render(
       <SearchHeader
         searchInputID={searchInputID}
@@ -66,20 +74,13 @@ describe('SearchHeader component', () => {
       await userEvent.keyboard('{Enter}')
     })
 
-    const params = {
-      ...initialSearchState,
-      view: SearchView.Suggestions,
-    }
-
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: params,
-    })
+    //The function is called with event parameter that is not used in the function that is why we use expect.anything()
+    expect(mockShowSuggestions).toHaveBeenNthCalledWith(1, expect.anything())
   })
 
-  it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
-    mockSearchState = { ...mockSearchState, view: SearchView.Suggestions, query: 'la fnac' }
-
+  it('should not render a button to focus on suggestion when being focus on suggestion', async () => {
+    mockSearchState = { ...mockSearchState, query: 'la fnac' }
+    mockIsFocusOnSuggestions = true
     render(
       <SearchHeader
         searchInputID={searchInputID}

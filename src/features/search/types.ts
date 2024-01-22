@@ -36,7 +36,6 @@ export type LocationFilter =
 
 export enum SearchView {
   Landing = 'Landing',
-  Suggestions = 'Suggestions',
   Results = 'Results',
 }
 
@@ -62,7 +61,6 @@ export interface SearchState {
   query: string
   view: SearchView
   noFocus?: boolean
-  previousView?: SearchView
   minPrice?: string
   maxPrice?: string
   searchId?: string
