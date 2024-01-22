@@ -123,7 +123,7 @@ export function Search() {
             addSearchHistory={addToHistory}
             searchInHistory={setQueryHistoryMemoized}
           />
-          <Spacer.Column numberOfSpaces={2} />
+          <Spacer.Column numberOfSpaces={4} />
           {view === SearchView.Suggestions ? (
             <StyledScrollView
               testID="autocompleteScrollView"

@@ -416,11 +416,11 @@ exports[`<Search/> should render Search 1`] = `
     </View>
   </View>
   <View
-    numberOfSpaces={2}
+    numberOfSpaces={4}
     style={
       [
         {
-          "height": 8,
+          "height": 16,
         },
       ]
     }

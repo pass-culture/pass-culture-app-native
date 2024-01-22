@@ -24,6 +24,8 @@ export type HitOfferWithArtistAndEan = Offer & {
   }
 }
 
+const EXCLUDED_ARTISTS = ['collectif', 'collectifs']
+
 export const fetchOffersByArtist = async ({
   artists,
   ean,
@@ -32,7 +34,12 @@ export const fetchOffersByArtist = async ({
 }: FetchOfferByArtist): Promise<HitOfferWithArtistAndEan[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
 
-  if (!artists || searchGroupName !== SearchGroupNameEnumv2.LIVRES) return []
+  if (
+    !artists ||
+    EXCLUDED_ARTISTS.includes(artists.toLowerCase()) ||
+    searchGroupName !== SearchGroupNameEnumv2.LIVRES
+  )
+    return []
 
   try {
     const response = await index.search<HitOfferWithArtistAndEan>('', {

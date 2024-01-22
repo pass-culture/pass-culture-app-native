@@ -1,19 +1,26 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { SetEmail } from './SetEmail'
 
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
+}))
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-const props = {
+const defaultProps = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
   previousSignupData: {
@@ -31,16 +38,17 @@ const INCORRECT_EMAIL_MESSAGE =
   'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
 
 describe('<SetEmail />', () => {
-  it('should disable validate button when email input is not filled', () => {
-    render(<SetEmail {...props} />)
+  it('should disable validate button when email input is not filled', async () => {
+    renderSetEmail()
 
+    await act(async () => {})
     const button = screen.getByText('Continuer')
 
     expect(button).toBeDisabled()
   })
 
   it('should display disabled validate button when email input is filled with spaces', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -53,7 +61,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should enable validate button when email input is filled', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -66,7 +74,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should go to next step on valid email with email and newsletter params', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -78,14 +86,14 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(props.goToNextStep).toHaveBeenCalledWith({
+    expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
       email: 'john.doe@gmail.com',
       marketingEmailSubscription: false,
     })
   })
 
   it('should hide email help message when email is valid', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -100,7 +108,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should reject invalid email when trying to submit', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -116,7 +124,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const loginButton = screen.getByText('Se connecter')
@@ -127,7 +135,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -142,7 +150,7 @@ describe('<SetEmail />', () => {
   })
 
   it('should log analytics when user select the suggested email', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -162,7 +170,7 @@ describe('<SetEmail />', () => {
   it('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
     const OFFER_ID = 1
     useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
-    render(<SetEmail {...props} />)
+    renderSetEmail()
 
     await act(async () => {
       const loginButton = screen.getByText('Se connecter')
@@ -175,7 +183,9 @@ describe('<SetEmail />', () => {
   })
 
   it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
-    render(<SetEmail {...props} />)
+    renderSetEmail()
+
+    await act(async () => {})
 
     const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
     fireEvent.press(faqLink)
@@ -183,54 +193,82 @@ describe('<SetEmail />', () => {
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
 
-  it('should log screen view when the screen is mounted', () => {
-    render(<SetEmail {...props} />)
+  it('should log screen view when the screen is mounted', async () => {
+    renderSetEmail()
+
+    await act(async () => {})
 
     expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should set a default email if the user has already added his email', () => {
+  it('should set a default email if the user has already added his email', async () => {
     const propsWithPreviousEmail = {
-      ...props,
+      ...defaultProps,
       previousSignupData: {
-        ...props.previousSignupData,
+        ...defaultProps.previousSignupData,
         email: 'john.doe@gmail.com',
       },
     }
-    render(<SetEmail {...propsWithPreviousEmail} />)
+    renderSetEmail(propsWithPreviousEmail)
 
-    const emailInput = screen.getByTestId('Entrée pour l’email')
+    const emailInput = await screen.findByTestId('Entrée pour l’email')
 
     expect(emailInput.props.value).toBe('john.doe@gmail.com')
   })
 
-  it('should set a default marketing email subscription choice to true if the user has already chosen', () => {
+  it('should set a default marketing email subscription choice to true if the user has already chosen', async () => {
     const propsWithPreviousEmail = {
-      ...props,
+      ...defaultProps,
       previousSignupData: {
-        ...props.previousSignupData,
+        ...defaultProps.previousSignupData,
         marketingEmailSubscription: true,
       },
     }
-    render(<SetEmail {...propsWithPreviousEmail} />)
+    renderSetEmail(propsWithPreviousEmail)
 
-    const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+    const marketingEmailSubscriptionCheckbox = await screen.findByRole('checkbox')
 
     expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(true)
   })
 
-  it('should set a default marketing email subscription choice to false', () => {
+  it('should set a default marketing email subscription choice to false', async () => {
     const propsWithoutMarketingEmailSubscription = {
-      ...props,
+      ...defaultProps,
       previousSignupData: {
-        ...props.previousSignupData,
+        ...defaultProps.previousSignupData,
         marketingEmailSubscription: undefined,
       },
     }
-    render(<SetEmail {...propsWithoutMarketingEmailSubscription} />)
+    renderSetEmail(propsWithoutMarketingEmailSubscription)
 
-    const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+    const marketingEmailSubscriptionCheckbox = await screen.findByRole('checkbox')
 
     expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
   })
+
+  describe('SSO', () => {
+    afterEach(() => {
+      useFeatureFlagSpy.mockReturnValue(false)
+    })
+
+    it('should not display SSO button when FF is disabled', async () => {
+      renderSetEmail()
+
+      await act(async () => {})
+
+      expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
+    })
+
+    it('should display SSO button when FF is enabled', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+
+      renderSetEmail()
+
+      expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
+    })
+  })
 })
+
+const renderSetEmail = (props: PreValidationSignupNormalStepProps = defaultProps) => {
+  render(reactQueryProviderHOC(<SetEmail {...props} />))
+}

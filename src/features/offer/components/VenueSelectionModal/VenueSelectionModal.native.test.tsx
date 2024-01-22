@@ -1,18 +1,11 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { GeolocPermissionState, useLocation } from 'libs/location'
-import {
-  requestGeolocPermission,
-  onPressGeolocPermissionModalButton,
-} from 'libs/location/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
 jest.mock('libs/location')
-const mockUseGeolocation = useLocation as jest.Mock
 
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [
@@ -235,101 +228,6 @@ describe('<VenueSelectionModal />', () => {
       )
 
       expect(screen.getByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeOnTheScreen()
-    })
-
-    it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', () => {
-      mockUseGeolocation.mockReturnValueOnce({
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      })
-      const mockShowModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: false,
-        showModal: mockShowModal,
-        hideModal: jest.fn(),
-        toggleModal: jest.fn(),
-      })
-
-      render(
-        <VenueSelectionModal
-          isVisible
-          items={items}
-          title="Lieu de retrait"
-          onSubmit={jest.fn()}
-          onClosePress={jest.fn()}
-          nbLoadedHits={nbLoadedHits}
-          nbHits={nbHits}
-          isFetchingNextPage
-          isSharingLocation={false}
-          venueName="LIBRAIRIE SILLAGE"
-        />
-      )
-      const button = screen.getByText('Active ta géolocalisation')
-
-      fireEvent.press(button)
-
-      expect(mockShowModal).toHaveBeenCalledWith()
-    })
-
-    it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
-      mockUseGeolocation.mockReturnValueOnce({
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-        onPressGeolocPermissionModalButton,
-      })
-      const mockHideModal = jest.fn()
-      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: jest.fn(),
-        hideModal: mockHideModal,
-        toggleModal: jest.fn(),
-      })
-
-      render(
-        <VenueSelectionModal
-          isVisible
-          items={items}
-          title="Lieu de retrait"
-          onSubmit={jest.fn()}
-          onClosePress={jest.fn()}
-          nbLoadedHits={nbLoadedHits}
-          nbHits={nbHits}
-          isFetchingNextPage
-          isSharingLocation={false}
-          venueName="LIBRAIRIE SILLAGE"
-        />
-      )
-      const button = screen.getByText('Active ta géolocalisation')
-
-      fireEvent.press(button)
-
-      fireEvent.press(screen.getByText('Activer la géolocalisation'))
-
-      expect(mockHideModal).toHaveBeenCalledWith()
-    })
-
-    it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', () => {
-      mockUseGeolocation.mockReturnValueOnce({
-        permissionState: GeolocPermissionState.DENIED,
-        requestGeolocPermission,
-      })
-      render(
-        <VenueSelectionModal
-          isVisible
-          items={items}
-          title="Lieu de retrait"
-          onSubmit={jest.fn()}
-          onClosePress={jest.fn()}
-          nbLoadedHits={nbLoadedHits}
-          nbHits={nbHits}
-          isFetchingNextPage
-          isSharingLocation={false}
-          venueName="LIBRAIRIE SILLAGE"
-        />
-      )
-      const button = screen.getByText('Active ta géolocalisation')
-
-      fireEvent.press(button)
-
-      expect(requestGeolocPermission).toHaveBeenCalledWith()
     })
   })
 })
