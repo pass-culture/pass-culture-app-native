@@ -138,8 +138,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       showSuggestions()
     } else {
       hideSuggestions()
-      pushWithSearch({ query: '', view: SearchView.Results })
     }
+    pushWithSearch({ query: '', view: SearchView.Results })
   }, [
     clear,
     setQuery,
