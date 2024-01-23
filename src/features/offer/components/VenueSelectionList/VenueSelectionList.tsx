@@ -26,7 +26,6 @@ export type VenueSelectionListProps = ViewProps &
     onPress?: () => void
     isSharingLocation?: boolean
     venueName?: string
-    onPressGeolocPermissionModalButton?: VoidFunction
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
@@ -48,7 +47,6 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       autoScrollEnabled,
       isSharingLocation,
       venueName,
-      onPressGeolocPermissionModalButton,
       ...props
     },
     ref
@@ -90,7 +88,6 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
               <GeolocationBanner
                 title="Active ta géolocalisation"
                 subtitle="Pour trouver les lieux autour de toi"
-                onPress={onPressGeolocPermissionModalButton}
               />
               <Spacer.Column numberOfSpaces={6} />
             </React.Fragment>
@@ -99,7 +96,7 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
           <Spacer.Column numberOfSpaces={2} />
         </ListHeaderContainer>
       ),
-      [headerMessage, isSharingLocation, onPressGeolocPermissionModalButton]
+      [headerMessage, isSharingLocation]
     )
 
     return (

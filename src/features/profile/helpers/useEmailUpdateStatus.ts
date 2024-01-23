@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError, isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
+import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'

@@ -30,7 +30,11 @@ let mockSearchState: SearchState = {
 
 const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockDispatch,
+    hideSuggestions: jest.fn(),
+  }),
 }))
 
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -442,7 +446,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
       })
 
       it('when native category associated to the most popular category', async () => {
@@ -455,7 +459,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
       })
 
       it('when category is unknown in the app', async () => {
@@ -483,7 +487,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
+        expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
       })
 
       it('has not native category associated to the suggestion', async () => {
@@ -496,7 +500,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
+        expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
       })
 
       it('native category is unknown in the app', async () => {

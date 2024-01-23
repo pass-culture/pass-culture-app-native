@@ -1,98 +1,97 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
     when:
-      visible: "Respect de ta vie privée"
-    file: "reusableFlows/FirstLaunch.yml" # First Launch
+      visible: 'Respect de ta vie privée'
+    file: 'reusableFlows/FirstLaunch.yml' # First Launch
 - runFlow:
     when:
-      visible: "Rechercher des offres"
-    file: "reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml"
+      visible: 'Rechercher des offres'
+    file: 'reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml'
 - runFlow:
     when:
-      visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
-- tapOn: "Films, séries, cinéma"
+      visible: 'Recherche'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
+- tapOn: 'Cinéma, films et séries'
 - runFlow:
     when:
-      visible: "Catégories"
-    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
-- tapOn: "Offre, artiste, lieu culturel..."
+      visible: 'Catégories'
+    file: 'reusableFlows/features/search/SearchCategoryReinit.yml'
+- tapOn: 'Offre, artiste, lieu culturel...'
 - runFlow:
     when:
-      visible: "Réinitialiser la recherche"
-    file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${PHYSICAL_OFFER}
+      visible: 'Réinitialiser la recherche'
+    file: 'reusableFlows/features/search/SearchTextReinit.yml'
+- inputText: ${MAESTRO_PHYSICAL_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${PHYSICAL_OFFER}
-    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
+      visible: ${MAESTRO_PHYSICAL_OFFER}
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
 - runFlow:
     when:
-      visible: "Rechercher des offres"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml"
+      visible: 'Rechercher des offres'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml'
 - runFlow:
     when:
-      visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
+      visible: 'Recherche'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
 
-- tapOn: "Offre, artiste, lieu culturel..."
+- tapOn: 'Offre, artiste, lieu culturel...'
 - runFlow:
     when:
-      visible: "Réinitialiser la recherche"
-    file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${EVENT_OFFER}
+      visible: 'Réinitialiser la recherche'
+    file: 'reusableFlows/features/search/SearchTextReinit.yml'
+- inputText: ${MAESTRO_EVENT_OFFER}
 - pressKey: Enter
 
 - runFlow:
     when:
       visible: "Voir tous les filtres\_: 2 filtres actifs"
-    file: "reusableFlows/components/buttons/SimpleActionButtonTwoFilter.yml"
+    file: 'reusableFlows/components/buttons/SimpleActionButtonTwoFilter.yml'
 - runFlow:
     when:
       visible: "Voir tous les filtres\_: 1 filtre actif"
-    file: "reusableFlows/components/buttons/SimpleActionButtonOneFilter.yml"
+    file: 'reusableFlows/components/buttons/SimpleActionButtonOneFilter.yml'
 
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonDateAndHour.yml
 - runFlow: reusableFlows/components/buttons/SimpleIdButtonSwitchDate.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonThisWeek.yml
 
 - tapOn:
-    id: "Interrupteur date"
+    id: 'Interrupteur date'
 
 - runFlow:
     when:
-      visible: "Appliquer le filtre"
-    file: "reusableFlows/components/buttons/SimpleActionButtonFilterApply.yml"
+      visible: 'Appliquer le filtre'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonFilterApply.yml'
 
 - runFlow:
     when:
-      visible: "Rechercher"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
+      visible: 'Rechercher'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.yml'
 
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par le nom de l'offre
 - tapOn:
-    text: ${EVENT_OFFER}
+    text: ${MAESTRO_EVENT_OFFER}
     index: 1
-- assertVisible: "Visite"
+- assertVisible: 'Visite'
 - assertVisible: "À deux\_!"
 
-
 - scrollUntilVisible:
-      element: "voir plus"
-      direction: DOWN
-- tapOn: "voir plus"
+    element: 'voir plus'
+    direction: DOWN
+- tapOn: 'voir plus'
 
-- assertVisible: "Durée"
+- assertVisible: 'Durée'
 
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
 - tapOn:
-      id: "final-animated-icon-back"
+    id: 'final-animated-icon-back'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonIconBack.yml
 - runFlow: reusableFlows/StopApp.yml # Stop App

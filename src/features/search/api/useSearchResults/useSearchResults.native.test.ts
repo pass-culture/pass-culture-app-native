@@ -31,7 +31,7 @@ describe('useSearchResults', () => {
       expect(fetchAlgoliaOffersAndVenuesSpy).toHaveBeenCalledTimes(1)
     })
 
-    it('should not fetch again when only view changes', async () => {
+    it('should not fetch again when focus on suggestion changes', async () => {
       const { rerender } = renderHook(
         (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
         {
@@ -40,7 +40,7 @@ describe('useSearchResults', () => {
       )
 
       await flushAllPromisesWithAct()
-      rerender({ ...initialSearchState, view: SearchView.Suggestions })
+      rerender({ ...initialSearchState, view: SearchView.Results })
 
       expect(fetchAlgoliaOffersAndVenuesSpy).toHaveBeenCalledTimes(1)
     })

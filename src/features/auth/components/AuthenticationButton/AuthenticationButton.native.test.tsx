@@ -5,8 +5,8 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
-const NAV_PARAMS_LOGIN = { offerId: 1, preventCancellation: true }
-const NAV_PARAMS_SIGNUP = { offerId: 1, preventCancellation: true, from: StepperOrigin.HOME }
+const NAV_PARAMS_LOGIN = { offerId: 1 }
+const NAV_PARAMS_SIGNUP = { offerId: 1, from: StepperOrigin.HOME }
 
 describe('<AuthenticationButton />', () => {
   it('should navigate to the login page when is type login', async () => {

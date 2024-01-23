@@ -3,7 +3,7 @@ import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import * as API from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'

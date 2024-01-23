@@ -14,6 +14,7 @@ import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/location'
 import { VenueTypeCode } from 'libs/parsers'
@@ -108,6 +109,7 @@ export interface AlgoliaQueryParameters {
 export interface FetchVenuesParameters {
   query: string
   attributesToHighlight?: string[]
+  buildLocationParameterParams: BuildLocationParameterParams
 }
 export interface FetchOfferParameters {
   parameters: SearchQueryParameters

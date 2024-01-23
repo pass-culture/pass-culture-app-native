@@ -1,5 +1,5 @@
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
-import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+import { deprecatedBuildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
@@ -78,7 +78,7 @@ export const buildOfferSearchParameters = (
     priceRange,
     timeRange,
   }),
-  ...buildGeolocationParameter({
+  ...deprecatedBuildGeolocationParameter({
     locationFilter,
     venue,
     userLocation,

@@ -2,9 +2,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
+import styled from 'styled-components'
 import { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -12,12 +14,15 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Separator } from 'ui/components/Separator'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
@@ -48,6 +53,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   accessibilityLabelForNextStep,
   previousSignupData,
 }) => {
+  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
@@ -119,14 +125,28 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={watch('email').trim() === ''}
       />
-      <Spacer.Column numberOfSpaces={8} />
+      {enableGoogleSSO ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledSeparatorWithText label="ou" />
+          <Spacer.Column numberOfSpaces={4} />
+          <SSOButton type="signup" />
+          <Spacer.Column numberOfSpaces={10} />
+        </React.Fragment>
+      ) : (
+        <Spacer.Column numberOfSpaces={8} />
+      )}
       <AuthenticationButton
         type="login"
         onAdditionalPress={onLogAnalytics}
         linkColor={theme.colors.secondary}
-        params={{ offerId: params?.offerId, preventCancellation: true }}
+        params={{ offerId: params?.offerId }}
       />
       <Spacer.Column numberOfSpaces={5} />
     </Form.MaxWidth>
   )
 }
+
+const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
+  backgroundColor: theme.colors.greyMedium,
+}))``

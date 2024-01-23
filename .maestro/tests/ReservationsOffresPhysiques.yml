@@ -1,87 +1,87 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - runFlow: reusableFlows/LaunchApp.yml # Launch App
 - runFlow:
     when:
-      visible: "Respect de ta vie privée"
-    file: "reusableFlows/FirstLaunch.yml" # First Launch
+      visible: 'Respect de ta vie privée'
+    file: 'reusableFlows/FirstLaunch.yml' # First Launch
 - runFlow:
     when:
-      visible: "Rechercher des offres"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml"
+      visible: 'Rechercher des offres'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml'
 - runFlow:
     when:
-      visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
-- tapOn: "Films, séries, cinéma"
+      visible: 'Recherche'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
+- tapOn: 'Cinéma, films et séries'
 - runFlow:
     when:
-      visible: "Catégories"
-    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
-- tapOn: "Offre, artiste, lieu culturel..."
+      visible: 'Catégories'
+    file: 'reusableFlows/features/search/SearchCategoryReinit.yml'
+- tapOn: 'Offre, artiste, lieu culturel...'
 - runFlow:
     when:
-      visible: "Réinitialiser la recherche"
-    file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${PHYSICAL_OFFER}
+      visible: 'Réinitialiser la recherche'
+    file: 'reusableFlows/features/search/SearchTextReinit.yml'
+- inputText: ${MAESTRO_PHYSICAL_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${PHYSICAL_OFFER}
-    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
+      visible: ${MAESTRO_PHYSICAL_OFFER}
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
 - runFlow:
     when:
-      visible: "Rechercher des offres"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml"
+      visible: 'Rechercher des offres'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml'
 - runFlow:
     when:
-      visible: "Recherche"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml"
-- tapOn: "Catégories"
-- tapOn: "Films, séries, cinéma"
+      visible: 'Recherche'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
+- tapOn: 'Catégories'
+- tapOn: 'Cinéma, films et séries'
 - runFlow:
     when:
-      visible: "Catégories"
-    file: "reusableFlows/features/search/SearchCategoryReinit.yml"
+      visible: 'Catégories'
+    file: 'reusableFlows/features/search/SearchCategoryReinit.yml'
 - runFlow:
     when:
-      visible: "Rechercher"
-    file: "reusableFlows/components/buttons/SimpleActionButtonSearch.yml"
-- tapOn: "Offre, artiste, lieu culturel..."
+      visible: 'Rechercher'
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.yml'
+- tapOn: 'Offre, artiste, lieu culturel...'
 - runFlow:
     when:
-      visible: "Réinitialiser la recherche"
-    file: "reusableFlows/features/search/SearchTextReinit.yml"
-- inputText: ${PHYSICAL_OFFER}
+      visible: 'Réinitialiser la recherche'
+    file: 'reusableFlows/features/search/SearchTextReinit.yml'
+- inputText: ${MAESTRO_PHYSICAL_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${PHYSICAL_OFFER}
-    file: "reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml"
+      visible: ${MAESTRO_PHYSICAL_OFFER}
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
 - runFlow: reusableFlows/features/bookOffer/BookingConfirmationPage.yml # BookingConfirmationPage
-- tapOn: "Voir ma réservation"
-- assertVisible: "Ma réservation"
+- tapOn: 'Voir ma réservation'
+- assertVisible: 'Ma réservation'
 - tapOn:
-      id: "animated-icon-back"
+    id: 'animated-icon-back'
 - assertVisible:
-      text: "Mes réservations"
-      index: 0
-- assertVisible: "Mes réservations"
+    text: 'Mes réservations'
+    index: 0
+- assertVisible: 'Mes réservations'
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:
-      point: "61%,16%"
+    point: '61%,16%'
 - scrollUntilVisible:
-      element: "Annuler ma réservation"
-      direction: DOWN
+    element: 'Annuler ma réservation'
+    direction: DOWN
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonCancelMyReservation.yml
 - runFlow: reusableFlows/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonCancelMyReservation.yml
-- assertVisible: "Réservations terminées"
+- assertVisible: 'Réservations terminées'
 - runFlow: reusableFlows/StopApp.yml # Stop App

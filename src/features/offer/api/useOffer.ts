@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { OfferResponse } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { OfferNotFoundError } from 'libs/monitoring'

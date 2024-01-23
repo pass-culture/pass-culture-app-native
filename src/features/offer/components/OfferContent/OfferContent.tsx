@@ -52,7 +52,6 @@ export function OfferContent({
 
   const {
     sameArtistPlaylist,
-    refetchSameArtistPlaylist,
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
     otherCategoriesSimilarOffers,
@@ -75,14 +74,6 @@ export function OfferContent({
     nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
     fromOfferId,
   })
-
-  const artists = offer.extraData?.author
-  const ean = offer.extraData?.ean
-  useEffect(() => {
-    if (artists && ean) {
-      refetchSameArtistPlaylist()
-    }
-  }, [artists, ean, refetchSameArtistPlaylist])
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout

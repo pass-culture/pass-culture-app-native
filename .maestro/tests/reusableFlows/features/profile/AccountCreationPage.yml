@@ -1,13 +1,13 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
-- inputText: ${NEW_USERNAME}
+- inputText: ${MAESTRO_NEW_USERNAME}
 - tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
     es du pass Culture."
 - tapOn:
     id: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
       es du pass Culture."
 - tapOn: "Continuer vers l’étape Mot de passe"
-- inputText: ${PASSWORD}
+- inputText: ${MAESTRO_PASSWORD}
 #Appui en dehors pour sortir du champ
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
 - tapOn:

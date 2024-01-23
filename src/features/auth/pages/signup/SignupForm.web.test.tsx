@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
@@ -14,6 +15,8 @@ jest.mock('uuid', () => {
     v4: jest.fn(() => value++),
   }
 })
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { AsyncError, MonitoringError, ScreenError, eventMonitoring } from 'libs/monitoring'

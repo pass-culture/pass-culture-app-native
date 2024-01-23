@@ -54,7 +54,6 @@ exports[`GenericHome With not displayed skeleton by default should display real 
             "type": "VenuesModule",
             "venuesParameters": {
               "hitsPerPage": 15,
-              "isGeolocated": false,
               "title": "Exemple de playlist de lieux",
               "venueTypes": [
                 "Bibliothèque ou médiathèque",
@@ -213,7 +212,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             "type": "VenuesModule",
             "venuesParameters": {
               "hitsPerPage": 15,
-              "isGeolocated": false,
               "title": "Exemple de playlist de lieux",
               "venueTypes": [
                 "Bibliothèque ou médiathèque",

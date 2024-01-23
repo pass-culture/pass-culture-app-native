@@ -43,7 +43,7 @@ describe('useSortedSearchCategories', () => {
 
     expect(actualCategoriesLabels).toEqual([
       'Concerts & festivals',
-      'Films, séries, cinéma',
+      'Cinéma, films et séries',
       'Livres',
       'CD, vinyles, musique en ligne',
       'Arts & loisirs créatifs',
@@ -73,7 +73,7 @@ describe('categoriesSortPredicate', () => {
     const itemA = { position: undefined, label: 'Example 1' } as MappingOutput
     const itemB = { position: 1, label: 'Example 2' } as MappingOutput
 
-    expect(categoriesSortPredicate(itemA, itemB)).toEqual(0)
-    expect(categoriesSortPredicate(itemB, itemA)).toEqual(0)
+    expect(categoriesSortPredicate(itemA, itemB)).toEqual(-1)
+    expect(categoriesSortPredicate(itemB, itemA)).toEqual(1)
   })
 })

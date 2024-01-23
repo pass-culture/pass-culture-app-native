@@ -31,7 +31,7 @@ WithDistance.args = {
 }
 
 export const Wrapped = WrappedTemplate.bind({})
-WrappedTemplate.args = {
+Wrapped.args = {
   title: 'Envie de lire',
   address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   distance: '500 m',

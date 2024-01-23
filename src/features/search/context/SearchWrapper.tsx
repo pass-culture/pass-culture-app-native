@@ -1,4 +1,12 @@
-import React, { memo, useCallback, useContext, useEffect, useMemo, useReducer } from 'react'
+import React, {
+  memo,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -12,6 +20,9 @@ interface ISearchContext {
   searchState: SearchState
   dispatch: React.Dispatch<Action>
   resetSearch: () => void
+  isFocusOnSuggestions: boolean
+  showSuggestions: () => void
+  hideSuggestions: () => void
 }
 
 const SearchContext = React.createContext<ISearchContext | null>(null)
@@ -32,6 +43,10 @@ export const SearchWrapper = memo(function SearchWrapper({
 
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+
+  const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
+  const showSuggestions = useCallback(() => setIsFocusOnSuggestions(true), [])
+  const hideSuggestions = useCallback(() => setIsFocusOnSuggestions(false), [])
 
   useEffect(() => {
     if (!enableAppLocation) return
@@ -74,8 +89,15 @@ export const SearchWrapper = memo(function SearchWrapper({
   }, [])
 
   const contextValue = useMemo(
-    () => ({ searchState, dispatch, resetSearch }),
-    [searchState, dispatch, resetSearch]
+    () => ({
+      searchState,
+      dispatch,
+      resetSearch,
+      isFocusOnSuggestions,
+      showSuggestions,
+      hideSuggestions,
+    }),
+    [searchState, dispatch, resetSearch, isFocusOnSuggestions, showSuggestions, hideSuggestions]
   )
 
   return <SearchContext.Provider value={contextValue}>{children}</SearchContext.Provider>

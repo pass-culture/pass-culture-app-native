@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError, isApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
+import { isApiError } from 'api/apiHelpers'
 import {
   FavoriteRequest,
   FavoriteResponse,

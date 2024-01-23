@@ -89,7 +89,6 @@ export const screenParamsParser: ParamsParsers = {
   },
 
   Login: {
-    preventCancellation: parseObject,
     displayForcedLoginHelpMessage: parseObject,
     offerId: identityFn,
     from: identityFn,

@@ -46,7 +46,6 @@ function getNativeCategoryGenreTypes(
     }, {} as MappedGenreTypes),
   }
 }
-
 export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsData?: FacetData) {
   if (!data) return {} as MappingTree
   /**
@@ -71,12 +70,18 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
    *   }
    * }
    */
+
   return data.searchGroups
     .filter(
       (searchGroup) =>
         searchGroup.name !== SearchGroupNameEnumv2.NONE &&
         Object.keys(CATEGORY_CRITERIA).includes(searchGroup.name)
     )
+    .sort((a, b) => {
+      const positionA: number = CATEGORY_CRITERIA[a.name]?.position || 0
+      const positionB: number = CATEGORY_CRITERIA[b.name]?.position || 0
+      return positionA - positionB
+    })
     .reduce<MappingTree>((result, searchGroup) => {
       const nativeCategories = getNativeCategories(data, searchGroup.name).filter(
         (nativeCategory) => nativeCategory.name !== NativeCategoryIdEnumv2.CARTES_JEUNES
@@ -105,19 +110,9 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsDat
         children: mappedNativeCategories,
       }
 
-      /**
-       * We want to sort the categories by label, and put 'Toutes les catégories' at the top
-       */
-      return Object.entries(result)
-        .sort(([, aMap], [, bMap]) => {
-          if (aMap.label === 'Toutes les catégories') return -1
-          if (bMap.label === 'Toutes les catégories') return 1
-
-          return aMap.label.localeCompare(bMap.label)
-        })
-        .reduce((res, [key, value]) => {
-          res[key as SearchGroupNameEnumv2] = value
-          return res
-        }, {} as MappingTree)
+      return Object.entries(result).reduce((res, [key, value]) => {
+        res[key as SearchGroupNameEnumv2] = value
+        return res
+      }, {} as MappingTree)
     }, {} as MappingTree)
 }

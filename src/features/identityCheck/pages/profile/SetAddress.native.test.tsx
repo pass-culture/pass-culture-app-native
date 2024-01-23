@@ -1,15 +1,18 @@
-import { rest } from 'msw'
+import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SettingsResponse } from 'api/gen'
+import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
+import { Properties } from 'libs/place/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -31,13 +34,15 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-server.use(
-  rest.get('https://api-adresse.data.gouv.fr/search', (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(mockedSuggestedPlaces))
-  )
-)
-
 describe('<SetAddress/>', () => {
+  beforeEach(() => {
+    mockServer.universalGet<FeatureCollection<Point, Properties>>(
+      'https://api-adresse.data.gouv.fr/search',
+      mockedSuggestedPlaces
+    )
+    mockServer.getApiV1<SettingsResponse>('/settings', mockDefaultSettings)
+  })
+
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   it('should render correctly', async () => {

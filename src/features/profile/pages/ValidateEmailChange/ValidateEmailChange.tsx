@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'

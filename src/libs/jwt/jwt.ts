@@ -35,3 +35,16 @@ export const getTokenStatus = (token: string | null): TokenStatus => {
   if (!tokenContent?.exp) return 'unknown'
   return tokenContent.exp * 1000 > Date.now() ? 'valid' : 'expired'
 }
+
+export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
+  const token = decodeToken(encodedToken)
+
+  if (token) {
+    const tokenExpirationInMs = token.exp * 1000
+    const currentDateInMs = Date.now()
+    const lifetimeInMs = tokenExpirationInMs - currentDateInMs
+    return lifetimeInMs
+  }
+
+  return undefined
+}

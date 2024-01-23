@@ -26,8 +26,17 @@ let mockSearchState: SearchState = {
 }
 
 const mockDispatch = jest.fn()
+let mockIsFocusOnSuggestions = false
+const mockHideSuggestions = jest.fn()
+const mockShowSuggestions = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: mockDispatch,
+    isFocusOnSuggestions: mockIsFocusOnSuggestions,
+    hideSuggestions: mockHideSuggestions,
+    showSuggestions: mockShowSuggestions,
+  }),
 }))
 
 jest.mock('libs/firebase/analytics')
@@ -129,6 +138,7 @@ describe('SearchBox component', () => {
       priceRange: [0, 20],
     }
     mockQuery = ''
+    mockIsFocusOnSuggestions = false
   })
 
   it('should render SearchBox', async () => {
@@ -181,8 +191,8 @@ describe('SearchBox component', () => {
     })
   })
 
-  it('should show back button when being on the suggestions view', async () => {
-    mockSearchState = { ...mockSearchState, view: SearchView.Suggestions }
+  it('should show back button when being focus on suggestions', async () => {
+    mockIsFocusOnSuggestions = true
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')
@@ -220,62 +230,28 @@ describe('SearchBox component', () => {
       mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
     })
 
-    it('should redirect on results view when being on the suggestions view and press back button and previous view is results view', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Suggestions,
-        previousView: SearchView.Results,
-      }
-
-      renderSearchBox()
-
-      const previousButton = screen.getByTestId('Revenir en arrière')
-
-      await act(async () => {
-        fireEvent.press(previousButton)
-      })
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: {
-          ...initialSearchState,
-          view: SearchView.Results,
-          previousView: SearchView.Suggestions,
-          offerCategories: mockSearchState.offerCategories,
-          priceRange: mockSearchState.priceRange,
-        },
-      })
-    })
-
-    it('should redirect on landing view when being on the suggestions view and press back button and previous view is SearchView.Landing view', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Suggestions,
-        previousView: SearchView.Landing,
-      }
-      renderSearchBox()
-
-      const previousButton = screen.getByTestId('Revenir en arrière')
-
-      await act(async () => {
-        fireEvent.press(previousButton)
-      })
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: {
-          ...initialSearchState,
-          view: SearchView.Landing,
-          previousView: SearchView.Suggestions,
-        },
-      })
-    })
-
-    it('should not execute go back when current and previous views are not identical', async () => {
+    it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
+      mockIsFocusOnSuggestions = true
       mockSearchState = {
         ...mockSearchState,
         view: SearchView.Results,
-        previousView: SearchView.Results,
+      }
+
+      renderSearchBox()
+      const previousButton = screen.getByTestId('Revenir en arrière')
+
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
+
+      expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
+    })
+
+    it('should hide suggestions when being focus on suggestions and press back button on landing view', async () => {
+      mockIsFocusOnSuggestions = true
+      mockSearchState = {
+        ...mockSearchState,
+        view: SearchView.Landing,
       }
       renderSearchBox()
 
@@ -285,13 +261,38 @@ describe('SearchBox component', () => {
         fireEvent.press(previousButton)
       })
 
-      expect(mockGoBack).not.toHaveBeenCalled()
+      expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
 
-    it('should stay on the current view when focusing search input and being on the suggestions', async () => {
+    it('should reset input when user click on reset icon when being focus on suggestions', async () => {
+      mockIsFocusOnSuggestions = true
       mockSearchState = {
         ...mockSearchState,
-        view: SearchView.Suggestions,
+        query: 'Some text',
+      }
+      mockQuery = 'Some text'
+      renderSearchBox()
+
+      const resetIcon = await screen.findByTestId('Réinitialiser la recherche')
+      await act(async () => {
+        fireEvent.press(resetIcon)
+      })
+
+      expect(screen.queryByText('Some text')).not.toBeOnTheScreen()
+
+      expect(mockClear).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('Without autocomplete', () => {
+    beforeAll(() => {
+      mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
+    })
+
+    it('should stay on the current view when focusing search input and being on the %s view', async () => {
+      mockSearchState = {
+        ...mockSearchState,
+        view: SearchView.Results,
       }
       renderSearchBox()
 
@@ -304,61 +305,10 @@ describe('SearchBox component', () => {
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
-    it('should reset input when user click on reset icon when being on the search suggestions view', async () => {
+    it('should reset input when user click on reset icon when being focus on the suggestions view', async () => {
+      mockIsFocusOnSuggestions = true
       mockSearchState = {
         ...mockSearchState,
-        view: SearchView.Suggestions,
-        query: 'Some text',
-      }
-      mockQuery = 'Some text'
-      renderSearchBox()
-
-      const resetIcon = await screen.findByTestId('Réinitialiser la recherche')
-      await act(async () => {
-        fireEvent.press(resetIcon)
-      })
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: {
-          ...mockSearchState,
-          query: '',
-          view: SearchView.Suggestions,
-        },
-      })
-
-      expect(mockClear).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  describe('Without autocomplete', () => {
-    beforeAll(() => {
-      mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
-    })
-
-    it.each([[SearchView.Suggestions], [SearchView.Results]])(
-      'should stay on the current view when focusing search input and being on the %s view',
-      async (view) => {
-        mockSearchState = {
-          ...mockSearchState,
-          view,
-        }
-        renderSearchBox()
-
-        const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
-
-        await act(async () => {
-          fireEvent(searchInput, 'onFocus')
-        })
-
-        expect(mockDispatch).not.toHaveBeenCalled()
-      }
-    )
-
-    it('should reset input when user click on reset icon when being on the search suggestions view', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Suggestions,
         query: 'Some text',
       }
       mockQuery = 'Some text'
@@ -478,7 +428,7 @@ describe('SearchBox component', () => {
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should display suggestions view when focusing search input and no search executed', async () => {
+  it('should display suggestions when focusing search input and no search executed', async () => {
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
@@ -487,33 +437,35 @@ describe('SearchBox component', () => {
       fireEvent(searchInput, 'onFocus')
     })
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: {
-        ...initialSearchState,
-        view: SearchView.Suggestions,
-        offerCategories: mockSearchState.offerCategories,
-        priceRange: mockSearchState.priceRange,
-        previousView: SearchView.Landing,
-      },
+    expect(mockShowSuggestions).toHaveBeenNthCalledWith(1)
+  })
+
+  it('should hide the search filter button when being on the search landing view', async () => {
+    mockSearchState = {
+      ...mockSearchState,
+      view: SearchView.Landing,
+      query: 'la fnac',
+    }
+    renderSearchBox()
+
+    await act(async () => {
+      expect(screen.queryByTestId(/Voir tous les filtres/)).not.toBeOnTheScreen()
     })
   })
 
-  it.each([[SearchView.Landing], [SearchView.Suggestions]])(
-    'should hide the search filter button when being on the %s view',
-    async (view) => {
-      mockSearchState = {
-        ...mockSearchState,
-        view,
-        query: 'la fnac',
-      }
-      renderSearchBox()
-
-      await act(async () => {
-        expect(screen.queryByTestId(/Voir tous les filtres/)).not.toBeOnTheScreen()
-      })
+  it('should hide the search filter button when being on the search result view and being focus on the suggestion', async () => {
+    mockIsFocusOnSuggestions = true
+    mockSearchState = {
+      ...mockSearchState,
+      view: SearchView.Results,
+      query: 'la fnac',
     }
-  )
+    renderSearchBox()
+
+    await act(async () => {
+      expect(screen.queryByTestId(/Voir tous les filtres/)).not.toBeOnTheScreen()
+    })
+  })
 
   it.each`
     locationType                 | locationFilter                                                                          | position            | locationButtonLabel
@@ -630,11 +582,10 @@ describe('SearchBox component with venue previous route', () => {
     })
   })
 
-  it('should unselect the venue when current and previous views are identical and previous route is Venue', async () => {
+  it('should unselect the venue and set the view to Landing when current rout is search and previous route is Venue and the user user press the back button', async () => {
     mockSearchState = {
       ...mockSearchState,
       view: SearchView.Results,
-      previousView: SearchView.Results,
     }
     renderSearchBox()
 
@@ -646,15 +597,14 @@ describe('SearchBox component with venue previous route', () => {
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
-      payload: { ...mockSearchState, venue: undefined },
+      payload: { ...mockSearchState, view: SearchView.Landing, venue: undefined },
     })
   })
 
-  it('should execute go back when current and previous views are identical and previous route is Venue', async () => {
+  it('should execute go back when current route is search and previous route is Venue', async () => {
     mockSearchState = {
       ...mockSearchState,
       view: SearchView.Results,
-      previousView: SearchView.Results,
     }
     renderSearchBox()
 
@@ -669,14 +619,23 @@ describe('SearchBox component with venue previous route', () => {
 })
 
 function renderSearchBox(isDesktopViewport?: boolean) {
+  return render(
+    <DummySearchBox />,
+
+    { theme: { isDesktopViewport: isDesktopViewport ?? false } }
+  )
+}
+
+const DummySearchBox = () => {
   const searchInputID = uuidv4()
 
-  return render(
-    <SearchBox
-      searchInputID={searchInputID}
-      addSearchHistory={jest.fn()}
-      searchInHistory={jest.fn()}
-    />,
-    { theme: { isDesktopViewport: isDesktopViewport ?? false } }
+  return (
+    <React.Fragment>
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    </React.Fragment>
   )
 }

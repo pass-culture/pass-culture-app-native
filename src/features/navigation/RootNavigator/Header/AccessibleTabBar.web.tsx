@@ -16,7 +16,7 @@ import { Ul } from 'ui/components/Ul'
 export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { tabRoutes } = useTabNavigationContext()
   const currentRoute = useCurrentRoute()
-  const { searchState } = useSearch()
+  const { searchState, hideSuggestions } = useSearch()
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
@@ -37,6 +37,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
               <LinkContainer key={route.name}>
                 <TabBarComponent
                   navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1], fromRef: true }}
+                  onPress={route.name === 'Search' ? hideSuggestions : undefined}
                   tabName={route.name}
                   isSelected={route.isSelected}
                   BicolorIcon={mapTabRouteToBicolorIcon(route.name)}

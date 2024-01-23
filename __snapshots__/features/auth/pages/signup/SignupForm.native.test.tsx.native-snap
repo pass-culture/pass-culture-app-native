@@ -2809,20 +2809,6 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
               >
                 Mot de passe
               </Text>
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Obligatoire
-              </Text>
             </View>
           </View>
           <View
@@ -2863,7 +2849,7 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
           >
             <TextInput
               accessibilityDescribedBy="testUuidV4"
-              accessibilityRequired={true}
+              accessibilityRequired={false}
               autoCapitalize="none"
               autoFocus={true}
               editable={true}

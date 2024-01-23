@@ -1,10 +1,12 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
@@ -30,7 +32,7 @@ export function NotificationSettings() {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { isLoggedIn, user } = useAuthContext()
 
-  const { goBack } = useNavigation()
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   const route = useRoute()
   const [state, setState] = useState<State>({
@@ -106,6 +108,7 @@ export function NotificationSettings() {
         timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
+
       goBack()
     },
     /**
@@ -117,6 +120,7 @@ export function NotificationSettings() {
         message: 'Une erreur est survenue',
       })
       // on error rollback to the last loaded result
+
       setState((prevState) => ({
         ...prevState, // keep permission state
         ...getInitialSwitchesState(user?.subscriptions),

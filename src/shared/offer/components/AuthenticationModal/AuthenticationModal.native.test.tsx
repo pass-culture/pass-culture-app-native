@@ -30,7 +30,6 @@ describe('<AuthenticationModal />', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('SignupForm', {
-        preventCancellation: true,
         offerId: OFFER_ID,
         from: From.BOOKING,
       })
@@ -79,7 +78,6 @@ describe('<AuthenticationModal />', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
-        preventCancellation: true,
         offerId: OFFER_ID,
         from: From.BOOKING,
       })
@@ -97,7 +95,6 @@ describe('<AuthenticationModal />', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
-        preventCancellation: true,
         offerId: OFFER_ID,
         from: From.FAVORITE,
       })

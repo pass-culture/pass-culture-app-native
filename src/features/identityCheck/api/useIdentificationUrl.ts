@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError } from 'api/ApiError'
 import { MaintenancePageType } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'

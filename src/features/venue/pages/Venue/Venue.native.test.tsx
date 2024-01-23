@@ -230,7 +230,6 @@ describe('<Venue /> with new venue body', () => {
             geolocation: { latitude: 48.87004, longitude: 2.3785 },
             venueId: 5543,
           },
-          previousView: SearchView.Results,
         },
         screen: 'Search',
       })

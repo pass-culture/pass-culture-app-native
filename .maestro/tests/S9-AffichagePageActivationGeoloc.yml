@@ -1,7 +1,7 @@
-appId: ${APP_ID}
+appId: ${MAESTRO_APP_ID}
 ---
 - launchApp:
-    appId: ${APP_ID}
+    appId: ${MAESTRO_APP_ID}
     clearState: true
 - runFlow:
     when:

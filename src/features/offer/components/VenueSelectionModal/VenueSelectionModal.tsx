@@ -8,12 +8,9 @@ import {
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
-import { GeolocPermissionState, useLocation } from 'libs/location'
-import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -28,7 +25,7 @@ type VenueSelectionModalProps = Pick<
   nbHits: number
   isFetchingNextPage: boolean
   title: string
-  onSubmit: (selectedOfferId: number) => void
+  onSubmit: (selectedVenueId: number) => void
   onClosePress: VoidFunction
   onEndReached?: () => void
   venueName?: string
@@ -53,44 +50,16 @@ export function VenueSelectionModal({
   venueName,
   isSharingLocation,
 }: VenueSelectionModalProps) {
-  const [selectedOffer, setSelectedOffer] = useState<number>()
+  const [selectedVenue, setSelectedVenue] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const venueListRef = useRef<FlatList<VenueListItem>>(null)
   const { top } = useCustomSafeInsets()
-  const {
-    permissionState,
-    requestGeolocPermission,
-    onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
-  } = useLocation()
-
-  const {
-    showModal: showGeolocPermissionModal,
-    hideModal: hideGeolocPermissionModal,
-    visible: isGeolocPermissionModalVisible,
-  } = useModal(false)
 
   const handleSubmit = useCallback(() => {
-    /**
-     * `selectedOffer` would always be there since submit is disabled otherwise,
-     * but TypeScript can't understand this so a check is necessary.
-     */
-    onSubmit(selectedOffer as number)
-  }, [onSubmit, selectedOffer])
-
-  const onPressGeolocPermissionModalButton = useCallback(() => {
-    hideGeolocPermissionModal()
-    onPressGeolocPermissionModalButtonDefault()
-  }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
-
-  const onPressGeolocationBanner = useCallback(() => {
-    void (async () => {
-      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-        showGeolocPermissionModal()
-      } else {
-        await requestGeolocPermission()
-      }
-    })()
-  }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
+    if (selectedVenue !== undefined) {
+      onSubmit(selectedVenue)
+    }
+  }, [onSubmit, selectedVenue])
 
   const customHeader = useMemo(() => {
     return (
@@ -136,7 +105,7 @@ export function VenueSelectionModal({
           <ButtonPrimary
             wording="Choisir ce lieu"
             onPress={handleSubmit}
-            disabled={!selectedOffer}
+            disabled={!selectedVenue}
           />
         </BottomWrapper>
       }
@@ -149,9 +118,9 @@ export function VenueSelectionModal({
         />
       </View>
       <VenueSelectionList
-        onItemSelect={setSelectedOffer}
+        onItemSelect={setSelectedVenue}
         items={items}
-        selectedItem={selectedOffer}
+        selectedItem={selectedVenue}
         onEndReached={onEndReached}
         refreshing={refreshing}
         onRefresh={onRefresh}
@@ -164,12 +133,6 @@ export function VenueSelectionModal({
         isFetchingNextPage={isFetchingNextPage}
         isSharingLocation={isSharingLocation}
         venueName={venueName}
-        onPressGeolocPermissionModalButton={onPressGeolocationBanner}
-      />
-      <GeolocationActivationModal
-        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
     </AppModal>
   )

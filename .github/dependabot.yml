@@ -40,6 +40,6 @@ updates:
     schedule:
       interval: 'daily'
     commit-message:
-      prefix: '(BSR) chore(ci):'
+      prefix: '(BSR) chore(deps):'
     reviewers:
       - 'Lucasbeneston'

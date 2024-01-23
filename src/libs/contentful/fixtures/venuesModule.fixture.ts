@@ -38,7 +38,6 @@ export const venuesNatifModuleFixture: VenuesContentModel = {
         },
         fields: {
           title: 'Exemple de playlist de lieux',
-          isGeolocated: false,
           venueTypes: [
             'Bibliothèque ou médiathèque',
             'Arts visuels, arts plastiques et galeries',

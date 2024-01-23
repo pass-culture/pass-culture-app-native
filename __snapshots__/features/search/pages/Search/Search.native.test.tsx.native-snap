@@ -416,11 +416,11 @@ exports[`<Search/> should render Search 1`] = `
     </View>
   </View>
   <View
-    numberOfSpaces={2}
+    numberOfSpaces={4}
     style={
       [
         {
-          "height": 8,
+          "height": 16,
         },
       ]
     }
@@ -518,7 +518,7 @@ exports[`<Search/> should render Search 1`] = `
               "#27DCA8",
               "#0E8474",
             ],
-            "label": "Films, séries, cinéma",
+            "label": "Cinéma, films et séries",
             "onPress": [Function],
             "position": 2,
           },
@@ -1079,7 +1079,7 @@ exports[`<Search/> should render Search 1`] = `
               }
             >
               <View
-                accessibilityLabel="Catégorie Films, séries, cinéma"
+                accessibilityLabel="Catégorie Cinéma, films et séries"
                 accessibilityRole="button"
                 accessibilityState={
                   {
@@ -1117,7 +1117,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
-                testID="Catégorie Films, séries, cinéma"
+                testID="Catégorie Cinéma, films et séries"
               >
                 <View
                   style={
@@ -1211,7 +1211,7 @@ exports[`<Search/> should render Search 1`] = `
                       ]
                     }
                   >
-                    Films, séries, cinéma
+                    Cinéma, films et séries
                   </Text>
                 </View>
               </View>
