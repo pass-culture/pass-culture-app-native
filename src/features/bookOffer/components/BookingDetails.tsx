@@ -16,6 +16,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
+import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
@@ -73,16 +74,10 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
   const { onScroll: onScrollModal } = useOpacityTransition()
-  const { userLocation } = useLocation()
+  const { userLocation, selectedLocationMode, place } = useLocation()
   const venueName = offer?.venue.publicName || offer?.venue.name
 
-  const headerMessage = useMemo(
-    () =>
-      userLocation !== null
-        ? 'Lieux disponibles autour de moi'
-        : `Lieux à proximité de “${venueName}”`,
-    [userLocation, venueName]
-  )
+  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
   const defaultSearchVenueOffers = {
     offerId: 0,
