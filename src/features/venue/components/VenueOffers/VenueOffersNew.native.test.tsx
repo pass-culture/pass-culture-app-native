@@ -161,7 +161,7 @@ describe('<VenueOffersNew />', () => {
     })
   })
 
-  it('should display only 10 gtl playlists when there are more to display', () => {
+  it('should display all gtl playlists when there are more to display', () => {
     const moreThan10Playlists = [...Array(11)].map((_, index) => ({
       ...playlists[0],
       title: playlists[0].title + index,
@@ -172,7 +172,7 @@ describe('<VenueOffersNew />', () => {
       playlists: moreThan10Playlists,
     })
 
-    expect(screen.getAllByText(/GTL playlist.+/)).toHaveLength(10)
+    expect(screen.getAllByText(/GTL playlist.+/)).toHaveLength(11)
   })
 
   describe('should not display all gtl playlists', () => {
