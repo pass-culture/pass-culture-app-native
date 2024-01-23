@@ -7,11 +7,12 @@ import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOff
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
+import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { OfferVenueBlock } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlock'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { Position } from 'libs/location'
+import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/getIsMultivenueCompatibleOffer'
@@ -22,7 +23,6 @@ import { Spacer } from 'ui/theme'
 
 type OfferPlaceProps = {
   offer: OfferResponse
-  userLocation: Position
   isEvent: boolean
 }
 
@@ -44,9 +44,10 @@ const mergeVenueData =
     ...(prevData ?? {}),
   })
 
-export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlaceProps>) {
+export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
+  const { selectedLocationMode, place, geolocPosition } = useLocation()
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
@@ -79,7 +80,7 @@ export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlace
   } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
-    geolocation: userLocation ?? {
+    geolocation: geolocPosition ?? {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
@@ -132,6 +133,9 @@ export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlace
     offer.venue.address && offer.venue.postalCode && offer.venue.city
   )
 
+  const venueName = offer.venue.publicName || offer.venue.name
+  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
+
   return (
     <React.Fragment>
       <SectionWithDivider visible={!offer.isDigital} margin>
@@ -162,8 +166,11 @@ export function OfferPlace({ offer, userLocation, isEvent }: Readonly<OfferPlace
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={userLocation !== null}
-          venueName={offer.venue.publicName || offer.venue.name}
+          isSharingLocation={geolocPosition !== null}
+          subTitle="Sélectionner un lieu"
+          rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
+          validateButtonLabel="Choisir ce lieu"
+          headerMessage={headerMessage}
         />
       ) : null}
     </React.Fragment>

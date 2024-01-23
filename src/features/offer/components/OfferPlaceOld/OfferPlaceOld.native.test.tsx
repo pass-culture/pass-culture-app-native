@@ -10,8 +10,10 @@ import {
 } from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { analytics } from 'libs/analytics'
+import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('libs/address/useFormatFullAddress')
@@ -64,9 +66,17 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 
 const offerPlaceProps: OfferPlaceOldProps = {
   offer: mockOffer,
-  userLocation: null,
   isEvent: false,
 }
+
+let mockSelectedLocationMode = LocationMode.EVERYWHERE
+let mockPlace: SuggestedPlace | null = null
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({
+    selectedLocationMode: mockSelectedLocationMode,
+    place: mockPlace,
+  })),
+}))
 
 describe('<OfferPlace />', () => {
   beforeEach(() => {
@@ -261,98 +271,47 @@ describe('<OfferPlace />', () => {
     expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(mockOffer.id)
   })
 
-  describe('when user share their position', () => {
-    it('should display "Lieux disponibles autour de moi"', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferPlace({
-        userLocation: { latitude: 0, longitude: 0 },
-        isEvent: false,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: {
-            ean: '2765410054',
+  describe('HeaderMessage', () => {
+    it.each`
+      locationMode                 | place                                                                                             | headerMessage
+      ${LocationMode.AROUND_ME}    | ${null}                                                                                           | ${'Lieux disponibles autour de moi'}
+      ${LocationMode.EVERYWHERE}   | ${null}                                                                                           | ${'Lieux à proximité de “Cinéma de la fin”'}
+      ${LocationMode.AROUND_PLACE} | ${{ label: 'Kourou', info: 'Guyane', geolocation: { longitude: -52.669736, latitude: 5.16186 } }} | ${'Lieux à proximité de “Kourou”'}
+    `(
+      'should return "$headerMessage" when location mode is $locationMode and place is $place',
+      async ({
+        locationMode,
+        place,
+        headerMessage,
+      }: {
+        locationMode: LocationMode
+        place: SuggestedPlace | null
+        headerMessage: string
+      }) => {
+        mockNbVenueItems = 2
+        mockVenueList = offerVenues
+        mockSelectedLocationMode = locationMode
+        mockPlace = place
+        renderOfferPlace({
+          isEvent: false,
+          offer: {
+            ...mockOffer,
+            subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            extraData: {
+              ean: '2765410054',
+            },
           },
-        },
-      })
+        })
 
-      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+        await act(async () => {
+          fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+        })
 
-      expect(screen.getByText('Lieux disponibles autour de moi')).toBeOnTheScreen()
-    })
-
-    it('should not display "Lieux à proximité de “Cinéma de la fin”"', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferPlace({
-        userLocation: { latitude: 0, longitude: 0 },
-        isEvent: false,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: {
-            ean: '2765410054',
-          },
-        },
-      })
-
-      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
-
-      expect(screen.queryByText('Lieux à proximité de “Cinéma de la fin”')).not.toBeOnTheScreen()
-    })
-  })
-
-  describe("when user doesn't share their position", () => {
-    it('should not display "Lieux disponibles autour de moi"', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferPlace({
-        userLocation: null,
-        isEvent: false,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: {
-            ean: '2765410054',
-          },
-        },
-      })
-
-      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
-
-      expect(screen.queryByText('Lieux disponibles autour de moi')).not.toBeOnTheScreen()
-    })
-
-    it('should display "Lieux à proximité de “Cinéma de la fin”"', () => {
-      mockNbVenueItems = 2
-      mockVenueList = offerVenues
-
-      renderOfferPlace({
-        userLocation: null,
-        isEvent: false,
-        offer: {
-          ...mockOffer,
-          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: {
-            ean: '2765410054',
-          },
-        },
-      })
-
-      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
-
-      expect(screen.getByText('Lieux à proximité de “Cinéma de la fin”')).toBeOnTheScreen()
-    })
+        expect(screen.getByText(headerMessage)).toBeOnTheScreen()
+      }
+    )
   })
 })
 
-const renderOfferPlace = ({ offer, userLocation, isEvent }: OfferPlaceOldProps) =>
-  render(
-    reactQueryProviderHOC(
-      <OfferPlaceOld offer={offer} userLocation={userLocation} isEvent={isEvent} />
-    )
-  )
+const renderOfferPlace = ({ offer, isEvent }: OfferPlaceOldProps) =>
+  render(reactQueryProviderHOC(<OfferPlaceOld offer={offer} isEvent={isEvent} />))

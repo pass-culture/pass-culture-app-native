@@ -9,6 +9,8 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -68,13 +70,21 @@ jest
 
 const offerPlaceProps: OfferPlaceOldProps = {
   offer: mockOffer,
-  userLocation: null,
   isEvent: false,
 }
 
 let mockDistance: string | null = null
 jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
+}))
+
+const mockSelectedLocationMode = LocationMode.EVERYWHERE
+const mockPlace: SuggestedPlace | null = null
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({
+    selectedLocationMode: mockSelectedLocationMode,
+    place: mockPlace,
+  })),
 }))
 
 describe('<OfferPlace />', () => {
@@ -424,13 +434,5 @@ describe('<OfferPlace />', () => {
 
 type RenderOfferPlaceType = Partial<ComponentProps<typeof OfferPlace>>
 
-const renderOfferPlace = ({
-  offer = mockOffer,
-  userLocation,
-  isEvent = false,
-}: RenderOfferPlaceType) =>
-  render(
-    reactQueryProviderHOC(
-      <OfferPlace offer={offer} userLocation={userLocation} isEvent={isEvent} />
-    )
-  )
+const renderOfferPlace = ({ offer = mockOffer, isEvent = false }: RenderOfferPlaceType) =>
+  render(reactQueryProviderHOC(<OfferPlace offer={offer} isEvent={isEvent} />))

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback } from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
@@ -7,10 +7,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
+import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { Position } from 'libs/location'
+import { useLocation } from 'libs/location'
 import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/getIsMultivenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -20,15 +21,16 @@ import { Spacer } from 'ui/theme'
 
 export type OfferPlaceOldProps = {
   offer: OfferResponse
-  userLocation: Position
   isEvent: boolean
 }
 
-export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPlaceOldProps>) {
+export function OfferPlaceOld({ offer, isEvent }: Readonly<OfferPlaceOldProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const showVenueBanner = offer.venue.isPermanent === true
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
+
+  const { selectedLocationMode, place, geolocPosition } = useLocation()
 
   const handleBeforeNavigateToItinerary = useCallback(() => {
     analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
@@ -56,7 +58,7 @@ export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPl
   } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
-    geolocation: userLocation ?? {
+    geolocation: geolocPosition ?? {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
@@ -99,13 +101,7 @@ export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPl
   )
 
   const venueName = offer.venue.publicName || offer.venue.name
-  const headerMessage = useMemo(
-    () =>
-      userLocation !== null
-        ? 'Lieux disponibles autour de moi'
-        : `Lieux à proximité de “${venueName}”`,
-    [userLocation, venueName]
-  )
+  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
   return (
     <React.Fragment>
@@ -144,7 +140,7 @@ export function OfferPlaceOld({ offer, userLocation, isEvent }: Readonly<OfferPl
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={userLocation !== null}
+          isSharingLocation={geolocPosition !== null}
           subTitle="Sélectionner un lieu"
           rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
           validateButtonLabel="Choisir ce lieu"
