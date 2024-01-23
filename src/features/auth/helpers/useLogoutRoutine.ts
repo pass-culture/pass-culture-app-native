@@ -12,14 +12,14 @@ import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { storage } from 'libs/storage'
 
 export function useLogoutRoutine(): () => Promise<void> {
-  const { removeQueries } = useQueryClient()
+  const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
 
   return useCallback(async () => {
     try {
       BatchUser.editor().setIdentifier(null).save()
       LoggedInQueryKeys.forEach((queryKey) => {
-        removeQueries([queryKey])
+        queryClient.removeQueries([queryKey])
       })
       await Promise.all([
         analytics.logLogout(),
@@ -34,7 +34,7 @@ export function useLogoutRoutine(): () => Promise<void> {
     } finally {
       setIsLoggedIn(false)
     }
-  }, [removeQueries, setIsLoggedIn])
+  }, [queryClient, setIsLoggedIn])
 }
 
 // List of keys that are accessible only when logged in to clean when logging out
