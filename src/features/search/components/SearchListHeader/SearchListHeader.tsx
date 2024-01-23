@@ -104,7 +104,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     <View testID="searchListHeader">
       {!!shouldDisplayGeolocationButton && (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={3} />
+          <Spacer.Column numberOfSpaces={4} />
           <GeolocationButtonContainer
             onPress={onPress}
             accessibilityLabel="Active ta géolocalisation">
@@ -126,7 +126,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       )}
       {!!shouldDisplayVenuesPlaylist && (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={3} />
+          <Spacer.Column numberOfSpaces={4} />
           <View>
             <Title>{venueTitle}</Title>
             <NumberOfResults nbHits={venues?.length ?? 0} />
@@ -150,7 +150,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <StyledSeparator />
         </React.Fragment>
       )}
-      <Spacer.Column numberOfSpaces={5} />
+      <Spacer.Column numberOfSpaces={4} />
       <Title>{offerTitle}</Title>
       <NumberOfResults nbHits={nbHits} />
     </View>

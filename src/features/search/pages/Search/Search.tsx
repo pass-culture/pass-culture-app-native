@@ -74,7 +74,7 @@ export function Search() {
             addSearchHistory={addToHistory}
             searchInHistory={setQueryHistoryMemoized}
           />
-          <Spacer.Column numberOfSpaces={4} />
+          <Spacer.Column numberOfSpaces={2} />
           {isFocusOnSuggestions ? (
             <SearchSuggestions
               queryHistory={queryHistory}
