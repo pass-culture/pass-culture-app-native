@@ -17,7 +17,8 @@ export const useVenues = (query: string) => {
     aroundPlaceRadius,
   }
   const netInfo = useNetInfoContext()
-  return useQuery<Venue[]>(
+
+  const test = useQuery<Venue[]>(
     [QueryKeys.VENUES, query, buildLocationParameterParams],
     () =>
       fetchVenues({
@@ -29,4 +30,5 @@ export const useVenues = (query: string) => {
       enabled: !!netInfo.isConnected && query.length > 0,
     }
   )
+  return test
 }

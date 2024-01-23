@@ -171,6 +171,8 @@ export type SubscriptionRootStackParamList = {
  */
 export type RootStackParamList = {
   SignupForm: { offerId?: number; from: StepperOrigin } | undefined
+  SignupFormV2: undefined
+  Dora: undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined

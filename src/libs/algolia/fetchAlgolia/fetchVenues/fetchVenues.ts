@@ -22,12 +22,16 @@ export const fetchVenues = async ({
   try {
     const rawAlgoliaVenuesResponse = await venuesIndex.search<AlgoliaVenue>(
       algoliaSearchParams.query,
-      algoliaSearchParams.requestOptions
+      {
+        ...algoliaSearchParams.requestOptions,
+        hitsPerPage: 5000,
+      }
     )
+    // console.log({ rawAlgoliaVenuesResponse })
 
     const rawVenues = adaptGenericAlgoliaTypes(rawAlgoliaVenuesResponse)
     const adaptedVenues = adaptAlgoliaVenues(rawVenues)
-
+    // console.log(adaptedVenues?.length)
     return adaptedVenues
   } catch (error) {
     captureAlgoliaError(error)

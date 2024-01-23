@@ -22,6 +22,7 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { Dora } from 'features/home/pages/Dora'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
@@ -74,6 +75,12 @@ export const routes: Route[] = [
   ...tutorialRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
+  {
+    name: 'Dora',
+    component: Dora,
+    path: 'carte',
+    options: { title: 'carte des lieux' },
+  },
   {
     name: 'Offer',
     component: Offer,
