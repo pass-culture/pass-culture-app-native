@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
 import MapView from 'react-native-map-clustering'
+import { returnMarkerStyle } from 'react-native-map-clustering/lib/helpers'
 import { Marker } from 'react-native-maps'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
@@ -10,6 +12,7 @@ import { Venue } from 'features/venue/types'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { computeDistanceInMeters } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
@@ -69,10 +72,17 @@ export const Dora: FunctionComponent = () => {
     longitudeDelta: 0.08,
   })
 
+  const radius = computeDistanceInMeters(
+    centerPosition.latitude,
+    centerPosition.longitude,
+    centerPosition.latitude + centerPosition.latitudeDelta,
+    centerPosition.longitude + centerPosition.longitudeDelta
+  )
+
   const buildLocationParameterParams = {
-    userLocation,
+    userLocation: centerPosition,
     selectedLocationMode,
-    aroundMeRadius,
+    aroundMeRadius: radius,
     aroundPlaceRadius,
   }
 
@@ -93,7 +103,7 @@ export const Dora: FunctionComponent = () => {
     )
   }
 
-  const { data: venues = [] } = useVenues('')
+  const { data: venues = [], refetch } = useVenues('')
 
   return (
     <React.Fragment>
@@ -102,12 +112,30 @@ export const Dora: FunctionComponent = () => {
       <StyledMapView
         initialRegion={centerPosition}
         rotateEnabled={false}
-        onRegionChangeComplete={setCenterPosition}
+        onRegionChangeComplete={(prout) => {
+          console.log({ prout })
+          console.log({
+            radius: computeDistanceInMeters(
+              prout.latitude,
+              prout.longitude,
+              prout.latitude + prout.latitudeDelta,
+              prout.longitude + prout.longitudeDelta
+            ),
+          })
+
+          setCenterPosition(prout)
+        }}
         spiralEnabled
         spiderLineColor="royalblue"
-        clusterColor="#FF5733"
+        clusterColor="royalblue"
         clusterTextColor="FFFF"
-        // renderCluster={}
+        minPoints={5}
+        radius={50}
+        renderCluster={({ count, ...props }) => {
+          // {"clusterColor": "#FF5733", "clusterFontFamily": undefined, "clusterTextColor": "FFFF", "geometry": {"coordinates": [2.317686080932617, 48.88368971897958], "type": "Point"}, "id": 3768, "onPress": [Function anonymous], "properties": {"cluster": true, "cluster_id": 3768, "point_count": 14, "point_count_abbreviated": 14}, "type": "Feature"}
+
+          return <ClusteredMarker {...props} count={count} />
+        }}
         showsUserLocation>
         {venues.map((venue) => (
           <Marker
@@ -124,7 +152,7 @@ export const Dora: FunctionComponent = () => {
         ))}
       </StyledMapView>
       <StyledView top={top}>
-        <StyledPrimaryButton wording="Rechercher dans cette zone" />
+        <StyledPrimaryButton wording="Rechercher dans cette zone" onPress={refetch} />
       </StyledView>
     </React.Fragment>
   )
@@ -154,4 +182,87 @@ const StyledMarkerView = styled.View({
   borderRadius: 50,
   justifyContent: 'center',
   alignItems: 'center',
+})
+
+const ClusteredMarker = ({
+  geometry,
+  properties,
+  onPress,
+  clusterColor,
+  clusterTextColor,
+  clusterFontFamily,
+  tracksViewChanges,
+}) => {
+  const points = properties.point_count
+  const { width, height, fontSize, size } = returnMarkerStyle(points)
+
+  return (
+    <Marker
+      key={`${geometry.coordinates[0]}_${geometry.coordinates[1]}`}
+      coordinate={{
+        longitude: geometry.coordinates[0],
+        latitude: geometry.coordinates[1],
+      }}
+      style={{ zIndex: points + 1 }}
+      onPress={onPress}
+      tracksViewChanges={tracksViewChanges}>
+      <TouchableOpacity activeOpacity={0.5} style={[styles.container, { width, height }]}>
+        <View
+          style={[
+            styles.wrapper,
+            {
+              backgroundColor: clusterColor,
+              width,
+              height,
+              borderRadius: width / 2,
+            },
+          ]}
+        />
+        <View
+          style={[
+            styles.cluster,
+            {
+              backgroundColor: clusterColor,
+              width: size,
+              height: size,
+              borderRadius: size / 2,
+            },
+          ]}>
+          <Text
+            style={[
+              styles.text,
+              {
+                color: clusterTextColor,
+                fontSize,
+                fontFamily: clusterFontFamily,
+              },
+            ]}>
+            {points}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    </Marker>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  wrapper: {
+    position: 'absolute',
+    opacity: 0.5,
+    zIndex: 0,
+  },
+  cluster: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+  },
+  text: {
+    fontWeight: 'bold',
+  },
 })
