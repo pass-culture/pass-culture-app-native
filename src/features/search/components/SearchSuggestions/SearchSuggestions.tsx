@@ -84,7 +84,7 @@ export const SearchSuggestions = ({
       keyboardShouldPersistTaps="handled"
       onScroll={Keyboard.dismiss}
       scrollEventThrottle={16}>
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={4} />
       <SearchHistory
         history={filteredHistory}
         queryHistory={queryHistory}

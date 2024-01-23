@@ -57,21 +57,13 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             }
           }
         />
-        <View
-          height={8}
-          width={960}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
       </View>
       <View
-        numberOfSpaces={26}
+        numberOfSpaces={32}
         style={
           [
             {
-              "height": 104,
+              "height": 128,
             },
           ]
         }
@@ -694,9 +686,9 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
                 "paddingBottom": 16,
                 "paddingTop": 24,
               },
@@ -1325,21 +1317,13 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             }
           }
         />
-        <View
-          height={8}
-          width={960}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
       </View>
       <View
-        numberOfSpaces={26}
+        numberOfSpaces={32}
         style={
           [
             {
-              "height": 104,
+              "height": 128,
             },
           ]
         }
@@ -2331,9 +2315,9 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
                 "paddingBottom": 16,
                 "paddingTop": 24,
               },

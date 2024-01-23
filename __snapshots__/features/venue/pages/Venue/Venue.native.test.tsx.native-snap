@@ -143,21 +143,13 @@ exports[`<Venue /> should match snapshot 1`] = `
               </Text>
             </View>
           </View>
-          <View
-            height={8}
-            width={960}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
         </View>
         <View
-          numberOfSpaces={26}
+          numberOfSpaces={32}
           style={
             [
               {
-                "height": 104,
+                "height": 128,
               },
             ]
           }

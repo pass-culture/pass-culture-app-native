@@ -9,9 +9,9 @@ import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/OfferIconCaptions'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
-import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
-import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
+import { OfferPlaceOld } from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
+import { OfferPlaylistListOld } from 'features/offer/components/OfferPlaylistListOld/OfferPlaylistListOld'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <SectionBody>{capitalizedFormattedDateEvent}</SectionBody>
       </SectionWithDivider>
 
-      <OfferPlace offer={offer} userLocation={userLocation} isEvent={isEvent} />
+      <OfferPlaceOld offer={offer} userLocation={userLocation} isEvent={isEvent} />
 
       <SectionWithDivider visible margin>
         <OfferMessagingApps offer={offer} />
@@ -143,7 +143,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         </AccordionItem>
       </SectionWithDivider>
 
-      <OfferPlaylistList
+      <OfferPlaylistListOld
         offer={offer}
         position={userLocation}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
