@@ -10,6 +10,7 @@ import {
   SearchGroupResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { GTLLevel } from 'features/gtlPlaylist/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
@@ -72,6 +73,12 @@ export interface SearchState {
   minBookingsThreshold?: number
   isFromHistory?: boolean
   venue?: Venue
+}
+
+export type GTL = {
+  code: string
+  label: string
+  level: GTLLevel
 }
 
 export type UserData = {

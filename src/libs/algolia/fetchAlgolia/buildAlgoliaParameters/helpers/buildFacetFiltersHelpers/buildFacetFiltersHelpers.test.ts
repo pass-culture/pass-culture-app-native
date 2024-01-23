@@ -4,11 +4,13 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { GTL } from 'features/search/types'
 import {
   buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
+  buildOfferGtlsPredicate,
   buildOfferIsDuoPredicate,
   buildOfferNativeCategoriesPredicate,
   buildOfferSubcategoriesPredicate,
@@ -54,6 +56,24 @@ describe('buildOfferNativeCategoriesPredicate', () => {
     expect(offerSubcategoriesPredicate).toEqual([
       'offer.nativeCategoryId:ARTS_VISUELS',
       'offer.nativeCategoryId:DVD_BLU_RAY',
+    ])
+  })
+})
+
+describe('buildOfferGtlsPredicate', () => {
+  it('should return an offer gtls predicate formatted for Algolia API', () => {
+    const gtlArray: GTL[] = [
+      { code: '03040300', label: 'Kodomo', level: 3 },
+      { code: '03040400', label: 'Shôjo', level: 3 },
+      { code: '03040500', label: 'Shonen', level: 3 },
+    ]
+
+    const offerGtlsPredicate = buildOfferGtlsPredicate(gtlArray)
+
+    expect(offerGtlsPredicate).toEqual([
+      'offer.gtl_level3:Kodomo',
+      'offer.gtl_level3:Shôjo',
+      'offer.gtl_level3:Shonen',
     ])
   })
 })

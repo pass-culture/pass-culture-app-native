@@ -5,7 +5,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
-import { OfferGenreType } from 'features/search/types'
+import { GTL, OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { eventMonitoring } from 'libs/monitoring'
@@ -22,6 +22,12 @@ export const buildOfferGtl = (gtlLevel: GTLLevel, gtlLabel: string) => {
   const filterName = FACETS_FILTERS_ENUM.OFFER_GTL_LEVEL.replace('XX', String(gtlLevel))
   return [`${filterName}:${gtlLabel}`]
 }
+
+export const buildOfferGtlsPredicate = (gtls: GTL[]) =>
+  gtls.map((gtl) => {
+    const filterName = FACETS_FILTERS_ENUM.OFFER_GTL_LEVEL.replace('XX', String(gtl.level))
+    return `${filterName}:${gtl.label}`
+  })
 
 export const buildOfferNativeCategoriesPredicate = (nativeCategories: NativeCategoryIdEnumv2[]) =>
   nativeCategories.map(
