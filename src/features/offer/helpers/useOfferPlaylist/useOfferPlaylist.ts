@@ -2,8 +2,8 @@ import { useMemo } from 'react'
 
 import { OfferResponse, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
-import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
+import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { useLocation, Position } from 'libs/location'
 import { Offer, RecommendationApiParams } from 'shared/offer/types'
 

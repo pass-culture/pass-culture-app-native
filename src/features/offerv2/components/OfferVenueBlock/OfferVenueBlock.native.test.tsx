@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
 
@@ -14,6 +14,14 @@ jest.mock('features/offerv2/components/OfferVenueBlock/useVenueBlock', () => ({
     address: '75008 PARIS 8, 2 RUE LAMENNAIS',
     onCopyAddressPress: mockOnCopyAddressPress,
   })),
+}))
+
+const navigateToItineraryMock = jest.fn()
+const useItinerary = () => ({
+  navigateTo: navigateToItineraryMock,
+})
+jest.mock('libs/itinerary/useItinerary', () => ({
+  useItinerary,
 }))
 
 describe('<OfferVenueBlock />', () => {
@@ -162,5 +170,22 @@ describe('<OfferVenueBlock />', () => {
     render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
+  })
+
+  it('should redirect to Google Maps itinerary when pressing "Voir l’itinéraire" button', async () => {
+    const onSeeItineraryPress = jest.fn()
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        venue={offerResponseSnap.venue}
+        onSeeItineraryPress={onSeeItineraryPress}
+      />
+    )
+
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+
+    await waitFor(() => {
+      expect(navigateToItineraryMock).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
+    })
   })
 })

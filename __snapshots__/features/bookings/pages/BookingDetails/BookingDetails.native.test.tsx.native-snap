@@ -55,22 +55,14 @@ exports[`BookingDetails should render correctly 1`] = `
               BackgroundPlaceholder-SVG-Mock
             </Text>
           </View>
-          <View
-            height={8}
-            width={960}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
         </View>
       </View>
       <View
-        numberOfSpaces={26}
+        numberOfSpaces={32}
         style={
           [
             {
-              "height": 104,
+              "height": 128,
             },
           ]
         }

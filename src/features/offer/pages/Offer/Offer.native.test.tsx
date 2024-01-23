@@ -1,10 +1,11 @@
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
-import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylist/hook/useSameArtistPlaylist'
+import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, screen } from 'tests/utils'
 
@@ -26,6 +27,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     data: mockData,
   }),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Offer />', () => {
   beforeEach(() => {
@@ -98,5 +101,35 @@ describe('<Offer />', () => {
     await act(async () => {})
 
     expect(screen.queryByTestId('offer-container')).toBeOnTheScreen()
+  })
+
+  describe('When offer V2 feature flag enabled', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    it('should display offer v2 page', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await act(async () => {})
+
+      expect(screen.getByTestId('offerv2-container')).toBeOnTheScreen()
+    })
+
+    it('should display subcategory tag', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap })
+
+      await act(async () => {})
+
+      expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
+    })
+  })
+
+  it('should display offer v1 page when feature flag is disabled', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await act(async () => {})
+
+    expect(screen.queryByTestId('offerv2-container')).toBe(null)
   })
 })

@@ -14,18 +14,21 @@ import { getSpacing, Spacer, getShadow } from 'ui/theme'
 
 type HeroProps =
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
+  | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
-
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
 export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   const { imageUrl, ...placeholderProps } = props
-  const { heroBackgroundHeight, imageStyle } = useHeroDimensions(placeholderProps.type, !!imageUrl)
+  const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
+    type: placeholderProps.type,
+    hasImage: !!imageUrl,
+  })
 
   const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(
     ({ theme }): ComponentProps<typeof DefaultImagePlaceholder> =>
-      placeholderProps.type === 'offer'
+      placeholderProps.type === 'offer' || placeholderProps.type === 'offerv2'
         ? {
             Icon: mapCategoryToIcon(placeholderProps.categoryId),
             backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
