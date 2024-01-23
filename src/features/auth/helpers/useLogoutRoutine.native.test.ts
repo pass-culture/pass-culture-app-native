@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain'
+import { eventMonitoring } from 'libs/monitoring'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { renderHook } from 'tests/utils'
 
@@ -40,6 +41,12 @@ describe('useLogoutRoutine', () => {
     await renderUseLogoutRoutine()
 
     expect(mockClearRefreshToken).toHaveBeenCalledTimes(1)
+  })
+
+  it('should clear the currently set user in sentry', async () => {
+    await renderUseLogoutRoutine()
+
+    expect(eventMonitoring.setUser).toHaveBeenCalledWith(null)
   })
 
   it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
