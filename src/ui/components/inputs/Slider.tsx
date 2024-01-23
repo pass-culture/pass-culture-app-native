@@ -1,8 +1,7 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
-import styled from 'styled-components/native'
-import { DefaultTheme } from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -33,16 +32,16 @@ const DEFAULT_VALUES: ValuesType = [DEFAULT_MIN, DEFAULT_MAX]
 const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
-function isValidValuesType(value: number[]): value is ValuesType {
+function isValidValuesType(value: Readonly<number[]>): value is ValuesType {
   return Array.isArray(value) && (value.length === 1 || value.length === 2)
 }
 
-export function Slider(props: Props) {
+export function Slider(props: Readonly<Props>) {
   const sliderContainerRef = useRef<View | null>(null)
 
-  const min = props.min || DEFAULT_MIN
-  const max = props.max || DEFAULT_MAX
-  const step = props.step || DEFAULT_STEP
+  const min = props.min ?? DEFAULT_MIN
+  const max = props.max ?? DEFAULT_MAX
+  const step = props.step ?? DEFAULT_STEP
   const minLabel = props.minLabel ?? 'Minimum\u00a0:'
   const maxLabel = props.maxLabel ?? 'Maximum\u00a0:'
   const shouldShowMinMaxValues = props.shouldShowMinMaxValues ?? false
@@ -137,7 +136,7 @@ export function Slider(props: Props) {
   }, [])
 
   const handleValueChange = useCallback(
-    (nextValues: number[]) => {
+    (nextValues: Readonly<number[]>) => {
       if (!isValidValuesType(nextValues)) return
 
       props.onValuesChange?.(nextValues)
@@ -147,7 +146,7 @@ export function Slider(props: Props) {
   )
 
   const handleValueChangeFinish = useCallback(
-    (nextValues: number[]) => {
+    (nextValues: Readonly<number[]>) => {
       if (!isValidValuesType(nextValues)) return
 
       props.onValuesChangeFinish?.(nextValues)
@@ -225,7 +224,7 @@ const CenteredText = styled(Typo.ButtonText)<{ shouldShowMinMaxValues?: boolean;
 })
 
 const SliderComponentWrapper = styled.View<{ sliderLength?: number }>(({ sliderLength }) => ({
-  width: sliderLength ? sliderLength : '100%',
+  width: sliderLength ?? '100%',
   alignItems: 'center',
 }))
 
