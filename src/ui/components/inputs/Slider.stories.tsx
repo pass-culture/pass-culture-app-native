@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-color-literals */
+/* eslint-disable react-native/no-inline-styles */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
