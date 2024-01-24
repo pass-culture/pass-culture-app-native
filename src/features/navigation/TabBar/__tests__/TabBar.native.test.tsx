@@ -1,5 +1,5 @@
 import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/typescript/src/types'
-import { NavigationHelpers, ParamListBase } from '@react-navigation/native'
+import { NavigationHelpers, TabNavigationState, ParamListBase } from '@react-navigation/native'
 import React from 'react'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -43,6 +43,24 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
     },
   ],
 }))
+
+const mockTabNavigationState: TabNavigationState<ParamListBase> = {
+  history: [{ key: 'Home-LzN9F8ePccY3NzxcsunpQ', type: 'route' }],
+  stale: false,
+  type: 'tab',
+  key: 'tab-oMaiLEoOIhNl7W4ZcsYSD',
+  index: 0,
+  routeNames: ['Home', '_DeeplinkOnlyHome1'],
+  routes: [
+    { name: 'Home', key: 'Home-LzN9F8ePccY3NzxcsunpQ', params: undefined },
+
+    {
+      name: '_DeeplinkOnlyHome1',
+      key: '_DeeplinkOnlyHome1-DpjmCP7zfgwe2hAN76PJM',
+      params: undefined,
+    },
+  ],
+}
 
 const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> = {
   // @ts-expect-error : ignore type of emit to facilitate testing
@@ -195,5 +213,5 @@ describe('TabBar', () => {
 })
 
 function renderTabBar() {
-  render(reactQueryProviderHOC(<TabBar navigation={navigation} />))
+  render(reactQueryProviderHOC(<TabBar navigation={navigation} state={mockTabNavigationState} />))
 }
