@@ -41,7 +41,7 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
   const { data: places = [], isLoading } = usePlaces({ query })
 
   if (isLoading) {
-    return <Spinner />
+    return <Spinner testID="loader" />
   }
 
   const isQueryProvided = query.length > 0
