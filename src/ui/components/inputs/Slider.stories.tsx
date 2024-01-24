@@ -12,14 +12,14 @@ const meta: ComponentMeta<typeof Slider> = {
 export default meta
 
 const Template: ComponentStory<typeof Slider> = (props) => (
-  <div style={{ width: '1024px', backgroundColor: 'grey' }}>
+  <div style={{ width: '1024px' }}>
     <Slider {...props} />
   </div>
 )
 
 const TemplateWrapped: ComponentStory<typeof Slider> = (props) => (
   // eslint-disable-next-line react-native/no-inline-styles
-  <div style={{ width: '375px', backgroundColor: 'lightGrey' }}>
+  <div style={{ width: '375px' }}>
     <Slider {...props} />
   </div>
 )
