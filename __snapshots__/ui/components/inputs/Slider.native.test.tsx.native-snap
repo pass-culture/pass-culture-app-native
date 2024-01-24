@@ -6,7 +6,6 @@ exports[`<Slider /> should render correctly 1`] = `
     [
       {
         "alignItems": "center",
-        "width": "100%",
       },
     ]
   }
@@ -15,12 +14,12 @@ exports[`<Slider /> should render correctly 1`] = `
     style={
       [
         {
+          "backgroundColor": "white",
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,
           "lineHeight": 20,
           "textAlign": "center",
-          "width": "100%",
         },
       ]
     }
@@ -41,10 +40,8 @@ exports[`<Slider /> should render correctly 1`] = `
     style={
       [
         {
-          "alignItems": "center",
           "paddingLeft": 18,
           "paddingRight": 18,
-          "width": "100%",
         },
       ]
     }
