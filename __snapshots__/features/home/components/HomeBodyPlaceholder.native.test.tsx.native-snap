@@ -102,7 +102,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <RCTScrollView
         ItemSeparatorComponent={[Function]}
-        collapsable={false}
         data={
           [
             {
@@ -124,8 +123,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
         onLayout={[Function]}
         onMomentumScrollBegin={[Function]}
         onMomentumScrollEnd={[Function]}
@@ -134,7 +131,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         onScrollEndDrag={[Function]}
         removeClippedSubviews={false}
         renderItem={[Function]}
-        renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
@@ -1137,7 +1133,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <RCTScrollView
         ItemSeparatorComponent={[Function]}
-        collapsable={false}
         data={
           [
             {
@@ -1162,8 +1157,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
         onLayout={[Function]}
         onMomentumScrollBegin={[Function]}
         onMomentumScrollEnd={[Function]}
@@ -1172,7 +1165,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         onScrollEndDrag={[Function]}
         removeClippedSubviews={false}
         renderItem={[Function]}
-        renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
@@ -2486,7 +2478,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <RCTScrollView
         ItemSeparatorComponent={[Function]}
-        collapsable={false}
         data={
           [
             {
@@ -2511,8 +2502,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
         onLayout={[Function]}
         onMomentumScrollBegin={[Function]}
         onMomentumScrollEnd={[Function]}
@@ -2521,7 +2510,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         onScrollEndDrag={[Function]}
         removeClippedSubviews={false}
         renderItem={[Function]}
-        renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
@@ -3747,7 +3735,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       />
       <RCTScrollView
         ItemSeparatorComponent={[Function]}
-        collapsable={false}
         data={
           [
             {
@@ -3769,8 +3756,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         horizontal={true}
         keyExtractor={[Function]}
         onContentSizeChange={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
         onLayout={[Function]}
         onMomentumScrollBegin={[Function]}
         onMomentumScrollEnd={[Function]}
@@ -3779,7 +3764,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         onScrollEndDrag={[Function]}
         removeClippedSubviews={false}
         renderItem={[Function]}
-        renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
         stickyHeaderIndices={[]}
