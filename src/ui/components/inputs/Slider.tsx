@@ -219,31 +219,28 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
 })``
 
 const CenteredText = styled(Typo.ButtonText)<{ shouldShowMinMaxValues?: boolean; width?: number }>({
+  backgroundColor: 'white',
   textAlign: 'center',
-  width: '100%',
 })
 
 const SliderComponentWrapper = styled.View<{ sliderLength?: number }>(({ sliderLength }) => ({
-  width: sliderLength ?? '100%',
   alignItems: 'center',
 }))
 
 const MinMaxContainer = styled.View<{ sliderLength?: number }>(({ sliderLength, theme }) => ({
   flexDirection: 'row',
-  content: ' ',
   justifyContent: 'space-between',
   width: getSliderInfosLength(theme, sliderLength),
 }))
 
 const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
+  backgroundColor: 'white',
 }))
 
 const SliderWrapper = styled(View)(({ theme }) => ({
   paddingLeft: theme.slider.markerSize / 2,
   paddingRight: theme.slider.markerSize / 2,
-  alignItems: 'center',
-  width: '100%',
 }))
 
 function getSliderMarkerSize(theme: DefaultTheme): number {
