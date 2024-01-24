@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
 import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { SuggestedPlace, usePlaces } from 'libs/place'
+import { MIN_QUERY_LENGTH, SuggestedPlace, usePlaces } from 'libs/place'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
@@ -45,6 +45,7 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
   }
 
   const isQueryProvided = query.length > 0
+  const isQueryTooShort = query.length < MIN_QUERY_LENGTH
 
   const filteredPlaces: SuggestedPlace[] = [...uniqWith(places.slice(0, MAXIMUM_RESULTS), isEqual)]
   const hasResults = filteredPlaces.length > 0
@@ -53,7 +54,8 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
     <React.Fragment>
       <HiddenAccessibleResultNumber nbResults={filteredPlaces.length} show={hasResults} />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedPlaces show={!hasResults && isQueryProvided} />
+        <NoSuggestedPlaces show={!hasResults && !isQueryTooShort && isQueryProvided} />
+        <NotLongEnough show={isQueryTooShort} />
       </View>
       {!!hasResults && (
         <VerticalUl>
@@ -80,6 +82,9 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
       Aucune localisation ne correspond à ta recherche
     </StyledBody>
   ) : null
+
+const NotLongEnough = ({ show }: { show: boolean }) =>
+  show ? <StyledBody accessibilityLiveRegion="assertive">A valider par un PO/UX</StyledBody> : null
 
 const ListIconWrapper = styled.View(({ theme }) => ({
   marginTop: (theme.typography.body.fontSize * 15) / 100,

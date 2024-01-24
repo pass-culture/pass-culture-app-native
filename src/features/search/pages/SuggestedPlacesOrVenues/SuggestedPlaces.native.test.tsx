@@ -43,6 +43,21 @@ describe('<SuggestedPlaces/>', () => {
     ).not.toBeOnTheScreen()
   })
 
+  it('should show help message when the query is too short', async () => {
+    mockApiAdresse({
+      responseOptions: {
+        statusCode: 400,
+        data: {
+          code: 400,
+          message: 'q must contain between 3 and 200 chars and start with a number or a letter',
+        },
+      },
+    })
+    renderSuggestedPlaces('Oô')
+
+    expect(await screen.findByText('A valider par un PO/UX')).toBeOnTheScreen()
+  })
+
   it('should show loader when loading', async () => {
     mockApiAdresse(fixtureApiAddressDataGouv)
 
