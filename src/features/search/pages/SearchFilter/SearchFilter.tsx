@@ -1,3 +1,4 @@
+import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
@@ -9,7 +10,7 @@ import Section from 'features/search/components/sections'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { useSyncSearchFilter } from 'features/search/helpers/useSyncSearchFilter/useSyncSearchFilter'
+import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
@@ -26,7 +27,10 @@ import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
-  useSyncSearchFilter()
+  const routes = useNavigationState((state) => state?.routes)
+  const currentRoute = routes[routes?.length - 1].name
+  useSync(currentRoute === 'SearchFilter')
+
   const headerHeight = useGetHeaderHeight()
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch()
