@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
-import { View } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { View, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'

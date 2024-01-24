@@ -1,6 +1,5 @@
 import React from 'react'
-import { Animated } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Animated, TouchableOpacity } from 'react-native'
 
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
