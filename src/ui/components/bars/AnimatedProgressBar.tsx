@@ -2,6 +2,7 @@ import React, { FunctionComponent, memo, useEffect, useRef, useState } from 'rea
 import styled from 'styled-components/native'
 
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -68,7 +69,7 @@ const AnimatedProgressBarComponent: React.FC<ProgressBarProps> = ({
           backgroundColor={color}
           barWidth={barWidth}
           testID="animated-progress-bar"
-          useNativeDriver
+          useNativeDriver={ANIMATION_USE_NATIVE_DRIVER}
           duration={1000}
           easing="ease-in-out"
         />
