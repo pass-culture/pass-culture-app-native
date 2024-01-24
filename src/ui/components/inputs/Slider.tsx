@@ -223,7 +223,7 @@ const CenteredText = styled(Typo.ButtonText)<{ shouldShowMinMaxValues?: boolean;
   textAlign: 'center',
 })
 
-const SliderComponentWrapper = styled.View<{ sliderLength?: number }>(({ sliderLength }) => ({
+const SliderComponentWrapper = styled.View<{ sliderLength?: number }>(() => ({
   alignItems: 'center',
 }))
 
