@@ -84,7 +84,11 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   ) : null
 
 const NotLongEnough = ({ show }: { show: boolean }) =>
-  show ? <StyledBody accessibilityLiveRegion="assertive">A valider par un PO/UX</StyledBody> : null
+  show ? (
+    <StyledBody accessibilityLiveRegion="assertive">
+      Ta recherche doit comporter au minimum 3 caractères pour afficher des résultats
+    </StyledBody>
+  ) : null
 
 const ListIconWrapper = styled.View(({ theme }) => ({
   marginTop: (theme.typography.body.fontSize * 15) / 100,

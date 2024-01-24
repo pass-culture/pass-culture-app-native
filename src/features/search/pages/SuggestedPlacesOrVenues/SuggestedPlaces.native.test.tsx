@@ -55,7 +55,11 @@ describe('<SuggestedPlaces/>', () => {
     })
     renderSuggestedPlaces('Oô')
 
-    expect(await screen.findByText('A valider par un PO/UX')).toBeOnTheScreen()
+    expect(
+      await screen.findByText(
+        'Ta recherche doit comporter au minimum 3 caractères pour afficher des résultats'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should show loader when loading', async () => {
