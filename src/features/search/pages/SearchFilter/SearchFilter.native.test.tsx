@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useNavigationState } from '__mocks__/@react-navigation/native'
+import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { analytics } from 'libs/analytics'
@@ -27,14 +27,18 @@ const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: Position = DEFAULT_POSITION
 let mockLocationMode = LocationMode.AROUND_ME
 const mockAroundMeRadius = DEFAULT_RADIUS
+let mockHasGeolocPosition = false
+const mockSetSelectedLocationMode = jest.fn()
+
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     geolocPosition: mockPosition,
-    hasGeolocPosition: true,
     place: null,
     userLocation: mockPosition,
     selectedLocationMode: mockLocationMode,
     aroundMeRadius: mockAroundMeRadius,
+    setSelectedLocationMode: mockSetSelectedLocationMode,
+    hasGeolocPosition: mockHasGeolocPosition,
   }),
 }))
 
@@ -72,6 +76,41 @@ describe('<SearchFilter/>', () => {
     await screen.findByText('Filtres')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has a geolocposition', async () => {
+    mockHasGeolocPosition = true
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+        },
+      },
+    })
+
+    renderSearchFilter()
+
+    await act(async () => {})
+
+    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
+  })
+
+  it("shouldn't setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has no geolocposition", async () => {
+    mockHasGeolocPosition = false
+    mockLocationMode = LocationMode.EVERYWHERE
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+        },
+      },
+    })
+
+    renderSearchFilter()
+
+    await act(async () => {})
+
+    expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
   })
 
   describe('should update the SearchState, but keep the query, when pressing the reset button, and position', () => {
