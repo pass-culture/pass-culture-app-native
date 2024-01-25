@@ -662,9 +662,9 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       nativeCategoryId: NativeCategoryIdEnumv2.DVD_BLU_RAY,
     },
     {
-      id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE_CD,
+      id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE,
       categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
-      appLabel: 'CD',
+      appLabel: 'Support physique (CD, vinyle...)',
       searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
@@ -672,9 +672,9 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       nativeCategoryId: NativeCategoryIdEnumv2.CD,
     },
     {
-      id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+      id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE,
       categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
-      appLabel: 'Vinyles et autres supports',
+      appLabel: 'Support physique (CD, vinyle...)',
       searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
