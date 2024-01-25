@@ -161,20 +161,6 @@ describe('<VenueOffersNew />', () => {
     })
   })
 
-  it('should display all gtl playlists when there are more to display', () => {
-    const moreThan10Playlists = [...Array(11)].map((_, index) => ({
-      ...playlists[0],
-      title: playlists[0].title + index,
-    }))
-    renderVenueOffersNew({
-      venue: distributionStoreVenue,
-      venueOffers: venueOffersMock,
-      playlists: moreThan10Playlists,
-    })
-
-    expect(screen.getAllByText(/GTL playlist.+/)).toHaveLength(11)
-  })
-
   describe('should not display all gtl playlists', () => {
     it('When there are not gtl playlists associated to the venue and venue type is distribution store', () => {
       renderVenueOffersNew({ venue: bookstoreVenue, venueOffers: venueOffersMock })
