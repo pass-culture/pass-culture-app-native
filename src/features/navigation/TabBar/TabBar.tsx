@@ -1,11 +1,9 @@
-import { BottomTabBarProps, BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs'
-import { NavigationHelpers, ParamListBase } from '@react-navigation/native'
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabStateRoute } from 'features/navigation/TabBar/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 
@@ -13,19 +11,6 @@ import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
 
 type Props = Pick<BottomTabBarProps, 'navigation'>
-
-const scrollTopOfHomeIfOnHome = (
-  navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>,
-  route: TabStateRoute
-) => {
-  if (route.name === 'Home' && route.isSelected) {
-    navigation.emit({
-      type: 'tabPress',
-      target: route.key,
-      canPreventDefault: true,
-    })
-  }
-}
 
 export const TabBar: React.FC<Props> = ({ navigation }) => {
   const { tabRoutes } = useTabNavigationContext()
@@ -36,21 +21,39 @@ export const TabBar: React.FC<Props> = ({ navigation }) => {
     <TabBarContainer>
       {tabRoutes.map((route) => {
         const onPress = () => {
-          if (route.name === 'Search') {
-            if (route.isSelected) {
-              dispatch({
-                type: 'SET_STATE',
-                payload: { ...initialSearchState, locationFilter },
-              })
-              hideSuggestions()
-            } else {
-              navigation.navigate('TabNavigator', { screen: route.name, params: searchState })
-            }
-          } else {
-            const params = route.name === 'Home' ? undefined : route.params
-            scrollTopOfHomeIfOnHome(navigation, route)
-            navigation.navigate('TabNavigator', { screen: route.name, params })
+          const navigateParams: { screen: string; params?: unknown } = {
+            screen: route.name,
+            params: route.params,
           }
+          switch (route.name) {
+            case 'Home':
+              if (route.isSelected) {
+                // make the screen scroll to top (mobile only - Home only)
+                navigation.emit({
+                  type: 'tabPress',
+                  target: route.key,
+                  canPreventDefault: true,
+                })
+              }
+              navigateParams.params = undefined
+              break
+            case 'Search':
+              if (route.isSelected) {
+                dispatch({
+                  type: 'SET_STATE',
+                  payload: { ...initialSearchState, locationFilter },
+                })
+                hideSuggestions()
+              } else {
+                navigateParams.params = searchState
+              }
+              break
+            case 'Bookings':
+            case 'Favorites':
+            case 'Profile':
+              break
+          }
+          navigation.navigate('TabNavigator', navigateParams)
         }
         const tabNavConfig = getTabNavConfig(route.name)
         return (
