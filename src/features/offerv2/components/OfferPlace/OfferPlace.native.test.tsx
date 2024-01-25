@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferPlaceOldProps } from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
-import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -39,28 +38,34 @@ const offerVenues = [
     price: 1000,
   },
 ]
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-const mockData = {
-  pages: [
-    {
-      nbHits: 0,
-      hits: [],
-      page: 0,
-    },
-  ],
+
+const baseValueSearchVenueOffer = {
+  hasNextPage: true,
+  fetchNextPage: jest.fn(),
+  data: {
+    pages: [
+      {
+        nbHits: 0,
+        hits: [],
+        page: 0,
+      },
+    ],
+  },
+  isFetching: false,
 }
-let mockVenueList: VenueListItem[] = []
-let mockNbVenueItems = 0
+const searchVenueOfferEmpty = {
+  ...baseValueSearchVenueOffer,
+  venueList: [],
+  nbVenueItems: 0,
+}
+const searchVenueOfferWithVenues = {
+  ...baseValueSearchVenueOffer,
+  venueList: offerVenues,
+  nbVenueItems: 2,
+}
+const mockUseSearchVenueOffers = jest.fn(() => searchVenueOfferWithVenues)
 jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
-  useSearchVenueOffers: () => ({
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    data: mockData,
-    venueList: mockVenueList,
-    nbVenueItems: mockNbVenueItems,
-    isFetching: false,
-  }),
+  useSearchVenueOffers: () => mockUseSearchVenueOffers(),
 }))
 
 jest
@@ -91,13 +96,10 @@ describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockDistance = null
     mockdate.set(new Date('2021-01-01'))
-    mockVenueList = []
-    mockNbVenueItems = 0
+    mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
 
   it('should display change venue button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -111,8 +113,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display change venue button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
-    mockNbVenueItems = 0
-    mockVenueList = []
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -126,6 +127,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display change venue button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
@@ -135,8 +137,6 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display change venue button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -150,8 +150,8 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display change venue button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
-    mockNbVenueItems = 0
-    mockVenueList = []
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
+
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -165,9 +165,6 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display change venue button when offer subcategory is "Livres papier" and offer has not an EAN', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
     renderOfferPlace({
       ...offerPlaceProps,
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
@@ -177,12 +174,14 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display change venue button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace(offerPlaceProps)
 
     expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
   })
 
   it('should display venue block With "Lieu de retrait" in title by default', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
@@ -199,8 +198,6 @@ describe('<OfferPlace />', () => {
       hideModal: jest.fn(),
       toggleModal: jest.fn(),
     })
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
 
     renderOfferPlace({
       ...offerPlaceProps,
@@ -230,9 +227,6 @@ describe('<OfferPlace />', () => {
       toggleModal: jest.fn(),
     })
 
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -254,9 +248,6 @@ describe('<OfferPlace />', () => {
   })
 
   it('should log when the users press "Changer le lieu de retrait" button', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -274,6 +265,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display venue tag distance when user share his position', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     mockDistance = '7 km'
     renderOfferPlace({})
 
@@ -281,12 +273,14 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display venue tag distance when user not share his position', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({})
 
     expect(screen.queryByText('à 7 km')).not.toBeOnTheScreen()
   })
 
   it('should not display "Voir la page du lieu" button when venue is not permanent', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     const offer: OfferResponse = {
       ...mockOffer,
       venue: {
@@ -309,12 +303,14 @@ describe('<OfferPlace />', () => {
     }
 
     it('should display "Voir la page du lieu" button', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
       expect(screen.getByText('Voir la page du lieu')).toBeOnTheScreen()
     })
 
     it('should navigate to venue page when pressing "Voir la page du lieu" button', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
       fireEvent.press(screen.getByText('Voir la page du lieu'))
@@ -323,6 +319,7 @@ describe('<OfferPlace />', () => {
     })
 
     it('should log ConsultVenue when pressing "Voir la page du lieu" button', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
       fireEvent.press(screen.getByText('Voir la page du lieu'))
@@ -335,6 +332,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     const offer: OfferResponse = {
       ...mockOffer,
       venue: {
@@ -352,6 +350,7 @@ describe('<OfferPlace />', () => {
 
   describe('should not display "Voir l’itinéraire" button', () => {
     it('When address, city and postal code not provided', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponse = {
         ...mockOffer,
         venue: {
@@ -368,6 +367,7 @@ describe('<OfferPlace />', () => {
     })
 
     it('When only address provided', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponse = {
         ...mockOffer,
         venue: {
@@ -384,6 +384,7 @@ describe('<OfferPlace />', () => {
     })
 
     it('When only city provided', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponse = {
         ...mockOffer,
         venue: {
@@ -400,6 +401,7 @@ describe('<OfferPlace />', () => {
     })
 
     it('When only city postalCode', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       const offer: OfferResponse = {
         ...mockOffer,
         venue: {
@@ -417,6 +419,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should log consult itinerary when pressing "Voir l’itinéraire" button', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     const offer: OfferResponse = {
       ...mockOffer,
       id: 146112,
