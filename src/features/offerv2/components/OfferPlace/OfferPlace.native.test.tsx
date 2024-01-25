@@ -8,7 +8,7 @@ import { OfferPlaceOldProps } from 'features/offer/components/OfferPlaceOld/Offe
 import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { LocationMode } from 'libs/location/types'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -83,13 +83,14 @@ jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 
-let mockSelectedLocationMode = LocationMode.EVERYWHERE
-let mockPlace: SuggestedPlace | null = null
+const mockUseLocation = jest.fn(
+  (): Partial<ILocationContext> => ({
+    selectedLocationMode: LocationMode.EVERYWHERE,
+    place: null,
+  })
+)
 jest.mock('libs/location', () => ({
-  useLocation: jest.fn(() => ({
-    selectedLocationMode: mockSelectedLocationMode,
-    place: mockPlace,
-  })),
+  useLocation: () => mockUseLocation(),
 }))
 
 describe('<OfferPlace />', () => {
@@ -451,8 +452,15 @@ describe('<OfferPlace />', () => {
         place: SuggestedPlace | null
         headerMessage: string
       }) => {
-        mockSelectedLocationMode = locationMode
-        mockPlace = place
+        mockUseLocation
+          .mockReturnValueOnce({
+            selectedLocationMode: locationMode,
+            place,
+          })
+          .mockReturnValueOnce({
+            selectedLocationMode: locationMode,
+            place,
+          })
         mockDistance = null
         renderOfferPlace({
           isEvent: false,
