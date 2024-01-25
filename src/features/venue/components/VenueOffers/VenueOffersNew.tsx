@@ -120,7 +120,7 @@ export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props
       />
       {shouldDisplayGtlPlaylist ? (
         <React.Fragment>
-          {playlists.slice(0, 10).map((playlist) => (
+          {playlists.map((playlist) => (
             <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
           ))}
         </React.Fragment>
