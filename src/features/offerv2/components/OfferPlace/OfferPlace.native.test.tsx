@@ -11,7 +11,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('libs/address/useFormatFullAddress')
@@ -83,8 +83,8 @@ jest.mock('libs/location/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
 
-const mockSelectedLocationMode = LocationMode.EVERYWHERE
-const mockPlace: SuggestedPlace | null = null
+let mockSelectedLocationMode = LocationMode.EVERYWHERE
+let mockPlace: SuggestedPlace | null = null
 jest.mock('libs/location', () => ({
   useLocation: jest.fn(() => ({
     selectedLocationMode: mockSelectedLocationMode,
@@ -432,6 +432,46 @@ describe('<OfferPlace />', () => {
       from: 'offer',
       offerId: 146112,
     })
+  })
+
+  describe('HeaderMessage', () => {
+    it.each`
+      locationMode                 | place                                                                                             | headerMessage
+      ${LocationMode.AROUND_ME}    | ${null}                                                                                           | ${'Lieux disponibles autour de moi'}
+      ${LocationMode.EVERYWHERE}   | ${null}                                                                                           | ${'Lieux à proximité de “Cinéma de la fin”'}
+      ${LocationMode.AROUND_PLACE} | ${{ label: 'Kourou', info: 'Guyane', geolocation: { longitude: -52.669736, latitude: 5.16186 } }} | ${'Lieux à proximité de “Kourou”'}
+    `(
+      'should return "$headerMessage" when location mode is $locationMode and place is $place',
+      async ({
+        locationMode,
+        place,
+        headerMessage,
+      }: {
+        locationMode: LocationMode
+        place: SuggestedPlace | null
+        headerMessage: string
+      }) => {
+        mockSelectedLocationMode = locationMode
+        mockPlace = place
+        mockDistance = null
+        renderOfferPlace({
+          isEvent: false,
+          offer: {
+            ...mockOffer,
+            subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            extraData: {
+              ean: '2765410054',
+            },
+          },
+        })
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Changer le lieu de retrait'))
+        })
+
+        expect(screen.getByText(headerMessage)).toBeOnTheScreen()
+      }
+    )
   })
 })
 
