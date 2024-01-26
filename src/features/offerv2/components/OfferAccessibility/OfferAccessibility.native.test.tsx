@@ -13,12 +13,6 @@ describe('<OfferAccessibility />', () => {
     expect(screen.getByText('Accessibilité de l’offre')).toBeOnTheScreen()
   })
 
-  it('should not display section title when there is not handicap information', () => {
-    render(<OfferAccessibility accessibility={{}} />)
-
-    expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
-  })
-
   it('should display accessibility block when there is at least one handicap information', () => {
     render(<OfferAccessibility accessibility={accessibility} />)
 

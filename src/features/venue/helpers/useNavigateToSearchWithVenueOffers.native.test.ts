@@ -49,7 +49,6 @@ describe('useNavigateToSearchWithVenueOffers', () => {
         screen: 'Search',
         params: {
           ...venueSearchParamsMock,
-          previousView: SearchView.Results,
           view: SearchView.Results,
         },
       },

@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.275.0",
-  "build": 10275000,
+  "version": "1.276.0",
+  "build": 10276000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -160,7 +160,7 @@
     "react-native-email-link": "^1.10.0",
     "react-native-fast-image": "^8.6.3",
     "react-native-geolocation-service": "5.3.1",
-    "react-native-gesture-handler": "^1.10.3",
+    "react-native-gesture-handler": "^2.14.1",
     "react-native-get-random-values": "^1.5.1",
     "react-native-in-app-review": "^4.3.1",
     "react-native-intersection-observer": "^0.2.0",
@@ -171,6 +171,8 @@
     "react-native-modal": "^13.0.0",
     "react-native-permissions": "^3.8.0",
     "react-native-qrcode-svg": "^6.1.2",
+    "react-native-reanimated": "^2.17.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "react-native-safe-area-context": "3.4.1",
     "react-native-screens": "^3.18.2",
     "react-native-share": "^8.2.2",

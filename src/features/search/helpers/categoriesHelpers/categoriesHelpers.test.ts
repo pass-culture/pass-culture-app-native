@@ -47,6 +47,10 @@ describe('categoriesHelpers', () => {
         value: 'CD, vinyles, musique en ligne',
       },
       {
+        name: 'FILMS_SERIES_CINEMA',
+        value: 'Cinéma, films et séries',
+      },
+      {
         name: 'CONCERTS_FESTIVALS',
         value: 'Concerts & festivals',
       },
@@ -57,10 +61,6 @@ describe('categoriesHelpers', () => {
       {
         name: 'EVENEMENTS_EN_LIGNE',
         value: 'Évènements en ligne',
-      },
-      {
-        name: 'FILMS_SERIES_CINEMA',
-        value: 'Films, séries, cinéma',
       },
       {
         name: 'INSTRUMENTS',

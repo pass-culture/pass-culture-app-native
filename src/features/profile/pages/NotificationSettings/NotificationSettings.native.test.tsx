@@ -31,9 +31,6 @@ describe('NotificationSettings', () => {
     })
 
     it('should only display the email switch on android', async () => {
-      // FIXME(PC-211174): This warning comes from android 'Expected style "elevation: 4px" to be unitless' due to shadow style (https://passculture.atlassian.net/browse/PC-21174)
-      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
-
       Platform.OS = 'android'
       renderNotificationSettings('granted', {} as UserProfileResponse)
 

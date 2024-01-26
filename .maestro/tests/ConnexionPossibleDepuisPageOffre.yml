@@ -13,7 +13,7 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Recherche'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
-- tapOn: 'Films, séries, cinéma'
+- tapOn: 'Cinéma, films et séries'
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par le nom de l'aoffre
 - tapOn: ${MAESTRO_PHYSICAL_OFFER}
 - tapOn:

@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-color-literals */
+/* eslint-disable react-native/no-inline-styles */
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -9,7 +11,18 @@ const meta: ComponentMeta<typeof Slider> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof Slider> = (props) => <Slider {...props} />
+const Template: ComponentStory<typeof Slider> = (props) => (
+  <div style={{ width: '1024px' }}>
+    <Slider {...props} />
+  </div>
+)
+
+const TemplateWrapped: ComponentStory<typeof Slider> = (props) => (
+  // eslint-disable-next-line react-native/no-inline-styles
+  <div style={{ width: '375px' }}>
+    <Slider {...props} />
+  </div>
+)
 
 export const DefaultSlider = Template.bind({})
 
@@ -27,6 +40,16 @@ SliderWithMinMaxValues.args = {
   showValues: false,
   shouldShowMinMaxValues: true,
   minMaxValuesComplement: `\u00a0km`,
+}
+
+export const MobileSliderWithMinMaxValues = TemplateWrapped.bind({})
+MobileSliderWithMinMaxValues.args = {
+  values: [50],
+  max: 100,
+  showValues: false,
+  shouldShowMinMaxValues: true,
+  minMaxValuesComplement: `\u00a0km`,
+  sliderLength: 375,
 }
 
 export const SliderWithFormattedValues = Template.bind({})

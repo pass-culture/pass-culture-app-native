@@ -166,7 +166,7 @@ describe('expirationDateUtils', () => {
   describe('isFreeBookingInSubcategories', () => {
     it('should return true when booking amount is 0 and the offer has a category that can be archived', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.totalAmount = 0
 
       expect(isFreeBookingInSubcategories(booking)).toBeTruthy()
@@ -182,7 +182,7 @@ describe('expirationDateUtils', () => {
 
     it('should return false when booking amount > 0 and the offer has a category that can be archived', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.totalAmount = 1000
 
       expect(isFreeBookingInSubcategories(booking)).toBeFalsy()

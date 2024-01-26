@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import { Platform, ViewStyle } from 'react-native'
+import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -13,7 +13,12 @@ type InputShadow = {
   shadowColor: ColorsEnum | string
   shadowOpacity: number
 }
-type AndroidShadow = Pick<ViewStyle, 'elevation'>
+type AndroidShadow = {
+  // To avoid the following error:
+  // WARN  Expected style "elevation: 2.2857142857142856px" to be unitless
+  // https://github.com/styled-components/styled-components/issues/3254
+  elevation: string
+}
 type IOSShadow = {
   shadowOffset: string
   shadowRadius: number
@@ -31,7 +36,7 @@ export function getShadow(
     if (Platform.Version < 5) {
       return {}
     }
-    return { elevation: Number(shadowInput.shadowOffset.height) * 2 }
+    return { elevation: `${Number(shadowInput.shadowOffset.height) * 2}` }
   }
   if (Platform.OS === 'ios') {
     return {

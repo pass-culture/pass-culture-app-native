@@ -26,7 +26,6 @@ import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getB
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
-import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
@@ -38,6 +37,7 @@ import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 type UseGetCtaWordingAndActionProps = {
   offer: OfferResponse
+  subcategory: Subcategory
   from?: Referrals
   searchId?: string
 }
@@ -243,12 +243,11 @@ export const getCtaWordingAndAction = ({
 }
 
 export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) => {
-  const { offer, from, searchId } = props
+  const { offer, from, searchId, subcategory } = props
   const offerId = offer.id
   const { isLoggedIn, user } = useAuthContext()
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const mapping = useSubcategoriesMapping()
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
@@ -308,7 +307,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     userStatus,
     isBeneficiary,
     offer,
-    subcategory: mapping[offer.subcategoryId],
+    subcategory,
     hasEnoughCredit,
     bookedOffers,
     isEndedUsedBooking: !!endedBooking?.dateUsed,

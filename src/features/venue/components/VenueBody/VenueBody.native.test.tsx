@@ -102,9 +102,6 @@ describe('<VenueBody />', () => {
     afterAll(() => (Platform.OS = 'ios'))
 
     it('should open social medium on share button press', async () => {
-      // FIXME(PC-21174): This warning comes from android 'Expected style "elevation: 16px" to be unitless' due to shadow style
-      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
-      jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
       canOpenURLSpy.mockResolvedValueOnce(true)
       await renderVenueBody(venueId)
 

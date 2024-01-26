@@ -45,7 +45,6 @@ import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 LogBox.ignoreLogs([
   'Setting a timer',
-  'Expected style "elevation:',
   'OfferNotFoundError', // custom error
   // The following warning is caused by TabNavigationContext which is updated by the `tabbar` prop
   // of TabNavigator. As of today, no bug has been observed which seems related to the warning.

@@ -8,10 +8,17 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 const RATIO_LANDSCAPE = 3 / 2
 const RATIO_PORTRAIT = 2 / 3
 
-export const blurImageHeight = getSpacing(74)
-export const heroMarginTop = MARGIN_DP + getSpacing(0.5)
+type Props = {
+  type: 'offer' | 'offerv2' | 'venue'
+  hasImage: boolean
+}
 
-export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) => {
+export const blurImageHeight = getSpacing(74)
+export const heroMarginTop = MARGIN_DP + getSpacing(2)
+const PORTRAIT_IMAGE_V2_HEIGHT = getSpacing(95)
+const HEADER_HEIGHT = getSpacing(64.5)
+
+export const useHeroDimensions = ({ type, hasImage }: Props) => {
   const { top } = useCustomSafeInsets()
   const { appContentWidth, borderRadius } = useTheme()
   const fullWidth = appContentWidth - 2 * MARGIN_DP
@@ -39,6 +46,17 @@ export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) =>
             aspectRatio: 1,
           },
         }
+      }
+    } else if (type === 'offerv2') {
+      return {
+        heroBackgroundHeight: top + HEADER_HEIGHT,
+        imageStyle: {
+          borderRadius: borderRadius.radius,
+          height: PORTRAIT_IMAGE_V2_HEIGHT,
+          width: Math.round(PORTRAIT_IMAGE_V2_HEIGHT * RATIO_PORTRAIT),
+          maxWidth: fullWidth,
+          aspectRatio: RATIO_PORTRAIT,
+        },
       }
     }
 

@@ -7,7 +7,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 import { OfferResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylist/api/fetchOffersByArtist'
+import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { PlaylistType } from 'features/offer/enums'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -184,8 +184,6 @@ describe('<OfferBody />', () => {
       afterAll(() => (Platform.OS = 'ios'))
 
       it('should open social medium on share button press using correct message', async () => {
-        // FIXME(PC-21174): This warning comes from android 'Expected style "elevation: 16px" to be unitless' due to shadow style
-        jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
         canOpenURLSpy.mockResolvedValueOnce(true)
         renderOfferBody({})
 

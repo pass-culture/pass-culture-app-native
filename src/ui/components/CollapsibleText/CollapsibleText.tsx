@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -10,21 +10,16 @@ import { ArrowUp } from 'ui/svg/icons/ArrowUp'
 import { Typo } from 'ui/theme'
 
 type Props = {
-  text: string
+  children: string
   // Minimum number of lines when collapsible is collapsed.
   numberOfLines: number
-  lineHeight: number
-  isExpandedByDefault?: boolean
 }
 
-export function CollapsibleText({
-  text,
-  numberOfLines,
-  lineHeight,
-  isExpandedByDefault = false,
-}: Readonly<Props>) {
-  const [expanded, setExpanded] = useState(isExpandedByDefault)
+export function CollapsibleText({ children, numberOfLines }: Readonly<Props>) {
+  const [expanded, setExpanded] = useState(false)
   const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
+  const theme = useTheme()
+  const lineHeight = Number(theme.typography.body.lineHeight.slice(0, -2))
 
   const onPress = () => setExpanded((prevExpanded) => !prevExpanded)
 
@@ -45,7 +40,7 @@ export function CollapsibleText({
   return (
     <React.Fragment>
       <Typo.Body numberOfLines={expanded ? undefined : numberOfLines} onLayout={onLayout}>
-        {highlightLinks(text)}
+        {highlightLinks(children)}
       </Typo.Body>
       {shouldDisplayButton ? (
         <ButtonContainer>

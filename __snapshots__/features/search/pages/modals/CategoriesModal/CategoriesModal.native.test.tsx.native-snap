@@ -760,7 +760,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                           ]
                         }
                       >
-                        Films, séries, cinéma
+                        Cinéma, films et séries
                       </Text>
                     </View>
                   </View>

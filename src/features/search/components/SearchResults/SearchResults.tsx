@@ -218,7 +218,6 @@ export const SearchResults: React.FC = () => {
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
       <View>
-        <Spacer.Column numberOfSpaces={2} />
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <Spacer.Row numberOfSpaces={5} />
           <Ul>

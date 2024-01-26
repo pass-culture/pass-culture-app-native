@@ -48,6 +48,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
         securityRulesAlwaysVisible
         autoFocus
         nativeAutoFocus
+        isRequiredField={false}
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary

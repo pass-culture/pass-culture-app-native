@@ -50,7 +50,7 @@ describe('<Slider />', () => {
       expect(screen.queryByText('0')).toBeOnTheScreen()
     })
 
-    it('should show maximim value if shouldShowMinMaxValues is true', () => {
+    it('should show max and min value if shouldShowMinMaxValues is true', () => {
       render(<Slider values={[100]} shouldShowMinMaxValues max={100} showValues={false} />)
 
       expect(screen.queryByText('100')).toBeOnTheScreen()

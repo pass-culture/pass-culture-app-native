@@ -54,23 +54,23 @@ src/api/gen/index.ts:1648 - OfferReportRequest
 src/api/gen/index.ts:1770 - OfferStockActivationCodeResponse
 src/api/gen/index.ts:2021 - ReasonMeta
 src/api/gen/index.ts:2048 - ReportedOffer
-src/api/gen/index.ts:2612 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:2728 - UserProfileEmailUpdate
-src/api/gen/index.ts:2959 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:2970 - ValidationError
-src/api/gen/index.ts:2976 - ValidationErrorElement
-src/api/gen/index.ts:3211 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4412 - DefaultApiFp
+src/api/gen/index.ts:2608 - SubscriptionStepDetailsResponse
+src/api/gen/index.ts:2724 - UserProfileEmailUpdate
+src/api/gen/index.ts:2955 - ValidatePhoneNumberRequest
+src/api/gen/index.ts:2966 - ValidationError
+src/api/gen/index.ts:2972 - ValidationErrorElement
+src/api/gen/index.ts:3207 - DefaultApiFetchParamCreator
+src/api/gen/index.ts:4408 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:34 - Response (used in module)
-src/features/search/types.ts:81 - CategoriesModalFormProps
-src/features/search/types.ts:93 - CategoriesViewData
-src/features/search/types.ts:98 - MappedData
-src/features/search/types.ts:100 - VenueUserTitleRule (used in module)
-src/features/search/types.ts:101 - VenueUserData (used in module)
-src/features/search/types.ts:119 - AnalyticsParams
+src/features/search/types.ts:79 - CategoriesModalFormProps
+src/features/search/types.ts:91 - CategoriesViewData
+src/features/search/types.ts:96 - MappedData
+src/features/search/types.ts:98 - VenueUserTitleRule (used in module)
+src/features/search/types.ts:99 - VenueUserData (used in module)
+src/features/search/types.ts:117 - AnalyticsParams
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)

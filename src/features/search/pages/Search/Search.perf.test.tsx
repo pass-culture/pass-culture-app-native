@@ -55,20 +55,6 @@ describe('<Search />', () => {
       })
     })
   })
-
-  describe('Search Suggestions -', () => {
-    beforeAll(() => {
-      useRoute.mockReturnValue({ params: { view: SearchView.Suggestions, query: 'ciné' } })
-    })
-
-    it('Performance test for Search Suggestions page', async () => {
-      await measurePerformance(<SearchPage />, {
-        scenario: async () => {
-          await act(async () => {})
-        },
-      })
-    })
-  })
 })
 
 const SearchPage = () =>

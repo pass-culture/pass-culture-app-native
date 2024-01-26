@@ -57,7 +57,6 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
             },
           }
         : {}),
-      previousView: SearchView.Results,
       view: SearchView.Results,
     })
   }, [params, venue])
