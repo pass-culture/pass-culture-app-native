@@ -76,9 +76,12 @@ jobs:
       - name: 'Build web for input env'
         run: |
           NODE_OPTIONS='--max-old-space-size=4096' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:${{ inputs.ENV }}
-      - name: 'Push to bucket'
+      - name: 'Push assets to bucket'
         run: |
-          gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
+          gsutil rsync -x "index\.html$" -r build gs://${{ inputs.BUCKET_NAME }}
+      - name: 'Push index.html to bucket'
+        run: |
+          gsutil cp build/index.html gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
     runs-on: ubuntu-latest
     if: ${{ always() }}
