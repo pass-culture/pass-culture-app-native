@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
-import { SearchLocationWidgetDesktop } from 'features/location/components/SearchLocationWidgetDesktop'
+import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { CreateHistoryItem, SearchView } from 'features/search/types'
@@ -11,7 +11,6 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -46,17 +45,8 @@ export const SearchHeader = memo(function SearchHeader({
               <StyledTitleMainView {...getHeadingAttrs(1)}>
                 <StyledTitleMainText htmlFor={searchInputID}>Rechercher</StyledTitleMainText>
               </StyledTitleMainView>
-
-              {!!shouldDisplayDesktopLocationWidget && (
-                <LocationWidgetDesktopView>
-                  <Spacer.Row numberOfSpaces={6} />
-                  <Separator.Vertical height={getSpacing(6)} />
-                  <Spacer.Row numberOfSpaces={4} />
-                  <SearchLocationWidgetDesktop />
-                </LocationWidgetDesktopView>
-              )}
+              {!!shouldDisplayDesktopLocationWidget && <SearchLocationWidgetDesktopView />}
             </TitleMainWrapper>
-
             {
               // eslint-disable-next-line local-rules/no-string-check-before-component
               shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>
@@ -117,12 +107,4 @@ const StyledTitleMainView = styled.View({
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
   maxWidth: '75%',
-})
-
-const LocationWidgetDesktopView = styled.View({
-  marginTop: getSpacing(1) / 2,
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  maxWidth: '25%',
 })
