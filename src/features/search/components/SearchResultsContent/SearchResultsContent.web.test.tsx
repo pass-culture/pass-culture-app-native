@@ -5,7 +5,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { GeoCoordinates, Position } from 'libs/location'
 import { act, render, screen } from 'tests/utils/web'
 
-import { SearchResults } from './SearchResults'
+import { SearchResultsContent } from './SearchResultsContent'
 
 jest.mock('react-query')
 
@@ -45,9 +45,9 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
-describe('SearchResults component', () => {
+describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(<SearchResults />)
+    const renderAPI = render(<SearchResultsContent />)
     await act(async () => {}) // fix 3 warnings "Warning: An update to %s inside a test was not wrapped in act" for PriceModal, LocationModal and DatesHoursModal
     await screen.findByTestId('searchResultsList')
 

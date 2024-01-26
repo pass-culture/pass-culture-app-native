@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
 import { CategoriesButtons } from 'features/search/components/CategoriesButtons/CategoriesButtons'
-import { SearchResults } from 'features/search/components/SearchResults/SearchResults'
+import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { useShowResultsForCategory } from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { SearchView } from 'features/search/types'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -15,7 +15,7 @@ export const BodySearch = memo(function BodySearch({ view }: BodySearchProps) {
   const showResultsForCategory = useShowResultsForCategory()
 
   if (view === SearchView.Results) {
-    return <SearchResults />
+    return <SearchResultsContent />
   }
   return (
     <Container>
