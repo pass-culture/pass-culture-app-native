@@ -76,7 +76,10 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
       itemWidth={itemWidth}
       itemHeight={itemHeight}
       renderItem={renderPassPlaylist}
-      keyExtractor={(item: Hit<Offer>) => item.offer.name ?? ''}
+        keyExtractor={(item: Hit<Offer>) => {
+          const hit = transformOfferHits(item)
+          return hit.objectID ?? ''
+        }}
       title={playlist.title}
       onEndReached={logHasSeenAllTilesOnce}
     />
