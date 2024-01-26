@@ -70,7 +70,6 @@ export const SearchResults = () => {
           <Configure hitsPerPage={5} clickAnalytics />
           <SearchHeader
             searchInputID={searchInputID}
-            searchView={view}
             addSearchHistory={addToHistory}
             searchInHistory={setQueryHistoryMemoized}
           />

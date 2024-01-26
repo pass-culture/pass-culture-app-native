@@ -52,7 +52,7 @@ describe('SearchHeader component', () => {
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
-          searchView={SearchView.Landing}
+          shouldDisplaySubtitle
         />
       )
       await act(async () => {})
@@ -67,7 +67,7 @@ describe('SearchHeader component', () => {
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-        searchView={SearchView.Landing}
+        shouldDisplaySubtitle
       />
     )
 
@@ -88,7 +88,7 @@ describe('SearchHeader component', () => {
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-        searchView={SearchView.Landing}
+        shouldDisplaySubtitle
       />
     )
     await act(async () => {})
@@ -108,7 +108,6 @@ describe('SearchHeader component', () => {
           searchInputID={searchInputID}
           addSearchHistory={jest.fn()}
           searchInHistory={jest.fn()}
-          searchView={view}
         />
       )
 
@@ -129,7 +128,7 @@ describe('SearchHeader component', () => {
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
-        searchView={SearchView.Landing}
+        shouldDisplaySubtitle
       />
     )
 

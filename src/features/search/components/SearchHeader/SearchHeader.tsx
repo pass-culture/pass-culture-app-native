@@ -4,21 +4,21 @@ import styled from 'styled-components/native'
 
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndWidget/SearchTitleAndWidget'
-import { CreateHistoryItem, SearchView } from 'features/search/types'
+import { CreateHistoryItem } from 'features/search/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   searchInputID: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
-  searchView: SearchView
+  shouldDisplaySubtitle?: boolean
 }
 
 export const SearchHeader = memo(function SearchHeader({
   searchInputID,
-  searchView,
   addSearchHistory,
   searchInHistory,
+  shouldDisplaySubtitle = false,
 }: Props) {
   return (
     <React.Fragment>
@@ -26,7 +26,7 @@ export const SearchHeader = memo(function SearchHeader({
       <HeaderContainer>
         <SearchTitleAndWidget
           searchInputID={searchInputID}
-          shouldDisplaySubtitle={searchView === SearchView.Landing}
+          shouldDisplaySubtitle={shouldDisplaySubtitle}
         />
         <Spacer.Column numberOfSpaces={4} />
         <View>

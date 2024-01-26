@@ -70,7 +70,7 @@ export const SearchLanding = () => {
           <Configure hitsPerPage={5} clickAnalytics />
           <SearchHeader
             searchInputID={searchInputID}
-            searchView={view}
+            shouldDisplaySubtitle
             addSearchHistory={addToHistory}
             searchInHistory={setQueryHistoryMemoized}
           />
