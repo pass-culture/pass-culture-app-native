@@ -5,8 +5,8 @@ import { StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import { v4 as uuidv4 } from 'uuid'
 
-import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
+import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
@@ -45,8 +45,7 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 export const SearchResults = () => {
   useSync()
   const netInfo = useNetInfoContext()
-  const { searchState, isFocusOnSuggestions } = useSearch()
-  const { view } = searchState
+  const { isFocusOnSuggestions } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
 
@@ -82,7 +81,7 @@ export const SearchResults = () => {
               filteredHistory={filteredHistory}
             />
           ) : (
-            <BodySearch view={view} />
+            <SearchResultsContent />
           )}
         </InstantSearch>
       </Form.Flex>

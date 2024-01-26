@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchResults component should render correctly 1`] = `
+exports[`SearchResultsContent component should render correctly 1`] = `
 [
   <View>
     <RCTScrollView

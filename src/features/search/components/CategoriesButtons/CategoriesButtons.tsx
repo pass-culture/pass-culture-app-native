@@ -1,26 +1,14 @@
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { memo } from 'react'
 
-import {
-  OnPressCategory,
-  useSortedSearchCategories,
-} from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
+import { useShowResultsForCategory } from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
+import { useSortedSearchCategories } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 
 import { CategoriesButtonsDisplay } from '../CategoriesButtonsDisplay/CategoriesButtonsDisplay'
 
-type Props = {
-  onPressCategory: OnPressCategory
-  children?: never
-}
+export const CategoriesButtons = memo(function CategoriesButtons() {
+  const showResultsForCategory = useShowResultsForCategory()
 
-export const CategoriesButtons: FunctionComponent<Props> = ({ onPressCategory }) => {
-  const onPressWithAnalytics: OnPressCategory = useCallback(
-    (pressedCategory) => {
-      onPressCategory(pressedCategory)
-    },
-    [onPressCategory]
-  )
-
-  const sortedCategories = useSortedSearchCategories(onPressWithAnalytics)
+  const sortedCategories = useSortedSearchCategories(showResultsForCategory)
 
   return <CategoriesButtonsDisplay sortedCategories={sortedCategories} />
-}
+})

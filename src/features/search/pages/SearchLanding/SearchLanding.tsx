@@ -3,9 +3,10 @@ import React, { useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import { StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
+import { CategoriesButtons } from 'features/search/components/CategoriesButtons/CategoriesButtons'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -45,8 +46,7 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 export const SearchLanding = () => {
   useSync()
   const netInfo = useNetInfoContext()
-  const { searchState, isFocusOnSuggestions } = useSearch()
-  const { view } = searchState
+  const { isFocusOnSuggestions } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
 
@@ -83,10 +83,18 @@ export const SearchLanding = () => {
               filteredHistory={filteredHistory}
             />
           ) : (
-            <BodySearch view={view} />
+            <CategoriesButtonsContainer>
+              <CategoriesButtons />
+              <Spacer.TabBar />
+            </CategoriesButtonsContainer>
           )}
         </InstantSearch>
       </Form.Flex>
     </React.Fragment>
   )
 }
+
+const CategoriesButtonsContainer = styled.View({
+  flex: 1,
+  overflowY: 'auto',
+})
