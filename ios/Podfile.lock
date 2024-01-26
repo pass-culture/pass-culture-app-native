@@ -671,7 +671,8 @@ PODS:
     - RNFBApp
   - RNFlashList (1.4.1):
     - React-Core
-  - RNGestureHandler (1.10.3):
+  - RNGestureHandler (2.14.1):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - RNGoogleSignin (10.1.0):
     - GoogleSignIn (~> 7.0)
@@ -682,6 +683,33 @@ PODS:
     - React
   - RNPermissions (3.8.0):
     - React-Core
+  - RNReanimated (2.17.0):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - glog
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (3.20.0):
     - React-Core
     - React-RCTImage
@@ -808,6 +836,7 @@ DEPENDENCIES:
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLaunchNavigator (from `../node_modules/react-native-launch-navigator`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
@@ -1011,6 +1040,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-launch-navigator"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSentry:
@@ -1134,11 +1165,12 @@ SPEC CHECKSUMS:
   RNFBPerf: c4b51d204881e99f1fccd491f8756c6be1bb8f3d
   RNFBRemoteConfig: ec7bfe6cff76296f0e5ec8ad0c0149f00d6d92ca
   RNFlashList: 8ec7f7454721145fe84566bb9e88bcf58981c9fe
-  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNGestureHandler: fe2be3be5598dc74329b211c58c9f2d231461769
   RNGoogleSignin: a6a612cce56a45ab701c5c5c6e36f5390522d100
   RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
+  RNReanimated: f186e85d9f28c9383d05ca39e11dd194f59093ec
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   RNSentry: 221d8c3f0bf0d951e9ecc89d3e42ee97aab9d7c0
   RNShare: d82e10f6b7677f4b0048c23709bd04098d5aee6c
