@@ -98,7 +98,7 @@ jobs:
       - name: Post to a Slack channel
         id: slack
         if: ${{ steps.web_deploy.outputs.status == 'failure' || inputs.ENV == 'staging' }}
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
         with:
           # channel #alertes-deploiement-native
           channel-id: 'C0309RP8K42'
