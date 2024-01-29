@@ -24,20 +24,39 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
     <TabBarContainer>
       {tabRoutes.map((route) => {
         const onPress = () => {
-          if (route.name === 'Search') {
-            if (route.isSelected) {
-              dispatch({
-                type: 'SET_STATE',
-                payload: { ...initialSearchState, locationFilter },
-              })
-              hideSuggestions()
-            } else {
-              navigation.navigate('TabNavigator', { screen: route.name, params: searchState })
-            }
-          } else {
-            const params = route.name === 'Home' ? undefined : route.params
-            navigation.navigate('TabNavigator', { screen: route.name, params })
+          const navigateParams: { screen: string; params?: unknown } = {
+            screen: route.name,
+            params: route.params,
           }
+          switch (route.name) {
+            case 'Home':
+              if (route.isSelected) {
+                // make the screen scroll to top (mobile only - Home only)
+                navigation.emit({
+                  type: 'tabPress',
+                  target: route.key,
+                  canPreventDefault: true,
+                })
+              }
+              navigateParams.params = undefined
+              break
+            case 'Search':
+              if (route.isSelected) {
+                dispatch({
+                  type: 'SET_STATE',
+                  payload: { ...initialSearchState, locationFilter },
+                })
+                hideSuggestions()
+              } else {
+                navigateParams.params = searchState
+              }
+              break
+            case 'Bookings':
+            case 'Favorites':
+            case 'Profile':
+              break
+          }
+          navigation.navigate('TabNavigator', navigateParams)
         }
         const tabNavConfig = getTabNavConfig(route.name)
         return (
