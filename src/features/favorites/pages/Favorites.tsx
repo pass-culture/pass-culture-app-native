@@ -9,10 +9,10 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 
 export const Favorites: React.FC = () => {
-  const netInfo = useNetInfoContext()
+  const { isConnected } = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
-  if (!netInfo.isConnected) {
+  if (!isConnected) {
     return <OfflinePage />
   }
 

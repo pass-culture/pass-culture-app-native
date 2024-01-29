@@ -1,4 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -64,7 +72,7 @@ const contentContainerStyle = {
   paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
 }
 
-export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
+const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
@@ -75,7 +83,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
 
   const sortedFavorites = useMemo(() => {
     if (!data) {
-      return undefined
+      return
     }
     return !favoritesState.sortBy
       ? data.favorites
@@ -165,7 +173,9 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       </Container>
     </React.Fragment>
   )
-})
+}
+
+export const FavoritesResults = memo(UnmemoizedFavoritesResults)
 
 const Container = styled.View({ flex: 1 })
 
