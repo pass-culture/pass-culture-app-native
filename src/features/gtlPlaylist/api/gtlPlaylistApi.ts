@@ -1,14 +1,15 @@
 import resolveResponse from 'contentful-resolve-response'
 
 import { VenueResponse } from 'api/gen'
-import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
-import { SearchQueryParameters } from 'libs/algolia'
+import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
+import { adaptGtlPlaylist } from 'libs/contentful/adapters/adaptGtlPlaylist'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
+import { GtlPlaylist } from 'libs/contentful/types'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { Position } from 'libs/location'
@@ -29,7 +30,7 @@ export async function fetchGTLPlaylists({
   venue,
 }: FetchOffersFromGTLPlaylistProps) {
   const json = await getExternal(URL)
-  const jsonResponse = resolveResponse(json) as ContentfulGtlPlaylistResponse
+  const jsonResponse = resolveResponse(json) as GtlPlaylist[]
 
   return fetchOffersFromGTLPlaylist(jsonResponse, { position, isUserUnderage, venue })
 }
@@ -37,23 +38,17 @@ export async function fetchGTLPlaylists({
 export type GTLPlaylistResponse = Awaited<ReturnType<typeof fetchGTLPlaylists>>
 
 export async function fetchOffersFromGTLPlaylist(
-  data: ContentfulGtlPlaylistResponse,
+  data: GtlPlaylist[],
   { position, isUserUnderage, venue }: FetchOffersFromGTLPlaylistProps
 ) {
   // Build parameters list from Contentful algolia parameters for algolia
-  const paramList = data.map(
-    (item) =>
-      ({
-        offerGtlLevel: item.fields.algoliaParameters.fields.gtlLevel,
-        offerGtlLabel: item.fields.algoliaParameters.fields.gtlLabel,
-        hitsPerPage: item.fields.algoliaParameters.fields.hitsPerPage,
-      } as unknown as SearchQueryParameters)
-  )
+  const gtlPlaylistRequests = data
+    .map(adaptGtlPlaylist)
+    .filter((item): item is GtlPlaylistRequest => item !== null)
 
   // Build a query list to send to Algolia
-  const queries = paramList.map((params) => ({
+  const queries = gtlPlaylistRequests.map(({ offersModuleParameters: params }) => ({
     indexName: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
-    query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
       ...buildOfferSearchParameters(

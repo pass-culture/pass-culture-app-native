@@ -6,7 +6,7 @@ import { Position } from 'libs/location'
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
 
-type Parameters = SearchQueryParameters & {
+type Parameters = Partial<SearchQueryParameters> & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   eanList?: string[]

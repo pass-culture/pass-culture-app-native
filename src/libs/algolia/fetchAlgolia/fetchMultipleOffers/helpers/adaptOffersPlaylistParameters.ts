@@ -63,6 +63,7 @@ export const adaptOffersPlaylistParameters = (
     query: '',
     minBookingsThreshold: parameters.minBookingsThreshold || 0,
     offerGenreTypes: offerGenreTypes,
+    // handle GTL
   }
 }
 

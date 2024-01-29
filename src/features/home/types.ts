@@ -3,6 +3,7 @@ import { Animated } from 'react-native'
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { GtlLevel } from 'libs/contentful/types'
 import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 
@@ -86,7 +87,7 @@ export type OffersModule = {
   data?: ModuleData
 }
 
-type DisplayParameters = {
+export type DisplayParameters = {
   title: string
   layout: 'two-items' | 'one-item-medium'
   minOffers: number
@@ -118,6 +119,8 @@ export type OffersModuleParameters = {
   musicTypes?: string[]
   showTypes?: string[]
   bookTypes?: string[]
+  gtlLevel?: GtlLevel
+  gtlLabel?: string
 }
 
 export type BusinessModule = {
