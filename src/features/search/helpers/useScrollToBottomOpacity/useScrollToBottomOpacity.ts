@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Animated } from 'react-native'
 
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { getSpacing } from 'ui/theme'
 
 export const HEIGHT_END_OF_TRANSITION = getSpacing(20)
@@ -15,7 +16,7 @@ export function useScrollToBottomOpacity() {
   const listScrollAnimatedValue = useRef(new Animated.Value(0)).current
 
   const handleScroll = Animated.event([{ scrollOffset: listScrollAnimatedValue }], {
-    useNativeDriver: true,
+    useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
   })
 
   return { handleScroll, opacity: listScrollAnimatedValue.interpolate(interpolationConfig) }

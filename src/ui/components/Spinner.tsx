@@ -1,11 +1,10 @@
 import React, { memo, useEffect, useRef } from 'react'
-import { Animated, Easing, Platform } from 'react-native'
+import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-
-const USE_NATIVE_DRIVER = Platform.select({ default: false, ios: true, android: true })
 
 function NotMemoizedSpinner({ size, color, testID }: IconInterface) {
   const animatedValue = useRef(new Animated.Value(0)).current
@@ -20,7 +19,7 @@ function NotMemoizedSpinner({ size, color, testID }: IconInterface) {
         toValue: 1,
         duration: 3000,
         easing: Easing.linear,
-        useNativeDriver: USE_NATIVE_DRIVER,
+        useNativeDriver: ANIMATION_USE_NATIVE_DRIVER,
       })
     ).start()
   }, [animatedValue])
