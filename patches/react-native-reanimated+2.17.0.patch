@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-reanimated/react-native-reanimated.d.ts b/node_modules/react-native-reanimated/react-native-reanimated.d.ts
+index c33d830..42e24e1 100644
+--- a/node_modules/react-native-reanimated/react-native-reanimated.d.ts
++++ b/node_modules/react-native-reanimated/react-native-reanimated.d.ts
+@@ -129,6 +129,8 @@ declare module 'react-native-reanimated' {
+     export type TransformStyleTypes = TransformsStyle['transform'] extends
+       | readonly (infer T)[]
+       | undefined
++      // to remove when update to v3: https://github.com/software-mansion/react-native-reanimated/pull/4881
++      | string
+       ? T
+       : never;
+     export type AdaptTransforms<T> = {

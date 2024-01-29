@@ -175,9 +175,7 @@ describe('GenericHome page - Analytics', () => {
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
   })
 
-  // TODO(PC-26577): fix test flackyness
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should display spinner when end is reached', async () => {
+  it('should display spinner when end is reached', async () => {
     // To simulate progressive loading we need at least 11 modules
     const modules = [
       formattedVenuesModule,
@@ -199,7 +197,7 @@ describe('GenericHome page - Analytics', () => {
       scrollView?.props.onScroll(scrollEventBottom)
     })
 
-    expect(await screen.findByTestId('spinner')).toBeOnTheScreen()
+    expect(screen.getByTestId('spinner')).toBeOnTheScreen()
   })
 })
 

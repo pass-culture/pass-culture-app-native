@@ -410,6 +410,7 @@ module.exports = function (webpackEnv) {
                 paths.appSrc,
                 /node_modules\/@ptomasroos\/react-native-multi-slider/,
                 /node_modules\/react-native-gesture-handler/,
+                /node_modules\/react-native-reanimated/,
                 /node_modules\/react-native-animatable/,
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
