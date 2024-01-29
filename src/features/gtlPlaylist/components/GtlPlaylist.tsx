@@ -1,10 +1,11 @@
 import { Hit } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
@@ -12,6 +13,7 @@ import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFunctionOnce } from 'libs/hooks'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -21,24 +23,26 @@ interface GtlPlaylistProps {
   playlist: GTLPlaylistResponse[number]
 }
 
-export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
+export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
   const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const route = useRoute<UseRouteType<'Venue'>>()
   const entryId = playlist.entryId
 
-  const logHasSeenAllTilesOnce = useFunctionOnce(() =>
+  const logHasSeenAllTilesOnce = useFunctionOnce(() => {
     analytics.logAllTilesSeen({
       moduleId: entryId,
       numberOfTiles: playlist.offers.hits.length,
       venueId: venue.id,
     })
-  )
+  })
 
-  useEffect(() => {
+  const logModuleDisplayedOnce = useFunctionOnce(() => {
     analytics.logModuleDisplayed({ moduleId: entryId, displayedOn: 'venue', venueId: venue.id })
-  }, [entryId, venue.id])
+  })
+
+  const handleLogModuleDisplayedScrolling = useLogScrollHandler(logModuleDisplayedOnce)
 
   const renderPassPlaylist: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height, index }) => {
@@ -71,17 +75,22 @@ export function GtlPlaylist({ venue, playlist }: GtlPlaylistProps) {
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)
 
   return (
-    <PassPlaylist
-      data={playlist.offers.hits}
-      itemWidth={itemWidth}
-      itemHeight={itemHeight}
-      renderItem={renderPassPlaylist}
+    <IntersectionObserver
+      onChange={handleLogModuleDisplayedScrolling}
+      threshold="50%"
+      key={playlist.entryId}>
+      <PassPlaylist
+        data={playlist.offers.hits}
+        itemWidth={itemWidth}
+        itemHeight={itemHeight}
+        renderItem={renderPassPlaylist}
         keyExtractor={(item: Hit<Offer>) => {
           const hit = transformOfferHits(item)
           return hit.objectID ?? ''
         }}
-      title={playlist.title}
-      onEndReached={logHasSeenAllTilesOnce}
-    />
+        title={playlist.title}
+        onEndReached={logHasSeenAllTilesOnce}
+      />
+    </IntersectionObserver>
   )
 }

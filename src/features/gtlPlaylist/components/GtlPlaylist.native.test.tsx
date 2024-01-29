@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import { InViewProps } from 'react-native-intersection-observer'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
@@ -121,6 +122,23 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
+/**
+ * This mock permit to simulate the visibility of the playlist
+ * it is an alternative solution which allows you to replace the scroll simulation
+ * it's not optimal, if you have better idea don't hesitate to update
+ */
+const mockInView = jest.fn()
+jest.mock('react-native-intersection-observer', () => {
+  const InView = (props: InViewProps) => {
+    mockInView.mockImplementation(props.onChange)
+    return null
+  }
+  return {
+    ...jest.requireActual('react-native-intersection-observer'),
+    InView,
+  }
+})
+
 describe('GtlPlaylist', () => {
   it('should log ConsultOffer when pressing an item', () => {
     render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
@@ -157,8 +175,10 @@ describe('GtlPlaylist', () => {
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ModuleDisplayed when playlist is loaded', () => {
+  it('should log ModuleDisplayed when scrolling to the playlist', () => {
     render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+
+    mockInView(true)
 
     expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
       displayedOn: 'venue',
@@ -167,13 +187,11 @@ describe('GtlPlaylist', () => {
     })
   })
 
-  it('should log ModuleDisplayed only once when playlist is loaded', () => {
+  it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
     render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
 
-    expect(analytics.logModuleDisplayed).toHaveBeenCalledTimes(1)
+    mockInView(false)
 
-    screen.rerender(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
-
-    expect(analytics.logModuleDisplayed).toHaveBeenCalledTimes(1)
+    expect(analytics.logModuleDisplayed).not.toHaveBeenCalled()
   })
 })

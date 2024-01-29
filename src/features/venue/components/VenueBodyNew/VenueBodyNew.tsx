@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -133,7 +134,9 @@ export const VenueBodyNew: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.ScrollView.attrs({ scrollIndicatorInsets: { right: 1 } })({
+const Container = styled(IntersectionObserverScrollView).attrs({
+  scrollIndicatorInsets: { right: 1 },
+})({
   overflow: 'visible',
 })
 
