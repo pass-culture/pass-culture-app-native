@@ -6,14 +6,12 @@ import { AccessibilityDeclaration } from './AccessibilityDeclaration'
 
 describe('<AccessibilityDeclaration />', () => {
   describe('Accessibility', () => {
-    // TODO(PC-26577): fix test flackyness
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = render(<AccessibilityDeclaration />)
 
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
-    })
+    }, 15_000) // we increase the timeout to 15s because axe-core can be slow on CI
   })
 })
