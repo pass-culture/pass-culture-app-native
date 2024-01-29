@@ -23,7 +23,7 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
+const gtlPlaylistsFixture = [
   {
     title: 'Test',
     offers: {
@@ -46,9 +46,11 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
       ],
     } as SearchResponse<Offer>,
     layout: 'one-item-medium',
+    minNumberOfOffers: 1,
     entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
-])
+]
+jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue(gtlPlaylistsFixture)
 
 describe('useGTLPlaylists', () => {
   const renderHookWithParams = () =>
@@ -92,6 +94,7 @@ describe('useGTLPlaylists', () => {
       gtlPlaylists: [
         {
           layout: 'one-item-medium',
+          minNumberOfOffers: 1,
           offers: {
             hits: [
               {
@@ -127,9 +130,22 @@ describe('useGTLPlaylists', () => {
           hits: [],
         } as unknown as SearchResponse<Offer>,
         layout: 'one-item-medium',
+        minNumberOfOffers: 0,
         entryId: '2xUlLBRfxdk6jeYyJszunX',
       },
     ])
+
+    const { result } = renderHookWithParams()
+
+    await act(async () => {})
+
+    expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
+  })
+
+  it('should not return playlist when it is shorter than the minimum number of offers', async () => {
+    jest
+      .spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists')
+      .mockResolvedValueOnce([{ ...gtlPlaylistsFixture[0], minNumberOfOffers: 2 }])
 
     const { result } = renderHookWithParams()
 
