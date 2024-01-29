@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchView } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen, waitFor, within } from 'tests/utils'
 
@@ -45,7 +44,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 describe('SearchHeader component', () => {
   it('should render SearchHeader', async () => {
-    renderSearchHeader(false, SearchView.Landing)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 
     await screen.findByText('Rechercher')
 
@@ -54,7 +53,7 @@ describe('SearchHeader component', () => {
 
   it('should show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false and SearchView is Landing', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(false, SearchView.Landing)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
@@ -65,7 +64,7 @@ describe('SearchHeader component', () => {
 
   it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is off and when isDesktopViewport is false and SearchView is Landing', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
-    renderSearchHeader(false, SearchView.Landing)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
@@ -76,7 +75,7 @@ describe('SearchHeader component', () => {
 
   it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false and searchView is not landing', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(false, SearchView.Results)
+    renderSearchHeader({ shouldDisplaySubtitle: false, isDesktopViewport: false })
 
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
@@ -85,9 +84,9 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false and SearchView is Landing', async () => {
+  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(false, SearchView.Landing)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })
 
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
@@ -96,9 +95,9 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true and SearchView is Landing', async () => {
+  it('should not show LocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(true, SearchView.Landing)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: true })
 
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
@@ -107,20 +106,9 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true and SearchView is Landing', async () => {
+  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(true, SearchView.Landing)
-
-    await waitFor(() => {
-      const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
-
-      expect(searchHeaderTitleContainer.queryByText('Me localiser')).toBeOnTheScreen()
-    })
-  })
-
-  it('should show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is on and when isDesktopViewport is true and SearchView is not landing', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderSearchHeader(true, SearchView.Results)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: true })
 
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
@@ -131,7 +119,7 @@ describe('SearchHeader component', () => {
 
   it('should not show SearchLocationWidget when ENABLE_APP_LOCATION featureFlag is off and when isDesktopViewport is true', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
-    renderSearchHeader(true)
+    renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: true })
 
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
@@ -141,13 +129,18 @@ describe('SearchHeader component', () => {
   })
 })
 
-function renderSearchHeader(isDesktopViewport?: boolean, searchView?: SearchView) {
+interface RenderSearchHeaderProps {
+  shouldDisplaySubtitle: boolean
+  isDesktopViewport?: boolean
+}
+
+function renderSearchHeader({ shouldDisplaySubtitle, isDesktopViewport }: RenderSearchHeaderProps) {
   const searchInputID = uuidv4()
 
   return render(
     <SearchHeader
       searchInputID={searchInputID}
-      searchView={searchView}
+      shouldDisplaySubtitle={shouldDisplaySubtitle}
       addSearchHistory={jest.fn()}
       searchInHistory={jest.fn()}
     />,
