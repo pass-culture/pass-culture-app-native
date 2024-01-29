@@ -33,7 +33,6 @@ describe('<Favorites/>', () => {
       mockUseNetInfoContext.mockReturnValue({ isConnected: true })
     })
 
-    // TODO(PC-26577): fix test flackyness
     it('should not have basic accessibility issues when user is logged in', async () => {
       const { container } = renderFavorites()
 
