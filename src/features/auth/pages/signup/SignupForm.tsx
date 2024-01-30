@@ -47,7 +47,7 @@ type SignupStepConfig = {
   accessibilityTitle: string
 }
 
-const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
+const DEFAULT_STEP_CONFIG: SignupStepConfig[] = [
   {
     name: PreValidationSignupStep.Email,
     Component: SetEmail,
@@ -75,20 +75,40 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   },
 ]
 
+const SSO_STEP_CONFIG: SignupStepConfig[] = [
+  {
+    name: PreValidationSignupStep.Email,
+    Component: SetEmail,
+    accessibilityTitle: 'Adresse e-mail',
+  },
+  {
+    name: PreValidationSignupStep.Birthday,
+    Component: SetBirthday,
+    accessibilityTitle: 'Date de naissance',
+  },
+  {
+    name: PreValidationSignupStep.CGU,
+    accessibilityTitle: 'CGU & Données',
+    Component: AcceptCgu,
+  },
+]
+
 export const SignupForm: FunctionComponent = () => {
   const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const [stepIndex, setStepIndex] = React.useState(0)
-  const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
-  const numberOfSteps = SIGNUP_STEP_CONFIG.length
+  const [isSSO] = React.useState(false)
+  const signupStepConfig = isSSO ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
+  const stepConfig = signupStepConfig[stepIndex]
+  const numberOfSteps = signupStepConfig.length
   const isFirstStep = stepIndex === 0
   const isLastStep = stepIndex === numberOfSteps - 1
   const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
   const accessibilityLabelForNextStep =
     stepIndex < numberOfSteps - 1
-      ? `Continuer vers l’étape ${SIGNUP_STEP_CONFIG[stepIndex + 1].accessibilityTitle}`
+      ? `Continuer vers l’étape ${signupStepConfig[stepIndex + 1].accessibilityTitle}`
       : undefined
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
