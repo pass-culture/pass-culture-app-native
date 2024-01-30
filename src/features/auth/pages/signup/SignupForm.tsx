@@ -7,15 +7,8 @@ import { useSignUp } from 'features/auth/api/useSignUp'
 import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
-import {
-  Props as ConfirmationEmailSentProps,
-  SignupConfirmationEmailSent,
-} from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
-import {
-  PreValidationSignupNormalStepProps,
-  PreValidationSignupLastStepProps,
-  SignupData,
-} from 'features/auth/types'
+import { SSO_STEP_CONFIG, DEFAULT_STEP_CONFIG } from 'features/auth/stepConfig'
+import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -32,66 +25,6 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
-
-import { AcceptCgu } from './AcceptCgu/AcceptCgu'
-import { SetBirthday } from './SetBirthday/SetBirthday'
-import { SetEmail } from './SetEmail/SetEmail'
-import { SetPassword } from './SetPassword/SetPassword'
-
-type SignupStepConfig = {
-  name: PreValidationSignupStep
-  Component:
-    | React.FunctionComponent<PreValidationSignupNormalStepProps>
-    | React.FunctionComponent<PreValidationSignupLastStepProps>
-    | React.FunctionComponent<ConfirmationEmailSentProps>
-  accessibilityTitle: string
-}
-
-const DEFAULT_STEP_CONFIG: SignupStepConfig[] = [
-  {
-    name: PreValidationSignupStep.Email,
-    Component: SetEmail,
-    accessibilityTitle: 'Adresse e-mail',
-  },
-  {
-    name: PreValidationSignupStep.Password,
-    Component: SetPassword,
-    accessibilityTitle: 'Mot de passe',
-  },
-  {
-    name: PreValidationSignupStep.Birthday,
-    Component: SetBirthday,
-    accessibilityTitle: 'Date de naissance',
-  },
-  {
-    name: PreValidationSignupStep.CGU,
-    accessibilityTitle: 'CGU & Données',
-    Component: AcceptCgu,
-  },
-  {
-    name: PreValidationSignupStep.ConfirmationEmailSent,
-    accessibilityTitle: 'Confirmation d‘envoi d‘e-mail',
-    Component: SignupConfirmationEmailSent,
-  },
-]
-
-const SSO_STEP_CONFIG: SignupStepConfig[] = [
-  {
-    name: PreValidationSignupStep.Email,
-    Component: SetEmail,
-    accessibilityTitle: 'Adresse e-mail',
-  },
-  {
-    name: PreValidationSignupStep.Birthday,
-    Component: SetBirthday,
-    accessibilityTitle: 'Date de naissance',
-  },
-  {
-    name: PreValidationSignupStep.CGU,
-    accessibilityTitle: 'CGU & Données',
-    Component: AcceptCgu,
-  },
-]
 
 export const SignupForm: FunctionComponent = () => {
   const signUpApiCall = useSignUp()
