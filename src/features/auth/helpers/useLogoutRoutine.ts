@@ -18,21 +18,23 @@ export function useLogoutRoutine(): () => Promise<void> {
   return useCallback(async () => {
     try {
       BatchUser.editor().setIdentifier(null).save()
-      analytics.logLogout()
-      await storage.clear('access_token')
-      await clearRefreshToken()
       LoggedInQueryKeys.forEach((queryKey) => {
         queryClient.removeQueries([queryKey])
       })
-      await AsyncStorage.multiRemove(LoggedInQueryKeys)
-      await googleLogout()
+      await Promise.all([
+        analytics.logLogout(),
+        storage.clear('access_token'),
+        clearRefreshToken(),
+        AsyncStorage.multiRemove(LoggedInQueryKeys),
+        googleLogout(),
+      ])
+      eventMonitoring.setUser(null)
     } catch (err) {
       eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setIsLoggedIn])
+  }, [queryClient, setIsLoggedIn])
 }
 
 // List of keys that are accessible only when logged in to clean when logging out
