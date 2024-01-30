@@ -33,6 +33,8 @@ describe('<VenueSelectionList />', () => {
   it('should show list of items', () => {
     render(
       <VenueSelectionList
+        headerMessage=""
+        subTitle=""
         onItemSelect={jest.fn()}
         items={items}
         nbLoadedHits={nbLoadedHits}
@@ -50,6 +52,8 @@ describe('<VenueSelectionList />', () => {
 
     render(
       <VenueSelectionList
+        headerMessage=""
+        subTitle=""
         onItemSelect={onItemSelect}
         items={items}
         nbLoadedHits={nbLoadedHits}
@@ -67,6 +71,8 @@ describe('<VenueSelectionList />', () => {
   it('should mark item as selected', () => {
     render(
       <VenueSelectionList
+        headerMessage=""
+        subTitle=""
         onItemSelect={jest.fn()}
         selectedItem={1}
         items={items}
@@ -86,6 +92,8 @@ describe('<VenueSelectionList />', () => {
   it('should display distance when user share his position', () => {
     render(
       <VenueSelectionList
+        headerMessage=""
+        subTitle=""
         onItemSelect={jest.fn()}
         selectedItem={1}
         items={items}
@@ -103,6 +111,8 @@ describe('<VenueSelectionList />', () => {
   it('should not display distance when user not share his position', () => {
     render(
       <VenueSelectionList
+        headerMessage=""
+        subTitle=""
         onItemSelect={jest.fn()}
         selectedItem={1}
         items={items}

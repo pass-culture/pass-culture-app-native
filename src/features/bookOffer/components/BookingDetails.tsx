@@ -16,6 +16,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
+import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
@@ -73,7 +74,11 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const shouldFetchSearchVenueOffers = Boolean(isMultivenueCompatibleOffer && offer?.extraData?.ean)
 
   const { onScroll: onScrollModal } = useOpacityTransition()
-  const { userLocation: position } = useLocation()
+  const { userLocation, selectedLocationMode, place } = useLocation()
+  const venueName = offer?.venue.publicName || offer?.venue.name
+
+  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
+
   const defaultSearchVenueOffers = {
     offerId: 0,
     venueId: undefined,
@@ -87,7 +92,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const currentSearchVenueOffers = {
     offerId: offer?.id,
     venueId: offer?.venue?.id,
-    geolocation: position,
+    geolocation: userLocation,
     query: offer?.extraData?.ean,
   }
   const {
@@ -108,7 +113,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     shouldFetchSearchVenueOffers && nbVenueItems > 0
   )
 
-  const venueName = offer?.venue.publicName || offer?.venue.name
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
     offer?.venue.address,
     offer?.venue.postalCode,
@@ -251,8 +255,11 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           nbHits={nbHits}
           nbLoadedHits={nbLoadedHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={Boolean(position !== null)}
-          venueName={offer?.venue?.publicName || offer?.venue?.name}
+          isSharingLocation={userLocation !== null}
+          subTitle="Sélectionner un lieu"
+          rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
+          validateButtonLabel="Choisir ce lieu"
+          headerMessage={headerMessage}
         />
       )}
     </Container>

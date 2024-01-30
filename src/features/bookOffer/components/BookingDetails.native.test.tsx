@@ -13,6 +13,8 @@ import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockRespon
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { env } from 'libs/environment'
+import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -72,6 +74,7 @@ jest.mock('libs/subcategories', () => ({
 }))
 mockUseSubcategoriesMapping.mockReturnValue({
   EVENEMENT_PATRIMOINE: { isEvent: true },
+  LIVRE_PAPIER: { isEvent: false },
 })
 
 const spyLogOfferConversion = jest.fn()
@@ -85,6 +88,15 @@ server.use(
   )
 )
 const mockOnPressBookOffer = jest.fn()
+
+let mockSelectedLocationMode = LocationMode.EVERYWHERE
+let mockPlace: SuggestedPlace | null = null
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({
+    selectedLocationMode: mockSelectedLocationMode,
+    place: mockPlace,
+  })),
+}))
 
 const offerVenues = [
   {
@@ -142,6 +154,8 @@ describe('<BookingDetails />', () => {
   afterEach(() => {
     mockVenueList = []
     mockNbVenueItems = 0
+    mockSelectedLocationMode = LocationMode.EVERYWHERE
+    mockPlace = null
   })
 
   describe('with initial state', () => {
@@ -559,6 +573,45 @@ describe('<BookingDetails />', () => {
     })
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_OFFER', payload: 2 })
+  })
+
+  describe('HeaderMessage', () => {
+    it.each`
+      locationMode                 | place                                                                                             | headerMessage
+      ${LocationMode.AROUND_ME}    | ${null}                                                                                           | ${'Lieux disponibles autour de moi'}
+      ${LocationMode.EVERYWHERE}   | ${null}                                                                                           | ${'Lieux à proximité de “Cinéma de la fin”'}
+      ${LocationMode.AROUND_PLACE} | ${{ label: 'Kourou', info: 'Guyane', geolocation: { longitude: -52.669736, latitude: 5.16186 } }} | ${'Lieux à proximité de “Kourou”'}
+    `(
+      'should return "$headerMessage" when location mode is $locationMode and place is $place',
+      async ({
+        locationMode,
+        place,
+        headerMessage,
+      }: {
+        locationMode: LocationMode
+        place: SuggestedPlace | null
+        headerMessage: string
+      }) => {
+        mockUseBookingOffer.mockReturnValue({
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: {
+            ean: '2765410054',
+          },
+        })
+        mockNbVenueItems = 2
+        mockVenueList = offerVenues
+        mockSelectedLocationMode = locationMode
+        mockPlace = place
+        renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Modifier'))
+        })
+
+        expect(screen.getByText(headerMessage)).toBeOnTheScreen()
+      }
+    )
   })
 })
 

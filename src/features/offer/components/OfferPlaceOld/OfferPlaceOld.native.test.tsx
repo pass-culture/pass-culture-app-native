@@ -8,10 +8,11 @@ import {
   OfferPlaceOld,
   OfferPlaceOldProps,
 } from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
-import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { analytics } from 'libs/analytics'
+import { LocationMode } from 'libs/location/types'
+import { SuggestedPlace } from 'libs/place/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.mock('libs/address/useFormatFullAddress')
@@ -49,35 +50,52 @@ const mockData = {
     },
   ],
 }
-let mockVenueList: VenueListItem[] = []
-let mockNbVenueItems = 0
+
+const baseValueSearchVenueOffer = {
+  hasNextPage: mockHasNextPage,
+  fetchNextPage: mockFetchNextPage,
+  data: mockData,
+  isFetching: false,
+}
+const searchVenueOfferEmpty = {
+  ...baseValueSearchVenueOffer,
+  venueList: [],
+  nbVenueItems: 0,
+}
+
+const searchVenueOfferWithVenues = {
+  ...baseValueSearchVenueOffer,
+  venueList: offerVenues,
+  nbVenueItems: 2,
+}
+
+const mockUseSearchVenueOffers = jest.fn(() => searchVenueOfferWithVenues)
+
 jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
-  useSearchVenueOffers: () => ({
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    data: mockData,
-    venueList: mockVenueList,
-    nbVenueItems: mockNbVenueItems,
-    isFetching: false,
-  }),
+  useSearchVenueOffers: () => mockUseSearchVenueOffers(),
 }))
 
 const offerPlaceProps: OfferPlaceOldProps = {
   offer: mockOffer,
-  userLocation: null,
   isEvent: false,
 }
+
+let mockSelectedLocationMode = LocationMode.EVERYWHERE
+let mockPlace: SuggestedPlace | null = null
+jest.mock('libs/location', () => ({
+  useLocation: jest.fn(() => ({
+    selectedLocationMode: mockSelectedLocationMode,
+    place: mockPlace,
+  })),
+}))
 
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockdate.set(new Date('2021-01-01'))
-    mockVenueList = []
-    mockNbVenueItems = 0
+    mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
 
   it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -91,8 +109,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
-    mockNbVenueItems = 0
-    mockVenueList = []
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -106,6 +123,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
@@ -115,8 +133,6 @@ describe('<OfferPlace />', () => {
   })
 
   it('should display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -130,8 +146,7 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', () => {
-    mockNbVenueItems = 0
-    mockVenueList = []
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -145,9 +160,6 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an EAN', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
     renderOfferPlace({
       ...offerPlaceProps,
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
@@ -157,19 +169,23 @@ describe('<OfferPlace />', () => {
   })
 
   it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace(offerPlaceProps)
 
     expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
   })
 
   it('should not display old venue section', () => {
+    mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace(offerPlaceProps)
 
     expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
   })
 
   describe('should display new venue section', () => {
-    it('With "Lieu de retrait" in title by default', () => {
+    it('With "Lieu de retrait" in title by base', () => {
+      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
+
       renderOfferPlace({
         ...offerPlaceProps,
         offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
@@ -187,8 +203,6 @@ describe('<OfferPlace />', () => {
       hideModal: jest.fn(),
       toggleModal: jest.fn(),
     })
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
 
     renderOfferPlace({
       ...offerPlaceProps,
@@ -218,9 +232,6 @@ describe('<OfferPlace />', () => {
       toggleModal: jest.fn(),
     })
 
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -242,9 +253,6 @@ describe('<OfferPlace />', () => {
   })
 
   it('should log when the users press the change venue modal', () => {
-    mockNbVenueItems = 2
-    mockVenueList = offerVenues
-
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -260,11 +268,46 @@ describe('<OfferPlace />', () => {
 
     expect(analytics.logMultivenueOptionDisplayed).toHaveBeenCalledWith(mockOffer.id)
   })
+
+  describe('HeaderMessage', () => {
+    it.each`
+      locationMode                 | place                                                                                             | headerMessage
+      ${LocationMode.AROUND_ME}    | ${null}                                                                                           | ${'Lieux disponibles autour de moi'}
+      ${LocationMode.EVERYWHERE}   | ${null}                                                                                           | ${'Lieux à proximité de “Cinéma de la fin”'}
+      ${LocationMode.AROUND_PLACE} | ${{ label: 'Kourou', info: 'Guyane', geolocation: { longitude: -52.669736, latitude: 5.16186 } }} | ${'Lieux à proximité de “Kourou”'}
+    `(
+      'should return "$headerMessage" when location mode is $locationMode and place is $place',
+      async ({
+        locationMode,
+        place,
+        headerMessage,
+      }: {
+        locationMode: LocationMode
+        place: SuggestedPlace | null
+        headerMessage: string
+      }) => {
+        mockSelectedLocationMode = locationMode
+        mockPlace = place
+        renderOfferPlace({
+          isEvent: false,
+          offer: {
+            ...mockOffer,
+            subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            extraData: {
+              ean: '2765410054',
+            },
+          },
+        })
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+        })
+
+        expect(screen.getByText(headerMessage)).toBeOnTheScreen()
+      }
+    )
+  })
 })
 
-const renderOfferPlace = ({ offer, userLocation, isEvent }: OfferPlaceOldProps) =>
-  render(
-    reactQueryProviderHOC(
-      <OfferPlaceOld offer={offer} userLocation={userLocation} isEvent={isEvent} />
-    )
-  )
+const renderOfferPlace = ({ offer, isEvent }: OfferPlaceOldProps) =>
+  render(reactQueryProviderHOC(<OfferPlaceOld offer={offer} isEvent={isEvent} />))

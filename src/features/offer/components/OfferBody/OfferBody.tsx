@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <SectionBody>{capitalizedFormattedDateEvent}</SectionBody>
       </SectionWithDivider>
 
-      <OfferPlaceOld offer={offer} userLocation={userLocation} isEvent={isEvent} />
+      <OfferPlaceOld offer={offer} isEvent={isEvent} />
 
       <SectionWithDivider visible margin>
         <OfferMessagingApps offer={offer} />

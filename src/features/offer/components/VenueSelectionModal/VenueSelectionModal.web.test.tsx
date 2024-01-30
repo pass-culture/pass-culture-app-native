@@ -34,6 +34,10 @@ describe('<VenueSelectionModal />', () => {
   it('should not have any accessibility violations', async () => {
     const { container } = render(
       <VenueSelectionModal
+        headerMessage=""
+        subTitle=""
+        rightIconAccessibilityLabel=""
+        validateButtonLabel=""
         isVisible
         items={items}
         title="Lieu de retrait"

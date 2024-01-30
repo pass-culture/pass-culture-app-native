@@ -26,6 +26,8 @@ export type VenueSelectionListProps = ViewProps &
     onPress?: () => void
     isSharingLocation?: boolean
     venueName?: string
+    subTitle: string
+    headerMessage: string
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
@@ -46,7 +48,8 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       onPress,
       autoScrollEnabled,
       isSharingLocation,
-      venueName,
+      subTitle,
+      headerMessage,
       ...props
     },
     ref
@@ -69,19 +72,11 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       [onItemSelect, selectedItem, isSharingLocation]
     )
 
-    const headerMessage = useMemo(
-      () =>
-        isSharingLocation
-          ? 'Lieux disponibles autour de moi'
-          : `Lieux à proximité de “${venueName}”`,
-      [isSharingLocation, venueName]
-    )
-
     const listHeader = useMemo(
       () => (
         <ListHeaderContainer>
           <Spacer.Column numberOfSpaces={6} />
-          <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionner un lieu</Typo.Title3>
+          <Typo.Title3 {...getHeadingAttrs(2)}>{subTitle}</Typo.Title3>
           <Spacer.Column numberOfSpaces={6} />
           {!isSharingLocation && (
             <React.Fragment>
@@ -96,7 +91,7 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
           <Spacer.Column numberOfSpaces={2} />
         </ListHeaderContainer>
       ),
-      [headerMessage, isSharingLocation]
+      [headerMessage, isSharingLocation, subTitle]
     )
 
     return (
