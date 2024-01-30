@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { useSignUp } from 'features/auth/api/useSignUp'
 import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
-import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
 import {
@@ -83,13 +82,12 @@ export const SignupForm: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const [stepIndex, setStepIndex] = React.useState(0)
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
+  const numberOfSteps = SIGNUP_STEP_CONFIG.length
   const isFirstStep = stepIndex === 0
-  const isLastStep = stepIndex === 4
-  const helmetTitle = `Étape ${
-    stepIndex + 1
-  } sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
+  const isLastStep = stepIndex === numberOfSteps - 1
+  const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
   const accessibilityLabelForNextStep =
-    stepIndex < SIGNUP_NUMBER_OF_STEPS - 1
+    stepIndex < numberOfSteps - 1
       ? `Continuer vers l’étape ${SIGNUP_STEP_CONFIG[stepIndex + 1].accessibilityTitle}`
       : undefined
 
@@ -105,7 +103,7 @@ export const SignupForm: FunctionComponent = () => {
 
   const goToNextStep = (_signupData: Partial<SignupData>) => {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-    setStepIndex((prevStepIndex) => Math.min(SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
+    setStepIndex((prevStepIndex) => Math.min(numberOfSteps, prevStepIndex + 1))
   }
 
   useEffect(() => {
@@ -146,7 +144,7 @@ export const SignupForm: FunctionComponent = () => {
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       } else {
-        setStepIndex(SIGNUP_NUMBER_OF_STEPS - 1)
+        setStepIndex(numberOfSteps - 1)
       }
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
@@ -168,7 +166,7 @@ export const SignupForm: FunctionComponent = () => {
         shouldDisplayBackButton={!isLastStep}
         onGoBack={goToPreviousStep}
         RightButton={isFirstStep ? null : RightButton}>
-        <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
+        <ProgressBar totalStep={numberOfSteps} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>
         <Placeholder height={headerHeight} />

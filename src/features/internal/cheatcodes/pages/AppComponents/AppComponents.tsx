@@ -4,7 +4,6 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
-import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
@@ -84,6 +83,7 @@ function onButtonPress() {
   Alert.alert('you pressed it')
 }
 
+const NUMBER_OF_STEPS = 5
 const THIS_YEAR = new Date().getFullYear()
 const imageUrl =
   'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg'
@@ -727,7 +727,7 @@ export const AppComponents: FunctionComponent = () => {
           </AlignedText>
 
           <AlignedText>
-            <StepDots numberOfSteps={SIGNUP_NUMBER_OF_STEPS} currentStep={currentStep} />
+            <StepDots numberOfSteps={NUMBER_OF_STEPS} currentStep={currentStep} />
             <Text> - Steps </Text>
           </AlignedText>
           <AlignedText>
@@ -738,9 +738,7 @@ export const AppComponents: FunctionComponent = () => {
             <Spacer.Column numberOfSpaces={2} />
             <Button
               title="Next"
-              onPress={() =>
-                setCurrentStep((step) => (step === SIGNUP_NUMBER_OF_STEPS ? step : step + 1))
-              }
+              onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
             />
           </AlignedText>
           <AlignedText>
