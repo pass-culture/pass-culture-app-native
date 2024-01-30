@@ -3,7 +3,6 @@ import React from 'react'
 import { Keyboard } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
@@ -13,7 +12,6 @@ import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -195,7 +193,7 @@ const mockedPlace: SuggestedPlace = {
 
 const mockSetPlace = jest.fn()
 const mockSetSelectedLocationMode = jest.fn()
-let mockHasGeolocPosition = false
+const mockHasGeolocPosition = false
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -230,59 +228,6 @@ describe('<Search/>', () => {
     await act(() => {})
 
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should setPlace and setLocationMode in location context, when URI params contains a place,', async () => {
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: mockedPlace,
-        },
-      },
-    })
-
-    render(<SearchResults />)
-
-    await act(async () => {})
-
-    expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
-    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
-  })
-
-  it('should setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is true', async () => {
-    mockHasGeolocPosition = true
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_ME,
-        },
-      },
-    })
-
-    render(<SearchResults />)
-
-    await act(async () => {})
-
-    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
-  })
-
-  it("shouldn't setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is false", async () => {
-    mockHasGeolocPosition = false
-
-    useRoute.mockReturnValueOnce({
-      params: {
-        locationFilter: {
-          locationType: LocationMode.AROUND_ME,
-        },
-      },
-    })
-
-    render(<SearchResults />)
-
-    await act(async () => {})
-
-    expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
   })
 
   describe('When SearchResults is focus on suggestions', () => {
@@ -349,28 +294,13 @@ describe('<Search/>', () => {
 
     it('should not display search history when it has not items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory
-        .mockReturnValueOnce({
-          filteredHistory: [],
-          queryHistory: '',
-          addToHistory: jest.fn(),
-          removeFromHistory: jest.fn(),
-          search: jest.fn(),
-        })
-        .mockReturnValueOnce({
-          filteredHistory: [],
-          queryHistory: '',
-          addToHistory: jest.fn(),
-          removeFromHistory: jest.fn(),
-          search: jest.fn(),
-        })
-        .mockReturnValueOnce({
-          filteredHistory: [],
-          queryHistory: '',
-          addToHistory: jest.fn(),
-          removeFromHistory: jest.fn(),
-          search: jest.fn(),
-        })
+      mockUseSearchHistory.mockReturnValueOnce({
+        filteredHistory: [],
+        queryHistory: '',
+        addToHistory: jest.fn(),
+        removeFromHistory: jest.fn(),
+        search: jest.fn(),
+      })
       render(<SearchResults />)
       await act(async () => {})
 
