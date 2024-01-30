@@ -104,7 +104,8 @@ export const SignupForm: FunctionComponent = () => {
   const stepConfig = signupStepConfig[stepIndex]
   const numberOfSteps = signupStepConfig.length
   const isFirstStep = stepIndex === 0
-  const isLastStep = stepIndex === numberOfSteps - 1
+  const isConfirmationEmailSentStep =
+    signupStepConfig[stepIndex].name === PreValidationSignupStep.ConfirmationEmailSent
   const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
   const accessibilityLabelForNextStep =
     stepIndex < numberOfSteps - 1
@@ -174,7 +175,7 @@ export const SignupForm: FunctionComponent = () => {
     }
   }
 
-  const RightButton = isLastStep ? (
+  const RightButton = isConfirmationEmailSentStep ? (
     <RightButtonText onClose={navigateToHome} wording="Fermer" />
   ) : (
     <RightButtonText onClose={showQuitSignupModal} wording="Quitter" />
@@ -185,7 +186,7 @@ export const SignupForm: FunctionComponent = () => {
       <Helmet title={helmetTitle} />
       <PageHeaderWithoutPlaceholder
         title="Inscription"
-        shouldDisplayBackButton={!isLastStep}
+        shouldDisplayBackButton={!isConfirmationEmailSentStep}
         onGoBack={goToPreviousStep}
         RightButton={isFirstStep ? null : RightButton}>
         <ProgressBar totalStep={numberOfSteps} currentStep={stepIndex + 1} />

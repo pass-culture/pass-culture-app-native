@@ -460,6 +460,27 @@ describe('Signup Form', () => {
 
       expect(screen.getByText('Crée-toi un compte')).toBeOnTheScreen()
     })
+
+    it('should display go back for last step', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+
+      expect(screen.getByText('Accepter et s’inscrire')).toBeOnTheScreen()
+      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
+    })
   })
 })
 
