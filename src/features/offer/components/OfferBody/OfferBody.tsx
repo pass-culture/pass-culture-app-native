@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
-import { IOScrollView } from 'react-native-intersection-observer'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
@@ -163,7 +163,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
 const scrollIndicatorInsets = { right: 1 }
 
-const Container = styled(IOScrollView)({ overflow: 'visible' })
+const Container = styled(IntersectionObserverScrollView)({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
 })

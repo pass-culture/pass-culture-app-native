@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
-import { IOScrollView } from 'react-native-intersection-observer'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
@@ -200,7 +200,7 @@ const Container = styled.View({
   flex: 1,
 })
 
-const ScrollViewContainer = styled(IOScrollView)({ overflow: 'visible' })
+const ScrollViewContainer = styled(IntersectionObserverScrollView)({ overflow: 'visible' })
 
 const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
