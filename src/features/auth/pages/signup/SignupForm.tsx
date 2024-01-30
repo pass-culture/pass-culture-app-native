@@ -32,8 +32,8 @@ export const SignupForm: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const [stepIndex, setStepIndex] = React.useState(0)
-  const [isSSO, setIsSSO] = React.useState(false)
-  const signupStepConfig = isSSO ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
+  const [isSSOSubscription, setIsSSOSubscription] = React.useState(false)
+  const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
   const stepConfig = signupStepConfig[stepIndex]
   const numberOfSteps = signupStepConfig.length
   const isFirstStep = stepIndex === 0
@@ -88,8 +88,8 @@ export const SignupForm: FunctionComponent = () => {
     postalCode: '',
   })
 
-  const onSSOEmailNotFoundError = useCallback(() => setIsSSO(true), [])
-  const onDefaultEmailSignup = useCallback(() => setIsSSO(false), [])
+  const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
+  const onDefaultEmailSignup = useCallback(() => setIsSSOSubscription(false), [])
 
   async function signUp(token: string) {
     try {

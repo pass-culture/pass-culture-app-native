@@ -482,7 +482,7 @@ describe('Signup Form', () => {
       expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
     })
 
-    it('should reset isSSO state when choosing sso first then choosing default signup', async () => {
+    it('should reset isSSOSubscription state when choosing sso first then choosing default signup', async () => {
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
         responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
       })
