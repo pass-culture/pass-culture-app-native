@@ -6,6 +6,7 @@ import {
   NativeSyntheticEvent,
   ScrollView,
   useWindowDimensions,
+  View,
 } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -17,6 +18,7 @@ import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
+import { PreviewCarousel } from 'features/offerv2/PreviewCarousel'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -25,7 +27,7 @@ import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -178,9 +180,22 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       renderModule({ item, index }, homeId, videoModuleId),
     [homeId, videoModuleId]
   )
-
+  const [activeIndex, setActiveIndex] = useState(0)
   return (
     <Container>
+      <PreviewCarousel
+        cardList={[1, 2, 3, 4]}
+        paddingCardContainer={0}
+        renderCard={(card, _index) => (
+          <View style={{ height: 300, width: 200, backgroundColor: 'royalblue', borderWidth: 1 }}>
+            <Typo.Body>{card}</Typo.Body>
+          </View>
+        )}
+        activeIndex={activeIndex}
+        onScrollToSlide={setActiveIndex}
+        containerStyle={{ marginTop: 50 }}
+      />
+
       {showSkeleton ? (
         <ScrollView testID="homeScrollView" bounces={false} scrollEnabled={false}>
           {Header}
