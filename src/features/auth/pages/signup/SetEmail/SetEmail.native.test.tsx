@@ -31,6 +31,7 @@ const defaultProps = {
     postalCode: '',
   },
   onSSOEmailNotFoundError: jest.fn(),
+  onDefaultEmailSignup: jest.fn(),
 }
 
 jest.useFakeTimers({ legacyFakeTimers: true })

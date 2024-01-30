@@ -24,6 +24,7 @@ const props = {
     postalCode: '',
   },
   onSSOEmailNotFoundError: jest.fn(),
+  onDefaultEmailSignup: jest.fn(),
 }
 
 const specificUserAges = [15, 16, 17, 18]

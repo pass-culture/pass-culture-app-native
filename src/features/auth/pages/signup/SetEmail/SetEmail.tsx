@@ -53,6 +53,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   accessibilityLabelForNextStep,
   previousSignupData,
   onSSOEmailNotFoundError,
+  onDefaultEmailSignup,
 }) => {
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
@@ -72,9 +73,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const goToNextStepCallback = useCallback(
     ({ email, marketingEmailSubscription }: FormValues) => {
+      onDefaultEmailSignup()
       goToNextStep({ email, marketingEmailSubscription })
     },
-    [goToNextStep]
+    [goToNextStep, onDefaultEmailSignup]
   )
 
   const onLogHasCorrectedEmail = useCallback(() => {

@@ -156,6 +156,7 @@ export const SignupForm: FunctionComponent = () => {
   })
 
   const onSSOEmailNotFoundError = useCallback(() => setIsSSO(true), [])
+  const onDefaultEmailSignup = useCallback(() => setIsSSO(false), [])
 
   async function signUp(token: string) {
     try {
@@ -201,6 +202,7 @@ export const SignupForm: FunctionComponent = () => {
           accessibilityLabelForNextStep={accessibilityLabelForNextStep}
           previousSignupData={signupData}
           onSSOEmailNotFoundError={onSSOEmailNotFoundError}
+          onDefaultEmailSignup={onDefaultEmailSignup}
         />
       </StyledScrollView>
       <QuitSignupModal

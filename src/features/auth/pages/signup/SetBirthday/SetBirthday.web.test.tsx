@@ -17,6 +17,7 @@ const props = {
     postalCode: '',
   },
   onSSOEmailNotFoundError: jest.fn(),
+  onDefaultEmailSignup: jest.fn(),
 }
 
 jest.mock('features/auth/context/SettingsContext')

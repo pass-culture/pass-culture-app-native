@@ -27,6 +27,7 @@ export type PreValidationSignupNormalStepProps = {
   goToNextStep: (signupData: Partial<SignupData>) => void
   previousSignupData: Partial<SignupData>
   onSSOEmailNotFoundError: () => void
+  onDefaultEmailSignup: () => void
 }
 
 export type PreValidationSignupLastStepProps = {

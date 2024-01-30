@@ -481,6 +481,24 @@ describe('Signup Form', () => {
       expect(screen.getByText('Accepter et s’inscrire')).toBeOnTheScreen()
       expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
     })
+
+    it('should reset isSSO state when choosing sso first then choosing default signup', async () => {
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await act(() => fireEvent.press(screen.getByText('Continuer')))
+
+      expect(screen.getByText('Choisis un mot de passe')).toBeOnTheScreen()
+    })
   })
 })
 
