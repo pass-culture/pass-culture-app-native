@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -99,7 +99,7 @@ export const SignupForm: FunctionComponent = () => {
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const [stepIndex, setStepIndex] = React.useState(0)
-  const [isSSO] = React.useState(false)
+  const [isSSO, setIsSSO] = React.useState(false)
   const signupStepConfig = isSSO ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
   const stepConfig = signupStepConfig[stepIndex]
   const numberOfSteps = signupStepConfig.length
@@ -154,6 +154,8 @@ export const SignupForm: FunctionComponent = () => {
     postalCode: '',
   })
 
+  const onSSOEmailNotFoundError = useCallback(() => setIsSSO(true), [])
+
   async function signUp(token: string) {
     try {
       const signupResponse = await signUpApiCall({
@@ -197,6 +199,7 @@ export const SignupForm: FunctionComponent = () => {
           email={signupData.email}
           accessibilityLabelForNextStep={accessibilityLabelForNextStep}
           previousSignupData={signupData}
+          onSSOEmailNotFoundError={onSSOEmailNotFoundError}
         />
       </StyledScrollView>
       <QuitSignupModal

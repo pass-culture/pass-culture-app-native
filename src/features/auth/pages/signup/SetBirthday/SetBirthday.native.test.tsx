@@ -23,6 +23,7 @@ const props = {
     birthdate: '',
     postalCode: '',
   },
+  onSSOEmailNotFoundError: jest.fn(),
 }
 
 const specificUserAges = [15, 16, 17, 18]

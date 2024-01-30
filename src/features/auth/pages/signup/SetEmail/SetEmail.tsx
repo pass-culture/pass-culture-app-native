@@ -8,7 +8,7 @@ import { useTheme } from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
-import { PreValidationSignupNormalStepProps } from 'features/auth/types'
+import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -52,6 +52,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   goToNextStep,
   accessibilityLabelForNextStep,
   previousSignupData,
+  onSSOEmailNotFoundError,
 }) => {
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
@@ -83,6 +84,16 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   useEffect(() => {
     analytics.logScreenViewSetEmail()
   }, [])
+
+  const onSSOSignInFailure = useCallback(
+    (errorResponse: SignInResponseFailure) => {
+      if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
+        onSSOEmailNotFoundError()
+        goToNextStep({})
+      }
+    },
+    [goToNextStep, onSSOEmailNotFoundError]
+  )
 
   return (
     <Form.MaxWidth>
@@ -130,7 +141,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
           <Spacer.Column numberOfSpaces={4} />
           <StyledSeparatorWithText label="ou" />
           <Spacer.Column numberOfSpaces={4} />
-          <SSOButton type="signup" />
+          <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
           <Spacer.Column numberOfSpaces={10} />
         </React.Fragment>
       ) : (
