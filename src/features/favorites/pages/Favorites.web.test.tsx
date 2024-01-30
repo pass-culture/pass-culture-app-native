@@ -23,12 +23,18 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 describe('<Favorites/>', () => {
   describe('Accessibility', () => {
-    mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    beforeEach(() => {
+      mockUseAuthContext.mockReturnValue({
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      })
+      mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    })
 
-    // TODO(PC-26577): fix test flackyness
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues when user is logged in', async () => {
-      const { container } = renderFavorites({ isLoggedIn: true })
+    it('should not have basic accessibility issues when user is logged in', async () => {
+      const { container } = renderFavorites()
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -38,7 +44,13 @@ describe('<Favorites/>', () => {
     })
 
     it('should not have basic accessibility issues when user is not logged in', async () => {
-      const { container } = renderFavorites({ isLoggedIn: false })
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: false,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+        isUserLoading: false,
+      })
+      const { container } = renderFavorites()
 
       const results = await checkAccessibilityFor(container)
 
@@ -47,7 +59,7 @@ describe('<Favorites/>', () => {
 
     it('should not have basic accessibility issues when user is logged in but offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = renderFavorites({ isLoggedIn: true })
+      const { container } = renderFavorites()
 
       const results = await checkAccessibilityFor(container)
 
@@ -56,13 +68,6 @@ describe('<Favorites/>', () => {
   })
 })
 
-function renderFavorites({ isLoggedIn }: { isLoggedIn: boolean }) {
-  const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({
-    isLoggedIn,
-    setIsLoggedIn,
-    isUserLoading: false,
-    refetchUser: jest.fn(),
-  }))
+function renderFavorites() {
   return render(reactQueryProviderHOC(<Favorites />))
 }
