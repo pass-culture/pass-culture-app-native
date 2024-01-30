@@ -10,7 +10,13 @@ import * as useGTLPlaylistsLibrary from '../api/gtlPlaylistApi'
 
 import { useGTLPlaylists } from './useGTLPlaylists'
 
-const venue = { name: 'Une librairie', city: 'Jest', id: 123 } as VenueResponse
+const venue: VenueResponse = {
+  name: 'Une librairie',
+  city: 'Jest',
+  id: 123,
+  isVirtual: false,
+  accessibility: {},
+}
 
 const mockPosition: Position = { latitude: 2, longitude: 2 }
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -45,7 +51,7 @@ const gtlPlaylistsFixture = [
         },
       ],
     } as SearchResponse<Offer>,
-    layout: 'one-item-medium',
+    layout: 'one-item-medium' as const,
     minNumberOfOffers: 1,
     entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
@@ -77,7 +83,7 @@ describe('useGTLPlaylists', () => {
         latitude: 2,
         longitude: 2,
       },
-      venue: { name: 'Une librairie', city: 'Jest', id: 123 },
+      venue: { name: 'Une librairie', city: 'Jest', id: 123, accessibility: {}, isVirtual: false },
     })
 
     await act(async () => {
