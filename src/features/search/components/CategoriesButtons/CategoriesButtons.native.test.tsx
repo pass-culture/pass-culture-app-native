@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { initialSearchState } from 'features/search/context/reducer'
-import { SearchView } from 'features/search/types'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
 
@@ -14,42 +13,20 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const mockSearchState = initialSearchState
-const mockDispatch = jest.fn()
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-  }),
-}))
-
 describe('CategoriesButtons', () => {
   it('should display categories', () => {
-    render(<CategoriesButtons />)
+    render(<CategoriesButtons onPressCategory={jest.fn()} />)
 
     expect(screen.queryAllByRole('button')).toHaveLength(14)
   })
 
-  it('should update searchContext on press', async () => {
-    render(<CategoriesButtons />)
+  it('should call given callBack on press', () => {
+    const mockOnPressCategory = jest.fn()
+    render(<CategoriesButtons onPressCategory={mockOnPressCategory} />)
 
     const categoryButton = screen.getByText('Spectacles')
     fireEvent.press(categoryButton)
-    await act(async () => {})
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      payload: {
-        ...mockSearchState,
-        offerSubcategories: [],
-        offerNativeCategories: undefined,
-        offerGenreTypes: undefined,
-        searchId: 'testUuidV4',
-        isFullyDigitalOffersCategory: undefined,
-        isFromHistory: undefined,
-        view: SearchView.Results,
-        offerCategories: ['SPECTACLES'],
-      },
-      type: 'SET_STATE',
-    })
+    expect(mockOnPressCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
   })
 })

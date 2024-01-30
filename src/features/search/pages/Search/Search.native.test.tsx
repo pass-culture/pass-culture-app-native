@@ -1,4 +1,7 @@
+import mockdate from 'mockdate'
 import React from 'react'
+import { Keyboard } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -10,7 +13,9 @@ import * as useShowResultsForCategory from 'features/search/helpers/useShowResul
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -167,6 +172,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
+
 const mockUseSearchHistory = jest.fn()
 jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: jest.fn(() => mockUseSearchHistory()),
@@ -179,6 +186,8 @@ mockUseSearchHistory.mockReturnValue({
   search: jest.fn(),
 })
 
+const searchId = uuidv4()
+
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -187,7 +196,7 @@ const mockedPlace: SuggestedPlace = {
 
 const mockSetPlace = jest.fn()
 const mockSetSelectedLocationMode = jest.fn()
-const mockHasGeolocPosition = false
+let mockHasGeolocPosition = false
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -231,6 +240,234 @@ describe('<Search/>', () => {
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
+  it('should setPlace and setLocationMode in location context, when URI params contains a place,', async () => {
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationMode.AROUND_PLACE,
+          place: mockedPlace,
+        },
+      },
+    })
+
+    render(<Search />)
+
+    await act(async () => {})
+
+    expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
+    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
+  })
+
+  it('should setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is true', async () => {
+    mockHasGeolocPosition = true
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+        },
+      },
+    })
+
+    render(<Search />)
+
+    await act(async () => {})
+
+    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
+  })
+
+  it("shouldn't setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is false", async () => {
+    mockHasGeolocPosition = false
+
+    useRoute.mockReturnValueOnce({
+      params: {
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+        },
+      },
+    })
+
+    render(<Search />)
+
+    await act(async () => {})
+
+    expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
+  })
+
+  describe('When search is focus on suggestions', () => {
+    beforeEach(() => {
+      mockIsFocusOnSuggestions = true
+    })
+
+    it('should display offer suggestions', async () => {
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
+      expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
+    })
+
+    it('should display venue suggestions', async () => {
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
+      expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
+    })
+
+    it('should handle venue press', async () => {
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
+
+      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+
+      expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+        from: 'searchAutoComplete',
+        venueId: 1,
+      })
+    })
+
+    it('should dismiss keyboard on scroll', async () => {
+      const scrollEventBottom = {
+        nativeEvent: {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 900 },
+          contentSize: { height: 1600 },
+        },
+      }
+      const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
+      render(<Search />)
+      await act(async () => {})
+
+      const scrollView = screen.getByTestId('autocompleteScrollView')
+      // 1st scroll to bottom => trigger
+      scrollView.props.onScroll(scrollEventBottom)
+
+      expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should display search history when it has items', async () => {
+      mockdate.set(TODAY_DATE)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
+    })
+
+    it('should not display search history when it has not items', async () => {
+      mockdate.set(TODAY_DATE)
+      mockUseSearchHistory
+        .mockReturnValueOnce({
+          filteredHistory: [],
+          queryHistory: '',
+          addToHistory: jest.fn(),
+          removeFromHistory: jest.fn(),
+          search: jest.fn(),
+        })
+        .mockReturnValueOnce({
+          filteredHistory: [],
+          queryHistory: '',
+          addToHistory: jest.fn(),
+          removeFromHistory: jest.fn(),
+          search: jest.fn(),
+        })
+        .mockReturnValueOnce({
+          filteredHistory: [],
+          queryHistory: '',
+          addToHistory: jest.fn(),
+          removeFromHistory: jest.fn(),
+          search: jest.fn(),
+        })
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
+    })
+
+    it('should dismiss the keyboard when pressing search history item', async () => {
+      mockdate.set(TODAY_DATE)
+      const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
+      render(<Search />)
+      await act(async () => {})
+
+      fireEvent.press(screen.getByText('manga'))
+
+      expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
+    })
+
+    describe('should update state and execute the search with the history item', () => {
+      it('When it has not category and native category', async () => {
+        mockdate.set(TODAY_DATE)
+        render(<Search />)
+        await act(async () => {})
+
+        fireEvent.press(screen.getByText('manga'))
+
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
+            ...mockSearchState,
+            query: 'manga',
+            view: SearchView.Results,
+            searchId,
+            isFromHistory: true,
+            isAutocomplete: undefined,
+            offerGenreTypes: undefined,
+            offerNativeCategories: undefined,
+            offerCategories: [],
+          },
+        })
+      })
+
+      it('When it has category and native category', async () => {
+        mockdate.set(TODAY_DATE)
+        render(<Search />)
+        await act(async () => {})
+
+        fireEvent.press(screen.getByText('tolkien'))
+
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
+            ...mockSearchState,
+            query: 'tolkien',
+            view: SearchView.Results,
+            searchId,
+            isFromHistory: true,
+            isAutocomplete: undefined,
+            offerGenreTypes: undefined,
+            offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES],
+            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+          },
+        })
+      })
+
+      it('When it has only a category', async () => {
+        mockdate.set(TODAY_DATE)
+        render(<Search />)
+        await act(async () => {})
+
+        fireEvent.press(screen.getByText('foresti'))
+
+        expect(mockDispatch).toHaveBeenCalledWith({
+          type: 'SET_STATE',
+          payload: {
+            ...mockSearchState,
+            query: 'foresti',
+            view: SearchView.Results,
+            searchId,
+            isFromHistory: true,
+            isAutocomplete: undefined,
+            offerGenreTypes: undefined,
+            offerNativeCategories: undefined,
+            offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+          },
+        })
+      })
+    })
+  })
+
   it.each([SearchView.Landing, SearchView.Results])(
     'should not display suggestions when search view is not suggestions',
     async (view) => {
@@ -243,6 +480,20 @@ describe('<Search/>', () => {
       expect(screen.queryByTestId('autocompleteOfferItem_2')).not.toBeOnTheScreen()
     }
   )
+
+  describe('When offline', () => {
+    it('should display offline page', async () => {
+      mockUseNetInfoContext
+        .mockReturnValueOnce({ isConnected: false })
+        .mockReturnValueOnce({ isConnected: false })
+        .mockReturnValueOnce({ isConnected: false })
+      render(<Search />)
+      await act(async () => {})
+      await act(async () => {})
+
+      expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+    })
+  })
 
   describe('When search not executed', () => {
     beforeEach(() => {
