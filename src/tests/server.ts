@@ -13,7 +13,6 @@ import {
   Reason,
   ResetPasswordRequest,
   SendPhoneValidationRequest,
-  SettingsResponse,
   SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
   UserProfileResponse,
@@ -22,7 +21,6 @@ import {
   ValidateEmailResponse,
   VenueResponse,
 } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
@@ -37,7 +35,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  requestSettingsSuccess(),
   rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/reset_password',
     (_req, res, ctx) => {
@@ -157,9 +154,3 @@ export const server = setupServer(
     res(ctx.status(200), ctx.json({}))
   )
 )
-
-function requestSettingsSuccess(settingsResponse: SettingsResponse = mockDefaultSettings) {
-  return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(settingsResponse))
-  })
-}
