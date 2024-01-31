@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
@@ -12,11 +11,10 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
-import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -82,11 +80,8 @@ jest
   .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
   .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
-server.use(
-  rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${mockOfferId}`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(offerResponseSnap))
-  )
-)
+mockServer.getApiV1<OfferResponse>(`/offer/${mockOfferId}`, offerResponseSnap)
+
 const mockOnPressBookOffer = jest.fn()
 
 let mockSelectedLocationMode = LocationMode.EVERYWHERE
@@ -149,6 +144,10 @@ describe('<BookingDetails />', () => {
   beforeAll(() => {
     mockVenueList = []
     mockNbVenueItems = 0
+  })
+
+  beforeEach(() => {
+    mockServer.getApiV1<OfferResponse>(`/offer/${mockOfferId}`, offerResponseSnap)
   })
 
   afterEach(() => {
