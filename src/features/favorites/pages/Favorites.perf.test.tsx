@@ -1,12 +1,15 @@
 import React from 'react'
 
 import * as jwt from '__mocks__/jwt-decode'
+import { UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { Favorites } from 'features/favorites/pages/Favorites'
+import { beneficiaryUser } from 'fixtures/user'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
@@ -29,6 +32,10 @@ jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
 describe('<Favorites />', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+  })
+
   it('Performance test for Favorites page', async () => {
     storage.saveString('access_token', 'token')
     storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')

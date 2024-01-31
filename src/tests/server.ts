@@ -15,7 +15,6 @@ import {
   SendPhoneValidationRequest,
   SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
-  UserProfileResponse,
   UserReportedOffersResponse,
   ValidateEmailRequest,
   ValidateEmailResponse,
@@ -27,7 +26,6 @@ import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { beneficiaryUser } from 'fixtures/user'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
@@ -46,9 +44,6 @@ export const server = setupServer(
     (_req, res, ctx) => {
       return res(ctx.status(204))
     }
-  ),
-  rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-    res(ctx.status(200), ctx.json(beneficiaryUser))
   ),
   rest.get<OfferResponse>(
     env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
