@@ -4,7 +4,6 @@ import { setupServer } from 'msw/node'
 import {
   ActivityTypesResponse,
   BannerResponse,
-  BookingsResponse,
   CookieConsentRequest,
   FavoriteResponse,
   NextSubscriptionStepResponse,
@@ -17,7 +16,6 @@ import {
   ValidateEmailRequest,
   ValidateEmailResponse,
 } from 'api/gen'
-import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
@@ -28,9 +26,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(bookingsSnap))
-  }),
   rest.post<SendPhoneValidationRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/send_phone_validation_code',
     (_req, res, ctx) => {
