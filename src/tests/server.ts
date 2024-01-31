@@ -11,7 +11,6 @@ import {
   OfferResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
-  ResetPasswordRequest,
   SendPhoneValidationRequest,
   SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
@@ -33,12 +32,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.post<ResetPasswordRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/resend_email_validation',
-    (_req, res, ctx) => {
-      return res(ctx.status(204))
-    }
-  ),
   rest.get<OfferResponse>(
     env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
     (_req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
