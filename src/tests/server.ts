@@ -9,7 +9,6 @@ import {
   NextSubscriptionStepResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
-  SendPhoneValidationRequest,
   SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
   UserReportedOffersResponse,
@@ -26,12 +25,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.post<SendPhoneValidationRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/send_phone_validation_code',
-    (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({}))
-    }
-  ),
   rest.post<ValidateEmailRequest, ValidateEmailResponse>(
     env.API_BASE_URL + '/native/v1/validate_email',
     (_req, res, ctx) =>

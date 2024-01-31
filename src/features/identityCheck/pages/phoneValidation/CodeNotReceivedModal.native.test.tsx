@@ -8,6 +8,7 @@ import {
   CodeNotReceivedModalProps,
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { analytics } from 'libs/analytics'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -142,6 +143,8 @@ describe('<CodeNotReceivedModal />', () => {
   })
 
   it('should log event when pressing "Demander un autre code" button', async () => {
+    mockServer.postApiV1('/send_phone_validation_code', { responseOptions: { statusCode: 200 } })
+
     renderCodeNotReceivedModal()
 
     const requestNewCodeButton = screen.getByTestId('Demander un autre code')
