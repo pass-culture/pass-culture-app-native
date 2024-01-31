@@ -11,7 +11,6 @@ import {
   OfferResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
-  RequestPasswordResetRequest,
   ResetPasswordRequest,
   SendPhoneValidationRequest,
   SettingsResponse,
@@ -38,7 +37,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  requestPasswordResetSuccess(),
   requestSettingsSuccess(),
   rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/reset_password',
@@ -159,15 +157,6 @@ export const server = setupServer(
     res(ctx.status(200), ctx.json({}))
   )
 )
-
-function requestPasswordResetSuccess() {
-  return rest.post<RequestPasswordResetRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/request_password_reset',
-    (_req, res, ctx) => {
-      return res(ctx.status(204))
-    }
-  )
-}
 
 function requestSettingsSuccess(settingsResponse: SettingsResponse = mockDefaultSettings) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {
