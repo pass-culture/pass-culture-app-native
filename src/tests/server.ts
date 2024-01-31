@@ -34,12 +34,6 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
   rest.post<ResetPasswordRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/reset_password',
-    (_req, res, ctx) => {
-      return res(ctx.status(204))
-    }
-  ),
-  rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/resend_email_validation',
     (_req, res, ctx) => {
       return res(ctx.status(204))
