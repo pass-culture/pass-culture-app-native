@@ -12,8 +12,6 @@ import {
   SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
   UserReportedOffersResponse,
-  ValidateEmailRequest,
-  ValidateEmailResponse,
 } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
@@ -25,17 +23,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.post<ValidateEmailRequest, ValidateEmailResponse>(
-    env.API_BASE_URL + '/native/v1/validate_email',
-    (_req, res, ctx) =>
-      res(
-        ctx.status(200),
-        ctx.json({
-          accessToken: 'access_token',
-          refreshToken: 'refresh_token',
-        })
-      )
-  ),
   rest.get<NextSubscriptionStepResponse>(
     env.API_BASE_URL + '/native/v1/subscription/next_step',
     (_req, res, ctx) =>
