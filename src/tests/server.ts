@@ -2,7 +2,6 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import {
-  AccountState,
   ActivityTypesResponse,
   BannerResponse,
   BookingsResponse,
@@ -16,8 +15,6 @@ import {
   ResetPasswordRequest,
   SendPhoneValidationRequest,
   SettingsResponse,
-  SigninRequest,
-  SigninResponse,
   SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
   UserProfileResponse,
@@ -41,19 +38,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.post<SigninRequest, SigninResponse>(
-    env.API_BASE_URL + '/native/v1/signin',
-    (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          accessToken: 'access_token',
-          refreshToken: 'refresh_token',
-          accountState: AccountState.ACTIVE as AccountState,
-        })
-      )
-    }
-  ),
   requestPasswordResetSuccess(),
   requestSettingsSuccess(),
   rest.post<ResetPasswordRequest, EmptyResponse>(
