@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import {
@@ -17,6 +17,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -80,6 +81,10 @@ describe('<OfferCTAButton />', () => {
       setIsLoggedIn: jest.fn(),
       refetchUser: jest.fn(),
       isUserLoading: false,
+    })
+    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, {
+      responseOptions: { data: offerResponseSnap },
+      requestOptions: { persist: true },
     })
   })
 

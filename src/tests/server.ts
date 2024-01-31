@@ -8,7 +8,6 @@ import {
   CookieConsentRequest,
   FavoriteResponse,
   NextSubscriptionStepResponse,
-  OfferResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
   SendPhoneValidationRequest,
@@ -23,7 +22,6 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
-import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
@@ -32,10 +30,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.get<OfferResponse>(
-    env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
-  ),
   rest.get<VenueResponse>(
     env.API_BASE_URL + '/native/v1/venue/' + venueResponseSnap.id,
     (_req, res, ctx) => res(ctx.status(200), ctx.json(venueResponseSnap))
