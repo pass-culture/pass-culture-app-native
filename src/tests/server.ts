@@ -16,13 +16,11 @@ import {
   UserReportedOffersResponse,
   ValidateEmailRequest,
   ValidateEmailResponse,
-  VenueResponse,
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
@@ -30,10 +28,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
-  rest.get<VenueResponse>(
-    env.API_BASE_URL + '/native/v1/venue/' + venueResponseSnap.id,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json(venueResponseSnap))
-  ),
   rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(bookingsSnap))
   }),
