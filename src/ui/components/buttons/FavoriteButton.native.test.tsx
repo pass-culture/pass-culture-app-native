@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
@@ -10,12 +9,11 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import {
@@ -299,26 +297,39 @@ function renderFavoriteButton(options: Options = defaultOptions) {
     ...options,
   }
 
-  server.use(
-    rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
-      res(ctx.status(200), ctx.json(offerResponseSnap))
-    ),
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
-      if (hasAddFavoriteError) {
-        return res(ctx.status(415), ctx.json({}))
-      } else if (hasTooManyFavorites) {
-        return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))
-      } else {
-        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
-      }
-    }),
-    rest.delete<EmptyResponse>(
-      `${env.API_BASE_URL}/native/v1/me/favorites/${
-        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-      }`,
-      (_req, res, ctx) => (!hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422)))
-    )
-  )
+  mockServer.getApiV1<OfferResponse>(`/offer/${id}`, offerResponseSnap)
+  mockServer.getApiV1<PaginatedFavoritesResponse>(`/me/favorites`, paginatedFavoritesResponseSnap)
+  if (hasAddFavoriteError) {
+    mockServer.postApiV1<EmptyResponse>(`/me/favorites`, {
+      responseOptions: { statusCode: 415, data: {} },
+    })
+  } else if (hasTooManyFavorites) {
+    mockServer.postApiV1(`/me/favorites`, {
+      responseOptions: { statusCode: 400, data: { code: 'MAX_FAVORITES_REACHED' } },
+    })
+  } else {
+    mockServer.postApiV1<FavoriteResponse>(`/me/favorites`, {
+      responseOptions: { statusCode: 200, data: favoriteResponseSnap },
+    })
+  }
+
+  !hasRemoveFavoriteError
+    ? mockServer.deleteApiV1<EmptyResponse>(
+        `/me/favorites/${
+          paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
+        }`,
+        {
+          responseOptions: { statusCode: 204 },
+        }
+      )
+    : mockServer.deleteApiV1<EmptyResponse>(
+        `/me/favorites/${
+          paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
+        }`,
+        {
+          responseOptions: { statusCode: 422 },
+        }
+      )
 
   return render(reactQueryProviderHOC(<FavoriteButton offerId={id} animationState={undefined} />))
 }
