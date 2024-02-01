@@ -4,12 +4,20 @@ import DeviceInfo from 'react-native-device-info'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { EmailValidationRemainingResendsResponse } from 'api/gen'
+import {
+  AccountState,
+  EmailValidationRemainingResendsResponse,
+  OauthStateResponse,
+  SigninResponse,
+  UserProfileResponse,
+} from 'api/gen'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { SignInResponseFailure } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { eventMonitoring } from 'libs/monitoring'
@@ -19,7 +27,7 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -28,6 +36,12 @@ const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
+
+const apiPostGoogleAuthorize = jest.spyOn(api, 'postNativeV1OauthGoogleAuthorize')
+
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
+}))
 
 mockdate.set(CURRENT_DATE)
 
@@ -377,6 +391,113 @@ describe('Signup Form', () => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         new Error('NETWORK_REQUEST_FAILED')
       )
+    })
+  })
+
+  describe('SSO', () => {
+    beforeEach(() => {
+      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+        responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
+        requestOptions: { persist: true },
+      })
+    })
+
+    beforeAll(() => useFeatureFlagSpy.mockReturnValue(true))
+
+    afterAll(() => useFeatureFlagSpy.mockReturnValue(false))
+
+    it('should sign in when sso button is clicked and sso account already exists', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
+      mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+        accessToken: 'accessToken',
+        refreshToken: 'refreshToken',
+        accountState: AccountState.ACTIVE,
+      })
+      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
+        authorizationCode: 'mockServerAuthCode',
+        oauthStateToken: 'oauth_state_token',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+        },
+      })
+    })
+
+    it('should go to next step when sso button is clicked and sso account does not exist', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      expect(screen.getByText('Renseigne ton âge')).toBeOnTheScreen()
+    })
+
+    it('should go back to email step instead of password step when signing up with sso button', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
+
+      expect(screen.getByText('Crée-toi un compte')).toBeOnTheScreen()
+    })
+
+    it('should display go back for last step', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+
+      expect(screen.getByText('Accepter et s’inscrire')).toBeOnTheScreen()
+      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
+    })
+
+    it('should reset isSSOSubscription state when choosing sso first then choosing default signup', async () => {
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await act(() => fireEvent.press(screen.getByText('Continuer')))
+
+      expect(screen.getByText('Choisis un mot de passe')).toBeOnTheScreen()
     })
   })
 })

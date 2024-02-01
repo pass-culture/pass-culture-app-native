@@ -1,22 +1,14 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignUp } from 'features/auth/api/useSignUp'
 import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
-import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
-import {
-  Props as ConfirmationEmailSentProps,
-  SignupConfirmationEmailSent,
-} from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
-import {
-  PreValidationSignupNormalStepProps,
-  PreValidationSignupLastStepProps,
-  SignupData,
-} from 'features/auth/types'
+import { SSO_STEP_CONFIG, DEFAULT_STEP_CONFIG } from 'features/auth/stepConfig'
+import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -34,63 +26,23 @@ import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-import { AcceptCgu } from './AcceptCgu/AcceptCgu'
-import { SetBirthday } from './SetBirthday/SetBirthday'
-import { SetEmail } from './SetEmail/SetEmail'
-import { SetPassword } from './SetPassword/SetPassword'
-
-type SignupStepConfig = {
-  name: PreValidationSignupStep
-  Component:
-    | React.FunctionComponent<PreValidationSignupNormalStepProps>
-    | React.FunctionComponent<PreValidationSignupLastStepProps>
-    | React.FunctionComponent<ConfirmationEmailSentProps>
-  accessibilityTitle: string
-}
-
-const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
-  {
-    name: PreValidationSignupStep.Email,
-    Component: SetEmail,
-    accessibilityTitle: 'Adresse e-mail',
-  },
-  {
-    name: PreValidationSignupStep.Password,
-    Component: SetPassword,
-    accessibilityTitle: 'Mot de passe',
-  },
-  {
-    name: PreValidationSignupStep.Birthday,
-    Component: SetBirthday,
-    accessibilityTitle: 'Date de naissance',
-  },
-  {
-    name: PreValidationSignupStep.CGU,
-    accessibilityTitle: 'CGU & Données',
-    Component: AcceptCgu,
-  },
-  {
-    name: PreValidationSignupStep.ConfirmationEmailSent,
-    accessibilityTitle: 'Confirmation d‘envoi d‘e-mail',
-    Component: SignupConfirmationEmailSent,
-  },
-]
-
 export const SignupForm: FunctionComponent = () => {
   const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const [stepIndex, setStepIndex] = React.useState(0)
-  const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
+  const [isSSOSubscription, setIsSSOSubscription] = React.useState(false)
+  const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
+  const stepConfig = signupStepConfig[stepIndex]
+  const numberOfSteps = signupStepConfig.length
   const isFirstStep = stepIndex === 0
-  const isLastStep = stepIndex === 4
-  const helmetTitle = `Étape ${
-    stepIndex + 1
-  } sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
+  const isConfirmationEmailSentStep =
+    signupStepConfig[stepIndex].name === PreValidationSignupStep.ConfirmationEmailSent
+  const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
   const accessibilityLabelForNextStep =
-    stepIndex < SIGNUP_NUMBER_OF_STEPS - 1
-      ? `Continuer vers l’étape ${SIGNUP_STEP_CONFIG[stepIndex + 1].accessibilityTitle}`
+    stepIndex < numberOfSteps - 1
+      ? `Continuer vers l’étape ${signupStepConfig[stepIndex + 1].accessibilityTitle}`
       : undefined
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
@@ -105,7 +57,7 @@ export const SignupForm: FunctionComponent = () => {
 
   const goToNextStep = (_signupData: Partial<SignupData>) => {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-    setStepIndex((prevStepIndex) => Math.min(SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
+    setStepIndex((prevStepIndex) => Math.min(numberOfSteps, prevStepIndex + 1))
   }
 
   useEffect(() => {
@@ -136,6 +88,9 @@ export const SignupForm: FunctionComponent = () => {
     postalCode: '',
   })
 
+  const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
+  const onDefaultEmailSignup = useCallback(() => setIsSSOSubscription(false), [])
+
   async function signUp(token: string) {
     try {
       const signupResponse = await signUpApiCall({
@@ -146,7 +101,7 @@ export const SignupForm: FunctionComponent = () => {
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       } else {
-        setStepIndex(SIGNUP_NUMBER_OF_STEPS - 1)
+        setStepIndex(numberOfSteps - 1)
       }
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
@@ -154,7 +109,7 @@ export const SignupForm: FunctionComponent = () => {
     }
   }
 
-  const RightButton = isLastStep ? (
+  const RightButton = isConfirmationEmailSentStep ? (
     <RightButtonText onClose={navigateToHome} wording="Fermer" />
   ) : (
     <RightButtonText onClose={showQuitSignupModal} wording="Quitter" />
@@ -165,10 +120,10 @@ export const SignupForm: FunctionComponent = () => {
       <Helmet title={helmetTitle} />
       <PageHeaderWithoutPlaceholder
         title="Inscription"
-        shouldDisplayBackButton={!isLastStep}
+        shouldDisplayBackButton={!isConfirmationEmailSentStep}
         onGoBack={goToPreviousStep}
         RightButton={isFirstStep ? null : RightButton}>
-        <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
+        <ProgressBar totalStep={numberOfSteps} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>
         <Placeholder height={headerHeight} />
@@ -179,6 +134,8 @@ export const SignupForm: FunctionComponent = () => {
           email={signupData.email}
           accessibilityLabelForNextStep={accessibilityLabelForNextStep}
           previousSignupData={signupData}
+          onSSOEmailNotFoundError={onSSOEmailNotFoundError}
+          onDefaultEmailSignup={onDefaultEmailSignup}
         />
       </StyledScrollView>
       <QuitSignupModal

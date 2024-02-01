@@ -14,6 +14,8 @@ const props = {
     birthdate: '',
     postalCode: '',
   },
+  onSSOEmailNotFoundError: jest.fn(),
+  onDefaultEmailSignup: jest.fn(),
 }
 
 describe('SetPassword Page', () => {

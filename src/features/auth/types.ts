@@ -4,7 +4,12 @@ export type SignInResponseFailure = {
   isSuccess: false
   statusCode?: number
   content?: {
-    code: 'ACCOUNT_DELETED' | 'EMAIL_NOT_VALIDATED' | 'NETWORK_REQUEST_FAILED' | 'TOO_MANY_ATTEMPTS'
+    code:
+      | 'ACCOUNT_DELETED'
+      | 'EMAIL_NOT_VALIDATED'
+      | 'NETWORK_REQUEST_FAILED'
+      | 'TOO_MANY_ATTEMPTS'
+      | 'SSO_EMAIL_NOT_FOUND'
     general: string[]
   }
 }
@@ -21,6 +26,8 @@ export type PreValidationSignupNormalStepProps = {
   accessibilityLabelForNextStep?: string
   goToNextStep: (signupData: Partial<SignupData>) => void
   previousSignupData: Partial<SignupData>
+  onSSOEmailNotFoundError: () => void
+  onDefaultEmailSignup: () => void
 }
 
 export type PreValidationSignupLastStepProps = {
