@@ -139,14 +139,6 @@ src/libs/monitoring/sentry.ts:12 - SDK_VERSION
 src/libs/parsers/culturalSurveyType.ts:6 - MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON (used in module)
 src/libs/parsers/index.ts:6 - getHumanizeRelativeDistance
 src/libs/parsers/index.ts:33 - humanizeDistance
-src/libs/parsers/index.ts:87 - groupByYearAndMonth
-src/libs/parsers/index.ts:116 - joinArrayElement
-src/libs/parsers/index.ts:131 - formatGroupedDates
-src/libs/parsers/index.ts:40 - decomposeDate
-src/libs/parsers/index.ts:61 - getUniqueSortedTimestamps
-src/libs/parsers/index.ts:80 - GroupResult
-src/libs/parsers/index.ts:171 - formatDatePeriod
-src/libs/parsers/index.ts:209 - localizeUTCDate
 src/libs/parsers/index.ts:64 - parseTypeHomeLabel
 src/libs/parsers/index.ts:70 - MAP_TYPE_TO_ICON
 src/libs/place/fetchAddresses.ts:4 - buildSuggestedAddresses (used in module)
@@ -353,9 +345,9 @@ src/ui/svg/RadioButtonSelected.tsx:28 - RadioButtonSelected
 src/features/auth/fixtures/fixtures.ts:11 - SEVENTEEN_AGE_DATE
 src/features/bookings/api/index.ts:1 - useUserHasBookings
 src/features/navigation/helpers/index.ts:3 - navigateToBooking
-src/features/navigation/RootNavigator/types.ts:290 - ScreenNavigationProp
-src/features/navigation/RootNavigator/types.ts:315 - NavigateParams (used in module)
-src/features/navigation/RootNavigator/types.ts:320 - AllNavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:291 - ScreenNavigationProp
+src/features/navigation/RootNavigator/types.ts:316 - NavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:321 - AllNavigateParams (used in module)
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
