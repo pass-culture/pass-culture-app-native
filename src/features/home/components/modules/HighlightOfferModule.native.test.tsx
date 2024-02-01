@@ -1,13 +1,17 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { FavoriteResponse, PaginatedFavoritesResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import { analytics } from 'libs/analytics'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -27,6 +31,20 @@ mockUseAuthContext.mockReturnValue({
 })
 
 describe('HighlightOfferModule', () => {
+  beforeEach(() => {
+    const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
+      page: 1,
+      nbFavorites: 0,
+      favorites: [],
+    }
+    mockServer.getApiV1<SubcategoriesResponseModelv2>(`/subcategories/v2`, { ...placeholderData })
+    mockServer.getApiV1<PaginatedFavoritesResponse>(
+      '/me/favorites',
+      favoritesResponseWithoutOfferIn
+    )
+    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+  })
+
   it('should navigate to offer page on press', async () => {
     mockUseHighlightOffer.mockReturnValueOnce(offerFixture)
 

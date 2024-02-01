@@ -1,14 +1,13 @@
 import { render } from '@testing-library/react'
-import { rest } from 'msw'
 import React from 'react'
 import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
+import { FavoritesCountResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { screen, act } from 'tests/utils/web'
 import { theme } from 'theme'
 
@@ -16,12 +15,6 @@ import { Header } from './Header'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
-
-server.use(
-  rest.get(env.API_BASE_URL + '/native/v1/me/favorites/count', (_req, res, ctx) =>
-    res(ctx.status(200), ctx.json({ count: 2 }))
-  )
-)
 
 jest.mock('features/navigation/RootNavigator/routes', () => ({
   routes: [
@@ -39,6 +32,10 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 }))
 
 describe('Header', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<FavoritesCountResponse>(`/me/favorites/count`, { count: 2 })
+  })
+
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
 

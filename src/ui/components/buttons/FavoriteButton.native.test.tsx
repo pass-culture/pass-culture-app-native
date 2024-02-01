@@ -1,21 +1,16 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useAddFavoriteAPI from 'features/favorites/api/useAddFavorite'
 import * as useRemoveFavoriteAPI from 'features/favorites/api/useRemoveFavorite'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import {
@@ -299,26 +294,12 @@ function renderFavoriteButton(options: Options = defaultOptions) {
     ...options,
   }
 
-  server.use(
-    rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
-      res(ctx.status(200), ctx.json(offerResponseSnap))
-    ),
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
-      if (hasAddFavoriteError) {
-        return res(ctx.status(415), ctx.json({}))
-      } else if (hasTooManyFavorites) {
-        return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))
-      } else {
-        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
-      }
-    }),
-    rest.delete<EmptyResponse>(
-      `${env.API_BASE_URL}/native/v1/me/favorites/${
-        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-      }`,
-      (_req, res, ctx) => (!hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422)))
-    )
-  )
+  simulateBackend({
+    id,
+    hasAddFavoriteError,
+    hasRemoveFavoriteError,
+    hasTooManyFavorites,
+  })
 
   return render(reactQueryProviderHOC(<FavoriteButton offerId={id} animationState={undefined} />))
 }
