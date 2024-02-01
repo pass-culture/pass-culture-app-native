@@ -3,12 +3,13 @@ import styled from 'styled-components/native'
 
 import { getDateValuesString } from 'shared/date/getDateValuesString'
 import { monthNames } from 'shared/date/months'
-import { DatePickerProps, PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
+import { DatePickerDropDownProps } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
+import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
 
-export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
+export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
   defaultSelectedDate,
   maximumDate,
   minimumDate,

@@ -6,7 +6,12 @@ import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
+export type DatePickerDropDownProps = Omit<DatePickerProps, 'date' | 'defaultSelectedDate'> & {
+  date?: Date
+  defaultSelectedDate?: Date
+}
+
+export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
   onChange,
   date,
   minimumDate,

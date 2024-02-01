@@ -1,3 +1,3 @@
-import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
+import { DatePickerDropDownProps } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
 
-export const DatePickerDropDown = (_: DatePickerProps) => null
+export const DatePickerDropDown = (_: DatePickerDropDownProps) => null
