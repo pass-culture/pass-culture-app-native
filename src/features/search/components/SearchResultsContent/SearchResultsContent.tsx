@@ -49,7 +49,7 @@ import { Helmet } from 'ui/web/global/Helmet'
 const ANIMATION_DURATION = 700
 const MAX_VENUE_CHARACTERS = 20
 
-export const SearchResults: React.FC = () => {
+export const SearchResultsContent: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlatList<Offer> | FlashList<Offer> | null>(null)
   const {
