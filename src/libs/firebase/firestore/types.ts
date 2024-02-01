@@ -17,6 +17,7 @@ export enum RemoteStoreDocuments {
 
 export enum RemoteStoreFeatureFlags {
   FAV_LIST_FAKE_DOOR = 'favListFakeDoor',
+  WIP_CINEMA_OFFER_VENUE_BLOCK = 'wipCinemaOfferVenueBlock',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
   WIP_ENABLE_APP_LOCATION = 'wipEnableAppLocation',
