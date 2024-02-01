@@ -80,8 +80,6 @@ jest
   .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
   .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
-mockServer.getApiV1<OfferResponse>(`/offer/${mockOfferId}`, offerResponseSnap)
-
 const mockOnPressBookOffer = jest.fn()
 
 let mockSelectedLocationMode = LocationMode.EVERYWHERE
