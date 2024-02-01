@@ -86,6 +86,7 @@ const gtlPLaylistSpy = jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').m
     } as SearchResponse<Offer>,
     layout: 'one-item-medium',
     entryId: '2xUlLBRfxdk6jeYyJszunX',
+    minNumberOfOffers: 1,
   },
 ])
 
