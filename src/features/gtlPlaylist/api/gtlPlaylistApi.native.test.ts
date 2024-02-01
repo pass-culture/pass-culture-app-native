@@ -39,12 +39,14 @@ describe('GTL Playlist API', () => {
           offers: { hits: [] },
           title: 'Jeunesse',
           entryId: '7FqRezKdV0mcUjOYerCUuJ',
+          minNumberOfOffers: 1,
         },
         {
           layout: 'two-items',
           offers: { hits: [] },
           title: 'Littérature',
           entryId: '2xUlLBRfxdk6jeYyJszunX',
+          minNumberOfOffers: 1,
         },
       ])
     })
@@ -140,6 +142,7 @@ describe('GTL Playlist API', () => {
           },
           title: 'Ma Playlist Littérature',
           entryId: '2xUlLBRfxdk6jeYyJszunX',
+          minNumberOfOffers: 1,
         },
       ])
     })

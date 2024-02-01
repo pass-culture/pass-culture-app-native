@@ -10,7 +10,13 @@ import * as useGTLPlaylistsLibrary from '../api/gtlPlaylistApi'
 
 import { useGTLPlaylists } from './useGTLPlaylists'
 
-const venue = { name: 'Une librairie', city: 'Jest', id: 123 } as VenueResponse
+const venue: VenueResponse = {
+  name: 'Une librairie',
+  city: 'Jest',
+  id: 123,
+  isVirtual: false,
+  accessibility: {},
+}
 
 const mockPosition: Position = { latitude: 2, longitude: 2 }
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -23,7 +29,7 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
+const gtlPlaylistsFixture = [
   {
     title: 'Test',
     offers: {
@@ -45,10 +51,14 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
         },
       ],
     } as SearchResponse<Offer>,
-    layout: 'one-item-medium',
+    layout: 'one-item-medium' as const,
+    minNumberOfOffers: 1,
     entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
-])
+]
+const mockFetchGTLPlaylists = jest
+  .spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists')
+  .mockResolvedValue(gtlPlaylistsFixture)
 
 describe('useGTLPlaylists', () => {
   const renderHookWithParams = () =>
@@ -75,7 +85,7 @@ describe('useGTLPlaylists', () => {
         latitude: 2,
         longitude: 2,
       },
-      venue: { name: 'Une librairie', city: 'Jest', id: 123 },
+      venue: { name: 'Une librairie', city: 'Jest', id: 123, accessibility: {}, isVirtual: false },
     })
 
     await act(async () => {
@@ -92,6 +102,7 @@ describe('useGTLPlaylists', () => {
       gtlPlaylists: [
         {
           layout: 'one-item-medium',
+          minNumberOfOffers: 1,
           offers: {
             hits: [
               {
@@ -120,15 +131,28 @@ describe('useGTLPlaylists', () => {
   })
 
   it('should not return playlist that contains no offer', async () => {
-    jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValueOnce([
+    mockFetchGTLPlaylists.mockResolvedValueOnce([
       {
         title: 'Test',
         offers: {
           hits: [],
         } as unknown as SearchResponse<Offer>,
         layout: 'one-item-medium',
+        minNumberOfOffers: 0,
         entryId: '2xUlLBRfxdk6jeYyJszunX',
       },
+    ])
+
+    const { result } = renderHookWithParams()
+
+    await act(async () => {})
+
+    expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
+  })
+
+  it('should not return playlist when it is shorter than the minimum number of offers', async () => {
+    mockFetchGTLPlaylists.mockResolvedValueOnce([
+      { ...gtlPlaylistsFixture[0], minNumberOfOffers: 2 },
     ])
 
     const { result } = renderHookWithParams()

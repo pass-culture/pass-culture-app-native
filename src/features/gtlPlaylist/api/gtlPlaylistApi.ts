@@ -82,6 +82,7 @@ export async function fetchOffersFromGTLPlaylist(
     title: item.fields.displayParameters.fields.title,
     offers: searchResponseQueries[index] ?? { hits: [] },
     layout: item.fields.displayParameters.fields.layout,
+    minNumberOfOffers: item.fields.displayParameters.fields.minOffers,
     entryId: item.sys.id,
   }))
 }

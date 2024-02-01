@@ -31,7 +31,9 @@ export function useGTLPlaylists({ venue }: UseGTLPlaylistsProps) {
   }
 
   return {
-    gtlPlaylists: gtlPlaylists.filter((playlist) => Boolean(playlist.offers.hits.length)),
+    gtlPlaylists: gtlPlaylists.filter(
+      (playlist) => playlist.offers.hits.length >= Math.max(playlist.minNumberOfOffers, 1)
+    ),
     isLoading,
   }
 }
