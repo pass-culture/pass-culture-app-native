@@ -18,13 +18,13 @@
 
 Tableau récapitulatif des besoins de chaque plateforme pour lancer les tests:
 
-|                  | Build local | CLI | adb       | idb | ChromeDriver |
-| ---------------- | ----------- | --- | --------- | --- | ------------ |
-| Android Virtuel  | ✓           | ✓   | optionnel | ✗   | ✗            |
-| Android Physique | ✓           | ✓   | optionnel | ✗   | ✗            |
-| iOS Virtuel      | ✓           | ✓   | ✗         | ✓   | ✗            |
-| iOS Physique     | -           | -   | -         | -   | -            |
-| Web              | ✗           | ✓   | ✗         | ✗   | ✓            |
+|                  | Build local | CLI | adb | idb | ChromeDriver |
+| ---------------- | ----------- | --- | --- | --- | ------------ |
+| Android Virtuel  | ✓           | ✓   | ✓   | ✗   | ✗            |
+| Android Physique | ✓           | ✓   | ✓   | ✗   | ✗            |
+| iOS Virtuel      | ✓           | ✓   | ✗   | ✓   | ✗            |
+| iOS Physique     | -           | -   | -   | -   | -            |
+| Web              | ✗           | ✓   | ✗   | ✗   | ✓            |
 
 ### Installer la CLI Maestro
 
@@ -40,13 +40,20 @@ Téléphone à utilisé (virtuel et physique): Samsung Galaxy S9 (SM-G960F) && O
 
 Sur téléphone physique, il se peut que vous deviez accepter l'installation via USB de `dev.mobile.maestro` lors du lancement des tests.
 
-### Installer ADB (optionnel)
-
-IMPORTANT: Vous n'avez pas directement besoin de `adb` (Android Debug Bridge) pour lancer les tests.
+### Installer ADB
 
 Lorsque vous avez installé Android Studio, `platform-tools` (qui inclut `adb`) est installé par défaut.
 
 Si la commande `adb --version` ne marche pas chez vous, assurez-vous d'avoir ajouté `platform-tools` à [vos variables d'environnement](README.md#troubleshooting).
+
+#### Pourquoi a-t-on besoin d'ADB ?
+
+Les devices Android font des requêtes aux adresses suivantes :
+||Simulateur|Physique|
+|--|--|--|
+|Android|10.0.2.2|localhost|
+
+Pour rediriger les requêtes faites sur ces adresses-là vers notre machine, nous utilisons la commande `adb reverse`. Cette commande nous permet d'exposer un port de notre device Android à notre machine, et est nécessaire pour rediriger les requêtes faites sur `10.0.2.2:<port>` ou `localhost:<port>` sur notre device Android vers `localhost:<port>` sur notre machine.
 
 ### Lancez votre build local
 
