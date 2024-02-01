@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatToFrenchDate, formatToHour, getTimeZonedDate } from 'libs/parsers/formatDates'
+import { formatToFrenchDate, formatToHour, getTimeZonedDate } from 'libs/parsers'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

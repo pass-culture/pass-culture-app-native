@@ -15,7 +15,7 @@ import {
   GroupResult,
   formatGroupedDates,
   capitalizeFirstLetter,
-} from '../formatDates'
+} from 'libs/parsers'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
 const NOVEMBER_1_2020 = new Date(2020, 10, 1)
