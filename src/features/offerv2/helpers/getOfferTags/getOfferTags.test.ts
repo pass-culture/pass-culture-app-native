@@ -36,4 +36,29 @@ describe('getOfferTags', () => {
 
     expect(tags).toEqual(['Cinéma plein air'])
   })
+
+  it('should return cinema genres in tags list when offer has it', () => {
+    const cinemaGenres = ['Action', 'Comedy', 'Drama']
+    const tags = getOfferTags('Cinéma plein air', { genres: cinemaGenres })
+
+    expect(tags).toEqual(['Cinéma plein air', 'Action', 'Comedy', 'Drama'])
+  })
+
+  it('should handle empty cinema genres', () => {
+    const tags = getOfferTags('Cinéma plein air', { genres: [] })
+
+    expect(tags).toEqual(['Cinéma plein air'])
+  })
+
+  it('should handle undefined cinema genres', () => {
+    const tags = getOfferTags('Cinéma plein air', { genres: undefined })
+
+    expect(tags).toEqual(['Cinéma plein air'])
+  })
+
+  it('should handle null cinema genres', () => {
+    const tags = getOfferTags('Cinéma plein air', { genres: null })
+
+    expect(tags).toEqual(['Cinéma plein air'])
+  })
 })
