@@ -95,6 +95,7 @@ export type TrustedDeviceRootStackParamList = {
   SuspensionChoiceExpiredLink: undefined
   SuspiciousLoginSuspendedAccount: undefined
   TrustedDeviceInfos: undefined
+  MovieCalendar: undefined
 }
 
 export enum StepperOrigin {
