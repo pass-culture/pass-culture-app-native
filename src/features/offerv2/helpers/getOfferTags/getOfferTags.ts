@@ -5,11 +5,15 @@ function filterByString(value: string | null | undefined): value is string {
 }
 
 export function getOfferTags(subcategoryLabel: string, extraData?: OfferExtraData) {
+  const cinemaGenres = extraData?.genres?.map((genre) => genre) ?? []
+
   return [
     subcategoryLabel,
     extraData?.musicType,
     extraData?.musicSubType,
     extraData?.showType,
     extraData?.showSubType,
-  ].filter(filterByString)
+  ]
+    .filter(filterByString)
+    .concat(cinemaGenres)
 }
