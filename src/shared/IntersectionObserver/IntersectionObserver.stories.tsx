@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { IOScrollView } from 'react-native-intersection-observer'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 
 import { theme } from 'theme'
 import { Typo } from 'ui/theme'
@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof IntersectionObserver> = (props) => {
   }
 
   return (
-    <IOScrollView style={styles.scrollView}>
+    <IntersectionObserverScrollView style={styles.scrollView}>
       <View style={styles.stateObserverView}>
         <Typo.Caption>
           {inView ? 'Observer visible' : 'Observer not visible'} - scroll to test
@@ -41,7 +41,7 @@ const Template: ComponentStory<typeof IntersectionObserver> = (props) => {
           <Typo.Caption>The observer</Typo.Caption>
         </View>
       </IntersectionObserver>
-    </IOScrollView>
+    </IntersectionObserverScrollView>
   )
 }
 
