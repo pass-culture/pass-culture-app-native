@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
-import { OfferVenueBlock } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlock'
+import { OfferVenueBlockDeprecated } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlockDeprecated'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -140,7 +140,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     <React.Fragment>
       <SectionWithDivider visible={!offer.isDigital} margin>
         <Spacer.Column numberOfSpaces={8} />
-        <OfferVenueBlock
+        <OfferVenueBlockDeprecated
           title={venueSectionTitle}
           venue={offer.venue}
           distance={distanceToLocation}
