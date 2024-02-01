@@ -1,7 +1,22 @@
 import { utcToZonedTime } from 'date-fns-tz'
 
+export const SHORT_MONTHS = [
+  'janv.',
+  'févr.',
+  'mars',
+  'avr.',
+  'mai',
+  'juin',
+  'juill.',
+  'août',
+  'sept.',
+  'oct.',
+  'nov.',
+  'déc.',
+]
+
 // javascript Date can't find them...
-const MONTHS = [
+export const MONTHS = [
   'janvier',
   'février',
   'mars',
@@ -17,7 +32,8 @@ const MONTHS = [
 ] as const
 type Month = typeof MONTHS[number]
 
-const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+export const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+export const SHORT_DAYS = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.']
 
 export const pad = (num: number): string => {
   const res = num.toString()
