@@ -56,7 +56,9 @@ const gtlPlaylistsFixture = [
     entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
 ]
-jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue(gtlPlaylistsFixture)
+const mockFetchGTLPlaylists = jest
+  .spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists')
+  .mockResolvedValue(gtlPlaylistsFixture)
 
 describe('useGTLPlaylists', () => {
   const renderHookWithParams = () =>
@@ -129,7 +131,7 @@ describe('useGTLPlaylists', () => {
   })
 
   it('should not return playlist that contains no offer', async () => {
-    jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValueOnce([
+    mockFetchGTLPlaylists.mockResolvedValueOnce([
       {
         title: 'Test',
         offers: {
@@ -149,9 +151,9 @@ describe('useGTLPlaylists', () => {
   })
 
   it('should not return playlist when it is shorter than the minimum number of offers', async () => {
-    jest
-      .spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists')
-      .mockResolvedValueOnce([{ ...gtlPlaylistsFixture[0], minNumberOfOffers: 2 }])
+    mockFetchGTLPlaylists.mockResolvedValueOnce([
+      { ...gtlPlaylistsFixture[0], minNumberOfOffers: 2 },
+    ])
 
     const { result } = renderHookWithParams()
 
