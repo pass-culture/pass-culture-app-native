@@ -1,18 +1,14 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
-import { api } from 'api/api'
-import { AccountState, ValidateEmailResponse } from 'api/gen'
+import { ValidateEmailResponse } from 'api/gen'
 import { useValidateEmailMutation } from 'features/auth/api/useValidateEmailMutation'
-import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
+import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -25,6 +21,7 @@ export function AfterSignupEmailValidationBuffer() {
       replace(...args)
     }, 2000)
   }
+  const loginAndRedirect = useLoginAndRedirect()
 
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
@@ -34,8 +31,6 @@ export function AfterSignupEmailValidationBuffer() {
     beforeEmailValidation()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deviceInfo])
-
-  const loginRoutine = useLoginRoutine()
 
   const { mutate: validateEmail } = useValidateEmailMutation(
     onEmailValidationSuccess,
@@ -54,36 +49,9 @@ export function AfterSignupEmailValidationBuffer() {
     })
   }
 
-  async function onEmailValidationSuccess({ accessToken, refreshToken }: ValidateEmailResponse) {
+  async function onEmailValidationSuccess(props: ValidateEmailResponse) {
     await analytics.logEmailValidated()
-
-    await loginRoutine(
-      { accessToken, refreshToken, accountState: AccountState.ACTIVE },
-      'fromSignup'
-    )
-
-    try {
-      const user = await api.getNativeV1Me()
-      const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
-      await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
-        af_firebase_pseudo_id: firebasePseudoId,
-        af_user_id: user.id,
-      })
-
-      if (user.isEligibleForBeneficiaryUpgrade) {
-        delayedReplace('VerifyEligibility')
-        return
-      }
-      if (user.eligibilityStartDatetime && new Date(user.eligibilityStartDatetime) >= new Date()) {
-        delayedReplace('NotYetUnderageEligibility', {
-          eligibilityStartDatetime: user.eligibilityStartDatetime.toString(),
-        })
-        return
-      }
-      delayedReplace('AccountCreated')
-    } catch {
-      delayedReplace('AccountCreated')
-    }
+    await loginAndRedirect(props)
   }
 
   function onEmailValidationFailure() {

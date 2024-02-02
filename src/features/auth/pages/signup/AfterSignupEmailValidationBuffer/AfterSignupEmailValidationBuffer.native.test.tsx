@@ -4,15 +4,12 @@ import DeviceInfo from 'react-native-device-info'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { EligibilityType, UserProfileResponse } from 'api/gen'
-import * as Login from 'features/auth/helpers/useLoginRoutine'
+import { UserProfileResponse, ValidateEmailResponse } from 'api/gen'
+import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as datesLib from 'libs/dates'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils'
@@ -23,9 +20,8 @@ import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBu
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('features/auth/helpers/useLoginRoutine')
-const loginRoutine = jest.fn()
-const mockLoginRoutine = Login.useLoginRoutine as jest.Mock
+const loginAndRedirectMock = jest.fn()
+jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
 const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -58,137 +54,32 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is NOT expired', () => {
     beforeEach(() => {
-      mockServer.postApiV1('/validate_email', {})
+      mockServer.postApiV1<ValidateEmailResponse>('/validate_email', {
+        accessToken: 'access_token',
+        refreshToken: 'refresh_token',
+      })
     })
 
-    it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
-        ...nonBeneficiaryUser,
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        eligibility: EligibilityType['age-18'],
-        isEligibleForBeneficiaryUpgrade: false,
-      })
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine) // second render because of useDeviceInfo
+    it('should login and redirect use on email validation success', async () => {
+      mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
 
       renderPage()
 
-      await waitFor(
-        () => {
-          expect(loginRoutine).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledWith('AccountCreated')
-        },
-        { timeout: 10_000 }
-      )
-      loginRoutine.mockRestore()
-    })
+      await act(async () => {})
 
-    it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
-        ...nonBeneficiaryUser,
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        eligibility: EligibilityType['age-18'],
-        isEligibleForBeneficiaryUpgrade: true,
+      expect(loginAndRedirectMock).toHaveBeenCalledWith({
+        accessToken: 'access_token',
+        refreshToken: 'refresh_token',
       })
-
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine) // second render because of useDeviceInfo
-
-      renderPage()
-
-      await waitFor(
-        () => {
-          expect(loginRoutine).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledTimes(1)
-          expect(replace).toHaveBeenCalledWith('VerifyEligibility')
-        },
-        { timeout: 10_000 }
-      )
-      loginRoutine.mockRestore()
-    })
-
-    it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
-        ...nonBeneficiaryUser,
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        isEligibleForBeneficiaryUpgrade: false,
-        eligibilityStartDatetime: '2019-12-01T00:00:00Z',
-      })
-      renderPage()
-
-      await waitFor(
-        () => {
-          expect(replace).toHaveBeenCalledWith('AccountCreated')
-        },
-        { timeout: 10_000 }
-      )
-    })
-
-    it('should log event on email validation success', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
-        ...nonBeneficiaryUser,
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        isEligibleForBeneficiaryUpgrade: false,
-        eligibilityStartDatetime: '2019-12-01T00:00:00Z',
-      })
-      renderPage()
-
-      await waitFor(
-        async () => {
-          expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
-            1,
-            CampaignEvents.COMPLETE_REGISTRATION,
-            {
-              af_firebase_pseudo_id: await firebaseAnalytics.getAppInstanceId(),
-              af_user_id: nonBeneficiaryUser.id,
-            }
-          )
-        },
-        { timeout: 10_000 }
-      )
     })
 
     it('should log analytics on email validation success', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
-        ...nonBeneficiaryUser,
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        isEligibleForBeneficiaryUpgrade: false,
-        eligibilityStartDatetime: '2019-12-01T00:00:00Z',
-      })
+      mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
       renderPage()
 
-      await waitFor(
-        async () => {
-          expect(analytics.logEmailValidated).toHaveBeenCalledTimes(1)
-        },
-        { timeout: 10_000 }
-      )
-    })
+      await act(async () => {})
 
-    it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
-        ...nonBeneficiaryUser,
-        email: 'email@domain.ext',
-        firstName: 'Jean',
-        isEligibleForBeneficiaryUpgrade: false,
-        eligibilityStartDatetime: '2021-12-01T00:00:00Z',
-      })
-      renderPage()
-
-      await waitFor(
-        () => {
-          expect(replace).toHaveBeenCalledWith('NotYetUnderageEligibility', {
-            eligibilityStartDatetime: '2021-12-01T00:00:00Z',
-          })
-        },
-        { timeout: 10_000 }
-      )
+      expect(analytics.logEmailValidated).toHaveBeenCalledTimes(1)
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {
