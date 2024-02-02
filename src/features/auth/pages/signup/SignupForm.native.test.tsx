@@ -25,6 +25,8 @@ import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SignupForm } from './SignupForm'
 
@@ -50,6 +52,13 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 mockdate.set(CURRENT_DATE)
 
 useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+}))
 
 describe('Signup Form', () => {
   beforeEach(() => {
@@ -470,6 +479,26 @@ describe('Signup Form', () => {
       await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
 
       expect(screen.getByText('Crée-toi un compte')).toBeOnTheScreen()
+    })
+
+    it('should go back to email step instead of password step when signing up with sso button and show error snackbar', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message:
+          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
+      })
     })
 
     it('should display go back for last step', async () => {
