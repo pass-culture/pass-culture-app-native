@@ -22,7 +22,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logCancelBookingFunnel: jest.fn(),
   logCancelSignup: jest.fn(),
   logCategoryBlockClicked: jest.fn(),
-  logChangeSearchLocation: jest.fn(),
   logCheckEduconnectDataClicked: jest.fn(),
   logChooseEduConnectMethod: jest.fn(),
   logChooseUbbleMethod: jest.fn(),

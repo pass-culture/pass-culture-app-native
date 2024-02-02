@@ -40,10 +40,6 @@ type HighlightThematicBlockThematicHome = {
   moduleListId?: never
 }
 
-export type ChangeSearchLocationParam =
-  | { type: 'place' | 'everywhere' | 'aroundMe'; venueId?: never }
-  | { type: 'venue'; venueId: number | null }
-
 type ConsultHomeParams =
   | BaseThematicHome
   | CategoryBlockThematicHome
@@ -138,15 +134,6 @@ export const logEventAnalytics = {
     entryId: string
     toEntryId: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CATEGORY_BLOCK_CLICKED }, params),
-  logChangeSearchLocation: (params: ChangeSearchLocationParam, searchId?: string) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.CHANGE_SEARCH_LOCATION },
-      {
-        searchId,
-        type: params.type,
-        ...(params.type === 'venue' && { venueId: params.venueId }),
-      }
-    ),
   logCheckEduconnectDataClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
   logChooseEduConnectMethod: () =>
