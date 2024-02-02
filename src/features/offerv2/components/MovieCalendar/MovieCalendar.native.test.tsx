@@ -15,6 +15,8 @@ const dummyDates: Date[] = [
   new Date(1654099200000), // 31 mai 2024 (Vendredi)
 ]
 
+const mockOnTabChange = jest.fn()
+
 describe('<MovieCalendar/>', () => {
   it('should render MovieCalendar', async () => {
     renderMovieCalendar(dummyDates)
@@ -25,11 +27,5 @@ describe('<MovieCalendar/>', () => {
 })
 
 const renderMovieCalendar = (dates: Date[]) => {
-  render(<DummyMovieCalendar dates={dates} />)
-}
-
-const DummyMovieCalendar: React.FC<{ dates: Date[] }> = ({ dates }) => {
-  const [selectedDate, setSelectedDate] = React.useState<Date>(dates[0])
-
-  return <MovieCalendar dates={dates} selectedDate={selectedDate} onTabChange={setSelectedDate} />
+  render(<MovieCalendar dates={dates} selectedDate={dates[0]} onTabChange={mockOnTabChange} />)
 }

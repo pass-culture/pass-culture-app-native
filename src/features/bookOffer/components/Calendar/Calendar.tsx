@@ -19,15 +19,15 @@ import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { dayNames, dayNamesShort } from 'shared/date/days'
-import { monthNames, monthNamesShort } from 'shared/date/months'
+import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
-  monthNames,
-  monthNamesShort,
+  monthNames: CAPITALIZED_MONTHS,
+  monthNamesShort: CAPITALIZED_SHORT_MONTHS,
   dayNames,
   dayNamesShort,
 }

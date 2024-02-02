@@ -3,7 +3,8 @@ import { View, ScrollView, TouchableOpacity } from 'react-native'
 import { Timestamp } from 'react-native-reanimated/lib/types/lib/reanimated2/commonTypes'
 import styled from 'styled-components/native'
 
-import { SHORT_MONTHS, DAYS, MONTHS, SHORT_DAYS } from 'libs/parsers'
+import { DAYS, SHORT_DAYS } from 'libs/parsers'
+import { MONTHS, SHORT_MONTHS } from 'shared/date/months'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 type DayMapping = {
