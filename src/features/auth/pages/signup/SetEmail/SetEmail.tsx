@@ -23,6 +23,7 @@ import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { Separator } from 'ui/components/Separator'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
+import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
@@ -55,6 +56,8 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   onSSOEmailNotFoundError,
   onDefaultEmailSignup,
 }) => {
+  const { showErrorSnackBar } = useSnackBarContext()
+
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const theme = useTheme()
@@ -89,12 +92,18 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const onSSOSignInFailure = useCallback(
     (errorResponse: SignInResponseFailure) => {
-      if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
+      if (errorResponse.content?.code !== 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
         goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
+      } else {
+        showErrorSnackBar({
+          message:
+            'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
+          timeout: SNACK_BAR_TIME_OUT_LONG,
+        })
       }
     },
-    [goToNextStep, onSSOEmailNotFoundError]
+    [goToNextStep, onSSOEmailNotFoundError, showErrorSnackBar]
   )
 
   return (
