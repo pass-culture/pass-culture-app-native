@@ -13,6 +13,7 @@ import {
 } from 'api/gen'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { SignInResponseFailure } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -34,6 +35,8 @@ const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
 const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
+const loginAndRedirectMock = jest.fn()
+jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
@@ -562,6 +565,41 @@ describe('Signup Form', () => {
         },
         { credentials: 'omit' }
       )
+    })
+
+    it('should login and redirect user on SSO signup success', async () => {
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
+      })
+      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(loginAndRedirectMock).toHaveBeenCalledWith({
+        accessToken: 'accessToken',
+        refreshToken: 'refreshToken',
+      })
     })
   })
 })

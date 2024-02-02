@@ -16,6 +16,10 @@ jest.mock('uuid', () => {
   }
 })
 
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
+}))
+
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const realUseState = React.useState
@@ -47,6 +51,10 @@ describe('<SignupForm/>', () => {
 
       const { container } = renderSignupForm()
       await act(async () => {})
+
+      await waitFor(() => {
+        expect(screen.getByTestId(/Entrée pour/)).toHaveFocus()
+      })
 
       const results = await checkAccessibilityFor(container)
 
