@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import { useIsFetching } from 'react-query'
 import styled from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -8,13 +7,13 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
-import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -36,7 +35,7 @@ export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props
   const { geolocPosition } = useLocation()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
-  const isVenueOfferFetching = useIsFetching(QueryKeys.VENUE_OFFERS)
+  const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
   const { isLoading: arePlaylistsLoading } = useGTLPlaylists({ venue })
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
@@ -90,7 +89,7 @@ export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props
     [onPressSeeMore]
   )
 
-  if (isVenueOfferFetching || arePlaylistsLoading)
+  if (areVenueOffersLoading || arePlaylistsLoading)
     return (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={6} />
