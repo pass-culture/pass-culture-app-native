@@ -88,7 +88,13 @@ export const SignupForm: FunctionComponent = () => {
   })
 
   const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
-  const onDefaultEmailSignup = useCallback(() => setIsSSOSubscription(false), [])
+  const onDefaultEmailSignup = useCallback(() => {
+    setSignupData((previousSignupData) => ({
+      ...previousSignupData,
+      accountCreationToken: undefined,
+    }))
+    setIsSSOSubscription(false)
+  }, [])
 
   async function signUp(token: string) {
     try {

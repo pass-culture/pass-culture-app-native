@@ -394,6 +394,12 @@ describe('Signup Form', () => {
   })
 
   describe('SSO', () => {
+    const signInFailureData: SignInResponseFailure['content'] = {
+      code: 'SSO_EMAIL_NOT_FOUND',
+      accountCreationToken: 'accountCreationToken',
+      general: [],
+    }
+
     beforeEach(() => {
       mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
         responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
@@ -432,7 +438,10 @@ describe('Signup Form', () => {
 
     it('should go to next step when sso button is clicked and sso account does not exist', async () => {
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -444,7 +453,10 @@ describe('Signup Form', () => {
 
     it('should go back to email step instead of password step when signing up with sso button', async () => {
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -458,7 +470,10 @@ describe('Signup Form', () => {
 
     it('should display go back for last step', async () => {
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -477,7 +492,10 @@ describe('Signup Form', () => {
 
     it('should reset isSSOSubscription state when choosing sso first then choosing default signup', async () => {
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()

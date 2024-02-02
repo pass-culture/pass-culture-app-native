@@ -3,15 +3,20 @@ import { GoogleSigninRequest, SigninRequest } from 'api/gen'
 export type SignInResponseFailure = {
   isSuccess: false
   statusCode?: number
-  content?: {
-    code:
-      | 'ACCOUNT_DELETED'
-      | 'EMAIL_NOT_VALIDATED'
-      | 'NETWORK_REQUEST_FAILED'
-      | 'TOO_MANY_ATTEMPTS'
-      | 'SSO_EMAIL_NOT_FOUND'
-    general: string[]
-  }
+  content?:
+    | {
+        code:
+          | 'ACCOUNT_DELETED'
+          | 'EMAIL_NOT_VALIDATED'
+          | 'NETWORK_REQUEST_FAILED'
+          | 'TOO_MANY_ATTEMPTS'
+        general: string[]
+      }
+    | {
+        code: 'SSO_EMAIL_NOT_FOUND'
+        general: string[]
+        accountCreationToken: string
+      }
 }
 
 export type SignupData = {
@@ -19,6 +24,7 @@ export type SignupData = {
   marketingEmailSubscription: boolean
   password: string
   birthdate: string
+  accountCreationToken?: string
 }
 
 export type PreValidationSignupNormalStepProps = {
