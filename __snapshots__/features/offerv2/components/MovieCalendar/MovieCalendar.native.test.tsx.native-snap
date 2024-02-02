@@ -1,18 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
-<View>
-  <View
-    customHeight={16}
-    enable={true}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
+<View
+  style={
+    [
+      {},
+    ]
+  }
+>
   <View
     style={
       [

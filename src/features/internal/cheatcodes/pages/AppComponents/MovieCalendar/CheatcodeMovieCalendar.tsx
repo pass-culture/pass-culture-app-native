@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { MovieCalendar } from 'features/offerv2/components/MovieCalendar/MovieCalendar'
+import { Spacer } from 'ui/theme'
 
 const dummyDates: Date[] = [
   new Date(1296518400000), // 1er février 2011 (Mardi)
@@ -18,6 +19,9 @@ export const CheatCodeMovieCalendar: React.FC = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(dummyDates[0])
 
   return (
-    <MovieCalendar dates={dummyDates} selectedDate={selectedDate} onTabChange={setSelectedDate} />
+    <React.Fragment>
+      <Spacer.TopScreen />
+      <MovieCalendar dates={dummyDates} selectedDate={selectedDate} onTabChange={setSelectedDate} />
+    </React.Fragment>
   )
 }

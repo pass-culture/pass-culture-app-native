@@ -40,8 +40,7 @@ type Props = {
 
 export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChange }) => {
   return (
-    <View>
-      <Spacer.TopScreen />
+    <Container>
       <BottomBar />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {dates.map((date) => {
@@ -66,9 +65,11 @@ export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChang
           )
         })}
       </ScrollView>
-    </View>
+    </Container>
   )
 }
+
+const Container = styled.View({})
 
 const BottomBar = styled.View(({ theme }) => ({
   position: 'absolute',
