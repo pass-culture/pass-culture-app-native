@@ -19,19 +19,10 @@ import { HiddenSuggestionsButton } from 'features/search/components/Buttons/Hidd
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { FilterBehaviour } from 'features/search/enums'
 import { getIsVenuePreviousRoute } from 'features/search/helpers/getIsVenuePreviousRoute/getIsVenuePreviousRoute'
-import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
-import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
-import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
-import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { LocationMode } from 'libs/location/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -53,20 +44,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   searchInHistory,
   ...props
 }) => {
-  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
   const { goBack } = useGoBack(...homeNavConfig)
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
-  const { section, locationType } = useLocationType(searchState)
-  const { label: locationLabel } = useLocationChoice(section)
   const inputRef = useRef<RNTextInput | null>(null)
-  const {
-    visible: locationModalVisible,
-    showModal: showLocationModal,
-    hideModal: hideLocationModal,
-  } = useModal(false)
+
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
   // An issue was opened to ask the integration of debounce directly in the lib : https://github.com/algolia/react-instantsearch/discussions/3555
@@ -101,8 +85,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   )
 
   const hasEditableSearchInput = isFocusOnSuggestions || searchState.view === SearchView.Results
-
-  const hasPosition = useHasPosition()
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -234,15 +216,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     showSuggestions,
   ])
 
-  const showLocationButton = enableAppLocation
-    ? searchState.view === SearchView.Results && !isFocusOnSuggestions
-    : searchState.view === SearchView.Landing
+  const showLocationButton = searchState.view === SearchView.Results && !isFocusOnSuggestions
 
   const disableInputClearButton =
-    searchState.view === SearchView.Results &&
-    !isFocusOnSuggestions &&
-    !isDesktopViewport &&
-    !!enableAppLocation
+    searchState.view === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
 
   return (
     <RowContainer>
@@ -268,10 +245,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               resetQuery={resetQuery}
               onFocus={onFocus}
               showLocationButton={showLocationButton}
-              locationLabel={hasPosition ? locationLabel : 'Me localiser'}
-              onPressLocationButton={showLocationModal}
               accessibilityDescribedBy={accessibilityDescribedBy}
-              numberOfLinesForLocation={locationType === LocationMode.AROUND_PLACE ? 1 : 2}
               disableInputClearButton={disableInputClearButton}
             />
           </FlexView>
@@ -281,13 +255,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
         ”Entrée”
       </HiddenAccessibleText>
-      <LocationModal
-        title="Localisation"
-        accessibilityLabel="Ne pas filtrer sur la localisation et retourner aux résultats"
-        isVisible={locationModalVisible}
-        hideModal={hideLocationModal}
-        filterBehaviour={FilterBehaviour.APPLY_WITHOUT_SEARCHING}
-      />
     </RowContainer>
   )
 }

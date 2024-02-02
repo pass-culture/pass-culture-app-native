@@ -11,8 +11,6 @@ import React, {
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 
@@ -32,7 +30,6 @@ export const SearchWrapper = memo(function SearchWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const maxPrice = useMaxPrice()
   const priceRange: [number, number] = [0, maxPrice]
 
@@ -49,8 +46,6 @@ export const SearchWrapper = memo(function SearchWrapper({
   const hideSuggestions = useCallback(() => setIsFocusOnSuggestions(false), [])
 
   useEffect(() => {
-    if (!enableAppLocation) return
-
     switch (selectedLocationMode) {
       case LocationMode.AROUND_ME:
         dispatch({
@@ -77,7 +72,7 @@ export const SearchWrapper = memo(function SearchWrapper({
       default:
         break
     }
-  }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch, enableAppLocation])
+  }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch])
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: { ...searchState, priceRange } })
