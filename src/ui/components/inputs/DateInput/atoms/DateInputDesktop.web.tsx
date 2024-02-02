@@ -1,7 +1,6 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getDateValuesString } from 'shared/date/getDateValuesString'
 import { monthNames } from 'shared/date/months'
 import { DatePickerDropDownProps } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
 import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
@@ -25,7 +24,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
     year,
   })
 
-  const maximumYear = parseInt(getDateValuesString(maximumDate ?? defaultSelectedDate).year)
+  const maximumYear = maximumDate.getFullYear()
   const minimumYear = minimumDate.getFullYear()
   const { optionGroups } = useDatePickerOptions({ date, maximumYear, minimumYear })
 

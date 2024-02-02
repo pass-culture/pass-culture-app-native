@@ -26,12 +26,11 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   errorMessage,
 }) => {
   const defaultDate = getDateValuesString(defaultSelectedDate)
-  const maximumYear = parseInt(getDateValuesString(maximumDate ?? new Date()).year)
   const [date, setDate] = useState(defaultDate)
 
   const { optionGroups } = useDatePickerOptions({
     date,
-    maximumYear,
+    maximumYear: maximumDate.getFullYear(),
     minimumYear: minimumDate.getFullYear(),
     monthNamesType: 'short',
   })
