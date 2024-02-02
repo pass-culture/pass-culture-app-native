@@ -12,7 +12,6 @@ const props = {
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
-    postalCode: '',
   },
   onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),

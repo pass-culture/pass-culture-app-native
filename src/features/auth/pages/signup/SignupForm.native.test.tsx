@@ -348,7 +348,6 @@ describe('Signup Form', () => {
           marketingEmailSubscription: false,
           password: 'user@AZERTY123',
           birthdate: '2003-12-01',
-          postalCode: '',
           token: 'dummyToken',
           appsFlyerPlatform: 'ios',
           appsFlyerUserId: 'uniqueCustomerId',

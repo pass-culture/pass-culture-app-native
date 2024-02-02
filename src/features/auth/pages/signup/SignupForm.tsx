@@ -85,7 +85,6 @@ export const SignupForm: FunctionComponent = () => {
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
-    postalCode: '',
   })
 
   const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])

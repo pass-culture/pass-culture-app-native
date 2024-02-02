@@ -28,7 +28,6 @@ const defaultProps = {
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
-    postalCode: '',
   },
   onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),

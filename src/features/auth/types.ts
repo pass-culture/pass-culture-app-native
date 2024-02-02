@@ -19,7 +19,6 @@ export type SignupData = {
   marketingEmailSubscription: boolean
   password: string
   birthdate: string
-  postalCode: string
 }
 
 export type PreValidationSignupNormalStepProps = {
