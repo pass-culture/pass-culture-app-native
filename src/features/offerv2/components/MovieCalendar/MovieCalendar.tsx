@@ -4,15 +4,15 @@ import { Timestamp } from 'react-native-reanimated/lib/types/lib/reanimated2/com
 import styled from 'styled-components/native'
 
 import { DAYS, SHORT_DAYS } from 'shared/date/days'
-import { MONTHS, SHORT_MONTHS } from 'shared/date/months'
-import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { Month, MONTHS, SHORT_MONTHS } from 'shared/date/months'
+import { getSpacing, Typo } from 'ui/theme'
 
 type DayMapping = {
   weekday: string
   fullWeekDay: string
   dayDate: number
   month: string
-  fullMonth: string
+  fullMonth: Month
   timestamp: Timestamp
 }
 
@@ -44,11 +44,10 @@ export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChang
       <BottomBar />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {dates.map((date) => {
-          const day = extractDate(date)
-          const { weekday, fullWeekDay, dayDate, month, fullMonth, timestamp } = day
+          const { weekday, fullWeekDay, dayDate, month, fullMonth, timestamp } = extractDate(date)
           const isSelected = selectedDate.getTime() === timestamp
 
-          const { CalendarCell, CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
+          const { CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
           return (
             <CalendarCell onPress={() => onTabChange(date)} key={`${timestamp} - ${isSelected}`}>
               <CalendarTextView>
@@ -90,12 +89,11 @@ const CalendarTextView = styled(View)({
   marginBottom: getSpacing(2),
 })
 
-const DefaultCalendarCell = styled(TouchableOpacity)({
+const CalendarCell = styled(TouchableOpacity)({
   justifyContent: 'center',
   alignItems: 'center',
   flexWrap: 'wrap',
 })
-const SelectedCalendarCell = styled(DefaultCalendarCell)({})
 
 const DefaultCalendarText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.greyDark,
@@ -109,11 +107,9 @@ const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
 
 const StatusPattern = {
   default: {
-    CalendarCell: DefaultCalendarCell,
     CalendarText: DefaultCalendarText,
   },
   selected: {
-    CalendarCell: SelectedCalendarCell,
     CalendarText: SelectedCalendarText,
   },
 }
