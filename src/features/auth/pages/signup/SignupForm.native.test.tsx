@@ -33,6 +33,7 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
+const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
@@ -509,6 +510,58 @@ describe('Signup Form', () => {
       await act(() => fireEvent.press(screen.getByText('Continuer')))
 
       expect(screen.getByText('Choisis un mot de passe')).toBeOnTheScreen()
+    })
+
+    it('should create SSO account when clicking on AcceptCgu button', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13') // first render
+      getSystemNameSpy.mockReturnValueOnce('iOS') // first render
+      getModelSpy.mockReturnValueOnce('iPhone 13') // rerender because of isSSOSubscription
+      getSystemNameSpy.mockReturnValueOnce('iOS') // rerender because of isSSOSubscription
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
+      })
+      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
+        {
+          accountCreationToken: 'accountCreationToken',
+          marketingEmailSubscription: false,
+          birthdate: '2003-12-01',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          firebasePseudoId: 'firebase_pseudo_id',
+          trustedDevice: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+          },
+        },
+        { credentials: 'omit' }
+      )
     })
   })
 })

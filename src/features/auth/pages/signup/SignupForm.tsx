@@ -101,11 +101,11 @@ export const SignupForm: FunctionComponent = () => {
       const signupResponse = await signUpApiCall({
         ...signupData,
         token,
-        trustedDevice: trustedDevice,
+        trustedDevice,
       })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
-      } else {
+      } else if (!isSSOSubscription) {
         setStepIndex(numberOfSteps - 1)
       }
     } catch (error) {

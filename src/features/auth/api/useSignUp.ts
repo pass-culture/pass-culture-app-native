@@ -1,12 +1,12 @@
 import { Platform } from 'react-native'
 
 import { api } from 'api/api'
-import { AccountRequest } from 'api/gen'
+import { AccountRequest, GoogleAccountRequest } from 'api/gen'
 import { campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 
-type appAccountRequest = Omit<AccountRequest, 'appsFlyerPlatform' | 'appsFlyerUserId'>
+type AppAccountRequest = AccountRequest | GoogleAccountRequest
 
 type SignUpResponse =
   | {
@@ -21,16 +21,41 @@ type SignUpResponse =
       }
     }
 
-export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse> {
-  return async (body: appAccountRequest) => {
-    try {
-      const appsFlyerUserId = await campaignTracker.getUserId()
-      const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
+function isSSOSignupRequest(body: AppAccountRequest): body is GoogleAccountRequest {
+  return 'accountCreationToken' in body && !!body.accountCreationToken
+}
 
-      const response = await api.postNativeV1Account(
-        { ...body, appsFlyerPlatform: Platform.OS, appsFlyerUserId, firebasePseudoId },
-        { credentials: 'omit' }
-      )
+export function useSignUp(): (data: AppAccountRequest) => Promise<SignUpResponse> {
+  return async (body: AppAccountRequest) => {
+    try {
+      const commonBody = {
+        birthdate: body.birthdate,
+        token: body.token,
+        marketingEmailSubscription: body.marketingEmailSubscription,
+        trustedDevice: body.trustedDevice,
+        appsFlyerPlatform: Platform.OS,
+        appsFlyerUserId: await campaignTracker.getUserId(),
+        firebasePseudoId: await firebaseAnalytics.getAppInstanceId(),
+      }
+      const requestOptions = { credentials: 'omit' }
+      const isSSOSignup = isSSOSignupRequest(body)
+
+      const response = isSSOSignup
+        ? await api.postNativeV1OauthGoogleAccount(
+            {
+              ...commonBody,
+              accountCreationToken: body.accountCreationToken,
+            },
+            requestOptions
+          )
+        : await api.postNativeV1Account(
+            {
+              ...commonBody,
+              email: body.email,
+              password: body.password,
+            },
+            requestOptions
+          )
       return { isSuccess: !!response }
     } catch (error) {
       return {
