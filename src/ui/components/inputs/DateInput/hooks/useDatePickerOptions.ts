@@ -9,7 +9,7 @@ import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 type Args = {
   date: PartialDate
   minimumYear: number
-  maximumYear: string
+  maximumYear: number
   monthNamesType?: 'long' | 'short'
 }
 

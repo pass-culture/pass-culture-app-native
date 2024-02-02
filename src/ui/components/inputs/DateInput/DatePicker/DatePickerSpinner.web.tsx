@@ -26,7 +26,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   errorMessage,
 }) => {
   const defaultDate = getDateValuesString(defaultSelectedDate)
-  const maximumYear = getDateValuesString(maximumDate ?? new Date()).year
+  const maximumYear = parseInt(getDateValuesString(maximumDate ?? new Date()).year)
   const [date, setDate] = useState(defaultDate)
 
   const { optionGroups } = useDatePickerOptions({

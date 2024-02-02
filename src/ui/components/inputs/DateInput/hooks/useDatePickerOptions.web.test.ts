@@ -9,7 +9,7 @@ describe('useDatePickerOptions', () => {
       useDatePickerOptions({
         date: { day: '13', month: 'Décembre' },
         minimumYear: 2000,
-        maximumYear: '2001',
+        maximumYear: 2001,
       })
     )
 
@@ -25,7 +25,7 @@ describe('useDatePickerOptions', () => {
       useDatePickerOptions({
         date: { day: '13', month: 'Février', year: '2000' },
         minimumYear: 2000,
-        maximumYear: '2004',
+        maximumYear: 2004,
       })
     )
 
@@ -41,7 +41,7 @@ describe('useDatePickerOptions', () => {
       useDatePickerOptions({
         date: { day: '13', month: 'Décembre', year: '2000' },
         minimumYear: 2000,
-        maximumYear: '2004',
+        maximumYear: 2004,
         monthNamesType: 'short',
       })
     )

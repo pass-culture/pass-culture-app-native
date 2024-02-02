@@ -25,7 +25,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
     year,
   })
 
-  const maximumYear = getDateValuesString(maximumDate ?? defaultSelectedDate).year
+  const maximumYear = parseInt(getDateValuesString(maximumDate ?? defaultSelectedDate).year)
   const minimumYear = minimumDate.getFullYear()
   const { optionGroups } = useDatePickerOptions({ date, maximumYear, minimumYear })
 
