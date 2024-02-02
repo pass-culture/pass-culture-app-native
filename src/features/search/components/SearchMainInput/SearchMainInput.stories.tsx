@@ -25,7 +25,6 @@ const baseProps = {
 export const Home = Template.bind({})
 Home.args = {
   ...baseProps,
-  locationLabel: 'Autour de moi',
   showLocationButton: true,
 }
 
