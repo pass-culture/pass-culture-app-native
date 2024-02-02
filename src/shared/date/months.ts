@@ -43,7 +43,6 @@ export const SHORT_MONTHS = [
   'déc.',
 ]
 
-// javascript Date can't find them...
 export const MONTHS = [
   'janvier',
   'février',

@@ -18,7 +18,7 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { dayNames, dayNamesShort } from 'shared/date/days'
+import { DAYS, dayNamesShort } from 'shared/date/days'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -28,7 +28,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 LocaleConfig.locales['fr'] = {
   monthNames: CAPITALIZED_MONTHS,
   monthNamesShort: CAPITALIZED_SHORT_MONTHS,
-  dayNames,
+  dayNames: DAYS,
   dayNamesShort,
 }
 LocaleConfig.defaultLocale = 'fr'

@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { isBeforeToday } from 'features/search/helpers/isBeforeToday/isBeforeToday'
-import { dayNames, dayNamesShort } from 'shared/date/days'
+import { DAYS, dayNamesShort } from 'shared/date/days'
 import { getDatesInMonth } from 'shared/date/getDatesInMonth'
 import { getDateValuesString } from 'shared/date/getDateValuesString'
 import { getYears } from 'shared/date/getYears'
@@ -27,7 +27,7 @@ import { Props } from './CalendarPicker.d'
 LocaleConfig.locales['fr'] = {
   monthNames: CAPITALIZED_MONTHS,
   monthNamesShort: CAPITALIZED_SHORT_MONTHS,
-  dayNames,
+  dayNames: DAYS,
   dayNamesShort,
   today: 'Aujourd’hui',
 } as typeof LocaleConfig.locales
