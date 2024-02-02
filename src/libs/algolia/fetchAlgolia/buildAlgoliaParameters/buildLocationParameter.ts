@@ -56,8 +56,6 @@ type BuildGeolocationParameterParams = {
   locationFilter?: SearchQueryParameters['locationFilter']
   venue?: SearchQueryParameters['venue']
   userLocation: Position
-  isFullyDigitalOffersCategory?: SearchQueryParameters['isFullyDigitalOffersCategory']
-  enableAppLocation?: boolean
   aroundRadius?: number
 }
 
@@ -67,12 +65,9 @@ export const deprecatedBuildGeolocationParameter = ({
   locationFilter: providedLocationFilter,
   venue,
   userLocation,
-  isFullyDigitalOffersCategory,
-  enableAppLocation,
   aroundRadius,
 }: BuildGeolocationParameterParams): AlgoliaPositionParams | undefined => {
   let locationFilter = providedLocationFilter
-  if (isFullyDigitalOffersCategory && enableAppLocation) return
   if (!locationFilter)
     locationFilter = userLocation
       ? { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }
@@ -92,12 +87,7 @@ export const deprecatedBuildGeolocationParameter = ({
   }
 
   if (!userLocation) return
-  if (
-    !enableAppLocation &&
-    isFullyDigitalOffersCategory &&
-    locationFilter.locationType === LocationMode.AROUND_ME
-  )
-    return
+
   if (locationFilter.locationType === LocationMode.EVERYWHERE) {
     return {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,

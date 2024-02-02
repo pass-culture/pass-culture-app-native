@@ -1508,56 +1508,6 @@ describe('fetchOffer', () => {
     })
   })
 
-  describe('isFullyDigitalOffersCategory & geolocation shared with around me location filter param', () => {
-    it('should fetch with around me parameters when isFullyDigitalOffersCategory is undefined', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
-          query,
-          isFullyDigitalOffersCategory: undefined,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        aroundLatLng: '42, 43',
-        aroundRadius: 15000,
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-      })
-    })
-
-    it('should not fetch with around me parameters when isFullyDigitalOffersCategory is undefined', () => {
-      const query = 'searched query'
-
-      fetchOffers({
-        parameters: {
-          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: 15 },
-          query,
-          isFullyDigitalOffersCategory: true,
-        } as SearchQueryParameters,
-        userLocation,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        clickAnalytics: true,
-      })
-    })
-  })
-
   describe('Index name param', () => {
     it('should fetch Algolia offers index when param not provided', () => {
       const query = 'searched query'

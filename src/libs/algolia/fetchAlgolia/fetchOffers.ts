@@ -39,7 +39,6 @@ export const fetchOffers = async ({
     parameters,
     userLocation,
     isUserUnderage,
-    undefined,
     aroundRadius
   )
   const index = client.initIndex(indexSearch)

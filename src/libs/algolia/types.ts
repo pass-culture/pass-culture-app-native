@@ -51,7 +51,6 @@ export type SearchQueryParameters = {
   date: SelectedDate | null
   endingDatetime?: string
   hitsPerPage: number | null
-  isFullyDigitalOffersCategory?: boolean
   locationFilter: LocationFilter
   maxPossiblePrice?: string
   maxPrice?: string

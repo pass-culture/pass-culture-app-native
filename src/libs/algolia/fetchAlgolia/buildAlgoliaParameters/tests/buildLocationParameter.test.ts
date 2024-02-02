@@ -174,16 +174,6 @@ describe('buildLocationParameter', () => {
       })
     })
 
-    it('should return undefined for online location type with around me filter', () => {
-      const result = deprecatedBuildGeolocationParameter({
-        locationFilter: locationFilterAroundMe,
-        userLocation,
-        isFullyDigitalOffersCategory: true,
-      })
-
-      expect(result).toBeUndefined()
-    })
-
     it('should return geolocation parameter for around me location type', () => {
       const result = deprecatedBuildGeolocationParameter({
         locationFilter: locationFilterAroundMe,
