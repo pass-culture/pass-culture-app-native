@@ -431,8 +431,6 @@ describe('Signup Form', () => {
     })
 
     it('should go to next step when sso button is clicked and sso account does not exist', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
         responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
       })
@@ -445,8 +443,6 @@ describe('Signup Form', () => {
     })
 
     it('should go back to email step instead of password step when signing up with sso button', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
         responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
       })
@@ -461,8 +457,6 @@ describe('Signup Form', () => {
     })
 
     it('should display go back for last step', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
         responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
       })
