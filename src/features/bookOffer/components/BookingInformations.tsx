@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { formatDate } from 'features/bookOffer/components/CancellationDetails'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatDuration } from 'features/offerv2/helpers/formatDuration/formatDuration'
-import { formatToFrenchDate } from 'libs/parsers/formatDates'
+import { formatDateTimezone, formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
@@ -49,10 +48,15 @@ export const BookingInformations = () => {
     )
 
   if (mapping[offer.subcategoryId].isEvent) {
+    const shouldDisplayWeekday = true
     let message = ''
 
     if (stock.beginningDatetime) {
-      message = formatDate(stock.beginningDatetime, offer.venue.timezone)
+      message = formatDateTimezone(
+        stock.beginningDatetime,
+        shouldDisplayWeekday,
+        offer.venue.timezone
+      )
     }
 
     if (offer.extraData?.durationMinutes) {
