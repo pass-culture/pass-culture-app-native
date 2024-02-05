@@ -1,15 +1,14 @@
-import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import * as ReactMobilePicker from 'react-mobile-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { pad } from 'libs/parsers'
-import { getDatesInMonth } from 'shared/date/getDatesInMonth'
 import { getDateValuesString } from 'shared/date/getDateValuesString'
-import { getPastYears } from 'shared/date/getPastYears'
 import { monthNamesShort } from 'shared/date/months'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
+import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
 import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -27,18 +26,14 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   errorMessage,
 }) => {
   const defaultDate = getDateValuesString(defaultSelectedDate)
-  const maximumYear = getDateValuesString(maximumDate ?? new Date()).year
   const [date, setDate] = useState(defaultDate)
 
-  const optionGroups = useMemo(() => {
-    const { month: selectedMonth, year: selectedYear } = date
-    const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth).toString()
-    return {
-      day: getDatesInMonth(selectedMonthIndex, selectedYear),
-      month: monthNamesShort,
-      year: getPastYears(minimumDate.getFullYear(), maximumYear),
-    }
-  }, [date, maximumYear, minimumDate])
+  const { optionGroups } = useDatePickerOptions({
+    date,
+    maximumYear: maximumDate.getFullYear(),
+    minimumYear: minimumDate.getFullYear(),
+    monthNamesType: 'short',
+  })
 
   function onDateChange(name: string, value: number | string) {
     setDate((prevDateValues) => ({ ...prevDateValues, [name]: value }))

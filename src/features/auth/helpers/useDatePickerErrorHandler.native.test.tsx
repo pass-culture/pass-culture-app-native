@@ -1,5 +1,4 @@
 import mockdate from 'mockdate'
-import * as styledComponentsNative from 'styled-components/native'
 
 import {
   AGE,
@@ -34,14 +33,6 @@ describe('useDatePickerErrorHandler', () => {
 
     expect(result.current.isDisabled).toEqual(true)
     expect(result.current.errorMessage).toEqual(null)
-  })
-
-  it('should display the error message "tu dois avoir 15 ans" when the default selected date is selected and not touch device', () => {
-    const message = 'Tu dois avoir au moins 15\u00a0ans pour t’inscrire au pass Culture'
-    const { result } = renderUseDatePickerErrorHandler(DEFAULT_SELECTED_DATE, false)
-
-    expect(result.current.isDisabled).toEqual(true)
-    expect(result.current.errorMessage).toEqual(message)
   })
 
   it('should display the error message "une date dans le futur" when the selected date is in the futur', () => {
@@ -89,10 +80,6 @@ describe('useDatePickerErrorHandler', () => {
   })
 })
 
-const renderUseDatePickerErrorHandler = (date?: Date, isTouch = true) => {
-  jest
-    .spyOn(styledComponentsNative, 'useTheme')
-    .mockReturnValue({ isTouch } as styledComponentsNative.DefaultTheme)
-
+const renderUseDatePickerErrorHandler = (date?: Date) => {
   return renderHook(() => useDatePickerErrorHandler(date))
 }

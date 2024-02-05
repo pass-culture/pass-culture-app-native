@@ -1,7 +1,12 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { MINIMUM_DATE, CURRENT_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
+import {
+  MINIMUM_DATE,
+  CURRENT_DATE,
+  DEFAULT_SELECTED_DATE,
+  MAXIMUM_DATE,
+} from 'features/auth/fixtures/fixtures'
 import { render, screen } from 'tests/utils'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
@@ -9,6 +14,7 @@ const props = {
   onChange: jest.fn(),
   defaultSelectedDate: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
+  maximumDate: MAXIMUM_DATE,
 }
 
 describe('<DateInput />', () => {

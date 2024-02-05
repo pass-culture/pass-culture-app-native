@@ -1,10 +1,3 @@
-export const DatePickerDropDown = (_: {
-  defaultSelectedDate?: Date
-  previousBirthdateProvided?: string
-  minimumDate?: Date
-  maximumDate?: Date
-  onChange?: (date?: Date | undefined) => void
-  errorMessage?: string | null
-  isDisabled?: boolean
-  chidren?: never
-}) => null
+import { DatePickerDropDownProps } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
+
+export const DatePickerDropDown = (_: DatePickerDropDownProps) => null

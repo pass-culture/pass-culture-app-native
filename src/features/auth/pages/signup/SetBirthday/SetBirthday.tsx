@@ -63,9 +63,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
         <Spacer.Column numberOfSpaces={10} />
         <DateInput
           onChange={setDate}
+          date={date}
           errorMessage={errorMessage}
           defaultSelectedDate={defaultSelectedDate}
-          previousBirthdateProvided={previousBirthdateProvided}
           maximumDate={maximumSpinnerDate}
           minimumDate={MINIMUM_DATE}
         />

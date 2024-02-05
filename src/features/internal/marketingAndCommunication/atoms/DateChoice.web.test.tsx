@@ -21,7 +21,6 @@ describe('<DateChoice />', () => {
     fireEvent.change(screen.getByTestId('select-Mois'), { target: { value: 'Décembre' } })
     fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2020' } })
 
-    expect(onChange).toHaveBeenNthCalledWith(1, undefined) // first render trigger useEffect
-    expect(onChange).toHaveBeenNthCalledWith(2, new Date('2020-12-31T00:00:00.000Z'))
+    expect(onChange).toHaveBeenNthCalledWith(4, new Date('2020-12-31T00:00:00.000Z'))
   })
 })

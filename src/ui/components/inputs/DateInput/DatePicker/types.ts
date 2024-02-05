@@ -1,11 +1,16 @@
 export type DatePickerProps = {
-  defaultSelectedDate: Date
-  previousBirthdateProvided?: string
-  minimumDate: Date
-  maximumDate?: Date
+  date?: Date
   onChange: (date?: Date) => void
+  defaultSelectedDate: Date
+  minimumDate: Date
+  maximumDate: Date
   errorMessage?: string | null
   accessibilityDescribedBy?: string
   isDisabled?: boolean
-  chidren?: never
+}
+
+export type PartialDate = {
+  year?: string
+  month?: string
+  day?: string
 }
