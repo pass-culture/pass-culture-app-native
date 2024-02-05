@@ -6,7 +6,9 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
+import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { OfferPlaylist } from 'features/offerv2/components/OfferPlaylist/OfferPlaylist'
+import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -22,9 +24,6 @@ import { Spacer } from 'ui/theme'
 
 export type OfferPlaylistListProps = {
   offer: OfferResponse
-  handleChangeSameArtistPlaylistDisplay: (inView: boolean) => void
-  handleChangeSameCategoryPlaylistDisplay: (inView: boolean) => void
-  handleChangeOtherCategoriesPlaylistDisplay: (inView: boolean) => void
   position: Position
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
@@ -93,14 +92,37 @@ export function OfferPlaylistList({
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
   sameArtistPlaylist,
-  handleChangeSameArtistPlaylistDisplay,
-  handleChangeSameCategoryPlaylistDisplay,
-  handleChangeOtherCategoriesPlaylistDisplay,
 }: Readonly<OfferPlaylistListProps>) {
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+
+  const {
+    logSameCategoryPlaylistVerticalScroll,
+    logOtherCategoriesPlaylistVerticalScroll,
+    logSameArtistPlaylistVerticalScroll,
+  } = useLogPlaylist({
+    offerId: offer.id,
+    nbSameArtistPlaylist: sameArtistPlaylist?.length ?? 0,
+    apiRecoParamsSameCategory,
+    nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
+    apiRecoParamsOtherCategories,
+    nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
+    fromOfferId,
+  })
+
+  const handleChangeSameArtistPlaylistDisplay = useLogScrollHandler(
+    logSameArtistPlaylistVerticalScroll
+  )
+
+  const handleChangeOtherCategoriesPlaylistDisplay = useLogScrollHandler(
+    logOtherCategoriesPlaylistVerticalScroll
+  )
+
+  const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
+    logSameCategoryPlaylistVerticalScroll
+  )
 
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
   const shouldDisplaySameArtistPlaylist =

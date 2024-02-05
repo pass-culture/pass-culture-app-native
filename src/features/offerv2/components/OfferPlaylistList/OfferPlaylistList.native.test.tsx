@@ -38,9 +38,6 @@ const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffe
 const offerPlaylistListProps: OfferPlaylistListProps = {
   offer: mockOffer,
   position: null,
-  handleChangeSameArtistPlaylistDisplay: jest.fn(),
-  handleChangeSameCategoryPlaylistDisplay: jest.fn(),
-  handleChangeOtherCategoriesPlaylistDisplay: jest.fn(),
 }
 
 describe('<OfferPlaylistList />', () => {
@@ -165,9 +162,6 @@ const renderOfferPlaylistList = ({
   sameCategorySimilarOffers,
   otherCategoriesSimilarOffers,
   sameArtistPlaylist,
-  handleChangeSameArtistPlaylistDisplay,
-  handleChangeSameCategoryPlaylistDisplay,
-  handleChangeOtherCategoriesPlaylistDisplay,
 }: OfferPlaylistListProps) =>
   render(
     reactQueryProviderHOC(
@@ -177,9 +171,6 @@ const renderOfferPlaylistList = ({
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         sameArtistPlaylist={sameArtistPlaylist}
-        handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
-        handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
-        handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
       />
     )
   )
