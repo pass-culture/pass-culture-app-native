@@ -6,6 +6,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
+import { formatDateTimezone } from 'libs/parsers'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils'
 
@@ -240,5 +241,60 @@ describe('<BookingInformations />', () => {
     render(<BookingInformations />)
 
     expect(screen.queryByText('RUE DE CALI')).not.toBeOnTheScreen()
+  })
+
+  it("shouldn't display duration if it has no duration information", () => {
+    // @ts-expect-error mock is not real type
+    mockedUseBookingStock.mockReturnValueOnce({
+      beginningDatetime: '2020-12-01T00:00:00Z',
+    })
+    // @ts-expect-error mock is not real type
+    mockedUseBookingOffer.mockReturnValueOnce({
+      isDigital: false,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      name: 'Pas de durée',
+      stocks: [],
+      venue: mockOffer.venue,
+      extraData: { durationMinutes: null },
+    })
+    render(<BookingInformations />)
+
+    expect(screen.queryByText('Mardi 1 décembre 2020, 01h00 - Durée : 1h')).not.toBeOnTheScreen()
+  })
+
+  it('should display duration if it has duration information', async () => {
+    // @ts-expect-error mock is not real type
+    mockedUseBookingStock.mockReturnValueOnce({
+      beginningDatetime: '2020-12-01T00:00:00Z',
+    })
+    // @ts-expect-error mock is not real type
+    mockedUseBookingOffer.mockReturnValueOnce({
+      isDigital: false,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      name: 'Offre cinéma avec une duration',
+      stocks: [],
+      venue: mockOffer.venue,
+      extraData: { durationMinutes: 60 },
+    })
+
+    render(<BookingInformations />)
+
+    expect(await screen.findByText('Mardi 1 décembre 2020, 01h00 - Durée : 1h')).toBeVisible()
+  })
+
+  describe('formatDateTimezone()', () => {
+    it.each`
+      limitDate                       | expected
+      ${'2021-02-23T13:45:00'}        | ${'Mardi 23 février 2021, 13h45'}
+      ${new Date(2021, 4, 3, 9, 30)}  | ${'Lundi 3 mai 2021, 09h30'}
+      ${new Date(2021, 11, 16, 9, 3)} | ${'Jeudi 16 décembre 2021, 09h03'}
+    `(
+      'should format Date $limitDate to string "$expected"',
+      ({ limitDate, expected }: { limitDate: string; expected: string }) => {
+        const shouldShowWeekDay = true
+
+        expect(formatDateTimezone(limitDate, shouldShowWeekDay)).toEqual(expected)
+      }
+    )
   })
 })
