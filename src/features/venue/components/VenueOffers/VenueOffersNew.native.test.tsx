@@ -84,8 +84,7 @@ describe('<VenueOffersNew />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
-      data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+    } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
     renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
