@@ -23,7 +23,7 @@ describe('<DatePickerDropDown />', () => {
     props.onChange.mockReset()
   })
 
-  it('should set a default date', async () => {
+  it('should display a date if provided as a default date', async () => {
     const propsWithDefaultDate = { ...props, defaultSelectedDate: new Date('1994-11-12') }
     render(<DatePickerDropDown {...propsWithDefaultDate} />)
 
