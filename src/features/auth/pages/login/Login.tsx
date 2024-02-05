@@ -47,7 +47,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { data: settings } = useSettingsContext()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { showInfoSnackBar } = useSnackBarContext()
+  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const isRecaptchaEnabled = settings?.isRecaptchaEnabled
 
@@ -80,6 +80,19 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const handleSigninFailure = useCallback(
     (response: SignInResponseFailure) => {
       const failureCode = response.content?.code
+      if (
+        failureCode === 'DUPLICATE_GOOGLE_ACCOUNT' ||
+        failureCode === 'SSO_ACCOUNT_DELETED' ||
+        failureCode === 'SSO_ACCOUNT_ANONYMIZED' ||
+        failureCode === 'SSO_EMAIL_NOT_VALIDATED'
+      ) {
+        showErrorSnackBar({
+          message:
+            'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
+          timeout: SNACK_BAR_TIME_OUT_LONG,
+        })
+      }
+
       if (failureCode === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
@@ -92,7 +105,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [email, navigate, setFormErrors, setErrorMessage]
+    [showErrorSnackBar, navigate, email, setFormErrors, setErrorMessage]
   )
 
   const { mutate: signIn, isLoading } = useSignIn({

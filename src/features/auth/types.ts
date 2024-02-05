@@ -13,7 +13,12 @@ export type SignInResponseFailure = {
         general: string[]
       }
     | {
-        code: 'SSO_EMAIL_NOT_FOUND'
+        code:
+          | 'SSO_EMAIL_NOT_FOUND'
+          | 'DUPLICATE_GOOGLE_ACCOUNT'
+          | 'SSO_ACCOUNT_DELETED'
+          | 'SSO_ACCOUNT_ANONYMIZED'
+          | 'SSO_EMAIL_NOT_VALIDATED'
         general: string[]
         accountCreationToken: string
       }

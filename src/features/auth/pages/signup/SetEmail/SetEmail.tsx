@@ -92,7 +92,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   const onSSOSignInFailure = useCallback(
     (errorResponse: SignInResponseFailure) => {
-      if (errorResponse.content?.code !== 'SSO_EMAIL_NOT_FOUND') {
+      if (errorResponse.content?.code === 'SSO_EMAIL_NOT_FOUND') {
         onSSOEmailNotFoundError()
         goToNextStep({ accountCreationToken: errorResponse.content.accountCreationToken })
       } else {
