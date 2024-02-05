@@ -30,6 +30,8 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
+import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -203,9 +205,16 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       </VenueTitleContainer>
 
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
-      <Spacer.Column numberOfSpaces={1} />
-      <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+      <Item
+        Icon={LocationBuilding}
+        message={
+          <VenueContainer>
+            <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+            <Spacer.Column numberOfSpaces={1} />
+            <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+          </VenueContainer>
+        }
+      />
       <Spacer.Column numberOfSpaces={6} />
 
       {!isFreeOfferToArchive && (
@@ -294,3 +303,41 @@ const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
 const VenueAddress = styled(Typo.Hint)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const Item: React.FC<{
+  Icon: React.FC<IconInterface>
+  message: React.JSX.Element | string
+  subtext?: string
+  testID?: string
+}> = ({ Icon, message, subtext = '', testID }) => {
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.greyDark,
+    size: theme.icons.sizes.small,
+  }))``
+  return (
+    <Row testID={testID}>
+      <IconWrapper>
+        <StyledIcon />
+      </IconWrapper>
+      <Spacer.Row numberOfSpaces={3} />
+      {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
+      <Spacer.Row numberOfSpaces={2} />
+      <Typo.CaptionNeutralInfo>{subtext}</Typo.CaptionNeutralInfo>
+    </Row>
+  )
+}
+
+const Row = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  width: theme.appContentWidth - getSpacing(24),
+  paddingVertical: getSpacing(0.5),
+}))
+
+const IconWrapper = styled.View({
+  flexShrink: 0,
+})
+
+const VenueContainer = styled.View({
+  flexDirection: 'column',
+})
