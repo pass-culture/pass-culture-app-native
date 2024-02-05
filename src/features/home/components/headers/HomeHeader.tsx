@@ -11,7 +11,7 @@ import { LocationWidgetDesktop } from 'features/location/components/LocationWidg
 import { ScreenOrigin } from 'features/location/enums'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { useLocation } from 'libs/location'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -24,9 +24,8 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { permissionState } = useLocation()
-  const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useHomeBanner(isGeolocated)
+  const { hasGeolocPosition } = useLocation()
+  const { data } = useHomeBanner(hasGeolocPosition)
   const homeBanner = data?.banner
   const { isDesktopViewport } = useTheme()
 
