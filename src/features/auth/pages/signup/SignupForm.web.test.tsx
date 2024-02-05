@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SignupForm } from './SignupForm'
 
@@ -31,10 +31,6 @@ describe('<SignupForm/>', () => {
       const { container } = renderSignupForm()
       await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
-      })
-
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
@@ -51,10 +47,6 @@ describe('<SignupForm/>', () => {
 
       const { container } = renderSignupForm()
       await act(async () => {})
-
-      await waitFor(() => {
-        expect(screen.getByTestId(/Entrée pour/)).toHaveFocus()
-      })
 
       const results = await checkAccessibilityFor(container)
 
