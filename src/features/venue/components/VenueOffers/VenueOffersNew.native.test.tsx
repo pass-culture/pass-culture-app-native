@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import * as reactQuery from 'react-query'
+import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -8,6 +8,7 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { SearchView } from 'features/search/types'
+import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -22,10 +23,13 @@ const playlists = gtlPlaylistAlgoliaSnapshot
 const mockVenue = venueResponseSnap
 const venueId = venueResponseSnap.id
 
-const useIsFetchingSpy = jest.spyOn(reactQuery, 'useIsFetching').mockReturnValue(0)
 const useGTLPlaylistsSpy = jest
   .spyOn(useGTLPlaylists, 'useGTLPlaylists')
   .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
+jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
+  isLoading: false,
+  data: { hits: VenueOffersResponseSnap, nbHits: 10 },
+} as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -78,7 +82,9 @@ describe('<VenueOffersNew />', () => {
   })
 
   it('should display skeleton if offers are fetching', () => {
-    useIsFetchingSpy.mockReturnValueOnce(1)
+    jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
+      isLoading: true,
+    } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
     renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
