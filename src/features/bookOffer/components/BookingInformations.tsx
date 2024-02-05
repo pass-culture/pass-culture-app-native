@@ -6,7 +6,8 @@ import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatToFrenchDate } from 'libs/parsers'
+import { formatDuration } from 'features/offerv2/helpers/formatDuration/formatDuration'
+import { formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
@@ -48,15 +49,20 @@ export const BookingInformations = () => {
     )
 
   if (mapping[offer.subcategoryId].isEvent) {
+    let message = ''
+
+    if (stock.beginningDatetime) {
+      message = formatDate(stock.beginningDatetime, offer.venue.timezone)
+    }
+
+    if (offer.extraData?.durationMinutes) {
+      message += ` - Durée\u00a0: ${formatDuration(offer.extraData.durationMinutes)}`
+    }
+
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        {!!stock.beginningDatetime && (
-          <Item
-            Icon={Calendar}
-            message={formatDate(stock.beginningDatetime, offer.venue.timezone)}
-          />
-        )}
+        {!!stock.beginningDatetime && <Item Icon={Calendar} message={message} />}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
