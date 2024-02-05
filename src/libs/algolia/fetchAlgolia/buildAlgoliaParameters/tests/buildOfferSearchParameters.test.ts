@@ -1,7 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { LocationFilter } from 'features/search/types'
 import { LocationMode } from 'libs/algolia'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
 
@@ -9,6 +9,12 @@ describe('buildOfferSearchParameters', () => {
   const userLocation = {
     latitude: 48.8566,
     longitude: 2.3522,
+  }
+  const buildLocationParameterParams: BuildLocationParameterParams = {
+    userLocation,
+    selectedLocationMode: LocationMode.AROUND_ME,
+    aroundMeRadius: 'all',
+    aroundPlaceRadius: 'all',
   }
 
   const isUserUnderage = false
@@ -18,7 +24,11 @@ describe('buildOfferSearchParameters', () => {
       ...SearchQueryParametersFixture,
     }
 
-    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(
+      parameters,
+      buildLocationParameterParams,
+      isUserUnderage
+    )
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -37,7 +47,11 @@ describe('buildOfferSearchParameters', () => {
       },
     }
 
-    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(
+      parameters,
+      buildLocationParameterParams,
+      isUserUnderage
+    )
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -53,7 +67,11 @@ describe('buildOfferSearchParameters', () => {
       offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
     }
 
-    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(
+      parameters,
+      buildLocationParameterParams,
+      isUserUnderage
+    )
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -72,7 +90,11 @@ describe('buildOfferSearchParameters', () => {
       minPrice: '50',
     }
 
-    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(
+      parameters,
+      buildLocationParameterParams,
+      isUserUnderage
+    )
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -83,28 +105,28 @@ describe('buildOfferSearchParameters', () => {
   })
 
   it('should return parameters with geolocation filter when locationFilter is specified', () => {
-    const locationFilter = {
-      locationType: LocationMode.AROUND_PLACE,
-      place: {
-        label: 'Paris',
-        info: 'infoPlace',
-        geolocation: {
-          latitude: 48.8566,
-          longitude: 2.3522,
-        },
+    const localBuildLocationParameterParams: BuildLocationParameterParams = {
+      selectedLocationMode: LocationMode.AROUND_PLACE,
+      userLocation: {
+        latitude: 43.2965,
+        longitude: 5.3698,
       },
-      aroundRadius: 10,
-    } as LocationFilter
+      aroundMeRadius: 'all',
+      aroundPlaceRadius: 10,
+    }
 
     const parameters = {
       ...SearchQueryParametersFixture,
-      locationFilter,
     }
 
-    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(
+      parameters,
+      localBuildLocationParameterParams,
+      isUserUnderage
+    )
 
     expect(result).toEqual({
-      aroundLatLng: '48.8566, 2.3522',
+      aroundLatLng: '43.2965, 5.3698',
       aroundRadius: 10000,
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
