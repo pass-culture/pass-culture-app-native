@@ -16,6 +16,7 @@ import {
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
@@ -31,6 +32,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
+import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Login } from './Login'
 
@@ -43,6 +46,13 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
+}))
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
 }))
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
@@ -142,6 +152,29 @@ describe('<Login/>', () => {
         os: 'iOS',
         source: 'iPhone 13',
       },
+    })
+  })
+
+  it('should show snackbar when SSO fails', async () => {
+    mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      responseOptions: {
+        statusCode: 401,
+        data: {
+          code: 'SSO_ACCOUNT_DELETED',
+          accountCreationToken: 'accountCreationToken',
+          general: [],
+        },
+      },
+    })
+
+    renderLogin()
+
+    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message:
+        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
+      timeout: SNACK_BAR_TIME_OUT_LONG,
     })
   })
 

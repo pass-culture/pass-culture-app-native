@@ -91,6 +91,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
           timeout: SNACK_BAR_TIME_OUT_LONG,
         })
+        return
       }
 
       if (failureCode === 'EMAIL_NOT_VALIDATED') {
