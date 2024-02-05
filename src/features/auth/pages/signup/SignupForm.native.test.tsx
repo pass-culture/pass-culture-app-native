@@ -13,6 +13,7 @@ import {
 } from 'api/gen'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { SignInResponseFailure } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -33,6 +34,9 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
+const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
+const loginAndRedirectMock = jest.fn()
+jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
@@ -348,7 +352,6 @@ describe('Signup Form', () => {
           marketingEmailSubscription: false,
           password: 'user@AZERTY123',
           birthdate: '2003-12-01',
-          postalCode: '',
           token: 'dummyToken',
           appsFlyerPlatform: 'ios',
           appsFlyerUserId: 'uniqueCustomerId',
@@ -395,6 +398,12 @@ describe('Signup Form', () => {
   })
 
   describe('SSO', () => {
+    const signInFailureData: SignInResponseFailure['content'] = {
+      code: 'SSO_EMAIL_NOT_FOUND',
+      accountCreationToken: 'accountCreationToken',
+      general: [],
+    }
+
     beforeEach(() => {
       mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
         responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
@@ -432,10 +441,11 @@ describe('Signup Form', () => {
     })
 
     it('should go to next step when sso button is clicked and sso account does not exist', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -446,10 +456,11 @@ describe('Signup Form', () => {
     })
 
     it('should go back to email step instead of password step when signing up with sso button', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -462,10 +473,11 @@ describe('Signup Form', () => {
     })
 
     it('should display go back for last step', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13')
-      getSystemNameSpy.mockReturnValueOnce('iOS')
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -484,7 +496,10 @@ describe('Signup Form', () => {
 
     it('should reset isSSOSubscription state when choosing sso first then choosing default signup', async () => {
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
-        responseOptions: { statusCode: 401, data: { code: 'SSO_EMAIL_NOT_FOUND', general: [] } },
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
       })
 
       renderSignupForm()
@@ -498,6 +513,93 @@ describe('Signup Form', () => {
       await act(() => fireEvent.press(screen.getByText('Continuer')))
 
       expect(screen.getByText('Choisis un mot de passe')).toBeOnTheScreen()
+    })
+
+    it('should create SSO account when clicking on AcceptCgu button', async () => {
+      getModelSpy.mockReturnValueOnce('iPhone 13') // first render
+      getSystemNameSpy.mockReturnValueOnce('iOS') // first render
+      getModelSpy.mockReturnValueOnce('iPhone 13') // rerender because of isSSOSubscription
+      getSystemNameSpy.mockReturnValueOnce('iOS') // rerender because of isSSOSubscription
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
+      })
+      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
+        {
+          accountCreationToken: 'accountCreationToken',
+          marketingEmailSubscription: false,
+          birthdate: '2003-12-01',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          firebasePseudoId: 'firebase_pseudo_id',
+          trustedDevice: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+          },
+        },
+        { credentials: 'omit' }
+      )
+    })
+
+    it('should login and redirect user on SSO signup success', async () => {
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 401,
+          data: signInFailureData,
+        },
+      })
+      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      })
+
+      renderSignupForm()
+
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(loginAndRedirectMock).toHaveBeenCalledWith({
+        accessToken: 'accessToken',
+        refreshToken: 'refreshToken',
+      })
     })
   })
 })

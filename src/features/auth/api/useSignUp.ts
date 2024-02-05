@@ -1,12 +1,14 @@
 import { Platform } from 'react-native'
 
 import { api } from 'api/api'
-import { AccountRequest } from 'api/gen'
+import { AccountRequest, GoogleAccountRequest, SigninResponse } from 'api/gen'
+import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { campaignTracker } from 'libs/campaign'
+import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 
-type appAccountRequest = Omit<AccountRequest, 'appsFlyerPlatform' | 'appsFlyerUserId'>
+type AppAccountRequest = AccountRequest | GoogleAccountRequest
 
 type SignUpResponse =
   | {
@@ -21,16 +23,51 @@ type SignUpResponse =
       }
     }
 
-export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse> {
-  return async (body: appAccountRequest) => {
-    try {
-      const appsFlyerUserId = await campaignTracker.getUserId()
-      const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
+function isSSOSignupRequest(body: AppAccountRequest): body is GoogleAccountRequest {
+  return 'accountCreationToken' in body && !!body.accountCreationToken
+}
 
-      const response = await api.postNativeV1Account(
-        { ...body, appsFlyerPlatform: Platform.OS, appsFlyerUserId, firebasePseudoId },
-        { credentials: 'omit' }
-      )
+function isSigninResponse(object: SigninResponse | EmptyResponse): object is SigninResponse {
+  return 'accessToken' in object
+}
+
+export function useSignUp(): (data: AppAccountRequest) => Promise<SignUpResponse> {
+  const loginAndRedirect = useLoginAndRedirect()
+  return async (body: AppAccountRequest) => {
+    try {
+      const commonBody = {
+        birthdate: body.birthdate,
+        token: body.token,
+        marketingEmailSubscription: body.marketingEmailSubscription,
+        trustedDevice: body.trustedDevice,
+        appsFlyerPlatform: Platform.OS,
+        appsFlyerUserId: await campaignTracker.getUserId(),
+        firebasePseudoId: await firebaseAnalytics.getAppInstanceId(),
+      }
+      const requestOptions = { credentials: 'omit' }
+      const isSSOSignup = isSSOSignupRequest(body)
+
+      const response = isSSOSignup
+        ? await api.postNativeV1OauthGoogleAccount(
+            {
+              ...commonBody,
+              accountCreationToken: body.accountCreationToken,
+            },
+            requestOptions
+          )
+        : await api.postNativeV1Account(
+            {
+              ...commonBody,
+              email: body.email,
+              password: body.password,
+            },
+            requestOptions
+          )
+
+      if (isSigninResponse(response)) {
+        loginAndRedirect({ accessToken: response.accessToken, refreshToken: response.refreshToken })
+      }
+
       return { isSuccess: !!response }
     } catch (error) {
       return {

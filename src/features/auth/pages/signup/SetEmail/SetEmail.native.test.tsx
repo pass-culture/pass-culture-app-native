@@ -1,13 +1,15 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { PreValidationSignupNormalStepProps } from 'features/auth/types'
+import { OauthStateResponse } from 'api/gen'
+import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
@@ -28,7 +30,6 @@ const defaultProps = {
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
-    postalCode: '',
   },
   onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),
@@ -91,6 +92,7 @@ describe('<SetEmail />', () => {
     expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
       email: 'john.doe@gmail.com',
       marketingEmailSubscription: false,
+      accountCreationToken: undefined,
     })
   })
 
@@ -267,6 +269,37 @@ describe('<SetEmail />', () => {
       renderSetEmail()
 
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
+    })
+
+    it('should go to next step when clicking SSO button and account does not already exist', async () => {
+      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+        oauthStateToken: 'oauth_state_token',
+      })
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 401,
+          data: {
+            code: 'SSO_EMAIL_NOT_FOUND',
+            general: [],
+            accountCreationToken: 'accountCreationToken',
+          },
+        },
+      })
+      useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
+      useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
+
+      renderSetEmail()
+
+      await act(() => {})
+
+      const signupButton = screen.getByText('S’inscrire avec Google')
+
+      await act(async () => fireEvent.press(signupButton))
+
+      expect(defaultProps.onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
+      expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
+        accountCreationToken: 'accountCreationToken',
+      })
     })
   })
 })

@@ -54,7 +54,6 @@ const props = {
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
-    postalCode: '',
   },
 }
 

@@ -85,22 +85,27 @@ export const SignupForm: FunctionComponent = () => {
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
-    postalCode: '',
   })
 
   const onSSOEmailNotFoundError = useCallback(() => setIsSSOSubscription(true), [])
-  const onDefaultEmailSignup = useCallback(() => setIsSSOSubscription(false), [])
+  const onDefaultEmailSignup = useCallback(() => {
+    setSignupData((previousSignupData) => ({
+      ...previousSignupData,
+      accountCreationToken: undefined,
+    }))
+    setIsSSOSubscription(false)
+  }, [])
 
   async function signUp(token: string) {
     try {
       const signupResponse = await signUpApiCall({
         ...signupData,
         token,
-        trustedDevice: trustedDevice,
+        trustedDevice,
       })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
-      } else {
+      } else if (!isSSOSubscription) {
         setStepIndex(numberOfSteps - 1)
       }
     } catch (error) {
