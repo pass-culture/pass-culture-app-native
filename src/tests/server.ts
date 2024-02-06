@@ -8,20 +8,14 @@ import {
   FavoriteResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
-  SubscriptionStepperResponse,
   UserReportedOffersResponse,
 } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
 export const server = setupServer(
-  rest.get<SubscriptionStepperResponse>(
-    env.API_BASE_URL + '/native/v1/subscription/stepper',
-    (_req, res, ctx) => res(ctx.status(200), ctx.json(SubscriptionStepperResponseFixture))
-  ),
   rest.get<Array<FavoriteResponse>>(
     `${env.API_BASE_URL}/native/v1/me/favorites`,
     (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
