@@ -139,16 +139,16 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
   })
 
-  it('should render see venue button', () => {
+  it('should display right icon when venue is permanent', () => {
     render(
       <OfferVenueBlock
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
-        onSeeVenuePress={() => {}}
+        onSeeVenuePress={jest.fn()}
       />
     )
 
-    expect(screen.getByText('Voir la page du lieu')).toBeOnTheScreen()
+    expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
 
   it('should handle see venue button press', () => {
@@ -161,7 +161,7 @@ describe('<OfferVenueBlock />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Voir la page du lieu'))
+    fireEvent.press(screen.getByText(offerResponseSnap.venue.name))
 
     expect(onSeeVenuePress).toHaveBeenCalledTimes(1)
   })
@@ -169,7 +169,7 @@ describe('<OfferVenueBlock />', () => {
   it('should not render see venue button when onSeeVenuePress is undefined', () => {
     render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
-    expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
 
   it('should redirect to Google Maps itinerary when pressing "Voir l’itinéraire" button', async () => {

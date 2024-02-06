@@ -81,7 +81,7 @@ export function OfferVenueBlock({
             {hasVenuePage ? (
               <React.Fragment>
                 <Spacer.Row numberOfSpaces={1} />
-                <RightFilled size={16} />
+                <RightFilled size={16} testID="RightFilled" />
               </React.Fragment>
             ) : null}
           </VenueTitleContainer>
