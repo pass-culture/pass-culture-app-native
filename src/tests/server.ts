@@ -3,7 +3,6 @@ import { setupServer } from 'msw/node'
 
 import {
   ActivityTypesResponse,
-  BannerResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
   UserReportedOffersResponse,
@@ -46,8 +45,5 @@ export const server = setupServer(
         })
       )
     }
-  ),
-  rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-    res(ctx.status(200), ctx.json({}))
   )
 )
