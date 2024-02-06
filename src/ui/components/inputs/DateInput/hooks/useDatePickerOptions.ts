@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { dayNumbers } from 'shared/date/days'
 import { getDatesInMonth } from 'shared/date/getDatesInMonth'
 import { getPastYears } from 'shared/date/getPastYears'
-import { monthNames as monthNamesLong, monthNamesShort } from 'shared/date/months'
+import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 
 type Args = {
@@ -19,7 +19,7 @@ export const useDatePickerOptions = ({
   maximumYear,
   monthNamesType,
 }: Args): { optionGroups: { day: string[]; month: string[]; year: string[] } } => {
-  const monthNames = monthNamesType === 'short' ? monthNamesShort : monthNamesLong
+  const monthNames = monthNamesType === 'short' ? CAPITALIZED_SHORT_MONTHS : CAPITALIZED_MONTHS
   const optionGroups = useMemo(() => {
     const year = getPastYears(minimumYear, maximumYear)
 

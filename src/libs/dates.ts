@@ -1,4 +1,4 @@
-import { monthNames } from 'shared/date/months'
+import { CAPITALIZED_MONTHS } from 'shared/date/months'
 
 /**
  *Compare timestamps using this margin expressed in seconds for a better UX experience.
@@ -72,7 +72,7 @@ export const formatToReadableFrenchDate = (date: Date | string) => {
   if (isNaN(formattedDate)) return ''
   const monthOrder = formattedDate.getMonth()
   const day = ('0' + formattedDate.getDate()).slice(-2)
-  const month = monthNames[monthOrder].toLowerCase()
+  const month = CAPITALIZED_MONTHS[monthOrder].toLowerCase()
   return `${day} ${month}`
 }
 

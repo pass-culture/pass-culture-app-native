@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { monthNames } from 'shared/date/months'
+import { CAPITALIZED_MONTHS } from 'shared/date/months'
 import { DatePickerDropDownProps } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
 import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
@@ -89,7 +89,7 @@ const getDefaultDateValues = (initialDate?: Date): PartialDate => {
 
   return {
     day: initialDate.getUTCDate().toString(),
-    month: monthNames.at(initialDate.getUTCMonth()),
+    month: CAPITALIZED_MONTHS.at(initialDate.getUTCMonth()),
     year: initialDate.getUTCFullYear().toString(),
   }
 }
@@ -97,7 +97,7 @@ const getDefaultDateValues = (initialDate?: Date): PartialDate => {
 const getValidDate = (date: PartialDate) => {
   if (!date.year || !date.month || !date.day) return
 
-  const dateMonth = monthNames.indexOf(date.month)
+  const dateMonth = CAPITALIZED_MONTHS.indexOf(date.month)
   const maybeValidDate = new Date(Number(date.year), dateMonth, Number(date.day))
   return maybeValidDate.getDate() == Number(date.day) ? maybeValidDate : undefined
 }

@@ -1,3 +1,4 @@
+import { CheatCodeMovieCalendar } from 'features/internal/cheatcodes/pages/AppComponents/MovieCalendar/CheatcodeMovieCalendar'
 import { NavigationTrustedDevice } from 'features/internal/cheatcodes/pages/NavigationTrustedDevice/NavigationTrustedDevice'
 import { TrustedDeviceInfos } from 'features/internal/cheatcodes/pages/NavigationTrustedDevice/TrustedDeviceInfos'
 import {
@@ -56,5 +57,11 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     component: TrustedDeviceInfos,
     path: 'appareil-de-confiance-cheatcode-informations',
     options: { title: 'Informations de l’appareil' },
+  },
+  {
+    name: 'MovieCalendar',
+    component: CheatCodeMovieCalendar,
+    path: 'movie-calendar',
+    options: { title: 'Calendrier page offres cinémas cheatcode' },
   },
 ]

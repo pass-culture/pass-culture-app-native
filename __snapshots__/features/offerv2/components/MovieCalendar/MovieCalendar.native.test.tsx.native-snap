@@ -1,0 +1,966 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
+<View
+  style={
+    [
+      {},
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#F1F1F4",
+          "bottom": 0,
+          "height": 4,
+          "left": 0,
+          "position": "absolute",
+          "width": "100%",
+        },
+      ]
+    }
+  />
+  <RCTScrollView
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+  >
+    <View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Mardi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Mar.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="février"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            févr.
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#eb0055",
+                "borderRadius": 4,
+                "bottom": 0,
+                "height": 4,
+                "left": 0,
+                "position": "absolute",
+                "width": "100%",
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Jeudi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Jeu.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="mars"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            mars
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Vendredi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Ven.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+          <Text
+            accessibilityLabel="octobre"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            oct.
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Samedi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Sam.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            29
+          </Text>
+          <Text
+            accessibilityLabel="novembre"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            nov.
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Mercredi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Mer.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="juin"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            juin
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Mercredi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Mer.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="novembre"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            nov.
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Samedi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Sam.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="juin"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            juin
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Mardi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Mar.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="décembre"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            déc.
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexWrap": "wrap",
+            "justifyContent": "center",
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "marginBottom": 8,
+                "marginHorizontal": 16,
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Mercredi"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            Mer.
+          </Text>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            1
+          </Text>
+          <Text
+            accessibilityLabel="juin"
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 40,
+                },
+              ]
+            }
+          >
+            juin
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

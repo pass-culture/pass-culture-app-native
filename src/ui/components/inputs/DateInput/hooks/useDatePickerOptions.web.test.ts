@@ -1,5 +1,5 @@
 import { dayNumbers } from 'shared/date/days'
-import { monthNames, monthNamesShort } from 'shared/date/months'
+import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { renderHook } from 'tests/utils/web'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
 
@@ -14,7 +14,7 @@ describe('useDatePickerOptions', () => {
     )
 
     expect(result.current.optionGroups).toEqual({
-      month: monthNames,
+      month: CAPITALIZED_MONTHS,
       day: dayNumbers,
       year: ['2001', '2000'],
     })
@@ -30,7 +30,7 @@ describe('useDatePickerOptions', () => {
     )
 
     expect(result.current.optionGroups).toEqual({
-      month: monthNames,
+      month: CAPITALIZED_MONTHS,
       day: dayNumbers.slice(0, 29),
       year: ['2004', '2003', '2002', '2001', '2000'],
     })
@@ -47,7 +47,7 @@ describe('useDatePickerOptions', () => {
     )
 
     expect(result.current.optionGroups).toEqual({
-      month: monthNamesShort,
+      month: CAPITALIZED_SHORT_MONTHS,
       day: dayNumbers,
       year: ['2004', '2003', '2002', '2001', '2000'],
     })

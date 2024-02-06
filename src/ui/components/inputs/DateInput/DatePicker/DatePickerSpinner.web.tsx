@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { pad } from 'libs/parsers'
 import { getDateValuesString } from 'shared/date/getDateValuesString'
-import { monthNamesShort } from 'shared/date/months'
+import { CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
@@ -39,7 +39,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
     setDate((prevDateValues) => ({ ...prevDateValues, [name]: value }))
   }
 
-  const dateMonth = monthNamesShort.indexOf(date.month) + 1
+  const dateMonth = CAPITALIZED_SHORT_MONTHS.indexOf(date.month) + 1
   const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(Number(date.day))}`)
 
   useEffect(() => {

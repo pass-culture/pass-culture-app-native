@@ -8,11 +8,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { isBeforeToday } from 'features/search/helpers/isBeforeToday/isBeforeToday'
-import { dayNames, dayNamesShort } from 'shared/date/days'
+import { DAYS, dayNamesShort } from 'shared/date/days'
 import { getDatesInMonth } from 'shared/date/getDatesInMonth'
 import { getDateValuesString } from 'shared/date/getDateValuesString'
 import { getYears } from 'shared/date/getYears'
-import { monthNames, monthNamesShort } from 'shared/date/months'
+import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -25,9 +25,9 @@ import { getSpacing } from 'ui/theme'
 import { Props } from './CalendarPicker.d'
 
 LocaleConfig.locales['fr'] = {
-  monthNames,
-  monthNamesShort,
-  dayNames,
+  monthNames: CAPITALIZED_MONTHS,
+  monthNamesShort: CAPITALIZED_SHORT_MONTHS,
+  dayNames: DAYS,
   dayNamesShort,
   today: 'Aujourd’hui',
 } as typeof LocaleConfig.locales
@@ -94,7 +94,8 @@ export const CalendarPicker: React.FC<Props> = ({
       month: selectedMobileMonth,
       year: selectedMobileYear,
     } = mobileDateValues
-    const selectedMobileMonthIndex = monthNamesShort.indexOf(selectedMobileMonth).toString()
+    const selectedMobileMonthIndex =
+      CAPITALIZED_SHORT_MONTHS.indexOf(selectedMobileMonth).toString()
     const currentYear = new Date().getFullYear()
 
     const invalid = isBeforeToday(selectedMobileYear, selectedMobileMonthIndex, selectedMobileDay)
@@ -103,12 +104,12 @@ export const CalendarPicker: React.FC<Props> = ({
       isMobileDateInvalid: invalid && isTouch,
       optionGroups: {
         day: getDatesInMonth(selectedMobileMonthIndex, selectedMobileYear),
-        month: monthNamesShort,
+        month: CAPITALIZED_SHORT_MONTHS,
         year: getYears(currentYear, 10),
       },
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mobileDateValues, monthNamesShort, getYears])
+  }, [mobileDateValues, CAPITALIZED_SHORT_MONTHS, getYears])
 
   function handleMobileDateChange(name: string, value: number | string) {
     setMobileDateValues((prevMobileDateValues) => ({ ...prevMobileDateValues, [name]: value }))
@@ -122,7 +123,7 @@ export const CalendarPicker: React.FC<Props> = ({
     if (!hideCalendar) return
     if (isTouch) {
       const { year, month, day } = mobileDateValues
-      const monthIndex = monthNamesShort.indexOf(month)
+      const monthIndex = CAPITALIZED_SHORT_MONTHS.indexOf(month)
       setSelectedDate(new Date(Number(year), monthIndex, Number(day)))
     } else {
       setSelectedDate(desktopCalendarDate)

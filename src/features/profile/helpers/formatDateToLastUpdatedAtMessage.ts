@@ -1,5 +1,5 @@
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { formatToHour, localizeUTCDate } from 'libs/parsers/formatDates'
+import { formatToHour, localizeUTCDate } from 'libs/parsers'
 
 export const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | Date | undefined) => {
   if (!lastUpdatedDate) return
