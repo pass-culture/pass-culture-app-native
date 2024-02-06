@@ -38,6 +38,7 @@ parse_env_variable () {
   fi
 }
 
+METRO_SERVER_PORT=8081
 MOCK_ANALYTICS_SERVER_PORT=4001
 
 if [ "$platform" = "ios" ]; then
@@ -46,6 +47,7 @@ if [ "$platform" = "ios" ]; then
 elif [ "$platform" = "android" ]; then
   app_id=$(parse_env_variable ANDROID_APP_ID ".env.$env")
   echo "Running Android tests on $env environment with app id: $app_id"
+  adb reverse "tcp:${METRO_SERVER_PORT}" "tcp:${METRO_SERVER_PORT}"
   adb reverse "tcp:${MOCK_ANALYTICS_SERVER_PORT}" "tcp:${MOCK_ANALYTICS_SERVER_PORT}"
 elif [ "$platform" = "web" ]; then
   app_id=$(parse_env_variable APP_PUBLIC_URL ".env.$env")
