@@ -78,7 +78,7 @@ describe('metasResponseInterceptor', () => {
         jsResponseBuffer,
         proxyRes,
         {
-          path: 'static/js/main.abcdef.chunk.js'
+          path: 'static/js/main.abcdef.chunk.js',
         } as Request,
         {
           setHeader,
