@@ -17,20 +17,29 @@ interface Props {
 export const HeroHeader: React.FC<Props> = (props) => {
   const { appContentWidth } = useTheme()
 
-  const backgroundImage =
-    props.type === 'offer' ? (
-      <BackgroundPlaceholder
-        testID="BackgroundPlaceholder"
-        width={appContentWidth}
-        height={props.imageHeight}
-      />
-    ) : (
-      <BackgroundContainer>
-        {Array.from({ length: 9 }).map((_, index) => (
-          <VenueHeaderBackground key={index} />
-        ))}
-      </BackgroundContainer>
-    )
+  const getBackgroundImage = () => {
+    if (props.type === 'offer') {
+      return (
+        <BackgroundPlaceholder
+          testID="BackgroundPlaceholder"
+          width={appContentWidth}
+          height={props.imageHeight}
+        />
+      )
+    } else if (props.type === 'venue') {
+      return (
+        <BackgroundContainer>
+          {Array.from({ length: 9 }).map((_, index) => (
+            <VenueHeaderBackground key={index} />
+          ))}
+        </BackgroundContainer>
+      )
+    } else {
+      return <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={props.imageHeight} />
+    }
+  }
+
+  const backgroundImage = getBackgroundImage()
 
   const blurImageRadius = Platform.OS === 'android' ? 5 : 20
   const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
@@ -69,3 +78,11 @@ const HeroContainer = styled.View({
   alignItems: 'center',
   position: 'absolute',
 })
+
+const DefaultImagePlaceholderOfferV2 = styled.View<{ width: number; height: number }>(
+  ({ theme, width, height }) => ({
+    backgroundColor: theme.colors.greyLight,
+    width,
+    height,
+  })
+)
