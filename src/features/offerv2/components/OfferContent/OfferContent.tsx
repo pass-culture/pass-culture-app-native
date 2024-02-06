@@ -1,16 +1,13 @@
-import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferAbout } from 'features/offerv2/components/OfferAbout/OfferAbout'
@@ -24,8 +21,8 @@ import { OfferTitle } from 'features/offerv2/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offerv2/components/OfferVenueButton/OfferVenueButton'
 import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
-import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
-import { isCloseToBottom } from 'libs/analytics'
+import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -45,9 +42,6 @@ const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
-  const route = useRoute<UseRouteType<'Offer'>>()
-  const fromOfferId = route.params.fromOfferId
-
   const { userLocation } = useLocation()
 
   const extraData = offer.extraData ?? undefined
@@ -63,32 +57,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     apiRecoParamsOtherCategories,
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
 
-  const {
-    logSameArtistPlaylistVerticalScroll,
-    logSameCategoryPlaylistVerticalScroll,
-    logOtherCategoriesPlaylistVerticalScroll,
-    logConsultWholeOffer,
-  } = useOfferAnalytics({
-    offerId: offer.id,
-    nbSameArtistPlaylist: sameArtistPlaylist.length,
-    apiRecoParamsSameCategory,
-    nbSameCategorySimilarOffers: sameCategorySimilarOffers?.length ?? 0,
-    apiRecoParamsOtherCategories,
-    nbOtherCategoriesSimilarOffers: otherCategoriesSimilarOffers?.length ?? 0,
-    fromOfferId,
+  const logConsultWholeOffer = useFunctionOnce(() => {
+    analytics.logConsultWholeOffer(offer.id)
   })
-
-  const handleChangeSameArtistPlaylistDisplay = useLogScrollHandler(
-    logSameArtistPlaylistVerticalScroll
-  )
-
-  const handleChangeOtherCategoriesPlaylistDisplay = useLogScrollHandler(
-    logOtherCategoriesPlaylistVerticalScroll
-  )
-
-  const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
-    logSameCategoryPlaylistVerticalScroll
-  )
 
   const { trackEventHasSeenOfferOnce, shouldTriggerBatchSurveyEvent, trackBatchEvent } =
     useOfferBatchTracking({
@@ -175,9 +146,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
           apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           sameArtistPlaylist={sameArtistPlaylist}
-          handleChangeSameArtistPlaylistDisplay={handleChangeSameArtistPlaylistDisplay}
-          handleChangeOtherCategoriesPlaylistDisplay={handleChangeOtherCategoriesPlaylistDisplay}
-          handleChangeSameCategoryPlaylistDisplay={handleChangeSameCategoryPlaylistDisplay}
         />
         <Spacer.Column numberOfSpaces={22} />
       </ScrollViewContainer>
