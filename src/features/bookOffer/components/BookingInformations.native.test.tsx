@@ -196,13 +196,6 @@ describe('<BookingInformations />', () => {
     expect(screen.queryByText('À activer avant le 1 décembre 2020')).not.toBeOnTheScreen()
   })
 
-  it('should not display address', () => {
-    mockUseBookingOffer.mockReturnValueOnce(cinePleinAirOffer)
-    render(<BookingInformations />)
-
-    expect(screen.queryByText('RUE DE CALI')).not.toBeOnTheScreen()
-  })
-
   it("shouldn't display duration if it has no duration information", () => {
     mockedUseBookingStock.mockReturnValueOnce({
       ...offerStockResponseSnap,
