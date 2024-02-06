@@ -24,7 +24,7 @@ const options = {
 }
 
 const computeCanonicalUrl = (url: URL): URL => {
-  const match = url.pathname.match(OFFER_DESCRIPTION_PATH_REGEXP)
+  const match = OFFER_DESCRIPTION_PATH_REGEXP.exec(url.pathname)
   if (match) {
     const offerUrl = match[1]
     return new URL(`${env.APP_PUBLIC_URL}${offerUrl}`)
