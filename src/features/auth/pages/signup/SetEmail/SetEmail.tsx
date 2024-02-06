@@ -105,7 +105,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         control={control}
         name="email"
         onSpellingHelpPress={onLogHasCorrectedEmail}
-        autoFocus
       />
       <Spacer.Column numberOfSpaces={8} />
       <Controller
