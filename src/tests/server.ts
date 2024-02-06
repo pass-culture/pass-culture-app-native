@@ -6,7 +6,6 @@ import {
   BannerResponse,
   CookieConsentRequest,
   FavoriteResponse,
-  NextSubscriptionStepResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
   SubscriptionStepperResponse,
@@ -19,16 +18,6 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
 export const server = setupServer(
-  rest.get<NextSubscriptionStepResponse>(
-    env.API_BASE_URL + '/native/v1/subscription/next_step',
-    (_req, res, ctx) =>
-      res(
-        ctx.status(200),
-        ctx.json({
-          nextSubscriptionStep: null,
-        })
-      )
-  ),
   rest.get<SubscriptionStepperResponse>(
     env.API_BASE_URL + '/native/v1/subscription/stepper',
     (_req, res, ctx) => res(ctx.status(200), ctx.json(SubscriptionStepperResponseFixture))
