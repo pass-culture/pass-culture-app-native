@@ -15,8 +15,6 @@ import {
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
-import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
-import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -80,9 +78,6 @@ export const server = setupServer(
       )
     }
   ),
-  rest.get(`${CONTENTFUL_BASE_URL}/entries`, async (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(homepageEntriesAPIResponse))
-  }),
   rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
     res(ctx.status(200), ctx.json({}))
   )
