@@ -78,7 +78,7 @@ describe('metasResponseInterceptor', () => {
         jsResponseBuffer,
         proxyRes,
         {
-          path: 'static/js/main.abcdef.chunk.js'
+          path: 'static/js/main.abcdef.chunk.js',
         } as Request,
         {
           setHeader,
@@ -149,7 +149,7 @@ describe('metasResponseInterceptor', () => {
       it('with encoded home id when url is thematic home', async () => {
         const url = `${env.APP_PUBLIC_URL}/accueil-thematique?homeId=1324434"><script>alert('hack')</script>`
         const canonicalUrl = new RegExp(
-          `<head>.*?<link rel="canonical" href="${env.APP_PUBLIC_URL}/accueil-thematique\\?homeId=1324434%22%3E%3Cscript%3Ealert\\('hack'\\)%3C%2Fscript%3E\" />.*?</head>`,
+          `<head>.*?<link rel="canonical" href="${env.APP_PUBLIC_URL}/accueil-thematique\\?homeId=1324434%22%3E%3Cscript%3Ealert\\(%27hack%27\\)%3C%2Fscript%3E\" />.*?</head>`,
           's'
         )
 
@@ -193,6 +193,14 @@ describe('metasResponseInterceptor', () => {
           expect(response).not.toContain('<meta name="robots" content="noindex" />')
         }
       )
+
+      it('links offer description page to its offer page', async () => {
+        const url = `${env.APP_PUBLIC_URL}/offre/${OFFER_RESPONSE_SNAPSHOT.id}`
+
+        const response = await htmlResponseFor(`${url}/description`)
+
+        expect(response).toMatch(hasCanonicalWith(url))
+      })
     })
   })
 

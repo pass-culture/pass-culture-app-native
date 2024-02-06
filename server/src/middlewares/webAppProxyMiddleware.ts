@@ -13,6 +13,7 @@ const { APP_BUCKET_URL } = env
 const { href } = new URL(APP_BUCKET_URL)
 
 const ENTITY_PATH_REGEXP = new RegExp(`/(${Object.keys(ENTITY_MAP).join('|')})/(\\d+)`)
+const OFFER_DESCRIPTION_PATH_REGEXP = /(\/offre\/\d+)\/description/
 
 const options = {
   target: href,
@@ -22,15 +23,22 @@ const options = {
   onProxyRes: responseInterceptor(metasResponseInterceptor),
 }
 
-const addCanonicalLinkToHTML = (html: string, url: URL): string => {
+const computeCanonicalUrl = (url: URL): URL => {
+  const match = OFFER_DESCRIPTION_PATH_REGEXP.exec(url.pathname)
+  if (match) {
+    const offerUrl = match[1]
+    return new URL(`${env.APP_PUBLIC_URL}${offerUrl}`)
+  }
+
   const isThematicHome = url.pathname === '/accueil-thematique'
   const homeIdParams = url.searchParams.get('homeId')
   const additionalParams =
     isThematicHome && homeIdParams ? `?homeId=${encodeURIComponent(homeIdParams)}` : ''
-  return html.replace(
-    '<head>',
-    `<head><link rel="canonical" href="${env.APP_PUBLIC_URL}${url.pathname}${additionalParams}" />`
-  )
+  return new URL(`${env.APP_PUBLIC_URL}${url.pathname}${additionalParams}`)
+}
+
+const addCanonicalLinkToHTML = (html: string, url: URL): string => {
+  return html.replace('<head>', `<head><link rel="canonical" href="${url}" />`)
 }
 
 const addNoIndexToHTML = (html: string): string =>
@@ -66,7 +74,7 @@ export async function metasResponseInterceptor(
     match = ENTITY_PATH_REGEXP.exec(req.url)
 
     const url = new URL(req.url.startsWith('/') ? env.APP_PUBLIC_URL + req.url : req.url)
-    html = addCanonicalLinkToHTML(html, url)
+    html = addCanonicalLinkToHTML(html, computeCanonicalUrl(url))
 
     const isSearchPageWithParams =
       url.pathname === '/recherche' && [...url.searchParams.keys()].length
