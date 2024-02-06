@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
@@ -42,7 +41,7 @@ export function OfferVenueBlock({
   )
 
   return (
-    <View>
+    <Container>
       <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
 
       <Spacer.Column numberOfSpaces={4} />
@@ -111,9 +110,13 @@ export function OfferVenueBlock({
           </TertiaryButtonWrapper>
         </React.Fragment>
       ) : null}
-    </View>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  maxWidth: 500,
+})
 
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
