@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
 
@@ -27,19 +27,21 @@ describe('<SetBirthday />', () => {
   })
 
   describe('submit button behavior', () => {
-    it('should disable continue button when user hasnt given his birthday yet', () => {
+    it('should disable continue button when user hasnt given his birthday yet', async () => {
       render(<SetBirthday {...props} />)
 
-      const continueButton = screen.getByTestId('Continuer')
+      const continueButton = await screen.findByTestId('Continuer')
 
       expect(continueButton).toBeDisabled()
     })
 
-    it('should enable continue button when birthdate is valid', () => {
+    it('should enable continue button when birthdate is valid', async () => {
       render(<SetBirthday {...props} />)
-      fireEvent.change(screen.getByTestId('select-Jour'), { target: { value: '1' } })
-      fireEvent.change(screen.getByTestId('select-Mois'), { target: { value: 'Janvier' } })
-      fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2004' } })
+      await act(async () => {
+        fireEvent.change(screen.getByTestId('select-Jour'), { target: { value: '1' } })
+        fireEvent.change(screen.getByTestId('select-Mois'), { target: { value: 'Janvier' } })
+        fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '2004' } })
+      })
 
       const continueButton = screen.getByText('Continuer')
 
@@ -48,19 +50,21 @@ describe('<SetBirthday />', () => {
   })
 
   describe('touch device', () => {
-    it('should render correctly', () => {
+    it('should render correctly', async () => {
       // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
       jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: true } })
+      await screen.findByText('Continuer')
 
       expect(renderAPI).toMatchSnapshot()
     })
   })
 
   describe('no touch device', () => {
-    it('should render correctly', () => {
+    it('should render correctly', async () => {
       const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+      await screen.findByText('Continuer')
 
       expect(renderAPI).toMatchSnapshot()
     })
