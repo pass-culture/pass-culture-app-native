@@ -33,6 +33,16 @@ describe('<OfferVenueButton />', () => {
     expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
   })
 
+  it('should display name when public name is empty', () => {
+    const venue: OfferVenueResponse = {
+      ...offerResponseSnap.venue,
+      publicName: '',
+    }
+    render(<OfferVenueButton venue={venue} />)
+
+    expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
+  })
+
   it('should display subtitle when city informed', () => {
     render(<OfferVenueButton venue={offerResponseSnap.venue} />)
 

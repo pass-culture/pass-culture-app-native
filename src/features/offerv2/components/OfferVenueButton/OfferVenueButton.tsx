@@ -13,7 +13,7 @@ interface Props {
 
 export function OfferVenueButton({ venue }: Readonly<Props>) {
   const theme = useTheme()
-  const venueName = venue.publicName ?? venue.name
+  const venueName = venue.publicName || venue.name
 
   return (
     <HeroButtonList
