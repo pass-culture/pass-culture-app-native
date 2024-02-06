@@ -13,6 +13,7 @@ const { APP_BUCKET_URL } = env
 const { href } = new URL(APP_BUCKET_URL)
 
 const ENTITY_PATH_REGEXP = new RegExp(`/(${Object.keys(ENTITY_MAP).join('|')})/(\\d+)`)
+const OFFER_DESCRIPTION_PATH_REGEXP = /(\/offre\/\d+)\/description/
 
 const options = {
   target: href,
@@ -23,6 +24,12 @@ const options = {
 }
 
 const computeCanonicalUrl = (url: URL): URL => {
+  const match = url.pathname.match(OFFER_DESCRIPTION_PATH_REGEXP)
+  if (match) {
+    const offerUrl = match[1]
+    return new URL(`${env.APP_PUBLIC_URL}${offerUrl}`)
+  }
+
   const isThematicHome = url.pathname === '/accueil-thematique'
   const homeIdParams = url.searchParams.get('homeId')
   const additionalParams =

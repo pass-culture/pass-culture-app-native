@@ -193,6 +193,14 @@ describe('metasResponseInterceptor', () => {
           expect(response).not.toContain('<meta name="robots" content="noindex" />')
         }
       )
+
+      it('links offer description page to its offer page', async () => {
+        const url = `${env.APP_PUBLIC_URL}/offre/${OFFER_RESPONSE_SNAPSHOT.id}`
+
+        const response = await htmlResponseFor(`${url}/description`)
+
+        expect(response).toMatch(hasCanonicalWith(url))
+      })
     })
   })
 
