@@ -5,8 +5,10 @@ import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics'
+import { EmptyResponse } from 'libs/fetch'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -46,6 +48,8 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should persist cookies consent information when user partially accepts cookies', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     renderConsentSettings()
 
     const performanceSwitch = screen.getByTestId(
@@ -72,6 +76,8 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     renderConsentSettings()
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -83,6 +89,8 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     renderConsentSettings()
 
     const performanceSwitch = screen.getByTestId(
@@ -101,6 +109,8 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should log analytics if performance cookies are accepted', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     renderConsentSettings()
 
     const performanceSwitch = screen.getByTestId(
@@ -122,6 +132,8 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should show snackbar and navigate to home on save', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     renderConsentSettings()
 
     const saveChoice = screen.getByText('Enregistrer mes choix')

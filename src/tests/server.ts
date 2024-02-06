@@ -4,22 +4,14 @@ import { setupServer } from 'msw/node'
 import {
   ActivityTypesResponse,
   BannerResponse,
-  CookieConsentRequest,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
   UserReportedOffersResponse,
 } from 'api/gen'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
 
 export const server = setupServer(
-  rest.post<CookieConsentRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/cookies_consent',
-    (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({}))
-    }
-  ),
   rest.get<UserReportedOffersResponse>(
     env.API_BASE_URL + '/native/v1/offers/reports',
     (_req, res, ctx) =>
