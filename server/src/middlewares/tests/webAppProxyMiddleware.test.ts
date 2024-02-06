@@ -149,7 +149,7 @@ describe('metasResponseInterceptor', () => {
       it('with encoded home id when url is thematic home', async () => {
         const url = `${env.APP_PUBLIC_URL}/accueil-thematique?homeId=1324434"><script>alert('hack')</script>`
         const canonicalUrl = new RegExp(
-          `<head>.*?<link rel="canonical" href="${env.APP_PUBLIC_URL}/accueil-thematique\\?homeId=1324434%22%3E%3Cscript%3Ealert\\('hack'\\)%3C%2Fscript%3E\" />.*?</head>`,
+          `<head>.*?<link rel="canonical" href="${env.APP_PUBLIC_URL}/accueil-thematique\\?homeId=1324434%22%3E%3Cscript%3Ealert\\(%27hack%27\\)%3C%2Fscript%3E\" />.*?</head>`,
           's'
         )
 
