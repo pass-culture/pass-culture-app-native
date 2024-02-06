@@ -1,9 +1,12 @@
 import React from 'react'
 import { Animated } from 'react-native'
 
+import { PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
@@ -21,6 +24,10 @@ mockUseAuthContext.mockImplementation(() => ({
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<OfferHeader />', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
+  })
+
   it('should fully display the title at the end of the animation', async () => {
     const animatedValue = new Animated.Value(0)
 

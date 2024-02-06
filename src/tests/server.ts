@@ -5,21 +5,15 @@ import {
   ActivityTypesResponse,
   BannerResponse,
   CookieConsentRequest,
-  FavoriteResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
   UserReportedOffersResponse,
 } from 'api/gen'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 
 export const server = setupServer(
-  rest.get<Array<FavoriteResponse>>(
-    `${env.API_BASE_URL}/native/v1/me/favorites`,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
-  ),
   rest.post<CookieConsentRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/cookies_consent',
     (_req, res, ctx) => {
