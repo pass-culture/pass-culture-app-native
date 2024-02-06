@@ -2,11 +2,14 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import algoliasearch from '__mocks__/algoliasearch'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchView } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
@@ -32,6 +35,10 @@ describe('<Search />', () => {
       useRoute.mockReturnValue({ params: { view: SearchView.Landing } })
     })
 
+    beforeEach(() => {
+      mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+    })
+
     it('Performance test for Search Landing page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
@@ -45,6 +52,10 @@ describe('<Search />', () => {
     beforeAll(() => {
       algoliasearch().initIndex().search.mockResolvedValue(mockedAlgoliaResponse)
       useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'test' } })
+    })
+
+    beforeEach(() => {
+      mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
     })
 
     it('Performance test for Search Results page', async () => {

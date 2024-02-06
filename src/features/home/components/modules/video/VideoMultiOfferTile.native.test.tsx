@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoMultiOfferTile } from 'features/home/components/modules/video/VideoMultiOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -20,6 +23,10 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
 const hideModalMock = jest.fn()
 
 describe('VideoMultiOfferTile', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
+
   it('should redirect to an offer when pressing it', async () => {
     renderMultiOfferTile()
 

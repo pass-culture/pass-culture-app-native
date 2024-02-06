@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as showSkeletonAPI from 'features/home/api/useShowSkeleton'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
@@ -41,6 +44,10 @@ jest.mock('shared/performance/transactions', () => {
 
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
 
   describe('With not displayed skeleton by default', () => {
     it('should display skeleton', async () => {
@@ -127,6 +134,10 @@ describe('GenericHome page - Analytics', () => {
     },
     persist: jest.fn(),
   }
+
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     renderGenericHome()

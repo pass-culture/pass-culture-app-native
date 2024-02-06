@@ -9,7 +9,6 @@ import {
   NextSubscriptionStepResponse,
   PhoneValidationRemainingAttemptsRequest,
   Reason,
-  SubcategoriesResponseModelv2,
   SubscriptionStepperResponse,
   UserReportedOffersResponse,
 } from 'api/gen'
@@ -20,7 +19,6 @@ import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
-import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
   rest.get<NextSubscriptionStepResponse>(
@@ -40,16 +38,6 @@ export const server = setupServer(
   rest.get<Array<FavoriteResponse>>(
     `${env.API_BASE_URL}/native/v1/me/favorites`,
     (_req, res, ctx) => res(ctx.status(200), ctx.json(paginatedFavoritesResponseSnap))
-  ),
-  rest.get<SubcategoriesResponseModelv2>(
-    env.API_BASE_URL + '/native/v1/subcategories/v2',
-    (_req, res, ctx) =>
-      res(
-        ctx.status(200),
-        ctx.json({
-          ...placeholderData,
-        })
-      )
   ),
   rest.post<CookieConsentRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/cookies_consent',

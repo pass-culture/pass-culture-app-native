@@ -1,8 +1,11 @@
 import React from 'react'
 
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -11,6 +14,10 @@ const mockHideModal = jest.fn()
 const mockOffer = mockedAlgoliaResponse.hits[0]
 
 describe('VideoEndView', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
+
   it('should replay video when pressing replay button', () => {
     renderVideoEndView()
 

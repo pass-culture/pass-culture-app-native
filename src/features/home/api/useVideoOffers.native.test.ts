@@ -1,11 +1,14 @@
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
 
@@ -29,6 +32,10 @@ const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
 const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
 describe('useVideoOffers', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
+
   it('should return offers when asking for specific ids', async () => {
     mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 

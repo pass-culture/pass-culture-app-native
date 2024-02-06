@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -20,6 +23,10 @@ jest.mock('features/home/api/useVideoOffers')
 const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 describe('VideoModule', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
+
   it('should show modal when pressing video thumbnail', async () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
