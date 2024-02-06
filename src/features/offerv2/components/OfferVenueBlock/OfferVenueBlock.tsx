@@ -75,7 +75,7 @@ export function OfferVenueBlock({
           url="https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/becca-tapert-GnY_mW1Q6Xc-unsplash.png"
         />
         <Spacer.Row numberOfSpaces={2} />
-        <View>
+        <VenueRightContainer>
           <VenueTitleContainer>
             <Typo.ButtonText>{venueName}</Typo.ButtonText>
             {hasVenuePage ? (
@@ -87,7 +87,7 @@ export function OfferVenueBlock({
           </VenueTitleContainer>
           <Spacer.Column numberOfSpaces={1} />
           <Address>{address}</Address>
-        </View>
+        </VenueRightContainer>
       </TouchableContainer>
 
       {onChangeVenuePress ? (
@@ -138,6 +138,10 @@ const Container = styled.View({
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))
+
+const VenueRightContainer = styled.View({
+  flexShrink: 1,
+})
 
 const VenueTitleContainer = styled.View({
   flexDirection: 'row',
