@@ -12,7 +12,6 @@ import { Separator } from 'ui/components/Separator'
 import { Tag } from 'ui/components/Tag/Tag'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { Show } from 'ui/svg/icons/Show'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -94,20 +93,6 @@ export function OfferVenueBlock({
             }}
             onPress={onSeeItineraryPress}
           />
-        </React.Fragment>
-      ) : null}
-
-      {onSeeVenuePress ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={6} />
-          <TertiaryButtonWrapper>
-            <ButtonTertiaryBlack
-              inline
-              wording="Voir la page du lieu"
-              onPress={onSeeVenuePress}
-              icon={Show}
-            />
-          </TertiaryButtonWrapper>
         </React.Fragment>
       ) : null}
     </Container>
