@@ -1,4 +1,4 @@
-import React, { ComponentProps, FunctionComponent, useMemo } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,19 +7,15 @@ import { useVenueBlock } from 'features/offerv2/components/OfferVenueBlock/useVe
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { Tag } from 'ui/components/Tag/Tag'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Show } from 'ui/svg/icons/Show'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 type Props = {
   distance?: string
@@ -30,7 +26,7 @@ type Props = {
   onSeeItineraryPress?: VoidFunction
 }
 
-export function OfferVenueBlock({
+export function OfferVenueBlockDeprecated({
   distance,
   onChangeVenuePress,
   onSeeVenuePress,
@@ -44,51 +40,25 @@ export function OfferVenueBlock({
     venue.postalCode,
     venue.city
   )
-  const hasVenuePage = !!onSeeVenuePress
-  const TouchableContainer: FunctionComponent<ComponentProps<typeof InternalTouchableLink>> =
-    useMemo(
-      () =>
-        styled(hasVenuePage ? InternalTouchableLink : View)({
-          flexDirection: 'row',
-        }),
-      [hasVenuePage]
-    )
 
   return (
-    <Container>
+    <View>
       <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
+
       <Spacer.Column numberOfSpaces={4} />
+      <StyledSeparator />
+      <Spacer.Column numberOfSpaces={6} />
+
+      <Typo.ButtonText>{venueName}</Typo.ButtonText>
+      <Spacer.Column numberOfSpaces={1} />
+      <Address>{address}</Address>
 
       {distance ? (
         <React.Fragment>
-          <Tag label={`à ${distance}`} />
           <Spacer.Column numberOfSpaces={4} />
+          <Tag label={`à ${distance}`} />
         </React.Fragment>
       ) : null}
-
-      <TouchableContainer
-        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-        onBeforeNavigate={onSeeVenuePress}>
-        <VenueThumbnail
-          height={VENUE_THUMBNAIL_SIZE}
-          width={VENUE_THUMBNAIL_SIZE}
-          url="https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/becca-tapert-GnY_mW1Q6Xc-unsplash.png"
-        />
-        <Spacer.Row numberOfSpaces={2} />
-        <VenueRightContainer>
-          <VenueTitleContainer>
-            <Typo.ButtonText>{venueName}</Typo.ButtonText>
-            {hasVenuePage ? (
-              <React.Fragment>
-                <Spacer.Row numberOfSpaces={1} />
-                <RightFilled size={16} testID="RightFilled" />
-              </React.Fragment>
-            ) : null}
-          </VenueTitleContainer>
-          <Spacer.Column numberOfSpaces={1} />
-          <Address>{address}</Address>
-        </VenueRightContainer>
-      </TouchableContainer>
 
       {onChangeVenuePress ? (
         <React.Fragment>
@@ -127,31 +97,26 @@ export function OfferVenueBlock({
           />
         </React.Fragment>
       ) : null}
-    </Container>
+
+      {onSeeVenuePress ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <TertiaryButtonWrapper>
+            <ButtonTertiaryBlack
+              inline
+              wording="Voir la page du lieu"
+              onPress={onSeeVenuePress}
+              icon={Show}
+            />
+          </TertiaryButtonWrapper>
+        </React.Fragment>
+      ) : null}
+    </View>
   )
 }
 
-const Container = styled.View({
-  maxWidth: 500,
-})
-
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
-}))
-
-const VenueRightContainer = styled.View({
-  flexShrink: 1,
-})
-
-const VenueTitleContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
-
-const VenueThumbnail = styled(Image)<{ height: number; width: number }>(({ height, width }) => ({
-  borderRadius: 4,
-  height,
-  width,
 }))
 
 const TertiaryButtonWrapper = styled.View({

@@ -3,7 +3,7 @@ import React from 'react'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { OfferVenueBlock } from './OfferVenueBlock'
+import { OfferVenueBlockDeprecated } from './OfferVenueBlockDeprecated'
 
 // Mock useVenueBlock hook to avoid using Clipboard API
 const mockOnCopyAddressPress = jest.fn()
@@ -24,44 +24,52 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary,
 }))
 
-describe('<OfferVenueBlock />', () => {
+describe('<OfferVenueBlockDeprecated />', () => {
   it('should display title', () => {
     render(
-      <OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} distance="1,1 km" />
+      <OfferVenueBlockDeprecated
+        title="Lieu de retrait"
+        venue={offerResponseSnap.venue}
+        distance="1,1 km"
+      />
     )
 
     expect(screen.getByText('Lieu de retrait')).toBeOnTheScreen()
   })
 
   it('should render venue name', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
   })
 
   it('should render address', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.getByText('75008 PARIS 8, 2 RUE LAMENNAIS')).toBeOnTheScreen()
   })
 
   it('should render distance', () => {
     render(
-      <OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} distance="1,1 km" />
+      <OfferVenueBlockDeprecated
+        title="Lieu de retrait"
+        venue={offerResponseSnap.venue}
+        distance="1,1 km"
+      />
     )
 
     expect(screen.getByText('à 1,1 km')).toBeOnTheScreen()
   })
 
   it('should not render distance when not informed', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.queryByText('à 1,1 km')).not.toBeOnTheScreen()
   })
 
   it("should render 'Changer le lieu de retrait' button when onChangeVenuePress is defined", () => {
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
         onChangeVenuePress={() => {}}
@@ -74,7 +82,7 @@ describe('<OfferVenueBlock />', () => {
   it("should handle 'Changer le lieu de retrait' button press", () => {
     const onChangeVenuePress = jest.fn()
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
         onChangeVenuePress={onChangeVenuePress}
@@ -87,19 +95,19 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it("should not render 'Changer le lieu de retrait' button when onChangeVenuePress is undefined", () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
   })
 
   it('should render copy address button', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
   })
 
   it('should handle copy address button press', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     fireEvent.press(screen.getByText('Copier l’adresse'))
 
@@ -108,7 +116,7 @@ describe('<OfferVenueBlock />', () => {
 
   it('should render see itinerary button', () => {
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
         onSeeItineraryPress={() => {}}
@@ -121,7 +129,7 @@ describe('<OfferVenueBlock />', () => {
   it('should handle see itinerary button press', () => {
     const onSeeItineraryPress = jest.fn()
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
         onSeeItineraryPress={onSeeItineraryPress}
@@ -134,48 +142,48 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should not render see itinerary button when onSeeItineraryPress is undefined', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
     expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
   })
 
-  it('should display right icon when venue is permanent', () => {
+  it('should render see venue button', () => {
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
-        onSeeVenuePress={jest.fn()}
+        onSeeVenuePress={() => {}}
       />
     )
 
-    expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
+    expect(screen.getByText('Voir la page du lieu')).toBeOnTheScreen()
   })
 
   it('should handle see venue button press', () => {
     const onSeeVenuePress = jest.fn()
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
         onSeeVenuePress={onSeeVenuePress}
       />
     )
 
-    fireEvent.press(screen.getByText(offerResponseSnap.venue.name))
+    fireEvent.press(screen.getByText('Voir la page du lieu'))
 
     expect(onSeeVenuePress).toHaveBeenCalledTimes(1)
   })
 
   it('should not render see venue button when onSeeVenuePress is undefined', () => {
-    render(<OfferVenueBlock title="Lieu de retrait" venue={offerResponseSnap.venue} />)
+    render(<OfferVenueBlockDeprecated title="Lieu de retrait" venue={offerResponseSnap.venue} />)
 
-    expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Voir la page du lieu')).not.toBeOnTheScreen()
   })
 
   it('should redirect to Google Maps itinerary when pressing "Voir l’itinéraire" button', async () => {
     const onSeeItineraryPress = jest.fn()
     render(
-      <OfferVenueBlock
+      <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
         onSeeItineraryPress={onSeeItineraryPress}

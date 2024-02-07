@@ -9,8 +9,11 @@ import { VenueSelectionModal } from 'features/offer/components/VenueSelectionMod
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { OfferVenueBlock } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlock'
+import { OfferVenueBlockDeprecated } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlockDeprecated'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -48,6 +51,8 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { selectedLocationMode, place, geolocPosition } = useLocation()
+
+  const hasNewOfferVenueBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK)
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
@@ -140,16 +145,29 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     <React.Fragment>
       <SectionWithDivider visible={!offer.isDigital} margin>
         <Spacer.Column numberOfSpaces={8} />
-        <OfferVenueBlock
-          title={venueSectionTitle}
-          venue={offer.venue}
-          distance={distanceToLocation}
-          onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
-          onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
-          onSeeItineraryPress={
-            shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
-          }
-        />
+        {hasNewOfferVenueBlock ? (
+          <OfferVenueBlock
+            title={venueSectionTitle}
+            venue={offer.venue}
+            distance={distanceToLocation}
+            onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
+            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+            onSeeItineraryPress={
+              shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
+            }
+          />
+        ) : (
+          <OfferVenueBlockDeprecated
+            title={venueSectionTitle}
+            venue={offer.venue}
+            distance={distanceToLocation}
+            onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
+            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+            onSeeItineraryPress={
+              shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
+            }
+          />
+        )}
       </SectionWithDivider>
 
       {shouldDisplayChangeVenueButton ? (
