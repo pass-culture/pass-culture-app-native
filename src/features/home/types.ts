@@ -95,8 +95,6 @@ type DisplayParameters = {
 
 export type OffersModuleParameters = {
   title: string
-  isGeolocated?: boolean
-  aroundRadius?: number
   categories?: string[]
   subcategories?: string[]
   tags?: string[]

@@ -37,7 +37,6 @@ export const algoliaNatifModuleFixture: AlgoliaContentModel = {
       },
       fields: {
         title: 'Livre',
-        isGeolocated: false,
         algoliaCategories: categoriesFixture,
         hitsPerPage: 10,
         minBookingsThreshold: 2,
@@ -93,7 +92,6 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
     },
     fields: {
       title: 'Livre',
-      isGeolocated: false,
       algoliaCategories: categoriesFixture,
       hitsPerPage: 10,
     },
@@ -130,7 +128,6 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
     },
     fields: {
       title: 'Musique',
-      isGeolocated: false,
       algoliaCategories: categoriesFixture,
       hitsPerPage: 2,
     },

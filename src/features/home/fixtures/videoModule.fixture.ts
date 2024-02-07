@@ -12,12 +12,10 @@ export const videoModuleFixture: VideoModule = {
   offersModuleParameters: [
     {
       title: 'test music type',
-      isGeolocated: false,
       hitsPerPage: 1,
     },
     {
       title: 'test music type',
-      isGeolocated: false,
       hitsPerPage: 1,
     },
   ],

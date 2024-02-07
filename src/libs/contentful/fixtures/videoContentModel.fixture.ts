@@ -109,7 +109,6 @@ export const videoContentModelFixture: VideoContentModel = {
       },
       fields: {
         title: 'test music type',
-        isGeolocated: false,
         hitsPerPage: 1,
       },
     },
@@ -146,7 +145,6 @@ export const videoContentModelFixture: VideoContentModel = {
         },
         fields: {
           title: 'test music type',
-          isGeolocated: false,
           hitsPerPage: 1,
         },
       },

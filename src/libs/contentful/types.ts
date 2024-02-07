@@ -232,8 +232,6 @@ export interface RecommendationFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/algoliaParameters/fields
 export interface SearchParametersFields {
   title: string
-  isGeolocated?: boolean
-  aroundRadius?: number
   algoliaSubcategories?: Subcategories
   algoliaCategories?: Categories
   tags?: string[]
@@ -260,8 +258,6 @@ export interface SearchParametersFields {
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
 interface VenuesParametersFields {
   title: string
-  isGeolocated?: boolean
-  aroundRadius?: number
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number

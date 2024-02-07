@@ -42,25 +42,26 @@ describe('adaptHomepageModules', () => {
     expect(adaptHomepageNatifModules(rawHomepageNatifModules)).toStrictEqual(
       formattedHomepageModules
     )
-  }),
-    it('should catch the error and log to Sentry if the provided data is corrupted', () => {
-      const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+  })
 
-      const contentModel = structuredClone(businessNatifModuleFixture)
-      // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
-      contentModel.fields.image = undefined
+  it('should catch the error and log to Sentry if the provided data is corrupted', () => {
+    const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-      adaptHomepageNatifModules([contentModel])
+    const contentModel = structuredClone(businessNatifModuleFixture)
+    // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
+    contentModel.fields.image = undefined
 
-      expect(spyWarn).toHaveBeenNthCalledWith(
-        1,
-        'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
-        expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
-      )
-      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-        1,
-        'Error while computing home modules',
-        { extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' } }
-      )
-    })
+    adaptHomepageNatifModules([contentModel])
+
+    expect(spyWarn).toHaveBeenNthCalledWith(
+      1,
+      'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
+      expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
+    )
+    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
+      1,
+      'Error while computing home modules',
+      { extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' } }
+    )
+  })
 })

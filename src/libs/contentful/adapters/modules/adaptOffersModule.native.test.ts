@@ -39,7 +39,6 @@ describe('adaptOffersModule', () => {
       offersModuleParameters: [
         {
           title: 'Livre',
-          isGeolocated: false,
           categories: ['Cartes jeunes', 'Spectacles'],
           hitsPerPage: 10,
           subcategories: ['Livre', 'Livre numérique, e-book'],
@@ -51,14 +50,12 @@ describe('adaptOffersModule', () => {
         },
         {
           title: 'Livre',
-          isGeolocated: false,
           categories: ['Cartes jeunes', 'Spectacles'],
           hitsPerPage: 10,
         },
         { title: 'Ciné', categories: ['Cartes jeunes', 'Spectacles'], hitsPerPage: 2 },
         {
           title: 'Musique',
-          isGeolocated: false,
           categories: ['Cartes jeunes', 'Spectacles'],
           hitsPerPage: 2,
         },
