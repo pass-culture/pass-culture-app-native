@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import styled from 'styled-components/native'
 
@@ -34,8 +34,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
     ? new Date(previousBirthdateProvided)
     : underYoungestDate
 
-  const [defaultSelectedDate, setDefaultSelectedDate] = useState(initialDate)
-
   const {
     control,
     formState: { isValid },
@@ -53,7 +51,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       if (!previousBirthdateProvided && typeof userAge === 'number') {
         const userAgeDate = new Date(new Date().setFullYear(currentYear - userAge))
         setValue('birthdate', userAgeDate)
-        setDefaultSelectedDate(userAgeDate)
       }
     }
 
@@ -92,7 +89,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
                   ? undefined
                   : errors.birthdate?.message
               }
-              defaultSelectedDate={defaultSelectedDate}
               maximumDate={maximumSpinnerDate}
               minimumDate={MINIMUM_DATE}
             />

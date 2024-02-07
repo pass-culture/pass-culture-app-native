@@ -12,7 +12,7 @@ import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/Da
 
 const props = {
   onChange: jest.fn(),
-  defaultSelectedDate: DEFAULT_SELECTED_DATE,
+  date: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
   maximumDate: MAXIMUM_DATE,
 }
@@ -24,7 +24,7 @@ describe('<DatePickerDropDown />', () => {
   })
 
   it('should display a date if provided as a default date', async () => {
-    const propsWithDefaultDate = { ...props, defaultSelectedDate: new Date('1994-11-12') }
+    const propsWithDefaultDate = { ...props, date: new Date('1994-11-12') }
     render(<DatePickerDropDown {...propsWithDefaultDate} />)
 
     expect(screen.getByTestId('select-Jour')).toHaveValue('12')

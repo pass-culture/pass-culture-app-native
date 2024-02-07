@@ -1,7 +1,6 @@
 export type DatePickerProps = {
   date: Date
   onChange: (date?: Date) => void
-  defaultSelectedDate: Date
   minimumDate: Date
   maximumDate: Date
   errorMessage?: string | null

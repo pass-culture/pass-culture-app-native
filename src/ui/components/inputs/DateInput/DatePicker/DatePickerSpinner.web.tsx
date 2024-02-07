@@ -19,13 +19,13 @@ interface PickerProps extends ReactMobilePicker.ReactMobilePickerProps {
 const birthdateInputErrorId = uuidv4()
 
 export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
-  defaultSelectedDate,
+  date: initialDate,
   maximumDate,
   minimumDate,
   onChange,
   errorMessage,
 }) => {
-  const defaultDate = getDateValuesString(defaultSelectedDate)
+  const defaultDate = getDateValuesString(initialDate)
   const [date, setDate] = useState(defaultDate)
 
   const { optionGroups } = useDatePickerOptions({
