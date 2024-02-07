@@ -1,11 +1,9 @@
 import omit from 'lodash/omit'
 import mockdate from 'mockdate'
-import { GeoCoordinates } from 'react-native-geolocation-service'
 
 import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
-import { LocationMode } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -35,7 +33,7 @@ const defaultSearchParameters = omit(
     minBookingsThreshold: 0,
     offerGenreTypes: [],
   },
-  ['offerIsFree', 'view', 'venue']
+  ['offerIsFree', 'view', 'venue', 'locationFilter']
 )
 
 describe('adaptOffersPlaylistParameters', () => {
@@ -48,11 +46,9 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return default parameters when no parameters are provided', () => {
     const parameters = {} as OffersModuleParameters
-    const geolocation = null
 
     const result = adaptOffersPlaylistParameters(
       parameters,
-      geolocation,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -103,10 +99,8 @@ describe('adaptOffersPlaylistParameters', () => {
       upcomingWeekendEvent: true,
       currentWeekEvent: true,
     } as OffersModuleParameters
-    const geolocation = null
     const result = adaptOffersPlaylistParameters(
       parameters,
-      geolocation,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -130,17 +124,11 @@ describe('adaptOffersPlaylistParameters', () => {
       hitsPerPage: 5,
       eventDuringNextXDays: days,
     } as OffersModuleParameters
-    const geolocation = null
     const mockedComputer = jest.spyOn(
       computeBeginningAndEndingDatetimes,
       'computeBeginningAndEndingDatetimes'
     )
-    adaptOffersPlaylistParameters(
-      parameters,
-      geolocation,
-      subcategoryLabelMapping,
-      genreTypeMapping
-    )
+    adaptOffersPlaylistParameters(parameters, subcategoryLabelMapping, genreTypeMapping)
 
     expect(mockedComputer).toHaveBeenCalledWith({
       beginningDatetime: undefined,
@@ -153,11 +141,9 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return algolia parameters with isDigital when provided', () => {
     const parameters = { isDigital: true } as OffersModuleParameters
-    const geolocation = null
 
     const result = adaptOffersPlaylistParameters(
       parameters,
-      geolocation,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -170,11 +156,9 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return algolia parameters with a price range when minimum price is provided', () => {
     const parameters = { priceMin: 50 } as OffersModuleParameters
-    const geolocation = null
 
     const result = adaptOffersPlaylistParameters(
       parameters,
-      geolocation,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -184,11 +168,9 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return algolia parameters with a price range when maximum price is provided', () => {
     const parameters = { priceMax: 200 } as OffersModuleParameters
-    const geolocation = null
 
     const result = adaptOffersPlaylistParameters(
       parameters,
-      geolocation,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -198,11 +180,9 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return algolia parameters with a price range when minimum and maximum prices are provided', () => {
     const parameters = { priceMin: 50, priceMax: 200 } as OffersModuleParameters
-    const geolocation = null
 
     const result = adaptOffersPlaylistParameters(
       parameters,
-      geolocation,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -210,89 +190,24 @@ describe('adaptOffersPlaylistParameters', () => {
     expect(result).toStrictEqual({ ...defaultSearchParameters, priceRange: [50, 200] })
   })
 
-  describe('geolocation', () => {
-    const geolocation = { latitude: 1, longitude: 2 } as GeoCoordinates
+  it('should return algolia parameters when a movieGenres and a musicTypes lists are provided', () => {
+    const parameters = {
+      movieGenres: ['BOLLYWOOD'],
+      musicTypes: ['Gospel'],
+    } as OffersModuleParameters
 
-    it('should return algolia parameters with geolocation with no distance limit when isGeolocated is provided', () => {
-      const parameters = { isGeolocated: true } as OffersModuleParameters
+    const result = adaptOffersPlaylistParameters(
+      parameters,
+      subcategoryLabelMapping,
+      genreTypeMapping
+    )
 
-      const result = adaptOffersPlaylistParameters(
-        parameters,
-        geolocation,
-        subcategoryLabelMapping,
-        genreTypeMapping
-      )
-
-      expect(result?.locationFilter).toStrictEqual({
-        ...defaultSearchParameters.locationFilter,
-        locationType: LocationMode.AROUND_ME,
-        aroundRadius: null,
-      })
-    })
-
-    it('should return algolia parameters with geolocation with distance limit when isGeolocated is provided and radius as well', () => {
-      const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
-
-      const result = adaptOffersPlaylistParameters(
-        parameters,
-        geolocation,
-        subcategoryLabelMapping,
-        genreTypeMapping
-      )
-
-      expect(result?.locationFilter).toStrictEqual({
-        ...defaultSearchParameters.locationFilter,
-        aroundRadius: 10,
-        locationType: LocationMode.AROUND_ME,
-      })
-    })
-
-    it('should return null when isGeolocated is true & around radius is provided but geolocation is null', () => {
-      const parameters = { aroundRadius: 10, isGeolocated: true } as OffersModuleParameters
-
-      const result = adaptOffersPlaylistParameters(
-        parameters,
-        null,
-        subcategoryLabelMapping,
-        genreTypeMapping
-      )
-
-      expect(result).toBeUndefined()
-    })
-
-    it('should return null when isGeolocated is false & around radius is provided', () => {
-      const parameters = { aroundRadius: 10, isGeolocated: false } as OffersModuleParameters
-
-      const result = adaptOffersPlaylistParameters(
-        parameters,
-        null,
-        subcategoryLabelMapping,
-        genreTypeMapping
-      )
-
-      expect(result).toBeUndefined()
-    })
-
-    it('should return algolia parameters when a movieGenres and a musicTypes lists are provided', () => {
-      const parameters = {
-        movieGenres: ['BOLLYWOOD'],
-        musicTypes: ['Gospel'],
-      } as OffersModuleParameters
-
-      const result = adaptOffersPlaylistParameters(
-        parameters,
-        null,
-        subcategoryLabelMapping,
-        genreTypeMapping
-      )
-
-      expect(result).toStrictEqual({
-        ...defaultSearchParameters,
-        offerGenreTypes: [
-          { key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' },
-          { key: 'MUSIC', name: 'Gospel', value: 'Gospel' },
-        ],
-      })
+    expect(result).toStrictEqual({
+      ...defaultSearchParameters,
+      offerGenreTypes: [
+        { key: 'MOVIE', name: 'BOLLYWOOD', value: 'Bollywood' },
+        { key: 'MUSIC', name: 'Gospel', value: 'Gospel' },
+      ],
     })
   })
 })
