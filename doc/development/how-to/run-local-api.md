@@ -42,3 +42,11 @@ Since the backend differs between local / testing, you won't:
 - hence book an offer, or favorite it.
 
 However, you can still access the app and should be able to work around those limitations.
+
+### Android - Network request failed
+
+If you run into the error `Network request failed` when trying to connect an Android device to your backend running locally, run the command:
+
+```
+adb reverse tcp:5001 tcp:5001
+```
