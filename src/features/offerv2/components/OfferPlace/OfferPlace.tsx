@@ -148,7 +148,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
         {hasNewOfferVenueBlock ? (
           <OfferVenueBlock
             title={venueSectionTitle}
-            venue={offer.venue}
+            offer={offer}
             distance={distanceToLocation}
             onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
             onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
