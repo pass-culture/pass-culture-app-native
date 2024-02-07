@@ -25,6 +25,8 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary,
 }))
 
+const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
+
 describe('<OfferVenueBlock />', () => {
   it('should display title', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="1,1 km" />)
@@ -69,7 +71,6 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it("should render 'Changer de cinéma' button when venue is a cinema and onChangeVenuePress is defined", () => {
-    const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
     render(
       <OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} onChangeVenuePress={() => {}} />
     )
@@ -104,6 +105,12 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
   })
 
+  it('should not render copy address button when offer is cinema', () => {
+    render(<OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} />)
+
+    expect(screen.queryByText('Copier l’adresse')).not.toBeOnTheScreen()
+  })
+
   it('should handle copy address button press', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
@@ -117,7 +124,7 @@ describe('<OfferVenueBlock />', () => {
       <OfferVenueBlock
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onSeeItineraryPress={() => {}}
+        onSeeItineraryPress={jest.fn()}
       />
     )
 
@@ -141,6 +148,18 @@ describe('<OfferVenueBlock />', () => {
 
   it('should not render see itinerary button when onSeeItineraryPress is undefined', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+
+    expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
+  })
+
+  it('should not render see itinerary button when offer is cinema', () => {
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        offer={cinemaOffer}
+        onSeeItineraryPress={jest.fn()}
+      />
+    )
 
     expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
   })

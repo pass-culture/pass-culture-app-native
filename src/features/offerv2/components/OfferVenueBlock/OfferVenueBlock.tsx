@@ -1,4 +1,4 @@
-import React, { ComponentProps, FunctionComponent, useMemo } from 'react'
+import React, { ComponentProps, Fragment, FunctionComponent, useMemo } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -104,32 +104,36 @@ export function OfferVenueBlock({
         </React.Fragment>
       ) : null}
 
-      <Spacer.Column numberOfSpaces={6} />
-      <StyledSeparator />
-      <Spacer.Column numberOfSpaces={4} />
-
-      <Spacer.Column numberOfSpaces={2} />
-      <TertiaryButtonWrapper>
-        <ButtonTertiaryBlack
-          inline
-          wording="Copier l’adresse"
-          onPress={onCopyAddressPress}
-          icon={Duplicate}
-        />
-      </TertiaryButtonWrapper>
-
-      {onSeeItineraryPress ? (
-        <React.Fragment>
+      {isCinema ? null : (
+        <Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <SeeItineraryButton
-            externalNav={{
-              url: getGoogleMapsItineraryUrl(venueFullAddress),
-              address: venueFullAddress,
-            }}
-            onPress={onSeeItineraryPress}
-          />
-        </React.Fragment>
-      ) : null}
+          <StyledSeparator />
+          <Spacer.Column numberOfSpaces={4} />
+
+          <Spacer.Column numberOfSpaces={2} />
+          <TertiaryButtonWrapper>
+            <ButtonTertiaryBlack
+              inline
+              wording="Copier l’adresse"
+              onPress={onCopyAddressPress}
+              icon={Duplicate}
+            />
+          </TertiaryButtonWrapper>
+
+          {onSeeItineraryPress ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <SeeItineraryButton
+                externalNav={{
+                  url: getGoogleMapsItineraryUrl(venueFullAddress),
+                  address: venueFullAddress,
+                }}
+                onPress={onSeeItineraryPress}
+              />
+            </React.Fragment>
+          ) : null}
+        </Fragment>
+      )}
     </Container>
   )
 }
