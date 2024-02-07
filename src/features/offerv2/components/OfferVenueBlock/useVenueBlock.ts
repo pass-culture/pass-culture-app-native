@@ -14,7 +14,7 @@ export function useVenueBlock({ venue }: { venue: OfferVenueResponse }) {
 
   return useMemo(
     () => ({
-      venueName: venue.publicName ?? venue.name,
+      venueName: venue.publicName || venue.name,
       address,
       onCopyAddressPress: async () => {
         Clipboard.setString(address)

@@ -23,7 +23,7 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
       }
       Icon={<LocationPointer color={theme.colors.black} size={theme.icons.sizes.small} />}
       navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
-      accessibilityLabel={`Accéder à la page du lieu ${venue.publicName ?? venue.name}`}
+      accessibilityLabel={`Accéder à la page du lieu ${venueName}`}
     />
   )
 }
