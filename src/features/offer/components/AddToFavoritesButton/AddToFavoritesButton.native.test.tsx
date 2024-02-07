@@ -1,13 +1,13 @@
-import { rest } from 'msw'
 import React from 'react'
 
+import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
-import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, waitFor, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -62,15 +62,17 @@ const renderButton = (options?: Options) => {
     ...options,
   }
 
-  server.use(
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
-      if (hasAddFavoriteError) {
-        return res(ctx.status(415), ctx.json({}))
-      } else {
-        mockPostFavorite()
-        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
-      }
+  if (hasAddFavoriteError) {
+    mockServer.postApiV1<EmptyResponse>(`/me/favorites`, {
+      responseOptions: { statusCode: 415, data: {} },
     })
-  )
+  } else {
+    mockPostFavorite()
+    mockServer.getApiV1<PaginatedFavoritesResponse>(`/me/favorites`, paginatedFavoritesResponseSnap)
+    mockServer.postApiV1<FavoriteResponse>(`/me/favorites`, {
+      responseOptions: { statusCode: 200, data: favoriteResponseSnap },
+    })
+  }
+
   return render(reactQueryProviderHOC(<AddToFavoritesButton offerId={offerId} />))
 }
