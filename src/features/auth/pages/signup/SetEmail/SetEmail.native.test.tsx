@@ -14,7 +14,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SetEmail } from './SetEmail'
 
@@ -45,7 +44,7 @@ const INCORRECT_EMAIL_MESSAGE =
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+    showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
 
