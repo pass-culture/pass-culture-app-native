@@ -1,6 +1,7 @@
 import flatten from 'lodash/flatten'
 
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -8,18 +9,17 @@ import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchRespons
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchMultipleOffersArgs = {
   paramsList: SearchQueryParameters[]
-  userLocation: Position
+  buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
 }
 
 export const fetchMultipleOffers = async ({
   paramsList,
-  userLocation,
+  buildLocationParameterParams,
   isUserUnderage,
 }: FetchMultipleOffersArgs): Promise<{ hits: Offer[]; nbHits: number }> => {
   const queries = paramsList.map((params) => ({
@@ -27,7 +27,7 @@ export const fetchMultipleOffers = async ({
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
-      ...buildOfferSearchParameters(params, userLocation, isUserUnderage),
+      ...buildOfferSearchParameters(params, buildLocationParameterParams, isUserUnderage),
       attributesToHighlight: [], // We disable highlighting because we don't need it
       attributesToRetrieve: offerAttributesToRetrieve,
     },
