@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -65,6 +66,15 @@ describe('<OfferVenueBlock />', () => {
     )
 
     expect(screen.getByText('Changer le lieu de retrait')).toBeOnTheScreen()
+  })
+
+  it("should render 'Changer de cinéma' button when venue is a cinema and onChangeVenuePress is defined", () => {
+    const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
+    render(
+      <OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} onChangeVenuePress={() => {}} />
+    )
+
+    expect(screen.getByText('Changer de cinéma')).toBeOnTheScreen()
   })
 
   it("should handle 'Changer le lieu de retrait' button press", () => {

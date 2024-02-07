@@ -2,7 +2,7 @@ import React, { ComponentProps, FunctionComponent, useMemo } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offerv2/components/OfferVenueBlock/useVenueBlock'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -55,6 +55,8 @@ export function OfferVenueBlock({
       [hasVenuePage]
     )
 
+  const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+
   return (
     <Container>
       <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
@@ -96,7 +98,7 @@ export function OfferVenueBlock({
           <Spacer.Column numberOfSpaces={4} />
           <ButtonSecondaryBlack
             icon={EditPen}
-            wording="Changer le lieu de retrait"
+            wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
             onPress={onChangeVenuePress}
           />
         </React.Fragment>
