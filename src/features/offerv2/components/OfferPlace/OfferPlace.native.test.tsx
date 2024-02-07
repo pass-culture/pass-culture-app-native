@@ -303,27 +303,20 @@ describe('<OfferPlace />', () => {
       },
     }
 
-    it('should display "Voir la page du lieu" button', () => {
+    it('should navigate to venue page when pressing venue button', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
-      expect(screen.getByText('Voir la page du lieu')).toBeOnTheScreen()
-    })
-
-    it('should navigate to venue page when pressing "Voir la page du lieu" button', () => {
-      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      renderOfferPlace({ offer })
-
-      fireEvent.press(screen.getByText('Voir la page du lieu'))
+      fireEvent.press(screen.getByTestId('RightFilled'))
 
       expect(navigate).toHaveBeenCalledWith('Venue', { id: mockOffer.venue.id })
     })
 
-    it('should log ConsultVenue when pressing "Voir la page du lieu" button', () => {
+    it('should log ConsultVenue when pressing venue button', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
       renderOfferPlace({ offer })
 
-      fireEvent.press(screen.getByText('Voir la page du lieu'))
+      fireEvent.press(screen.getByTestId('RightFilled'))
 
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
         venueId: mockOffer.venue.id,
