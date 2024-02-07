@@ -316,7 +316,7 @@ describe('<SetEmail />', () => {
       })
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
         responseOptions: {
-          statusCode: 401,
+          statusCode: 400,
           data: {
             code: 'SSO_ACCOUNT_DELETED',
             general: [],
