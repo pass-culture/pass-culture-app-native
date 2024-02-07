@@ -311,7 +311,7 @@ describe('<SetEmail />', () => {
       })
     })
 
-    it('should display snackbar if we get an error', async () => {
+    it('should display snackbar when SSO account is invalid', async () => {
       mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
         oauthStateToken: 'oauth_state_token',
       })
@@ -321,7 +321,6 @@ describe('<SetEmail />', () => {
           data: {
             code: 'SSO_ACCOUNT_DELETED',
             general: [],
-            accountCreationToken: 'accountCreationToken',
           },
         },
       })

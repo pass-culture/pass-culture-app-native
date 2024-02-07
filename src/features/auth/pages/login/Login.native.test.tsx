@@ -33,7 +33,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Login } from './Login'
 
@@ -51,7 +50,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+    showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
 
@@ -155,13 +154,12 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should show snackbar when SSO fails', async () => {
+  it('should show snackbar when SSO login fails', async () => {
     mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
       responseOptions: {
         statusCode: 401,
         data: {
           code: 'SSO_ACCOUNT_DELETED',
-          accountCreationToken: 'accountCreationToken',
           general: [],
         },
       },
