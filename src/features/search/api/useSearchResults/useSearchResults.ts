@@ -26,18 +26,30 @@ export type SearchOfferHits = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { geolocPosition } = useLocation()
+  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
-    [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
+    [
+      QueryKeys.SEARCH_RESULTS,
+      { ...searchState, view: undefined },
+      userLocation,
+      selectedLocationMode,
+      aroundPlaceRadius,
+      aroundMeRadius,
+    ],
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
         parameters: { page, ...searchState },
-        userLocation: geolocPosition,
+        buildLocationParameterParams: {
+          userLocation,
+          selectedLocationMode,
+          aroundPlaceRadius,
+          aroundMeRadius,
+        },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
