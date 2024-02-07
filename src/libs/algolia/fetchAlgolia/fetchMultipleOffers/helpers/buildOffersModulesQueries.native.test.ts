@@ -1,11 +1,19 @@
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOffersModulesQueries'
 import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
+import { LocationMode } from 'libs/algolia/types'
 
 describe('buildOffersModulesQueries', () => {
   const userLocation = {
     latitude: 48.8566,
     longitude: 2.3522,
+  }
+  const buildLocationParameterParams: BuildLocationParameterParams = {
+    userLocation,
+    selectedLocationMode: LocationMode.AROUND_ME,
+    aroundMeRadius: 'all',
+    aroundPlaceRadius: 'all',
   }
 
   const isUserUnderage = false
@@ -31,7 +39,11 @@ describe('buildOffersModulesQueries', () => {
 
     const paramsList = [[parameters, parameters], [parameters]]
 
-    const queries = buildOffersModulesQueries({ paramsList, userLocation, isUserUnderage })
+    const queries = buildOffersModulesQueries({
+      paramsList,
+      buildLocationParameterParams,
+      isUserUnderage,
+    })
 
     expect(queries).toEqual([expectedResult, expectedResult, expectedResult])
   })

@@ -21,7 +21,7 @@ const isSearchQueryParametersArrayWithoutUndefined = (
 ): params is SearchQueryParameters[] => params !== undefined
 
 export const useGetOffersData = (modules: OffersModule[]) => {
-  const { userLocation } = useLocation()
+  const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
 
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -48,7 +48,12 @@ export const useGetOffersData = (modules: OffersModule[]) => {
   const offersQuery = async () => {
     const result = await fetchOffersModules({
       paramsList: offersAdaptedPlaylistParametersWithoutUndefined,
-      userLocation,
+      buildLocationParameterParams: {
+        userLocation,
+        selectedLocationMode,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
       isUserUnderage,
     })
     const searchResponseResult = result.filter(searchResponsePredicate)
