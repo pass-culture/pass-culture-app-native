@@ -1,8 +1,7 @@
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/algolia'
-import { Position } from 'libs/location'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 
 type SearchVenuePositionType = {
   aroundLatLng?: string
@@ -17,38 +16,36 @@ export function convertKmToMeters(aroundRadiusKm: number | 'all') {
 }
 
 export function buildSearchVenuePosition(
-  locationFilter?: LocationFilter,
-  geolocPosition?: Position,
+  buildLocationParameterParams: BuildLocationParameterParams,
   venue?: Venue
 ) {
+  const { selectedLocationMode, userLocation, aroundMeRadius, aroundPlaceRadius } =
+    buildLocationParameterParams
+
   let searchVenuePosition: SearchVenuePositionType = { aroundRadius: 'all' }
+  if (userLocation) {
+    switch (selectedLocationMode) {
+      case LocationMode.AROUND_ME:
+        searchVenuePosition = {
+          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: convertKmToMeters(aroundMeRadius),
+        }
+        break
+      case LocationMode.EVERYWHERE:
+        searchVenuePosition = {
+          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: 'all',
+        }
+        break
+      case LocationMode.AROUND_PLACE:
+        searchVenuePosition = {
+          aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
+          aroundRadius: convertKmToMeters(aroundPlaceRadius),
+        }
+        break
 
-  if (geolocPosition) {
-    if (locationFilter?.locationType === LocationMode.AROUND_ME) {
-      const aroundRadius = locationFilter.aroundRadius ?? 'all'
-
-      searchVenuePosition = {
-        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
-        aroundRadius: convertKmToMeters(aroundRadius),
-      }
-    }
-    if (locationFilter?.locationType === LocationMode.EVERYWHERE) {
-      searchVenuePosition = {
-        ...searchVenuePosition,
-        aroundLatLng: `${geolocPosition.latitude}, ${geolocPosition.longitude}`,
-      }
-    }
-  }
-
-  if (
-    locationFilter?.locationType === LocationMode.AROUND_PLACE &&
-    locationFilter?.place?.geolocation
-  ) {
-    const placePosition = locationFilter?.place?.geolocation
-
-    searchVenuePosition = {
-      aroundLatLng: `${placePosition.latitude}, ${placePosition.longitude}`,
-      aroundRadius: convertKmToMeters(locationFilter?.aroundRadius),
+      default:
+        break
     }
   }
 
