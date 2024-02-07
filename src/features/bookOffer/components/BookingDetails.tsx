@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
+import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
@@ -31,7 +32,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -303,40 +303,6 @@ const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
 const VenueAddress = styled(Typo.Hint)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
-
-const Item: React.FC<{
-  Icon: React.FC<IconInterface>
-  message: React.JSX.Element | string
-  subtext?: string
-  testID?: string
-}> = ({ Icon, message, subtext = '', testID }) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color: theme.colors.greyDark,
-    size: theme.icons.sizes.small,
-  }))``
-  return (
-    <Row testID={testID}>
-      <IconWrapper>
-        <StyledIcon />
-      </IconWrapper>
-      <Spacer.Row numberOfSpaces={3} />
-      {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
-      <Spacer.Row numberOfSpaces={2} />
-      <Typo.CaptionNeutralInfo>{subtext}</Typo.CaptionNeutralInfo>
-    </Row>
-  )
-}
-
-const Row = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  width: theme.appContentWidth - getSpacing(24),
-  paddingVertical: getSpacing(0.5),
-}))
-
-const IconWrapper = styled.View({
-  flexShrink: 0,
-})
 
 const VenueContainer = styled.View({
   flexDirection: 'column',

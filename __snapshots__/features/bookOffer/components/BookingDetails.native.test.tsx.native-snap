@@ -237,7 +237,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
         ]
       }
     >
-      2 mars 2021, 21h00
+      Mardi 2 mars 2021, 21h00 - Durée : 1h
     </Text>
     <View
       numberOfSpaces={2}
@@ -420,46 +420,119 @@ exports[`<BookingDetails /> when user has selected options should render correct
       ]
     }
   />
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-        },
-      ]
-    }
-    testID="venueName"
-  >
-    Cinéma de la fin
-  </Text>
   <View
-    numberOfSpaces={1}
     style={
       [
         {
-          "height": 4,
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
         },
       ]
     }
-  />
-  <Text
-    style={
-      [
-        {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 10,
-          "lineHeight": 12,
-        },
-      ]
-    }
-    testID="venueAddress"
   >
-    97310 Kourou, RUE DE CALI
-  </Text>
+    <View
+      style={
+        [
+          {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        [
+          {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+        testID="venueName"
+      >
+        Cinéma de la fin
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 12,
+            },
+          ]
+        }
+        testID="venueAddress"
+      >
+        97310 Kourou, RUE DE CALI
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>
   <View
     numberOfSpaces={6}
     style={
@@ -873,7 +946,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
         ]
       }
     >
-      2 mars 2021, 21h00
+      Mardi 2 mars 2021, 21h00 - Durée : 1h
     </Text>
     <View
       numberOfSpaces={2}
@@ -1056,46 +1129,119 @@ exports[`<BookingDetails /> when user has selected options should render disable
       ]
     }
   />
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-        },
-      ]
-    }
-    testID="venueName"
-  >
-    Cinéma de la fin
-  </Text>
   <View
-    numberOfSpaces={1}
     style={
       [
         {
-          "height": 4,
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
         },
       ]
     }
-  />
-  <Text
-    style={
-      [
-        {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 10,
-          "lineHeight": 12,
-        },
-      ]
-    }
-    testID="venueAddress"
   >
-    97310 Kourou, RUE DE CALI
-  </Text>
+    <View
+      style={
+        [
+          {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        [
+          {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+        testID="venueName"
+      >
+        Cinéma de la fin
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 12,
+            },
+          ]
+        }
+        testID="venueAddress"
+      >
+        97310 Kourou, RUE DE CALI
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>
   <View
     numberOfSpaces={6}
     style={
