@@ -13,6 +13,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
+import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { SetEmail } from './SetEmail'
 
@@ -39,6 +40,13 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 const INCORRECT_EMAIL_MESSAGE =
   'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
 
 describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', async () => {
@@ -299,6 +307,37 @@ describe('<SetEmail />', () => {
       expect(defaultProps.onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
       expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
         accountCreationToken: 'accountCreationToken',
+      })
+    })
+
+    it('should display snackbar when SSO account is invalid', async () => {
+      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+        oauthStateToken: 'oauth_state_token',
+      })
+      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        responseOptions: {
+          statusCode: 400,
+          data: {
+            code: 'SSO_ACCOUNT_DELETED',
+            general: [],
+          },
+        },
+      })
+      useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
+      useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
+
+      renderSetEmail()
+
+      await act(() => {})
+
+      const signupButton = screen.getByText('S’inscrire avec Google')
+
+      await act(async () => fireEvent.press(signupButton))
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message:
+          'Ton compte Google semble ne pas être valide. Pour pouvoir t’inscrire, confirme d’abord ton adresse e-mail Google.',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
       })
     })
   })
