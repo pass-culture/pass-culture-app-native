@@ -1,5 +1,5 @@
 export type DatePickerProps = {
-  date?: Date
+  date: Date
   onChange: (date?: Date) => void
   defaultSelectedDate: Date
   minimumDate: Date

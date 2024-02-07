@@ -21,6 +21,7 @@ Default.args = {
 
 export const Error = Template.bind({})
 Error.args = {
+  date: DEFAULT_SELECTED_DATE,
   defaultSelectedDate: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
   maximumDate: MAXIMUM_DATE,
