@@ -47,7 +47,6 @@ describe('useAdaptOffersPlaylistParameters', () => {
 
     expect(adaptOffersPlaylistParametersSpy).toHaveBeenCalledWith(
       { priceMax: mockMaxPrice },
-      mockPosition,
       subcategoryLabelMapping,
       genreTypeMapping
     )
@@ -62,7 +61,6 @@ describe('useAdaptOffersPlaylistParameters', () => {
 
     expect(adaptOffersPlaylistParametersSpy).toHaveBeenCalledWith(
       { priceMax },
-      mockPosition,
       subcategoryLabelMapping,
       genreTypeMapping
     )
