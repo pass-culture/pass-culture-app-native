@@ -2,12 +2,15 @@ import React from 'react'
 import { Platform } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
@@ -50,6 +53,10 @@ describe('ThematicHome', () => {
     modules,
     id: 'fakeEntryId',
     thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
+  })
+
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
   })
 
   it('should render correctly', async () => {

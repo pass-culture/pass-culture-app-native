@@ -2,7 +2,12 @@ import React from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { NativeCategoryIdEnumv2, OfferResponse, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  NativeCategoryIdEnumv2,
+  OfferResponse,
+  SearchGroupNameEnumv2,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { OfferContentOld } from 'features/offer/components/OfferContentOld/OfferContentOld'
@@ -20,6 +25,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -108,6 +114,8 @@ describe('<OfferContentOld />', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
+    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
   })
 
   it('animates on scroll', async () => {

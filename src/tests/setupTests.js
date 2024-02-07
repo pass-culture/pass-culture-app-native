@@ -4,8 +4,6 @@ import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
-import { server } from 'tests/server'
-
 import { queryCache } from './reactQueryProviderHOC'
 
 // Configuration for performance tests
@@ -22,15 +20,6 @@ consoleFailTestModule.cft({
     log: false,
     warn: false,
   },
-})
-
-global.beforeAll(() => {
-  server.listen()
-})
-
-global.afterAll(() => {
-  server.resetHandlers()
-  server.close()
 })
 
 global.afterEach(async () => {

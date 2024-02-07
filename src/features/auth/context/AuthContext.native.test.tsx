@@ -64,8 +64,9 @@ describe('AuthContext', () => {
     })
 
     it('should return the user when logged in with internet connection', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+      await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
+      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
 
       const result = renderUseAuthContext()
 
@@ -109,8 +110,9 @@ describe('AuthContext', () => {
     })
 
     it('should set user properties to Amplitude events when user is logged in', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+      await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
+      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
 
       renderUseAuthContext()
 
@@ -138,6 +140,7 @@ describe('AuthContext', () => {
     })
 
     it('should set user id when user is logged in', async () => {
+      await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
 
       renderUseAuthContext()
@@ -148,7 +151,9 @@ describe('AuthContext', () => {
     })
 
     it('should log out user when refresh token is no longer valid', async () => {
+      await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
+
       const result = renderUseAuthContext()
 
       await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
@@ -164,7 +169,9 @@ describe('AuthContext', () => {
     it('should not log out user using setTimeout when refresh token remaining lifetime is longer than max average session duration', async () => {
       decodedTokenWithRemainingLifetime.exp =
         (CURRENT_DATE.getTime() + MAX_AVERAGE_SESSION_DURATION_IN_MS) / 1000
+      await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
+
       const result = renderUseAuthContext()
 
       await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers

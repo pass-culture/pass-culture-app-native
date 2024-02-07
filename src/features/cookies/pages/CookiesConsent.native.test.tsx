@@ -9,8 +9,10 @@ import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign/__mocks__'
+import { EmptyResponse } from 'libs/fetch'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, act, screen } from 'tests/utils'
 
@@ -52,7 +54,10 @@ jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
 const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')
 
 describe('<CookiesConsent/>', () => {
-  beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
+  beforeEach(() => {
+    storage.clear(COOKIES_CONSENT_KEY)
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+  })
 
   it('should render correctly', async () => {
     renderCookiesConsent()

@@ -38,6 +38,7 @@ src/api/gen/index.ts:593 - CallToActionMessage
 src/api/gen/index.ts:636 - ChangeBeneficiaryEmailBody
 src/api/gen/index.ts:652 - ChangeBeneficiaryEmailResponse
 src/api/gen/index.ts:684 - Consent
+src/api/gen/index.ts:705 - CookieConsentRequest
 src/api/gen/index.ts:747 - Credit
 src/api/gen/index.ts:849 - CulturalSurveyQuestion
 src/api/gen/index.ts:909 - DepositAmountsByAge
@@ -52,10 +53,14 @@ src/api/gen/index.ts:1672 - OfferOffererResponse
 src/api/gen/index.ts:1683 - OfferReportReasons
 src/api/gen/index.ts:1694 - OfferReportRequest
 src/api/gen/index.ts:1816 - OfferStockActivationCodeResponse
+src/api/gen/index.ts:2057 - Reason
 src/api/gen/index.ts:2067 - ReasonMeta
 src/api/gen/index.ts:2094 - ReportedOffer
+src/api/gen/index.ts:2115 - RequestPasswordResetRequest
+src/api/gen/index.ts:2233 - SendPhoneValidationRequest
 src/api/gen/index.ts:2654 - SubscriptionStepDetailsResponse
 src/api/gen/index.ts:2770 - UserProfileEmailUpdate
+src/api/gen/index.ts:2923 - UserReportedOffersResponse
 src/api/gen/index.ts:3001 - ValidatePhoneNumberRequest
 src/api/gen/index.ts:3012 - ValidationError
 src/api/gen/index.ts:3018 - ValidationErrorElement

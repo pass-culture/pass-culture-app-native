@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -63,6 +65,10 @@ describe('<SearchFilter/>', () => {
     mockPosition = DEFAULT_POSITION
     mockSearchState = initialSearchState
     mockLocationMode = LocationMode.AROUND_ME
+  })
+
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
   })
 
   it('should render correctly', async () => {

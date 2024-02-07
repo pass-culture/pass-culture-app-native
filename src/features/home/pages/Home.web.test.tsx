@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
@@ -20,6 +23,10 @@ jest.mock('libs/location')
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 describe('<Home/>', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockUseHomepageData.mockReturnValueOnce({

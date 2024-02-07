@@ -2,7 +2,9 @@ import mockdate from 'mockdate'
 
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/helpers/useCookies'
+import { EmptyResponse } from 'libs/fetch'
 import { storage } from 'libs/storage'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
@@ -26,6 +28,8 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when all cookies are accepted', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
@@ -42,6 +46,8 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return false when all cookies are refused', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
@@ -59,6 +65,8 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when marketing cookies are accepted', async () => {
+    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 

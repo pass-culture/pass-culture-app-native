@@ -1,11 +1,11 @@
 import React from 'react'
 
+import { api } from 'api/api'
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
-import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, waitFor, render, screen } from 'tests/utils'
@@ -19,9 +19,13 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
 })
 
-const mockPostFavorite = jest.fn()
+const postFavoritesSpy = jest.spyOn(api, 'postNativeV1MeFavorites')
 
 describe('<AddToFavoriteButton />', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
+  })
+
   it('should render nothing when offer already in favorite', async () => {
     const favoriteOfferId = 146193
     renderButton({ offerId: favoriteOfferId })
@@ -32,6 +36,8 @@ describe('<AddToFavoriteButton />', () => {
   })
 
   it('should add favorite', async () => {
+    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+
     renderButton({
       offerId: favoriteResponseSnap.offer.id,
     })
@@ -39,40 +45,11 @@ describe('<AddToFavoriteButton />', () => {
     fireEvent.press(screen.getByText('Mettre en favori'))
 
     await waitFor(() => {
-      expect(mockPostFavorite).toHaveBeenCalledTimes(1)
+      expect(postFavoritesSpy).toHaveBeenCalledTimes(1)
     })
   })
 })
 
-type Options = {
-  offerId?: number
-  hasAddFavoriteError?: boolean
-  hasTooManyFavorites?: boolean
-}
-
-const defaultOptions = {
-  offerId: 116656,
-  hasAddFavoriteError: false,
-  hasTooManyFavorites: false,
-}
-
-const renderButton = (options?: Options) => {
-  const { offerId, hasAddFavoriteError } = {
-    ...defaultOptions,
-    ...options,
-  }
-
-  if (hasAddFavoriteError) {
-    mockServer.postApiV1<EmptyResponse>(`/me/favorites`, {
-      responseOptions: { statusCode: 415, data: {} },
-    })
-  } else {
-    mockPostFavorite()
-    mockServer.getApiV1<PaginatedFavoritesResponse>(`/me/favorites`, paginatedFavoritesResponseSnap)
-    mockServer.postApiV1<FavoriteResponse>(`/me/favorites`, {
-      responseOptions: { statusCode: 200, data: favoriteResponseSnap },
-    })
-  }
-
+const renderButton = ({ offerId }: { offerId: number }) => {
   return render(reactQueryProviderHOC(<AddToFavoritesButton offerId={offerId} />))
 }

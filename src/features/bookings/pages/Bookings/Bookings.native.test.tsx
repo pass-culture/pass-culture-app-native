@@ -2,9 +2,11 @@ import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
@@ -18,6 +20,10 @@ useBookingsSpy.mockReturnValue({ data: bookingsSnap, isFetching: false } as Quer
 >)
 
 describe('Bookings', () => {
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+  })
+
   it('should render correctly', async () => {
     renderBookings()
 

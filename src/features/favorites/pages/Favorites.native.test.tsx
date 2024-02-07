@@ -1,8 +1,11 @@
 import React from 'react'
 
+import { PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -25,6 +28,7 @@ describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
+    mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
     renderFavorites({ isLoggedIn: true })
 
     await screen.findByText('Mes favoris')

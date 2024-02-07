@@ -2,7 +2,12 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { BookingReponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
+import {
+  BookingReponse,
+  SubcategoriesResponseModelv2,
+  SubcategoryIdEnum,
+  WithdrawalTypeEnum,
+} from 'api/gen'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
@@ -12,6 +17,8 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -64,6 +71,10 @@ describe('BookingDetails', () => {
         id: 456,
       },
     }))
+  })
+
+  beforeEach(() => {
+    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
   })
 
   it('should call useOngoingOrEndedBooking with the right parameters', async () => {
