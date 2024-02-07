@@ -1,8 +1,8 @@
-import React, { ComponentProps, FunctionComponent, useMemo } from 'react'
+import React, { ComponentProps, Fragment, FunctionComponent, useMemo } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferVenueResponse } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offerv2/components/OfferVenueBlock/useVenueBlock'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -24,7 +24,7 @@ const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 type Props = {
   distance?: string
   title: string
-  venue: OfferVenueResponse
+  offer: OfferResponse
   onChangeVenuePress?: VoidFunction
   onSeeVenuePress?: VoidFunction
   onSeeItineraryPress?: VoidFunction
@@ -36,8 +36,9 @@ export function OfferVenueBlock({
   onSeeVenuePress,
   onSeeItineraryPress,
   title,
-  venue,
+  offer,
 }: Readonly<Props>) {
+  const { venue } = offer
   const { venueName, address, onCopyAddressPress } = useVenueBlock({ venue })
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
     venue.address,
@@ -53,6 +54,8 @@ export function OfferVenueBlock({
         }),
       [hasVenuePage]
     )
+
+  const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   return (
     <Container>
@@ -95,38 +98,42 @@ export function OfferVenueBlock({
           <Spacer.Column numberOfSpaces={4} />
           <ButtonSecondaryBlack
             icon={EditPen}
-            wording="Changer le lieu de retrait"
+            wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
             onPress={onChangeVenuePress}
           />
         </React.Fragment>
       ) : null}
 
-      <Spacer.Column numberOfSpaces={6} />
-      <StyledSeparator />
-      <Spacer.Column numberOfSpaces={4} />
-
-      <Spacer.Column numberOfSpaces={2} />
-      <TertiaryButtonWrapper>
-        <ButtonTertiaryBlack
-          inline
-          wording="Copier l’adresse"
-          onPress={onCopyAddressPress}
-          icon={Duplicate}
-        />
-      </TertiaryButtonWrapper>
-
-      {onSeeItineraryPress ? (
-        <React.Fragment>
+      {isCinema ? null : (
+        <Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <SeeItineraryButton
-            externalNav={{
-              url: getGoogleMapsItineraryUrl(venueFullAddress),
-              address: venueFullAddress,
-            }}
-            onPress={onSeeItineraryPress}
-          />
-        </React.Fragment>
-      ) : null}
+          <StyledSeparator />
+          <Spacer.Column numberOfSpaces={4} />
+
+          <Spacer.Column numberOfSpaces={2} />
+          <TertiaryButtonWrapper>
+            <ButtonTertiaryBlack
+              inline
+              wording="Copier l’adresse"
+              onPress={onCopyAddressPress}
+              icon={Duplicate}
+            />
+          </TertiaryButtonWrapper>
+
+          {onSeeItineraryPress ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <SeeItineraryButton
+                externalNav={{
+                  url: getGoogleMapsItineraryUrl(venueFullAddress),
+                  address: venueFullAddress,
+                }}
+                onPress={onSeeItineraryPress}
+              />
+            </React.Fragment>
+          ) : null}
+        </Fragment>
+      )}
     </Container>
   )
 }
