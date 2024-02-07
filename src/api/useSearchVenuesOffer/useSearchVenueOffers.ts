@@ -12,6 +12,7 @@ import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsW
 import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
@@ -114,8 +115,12 @@ export const useSearchVenueOffers = ({
           page,
           hitsPerPage: 10,
         },
-        userLocation: geolocation,
-        aroundRadius: AROUND_RADIUS,
+        buildLocationParameterParams: {
+          userLocation: geolocation,
+          selectedLocationMode: LocationMode.AROUND_ME,
+          aroundMeRadius: AROUND_RADIUS,
+          aroundPlaceRadius: 'all',
+        },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

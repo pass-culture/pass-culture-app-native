@@ -1,24 +1,23 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
 
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferArgs = {
   parameters: SearchQueryParameters
-  userLocation: Position
+  buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
   indexSearch?: string
   isFromOffer?: boolean
-  aroundRadius?: number
 }
 
 export type FetchOffersResponse = Pick<
@@ -28,18 +27,16 @@ export type FetchOffersResponse = Pick<
 
 export const fetchOffers = async ({
   parameters,
-  userLocation,
+  buildLocationParameterParams,
   isUserUnderage,
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
   isFromOffer,
-  aroundRadius,
 }: FetchOfferArgs): Promise<FetchOffersResponse> => {
   const searchParameters = buildOfferSearchParameters(
     parameters,
-    userLocation,
-    isUserUnderage,
-    aroundRadius
+    buildLocationParameterParams,
+    isUserUnderage
   )
   const index = client.initIndex(indexSearch)
 
