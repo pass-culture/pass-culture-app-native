@@ -5,7 +5,6 @@ import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { SimilarOffersResponse } from 'features/offer/types'
-import { usePrevious } from 'features/search/helpers/usePrevious'
 import { env } from 'libs/environment'
 import { Position } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring'
@@ -100,21 +99,11 @@ export const useSimilarOffers = ({
   const similarOffersEndpoint =
     getSimilarOffersEndpoint(offerId, profile?.id, position, categories) ?? ''
 
-  const previousPosition = usePrevious(position)
-  const previousCategoryExcluded = usePrevious(categoryExcluded)
-  const previousCategoryIncluded = usePrevious(categoryIncluded)
-  const hasSameCategoryExcluded = categoryExcluded === previousCategoryExcluded
-  const hasSameCategoryIncluded = categoryIncluded === previousCategoryIncluded
-  const hasSamePosition = JSON.stringify(previousPosition) === JSON.stringify(position)
-
   const { data: apiRecoResponse } = useQuery(
     [QueryKeys.SIMILAR_OFFERS, offerId, position, categories],
     () => getApiRecoSimilarOffers(similarOffersEndpoint),
     {
-      enabled:
-        !!similarOffersEndpoint ||
-        (categoryExcluded && hasSameCategoryExcluded && hasSamePosition) ||
-        (categoryIncluded && hasSameCategoryIncluded && hasSamePosition),
+      enabled: !!similarOffersEndpoint,
     }
   )
 
