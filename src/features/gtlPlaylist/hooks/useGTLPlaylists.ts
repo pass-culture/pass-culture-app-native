@@ -13,14 +13,23 @@ type UseGTLPlaylistsProps = {
 
 export function useGTLPlaylists({ venue }: UseGTLPlaylistsProps) {
   const netInfo = useNetInfoContext()
-  const { userLocation } = useLocation()
+  const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
 
   const { data: gtlPlaylists, isLoading } = useQuery({
-    queryKey: [QueryKeys.VENUE_GTL_PLAYLISTS, venue?.id],
+    queryKey: [QueryKeys.VENUE_GTL_PLAYLISTS, venue?.id, userLocation, selectedLocationMode],
     queryFn: () => {
       if (!venue) return Promise.resolve([])
-      return fetchGTLPlaylists({ position: userLocation, isUserUnderage, venue })
+      return fetchGTLPlaylists({
+        buildLocationParameterParams: {
+          userLocation,
+          selectedLocationMode,
+          aroundMeRadius: 'all',
+          aroundPlaceRadius: 'all',
+        },
+        isUserUnderage,
+        venue,
+      })
     },
     enabled: !!netInfo.isConnected && !!venue?.id,
     staleTime: 5 * 60 * 1000, // 5 minutes, as the GTL playlists are not often updated

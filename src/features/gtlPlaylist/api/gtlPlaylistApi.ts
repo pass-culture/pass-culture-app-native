@@ -3,6 +3,7 @@ import resolveResponse from 'contentful-resolve-response'
 import { VenueResponse } from 'api/gen'
 import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
 import { SearchQueryParameters } from 'libs/algolia'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -11,34 +12,37 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
-import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 const PARAMS = `?content_type=gtlPlaylist&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
 const URL = `${CONTENTFUL_BASE_URL}/entries${PARAMS}`
 
 export type FetchOffersFromGTLPlaylistProps = {
-  position: Position
+  buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
   venue: VenueResponse
 }
 
 export async function fetchGTLPlaylists({
-  position,
+  buildLocationParameterParams,
   isUserUnderage,
   venue,
 }: FetchOffersFromGTLPlaylistProps) {
   const json = await getExternal(URL)
   const jsonResponse = resolveResponse(json) as ContentfulGtlPlaylistResponse
 
-  return fetchOffersFromGTLPlaylist(jsonResponse, { position, isUserUnderage, venue })
+  return fetchOffersFromGTLPlaylist(jsonResponse, {
+    buildLocationParameterParams,
+    isUserUnderage,
+    venue,
+  })
 }
 
 export type GTLPlaylistResponse = Awaited<ReturnType<typeof fetchGTLPlaylists>>
 
 export async function fetchOffersFromGTLPlaylist(
   data: ContentfulGtlPlaylistResponse,
-  { position, isUserUnderage, venue }: FetchOffersFromGTLPlaylistProps
+  { buildLocationParameterParams, isUserUnderage, venue }: FetchOffersFromGTLPlaylistProps
 ) {
   // Build parameters list from Contentful algolia parameters for algolia
   const paramList = data.map(
@@ -65,7 +69,7 @@ export async function fetchOffersFromGTLPlaylist(
             label: venue.name,
           },
         },
-        position,
+        buildLocationParameterParams,
         isUserUnderage
       ),
       attributesToHighlight: [], // We disable highlighting because we don't need it
