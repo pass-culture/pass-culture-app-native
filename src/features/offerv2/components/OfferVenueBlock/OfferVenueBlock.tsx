@@ -148,6 +148,7 @@ const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
 
 const VenueRightContainer = styled.View({
   flexShrink: 1,
+  justifyContent: 'center',
 })
 
 const VenueTitleContainer = styled.View({
