@@ -53,6 +53,7 @@ export function OfferVenueBlock({
       () =>
         styled(hasVenuePage ? InternalTouchableLink : View)({
           flexDirection: 'row',
+          maxWidth: 500,
         }),
       [hasVenuePage]
     )
@@ -60,7 +61,7 @@ export function OfferVenueBlock({
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   return (
-    <Container>
+    <View>
       <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
 
@@ -86,7 +87,7 @@ export function OfferVenueBlock({
         <Spacer.Row numberOfSpaces={2} />
         <VenueRightContainer>
           <VenueTitleContainer>
-            <Typo.ButtonText>{venueName}</Typo.ButtonText>
+            <Typo.ButtonText numberOfLines={1}>{venueName}</Typo.ButtonText>
             {hasVenuePage ? (
               <React.Fragment>
                 <Spacer.Row numberOfSpaces={1} />
@@ -113,7 +114,7 @@ export function OfferVenueBlock({
       {isCinema ? null : (
         <Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <StyledSeparator />
+          <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={4} />
 
           <Spacer.Column numberOfSpaces={2} />
@@ -140,17 +141,9 @@ export function OfferVenueBlock({
           ) : null}
         </Fragment>
       )}
-    </Container>
+    </View>
   )
 }
-
-const Container = styled.View({
-  maxWidth: 500,
-})
-
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  backgroundColor: theme.colors.greyMedium,
-}))
 
 const VenueRightContainer = styled.View({
   flexShrink: 1,
@@ -172,7 +165,7 @@ const TertiaryButtonWrapper = styled.View({
   alignItems: 'flex-start',
 })
 
-const Address = styled(Typo.Caption)(({ theme }) => ({
+const Address = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
