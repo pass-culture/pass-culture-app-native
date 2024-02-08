@@ -650,6 +650,73 @@ describe('Signup Form', () => {
         refreshToken: 'refreshToken',
       })
     })
+
+    it('should directly go to birthday step when account creation token is in route params', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
+      })
+
+      renderSignupForm()
+
+      expect(await screen.findByText('Renseigne ton âge')).toBeOnTheScreen()
+    })
+
+    it('should create SSO account when clicking on AcceptCgu button and coming from login', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          accountCreationToken: 'accountCreationToken',
+          email: 'user@gmail.com',
+          from: StepperOrigin.LOGIN,
+        },
+      })
+      getModelSpy.mockReturnValueOnce('iPhone 13') // first call in useSignIn
+      getSystemNameSpy.mockReturnValueOnce('iOS') // first call in useSignIn
+      getModelSpy.mockReturnValueOnce('iPhone 13') // second call in SignupForm
+      getSystemNameSpy.mockReturnValueOnce('iOS') // second call in SignupForm
+      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      })
+
+      renderSignupForm()
+
+      const datePicker = await screen.findByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
+        {
+          accountCreationToken: 'accountCreationToken',
+          marketingEmailSubscription: false,
+          birthdate: '2003-12-01',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          firebasePseudoId: 'firebase_pseudo_id',
+          trustedDevice: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+          },
+        },
+        { credentials: 'omit' }
+      )
+    })
   })
 })
 
