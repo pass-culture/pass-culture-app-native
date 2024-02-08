@@ -553,10 +553,10 @@ describe('Signup Form', () => {
     })
 
     it('should create SSO account when clicking on AcceptCgu button', async () => {
-      getModelSpy.mockReturnValueOnce('iPhone 13') // first render
-      getSystemNameSpy.mockReturnValueOnce('iOS') // first render
-      getModelSpy.mockReturnValueOnce('iPhone 13') // rerender because of isSSOSubscription
-      getSystemNameSpy.mockReturnValueOnce('iOS') // rerender because of isSSOSubscription
+      getModelSpy.mockReturnValueOnce('iPhone 13') // first call in useSignIn
+      getSystemNameSpy.mockReturnValueOnce('iOS') // first call in useSignIn
+      getModelSpy.mockReturnValueOnce('iPhone 13') // second call in SignupForm
+      getSystemNameSpy.mockReturnValueOnce('iOS') // second call in SignupForm
       mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
