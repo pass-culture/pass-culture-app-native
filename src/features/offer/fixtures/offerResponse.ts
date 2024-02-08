@@ -50,6 +50,8 @@ export const offerResponseSnap: OfferResponse = {
   venue: {
     id: 1664,
     address: '2 RUE LAMENNAIS',
+    bannerUrl:
+      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
     city: 'PARIS 8',
     offerer: { name: 'PATHE BEAUGRENELLE' },
     name: 'PATHE BEAUGRENELLE',

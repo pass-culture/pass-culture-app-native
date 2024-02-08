@@ -53,19 +53,19 @@ src/api/gen/index.ts:1672 - OfferOffererResponse
 src/api/gen/index.ts:1683 - OfferReportReasons
 src/api/gen/index.ts:1694 - OfferReportRequest
 src/api/gen/index.ts:1816 - OfferStockActivationCodeResponse
-src/api/gen/index.ts:2057 - Reason
-src/api/gen/index.ts:2067 - ReasonMeta
-src/api/gen/index.ts:2094 - ReportedOffer
-src/api/gen/index.ts:2115 - RequestPasswordResetRequest
-src/api/gen/index.ts:2233 - SendPhoneValidationRequest
-src/api/gen/index.ts:2654 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:2770 - UserProfileEmailUpdate
-src/api/gen/index.ts:2923 - UserReportedOffersResponse
-src/api/gen/index.ts:3001 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:3012 - ValidationError
-src/api/gen/index.ts:3018 - ValidationErrorElement
-src/api/gen/index.ts:3253 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4474 - DefaultApiFp
+src/api/gen/index.ts:2062 - Reason
+src/api/gen/index.ts:2072 - ReasonMeta
+src/api/gen/index.ts:2099 - ReportedOffer
+src/api/gen/index.ts:2120 - RequestPasswordResetRequest
+src/api/gen/index.ts:2238 - SendPhoneValidationRequest
+src/api/gen/index.ts:2659 - SubscriptionStepDetailsResponse
+src/api/gen/index.ts:2775 - UserProfileEmailUpdate
+src/api/gen/index.ts:2928 - UserReportedOffersResponse
+src/api/gen/index.ts:3006 - ValidatePhoneNumberRequest
+src/api/gen/index.ts:3017 - ValidationError
+src/api/gen/index.ts:3023 - ValidationErrorElement
+src/api/gen/index.ts:3258 - DefaultApiFetchParamCreator
+src/api/gen/index.ts:4479 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
 src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)

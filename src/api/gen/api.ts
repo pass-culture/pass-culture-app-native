@@ -1905,6 +1905,11 @@ export interface OfferVenueResponse {
    * @type {string}
    * @memberof OfferVenueResponse
    */
+  bannerUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
   city?: string | null
   /**
    * @type {Coordinates}
