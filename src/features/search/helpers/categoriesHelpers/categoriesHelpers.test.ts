@@ -21,7 +21,11 @@ let mockSearchState: SearchState = {
   ...initialSearchState,
 }
 
-const tree = createMappingTree(mockData)
+const mockedSubcateroriesV2Response = mockData
+const mockedFacets = undefined
+const mockedNewMappingEnabled = true
+
+const tree = createMappingTree(mockedSubcateroriesV2Response, mockedFacets, mockedNewMappingEnabled)
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
@@ -314,8 +318,8 @@ describe('categoriesHelpers', () => {
       it('when a category, a native category that it has genre type selected', () => {
         mockSearchState = {
           ...mockSearchState,
-          offerCategories: [SearchGroupNameEnumv2.LIVRES],
-          offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+          offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+          offerNativeCategories: [NativeCategoryIdEnumv2.SPECTACLES_REPRESENTATIONS],
         }
 
         expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.GENRES)
