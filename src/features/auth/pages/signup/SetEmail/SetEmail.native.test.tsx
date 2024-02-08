@@ -3,9 +3,7 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OauthStateResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
-import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment/__mocks__/envFixtures'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -20,7 +18,7 @@ import { SetEmail } from './SetEmail'
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
-const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
+
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const defaultProps = {
@@ -99,7 +97,6 @@ describe('<SetEmail />', () => {
 
     expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
       email: 'john.doe@gmail.com',
-      marketingEmailSubscription: false,
       accountCreationToken: undefined,
     })
   })
@@ -194,17 +191,6 @@ describe('<SetEmail />', () => {
     })
   })
 
-  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
-    renderSetEmail()
-
-    await act(async () => {})
-
-    const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
-    fireEvent.press(faqLink)
-
-    expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
-  })
-
   it('should log screen view when the screen is mounted', async () => {
     renderSetEmail()
 
@@ -226,36 +212,6 @@ describe('<SetEmail />', () => {
     const emailInput = await screen.findByTestId('Entrée pour l’email')
 
     expect(emailInput.props.value).toBe('john.doe@gmail.com')
-  })
-
-  it('should set a default marketing email subscription choice to true if the user has already chosen', async () => {
-    const propsWithPreviousEmail = {
-      ...defaultProps,
-      previousSignupData: {
-        ...defaultProps.previousSignupData,
-        marketingEmailSubscription: true,
-      },
-    }
-    renderSetEmail(propsWithPreviousEmail)
-
-    const marketingEmailSubscriptionCheckbox = await screen.findByRole('checkbox')
-
-    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(true)
-  })
-
-  it('should set a default marketing email subscription choice to false', async () => {
-    const propsWithoutMarketingEmailSubscription = {
-      ...defaultProps,
-      previousSignupData: {
-        ...defaultProps.previousSignupData,
-        marketingEmailSubscription: undefined,
-      },
-    }
-    renderSetEmail(propsWithoutMarketingEmailSubscription)
-
-    const marketingEmailSubscriptionCheckbox = await screen.findByRole('checkbox')
-
-    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
   })
 
   describe('SSO', () => {
