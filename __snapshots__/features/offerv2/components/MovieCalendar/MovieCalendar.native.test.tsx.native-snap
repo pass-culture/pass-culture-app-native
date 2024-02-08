@@ -23,6 +23,12 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
     }
   />
   <RCTScrollView
+    contentContainerStyle={
+      {
+        "marginLeft": 24,
+        "marginRight": 24,
+      }
+    }
     horizontal={true}
     showsHorizontalScrollIndicator={false}
   >
