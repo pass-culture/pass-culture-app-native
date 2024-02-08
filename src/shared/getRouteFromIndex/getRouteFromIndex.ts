@@ -1,4 +1,4 @@
-import { ParamListBase, RouteProp } from '@react-navigation/core'
+import { ParamListBase, RouteProp } from '@react-navigation/native'
 
 export function getRouteFromIndex(routes: RouteProp<ParamListBase>[], indexPreviousRoute: number) {
   if (!routes.length) {

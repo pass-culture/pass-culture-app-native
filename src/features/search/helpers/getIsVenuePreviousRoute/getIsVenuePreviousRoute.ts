@@ -1,4 +1,4 @@
-import { NavigatorScreenParams, ParamListBase, RouteProp } from '@react-navigation/core'
+import { NavigatorScreenParams, ParamListBase, RouteProp } from '@react-navigation/native'
 
 import { TabParamList } from 'features/navigation/TabBar/types'
 import { getRouteFromIndex } from 'shared/getRouteFromIndex/getRouteFromIndex'
