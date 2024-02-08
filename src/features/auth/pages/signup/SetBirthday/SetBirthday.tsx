@@ -28,11 +28,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   const currentYear = new Date().getFullYear()
   const previousBirthdateProvided = previousSignupData.birthdate
   const maximumSpinnerDate = new Date(currentYear - UNDER_YOUNGEST_AGE, 11, 31)
-  const underYoungestDate = new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
+  const defaultDate = new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
 
-  const initialDate = previousBirthdateProvided
-    ? new Date(previousBirthdateProvided)
-    : underYoungestDate
+  const initialDate = previousBirthdateProvided ? new Date(previousBirthdateProvided) : defaultDate
 
   const {
     control,
@@ -85,7 +83,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
               date={value}
               errorMessage={
                 formatDateToISOStringWithoutTime(value) ===
-                formatDateToISOStringWithoutTime(underYoungestDate)
+                formatDateToISOStringWithoutTime(defaultDate)
                   ? undefined
                   : errors.birthdate?.message
               }
