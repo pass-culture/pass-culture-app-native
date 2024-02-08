@@ -21,10 +21,6 @@ import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
 import { getSpacing, Spacer } from 'ui/theme'
 
-const onVenuePress = async (venueId: number) => {
-  await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
-}
-
 type SearchSuggestionsParams = {
   queryHistory: string
   addToHistory: (item: CreateHistoryItem) => Promise<void>
@@ -77,6 +73,11 @@ export const SearchSuggestions = ({
     },
     [dispatch, searchState, hideSuggestions]
   )
+
+  const onVenuePress = async (venueId: number) => {
+    hideSuggestions()
+    await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
+  }
 
   return (
     <StyledScrollView
