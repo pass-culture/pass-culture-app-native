@@ -72,6 +72,7 @@ module.exports = {
       'error',
       {
         paths: [
+          { name: '@react-navigation/core', message: 'use @react-navigation/native' },
           { name: 'lottie-react-native', message: 'use libs/lottie instead' },
           { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
           { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
@@ -323,14 +324,7 @@ module.exports = {
     jest: true,
     serviceworker: true,
   },
-  ignorePatterns: [
-    '/build',
-    '.*.js',
-    '*.config.js',
-    'node_modules',
-    '/coverage',
-    '/server',
-  ],
+  ignorePatterns: ['/build', '.*.js', '*.config.js', 'node_modules', '/coverage', '/server'],
   // TypeScript files overrides
   overrides: [
     {
