@@ -1,8 +1,11 @@
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
-import { useDatePickerErrorHandler } from 'features/auth/helpers/useDatePickerErrorHandler'
+import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
@@ -14,6 +17,10 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+type BirthdayForm = {
+  birthdate: Date
+}
+
 export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = ({
   goToNextStep,
   accessibilityLabelForNextStep,
@@ -22,34 +29,44 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   const currentYear = new Date().getFullYear()
   const previousBirthdateProvided = previousSignupData.birthdate
   const maximumSpinnerDate = new Date(currentYear - UNDER_YOUNGEST_AGE, 11, 31)
+  const defaultDate = new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
+  const { isNative } = useTheme()
 
-  const initialDate = previousBirthdateProvided
-    ? new Date(previousBirthdateProvided)
-    : new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
+  const initialDate = previousBirthdateProvided ? new Date(previousBirthdateProvided) : defaultDate
 
-  const [defaultSelectedDate, setDefaultSelectedDate] = useState(initialDate)
+  const {
+    control,
+    formState: { isValid },
+    handleSubmit,
+    setValue,
+  } = useForm<BirthdayForm>({
+    resolver: yupResolver(setBirthdaySchema),
+    defaultValues: { birthdate: initialDate },
+    mode: 'onChange',
+  })
 
   useEffect(() => {
     const setDate = async () => {
       const userAge = await storage.readObject<number | string>('user_age')
       if (!previousBirthdateProvided && typeof userAge === 'number') {
-        setDefaultSelectedDate(new Date(new Date().setFullYear(currentYear - userAge)))
+        const userAgeDate = new Date(new Date().setFullYear(currentYear - userAge))
+        setValue('birthdate', userAgeDate)
       }
     }
 
-    setDate()
-  }, [currentYear, previousBirthdateProvided])
-
-  const [date, setDate] = useState<Date | undefined>()
-
-  const birthdate = date ? formatDateToISOStringWithoutTime(date) : undefined
-  const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)
-
-  const onGoToNextStep = useCallback(() => {
-    if (birthdate) {
-      goToNextStep({ birthdate })
+    if (isNative) {
+      setDate()
     }
-  }, [birthdate, goToNextStep])
+  }, [currentYear, previousBirthdateProvided, setValue, isNative])
+
+  const onGoToNextStep = useCallback(
+    ({ birthdate }: BirthdayForm) => {
+      if (birthdate) {
+        goToNextStep({ birthdate: formatDateToISOStringWithoutTime(birthdate) })
+      }
+    },
+    [goToNextStep]
+  )
 
   return (
     <Form.MaxWidth>
@@ -61,20 +78,31 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           icon={BicolorIdCard}
         />
         <Spacer.Column numberOfSpaces={10} />
-        <DateInput
-          onChange={setDate}
-          date={date}
-          errorMessage={errorMessage}
-          defaultSelectedDate={defaultSelectedDate}
-          maximumDate={maximumSpinnerDate}
-          minimumDate={MINIMUM_DATE}
+        <Controller
+          control={control}
+          name="birthdate"
+          render={({ field: { value, onChange }, formState: { errors } }) => (
+            <DateInput
+              onChange={onChange}
+              date={value}
+              errorMessage={
+                formatDateToISOStringWithoutTime(value) ===
+                formatDateToISOStringWithoutTime(defaultDate)
+                  ? undefined
+                  : errors.birthdate?.message
+              }
+              maximumDate={maximumSpinnerDate}
+              minimumDate={MINIMUM_DATE}
+            />
+          )}
         />
+
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
           accessibilityLabel={accessibilityLabelForNextStep}
-          disabled={isDisabled}
-          onPress={onGoToNextStep}
+          disabled={!isValid}
+          onPress={handleSubmit(onGoToNextStep)}
         />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>

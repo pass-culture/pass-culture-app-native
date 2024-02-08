@@ -347,7 +347,6 @@ src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/ui/svg/Background.tsx:28 - BackgroundWithWhiteStatusBar
 src/ui/svg/RadioButtonSelected.tsx:28 - RadioButtonSelected
-src/features/auth/fixtures/fixtures.ts:11 - SEVENTEEN_AGE_DATE
 src/features/bookings/api/index.ts:1 - useUserHasBookings
 src/features/navigation/helpers/index.ts:3 - navigateToBooking
 src/features/navigation/RootNavigator/types.ts:291 - ScreenNavigationProp

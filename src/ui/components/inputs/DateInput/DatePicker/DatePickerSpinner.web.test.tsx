@@ -12,7 +12,7 @@ import { DatePickerSpinner } from 'ui/components/inputs/DateInput/DatePicker/Dat
 
 const props = {
   onChange: jest.fn(),
-  defaultSelectedDate: DEFAULT_SELECTED_DATE,
+  date: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
   maximumDate: MAXIMUM_DATE,
 }

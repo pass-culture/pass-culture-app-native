@@ -9,14 +9,14 @@ import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
 
 export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
-  defaultSelectedDate,
+  date: initialDate,
   maximumDate,
   minimumDate,
   onChange,
   accessibilityDescribedBy,
   errorMessage,
 }) => {
-  const { day, month, year } = getDefaultDateValues(defaultSelectedDate)
+  const { day, month, year } = getDefaultDateValues(initialDate)
 
   const [date, setDate] = useState<PartialDate>({
     day,

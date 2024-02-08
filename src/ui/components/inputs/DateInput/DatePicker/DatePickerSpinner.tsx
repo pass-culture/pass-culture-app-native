@@ -11,7 +11,6 @@ import { getSpacing, Spacer } from 'ui/theme'
 export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   date,
   onChange,
-  defaultSelectedDate,
   errorMessage,
   maximumDate,
   minimumDate,
@@ -20,7 +19,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
 
   return (
     <React.Fragment>
-      <DateInputDisplay date={date || defaultSelectedDate} isError={!!errorMessage} />
+      <DateInputDisplay date={date} isError={!!errorMessage} />
       <InputError
         visible={!!errorMessage}
         messageId={errorMessage}
@@ -30,7 +29,7 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
       <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
-        date={date || defaultSelectedDate}
+        date={date}
         onDateChange={onChange}
         mode="date"
         locale="fr-FR"

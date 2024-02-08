@@ -9,7 +9,7 @@ import {
 import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
@@ -44,14 +44,16 @@ describe('<SetBirthday />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {
+  it('should call goToNextStep() when the date is selected and press the button "Continuer"', async () => {
     render(<SetBirthday {...props} />)
 
     const datePicker = screen.getByTestId('date-picker-spinner-native')
-    fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+    await act(() =>
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+    )
 
     const continueButton = screen.getByTestId('Continuer')
-    fireEvent.press(continueButton)
+    await act(() => fireEvent.press(continueButton))
 
     expect(props.goToNextStep).toHaveBeenCalledWith({
       birthdate: formatDateToISOStringWithoutTime(ELIGIBLE_AGE_DATE),
@@ -60,11 +62,11 @@ describe('<SetBirthday />', () => {
 
   it.each(nonSpecificUserAges)(
     'should set default date when no specific user age in local storage',
-    (userAge) => {
+    async (userAge) => {
       storage.saveObject('user_age', userAge)
       render(<SetBirthday {...props} />)
 
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
       expect(datePicker.props.date).toBe(DEFAULT_SELECTED_DATE.getTime())
     }
@@ -85,7 +87,7 @@ describe('<SetBirthday />', () => {
     }
   )
 
-  it('should set a default birthdate if the user has already added his birthdate', () => {
+  it('should set a default birthdate if the user has already added his birthdate', async () => {
     const propsWithPreviousBirthdate = {
       ...props,
       previousSignupData: {
@@ -95,7 +97,7 @@ describe('<SetBirthday />', () => {
     }
     render(<SetBirthday {...propsWithPreviousBirthdate} />)
 
-    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    const datePicker = await screen.findByTestId('date-picker-spinner-native')
 
     expect(datePicker.props.date).toBe(new Date('1994-12-11').getTime())
   })

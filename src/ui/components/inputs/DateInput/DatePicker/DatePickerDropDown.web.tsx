@@ -6,9 +6,8 @@ import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-export type DatePickerDropDownProps = Omit<DatePickerProps, 'date' | 'defaultSelectedDate'> & {
+export type DatePickerDropDownProps = Omit<DatePickerProps, 'date'> & {
   date?: Date
-  defaultSelectedDate?: Date
 }
 
 export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
@@ -16,7 +15,6 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
   date,
   minimumDate,
   maximumDate,
-  defaultSelectedDate,
   errorMessage,
 }) => {
   const birthdateInputErrorId = uuidv4()
@@ -28,7 +26,6 @@ export const DatePickerDropDown: FunctionComponent<DatePickerDropDownProps> = ({
         onChange={onChange}
         minimumDate={minimumDate}
         maximumDate={maximumDate}
-        defaultSelectedDate={defaultSelectedDate}
         accessibilityDescribedBy={birthdateInputErrorId}
         errorMessage={errorMessage}
       />

@@ -12,7 +12,7 @@ import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
 const props = {
   onChange: jest.fn(),
-  defaultSelectedDate: DEFAULT_SELECTED_DATE,
+  date: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
   maximumDate: MAXIMUM_DATE,
 }
