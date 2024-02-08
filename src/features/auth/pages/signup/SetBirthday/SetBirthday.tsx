@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
@@ -29,6 +30,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   const previousBirthdateProvided = previousSignupData.birthdate
   const maximumSpinnerDate = new Date(currentYear - UNDER_YOUNGEST_AGE, 11, 31)
   const defaultDate = new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
+  const { isNative } = useTheme()
 
   const initialDate = previousBirthdateProvided ? new Date(previousBirthdateProvided) : defaultDate
 
@@ -52,8 +54,10 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
       }
     }
 
-    setDate()
-  }, [currentYear, previousBirthdateProvided, setValue])
+    if (isNative) {
+      setDate()
+    }
+  }, [currentYear, previousBirthdateProvided, setValue, isNative])
 
   const onGoToNextStep = useCallback(
     ({ birthdate }: BirthdayForm) => {
