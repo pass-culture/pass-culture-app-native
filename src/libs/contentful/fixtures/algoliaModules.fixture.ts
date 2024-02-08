@@ -4,7 +4,7 @@ import { movieGenresFixture } from 'libs/contentful/fixtures/movieGenres.fixture
 import { musicTypesFixture } from 'libs/contentful/fixtures/musicTypes.fixture'
 import { showTypesFixture } from 'libs/contentful/fixtures/showTypes.fixture'
 import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
-import { AlgoliaContentModel, AlgoliaParameters, ContentTypes, Cover } from 'libs/contentful/types'
+import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
 
 // This fixture reflects the contentful data after the resolveResponse formatting
 export const algoliaNatifModuleFixture: AlgoliaContentModel = {
@@ -133,44 +133,3 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
     },
   },
 ]
-
-export const algoliaNatifModuleCoverFixture: Cover = {
-  sys: {
-    space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-    id: '1ZGleldomxaHjZeVZs6wCM',
-    type: 'Entry',
-    createdAt: '2022-11-25T15:42:23.711Z',
-    updatedAt: '2022-11-25T15:42:23.711Z',
-    environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-    revision: 1,
-    contentType: {
-      sys: { type: 'Link', linkType: 'ContentType', id: ContentTypes.INFORMATION },
-    },
-    locale: 'en-US',
-  },
-  fields: {
-    title: 'Chaton',
-    image: {
-      sys: {
-        space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
-        id: '1IujqyX9w3ugcGGbKlolbp',
-        type: 'Asset',
-        createdAt: '2022-05-03T09:58:15.614Z',
-        updatedAt: '2022-10-21T09:51:46.381Z',
-        environment: { sys: { id: 'testing', type: 'Link', linkType: 'Environment' } },
-        revision: 7,
-        locale: 'en-US',
-      },
-      fields: {
-        title: 'Test Sab',
-        description: 'dqqddsds',
-        file: {
-          url: '//images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
-          details: { size: 378517, image: { width: 1000, height: 667 } },
-          fileName: 'i107848-eduquer-un-chaton.jpeg',
-          contentType: 'image/jpeg',
-        },
-      },
-    },
-  },
-}

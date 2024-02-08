@@ -1,11 +1,11 @@
 import { flatten } from 'lodash'
 
 import { OffersPlaylistParameters } from 'features/home/types'
+import { OfferModuleQuery } from 'libs/algolia'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { OfferModuleQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 
 type buildOffersModuleQueriesArgs = {

@@ -104,7 +104,7 @@ describe('buildOfferSearchParameters', () => {
     })
   })
 
-  it('should return parameters with geolocation filter when locationFilter is specified', () => {
+  it('should return parameters with geolocation filter when userLocation is specified', () => {
     const localBuildLocationParameterParams: BuildLocationParameterParams = {
       selectedLocationMode: LocationMode.AROUND_PLACE,
       userLocation: {

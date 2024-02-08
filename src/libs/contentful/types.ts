@@ -198,7 +198,7 @@ type VideoFields = {
   additionalAlgoliaParameters?: AlgoliaParameters[]
 }
 
-export type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
+type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/cover/fields
 interface CoverFields {

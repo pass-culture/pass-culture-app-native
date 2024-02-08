@@ -1,7 +1,7 @@
+import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
-import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia/types'
 
 const facetFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
 

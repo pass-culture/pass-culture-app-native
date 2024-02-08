@@ -1,6 +1,6 @@
+import { AlgoliaQueryParameters, FetchVenuesParameters } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { buildLocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { AlgoliaQueryParameters, FetchVenuesParameters } from 'libs/algolia/types'
 
 export const buildFetchVenuesQueryParameters = ({
   query,

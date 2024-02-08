@@ -18,7 +18,9 @@ import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
-export type UseSearchVenueOffersOptions = {
+type Response = Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+
+type UseSearchVenueOffersOptions = {
   offerId: number
   query: string
   geolocation: Position
@@ -26,16 +28,11 @@ export type UseSearchVenueOffersOptions = {
   venueId?: number
 }
 
-export type OfferVenueType = VenueListItem & {
+type OfferVenueType = VenueListItem & {
   price: number
   coordinates: Geoloc
   venueId?: number
 }
-
-export type Response = Pick<
-  SearchResponse<Offer>,
-  'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
->
 
 type FilterVenueOfferType = {
   hit: AlgoliaHit
