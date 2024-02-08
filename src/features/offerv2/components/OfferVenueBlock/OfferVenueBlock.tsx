@@ -1,5 +1,5 @@
 import React, { ComponentProps, Fragment, FunctionComponent, useMemo } from 'react'
-import { View } from 'react-native'
+import { View, ViewProps } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -82,7 +82,7 @@ export function OfferVenueBlock({
             url={venue.bannerUrl}
           />
         ) : (
-          <ImagePlaceholder />
+          <ImagePlaceholder testID="OfferVenueBlockPlaceholder" />
         )}
         <Spacer.Row numberOfSpaces={2} />
         <VenueRightContainer>
@@ -184,8 +184,8 @@ const ImagePlaceholderIcon = styled(All).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))``
 
-const ImagePlaceholder = () => (
-  <ImagePlaceholderContainer>
+const ImagePlaceholder = (props: ViewProps) => (
+  <ImagePlaceholderContainer {...props}>
     <ImagePlaceholderIcon />
   </ImagePlaceholderContainer>
 )

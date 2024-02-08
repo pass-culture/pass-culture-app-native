@@ -58,6 +58,22 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.queryByText('à 1,1 km')).not.toBeOnTheScreen()
   })
 
+  it("should render placeholder instead of thumbnail when venue doesn't have any image", () => {
+    const offerWithNoImageVenue = {
+      ...offerResponseSnap,
+      venue: { ...offerResponseSnap.venue, bannerUrl: undefined },
+    }
+    render(<OfferVenueBlock title="Lieu de retrait" offer={offerWithNoImageVenue} />)
+
+    expect(screen.getByTestId('OfferVenueBlockPlaceholder')).toBeOnTheScreen()
+  })
+
+  it('should not render placeholder instead of thumbnail when venue has an image', () => {
+    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+
+    expect(screen.queryByTestId('OfferVenueBlockPlaceholder')).not.toBeOnTheScreen()
+  })
+
   it("should render 'Changer le lieu de retrait' button when onChangeVenuePress is defined", () => {
     render(
       <OfferVenueBlock
