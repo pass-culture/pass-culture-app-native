@@ -42,7 +42,10 @@ export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChang
   return (
     <Container>
       <BottomBar />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={scrollViewContainer}>
         {dates.map((date) => {
           const { weekday, fullWeekDay, dayDate, month, fullMonth, timestamp } = extractDate(date)
           const isSelected = selectedDate.getTime() === timestamp
@@ -69,6 +72,8 @@ export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChang
 }
 
 const Container = styled.View({})
+
+const scrollViewContainer = { marginLeft: getSpacing(6), marginRight: getSpacing(6) }
 
 const BottomBar = styled.View(({ theme }) => ({
   position: 'absolute',
