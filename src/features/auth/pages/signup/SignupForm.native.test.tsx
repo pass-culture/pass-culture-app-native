@@ -437,6 +437,7 @@ describe('Signup Form', () => {
     const signInFailureData: SignInResponseFailure['content'] = {
       code: 'SSO_EMAIL_NOT_FOUND',
       accountCreationToken: 'accountCreationToken',
+      email: 'user@gmail.com',
       general: [],
     }
 

@@ -20,6 +20,7 @@ import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
@@ -154,10 +155,10 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should show snackbar when SSO login fails', async () => {
+  it('should show snackbar when SSO login fails because account is invalid', async () => {
     mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
       responseOptions: {
-        statusCode: 401,
+        statusCode: 400,
         data: {
           code: 'SSO_ACCOUNT_DELETED',
           general: [],
@@ -173,6 +174,30 @@ describe('<Login/>', () => {
       message:
         'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
       timeout: SNACK_BAR_TIME_OUT_LONG,
+    })
+  })
+
+  it('should redirect to signup form when SSO login fails because user does not exist', async () => {
+    mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      responseOptions: {
+        statusCode: 401,
+        data: {
+          code: 'SSO_EMAIL_NOT_FOUND',
+          general: [],
+          accountCreationToken: 'accountCreationToken',
+          email: 'user@gmail.com',
+        },
+      },
+    })
+
+    renderLogin()
+
+    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+
+    expect(navigate).toHaveBeenCalledWith('SignupForm', {
+      accountCreationToken: 'accountCreationToken',
+      email: 'user@gmail.com',
+      from: StepperOrigin.LOGIN,
     })
   })
 

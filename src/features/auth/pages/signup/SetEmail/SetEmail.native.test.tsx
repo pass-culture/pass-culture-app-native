@@ -244,8 +244,9 @@ describe('<SetEmail />', () => {
           statusCode: 401,
           data: {
             code: 'SSO_EMAIL_NOT_FOUND',
-            general: [],
             accountCreationToken: 'accountCreationToken',
+            email: 'user@gmail.com',
+            general: [],
           },
         },
       })

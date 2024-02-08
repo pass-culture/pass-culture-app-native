@@ -349,9 +349,9 @@ src/ui/svg/Background.tsx:28 - BackgroundWithWhiteStatusBar
 src/ui/svg/RadioButtonSelected.tsx:28 - RadioButtonSelected
 src/features/bookings/api/index.ts:1 - useUserHasBookings
 src/features/navigation/helpers/index.ts:3 - navigateToBooking
-src/features/navigation/RootNavigator/types.ts:291 - ScreenNavigationProp
-src/features/navigation/RootNavigator/types.ts:316 - NavigateParams (used in module)
-src/features/navigation/RootNavigator/types.ts:321 - AllNavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:294 - ScreenNavigationProp
+src/features/navigation/RootNavigator/types.ts:319 - NavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:324 - AllNavigateParams (used in module)
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
