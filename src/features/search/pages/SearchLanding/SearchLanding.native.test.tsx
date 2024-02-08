@@ -28,13 +28,14 @@ let mockSearchState: SearchState = {
 }
 
 const mockDispatch = jest.fn()
+const mockHideSuggestions = jest.fn()
 let mockIsFocusOnSuggestions = false
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
     isFocusOnSuggestions: mockIsFocusOnSuggestions,
-    hideSuggestions: jest.fn(),
+    hideSuggestions: mockHideSuggestions,
   }),
 }))
 
@@ -261,6 +262,17 @@ describe('<SearchLanding />', () => {
         from: 'searchAutoComplete',
         venueId: 1,
       })
+    })
+
+    it('should hide suggestions when pressing a venue', async () => {
+      render(<SearchLanding />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
+
+      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+
+      expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
 
     it('should dismiss keyboard on scroll', async () => {
