@@ -3,16 +3,17 @@ import React from 'react'
 
 import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
+import { formatDateTimezone } from 'libs/parsers'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-import { CancellationDetails, formatDate } from './CancellationDetails'
+import { CancellationDetails } from './CancellationDetails'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
 const pastDate = '2021-01-02T00:00:00'
 const futureDate = '2021-01-06T00:00:00'
 
-describe('formatDate()', () => {
+describe('formatDateTimezone()', () => {
   it.each`
     limitDate                        | expected
     ${'2021-02-23T13:45:00'}         | ${'23 février 2021, 13h45'}
@@ -22,7 +23,9 @@ describe('formatDate()', () => {
   `(
     'should format Date $limitDate to string "$expected"',
     ({ limitDate, expected }: { limitDate: string; expected: string }) => {
-      expect(formatDate(limitDate)).toEqual(expected)
+      const shouldShowWeekDay = false
+
+      expect(formatDateTimezone(limitDate, shouldShowWeekDay)).toEqual(expected)
     }
   )
 })

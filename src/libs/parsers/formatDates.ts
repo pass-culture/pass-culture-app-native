@@ -213,3 +213,12 @@ export function capitalizeFirstLetter(formattedDate: string | number | undefined
     ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
     : String(formattedDate)
 }
+
+export const formatDateTimezone = (
+  limitDate: string,
+  shouldDisplayWeekDay?: boolean,
+  timezone?: string
+): string => {
+  const limit = timezone ? getTimeZonedDate(limitDate, timezone) : new Date(limitDate)
+  return `${formatToCompleteFrenchDate(limit, shouldDisplayWeekDay)}, ${formatToHour(limit)}`
+}

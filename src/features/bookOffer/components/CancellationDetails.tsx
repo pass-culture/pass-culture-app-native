@@ -2,14 +2,9 @@ import React from 'react'
 
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatToFrenchDate, formatToHour, getTimeZonedDate } from 'libs/parsers'
+import { formatDateTimezone } from 'libs/parsers'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export const formatDate = (limitDate: string, timezone?: string): string => {
-  const limit = timezone ? getTimeZonedDate(limitDate, timezone) : new Date(limitDate)
-  return `${formatToFrenchDate(limit)}, ${formatToHour(limit)}`
-}
 
 const notCancellableMessage = 'Cette réservation n’est pas annulable'
 
@@ -26,7 +21,7 @@ export const CancellationDetails: React.FC = () => {
     message =
       new Date(limitDate) < new Date()
         ? notCancellableMessage
-        : `Cette réservation peut être annulée jusqu’au ${formatDate(limitDate)}`
+        : `Cette réservation peut être annulée jusqu’au ${formatDateTimezone(limitDate, false)}`
   }
 
   if (offer.isDigital && !!activationCode) {

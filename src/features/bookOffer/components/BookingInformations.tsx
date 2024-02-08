@@ -1,18 +1,16 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
-import { formatDate } from 'features/bookOffer/components/CancellationDetails'
+import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatToFrenchDate } from 'libs/parsers'
+import { formatDuration } from 'features/offerv2/helpers/formatDuration/formatDuration'
+import { formatDateTimezone, formatToFrenchDate } from 'libs/parsers/formatDates'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
-import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const ExpirationDate: React.FC<{
   expirationDate: string | undefined | null
@@ -48,15 +46,25 @@ export const BookingInformations = () => {
     )
 
   if (mapping[offer.subcategoryId].isEvent) {
+    const shouldDisplayWeekday = true
+    let message = ''
+
+    if (stock.beginningDatetime) {
+      message = formatDateTimezone(
+        stock.beginningDatetime,
+        shouldDisplayWeekday,
+        offer.venue.timezone
+      )
+    }
+
+    if (offer.extraData?.durationMinutes) {
+      message += ` - Durée\u00a0: ${formatDuration(offer.extraData.durationMinutes)}`
+    }
+
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        {!!stock.beginningDatetime && (
-          <Item
-            Icon={Calendar}
-            message={formatDate(stock.beginningDatetime, offer.venue.timezone)}
-          />
-        )}
+        {!!stock.beginningDatetime && <Item Icon={Calendar} message={message} />}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
@@ -81,37 +89,3 @@ export const BookingInformations = () => {
     </React.Fragment>
   )
 }
-
-const Item: React.FC<{
-  Icon: React.FC<IconInterface>
-  message: React.JSX.Element | string
-  subtext?: string
-  testID?: string
-}> = ({ Icon, message, subtext = '', testID }) => {
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    color: theme.colors.greyDark,
-    size: theme.icons.sizes.small,
-  }))``
-  return (
-    <Row testID={testID}>
-      <IconWrapper>
-        <StyledIcon />
-      </IconWrapper>
-      <Spacer.Row numberOfSpaces={3} />
-      {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
-      <Spacer.Row numberOfSpaces={2} />
-      <Typo.CaptionNeutralInfo>{subtext}</Typo.CaptionNeutralInfo>
-    </Row>
-  )
-}
-
-const Row = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  width: theme.appContentWidth - getSpacing(24),
-  paddingVertical: getSpacing(0.5),
-}))
-
-const IconWrapper = styled.View({
-  flexShrink: 0,
-})

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
+import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
@@ -30,6 +31,7 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
+import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -203,9 +205,16 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       </VenueTitleContainer>
 
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
-      <Spacer.Column numberOfSpaces={1} />
-      <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+      <Item
+        Icon={LocationBuilding}
+        message={
+          <VenueContainer>
+            <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+            <Spacer.Column numberOfSpaces={1} />
+            <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+          </VenueContainer>
+        }
+      />
       <Spacer.Column numberOfSpaces={6} />
 
       {!isFreeOfferToArchive && (
@@ -294,3 +303,7 @@ const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
 const VenueAddress = styled(Typo.Hint)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const VenueContainer = styled.View({
+  flexDirection: 'column',
+})
