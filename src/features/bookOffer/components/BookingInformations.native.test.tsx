@@ -196,7 +196,7 @@ describe('<BookingInformations />', () => {
     expect(screen.queryByText('À activer avant le 1 décembre 2020')).not.toBeOnTheScreen()
   })
 
-  it("shouldn't display duration if it has no duration information", () => {
+  it('should display only date if it has no duration information', async () => {
     mockedUseBookingStock.mockReturnValueOnce({
       ...offerStockResponseSnap,
       beginningDatetime: randomDatetime,
@@ -205,24 +205,10 @@ describe('<BookingInformations />', () => {
       ...cinePleinAirOffer,
       extraData: { durationMinutes: null },
     })
-    render(<BookingInformations />)
-
-    expect(screen.queryByText('Mardi 1 décembre 2020, 01h00 - Durée : 2h')).not.toBeOnTheScreen()
-  })
-
-  it('should display duration if it has duration information', async () => {
-    mockedUseBookingStock.mockReturnValueOnce({
-      ...offerStockResponseSnap,
-      beginningDatetime: randomDatetime,
-    })
-    mockUseBookingOffer.mockReturnValueOnce({
-      ...cinePleinAirOffer,
-      extraData: { durationMinutes: 120 },
-    })
 
     render(<BookingInformations />)
 
-    expect(await screen.findByText('Mardi 1 décembre 2020, 01h00 - Durée : 2h')).toBeOnTheScreen()
+    expect(await screen.findByText('Mardi 1 décembre 2020, 01h00')).toBeOnTheScreen()
   })
 
   describe('formatDateTimezone()', () => {
