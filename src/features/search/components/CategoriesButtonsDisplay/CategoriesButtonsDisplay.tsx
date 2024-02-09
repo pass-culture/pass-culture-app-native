@@ -6,9 +6,10 @@ import {
   CategoryButton,
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
+import { VenueMapBlock } from 'features/search/components/VenueMapBlock/VenueMapBlock'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type ListCategoryButtonProps = CategoryButtonProps[]
@@ -34,7 +35,14 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
       keyExtractor={(item) => item.label}
       numColumns={numColumns}
       key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
-      ListHeaderComponent={CategoriesTitle}
+      ListHeaderComponent={
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <VenueMapBlock />
+          <Spacer.Column numberOfSpaces={2} />
+          <CategoriesTitle />
+        </React.Fragment>
+      }
       contentContainerStyle={contentContainerStyle}
       testID="categoriesButtons"
     />
@@ -47,7 +55,7 @@ const CategoriesTitle = styled(Typo.Title3).attrs({
 })(({ theme }) => ({
   marginTop: getSpacing(4),
   marginBottom: getSpacing(theme.isDesktopViewport ? 1 : 2),
-  paddingHorizontal: getSpacing(3),
+  paddingHorizontal: getSpacing(2),
 }))
 
 const tabletMinWidth = theme.breakpoints.md
