@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Modal } from 'react-native'
+import { Modal, Platform } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
@@ -86,6 +87,8 @@ export const ReCaptcha: React.FC<Props> = (props) => {
     return event.navigationType === 'other'
   }
 
+  const { top } = useSafeAreaInsets()
+
   return (
     <Modal
       onRequestClose={handleClose}
@@ -94,6 +97,7 @@ export const ReCaptcha: React.FC<Props> = (props) => {
       visible={props.isVisible}>
       {props.isVisible && keyToReCreateWebViewFromScratch ? (
         <StyledWebview
+          marginTop={top}
           allowsBackForwardNavigationGestures={false}
           bounces={false}
           cacheEnabled={false}
@@ -118,7 +122,8 @@ export const ReCaptcha: React.FC<Props> = (props) => {
   )
 }
 
-const StyledWebview = styled(WebView)({
+const StyledWebview = styled(WebView)<{ marginTop: number }>(({ marginTop }) => ({
   flex: 1,
   backgroundColor: 'rgba(0, 0, 0, 0)',
-})
+  marginTop: Platform.OS === 'ios' ? marginTop : 0,
+}))
