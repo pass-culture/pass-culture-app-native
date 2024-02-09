@@ -1,21 +1,21 @@
 import { useCallback, useState } from 'react'
-import { useTheme } from 'styled-components/native'
 
 import { IsTextEllipsisOutput } from './types'
 
+// On Android, onTextLayout returns the number of text lines without numberOfLines.
+// So we can check if the number of lines is greater than numberOfLines.
 export const useIsTextEllipsis = (numberOfLines: number): IsTextEllipsisOutput => {
   const [isTextEllipsis, setIsTextEllipsis] = useState(false)
-  const theme = useTheme()
-  const lineHeight = Number(theme.typography.body.lineHeight.slice(0, -2))
 
-  const onLayout: Required<IsTextEllipsisOutput>['onLayout'] = useCallback(
+  const onTextLayout: Required<IsTextEllipsisOutput>['onTextLayout'] = useCallback(
     (event) => {
-      const textHeight = event.nativeEvent.layout.height
-      const maxTextHeight = lineHeight * numberOfLines
+      const linesWidth = event.nativeEvent.lines.map((line) => line.width)
 
-      setIsTextEllipsis(textHeight >= maxTextHeight)
+      if (linesWidth.length > numberOfLines) {
+        setIsTextEllipsis(true)
+      }
     },
-    [lineHeight, numberOfLines]
+    [numberOfLines]
   )
-  return { isTextEllipsis, onLayout }
+  return { isTextEllipsis, onTextLayout }
 }
