@@ -382,6 +382,30 @@ describe('SearchBox component', () => {
     })
   })
 
+  it('should reset query when user go goBack to Landing', async () => {
+    mockSearchState = {
+      ...mockSearchState,
+      view: SearchView.Results,
+      query: 'Some text',
+    }
+    mockQuery = 'Some text'
+    renderSearchBox(true)
+
+    const goBackIcon = screen.getByTestId('icon-back')
+    await act(async () => {
+      fireEvent.press(goBackIcon)
+    })
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        ...mockSearchState,
+        query: '',
+        view: SearchView.Landing,
+      },
+    })
+  })
+
   it('should execute a search if input is not empty', async () => {
     renderSearchBox()
 
