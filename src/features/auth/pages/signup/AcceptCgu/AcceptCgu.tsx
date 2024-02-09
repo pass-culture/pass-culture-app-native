@@ -1,16 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSignupRecaptcha } from 'features/auth/helpers/useSignupRecaptcha'
 import { acceptCGUSchema } from 'features/auth/pages/signup/AcceptCgu/acceptCguSchema'
 import { PreValidationSignupLastStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -33,7 +32,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
 
-  const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -52,15 +50,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     mode: 'onChange',
   })
 
-  useEffect(() => {
-    if (!networkInfo.isConnected) {
-      setErrorMessage('Hors connexion\u00a0: en attente du réseau.')
-      setIsDoingReCaptchaChallenge(false)
-    } else {
-      setErrorMessage(null)
-    }
-  }, [networkInfo.isConnected])
-
   const handleSignup = useCallback(
     async (token: string) => {
       setErrorMessage(null)
@@ -76,38 +65,18 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     [signUp, getValues]
   )
 
-  const openReCaptchaChallenge = useCallback(() => {
-    if (!networkInfo.isConnected) {
-      return
-    }
-    setIsDoingReCaptchaChallenge(true)
-    setErrorMessage(null)
-  }, [networkInfo.isConnected])
-
-  const onReCaptchaClose = useCallback(() => {
-    setIsDoingReCaptchaChallenge(false)
-  }, [])
-
-  const onReCaptchaError = useCallback((errorCode: ReCaptchaError, error: string | undefined) => {
-    setIsDoingReCaptchaChallenge(false)
-    setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
-    if (errorCode !== 'ReCaptchaNetworkError') {
-      captureMonitoringError(`${errorCode} ${error}`, 'AcceptCguOnReCaptchaError')
-    }
-  }, [])
-
-  const onReCaptchaExpire = useCallback(() => {
-    setIsDoingReCaptchaChallenge(false)
-    setErrorMessage('Le token reCAPTCHA a expiré, tu peux réessayer.')
-  }, [])
-
-  const onReCaptchaSuccess = useCallback(
-    (token: string) => {
-      setIsDoingReCaptchaChallenge(false)
-      handleSignup(token)
-    },
-    [handleSignup]
-  )
+  const {
+    isDoingReCaptchaChallenge,
+    onReCaptchaClose,
+    onReCaptchaError,
+    onReCaptchaExpire,
+    onReCaptchaSuccess,
+    openReCaptchaChallenge,
+  } = useSignupRecaptcha({
+    handleSignup,
+    setErrorMessage,
+    isUserConnected: networkInfo.isConnected,
+  })
 
   const onSubmit = useCallback(() => {
     analytics.logContinueCGU()

@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
-import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
+import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, screen, fireEvent, render, waitFor, act } from 'tests/utils'
 
@@ -224,23 +224,6 @@ describe('<AcceptCgu/>', () => {
       'UnknownError someError',
       'AcceptCguOnReCaptchaError'
     )
-  })
-
-  it('should not log to Sentry on reCAPTCHA network error', async () => {
-    renderAcceptCGU()
-
-    fireEvent.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-    )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
-    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-
-    simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
-
-    expect(captureMonitoringError).not.toHaveBeenCalled()
   })
 
   it('should NOT call API to create user account when reCAPTCHA token has expired', async () => {
