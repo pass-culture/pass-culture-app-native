@@ -1,4 +1,4 @@
-import { useFocusEffect } from '@react-navigation/core'
+import { useFocusEffect } from '@react-navigation/native'
 import React, { ComponentProps, FunctionComponent, useCallback, useEffect, useRef } from 'react'
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'

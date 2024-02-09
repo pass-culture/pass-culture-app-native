@@ -1,4 +1,4 @@
-import { ParamListBase, RouteProp } from '@react-navigation/core'
+import { ParamListBase, RouteProp } from '@react-navigation/native'
 
 import { getRouteFromIndex } from 'shared/getRouteFromIndex/getRouteFromIndex'
 
