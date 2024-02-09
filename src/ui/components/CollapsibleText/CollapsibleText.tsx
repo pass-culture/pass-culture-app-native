@@ -1,6 +1,5 @@
-import React, { useCallback, useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React, { useState } from 'react'
+import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -8,6 +7,8 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { ArrowUp } from 'ui/svg/icons/ArrowUp'
 import { Typo } from 'ui/theme'
+
+import { useIsTextEllipsis } from './useIsTextEllipsis'
 
 type Props = {
   children: string
@@ -17,21 +18,13 @@ type Props = {
 
 export function CollapsibleText({ children, numberOfLines }: Readonly<Props>) {
   const [expanded, setExpanded] = useState(false)
-  const [shouldDisplayButton, setShouldDisplayButton] = useState(false)
-  const theme = useTheme()
-  const lineHeight = Number(theme.typography.body.lineHeight.slice(0, -2))
+  const {
+    isTextEllipsis: shouldDisplayButton,
+    onTextLayout,
+    onLayout,
+  } = useIsTextEllipsis(numberOfLines)
 
   const onPress = () => setExpanded((prevExpanded) => !prevExpanded)
-
-  const onLayout = useCallback(
-    (event: LayoutChangeEvent) => {
-      const textHeight = event.nativeEvent.layout.height
-      const maxTextHeight = lineHeight * numberOfLines
-
-      setShouldDisplayButton(textHeight >= maxTextHeight)
-    },
-    [lineHeight, numberOfLines]
-  )
 
   const buttonText = expanded ? 'Voir moins' : 'Voir plus'
   const accessibilityLabel = expanded ? 'Réduire le texte' : 'Étendre le texte'
@@ -39,7 +32,10 @@ export function CollapsibleText({ children, numberOfLines }: Readonly<Props>) {
 
   return (
     <React.Fragment>
-      <Typo.Body numberOfLines={expanded ? undefined : numberOfLines} onLayout={onLayout}>
+      <Typo.Body
+        numberOfLines={expanded ? undefined : numberOfLines}
+        onLayout={onLayout}
+        onTextLayout={onTextLayout}>
         {highlightLinks(children)}
       </Typo.Body>
       {shouldDisplayButton ? (
