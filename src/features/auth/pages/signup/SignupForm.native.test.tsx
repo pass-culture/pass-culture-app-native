@@ -130,7 +130,13 @@ describe('Signup Form', () => {
         fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
       )
 
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       const closeButton = screen.getByText('Fermer')
       fireEvent.press(closeButton)
@@ -191,7 +197,13 @@ describe('Signup Form', () => {
       )
       await act(async () => fireEvent.press(screen.getByText('Continuer')))
 
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(screen.queryByLabelText('Revenir en arrière')).not.toBeOnTheScreen()
     })
@@ -215,7 +227,13 @@ describe('Signup Form', () => {
     )
     await act(async () => fireEvent.press(screen.getByText('Continuer')))
 
-    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
     expect(screen.getByText('Confirme ton adresse e-mail')).toBeOnTheScreen()
   })
@@ -270,7 +288,13 @@ describe('Signup Form', () => {
         PreValidationSignupStep.CGU
       )
 
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         5,
@@ -344,7 +368,13 @@ describe('Signup Form', () => {
         fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
       )
 
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(apiSignUpSpy).toHaveBeenCalledWith(
         {
@@ -389,7 +419,13 @@ describe('Signup Form', () => {
         fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
       )
 
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         new Error('NETWORK_REQUEST_FAILED')
@@ -490,7 +526,7 @@ describe('Signup Form', () => {
       )
       await act(async () => fireEvent.press(screen.getByText('Continuer')))
 
-      expect(screen.getByText('Accepter et s’inscrire')).toBeOnTheScreen()
+      expect(screen.getByText('S’inscrire')).toBeOnTheScreen()
       expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
     })
 
@@ -546,7 +582,13 @@ describe('Signup Form', () => {
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
       await act(async () => fireEvent.press(screen.getByText('Continuer')))
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
         {
@@ -594,7 +636,13 @@ describe('Signup Form', () => {
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
       await act(async () => fireEvent.press(screen.getByText('Continuer')))
-      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(loginAndRedirectMock).toHaveBeenCalledWith({
         accessToken: 'accessToken',

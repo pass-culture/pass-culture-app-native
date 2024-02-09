@@ -3,15 +3,13 @@ import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { contactSupport } from 'features/auth/helpers/contactSupport'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { simulateWebviewMessage, screen, fireEvent, render, waitFor } from 'tests/utils'
+import { simulateWebviewMessage, screen, fireEvent, render, waitFor, act } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
 
@@ -27,8 +25,6 @@ mockUseAuthContext.mockReturnValue({
   isUserLoading: false,
 })
 
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 function simulateNoNetwork() {
   mockUseNetInfoContext.mockReturnValueOnce({
@@ -40,11 +36,9 @@ function simulateNoNetwork() {
   })
 }
 
-function simulateConnectedNetwork() {
-  mockUseNetInfoContext.mockReturnValueOnce({
-    isConnected: true,
-  })
-}
+mockUseNetInfoContext.mockReturnValue({
+  isConnected: true,
+})
 
 const props = {
   goToNextStep: jest.fn(),
@@ -64,22 +58,7 @@ describe('<AcceptCgu/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open mail app when clicking on contact support button', () => {
-    simulateConnectedNetwork()
-    renderAcceptCGU()
-
-    const contactSupportButton = screen.getByText('Contacter le support')
-    fireEvent.press(contactSupportButton)
-
-    expect(openUrl).toHaveBeenCalledWith(
-      contactSupport.forGenericQuestion.url,
-      contactSupport.forGenericQuestion.params,
-      true
-    )
-  })
-
   it('should redirect to the "CGU" page', () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
 
     const link = screen.getByText('Nos conditions générales d’utilisation')
@@ -89,80 +68,116 @@ describe('<AcceptCgu/>', () => {
   })
 
   it('should redirect to the "Politique de confidentialité" page', () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
 
-    const link = screen.getByText('Notre politique de confidentialité')
+    const link = screen.getByText('La charte des données personnelles')
     fireEvent.press(link)
 
     expect(Linking.openURL).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK)
   })
 
-  it('should log analytics when pressing on signup button', () => {
-    simulateConnectedNetwork()
+  it('should disable the button if the data charted is not checked', () => {
     renderAcceptCGU()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+
+    expect(screen.getByText('S’inscrire')).toBeDisabled()
+  })
+
+  it('should log analytics when pressing on signup button', async () => {
+    renderAcceptCGU()
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
     expect(analytics.logContinueCGU).toHaveBeenCalledTimes(1)
   })
 
-  it("should NOT open reCAPTCHA challenge's modal when there is no network", () => {
-    simulateNoNetwork()
+  it("should NOT open reCAPTCHA challenge's modal when there is no network", async () => {
+    simulateNoNetwork() // first render
+    simulateNoNetwork() // render when pressing signup button
+
     renderAcceptCGU()
 
     const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(screen.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeOnTheScreen()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
-  it("should open reCAPTCHA challenge's modal when pressing on signup button", () => {
-    simulateConnectedNetwork()
+  it("should open reCAPTCHA challenge's modal when pressing on signup button", async () => {
     renderAcceptCGU()
     const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
     expect(recaptchaWebviewModal.props.visible).toBe(true)
   })
 
   it('should call API to create user account when reCAPTCHA challenge is successful', async () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
-      expect(props.signUp).toHaveBeenCalledWith('fakeToken')
+      expect(props.signUp).toHaveBeenCalledWith('fakeToken', false)
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
   it('should log monitoring error and display error message when API call to create user account fails', async () => {
-    simulateConnectedNetwork()
     props.signUp.mockImplementationOnce(() => {
       throw new Error()
     })
     renderAcceptCGU()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
-      expect(props.signUp).toHaveBeenCalledWith('fakeToken')
+      expect(props.signUp).toHaveBeenCalledWith('fakeToken', false)
       expect(
         screen.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeOnTheScreen()
@@ -171,10 +186,14 @@ describe('<AcceptCgu/>', () => {
   })
 
   it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
-
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
@@ -188,10 +207,15 @@ describe('<AcceptCgu/>', () => {
   })
 
   it('should log to Sentry when reCAPTCHA challenge was failed', async () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
@@ -203,10 +227,15 @@ describe('<AcceptCgu/>', () => {
   })
 
   it('should not log to Sentry on reCAPTCHA network error', async () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
@@ -215,10 +244,15 @@ describe('<AcceptCgu/>', () => {
   })
 
   it('should NOT call API to create user account when reCAPTCHA token has expired', async () => {
-    simulateConnectedNetwork()
     renderAcceptCGU()
 
-    fireEvent.press(screen.getByText('Accepter et s’inscrire'))
+    fireEvent.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await act(() => {
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')

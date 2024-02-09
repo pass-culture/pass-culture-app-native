@@ -41,7 +41,7 @@ export type PreValidationSignupNormalStepProps = {
 
 export type PreValidationSignupLastStepProps = {
   accessibilityLabelForNextStep?: string
-  signUp: (token: string) => Promise<void>
+  signUp: (token: string, marketingEmailSubscription: boolean) => Promise<void>
   previousSignupData: Partial<SignupData>
 }
 

@@ -1,8 +1,10 @@
-import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { contactSupport } from 'features/auth/helpers/contactSupport'
+import { acceptCGUSchema } from 'features/auth/pages/signup/AcceptCgu/acceptCguSchema'
 import { PreValidationSignupLastStepProps } from 'features/auth/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -10,15 +12,21 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
+import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+type FormValues = {
+  acceptCgu: boolean
+  acceptDataCharter: boolean
+  marketingEmailSubscription: boolean
+}
 
 export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
@@ -28,6 +36,21 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+    getValues,
+  } = useForm<FormValues>({
+    defaultValues: {
+      acceptCgu: false,
+      acceptDataCharter: false,
+      marketingEmailSubscription: false,
+    },
+    resolver: yupResolver(acceptCGUSchema),
+    mode: 'onChange',
+  })
 
   useEffect(() => {
     if (!networkInfo.isConnected) {
@@ -43,14 +66,14 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       setErrorMessage(null)
       try {
         setIsFetching(true)
-        await signUp(token)
+        await signUp(token, getValues('marketingEmailSubscription'))
       } catch {
         setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       } finally {
         setIsFetching(false)
       }
     },
-    [signUp]
+    [signUp, getValues]
   )
 
   const openReCaptchaChallenge = useCallback(() => {
@@ -88,13 +111,19 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
 
   const onSubmit = useCallback(() => {
     analytics.logContinueCGU()
-    settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
+    if (settings?.isRecaptchaEnabled) {
+      openReCaptchaChallenge()
+    } else {
+      handleSignup('dummyToken')
+    }
   }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup])
 
-  const disabled = useMemo(
-    () => isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected || areSettingsLoading,
-    [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
-  )
+  const disabled =
+    isDoingReCaptchaChallenge ||
+    isFetching ||
+    !networkInfo.isConnected ||
+    areSettingsLoading ||
+    !isValid
 
   // ReCaptcha needs previous callbacks
   return (
@@ -110,10 +139,24 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       )}
       <Typo.Title3 {...getHeadingAttrs(2)}>CGU & Données</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
-      <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes&nbsp;: </Typo.Body>
+      <CheckboxController
+        control={control}
+        label="J’ai lu et j’accepte les conditions générales d’utilisation*"
+        name="acceptCgu"
+      />
+      <Spacer.Column numberOfSpaces={6} />
+      <CheckboxController
+        control={control}
+        label="J’ai lu la charte des données personnelles*"
+        name="acceptDataCharter"
+      />
+      <Spacer.Column numberOfSpaces={6} />
+      <Typo.CaptionNeutralInfo>
+        *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu&nbsp;:{' '}
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <ExternalTouchableLink
-        as={ButtonTertiaryBlack}
+        as={ButtonQuaternaryBlack}
         wording="Nos conditions générales d’utilisation"
         externalNav={{ url: env.CGU_LINK }}
         icon={ExternalSiteFilled}
@@ -121,8 +164,8 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         numberOfLines={2}
       />
       <ExternalTouchableLink
-        as={ButtonTertiaryBlack}
-        wording="Notre politique de confidentialité"
+        as={ButtonQuaternaryBlack}
+        wording="La charte des données personnelles"
         externalNav={{ url: env.PRIVACY_POLICY_LINK }}
         icon={ExternalSiteFilled}
         justifyContent="flex-start"
@@ -130,27 +173,19 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       />
       <Spacer.Column numberOfSpaces={6} />
       <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={8} />
-      <Typo.Body>
-        Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu
-        peux&nbsp;:
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={2} />
-      <ExternalTouchableLink
-        as={ButtonTertiaryBlack}
-        wording="Contacter le support"
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-        externalNav={contactSupport.forGenericQuestion}
-        icon={EmailFilled}
-        justifyContent="flex-start"
+      <Spacer.Column numberOfSpaces={6} />
+      <CheckboxController
+        control={control}
+        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+        name="marketingEmailSubscription"
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
-        wording="Accepter et s’inscrire"
+        wording="S’inscrire"
         accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
         // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
         // Cf. backend logic for token validation
-        onPress={onSubmit}
+        onPress={handleSubmit(onSubmit)}
         isLoading={isDoingReCaptchaChallenge || isFetching}
         disabled={disabled}
         accessibilityDescribedBy={checkCGUErrorId}
@@ -161,6 +196,16 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         numberOfSpacesTop={5}
         relatedInputId={checkCGUErrorId}
       />
+      <Spacer.Column numberOfSpaces={4} />
+      <Typo.CaptionNeutralInfo>
+        Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à
+        collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de
+        l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes
+        données et pour exercer tes droits (ex&nbsp;: demander l’accès à tes données ou leur
+        suppression), tu peux te reporter à la charte des données personnelles. Tu peux également
+        gérer certaines préférences concernant tes données depuis les paramètres de ton compte,
+        comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={5} />
     </React.Fragment>
   )

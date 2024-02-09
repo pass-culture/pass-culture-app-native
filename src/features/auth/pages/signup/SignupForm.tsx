@@ -96,10 +96,11 @@ export const SignupForm: FunctionComponent = () => {
     setIsSSOSubscription(false)
   }, [])
 
-  async function signUp(token: string) {
+  async function signUp(token: string, marketingEmailSubscription: boolean) {
     try {
       const signupResponse = await signUpApiCall({
         ...signupData,
+        marketingEmailSubscription,
         token,
         trustedDevice,
       })
