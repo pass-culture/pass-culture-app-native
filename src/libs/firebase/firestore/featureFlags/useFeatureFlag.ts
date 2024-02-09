@@ -6,16 +6,18 @@ import { getAppBuildVersion } from 'libs/packageJson'
 
 // firestore feature flag documentation :
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
-export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean | undefined => {
+export const useFeatureFlag = (
+  remoteStorefeatureFlag: RemoteStoreFeatureFlags
+): boolean | undefined => {
   const [minimalBuildNumber, setMinimalBuildNumber] = useState<number | null>()
 
   useEffect(() => {
     async function getMinimalBuildNumber() {
-      const disableStoreReview = await getFeatureFlag(featureFlag)
-      setMinimalBuildNumber(disableStoreReview?.minimalBuildNumber || null)
+      const featureFlag = await getFeatureFlag(remoteStorefeatureFlag)
+      setMinimalBuildNumber(featureFlag?.minimalBuildNumber || null)
     }
     getMinimalBuildNumber()
-  }, [featureFlag])
+  }, [remoteStorefeatureFlag])
 
   if (minimalBuildNumber === undefined) return undefined
 
