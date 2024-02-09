@@ -15,7 +15,7 @@ docker run \
     --rm \
     --volume "${PWD}:/local" \
     "parsertongue/swagger-codegen-cli:${SWAGGER_CODEGEN_CLI_VERSION:-'latest'}" generate \
-        --input-spec https://backend.testing.passculture.team/native/v1/openapi.json `# schema location` \
+        --input-spec https://backend.testing.passculture.team/native/openapi.json `# schema location` \
         --lang typescript-fetch `# client type` \
         --config /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
         --template-dir /local/swagger_codegen/gen_templates `# templates directory` \
