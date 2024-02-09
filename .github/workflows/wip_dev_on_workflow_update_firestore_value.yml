@@ -1,0 +1,10 @@
+notify:
+  runs-on: ubuntu-latest
+  name: Notify
+  steps:
+    - name: Update used routes document in firestore
+      uses: w9jds/firebase-trigger@master
+      with:
+        credentials: ${{ secrets.FIREBASE_CREDENTIALS }}
+        databaseUrl: https://[project_id].firebaseio.com
+        path: version/lastRelease

@@ -13,8 +13,6 @@ END_FLAG="^}$"
 REGEX='async ([^ ]*)\(.*'
 REGEX_PATHNAME='const pathname = `([^`]*)`'
 
-
-
 # Use awk to extract the block of code that defines DefaultApiFetchParamCreator
 function_names=$(awk "/${START_FLAG}/,/${END_FLAG}/{print}" $FILE_PATH |
     # Use grep to filter lines that likely define functions within the block
