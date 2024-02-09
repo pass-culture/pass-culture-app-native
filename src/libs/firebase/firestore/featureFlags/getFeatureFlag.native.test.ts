@@ -21,6 +21,8 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST,
     RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
     RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_PREVIEW,
   ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {

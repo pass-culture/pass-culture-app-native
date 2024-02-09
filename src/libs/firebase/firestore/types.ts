@@ -29,4 +29,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',
+  WIP_VENUE_MAP = 'wipVenueMap',
+  WIP_VENUE_MAP_WITHOUT_PREVIEW = 'wipVenueMapWithoutPreview',
 }
