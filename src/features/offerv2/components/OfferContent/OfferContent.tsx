@@ -29,6 +29,7 @@ import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { Separator } from 'ui/components/Separator'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -99,9 +100,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
-      {isWeb ? (
+      {!isWeb ? null : (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      ) : null}
+      )}
       <ScrollViewContainer
         testID="offerv2-container"
         scrollEventThrottle={16}
@@ -115,17 +116,21 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <InformationTags tags={tags} />
             <Spacer.Column numberOfSpaces={4} />
             <OfferTitle offerName={offer.name} />
-            {artists ? (
+
+            {!artists ? null : (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={2} />
                 <OfferArtists artists={artists} />
               </React.Fragment>
-            ) : null}
+            )}
           </GroupWithoutGap>
 
-          <OfferPrice prices={prices} />
+          {!prices ? null : <OfferPrice prices={prices} />}
 
-          <GroupWithoutGap>
+          {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+            <GroupWithoutGap>
+              {!offer.venue.isPermanent ? null : <OfferVenueButton venue={offer.venue} />}
+
               {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
                 <Separator.Horizontal testID="topSeparator" />
               )}
@@ -133,7 +138,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               {summaryInfoItems.length === 0 ? null : (
                 <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />
               )}
-          </GroupWithoutGap>
+            </GroupWithoutGap>
+          )}
 
           <OfferAbout offer={offer} />
         </InfoContainer>
