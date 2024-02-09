@@ -174,7 +174,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         break
       case searchState.view === SearchView.Results:
         setQuery('')
-        dispatch({ type: 'SET_STATE', payload: { ...searchState, view: SearchView.Landing } })
+        dispatch({
+          type: 'SET_STATE',
+          payload: { ...searchState, view: SearchView.Landing, query: '' },
+        })
         break
       default:
         break
