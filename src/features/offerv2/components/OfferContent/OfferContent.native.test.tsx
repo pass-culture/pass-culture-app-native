@@ -221,18 +221,72 @@ describe('<OfferContent />', () => {
     expect(screen.getByText('5,00 €')).toBeOnTheScreen()
   })
 
-  describe('Venue button section', () => {
-    it('should display venue button', async () => {
+  it('should not display prices when the offer is free', async () => {
+    const offerFree: OfferResponse = {
+      ...offerResponseSnap,
+      stocks: [
+        {
+          id: 118929,
+          beginningDatetime: '2021-01-04T13:30:00',
+          price: 0,
+          isBookable: true,
+          isExpired: false,
+          isForbiddenToUnderage: false,
+          isSoldOut: false,
+          features: [],
+        },
+      ],
+    }
+
+    renderOfferContent({ offer: offerFree })
+
+    await act(async () => {})
+
+    expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
+  })
+
+  describe('Venue button section & Summary info section', () => {
+    it('should display both section', async () => {
       renderOfferContent({})
 
       await act(async () => {})
 
       expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
+      expect(screen.getByText('Duo')).toBeOnTheScreen()
     })
 
-    it('should not display venue button', async () => {
+    it('should not display both section', async () => {
       const offer: OfferResponse = {
         ...offerResponseSnap,
+        isDuo: false,
+        venue: {
+          ...offerResponseSnap.venue,
+          isPermanent: false,
+        },
+      }
+
+      renderOfferContent({ offer })
+
+      await act(async () => {})
+
+      expect(
+        screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+      ).not.toBeOnTheScreen()
+      expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
+    })
+
+    it('should display top separator between this two section', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.getByTestId('topSeparator')).toBeOnTheScreen()
+    })
+
+    it('should not display top separator between this two section', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        isDuo: false,
         venue: {
           ...offerResponseSnap.venue,
           isPermanent: false,
@@ -242,35 +296,60 @@ describe('<OfferContent />', () => {
 
       await act(async () => {})
 
-      expect(
-        screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-      ).not.toBeOnTheScreen()
-    })
-  })
-
-  describe('Summary info section', () => {
-    it('should display duo info', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        isDuo: true,
-      }
-      renderOfferContent({ offer })
-
-      await act(async () => {})
-
-      expect(screen.getByText('Duo')).toBeOnTheScreen()
+      expect(screen.queryByTestId('topSeparator')).not.toBeOnTheScreen()
     })
 
-    it('should not display duo info', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        isDuo: false,
-      }
-      renderOfferContent({ offer })
+    describe('Venue button section', () => {
+      it('should display venue button', async () => {
+        renderOfferContent({})
 
-      await act(async () => {})
+        await act(async () => {})
 
-      expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
+        expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
+      })
+
+      it('should not display venue button', async () => {
+        const offer: OfferResponse = {
+          ...offerResponseSnap,
+          venue: {
+            ...offerResponseSnap.venue,
+            isPermanent: false,
+          },
+        }
+        renderOfferContent({ offer })
+
+        await act(async () => {})
+
+        expect(
+          screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+        ).not.toBeOnTheScreen()
+      })
+    })
+
+    describe('Summary info section', () => {
+      it('should display duo info', async () => {
+        const offer: OfferResponse = {
+          ...offerResponseSnap,
+          isDuo: true,
+        }
+        renderOfferContent({ offer })
+
+        await act(async () => {})
+
+        expect(screen.getByText('Duo')).toBeOnTheScreen()
+      })
+
+      it('should not display duo info', async () => {
+        const offer: OfferResponse = {
+          ...offerResponseSnap,
+          isDuo: false,
+        }
+        renderOfferContent({ offer })
+
+        await act(async () => {})
+
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
+      })
     })
   })
 
