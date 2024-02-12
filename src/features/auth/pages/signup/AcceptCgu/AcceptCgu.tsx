@@ -121,7 +121,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       />
       <Spacer.Column numberOfSpaces={6} />
       <Typo.CaptionNeutralInfo>
-        *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu&nbsp;:{' '}
+        *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu&nbsp;:
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <ExternalTouchableLink

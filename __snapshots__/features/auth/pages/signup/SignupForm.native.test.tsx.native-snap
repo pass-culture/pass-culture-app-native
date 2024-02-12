@@ -531,7 +531,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
         }
       >
         *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu :
-         
       </Text>
       <View
         numberOfSpaces={2}
