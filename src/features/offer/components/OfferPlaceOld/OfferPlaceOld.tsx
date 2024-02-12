@@ -30,7 +30,7 @@ export function OfferPlaceOld({ offer, isEvent }: Readonly<OfferPlaceOldProps>) 
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 
-  const { selectedLocationMode, place, geolocPosition } = useLocation()
+  const { selectedLocationMode, place, userLocation } = useLocation()
 
   const handleBeforeNavigateToItinerary = useCallback(() => {
     analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
@@ -58,7 +58,7 @@ export function OfferPlaceOld({ offer, isEvent }: Readonly<OfferPlaceOldProps>) 
   } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
-    geolocation: geolocPosition ?? {
+    geolocation: userLocation ?? {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
@@ -140,7 +140,7 @@ export function OfferPlaceOld({ offer, isEvent }: Readonly<OfferPlaceOldProps>) 
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={geolocPosition !== null}
+          isSharingLocation={userLocation !== null}
           subTitle="Sélectionner un lieu"
           rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
           validateButtonLabel="Choisir ce lieu"
