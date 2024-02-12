@@ -118,7 +118,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   useEffect(() => {
     // If the user select a value in autocomplete list it must be display in search input
-    if (searchState.query !== displayedQuery) setQuery(searchState.query)
+    if (searchState.query !== displayedQuery || searchState.query !== autocompleteQuery) {
+      setQuery(searchState.query)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchState.query])
 
