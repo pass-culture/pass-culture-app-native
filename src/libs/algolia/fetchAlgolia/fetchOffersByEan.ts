@@ -3,6 +3,7 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { LocationMode } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
@@ -21,7 +22,12 @@ export const fetchOffersByEan = async ({
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
     { ...initialSearchState, eanList },
-    userLocation,
+    {
+      userLocation,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      aroundMeRadius: 'all',
+      aroundPlaceRadius: 'all',
+    },
     isUserUnderage
   )
 

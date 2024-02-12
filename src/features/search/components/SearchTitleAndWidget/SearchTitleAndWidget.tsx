@@ -5,8 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { SearchLocationWidgetDesktopView } from 'features/location/components/SearchLocationWidgetDesktopView'
 import { ScreenOrigin } from 'features/location/enums'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { getSpacing, Typo } from 'ui/theme'
@@ -22,11 +20,8 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   searchInputID,
 }) => {
   const subtitle = 'Toutes les offres à portée de main'
-  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
   const { isDesktopViewport } = useTheme()
-  const shouldDisplayMobileLocationWidget =
-    enableAppLocation && shouldDisplaySubtitle && !isDesktopViewport
-  const shouldDisplayDesktopLocationWidget = enableAppLocation && isDesktopViewport
+  const shouldDisplayMobileLocationWidget = shouldDisplaySubtitle && !isDesktopViewport
   return (
     <TitleAndWidgetContainer>
       <TitleContainer testID="SearchHeaderTitleContainer">
@@ -34,7 +29,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
           <StyledTitleMainView {...getHeadingAttrs(1)}>
             <StyledTitleMainText htmlFor={searchInputID}>Rechercher</StyledTitleMainText>
           </StyledTitleMainView>
-          {!!shouldDisplayDesktopLocationWidget && <SearchLocationWidgetDesktopView />}
+          {!!isDesktopViewport && <SearchLocationWidgetDesktopView />}
         </TitleMainWrapper>
         {
           // eslint-disable-next-line local-rules/no-string-check-before-component

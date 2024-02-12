@@ -11,8 +11,6 @@ import {
 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeolocPermissionState, useLocation } from 'libs/location'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -27,8 +25,6 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 jest.mock('shared/user/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
-jest.mock('libs/location')
-const mockUseGeolocation = useLocation as jest.Mock
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
 
 const mockedUser = {
@@ -45,8 +41,6 @@ mockUseAuthContext.mockReturnValue({
   setIsLoggedIn: jest.fn(),
   refetchUser: jest.fn(),
 })
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('HomeHeader', () => {
   it.each`
@@ -79,7 +73,6 @@ describe('HomeHeader', () => {
       mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
       mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
       mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
-      mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
 
       mockUseAvailableCredit.mockReturnValueOnce(credit)
       mockUseAvailableCredit.mockReturnValueOnce(credit)
@@ -92,49 +85,6 @@ describe('HomeHeader', () => {
     }
   )
 
-  it('should not display geolocation banner when geolocation is granted', async () => {
-    mockUseGeolocation
-      .mockReturnValueOnce({
-        permissionState: GeolocPermissionState.GRANTED,
-      })
-      .mockReturnValueOnce({
-        permissionState: GeolocPermissionState.GRANTED,
-      })
-
-    mockGeolocBannerFromBackend()
-    renderHomeHeader()
-    await act(async () => {})
-
-    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
-  })
-
-  it('should display geolocation banner when geolocation is denied', async () => {
-    mockUseGeolocation
-      .mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
-      .mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
-      .mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
-    mockGeolocBannerFromBackend()
-
-    renderHomeHeader()
-
-    expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
-  })
-
-  it('should display geolocation banner when geolocation is never ask again', async () => {
-    mockUseGeolocation
-      .mockReturnValueOnce({
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      })
-      .mockReturnValueOnce({
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      })
-    mockGeolocBannerFromBackend()
-
-    renderHomeHeader()
-
-    expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
-  })
-
   it('should display SignupBanner when user is not logged in', async () => {
     const useAuthContextNotLoggedInMock = {
       isLoggedIn: false,
@@ -142,9 +92,7 @@ describe('HomeHeader', () => {
       setIsLoggedIn: jest.fn(),
       refetchUser: jest.fn(),
     }
-    mockUseAuthContext
-      .mockReturnValueOnce(useAuthContextNotLoggedInMock)
-      .mockReturnValueOnce(useAuthContextNotLoggedInMock)
+    mockUseAuthContext.mockReturnValueOnce(useAuthContextNotLoggedInMock)
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -200,21 +148,17 @@ describe('HomeHeader', () => {
     expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
   })
 
-  it('should show LocationWidget when ENABLE_APP_LOCATION is on and when isDesktopViewport is false', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should show LocationWidget when isDesktopViewport is false', async () => {
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
 
     await screen.findByTestId('Ouvrir la modale de localisation depuis le widget')
 
-    expect(screen.getByText('Ma position')).toBeTruthy()
+    expect(screen.getByText('Me localiser')).toBeTruthy()
   })
 
-  it('should not show LocationWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should not show LocationWidget isDesktopViewport is true', async () => {
     mockGeolocBannerFromBackend()
 
     renderHomeHeader(true)
@@ -226,24 +170,7 @@ describe('HomeHeader', () => {
     })
   })
 
-  it('should not show LocationWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is false', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    mockGeolocBannerFromBackend()
-
-    renderHomeHeader()
-
-    await waitFor(() => {
-      expect(
-        screen.queryByTestId('Ouvrir la modale de localisation depuis le widget')
-      ).not.toBeOnTheScreen()
-      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should show LocationTitleWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should show LocationTitleWidget isDesktopViewport is true', async () => {
     mockGeolocBannerFromBackend()
 
     renderHomeHeader(true)
@@ -253,26 +180,10 @@ describe('HomeHeader', () => {
     ).toBeTruthy()
   })
 
-  it('should not show LocationTitleWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is false', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+  it('should not show LocationTitleWidget isDesktopViewport is false', async () => {
     mockGeolocBannerFromBackend()
 
     renderHomeHeader(false)
-
-    await waitFor(() => {
-      expect(
-        screen.queryByTestId('Ouvrir la modale de localisation depuis le titre')
-      ).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should not show LocationTitleWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is true', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    useFeatureFlagSpy.mockReturnValueOnce(false)
-    mockGeolocBannerFromBackend()
-
-    renderHomeHeader(true)
 
     await waitFor(() => {
       expect(

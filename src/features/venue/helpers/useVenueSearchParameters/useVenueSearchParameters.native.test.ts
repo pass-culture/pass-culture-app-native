@@ -1,15 +1,16 @@
 import { VenueResponse } from 'api/gen'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
-import { Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
-let mockPosition: Position = null
-jest.mock('libs/location', () => ({
-  useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
+let mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
+
 const mockVenue: VenueResponse = venue
 jest.mock('features/venue/api/useVenue', () => ({
   useVenue: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
@@ -19,6 +20,10 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
 }))
 
 describe('useVenueSearchParameters', () => {
+  afterEach(() => {
+    mockSearchState = initialSearchState
+  })
+
   it('should retrieve the default search parameters', () => {
     const { result } = renderHook(() => useVenueSearchParameters())
 
@@ -54,7 +59,10 @@ describe('useVenueSearchParameters', () => {
   })
 
   it('should retrieve the locationFilter filtered around me if no venue - position available', () => {
-    mockPosition = { latitude: 48.8, longitude: 2.3 }
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: { aroundRadius: 100, locationType: LocationMode.AROUND_ME },
+    }
     const { result } = renderHook(() => useVenueSearchParameters())
 
     expect(result.current.locationFilter).toEqual({
@@ -64,7 +72,6 @@ describe('useVenueSearchParameters', () => {
   })
 
   it('should retrieve the locationFilter filtered everywhere if no venue - position unavailable', () => {
-    mockPosition = null
     const { result } = renderHook(() => useVenueSearchParameters())
 
     expect(result.current.locationFilter).toEqual({

@@ -13,6 +13,7 @@ import { act, render, screen } from 'tests/utils'
 import { Home } from './Home'
 
 const mockShouldShowSkeleton = false
+
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => mockShouldShowSkeleton),
 }))
@@ -71,6 +72,7 @@ describe('Home page', () => {
     })
     renderHome()
     await act(async () => {})
+    await act(async () => {})
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
@@ -83,6 +85,7 @@ describe('Home page', () => {
     })
 
     renderHome()
+    await act(async () => {})
     await act(async () => {})
 
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')

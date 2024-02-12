@@ -5,17 +5,13 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { initialSearchState } from 'features/search/context/reducer'
-import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from './SearchBox'
 
@@ -40,8 +36,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics')
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
@@ -108,11 +102,6 @@ const mockRoutesWithVenue = [
   },
 ]
 
-const Kourou: SuggestedPlace = {
-  label: 'Kourou',
-  info: 'Guyane',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
-}
 const venue: Venue = mockedSuggestedVenues[0]
 
 const searchId = uuidv4()
@@ -330,32 +319,6 @@ describe('SearchBox component', () => {
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
 
-    it('should reset input when user click on reset icon when being on the search results view with feature flag appLocation not enabled', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Results,
-        query: 'Some text',
-      }
-      mockQuery = 'Some text'
-      renderSearchBox()
-
-      const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-      await act(async () => {
-        fireEvent.press(resetIcon)
-      })
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: {
-          ...mockSearchState,
-          query: '',
-          view: SearchView.Results,
-        },
-      })
-      expect(mockClear).toHaveBeenCalledTimes(1)
-    })
-
     it('should reset input when user click on reset icon when being on the search results view when isDesktopViewport', async () => {
       mockSearchState = {
         ...mockSearchState,
@@ -428,30 +391,6 @@ describe('SearchBox component', () => {
     })
   })
 
-  it('should open location modal on location button click', async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
-    const mockShowModal = jest.fn()
-    jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
-      visible: false,
-      showModal: mockShowModal,
-      hideModal: jest.fn(),
-      toggleModal: jest.fn(),
-    })
-    mockSearchState = {
-      ...mockSearchState,
-      view: SearchView.Landing,
-    }
-    renderSearchBox()
-
-    const locationButton = screen.getByTestId('Partout')
-
-    await act(async () => {
-      fireEvent.press(locationButton)
-    })
-
-    expect(mockShowModal).toHaveBeenCalledTimes(1)
-  })
-
   it('should display suggestions when focusing search input and no search executed', async () => {
     renderSearchBox()
 
@@ -491,84 +430,7 @@ describe('SearchBox component', () => {
     })
   })
 
-  it.each`
-    locationType                 | locationFilter                                                                          | position            | locationButtonLabel
-    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
-    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${'Me localiser'}
-    ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
-    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-  `(
-    'should display $locationButtonLabel in location button label when location type is $locationType and position is $position',
-    async ({
-      locationFilter,
-      position,
-      locationButtonLabel,
-    }: {
-      locationFilter: LocationFilter
-      position: Position
-      locationButtonLabel: string
-    }) => {
-      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
-
-      mockSearchState = { ...initialSearchState, locationFilter }
-      mockPosition = position
-      renderSearchBox()
-
-      await act(async () => {})
-
-      expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
-    }
-  )
-
-  it(`should display Le Petit Rintintin 1 in location button label when a venue is selected`, async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
-
-    mockSearchState = {
-      ...initialSearchState,
-      venue,
-    }
-    mockPosition = null
-    renderSearchBox()
-
-    await act(async () => {})
-
-    expect(screen.getByText(venue.label)).toBeOnTheScreen()
-  })
-
-  it.each`
-    locationType                 | locationFilter                                                                          | position            | locationSearchWidgetLabel
-    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
-    ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${'Me localiser'}
-    ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
-    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-    ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-  `(
-    'should display $locationSearchWidgetLabel in location search widget when location type is $locationType and position is $position',
-    async ({
-      locationFilter,
-      position,
-      locationSearchWidgetLabel,
-    }: {
-      locationFilter: LocationFilter
-      position: Position
-      locationSearchWidgetLabel: string
-    }) => {
-      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
-
-      mockSearchState = { ...initialSearchState, view: SearchView.Results, locationFilter }
-      mockPosition = position
-      renderSearchBox()
-
-      await act(async () => {})
-
-      expect(screen.getByText(locationSearchWidgetLabel)).toBeOnTheScreen()
-    }
-  )
-
   it(`should not display Le Petit Rintintin 1 in location search widget when a venue is selected`, async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true).mockReturnValueOnce(true)
-
     mockSearchState = { ...initialSearchState, view: SearchView.Results, venue }
     renderSearchBox()
 
@@ -578,8 +440,6 @@ describe('SearchBox component', () => {
   })
 
   it('should not display locationSearchWidget when isDesktopViewport = true', async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
-
     mockSearchState = {
       ...initialSearchState,
       view: SearchView.Results,
@@ -590,7 +450,7 @@ describe('SearchBox component', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('Partout')).toBeOnTheScreen()
+    expect(screen.getByText('Me localiser')).toBeOnTheScreen()
   })
 })
 

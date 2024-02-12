@@ -28,7 +28,12 @@ describe('fetchSearchResults', () => {
 
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      userLocation: null,
+      buildLocationParameterParams: {
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
       isUserUnderage: false,
     })
 
@@ -87,11 +92,13 @@ describe('fetchSearchResults', () => {
     const query = 'searched query'
 
     fetchSearchResults({
-      parameters: {
-        query,
-        locationFilter: { locationType: LocationMode.EVERYWHERE },
-      } as SearchQueryParameters,
-      userLocation: null,
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: MAX_RADIUS,
+        aroundPlaceRadius: MAX_RADIUS,
+      },
       isUserUnderage: false,
     })
 
@@ -150,11 +157,13 @@ describe('fetchSearchResults', () => {
     const query = 'searched query'
 
     fetchSearchResults({
-      parameters: {
-        query,
-        locationFilter: { locationType: LocationMode.EVERYWHERE },
-      } as SearchQueryParameters,
-      userLocation,
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: MAX_RADIUS,
+        aroundPlaceRadius: MAX_RADIUS,
+      },
       isUserUnderage: false,
     })
 
@@ -223,11 +232,13 @@ describe('fetchSearchResults', () => {
     const query = 'searched query'
 
     fetchSearchResults({
-      parameters: {
-        query,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-      } as SearchQueryParameters,
-      userLocation,
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation,
+        selectedLocationMode: LocationMode.AROUND_ME,
+        aroundMeRadius: MAX_RADIUS,
+        aroundPlaceRadius: 'all',
+      },
       isUserUnderage: false,
     })
 
@@ -296,15 +307,13 @@ describe('fetchSearchResults', () => {
     const query = 'searched query'
 
     fetchSearchResults({
-      parameters: {
-        query,
-        locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: kourou,
-          aroundRadius: MAX_RADIUS,
-        },
-      } as SearchQueryParameters,
-      userLocation,
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation: kourou.geolocation,
+        selectedLocationMode: LocationMode.AROUND_PLACE,
+        aroundMeRadius: MAX_RADIUS,
+        aroundPlaceRadius: MAX_RADIUS,
+      },
       isUserUnderage: false,
     })
 
@@ -373,15 +382,13 @@ describe('fetchSearchResults', () => {
     const query = 'searched query'
 
     fetchSearchResults({
-      parameters: {
-        query,
-        locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: kourou,
-          aroundRadius: MAX_RADIUS,
-        },
-      } as SearchQueryParameters,
-      userLocation: null,
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation: kourou.geolocation,
+        selectedLocationMode: LocationMode.AROUND_PLACE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: MAX_RADIUS,
+      },
       isUserUnderage: false,
     })
 
@@ -454,7 +461,12 @@ describe('fetchSearchResults', () => {
         query,
         venue,
       } as SearchQueryParameters,
-      userLocation,
+      buildLocationParameterParams: {
+        userLocation,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: MAX_RADIUS,
+        aroundPlaceRadius: MAX_RADIUS,
+      },
       isUserUnderage: false,
     })
 
@@ -515,7 +527,7 @@ describe('fetchSearchResults', () => {
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
   })
 
-  it('should execute multi query with venues playlist search index when location type is VENUE and user not share his position', () => {
+  it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', () => {
     const query = 'searched query'
 
     fetchSearchResults({
@@ -523,7 +535,12 @@ describe('fetchSearchResults', () => {
         query,
         venue,
       } as SearchQueryParameters,
-      userLocation: null,
+      buildLocationParameterParams: {
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
       isUserUnderage: false,
     })
 
@@ -553,7 +570,7 @@ describe('fetchSearchResults', () => {
         query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
         params: {
           aroundRadius: 100000,
           aroundLatLng: '5.16186, -52.669736',

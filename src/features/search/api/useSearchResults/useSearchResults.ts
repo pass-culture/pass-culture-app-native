@@ -10,13 +10,11 @@ import { AlgoliaVenue, FacetData } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-export type SearchOfferResponse = {
+type SearchOfferResponse = {
   offers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   facets: Pick<SearchResponse<Offer>, 'facets'>
@@ -28,23 +26,33 @@ export type SearchOfferHits = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { geolocPosition } = useLocation()
+  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
-  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
-    [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
+    [
+      QueryKeys.SEARCH_RESULTS,
+      { ...searchState, view: undefined },
+      userLocation,
+      selectedLocationMode,
+      aroundPlaceRadius,
+      aroundMeRadius,
+    ],
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
         parameters: { page, ...searchState },
-        userLocation: geolocPosition,
+        buildLocationParameterParams: {
+          userLocation,
+          selectedLocationMode,
+          aroundPlaceRadius,
+          aroundMeRadius,
+        },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
-        enableAppLocation,
       })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)

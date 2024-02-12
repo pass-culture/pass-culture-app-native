@@ -12,12 +12,15 @@ import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsW
 import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
-export type UseSearchVenueOffersOptions = {
+type Response = Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+
+type UseSearchVenueOffersOptions = {
   offerId: number
   query: string
   geolocation: Position
@@ -25,16 +28,11 @@ export type UseSearchVenueOffersOptions = {
   venueId?: number
 }
 
-export type OfferVenueType = VenueListItem & {
+type OfferVenueType = VenueListItem & {
   price: number
   coordinates: Geoloc
   venueId?: number
 }
-
-export type Response = Pick<
-  SearchResponse<Offer>,
-  'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
->
 
 type FilterVenueOfferType = {
   hit: AlgoliaHit
@@ -114,8 +112,12 @@ export const useSearchVenueOffers = ({
           page,
           hitsPerPage: 10,
         },
-        userLocation: geolocation,
-        aroundRadius: AROUND_RADIUS,
+        buildLocationParameterParams: {
+          userLocation: geolocation,
+          selectedLocationMode: LocationMode.AROUND_ME,
+          aroundMeRadius: AROUND_RADIUS,
+          aroundPlaceRadius: 'all',
+        },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,

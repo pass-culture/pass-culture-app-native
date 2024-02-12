@@ -6,12 +6,11 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchState, SearchView, UserData } from 'features/search/types'
+import { SearchState, SearchView, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
@@ -20,8 +19,6 @@ import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues
 import { Offer } from 'shared/offer/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-query')
 
@@ -113,12 +110,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 const venue: Venue = mockedSuggestedVenues[0]
-
-const Kourou: SuggestedPlace = {
-  label: 'Kourou',
-  info: 'Guyane',
-  geolocation: { longitude: -52.669736, latitude: 5.16186 },
-}
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 
@@ -390,43 +381,6 @@ describe('SearchResultsContent component', () => {
     })
   })
 
-  describe('Location filter', () => {
-    it('should display location filter button', async () => {
-      mockPosition = null
-      render(<SearchResultsContent />)
-      await act(async () => {})
-
-      expect(screen.getByTestId('Localisation')).toBeOnTheScreen()
-    })
-
-    it.each`
-      locationType                 | locationFilter                                                                          | position            | locationButtonLabel
-      ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${DEFAULT_POSITION} | ${'Partout'}
-      ${LocationMode.EVERYWHERE}   | ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${null}             | ${'Localisation'}
-      ${LocationMode.AROUND_ME}    | ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${DEFAULT_POSITION} | ${'Autour de moi'}
-      ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${DEFAULT_POSITION} | ${Kourou.label}
-      ${LocationMode.AROUND_PLACE} | ${{ locationType: LocationMode.AROUND_PLACE, place: Kourou, aroundRadius: MAX_RADIUS }} | ${null}             | ${Kourou.label}
-    `(
-      'should display $locationButtonLabel in location filter button label when location type is $locationType and position is $position',
-      async ({
-        locationFilter,
-        position,
-        locationButtonLabel,
-      }: {
-        locationFilter: LocationFilter
-        position: Position
-        locationButtonLabel: string
-      }) => {
-        mockPosition = position
-        mockSearchState = { ...searchState, locationFilter }
-        render(<SearchResultsContent />)
-        await act(async () => {})
-
-        expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
-      }
-    )
-  })
-
   it(`should display ${venue.label} in location filter button label when a venue is selected`, async () => {
     mockSearchState = { ...searchState, venue }
     render(<SearchResultsContent />)
@@ -436,10 +390,6 @@ describe('SearchResultsContent component', () => {
   })
 
   describe('Venue filter', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-    })
-
     it('should open the venue modal when pressing the venue filter button', async () => {
       render(<SearchResultsContent />)
 
@@ -473,14 +423,14 @@ describe('SearchResultsContent component', () => {
       })
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if no venue is selected', async () => {
+    it('should display "Lieu culturel" in venue filter if no venue is selected', async () => {
       render(<SearchResultsContent />)
       await act(async () => {})
 
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display venueButtonLabel in venue filter if a venue is selected', async () => {
+    it('should display venueButtonLabel in venue filter if a venue is selected', async () => {
       mockSearchState = {
         ...searchState,
         venue,
@@ -491,7 +441,7 @@ describe('SearchResultsContent component', () => {
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if location type is AROUND_ME', async () => {
+    it('should display "Lieu culturel" in venue filter if location type is AROUND_ME', async () => {
       mockSearchState = {
         ...searchState,
         locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
@@ -502,7 +452,7 @@ describe('SearchResultsContent component', () => {
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
 
-    it('when ENABLE_APP_LOCATION featureFlag, should display "Lieu culturel" in venue filter if location type is EVERYWHERE', async () => {
+    it('should display "Lieu culturel" in venue filter if location type is EVERYWHERE', async () => {
       mockSearchState = {
         ...searchState,
         locationFilter: { locationType: LocationMode.EVERYWHERE },

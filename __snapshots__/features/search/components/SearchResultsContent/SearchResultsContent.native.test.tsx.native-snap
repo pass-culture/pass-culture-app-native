@@ -172,7 +172,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Partout : Filtre sélectionné"
+              accessibilityLabel="Lieu culturel"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -204,10 +204,10 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 24,
-                  "borderWidth": 2,
+                  "borderWidth": 1,
                   "boxSizing": "border-box",
                   "flexDirection": "row-reverse",
                   "height": 32,
@@ -218,7 +218,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Partout : Filtre sélectionné"
+              testID="Lieu culturel"
             >
               <Text
                 style={
@@ -231,30 +231,10 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="locationButtonLabel"
+                testID="venueButtonLabel"
               >
-                Partout
+                Lieu culturel
               </Text>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Filtre sélectionné"
-                height={16}
-                testID="locationButtonIcon"
-                width={16}
-              >
-                <Text>
-                  locationButtonIcon-SVG-Mock
-                </Text>
-              </View>
             </View>
           </View>
           <View
@@ -794,37 +774,6 @@ exports[`SearchResultsContent component should render correctly 1`] = `
       </View>
     </View>
   </View>,
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    accessibilityRole="none"
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />,
   <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}

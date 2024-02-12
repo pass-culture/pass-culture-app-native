@@ -20,7 +20,6 @@ export const buildFacetFilters = ({
   eanList,
   isUserUnderage,
   objectIds,
-  enableAppLocation,
   offerCategories,
   offerGenreTypes,
   offerGtlLabel,
@@ -30,7 +29,6 @@ export const buildFacetFilters = ({
   offerSubcategories,
   isDigital,
   tags,
-  isFullyDigitalOffersCategory,
 }: Pick<
   SearchQueryParameters,
   | 'venue'
@@ -43,12 +41,10 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'isDigital'
   | 'tags'
-  | 'isFullyDigitalOffersCategory'
 > & {
   isUserUnderage: boolean
   objectIds?: string[]
   eanList?: string[]
-  enableAppLocation?: boolean
 }): null | {
   facetFilters: FiltersArray
 } => {
@@ -100,11 +96,6 @@ export const buildFacetFilters = ({
 
   const tagsPredicate = buildTagsPredicate(tags)
   if (tagsPredicate) facetFilters.push(tagsPredicate)
-
-  if (!isFullyDigitalOffersCategory && enableAppLocation) {
-    const includeDigitalOffersPredicate = [`${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${false}`]
-    facetFilters.push(includeDigitalOffersPredicate)
-  }
 
   if (venue && typeof venue.venueId === 'number')
     facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${venue.venueId}`])

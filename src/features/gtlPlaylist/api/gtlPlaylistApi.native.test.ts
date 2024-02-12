@@ -8,6 +8,7 @@ import {
 } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
+import { LocationMode } from 'libs/algolia'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { Offer } from 'shared/offer/types'
@@ -21,9 +22,14 @@ describe('GTL Playlist API', () => {
 
     it('should return correct data', async () => {
       const result = await fetchGTLPlaylists({
-        position: {
-          latitude: 2,
-          longitude: 2,
+        buildLocationParameterParams: {
+          userLocation: {
+            latitude: 2,
+            longitude: 2,
+          },
+          selectedLocationMode: LocationMode.AROUND_ME,
+          aroundMeRadius: 'all',
+          aroundPlaceRadius: 'all',
         },
         isUserUnderage: false,
         venue: {
@@ -85,9 +91,14 @@ describe('GTL Playlist API', () => {
       ],
       {
         isUserUnderage: false,
-        position: {
-          latitude: 2,
-          longitude: 2,
+        buildLocationParameterParams: {
+          userLocation: {
+            latitude: 2,
+            longitude: 2,
+          },
+          selectedLocationMode: LocationMode.AROUND_ME,
+          aroundMeRadius: 'all',
+          aroundPlaceRadius: 'all',
         },
         venue: {
           name: 'Une librairie',

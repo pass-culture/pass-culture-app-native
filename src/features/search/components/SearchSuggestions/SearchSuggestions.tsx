@@ -34,18 +34,21 @@ export const SearchSuggestions = ({
   filteredHistory,
 }: SearchSuggestionsParams) => {
   const { searchState, dispatch, hideSuggestions } = useSearch()
-  const { geolocPosition } = useLocation()
-  const { locationFilter, venue } = searchState
+  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const { venue } = searchState
 
-  const searchVenuePosition = buildSearchVenuePosition(locationFilter, geolocPosition, venue)
+  const searchVenuePosition = buildSearchVenuePosition(
+    { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius },
+    venue
+  )
 
   const currentVenuesIndex = useMemo(
     () =>
       getCurrentVenuesIndex({
-        locationType: locationFilter?.locationType,
-        venue,
+        selectedLocationMode,
+        userLocation,
       }),
-    [locationFilter?.locationType, venue]
+    [selectedLocationMode, userLocation]
   )
 
   const onPressHistoryItem = useCallback(

@@ -1,6 +1,7 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
 
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
@@ -10,39 +11,34 @@ import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { Position } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferAndVenuesArgs = {
   parameters: SearchQueryParameters
-  userLocation: Position
+  buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
   offersIndex?: string
   venuesIndex?: string
-  enableAppLocation?: boolean
 }
 
 export const fetchSearchResults = async ({
   parameters,
-  userLocation,
+  buildLocationParameterParams,
   isUserUnderage,
   storeQueryID,
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
-  enableAppLocation,
 }: FetchOfferAndVenuesArgs) => {
   const searchParameters = buildOfferSearchParameters(
     parameters,
-    userLocation,
-    isUserUnderage,
-    enableAppLocation
+    buildLocationParameterParams,
+    isUserUnderage
   )
 
   const currentVenuesIndex = getCurrentVenuesIndex({
-    locationType: parameters?.locationFilter?.locationType,
-    userLocation,
-    venue: parameters?.venue,
+    selectedLocationMode: buildLocationParameterParams.selectedLocationMode,
+    userLocation: buildLocationParameterParams.userLocation,
   })
 
   const queries = [
@@ -68,7 +64,7 @@ export const fetchSearchResults = async ({
       params: {
         page: 0,
         ...buildHitsPerPage(35),
-        ...buildSearchVenuePosition(parameters.locationFilter, userLocation, parameters.venue),
+        ...buildSearchVenuePosition(buildLocationParameterParams, parameters.venue),
         clickAnalytics: true,
       },
     },
@@ -87,7 +83,7 @@ export const fetchSearchResults = async ({
             offerNativeCategories: undefined,
             offerGenreTypes: undefined,
           },
-          userLocation,
+          buildLocationParameterParams,
           isUserUnderage
         ),
       },

@@ -16,9 +16,7 @@ import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { Position } from 'libs/location'
 import { VenueTypeCode } from 'libs/parsers'
-import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 interface SelectedDate {
@@ -32,12 +30,7 @@ export enum LocationMode {
   AROUND_PLACE = 'AROUND_PLACE',
 }
 
-export type LocationFilter =
-  | { locationType: LocationMode.EVERYWHERE }
-  | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
-  | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
-
-export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
+type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 
 /**
  * See Algolia doc on numericFilters and facetFilters
@@ -52,7 +45,6 @@ export type SearchQueryParameters = {
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean
-  locationFilter: LocationFilter
   maxPossiblePrice?: string
   maxPrice?: string
   minBookingsThreshold?: number
@@ -111,14 +103,6 @@ export interface FetchVenuesParameters {
   attributesToHighlight?: string[]
   buildLocationParameterParams: BuildLocationParameterParams
 }
-export interface FetchOfferParameters {
-  parameters: SearchQueryParameters
-  userLocation: Position
-  isUserUnderage: boolean
-  storeQueryID?: (queryID?: string) => void
-  indexSearch?: string
-}
-
 export interface OfferModuleQuery {
   indexName: string
   query: string
@@ -176,6 +160,7 @@ export type NativeCategoryFacetData = Record<
   FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY,
   NativeCategoryFacets
 >
-export type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
+
+type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
 
 export type FacetData = NativeCategoryFacetData | GenreTypeFacetData

@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { Position } from 'libs/location/types'
+import { LocationMode, Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -17,11 +17,12 @@ const venue: VenueResponse = {
   isVirtual: false,
   accessibility: {},
 }
-
-const mockPosition: Position = { latitude: 2, longitude: 2 }
+const mockLocationMode = LocationMode.AROUND_ME
+const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
-    userLocation: mockPosition,
+    userLocation: mockUserLocation,
+    selectedLocationMode: mockLocationMode,
   }),
 }))
 
@@ -80,11 +81,17 @@ describe('useGTLPlaylists', () => {
     expect(result.current).toEqual({ gtlPlaylists: [], isLoading: true })
 
     expect(useGTLPlaylistsLibrary.fetchGTLPlaylists).toHaveBeenNthCalledWith(1, {
-      isUserUnderage: false,
-      position: {
-        latitude: 2,
-        longitude: 2,
+      buildLocationParameterParams: {
+        userLocation: {
+          latitude: 2,
+          longitude: 2,
+        },
+        selectedLocationMode: LocationMode.AROUND_ME,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
       },
+      isUserUnderage: false,
+
       venue: { name: 'Une librairie', city: 'Jest', id: 123, accessibility: {}, isVirtual: false },
     })
 

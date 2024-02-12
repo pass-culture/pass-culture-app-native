@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { LocationMode } from 'libs/location/types'
 
 const fakeOfferId = 283
 
@@ -13,7 +14,12 @@ export const useSomeOfferId = () => {
     fetchOffers({
       parameters: { ...initialSearchState, page: 1 },
       isUserUnderage: false,
-      userLocation: { latitude: 1, longitude: 1 },
+      buildLocationParameterParams: {
+        userLocation: { latitude: 1, longitude: 1 },
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
     })
       .then((response) => setOfferId(Number.parseInt(response.hits[0].objectID)))
       .catch(() => {

@@ -1,7 +1,9 @@
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
-import { deprecatedBuildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import {
+  buildLocationParameter,
+  BuildLocationParameterParams,
+} from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
-import { Position } from 'libs/location'
 
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
@@ -10,7 +12,6 @@ type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   eanList?: string[]
-  enableAppLocation?: boolean
   aroundRadius?: number
 }
 
@@ -21,8 +22,7 @@ export const buildOfferSearchParameters = (
     eanList = [],
     endingDatetime = undefined,
     excludedObjectIds = [],
-    isFullyDigitalOffersCategory = undefined,
-    locationFilter,
+    isFullyDigitalOffersCategory = false,
     maxPossiblePrice = '',
     maxPrice = '',
     minBookingsThreshold = 0,
@@ -43,48 +43,44 @@ export const buildOfferSearchParameters = (
     timeRange = null,
     venue,
   }: Parameters,
-  userLocation: Position,
-  isUserUnderage: boolean,
-  enableAppLocation?: boolean,
-  aroundRadius?: number
-) => ({
-  ...buildFacetFilters({
-    eanList,
-    isUserUnderage,
-    venue,
-    objectIds,
-    offerCategories,
-    offerGenreTypes,
-    offerGtlLabel,
-    offerGtlLevel,
-    offerIsDuo,
-    offerNativeCategories,
-    offerSubcategories,
-    isDigital,
-    tags,
-    isFullyDigitalOffersCategory,
-    enableAppLocation,
-  }),
-  ...buildNumericFilters({
-    beginningDatetime,
-    date,
-    endingDatetime,
-    maxPossiblePrice,
-    maxPrice,
-    minBookingsThreshold,
-    minPrice,
-    offerIsFree,
-    offerIsNew,
-    priceRange,
-    timeRange,
-  }),
-  ...deprecatedBuildGeolocationParameter({
-    locationFilter,
-    venue,
-    userLocation,
-    isFullyDigitalOffersCategory,
-    enableAppLocation,
-    aroundRadius,
-  }),
-  ...buildFilters({ excludedObjectIds }),
-})
+  buildLocationParameterParams: BuildLocationParameterParams,
+  isUserUnderage: boolean
+) => {
+  const locationParameter =
+    venue || isFullyDigitalOffersCategory
+      ? {}
+      : buildLocationParameter(buildLocationParameterParams)
+
+  return {
+    ...buildFacetFilters({
+      eanList,
+      isUserUnderage,
+      venue,
+      objectIds,
+      offerCategories,
+      offerGenreTypes,
+      offerGtlLabel,
+      offerGtlLevel,
+      offerIsDuo,
+      offerNativeCategories,
+      offerSubcategories,
+      isDigital,
+      tags,
+    }),
+    ...buildNumericFilters({
+      beginningDatetime,
+      date,
+      endingDatetime,
+      maxPossiblePrice,
+      maxPrice,
+      minBookingsThreshold,
+      minPrice,
+      offerIsFree,
+      offerIsNew,
+      priceRange,
+      timeRange,
+    }),
+    ...locationParameter,
+    ...buildFilters({ excludedObjectIds }),
+  }
+}

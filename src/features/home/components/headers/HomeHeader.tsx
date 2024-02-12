@@ -5,16 +5,13 @@ import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
-import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { useLocation } from 'libs/location'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -27,12 +24,10 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { permissionState } = useLocation()
-  const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useHomeBanner(isGeolocated)
+  const { hasGeolocPosition } = useLocation()
+  const { data } = useHomeBanner(hasGeolocPosition)
   const homeBanner = data?.banner
   const { isDesktopViewport } = useTheme()
-  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
   // we distinguish three different cases:
   // - not connected OR eligible-to-credit users
@@ -56,13 +51,6 @@ export const HomeHeader: FunctionComponent = function () {
             icon={BicolorUnlock}
             from={StepperOrigin.HOME}
           />
-        </BannerContainer>
-      )
-
-    if (homeBanner?.name === BannerName.geolocation_banner && !enableAppLocation)
-      return (
-        <BannerContainer>
-          <GeolocationBanner title={homeBanner.title} subtitle={homeBanner.text} />
         </BannerContainer>
       )
 
@@ -91,11 +79,9 @@ export const HomeHeader: FunctionComponent = function () {
       )
 
     return null
-  }, [isLoggedIn, homeBanner, enableAppLocation])
+  }, [isLoggedIn, homeBanner])
 
   const Header = useMemo(() => {
-    const shouldDisplayMobileLocationWidget = !isDesktopViewport && enableAppLocation
-
     const welcomeTitle =
       user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
 
@@ -112,7 +98,7 @@ export const HomeHeader: FunctionComponent = function () {
       }
       return 'Ton crédit est expiré'
     }
-    if (isDesktopViewport && enableAppLocation) {
+    if (isDesktopViewport) {
       return (
         <React.Fragment>
           <Spacer.TopScreen />
@@ -134,10 +120,10 @@ export const HomeHeader: FunctionComponent = function () {
     }
     return (
       <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
-        {!!shouldDisplayMobileLocationWidget && <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
+        {!isDesktopViewport && <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
       </PageHeader>
     )
-  }, [user, isLoggedIn, isDesktopViewport, enableAppLocation, availableCredit])
+  }, [user, isLoggedIn, isDesktopViewport, availableCredit])
 
   return (
     <React.Fragment>

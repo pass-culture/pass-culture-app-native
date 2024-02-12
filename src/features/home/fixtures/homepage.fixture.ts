@@ -131,7 +131,6 @@ export const formattedOffersModule: OffersModule = {
   offersModuleParameters: [
     {
       title: 'Livre',
-      isGeolocated: false,
       categories: ['Cartes jeunes', 'Spectacles'],
       hitsPerPage: 10,
       minBookingsThreshold: 2,

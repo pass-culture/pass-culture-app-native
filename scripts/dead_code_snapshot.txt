@@ -67,9 +67,6 @@ src/api/gen/index.ts:3023 - ValidationErrorElement
 src/api/gen/index.ts:3258 - DefaultApiFetchParamCreator
 src/api/gen/index.ts:4479 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
-src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:20 - UseSearchVenueOffersOptions (used in module)
-src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:28 - OfferVenueType (used in module)
-src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:34 - Response (used in module)
 src/features/search/types.ts:79 - CategoriesModalFormProps
 src/features/search/types.ts:91 - CategoriesViewData
 src/features/search/types.ts:96 - MappedData
@@ -85,12 +82,6 @@ src/libs/algolia/algolia.d.ts:53 - AlgoliaFacetsAnalytics (used in module)
 src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
-src/libs/algolia/index.ts:35 - LocationFilter
-src/libs/algolia/index.ts:40 - OfferGenreType
-src/libs/algolia/index.ts:104 - AlgoliaQueryParameters
-src/libs/algolia/index.ts:114 - FetchOfferParameters
-src/libs/algolia/index.ts:122 - OfferModuleQuery
-src/libs/algolia/index.ts:179 - GenreTypeFacetData
 src/libs/analytics/index.ts:6 - isCloseToEndHorizontal
 src/libs/analytics/index.ts:10 - AnalyticsProvider
 src/libs/hooks/index.ts:5 - useIsMounted (used in module)
@@ -355,12 +346,10 @@ src/features/navigation/RootNavigator/types.ts:321 - AllNavigateParams (used in 
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
-src/libs/contentful/fixtures/algoliaModules.fixture.ts:140 - algoliaNatifModuleCoverFixture
 src/libs/styled/native/types.ts:11 - ComputedTheme
 src/ui/components/touchableLink/types.ts:39 - TouchableLinkGenericProps (used in module)
 src/features/identityCheck/pages/helpers/getCurrentStep.ts:4 - getCurrentStep
 src/features/identityCheck/pages/helpers/isSubscriptionRoute.ts:4 - isSubscriptionRoute
-src/features/search/api/useSearchResults/useSearchResults.ts:19 - SearchOfferResponse (used in module)
 src/features/search/components/SearchVenueItems/SearchVenueItem.tsx:23 - SearchVenueItemProps (used in module)
 src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:53 - getCategoryFromEnum (used in module)
 src/libs/firebase/shims/app/index.ts:2 - default

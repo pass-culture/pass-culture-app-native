@@ -20,7 +20,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_CINEMA_OFFER_VENUE_BLOCK = 'wipCinemaOfferVenueBlock',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
-  WIP_ENABLE_APP_LOCATION = 'wipEnableAppLocation',
   WIP_ENABLE_EMAIL_VALIDATION_RESEND = 'wipEnableEmailValidationResend',
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',

@@ -61,6 +61,27 @@ describe('SearchHeader component', () => {
     }
   )
 
+  it('should focus on location widget button', async () => {
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+        shouldDisplaySubtitle
+      />
+    )
+
+    await act(async () => {
+      await userEvent.tab()
+    })
+
+    const locationFilterButton = screen.getByTestId(
+      'Ouvrir la modale de localisation depuis le widget'
+    )
+
+    expect(locationFilterButton).toHaveFocus()
+  })
+
   it('should focus on suggestion when focusing and pressing enter', async () => {
     render(
       <SearchHeader
@@ -72,6 +93,7 @@ describe('SearchHeader component', () => {
     )
 
     await act(async () => {
+      await userEvent.tab()
       await userEvent.tab()
       await userEvent.keyboard('{Enter}')
     })
@@ -121,24 +143,4 @@ describe('SearchHeader component', () => {
       expect(searchMainInput).not.toHaveFocus()
     }
   )
-
-  it('should skip focus on search main input, the next focus should be on the location filter button', async () => {
-    render(
-      <SearchHeader
-        searchInputID={searchInputID}
-        addSearchHistory={jest.fn()}
-        searchInHistory={jest.fn()}
-        shouldDisplaySubtitle
-      />
-    )
-
-    await act(async () => {
-      await userEvent.tab()
-      await userEvent.tab()
-    })
-
-    const locationFilterButton = screen.getByTestId('Me localiser')
-
-    expect(locationFilterButton).toHaveFocus()
-  })
 })

@@ -248,13 +248,6 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
   },
 }
 
-export enum RadioButtonLocation {
-  EVERYWHERE = 'Partout',
-  AROUND_ME = 'Autour de moi',
-  CHOOSE_PLACE_OR_VENUE = 'Choisir un lieu',
-  NO_LOCATION = 'Aucune localisation',
-}
-
 export enum FilterBehaviour {
   SEARCH = 'Search',
   APPLY_WITHOUT_SEARCHING = 'ApplyWithoutSearching',
