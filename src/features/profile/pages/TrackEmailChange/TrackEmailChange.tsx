@@ -106,7 +106,7 @@ export function TrackEmailChange() {
                   ? 'Choisis ta nouvelle adresse'
                   : 'Choix de ta nouvelle adresse e-mail'
               }
-              subtitle={`Depuis l’email envoyé à ${newEmail}`}
+              subtitle="Renseigne ta nouvelle adresse e-mail"
               icon={<BicolorEmailIcon />}
             />
           </Step>
@@ -118,6 +118,7 @@ export function TrackEmailChange() {
                   ? 'Valide ta nouvelle adresse'
                   : 'Validation de ta nouvelle adresse'
               }
+              subtitle={`Depuis l’email envoyé à ${newEmail}`}
               icon={<BicolorNewIcon />}
             />
           </Step>

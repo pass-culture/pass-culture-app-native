@@ -127,6 +127,20 @@ describe('TrackEmailChange', () => {
     expect(screen.getByText('Choisis ta nouvelle adresse')).toBeOnTheScreen()
   })
 
+  it('should display subtitle "Renseigne ta nouvelle adresse e-mail" when current step is CONFIRMATION', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: {
+        expired: false,
+        newEmail: 'new@mail.com',
+        status: EmailHistoryEventTypeEnum.CONFIRMATION,
+      },
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<TrackEmailChange />)
+
+    expect(screen.getByText('Renseigne ta nouvelle adresse e-mail')).toBeOnTheScreen()
+  })
+
   it('should not display "Choisis ta nouvelle adresse" when current step is not CONFIRMATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
@@ -181,6 +195,20 @@ describe('TrackEmailChange', () => {
     render(<TrackEmailChange />)
 
     expect(screen.getByText('Valide ta nouvelle adresse')).toBeOnTheScreen()
+  })
+
+  it('should display subtitle "Depuis l’email envoyé à new@mail.com" when current step is VALIDATION', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: {
+        expired: false,
+        newEmail: 'new@mail.com',
+        status: EmailHistoryEventTypeEnum.VALIDATION,
+      },
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<TrackEmailChange />)
+
+    expect(screen.getByText('Depuis l’email envoyé à new@mail.com')).toBeOnTheScreen()
   })
 
   it('should not display "Valide ta nouvelle adresse" when current step is not VALIDATION', () => {
@@ -252,20 +280,6 @@ describe('TrackEmailChange', () => {
     render(<TrackEmailChange />)
 
     expect(screen.getByText('Depuis l’email envoyé à example@example.com')).toBeOnTheScreen()
-  })
-
-  it('should display the new user email when the step is confirmation of your change of e-mail address on your old e-mail address', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: {
-        expired: false,
-        newEmail: 'new@example.com',
-        status: EmailHistoryEventTypeEnum.CONFIRMATION,
-      },
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    render(<TrackEmailChange />)
-
-    expect(screen.getByText('Depuis l’email envoyé à new@example.com')).toBeOnTheScreen()
   })
 
   describe('should navigate to home', () => {
