@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Modal, Platform } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
@@ -8,6 +7,7 @@ import { v1 as uuidv1 } from 'uuid'
 
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { reCaptchaWebviewHTML } from './webviewHTML'
 
@@ -33,6 +33,7 @@ type Props = {
 export const ReCaptcha: React.FC<Props> = (props) => {
   const webViewRef = useRef<WebView>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const { top } = useCustomSafeInsets()
   const [keyToReCreateWebViewFromScratch, setKeyToReCreateWebViewFromScratch] = useState<
     string | null
   >(null)
@@ -86,8 +87,6 @@ export const ReCaptcha: React.FC<Props> = (props) => {
     // prevent navigation on iOS
     return event.navigationType === 'other'
   }
-
-  const { top } = useSafeAreaInsets()
 
   return (
     <Modal
