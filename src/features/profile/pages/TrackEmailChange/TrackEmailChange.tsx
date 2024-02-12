@@ -103,8 +103,8 @@ export function TrackEmailChange() {
               type={getStepCardType(2)}
               title={
                 currentStep === 2
-                  ? 'Valide ta nouvelle adresse'
-                  : 'Validation de ta nouvelle adresse'
+                  ? 'Choisis ta nouvelle adresse'
+                  : 'Choix de ta nouvelle adresse e-mail'
               }
               subtitle={`Depuis l’email envoyé à ${newEmail}`}
               icon={<BicolorEmailIcon />}
@@ -115,8 +115,8 @@ export function TrackEmailChange() {
               type={getStepCardType(3)}
               title={
                 currentStep === 3
-                  ? 'Connecte-toi sur ta nouvelle adresse'
-                  : 'Connexion sur ta nouvelle adresse'
+                  ? 'Valide ta nouvelle adresse'
+                  : 'Validation de ta nouvelle adresse'
               }
               icon={<BicolorNewIcon />}
             />

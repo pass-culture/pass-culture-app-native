@@ -113,12 +113,68 @@ describe('TrackEmailChange', () => {
     expect(screen.queryByText('Confirmation de ta demande')).not.toBeOnTheScreen()
   })
 
-  it('should display "Valide ta nouvelle adresse" when current step is CONFIRMATION', () => {
+  it('should display "Choisis ta nouvelle adresse" when current step is CONFIRMATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
         newEmail: 'new@mail.com',
         status: EmailHistoryEventTypeEnum.CONFIRMATION,
+      },
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<TrackEmailChange />)
+
+    expect(screen.getByText('Choisis ta nouvelle adresse')).toBeOnTheScreen()
+  })
+
+  it('should not display "Choisis ta nouvelle adresse" when current step is not CONFIRMATION', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: {
+        expired: false,
+        newEmail: 'new@mail.com',
+        status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+      },
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<TrackEmailChange />)
+
+    expect(screen.queryByText('Choisis ta nouvelle adresse')).not.toBeOnTheScreen()
+  })
+
+  it('should display "Choix de ta nouvelle adresse e-mail" when current step is not CONFIRMATION', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: {
+        expired: false,
+        newEmail: 'new@mail.com',
+        status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+      },
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<TrackEmailChange />)
+
+    expect(screen.getByText('Choix de ta nouvelle adresse e-mail')).toBeOnTheScreen()
+  })
+
+  it('should not display "Choix de ta nouvelle adresse e-mail" when current step is CONFIRMATION', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: {
+        expired: false,
+        newEmail: 'new@mail.com',
+        status: EmailHistoryEventTypeEnum.CONFIRMATION,
+      },
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<TrackEmailChange />)
+
+    expect(screen.queryByText('Choix de ta nouvelle adresse e-mail')).not.toBeOnTheScreen()
+  })
+
+  it('should display "Valide ta nouvelle adresse" when current step is VALIDATION', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: {
+        expired: false,
+        newEmail: 'new@mail.com',
+        status: EmailHistoryEventTypeEnum.VALIDATION,
       },
       isLoading: false,
     } as UseEmailUpdateStatusMock)
@@ -127,12 +183,12 @@ describe('TrackEmailChange', () => {
     expect(screen.getByText('Valide ta nouvelle adresse')).toBeOnTheScreen()
   })
 
-  it('should not display "Valide ta nouvelle adresse" when current step is not CONFIRMATION', () => {
+  it('should not display "Valide ta nouvelle adresse" when current step is not VALIDATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
         newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+        status: EmailHistoryEventTypeEnum.CONFIRMATION,
       },
       isLoading: false,
     } as UseEmailUpdateStatusMock)
@@ -141,12 +197,12 @@ describe('TrackEmailChange', () => {
     expect(screen.queryByText('Valide ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
-  it('should display "Validation de ta nouvelle adresse" when current step is not CONFIRMATION', () => {
+  it('should display "Validation de ta nouvelle adresse" when current step is not VALIDATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
         newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+        status: EmailHistoryEventTypeEnum.CONFIRMATION,
       },
       isLoading: false,
     } as UseEmailUpdateStatusMock)
@@ -155,74 +211,18 @@ describe('TrackEmailChange', () => {
     expect(screen.getByText('Validation de ta nouvelle adresse')).toBeOnTheScreen()
   })
 
-  it('should not display "Validation de ta nouvelle adresse" when current step is CONFIRMATION', () => {
+  it('should not display "Validation de ta nouvelle adresse" when current step is VALIDATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
         newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.CONFIRMATION,
+        status: EmailHistoryEventTypeEnum.VALIDATION,
       },
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
 
     expect(screen.queryByText('Validation de ta nouvelle adresse')).not.toBeOnTheScreen()
-  })
-
-  it('should display "Connecte-toi sur ta nouvelle adresse" when current step is VALIDATION', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: {
-        expired: false,
-        newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.VALIDATION,
-      },
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    render(<TrackEmailChange />)
-
-    expect(screen.getByText('Connecte-toi sur ta nouvelle adresse')).toBeOnTheScreen()
-  })
-
-  it('should not display "Connecte-toi sur ta nouvelle adresse" when current step is not VALIDATION', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: {
-        expired: false,
-        newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.CONFIRMATION,
-      },
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    render(<TrackEmailChange />)
-
-    expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).not.toBeOnTheScreen()
-  })
-
-  it('should display "Connexion sur ta nouvelle adresse" when current step is not VALIDATION', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: {
-        expired: false,
-        newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.CONFIRMATION,
-      },
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    render(<TrackEmailChange />)
-
-    expect(screen.getByText('Connexion sur ta nouvelle adresse')).toBeOnTheScreen()
-  })
-
-  it('should not display "Connexion sur ta nouvelle adresse" when current step is VALIDATION', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: {
-        expired: false,
-        newEmail: 'new@mail.com',
-        status: EmailHistoryEventTypeEnum.VALIDATION,
-      },
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    render(<TrackEmailChange />)
-
-    expect(screen.queryByText('Connexion sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
