@@ -33,19 +33,199 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       ]
     }
   />,
+  <View
+    accessibilityLabel="J’ai lu et j’accepte les conditions générales d’utilisation*"
+    accessibilityRole="checkbox"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": false,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "userSelect": "auto",
+      }
+    }
+    testID="J’ai lu et j’accepte les conditions générales d’utilisation*"
+  >
+    <View
+      isChecked={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#696A6F",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 2,
+            "height": 24,
+            "justifyContent": "center",
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "color": "#161617",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "paddingLeft": 16,
+          },
+        ]
+      }
+    >
+      J’ai lu et j’accepte les conditions générales d’utilisation*
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      [
+        {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    accessibilityLabel="J’ai lu la charte des données personnelles*"
+    accessibilityRole="checkbox"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": false,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "cursor": "pointer",
+        "display": "flex",
+        "flexDirection": "row",
+        "opacity": 1,
+        "userSelect": "auto",
+      }
+    }
+    testID="J’ai lu la charte des données personnelles*"
+  >
+    <View
+      isChecked={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#696A6F",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 2,
+            "height": 24,
+            "justifyContent": "center",
+            "width": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "color": "#161617",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "paddingLeft": 16,
+          },
+        ]
+      }
+    >
+      J’ai lu la charte des données personnelles*
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      [
+        {
+          "height": 24,
+        },
+      ]
+    }
+  />,
   <Text
     style={
       [
         {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
         },
       ]
     }
   >
-    En cliquant sur “Accepter et s’inscrire”, tu acceptes : 
+    *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu :
   </Text>,
   <View
     numberOfSpaces={2}
@@ -118,9 +298,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Nouvelle fenêtre"
-        height={20}
+        height={16}
         testID="button-icon"
-        width={20}
+        width={16}
       >
         <Text>
           button-icon-SVG-Mock
@@ -134,10 +314,10 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+            "marginLeft": 4,
             "maxWidth": "100%",
           },
         ]
@@ -147,7 +327,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     </Text>
   </View>,
   <View
-    accessibilityLabel="Notre politique de confidentialité"
+    accessibilityLabel="La charte des données personnelles"
     accessibilityState={
       {
         "busy": undefined,
@@ -194,7 +374,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         "width": "100%",
       }
     }
-    testID="Notre politique de confidentialité"
+    testID="La charte des données personnelles"
   >
     <View
       style={
@@ -207,9 +387,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Nouvelle fenêtre"
-        height={20}
+        height={16}
         testID="button-icon"
-        width={20}
+        width={16}
       >
         <Text>
           button-icon-SVG-Mock
@@ -223,16 +403,16 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         [
           {
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+            "marginLeft": 4,
             "maxWidth": "100%",
           },
         ]
       }
     >
-      Notre politique de confidentialité
+      La charte des données personnelles
     </Text>
   </View>,
   <View
@@ -257,45 +437,22 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   />,
   <View
-    numberOfSpaces={8}
+    numberOfSpaces={6}
     style={
       [
         {
-          "height": 32,
-        },
-      ]
-    }
-  />,
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
-        },
-      ]
-    }
-  >
-    Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :
-  </Text>,
-  <View
-    numberOfSpaces={2}
-    style={
-      [
-        {
-          "height": 8,
+          "height": 24,
         },
       ]
     }
   />,
   <View
-    accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+    accessibilityLabel="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+    accessibilityRole="checkbox"
     accessibilityState={
       {
         "busy": undefined,
-        "checked": undefined,
+        "checked": false,
         "disabled": undefined,
         "expanded": undefined,
         "selected": undefined,
@@ -322,59 +479,51 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
+        "cursor": "pointer",
+        "display": "flex",
         "flexDirection": "row",
-        "justifyContent": "flex-start",
-        "maxWidth": 500,
-        "minHeight": 40,
         "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 2,
         "userSelect": "auto",
-        "width": "100%",
       }
     }
-    testID="Ouvrir le gestionnaire mail pour contacter le support"
+    testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
   >
     <View
+      isChecked={false}
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#696A6F",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 2,
+            "height": 24,
+            "justifyContent": "center",
+            "width": 24,
           },
         ]
       }
-    >
-      <View
-        height={20}
-        testID="button-icon"
-        width={20}
-      >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
-      </View>
-    </View>
+    />
     <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
       style={
         [
           {
+            "alignSelf": "center",
             "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
+            "paddingLeft": 16,
           },
         ]
       }
     >
-      Contacter le support
+      J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
     </Text>
   </View>,
   <View
@@ -393,7 +542,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       {
         "busy": undefined,
         "checked": undefined,
-        "disabled": false,
+        "disabled": true,
         "expanded": undefined,
         "selected": undefined,
       }
@@ -408,7 +557,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
     accessible={true}
     collapsable={false}
-    focusable={true}
+    focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -419,7 +568,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "#eb0055",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 24,
         "flexDirection": "row",
         "justifyContent": "center",
@@ -442,7 +591,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       style={
         [
           {
-            "color": "#ffffff",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -452,9 +601,33 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         ]
       }
     >
-      Accepter et s’inscrire
+      S’inscrire
     </Text>
   </View>,
+  <View
+    numberOfSpaces={4}
+    style={
+      [
+        {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <Text
+    style={
+      [
+        {
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
+  </Text>,
   <View
     numberOfSpaces={5}
     style={
