@@ -17,8 +17,8 @@ import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateSta
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
+import { PencilTip } from 'ui/svg/icons/bicolor/PencilTip'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
-import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -107,7 +107,7 @@ export function TrackEmailChange() {
                   : 'Choix de ta nouvelle adresse e-mail'
               }
               subtitle="Renseigne ta nouvelle adresse e-mail"
-              icon={<BicolorEmailIcon />}
+              icon={<PencilTip />}
             />
           </Step>
           <Step>
@@ -119,7 +119,7 @@ export function TrackEmailChange() {
                   : 'Validation de ta nouvelle adresse'
               }
               subtitle={`Depuis l’email envoyé à ${newEmail}`}
-              icon={<BicolorNewIcon />}
+              icon={<BicolorEmailIcon />}
             />
           </Step>
         </StyledStepList>
