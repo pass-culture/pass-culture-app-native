@@ -22,6 +22,7 @@ export const buildOfferSearchParameters = (
     eanList = [],
     endingDatetime = undefined,
     excludedObjectIds = [],
+    isFullyDigitalOffersCategory = false,
     maxPossiblePrice = '',
     maxPrice = '',
     minBookingsThreshold = 0,
@@ -45,7 +46,10 @@ export const buildOfferSearchParameters = (
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean
 ) => {
-  const locationParameter = venue ? {} : buildLocationParameter(buildLocationParameterParams)
+  const locationParameter =
+    venue || isFullyDigitalOffersCategory
+      ? {}
+      : buildLocationParameter(buildLocationParameterParams)
 
   return {
     ...buildFacetFilters({

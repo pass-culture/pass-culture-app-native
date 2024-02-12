@@ -38,6 +38,24 @@ describe('buildOfferSearchParameters', () => {
     })
   })
 
+  it('should return offer search parameters without location params when the offer is a fully digital category', () => {
+    const parameters = {
+      ...SearchQueryParametersFixture,
+      isFullyDigitalOffersCategory: true,
+    }
+
+    const result = buildOfferSearchParameters(
+      parameters,
+      buildLocationParameterParams,
+      isUserUnderage
+    )
+
+    expect(result).toEqual({
+      facetFilters: [['offer.isEducational:false']],
+      numericFilters: [['offer.prices: 0 TO 300']],
+    })
+  })
+
   it('should return parameters with date filter when date is specified', () => {
     const parameters = {
       ...SearchQueryParametersFixture,
