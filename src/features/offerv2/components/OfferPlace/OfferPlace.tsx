@@ -50,7 +50,7 @@ const mergeVenueData =
 export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
-  const { selectedLocationMode, place, geolocPosition } = useLocation()
+  const { selectedLocationMode, place, userLocation } = useLocation()
 
   const hasNewOfferVenueBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK)
 
@@ -85,7 +85,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   } = useSearchVenueOffers({
     offerId: offer.id,
     venueId: offer.venue.id,
-    geolocation: geolocPosition ?? {
+    geolocation: userLocation ?? {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
@@ -137,7 +137,6 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const shouldDisplaySeeItineraryButton = Boolean(
     offer.venue.address && offer.venue.postalCode && offer.venue.city
   )
-
   const venueName = offer.venue.publicName || offer.venue.name
   const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
@@ -184,7 +183,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
-          isSharingLocation={geolocPosition !== null}
+          isSharingLocation={userLocation !== null}
           subTitle="Sélectionner un lieu"
           rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
           validateButtonLabel="Choisir ce lieu"
