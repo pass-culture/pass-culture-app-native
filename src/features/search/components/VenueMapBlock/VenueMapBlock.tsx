@@ -7,13 +7,14 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const VenueMapBlock: FunctionComponent = () => {
   const focusProps = useHandleFocus()
 
   return (
     <Container>
-      <Typo.Title3>Carte des lieux culturels</Typo.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
       <TouchableContainer navigateTo={{ screen: 'CheatCodes' }} {...focusProps}>
         <StyledImageBackground source={VENUE_MAP_BACKGROUND}>

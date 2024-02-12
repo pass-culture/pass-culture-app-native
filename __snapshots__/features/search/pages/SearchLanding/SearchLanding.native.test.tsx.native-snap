@@ -113,7 +113,123 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
       </View>
       <View
         testID="InsideLocationWidget"
-      />
+      >
+        <View
+          accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onLayout={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "marginLeft": 8,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Ouvrir la modale de localisation depuis le widget"
+        >
+          <View
+            collapsable={false}
+            isActive={true}
+            style={
+              {
+                "alignItems": "center",
+                "borderColor": "#161617",
+                "borderRadius": 40,
+                "borderStyle": "solid",
+                "borderWidth": 2,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 40,
+              }
+            }
+          >
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "maxWidth": 80,
+                  "paddingTop": 4,
+                },
+              ]
+            }
+          >
+            Me localiser
+          </Text>
+        </View>
+        <Modal
+          accessibilityLabelledBy="testUuidV4"
+          accessibilityModal={true}
+          accessibilityRole="none"
+          animationType="none"
+          deviceHeight={1334}
+          deviceWidth={750}
+          hardwareAccelerated={false}
+          hideModalContentWhileAnimating={false}
+          onBackdropPress={[Function]}
+          onModalHide={[Function]}
+          onModalWillHide={[Function]}
+          onModalWillShow={[Function]}
+          onRequestClose={[Function]}
+          panResponderThreshold={4}
+          scrollHorizontal={false}
+          scrollOffset={0}
+          scrollOffsetMax={0}
+          scrollTo={null}
+          statusBarTranslucent={true}
+          supportedOrientations={
+            [
+              "portrait",
+              "landscape",
+            ]
+          }
+          swipeThreshold={100}
+          testID="modal"
+          transparent={true}
+          visible={false}
+        />
+      </View>
     </View>
     <View
       numberOfSpaces={4}
@@ -274,97 +390,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   testID="searchInput"
                   value=""
                 />
-                <View
-                  accessibilityLabel="Le Petit Rintintin 1"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "height": "auto",
-                      "justifyContent": "center",
-                      "marginLeft": 8,
-                      "marginRight": -8,
-                      "maxWidth": 142,
-                      "minHeight": 32,
-                      "opacity": 1,
-                      "paddingBottom": 2,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 2,
-                      "userSelect": "auto",
-                      "width": "100%",
-                    }
-                  }
-                  testID="Le Petit Rintintin 1"
-                >
-                  <View
-                    style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={16}
-                      testID="button-icon"
-                      width={16}
-                    >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    ellipsizeMode="tail"
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "marginLeft": 4,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    Le Petit Rintintin 1
-                  </Text>
-                </View>
               </View>
             </View>
           </View>
@@ -439,26 +464,18 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
   >
     <RCTScrollView
       ListHeaderComponent={
-        {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": [
-            [Function],
-            {
-              "children": "Explore les catégories",
-            },
-          ],
-          "inlineStyle": InlineStyle {
-            "rules": [
-              [Function],
-              [Function],
-            ],
-          },
-          "render": [Function],
-          "shouldForwardProp": undefined,
-          "styledComponentId": "StyledNativeComponent",
-          "target": [Function],
-          "withComponent": [Function],
-        }
+        <React.Fragment>
+          <React.Fragment>
+            <Styled(View)
+              numberOfSpaces={4}
+            />
+            <VenueMapBlock />
+            <Styled(View)
+              numberOfSpaces={2}
+            />
+          </React.Fragment>
+          <Styled(Styled(Text)) />
+        </React.Fragment>
       }
       contentContainerStyle={
         {
@@ -884,6 +901,194 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
         <View
           onLayout={[Function]}
         >
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "marginHorizontal": 8,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                  },
+                ]
+              }
+            >
+              Carte des lieux culturels
+            </Text>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "borderColor": "#CBCDD2",
+                  "borderRadius": 8,
+                  "borderWidth": 1,
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                accessibilityIgnoresInvertColors={true}
+                style={
+                  [
+                    {
+                      "height": 100,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <Image
+                  source={
+                    {
+                      "testUri": "../../../public/images/VenueMapBackground.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      {
+                        "height": 100,
+                        "width": "100%",
+                      },
+                      {
+                        "borderRadius": 8,
+                      },
+                    ]
+                  }
+                />
+                <BVLinearGradient
+                  angle={69}
+                  colors={
+                    [
+                      4294967295,
+                      3019898879,
+                      16777215,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={
+                    [
+                      0.11,
+                      0.68,
+                      1,
+                    ]
+                  }
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "borderRadius": 8,
+                        "height": "100%",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  useAngle={true}
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "bottom": 16,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "left": 16,
+                        "lineHeight": 20,
+                        "position": "absolute",
+                      },
+                    ]
+                  }
+                >
+                  Explorer les lieux
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
           <Text
             style={
               [
@@ -894,7 +1099,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   "lineHeight": 24,
                   "marginBottom": 8,
                   "marginTop": 16,
-                  "paddingHorizontal": 12,
+                  "paddingHorizontal": 8,
                 },
               ]
             }
