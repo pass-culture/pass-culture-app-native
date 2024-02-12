@@ -8,21 +8,21 @@ describe('getEmailUpdateStep', () => {
     expect(emailUpdateStep).toEqual(0)
   })
 
-  it('should return 1 when user sent an email change request', () => {
+  it('should return 0 when user sent an email change request', () => {
     const emailUpdateStep = getEmailUpdateStep(EmailHistoryEventTypeEnum.UPDATE_REQUEST)
+
+    expect(emailUpdateStep).toEqual(0)
+  })
+
+  it('should return 1 when user confirmed his request for change of e-mail on his old e-mail', () => {
+    const emailUpdateStep = getEmailUpdateStep(EmailHistoryEventTypeEnum.CONFIRMATION)
 
     expect(emailUpdateStep).toEqual(1)
   })
 
-  it('should return 2 when user confirmed his request for change of e-mail on his old e-mail', () => {
-    const emailUpdateStep = getEmailUpdateStep(EmailHistoryEventTypeEnum.CONFIRMATION)
-
-    expect(emailUpdateStep).toEqual(2)
-  })
-
-  it('should return 3 when user validated his request for change of e-mail on his new e-mail', () => {
+  it('should return 2 when user validated his request for change of e-mail on his new e-mail', () => {
     const emailUpdateStep = getEmailUpdateStep(EmailHistoryEventTypeEnum.VALIDATION)
 
-    expect(emailUpdateStep).toEqual(3)
+    expect(emailUpdateStep).toEqual(2)
   })
 })

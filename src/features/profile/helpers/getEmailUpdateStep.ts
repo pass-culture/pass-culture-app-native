@@ -3,11 +3,11 @@ import { EmailHistoryEventTypeEnum } from 'api/gen'
 export function getEmailUpdateStep(step?: EmailHistoryEventTypeEnum) {
   switch (step) {
     case EmailHistoryEventTypeEnum.UPDATE_REQUEST:
-      return 1
+      return 0
     case EmailHistoryEventTypeEnum.CONFIRMATION:
-      return 2
+      return 1
     case EmailHistoryEventTypeEnum.VALIDATION:
-      return 3
+      return 2
     default:
       return 0
   }

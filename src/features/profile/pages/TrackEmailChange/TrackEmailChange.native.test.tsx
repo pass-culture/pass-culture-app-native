@@ -39,12 +39,6 @@ describe('TrackEmailChange', () => {
     expect(screen.getByText('Suivi de ton changement d’e-mail')).toBeOnTheScreen()
   })
 
-  it('should display "Envoi de ta demande"', () => {
-    render(<TrackEmailChange />)
-
-    expect(screen.getByText('Envoi de ta demande')).toBeOnTheScreen()
-  })
-
   it('should not display the update app banner when FF is disabled', async () => {
     render(<TrackEmailChange />)
 

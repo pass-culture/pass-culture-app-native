@@ -19,7 +19,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { PencilTip } from 'ui/svg/icons/bicolor/PencilTip'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
-import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -86,23 +85,16 @@ export function TrackEmailChange() {
           <Step>
             <StyledStepCard
               type={getStepCardType(0)}
-              title="Envoi de ta demande"
-              icon={<BicolorPhoneIcon />}
-            />
-          </Step>
-          <Step>
-            <StyledStepCard
-              type={getStepCardType(1)}
-              title={currentStep === 1 ? 'Confirme ta demande' : 'Confirmation de ta demande'}
+              title={currentStep === 0 ? 'Confirme ta demande' : 'Confirmation de ta demande'}
               subtitle={`Depuis l’email envoyé à ${currentEmail}`}
               icon={<BicolorEmailIcon />}
             />
           </Step>
           <Step>
             <StyledStepCard
-              type={getStepCardType(2)}
+              type={getStepCardType(1)}
               title={
-                currentStep === 2
+                currentStep === 1
                   ? 'Choisis ta nouvelle adresse'
                   : 'Choix de ta nouvelle adresse e-mail'
               }
@@ -112,9 +104,9 @@ export function TrackEmailChange() {
           </Step>
           <Step>
             <StyledStepCard
-              type={getStepCardType(3)}
+              type={getStepCardType(2)}
               title={
-                currentStep === 3
+                currentStep === 2
                   ? 'Valide ta nouvelle adresse'
                   : 'Validation de ta nouvelle adresse'
               }
