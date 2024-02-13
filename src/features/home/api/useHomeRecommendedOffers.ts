@@ -54,7 +54,7 @@ export const useHomeRecommendedOffers = (
   position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-): { offers?: Offer[]; RecommendationApiParams?: RecommendationApiParams } => {
+): { offers?: Offer[]; recommendationApiParams?: RecommendationApiParams } => {
   const recommendationEndpoint = getRecommendationEndpoint({
     userId,
     position,
@@ -84,6 +84,6 @@ export const useHomeRecommendedOffers = (
       moduleId,
       true
     ),
-    RecommendationApiParams: recommendedIdsResponse?.params,
+    recommendationApiParams: recommendedIdsResponse?.params,
   }
 }
