@@ -87,7 +87,7 @@ export function OfferVenueBlock({
         <Spacer.Row numberOfSpaces={2} />
         <VenueRightContainer>
           <VenueTitleContainer>
-            <Typo.ButtonText numberOfLines={1}>{venueName}</Typo.ButtonText>
+            <VenueName>{venueName}</VenueName>
             {hasVenuePage ? (
               <React.Fragment>
                 <Spacer.Row numberOfSpaces={1} />
@@ -163,6 +163,10 @@ const VenueThumbnail = styled(Image)<{ height: number; width: number }>(({ heigh
 
 const TertiaryButtonWrapper = styled.View({
   alignItems: 'flex-start',
+})
+
+const VenueName = styled(Typo.ButtonText).attrs({ numberOfLines: 1 })({
+  flexShrink: 1,
 })
 
 const Address = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
