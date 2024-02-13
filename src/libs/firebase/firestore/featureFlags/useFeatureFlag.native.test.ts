@@ -1,11 +1,11 @@
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
-import * as PackageJson from 'libs/packageJson'
+import { eventMonitoring } from 'libs/monitoring'
+import { getAppBuildVersion } from 'libs/packageJson'
 import { act, renderHook } from 'tests/utils'
 
-const buildVersion = 10010005
-jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
+const buildVersion = getAppBuildVersion()
 
 jest.mock('@react-native-firebase/firestore')
 
@@ -95,6 +95,95 @@ describe('useFeatureFlag', () => {
       await act(async () => {})
 
       expect(result.current).toBeFalsy()
+    })
+  })
+
+  describe('maximal and minimal build numbers', () => {
+    it('should activate FF when version is between minimalBuildNumber and maximalBuildNumber', async () => {
+      const firestoreData = {
+        minimalBuildNumber: buildVersion - 1,
+        maximalBuildNumber: buildVersion + 1,
+      }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+      await act(async () => {})
+
+      expect(result.current).toBeTruthy()
+    })
+
+    it('should activate FF when minimalBuildNumber and maximalBuildNumber are equal to current version', async () => {
+      const firestoreData = {
+        minimalBuildNumber: buildVersion,
+        maximalBuildNumber: buildVersion,
+      }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+      await act(async () => {})
+
+      expect(result.current).toBeTruthy()
+    })
+
+    it('should deactivate FF when minimalBuildNumber and maximalBuildNumber are equal and below current version', async () => {
+      const firestoreData = {
+        minimalBuildNumber: buildVersion - 1,
+        maximalBuildNumber: buildVersion - 1,
+      }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+      await act(async () => {})
+
+      expect(result.current).toBeFalsy()
+    })
+
+    it('should deactivate FF when minimalBuildNumber and maximalBuildNumber are equal and greater than current version', async () => {
+      const firestoreData = {
+        minimalBuildNumber: buildVersion + 1,
+        maximalBuildNumber: buildVersion + 1,
+      }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+      await act(async () => {})
+
+      expect(result.current).toBeFalsy()
+    })
+
+    it('should deactivate FF when minimalBuildNumber is greater than maximalBuildNumber', async () => {
+      const firestoreData = {
+        minimalBuildNumber: buildVersion + 1,
+        maximalBuildNumber: buildVersion,
+      }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+      await act(async () => {})
+
+      expect(result.current).toBeFalsy()
+    })
+
+    it('should log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {
+      const firestoreData = {
+        minimalBuildNumber: buildVersion + 1,
+        maximalBuildNumber: buildVersion,
+      }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      renderHook(() => useFeatureFlag(featureFlag))
+
+      await act(async () => {})
+
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+        `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
+        { extra: firestoreData }
+      )
     })
   })
 })
