@@ -27,7 +27,7 @@ const children = [
 
 describe('<StepList />', () => {
   it('should not render any complete step when active index is 0', () => {
-    render(<StepList activeStepIndex={0}>{children}</StepList>)
+    render(<StepList currentStepIndex={0}>{children}</StepList>)
 
     expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(0)
     expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(1)
@@ -35,7 +35,7 @@ describe('<StepList />', () => {
   })
 
   it('should render one complete step, one in progress step and one future step', () => {
-    render(<StepList activeStepIndex={1}>{children}</StepList>)
+    render(<StepList currentStepIndex={1}>{children}</StepList>)
 
     expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(1)
     expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(1)
@@ -43,7 +43,7 @@ describe('<StepList />', () => {
   })
 
   it('should render two complete steps, one in progress step and no future step', () => {
-    render(<StepList activeStepIndex={2}>{children}</StepList>)
+    render(<StepList currentStepIndex={2}>{children}</StepList>)
 
     expect(screen.queryAllByTestId('vertical-stepper-complete')).toHaveLength(2)
     expect(screen.queryAllByTestId('vertical-stepper-in_progress')).toHaveLength(1)
@@ -53,11 +53,11 @@ describe('<StepList />', () => {
   it('should warn about active index being greater than children length', () => {
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation()
 
-    render(<StepList activeStepIndex={3}>{children}</StepList>)
+    render(<StepList currentStepIndex={3}>{children}</StepList>)
 
     expect(warnSpy).toHaveBeenNthCalledWith(
       1,
-      '[StepList] - Given (`activeStepIndex`: 3) but children length is 3. Maximum `activeStepIndex` should be 2.'
+      '[StepList] - Given (`currentStepIndex`: 3) but children length is 3. Maximum `currentStepIndex` should be 2.'
     )
 
     warnSpy.mockRestore()

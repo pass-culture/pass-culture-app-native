@@ -35,10 +35,10 @@ export const Stepper = () => {
     errorMessage,
   } = useStepperInfo()
 
-  const activeStepIndex = steps.findIndex(
+  const currentStepIndex = steps.findIndex(
     (step) => step.stepState === StepButtonState.CURRENT || step.stepState === StepButtonState.RETRY
   )
-  const stepToComplete = steps[activeStepIndex]
+  const stepToComplete = steps[currentStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -85,7 +85,7 @@ export const Stepper = () => {
   }, [params?.from, stepToComplete?.name])
 
   const stepList = (
-    <StepList activeStepIndex={activeStepIndex}>
+    <StepList currentStepIndex={currentStepIndex}>
       {steps.map((step, index) => (
         <StepButtonContainer key={step.name}>
           <StepButton

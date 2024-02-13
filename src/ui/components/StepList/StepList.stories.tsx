@@ -3,8 +3,9 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
+import { StepCard } from 'features/profile/components/StepCard/StepCard'
 import { theme } from 'theme'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
@@ -17,7 +18,7 @@ const meta: ComponentMeta<typeof StepList> = {
   title: 'features/profile/StepList',
   component: StepList,
   args: {
-    activeStepIndex: 0,
+    currentStepIndex: 0,
   },
   argTypes: {
     children: { control: { disable: true } },
@@ -40,21 +41,21 @@ const styles = StyleSheet.create({
   },
 })
 
-export function UsageExample({ activeStepIndex = 0 }: StepListProps) {
+export function UsageExample({ currentStepIndex = 0 }: StepListProps) {
   return (
-    <StepList activeStepIndex={activeStepIndex}>
+    <StepList currentStepIndex={currentStepIndex}>
       <Step>
-        <View style={[styles.content, activeStepIndex === 0 && styles.contentActive]}>
+        <View style={[styles.content, currentStepIndex === 0 && styles.contentActive]}>
           <Typo.Body>Play with</Typo.Body>
         </View>
       </Step>
       <Step>
-        <View style={[styles.content, activeStepIndex === 1 && styles.contentActive]}>
-          <Typo.Body>`activeStepIndex` control</Typo.Body>
+        <View style={[styles.content, currentStepIndex === 1 && styles.contentActive]}>
+          <Typo.Body>`currentStepIndex` control</Typo.Body>
         </View>
       </Step>
       <Step>
-        <View style={[styles.content, activeStepIndex === 2 && styles.contentActive]}>
+        <View style={[styles.content, currentStepIndex === 2 && styles.contentActive]}>
           <Typo.Body>on Storybook</Typo.Body>
         </View>
       </Step>
@@ -66,31 +67,31 @@ const StyleStepCard = styled(StepCard)({
   marginVertical: 12,
 })
 
-const Template: ComponentStory<typeof StepList> = ({ activeStepIndex = 0 }) => {
-  const getStepCardType = (stepIndex: number) => {
-    if (stepIndex === activeStepIndex) return StepCardType.ACTIVE
-    if (stepIndex < activeStepIndex) return StepCardType.DONE
-    return StepCardType.DISABLED
+const Template: ComponentStory<typeof StepList> = ({ currentStepIndex = 0 }) => {
+  const getStepButtonState = (stepIndex: number) => {
+    if (stepIndex === currentStepIndex) return StepButtonState.CURRENT
+    if (stepIndex < currentStepIndex) return StepButtonState.COMPLETED
+    return StepButtonState.DISABLED
   }
 
   return (
-    <StepList activeStepIndex={activeStepIndex}>
+    <StepList currentStepIndex={currentStepIndex}>
       <Step>
-        <StyleStepCard title="Done" icon={<Email />} type={getStepCardType(0)} />
+        <StyleStepCard title="Done" icon={<Email />} type={getStepButtonState(0)} />
       </Step>
       <Step>
         <StyleStepCard
           title="Active"
           subtitle="Renseigne ton email"
           icon={<BicolorAroundMe />}
-          type={getStepCardType(1)}
+          type={getStepButtonState(1)}
         />
       </Step>
       <Step>
-        <StyleStepCard title="Disabled" icon={<Email />} type={getStepCardType(2)} />
+        <StyleStepCard title="Disabled" icon={<Email />} type={getStepButtonState(2)} />
       </Step>
       <Step>
-        <StyleStepCard title="Disabled" icon={<Email />} type={getStepCardType(3)} />
+        <StyleStepCard title="Disabled" icon={<Email />} type={getStepButtonState(3)} />
       </Step>
     </StepList>
   )
@@ -98,5 +99,5 @@ const Template: ComponentStory<typeof StepList> = ({ activeStepIndex = 0 }) => {
 
 export const WithStepCard = Template.bind({})
 WithStepCard.args = {
-  activeStepIndex: 1,
+  currentStepIndex: 1,
 }

@@ -3,7 +3,8 @@ import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
 import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
+import { StepCard } from 'features/profile/components/StepCard/StepCard'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
@@ -60,11 +61,11 @@ WithActiveStepCard.args = {
 export const WithDoneStepCard = Template.bind({})
 WithDoneStepCard.args = {
   variant: StepVariant.complete,
-  children: <StepCard title="Done" icon={<Email />} type={StepCardType.DONE} />,
+  children: <StepCard title="Done" icon={<Email />} type={StepButtonState.COMPLETED} />,
 }
 
 export const WithDisabledStepCard = Template.bind({})
 WithDisabledStepCard.args = {
   variant: StepVariant.future,
-  children: <StepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />,
+  children: <StepCard title="Disabled" icon={<Email />} type={StepButtonState.DISABLED} />,
 }

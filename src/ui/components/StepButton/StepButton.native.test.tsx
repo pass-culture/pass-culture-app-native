@@ -11,61 +11,61 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 describe('StepButton', () => {
-  it.each`
-    stepState                    | stepTestId                               | isDisabled
-    ${StepButtonState.COMPLETED} | ${'Identification complété'}             | ${true}
-    ${StepButtonState.CURRENT}   | ${'Identification non complété'}         | ${false}
-    ${StepButtonState.DISABLED}  | ${'Identification non complété'}         | ${true}
-    ${StepButtonState.RETRY}     | ${'Identification à essayer de nouveau'} | ${false}
-  `(
-    'should return the correct StepButton depending on StepButtonState',
-    ({ stepState, stepTestId, isDisabled }) => {
-      const identificationStep: StepDetails<IdentityCheckStep> = {
-        name: IdentityCheckStep.IDENTIFICATION,
-        firstScreen: 'SelectIDOrigin',
-        stepState: stepState,
-        title: 'Identification',
-        icon: {
-          disabled: DisabledIdCardIcon,
-          current: BicolorIdCard,
-          completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
-          retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
-        },
-      }
+  it('should disable the StepButton for COMPLETED state', () => {
+    renderStepButton(StepButtonState.COMPLETED)
 
-      render(<StepButton step={identificationStep} />)
+    expect(
+      screen.getByTestId('Identification complété').props.accessibilityState.disabled
+    ).toBeTruthy()
+  })
 
-      expect(screen.getByTestId(stepTestId).props.accessibilityState.disabled).toBe(isDisabled)
-    }
-  )
+  it('should enable the StepButton for CURRENT state', () => {
+    renderStepButton(StepButtonState.CURRENT)
 
-  it.each`
-    stepState                    | stepTestId
-    ${StepButtonState.COMPLETED} | ${'Identification complété'}
-    ${StepButtonState.CURRENT}   | ${'Identification non complété'}
-    ${StepButtonState.DISABLED}  | ${'Identification non complété'}
-    ${StepButtonState.RETRY}     | ${'Identification à essayer de nouveau'}
-  `(
-    'should return the correct StepButton depending on StepButtonState',
-    ({ stepState, stepTestId }) => {
-      const identificationStep: StepDetails<IdentityCheckStep> = {
-        name: IdentityCheckStep.IDENTIFICATION,
-        firstScreen: 'SelectIDOrigin',
-        stepState: stepState,
-        title: 'Identification',
-        icon: {
-          disabled: DisabledIdCardIcon,
-          current: BicolorIdCard,
-          completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
-          retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
-        },
-      }
+    expect(
+      screen.queryByTestId('Identification non complété')?.props.accessibilityState.disabled
+    ).toBeFalsy()
+  })
 
-      render(<StepButton step={identificationStep} />)
+  it('should disable StepButton for DISABLED state', () => {
+    renderStepButton(StepButtonState.DISABLED)
 
-      expect(screen.queryByTestId(stepTestId)).toBeOnTheScreen()
-    }
-  )
+    expect(
+      screen.getByTestId('Identification non complété').props.accessibilityState.disabled
+    ).toBeTruthy()
+  })
+
+  it('should enable StepButton for RETRY state', () => {
+    renderStepButton(StepButtonState.RETRY)
+
+    expect(
+      screen.queryByTestId('Identification à essayer de nouveau')?.props.accessibilityState.disabled
+    ).toBeFalsy()
+  })
+
+  it('should show the right StepButton for COMPLETED state', () => {
+    renderStepButton(StepButtonState.COMPLETED)
+
+    expect(screen.queryByTestId('Identification complété')).toBeOnTheScreen()
+  })
+
+  it('should show the right StepButton for CURRENT state', () => {
+    renderStepButton(StepButtonState.CURRENT)
+
+    expect(screen.queryByTestId('Identification non complété')).toBeOnTheScreen()
+  })
+
+  it('should show the right StepButton for DISABLED state', () => {
+    renderStepButton(StepButtonState.DISABLED)
+
+    expect(screen.queryByTestId('Identification non complété')).toBeOnTheScreen()
+  })
+
+  it('should show the right StepButton for RETRY state', () => {
+    renderStepButton(StepButtonState.RETRY)
+
+    expect(screen.queryByTestId('Identification à essayer de nouveau')).toBeOnTheScreen()
+  })
 })
 
 const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
@@ -76,3 +76,19 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
     testID="DisabledIdCardIcon"
   />
 )
+
+function renderStepButton(stepState: StepButtonState) {
+  const identificationStep: StepDetails<IdentityCheckStep> = {
+    name: IdentityCheckStep.CONFIRMATION,
+    firstScreen: 'SelectIDOrigin',
+    stepState: stepState,
+    title: 'Identification',
+    icon: {
+      disabled: DisabledIdCardIcon,
+      current: BicolorIdCard,
+      completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
+      retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
+    },
+  }
+  render(<StepButton step={identificationStep} />)
+}

@@ -2,9 +2,10 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 
-import { StepCard, StepCardType } from './StepCard'
+import { StepCard } from './StepCard'
 
 describe('<StepCard />', () => {
   const title = 'This is a StepCard'
@@ -23,53 +24,53 @@ describe('<StepCard />', () => {
     expect(screen.getByText(subtitle)).toBeOnTheScreen()
   })
 
-  it('should return the wrapper greyMedium when type is StepCardType.DISABLED', () => {
-    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DISABLED} />)
+  it('should return the wrapper greyMedium when type is StepButtonState.DISABLED', () => {
+    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepButtonState.DISABLED} />)
 
     expect(screen.getByTestId('stepcard-container')).toHaveStyle({
       borderColor: theme.colors.greyMedium,
     })
   })
 
-  it('should return the wrapper greyDark when type is StepCardType.DONE', () => {
-    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DONE} />)
+  it('should return the wrapper greyDark when type is StepButtonState.COMPLETED', () => {
+    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepButtonState.COMPLETED} />)
 
     expect(screen.getByTestId('stepcard-container')).toHaveStyle({
       borderColor: theme.colors.greyDark,
     })
   })
 
-  it('should return the title greyDark when type is StepCardType.DISABLED', () => {
-    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DISABLED} />)
+  it('should return the title greyDark when type is StepButtonState.DISABLED', () => {
+    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepButtonState.DISABLED} />)
 
     expect(screen.getByText(title)).toHaveStyle({
       color: theme.colors.greyDark,
     })
   })
 
-  it('should return the title black when type is StepCardType.ACTIVE', () => {
-    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.ACTIVE} />)
+  it('should return the title black when type is StepButtonState.CURRENT', () => {
+    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepButtonState.CURRENT} />)
 
     expect(screen.getByText(title)).toHaveStyle({
       color: theme.colors.black,
     })
   })
 
-  it('should return the title greyDark when type is StepCardType.DONE', () => {
-    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DONE} />)
+  it('should return the title greyDark when type is StepButtonState.COMPLETED', () => {
+    render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepButtonState.COMPLETED} />)
 
     expect(screen.getByText(title)).toHaveStyle({
       color: theme.colors.greyDark,
     })
   })
 
-  it('should return the subtitle greyDark when type is StepCardType.ACTIVE', () => {
+  it('should return the subtitle greyDark when type is StepButtonState.CURRENT', () => {
     render(
       <StepCard
         title={title}
         subtitle={subtitle}
         icon={<BicolorAroundMe />}
-        type={StepCardType.ACTIVE}
+        type={StepButtonState.CURRENT}
       />
     )
 
@@ -78,26 +79,26 @@ describe('<StepCard />', () => {
     })
   })
 
-  it('should not return the subtitle when type is StepCardType.DONE', () => {
+  it('should not return the subtitle when type is StepButtonState.COMPLETED', () => {
     render(
       <StepCard
         title={title}
         subtitle={subtitle}
         icon={<BicolorAroundMe />}
-        type={StepCardType.DONE}
+        type={StepButtonState.COMPLETED}
       />
     )
 
     expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
   })
 
-  it('should not return the subtitle when type is StepCardType.DISABLED', () => {
+  it('should not return the subtitle when type is StepButtonState.DISABLED', () => {
     render(
       <StepCard
         title={title}
         subtitle={subtitle}
         icon={<BicolorAroundMe />}
-        type={StepCardType.DISABLED}
+        type={StepButtonState.DISABLED}
       />
     )
 
