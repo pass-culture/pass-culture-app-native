@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/welcomeBackground'
+import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
