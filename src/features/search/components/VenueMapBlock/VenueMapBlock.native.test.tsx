@@ -17,11 +17,11 @@ describe('<VenueMapBlock />', () => {
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
   })
 
-  it('should navigate to cheat codes', () => {
+  it('should navigate to venue map screen', () => {
     render(<VenueMapBlock />)
 
     fireEvent.press(screen.getByText('Explorer les lieux'))
 
-    expect(navigate).toHaveBeenCalledWith('CheatCodes', undefined)
+    expect(navigate).toHaveBeenCalledWith('VenueMap', undefined)
   })
 })

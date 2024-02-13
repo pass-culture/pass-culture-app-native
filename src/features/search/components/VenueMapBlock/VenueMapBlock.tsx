@@ -16,7 +16,7 @@ export const VenueMapBlock: FunctionComponent = () => {
     <Container>
       <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
-      <TouchableContainer navigateTo={{ screen: 'CheatCodes' }} {...focusProps}>
+      <TouchableContainer navigateTo={{ screen: 'VenueMap' }} {...focusProps}>
         <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
           <StyledLinearGradient />
           <CardText>Explorer les lieux</CardText>

@@ -256,6 +256,7 @@ export type RootStackParamList = {
     from?: Referrals
     searchId?: string
   }
+  VenueMap: undefined
   DeeplinksGenerator: undefined
   UTMParameters: undefined
   ThematicHome: ThematicHomeParams
