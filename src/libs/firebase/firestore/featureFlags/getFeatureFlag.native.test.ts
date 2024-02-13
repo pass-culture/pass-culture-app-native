@@ -22,6 +22,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_PREVIEW,
+    RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER,
   ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {
