@@ -91,7 +91,7 @@ export function OfferVenueBlock({
             {hasVenuePage ? (
               <React.Fragment>
                 <Spacer.Row numberOfSpaces={1} />
-                <RightFilled size={16} testID="RightFilled" />
+                <RightIcon testID="RightFilled" />
               </React.Fragment>
             ) : null}
           </VenueTitleContainer>
@@ -168,6 +168,10 @@ const TertiaryButtonWrapper = styled.View({
 const VenueName = styled(Typo.ButtonText).attrs({ numberOfLines: 1 })({
   flexShrink: 1,
 })
+
+const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))({})
 
 const Address = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
   color: theme.colors.greyDark,
