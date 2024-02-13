@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Modal } from 'react-native'
+import { Modal, Platform } from 'react-native'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
@@ -7,6 +7,7 @@ import { v1 as uuidv1 } from 'uuid'
 
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { reCaptchaWebviewHTML } from './webviewHTML'
 
@@ -32,6 +33,7 @@ type Props = {
 export const ReCaptcha: React.FC<Props> = (props) => {
   const webViewRef = useRef<WebView>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const { top } = useCustomSafeInsets()
   const [keyToReCreateWebViewFromScratch, setKeyToReCreateWebViewFromScratch] = useState<
     string | null
   >(null)
@@ -94,6 +96,7 @@ export const ReCaptcha: React.FC<Props> = (props) => {
       visible={props.isVisible}>
       {props.isVisible && keyToReCreateWebViewFromScratch ? (
         <StyledWebview
+          marginTop={top}
           allowsBackForwardNavigationGestures={false}
           bounces={false}
           cacheEnabled={false}
@@ -118,7 +121,8 @@ export const ReCaptcha: React.FC<Props> = (props) => {
   )
 }
 
-const StyledWebview = styled(WebView)({
+const StyledWebview = styled(WebView)<{ marginTop: number }>(({ marginTop }) => ({
   flex: 1,
   backgroundColor: 'rgba(0, 0, 0, 0)',
-})
+  marginTop: Platform.OS === 'ios' ? marginTop : 0,
+}))

@@ -28,6 +28,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
       injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
       injectedJavaScriptForMainFrameOnly={true}
       javaScriptEnabled={true}
+      marginTop={16}
       messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
@@ -148,6 +149,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
+              "marginTop": 16,
             },
           ],
         ]
