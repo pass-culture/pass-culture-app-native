@@ -54,29 +54,30 @@ function getNativeCategoryGenreTypes(
 
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
   const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
-  return bookTree
-    ?.sort(({ position: positionA }, { position: positionB }) => positionA - positionB)
-    .reduce<MappedNativeCategories>((nativeCategoriesResult, nativeCategory) => {
-      const categorieKey = getKeyFromStringLabel(nativeCategory.label)
-      nativeCategoriesResult[categorieKey] = {
-        label: nativeCategory.label,
-        nbResultsFacet: 0,
-        genreTypeKey: GenreType.BOOK,
-        gtls: nativeCategory.gtls,
-        children: nativeCategory.children
-          .sort(({ position: positionA }, { position: positionB }) => positionA - positionB)
-          .reduce<MappedGenreTypes>((genreTypeChildren, genreType) => {
-            const genreKey = getKeyFromStringLabel(genreType.label)
-            genreTypeChildren[genreKey] = {
-              label: genreType.label,
-              gtls: genreType.gtls,
-              position: genreType.position,
-            }
-            return genreTypeChildren
-          }, {} as MappedGenreTypes),
-      }
-      return nativeCategoriesResult
-    }, {} as MappedNativeCategories)
+  bookTree.sort(({ position: positionA }, { position: positionB }) => positionA - positionB)
+
+  return bookTree.reduce<MappedNativeCategories>((nativeCategoriesResult, nativeCategory) => {
+    const categorieKey = getKeyFromStringLabel(nativeCategory.label)
+    nativeCategory.children.sort(
+      ({ position: positionA }, { position: positionB }) => positionA - positionB
+    )
+    nativeCategoriesResult[categorieKey] = {
+      label: nativeCategory.label,
+      nbResultsFacet: 0,
+      genreTypeKey: GenreType.BOOK,
+      gtls: nativeCategory.gtls,
+      children: nativeCategory.children.reduce<MappedGenreTypes>((genreTypeChildren, genreType) => {
+        const genreKey = getKeyFromStringLabel(genreType.label)
+        genreTypeChildren[genreKey] = {
+          label: genreType.label,
+          gtls: genreType.gtls,
+          position: genreType.position,
+        }
+        return genreTypeChildren
+      }, {} as MappedGenreTypes),
+    }
+    return nativeCategoriesResult
+  }, {} as MappedNativeCategories)
 }
 
 export function createMappingTree(
