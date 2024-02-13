@@ -3,9 +3,9 @@ import React, { ReactElement } from 'react'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 
-import { InternalStep } from '../InternalStep/InternalStep'
-import { StepProps } from '../Step/Step'
-import { StepVariant } from '../VerticalStepper/types'
+import { InternalStep } from '../../../features/profile/components/InternalStep/InternalStep'
+import { StepProps } from '../../../features/profile/components/Step/Step'
+import { StepVariant } from '../../../features/profile/components/VerticalStepper/types'
 
 export interface StepListProps {
   activeStepIndex: number

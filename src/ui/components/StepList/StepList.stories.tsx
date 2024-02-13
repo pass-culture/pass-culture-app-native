@@ -9,7 +9,7 @@ import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
 
-import { Step } from '../Step/Step'
+import { Step } from '../../../features/profile/components/Step/Step'
 
 import { StepList, StepListProps } from './StepList'
 
