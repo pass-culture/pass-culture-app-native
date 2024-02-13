@@ -18,8 +18,9 @@ export type SignInResponseFailure = {
       }
     | {
         code: 'SSO_EMAIL_NOT_FOUND'
-        general: string[]
         accountCreationToken: string
+        email: string
+        general: string[]
       }
 }
 

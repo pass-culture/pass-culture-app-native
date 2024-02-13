@@ -11,7 +11,11 @@ import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { SignInResponseFailure } from 'features/auth/types'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import {
+  StepperOrigin,
+  UseNavigationType,
+  UseRouteType,
+} from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -80,21 +84,27 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const handleSigninFailure = useCallback(
     (response: SignInResponseFailure) => {
       const failureCode = response.content?.code
-      if (
-        failureCode === 'DUPLICATE_GOOGLE_ACCOUNT' ||
-        failureCode === 'SSO_ACCOUNT_DELETED' ||
-        failureCode === 'SSO_ACCOUNT_ANONYMIZED' ||
-        failureCode === 'SSO_EMAIL_NOT_VALIDATED'
+      if (failureCode === 'SSO_EMAIL_NOT_FOUND') {
+        navigate('SignupForm', {
+          accountCreationToken: response.content?.accountCreationToken,
+          email: response.content?.email,
+          from: StepperOrigin.LOGIN,
+        })
+      } else if (
+        failureCode &&
+        [
+          'DUPLICATE_GOOGLE_ACCOUNT',
+          'SSO_ACCOUNT_DELETED',
+          'SSO_ACCOUNT_ANONYMIZED',
+          'SSO_EMAIL_NOT_VALIDATED',
+        ].includes(failureCode)
       ) {
         showErrorSnackBar({
           message:
             'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
           timeout: SNACK_BAR_TIME_OUT_LONG,
         })
-        return
-      }
-
-      if (failureCode === 'EMAIL_NOT_VALIDATED') {
+      } else if (failureCode === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
         setFormErrors('email', { message: 'Cette adresse e-mail est liée à un compte supprimé' })

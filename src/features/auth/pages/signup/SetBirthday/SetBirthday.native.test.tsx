@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import {
   CURRENT_DATE,
   DEFAULT_SELECTED_DATE,
@@ -39,6 +40,15 @@ describe('<SetBirthday />', () => {
   })
 
   it('should render correctly', () => {
+    render(<SetBirthday {...props} />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render correctly when account creation token and email are in route params', () => {
+    useRoute.mockReturnValueOnce({
+      params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
+    })
     render(<SetBirthday {...props} />)
 
     expect(screen).toMatchSnapshot()

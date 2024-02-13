@@ -106,6 +106,7 @@ export enum StepperOrigin {
   OFFER = 'offer',
   TUTORIAL = 'Tutorial',
   VERIFY_ELIGIBILITY = 'verifyEligibility',
+  LOGIN = 'login',
 }
 
 export type SubscriptionRootStackParamList = {
@@ -171,7 +172,9 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  SignupForm: { offerId?: number; from: StepperOrigin } | undefined
+  SignupForm:
+    | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
+    | undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined

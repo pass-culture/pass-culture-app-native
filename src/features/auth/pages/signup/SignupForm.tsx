@@ -31,8 +31,10 @@ export const SignupForm: FunctionComponent = () => {
   const trustedDevice = useDeviceInfo()
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const accountCreationToken = params?.accountCreationToken
+
   const [stepIndex, setStepIndex] = React.useState(0)
-  const [isSSOSubscription, setIsSSOSubscription] = React.useState(false)
+  const [isSSOSubscription, setIsSSOSubscription] = React.useState(!!accountCreationToken)
   const signupStepConfig = isSSOSubscription ? SSO_STEP_CONFIG : DEFAULT_STEP_CONFIG
   const stepConfig = signupStepConfig[stepIndex]
   const numberOfSteps = signupStepConfig.length
@@ -55,10 +57,19 @@ export const SignupForm: FunctionComponent = () => {
     }
   }
 
-  const goToNextStep = (_signupData: Partial<SignupData>) => {
-    setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-    setStepIndex((prevStepIndex) => Math.min(numberOfSteps, prevStepIndex + 1))
-  }
+  const goToNextStep = useCallback(
+    (_signupData: Partial<SignupData>) => {
+      setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
+      setStepIndex((prevStepIndex) => Math.min(numberOfSteps, prevStepIndex + 1))
+    },
+    [numberOfSteps]
+  )
+
+  useEffect(() => {
+    if (accountCreationToken) {
+      goToNextStep({ accountCreationToken })
+    }
+  }, [accountCreationToken, goToNextStep])
 
   useEffect(() => {
     if (params?.from && stepConfig.name) {

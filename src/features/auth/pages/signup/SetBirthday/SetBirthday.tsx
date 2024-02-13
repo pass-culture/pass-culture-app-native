@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
@@ -7,6 +8,7 @@ import styled from 'styled-components/native'
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/constants'
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -26,6 +28,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   accessibilityLabelForNextStep,
   previousSignupData,
 }) => {
+  const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const isSSOSubscriptionFromLogin = !!params?.accountCreationToken
+
   const currentYear = new Date().getFullYear()
   const previousBirthdateProvided = previousSignupData.birthdate
   const maximumSpinnerDate = new Date(currentYear - UNDER_YOUNGEST_AGE, 11, 31)
@@ -68,9 +73,20 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
     [goToNextStep]
   )
 
+  const pageTitle = isSSOSubscriptionFromLogin ? 'Termine ton inscription' : 'Renseigne ton âge'
+
   return (
     <Form.MaxWidth>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ton âge</Typo.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>{pageTitle}</Typo.Title3>
+      {isSSOSubscriptionFromLogin ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Body>
+            Ton compte Google “{params?.email ?? ''}” n’est pas lié à un compte existant. Pour
+            continuer, tu peux créer un compte.
+          </Typo.Body>
+        </React.Fragment>
+      ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
         <InfoBanner
