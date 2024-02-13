@@ -25,6 +25,8 @@ import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferD
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { plural } from 'libs/plural'
@@ -44,6 +46,9 @@ const ANIMATION_DURATION = 700
 const MAX_VENUE_CHARACTERS = 20
 
 export const SearchResultsContent: React.FC = () => {
+  const enableSearchAccessibility = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER
+  )
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlatList<Offer> | FlashList<Offer> | null>(null)
   const {
@@ -246,15 +251,35 @@ export const SearchResultsContent: React.FC = () => {
                 />
               </StyledLi>
             )}
-
-            <StyledLastLi>
-              <SingleFilterButton
-                label="Dates & heures"
-                testID="datesHoursButton"
-                onPress={showDatesHoursModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
-              />
-            </StyledLastLi>
+            {enableSearchAccessibility ? (
+              <React.Fragment>
+                <StyledLi>
+                  <SingleFilterButton
+                    label="Dates & heures"
+                    testID="datesHoursButton"
+                    onPress={showDatesHoursModal}
+                    isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
+                  />
+                </StyledLi>
+                <StyledLastLi>
+                  <SingleFilterButton
+                    label="Accessibilité"
+                    testID="lieuxAccessiblesButton"
+                    onPress={() => ({})}
+                    isSelected={appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY)}
+                  />
+                </StyledLastLi>
+              </React.Fragment>
+            ) : (
+              <StyledLastLi>
+                <SingleFilterButton
+                  label="Dates & heures"
+                  testID="datesHoursButton"
+                  onPress={showDatesHoursModal}
+                  isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
+                />
+              </StyledLastLi>
+            )}
           </Ul>
           <Spacer.Row numberOfSpaces={5} />
         </ScrollView>

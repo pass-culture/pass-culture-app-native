@@ -11,6 +11,7 @@ import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
@@ -19,6 +20,8 @@ import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues
 import { Offer } from 'shared/offer/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -709,6 +712,19 @@ describe('SearchResultsContent component', () => {
 
       expect(filterButton).toBeOnTheScreen()
       expect(filterButton).toHaveTextContent('2')
+    })
+  })
+
+  describe('Accessibility', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    it('should display accessibility filter button', async () => {
+      render(<SearchResultsContent />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('Accessibilité')).toBeOnTheScreen()
     })
   })
 })

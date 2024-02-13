@@ -7,6 +7,7 @@ export enum FILTER_TYPES {
   PRICES = 'Prix',
   OFFER_DUO = 'Duo',
   DATES_HOURS = 'Dates & heures',
+  ACCESSIBILITY = 'Lieux accessibles',
 }
 
 export const useAppliedFilters = (searchState: Partial<SearchState>) => {
