@@ -1,16 +1,21 @@
 import { SubscriptionStepCompletionState, SubscriptionStepperResponse } from 'api/gen'
-import { StepButtonState, StepConfig, StepDetails } from 'features/identityCheck/types'
+import {
+  IdentityCheckStep,
+  StepButtonState,
+  StepConfig,
+  StepDetails,
+} from 'features/identityCheck/types'
 
 export const mapStepsDetails = (
   stepToDisplayList: SubscriptionStepperResponse['subscriptionStepsToDisplay'],
-  stepConfigList: StepConfig[]
-): StepDetails[] => {
+  stepConfigList: StepConfig<IdentityCheckStep>[]
+): StepDetails<IdentityCheckStep>[] => {
   const stepDetailsList = stepToDisplayList.map((step) => {
     const currentStepConfig = stepConfigList.find(
       (stepConfig) => stepConfig.name.valueOf() === step.name.valueOf()
     )
     if (!currentStepConfig) return null
-    const stepDetails: StepDetails = {
+    const stepDetails: StepDetails<IdentityCheckStep> = {
       name: currentStepConfig?.name,
       title: step.title,
       subtitle: step.subtitle ?? undefined,
@@ -22,7 +27,7 @@ export const mapStepsDetails = (
   })
 
   const stepDetailsListWithoutNull = stepDetailsList.filter(
-    (step): step is StepDetails => step != null
+    (step): step is StepDetails<IdentityCheckStep> => step != null
   )
   return stepDetailsListWithoutNull
 }

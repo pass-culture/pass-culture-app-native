@@ -48,7 +48,7 @@ const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay']
 ]
 
 describe('mapStepsDetails', () => {
-  const stepsConfig: StepConfig[] = [
+  const stepsConfig: StepConfig<IdentityCheckStep>[] = [
     {
       firstScreen: 'SetPhoneNumber',
       name: IdentityCheckStep.PHONE_VALIDATION,
@@ -93,7 +93,7 @@ describe('mapStepsDetails', () => {
     },
   ]
 
-  const expectedStepsDetails: StepDetails[] = [
+  const expectedStepsDetails: StepDetails<IdentityCheckStep>[] = [
     {
       name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {

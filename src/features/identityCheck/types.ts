@@ -19,13 +19,13 @@ export enum IdentityCheckStep {
 
 export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 
-export type StepConfig = {
-  name: IdentityCheckStep
+export type StepConfig<T> = {
+  name: T
   icon: Record<StepButtonState, React.FC<IconInterface>>
   firstScreen: SubscriptionScreen
 }
 
-export type StepDetails = StepConfig & {
+export type StepDetails<T> = StepConfig<T> & {
   title: string
   subtitle?: string
   stepState: StepButtonState

@@ -3,7 +3,7 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 
-export const stepsDetailsFixture: StepDetails[] = [
+export const stepsDetailsFixture: StepDetails<IdentityCheckStep>[] = [
   {
     name: IdentityCheckStep.PHONE_VALIDATION,
     icon: {

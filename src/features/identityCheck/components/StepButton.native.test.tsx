@@ -19,7 +19,7 @@ describe('StepButton', () => {
   `(
     'should return the correct StepButton depending on StepButtonState',
     ({ stepState, stepTestId, isDisabled }) => {
-      const identificationStep: StepDetails = {
+      const identificationStep: StepDetails<IdentityCheckStep> = {
         name: IdentityCheckStep.IDENTIFICATION,
         firstScreen: 'SelectIDOrigin',
         stepState: stepState,
@@ -47,7 +47,7 @@ describe('StepButton', () => {
   `(
     'should return the correct StepButton depending on StepButtonState',
     ({ stepState, stepTestId }) => {
-      const identificationStep: StepDetails = {
+      const identificationStep: StepDetails<IdentityCheckStep> = {
         name: IdentityCheckStep.IDENTIFICATION,
         firstScreen: 'SelectIDOrigin',
         stepState: stepState,

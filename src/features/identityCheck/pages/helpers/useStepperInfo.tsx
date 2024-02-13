@@ -16,7 +16,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): {
-  stepsDetails: StepDetails[]
+  stepsDetails: StepDetails<IdentityCheckStep>[]
   title: string
   subtitle?: string | null
   errorMessage?: string | null
@@ -25,7 +25,7 @@ export const useStepperInfo = (): {
   const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
     useGetStepperInfo()
 
-  const stepsConfig: StepConfig[] = [
+  const stepsConfig: StepConfig<IdentityCheckStep>[] = [
     {
       name: IdentityCheckStep.PROFILE,
       icon: {
