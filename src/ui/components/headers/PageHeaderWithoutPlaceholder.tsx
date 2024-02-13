@@ -19,7 +19,6 @@ interface Props {
   shouldDisplayBackButton?: boolean
   RightButton?: ReactNode
   children?: ReactNode
-  backgroundColor?: string
 }
 
 const HEADER_HEIGHT = getSpacing(12)
@@ -40,12 +39,11 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   shouldDisplayBackButton = true,
   RightButton = null,
   children,
-  backgroundColor,
 }) => {
   return (
     <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER}>
       <Spacer.TopScreen />
-      <Container backgroundColor={backgroundColor}>
+      <Container>
         <Row>
           <ButtonContainer positionInHeader="left" testID="back-button-container">
             {!!shouldDisplayBackButton && (
@@ -76,12 +74,11 @@ const Header = styled.View(({ theme }) => ({
   borderBottomWidth: 1,
 }))
 
-const Container = styled.View<{ backgroundColor?: string }>(({ backgroundColor }) => ({
+const Container = styled.View({
   alignItems: 'center',
   height: HEADER_HEIGHT,
   justifyContent: 'center',
-  backgroundColor,
-}))
+})
 
 const Title = styled.Text.attrs(() => ({
   numberOfLines: 1,
