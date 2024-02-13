@@ -171,7 +171,9 @@ const VenueName = styled(Typo.ButtonText).attrs({ numberOfLines: 1 })({
 
 const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-}))({})
+}))({
+  flexShrink: 0,
+})
 
 const Address = styled(Typo.Caption).attrs({ numberOfLines: 2 })(({ theme }) => ({
   color: theme.colors.greyDark,
