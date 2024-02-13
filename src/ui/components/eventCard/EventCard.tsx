@@ -6,6 +6,9 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
+const CARD_HEIGHT = getSpacing(17)
+const CARD_WIDTH = getSpacing(28)
+
 interface Props {
   onPress: () => void
   isDisabled: boolean
@@ -43,7 +46,7 @@ export const EventCard: React.FC<Props> = ({
   )
 }
 const StyledPressable = styledButton(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
-  width: getSpacing(28),
+  width: CARD_WIDTH,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
   '&:focus': {
     outlineOffset: getSpacing(0.75),
@@ -56,7 +59,7 @@ const Container = styled.View<{ isDisabled: boolean }>(({ theme, isDisabled }) =
   display: 'inline-flex',
   backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
   alignItems: 'flex-start',
-  heigth: getSpacing(17),
+  heigth: CARD_HEIGHT,
   width: '100%',
   padding: getSpacing(3),
   borderRadius: theme.borderRadius.radius,
