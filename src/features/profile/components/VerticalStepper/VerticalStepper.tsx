@@ -1,9 +1,9 @@
 import React, { memo, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ValidateIcon } from 'features/profile/components/ValidateIcon'
 import { DotSize, VerticalDots } from 'features/profile/components/VerticalDots/VerticalDots'
 import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
+import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { getSpacing } from 'ui/theme'
 
 import { StepVariant } from './types'
@@ -45,7 +45,7 @@ export const VerticalStepper = memo(function VerticalStepper({
 
       if (variant === StepVariant.complete)
         return (
-          <ValidateIcon
+          <StepperValidate
             color={theme.colors.greenValid}
             color2={theme.colors.white}
             size={20}
