@@ -1,4 +1,5 @@
-import { IdentityCheckStep, StepButtonState, StepDetails } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
+import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'

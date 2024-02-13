@@ -1,5 +1,6 @@
-import { IdentityCheckStep, StepDetails } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { StepDetails } from 'ui/components/StepButton/types'
 
 export const getCurrentStep = (
   steps: StepDetails<IdentityCheckStep>[],

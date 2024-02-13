@@ -2,10 +2,11 @@ import React from 'react'
 
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
-import { StepButtonState, StepDetails, IdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { StepButton } from 'ui/components/StepButton/StepButton'
+import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 

@@ -1,10 +1,6 @@
 import { SubscriptionStepCompletionState, SubscriptionStepperResponse } from 'api/gen'
-import {
-  IdentityCheckStep,
-  StepButtonState,
-  StepConfig,
-  StepDetails,
-} from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
+import { StepButtonState, StepConfig, StepDetails } from 'ui/components/StepButton/types'
 
 export const mapStepsDetails = (
   stepToDisplayList: SubscriptionStepperResponse['subscriptionStepsToDisplay'],

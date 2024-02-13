@@ -2,13 +2,9 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  StepButtonState,
-  StepDetails,
-  SubscriptionScreen,
-  IdentityCheckStep,
-} from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
+import { StepButtonState, StepDetails, SubscriptionScreen } from 'ui/components/StepButton/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
