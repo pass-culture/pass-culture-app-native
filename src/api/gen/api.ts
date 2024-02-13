@@ -272,6 +272,53 @@ export interface BookOfferResponse {
 }
 /**
  * @export
+ * @interface BookSubType
+ */
+export interface BookSubType {
+  /**
+   * @type {Array<GTL>}
+   * @memberof BookSubType
+   */
+  gtls: Array<GTL>
+  /**
+   * @type {string}
+   * @memberof BookSubType
+   */
+  label: string
+  /**
+   * @type {number}
+   * @memberof BookSubType
+   */
+  position: number
+}
+/**
+ * @export
+ * @interface BookType
+ */
+export interface BookType {
+  /**
+   * @type {Array<BookSubType>}
+   * @memberof BookType
+   */
+  children: Array<BookSubType>
+  /**
+   * @type {Array<GTL>}
+   * @memberof BookType
+   */
+  gtls: Array<GTL>
+  /**
+   * @type {string}
+   * @memberof BookType
+   */
+  label: string
+  /**
+   * @type {number}
+   * @memberof BookType
+   */
+  position: number
+}
+/**
+ * @export
  * @interface BookingActivationCodeResponse
  */
 export interface BookingActivationCodeResponse {
@@ -1180,6 +1227,27 @@ export interface FavoritesCountResponse {
   count: number
 }
 /**
+ * @export
+ * @interface GTL
+ */
+export interface GTL {
+  /**
+   * @type {string}
+   * @memberof GTL
+   */
+  code: string
+  /**
+   * @type {string}
+   * @memberof GTL
+   */
+  label: string
+  /**
+   * @type {number}
+   * @memberof GTL
+   */
+  level: number
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1216,6 +1284,11 @@ export interface GenreTypeModel {
    * @memberof GenreTypeModel
    */
   name: GenreType
+  /**
+   * @type {Array<BookType> | Array<MusicType> | Array<ShowType> | Array<MovieType>}
+   * @memberof GenreTypeModel
+   */
+  trees: Array<BookType> | Array<MusicType> | Array<ShowType> | Array<MovieType>
   /**
    * @type {Array<GenreTypeContentModel>}
    * @memberof GenreTypeModel
@@ -1400,6 +1473,64 @@ export enum IdentityCheckMethod {
 export enum MaintenancePageType {
   'with-dms' = 'with-dms',
   'without-dms' = 'without-dms',
+}
+/**
+ * @export
+ * @interface MovieType
+ */
+export interface MovieType {
+  /**
+   * @type {string}
+   * @memberof MovieType
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof MovieType
+   */
+  name: string
+}
+/**
+ * @export
+ * @interface MusicSubType
+ */
+export interface MusicSubType {
+  /**
+   * @type {number}
+   * @memberof MusicSubType
+   */
+  code: number
+  /**
+   * @type {string}
+   * @memberof MusicSubType
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof MusicSubType
+   */
+  slug: string
+}
+/**
+ * @export
+ * @interface MusicType
+ */
+export interface MusicType {
+  /**
+   * @type {Array<MusicSubType>}
+   * @memberof MusicType
+   */
+  children: Array<MusicSubType>
+  /**
+   * @type {number}
+   * @memberof MusicType
+   */
+  code: number
+  /**
+   * @type {string}
+   * @memberof MusicType
+   */
+  label: string
 }
 /**
  * An enumeration.
@@ -2307,6 +2438,48 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   objectStorageUrl: string
+}
+/**
+ * @export
+ * @interface ShowSubType
+ */
+export interface ShowSubType {
+  /**
+   * @type {number}
+   * @memberof ShowSubType
+   */
+  code: number
+  /**
+   * @type {string}
+   * @memberof ShowSubType
+   */
+  label: string
+  /**
+   * @type {string}
+   * @memberof ShowSubType
+   */
+  slug: string
+}
+/**
+ * @export
+ * @interface ShowType
+ */
+export interface ShowType {
+  /**
+   * @type {Array<ShowSubType>}
+   * @memberof ShowType
+   */
+  children: Array<ShowSubType>
+  /**
+   * @type {number}
+   * @memberof ShowType
+   */
+  code: number
+  /**
+   * @type {string}
+   * @memberof ShowType
+   */
+  label: string
 }
 /**
  * @export
