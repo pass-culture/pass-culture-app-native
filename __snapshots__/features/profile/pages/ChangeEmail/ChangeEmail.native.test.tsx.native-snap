@@ -389,7 +389,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                     ]
                   }
                 >
-                  Nouvel e-mail
+                  Nouvelle adresse e-mail
                 </Text>
                 <Text
                   style={
@@ -456,7 +456,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholder="tonadresse@email.com"
+                placeholder="email@exemple.com"
                 placeholderTextColor="#696A6F"
                 returnKeyType="next"
                 style={
@@ -705,7 +705,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
             }
           >
             <View
-              accessibilityLabel="Enregistrer les modifications"
+              accessibilityLabel="Valider la demande de modification de mon e-mail"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -751,7 +751,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                   "width": "100%",
                 }
               }
-              testID="Enregistrer les modifications"
+              testID="Valider la demande de modification de mon e-mail"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -769,7 +769,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                   ]
                 }
               >
-                Enregistrer
+                Valider la demande
               </Text>
             </View>
           </View>
@@ -1119,7 +1119,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                     ]
                   }
                 >
-                  Nouvel e-mail
+                  Nouvelle adresse e-mail
                 </Text>
                 <Text
                   style={
@@ -1187,7 +1187,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
-                placeholder="tonadresse@email.com"
+                placeholder="email@exemple.com"
                 placeholderTextColor="#696A6F"
                 returnKeyType="next"
                 style={
@@ -1437,7 +1437,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Enregistrer les modifications"
+              accessibilityLabel="Valider la demande de modification de mon e-mail"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1483,7 +1483,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   "width": "100%",
                 }
               }
-              testID="Enregistrer les modifications"
+              testID="Valider la demande de modification de mon e-mail"
             >
               <Text
                 adjustsFontSizeToFit={false}
@@ -1501,7 +1501,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   ]
                 }
               >
-                Enregistrer
+                Valider la demande
               </Text>
             </View>
           </View>

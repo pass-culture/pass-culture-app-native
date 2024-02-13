@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, superFlushWithAct } from 'tests/utils'
@@ -25,6 +26,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('<ChangeEmail/>', () => {
   beforeEach(() => {
     mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
@@ -39,6 +42,18 @@ describe('<ChangeEmail/>', () => {
     await screen.findByText('Modifier mon e-mail')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should not display the update app banner when FF is disabled', async () => {
+    renderChangeEmail()
+
+    await act(() => {})
+
+    const updateAppBanner = screen.queryByText(
+      'Tu dois mettre à jour ton application pour pouvoir modifier ton adresse e-mail'
+    )
+
+    expect(updateAppBanner).not.toBeOnTheScreen()
   })
 
   it('should show email suggestion', async () => {
@@ -78,14 +93,16 @@ describe('<ChangeEmail/>', () => {
       renderChangeEmail()
       await act(async () => {})
 
-      const submitButton = await screen.findByLabelText('Enregistrer les modifications')
+      const submitButton = await screen.findByLabelText(
+        'Valider la demande de modification de mon e-mail'
+      )
 
       expect(submitButton).toBeDisabled()
     })
 
     it('should be enabled when form is valid', async () => {
       renderChangeEmail()
-      const submitButton = screen.getByLabelText('Enregistrer les modifications')
+      const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
 
       await fillInputs({ email: 'valid@email.com', password: 'password>=12' })
 
@@ -99,7 +116,7 @@ describe('<ChangeEmail/>', () => {
       ${'password>=12'} | ${''}
     `('should be disabled when form is invalid', async ({ password, email }) => {
       renderChangeEmail()
-      const submitButton = screen.getByLabelText('Enregistrer les modifications')
+      const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
 
       await fillInputs({ email, password })
 
@@ -139,7 +156,7 @@ describe('<ChangeEmail/>', () => {
 
   it('should display "same email" error if I entered the same email (case insensitive)', async () => {
     renderChangeEmail()
-    const submitButton = screen.getByLabelText('Enregistrer les modifications')
+    const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
 
     await fillInputs({ email: 'EMAIL@domain.ext' })
 
@@ -220,6 +237,49 @@ describe('<ChangeEmail/>', () => {
       )
     })
   })
+
+  describe('when FF disableOldChangeEmail is active', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true) // first render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // second render because of useCheckHasCurrentEmailChange
+    })
+
+    it('should display the update app banner', async () => {
+      renderChangeEmail()
+
+      const updateAppBanner = await screen.findByText(
+        'Tu dois mettre à jour ton application pour pouvoir modifier ton adresse e-mail'
+      )
+
+      expect(updateAppBanner).toBeOnTheScreen()
+    })
+
+    it('should disable the email input', async () => {
+      renderChangeEmail()
+
+      const emailInput = await screen.findByPlaceholderText('email@exemple.com')
+
+      expect(emailInput).toBeDisabled()
+    })
+
+    it('should disable the password input', async () => {
+      renderChangeEmail()
+
+      const passwordInput = await screen.findByPlaceholderText('Ton mot de passe')
+
+      expect(passwordInput).toBeDisabled()
+    })
+
+    it('should disable the submit button when form is valid', async () => {
+      renderChangeEmail()
+
+      await fillInputs({ email: 'valid@email.com', password: 'password>=12' })
+
+      const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
+
+      expect(submitButton).toBeDisabled()
+    })
+  })
 })
 
 const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
@@ -228,15 +288,15 @@ const fillInputs = async ({ email, password }: { email?: string; password?: stri
   const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
   fireEvent.changeText(passwordInput, password ?? 'password>=12')
 
-  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-  fireEvent.changeText(emailInput, email ?? 'tonadresse@email.com')
+  const emailInput = screen.getByPlaceholderText('email@exemple.com')
+  fireEvent.changeText(emailInput, email ?? 'email@exemple.com')
 
   // To avoid CI flakiness
   await superFlushWithAct()
 }
 
 const submitForm = async () => {
-  const submitButton = screen.getByLabelText('Enregistrer les modifications')
+  const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
   fireEvent.press(submitButton)
 
   // To avoid CI flakiness

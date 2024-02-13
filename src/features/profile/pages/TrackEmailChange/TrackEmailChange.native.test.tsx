@@ -7,7 +7,8 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
-import { fireEvent, render, screen } from 'tests/utils'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockUseAuthContext = jest.fn().mockReturnValue({ user: { email: 'example@example.com' } })
 jest.mock('features/auth/context/AuthContext', () => ({
@@ -29,6 +30,8 @@ const useEmailUpdateStatusSpy = jest
 
 jest.mock('features/navigation/navigationRef')
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('TrackEmailChange', () => {
   it('should render the component correctly', () => {
     render(<TrackEmailChange />)
@@ -40,6 +43,18 @@ describe('TrackEmailChange', () => {
     render(<TrackEmailChange />)
 
     expect(screen.getByText('Envoi de ta demande')).toBeOnTheScreen()
+  })
+
+  it('should not display the update app banner when FF is disabled', async () => {
+    render(<TrackEmailChange />)
+
+    await act(() => {})
+
+    const updateAppBanner = screen.queryByText(
+      'Tu dois mettre à jour ton application pour pouvoir modifier ton adresse e-mail'
+    )
+
+    expect(updateAppBanner).not.toBeOnTheScreen()
   })
 
   it('should display "Confirme ta demande" when current step is UPDATE_REQUEST', () => {
@@ -279,6 +294,43 @@ describe('TrackEmailChange', () => {
       render(<TrackEmailChange />)
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    })
+  })
+
+  describe('when FF disableOldChangeEmail is active', () => {
+    beforeEach(() => useFeatureFlagSpy.mockReturnValueOnce(true))
+
+    it('should display the update app banner', async () => {
+      render(<TrackEmailChange />)
+
+      const updateAppBanner = await screen.findByText(
+        'Tu dois mettre à jour ton application pour pouvoir modifier ton adresse e-mail'
+      )
+
+      expect(updateAppBanner).toBeOnTheScreen()
+    })
+
+    it.each([
+      undefined,
+      EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+      EmailHistoryEventTypeEnum.CONFIRMATION,
+      EmailHistoryEventTypeEnum.VALIDATION,
+    ])('should disable all steps regardless of progression', (status) => {
+      useEmailUpdateStatusSpy.mockReturnValueOnce({
+        data: {
+          expired: false,
+          newEmail: 'new@mail.com',
+          status,
+        },
+        isLoading: false,
+      } as UseEmailUpdateStatusMock)
+      render(<TrackEmailChange />)
+
+      const stepCards = screen.getAllByTestId('stepcard-container')
+
+      stepCards.forEach((stepCard) => {
+        expect(stepCard.props.type).toBe('disabled')
+      })
     })
   })
 })
