@@ -66,4 +66,48 @@ describe.each([
       expect(result.current).toBe(firebaseFeatureFlag)
     }
   )
+
+  it('should deactivate FF when no build number is given', async () => {
+    const firestoreData = {}
+    mockGet.mockReturnValueOnce(firestoreData)
+
+    const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+    await act(async () => {})
+
+    expect(result.current).toBeFalsy()
+  })
+
+  it('should activate FF when version is below maximalBuildNumber', async () => {
+    const firestoreData = { maximalBuildNumber: buildVersion + 1 }
+    mockGet.mockReturnValueOnce(firestoreData)
+
+    const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+    await act(async () => {})
+
+    expect(result.current).toBeTruthy()
+  })
+
+  it('should activate FF when version is equal to maximalBuildNumber', async () => {
+    const firestoreData = { maximalBuildNumber: buildVersion }
+    mockGet.mockReturnValueOnce(firestoreData)
+
+    const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+    await act(async () => {})
+
+    expect(result.current).toBeTruthy()
+  })
+
+  it('should deactivate FF when version is greater than maximalBuildNumber', async () => {
+    const firestoreData = { maximalBuildNumber: buildVersion - 1 }
+    mockGet.mockReturnValueOnce(firestoreData)
+
+    const { result } = renderHook(() => useFeatureFlag(featureFlag))
+
+    await act(async () => {})
+
+    expect(result.current).toBeFalsy()
+  })
 })

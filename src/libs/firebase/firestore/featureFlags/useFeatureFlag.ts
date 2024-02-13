@@ -9,17 +9,29 @@ import { getAppBuildVersion } from 'libs/packageJson'
 export const useFeatureFlag = (
   remoteStorefeatureFlag: RemoteStoreFeatureFlags
 ): boolean | undefined => {
-  const [minimalBuildNumber, setMinimalBuildNumber] = useState<number | null>()
+  const [buildNumberConfig, setBuildNumberConfig] = useState<{
+    minimalBuildNumber?: number | null
+    maximalBuildNumber?: number | null
+  }>({})
 
   useEffect(() => {
-    async function getMinimalBuildNumber() {
-      const featureFlag = await getFeatureFlag(remoteStorefeatureFlag)
-      setMinimalBuildNumber(featureFlag?.minimalBuildNumber || null)
+    async function fetchFeatureFlag() {
+      return getFeatureFlag(remoteStorefeatureFlag)
     }
-    getMinimalBuildNumber()
+
+    fetchFeatureFlag().then((featureFlag) => {
+      setBuildNumberConfig({
+        minimalBuildNumber: featureFlag?.minimalBuildNumber || null,
+        maximalBuildNumber: featureFlag?.maximalBuildNumber || null,
+      })
+    })
   }, [remoteStorefeatureFlag])
 
-  if (minimalBuildNumber === undefined) return undefined
+  const { minimalBuildNumber, maximalBuildNumber } = buildNumberConfig
+  if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) return undefined
+
+  if (maximalBuildNumber !== null)
+    return !!maximalBuildNumber && getAppBuildVersion() <= maximalBuildNumber
 
   return !!minimalBuildNumber && getAppBuildVersion() >= minimalBuildNumber
 }

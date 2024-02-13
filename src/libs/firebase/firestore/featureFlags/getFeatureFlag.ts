@@ -5,13 +5,14 @@ import { captureMonitoringError } from 'libs/monitoring'
 
 export const getFeatureFlag = (
   featureFlag: RemoteStoreFeatureFlags
-): Promise<void | { minimalBuildNumber: number } | null> =>
+): Promise<void | { minimalBuildNumber?: number; maximalBuildNumber?: number } | null> =>
   firestoreRemoteStore
     .collection(RemoteStoreCollections.FEATURE_FLAGS)
     .doc(env.ENV)
     .get()
     .then((docSnapshot) => {
-      const firebaseFeatureFlag = docSnapshot.get<{ minimalBuildNumber: number }>(featureFlag)
+      const firebaseFeatureFlag =
+        docSnapshot.get<{ minimalBuildNumber: number; maximalBuildNumber?: number }>(featureFlag)
 
       if (firebaseFeatureFlag === undefined) return null
       return firebaseFeatureFlag
