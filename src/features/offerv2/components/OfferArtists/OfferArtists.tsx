@@ -13,7 +13,6 @@ interface Props {
 export function OfferArtists({ artists, numberOfLines = 2 }: Readonly<Props>) {
   return artists ? (
     <ArtistsText
-      adjustsFontSizeToFit
       allowFontScaling={false}
       numberOfLines={numberOfLines}
       {...getHeadingAttrs(1)}

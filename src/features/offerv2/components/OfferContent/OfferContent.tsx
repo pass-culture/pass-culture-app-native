@@ -10,6 +10,7 @@ import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
+import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
 import { OfferAbout } from 'features/offerv2/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
@@ -28,6 +29,7 @@ import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { Separator } from 'ui/components/Separator'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -48,6 +50,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
+
+  const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
 
   const {
     sameArtistPlaylist,
@@ -96,9 +100,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
-      {isWeb ? (
+      {!isWeb ? null : (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      ) : null}
+      )}
       <ScrollViewContainer
         testID="offerv2-container"
         scrollEventThrottle={16}
@@ -112,20 +116,30 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <InformationTags tags={tags} />
             <Spacer.Column numberOfSpaces={4} />
             <OfferTitle offerName={offer.name} />
-            {artists ? (
+
+            {!artists ? null : (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={2} />
                 <OfferArtists artists={artists} />
               </React.Fragment>
-            ) : null}
+            )}
           </GroupWithoutGap>
 
-          <OfferPrice prices={prices} />
+          {!prices ? null : <OfferPrice prices={prices} />}
 
-          <GroupWithoutGap>
-            {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
-            <OfferSummaryInfoList offer={offer} />
-          </GroupWithoutGap>
+          {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+            <GroupWithoutGap>
+              {!offer.venue.isPermanent ? null : <OfferVenueButton venue={offer.venue} />}
+
+              {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+                <Separator.Horizontal testID="topSeparator" />
+              )}
+
+              {summaryInfoItems.length === 0 ? null : (
+                <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />
+              )}
+            </GroupWithoutGap>
+          )}
 
           <OfferAbout offer={offer} />
         </InfoContainer>
