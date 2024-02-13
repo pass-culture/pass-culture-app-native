@@ -28,7 +28,7 @@ describe.each([
   RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,
   RemoteStoreFeatureFlags.WIP_VENUE_MAP,
   RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_PREVIEW,
-  RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTERS,
+  RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER,
 ])('useFeatureFlag %s', (featureFlag: RemoteStoreFeatureFlags) => {
   beforeAll(() =>
     collection(featureFlag)
