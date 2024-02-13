@@ -31,4 +31,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',
   WIP_VENUE_MAP = 'wipVenueMap',
   WIP_VENUE_MAP_WITHOUT_PREVIEW = 'wipVenueMapWithoutPreview',
+  WIP_SEARCH_ACCESSIBILITY_FILTERS = 'wipSearchAccessibilityFilters',
 }
