@@ -12,6 +12,7 @@ import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -205,6 +206,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
     hasGeolocPosition: mockHasGeolocPosition,
   }),
 }))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<SearchLanding />', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

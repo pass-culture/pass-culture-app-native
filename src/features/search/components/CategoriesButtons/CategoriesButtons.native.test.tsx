@@ -3,7 +3,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
 
@@ -24,10 +24,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 describe('CategoriesButtons', () => {
-  it('should display categories', () => {
+  it('should display categories', async () => {
     render(<CategoriesButtons />)
 
-    expect(screen.queryAllByRole('button')).toHaveLength(14)
+    await waitFor(async () => {
+      expect(screen.queryAllByRole('button')).toHaveLength(14)
+    })
   })
 
   it('should update searchContext on press', async () => {
@@ -35,21 +37,22 @@ describe('CategoriesButtons', () => {
 
     const categoryButton = screen.getByText('Spectacles')
     fireEvent.press(categoryButton)
-    await act(async () => {})
 
-    expect(mockDispatch).toHaveBeenCalledWith({
-      payload: {
-        ...mockSearchState,
-        offerSubcategories: [],
-        offerNativeCategories: undefined,
-        offerGenreTypes: undefined,
-        searchId: 'testUuidV4',
-        isFullyDigitalOffersCategory: undefined,
-        isFromHistory: undefined,
-        view: SearchView.Results,
-        offerCategories: ['SPECTACLES'],
-      },
-      type: 'SET_STATE',
+    await waitFor(async () => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        payload: {
+          ...mockSearchState,
+          offerSubcategories: [],
+          offerNativeCategories: undefined,
+          offerGenreTypes: undefined,
+          searchId: 'testUuidV4',
+          isFullyDigitalOffersCategory: undefined,
+          isFromHistory: undefined,
+          view: SearchView.Results,
+          offerCategories: ['SPECTACLES'],
+        },
+        type: 'SET_STATE',
+      })
     })
   })
 })
