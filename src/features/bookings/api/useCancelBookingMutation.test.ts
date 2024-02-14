@@ -1,53 +1,55 @@
-import { useQueryClient, useMutation } from 'react-query'
+import * as ReactQueryAPI from 'react-query'
 
-import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, renderHook } from 'tests/utils'
 
 import { useCancelBookingMutation } from './useCancelBookingMutation'
 
-jest.mock('api/api')
-jest.mock('react-query')
+const BOOKING_OFFER_ID = 1
+
+const onSuccess = jest.fn()
+const onError = jest.fn()
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
+
+const invalidateQueriesMock = jest.fn()
+useQueryClientSpy.mockReturnValue({
+  invalidateQueries: invalidateQueriesMock,
+} as unknown as ReactQueryAPI.QueryClient)
 
 describe('[hook] useCancelBookingMutation', () => {
-  const onSuccess = jest.fn()
-  const onError = jest.fn()
-  const queryClient = useQueryClient()
+  it('invalidates me and bookings after successfully cancel a booking', async () => {
+    mockServer.postApiV1(`/bookings/${BOOKING_OFFER_ID}/cancel`, {})
 
-  it('use useMutation', () => {
-    useCancelBookingMutation({ onSuccess, onError })
+    const mutate = renderUseCancelBookingMutation()
 
-    expect(useMutation).toHaveBeenCalledWith(expect.any(Function), {
-      onSuccess: expect.any(Function),
-      onError: expect.any(Function),
+    await act(async () => mutate(BOOKING_OFFER_ID))
+
+    expect(onSuccess).toHaveBeenCalledTimes(1)
+    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.USER_PROFILE])
+    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.BOOKINGS])
+  })
+
+  it('call onError input after cancel a booking on error', async () => {
+    mockServer.postApiV1(`/bookings/${BOOKING_OFFER_ID}/cancel`, {
+      responseOptions: { statusCode: 400 },
     })
-  })
 
-  it('invalidates me and bookings after successfully cancel a booking', () => {
-    const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
-    // @ts-expect-error returned value is mocked
-    const { mutationOptions } = returnedMutationValue
-    mutationOptions.onSuccess()
+    const mutate = renderUseCancelBookingMutation()
+    await act(async () => mutate(BOOKING_OFFER_ID))
 
-    expect(onSuccess).toHaveBeenCalledWith()
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.USER_PROFILE])
-    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.BOOKINGS])
-  })
-
-  it('call api to cancel a booking', () => {
-    const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
-    // @ts-expect-error returned value is mocked
-    const { mutationFunction } = returnedMutationValue
-    mutationFunction('bookingId')
-
-    expect(api.postNativeV1BookingsbookingIdCancel).toHaveBeenCalledWith('bookingId')
-  })
-
-  it('call onError input after cancel a booking on error', () => {
-    const returnedMutationValue = useCancelBookingMutation({ onSuccess, onError })
-    // @ts-expect-error returned value is mocked
-    const { mutationOptions } = returnedMutationValue
-    mutationOptions.onError()
-
-    expect(onError).toHaveBeenCalledWith()
+    expect(onError).toHaveBeenCalledTimes(1)
   })
 })
+
+const renderUseCancelBookingMutation = () => {
+  const {
+    result: {
+      current: { mutate },
+    },
+  } = renderHook(() => useCancelBookingMutation({ onSuccess, onError }), {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+  return mutate
+}
