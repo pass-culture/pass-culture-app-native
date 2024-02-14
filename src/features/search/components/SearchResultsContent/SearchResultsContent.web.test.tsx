@@ -3,11 +3,10 @@ import React from 'react'
 import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils/web'
 
 import { SearchResultsContent } from './SearchResultsContent'
-
-jest.mock('react-query')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
@@ -47,7 +46,7 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(<SearchResultsContent />)
+    const renderAPI = render(reactQueryProviderHOC(<SearchResultsContent />))
     await act(async () => {}) // fix 3 warnings "Warning: An update to %s inside a test was not wrapped in act" for PriceModal, LocationModal and DatesHoursModal
     await screen.findByTestId('searchResultsList')
 

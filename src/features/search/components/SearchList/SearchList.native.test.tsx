@@ -7,8 +7,6 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
-jest.mock('react-query')
-
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
 

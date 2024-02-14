@@ -10,7 +10,6 @@ import { act, render, screen, waitFor } from 'tests/utils/web'
 import { SearchHeader } from './SearchHeader'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-jest.mock('react-query')
 
 jest.mock('react-instantsearch-core', () => ({
   useSearchBox: () => ({

@@ -20,8 +20,6 @@ import { Offer } from 'shared/offer/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
-jest.mock('react-query')
-
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState

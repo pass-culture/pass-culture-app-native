@@ -6,8 +6,6 @@ import { render, screen } from 'tests/utils'
 
 import { NumberOfResults } from './NumberOfResults'
 
-jest.mock('react-query')
-
 const mockLocationFilter: LocationFilter = { locationType: LocationMode.EVERYWHERE }
 
 jest.mock('features/search/context/SearchWrapper', () => ({
