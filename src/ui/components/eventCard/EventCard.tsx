@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const CARD_HEIGHT = getSpacing(17)
@@ -65,6 +65,14 @@ const Container = styled.View<{ isDisabled: boolean }>(({ theme, isDisabled }) =
   borderRadius: theme.borderRadius.radius,
   borderWidth: isDisabled ? 0 : getSpacing(0.25),
   borderColor: theme.colors.black,
+  ...(!isDisabled
+    ? getShadow({
+        shadowOffset: { width: 0, height: getSpacing(1) },
+        shadowRadius: getSpacing(1),
+        shadowColor: theme.colors.greyDark,
+        shadowOpacity: 0.2,
+      })
+    : {}),
 }))
 
 const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
