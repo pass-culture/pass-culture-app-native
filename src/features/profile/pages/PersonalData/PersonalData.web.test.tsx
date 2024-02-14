@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { UpdateEmailTokenExpiration } from 'api/gen'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, checkAccessibilityFor } from 'tests/utils/web'
 
@@ -10,13 +12,16 @@ jest.mock('features/auth/context/AuthContext')
 describe('<PersonalData/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
+      mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
+        expiration: null,
+      })
       const { container } = render(reactQueryProviderHOC(<PersonalData />))
 
-      await act(async () => {})
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
 
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { UpdateEmailTokenExpiration } from 'api/gen'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
@@ -17,13 +19,16 @@ jest.mock('uuid', () => {
 describe('<ChangeEmail/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
+      mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
+        expiration: null,
+      })
       const { container } = render(reactQueryProviderHOC(<ChangeEmail />))
 
-      await act(async () => {
-        await waitFor(() => {
-          expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
-        })
+      await waitFor(() => {
+        expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
+      })
 
+      await act(async () => {
         const results = await checkAccessibilityFor(container)
 
         expect(results).toHaveNoViolations()
