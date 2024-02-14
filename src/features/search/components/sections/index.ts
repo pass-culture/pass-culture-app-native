@@ -1,3 +1,4 @@
+import { Accessibility } from './Accessibility/Accessibility'
 import { Category } from './Category/Category'
 import { DateHour } from './DateHour/DateHour'
 import { OfferDuo } from './OfferDuo/OfferDuo'
@@ -10,4 +11,5 @@ export default {
   OfferDuo,
   Price,
   Venue,
+  Accessibility,
 }
