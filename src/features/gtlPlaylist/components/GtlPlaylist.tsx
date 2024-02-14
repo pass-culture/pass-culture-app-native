@@ -15,7 +15,7 @@ import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { PassPlaylist } from 'ui/components/PassPlaylist/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 interface GtlPlaylistProps {
