@@ -5,11 +5,10 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
-
-jest.mock('react-query')
 
 describe('EndedBookings', () => {
   it('should render correctly', () => {
@@ -44,5 +43,5 @@ const renderEndedBookings = (bookings: BookingsResponse) => {
     .spyOn(bookingsAPI, 'useBookings')
     .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
 
-  return render(<EndedBookings />)
+  return render(reactQueryProviderHOC(<EndedBookings />))
 }
