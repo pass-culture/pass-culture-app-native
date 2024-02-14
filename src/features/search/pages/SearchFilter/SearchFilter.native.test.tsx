@@ -5,6 +5,7 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -13,6 +14,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 let mockSearchState = initialSearchState
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
@@ -178,6 +181,19 @@ describe('<SearchFilter/>', () => {
     await act(async () => {})
 
     expect(screen.queryByTestId('Revenir en arrière')).toBeOnTheScreen()
+  })
+
+  describe('Accessibility', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    it('should display accessibility section', async () => {
+      renderSearchFilter()
+      await act(async () => {})
+
+      expect(screen.queryByText('Accessibilité')).toBeOnTheScreen()
+    })
   })
 })
 
