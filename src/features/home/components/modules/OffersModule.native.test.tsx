@@ -9,9 +9,10 @@ import { analytics } from 'libs/analytics'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { OffersModule } from './OffersModule'
+import { OffersModule, OffersModuleProps } from './OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
 
@@ -38,7 +39,6 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
-jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 
 const mockSubcategories = placeholderData.subcategories
@@ -54,13 +54,13 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 describe('OffersModule component', () => {
   it('should render correctly', () => {
-    render(<OffersModule {...props} index={1} />)
+    renderOffersModule()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should not render if data is undefined', () => {
-    render(<OffersModule {...{ ...props, data: undefined }} />)
+    renderOffersModule({ data: undefined })
 
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
@@ -68,7 +68,7 @@ describe('OffersModule component', () => {
 
 describe('OffersModule component - Analytics', () => {
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
-    render(<OffersModule {...props} index={1} />)
+    renderOffersModule()
     const scrollView = screen.getByTestId('offersModuleList')
 
     await act(async () => {
@@ -88,7 +88,7 @@ describe('OffersModule component - Analytics', () => {
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
-    render(<OffersModule {...props} />)
+    renderOffersModule()
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
       1,
@@ -100,21 +100,17 @@ describe('OffersModule component - Analytics', () => {
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    render(
-      <OffersModule
-        {...props}
-        offersModuleParameters={[{ title: 'Search title' } as OffersModuleParameters]}
-        displayParameters={{ ...props.displayParameters, minOffers: mockNbHits + 1 }}
-        index={1}
-      />
-    )
+    renderOffersModule({
+      offersModuleParameters: [{ title: 'Search title' } as OffersModuleParameters],
+      displayParameters: { ...props.displayParameters, minOffers: mockNbHits + 1 },
+    })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
     const mockData = { playlistItems: mockHits, nbPlaylistResults: 10, moduleId: 'fakeModuleId' }
-    render(<OffersModule {...props} index={1} data={mockData} />)
+    renderOffersModule({ data: mockData })
 
     act(() => {
       fireEvent.press(screen.getByText('En voir plus'))
@@ -126,3 +122,6 @@ describe('OffersModule component - Analytics', () => {
     })
   })
 })
+
+const renderOffersModule = (additionalProps: Partial<OffersModuleProps> = {}) =>
+  render(reactQueryProviderHOC(<OffersModule {...props} {...additionalProps} />))

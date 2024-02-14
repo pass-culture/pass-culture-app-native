@@ -3,11 +3,10 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
-
-jest.mock('react-query')
 
 const venue = mockVenues.hits[0]
 
@@ -22,13 +21,13 @@ const props: VenueTileProps = {
 
 describe('VenueTile component', () => {
   it('should render correctly', () => {
-    render(<VenueTile {...props} />)
+    renderVenueTile()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to the venue when clicking on the venue tile', async () => {
-    render(<VenueTile {...props} />)
+    renderVenueTile()
 
     fireEvent.press(screen.getByTestId(/Lieu/))
 
@@ -38,7 +37,7 @@ describe('VenueTile component', () => {
   })
 
   it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
-    render(<VenueTile {...props} />)
+    renderVenueTile()
 
     fireEvent.press(screen.getByTestId(/Lieu/))
 
@@ -51,7 +50,7 @@ describe('VenueTile component', () => {
   })
 
   it('should log analytics event ConsultVenue with homeEntryId when provided', () => {
-    render(<VenueTile {...props} homeEntryId="abcd" />)
+    renderVenueTile({ homeEntryId: 'abcd' })
 
     fireEvent.press(screen.getByTestId(/Lieu/))
 
@@ -65,14 +64,17 @@ describe('VenueTile component', () => {
   })
 
   it('should show venue placeholder when no venue does not have image', () => {
-    render(<VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />)
+    renderVenueTile({ venue: { ...venue, bannerUrl: undefined } })
 
     expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()
   })
 
   it('should show distance prop when provided', () => {
-    render(<VenueTile {...props} userLocation={{ latitude: 2, longitude: 1 }} />)
+    renderVenueTile({ userLocation: { latitude: 2, longitude: 1 } })
 
     expect(screen.getByTestId('distance-tag')).toBeTruthy()
   })
 })
+
+const renderVenueTile = (additionalProps: Partial<VenueTileProps> = {}) =>
+  render(reactQueryProviderHOC(<VenueTile {...props} {...additionalProps} />))
