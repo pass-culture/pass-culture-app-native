@@ -45,8 +45,6 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 
-jest.mock('react-query')
-
 describe('BookHourChoice when hour is already selected', () => {
   beforeEach(() => {
     mockUseBookingContext.mockReturnValueOnce({

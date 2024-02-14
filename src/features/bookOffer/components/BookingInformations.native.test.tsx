@@ -14,7 +14,6 @@ import { BookingInformations } from './BookingInformations'
 
 const randomDatetime = '2020-12-01T00:00:00Z'
 
-jest.mock('react-query')
 jest.mock('features/bookOffer/context/useBookingContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 jest.mock('libs/address/useFormatFullAddress')

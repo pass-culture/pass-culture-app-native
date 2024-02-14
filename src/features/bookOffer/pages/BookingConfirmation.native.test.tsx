@@ -13,7 +13,6 @@ import { BookingConfirmation } from './BookingConfirmation'
 
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
 
-jest.mock('react-query')
 jest.mock('features/offer/api/useOffer')
 
 jest.mock('shared/user/useAvailableCredit', () => ({

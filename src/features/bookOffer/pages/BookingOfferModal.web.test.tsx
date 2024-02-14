@@ -5,11 +5,11 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render, checkAccessibilityFor, act, waitFor } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
-jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 
@@ -69,48 +69,80 @@ describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for step "date"', async () => {
       mockStep = Step.DATE
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = render(
+        reactQueryProviderHOC(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      )
 
-      const results = await checkAccessibilityFor(container)
+      await waitFor(async () => {
+        let results
+        await act(async () => {
+          results = await checkAccessibilityFor(container)
+        })
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
 
     it('should not have basic accessibility issues for step "hour"', async () => {
       mockStep = Step.HOUR
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = render(
+        reactQueryProviderHOC(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      )
 
-      const results = await checkAccessibilityFor(container)
+      await waitFor(async () => {
+        let results
+        await act(async () => {
+          results = await checkAccessibilityFor(container)
+        })
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
 
     it('should not have basic accessibility issues for step "duo"', async () => {
       mockStep = Step.DUO
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = render(
+        reactQueryProviderHOC(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      )
 
-      const results = await checkAccessibilityFor(container)
+      await waitFor(async () => {
+        let results
+        await act(async () => {
+          results = await checkAccessibilityFor(container)
+        })
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
 
     it('should not have basic accessibility issues for step "confirmation"', async () => {
       mockStep = Step.CONFIRMATION
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = render(
+        reactQueryProviderHOC(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      )
 
-      const results = await checkAccessibilityFor(container)
+      await waitFor(async () => {
+        let results
+        await act(async () => {
+          results = await checkAccessibilityFor(container)
+        })
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
 
     it('should not have basic accessibility issues for ended used booking', async () => {
       const { container } = render(
-        <BookingOfferModalComponent offerId={mockOffer.id} isEndedUsedBooking visible />
+        reactQueryProviderHOC(
+          <BookingOfferModalComponent offerId={mockOffer.id} isEndedUsedBooking visible />
+        )
       )
 
-      const results = await checkAccessibilityFor(container)
+      await waitFor(async () => {
+        const results = await checkAccessibilityFor(container)
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

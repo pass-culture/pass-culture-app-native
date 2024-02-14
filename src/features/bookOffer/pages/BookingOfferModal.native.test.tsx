@@ -17,6 +17,7 @@ import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -61,8 +62,6 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   refetchUser: jest.fn(),
   setIsLoggedIn: jest.fn(),
 }) as jest.Mock
-
-jest.mock('react-query')
 
 const useBookOfferMutationSpy = jest.spyOn(useBookOfferMutation, 'useBookOfferMutation')
 
@@ -130,7 +129,7 @@ const apiRecoParams: RecommendationApiParams = {
 
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', () => {
-    render(<BookingOfferModalComponent visible offerId={mockOffer.id} />)
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
@@ -142,7 +141,7 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should set offer consulted when dismiss modal and an other venue has been selected', () => {
-    render(<BookingOfferModalComponent visible offerId={20} />)
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
@@ -152,21 +151,25 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should not log event BookingProcessStart when modal is not visible', () => {
-    render(<BookingOfferModalComponent visible={false} offerId={20} />)
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible={false} offerId={20} />))
 
     expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
   })
 
   it('should log event BookingProcessStart when modal opens', () => {
     const offerId = 30
-    render(<BookingOfferModalComponent visible offerId={offerId} />)
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={offerId} />))
 
     expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerId)
   })
 
   it('should show AlreadyBooked when isEndedUsedBooking is true', () => {
     const offerId = 30
-    render(<BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />)
+    render(
+      reactQueryProviderHOC(
+        <BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />
+      )
+    )
 
     expect(screen.queryByText('Tu as déjà réservé :')).toBeOnTheScreen()
     expect(
@@ -175,7 +178,7 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should log booking funnel cancellation event when closing the modal', () => {
-    render(<BookingOfferModalComponent visible offerId={20} />)
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
     fireEvent.press(dismissModalButton)
@@ -185,7 +188,7 @@ describe('<BookingOfferModalComponent />', () => {
 
   it('should display modal with prices by categories', () => {
     mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
-    render(<BookingOfferModalComponent visible offerId={20} />)
+    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
 
     expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
   })

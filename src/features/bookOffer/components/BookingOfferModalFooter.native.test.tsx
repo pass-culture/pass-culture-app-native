@@ -5,8 +5,6 @@ import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { IBookingContext } from 'features/bookOffer/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('react-query')
-
 const mockDispatch = jest.fn()
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
   bookingState: { offerId: 1, step: Step.DATE } as BookingState,

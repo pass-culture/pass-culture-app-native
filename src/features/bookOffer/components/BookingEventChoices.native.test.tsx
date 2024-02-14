@@ -3,11 +3,11 @@ import * as React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { render, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, render, screen } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
 
-jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 
 const mockUseBooking = useBookingContext as jest.Mock
@@ -48,7 +48,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.getByTestId('DateStep')).toBeOnTheScreen()
     })
@@ -61,7 +61,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
     })
@@ -74,7 +74,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
     })
@@ -87,7 +87,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
     })
@@ -103,9 +103,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.getByTestId('HourStep')).toBeOnTheScreen()
+      expect(await screen.findByTestId('HourStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
@@ -117,7 +117,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await act(async () => {})
 
       expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
     })
@@ -131,7 +133,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await act(async () => {})
 
       expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
     })
@@ -145,7 +149,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await act(async () => {})
 
       expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
     })
@@ -162,9 +168,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.getByTestId('PricesStep')).toBeOnTheScreen()
+      expect(await screen.findByTestId('PricesStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
@@ -177,7 +183,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await act(async () => {})
 
       expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
     })
@@ -193,7 +201,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await act(async () => {})
 
       expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
     })
@@ -209,7 +219,9 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await act(async () => {})
 
       expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
     })
@@ -227,7 +239,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.getByTestId('DuoStep')).toBeOnTheScreen()
     })
@@ -243,7 +255,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
     })
@@ -259,7 +271,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
     })
@@ -275,7 +287,7 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
-      render(<BookingEventChoices stocks={[]} />)
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
     })
