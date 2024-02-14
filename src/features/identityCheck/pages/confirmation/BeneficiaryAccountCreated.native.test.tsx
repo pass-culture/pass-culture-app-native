@@ -6,8 +6,6 @@ import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformati
 import { BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('react-query')
-
 let mockIsUserUnderageBeneficiary = true
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary', () => {
   return {

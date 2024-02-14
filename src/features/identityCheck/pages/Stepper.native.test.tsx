@@ -17,6 +17,7 @@ import {
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 let mockNextSubscriptionStep = mockStep
@@ -57,8 +58,6 @@ mockUseStepperInfo.mockReturnValue({
   subtitle: 'Débloque ton crédit',
 })
 
-jest.mock('react-query')
-
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('Stepper navigation', () => {
@@ -70,7 +69,7 @@ describe('Stepper navigation', () => {
       step: DeprecatedIdentityCheckStep.IDENTIFICATION,
       identification: { method: null },
     })
-    render(<Stepper />)
+    render(reactQueryProviderHOC(<Stepper />))
 
     expect(screen).toMatchSnapshot()
   })
@@ -81,7 +80,7 @@ describe('Stepper navigation', () => {
       title: 'Vas-y',
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
-    render(<Stepper />)
+    render(reactQueryProviderHOC(<Stepper />))
 
     expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeOnTheScreen()
   })
@@ -101,7 +100,7 @@ describe('Stepper navigation', () => {
         data: mockUserProfileData,
       }),
     })
-    render(<Stepper />)
+    render(reactQueryProviderHOC(<Stepper />))
     await waitFor(() => {
       expect(navigate).not.toHaveBeenCalled()
     })
@@ -124,7 +123,7 @@ describe('Stepper navigation', () => {
       ...mockStep,
       nextSubscriptionStep: null,
     }
-    render(<Stepper />)
+    render(reactQueryProviderHOC(<Stepper />))
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
@@ -169,7 +168,7 @@ describe('Stepper navigation', () => {
         identification: { method: null },
       })
 
-      render(<Stepper />)
+      render(reactQueryProviderHOC(<Stepper />))
 
       const stepButton = screen.getByText(stepperLabel)
       fireEvent.press(stepButton)
@@ -187,7 +186,7 @@ describe('Stepper navigation', () => {
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
 
-    render(<Stepper />)
+    render(reactQueryProviderHOC(<Stepper />))
 
     expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
       1,
@@ -205,7 +204,7 @@ describe('Stepper navigation', () => {
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
 
-    render(<Stepper />)
+    render(reactQueryProviderHOC(<Stepper />))
 
     expect(analytics.logStepperDisplayed).not.toHaveBeenCalled()
   })
