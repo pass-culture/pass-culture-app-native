@@ -3,11 +3,11 @@ import React from 'react'
 
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import { underageBeneficiaryUser } from 'fixtures/user'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
-jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/api/useUpdateProfileMutation', () => ({
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({
@@ -37,7 +37,7 @@ describe('<RecreditBirthdayNotification />', () => {
   })
 
   it('should have correct text', async () => {
-    render(<RecreditBirthdayNotification />)
+    render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
 
     const recreditText = screen.getByText(
       'Pour tes 16 ans, 50\u00a0€ ont été ajoutés à ton compte. Tu disposes maintenant de :'
