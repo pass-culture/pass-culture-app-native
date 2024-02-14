@@ -2,11 +2,10 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
-
-jest.mock('react-query')
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
 jest.mock('uuid', () => {
@@ -35,8 +34,10 @@ describe('<ReinitializePassword/>', () => {
 
 function renderReinitializePassword() {
   return render(
-    <SafeAreaProvider>
-      <ReinitializePassword />
-    </SafeAreaProvider>
+    reactQueryProviderHOC(
+      <SafeAreaProvider>
+        <ReinitializePassword />
+      </SafeAreaProvider>
+    )
   )
 }

@@ -1,13 +1,13 @@
 import React from 'react'
-import { useMutation, useQueryClient } from 'react-query'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { queriesToInvalidateOnUnsuspend } from 'features/auth/api/useAccountUnsuspend'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen, waitFor, useMutationFactory } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
 
@@ -21,73 +21,76 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-jest.mock('react-query')
-const mockedUseMutation = jest.mocked(useMutation)
-
 const mockShowErrorSnackBar = jest.fn()
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
-}))
-
-const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
-  onSuccess: () => {},
-  onError: () => {},
-}
+jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
+  showErrorSnackBar: mockShowErrorSnackBar,
+  showInfoSnackBar: jest.fn(),
+  showSuccessSnackBar: jest.fn(),
+  hideSnackBar: jest.fn(),
+})
 
 describe('<SuspendedAccountUponUserRequest />', () => {
-  const queryClient = useQueryClient()
-
   it('should match snapshot', () => {
-    render(<SuspendedAccountUponUserRequest />)
+    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should log analytics and redirect to reactivation screen on success', async () => {
-    // @ts-expect-error ts(2345)
-    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-    render(<SuspendedAccountUponUserRequest />)
+  it('should redirect to reactivation screen on success', async () => {
+    mockServer.postApiV1('/account/unsuspend', {})
+    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-    fireEvent.press(screen.getByText('Réactiver mon compte'))
+    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
 
-    expect(analytics.logAccountReactivation).toHaveBeenCalledWith('suspendedaccountuponuserrequest')
-
-    useMutationCallbacks.onSuccess()
-    await waitFor(() => {
-      queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
-        expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
-      )
-
-      expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
-    })
+    expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
   })
 
-  it('should log analytics and show error snackbar on error', async () => {
-    // @ts-expect-error ts(2345)
-    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-    render(<SuspendedAccountUponUserRequest />)
+  it('should log analytics on success', async () => {
+    mockServer.postApiV1('/account/unsuspend', {})
+    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-    fireEvent.press(screen.getByText('Réactiver mon compte'))
+    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
 
     expect(analytics.logAccountReactivation).toHaveBeenCalledWith('suspendedaccountuponuserrequest')
+  })
 
-    const response = {
-      content: { message: 'Une erreur s’est produite pendant la réactivation.' },
-      name: 'ApiError',
-    }
-    useMutationCallbacks.onError(response)
+  it('should show error snackbar on error', async () => {
+    mockServer.postApiV1('/account/unsuspend', {
+      responseOptions: {
+        statusCode: 400,
+      },
+    })
+    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+
+    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
+
     await waitFor(() => {
       expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-        message: response.content.message,
-        timeout: SNACK_BAR_TIME_OUT,
+        message: 'Une erreur s’est produite pendant la réactivation.',
+        timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
       })
     })
   })
 
-  it('should go to home page when clicking on go to home button', async () => {
-    render(<SuspendedAccountUponUserRequest />)
+  it('should log analytics on error', async () => {
+    mockServer.postApiV1<EmptyResponse>('/account/unsuspend', {
+      responseOptions: {
+        statusCode: 400,
+      },
+    })
+    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
+
+    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
+
+    await waitFor(() => {
+      expect(analytics.logAccountReactivation).toHaveBeenCalledWith(
+        'suspendedaccountuponuserrequest'
+      )
+    })
+  })
+
+  it('should go to home page when clicking on "Retourner à l’accueil" button', async () => {
+    render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
     const homeButton = screen.getByText('Retourner à l’accueil')
     fireEvent.press(homeButton)

@@ -17,7 +17,7 @@ export function useAccountUnsuspend(onSuccess: () => void, onError: (error: unkn
   })
 }
 
-export const queriesToInvalidateOnUnsuspend: QueryKeys[] = [
+const queriesToInvalidateOnUnsuspend: QueryKeys[] = [
   QueryKeys.USER_PROFILE,
   QueryKeys.NEXT_SUBSCRIPTION_STEP,
   QueryKeys.FAVORITES,
