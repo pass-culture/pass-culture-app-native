@@ -27,7 +27,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Réactiver mon compte"
 - runFlow: reusableFlows/features/auth/AccountReactivationPage.yml
 - tapOn: "Découvrir le catalogue"
-- assertVisible: "Bonjour Nicolas"
+- assertVisible: "Bonjour Tests-e2e"
 - assertVisible: "Tu as 300\_€ sur ton pass"
 - tapOn: "Découvrir le catalogue"
 - runFlow: reusableFlows/StopApp.yml # Stop App
