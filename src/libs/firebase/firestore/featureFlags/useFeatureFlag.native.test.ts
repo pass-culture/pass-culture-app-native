@@ -48,8 +48,8 @@ describe('useFeatureFlag', () => {
         firebaseFeatureFlag,
         minimalBuildNumber,
       }: {
-        firebaseFeatureFlag?: boolean
-        minimalBuildNumber?: number
+        firebaseFeatureFlag: boolean
+        minimalBuildNumber: number
       }) => {
         const firestoreData = { minimalBuildNumber }
         mockGet.mockReturnValueOnce(firestoreData)

@@ -5,9 +5,7 @@ import { captureMonitoringError } from 'libs/monitoring'
 
 type FeatureFlagConfig = { minimalBuildNumber?: number; maximalBuildNumber?: number }
 
-export const getFeatureFlag = (
-  featureFlag: RemoteStoreFeatureFlags
-): Promise<void | FeatureFlagConfig | null> =>
+export const getFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): Promise<FeatureFlagConfig> =>
   firestoreRemoteStore
     .collection(RemoteStoreCollections.FEATURE_FLAGS)
     .doc(env.ENV)
@@ -15,9 +13,10 @@ export const getFeatureFlag = (
     .then((docSnapshot) => {
       const firebaseFeatureFlag = docSnapshot.get<FeatureFlagConfig>(featureFlag)
 
-      if (firebaseFeatureFlag === undefined) return null
+      if (firebaseFeatureFlag === undefined) return {}
       return firebaseFeatureFlag
     })
     .catch((error) => {
       captureMonitoringError(error.message, 'firestore_not_available')
+      return {}
     })

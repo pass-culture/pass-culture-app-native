@@ -13,8 +13,8 @@ export const useFeatureFlag = (
   remoteStorefeatureFlag: RemoteStoreFeatureFlags
 ): boolean | undefined => {
   const [buildNumberConfig, setBuildNumberConfig] = useState<{
-    minimalBuildNumber?: number | null
-    maximalBuildNumber?: number | null
+    minimalBuildNumber?: number
+    maximalBuildNumber?: number
   }>({})
 
   useEffect(() => {
@@ -24,8 +24,8 @@ export const useFeatureFlag = (
 
     fetchFeatureFlag().then((featureFlag) => {
       setBuildNumberConfig({
-        minimalBuildNumber: featureFlag?.minimalBuildNumber || null,
-        maximalBuildNumber: featureFlag?.maximalBuildNumber || null,
+        minimalBuildNumber: featureFlag.minimalBuildNumber,
+        maximalBuildNumber: featureFlag.maximalBuildNumber,
       })
     })
   }, [remoteStorefeatureFlag])
