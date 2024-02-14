@@ -11,8 +11,6 @@ const mockStep = Step.DUO
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-jest.mock('react-query')
-
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: jest.fn(() => ({
     dispatch: mockDispatch,
