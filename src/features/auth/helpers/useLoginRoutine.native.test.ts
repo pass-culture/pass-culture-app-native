@@ -30,11 +30,6 @@ const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('api/api')
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
-  useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
-  usePersistQuery: jest.fn(),
-}))
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))

@@ -16,7 +16,7 @@ interface SnackBarContextValue {
   hideSnackBar: () => void
 }
 
-const SnackBarContext = createContext<SnackBarContextValue>({
+export const SnackBarContext = createContext<SnackBarContextValue>({
   showErrorSnackBar: () => null,
   showInfoSnackBar: () => null,
   showSuccessSnackBar: () => null,

@@ -1,21 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useQueryClient } from 'react-query'
+import * as ReactQueryAPI from 'react-query'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
 import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
 
-jest.mock('api/api')
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
-  useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
-  usePersistQuery: jest.fn(),
-}))
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 
 describe('useLogoutRoutine', () => {
   it('should remove batch identifier', async () => {
@@ -50,10 +46,16 @@ describe('useLogoutRoutine', () => {
   })
 
   it.each(LoggedInQueryKeys)('should remove query: "%s"', async (query) => {
-    const queryClient = useQueryClient()
+    const removeQueriesMock = jest.fn()
+    // We only want to test that the routine cleans up the queries,
+    // so we mock removeQueries and not the whole queryClient
+    useQueryClientSpy.mockReturnValueOnce({
+      removeQueries: removeQueriesMock,
+    } as unknown as ReactQueryAPI.QueryClient)
+
     await renderUseLogoutRoutine()
 
-    expect(queryClient.removeQueries).toHaveBeenCalledWith([query])
+    expect(removeQueriesMock).toHaveBeenCalledWith([query])
   })
 
   it('should logout from Google account', async () => {
@@ -64,7 +66,9 @@ describe('useLogoutRoutine', () => {
 })
 
 const renderUseLogoutRoutine = async () => {
-  const { result } = renderHook(useLogoutRoutine)
+  const { result } = renderHook(useLogoutRoutine, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
   const logout = result.current
   await logout()
 }
