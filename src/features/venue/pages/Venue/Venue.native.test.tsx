@@ -17,6 +17,7 @@ import { LocationMode, Position } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
   act,
   bottomScrollEvent,
@@ -29,7 +30,6 @@ import {
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-jest.mock('react-query')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = jest.mocked(useVenueOffers)
@@ -259,5 +259,5 @@ describe('<Venue /> with new venue body', () => {
 
 async function renderVenue(id: number, from?: Referrals) {
   useRoute.mockImplementation(() => ({ params: { id, from } }))
-  render(<Venue />)
+  render(reactQueryProviderHOC(<Venue />))
 }

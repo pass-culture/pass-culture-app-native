@@ -15,13 +15,12 @@ import { analytics } from 'libs/analytics'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
-
-jest.mock('react-query')
 
 let mockVenue = venueResponseSnap
 jest.mock('features/venue/api/useVenue', () => ({
@@ -162,13 +161,13 @@ describe('<VenueOffers />', () => {
   })
 
   it('should render correctly', () => {
-    render(<VenueOffers venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffers venueId={venueId} />))
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {
-    render(<VenueOffers venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffers venueId={venueId} />))
 
     expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
@@ -178,13 +177,13 @@ describe('<VenueOffers />', () => {
       data: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
-    render(<VenueOffers venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffers venueId={venueId} />))
 
     expect(screen.queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should set search state when clicking "En voir plus" button`, async () => {
-    render(<VenueOffers venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffers venueId={venueId} />))
 
     fireEvent.press(screen.getByText('En voir plus'))
 
@@ -206,14 +205,14 @@ describe('<VenueOffers />', () => {
   })
 
   it(`should log analytics event VenueSeeMoreClicked when clicking "En voir plus" button`, () => {
-    render(<VenueOffers venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffers venueId={venueId} />))
     fireEvent.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
   it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, async () => {
-    render(<VenueOffers venueId={venueId} />)
+    render(reactQueryProviderHOC(<VenueOffers venueId={venueId} />))
     fireEvent.press(screen.getByText('Voir toutes les offres'))
 
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
@@ -222,14 +221,14 @@ describe('<VenueOffers />', () => {
   describe('should display all gtl playlists', () => {
     it('When there are gtl playlists associated to the venue and venue type is distribution store', () => {
       mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE }
-      render(<VenueOffers venueId={mockVenue.id} playlists={playlists} />)
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} playlists={playlists} />))
 
       expect(screen.getByTestId('allGtlPlaylistsTitle')).toBeOnTheScreen()
     })
 
     it('When there are gtl playlists associated to the venue and venue type is book store', () => {
       mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE }
-      render(<VenueOffers venueId={mockVenue.id} playlists={playlists} />)
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} playlists={playlists} />))
 
       expect(screen.getByTestId('allGtlPlaylistsTitle')).toBeOnTheScreen()
     })
@@ -238,20 +237,20 @@ describe('<VenueOffers />', () => {
   describe('should not display all gtl playlists', () => {
     it('When there are not gtl playlists associated to the venue and venue type is distribution store', () => {
       mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE }
-      render(<VenueOffers venueId={mockVenue.id} />)
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} />))
 
       expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
     })
 
     it('When there are not gtl playlists associated to the venue and venue type is book store', () => {
       mockVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE }
-      render(<VenueOffers venueId={mockVenue.id} />)
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} />))
 
       expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
     })
 
     it('When there are gtl playlists associated to the venue and venue type is not distributon or book store', () => {
-      render(<VenueOffers venueId={mockVenue.id} playlists={playlists} />)
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} playlists={playlists} />))
 
       expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
     })

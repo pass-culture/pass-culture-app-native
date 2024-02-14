@@ -8,11 +8,11 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, act } from 'tests/utils/web'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-jest.mock('react-query')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 
@@ -64,7 +64,7 @@ describe('<Venue />', () => {
         .mockReturnValueOnce('withdrawalTermsAccordionID')
         .mockReturnValueOnce('accessibilityAccordionID')
         .mockReturnValueOnce('contactAccordionID')
-      const { container } = render(<Venue />)
+      const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -75,7 +75,7 @@ describe('<Venue />', () => {
 
     it('should not have basic accessibility issues with new version', async () => {
       mockUseFeatureFlag.mockReturnValueOnce(true)
-      const { container } = render(<Venue />)
+      const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
