@@ -17,7 +17,6 @@ import { analytics } from 'libs/analytics'
 import { render, screen, fireEvent, middleScrollEvent, bottomScrollEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
-jest.mock('react-query')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
 const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
