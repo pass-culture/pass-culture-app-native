@@ -14,11 +14,10 @@ import {
 } from 'features/venue/fixtures/venueResponseSnap'
 import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
-
-jest.mock('react-query')
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')
@@ -133,6 +132,6 @@ describe('<VenueBody />', () => {
 
 async function renderVenueBody(id: number) {
   useRoute.mockImplementation(() => ({ params: { id } }))
-  render(<VenueBody venueId={id} onScroll={jest.fn()} />)
+  render(reactQueryProviderHOC(<VenueBody venueId={id} onScroll={jest.fn()} />))
   await waitFor(() => screen.getByTestId('venue-container'))
 }

@@ -6,12 +6,11 @@ import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { Network } from 'libs/share/types'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
-
-jest.mock('react-query')
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
@@ -23,15 +22,14 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 }))
 
 jest.useFakeTimers({ legacyFakeTimers: true })
+const trigger = async (component: ReactTestInstance) => {
+  await act(async () => {
+    fireEvent.press(component)
+    jest.runAllTimers()
+  })
+}
 
 describe('<VenueBody /> - Analytics', () => {
-  const trigger = async (component: ReactTestInstance) => {
-    await act(async () => {
-      fireEvent.press(component)
-      jest.runAllTimers()
-    })
-  }
-
   it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
     renderVenueBody()
 
@@ -62,11 +60,10 @@ describe('<VenueBody /> - Analytics', () => {
 
   it('should log ConsultLocationItinerary when opening itinerary', async () => {
     renderVenueBody()
-    await act(async () => {
-      fireEvent.press(screen.getByText('Voir l’itinéraire'))
-    })
-
-    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+    await waitFor(() =>
+      expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
+    )
   })
 })
 
@@ -75,7 +72,9 @@ it('should log when the user shares the offer on a certain medium', async () => 
   renderVenueBody()
 
   const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
-  fireEvent.press(socialMediumButton)
+  await act(async () => {
+    fireEvent.press(socialMediumButton)
+  })
 
   expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
     type: 'Venue',
@@ -86,5 +85,5 @@ it('should log when the user shares the offer on a certain medium', async () => 
 })
 
 function renderVenueBody() {
-  return render(<VenueBody venueId={venueId} onScroll={jest.fn()} />)
+  return render(reactQueryProviderHOC(<VenueBody venueId={venueId} onScroll={jest.fn()} />))
 }
