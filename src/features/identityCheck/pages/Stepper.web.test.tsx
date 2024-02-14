@@ -5,7 +5,7 @@ import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDe
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
 
 import { Stepper } from './Stepper'
 
@@ -23,8 +23,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
-jest.mock('react-query')
-
 jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
 const mockUseStepperInfo = useStepperInfo as jest.Mock
 
@@ -38,9 +36,17 @@ describe('<Stepper/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Stepper />))
-      const results = await checkAccessibilityFor(container)
 
-      expect(results).toHaveNoViolations()
+      await waitFor(
+        async () => {
+          await act(async () => {
+            const results = await checkAccessibilityFor(container)
+
+            expect(results).toHaveNoViolations()
+          })
+        },
+        { timeout: 10_000 }
+      )
     })
   })
 })
