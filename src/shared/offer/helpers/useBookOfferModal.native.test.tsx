@@ -4,10 +4,9 @@ import { Text } from 'react-native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, render, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
-
-jest.mock('react-query')
 
 const mockBookingOfferModal = <Text>BookingOfferModal</Text>
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
@@ -39,11 +38,13 @@ describe('useOfferModal', () => {
 
   it('should return application processing modal when asked', () => {
     render(
-      <TestOfferModal
-        modalToDisplay={OfferModal.APPLICATION_PROCESSING}
-        offerId={1000}
-        from={StepperOrigin.OFFER}
-      />
+      reactQueryProviderHOC(
+        <TestOfferModal
+          modalToDisplay={OfferModal.APPLICATION_PROCESSING}
+          offerId={1000}
+          from={StepperOrigin.OFFER}
+        />
+      )
     )
 
     expect(screen.getByText('C’est pour bientôt\u00a0!')).toBeOnTheScreen()
@@ -77,11 +78,13 @@ describe('useOfferModal', () => {
 
   it('should return error application modal when asked', () => {
     render(
-      <TestOfferModal
-        modalToDisplay={OfferModal.ERROR_APPLICATION}
-        offerId={1000}
-        from={StepperOrigin.OFFER}
-      />
+      reactQueryProviderHOC(
+        <TestOfferModal
+          modalToDisplay={OfferModal.ERROR_APPLICATION}
+          offerId={1000}
+          from={StepperOrigin.OFFER}
+        />
+      )
     )
 
     expect(
@@ -89,13 +92,15 @@ describe('useOfferModal', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should return finish subscription modal when asked', () => {
+  it('should return finish subscription modal when asked', async () => {
     render(
-      <TestOfferModal
-        modalToDisplay={OfferModal.FINISH_SUBSCRIPTION}
-        offerId={1000}
-        from={StepperOrigin.OFFER}
-      />
+      reactQueryProviderHOC(
+        <TestOfferModal
+          modalToDisplay={OfferModal.FINISH_SUBSCRIPTION}
+          offerId={1000}
+          from={StepperOrigin.OFFER}
+        />
+      )
     )
 
     expect(
