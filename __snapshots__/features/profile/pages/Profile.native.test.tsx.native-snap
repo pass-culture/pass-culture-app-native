@@ -1,259 +1,330 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Profile component should render correctly 1`] = `
-<RNCSafeAreaProvider
-  onInsetsChange={[Function]}
+<View
   style={
     [
       {
-        "flex": 1,
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
       },
-      undefined,
     ]
   }
 >
-  <RNSScreenNavigationContainer
-    style={
-      {
-        "flex": 1,
-        "overflow": "hidden",
-      }
-    }
+  <RCTScrollView
+    bounces={false}
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    testID="profile-scrollview"
   >
-    <RNSScreen
-      activityState={2}
-      collapsable={false}
-      forwardedRef={[Function]}
-      gestureResponseDistance={
-        {
-          "bottom": -1,
-          "end": -1,
-          "start": -1,
-          "top": -1,
-        }
-      }
-      style={
-        {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 0,
-        }
-      }
-    >
+    <View>
       <View
-        accessibilityElementsHidden={false}
-        importantForAccessibility="auto"
         style={
           [
             {
-              "backgroundColor": "rgb(242, 242, 242)",
-              "flex": 1,
+              "borderColor": "#696A6F",
+              "borderRadius": 8,
+              "borderStyle": "solid",
+              "borderWidth": 2,
+              "paddingHorizontal": 4,
+              "position": "absolute",
+              "right": 24,
+              "top": 40,
+              "zIndex": 50,
             },
-            [
-              {
-                "flex": 1,
-                "flexDirection": "column-reverse",
-              },
-              undefined,
-            ],
+          ]
+        }
+        topSafeInsets={16}
+      >
+        <View
+          accessibilityLabel="CheatMenu"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 32,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="CheatMenu"
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            CheatMenu
+          </Text>
+        </View>
+      </View>
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginHorizontal": 24,
+              "marginTop": 24,
+              "zIndex": 1,
+            },
           ]
         }
       >
         <View
           style={
-            {
-              "flex": 1,
-            }
+            [
+              {
+                "flexShrink": 1,
+              },
+            ]
           }
         >
-          <View
+          <Text
+            numberOfLines={1}
             style={
               [
                 {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 26,
+                  "lineHeight": 34,
                 },
               ]
             }
           >
-            <RCTScrollView
-              bounces={false}
-              onScroll={[Function]}
-              scrollEventThrottle={16}
-              testID="profile-scrollview"
+            Mon profil
+          </Text>
+          <View
+            numberOfSpaces={1}
+            style={
+              [
+                {
+                  "height": 4,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "flexBasis": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "paddingTop": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Paramètres du compte
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="list"
+            style={
+              [
+                {
+                  "flexDirection": "column",
+                  "paddingLeft": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
             >
-              <View>
+              <View
+                accessibilityLabel="Informations personnelles"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Informations personnelles"
+              >
                 <View
                   style={
                     [
-                      {
-                        "borderColor": "#696A6F",
-                        "borderRadius": 8,
-                        "borderStyle": "solid",
-                        "borderWidth": 2,
-                        "paddingHorizontal": 4,
-                        "position": "absolute",
-                        "right": 24,
-                        "top": 40,
-                        "zIndex": 50,
-                      },
-                    ]
-                  }
-                  topSafeInsets={16}
-                >
-                  <View
-                    accessibilityLabel="CheatMenu"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
                       {
                         "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderRadius": 24,
-                        "flexDirection": "row",
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "minHeight": 32,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "userSelect": "auto",
-                        "width": "100%",
-                      }
-                    }
-                    testID="CheatMenu"
-                  >
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 0,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      CheatMenu
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  customHeight={16}
-                  enable={true}
-                  style={
-                    [
-                      {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
                         "flexDirection": "row",
                         "justifyContent": "space-between",
-                        "marginHorizontal": 24,
-                        "marginTop": 24,
-                        "zIndex": 1,
                       },
-                    ]
-                  }
-                >
-                  <View
-                    style={
                       [
                         {
-                          "flexShrink": 1,
+                          "paddingVertical": 16,
                         },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Black",
-                            "fontSize": 26,
-                            "lineHeight": 34,
-                          },
-                        ]
-                      }
-                    >
-                      Mon profil
-                    </Text>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                </View>
-                <View
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#ffffff",
-                        "flexBasis": 0,
-                        "flexDirection": "column",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "paddingHorizontal": 24,
-                      },
+                      ],
                     ]
                   }
                 >
                   <View
-                    numberOfSpaces={4}
+                    fill="url(#gradienttestUuid)"
+                    height={24}
+                    testID="BicolorProfile"
+                    width={24}
+                  >
+                    <Text>
+                      BicolorProfile-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "height": 16,
+                          "width": 8,
                         },
                       ]
                     }
@@ -262,848 +333,246 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       [
                         {
-                          "paddingTop": 8,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
                         },
                       ]
                     }
                   >
                     <Text
+                      numberOfLines={2}
                       style={
                         [
                           {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
                         ]
                       }
                     >
-                      Paramètres du compte
+                      Informations personnelles
                     </Text>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityRole="list"
-                      style={
-                        [
-                          {
-                            "flexDirection": "column",
-                            "paddingLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Informations personnelles"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Informations personnelles"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              fill="url(#gradienttestUuid)"
-                              height={24}
-                              testID="BicolorProfile"
-                              width={24}
-                            >
-                              <Text>
-                                BicolorProfile-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Informations personnelles
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "flex-end",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={20}
-                                testID="section-row-navigable-icon"
-                                width={20}
-                              >
-                                <Text>
-                                  section-row-navigable-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Notifications"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Notifications"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Notifications
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "flex-end",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={20}
-                                testID="section-row-navigable-icon"
-                                width={20}
-                              >
-                                <Text>
-                                  section-row-navigable-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "paddingVertical": 16,
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexBasis": 0,
-                                  "flexDirection": "row",
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                },
-                              ]
-                            }
-                            toggleLabel={true}
-                          >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <Text
-                              htmlFor="testUuidV4"
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Partager ma position
-                              </Text>
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              numberOfSpaces={5}
-                              style={
-                                [
-                                  {
-                                    "width": 20,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexDirection": "row",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                accessibilityHidden={true}
-                                style={
-                                  [
-                                    {
-                                      "display": "none",
-                                    },
-                                  ]
-                                }
-                              >
-                                Case à cocher - 
-                                cochée
-                              </Text>
-                              <View
-                                accessibilityRole="checkbox"
-                                accessibilityState={
-                                  {
-                                    "busy": undefined,
-                                    "checked": true,
-                                    "disabled": false,
-                                    "expanded": undefined,
-                                    "selected": undefined,
-                                  }
-                                }
-                                accessibilityValue={
-                                  {
-                                    "max": undefined,
-                                    "min": undefined,
-                                    "now": undefined,
-                                    "text": undefined,
-                                  }
-                                }
-                                accessible={false}
-                                collapsable={false}
-                                focusable={true}
-                                onClick={[Function]}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
-                                style={
-                                  {
-                                    "opacity": 1,
-                                    "userSelect": "auto",
-                                  }
-                                }
-                                testID="Interrupteur Partager ma position"
-                              >
-                                <View
-                                  active={true}
-                                  style={
-                                    [
-                                      {
-                                        "backgroundColor": "#15884f",
-                                        "borderRadius": 16,
-                                        "height": 32,
-                                        "justifyContent": "center",
-                                        "width": 56,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    collapsable={false}
-                                    disabled={false}
-                                    style={
-                                      {
-                                        "alignItems": "center",
-                                        "aspectRatio": 1,
-                                        "backgroundColor": "#ffffff",
-                                        "borderRadius": 28,
-                                        "height": 28,
-                                        "justifyContent": "center",
-                                        "marginLeft": 26,
-                                        "shadowColor": "#161617",
-                                        "shadowOffset": {
-                                          "height": 2,
-                                          "width": 0,
-                                        },
-                                        "shadowOpacity": 0.2,
-                                        "shadowRadius": 2.5,
-                                        "width": 28,
-                                      }
-                                    }
-                                  >
-                                    <View
-                                      accessibilityLabel="Activé"
-                                      height={16}
-                                      width={16}
-                                    >
-                                      <Text>
-                                        undefined-SVG-Mock
-                                      </Text>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
                   </View>
                   <View
                     style={
                       [
                         {
-                          "paddingTop": 8,
+                          "alignItems": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Notifications"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Notifications"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      [
+                        {
+                          "paddingVertical": 16,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
                         },
                       ]
                     }
                   >
                     <Text
+                      numberOfLines={2}
                       style={
                         [
                           {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
                         ]
                       }
                     >
-                      Aides
+                      Notifications
                     </Text>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityRole="list"
-                      style={
-                        [
-                          {
-                            "flexDirection": "column",
-                            "paddingLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Comment ça marche ?"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Comment ça marche ?"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Comment ça marche ?
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "flex-end",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={20}
-                                testID="section-row-navigable-icon"
-                                width={20}
-                              >
-                                <Text>
-                                  section-row-navigable-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Nouvelle fenêtre : Centre d’aide"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              accessibilityLabel="Nouvelle fenêtre"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Centre d’aide
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
                   </View>
                   <View
                     style={
                       [
                         {
-                          "paddingTop": 8,
+                          "alignItems": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "paddingVertical": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                  toggleLabel={true}
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    htmlFor="testUuidV4"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
                         },
                       ]
                     }
@@ -1112,507 +581,68 @@ exports[`Profile component should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
                         ]
                       }
                     >
-                      Autres
+                      Partager ma position
                     </Text>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityRole="list"
-                      style={
-                        [
-                          {
-                            "flexDirection": "column",
-                            "paddingLeft": 0,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Accessibilité"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Accessibilité"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              fill="#161617"
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Accessibilité
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "flex-end",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={20}
-                                testID="section-row-navigable-icon"
-                                width={20}
-                              >
-                                <Text>
-                                  section-row-navigable-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Informations légales"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Informations légales"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Informations légales
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "flex-end",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={20}
-                                testID="section-row-navigable-icon"
-                                width={20}
-                              >
-                                <Text>
-                                  section-row-navigable-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                      <View
-                        accessibilityRole="none"
-                        style={
-                          [
-                            {
-                              "display": "flex",
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Confidentialité"
-                          accessibilityRole="link"
-                          accessibilityState={
-                            {
-                              "busy": undefined,
-                              "checked": undefined,
-                              "disabled": false,
-                              "expanded": undefined,
-                              "selected": undefined,
-                            }
-                          }
-                          accessibilityValue={
-                            {
-                              "max": undefined,
-                              "min": undefined,
-                              "now": undefined,
-                              "text": undefined,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                              "userSelect": "auto",
-                            }
-                          }
-                          testID="Confidentialité"
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
-                                  "justifyContent": "space-between",
-                                },
-                                [
-                                  {
-                                    "paddingVertical": 16,
-                                  },
-                                ],
-                              ]
-                            }
-                          >
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "width": 8,
-                                  },
-                                ]
-                              }
-                            />
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "textAlign": "left",
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Confidentialité
-                              </Text>
-                            </View>
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "flex-end",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={20}
-                                testID="section-row-navigable-icon"
-                                width={20}
-                              >
-                                <Text>
-                                  section-row-navigable-icon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                  </Text>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    numberOfSpaces={5}
+                    style={
+                      [
+                        {
+                          "width": 20,
+                        },
+                      ]
+                    }
+                  />
                   <View
                     style={
                       [
                         {
-                          "paddingTop": 8,
+                          "alignItems": "center",
+                          "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <Text
+                      accessibilityHidden={true}
                       style={
                         [
                           {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "display": "none",
                           },
                         ]
                       }
                     >
-                      Partager le pass Culture
+                      Case à cocher - 
+                      cochée
                     </Text>
                     <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
+                      accessibilityRole="checkbox"
                       accessibilityState={
                         {
                           "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
+                          "checked": true,
+                          "disabled": false,
                           "expanded": undefined,
                           "selected": undefined,
                         }
@@ -1641,759 +671,1209 @@ exports[`Profile component should render correctly 1`] = `
                           "userSelect": "auto",
                         }
                       }
+                      testID="Interrupteur Partager ma position"
                     >
                       <View
+                        active={true}
                         style={
                           [
                             {
-                              "borderRadius": 7,
-                              "overflow": "hidden",
+                              "backgroundColor": "#15884f",
+                              "borderRadius": 16,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 56,
                             },
                           ]
                         }
                       >
                         <View
-                          accessibilityIgnoresInvertColors={true}
+                          collapsable={false}
+                          disabled={false}
                           style={
-                            [
-                              {
-                                "backgroundColor": "#eb0055",
-                                "justifyContent": "center",
-                                "width": "100%",
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderRadius": 28,
+                              "height": 28,
+                              "justifyContent": "center",
+                              "marginLeft": 26,
+                              "shadowColor": "#161617",
+                              "shadowOffset": {
+                                "height": 2,
+                                "width": 0,
                               },
-                            ]
+                              "shadowOpacity": 0.2,
+                              "shadowRadius": 2.5,
+                              "width": 28,
+                            }
                           }
                         >
-                          <Image
-                            source={
-                              {
-                                "testUri": "../../../public/images/ShareAppBannerImage.png",
-                              }
-                            }
-                            style={
-                              [
-                                {
-                                  "bottom": 0,
-                                  "left": 0,
-                                  "position": "absolute",
-                                  "right": 0,
-                                  "top": 0,
-                                },
-                                {
-                                  "height": undefined,
-                                  "width": "100%",
-                                },
-                                undefined,
-                              ]
-                            }
-                            testID="module-background"
-                          />
                           <View
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "borderColor": "#90949D",
-                                  "borderRadius": 7,
-                                  "borderStyle": "solid",
-                                  "borderWidth": 1,
-                                  "flexDirection": "row",
-                                  "padding": 16,
-                                  "width": "100%",
-                                },
-                                undefined,
-                              ]
-                            }
+                            accessibilityLabel="Activé"
+                            height={16}
+                            width={16}
                           >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "marginRight": 16,
-                                    "textAlign": "start",
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  [
-                                    {
-                                      "paddingRight": 32,
-                                    },
-                                  ]
-                                }
-                              >
-                                <Text
-                                  style={
-                                    [
-                                      {
-                                        "color": "#ffffff",
-                                        "fontFamily": "Montserrat-Bold",
-                                        "fontSize": 15,
-                                        "lineHeight": 20,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Partage le pass Culture
-                                </Text>
-                                <View
-                                  numberOfSpaces={1}
-                                  style={
-                                    [
-                                      {
-                                        "height": 4,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <Text
-                                  style={
-                                    [
-                                      {
-                                        "color": "#ffffff",
-                                        "fontFamily": "Montserrat-Regular",
-                                        "fontSize": 15,
-                                        "lineHeight": 20,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Recommande le bon plan à tes amis !
-                                </Text>
-                              </View>
-                            </View>
-                            <View>
-                              <View
-                                height={24}
-                                width={24}
-                              >
-                                <Text>
-                                  undefined-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
                           </View>
                         </View>
                       </View>
                     </View>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
                   </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingTop": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Aides
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="list"
+            style={
+              [
+                {
+                  "flexDirection": "column",
+                  "paddingLeft": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Comment ça marche ?"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Comment ça marche ?"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      [
+                        {
+                          "paddingVertical": 16,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
                   <View
                     style={
                       [
                         {
-                          "paddingTop": 8,
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
                         },
                       ]
                     }
                   >
                     <Text
+                      numberOfLines={2}
                       style={
                         [
                           {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
                         ]
                       }
                     >
-                      Suivre le pass Culture
+                      Comment ça marche ?
                     </Text>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "marginBottom": "auto",
-                            "marginLeft": "auto",
-                            "marginRight": "auto",
-                            "marginTop": "auto",
-                            "maxWidth": 500,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "flexDirection": "row",
-                              "justifyContent": "space-between",
-                              "paddingVertical": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityRole="list"
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexDirection": "row",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                                "justifyContent": "space-between",
-                                "paddingLeft": 0,
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityRole="none"
-                            style={
-                              [
-                                {
-                                  "display": "flex",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              accessibilityRole="link"
-                              accessibilityState={
-                                {
-                                  "busy": undefined,
-                                  "checked": undefined,
-                                  "disabled": undefined,
-                                  "expanded": undefined,
-                                  "selected": undefined,
-                                }
-                              }
-                              accessibilityValue={
-                                {
-                                  "max": undefined,
-                                  "min": undefined,
-                                  "now": undefined,
-                                  "text": undefined,
-                                }
-                              }
-                              accessible={false}
-                              collapsable={false}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                {
-                                  "opacity": 1,
-                                  "userSelect": "auto",
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "flexDirection": "column",
-                                      "justifyContent": "center",
-                                      "maxWidth": 80,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    [
-                                      {
-                                        "alignItems": "center",
-                                        "height": 32,
-                                        "justifyContent": "center",
-                                        "width": 32,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    height={24}
-                                    width={24}
-                                  >
-                                    <Text>
-                                      undefined-SVG-Mock
-                                    </Text>
-                                  </View>
-                                </View>
-                                <View
-                                  numberOfSpaces={1}
-                                  style={
-                                    [
-                                      {
-                                        "height": 4,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <Text
-                                  numberOfLines={2}
-                                  style={
-                                    [
-                                      {
-                                        "color": "#161617",
-                                        "fontFamily": "Montserrat-SemiBold",
-                                        "fontSize": 12,
-                                        "lineHeight": 16,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Instagram
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            accessibilityRole="none"
-                            style={
-                              [
-                                {
-                                  "display": "flex",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              accessibilityRole="link"
-                              accessibilityState={
-                                {
-                                  "busy": undefined,
-                                  "checked": undefined,
-                                  "disabled": undefined,
-                                  "expanded": undefined,
-                                  "selected": undefined,
-                                }
-                              }
-                              accessibilityValue={
-                                {
-                                  "max": undefined,
-                                  "min": undefined,
-                                  "now": undefined,
-                                  "text": undefined,
-                                }
-                              }
-                              accessible={false}
-                              collapsable={false}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                {
-                                  "opacity": 1,
-                                  "userSelect": "auto",
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "flexDirection": "column",
-                                      "justifyContent": "center",
-                                      "maxWidth": 80,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    [
-                                      {
-                                        "alignItems": "center",
-                                        "height": 32,
-                                        "justifyContent": "center",
-                                        "width": 32,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    height={24}
-                                    width={24}
-                                  >
-                                    <Text>
-                                      undefined-SVG-Mock
-                                    </Text>
-                                  </View>
-                                </View>
-                                <View
-                                  numberOfSpaces={1}
-                                  style={
-                                    [
-                                      {
-                                        "height": 4,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <Text
-                                  numberOfLines={2}
-                                  style={
-                                    [
-                                      {
-                                        "color": "#161617",
-                                        "fontFamily": "Montserrat-SemiBold",
-                                        "fontSize": 12,
-                                        "lineHeight": 16,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Twitter
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            accessibilityRole="none"
-                            style={
-                              [
-                                {
-                                  "display": "flex",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              accessibilityRole="link"
-                              accessibilityState={
-                                {
-                                  "busy": undefined,
-                                  "checked": undefined,
-                                  "disabled": undefined,
-                                  "expanded": undefined,
-                                  "selected": undefined,
-                                }
-                              }
-                              accessibilityValue={
-                                {
-                                  "max": undefined,
-                                  "min": undefined,
-                                  "now": undefined,
-                                  "text": undefined,
-                                }
-                              }
-                              accessible={false}
-                              collapsable={false}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                {
-                                  "opacity": 1,
-                                  "userSelect": "auto",
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "flexDirection": "column",
-                                      "justifyContent": "center",
-                                      "maxWidth": 80,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    [
-                                      {
-                                        "alignItems": "center",
-                                        "height": 32,
-                                        "justifyContent": "center",
-                                        "width": 32,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    height={24}
-                                    width={24}
-                                  >
-                                    <Text>
-                                      undefined-SVG-Mock
-                                    </Text>
-                                  </View>
-                                </View>
-                                <View
-                                  numberOfSpaces={1}
-                                  style={
-                                    [
-                                      {
-                                        "height": 4,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <Text
-                                  numberOfLines={2}
-                                  style={
-                                    [
-                                      {
-                                        "color": "#161617",
-                                        "fontFamily": "Montserrat-SemiBold",
-                                        "fontSize": 12,
-                                        "lineHeight": 16,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Tiktok
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                          <View
-                            accessibilityRole="none"
-                            style={
-                              [
-                                {
-                                  "display": "flex",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              accessibilityRole="link"
-                              accessibilityState={
-                                {
-                                  "busy": undefined,
-                                  "checked": undefined,
-                                  "disabled": undefined,
-                                  "expanded": undefined,
-                                  "selected": undefined,
-                                }
-                              }
-                              accessibilityValue={
-                                {
-                                  "max": undefined,
-                                  "min": undefined,
-                                  "now": undefined,
-                                  "text": undefined,
-                                }
-                              }
-                              accessible={false}
-                              collapsable={false}
-                              focusable={true}
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
-                              style={
-                                {
-                                  "opacity": 1,
-                                  "userSelect": "auto",
-                                }
-                              }
-                            >
-                              <View
-                                style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "flexDirection": "column",
-                                      "justifyContent": "center",
-                                      "maxWidth": 80,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    [
-                                      {
-                                        "alignItems": "center",
-                                        "height": 32,
-                                        "justifyContent": "center",
-                                        "width": 32,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View
-                                    height={24}
-                                    width={24}
-                                  >
-                                    <Text>
-                                      undefined-SVG-Mock
-                                    </Text>
-                                  </View>
-                                </View>
-                                <View
-                                  numberOfSpaces={1}
-                                  style={
-                                    [
-                                      {
-                                        "height": 4,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <Text
-                                  numberOfLines={2}
-                                  style={
-                                    [
-                                      {
-                                        "color": "#161617",
-                                        "fontFamily": "Montserrat-SemiBold",
-                                        "fontSize": 12,
-                                        "lineHeight": 16,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  Facebook
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
                   </View>
                   <View
                     style={
                       [
                         {
-                          "paddingTop": 8,
+                          "alignItems": "flex-end",
                         },
                       ]
                     }
                   >
                     <View
-                      numberOfSpaces={2}
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Nouvelle fenêtre : Centre d’aide"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      [
+                        {
+                          "paddingVertical": 16,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
                       style={
                         [
                           {
-                            "height": 8,
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
                         ]
                       }
-                    />
+                    >
+                      Centre d’aide
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingTop": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Autres
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="list"
+            style={
+              [
+                {
+                  "flexDirection": "column",
+                  "paddingLeft": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Accessibilité"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Accessibilité"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      [
+                        {
+                          "paddingVertical": 16,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    fill="#161617"
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Accessibilité
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Informations légales"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Informations légales"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      [
+                        {
+                          "paddingVertical": 16,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Informations légales
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Confidentialité"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Confidentialité"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      [
+                        {
+                          "paddingVertical": 16,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Confidentialité
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingTop": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Partager le pass Culture
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "borderRadius": 7,
+                    "overflow": "hidden",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityIgnoresInvertColors={true}
+                style={
+                  [
+                    {
+                      "backgroundColor": "#eb0055",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <Image
+                  source={
+                    {
+                      "testUri": "../../../public/images/ShareAppBannerImage.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      {
+                        "height": undefined,
+                        "width": "100%",
+                      },
+                      undefined,
+                    ]
+                  }
+                  testID="module-background"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#90949D",
+                        "borderRadius": 7,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "padding": 16,
+                        "width": "100%",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        },
+                      ]
+                    }
+                  >
                     <View
                       style={
                         [
                           {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
+                            "paddingRight": 32,
                           },
                         ]
                       }
-                    />
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Partage le pass Culture
+                      </Text>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-Regular",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Recommande le bon plan à tes amis !
+                      </Text>
+                    </View>
+                  </View>
+                  <View>
                     <View
-                      numberOfSpaces={4}
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingTop": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Suivre le pass Culture
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "marginBottom": "auto",
+                  "marginLeft": "auto",
+                  "marginRight": "auto",
+                  "marginTop": "auto",
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingVertical": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="list"
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "space-between",
+                      "paddingLeft": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
                       style={
                         [
                           {
-                            "height": 16,
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "justifyContent": "center",
+                            "maxWidth": 80,
                           },
                         ]
                       }
-                    />
-                    <View
-                      accessibilityLabel="Déconnexion"
-                      accessibilityRole="button"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": false,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      collapsable={false}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        {
-                          "opacity": 1,
-                          "userSelect": "auto",
-                        }
-                      }
-                      testID="Déconnexion"
                     >
                       <View
                         style={
                           [
                             {
                               "alignItems": "center",
-                              "flexDirection": "row",
-                              "justifyContent": "space-between",
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
                             },
-                            undefined,
                           ]
                         }
                       >
@@ -2405,522 +1885,642 @@ exports[`Profile component should render correctly 1`] = `
                             undefined-SVG-Mock
                           </Text>
                         </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            [
-                              {
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                                "textAlign": "left",
-                              },
-                            ]
-                          }
-                        >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                          >
-                            Déconnexion
-                          </Text>
-                        </View>
                       </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        Instagram
+                      </Text>
                     </View>
                   </View>
+                </View>
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                      },
+                    ]
+                  }
+                >
                   <View
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        {
-                          "paddingTop": 8,
-                        },
-                      ]
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
                     }
                   >
                     <View
-                      numberOfSpaces={2}
                       style={
                         [
                           {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#F1F1F4",
-                            "height": 1,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Version 1.10.5
-                    </Text>
-                    <View
-                      numberOfSpaces={4}
-                      style={
-                        [
-                          {
-                            "height": 16,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        [
-                          {
-                            "height": 112,
-                            "width": 160,
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "justifyContent": "center",
+                            "maxWidth": 80,
                           },
                         ]
                       }
                     >
                       <View
-                        accessibilityLabel="République Française - Liberté Égalité Fraternité"
-                        fill="none"
-                        height="100%"
-                        width="100%"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        Twitter
+                      </Text>
                     </View>
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
                     <View
-                      numberOfSpaces={4}
                       style={
                         [
                           {
-                            "height": 16,
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "justifyContent": "center",
+                            "maxWidth": 80,
                           },
                         ]
                       }
-                    />
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        Tiktok
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    customHeight={72}
-                    enable={true}
-                    style={
-                      [
-                        {
-                          "height": 72,
-                        },
-                      ]
-                    }
-                  />
                 </View>
-              </View>
-            </RCTScrollView>
-            <View
-              height={16}
-              style={
-                [
-                  {
-                    "backdropFilter": "blur(20px)",
-                    "height": 16,
-                    "left": 0,
-                    "overflow": "hidden",
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                ]
-              }
-            >
-              <BlurView
-                blurAmount={8}
-                blurType="light"
-                style={
-                  [
-                    {
-                      "backgroundColor": "transparent",
-                    },
+                <View
+                  accessibilityRole="none"
+                  style={
                     [
                       {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "display": "flex",
                       },
-                    ],
-                  ]
-                }
-              />
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "column",
+                            "justifyContent": "center",
+                            "maxWidth": 80,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 32,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "height": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                      >
+                        Facebook
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
             </View>
           </View>
         </View>
         <View
-          onLayout={[Function]}
-          style={null}
+          style={
+            [
+              {
+                "paddingTop": 8,
+              },
+            ]
+          }
         >
           <View
-            collapsable={false}
-            pointerEvents="box-none"
+            numberOfSpaces={2}
             style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-                "zIndex": 0,
-              }
-            }
-          >
-            <View
-              collapsable={false}
-              style={
+              [
                 {
-                  "backgroundColor": "rgb(255, 255, 255)",
-                  "borderBottomColor": "rgb(216, 216, 216)",
-                  "flex": 1,
-                  "shadowColor": "rgb(216, 216, 216)",
-                  "shadowOffset": {
-                    "height": 0.5,
-                    "width": 0,
-                  },
-                  "shadowOpacity": 0.85,
-                  "shadowRadius": 0,
-                }
-              }
-            />
-          </View>
-          <View
-            collapsable={false}
-            pointerEvents="box-none"
-            style={
-              {
-                "height": 60,
-                "maxHeight": undefined,
-                "minHeight": undefined,
-                "opacity": undefined,
-                "transform": undefined,
-              }
+                  "height": 8,
+                },
+              ]
             }
-          >
-            <View
-              pointerEvents="none"
-              style={
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
                 {
                   "height": 16,
-                }
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel="Déconnexion"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
               }
-            />
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Déconnexion"
+          >
             <View
-              pointerEvents="box-none"
               style={
-                {
-                  "alignItems": "stretch",
-                  "flex": 1,
-                  "flexDirection": "row",
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                  undefined,
+                ]
               }
             >
               <View
-                collapsable={false}
-                pointerEvents="box-none"
-                style={
-                  {
-                    "alignItems": "flex-start",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "justifyContent": "center",
-                    "marginStart": 16,
-                  }
-                }
-              />
-              <View
-                collapsable={false}
-                pointerEvents="box-none"
-                style={
-                  {
-                    "justifyContent": "center",
-                    "marginHorizontal": 16,
-                    "maxWidth": 686,
-                  }
-                }
+                height={24}
+                width={24}
               >
-                <Text
-                  accessibilityRole="header"
-                  aria-level="1"
-                  collapsable={false}
-                  numberOfLines={1}
-                  style={
-                    {
-                      "color": "rgb(28, 28, 30)",
-                      "fontSize": 17,
-                      "fontWeight": "600",
-                    }
-                  }
-                >
-                  Profile
+                <Text>
+                  undefined-SVG-Mock
                 </Text>
               </View>
               <View
-                collapsable={false}
-                pointerEvents="box-none"
+                numberOfSpaces={2}
                 style={
-                  {
-                    "alignItems": "flex-end",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "justifyContent": "center",
-                    "marginEnd": 16,
-                  }
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
                 }
               />
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Déconnexion
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </RNSScreen>
-  </RNSScreenNavigationContainer>
-  <View
-    collapsable={false}
-    onLayout={[Function]}
-    pointerEvents="auto"
-    style={
-      {
-        "backgroundColor": "rgb(255, 255, 255)",
-        "borderTopColor": "rgb(216, 216, 216)",
-        "borderTopWidth": 0.5,
-        "bottom": 0,
-        "elevation": 8,
-        "height": 49,
-        "left": 0,
-        "paddingBottom": 0,
-        "paddingHorizontal": 0,
-        "position": null,
-        "right": 0,
-        "transform": [
-          {
-            "translateY": 0,
-          },
-        ],
-      }
-    }
-  >
-    <View
-      pointerEvents="none"
-      style={
-        {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    />
-    <View
-      accessibilityRole="tablist"
-      style={
-        {
-          "flex": 1,
-          "flexDirection": "row",
-        }
-      }
-    >
-      <View
-        accessibilityLabel="Profile, tab, 1 of 1"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": true,
-          }
-        }
-        accessibilityStates={
-          [
-            "selected",
-          ]
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flex": 1,
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-            {
-              "flexDirection": "column",
-              "justifyContent": "flex-end",
-            },
-            undefined,
-          ]
-        }
-      >
         <View
           style={
             [
               {
-                "flex": 1,
+                "paddingTop": 8,
               },
-              undefined,
             ]
           }
         >
           <View
+            numberOfSpaces={2}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "height": "100%",
-                  "justifyContent": "center",
-                  "minWidth": 25,
-                  "position": "absolute",
-                  "width": "100%",
-                },
-                {
-                  "opacity": 1,
+                  "height": 8,
                 },
               ]
             }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                  {
-                    "color": "rgb(0, 122, 255)",
-                    "fontSize": 25,
-                  },
-                  undefined,
-                ]
-              }
-            >
-              ⏷
-            </Text>
-          </View>
+          />
           <View
             style={
               [
                 {
-                  "alignItems": "center",
-                  "alignSelf": "center",
-                  "height": "100%",
-                  "justifyContent": "center",
-                  "minWidth": 25,
-                  "position": "absolute",
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
                   "width": "100%",
                 },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
                 {
-                  "opacity": 0,
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
           >
-            <Text
-              style={
-                [
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                  {
-                    "color": "#8E8E8F",
-                    "fontSize": 25,
-                  },
-                  undefined,
-                ]
-              }
+            Version 1.10.5
+          </Text>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "height": 112,
+                  "width": 160,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="République Française - Liberté Égalité Fraternité"
+              fill="none"
+              height="100%"
+              width="100%"
             >
-              ⏷
-            </Text>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
         </View>
-        <Text
-          numberOfLines={1}
+        <View
+          customHeight={72}
+          enable={true}
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "textAlign": "center",
+                "height": 72,
               },
-              {
-                "color": "rgb(0, 122, 255)",
-              },
-              {
-                "fontSize": 10,
-              },
-              undefined,
             ]
           }
-        >
-          Profile
-        </Text>
+        />
       </View>
     </View>
+  </RCTScrollView>
+  <View
+    height={16}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 16,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
+      }
+    />
   </View>
-</RNCSafeAreaProvider>
+</View>
 `;

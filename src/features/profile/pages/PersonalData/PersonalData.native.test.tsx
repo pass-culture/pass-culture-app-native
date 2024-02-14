@@ -7,7 +7,7 @@ import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { render, fireEvent, screen, act } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
@@ -20,8 +20,6 @@ const mockedIdentity: Partial<UserProfileResponse> = {
   email: 'rosa.bonheur@gmail.com',
   phoneNumber: '+33685974563',
 }
-
-jest.mock('react-query')
 
 describe('PersonalData', () => {
   it('should render personal data success', () => {
@@ -80,14 +78,13 @@ describe('PersonalData', () => {
     expect(screen.queryByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
-  it('should redirect to ChangePassword when clicking on modify password button', () => {
+  it('should redirect to ChangePassword when clicking on modify password button', async () => {
     renderPersonalData({
       ...mockedIdentity,
       isBeneficiary: false,
     } as UserProfileResponse)
 
-    const modifyButton = screen.getByTestId('Modifier mot de passe')
-    fireEvent.press(modifyButton)
+    await act(async () => fireEvent.press(screen.getByTestId('Modifier mot de passe')))
 
     expect(navigate).toHaveBeenCalledWith('ChangePassword', undefined)
   })
@@ -98,34 +95,32 @@ describe('PersonalData', () => {
       isBeneficiary: false,
     } as UserProfileResponse)
 
-    const deleteButton = screen.getByText('Supprimer mon compte')
-    fireEvent.press(deleteButton)
+    await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
 
-    await waitFor(() => {
-      expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
-    })
+    expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
   })
 
-  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', () => {
+  it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
     renderPersonalData({
       ...mockedIdentity,
       isBeneficiary: false,
     } as UserProfileResponse)
 
-    const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
-    fireEvent.press(faqLink)
+    await act(async () =>
+      fireEvent.press(screen.getByText('Comment gérer tes données personnelles ?'))
+    )
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
 
-  it('should log modify email when pressing "Modifier"', () => {
+  it('should log modify email when pressing "Modifier"', async () => {
     renderPersonalData({
       ...mockedIdentity,
       isBeneficiary: false,
     } as UserProfileResponse)
 
-    fireEvent.press(screen.getByTestId('Modifier e-mail'))
+    await act(async () => fireEvent.press(screen.getByTestId('Modifier e-mail')))
 
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)

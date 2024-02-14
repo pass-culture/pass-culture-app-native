@@ -6,6 +6,7 @@ import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
@@ -18,7 +19,6 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   },
   isLoading: false,
 } as UseEmailUpdateStatusMock)
-jest.mock('react-query')
 
 describe('<ConfirmChangeEmail />', () => {
   const navigation = {
@@ -33,7 +33,9 @@ describe('<ConfirmChangeEmail />', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<ConfirmChangeEmail navigation={navigation} route={route} />)
+      const { container } = render(
+        reactQueryProviderHOC(<ConfirmChangeEmail navigation={navigation} route={route} />)
+      )
 
       const results = await checkAccessibilityFor(container)
 

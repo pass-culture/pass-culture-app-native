@@ -1,16 +1,19 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { PersonalData } from './PersonalData'
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('react-query')
 
 describe('<PersonalData/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<PersonalData />)
+      const { container } = render(reactQueryProviderHOC(<PersonalData />))
+
+      await act(async () => {})
+
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

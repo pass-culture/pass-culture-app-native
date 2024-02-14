@@ -1,14 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native'
 import mockdate from 'mockdate'
 import React, { NamedExoticComponent } from 'react'
 import { Share } from 'react-native'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import * as Auth from 'features/auth/context/AuthContext'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { TabStack } from 'features/navigation/TabBar/Stack'
 import { domains_exhausted_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -23,6 +22,7 @@ import {
   Position,
 } from 'libs/location'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
   render,
   screen,
@@ -30,21 +30,11 @@ import {
   middleScrollEvent,
   bottomScrollEvent,
   waitFor,
+  act,
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
 import { Profile } from './Profile'
-
-jest.mock('react-query')
-
-const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate }),
-}))
-jest.mock('@react-navigation/bottom-tabs', () =>
-  jest.requireActual('@react-navigation/bottom-tabs')
-)
 
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
@@ -107,8 +97,9 @@ describe('Profile component', () => {
     mockPositionError = null
   })
 
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     renderProfile()
+    await act(async () => {})
 
     expect(screen).toMatchSnapshot()
   })
@@ -123,13 +114,13 @@ describe('Profile component', () => {
   it('should display the version with the CodePush version label', async () => {
     const mockVersion = 'Version\u00A01.10.5-123'
     useVersionSpy.mockReturnValueOnce(mockVersion)
-    await renderProfile()
+    renderProfile()
 
     expect(screen.getByText(mockVersion)).toBeOnTheScreen()
   })
 
   it('should not display the Code push version label when it is not available', async () => {
-    await renderProfile()
+    renderProfile()
 
     expect(screen.getByText('Version\u00A01.10.5')).toBeOnTheScreen()
   })
@@ -141,7 +132,7 @@ describe('Profile component', () => {
       const row = screen.getByText('Informations personnelles')
       fireEvent.press(row)
 
-      expect(mockNavigate).toHaveBeenCalledWith('PersonalData', undefined)
+      expect(navigate).toHaveBeenCalledWith('PersonalData', undefined)
     })
 
     describe('geolocation switch', () => {
@@ -202,7 +193,7 @@ describe('Profile component', () => {
       const notificationsButton = screen.getByText('Notifications')
       fireEvent.press(notificationsButton)
 
-      expect(mockNavigate).toHaveBeenCalledWith('NotificationSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('NotificationSettings', undefined)
     })
   })
 
@@ -215,7 +206,7 @@ describe('Profile component', () => {
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(mockNavigate).toHaveBeenCalledWith('AgeSelection', {
+        expect(navigate).toHaveBeenCalledWith('AgeSelection', {
           type: TutorialTypes.PROFILE_TUTORIAL,
         })
       })
@@ -229,7 +220,7 @@ describe('Profile component', () => {
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(mockNavigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
+        expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
       })
     })
 
@@ -274,7 +265,7 @@ describe('Profile component', () => {
       const accessibilityButton = screen.getByText('Accessibilité')
       fireEvent.press(accessibilityButton)
 
-      expect(mockNavigate).toHaveBeenCalledWith('Accessibility', undefined)
+      expect(navigate).toHaveBeenCalledWith('Accessibility', undefined)
     })
 
     it('should navigate when the legal notices row is clicked', () => {
@@ -283,7 +274,7 @@ describe('Profile component', () => {
       const legalNoticesButton = screen.getByText('Informations légales')
       fireEvent.press(legalNoticesButton)
 
-      expect(mockNavigate).toHaveBeenCalledWith('LegalNotices', undefined)
+      expect(navigate).toHaveBeenCalledWith('LegalNotices', undefined)
     })
 
     it('should navigate when the confidentiality row is clicked', () => {
@@ -292,7 +283,7 @@ describe('Profile component', () => {
       const confidentialityButton = screen.getByText('Confidentialité')
       fireEvent.press(confidentialityButton)
 
-      expect(mockNavigate).toHaveBeenCalledWith('ConsentSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('ConsentSettings', undefined)
     })
   })
 
@@ -401,12 +392,5 @@ const defaultOptions = {
 
 function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  render(
-    <NavigationContainer>
-      <TabStack.Navigator initialRouteName="Profile">
-        <TabStack.Screen name="Profile" component={Profile} />
-      </TabStack.Navigator>
-    </NavigationContainer>,
-    { wrapper }
-  )
+  render(reactQueryProviderHOC(<Profile />), { wrapper })
 }
