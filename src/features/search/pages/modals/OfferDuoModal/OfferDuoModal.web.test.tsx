@@ -4,8 +4,6 @@ import { FilterBehaviour } from 'features/search/enums'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-jest.mock('react-query')
-
 jest.mock('features/auth/context/AuthContext')
 
 describe('<OfferDuoModal/>', () => {

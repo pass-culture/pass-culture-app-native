@@ -9,6 +9,7 @@ import { Venue } from 'features/venue/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 const venue: Venue = mockedSuggestedVenues[0]
@@ -25,8 +26,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('features/auth/context/AuthContext')
-
-jest.mock('react-query')
 
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
@@ -80,14 +79,13 @@ jest.mock('uuid', () => ({
   v4: jest.fn(mockV4),
 }))
 
-// mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<Search/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-      const { container } = render(<Search />)
+      const { container } = render(reactQueryProviderHOC(<Search />))
 
       await act(async () => {})
 
@@ -100,7 +98,7 @@ describe('<Search/>', () => {
 
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = render(<Search />)
+      const { container } = render(reactQueryProviderHOC(<Search />))
 
       await act(async () => {})
 

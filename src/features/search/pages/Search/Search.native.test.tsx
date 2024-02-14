@@ -39,8 +39,6 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('react-query')
-
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
