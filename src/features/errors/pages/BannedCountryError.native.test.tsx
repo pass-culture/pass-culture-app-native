@@ -1,14 +1,13 @@
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { BannedCountryError } from './BannedCountryError'
 
-jest.mock('react-query')
-
 describe('BannedCountryError', () => {
   it('should render correctly', () => {
-    render(<BannedCountryError />)
+    render(reactQueryProviderHOC(<BannedCountryError />))
 
     expect(screen).toMatchSnapshot()
   })

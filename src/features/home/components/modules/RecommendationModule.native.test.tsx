@@ -3,6 +3,7 @@ import React from 'react'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
@@ -13,7 +14,6 @@ const displayParameters: DisplayParametersFields = {
   layout: 'one-item-medium',
 }
 
-jest.mock('react-query')
 jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
   useHomeRecommendedOffers: jest.fn(() => ({
     offers: mockedAlgoliaResponse.hits,
@@ -22,14 +22,7 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
 
 describe('RecommendationModule', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
-    render(
-      <RecommendationModule
-        displayParameters={displayParameters}
-        index={1}
-        moduleId="abcd"
-        homeEntryId="xyz"
-      />
-    )
+    renderRecommendationModule()
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
       1,
@@ -42,15 +35,20 @@ describe('RecommendationModule', () => {
 
   it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
     const minOffers = mockedAlgoliaResponse.hits.length + 1
-    render(
-      <RecommendationModule
-        displayParameters={{ ...displayParameters, minOffers }}
-        index={1}
-        moduleId="abcd"
-        homeEntryId="xyz"
-      />
-    )
+    renderRecommendationModule({ ...displayParameters, minOffers })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 })
+
+const renderRecommendationModule = (additionalDisplayParams?: DisplayParametersFields) =>
+  render(
+    reactQueryProviderHOC(
+      <RecommendationModule
+        index={1}
+        moduleId="abcd"
+        homeEntryId="xyz"
+        displayParameters={additionalDisplayParams || displayParameters}
+      />
+    )
+  )

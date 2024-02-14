@@ -1,25 +1,14 @@
 import { ANIMATION_DELAY, useShowSkeleton } from 'features/home/api/useShowSkeleton'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-jest.mock('react-query', () => ({
-  useIsFetching: jest.fn(() => 0).mockImplementationOnce(() => 1),
-  useQueryClient: jest
-    .fn(() => ({
-      getQueryCache: jest.fn(() => ({
-        findAll: jest.fn(() => [{ state: { isFetching: false } }]),
-      })),
-    }))
-    .mockImplementationOnce(() => ({
-      getQueryCache: jest.fn(() => ({
-        findAll: jest.fn(() => [{ state: { isFetching: true } }]),
-      })),
-    })),
-}))
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('useShowSkeleton', () => {
   it('should show skeleton when fetching data on load', async () => {
-    jest.useFakeTimers({ legacyFakeTimers: true })
-    const { result, rerender } = renderHook(useShowSkeleton)
+    const { result, rerender } = renderHook(useShowSkeleton, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
 
     expect(result.current).toBeTruthy()
 

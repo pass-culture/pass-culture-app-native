@@ -18,7 +18,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 
-type OffersModuleProps = {
+export type OffersModuleProps = {
   offersModuleParameters: OffersModuleType['offersModuleParameters']
   displayParameters: OffersModuleType['displayParameters']
   moduleId: string
