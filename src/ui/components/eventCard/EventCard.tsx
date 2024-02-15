@@ -68,6 +68,7 @@ const Container = styled.View<{ isDisabled: boolean }>(({ theme, isDisabled }) =
   borderRadius: theme.borderRadius.radius,
   boxSizing: 'border-box',
   padding: getSpacing(3),
+  justifyContent: 'flex-start',
   backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
   ...(!isDisabled
     ? getShadow({
@@ -81,6 +82,7 @@ const Container = styled.View<{ isDisabled: boolean }>(({ theme, isDisabled }) =
 
 const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
   color: isDisabled ? theme.colors.greyDark : theme.colors.black,
+  textAlign: 'left',
 }))
 
 const SubtitleContainer = styled.View({
@@ -88,6 +90,8 @@ const SubtitleContainer = styled.View({
   flexDirection: 'row',
   width: '100%',
   alignItems: 'center',
+  justifyContent: 'space-between',
+  textOverflow: 'ellipsis',
 })
 
 const SubtitleLeft = styled(Typo.Caption)<{ isDisabled: boolean; hasSubtitleRight: boolean }>(
@@ -104,4 +108,5 @@ const SubtitleRight = styled(Typo.Body)<{ isDisabled: boolean }>(({ theme, isDis
   textAlign: 'right',
   flexShrink: 0,
   paddingLeft: getSpacing(1),
+  flex: 1,
 }))
