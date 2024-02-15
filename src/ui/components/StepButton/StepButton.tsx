@@ -2,22 +2,21 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { IdentityCheckStep } from 'features/identityCheck/types'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
-import { StepButtonState, StepDetails, SubscriptionScreen } from 'ui/components/StepButton/types'
+import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-interface Props {
-  step: Omit<StepDetails<IdentityCheckStep>, 'firstScreen'> & { firstScreen?: SubscriptionScreen }
+interface Props<T> {
+  step: StepDetails<T>
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress?: () => void
 }
 
-export const StepButton = ({ step, navigateTo, onPress }: Props) => {
+export const StepButton = <T,>({ step, navigateTo, onPress }: Props<T>) => {
   const label = step.title
   const stepState = step.stepState
   const Icon = step.icon[stepState]
