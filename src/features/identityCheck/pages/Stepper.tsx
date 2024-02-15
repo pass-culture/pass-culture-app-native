@@ -9,7 +9,6 @@ import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
@@ -89,7 +88,7 @@ export const Stepper = () => {
     <StepList currentStepIndex={currentStepIndex}>
       {steps.map((step, index) => (
         <StepButtonContainer key={step.name}>
-          <StepButton<IdentityCheckStep>
+          <StepButton
             step={step}
             navigateTo={{ screen: step.firstScreen }}
             onPress={() => {

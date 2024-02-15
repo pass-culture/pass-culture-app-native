@@ -10,13 +10,13 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-interface Props<T> {
-  step: StepDetails<T>
+interface Props {
+  step: StepDetails
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress?: () => void
 }
 
-export const StepButton = <T,>({ step, navigateTo, onPress }: Props<T>) => {
+export const StepButton = ({ step, navigateTo, onPress }: Props) => {
   const label = step.title
   const stepState = step.stepState
   const Icon = step.icon[stepState]

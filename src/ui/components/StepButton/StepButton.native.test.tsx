@@ -2,7 +2,6 @@ import React from 'react'
 
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
-import { IdentityCheckStep } from 'features/identityCheck/types'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { StepButton } from 'ui/components/StepButton/StepButton'
@@ -78,10 +77,8 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
 )
 
 function renderStepButton(stepState: StepButtonState) {
-  const identificationStep: StepDetails<IdentityCheckStep> = {
-    name: IdentityCheckStep.CONFIRMATION,
-    firstScreen: 'SelectIDOrigin',
-    stepState: stepState,
+  const identificationStep: StepDetails = {
+    stepState,
     title: 'Identification',
     icon: {
       disabled: DisabledIdCardIcon,

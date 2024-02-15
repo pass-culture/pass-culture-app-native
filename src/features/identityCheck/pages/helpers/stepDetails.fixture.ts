@@ -1,10 +1,10 @@
-import { IdentityCheckStep } from 'features/identityCheck/types'
-import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
+import { StepExtendedDetails, IdentityCheckStep } from 'features/identityCheck/types'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 
-export const stepsDetailsFixture: StepDetails<IdentityCheckStep>[] = [
+export const stepsDetailsFixture: StepExtendedDetails[] = [
   {
     name: IdentityCheckStep.PHONE_VALIDATION,
     icon: {

@@ -1,34 +1,32 @@
 import { SubscriptionStepCompletionState, SubscriptionStepperResponse } from 'api/gen'
-import { IdentityCheckStep } from 'features/identityCheck/types'
-import { StepButtonState, StepConfig, StepDetails } from 'ui/components/StepButton/types'
+import { StepConfig } from 'features/identityCheck/types'
+import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 
 export const mapStepsDetails = (
   stepToDisplayList: SubscriptionStepperResponse['subscriptionStepsToDisplay'],
-  stepConfigList: StepConfig<IdentityCheckStep>[]
-): StepDetails<IdentityCheckStep>[] => {
+  stepConfigList: StepConfig[]
+): StepDetails[] => {
   const stepDetailsList = stepToDisplayList.map((step) => {
     const currentStepConfig = stepConfigList.find(
       (stepConfig) => stepConfig.name.valueOf() === step.name.valueOf()
     )
     if (!currentStepConfig) return null
-    const stepDetails: StepDetails<IdentityCheckStep> = {
-      name: currentStepConfig?.name,
+    const stepDetails: StepDetails = {
       title: step.title,
       subtitle: step.subtitle ?? undefined,
       icon: currentStepConfig?.icon,
-      firstScreen: currentStepConfig?.firstScreen,
       stepState: mapCompletionState(step.completionState),
     }
     return stepDetails
   })
 
   const stepDetailsListWithoutNull = stepDetailsList.filter(
-    (step): step is StepDetails<IdentityCheckStep> => step != null
+    (step): step is StepDetails => step != null
   )
   return stepDetailsListWithoutNull
 }
 
-const mapCompletionState = (state: SubscriptionStepCompletionState) => {
+export const mapCompletionState = (state: SubscriptionStepCompletionState) => {
   switch (state) {
     case SubscriptionStepCompletionState.completed:
       return StepButtonState.COMPLETED

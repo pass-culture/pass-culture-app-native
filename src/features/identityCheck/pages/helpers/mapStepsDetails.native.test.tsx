@@ -9,8 +9,8 @@ import {
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
-import { IdentityCheckStep } from 'features/identityCheck/types'
-import { StepButtonState, StepConfig, StepDetails } from 'ui/components/StepButton/types'
+import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -44,7 +44,7 @@ const stepsToComplete: SubscriptionStepperResponse['subscriptionStepsToDisplay']
 ]
 
 describe('mapStepsDetails', () => {
-  const stepsConfig: StepConfig<IdentityCheckStep>[] = [
+  const stepsConfig: StepConfig[] = [
     {
       firstScreen: 'SetPhoneNumber',
       name: IdentityCheckStep.PHONE_VALIDATION,
@@ -89,7 +89,7 @@ describe('mapStepsDetails', () => {
     },
   ]
 
-  const expectedStepsDetails: StepDetails<IdentityCheckStep>[] = [
+  const expectedStepsDetails: StepExtendedDetails[] = [
     {
       name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
