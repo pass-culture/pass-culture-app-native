@@ -32,7 +32,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const { offers, RecommendationApiParams } = useHomeRecommendedOffers(
+  const { offers, recommendationApiParams } = useHomeRecommendedOffers(
     profile?.id,
     position,
     moduleId,
@@ -79,7 +79,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           width={width}
           height={height}
           homeEntryId={homeEntryId}
-          apiRecoParams={RecommendationApiParams}
+          apiRecoParams={recommendationApiParams}
         />
       )
     },
@@ -90,7 +90,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       profile?.isBeneficiary,
       labelMapping,
       mapping,
-      RecommendationApiParams,
+      recommendationApiParams,
     ]
   )
 
