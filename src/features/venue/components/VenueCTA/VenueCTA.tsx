@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
-import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -21,21 +20,19 @@ export const VenueCTA: FunctionComponent<Props> = ({ venue }) => {
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
   return (
     <StickyBottomWrapper>
-      <BlurryWrapper>
-        <CallToActionContainer>
-          <Spacer.Column numberOfSpaces={6} />
-          <InternalTouchableLink
-            navigateTo={searchNavConfig}
-            onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
-            as={ButtonPrimary}
-            wording="Rechercher une offre"
-            icon={SmallMagnifyingGlass}
-            fullWidth
-          />
-          <Spacer.Column numberOfSpaces={6} />
-        </CallToActionContainer>
-        <Spacer.BottomScreen />
-      </BlurryWrapper>
+      <CallToActionContainer>
+        <Spacer.Column numberOfSpaces={6} />
+        <InternalTouchableLink
+          navigateTo={searchNavConfig}
+          onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
+          as={ButtonPrimary}
+          wording="Rechercher une offre"
+          icon={SmallMagnifyingGlass}
+          fullWidth
+        />
+        <Spacer.Column numberOfSpaces={6} />
+      </CallToActionContainer>
+      <Spacer.BottomScreen />
     </StickyBottomWrapper>
   )
 }
@@ -46,9 +43,10 @@ const SmallMagnifyingGlass = styled(MagnifyingGlassFilled).attrs(({ theme }) => 
 
 const CallToActionContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
+  alignSelf: 'center',
   paddingHorizontal: theme.contentPage.marginHorizontal,
+  width: '100%',
   ...(!theme.isMobileViewport && {
-    width: '100%',
     maxWidth: theme.contentPage.maxWidth,
   }),
 }))
