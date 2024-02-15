@@ -73,7 +73,7 @@ export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChang
 
 const Container = styled.View({})
 
-const scrollViewContainer = { marginLeft: getSpacing(6), marginRight: getSpacing(6) }
+const scrollViewContainer = { paddingHorizontal: getSpacing(6) }
 
 const BottomBar = styled.View(({ theme }) => ({
   position: 'absolute',
