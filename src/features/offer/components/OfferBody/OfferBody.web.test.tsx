@@ -9,8 +9,9 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
+
+jest.mock('react-query')
 
 const mockSubcategories = placeholderData.subcategories
 const mockSearchGroups = placeholderData.searchGroups
@@ -61,19 +62,14 @@ describe('<OfferBody />', () => {
   describe('share on social media', () => {
     it('should open url to share on social medium', async () => {
       render(
-        reactQueryProviderHOC(
-          <OfferBody
-            offer={mockOffer}
-            onScroll={jest.fn()}
-            handleChangeSameArtistPlaylistDisplay={jest.fn()}
-          />
-        )
+        <OfferBody
+          offer={mockOffer}
+          onScroll={jest.fn()}
+          handleChangeSameArtistPlaylistDisplay={jest.fn()}
+        />
       )
 
-      const whatsAppButton = await screen.findByText('Envoyer sur WhatsApp')
-      await act(async () => {
-        await userEvent.click(whatsAppButton)
-      })
+      await userEvent.click(await screen.findByText('Envoyer sur WhatsApp'))
 
       const expectedUrl = `${getOfferUrl(offerId, 'social_media')}&utm_source=WhatsApp`
       const expectedMessage = `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\u00a0:\n${expectedUrl}`
@@ -86,21 +82,19 @@ describe('<OfferBody />', () => {
 
     it('should open web share modal on "Plus d’options" press', async () => {
       render(
-        reactQueryProviderHOC(
-          <OfferBody
-            offer={mockOffer}
-            onScroll={jest.fn()}
-            handleChangeSameArtistPlaylistDisplay={jest.fn()}
-          />
-        )
+        <OfferBody
+          offer={mockOffer}
+          onScroll={jest.fn()}
+          handleChangeSameArtistPlaylistDisplay={jest.fn()}
+        />
       )
 
-      const otherButton = screen.getByText('Plus d’options')
       await act(async () => {
-        await userEvent.click(otherButton)
+        const otherButton = screen.getByText('Plus d’options')
+        fireEvent.click(otherButton)
       })
 
-      expect(await screen.findByText('Partager l’offre')).toBeInTheDocument()
+      expect(screen.getByText('Partager l’offre')).toBeInTheDocument()
     })
   })
 })
