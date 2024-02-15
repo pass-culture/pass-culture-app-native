@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import { SubcategoryIdEnumv2 } from 'api/gen'
 import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
@@ -40,9 +41,9 @@ export function getRecommendationParameters(
     price_min: parameters?.priceMin,
     price_max: parameters?.priceMax,
     start_date: beginningDatetime,
-    subcategories: (parameters?.subcategories ?? []).map(
-      (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
-    ),
+    subcategories: (parameters?.subcategories ?? [])
+      .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
+      .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined),
     isDuo: parameters.isDuo,
     isRecoShuffled: parameters.isRecoShuffled,
     offerTypeList: offertTypeValue,
@@ -54,7 +55,7 @@ export const useHomeRecommendedOffers = (
   position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-): { offers?: Offer[]; RecommendationApiParams?: RecommendationApiParams } => {
+): { offers?: Offer[]; recommendationApiParams?: RecommendationApiParams } => {
   const recommendationEndpoint = getRecommendationEndpoint({
     userId,
     position,
@@ -84,6 +85,6 @@ export const useHomeRecommendedOffers = (
       moduleId,
       true
     ),
-    RecommendationApiParams: recommendedIdsResponse?.params,
+    recommendationApiParams: recommendedIdsResponse?.params,
   }
 }

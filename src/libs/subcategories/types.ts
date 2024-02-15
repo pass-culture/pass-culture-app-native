@@ -14,5 +14,5 @@ export type CategoryIdMapping = Record<SubcategoryIdEnumv2, CategoryIdEnum>
 export type HomeLabelMapping = Record<HomepageLabelNameEnumv2, string | null>
 export type CategoryHomeLabelMapping = Record<SubcategoryIdEnumv2, string | null>
 export type SearchGroupLabelMapping = Record<SearchGroupNameEnumv2, string>
-export type SubcategoryLabelMapping = Record<string, SubcategoryIdEnumv2>
+export type SubcategoryLabelMapping = RecordOfString<SubcategoryIdEnumv2>
 export type GenreTypeMapping = Record<GenreType, Array<GenreTypeContentModel>>

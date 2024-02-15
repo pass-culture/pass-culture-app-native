@@ -1,3 +1,4 @@
+import { SubcategoryIdEnumv2 } from 'api/gen'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { OffersModuleParameters } from 'features/home/types'
 import { sortCategories } from 'features/search/helpers/reducer.helpers'
@@ -26,9 +27,9 @@ export const adaptOffersPlaylistParameters = (
     .map(getCategoriesFacetFilters)
     .sort(sortCategories)
 
-  const offerSubcategories = (parameters.subcategories ?? []).map(
-    (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
-  )
+  const offerSubcategories = (parameters.subcategories ?? [])
+    .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])
+    .filter((subcategory): subcategory is SubcategoryIdEnumv2 => subcategory !== undefined)
 
   const offerGenreTypes = buildOfferGenreTypesValues(
     {
