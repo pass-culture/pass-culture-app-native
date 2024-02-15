@@ -32,7 +32,7 @@ export const useFeatureFlag = (
 
   const { minimalBuildNumber, maximalBuildNumber } = buildNumberConfig
 
-  if (minimalBuildNumber === maximalBuildNumber) return minimalBuildNumber === appBuildVersion
+  if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) return false
 
   if (!!(minimalBuildNumber && maximalBuildNumber) && minimalBuildNumber > maximalBuildNumber) {
     eventMonitoring.captureMessage(
@@ -47,7 +47,8 @@ export const useFeatureFlag = (
     return false
   }
 
-  if (maximalBuildNumber) return appBuildVersion <= maximalBuildNumber
-
-  return !!minimalBuildNumber && appBuildVersion >= minimalBuildNumber
+  return (
+    (!minimalBuildNumber || minimalBuildNumber <= appBuildVersion) &&
+    (!maximalBuildNumber || appBuildVersion <= maximalBuildNumber)
+  )
 }
