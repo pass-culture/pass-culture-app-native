@@ -20,6 +20,7 @@ import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
+import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -43,8 +44,8 @@ export function TrackEmailChange() {
   const getStepButtonState = useCallback(
     (stepIndex: number) => {
       if (disableOldChangeEmail) return StepButtonState.DISABLED
-      if (stepIndex === currentStep) return StepButtonState.ACTIVE
-      if (stepIndex < currentStep) return StepButtonState.DONE
+      if (stepIndex === currentStep) return StepButtonState.CURRENT
+      if (stepIndex < currentStep) return StepButtonState.DISABLED
       return StepButtonState.DISABLED
     },
     [currentStep, disableOldChangeEmail]
@@ -86,21 +87,16 @@ export function TrackEmailChange() {
           <Step>
             <StyledStepCard
               type={getStepButtonState(0)}
-              title={currentStep === 0 ? 'Confirme ta demande' : 'Confirmation de ta demande'}
-              subtitle={`Depuis l’email envoyé à ${currentEmail}`}
-              icon={<BicolorEmailIcon />}
+              title="Envoi de ta demande"
+              icon={<BicolorPhoneIcon />}
             />
           </Step>
           <Step>
             <StyledStepCard
               type={getStepButtonState(1)}
-              title={
-                currentStep === 1
-                  ? 'Choisis ta nouvelle adresse'
-                  : 'Choix de ta nouvelle adresse e-mail'
-              }
-              subtitle="Renseigne ta nouvelle adresse e-mail"
-              icon={<PencilTip />}
+              title={currentStep === 1 ? 'Confirme ta demande' : 'Confirmation de ta demande'}
+              subtitle={`Depuis l’email envoyé à ${currentEmail}`}
+              icon={<BicolorEmailIcon />}
             />
           </Step>
           <Step>
@@ -117,7 +113,7 @@ export function TrackEmailChange() {
           </Step>
           <Step>
             <StyledStepCard
-              type={getStepCardType(3)}
+              type={getStepButtonState(3)}
               title={
                 currentStep === 3
                   ? 'Connecte-toi sur ta nouvelle adresse'

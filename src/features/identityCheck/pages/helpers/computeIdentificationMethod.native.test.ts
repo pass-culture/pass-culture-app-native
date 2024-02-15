@@ -1,6 +1,6 @@
 import { IdentityCheckMethod } from 'api/gen'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
-import { SubscriptionScreen } from 'ui/components/StepButton/types'
+import { SubscriptionScreen } from 'features/identityCheck/types'
 
 const educonnectFlowFirstScreen: SubscriptionScreen = 'EduConnectForm'
 const ubbleFlowFirstScreen: SubscriptionScreen = 'SelectIDOrigin'

@@ -1,5 +1,5 @@
 import { IdentityCheckMethod } from 'api/gen'
-import { SubscriptionScreen } from 'ui/components/StepButton/types'
+import { SubscriptionScreen } from 'features/identityCheck/types'
 
 const educonnectFlowFirstScreen: SubscriptionScreen = 'EduConnectForm'
 
