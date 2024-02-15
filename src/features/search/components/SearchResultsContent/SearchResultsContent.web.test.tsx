@@ -42,7 +42,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
