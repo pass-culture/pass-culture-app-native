@@ -8,11 +8,14 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
 import { Step } from 'features/profile/components/Step/Step'
 import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
 import { StepList } from 'features/profile/components/StepList/StepList'
 import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
@@ -23,6 +26,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 const HEADER_HEIGHT = getSpacing(8)
 
 export function TrackEmailChange() {
+  const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
   const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
   const { user } = useAuthContext()
   const { top } = useCustomSafeInsets()
@@ -38,11 +42,12 @@ export function TrackEmailChange() {
 
   const getStepCardType = useCallback(
     (stepIndex: number) => {
+      if (disableOldChangeEmail) return StepCardType.DISABLED
       if (stepIndex === currentStep) return StepCardType.ACTIVE
       if (stepIndex < currentStep) return StepCardType.DONE
       return StepCardType.DISABLED
     },
-    [currentStep]
+    [currentStep, disableOldChangeEmail]
   )
 
   useEffect(() => {
@@ -67,8 +72,16 @@ export function TrackEmailChange() {
       </HeaderContainer>
       <Spacer.Column numberOfSpaces={6} />
       <StyledTitleText>Suivi de ton changement d’e-mail</StyledTitleText>
-      <Spacer.Column numberOfSpaces={10} />
       <StyledListContainer>
+        {disableOldChangeEmail ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <UpdateAppBanner />
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
+        ) : (
+          <Spacer.Column numberOfSpaces={10} />
+        )}
         <StyledStepList activeStepIndex={currentStep}>
           <Step>
             <StyledStepCard

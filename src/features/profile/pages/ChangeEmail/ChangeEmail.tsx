@@ -6,11 +6,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { theme } from 'theme'
@@ -27,6 +30,7 @@ type FormValues = {
 }
 
 export function ChangeEmail() {
+  const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
   const { isMobileViewport, isTouch } = useTheme()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const { user } = useAuthContext()
@@ -72,7 +76,8 @@ export function ChangeEmail() {
     changeEmail({ email: newEmail, password })
   }
 
-  const isSubmitButtonDisabled = !isValid || isLoading
+  const isInputDisabled = disableOldChangeEmail || hasCurrentEmailChange
+  const isSubmitButtonDisabled = disableOldChangeEmail || !isValid || isLoading
 
   return (
     <React.Fragment>
@@ -82,12 +87,18 @@ export function ChangeEmail() {
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={6} />
-        {hasCurrentEmailChange ? (
+        {!!disableOldChangeEmail && (
+          <React.Fragment>
+            <UpdateAppBanner />
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
+        )}
+        {!!hasCurrentEmailChange && (
           <React.Fragment>
             <AlreadyChangedEmailDisclaimer />
             <Spacer.Column numberOfSpaces={4} />
           </React.Fragment>
-        ) : null}
+        )}
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
@@ -95,8 +106,9 @@ export function ChangeEmail() {
             <EmailInputController
               control={control}
               name="newEmail"
-              label="Nouvel e-mail"
-              disabled={hasCurrentEmailChange}
+              label="Nouvelle adresse e-mail"
+              placeholder="email@exemple.com"
+              disabled={isInputDisabled}
               autoFocus
               isRequiredField
             />
@@ -104,7 +116,7 @@ export function ChangeEmail() {
             <PasswordInputController
               control={control}
               name="password"
-              disabled={hasCurrentEmailChange}
+              disabled={isInputDisabled}
               isRequiredField
             />
             {isMobileViewport && isTouch ? (
@@ -116,8 +128,8 @@ export function ChangeEmail() {
             {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
             <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
               <ButtonPrimary
-                wording="Enregistrer"
-                accessibilityLabel="Enregistrer les modifications"
+                wording="Valider la demande"
+                accessibilityLabel="Valider la demande de modification de mon e-mail"
                 onPress={handleSubmit(submitEmailChange)}
                 disabled={isSubmitButtonDisabled}
               />

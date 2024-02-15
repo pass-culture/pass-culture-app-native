@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-const ValidateIconSvg: React.FunctionComponent<AccessibleIcon> = ({
+const StepperValidateSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
@@ -31,7 +31,7 @@ const ValidateIconSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const ValidateIcon = styled(ValidateIconSvg).attrs(
+export const StepperValidate = styled(StepperValidateSvg).attrs(
   ({ theme, size = theme.icons.sizes.smaller, color = theme.colors.black }) => ({
     color,
     size,
