@@ -13,8 +13,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
-jest.mock('react-query')
-
 jest.mock('features/bookings/api')
 const mockUseBookings = jest.mocked(useBookings)
 mockUseBookings.mockReturnValue({
