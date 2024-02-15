@@ -1,21 +1,16 @@
 import React from 'react'
-import { useMutation } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/env'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor, useMutationFactory } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
-
-const mockedUseMutation = jest.mocked(useMutation)
-
-jest.mock('react-query')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
@@ -28,9 +23,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
-  }),
+  useSnackBarContext: () => ({ showErrorSnackBar: mockShowErrorSnackBar }),
 }))
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -42,33 +35,21 @@ describe('ConfirmDeleteProfile component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to DeleteProfileSuccess when clicking on "Supprimer mon compte" button', () => {
-    const useMutationCallbacks: { onSuccess: () => void } = {
-      onSuccess: () => {},
-    }
-    // @ts-expect-error ts(2345)
-    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+  it('should redirect to DeleteProfileSuccess when clicking on "Supprimer mon compte" button', async () => {
+    mockServer.postApiV1('/account/suspend', {})
     renderConfirmDeleteProfile()
 
-    fireEvent.press(screen.getByText('Supprimer mon compte'))
-
-    useMutationCallbacks.onSuccess()
+    await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'DeleteProfileSuccess')
     expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 
-  it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', () => {
-    const useMutationCallbacks: { onError: (error: unknown) => void } = {
-      onError: () => {},
-    }
-    // @ts-expect-error ts(2345)
-    mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
+  it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', async () => {
+    mockServer.postApiV1('/account/suspend', { responseOptions: { statusCode: 400 } })
     renderConfirmDeleteProfile()
 
-    fireEvent.press(screen.getByText('Supprimer mon compte'))
-
-    useMutationCallbacks.onError({ error: undefined })
+    await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur s’est produite pendant le chargement.',

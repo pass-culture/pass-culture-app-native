@@ -5,9 +5,8 @@ import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
-
-jest.mock('react-query')
 
 const user: UserProfileResponse = {
   bookedOffers: {},
@@ -60,39 +59,42 @@ describe('ProfileHeader', () => {
   })
 
   it('should display the LoggedOutHeader if no user', () => {
-    render(<ProfileHeader user={undefined} />)
+    renderProfileHeader({ user: undefined })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    render(<ProfileHeader user={user} />)
+    renderProfileHeader({ user })
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
-    render(<ProfileHeader user={user} />)
+    renderProfileHeader({ user })
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    render(<ProfileHeader user={exBeneficiaryUser} />)
+    renderProfileHeader({ user: exBeneficiaryUser })
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {
-    render(<ProfileHeader user={notBeneficiaryUser} />)
+    renderProfileHeader({ user: notBeneficiaryUser })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', () => {
-    render(<ProfileHeader user={exUnderageBeneficiaryUser} />)
+    renderProfileHeader({ user: exUnderageBeneficiaryUser })
 
     expect(screen).toMatchSnapshot()
   })
 })
+
+const renderProfileHeader = ({ user }: { user?: UserProfileResponse }) =>
+  render(reactQueryProviderHOC(<ProfileHeader user={user} />))

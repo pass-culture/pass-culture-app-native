@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
+import { UpdateEmailTokenExpiration } from 'api/gen'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
 import { ChangeEmail } from './ChangeEmail'
-
-jest.mock('react-query')
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
 jest.mock('uuid', () => {
@@ -18,15 +19,20 @@ jest.mock('uuid', () => {
 describe('<ChangeEmail/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<ChangeEmail />)
+      mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
+        expiration: null,
+      })
+      const { container } = render(reactQueryProviderHOC(<ChangeEmail />))
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
       })
 
-      const results = await checkAccessibilityFor(container)
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

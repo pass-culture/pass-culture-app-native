@@ -36,8 +36,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
-jest.mock('react-query')
-
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: () => mockSignOut,
@@ -54,26 +52,26 @@ const emailUpdateValidateSpy = jest
   .spyOn(API.api, 'putNativeV1ProfileEmailUpdateValidate')
   .mockImplementation()
 
+const navigation = {
+  navigate: jest.fn(),
+  replace: jest.fn(),
+} as unknown as NativeStackNavigationProp<RootStackParamList, 'ValidateEmailChange'>
+
+const route = {
+  params: {
+    token: 'example',
+  },
+} as unknown as RouteProp<RootStackParamList, 'ValidateEmailChange'>
+
 describe('ValidateEmailChange', () => {
-  const navigation = {
-    navigate: jest.fn(),
-    replace: jest.fn(),
-  } as unknown as NativeStackNavigationProp<RootStackParamList, 'ValidateEmailChange'>
-
-  const route = {
-    params: {
-      token: 'example',
-    },
-  } as unknown as RouteProp<RootStackParamList, 'ValidateEmailChange'>
-
   it('should render new email address', () => {
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     expect(screen.getByText('john@doe.com')).toBeOnTheScreen()
   })
 
   it('should sign out if submit is success and user is logged in', async () => {
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
 
@@ -89,7 +87,7 @@ describe('ValidateEmailChange', () => {
       isUserLoading: false,
       refetchUser: jest.fn(),
     })
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
 
@@ -99,7 +97,7 @@ describe('ValidateEmailChange', () => {
   })
 
   it('should redirect to Login if submit is success', async () => {
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
@@ -109,7 +107,7 @@ describe('ValidateEmailChange', () => {
   })
 
   it('should display a snackbar if submit is success', async () => {
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
@@ -121,7 +119,7 @@ describe('ValidateEmailChange', () => {
   it('should redirect to ChangeEmailExpiredLink if submit triggers a 401 error', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
 
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
@@ -133,7 +131,7 @@ describe('ValidateEmailChange', () => {
   it('should display an error message if submit triggers an error not 401', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(500, 'unauthorized'))
 
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
@@ -145,7 +143,7 @@ describe('ValidateEmailChange', () => {
   it('should not display an error message if submit triggers an error  401', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
 
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
@@ -163,7 +161,7 @@ describe('ValidateEmailChange', () => {
       },
     } as QueryObserverResult<EmailUpdateStatus>)
 
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
   })
@@ -173,8 +171,11 @@ describe('ValidateEmailChange', () => {
       data: undefined,
     } as QueryObserverResult<EmailUpdateStatus>)
 
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
+    renderValidateEmailChange()
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })
+
+const renderValidateEmailChange = () =>
+  render(<ValidateEmailChange navigation={navigation} route={route} />)

@@ -1,10 +1,9 @@
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { ConsentSettings } from './ConsentSettings'
-
-jest.mock('react-query')
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
@@ -25,7 +24,7 @@ jest.mock('uuid', () => {
 describe('<ConsentSettings/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<ConsentSettings />)
+      const { container } = render(reactQueryProviderHOC(<ConsentSettings />))
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

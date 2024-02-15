@@ -1,10 +1,9 @@
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
-
-jest.mock('react-query')
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -13,7 +12,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 describe('<ConfirmDeleteProfile/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<ConfirmDeleteProfile />)
+      const { container } = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

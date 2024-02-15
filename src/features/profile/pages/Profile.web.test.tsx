@@ -1,15 +1,14 @@
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { Profile } from './Profile'
 
-jest.mock('react-query')
-
 describe('<Profile/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<Profile />)
+      const { container } = renderProfile()
       const results = await checkAccessibilityFor(container, {
         // TODO(PC-19659): Fix FilterSwitch accessibility errors
         rules: {
@@ -23,8 +22,10 @@ describe('<Profile/>', () => {
   })
 
   it('should not display app share banner', () => {
-    render(<Profile />)
+    renderProfile()
 
     expect(screen.queryByText('Partage le pass Culture')).not.toBeInTheDocument()
   })
 })
+
+const renderProfile = () => render(reactQueryProviderHOC(<Profile />))

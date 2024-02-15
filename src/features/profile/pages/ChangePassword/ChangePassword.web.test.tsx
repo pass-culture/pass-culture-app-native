@@ -1,10 +1,9 @@
 import React from 'react'
 
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, act, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ChangePassword } from './ChangePassword'
-
-jest.mock('react-query')
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
 jest.mock('uuid', () => {
@@ -18,7 +17,7 @@ jest.mock('uuid', () => {
 describe('<ChangePassword/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<ChangePassword />)
+      const { container } = render(reactQueryProviderHOC(<ChangePassword />))
       await act(async () => {
         const results = await checkAccessibilityFor(container)
 
