@@ -1,13 +1,14 @@
 import React from 'react'
 
+import { SubscriptionStepCompletionState } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
-import { mapCompletionState } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { theme } from 'theme'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -21,13 +22,30 @@ type StepperInfo = {
   errorMessage?: string | null
 }
 
+type PartialIdentityCheckStep = Exclude<IdentityCheckStep, IdentityCheckStep.END>
+
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
     useGetStepperInfo()
+  function isPartialIdentityCheckStep(stepName: string): stepName is PartialIdentityCheckStep {
+    return stepName in stepsConfig
+  }
+  const mapCompletionState = (state: SubscriptionStepCompletionState) => {
+    switch (state) {
+      case SubscriptionStepCompletionState.completed:
+        return StepButtonState.COMPLETED
+      case SubscriptionStepCompletionState.current:
+        return StepButtonState.CURRENT
+      case SubscriptionStepCompletionState.disabled:
+        return StepButtonState.DISABLED
+      case SubscriptionStepCompletionState.retry:
+        return StepButtonState.RETRY
+    }
+  }
 
-  const stepsConfig: Record<string, StepConfig> = {
+  const stepsConfig: Record<PartialIdentityCheckStep, StepConfig> = {
     [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
       icon: {
@@ -75,7 +93,8 @@ export const useStepperInfo = (): StepperInfo => {
   }
 
   const stepDetailsList = stepToDisplay.map((step) => {
-    const currentStepConfig = stepsConfig[step.name]
+    if (!isPartialIdentityCheckStep(step.name)) return null
+    const currentStepConfig: StepConfig = stepsConfig[step.name]
     if (!currentStepConfig) return null
     const stepDetails: StepExtendedDetails = {
       name: currentStepConfig.name,
