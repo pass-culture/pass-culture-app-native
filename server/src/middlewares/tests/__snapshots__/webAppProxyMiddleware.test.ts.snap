@@ -10,6 +10,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta name=\\"description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
+    <meta name=\\"keywords\\" content=\\"pass Culture\\" />
     <meta property=\\"og:type\\" content=\\"website\\"/>
     <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/9\\" />
     <meta property=\\"og:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />

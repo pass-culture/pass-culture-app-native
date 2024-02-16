@@ -19,6 +19,7 @@ const { href } = new URL(APP_PUBLIC_URL)
 const REGEX = {
   metaTitle: /<meta\s+(name)="(title)"\s+content="([^"]*)"\s*\/?>/g,
   metaDescription: /<meta\s+(name)="(description)"\s+content="([^"]*)"\s*\/?>/g,
+  metaKeywords: /<meta\s+(name)="(keywords)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:url']: /<meta\s+(property)="(og:url)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:title']: /<meta\s+(property)="(og:title)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:description']: /<meta\s+(property)="(og:description)"\s+content="([^"]*)"\s*\/?>/g,
@@ -61,6 +62,10 @@ export async function replaceHtmlMetas(
       metaDescription: {
         data: METAS_CONFIG.metaDescription(entity),
         regEx: REGEX.metaDescription,
+      },
+      metaKeywords: {
+        data: METAS_CONFIG.metaKeywords(entity),
+        regEx: REGEX.metaKeywords,
       },
       ['og:url']: {
         data: METAS_CONFIG['og:url'](href, subPath),

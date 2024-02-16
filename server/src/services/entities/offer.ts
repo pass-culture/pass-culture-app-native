@@ -16,6 +16,18 @@ export const OFFER: EntityType<OfferData> = {
     metaDescription(entity) {
       return entity.description as string
     },
+    metaKeywords(entity) {
+      const extraData = entity.extraData || {}
+      const keywords = [
+        entity.subcategoryId.replaceAll('_', ' '),
+        extraData.musicType,
+        extraData.musicSubType,
+        extraData.showType,
+        extraData.showSubType,
+      ].filter((keyword) => !!keyword)
+
+      return keywords.join(', ')
+    },
     ['og:url'](href, subPath) {
       return `${href}${subPath}`
     },

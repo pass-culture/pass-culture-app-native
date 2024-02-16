@@ -16,6 +16,9 @@ export const VENUE: EntityType<VenueData> = {
     metaDescription(entity) {
       return entity.description as string
     },
+    metaKeywords() {
+      return ''
+    },
     ['og:url'](href, subPath) {
       return `${href}${subPath}`
     },

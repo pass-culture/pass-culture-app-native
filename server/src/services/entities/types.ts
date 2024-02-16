@@ -54,6 +54,7 @@ export type EntityType<T> = {
     title: (entity: T) => string
     metaTitle: (entity: T) => string
     metaDescription: (entity: T) => string
+    metaKeywords: (entity: T) => string
     ['og:url']: (href: string, subPath: string) => string
     ['og:title']: (entity: T) => string
     ['og:description']: (entity: T) => string
