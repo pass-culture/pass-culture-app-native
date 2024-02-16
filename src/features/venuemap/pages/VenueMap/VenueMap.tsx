@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { Map } from 'features/venuemap/components/Map/Map'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -17,6 +18,7 @@ export const VenueMap: FunctionComponent = () => {
     <View>
       <PageHeaderWithoutPlaceholder title="Carte des lieux" onGoBack={goBack} />
       <Placeholder height={headerHeight} />
+      <Map />
     </View>
   )
 }
