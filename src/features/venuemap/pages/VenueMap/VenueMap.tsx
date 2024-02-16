@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { Map } from 'features/venuemap/components/Map/Map'
+import { VenueMapView } from 'features/venuemap/components/VenueMapView/VenueMapView'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const VenueMap: FunctionComponent = () => {
@@ -14,7 +14,7 @@ export const VenueMap: FunctionComponent = () => {
   return (
     <View>
       <StyledHeader title="Carte des lieux" onGoBack={goBack} />
-      <Map />
+      <VenueMapView />
     </View>
   )
 }
