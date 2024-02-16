@@ -29,11 +29,16 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   </CategoryButtonContainer>
 )
 
+const isWeb = Platform.OS === 'web'
+
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const { hasGeolocPosition, selectedLocationMode } = useLocation()
+
   const shouldDisplayVenueMap =
-    enabledVenueMap && (!hasGeolocPosition || selectedLocationMode !== LocationMode.EVERYWHERE)
+    enabledVenueMap &&
+    (!hasGeolocPosition || selectedLocationMode !== LocationMode.EVERYWHERE) &&
+    !isWeb
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
