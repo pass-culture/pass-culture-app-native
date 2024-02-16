@@ -9,8 +9,8 @@ import {
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
-import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
-import { StepButtonState } from 'ui/components/StepButton/types'
+import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
+import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -89,42 +89,36 @@ describe('mapStepsDetails', () => {
     },
   ]
 
-  const expectedStepsDetails: StepExtendedDetails[] = [
+  const expectedStepsDetails: StepDetails[] = [
     {
-      name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
         disabled: BicolorSmartphone,
         current: BicolorSmartphone,
         completed: expect.any(Function),
         retry: expect.any(Function),
       },
-      firstScreen: 'SetPhoneNumber',
       title: 'Numéro de téléphone',
       subtitle: 'Sous-titre Numéro de téléphone',
       stepState: StepButtonState.CURRENT,
     },
     {
-      name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: BicolorIdCard,
         current: BicolorIdCard,
         completed: expect.any(Function),
         retry: expect.any(Function),
       },
-      firstScreen: 'SelectIDOrigin',
       title: 'Identification',
       subtitle: 'Sous-titre Identification',
       stepState: StepButtonState.RETRY,
     },
     {
-      name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: BicolorLegal,
         current: BicolorLegal,
         completed: expect.any(Function),
         retry: expect.any(Function),
       },
-      firstScreen: 'IdentityCheckHonor',
       title: 'Confirmation',
       subtitle: 'Confirmation',
       stepState: StepButtonState.DISABLED,
