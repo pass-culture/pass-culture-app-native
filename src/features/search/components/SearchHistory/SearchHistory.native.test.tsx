@@ -9,8 +9,6 @@ const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
 
 const mockRemoveItem = jest.fn()
 
-jest.mock('react-query')
-
 const mockHistory = [mockedSearchHistory[0]]
 
 describe('SearchHistory', () => {

@@ -10,9 +10,8 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-
-jest.mock('react-query')
 
 const mockSubcategories = placeholderData.subcategories
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -142,7 +141,7 @@ jest.mock('react-native-intersection-observer', () => {
 
 describe('GtlPlaylist', () => {
   it('should log ConsultOffer when pressing an item', () => {
-    render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
 
     fireEvent.press(screen.queryAllByText('Mon abonnement bibliothèque')[0])
 
@@ -156,7 +155,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
-    render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
     const scrollView = screen.getByTestId('offersModuleList')
 
     await act(async () => {
@@ -177,7 +176,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should log ModuleDisplayed when scrolling to the playlist', () => {
-    render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
 
     mockInView(true)
 
@@ -189,7 +188,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
-    render(<GtlPlaylist playlist={playlists[0]} venue={venue} />)
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
 
     mockInView(false)
 
