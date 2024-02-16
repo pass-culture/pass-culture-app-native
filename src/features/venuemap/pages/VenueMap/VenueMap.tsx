@@ -18,7 +18,7 @@ export const VenueMap: FunctionComponent = () => {
   return (
     <View>
       <StyledHeader title="Carte des lieux" onGoBack={goBack} />
-      <VenueMapView headerHeight={headerHeight} />
+      <VenueMapView padding={{ top: headerHeight, right: 0, bottom: 0, left: 0 }} />
     </View>
   )
 }
