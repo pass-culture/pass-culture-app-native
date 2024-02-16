@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Email } from 'ui/svg/icons/Email'
 
-import { StepCard, StepCardType } from './StepCard'
+import { StepCard } from './StepCard'
 
 const meta: ComponentMeta<typeof StepCard> = {
   title: 'features/profile/StepCard',
@@ -19,7 +20,7 @@ Default.args = {
   subtitle:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies non ante a egestas. Aliquam sed efficitur risus. Cras ut gravida quam, quis venenatis turpis. ',
   icon: <BicolorAroundMe />,
-  type: StepCardType.ACTIVE,
+  type: StepButtonState.CURRENT,
 }
 
 export const DisabledStepCard = Template.bind({})
@@ -28,7 +29,7 @@ DisabledStepCard.args = {
   icon: <Email />,
   subtitle:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies non ante a egestas. Aliquam sed efficitur risus. Cras ut gravida quam, quis venenatis turpis. ',
-  type: StepCardType.DISABLED,
+  type: StepButtonState.DISABLED,
 }
 
 export const DoneStepCard = Template.bind({})
@@ -37,5 +38,5 @@ DoneStepCard.args = {
   icon: <Email />,
   subtitle:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies non ante a egestas. Aliquam sed efficitur risus. Cras ut gravida quam, quis venenatis turpis. ',
-  type: StepCardType.DONE,
+  type: StepButtonState.COMPLETED,
 }
