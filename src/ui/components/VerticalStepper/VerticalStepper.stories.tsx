@@ -3,9 +3,9 @@ import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
 import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { StepVariant } from 'features/profile/components/VerticalStepper/types'
-import { VerticalStepper } from 'features/profile/components/VerticalStepper/VerticalStepper'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { StepVariant } from 'ui/components/VerticalStepper/types'
+import { VerticalStepper } from 'ui/components/VerticalStepper/VerticalStepper'
 
 type VerticalStepperStoryProps = ComponentProps<typeof VerticalStepper> & {
   wrapper: 'normal' | 'large' | 'small'

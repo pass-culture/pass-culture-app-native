@@ -1,4 +1,4 @@
-import { StepVariant } from './components/VerticalStepper/types'
+import { StepVariant } from 'ui/components/VerticalStepper/types'
 
 export interface ChangeEmailRequest {
   email: string

@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { InternalStep } from 'features/profile/components/InternalStep/InternalStep'
-import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { AgeCreditBlock } from 'features/tutorial/components/AgeCreditBlock'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
@@ -14,6 +12,8 @@ import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/get
 import { TutorialType } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { InternalStep } from 'ui/components/InternalStep/InternalStep'
+import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Spacer, getSpacing } from 'ui/theme'
 

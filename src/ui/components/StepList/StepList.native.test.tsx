@@ -1,8 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { Step } from 'features/profile/components/Step/Step'
 import { render, screen } from 'tests/utils'
+import { Step } from 'ui/components/Step/Step'
 import { Typo } from 'ui/theme'
 
 import { StepList } from './StepList'

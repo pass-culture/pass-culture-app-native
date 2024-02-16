@@ -1,11 +1,10 @@
 import React, { ReactElement } from 'react'
 
+import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { Li } from 'ui/components/Li'
+import { StepProps } from 'ui/components/Step/Step'
 import { VerticalUl } from 'ui/components/Ul'
-
-import { InternalStep } from '../../../features/profile/components/InternalStep/InternalStep'
-import { StepProps } from '../../../features/profile/components/Step/Step'
-import { StepVariant } from '../../../features/profile/components/VerticalStepper/types'
+import { StepVariant } from 'ui/components/VerticalStepper/types'
 
 export interface StepListProps {
   currentStepIndex: number
