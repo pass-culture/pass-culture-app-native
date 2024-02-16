@@ -726,5 +726,16 @@ describe('SearchResultsContent component', () => {
 
       expect(screen.getByTestId('Accessibilité')).toBeOnTheScreen()
     })
+
+    it('should open accessibility filters modal when accessibilityFiltersButton is pressed', async () => {
+      render(<SearchResultsContent />)
+      const accessibilityFiltersButton = screen.getByTestId('Accessibilité')
+      await act(async () => {
+        fireEvent.press(accessibilityFiltersButton)
+      })
+      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
+
+      expect(fullscreenModalScrollView).toBeOnTheScreen()
+    })
   })
 })
