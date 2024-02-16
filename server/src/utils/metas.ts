@@ -2,7 +2,13 @@ import { encode } from 'html-entities'
 
 import { env } from '../libs/environment/env'
 import { apiClient } from '../services/apiClient'
-import { ENTITY_METAS_CONFIG_MAP, EntityKeys, MetaConfig } from '../services/entities/types'
+import {
+  ENTITY_METAS_CONFIG_MAP,
+  EntityKeys,
+  MetaConfig,
+  NestedMetadata,
+  Metadata,
+} from '../services/entities/types'
 
 import { logger } from './logging'
 
@@ -148,9 +154,6 @@ export async function replaceHtmlMetas(
     return html
   }
 }
-
-type NestedMetadata = string | number | boolean | string[] | { [key: string]: NestedMetadata }
-type Metadata = Record<string, NestedMetadata>
 
 const encodeWhateverType = (value: NestedMetadata): NestedMetadata => {
   switch (typeof value) {

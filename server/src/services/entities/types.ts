@@ -11,6 +11,14 @@ export const ENTITY_METAS_CONFIG_MAP = {
   lieu: VENUE.METAS_CONFIG,
 }
 
+export type NestedMetadata =
+  | string
+  | number
+  | boolean
+  | string[]
+  | { [key: string]: NestedMetadata }
+export type Metadata = Record<string, NestedMetadata>
+
 export type EntityKeys = keyof typeof ENTITY_MAP
 
 export type EntityType = {
