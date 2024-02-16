@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { VenueMapBlock } from 'features/search/components/VenueMapBlock/VenueMapBlock'
+import { VenueMapBlock } from 'features/venuemap/components/VenueMapBlock/VenueMapBlock'
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('<VenueMapBlock />', () => {
