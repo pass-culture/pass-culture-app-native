@@ -40,7 +40,7 @@
     <meta-data android:name="asset_statements" android:resource="@string/asset_statements" />
      <meta-data
      android:name="com.google.android.geo.API_KEY"
-     android:value="need_to_be_filled"/>
+     android:value="AIzaSyBS-sLkmXXhCFmtvSRG-bBHPymxpUuH3yA"/>
   </application>
     <queries>
       <package android:name="com.instagram.android" />
