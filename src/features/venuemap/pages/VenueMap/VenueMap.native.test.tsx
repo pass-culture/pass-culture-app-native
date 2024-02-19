@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueMap } from 'features/search/pages/VenueMap/VenueMap'
+import { VenueMap } from 'features/venuemap/pages/VenueMap/VenueMap'
 import { render, screen } from 'tests/utils'
 
 describe('<VenueMap />', () => {

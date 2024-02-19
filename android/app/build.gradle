@@ -267,6 +267,7 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging" // firebase - batch
     implementation 'com.batch.android:firebase-dispatcher:2.0.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0' // for google-signin
+    implementation 'com.google.android.gms:play-services-location:21.0.1' // for google map android
 }
 
 

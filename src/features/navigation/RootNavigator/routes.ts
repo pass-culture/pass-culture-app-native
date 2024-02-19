@@ -62,9 +62,9 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
-import { VenueMap } from 'features/search/pages/VenueMap/VenueMap'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
+import { VenueMap } from 'features/venuemap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { Route } from './types'

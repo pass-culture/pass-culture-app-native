@@ -1,6 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, ReactNode } from 'react'
-import { Platform } from 'react-native'
+import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -19,6 +19,7 @@ interface Props {
   shouldDisplayBackButton?: boolean
   RightButton?: ReactNode
   children?: ReactNode
+  style?: StyleProp<ViewStyle>
 }
 
 const HEADER_HEIGHT = getSpacing(12)
@@ -39,9 +40,10 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   shouldDisplayBackButton = true,
   RightButton = null,
   children,
+  style,
 }) => {
   return (
-    <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER}>
+    <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
       <Spacer.TopScreen />
       <Container>
         <Row>
@@ -61,7 +63,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   )
 }
 
-const Header = styled.View(({ theme }) => ({
+const Header = styled(View)(({ theme }) => ({
   zIndex: theme.zIndex.header,
   position: 'absolute',
   top: 0,

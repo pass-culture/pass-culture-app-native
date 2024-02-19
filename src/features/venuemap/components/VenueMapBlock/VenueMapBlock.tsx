@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { VENUE_MAP_BACKGROUND } from 'features/search/components/VenueMapBlock/VenueMapBackground'
+import { VENUE_MAP_BACKGROUND } from 'features/venuemap/components/VenueMapBlock/VenueMapBackground'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'

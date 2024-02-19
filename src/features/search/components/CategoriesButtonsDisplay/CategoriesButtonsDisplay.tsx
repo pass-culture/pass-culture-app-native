@@ -6,7 +6,7 @@ import {
   CategoryButton,
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
-import { VenueMapBlock } from 'features/search/components/VenueMapBlock/VenueMapBlock'
+import { VenueMapBlock } from 'features/venuemap/components/VenueMapBlock/VenueMapBlock'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
@@ -29,11 +29,16 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   </CategoryButtonContainer>
 )
 
+const isWeb = Platform.OS === 'web'
+
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const { hasGeolocPosition, selectedLocationMode } = useLocation()
+
   const shouldDisplayVenueMap =
-    enabledVenueMap && (!hasGeolocPosition || selectedLocationMode !== LocationMode.EVERYWHERE)
+    enabledVenueMap &&
+    (!hasGeolocPosition || selectedLocationMode !== LocationMode.EVERYWHERE) &&
+    !isWeb
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
