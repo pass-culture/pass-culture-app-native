@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import MapView, { EdgePadding } from 'react-native-maps'
 import styled from 'styled-components/native'
+
+import MapView, { EdgePadding } from 'libs/maps/maps'
 
 type Props = {
   padding: EdgePadding

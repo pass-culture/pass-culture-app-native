@@ -182,6 +182,11 @@ module.exports = {
             message:
               'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',
           },
+          {
+            name: 'react-native-maps',
+            message:
+              'react-native-maps is not supported on the web. Use libs/maps/maps instead',
+          },
         ],
         patterns: [
           {
