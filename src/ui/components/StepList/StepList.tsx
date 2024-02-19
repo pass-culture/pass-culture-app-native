@@ -1,29 +1,28 @@
 import React, { ReactElement } from 'react'
 
+import { InternalStep } from 'ui/components/InternalStep/InternalStep'
 import { Li } from 'ui/components/Li'
+import { StepProps } from 'ui/components/Step/Step'
 import { VerticalUl } from 'ui/components/Ul'
-
-import { InternalStep } from '../InternalStep/InternalStep'
-import { StepProps } from '../Step/Step'
-import { StepVariant } from '../VerticalStepper/types'
+import { StepVariant } from 'ui/components/VerticalStepper/types'
 
 export interface StepListProps {
-  activeStepIndex: number
+  currentStepIndex: number
   children: ReactElement<StepProps>[]
 }
 
-function getVariantFromIndex(activeStepIndex: number, stepIndex: number) {
-  if (activeStepIndex < stepIndex) return StepVariant.future
-  if (activeStepIndex === stepIndex) return StepVariant.in_progress
+function getVariantFromIndex(currentStepIndex: number, stepIndex: number) {
+  if (currentStepIndex < stepIndex) return StepVariant.future
+  if (currentStepIndex === stepIndex) return StepVariant.in_progress
   return StepVariant.complete
 }
 
 /**
  * Create a step list that automatically assigns correct `StepVariant` based on
- * `activeStepIndex` value.
+ * `currentStepIndex` value.
  *
  * @example
- * <StepList activeStepIndex={0}>
+ * <StepList currentStepIndex={0}>
  *   <Step>
  *     <MyWonderfulComponent />
  *   </Step>
@@ -35,12 +34,12 @@ function getVariantFromIndex(activeStepIndex: number, stepIndex: number) {
  *   </Step>
  * </StepList>
  */
-export function StepList({ activeStepIndex, children, ...props }: StepListProps) {
-  if (activeStepIndex > children.length - 1) {
+export function StepList({ currentStepIndex, children, ...props }: StepListProps) {
+  if (currentStepIndex > children.length - 1) {
     console.warn(
-      `[StepList] - Given (\`activeStepIndex\`: ${activeStepIndex}) but children length is ${
+      `[StepList] - Given (\`currentStepIndex\`: ${currentStepIndex}) but children length is ${
         children.length
-      }. Maximum \`activeStepIndex\` should be ${children.length - 1}.`
+      }. Maximum \`currentStepIndex\` should be ${children.length - 1}.`
     )
   }
 
@@ -50,7 +49,7 @@ export function StepList({ activeStepIndex, children, ...props }: StepListProps)
         return (
           <Li>
             <InternalStep
-              variant={getVariantFromIndex(activeStepIndex, index)}
+              variant={getVariantFromIndex(currentStepIndex, index)}
               isFirst={index === 0}
               isLast={index === children.length - 1}
               {...child.props}

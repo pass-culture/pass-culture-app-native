@@ -9,14 +9,15 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
-import { Step } from 'features/profile/components/Step/Step'
-import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
-import { StepList } from 'features/profile/components/StepList/StepList'
+import { StepCard } from 'features/profile/components/StepCard/StepCard'
 import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
+import { Step } from 'ui/components/Step/Step'
+import { StepButtonState } from 'ui/components/StepButton/types'
+import { StepList } from 'ui/components/StepList/StepList'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
@@ -40,12 +41,12 @@ export function TrackEmailChange() {
   const currentEmail = user?.email ?? ''
   const newEmail = emailUpdateStatus?.newEmail ?? ''
 
-  const getStepCardType = useCallback(
+  const getStepButtonState = useCallback(
     (stepIndex: number) => {
-      if (disableOldChangeEmail) return StepCardType.DISABLED
-      if (stepIndex === currentStep) return StepCardType.ACTIVE
-      if (stepIndex < currentStep) return StepCardType.DONE
-      return StepCardType.DISABLED
+      if (disableOldChangeEmail) return StepButtonState.DISABLED
+      if (stepIndex === currentStep) return StepButtonState.CURRENT
+      if (stepIndex < currentStep) return StepButtonState.DISABLED
+      return StepButtonState.DISABLED
     },
     [currentStep, disableOldChangeEmail]
   )
@@ -82,17 +83,17 @@ export function TrackEmailChange() {
         ) : (
           <Spacer.Column numberOfSpaces={10} />
         )}
-        <StyledStepList activeStepIndex={currentStep}>
+        <StyledStepList currentStepIndex={currentStep}>
           <Step>
             <StyledStepCard
-              type={getStepCardType(0)}
+              type={getStepButtonState(0)}
               title="Envoi de ta demande"
               icon={<BicolorPhoneIcon />}
             />
           </Step>
           <Step>
             <StyledStepCard
-              type={getStepCardType(1)}
+              type={getStepButtonState(1)}
               title={currentStep === 1 ? 'Confirme ta demande' : 'Confirmation de ta demande'}
               subtitle={`Depuis l’email envoyé à ${currentEmail}`}
               icon={<BicolorEmailIcon />}
@@ -100,7 +101,7 @@ export function TrackEmailChange() {
           </Step>
           <Step>
             <StyledStepCard
-              type={getStepCardType(2)}
+              type={getStepButtonState(2)}
               title={
                 currentStep === 2
                   ? 'Valide ta nouvelle adresse'
@@ -112,7 +113,7 @@ export function TrackEmailChange() {
           </Step>
           <Step>
             <StyledStepCard
-              type={getStepCardType(3)}
+              type={getStepButtonState(3)}
               title={
                 currentStep === 3
                   ? 'Connecte-toi sur ta nouvelle adresse'

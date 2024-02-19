@@ -6,19 +6,19 @@ import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
-import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { StepButtonState } from 'features/identityCheck/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { StepList } from 'features/profile/components/StepList/StepList'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { StepButton } from 'ui/components/StepButton/StepButton'
+import { StepButtonState } from 'ui/components/StepButton/types'
+import { StepList } from 'ui/components/StepList/StepList'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -35,10 +35,10 @@ export const Stepper = () => {
     errorMessage,
   } = useStepperInfo()
 
-  const activeStepIndex = steps.findIndex(
+  const currentStepIndex = steps.findIndex(
     (step) => step.stepState === StepButtonState.CURRENT || step.stepState === StepButtonState.RETRY
   )
-  const stepToComplete = steps[activeStepIndex]
+  const stepToComplete = steps[currentStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -85,7 +85,7 @@ export const Stepper = () => {
   }, [params?.from, stepToComplete?.name])
 
   const stepList = (
-    <StepList activeStepIndex={activeStepIndex}>
+    <StepList currentStepIndex={currentStepIndex}>
       {steps.map((step, index) => (
         <StepButtonContainer key={step.name}>
           <StepButton

@@ -1,5 +1,5 @@
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { IconInterface } from 'ui/svg/icons/types'
+import { StepDetails } from 'ui/components/StepButton/types'
 
 export enum DeprecatedIdentityCheckStep {
   PHONE_VALIDATION = 'phone_validation',
@@ -17,27 +17,6 @@ export enum IdentityCheckStep {
   END = 'end',
 }
 
-export type SubscriptionScreen = keyof SubscriptionRootStackParamList
-
-export type StepConfig = {
-  name: IdentityCheckStep
-  icon: Record<StepButtonState, React.FC<IconInterface>>
-  firstScreen: SubscriptionScreen
-}
-
-export type StepDetails = StepConfig & {
-  title: string
-  subtitle?: string
-  stepState: StepButtonState
-}
-
-export enum StepButtonState {
-  'COMPLETED' = 'completed',
-  'CURRENT' = 'current',
-  'DISABLED' = 'disabled',
-  'RETRY' = 'retry',
-}
-
 export interface RehydrationProfile {
   activity: string
   address: string
@@ -47,3 +26,12 @@ export interface RehydrationProfile {
   postalCode: string
   schoolType: string
 }
+
+export type SubscriptionScreen = keyof SubscriptionRootStackParamList
+
+export type StepConfig = Pick<StepDetails, 'icon'> & {
+  name: IdentityCheckStep
+  firstScreen: SubscriptionScreen
+}
+
+export type StepExtendedDetails = StepConfig & StepDetails

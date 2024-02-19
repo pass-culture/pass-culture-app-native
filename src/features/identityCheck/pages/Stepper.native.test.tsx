@@ -9,16 +9,13 @@ import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
-import {
-  DeprecatedIdentityCheckStep,
-  IdentityCheckStep,
-  StepButtonState,
-} from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { StepButtonState } from 'ui/components/StepButton/types'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()

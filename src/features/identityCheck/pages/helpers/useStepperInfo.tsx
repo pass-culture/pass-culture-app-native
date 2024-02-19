@@ -1,32 +1,38 @@
 import React from 'react'
 
+import { SubscriptionStepCompletionState } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
-import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
-import { IdentityCheckStep, StepConfig, StepDetails } from 'features/identityCheck/types'
+import { StepExtendedDetails, IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { theme } from 'theme'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-// hook as it can be dynamic depending on subscription step
-export const useStepperInfo = (): {
-  stepsDetails: StepDetails[]
+type StepperInfo = {
+  stepsDetails: StepExtendedDetails[]
   title: string
   subtitle?: string | null
   errorMessage?: string | null
-} => {
+}
+
+type PartialIdentityCheckStep = Exclude<IdentityCheckStep, IdentityCheckStep.END>
+type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
+
+// hook as it can be dynamic depending on subscription step
+export const useStepperInfo = (): StepperInfo => {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
     useGetStepperInfo()
 
-  const stepsConfig: StepConfig[] = [
-    {
+  const stepsConfig: StepsDictionary = {
+    [IdentityCheckStep.PROFILE]: {
       name: IdentityCheckStep.PROFILE,
       icon: {
         disabled: DisabledProfileIcon,
@@ -36,7 +42,7 @@ export const useStepperInfo = (): {
       },
       firstScreen: 'SetName',
     },
-    {
+    [IdentityCheckStep.IDENTIFICATION]: {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: DisabledIdCardIcon,
@@ -46,7 +52,7 @@ export const useStepperInfo = (): {
       },
       firstScreen: computeIdentificationMethod(identificationMethods),
     },
-    {
+    [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: DisabledConfirmationIcon,
@@ -56,7 +62,7 @@ export const useStepperInfo = (): {
       },
       firstScreen: 'IdentityCheckHonor',
     },
-    {
+    [IdentityCheckStep.PHONE_VALIDATION]: {
       name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
         disabled: DisabledSmartphoneIcon,
@@ -70,11 +76,44 @@ export const useStepperInfo = (): {
       },
       firstScreen: remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber',
     },
-  ]
+  }
 
-  const stepsDetails = mapStepsDetails(stepToDisplay, stepsConfig)
+  const stepDetailsList = stepToDisplay.map((step) => {
+    if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
+    const currentStepConfig: StepConfig = stepsConfig[step.name]
+    const stepDetails: StepExtendedDetails = {
+      name: currentStepConfig.name,
+      title: step.title,
+      subtitle: step.subtitle ?? undefined,
+      icon: currentStepConfig.icon,
+      stepState: mapCompletionState(step.completionState),
+      firstScreen: currentStepConfig.firstScreen,
+    }
+    return stepDetails
+  })
 
+  const stepsDetails = stepDetailsList.filter((step): step is StepExtendedDetails => step != null)
   return { stepsDetails, title, subtitle, errorMessage }
+}
+
+function isPartialIdentityCheckStep(
+  stepName: string,
+  stepsConfig: StepsDictionary
+): stepName is PartialIdentityCheckStep {
+  return stepName in stepsConfig
+}
+
+const mapCompletionState = (state: SubscriptionStepCompletionState) => {
+  switch (state) {
+    case SubscriptionStepCompletionState.completed:
+      return StepButtonState.COMPLETED
+    case SubscriptionStepCompletionState.current:
+      return StepButtonState.CURRENT
+    case SubscriptionStepCompletionState.disabled:
+      return StepButtonState.DISABLED
+    case SubscriptionStepCompletionState.retry:
+      return StepButtonState.RETRY
+  }
 }
 
 const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (

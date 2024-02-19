@@ -4,9 +4,9 @@ import React from 'react'
 
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
-import { StepButton } from 'features/identityCheck/components/StepButton'
-import { IdentityCheckStep, StepButtonState } from 'features/identityCheck/types'
 import { theme } from 'theme'
+import { StepButton } from 'ui/components/StepButton/StepButton'
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -37,8 +37,6 @@ const Template: ComponentStory<typeof StepButton> = (props) => <StepButton {...p
 export const Default = Template.bind({})
 Default.args = {
   step: {
-    name: IdentityCheckStep.IDENTIFICATION,
-    firstScreen: 'SelectIDOrigin',
     stepState: StepButtonState.CURRENT,
     title: 'Identification',
     icon: {
@@ -55,8 +53,6 @@ export const DisabledStep = Template.bind({})
 DisabledStep.args = {
   step: {
     stepState: StepButtonState.DISABLED,
-    name: IdentityCheckStep.IDENTIFICATION,
-    firstScreen: 'SelectIDOrigin',
     title: 'Identification',
     icon: {
       disabled: DisabledIdCardIcon,
@@ -71,8 +67,6 @@ export const RetryStep = Template.bind({})
 RetryStep.args = {
   step: {
     stepState: StepButtonState.RETRY,
-    name: IdentityCheckStep.IDENTIFICATION,
-    firstScreen: 'SelectIDOrigin',
     title: 'Identification',
     subtitle: 'Réessaie avec ta pièce d’identité en t’assurant qu’elle soit lisible.',
     icon: {
@@ -88,8 +82,6 @@ export const CompletedStep = Template.bind({})
 CompletedStep.args = {
   step: {
     stepState: StepButtonState.COMPLETED,
-    name: IdentityCheckStep.IDENTIFICATION,
-    firstScreen: 'SelectIDOrigin',
     title: 'Identification',
     icon: {
       disabled: DisabledIdCardIcon,

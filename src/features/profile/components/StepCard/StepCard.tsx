@@ -2,32 +2,27 @@ import React, { ReactElement, useMemo } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
+import { StepButtonState } from 'ui/components/StepButton/types'
 import { getSpacing, Typo } from 'ui/theme'
-
-export enum StepCardType {
-  DONE = 'done',
-  ACTIVE = 'active',
-  DISABLED = 'disabled',
-}
 
 interface StepCardProps extends ViewProps {
   title: string
   icon: ReactElement
   subtitle?: string
-  type?: StepCardType
+  type?: StepButtonState
 }
 
 export function StepCard({
   title,
   subtitle,
   icon,
-  type = StepCardType.ACTIVE,
+  type = StepButtonState.CURRENT,
   ...props
 }: StepCardProps) {
   const hasSubtitle = !!subtitle
   const theme = useTheme()
 
-  const shouldDisplaySubtitle = Boolean(hasSubtitle && type === StepCardType.ACTIVE)
+  const shouldDisplaySubtitle = Boolean(hasSubtitle && type === StepButtonState.CURRENT)
 
   const iconElement = useMemo(() => {
     return getIconWithColors(icon, type, theme)
@@ -48,12 +43,12 @@ export function StepCard({
   )
 }
 
-const Parent = styled(View)<{ type: StepCardType }>(({ type }) => ({
-  paddingHorizontal: type === StepCardType.ACTIVE ? 0 : 4,
+const Parent = styled(View)<{ type: StepButtonState }>(({ type }) => ({
+  paddingHorizontal: type === StepButtonState.CURRENT ? 0 : 4,
   maxWidth: 500,
 }))
 
-const Container = styled.View<{ type: StepCardType; hasSubtitle?: boolean }>(
+const Container = styled.View<{ type: StepButtonState; hasSubtitle?: boolean }>(
   ({ theme, type, hasSubtitle }) => ({
     flexDirection: 'row',
     borderWidth: 1,
@@ -64,9 +59,9 @@ const Container = styled.View<{ type: StepCardType; hasSubtitle?: boolean }>(
   })
 )
 
-const IconContainer = styled.View<{ type: StepCardType }>(({ type }) => ({
+const IconContainer = styled.View<{ type: StepButtonState }>(({ type }) => ({
   justifyContent: 'center',
-  transform: type === StepCardType.DONE ? `rotate(-8deg)` : undefined,
+  transform: type === StepButtonState.COMPLETED ? `rotate(-8deg)` : undefined,
 }))
 
 const TextContainter = styled.View({
@@ -75,18 +70,20 @@ const TextContainter = styled.View({
   marginLeft: getSpacing(4),
 })
 
-const Title = styled(Typo.ButtonText)<{ type: StepCardType }>(({ theme, type }) => ({
-  color: type === StepCardType.ACTIVE ? theme.colors.black : theme.colors.greyDark,
+const Title = styled(Typo.ButtonText)<{ type: StepButtonState }>(({ theme, type }) => ({
+  color: type === StepButtonState.CURRENT ? theme.colors.black : theme.colors.greyDark,
 }))
 
-function getIconWithColors(icon: ReactElement, type: StepCardType, theme: DefaultTheme) {
+function getIconWithColors(icon: ReactElement, type: StepButtonState, theme: DefaultTheme) {
   const color = getBorderColor(type, theme)
 
-  return type === StepCardType.ACTIVE ? icon : React.cloneElement(icon, { color, color2: color })
+  return type === StepButtonState.CURRENT
+    ? icon
+    : React.cloneElement(icon, { color, color2: color })
 }
 
-function getBorderColor(type: StepCardType, theme: DefaultTheme) {
-  if (type === StepCardType.DONE) return theme.colors.greyDark
-  if (type === StepCardType.DISABLED) return theme.colors.greyMedium
+function getBorderColor(type: StepButtonState, theme: DefaultTheme) {
+  if (type === StepButtonState.COMPLETED) return theme.colors.greyDark
+  if (type === StepButtonState.DISABLED) return theme.colors.greyMedium
   return theme.colors.black
 }

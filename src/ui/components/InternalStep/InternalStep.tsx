@@ -2,10 +2,12 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { StepProps } from 'ui/components/Step/Step'
+import {
+  VerticalStepper,
+  VerticalStepperProps,
+} from 'ui/components/VerticalStepper/VerticalStepper'
 import { getSpacing } from 'ui/theme'
-
-import { StepProps } from '../Step/Step'
-import { VerticalStepper, VerticalStepperProps } from '../VerticalStepper/VerticalStepper'
 
 type InternalStepProps = StepProps & VerticalStepperProps
 
