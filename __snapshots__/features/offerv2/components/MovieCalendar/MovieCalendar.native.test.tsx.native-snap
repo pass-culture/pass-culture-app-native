@@ -50,7 +50,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -66,6 +66,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -167,7 +168,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -183,6 +184,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -269,7 +271,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -285,6 +287,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -371,7 +374,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -387,6 +390,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -473,7 +477,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -489,6 +493,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -575,7 +580,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -591,6 +596,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -677,7 +683,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -693,6 +699,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -779,7 +786,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -795,6 +802,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -881,7 +889,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "text": undefined,
           }
         }
-        accessible={true}
+        accessible={false}
         collapsable={false}
         focusable={true}
         onClick={[Function]}
@@ -897,6 +905,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             "flexWrap": "wrap",
             "justifyContent": "center",
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >

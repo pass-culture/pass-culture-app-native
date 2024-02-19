@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, ScrollView, TouchableOpacity } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { Timestamp } from 'react-native-reanimated/lib/types/lib/reanimated2/commonTypes'
 import styled from 'styled-components/native'
 
 import { DAYS, SHORT_DAYS } from 'shared/date/days'
 import { Month, MONTHS, SHORT_MONTHS } from 'shared/date/months'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Typo } from 'ui/theme'
 
 type DayMapping = {
