@@ -81,6 +81,7 @@ import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
+import { MapPin } from 'ui/svg/icons/MapPin'
 import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Offers } from 'ui/svg/icons/Offers'
@@ -214,6 +215,7 @@ export const SecondaryAndBiggerIcons = {
   Logo,
   MagnifyingGlass,
   MagnifyingGlassFilled,
+  MapPin,
   More,
   NewIcon,
   OfferEvent,
