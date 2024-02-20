@@ -10,7 +10,6 @@ const { collection } = firestore()
 describe('getFeatureFlag', () => {
   it.each([
     RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL,
-    RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR,
     RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK,
     RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS,
