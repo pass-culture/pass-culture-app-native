@@ -127,17 +127,6 @@ describe('<FavoriteButton />', () => {
     })
   })
 
-  it('should show favorite list modal when pressing favorite icon and feature flag is activated', async () => {
-    const favoriteOfferId = 146193
-    renderFavoriteButton({ id: favoriteOfferId })
-
-    fireEvent.press(screen.getByTestId('icon-favorite'))
-
-    await waitFor(() => {
-      expect(screen.getByText('Crée une liste de favoris !')).toBeOnTheScreen()
-    })
-  })
-
   it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     renderFavoriteButton()

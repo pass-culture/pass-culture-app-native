@@ -4,8 +4,6 @@ import { Animated } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
-import { FavoriteListOfferModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListOfferModal'
-import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListSurveyModal'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
@@ -34,13 +32,6 @@ export const FavoriteButton: React.FC<Props> = (props) => {
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
-  const { visible: FavoriteListOfferModalVisible, hideModal: hideFavoriteListOfferModal } =
-    useModal(false)
-  const {
-    visible: isFavoriteListSurveyModalVisible,
-    showModal: showFavoriteListSurveyModal,
-    hideModal: hideFavoriteListSurveyModal,
-  } = useModal()
 
   const { isLoggedIn } = useAuthContext()
   const favorite = useFavorite({ offerId })
@@ -93,15 +84,6 @@ export const FavoriteButton: React.FC<Props> = (props) => {
         visible={signInModalVisible}
         offerId={offerId}
         dismissModal={hideSignInModal}
-      />
-      <FavoriteListOfferModal
-        visible={FavoriteListOfferModalVisible}
-        hideModal={hideFavoriteListOfferModal}
-        showSurveyModal={showFavoriteListSurveyModal}
-      />
-      <FavoriteListSurveyModal
-        visible={isFavoriteListSurveyModalVisible}
-        hideModal={hideFavoriteListSurveyModal}
       />
     </React.Fragment>
   )
