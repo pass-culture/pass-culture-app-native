@@ -15,13 +15,13 @@ export const calculateVerticalDistance = (radiusInMeters: number, screenRatio: n
   return (radiusInMeters * screenRatio) / Math.sqrt(1 + screenRatio * screenRatio)
 }
 
-// Converts a distance in meters to degrees of latitude.
+// Converts a vertical distance in meters to degrees of latitude.
 export const distanceToLatitudeDelta = (distanceInMeters: number): number => {
   const distanceInRadians = distanceInMeters / EARTH_RADIUS_M
   return distanceInRadians * (180 / Math.PI)
 }
 
-// Converts a distance in meters to degrees of longitude.
+// Converts a horizontal distance in meters to degrees of longitude.
 export const distanceToLongitudeDelta = (
   distanceInMeters: number,
   latitudeInDegrees: number

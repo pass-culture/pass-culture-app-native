@@ -35,10 +35,15 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const { hasGeolocPosition, selectedLocationMode } = useLocation()
 
+  const isGeolocationEnabledAndNotEverywhere =
+    hasGeolocPosition && selectedLocationMode !== LocationMode.EVERYWHERE
+
+  const isGeolocationDisabledAndAroundPlace =
+    !hasGeolocPosition && selectedLocationMode === LocationMode.AROUND_PLACE
+
   const shouldDisplayVenueMap =
     enabledVenueMap &&
-    ((!hasGeolocPosition && selectedLocationMode === LocationMode.AROUND_PLACE) ||
-      (hasGeolocPosition && selectedLocationMode !== LocationMode.EVERYWHERE)) &&
+    (isGeolocationEnabledAndNotEverywhere || isGeolocationDisabledAndAroundPlace) &&
     !isWeb
 
   const theme = useTheme()

@@ -16,7 +16,7 @@ type Props = {
   padding: EdgePadding
 }
 
-const DISTANCE_IN_METERS = 10000
+const RADIUS_IN_METERS = 10000
 
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { data: venues = [] } = useGetAllVenues()
@@ -25,12 +25,12 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { height, width } = useWindowDimensions()
   const screenRatio = height / width
 
-  const verticalDistanceInM = calculateVerticalDistance(DISTANCE_IN_METERS, screenRatio)
-  const horizontalDistanceInM = calculateHorizontalDistance(DISTANCE_IN_METERS, screenRatio)
+  const verticalDistanceInMeters = calculateVerticalDistance(RADIUS_IN_METERS, screenRatio)
+  const horizontalDistanceInMeters = calculateHorizontalDistance(RADIUS_IN_METERS, screenRatio)
 
-  const latitudeDelta = distanceToLatitudeDelta(verticalDistanceInM)
+  const latitudeDelta = distanceToLatitudeDelta(verticalDistanceInMeters)
   const longitudeDelta = distanceToLongitudeDelta(
-    horizontalDistanceInM,
+    horizontalDistanceInMeters,
     userLocation?.latitude ?? 0
   )
 
