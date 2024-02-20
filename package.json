@@ -61,7 +61,7 @@
     "storybook": "NODE_OPTIONS='--openssl-legacy-provider' start-storybook --static-dir ./public -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
     "test:deadcode": "yarn --silent ts-prune",
-    "test:deadcode:count": "yarn prune:scan | wc -l",
+    "test:deadcode:count": "yarn test:deadcode | wc -l",
     "test:deadcode:update": "yarn --silent test:deadcode > scripts/dead_code_snapshot.txt",
     "test:e2e:android:staging": "./scripts/run_e2e_tests.sh android staging",
     "test:e2e:ios:staging": "./scripts/run_e2e_tests.sh ios staging",
