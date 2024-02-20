@@ -418,8 +418,16 @@ describe('<Login/>', () => {
     })
   })
 
+  it('should log analytics when displaying forced login help message', async () => {
+    useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
+    renderLogin()
+
+    await act(() => {})
+
+    expect(analytics.logDisplayForcedLoginHelpMessage).toHaveBeenCalledTimes(1)
+  })
+
   it('should not display the login help message when the query param is not given', async () => {
-    useRoute.mockReturnValueOnce({})
     renderLogin()
 
     await act(async () => {})

@@ -62,6 +62,7 @@ export enum AnalyticsEvent {
   DISMISS_ACCOUNT_SECURITY = 'DismissAccountSecurity',
   DISMISS_NOTIFICATIONS = 'DismissNotifications',
   DISMISS_SHARE_APP = 'DismissShareApp',
+  DISPLAY_FORCED_LOGIN_HELP_MESSAGE = 'DisplayForcedLoginHelpMessage',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
   FAVORITE_LIST_BUTTON_CLICKED = 'FavoriteListButtonClicked',

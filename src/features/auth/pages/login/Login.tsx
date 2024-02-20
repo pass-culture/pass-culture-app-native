@@ -78,6 +78,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
         timeout: SNACK_BAR_TIME_OUT_LONG,
       })
+      analytics.logDisplayForcedLoginHelpMessage()
     }
   }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
 
