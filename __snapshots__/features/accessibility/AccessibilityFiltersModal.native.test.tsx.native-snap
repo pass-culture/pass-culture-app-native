@@ -375,408 +375,354 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
               }
             >
               <View
-                accessibilityRole="none"
-                style={
-                  [
-                    {
-                      "display": "flex",
-                    },
-                  ]
+                accessibilityLabel="Handicap visuel"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
                 }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap visuel"
               >
                 <View
-                  accessibilityLabel="Handicap visuel"
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "cursor": "pointer",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Handicap visuel"
-                >
-                  <View
-                    isChecked={false}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 2,
-                          "height": 24,
-                          "justifyContent": "center",
-                          "width": 24,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    style={
-                      [
-                        {
-                          "alignSelf": "center",
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "paddingLeft": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Handicap visuel
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={6}
+                  isChecked={false}
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
                         "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
                       },
                     ]
                   }
                 />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap visuel
+                </Text>
               </View>
               <View
-                accessibilityRole="none"
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "display": "flex",
+                      "height": 24,
                     },
                   ]
                 }
+              />
+              <View
+                accessibilityLabel="Handicap psychique ou cognitif"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap psychique ou cognitif"
               >
                 <View
-                  accessibilityLabel="Handicap psychique ou cognitif"
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "cursor": "pointer",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Handicap psychique ou cognitif"
-                >
-                  <View
-                    isChecked={false}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 2,
-                          "height": 24,
-                          "justifyContent": "center",
-                          "width": 24,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    style={
-                      [
-                        {
-                          "alignSelf": "center",
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "paddingLeft": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Handicap psychique ou cognitif
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={6}
+                  isChecked={false}
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
                         "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
                       },
                     ]
                   }
                 />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap psychique ou cognitif
+                </Text>
               </View>
               <View
-                accessibilityRole="none"
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "display": "flex",
+                      "height": 24,
                     },
                   ]
                 }
+              />
+              <View
+                accessibilityLabel="Handicap moteur"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap moteur"
               >
                 <View
-                  accessibilityLabel="Handicap moteur"
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "cursor": "pointer",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Handicap moteur"
-                >
-                  <View
-                    isChecked={false}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 2,
-                          "height": 24,
-                          "justifyContent": "center",
-                          "width": 24,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    style={
-                      [
-                        {
-                          "alignSelf": "center",
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "paddingLeft": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Handicap moteur
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={6}
+                  isChecked={false}
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
                         "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
                       },
                     ]
                   }
                 />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap moteur
+                </Text>
               </View>
               <View
-                accessibilityRole="none"
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "display": "flex",
+                      "height": 24,
                     },
                   ]
                 }
+              />
+              <View
+                accessibilityLabel="Handicap auditif"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap auditif"
               >
                 <View
-                  accessibilityLabel="Handicap auditif"
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "cursor": "pointer",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Handicap auditif"
-                >
-                  <View
-                    isChecked={false}
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#696A6F",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 2,
-                          "height": 24,
-                          "justifyContent": "center",
-                          "width": 24,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    style={
-                      [
-                        {
-                          "alignSelf": "center",
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "paddingLeft": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Handicap auditif
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={6}
+                  isChecked={false}
                   style={
                     [
                       {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
                         "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
                       },
                     ]
                   }
                 />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap auditif
+                </Text>
               </View>
             </View>
           </View>
@@ -917,7 +863,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": false,
+                  "disabled": undefined,
                   "expanded": undefined,
                   "selected": undefined,
                 }

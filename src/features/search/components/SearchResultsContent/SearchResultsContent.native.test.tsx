@@ -722,20 +722,21 @@ describe('SearchResultsContent component', () => {
 
     it('should display accessibility filter button', async () => {
       render(<SearchResultsContent />)
-      await act(async () => {})
+      const accessibilityFilterButton = await screen.findByRole('button', { name: 'Accessibilité' })
 
-      expect(screen.getByTestId('Accessibilité')).toBeOnTheScreen()
+      expect(accessibilityFilterButton).toBeOnTheScreen()
     })
 
     it('should open accessibility filters modal when accessibilityFiltersButton is pressed', async () => {
       render(<SearchResultsContent />)
-      const accessibilityFiltersButton = screen.getByTestId('Accessibilité')
-      await act(async () => {
-        fireEvent.press(accessibilityFiltersButton)
-      })
-      const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
+      const accessibilityFilterButton = screen.getByRole('button', { name: 'Accessibilité' })
 
-      expect(fullscreenModalScrollView).toBeOnTheScreen()
+      fireEvent.press(accessibilityFilterButton)
+      const accessibilityFiltersModal = await screen.findByText(
+        'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
+      )
+
+      expect(accessibilityFiltersModal).toBeOnTheScreen()
     })
   })
 })

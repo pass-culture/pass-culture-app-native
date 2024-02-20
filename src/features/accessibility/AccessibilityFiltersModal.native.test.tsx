@@ -8,10 +8,18 @@ import { AccessibilityFiltersModal, AccessibilityModalProps } from './Accessibil
 describe('<AccessibilityFiltersModal />', () => {
   it('should render modal correctly', async () => {
     renderAccessibilityFiltersModal()
+    await screen.findByText(
+      'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
+    )
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should have a touchable search button', async () => {
+    renderAccessibilityFiltersModal()
     const searchButton = await screen.findByLabelText('Rechercher')
 
     expect(searchButton).toBeEnabled()
-    expect(screen).toMatchSnapshot()
   })
 })
 
