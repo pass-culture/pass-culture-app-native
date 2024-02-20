@@ -12,11 +12,13 @@ const NUMBER_LEFT_POSITION = 15
 const NUMBER_TOP_POSITION = -10
 
 export const VenueMapPin: FunctionComponent<Props> = ({ count }) => {
+  const shouldDisplayCounter = count && count > 1
+
   return (
     <React.Fragment>
       <MapPin />
 
-      {count ? (
+      {shouldDisplayCounter ? (
         <NumberContainer testID="numberContainer">
           <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
         </NumberContainer>
