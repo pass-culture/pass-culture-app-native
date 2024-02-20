@@ -149,16 +149,6 @@ describe('<FavoriteButton />', () => {
     expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
-  it('should track the user has seen favorite list modal when pressing favorite icon and feature flag is activated', async () => {
-    renderFavoriteButton()
-
-    fireEvent.press(screen.getByTestId('icon-favorite'))
-
-    await waitFor(() => {
-      expect(analytics.logFavoriteListDisplayed).toHaveBeenNthCalledWith(1, 'offer')
-    })
-  })
-
   it('should show error snackbar when remove favorite fails - logged in users', async () => {
     const favoriteOfferId = 146193
     renderFavoriteButton({

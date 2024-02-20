@@ -1,8 +1,7 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListSurveyModal'
-import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'
@@ -13,26 +12,14 @@ import { getSpacing, Typo } from 'ui/theme'
 
 export const FavoriteListBanner: FunctionComponent = () => {
   const isFavListFakeDoorEnabled = useFeatureFlag(RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR)
-  const {
-    visible: fakeDoorListFavoritesVisible,
-    showModal: showFakeDoorListFavoritesVisible,
-    hideModal: hideFakeDoorListFavoritesVisible,
-  } = useModal(false)
-
-  useEffect(() => {
-    analytics.logFavoriteListDisplayed('favorites')
-  }, [])
-
-  const onBannerPress = () => {
-    analytics.logFavoriteListButtonClicked('favorites')
-    showFakeDoorListFavoritesVisible()
-  }
+  const { visible: fakeDoorListFavoritesVisible, hideModal: hideFakeDoorListFavoritesVisible } =
+    useModal(false)
 
   if (!isFavListFakeDoorEnabled) return null
 
   return (
     <React.Fragment>
-      <StyledTouchableWrapper onPress={onBannerPress}>
+      <StyledTouchableWrapper>
         <StyledBanner dense LeftIcon={<BicolorListFav />}>
           <Typo.ButtonText>Crée une liste de favoris</Typo.ButtonText>
           <Typo.Body>Trie tes favoris à ta façon et partage-les&nbsp;!</Typo.Body>
