@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Venue } from 'features/venue/types'
 import {
   calculateHorizontalDistance,
   calculateVerticalDistance,
@@ -17,6 +18,10 @@ type Props = {
 }
 
 const RADIUS_IN_METERS = 10000
+
+type GeolocatedVenue = Venue & {
+  _geoloc: { lat: number; lng: number }
+}
 
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { data: venues = [] } = useGetAllVenues()
@@ -41,19 +46,24 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     longitudeDelta,
   }
 
+  const geolocatedVenues = venues.filter(
+    (venue): venue is GeolocatedVenue => !!(venue._geoloc?.lat && venue._geoloc.lng)
+  )
+
   return (
-    <StyledMapView showsUserLocation initialRegion={defaultCoordinates} mapPadding={padding}>
-      {venues.map((venue) => (
-        <React.Fragment key={venue.venueId}>
-          {venue._geoloc?.lat && venue._geoloc.lng ? (
-            <Marker
-              coordinate={{
-                latitude: venue._geoloc.lat,
-                longitude: venue._geoloc.lng,
-              }}
-            />
-          ) : null}
-        </React.Fragment>
+    <StyledMapView
+      showsUserLocation
+      initialRegion={defaultCoordinates}
+      mapPadding={padding}
+      rotateEnabled={false}>
+      {geolocatedVenues.map((venue) => (
+        <Marker
+          key={venue.venueId}
+          coordinate={{
+            latitude: venue._geoloc.lat,
+            longitude: venue._geoloc.lng,
+          }}
+        />
       ))}
     </StyledMapView>
   )
