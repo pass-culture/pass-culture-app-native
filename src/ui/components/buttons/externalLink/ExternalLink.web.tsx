@@ -1,4 +1,5 @@
 import React from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
@@ -35,9 +36,11 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
   )
 }
 
-const Text = styled.Text({
+const Text = webStyled.span(({ theme }) => ({
   whiteSpace: 'nowrap',
-})
+  verticalAlign: 'middle',
+  ...theme.typography.buttonText,
+}))
 
 const StyledTouchableLink = styled(ExternalTouchableLink).attrs<{
   primary?: boolean

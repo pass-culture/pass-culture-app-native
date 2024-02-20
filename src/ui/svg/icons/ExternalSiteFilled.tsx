@@ -13,7 +13,7 @@ const ExternalSiteFilledSvg: React.FunctionComponent<AccessibleIcon> = ({
   <AccessibleSvg
     width={size}
     height={size}
-    viewBox="0 0 48 36"
+    viewBox="0 0 48 48"
     testID={testID}
     accessibilityLabel={accessibilityLabel ?? 'Nouvelle fenêtre'}>
     <Path
