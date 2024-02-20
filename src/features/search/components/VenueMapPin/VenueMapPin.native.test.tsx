@@ -10,7 +10,19 @@ describe('<VenueMapPin />', () => {
     expect(screen.queryByTestId('numberContainer')).not.toBeOnTheScreen()
   })
 
-  it('should display the number of venues in the cluster when count informed', () => {
+  it('should not display number container when count informed and is equal to 0', () => {
+    render(<VenueMapPin count={0} />)
+
+    expect(screen.queryByTestId('numberContainer')).not.toBeOnTheScreen()
+  })
+
+  it('should not display number container when count informed and is equal to 1', () => {
+    render(<VenueMapPin count={1} />)
+
+    expect(screen.queryByTestId('numberContainer')).not.toBeOnTheScreen()
+  })
+
+  it('should display the number of venues in the cluster when count informed and is greater than 1', () => {
     render(<VenueMapPin count={50} />)
 
     expect(screen.getByText('50')).toBeOnTheScreen()
