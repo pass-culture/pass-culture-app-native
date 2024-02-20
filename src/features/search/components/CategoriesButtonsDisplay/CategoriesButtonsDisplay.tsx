@@ -37,7 +37,8 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
 
   const shouldDisplayVenueMap =
     enabledVenueMap &&
-    (!hasGeolocPosition || selectedLocationMode !== LocationMode.EVERYWHERE) &&
+    ((!hasGeolocPosition && selectedLocationMode === LocationMode.AROUND_PLACE) ||
+      (hasGeolocPosition && selectedLocationMode !== LocationMode.EVERYWHERE)) &&
     !isWeb
 
   const theme = useTheme()
