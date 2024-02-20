@@ -270,6 +270,7 @@ describe('<Search/>', () => {
   })
 
   it('should render Search', async () => {
+    mockHasGeolocPosition = true
     render(<Search />)
 
     await screen.findByText('Rechercher')
