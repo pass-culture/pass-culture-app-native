@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { MovieCalendar } from 'features/offerv2/components/MovieCalendar/MovieCalendar'
+import { EventCardProps } from 'ui/components/eventCard/EventCard'
+import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { Spacer } from 'ui/theme'
 
 const dummyDates: Date[] = [
@@ -15,6 +17,72 @@ const dummyDates: Date[] = [
   new Date(1654099200000), // 31 mai 2024 (Vendredi)
 ]
 
+const dummySessions: EventCardProps[] = [
+  {
+    onPress: () => ({}),
+    isDisabled: false,
+    title: '8h',
+    subtitleLeft: 'VO, 3D',
+    subtitleRight: '5,99€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: false,
+    title: '9h30',
+    subtitleLeft: 'VF, ICE, 3D',
+    subtitleRight: '7,99€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: true,
+    title: '10h55',
+    subtitleLeft: 'Complet',
+    subtitleRight: '12,99€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: false,
+    title: '11h35',
+    subtitleLeft: 'VO, 3D',
+    subtitleRight: '11,99€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: true,
+    title: '13h12',
+    subtitleLeft: 'Crédit insuffisant',
+    // subtitleRight: '13,99€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: true,
+    title: '14h25',
+    subtitleLeft: 'VO, 3D',
+    subtitleRight: '7,50€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: false,
+    title: '19h15',
+    subtitleLeft: 'VF, ICE, 3D',
+    subtitleRight: '9,50€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: false,
+    title: '22h05',
+    subtitleLeft: 'VO',
+    subtitleRight: '11,50€',
+  },
+  {
+    onPress: () => ({}),
+    isDisabled: false,
+    title: '23h05',
+    subtitleLeft: 'VO',
+    subtitleRight: '11,50€',
+  },
+]
+
 export const CheatCodeMovieCalendar: React.FC = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(dummyDates[0])
 
@@ -22,6 +90,8 @@ export const CheatCodeMovieCalendar: React.FC = () => {
     <React.Fragment>
       <Spacer.TopScreen />
       <MovieCalendar dates={dummyDates} selectedDate={selectedDate} onTabChange={setSelectedDate} />
+      <Spacer.Column numberOfSpaces={6} />
+      <EventCardList data={dummySessions} />
     </React.Fragment>
   )
 }

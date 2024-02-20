@@ -9,21 +9,22 @@ const BORDER_WIDTH = getSpacing(0.25)
 const CARD_HEIGHT = getSpacing(17)
 const CARD_WIDTH = getSpacing(30)
 
-interface Props {
+export type EventCardProps = {
   onPress: () => void
   isDisabled: boolean
   title: string
   subtitleLeft: string
   subtitleRight?: string
 }
-export const EventCard: React.FC<Props> = ({
+
+export const EventCard: React.FC<EventCardProps> = ({
   onPress,
   isDisabled,
   title,
   subtitleLeft,
   subtitleRight,
 }) => {
-  const hasSubtitleRight = !subtitleRight
+  const hasSubtitleRight = !!subtitleRight
   return (
     <StyledTouchableOpacity onPress={isDisabled ? undefined : onPress} isDisabled={isDisabled}>
       <Container isDisabled={isDisabled}>
@@ -39,12 +40,17 @@ export const EventCard: React.FC<Props> = ({
             hasSubtitleRight={hasSubtitleRight}>
             {subtitleLeft}
           </SubtitleLeft>
-          <SubtitleRight
-            accessibilityLabel={subtitleRight}
-            numberOfLines={1}
-            isDisabled={isDisabled}>
-            {subtitleRight}
-          </SubtitleRight>
+          {hasSubtitleRight ? (
+            <React.Fragment>
+              <Spacer.Row numberOfSpaces={1} />
+              <SubtitleRight
+                accessibilityLabel={subtitleRight}
+                numberOfLines={1}
+                isDisabled={isDisabled}>
+                {subtitleRight}
+              </SubtitleRight>
+            </React.Fragment>
+          ) : null}
         </SubtitleContainer>
       </Container>
     </StyledTouchableOpacity>
@@ -52,11 +58,16 @@ export const EventCard: React.FC<Props> = ({
 }
 const StyledTouchableOpacity = styledButton(Touchable)<{ isDisabled: boolean }>(
   ({ theme, isDisabled }) => ({
-    width: 'fit-content',
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT,
     borderRadius: theme.borderRadius.radius,
-    '&:hover': { textDecoration: isDisabled ? 'none' : 'underline' },
-    '&:focus': { outline: 'none' },
-    '&:focus-visible': { outline: 'auto' },
+    ...(theme.isNative
+      ? {}
+      : {
+          '&:hover': { textDecoration: isDisabled ? 'none' : 'underline' },
+          '&:focus': { outline: 'none' },
+          '&:focus-visible': { outline: 'auto' },
+        }),
   })
 )
 
@@ -97,7 +108,7 @@ const SubtitleContainer = styled.View({
 const SubtitleLeft = styled(Typo.Caption)<{ isDisabled: boolean; hasSubtitleRight: boolean }>(
   ({ theme, isDisabled, hasSubtitleRight }) => ({
     color: isDisabled ? theme.colors.greySemiDark : theme.colors.greyDark,
-    lineHeight: getSpacing(5),
+    lineHeight: `${getSpacing(5)}px`,
     textAlign: 'left',
     flex: hasSubtitleRight ? 'auto' : 1,
   })
@@ -107,6 +118,5 @@ const SubtitleRight = styled(Typo.Body)<{ isDisabled: boolean }>(({ theme, isDis
   color: isDisabled ? theme.colors.greySemiDark : theme.colors.black,
   textAlign: 'right',
   flexShrink: 0,
-  paddingLeft: getSpacing(1),
-  flex: 1,
+  flexGrow: 1,
 }))
