@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
-import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -16,15 +15,6 @@ type Props = {
 }
 
 export const FavoriteListSurveyModal = ({ visible, hideModal }: Props) => {
-  const saveHasSeenFakeDoor = useCallback(
-    async () => storage.saveObject('has_seen_fav_list_fake_door', true),
-    []
-  )
-
-  if (visible) {
-    saveHasSeenFakeDoor()
-  }
-
   return (
     <AppInformationModal
       title="Encore un peu de patience..."
