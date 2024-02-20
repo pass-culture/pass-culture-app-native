@@ -75,7 +75,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     if (params?.displayForcedLoginHelpMessage) {
       showInfoSnackBar({
         message:
-          'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.',
+          'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
         timeout: SNACK_BAR_TIME_OUT_LONG,
       })
     }

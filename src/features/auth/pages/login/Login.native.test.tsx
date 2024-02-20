@@ -49,9 +49,11 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const mockShowErrorSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
+    showInfoSnackBar: mockShowInfoSnackBar,
   }),
 }))
 
@@ -402,6 +404,27 @@ describe('<Login/>', () => {
     })
 
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'login' })
+  })
+
+  it('should display forced login help message when the query param is given', async () => {
+    useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
+    renderLogin()
+
+    await act(() => {})
+
+    expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+      message: 'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
+      timeout: SNACK_BAR_TIME_OUT_LONG,
+    })
+  })
+
+  it('should not display the login help message when the query param is not given', async () => {
+    useRoute.mockReturnValueOnce({})
+    renderLogin()
+
+    await act(async () => {})
+
+    expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
   })
 
   describe('Login comes from adding an offer to favorite', () => {
