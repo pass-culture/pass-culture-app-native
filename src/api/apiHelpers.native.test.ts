@@ -14,7 +14,6 @@ import {
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
   isAPIExceptionCapturedAsInfo,
-  RefreshTokenExpiredResponse,
   safeFetch,
 } from './apiHelpers'
 import { Configuration, DefaultApi, RefreshResponse } from './gen'
@@ -131,7 +130,7 @@ describe('[api] helpers', () => {
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(response).toEqual(RefreshTokenExpiredResponse)
+      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
     })
 
     it('regenerates the access token and fetch the real url after when the access token is expired', async () => {
@@ -398,19 +397,10 @@ describe('[api] helpers', () => {
       await expect(getResult).rejects.toThrow(error)
     })
 
-    it('should navigate to login when access token is invalid', async () => {
+    it('should navigate to login when access and refresh tokens are invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
       expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
-      expect(result).toEqual({})
-    })
-
-    it('should navigate to login with displayForcedLoginHelpMessage param when refresh token is expired', async () => {
-      const response = await respondWith('', 401, 'RefreshTokenExpired')
-
-      const result = await handleGeneratedApiResponse(response)
-
-      expect(navigateFromRef).toHaveBeenCalledWith('Login', { displayForcedLoginHelpMessage: true })
       expect(result).toEqual({})
     })
   })
