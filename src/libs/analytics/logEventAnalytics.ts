@@ -253,6 +253,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_SHARE_APP }, { type }),
+  logDisplayForcedLoginHelpMessage: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.DISPLAY_FORCED_LOGIN_HELP_MESSAGE }),
   logEduconnectExplanationClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED }),
   logEmailConfirmationConsultEmailClicked: () =>

@@ -9,7 +9,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
@@ -48,32 +48,6 @@ describe('<Login/>', () => {
         expect(results).toHaveNoViolations()
       })
     })
-  })
-
-  it('should display forced login help message when the query param is given', async () => {
-    useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
-    renderLogin()
-
-    await act(async () => {}) // Warning: An update to Login inside a test was not wrapped in act(...)
-
-    const snackBar = await screen.findByRole('status')
-
-    expect(snackBar).toHaveTextContent(
-      'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.'
-    )
-  })
-
-  it('should not display the login help message when the query param is not given', async () => {
-    useRoute.mockReturnValueOnce({})
-    renderLogin()
-
-    await act(async () => {}) // Warning: An update to Login inside a test was not wrapped in act(...)
-
-    const snackBar = await screen.findByRole('status')
-
-    expect(snackBar).not.toHaveTextContent(
-      'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.'
-    )
   })
 })
 

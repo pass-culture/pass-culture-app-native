@@ -45,11 +45,6 @@ const NeedsAuthenticationStatus = {
 export const createNeedsAuthenticationResponse = (url: string) =>
   new Response(url, NeedsAuthenticationStatus)
 
-export const RefreshTokenExpiredResponse = new Response('', {
-  status: 401,
-  statusText: 'RefreshTokenExpired',
-})
-
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
  * Ignores native/v1/refresh_access_token.
@@ -93,7 +88,6 @@ export const safeFetch = async (
 
       switch (error) {
         case REFRESH_TOKEN_IS_EXPIRED_ERROR:
-          return RefreshTokenExpiredResponse
         case FAILED_TO_GET_REFRESH_TOKEN_ERROR:
           return createNeedsAuthenticationResponse(url)
         case UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN:
@@ -154,14 +148,6 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.statusText === NeedsAuthenticationStatus.statusText
   ) {
     navigateToLogin()
-    return {}
-  }
-
-  if (
-    response.status === RefreshTokenExpiredResponse.status &&
-    response.statusText === RefreshTokenExpiredResponse.statusText
-  ) {
-    navigateToLogin({ displayForcedLoginHelpMessage: true })
     return {}
   }
 

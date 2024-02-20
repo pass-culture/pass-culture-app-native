@@ -5,6 +5,7 @@ import { QueryObserverResult } from 'react-query'
 import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
@@ -16,7 +17,7 @@ import {
   getUserIdFromAccessToken,
 } from 'libs/jwt'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
-import { getRefreshToken } from 'libs/keychain'
+import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getAppVersion } from 'libs/packageJson'
@@ -34,6 +35,11 @@ export interface IAuthContext {
   refetchUser: () => Promise<QueryObserverResult<UserProfileResponse, unknown>>
   isUserLoading: boolean
 }
+
+const NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS = 1000
+
+const navigateToLoginWithHelpMessage = () =>
+  navigateFromRef('Login', { displayForcedLoginHelpMessage: true })
 
 export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
   const { setUserId: setUserIdToCookiesChoice } = useCookies()
@@ -77,6 +83,7 @@ export const AuthWrapper = memo(function AuthWrapper({
   children: React.JSX.Element
 }) {
   const timeoutRef = useRef<NodeJS.Timeout>()
+  const navigationTimeoutRef = useRef<NodeJS.Timeout>()
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
@@ -94,8 +101,15 @@ export const AuthWrapper = memo(function AuthWrapper({
 
       switch (refreshTokenStatus) {
         case 'unknown':
+          setIsLoggedIn(false)
+          return
         case 'expired':
           setIsLoggedIn(false)
+          // We need to delay this navigation to avoid conflit between this navigation and the initial screen defined by react-navigation on app launch
+          navigationTimeoutRef.current = setTimeout(async () => {
+            navigateToLoginWithHelpMessage()
+            await clearRefreshToken()
+          }, NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS)
           return
         case 'valid':
           setIsLoggedIn(true)
@@ -110,8 +124,10 @@ export const AuthWrapper = memo(function AuthWrapper({
               remainingLifetimeInMs &&
               remainingLifetimeInMs < MAX_AVERAGE_SESSION_DURATION_IN_MS
             ) {
-              timeoutRef.current = globalThis.setTimeout(() => {
+              timeoutRef.current = globalThis.setTimeout(async () => {
                 setIsLoggedIn(false)
+                navigateToLoginWithHelpMessage()
+                await clearRefreshToken()
               }, remainingLifetimeInMs)
             }
           }
@@ -130,6 +146,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      if (navigationTimeoutRef.current) clearTimeout(navigationTimeoutRef.current)
     }
   }, [readTokenAndConnectUser])
 

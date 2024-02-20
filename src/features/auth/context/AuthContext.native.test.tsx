@@ -5,11 +5,12 @@ import * as jwt from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import * as NavigationRef from 'features/navigation/navigationRef'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
-import { saveRefreshToken, clearRefreshToken } from 'libs/keychain'
+import { saveRefreshToken, clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -28,6 +29,7 @@ jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
+const navigateFromRefSpy = jest.spyOn(NavigationRef, 'navigateFromRef')
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000
@@ -185,6 +187,81 @@ describe('AuthContext', () => {
         MAX_AVERAGE_SESSION_DURATION_IN_MS
       )
       expect(result.current.isLoggedIn).toBe(false)
+    })
+
+    it('should not navigate to login with the force display message when user has no refresh token', async () => {
+      await storage.saveString('access_token', 'access_token')
+
+      renderUseAuthContext()
+
+      await act(async () => {})
+
+      expect(navigateFromRefSpy).not.toHaveBeenCalled()
+    })
+
+    it('should navigate to login with the force display message when the refresh token is expired', async () => {
+      await storage.saveString('access_token', 'access_token')
+      await saveRefreshToken('token')
+
+      const expiredToken = {
+        ...decodedTokenWithRemainingLifetime,
+        exp: (CURRENT_DATE.getTime() - 1) / 1000,
+      }
+      decodeTokenSpy.mockReturnValueOnce(expiredToken) // first render
+      decodeTokenSpy.mockReturnValueOnce(expiredToken) // second render because of useCookies
+      decodeTokenSpy.mockReturnValueOnce(expiredToken) // third render because of useUserProfileInfo
+
+      renderUseAuthContext()
+
+      await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
+      await act(async () => {
+        jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
+      })
+
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 1000)
+      expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
+        displayForcedLoginHelpMessage: true,
+      })
+    })
+
+    it('should navigate to login with the force display message when the refresh token expires during user session', async () => {
+      await storage.saveString('access_token', 'access_token')
+      await saveRefreshToken('token')
+
+      renderUseAuthContext()
+
+      await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
+      await act(async () => {
+        mockdate.set(CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs)
+        jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
+      })
+
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), tokenRemainingLifetimeInMs)
+      expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
+        displayForcedLoginHelpMessage: true,
+      })
+    })
+
+    it('should clear refresh token when it expires', async () => {
+      await storage.saveString('access_token', 'access_token')
+      await saveRefreshToken('token')
+
+      const expiredToken = {
+        ...decodedTokenWithRemainingLifetime,
+        exp: (CURRENT_DATE.getTime() - 1) / 1000,
+      }
+      decodeTokenSpy.mockReturnValueOnce(expiredToken) // first render
+      decodeTokenSpy.mockReturnValueOnce(expiredToken) // second render because of useCookies
+      decodeTokenSpy.mockReturnValueOnce(expiredToken) // third render because of useUserProfileInfo
+
+      renderUseAuthContext()
+
+      await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
+      await act(async () => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      expect(await getRefreshToken()).toBe('')
     })
 
     it('should log to Sentry when error occurs', async () => {
