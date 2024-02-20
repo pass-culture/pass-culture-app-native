@@ -14,41 +14,44 @@ const mockedPlace: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-let mockHasGeolocPosition = true
-let mockSelectedLocationMode = LocationMode.AROUND_ME
+const mockHasGeolocPosition = true
+const mockSelectedLocationMode = LocationMode.AROUND_ME
+
+const mockUseLocation = jest.fn(() => ({
+  hasGeolocPosition: mockHasGeolocPosition,
+  selectedLocationMode: mockSelectedLocationMode,
+  place: mockedPlace,
+}))
 jest.mock('libs/location', () => ({
-  useLocation: jest.fn(() => ({
-    hasGeolocPosition: mockHasGeolocPosition,
-    selectedLocationMode: mockSelectedLocationMode,
-    place: mockedPlace,
-  })),
+  useLocation: () => mockUseLocation(),
 }))
 
 describe('CategoriesButtonsDisplay', () => {
-  afterEach(() => {
-    mockHasGeolocPosition = true
-    mockSelectedLocationMode = LocationMode.AROUND_ME
-  })
-
   it('should display venue map block when geoloc position is activated and location mode is set to "around me"', () => {
-    mockHasGeolocPosition = true
-    mockSelectedLocationMode = LocationMode.AROUND_ME
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
   })
 
   it('should display venue map block when geoloc position is activated and location mode is set to "around place"', () => {
-    mockHasGeolocPosition = true
-    mockSelectedLocationMode = LocationMode.AROUND_PLACE
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: mockHasGeolocPosition,
+      selectedLocationMode: LocationMode.AROUND_PLACE,
+      place: mockedPlace,
+    })
+
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
   })
 
   it('should display venue map block when geoloc position is deactivated and location mode is set to "around place"', () => {
-    mockHasGeolocPosition = false
-    mockSelectedLocationMode = LocationMode.AROUND_PLACE
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: false,
+      selectedLocationMode: LocationMode.AROUND_PLACE,
+      place: mockedPlace,
+    })
+
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
@@ -62,14 +65,24 @@ describe('CategoriesButtonsDisplay', () => {
   })
 
   it("should not display venue map block when we don't have geoloc position", () => {
-    mockHasGeolocPosition = false
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: false,
+      selectedLocationMode: mockSelectedLocationMode,
+      place: mockedPlace,
+    })
+
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
     expect(screen.queryByText('Explorer les lieux')).not.toBeOnTheScreen()
   })
 
   it('should not display venue map block when the location is to everywhere position', () => {
-    mockSelectedLocationMode = LocationMode.EVERYWHERE
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: mockHasGeolocPosition,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      place: mockedPlace,
+    })
+
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
     expect(screen.queryByText('Explorer les lieux')).not.toBeOnTheScreen()
