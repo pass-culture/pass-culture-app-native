@@ -13,6 +13,7 @@ import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -192,7 +193,8 @@ const mockedPlace: SuggestedPlace = {
 
 const mockSetPlace = jest.fn()
 const mockSetSelectedLocationMode = jest.fn()
-const mockHasGeolocPosition = false
+const mockHasGeolocPosition = true
+const mockSelectedLocationMode = LocationMode.AROUND_ME
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -202,6 +204,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     isCurrentLocationMode: jest.fn(),
     setSelectedLocationMode: mockSetSelectedLocationMode,
     hasGeolocPosition: mockHasGeolocPosition,
+    selectedLocationMode: mockSelectedLocationMode, // to have the venue map block display
   }),
 }))
 
