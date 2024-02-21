@@ -9,14 +9,10 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { FavoritesResults } from './FavoritesResults'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockFavoritesState = initialFavoritesState
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
@@ -96,24 +92,6 @@ describe('FavoritesResults component', () => {
     const sortByButton = screen.getByText('Trier')
 
     expect(sortByButton).toBeOnTheScreen()
-  })
-
-  it('should show favorite list banner when the user hasnt already seen it', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    renderFavoritesResults()
-
-    expect(await screen.findByText('Crée une liste de favoris')).toBeOnTheScreen()
-  })
-
-  it('should not show favorite list banner when the user has already seen the fake door', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-
-    storage.saveObject('has_seen_fav_list_fake_door', true)
-    renderFavoritesResults()
-
-    await waitFor(() => {
-      expect(screen.queryByText('Crée une liste de favoris')).not.toBeOnTheScreen()
-    })
   })
 })
 

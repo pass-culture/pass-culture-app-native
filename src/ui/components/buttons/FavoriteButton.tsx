@@ -4,15 +4,10 @@ import { Animated } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
-import { FavoriteListOfferModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListOfferModal'
-import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListSurveyModal'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { storage } from 'libs/storage'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { theme } from 'theme'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -37,22 +32,11 @@ export const FavoriteButton: React.FC<Props> = (props) => {
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
-  const {
-    visible: FavoriteListOfferModalVisible,
-    showModal: showFavoriteListOfferModal,
-    hideModal: hideFavoriteListOfferModal,
-  } = useModal(false)
-  const {
-    visible: isFavoriteListSurveyModalVisible,
-    showModal: showFavoriteListSurveyModal,
-    hideModal: hideFavoriteListSurveyModal,
-  } = useModal()
 
   const { isLoggedIn } = useAuthContext()
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
   const { params } = useRoute<UseRouteType<'Offer'>>()
-  const isFavListFakeDoorEnabled = useFeatureFlag(RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR)
 
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
 
@@ -82,24 +66,8 @@ export const FavoriteButton: React.FC<Props> = (props) => {
     } else {
       animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId })
-      if (isFavListFakeDoorEnabled) {
-        const hasSeenFavListFakeDoor = await storage.readObject('has_seen_fav_list_fake_door')
-        if (!hasSeenFavListFakeDoor) {
-          analytics.logFavoriteListDisplayed('offer')
-          showFavoriteListOfferModal()
-        }
-      }
     }
-  }, [
-    addFavorite,
-    favorite,
-    isFavListFakeDoorEnabled,
-    isLoggedIn,
-    offerId,
-    removeFavorite,
-    showFavoriteListOfferModal,
-    showSignInModal,
-  ])
+  }, [addFavorite, favorite, isLoggedIn, offerId, removeFavorite, showSignInModal])
   return (
     <React.Fragment>
       <RoundedButton
@@ -116,15 +84,6 @@ export const FavoriteButton: React.FC<Props> = (props) => {
         visible={signInModalVisible}
         offerId={offerId}
         dismissModal={hideSignInModal}
-      />
-      <FavoriteListOfferModal
-        visible={FavoriteListOfferModalVisible}
-        hideModal={hideFavoriteListOfferModal}
-        showSurveyModal={showFavoriteListSurveyModal}
-      />
-      <FavoriteListSurveyModal
-        visible={isFavoriteListSurveyModalVisible}
-        hideModal={hideFavoriteListSurveyModal}
       />
     </React.Fragment>
   )

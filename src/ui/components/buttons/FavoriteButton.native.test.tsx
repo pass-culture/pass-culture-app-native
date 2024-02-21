@@ -9,7 +9,6 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { storage } from 'libs/storage'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -128,17 +127,6 @@ describe('<FavoriteButton />', () => {
     })
   })
 
-  it('should show favorite list modal when pressing favorite icon and feature flag is activated', async () => {
-    const favoriteOfferId = 146193
-    renderFavoriteButton({ id: favoriteOfferId })
-
-    fireEvent.press(screen.getByTestId('icon-favorite'))
-
-    await waitFor(() => {
-      expect(screen.getByText('Crée une liste de favoris !')).toBeOnTheScreen()
-    })
-  })
-
   it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     renderFavoriteButton()
@@ -148,16 +136,6 @@ describe('<FavoriteButton />', () => {
     })
 
     expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
-  })
-
-  it('should track the user has seen favorite list modal when pressing favorite icon and feature flag is activated', async () => {
-    renderFavoriteButton()
-
-    fireEvent.press(screen.getByTestId('icon-favorite'))
-
-    await waitFor(() => {
-      expect(analytics.logFavoriteListDisplayed).toHaveBeenNthCalledWith(1, 'offer')
-    })
   })
 
   it('should show error snackbar when remove favorite fails - logged in users', async () => {
@@ -241,18 +219,6 @@ describe('<FavoriteButton />', () => {
         })
       })
     })
-  })
-
-  it('should not show favorite list modal when the user has already seen the fake door', async () => {
-    storage.saveObject('has_seen_fav_list_fake_door', true)
-    renderFavoriteButton()
-
-    const favButton = screen.getByTestId('icon-favorite')
-    await act(async () => {
-      fireEvent.press(favButton)
-    })
-
-    expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
   it('should enable the favorites button when is not loading', async () => {

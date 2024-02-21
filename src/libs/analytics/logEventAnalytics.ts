@@ -267,10 +267,6 @@ export const logEventAnalytics = {
     moduleId: string
     homeEntryId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED }, params),
-  logFavoriteListButtonClicked: (from: Referrals) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.FAVORITE_LIST_BUTTON_CLICKED }, { from }),
-  logFavoriteListDisplayed: (from: Referrals) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.FAVORITE_LIST_DISPLAYED }, { from }),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },

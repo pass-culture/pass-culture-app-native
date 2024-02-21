@@ -19,7 +19,6 @@ import { Favorite } from 'features/favorites/components/Favorite'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { NumberOfResults } from 'features/favorites/components/NumberOfResults'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
-import { FavoriteListBanner } from 'features/favorites/favoriteList/FakeDoor/FavoriteListBanner'
 import {
   sortByAscendingPrice,
   sortByDistanceAroundMe,
@@ -29,7 +28,6 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation, Position } from 'libs/location'
-import { storage } from 'libs/storage'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   FavoriteHitPlaceholder,
@@ -105,28 +103,9 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     [credit, user, setOfferToBook]
   )
 
-  const [hasSeenFavListFakeDoor, setHasSeenFavListFakeDoor] = useState<boolean | undefined>(
-    undefined
-  )
-
-  useEffect(() => {
-    storage.readObject('has_seen_fav_list_fake_door').then((value) => {
-      if (value) {
-        setHasSeenFavListFakeDoor(true)
-      } else {
-        setHasSeenFavListFakeDoor(false)
-      }
-    })
-  }, [])
-
   const ListHeaderComponent = useMemo(
-    () => (
-      <React.Fragment>
-        {hasSeenFavListFakeDoor === false && <FavoriteListBanner />}
-        <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />
-      </React.Fragment>
-    ),
-    [hasSeenFavListFakeDoor, sortedFavorites]
+    () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
+    [sortedFavorites]
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
   const ListFooterComponent = useMemo(
