@@ -46,6 +46,8 @@ describe('<VenueSelectionModal />', () => {
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage
+        isSharingLocation
+        onEndReached={jest.fn()}
       />
     )
 
