@@ -1,0 +1,39 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: reusableFlows/LaunchApp.yml
+- runFlow:
+    when:
+      visible: "Respect de ta vie privée"
+    file: "reusableFlows/FirstLaunch.yml"
+- runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
+- runFlow: reusableFlows/features/auth/ToLogin.yml
+- runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
+- runFlow:
+    when:
+      visible: 'Plus Tard'
+    file: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow:
+    when:
+      visible: 'Rechercher des offres'
+    file: 'reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml'
+- tapOn: "Offre, artiste, lieu culturel..."
+- inputText: ${MAESTRO_EVENT_OFFER}
+- pressKey: Enter
+- tapOn: "Ma position"
+- tapOn: "Partout"
+- tapOn:
+    text: ${MAESTRO_EVENT_OFFER}
+    index: 1
+- tapOn: "Voir les disponibilités"
+- tapOn:
+    enabled: true
+    above:
+      text: .*€
+- tapOn: "Valider la date"
+- tapOn:
+    point: "50%,73%"
+- tapOn: "Valider lʼhoraire"
+- tapOn: "Solo"
+- tapOn: "Finaliser ma réservation"
+- tapOn: "Confirmer la réservation"
+- assertVisible: "Réservation confirmée !"
