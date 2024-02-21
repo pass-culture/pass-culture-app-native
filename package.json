@@ -377,7 +377,8 @@
     "react-side-effect": "2.1.2",
     "react-is": "^16.13.1",
     "@sentry/core": "7.62.0",
-    "@babel/runtime": "^7.23"
+    "@babel/runtime": "^7.23",
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.f9c48c0.0"
   },
   "exports": {
     ".": "./index.js",
