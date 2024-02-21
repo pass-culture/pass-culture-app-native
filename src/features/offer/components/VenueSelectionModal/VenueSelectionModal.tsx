@@ -82,20 +82,6 @@ export function VenueSelectionModal({
     )
   }, [onClosePress, title, top])
 
-  const handlePressFooter = () => {
-    const currentRef = venueListRef.current
-    if (currentRef instanceof FlatList) {
-      const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
-        .lastChild as HTMLElement
-      const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
-      offerLink.focus()
-      offerLink.blur()
-      if (onEndReached) {
-        onEndReached()
-      }
-    }
-  }
-
   return (
     <AppModal
       title={title}
@@ -131,7 +117,7 @@ export function VenueSelectionModal({
         refreshing={refreshing}
         onRefresh={onRefresh}
         onScroll={onScroll}
-        onPress={handlePressFooter}
+        onPress={onEndReached}
         ref={venueListRef}
         autoScrollEnabled={autoScrollEnabled}
         nbLoadedHits={nbLoadedHits}
