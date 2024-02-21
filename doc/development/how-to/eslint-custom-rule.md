@@ -2,7 +2,7 @@
 
 ## Mode opératoire
 
-En cas de doute, la règle [use-the-right-test-utils](../eslint-custom-rules/use-the-right-test-utils.js) est bon exemple de règle ESLint custom.
+En cas de doute, la règle [use-the-right-test-utils](../../../eslint-custom-rules/use-the-right-test-utils.js) est bon exemple de règle ESLint custom.
 
 ### 1. Vérifier qu'il n'y a pas une règle existante
 
@@ -14,9 +14,9 @@ Sinon, continuer ce mode opératoire.
 
 - Créer un fichier JS dans `/eslint-custom-rules` et utiliser le snippet `eslint-rule` pour générer une règle vide.
 
-- Dans [eslint-local-rules.js](../eslint-local-rules.js), importer sa règle du fichier créé, et l'exporter.
+- Dans [eslint-local-rules.js](../../../eslint-local-rules.js), importer sa règle du fichier créé, et l'exporter.
 
-- Dans [.eslintrc.js](../.eslintrc.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`
+- Dans [.eslintrc.js](../../../.eslintrc.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`
 
 - Créer un fichier de test dans `/eslint-custom-rules/__tests__` : `<ma-règle-ESLint>.test.js`, et utiliser le snippet `eslint-test` pour générer des tests à remplir.
 
