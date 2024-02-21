@@ -19,6 +19,7 @@ export type FormValues = {
 
 export function ChangeEmail() {
   const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
+  const enableNewChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL)
   const { isMobileViewport, isTouch } = useTheme()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const { user } = useAuthContext()
