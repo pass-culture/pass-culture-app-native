@@ -16,7 +16,7 @@ export const IconsContainer: ComponentStory<
   }>
 > = ({ title, icons, isBicolor = false }) => {
   const sortedIcons = useMemo(() => {
-    return Object.entries(icons).sort(([iconName1], [iconName2]) => {
+    return Object.entries(icons).toSorted(([iconName1], [iconName2]) => {
       if (iconName1 < iconName2) return -1
       else if (iconName1 > iconName2) return 1
       else return 0

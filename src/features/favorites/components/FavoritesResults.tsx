@@ -43,13 +43,13 @@ function applySortBy(list: Array<FavoriteResponse>, sortBy: FavoriteSortBy, posi
     // fix concurrency sentry/issues/288586
     return []
   } else if (sortBy === 'ASCENDING_PRICE') {
-    list.sort(sortByAscendingPrice)
+    list.toSorted(sortByAscendingPrice)
     return list
   } else if (sortBy === 'AROUND_ME') {
-    list.sort(sortByDistanceAroundMe(position))
+    list.toSorted(sortByDistanceAroundMe(position))
     return list
   } else if (sortBy === 'RECENTLY_ADDED') {
-    list.sort(sortByIdDesc)
+    list.toSorted(sortByIdDesc)
     return list
   } else {
     return list

@@ -17,9 +17,8 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 3 },
       { ...baseOffer, id: 2 },
     ]
-    data.sort(sortByIdDesc)
 
-    expect(data.map(({ id }) => id)).toEqual([3, 2, 1])
+    expect(data.toSorted(sortByIdDesc).map(({ id }) => id)).toEqual([3, 2, 1])
   })
 
   it('should sort by ASCENDING_PRICE', () => {
@@ -29,9 +28,8 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: 20 } },
     ]
-    data.sort(sortByAscendingPrice)
 
-    expect(data.map(({ id }) => id)).toEqual([4, 1, 2, 3])
+    expect(data.toSorted(sortByAscendingPrice).map(({ id }) => id)).toEqual([4, 1, 2, 3])
   })
 
   it('should sort by ASCENDING_PRICE and place expired offer last', () => {
@@ -41,9 +39,8 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: 20, isExpired: true } },
     ]
-    data.sort(sortByAscendingPrice)
 
-    expect(data.map(({ id }) => id)).toEqual([4, 1, 3, 2])
+    expect(data.toSorted(sortByAscendingPrice).map(({ id }) => id)).toEqual([4, 1, 3, 2])
   })
 
   it('should sort by ASCENDING_PRICE and place offer with no price last', () => {
@@ -53,9 +50,8 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 4, offer: { ...baseOffer.offer, price: 0 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, price: null } },
     ]
-    data.sort(sortByAscendingPrice)
 
-    expect(data.map(({ id }) => id)).toEqual([4, 1, 3, 2])
+    expect(data.toSorted(sortByAscendingPrice).map(({ id }) => id)).toEqual([4, 1, 3, 2])
   })
 
   it('should sort by AROUND_ME', () => {
@@ -64,9 +60,8 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, coordinates: position3 } },
       { ...baseOffer, id: 2, offer: { ...baseOffer.offer, coordinates: position2 } },
     ]
-    data.sort(sortByDistanceAroundMe(position))
 
-    expect(data.map(({ id }) => id)).toEqual([1, 2, 3])
+    expect(data.toSorted(sortByDistanceAroundMe(position)).map(({ id }) => id)).toEqual([1, 2, 3])
   })
 
   it('should sort by AROUND_ME and place offer with no coordinates last', () => {
@@ -75,8 +70,7 @@ describe('Favorites sorts', () => {
       { ...baseOffer, id: 3, offer: { ...baseOffer.offer, coordinates: position3 } },
       { ...baseOffer, id: 2 },
     ]
-    data.sort(sortByDistanceAroundMe(position))
 
-    expect(data.map(({ id }) => id)).toEqual([1, 3, 2])
+    expect(data.toSorted(sortByDistanceAroundMe(position)).map(({ id }) => id)).toEqual([1, 3, 2])
   })
 })

@@ -101,7 +101,7 @@ export const getContentFromOffer = (
   if (photoCredit && photoCredit !== 'undefined')
     hits.push({ key: 'photoCredit', value: photoCredit })
 
-  return hits.sort(sortExtraData)
+  return hits.toSorted(sortExtraData)
 }
 
 const renderExtraData = ({ item }: { item: Item }) => {

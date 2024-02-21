@@ -30,7 +30,7 @@ const getPricePerPlace = (prices: number[], options?: FormatPriceOptions): strin
 
   if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0], options)}`
 
-  const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
+  const sortedPrices = [...uniquePrices].toSorted((a, b) => a - b)
   return `Dès ${formatToFrenchDecimal(sortedPrices[0], options)}`
 }
 

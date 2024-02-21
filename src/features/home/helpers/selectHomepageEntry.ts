@@ -60,7 +60,7 @@ export const useSelectHomepageEntry = (
       const scoredEntries = homepageList
         .map((homepageEntry) => scoreHomepageByTags(homepageEntry, user))
         .filter(({ score }) => score > 0)
-        .sort((a, b) => b.score - a.score)
+        .toSorted((a, b) => b.score - a.score)
 
       const defaultHomepageEntry = scoredEntries.length
         ? omit(scoredEntries[0], 'score')

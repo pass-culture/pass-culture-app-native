@@ -25,7 +25,7 @@ export const adaptOffersPlaylistParameters = (
   // We receive category labels from contentful. We first have to map to facetFilters used for search
   const offerCategories = (parameters.categories ?? [])
     .map(getCategoriesFacetFilters)
-    .sort(sortCategories)
+    .toSorted(sortCategories)
 
   const offerSubcategories = (parameters.subcategories ?? [])
     .map((subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel])

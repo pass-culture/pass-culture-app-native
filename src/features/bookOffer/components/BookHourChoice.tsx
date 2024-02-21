@@ -76,7 +76,7 @@ function getHourChoiceForSingleStock(
         ? formatToKeyDate(beginningDatetime) === selectedDate
         : false
     })
-    .sort(
+    .toSorted(
       (a, b) =>
         //@ts-expect-error : stocks with no beginningDatetime was filtered
         new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()

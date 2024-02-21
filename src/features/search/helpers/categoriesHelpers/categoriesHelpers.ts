@@ -224,7 +224,7 @@ export function getNativeCategories(
     // Just in case where the `.find` clause cannot find anything (this cannot happen but `find` definition is that).
     .filter(Boolean) as NativeCategoryResponseModelv2[]
 
-  return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
+  return getUniqueBy(nativeCategories, 'name').toSorted(searchGroupOrNativeCategorySortComparator)
 }
 
 function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {

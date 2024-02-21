@@ -32,5 +32,5 @@ export const useSortedSearchCategories = (
       gradients: category.gradients,
       position: category.position,
     }))
-    .sort(categoriesSortPredicate)
+    .toSorted(categoriesSortPredicate)
 }

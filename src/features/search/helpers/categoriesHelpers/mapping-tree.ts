@@ -53,28 +53,28 @@ function getNativeCategoryGenreTypes(
 }
 
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
-  const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
-  bookTree.sort(({ position: positionA }, { position: positionB }) => positionA - positionB)
+  const bookTree = (
+    data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
+  ).toSorted(({ position: positionA }, { position: positionB }) => positionA - positionB)
 
   return bookTree.reduce<MappedNativeCategories>((nativeCategoriesResult, nativeCategory) => {
     const categorieKey = getKeyFromStringLabel(nativeCategory.label)
-    nativeCategory.children.sort(
-      ({ position: positionA }, { position: positionB }) => positionA - positionB
-    )
     nativeCategoriesResult[categorieKey] = {
       label: nativeCategory.label,
       nbResultsFacet: 0,
       genreTypeKey: GenreType.BOOK,
       gtls: nativeCategory.gtls,
-      children: nativeCategory.children.reduce<MappedGenreTypes>((genreTypeChildren, genreType) => {
-        const genreKey = getKeyFromStringLabel(genreType.label)
-        genreTypeChildren[genreKey] = {
-          label: genreType.label,
-          gtls: genreType.gtls,
-          position: genreType.position,
-        }
-        return genreTypeChildren
-      }, {} as MappedGenreTypes),
+      children: nativeCategory.children
+        .toSorted(({ position: positionA }, { position: positionB }) => positionA - positionB)
+        .reduce<MappedGenreTypes>((genreTypeChildren, genreType) => {
+          const genreKey = getKeyFromStringLabel(genreType.label)
+          genreTypeChildren[genreKey] = {
+            label: genreType.label,
+            gtls: genreType.gtls,
+            position: genreType.position,
+          }
+          return genreTypeChildren
+        }, {} as MappedGenreTypes),
     }
     return nativeCategoriesResult
   }, {} as MappedNativeCategories)
@@ -115,7 +115,7 @@ export function createMappingTree(
         searchGroup.name !== SearchGroupNameEnumv2.NONE &&
         Object.keys(CATEGORY_CRITERIA).includes(searchGroup.name)
     )
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const positionA: number = CATEGORY_CRITERIA[a.name]?.position || 0
       const positionB: number = CATEGORY_CRITERIA[b.name]?.position || 0
       return positionA - positionB

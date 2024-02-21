@@ -31,7 +31,7 @@ describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
     const categories = mockData.searchGroups
       .filter((category) => category.name !== SearchGroupNameEnumv2.NONE)
-      .sort(searchGroupOrNativeCategorySortComparator)
+      .toSorted(searchGroupOrNativeCategorySortComparator)
 
     expect(categories).toEqual([
       {

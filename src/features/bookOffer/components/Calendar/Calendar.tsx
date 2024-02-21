@@ -71,7 +71,7 @@ export const getMinAvailableDate = (markedDates: MarkedDates): string | undefine
   if (availableDates.length === 0) return undefined
   if (availableDates.length === 1) return availableDates[0]
 
-  return [...availableDates].sort(
+  return availableDates.toSorted(
     (dateA, dateB) => new Date(dateA).valueOf() - new Date(dateB).valueOf()
   )[0]
 }

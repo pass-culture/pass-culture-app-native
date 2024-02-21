@@ -13,7 +13,7 @@ export default {
 
 export const Emojis: ComponentStory<React.FC> = () => {
   const sortedEmojis = useMemo(() => {
-    return Object.entries(Emoji).sort(([name1], [name2]) => {
+    return Object.entries(Emoji).toSorted(([name1], [name2]) => {
       if (name1 < name2) return -1
       else if (name1 > name2) return 1
       else return 0

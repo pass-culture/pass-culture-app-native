@@ -108,7 +108,7 @@ describe('TabBar', () => {
       'Mes réservations',
       'Mes favoris',
       'Mon profil',
-    ].sort()
+    ].toSorted()
 
     expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByTestId(tab)).toBeOnTheScreen()
@@ -131,7 +131,7 @@ describe('TabBar', () => {
       'Mes réservations sélectionné',
       'Mes favoris',
       'Mon profil',
-    ].sort()
+    ].toSorted()
 
     expectedTabsTestIds.forEach((tab) => {
       expect(screen.getByTestId(tab)).toBeOnTheScreen()

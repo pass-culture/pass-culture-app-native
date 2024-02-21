@@ -127,7 +127,7 @@ export function getSortedHoursFromDate(stocks: OfferStockResponse[], selectedDat
     .filter(getStockWithCategoryFromDate(selectedDate))
     .map((stock) => stock.beginningDatetime)
     .filter(filterBool)
-    .sort(sortByDateStringPredicate)
+    .toSorted(sortByDateStringPredicate)
 }
 
 export function getDistinctPricesFromAllStock(stocks: OfferStockResponse[]) {
@@ -141,7 +141,7 @@ const sortByPricePredicate = (a: OfferStockResponse, b: OfferStockResponse) => {
 }
 
 export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], selectedHour: string) {
-  return stocks.filter(getStockWithCategoryFromHour(selectedHour)).sort(sortByPricePredicate)
+  return stocks.filter(getStockWithCategoryFromHour(selectedHour)).toSorted(sortByPricePredicate)
 }
 
 export function getStockWithCategory(
