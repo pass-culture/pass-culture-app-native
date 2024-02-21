@@ -70,16 +70,15 @@ function getHourChoiceForSingleStock(
   offerCredit: number
 ) {
   return stocks
-    .filter(({ beginningDatetime }) => {
+    .filter((stock): stock is OfferStockResponse & { beginningDatetime: string } => {
+      const { beginningDatetime } = stock
       if (beginningDatetime === undefined || beginningDatetime === null) return false
       return selectedDate && beginningDatetime
         ? formatToKeyDate(beginningDatetime) === selectedDate
         : false
     })
     .toSorted(
-      (a, b) =>
-        //@ts-expect-error : stocks with no beginningDatetime was filtered
-        new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
+      (a, b) => new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
     )
     .map((stock, index) => (
       <HourChoice
