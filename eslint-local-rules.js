@@ -8,6 +8,7 @@ const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-u
 const noUseOfAlgoliaMultipleQueries = require('./eslint-custom-rules/no-use-of-algolia-multiple-queries')
 const noHardcodeIdInSvg = require('./eslint-custom-rules/no-hardcoded-id-in-svg')
 const noTruthyCheckAfterQueryAllMatchers = require('./eslint-custom-rules/no-truthy-check-after-queryAll-matchers')
+const toSortedInsteadOfSort = require('./eslint-custom-rules/toSorted-instead-of-sort.js')
 
 module.exports = {
   'independent-mocks': independentMocks,
@@ -20,4 +21,5 @@ module.exports = {
   'use-the-right-test-utils': useTheRightTestUtils,
   'no-use-of-algolia-multiple-queries': noUseOfAlgoliaMultipleQueries,
   'no-truthy-check-after-queryAll-matchers': noTruthyCheckAfterQueryAllMatchers,
+  'toSorted-instead-of-sort': toSortedInsteadOfSort,
 }
