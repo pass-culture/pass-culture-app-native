@@ -47,6 +47,8 @@ describe('<VenueSelectionModal />', () => {
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
       />
     )
 
@@ -70,6 +72,8 @@ describe('<VenueSelectionModal />', () => {
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
       />
     )
 
@@ -95,6 +99,8 @@ describe('<VenueSelectionModal />', () => {
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
       />
     )
 
@@ -120,6 +126,8 @@ describe('<VenueSelectionModal />', () => {
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
       />
     )
 
@@ -146,6 +154,7 @@ describe('<VenueSelectionModal />', () => {
           nbHits={nbHits}
           isFetchingNextPage
           isSharingLocation
+          onEndReached={jest.fn()}
         />
       )
 
@@ -170,6 +179,7 @@ describe('<VenueSelectionModal />', () => {
           nbHits={nbHits}
           isFetchingNextPage
           isSharingLocation={false}
+          onEndReached={jest.fn()}
         />
       )
 

@@ -14,7 +14,7 @@ export type VenueListItem = VenueDetail & {
 }
 
 export type VenueSelectionListProps = ViewProps &
-  Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'> & {
+  Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onScroll'> & {
     selectedItem?: number
     onItemSelect: (itemOfferId: number) => void
     items: VenueListItem[]
@@ -23,10 +23,11 @@ export type VenueSelectionListProps = ViewProps &
     autoScrollEnabled: boolean
     isFetchingNextPage: boolean
     onPress?: () => void
-    isSharingLocation?: boolean
+    isSharingLocation: boolean
     venueName?: string
     subTitle: string
     headerMessage: string
+    onEndReached: () => void
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)

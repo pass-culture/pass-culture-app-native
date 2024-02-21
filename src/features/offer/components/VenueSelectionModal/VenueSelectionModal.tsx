@@ -17,7 +17,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = Pick<
   FlatListProps<VenueListItem>,
-  'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'
+  'onRefresh' | 'refreshing' | 'onScroll'
 > & {
   isVisible: boolean
   items: VenueSelectionListProps['items']
@@ -27,8 +27,8 @@ type VenueSelectionModalProps = Pick<
   title: string
   onSubmit: (selectedVenueId: number) => void
   onClosePress: VoidFunction
-  onEndReached?: () => void
-  isSharingLocation?: boolean
+  onEndReached: () => void
+  isSharingLocation: boolean
   subTitle: string
   rightIconAccessibilityLabel: string
   validateButtonLabel: string
