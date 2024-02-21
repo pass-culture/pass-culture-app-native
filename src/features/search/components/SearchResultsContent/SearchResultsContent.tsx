@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityFiltersModal } from 'features/accessibility/AccessibilityFiltersModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -114,6 +115,11 @@ export const SearchResultsContent: React.FC = () => {
     visible: datesHoursModalVisible,
     showModal: showDatesHoursModal,
     hideModal: hideDatesHoursModal,
+  } = useModal(false)
+  const {
+    visible: accesibilityFiltersModalVisible,
+    showModal: showAccessibilityModal,
+    hideModal: hideAccessibilityModal,
   } = useModal(false)
 
   const activeFiltersCount = useFilterCount(searchState)
@@ -265,7 +271,7 @@ export const SearchResultsContent: React.FC = () => {
                   <SingleFilterButton
                     label="Accessibilité"
                     testID="lieuxAccessiblesButton"
-                    onPress={() => ({})}
+                    onPress={showAccessibilityModal}
                     isSelected={appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY)}
                   />
                 </StyledLastLi>
@@ -340,6 +346,13 @@ export const SearchResultsContent: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
         isVisible={datesHoursModalVisible}
         hideModal={hideDatesHoursModal}
+        filterBehaviour={FilterBehaviour.SEARCH}
+      />
+      <AccessibilityFiltersModal
+        title="Accessibilité"
+        accessibilityLabel="Ne pas filtrer sur les lieux accessibles puis retourner aux résultats"
+        isVisible={accesibilityFiltersModalVisible}
+        hideModal={hideAccessibilityModal}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
     </React.Fragment>
