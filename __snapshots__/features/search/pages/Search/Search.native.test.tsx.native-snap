@@ -195,7 +195,7 @@ exports[`<Search/> should render Search 1`] = `
               ]
             }
           >
-            Me localiser
+            Ma position
           </Text>
         </View>
         <Modal

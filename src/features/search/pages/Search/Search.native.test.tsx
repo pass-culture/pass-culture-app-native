@@ -187,7 +187,8 @@ const mockedPlace: SuggestedPlace = {
 
 const mockSetPlace = jest.fn()
 const mockSetSelectedLocationMode = jest.fn()
-let mockHasGeolocPosition = false
+let mockHasGeolocPosition = true
+const mockSelectedLocationMode = LocationMode.AROUND_ME
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -197,6 +198,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     isCurrentLocationMode: jest.fn(),
     setSelectedLocationMode: mockSetSelectedLocationMode,
     hasGeolocPosition: mockHasGeolocPosition,
+    selectedLocationMode: mockSelectedLocationMode, // to have the venue map block display
   }),
 }))
 
