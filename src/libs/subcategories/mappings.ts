@@ -22,8 +22,7 @@ export const useSubcategoriesMapping = (): SubcategoriesMapping => {
       mapping[id] = subcategory
     })
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subcategories.length])
+  }, [subcategories])
 }
 
 export const useCategoryIdMapping = (): CategoryIdMapping => {
@@ -36,8 +35,7 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
       mapping[curr.id] = curr.categoryId
     })
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subcategories.length])
+  }, [subcategories])
 }
 
 export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
@@ -50,8 +48,7 @@ export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
       mapping[curr.appLabel] = curr.id
     })
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subcategories.length])
+  }, [subcategories])
 }
 
 const useHomeLabelMapping = (): HomeLabelMapping => {
@@ -64,8 +61,7 @@ const useHomeLabelMapping = (): HomeLabelMapping => {
       mapping[curr.name] = curr.value || null
     })
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [homepageLabels.length])
+  }, [homepageLabels])
 }
 
 export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
@@ -79,8 +75,7 @@ export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
       mapping[curr.id] = homeLabelMapping[curr.homepageLabelName]
     })
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subcategories.length, homeLabelMapping])
+  }, [subcategories, homeLabelMapping])
 }
 
 export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
@@ -93,8 +88,7 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
       mapping[curr.name] = curr.value || 'Toutes les catégories'
     })
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchGroups.length])
+  }, [searchGroups])
 }
 
 export const useGenreTypeMapping = (): GenreTypeMapping => {
@@ -105,6 +99,5 @@ export const useGenreTypeMapping = (): GenreTypeMapping => {
     const mapping = {} as GenreTypeMapping
     genreTypes.forEach((genreType) => (mapping[genreType.name] = genreType.values))
     return mapping
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [genreTypes.length])
+  }, [genreTypes])
 }
