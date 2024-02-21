@@ -234,7 +234,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     {
       id: SubcategoryIdEnumv2.CARTE_MUSEE,
       categoryId: CategoryIdEnum.MUSEE,
-      appLabel: 'Cartes musées, patrimoine...',
+      appLabel: 'Abonnement musée, carte ou pass',
       searchGroupName: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
       homepageLabelName: HomepageLabelNameEnumv2.MUSEE,
       isEvent: false,
