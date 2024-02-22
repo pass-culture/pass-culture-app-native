@@ -200,7 +200,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       )}
       <SecondaryPageWithBlurHeader headerTitle="Connexion" shouldDisplayBackButton>
         <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title3 {...getHeadingAttrs(1)}>Connecte-toi</Typo.Title3>
+        <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <Form.MaxWidth>
           <InputError
