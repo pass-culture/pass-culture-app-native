@@ -9,13 +9,14 @@ import { FilterBehaviour } from 'features/search/enums'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
+import { Close } from 'ui/svg/icons/Close'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 
 const titleId = uuidv4()
 
 export type AccessibilityModalProps = {
   title: string
-  accessibilityLabel?: string
+  accessibilityLabel: string
   isVisible: boolean
   hideModal: () => void
   onClose?: () => void
@@ -27,6 +28,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   isVisible,
   hideModal,
   onClose,
+  accessibilityLabel,
   filterBehaviour,
 }) => {
   const { modal } = useTheme()
@@ -71,6 +73,9 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
       isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
+      rightIconAccessibilityLabel={accessibilityLabel}
+      rightIcon={Close}
+      onRightIconPress={handleCloseModal}
       fixedModalBottom={
         <SearchFixedModalBottom
           onResetPress={handleFilterReset}
