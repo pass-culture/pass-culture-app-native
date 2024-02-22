@@ -62,7 +62,7 @@ describe('adaptOffersPlaylistParameters', () => {
     } as OffersModuleParameters
 
     const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
-    const parsedParameters = result.current(parameters)
+    const parsedParameters = result.current(parameters).offerParams
 
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
@@ -76,7 +76,7 @@ describe('adaptOffersPlaylistParameters', () => {
     } as OffersModuleParameters
 
     const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
-    const parsedParameters = result.current(parameters)
+    const parsedParameters = result.current(parameters).offerParams
 
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
