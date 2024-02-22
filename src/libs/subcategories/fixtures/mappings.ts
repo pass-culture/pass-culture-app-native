@@ -276,7 +276,7 @@ export const subcategoriesMappingSnap = {
     searchGroupName: 'CARTES_JEUNES',
   },
   CARTE_MUSEE: {
-    appLabel: 'Cartes musées, patrimoine...',
+    appLabel: 'Abonnement musée, carte ou pass',
     categoryId: 'MUSEE',
     homepageLabelName: 'MUSEE',
     isEvent: false,
