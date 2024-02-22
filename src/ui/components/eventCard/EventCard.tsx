@@ -25,7 +25,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const hasSubtitleRight = !!subtitleRight
   return (
-    <ContainerTouchable isDisabled={isDisabled} onPress={isDisabled ? undefined : onPress}>
+    <StyledTouchableOpacity isDisabled={isDisabled} onPress={isDisabled ? undefined : onPress}>
       <Title accessibilityLabel={title} numberOfLines={1} isDisabled={isDisabled}>
         {title}
       </Title>
@@ -51,11 +51,11 @@ export const EventCard: React.FC<EventCardProps> = ({
           </React.Fragment>
         ) : null}
       </SubtitleContainer>
-    </ContainerTouchable>
+    </StyledTouchableOpacity>
   )
 }
 
-const ContainerTouchable = styled(TouchableOpacity)<{ isDisabled: boolean }>(
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ isDisabled: boolean }>(
   ({ theme, isDisabled }) => ({
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
