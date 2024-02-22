@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
@@ -55,7 +56,7 @@ export const EventCard: React.FC<EventCardProps> = ({
   )
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{ isDisabled: boolean }>(
+const StyledTouchableOpacity = styledButton(Touchable)<{ isDisabled: boolean }>(
   ({ theme, isDisabled }) => ({
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
@@ -74,13 +75,8 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ isDisabled: boolean }>
           shadowOpacity: 0.2,
         })
       : {}),
-    ...(theme.isNative
-      ? {}
-      : {
-          '&:hover': { textDecoration: isDisabled ? 'none' : 'underline' },
-          '&:focus': { outline: 'none' },
-          '&:focus-visible': { outline: 'auto' },
-        }),
+    '&:focus': { outline: 'none' },
+    '&:focus-visible': { outline: 'auto' },
   })
 )
 
