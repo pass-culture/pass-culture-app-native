@@ -349,7 +349,7 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           }
         />
         <View
-          accessibilityLabel="J’ai lu et j’accepte les conditions générales d’utilisation*"
+          accessibilityLabel="J’ai lu et j’accepte les conditions générales d’utilisation"
           accessibilityRole="checkbox"
           accessibilityState={
             {
@@ -388,7 +388,7 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               "userSelect": "auto",
             }
           }
-          testID="J’ai lu et j’accepte les conditions générales d’utilisation*"
+          testID="J’ai lu et j’accepte les conditions générales d’utilisation"
         >
           <View
             isChecked={false}
@@ -425,7 +425,8 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               ]
             }
           >
-            J’ai lu et j’accepte les conditions générales d’utilisation*
+            J’ai lu et j’accepte les conditions générales d’utilisation
+            *
           </Text>
         </View>
         <View
@@ -439,7 +440,7 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           }
         />
         <View
-          accessibilityLabel="J’ai lu la charte des données personnelles*"
+          accessibilityLabel="J’ai lu la charte des données personnelles"
           accessibilityRole="checkbox"
           accessibilityState={
             {
@@ -478,7 +479,7 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               "userSelect": "auto",
             }
           }
-          testID="J’ai lu la charte des données personnelles*"
+          testID="J’ai lu la charte des données personnelles"
         >
           <View
             isChecked={false}
@@ -515,7 +516,8 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               ]
             }
           >
-            J’ai lu la charte des données personnelles*
+            J’ai lu la charte des données personnelles
+            *
           </Text>
         </View>
         <View
@@ -540,7 +542,12 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             ]
           }
         >
-          *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu :
+          <Text
+            accessibilityHidden={true}
+          >
+            *obligatoires pour créer ton compte. 
+          </Text>
+          En cochant ces 2 cases tu assures avoir lu :
         </Text>
         <View
           numberOfSpaces={2}

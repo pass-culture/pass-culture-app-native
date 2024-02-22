@@ -30,3 +30,10 @@ IsChecked.args = {
   label: 'I agree to disagree',
   isChecked: true,
 }
+
+export const Required = Template.bind({})
+Required.args = {
+  label: 'I have to agree',
+  isChecked: false,
+  required: true,
+}

@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Text } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -111,18 +112,21 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       <Spacer.Column numberOfSpaces={10} />
       <CheckboxController
         control={control}
-        label="J’ai lu et j’accepte les conditions générales d’utilisation*"
+        label="J’ai lu et j’accepte les conditions générales d’utilisation"
         name="acceptCgu"
+        required
       />
       <Spacer.Column numberOfSpaces={6} />
       <CheckboxController
         control={control}
-        label="J’ai lu la charte des données personnelles*"
+        label="J’ai lu la charte des données personnelles"
         name="acceptDataCharter"
+        required
       />
       <Spacer.Column numberOfSpaces={6} />
       <Typo.CaptionNeutralInfo>
-        *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu&nbsp;:
+        <Text accessibilityHidden>*obligatoires pour créer ton compte. </Text>
+        En cochant ces 2 cases tu assures avoir lu&nbsp;:
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <ExternalTouchableLink
