@@ -7,6 +7,7 @@ import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
+import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
@@ -58,26 +59,28 @@ export function App() {
                     <AuthWrapper>
                       <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
                         <LocationWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <AppWebHead />
-                                      <OnboardingWrapper>
-                                        <ScreenErrorProvider>
-                                          <Suspense fallback={<LoadingPage />}>
-                                            <AppNavigationContainer />
-                                          </Suspense>
-                                        </ScreenErrorProvider>
-                                      </OnboardingWrapper>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
+                          <AccessibilityFiltersWrapper>
+                            <FavoritesWrapper>
+                              <SearchAnalyticsWrapper>
+                                <SearchWrapper>
+                                  <SnackBarProvider>
+                                    <CulturalSurveyContextProvider>
+                                      <SubscriptionContextProvider>
+                                        <AppWebHead />
+                                        <OnboardingWrapper>
+                                          <ScreenErrorProvider>
+                                            <Suspense fallback={<LoadingPage />}>
+                                              <AppNavigationContainer />
+                                            </Suspense>
+                                          </ScreenErrorProvider>
+                                        </OnboardingWrapper>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SnackBarProvider>
+                                </SearchWrapper>
+                              </SearchAnalyticsWrapper>
+                            </FavoritesWrapper>
+                          </AccessibilityFiltersWrapper>
                         </LocationWrapper>
                       </ErrorBoundary>
                     </AuthWrapper>

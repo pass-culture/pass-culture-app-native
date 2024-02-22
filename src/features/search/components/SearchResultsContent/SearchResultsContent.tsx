@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AccessibilityFiltersModal } from 'features/accessibility/AccessibilityFiltersModal'
+import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'

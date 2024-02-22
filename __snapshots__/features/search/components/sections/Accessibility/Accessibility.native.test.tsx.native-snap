@@ -102,22 +102,6 @@ exports[`Category component should render correctly 1`] = `
         >
           Accessibilité
         </Text>
-        <Text
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Handicap auditif, handicap visuel, handicap psychique ou cognitif, handicap moteur
-        </Text>
       </View>
     </View>
     <View

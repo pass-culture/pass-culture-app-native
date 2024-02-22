@@ -1,0 +1,943 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
+<Modal
+  accessibilityLabelledBy="testUuidV4"
+  accessibilityModal={true}
+  accessibilityRole="none"
+  animationType="none"
+  deviceHeight={1334}
+  deviceWidth={750}
+  hardwareAccelerated={false}
+  hideModalContentWhileAnimating={false}
+  onBackdropPress={[Function]}
+  onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
+  onRequestClose={[Function]}
+  panResponderThreshold={4}
+  scrollHorizontal={false}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  statusBarTranslucent={true}
+  supportedOrientations={
+    [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  testID="modal"
+  transparent={true}
+  visible={true}
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    forwardedRef={[Function]}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "height": 1334,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "width": 750,
+      }
+    }
+  />
+  <View
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
+    accessibilityRole="none"
+    collapsable={false}
+    deviceHeight={1334}
+    deviceWidth={750}
+    forwardedRef={[Function]}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[Function]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    panResponderThreshold={4}
+    pointerEvents="box-none"
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    style={
+      {
+        "alignItems": "center",
+        "bottom": 0,
+        "flex": 1,
+        "justifyContent": "center",
+        "left": 0,
+        "margin": "auto",
+        "position": "absolute",
+        "right": 0,
+        "top": "auto",
+        "transform": [
+          {
+            "translateY": 1334,
+          },
+        ],
+      }
+    }
+    supportedOrientations={
+      [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+  >
+    <View
+      desktopMaxHeight={1000.5}
+      height={1318}
+      maxHeight={1334}
+      noPadding={true}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderBottomEndRadius": 0,
+            "borderBottomLeftRadius": 0,
+            "borderBottomRightRadius": 0,
+            "borderBottomStartRadius": 0,
+            "borderTopEndRadius": 16,
+            "borderTopLeftRadius": 20,
+            "borderTopRightRadius": 20,
+            "borderTopStartRadius": 16,
+            "flexDirection": "column",
+            "height": 1318,
+            "justifyContent": "center",
+            "maxHeight": 1334,
+            "maxWidth": 960,
+            "paddingBottom": 32,
+            "width": "100%",
+          },
+        ]
+      }
+      testID="modalContainer"
+    >
+      <View
+        nativeID="testUuidV4"
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "width": "100%",
+            },
+          ]
+        }
+        testID="customModalHeader"
+      >
+        <View
+          accessibilityRole="header"
+          style={
+            [
+              {
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            height={72}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "height": 72,
+                  "justifyContent": "space-between",
+                  "width": "100%",
+                  "zIndex": 1,
+                },
+              ]
+            }
+            testID="pageHeader"
+          >
+            <View
+              positionInHeader="left"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+              testID="back-button-container"
+            />
+            <Text
+              nativeID="testUuidV4"
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Accessibilité
+            </Text>
+            <View
+              positionInHeader="right"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-end",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                  },
+                ]
+              }
+              testID="close-button-container"
+            >
+              <View
+                accessibilityLabel="Fermer"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Fermer"
+              >
+                <View
+                  height={24}
+                  testID="icon-close"
+                  width={24}
+                >
+                  <Text>
+                    icon-close-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "display": "none",
+                      },
+                    ]
+                  }
+                >
+                  Retour
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <RCTScrollView
+        modalSpacing={24}
+        onContentSizeChange={[Function]}
+        scrollEnabled={true}
+        style={
+          [
+            {
+              "paddingHorizontal": 24,
+              "width": "100%",
+            },
+          ]
+        }
+        testID="fullscreenModalScrollView"
+      >
+        <View>
+          <View
+            numberOfSpaces={6}
+            style={
+              [
+                {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
+            </Text>
+            <View
+              numberOfSpaces={8}
+              style={
+                [
+                  {
+                    "height": 32,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityRole="list"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "paddingLeft": 0,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Handicap visuel"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap visuel"
+              >
+                <View
+                  isChecked={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
+                        "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap visuel
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Handicap psychique ou cognitif"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap psychique ou cognitif"
+              >
+                <View
+                  isChecked={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
+                        "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap psychique ou cognitif
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Handicap moteur"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap moteur"
+              >
+                <View
+                  isChecked={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
+                        "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap moteur
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Handicap auditif"
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Handicap auditif"
+              >
+                <View
+                  isChecked={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#696A6F",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
+                        "height": 24,
+                        "justifyContent": "center",
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "paddingLeft": 16,
+                      },
+                    ]
+                  }
+                >
+                  Handicap auditif
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        style={
+          [
+            {
+              "width": "100%",
+            },
+          ]
+        }
+        testID="fixedModalBottom"
+      >
+        <View
+          paddingBottom={0}
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            isModal={true}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "paddingHorizontal": 24,
+                  "paddingTop": 8,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginRight": 16,
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
+              }
+              testID="Réinitialiser"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={16}
+                  testID="button-icon"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Réinitialiser
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Rechercher"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
+              }
+              testID="Rechercher"
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Rechercher
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</Modal>
+`;
