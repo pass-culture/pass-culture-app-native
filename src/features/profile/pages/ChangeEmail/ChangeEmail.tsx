@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
+import { ChangeEmailContentDeprecated } from 'features/profile/pages/ChangeEmail/ChangeEmailContentDeprecated'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
@@ -24,16 +25,27 @@ export function ChangeEmail() {
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const { user } = useAuthContext()
 
+  const showNewChangeEmail = enableNewChangeEmail && !disableOldChangeEmail
+
   return (
     <React.Fragment>
       <PageHeaderSecondary title="Modifier mon e-mail" />
-      <ChangeEmailContent
-        disableOldChangeEmail={disableOldChangeEmail}
-        hasCurrentEmailChange={hasCurrentEmailChange}
-        isMobileViewport={isMobileViewport}
-        isTouch={isTouch}
-        user={user}
-      />
+      {showNewChangeEmail ? (
+        <ChangeEmailContent
+          hasCurrentEmailChange={hasCurrentEmailChange}
+          isMobileViewport={isMobileViewport}
+          isTouch={isTouch}
+          user={user}
+        />
+      ) : (
+        <ChangeEmailContentDeprecated
+          disableOldChangeEmail={disableOldChangeEmail}
+          hasCurrentEmailChange={hasCurrentEmailChange}
+          isMobileViewport={isMobileViewport}
+          isTouch={isTouch}
+          user={user}
+        />
+      )}
     </React.Fragment>
   )
 }

@@ -44,7 +44,7 @@ describe('<ChangeEmail/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should not display the update app banner when FF is disabled', async () => {
+  it('should not display the update app banner when FF (disableOldChangeEmail) is disabled', async () => {
     renderChangeEmail()
 
     await act(() => {})
@@ -238,10 +238,12 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
-  describe('when FF disableOldChangeEmail is active', () => {
+  describe('when FF disableOldChangeEmail is active and FF enableNewChangeEmail is inactive', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true) // first render
-      useFeatureFlagSpy.mockReturnValueOnce(true) // second render because of useCheckHasCurrentEmailChange
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting both FFs for first render
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting both FFs second render because of useCheckHasCurrentEmailChange
+      useFeatureFlagSpy.mockReturnValueOnce(false)
     })
 
     it('should display the update app banner', async () => {

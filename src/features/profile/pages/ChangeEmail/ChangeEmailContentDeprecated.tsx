@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { UserProfileResponse } from 'api/gen'
+import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
@@ -25,12 +26,14 @@ import {
   ButtonContainer,
 } from './ChangeEmail'
 
-export function ChangeEmailContent({
+export function ChangeEmailContentDeprecated({
+  disableOldChangeEmail,
   hasCurrentEmailChange,
   isMobileViewport,
   isTouch,
   user,
 }: {
+  disableOldChangeEmail: boolean | undefined
   hasCurrentEmailChange: boolean
   isMobileViewport: boolean | undefined
   isTouch: boolean
@@ -77,14 +80,20 @@ export function ChangeEmailContent({
     changeEmail({ email: newEmail, password })
   }
 
-  const isInputDisabled = hasCurrentEmailChange
-  const isSubmitButtonDisabled = !isValid || isLoading
+  const isInputDisabled = disableOldChangeEmail || hasCurrentEmailChange
+  const isSubmitButtonDisabled = disableOldChangeEmail || !isValid || isLoading
   return (
     <StyledScrollView
       ref={scrollRef}
       contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
       keyboardShouldPersistTaps="handled">
       <Spacer.Column numberOfSpaces={6} />
+      {!!disableOldChangeEmail && (
+        <React.Fragment>
+          <UpdateAppBanner />
+          <Spacer.Column numberOfSpaces={4} />
+        </React.Fragment>
+      )}
       {!!hasCurrentEmailChange && (
         <React.Fragment>
           <AlreadyChangedEmailDisclaimer />
