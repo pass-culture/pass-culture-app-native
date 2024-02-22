@@ -11,7 +11,7 @@ export const adaptOffersPlaylistParameters = (
   parameters: OffersModuleParameters,
   subcategoryLabelMapping: SubcategoryLabelMapping,
   genreTypeMapping: GenreTypeMapping
-): SearchQueryParameters | undefined => {
+): SearchQueryParameters => {
   const { priceMin, priceMax } = parameters
 
   const { beginningDatetime, endingDatetime } = computeBeginningAndEndingDatetimes({

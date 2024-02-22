@@ -2,6 +2,7 @@ import { Animated } from 'react-native'
 
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
@@ -116,6 +117,13 @@ export type OffersModuleParameters = {
   musicTypes?: string[]
   showTypes?: string[]
   bookTypes?: string[]
+  isGeolocated?: boolean
+  aroundRadius?: number
+}
+
+export type PlaylistOffersParams = {
+  offerParams: SearchQueryParameters
+  locationParams: BuildLocationParameterParams
 }
 
 export type BusinessModule = {
@@ -295,7 +303,7 @@ export type HighlightOfferModule = {
   aroundRadius?: number
 }
 
-export type OffersPlaylistParameters = SearchQueryParameters[]
+export type OffersPlaylistParameters = PlaylistOffersParams[]
 
 export type OfferModuleParamsInfo = {
   adaptedPlaylistParameters: OffersPlaylistParameters
