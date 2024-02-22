@@ -14,6 +14,7 @@ import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -96,7 +97,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
 
   // ReCaptcha needs previous callbacks
   return (
-    <React.Fragment>
+    <Form.MaxWidth>
       {!!settings?.isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
@@ -176,6 +177,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={5} />
-    </React.Fragment>
+    </Form.MaxWidth>
   )
 }

@@ -233,18 +233,18 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             onPress={handleSubmit(onSubmit)}
             disabled={shouldDisableLoginButton}
           />
+          {enableGoogleSSO ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <StyledSeparatorWithText label="ou" />
+              <Spacer.Column numberOfSpaces={4} />
+              <SSOButtonBase type="login" onSuccess={signIn} />
+              <Spacer.Column numberOfSpaces={10} />
+            </React.Fragment>
+          ) : (
+            <Spacer.Column numberOfSpaces={8} />
+          )}
         </Form.MaxWidth>
-        {enableGoogleSSO ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <StyledSeparatorWithText label="ou" />
-            <Spacer.Column numberOfSpaces={4} />
-            <SSOButtonBase type="login" onSuccess={signIn} />
-            <Spacer.Column numberOfSpaces={10} />
-          </React.Fragment>
-        ) : (
-          <Spacer.Column numberOfSpaces={8} />
-        )}
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
     </React.Fragment>
