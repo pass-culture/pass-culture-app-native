@@ -89,15 +89,7 @@ export function VenueSelectionListItem({ index, style, data }: Readonly<RowProps
   )
 }
 
-/**
- * I really don't like to do these styles but since my items are
- * in a `FlatList`, if I don't apply some padding the negative
- * outline won't be visible :(
- *
- * So I have to add a padding so it's visible again.
- */
 const ItemWrapper = styled(View)({
-  paddingHorizontal: getSpacing(1),
   paddingTop: getSpacing(2),
 })
 
