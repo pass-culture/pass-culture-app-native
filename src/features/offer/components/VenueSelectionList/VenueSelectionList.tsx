@@ -1,21 +1,20 @@
-import React, { forwardRef, useCallback, useMemo } from 'react'
+import React, { forwardRef, useCallback } from 'react'
 import { FlatList, FlatListProps, View, ViewProps } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
+import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
 }
 
 export type VenueSelectionListProps = ViewProps &
-  Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'> & {
+  Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onScroll'> & {
     selectedItem?: number
     onItemSelect: (itemOfferId: number) => void
     items: VenueListItem[]
@@ -24,10 +23,11 @@ export type VenueSelectionListProps = ViewProps &
     autoScrollEnabled: boolean
     isFetchingNextPage: boolean
     onPress?: () => void
-    isSharingLocation?: boolean
+    isSharingLocation: boolean
     venueName?: string
     subTitle: string
     headerMessage: string
+    onEndReached: () => void
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
@@ -72,28 +72,6 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       [onItemSelect, selectedItem, isSharingLocation]
     )
 
-    const listHeader = useMemo(
-      () => (
-        <ListHeaderContainer>
-          <Spacer.Column numberOfSpaces={6} />
-          <Typo.Title3 {...getHeadingAttrs(2)}>{subTitle}</Typo.Title3>
-          <Spacer.Column numberOfSpaces={6} />
-          {!isSharingLocation && (
-            <React.Fragment>
-              <GeolocationBanner
-                title="Active ta géolocalisation"
-                subtitle="Pour trouver les lieux autour de toi"
-              />
-              <Spacer.Column numberOfSpaces={6} />
-            </React.Fragment>
-          )}
-          <HeaderMessageText>{headerMessage}</HeaderMessageText>
-          <Spacer.Column numberOfSpaces={2} />
-        </ListHeaderContainer>
-      ),
-      [headerMessage, isSharingLocation, subTitle]
-    )
-
     return (
       <FlatList
         accessibilityRole={AccessibilityRole.LIST}
@@ -112,7 +90,13 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         contentContainerStyle={{ paddingHorizontal: modal.spacing.MD }}
-        ListHeaderComponent={listHeader}
+        ListHeaderComponent={
+          <VenueSelectionListHeader
+            headerMessage={headerMessage}
+            isSharingLocation={isSharingLocation}
+            subTitle={subTitle}
+          />
+        }
         ListFooterComponent={
           <SearchListFooter
             isFetchingNextPage={isFetchingNextPage}
@@ -140,11 +124,3 @@ const ItemWrapper = styled(View)({
   paddingHorizontal: getSpacing(1),
   paddingTop: getSpacing(2),
 })
-
-const ListHeaderContainer = styled.View({
-  width: '100%',
-})
-
-const HeaderMessageText = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))

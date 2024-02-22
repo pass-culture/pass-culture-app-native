@@ -17,7 +17,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = Pick<
   FlatListProps<VenueListItem>,
-  'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'
+  'onRefresh' | 'refreshing' | 'onScroll'
 > & {
   isVisible: boolean
   items: VenueSelectionListProps['items']
@@ -27,8 +27,8 @@ type VenueSelectionModalProps = Pick<
   title: string
   onSubmit: (selectedVenueId: number) => void
   onClosePress: VoidFunction
-  onEndReached?: () => void
-  isSharingLocation?: boolean
+  onEndReached: () => void
+  isSharingLocation: boolean
   subTitle: string
   rightIconAccessibilityLabel: string
   validateButtonLabel: string
@@ -82,20 +82,6 @@ export function VenueSelectionModal({
     )
   }, [onClosePress, title, top])
 
-  const handlePressFooter = () => {
-    const currentRef = venueListRef.current
-    if (currentRef instanceof FlatList) {
-      const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
-        .lastChild as HTMLElement
-      const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
-      offerLink.focus()
-      offerLink.blur()
-      if (onEndReached) {
-        onEndReached()
-      }
-    }
-  }
-
   return (
     <AppModal
       title={title}
@@ -131,7 +117,7 @@ export function VenueSelectionModal({
         refreshing={refreshing}
         onRefresh={onRefresh}
         onScroll={onScroll}
-        onPress={handlePressFooter}
+        onPress={onEndReached}
         ref={venueListRef}
         autoScrollEnabled={autoScrollEnabled}
         nbLoadedHits={nbLoadedHits}

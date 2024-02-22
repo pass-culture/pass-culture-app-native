@@ -41,6 +41,8 @@ describe('<VenueSelectionList />', () => {
         nbHits={nbHits}
         isFetchingNextPage
         autoScrollEnabled
+        isSharingLocation
+        onEndReached={jest.fn()}
       />
     )
 
@@ -60,6 +62,8 @@ describe('<VenueSelectionList />', () => {
         nbHits={nbHits}
         isFetchingNextPage
         autoScrollEnabled
+        isSharingLocation
+        onEndReached={jest.fn()}
       />
     )
 
@@ -80,6 +84,8 @@ describe('<VenueSelectionList />', () => {
         nbHits={nbHits}
         isFetchingNextPage
         autoScrollEnabled
+        isSharingLocation
+        onEndReached={jest.fn()}
       />
     )
 
@@ -102,6 +108,7 @@ describe('<VenueSelectionList />', () => {
         isFetchingNextPage
         autoScrollEnabled
         isSharingLocation
+        onEndReached={jest.fn()}
       />
     )
 
@@ -120,6 +127,8 @@ describe('<VenueSelectionList />', () => {
         nbHits={nbHits}
         isFetchingNextPage
         autoScrollEnabled
+        isSharingLocation={false}
+        onEndReached={jest.fn()}
       />
     )
 
