@@ -38,7 +38,7 @@ export const useVideoOffers = (
   eanList?: string[]
 ) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
-  const { userLocation, selectedLocationMode } = useLocation()
+  const { userLocation } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
@@ -73,12 +73,6 @@ export const useVideoOffers = (
   const multipleOffersQuery = async () => {
     const result = await fetchMultipleOffers({
       paramsList: adaptedPlaylistParameters,
-      buildLocationParameterParams: {
-        userLocation,
-        selectedLocationMode,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
       isUserUnderage,
     })
 

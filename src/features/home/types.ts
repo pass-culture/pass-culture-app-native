@@ -117,6 +117,9 @@ export type OffersModuleParameters = {
   musicTypes?: string[]
   showTypes?: string[]
   bookTypes?: string[]
+  isGeolocated?: boolean
+  aroundRadius?: number
+}
 
 export type PlaylistOffersParams = {
   offerParams: SearchQueryParameters

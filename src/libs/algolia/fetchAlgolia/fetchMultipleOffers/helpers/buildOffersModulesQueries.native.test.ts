@@ -1,3 +1,4 @@
+import { OffersPlaylistParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOffersModulesQueries'
@@ -37,11 +38,18 @@ describe('buildOffersModulesQueries', () => {
       ...SearchQueryParametersFixture,
     }
 
-    const paramsList = [[parameters, parameters], [parameters]]
+    const paramsListElement = {
+      offerParams: parameters,
+      locationParams: buildLocationParameterParams,
+    }
+
+    const paramsList: OffersPlaylistParameters[] = [
+      [paramsListElement, paramsListElement],
+      [paramsListElement],
+    ]
 
     const queries = buildOffersModulesQueries({
       paramsList,
-      buildLocationParameterParams,
       isUserUnderage,
     })
 

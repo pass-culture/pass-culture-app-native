@@ -2,9 +2,8 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
-import { OffersModule, OfferModuleParamsInfo } from 'features/home/types'
+import { OffersModule, OfferModuleParamsInfo, PlaylistOffersParams } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchQueryParameters } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
@@ -13,15 +12,15 @@ import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
+const isPlaylistOffersParameters = (parameter: unknown): parameter is PlaylistOffersParams =>
   typeof parameter === 'object' && parameter !== null
 
-const isSearchQueryParametersArrayWithoutUndefined = (
+const isPlaylistOffersParamsArrayWithoutUndefined = (
   params: unknown
-): params is SearchQueryParameters[] => params !== undefined
+): params is PlaylistOffersParams[] => params !== undefined
 
 export const useGetOffersData = (modules: OffersModule[]) => {
-  const { userLocation, selectedLocationMode } = useLocation()
+  const { userLocation } = useLocation()
   const transformHits = useTransformOfferHits()
 
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -33,7 +32,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
   const offersParameters = modules.map((module) => {
     const adaptedPlaylistParameters = module.offersModuleParameters
       .map(adaptPlaylistParameters)
-      .filter(isSearchQueryParameters)
+      .filter(isPlaylistOffersParameters)
     offersModuleIds.push(module.id)
     return {
       adaptedPlaylistParameters: adaptedPlaylistParameters,
@@ -43,17 +42,11 @@ export const useGetOffersData = (modules: OffersModule[]) => {
 
   const offersAdaptedPlaylistParametersWithoutUndefined = offersParameters
     .map((param) => param?.adaptedPlaylistParameters)
-    .filter(isSearchQueryParametersArrayWithoutUndefined)
+    .filter(isPlaylistOffersParamsArrayWithoutUndefined)
 
   const offersQuery = async () => {
     const result = await fetchOffersModules({
       paramsList: offersAdaptedPlaylistParametersWithoutUndefined,
-      buildLocationParameterParams: {
-        userLocation,
-        selectedLocationMode,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
       isUserUnderage,
     })
     const searchResponseResult = result.filter(searchResponsePredicate)
