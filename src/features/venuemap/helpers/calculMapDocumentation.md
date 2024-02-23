@@ -20,15 +20,39 @@ r^2 = D^2 + d^2
 \end{equation}
 $$
 
-On a donc un système de deux équations à deux inconnues. On peut isoler $D$ dans l'équation $(1)$ :
+Après [simplification](https://www.wolframalpha.com/input?i=solve+%7BR%3DD%2Fd%2C+r%5E2%3DD%5E2%2Bd%5E2%2C+D%2C+d%7D), on obtient :
 
-$$D = R \cdot d$$
+$$
+\begin{equation}
+\boxed{d = \frac{r}{\sqrt{R^2 + 1}}}
+\end{equation}
+$$
+$$
+\begin{equation}
+\boxed{D = \frac{r \times R}{\sqrt{R^2 + 1}}}
+\end{equation}
+$$
+
+## Démonstration
+
+On a un système de deux équations à deux inconnues.
+
+$$
+\begin{cases}
+R = \frac{D}{d}\\
+r^2 = D^2 + d^2
+\end{cases}
+$$
+
+On peut isoler $D$ dans l'équation $(1)$ :
+
+$$D = R \times d$$
 
 En remplaçant dans l'équation $(2)$, on obtient :
 
-$$r^2 = (R \cdot d)^2 + d^2$$
-$$r^2 = R^2 \cdot d^2 + d^2$$
-$$r^2 = (R^2 + 1) \cdot d^2$$
+$$r^2 = (R \times d)^2 + d^2$$
+$$r^2 = R^2 \times d^2 + d^2$$
+$$r^2 = (R^2 + 1) \times d^2$$
 
 On peut isoler alors $d$ :
 
@@ -36,15 +60,11 @@ $$d^2 = \frac{r^2}{R^2 + 1}$$
 $$d = \sqrt{\frac{r^2}{R^2 + 1}}$$
 
 $$
-\begin{equation}
 d = \frac{r}{\sqrt{R^2 + 1}}
-\end{equation}
 $$
 
 Et en remplaçant dans l'équation de $D$, on obtient :
 
 $$
-\begin{equation}
-D = \frac{r \cdot R}{\sqrt{R^2 + 1}}
-\end{equation}
+D = \frac{r \times R}{\sqrt{R^2 + 1}}
 $$
