@@ -4,7 +4,6 @@ import { useMutation } from 'react-query'
 import { api } from 'api/api'
 import { isApiError } from 'api/apiHelpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ChangeEmailRequest } from 'features/profile/types'
 import { analytics } from 'libs/analytics'
 import {
@@ -16,7 +15,6 @@ import {
 export const useChangeEmailMutationV2 = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
   const onEmailChangeError = (errorCode?: string) => {
     if (errorCode) {
@@ -38,7 +36,7 @@ export const useChangeEmailMutationV2 = () => {
             'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
           timeout: SNACK_BAR_TIME_OUT_LONG,
         })
-        navigateToProfile()
+        navigate('TrackEmailChange')
         analytics.logSaveNewMail()
       },
       onError: (error: unknown) => {
