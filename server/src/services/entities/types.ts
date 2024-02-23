@@ -19,42 +19,57 @@ export type NestedMetadata =
   | { [key: string]: NestedMetadata }
 export type Metadata = Record<string, NestedMetadata>
 
+export type OfferData = {
+  id: number
+  name: string
+  subcategoryId: string
+  metadata: Metadata
+  description?: string | null
+  image?: {
+    url: string
+  } | null
+  extraData?: {
+    musicSubType?: string | null
+    musicType?: string | null
+    showSubType?: string | null
+    showType?: string | null
+  } | null
+}
+
+export type VenueData = {
+  id: number
+  name: string
+  publicName?: string | null
+  description?: string | null
+  bannerUrl?: string | null
+  venueTypeCode?: string | null
+  bannerMeta?: { image_credit?: string | null } | null
+}
+
 export type EntityKeys = keyof typeof ENTITY_MAP
 
-export type EntityType = {
+export type EntityType<T> = {
   API_MODEL_NAME: string
   METAS_CONFIG: {
-    title: (entity: Record<string, unknown>) => string
-    metaTitle: (entity: Record<string, unknown>) => string
-    metaDescription: (entity: Record<string, unknown>) => string
+    title: (entity: T) => string
+    metaTitle: (entity: T) => string
+    metaDescription: (entity: T) => string
     ['og:url']: (href: string, subPath: string) => string
-    ['og:title']: (entity: Record<string, unknown>) => string
-    ['og:description']: (entity: Record<string, unknown>) => string
-    ['og:image']: (entity: Record<string, unknown>) => string
-    ['og:image:alt']: (entity: Record<string, unknown>) => string
+    ['og:title']: (entity: T) => string
+    ['og:description']: (entity: T) => string
+    ['og:image']: (entity: T) => string
+    ['og:image:alt']: (entity: T) => string
     ['twitter:card']: () => TwitterCard
-    ['twitter:url']: (entity: Record<string, unknown>, href: string, subPath: string) => string
-    ['twitter:title']: (entity: Record<string, unknown>) => string
-    ['twitter:description']: (entity: Record<string, unknown>) => string
-    ['twitter:image']: (entity: Record<string, unknown>) => string
-    ['twitter:image:alt']: (entity: Record<string, unknown>) => string
-    ['twitter:app:url:iphone']: (
-      entity: Record<string, unknown>,
-      href: string,
-      subPath: string
-    ) => string
-    ['twitter:app:url:ipad']: (
-      entity: Record<string, unknown>,
-      href: string,
-      subPath: string
-    ) => string
-    ['twitter:app:url:googleplay']: (
-      entity: Record<string, unknown>,
-      href: string,
-      subPath: string
-    ) => string
-    ['al:ios:url']: (entity: Record<string, unknown>, href: string, subPath: string) => string
-    ['al:android:url']: (entity: Record<string, unknown>, href: string, subPath: string) => string
+    ['twitter:url']: (entity: T, href: string, subPath: string) => string
+    ['twitter:title']: (entity: T) => string
+    ['twitter:description']: (entity: T) => string
+    ['twitter:image']: (entity: T) => string
+    ['twitter:image:alt']: (entity: T) => string
+    ['twitter:app:url:iphone']: (entity: T, href: string, subPath: string) => string
+    ['twitter:app:url:ipad']: (entity: T, href: string, subPath: string) => string
+    ['twitter:app:url:googleplay']: (entity: T, href: string, subPath: string) => string
+    ['al:ios:url']: (entity: T, href: string, subPath: string) => string
+    ['al:android:url']: (entity: T, href: string, subPath: string) => string
   }
 }
 
