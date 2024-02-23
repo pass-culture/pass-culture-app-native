@@ -4,6 +4,7 @@ import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SubscriptionState } from 'features/identityCheck/context/types'
+import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function usePatchProfile() {
@@ -12,9 +13,25 @@ export function usePatchProfile() {
   return useMutation(
     () => {
       const body = getCompleteProfile(profile)
-      return body
-        ? api.postNativeV1SubscriptionProfile(body)
-        : Promise.reject(new Error('No body was provided for subscription profile'))
+      if (body) {
+        return api.postNativeV1SubscriptionProfile(body)
+      } else {
+        eventMonitoring.captureException(
+          new Error('No body was provided for subscription profile'),
+          {
+            extra: {
+              profile: {
+                hasAddress: !!profile.address,
+                hasCity: !!profile.city?.name,
+                hasFirstName: !!profile.name?.firstName,
+                hasLastName: !!profile.name?.lastName,
+                status: profile.status,
+              },
+            },
+          }
+        )
+        return Promise.reject(new Error('No body was provided for subscription profile'))
+      }
     },
     {
       onError: () =>
