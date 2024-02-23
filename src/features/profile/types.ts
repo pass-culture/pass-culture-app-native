@@ -1,8 +1,11 @@
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 
-export interface ChangeEmailRequest {
+export interface ChangeEmailRequestDeprecated {
   email: string
   password: string
+}
+export interface ChangeEmailRequest {
+  email: string
 }
 
 export type ResetRecreditAmountToShowMutationOptions = {

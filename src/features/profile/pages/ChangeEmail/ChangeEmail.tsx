@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform, StyleProp, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
@@ -16,7 +16,6 @@ import { ChangeEmailContent } from './ChangeEmailContent'
 export function ChangeEmail() {
   const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
   const enableNewChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL)
-  const { isMobileViewport, isTouch } = useTheme()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const { user } = useAuthContext()
 
@@ -26,12 +25,7 @@ export function ChangeEmail() {
     <React.Fragment>
       {showNewChangeEmail ? (
         <SecondaryPageWithBlurHeader headerTitle="Modifier mon e-mail">
-          <ChangeEmailContent
-            hasCurrentEmailChange={hasCurrentEmailChange}
-            isMobileViewport={isMobileViewport}
-            isTouch={isTouch}
-            user={user}
-          />
+          <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
         </SecondaryPageWithBlurHeader>
       ) : (
         <React.Fragment>
@@ -39,8 +33,6 @@ export function ChangeEmail() {
           <ChangeEmailContentDeprecated
             disableOldChangeEmail={disableOldChangeEmail}
             hasCurrentEmailChange={hasCurrentEmailChange}
-            isMobileViewport={isMobileViewport}
-            isTouch={isTouch}
             user={user}
           />
         </React.Fragment>

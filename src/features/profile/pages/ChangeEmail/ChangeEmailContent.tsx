@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -6,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { UserProfileResponse } from 'api/gen'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
-import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
+import { useChangeEmailMutationV2 } from 'features/profile/helpers/useChangeEmailMutationV2'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,36 +22,30 @@ export type FormValues = {
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
-  isMobileViewport,
-  isTouch,
   user,
 }: {
   hasCurrentEmailChange: boolean
-  isMobileViewport: boolean | undefined
-  isTouch: boolean
   user: UserProfileResponse | undefined
 }) {
   const {
     control,
-    // handleSubmit,
-    // formState: { isValid },
-    // setError,
-    // watch,
-    // clearErrors,
+    handleSubmit,
+    formState: { isValid },
   } = useForm<FormValues>({
     defaultValues: {
-      currentEmail: '',
+      currentEmail: user?.email,
     },
-    resolver: yupResolver(changeEmailSchema(user?.email)),
     mode: 'all',
     delayError: SUGGESTION_DELAY_IN_MS,
   })
+  const { changeEmail, isLoading } = useChangeEmailMutationV2()
 
-  // TODO: useChangeEmailMutation & submitEmailChange
-
+  const submitEmailChange = ({ currentEmail }: FormValues) => {
+    changeEmail({ email: currentEmail })
+  }
   const { bottom } = useSafeAreaInsets()
 
-  // const isSubmitButtonDisabled = !isValid || isLoading
+  const isSubmitButtonDisabled = !isValid || isLoading
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
@@ -70,30 +63,20 @@ export function ChangeEmailContent({
             control={control}
             name="currentEmail"
             label="Adresse e-mail actuelle"
-            placeholder={user?.email}
             disabled
-            autoFocus
           />
           <Spacer.Column numberOfSpaces={4} />
           <InfoBanner
             icon={Info}
             message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
           />
-          <Spacer.Column numberOfSpaces={4} />
-
-          {isMobileViewport && isTouch ? (
-            <Spacer.Flex flex={1} />
-          ) : (
-            <Spacer.Column numberOfSpaces={10} />
-          )}
-
-          <Spacer.Column numberOfSpaces={8} />
+          <Spacer.Column numberOfSpaces={12} />
           <ButtonContainer paddingBottom={bottom}>
             <ButtonPrimary
               wording="Envoyer la demande"
               accessibilityLabel="Valider la demande de modification de mon e-mail"
-              // onPress={handleSubmit(submitEmailChange)}
-              // disabled={isSubmitButtonDisabled}
+              onPress={handleSubmit(submitEmailChange)}
+              disabled={isSubmitButtonDisabled}
             />
           </ButtonContainer>
         </Form.MaxWidth>

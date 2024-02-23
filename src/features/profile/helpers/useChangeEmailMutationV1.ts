@@ -6,7 +6,7 @@ import { isApiError } from 'api/apiHelpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
-import { ChangeEmailRequest } from 'features/profile/types'
+import { ChangeEmailRequestDeprecated } from 'features/profile/types'
 import { analytics } from 'libs/analytics'
 import {
   SNACK_BAR_TIME_OUT,
@@ -14,11 +14,11 @@ import {
   useSnackBarContext,
 } from 'ui/components/snackBar/SnackBarContext'
 
-export const useChangeEmailMutation = ({
-  setPasswordErrorMessage,
-}: {
+interface SetPasswordErrorMessage {
   setPasswordErrorMessage: (message: string) => void
-}) => {
+}
+
+export const useChangeEmailMutationV1 = ({ setPasswordErrorMessage }: SetPasswordErrorMessage) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
@@ -39,7 +39,7 @@ export const useChangeEmailMutation = ({
   }
 
   const { mutate: changeEmail, isLoading } = useMutation(
-    (body: ChangeEmailRequest) => api.postNativeV1ProfileUpdateEmail(body),
+    (body: ChangeEmailRequestDeprecated) => api.postNativeV1ProfileUpdateEmail(body),
     {
       onSuccess: () => {
         showSuccessSnackBar({

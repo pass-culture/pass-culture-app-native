@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form'
 import { ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
 import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimerDeprecated } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimerDeprecated'
-import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
+import { useChangeEmailMutationV1 } from 'features/profile/helpers/useChangeEmailMutationV1'
 import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
@@ -33,16 +34,15 @@ import {
 export function ChangeEmailContentDeprecated({
   disableOldChangeEmail,
   hasCurrentEmailChange,
-  isMobileViewport,
-  isTouch,
+
   user,
 }: {
   disableOldChangeEmail: boolean | undefined
   hasCurrentEmailChange: boolean
-  isMobileViewport: boolean | undefined
-  isTouch: boolean
   user: UserProfileResponse | undefined
 }) {
+  const { isMobileViewport, isTouch } = useTheme()
+
   const {
     control,
     handleSubmit,
@@ -60,7 +60,7 @@ export function ChangeEmailContentDeprecated({
     delayError: SUGGESTION_DELAY_IN_MS,
   })
 
-  const { changeEmail, isLoading } = useChangeEmailMutation({
+  const { changeEmail, isLoading } = useChangeEmailMutationV1({
     setPasswordErrorMessage: (message: string) =>
       setError('password', { message, type: 'validate' }),
   })
