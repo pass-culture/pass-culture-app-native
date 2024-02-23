@@ -17,15 +17,11 @@ export const useGetStepperInfo = (): {
   // TODO(PC-26801): remove this when the bug is fixed
   eventMonitoring.setExtras({ useGetStepperInfoResponse: JSON.stringify(data) })
 
-  if (data === undefined) {
-    return { stepToDisplay: [], title: '' }
-  }
-
   return {
-    stepToDisplay: data.subscriptionStepsToDisplay,
-    title: data.title,
-    subtitle: data.subtitle,
-    errorMessage: data.errorMessage,
-    identificationMethods: data.allowedIdentityCheckMethods,
+    stepToDisplay: data?.subscriptionStepsToDisplay || [],
+    title: data?.title || '',
+    subtitle: data?.subtitle,
+    errorMessage: data?.errorMessage,
+    identificationMethods: data?.allowedIdentityCheckMethods,
   }
 }
