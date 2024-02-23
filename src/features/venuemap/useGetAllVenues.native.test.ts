@@ -25,6 +25,7 @@ describe('useGetAllVenues', () => {
         aroundRadius: 'all',
         attributesToHighlight: [],
         facetFilters: [['has_at_least_one_bookable_offer:true']],
+        hitsPerPage: 1000,
       })
     })
   })

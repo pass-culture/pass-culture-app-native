@@ -6,9 +6,11 @@ export const buildFetchVenuesQueryParameters = ({
   query,
   attributesToHighlight = [],
   buildLocationParameterParams,
+  options,
 }: FetchVenuesParameters): AlgoliaQueryParameters => ({
   query: query || '',
   requestOptions: {
+    ...options,
     attributesToHighlight,
     facetFilters: [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]],
     ...buildLocationParameter(buildLocationParameterParams),

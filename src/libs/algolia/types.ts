@@ -102,6 +102,7 @@ export interface FetchVenuesParameters {
   query: string
   attributesToHighlight?: string[]
   buildLocationParameterParams: BuildLocationParameterParams
+  options?: SearchOptions
 }
 export interface OfferModuleQuery {
   indexName: string

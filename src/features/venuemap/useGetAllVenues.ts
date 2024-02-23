@@ -20,6 +20,9 @@ export const useGetAllVenues = () => {
           aroundMeRadius: 'all',
           aroundPlaceRadius: 'all',
         },
+        options: {
+          hitsPerPage: 1000, // the maximum, cf.: https://www.algolia.com/doc/api-reference/api-parameters/hitsPerPage/#usage-notes
+        },
       }),
     {
       enabled: !!netInfo.isConnected,
