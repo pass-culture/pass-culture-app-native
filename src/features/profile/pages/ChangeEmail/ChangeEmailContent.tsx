@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { UserProfileResponse } from 'api/gen'
@@ -14,16 +13,9 @@ import { PasswordInputController } from 'shared/forms/controllers/PasswordInputC
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
-import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Spacer } from 'ui/theme'
 
-import {
-  FormValues,
-  StyledScrollView,
-  getScrollViewContentContainerStyle,
-  CenteredContainer,
-  ButtonContainer,
-} from './ChangeEmail'
+import { FormValues, CenteredContainer, ButtonContainer } from './ChangeEmail'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -52,7 +44,6 @@ export function ChangeEmailContent({
     mode: 'all',
     delayError: SUGGESTION_DELAY_IN_MS,
   })
-
   const { changeEmail, isLoading } = useChangeEmailMutation({
     setPasswordErrorMessage: (message: string) =>
       setError('password', { message, type: 'validate' }),
@@ -68,10 +59,7 @@ export function ChangeEmailContent({
     removePasswordError()
   }, [password, removePasswordError])
 
-  const scrollRef = useRef<ScrollView | null>(null)
-  const [keyboardHeight, setKeyboardHeight] = useState(0)
   const { bottom } = useSafeAreaInsets()
-  useForHeightKeyboardEvents(setKeyboardHeight)
 
   const submitEmailChange = ({ newEmail, password }: FormValues) => {
     changeEmail({ email: newEmail, password })
@@ -80,10 +68,7 @@ export function ChangeEmailContent({
   const isInputDisabled = hasCurrentEmailChange
   const isSubmitButtonDisabled = !isValid || isLoading
   return (
-    <StyledScrollView
-      ref={scrollRef}
-      contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
-      keyboardShouldPersistTaps="handled">
+    <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
       {!!hasCurrentEmailChange && (
         <React.Fragment>
@@ -117,8 +102,8 @@ export function ChangeEmailContent({
             <Spacer.Column numberOfSpaces={10} />
           )}
 
-          {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
-          <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
+          <Spacer.Column numberOfSpaces={8} />
+          <ButtonContainer paddingBottom={bottom}>
             <ButtonPrimary
               wording="Valider la demande"
               accessibilityLabel="Valider la demande de modification de mon e-mail"
@@ -129,6 +114,6 @@ export function ChangeEmailContent({
         </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={6} />
       </CenteredContainer>
-    </StyledScrollView>
+    </React.Fragment>
   )
 }

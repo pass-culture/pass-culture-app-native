@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import styled from 'styled-components'
 
 import { UserProfileResponse } from 'api/gen'
 import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
@@ -16,11 +17,10 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 import {
   FormValues,
-  StyledScrollView,
   getScrollViewContentContainerStyle,
   CenteredContainer,
   ButtonContainer,
@@ -141,3 +141,7 @@ export function ChangeEmailContentDeprecated({
     </StyledScrollView>
   )
 }
+
+const StyledScrollView = styled(ScrollView)({
+  paddingHorizontal: getSpacing(5),
+})
