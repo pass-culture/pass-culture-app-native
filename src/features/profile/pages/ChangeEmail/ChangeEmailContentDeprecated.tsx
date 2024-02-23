@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { UserProfileResponse } from 'api/gen'
 import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
-import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
+import { ChangeEmailDisclaimerDeprecated } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimerDeprecated'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { changeEmailSchema } from 'features/profile/pages/ChangeEmail/schema/changeEmailSchema'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
@@ -19,8 +19,12 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { getSpacing, Spacer } from 'ui/theme'
 
+export type FormValues = {
+  newEmail: string
+  password: string
+}
+
 import {
-  FormValues,
   getScrollViewContentContainerStyle,
   CenteredContainer,
   ButtonContainer,
@@ -100,7 +104,7 @@ export function ChangeEmailContentDeprecated({
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
       )}
-      <ChangeEmailDisclaimer />
+      <ChangeEmailDisclaimerDeprecated />
       <Spacer.Column numberOfSpaces={4} />
       <CenteredContainer>
         <Form.MaxWidth flex={1}>

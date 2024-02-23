@@ -13,11 +13,6 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 
 import { ChangeEmailContent } from './ChangeEmailContent'
 
-export type FormValues = {
-  newEmail: string
-  password: string
-}
-
 export function ChangeEmail() {
   const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
   const enableNewChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL)
@@ -29,7 +24,7 @@ export function ChangeEmail() {
 
   return (
     <React.Fragment>
-      {!showNewChangeEmail ? (
+      {showNewChangeEmail ? (
         <SecondaryPageWithBlurHeader headerTitle="Modifier mon e-mail">
           <ChangeEmailContent
             hasCurrentEmailChange={hasCurrentEmailChange}
