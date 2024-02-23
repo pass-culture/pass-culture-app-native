@@ -7,7 +7,7 @@ import { TextInputProps } from 'ui/components/inputs/types'
 export interface EmailInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label?: string
   email: string
-  onEmailChange: (email: string) => void
+  onEmailChange?: (email: string) => void
   isRequiredField?: boolean
 }
 
