@@ -200,7 +200,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       )}
       <SecondaryPageWithBlurHeader headerTitle="Connexion" shouldDisplayBackButton>
         <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title3 {...getHeadingAttrs(1)}>Connecte-toi</Typo.Title3>
+        <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <Form.MaxWidth>
           <InputError
@@ -233,18 +233,18 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             onPress={handleSubmit(onSubmit)}
             disabled={shouldDisableLoginButton}
           />
+          {enableGoogleSSO ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <StyledSeparatorWithText label="ou" />
+              <Spacer.Column numberOfSpaces={4} />
+              <SSOButtonBase type="login" onSuccess={signIn} />
+              <Spacer.Column numberOfSpaces={10} />
+            </React.Fragment>
+          ) : (
+            <Spacer.Column numberOfSpaces={8} />
+          )}
         </Form.MaxWidth>
-        {enableGoogleSSO ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <StyledSeparatorWithText label="ou" />
-            <Spacer.Column numberOfSpaces={4} />
-            <SSOButtonBase type="login" onSuccess={signIn} />
-            <Spacer.Column numberOfSpaces={10} />
-          </React.Fragment>
-        ) : (
-          <Spacer.Column numberOfSpaces={8} />
-        )}
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
     </React.Fragment>

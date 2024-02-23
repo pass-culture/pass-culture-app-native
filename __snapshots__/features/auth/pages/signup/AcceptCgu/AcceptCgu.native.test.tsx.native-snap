@@ -1,14 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AcceptCgu/> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "maxWidth": 500,
+        "width": "100%",
+      },
+    ]
+  }
+>
   <Modal
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     testID="recaptcha-webview-modal"
     transparent={true}
     visible={false}
-  />,
+  />
   <Text
     style={
       [
@@ -22,7 +31,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   >
     CGU & Données
-  </Text>,
+  </Text>
   <View
     numberOfSpaces={10}
     style={
@@ -32,9 +41,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
-    accessibilityLabel="J’ai lu et j’accepte les conditions générales d’utilisation*"
+    accessibilityLabel="J’ai lu et j’accepte les conditions générales d’utilisation"
     accessibilityRole="checkbox"
     accessibilityState={
       {
@@ -73,7 +82,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         "userSelect": "auto",
       }
     }
-    testID="J’ai lu et j’accepte les conditions générales d’utilisation*"
+    testID="J’ai lu et j’accepte les conditions générales d’utilisation"
   >
     <View
       isChecked={false}
@@ -110,9 +119,10 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         ]
       }
     >
-      J’ai lu et j’accepte les conditions générales d’utilisation*
+      J’ai lu et j’accepte les conditions générales d’utilisation
+      *
     </Text>
-  </View>,
+  </View>
   <View
     numberOfSpaces={6}
     style={
@@ -122,9 +132,9 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
-    accessibilityLabel="J’ai lu la charte des données personnelles*"
+    accessibilityLabel="J’ai lu la charte des données personnelles"
     accessibilityRole="checkbox"
     accessibilityState={
       {
@@ -163,7 +173,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         "userSelect": "auto",
       }
     }
-    testID="J’ai lu la charte des données personnelles*"
+    testID="J’ai lu la charte des données personnelles"
   >
     <View
       isChecked={false}
@@ -200,9 +210,10 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         ]
       }
     >
-      J’ai lu la charte des données personnelles*
+      J’ai lu la charte des données personnelles
+      *
     </Text>
-  </View>,
+  </View>
   <View
     numberOfSpaces={6}
     style={
@@ -212,7 +223,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <Text
     style={
       [
@@ -225,8 +236,13 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       ]
     }
   >
-    *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu :
-  </Text>,
+    <Text
+      accessibilityHidden={true}
+    >
+      *obligatoires pour créer ton compte. 
+    </Text>
+    En cochant ces 2 cases tu assures avoir lu :
+  </Text>
   <View
     numberOfSpaces={2}
     style={
@@ -236,7 +252,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
     accessibilityLabel="Nos conditions générales d’utilisation"
     accessibilityState={
@@ -325,7 +341,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       Nos conditions générales d’utilisation
     </Text>
-  </View>,
+  </View>
   <View
     accessibilityLabel="La charte des données personnelles"
     accessibilityState={
@@ -414,7 +430,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       La charte des données personnelles
     </Text>
-  </View>,
+  </View>
   <View
     numberOfSpaces={6}
     style={
@@ -424,7 +440,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
     style={
       [
@@ -435,7 +451,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
     numberOfSpaces={6}
     style={
@@ -445,7 +461,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
     accessibilityLabel="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
     accessibilityRole="checkbox"
@@ -525,7 +541,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
     </Text>
-  </View>,
+  </View>
   <View
     numberOfSpaces={10}
     style={
@@ -535,7 +551,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <View
     accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
     accessibilityState={
@@ -603,7 +619,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     >
       S’inscrire
     </Text>
-  </View>,
+  </View>
   <View
     numberOfSpaces={4}
     style={
@@ -613,7 +629,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
+  />
   <Text
     style={
       [
@@ -627,7 +643,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   >
     Lors de ton utilisation des services de la société pass Culture, nous sommes amenés à collecter et utiliser tes données personnelles pour assurer le bon fonctionnement de l’application et des services que nous proposons. Pour en savoir plus sur la gestion de tes données et pour exercer tes droits (ex : demander l’accès à tes données ou leur suppression), tu peux te reporter à la charte des données personnelles. Tu peux également gérer certaines préférences concernant tes données depuis les paramètres de ton compte, comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
-  </Text>,
+  </Text>
   <View
     numberOfSpaces={5}
     style={
@@ -637,6 +653,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;

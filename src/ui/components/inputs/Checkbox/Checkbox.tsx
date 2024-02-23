@@ -15,10 +15,11 @@ type IsCheckedProps = {
 type Props = IsCheckedProps & {
   label: string
   onPress: (isChecked: boolean) => void
+  required?: boolean
   children?: never
 }
 
-export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }) => {
+export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, required, onPress }) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
 
   const onToggle = useCallback(() => {
@@ -29,12 +30,15 @@ export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, onPress }
 
   return (
     <CheckboxContainer
-      {...accessibleCheckboxProps({ checked: isChecked, label })}
+      {...accessibleCheckboxProps({ checked: isChecked, label, required })}
       onPress={onToggle}
       onFocus={onFocus}
       onBlur={onBlur}>
       <Box isChecked={isChecked}>{!!isChecked && <CheckboxMark />}</Box>
-      <Label>{label}</Label>
+      <StyledBody>
+        {label}
+        {required ? '*' : null}
+      </StyledBody>
     </CheckboxContainer>
   )
 }
@@ -57,7 +61,7 @@ const Box = styled.View<IsCheckedProps>(({ isChecked, theme }) => ({
   backgroundColor: isChecked ? theme.colors.greyDark : theme.colors.white,
 }))
 
-const Label = styled(Typo.Body)({
+const StyledBody = styled(Typo.Body)({
   alignSelf: 'center',
   paddingLeft: getSpacing(4),
   flex: 1,

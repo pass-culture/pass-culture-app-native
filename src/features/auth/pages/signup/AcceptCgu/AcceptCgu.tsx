@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Text } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -14,6 +15,7 @@ import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -96,7 +98,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
 
   // ReCaptcha needs previous callbacks
   return (
-    <React.Fragment>
+    <Form.MaxWidth>
       {!!settings?.isRecaptchaEnabled && (
         <ReCaptcha
           onClose={onReCaptchaClose}
@@ -110,18 +112,21 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       <Spacer.Column numberOfSpaces={10} />
       <CheckboxController
         control={control}
-        label="J’ai lu et j’accepte les conditions générales d’utilisation*"
+        label="J’ai lu et j’accepte les conditions générales d’utilisation"
         name="acceptCgu"
+        required
       />
       <Spacer.Column numberOfSpaces={6} />
       <CheckboxController
         control={control}
-        label="J’ai lu la charte des données personnelles*"
+        label="J’ai lu la charte des données personnelles"
         name="acceptDataCharter"
+        required
       />
       <Spacer.Column numberOfSpaces={6} />
       <Typo.CaptionNeutralInfo>
-        *obligatoires pour créer ton compte. En cochant ces 2 cases tu assures avoir lu&nbsp;:
+        <Text accessibilityHidden>*obligatoires pour créer ton compte. </Text>
+        En cochant ces 2 cases tu assures avoir lu&nbsp;:
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <ExternalTouchableLink
@@ -176,6 +181,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         comme par exemple le fait de ne plus souhaiter recevoir notre newsletter.
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={5} />
-    </React.Fragment>
+    </Form.MaxWidth>
   )
 }

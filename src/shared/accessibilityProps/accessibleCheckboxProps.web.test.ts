@@ -16,4 +16,15 @@ describe('accessibleCheckboxProps', () => {
       })
     }
   )
+
+  it('should return accessibility required prop when required in web', () => {
+    const props = accessibleCheckboxProps({ checked: false, label, required: true })
+
+    expect(props).toMatchObject({
+      accessibilityRole: AccessibilityRole.CHECKBOX,
+      accessibilityLabel: label,
+      accessibilityChecked: false,
+      accessibilityRequired: true,
+    })
+  })
 })

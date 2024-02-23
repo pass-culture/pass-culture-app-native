@@ -7,6 +7,7 @@ interface Props<TFieldValues extends FieldValues, TName> {
   name: TName
   control: Control<TFieldValues>
   label: string
+  required?: boolean
 }
 
 export const CheckboxController = <
@@ -16,12 +17,13 @@ export const CheckboxController = <
   name,
   control,
   label,
+  required,
 }: Props<TFieldValues, TName>) => (
   <Controller
     control={control}
     name={name}
     render={({ field: { onChange, value } }) => (
-      <Checkbox isChecked={value} label={label} onPress={onChange} />
+      <Checkbox isChecked={value} label={label} required={required} onPress={onChange} />
     )}
   />
 )
