@@ -6,7 +6,7 @@ import {
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {
@@ -52,6 +52,19 @@ describe('useGetStepperInfo', () => {
     expect(result.result.current).toEqual({
       stepToDisplay: [],
       title: '',
+    })
+  })
+
+  it('should return empty stepsToDisplay list and titles if the response is a 403', async () => {
+    mockServer.getApiV1('/subscription/stepper', { responseOptions: { status: 403 } })
+
+    const result = renderGetStepperInfo()
+
+    await waitFor(() => {
+      expect(result.result.current).toEqual({
+        stepToDisplay: [],
+        title: '',
+      })
     })
   })
 })
