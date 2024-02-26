@@ -16,14 +16,16 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Rechercher des offres'
     file: 'reusableFlows/components/buttons/DoubleActionButtonSearchOffers.yml'
-- tapOn: "Offre, artiste, lieu culturel..."
-- inputText: ${MAESTRO_EVENT_OFFER}
-- pressKey: Enter
+- tapOn: "Cinéma, films et séries"
 - tapOn: "Ma position"
 - tapOn: "Partout"
+- tapOn: "Catégories"
+- tapOn: "Séances de cinéma"
+- tapOn: "Rechercher"
 - tapOn:
-    text: ${MAESTRO_EVENT_OFFER}
-    index: 1
+    label: "Tap on first offer visible in results"
+    below:
+      text: .*résultats
 - tapOn: "Voir les disponibilités"
 - tapOn:
     enabled: true
@@ -36,4 +38,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Solo"
 - tapOn: "Finaliser ma réservation"
 - tapOn: "Confirmer la réservation"
-- assertVisible: "Réservation confirmée !"
+- tapOn: "Voir ma réservation"
+- scrollUntilVisible:
+    element: "Annuler ma réservation"
+- tapOn: "Annuler ma réservation"
+- tapOn: "Annuler ma réservation"
