@@ -71,7 +71,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
         <ButtonsContainer
           animation={buttonsContainerAnimation}
           duration={DURATION_IN_MS}
-          delay={NAV_DELAY_IN_MS + 100} // We delay a little bit more for better animation orchestration
+          delay={NAV_DELAY_IN_MS + 100} // We delay a little bit more for better animation orchestration coucou
           easing={customEaseInOut}>
           {buttons?.map((button, index) => (
             <React.Fragment key={index}>
