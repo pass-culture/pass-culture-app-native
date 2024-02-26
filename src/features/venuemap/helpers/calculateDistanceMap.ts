@@ -42,6 +42,5 @@ export const calculateRoundRadiusInKilometers = (region: Region): number => {
     region.longitude + region.longitudeDelta
   )
 
-  // It is necessary to round to the whole number to avoid an error with the Algolia API
-  return Math.round(distanceInMeters / 1000)
+  return distanceInMeters / 1000
 }

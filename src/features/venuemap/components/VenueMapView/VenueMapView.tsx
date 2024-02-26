@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -14,8 +14,8 @@ import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
 import { useLocation } from 'libs/location'
 import MapView, { EdgePadding, Marker, Region } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   padding: EdgePadding
@@ -32,7 +32,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 
   const { height, width } = useWindowDimensions()
   const screenRatio = height / width
-  const { top } = useCustomSafeInsets()
+  const headerHeight = useGetHeaderHeight()
 
   const verticalDistanceInMeters = calculateVerticalDistance(RADIUS_IN_METERS, screenRatio)
   const horizontalDistanceInMeters = calculateHorizontalDistance(RADIUS_IN_METERS, screenRatio)
@@ -60,22 +60,19 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     (venue): venue is GeolocatedVenue => !!(venue._geoloc?.lat && venue._geoloc.lng)
   )
 
-  const handleRegionChangeComplete = useCallback(
-    (region: Region) => {
-      setCurrentRegion(region)
-      setShowSearchButton(true)
-    },
-    [setCurrentRegion, setShowSearchButton]
-  )
+  const handleRegionChangeComplete = (region: Region) => {
+    setCurrentRegion(region)
+    setShowSearchButton(true)
+  }
 
-  const handleSearchPress = useCallback(() => {
+  const handleSearchPress = () => {
     setLastRegionSearched(currentRegion)
     setShowSearchButton(false)
-  }, [currentRegion, setLastRegionSearched, setShowSearchButton])
+  }
 
-  const handleMarkerPress = useCallback(() => {
+  const handleMarkerPress = () => {
     setShowSearchButton(false)
-  }, [setShowSearchButton])
+  }
 
   return (
     <React.Fragment>
@@ -98,10 +95,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         ))}
       </StyledMapView>
       {showSearchButton ? (
-        <ButtonContainer top={top}>
-          <ButtonWrapper>
-            <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
-          </ButtonWrapper>
+        <ButtonContainer top={headerHeight}>
+          <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
       ) : null}
     </React.Fragment>
@@ -112,12 +107,8 @@ const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
 
 const ButtonContainer = styled.View<{ top: number }>(({ top }) => ({
   position: 'absolute',
-  top: top + getSpacing(16),
-  left: 0,
-  right: 0,
+  top: top + getSpacing(4),
+  left: getSpacing(13.5),
+  right: getSpacing(13.5),
   alignItems: 'center',
 }))
-
-const ButtonWrapper = styled.View({
-  justifyContent: 'center',
-})
