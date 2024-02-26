@@ -46,9 +46,8 @@ export const useFeatureFlag = (
     )
     return false
   }
-
   return (
     (!minimalBuildNumber || minimalBuildNumber <= appBuildVersion) &&
-    (!maximalBuildNumber || appBuildVersion <= maximalBuildNumber)
+    (!maximalBuildNumber || maximalBuildNumber >= appBuildVersion)
   )
 }

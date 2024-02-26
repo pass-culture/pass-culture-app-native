@@ -19,11 +19,9 @@ export function ChangeEmail() {
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const { user } = useAuthContext()
 
-  const showNewChangeEmail = enableNewChangeEmail && !disableOldChangeEmail
-
   return (
     <React.Fragment>
-      {showNewChangeEmail ? (
+      {enableNewChangeEmail ? (
         <SecondaryPageWithBlurHeader headerTitle="Modifier mon e-mail">
           <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
         </SecondaryPageWithBlurHeader>
