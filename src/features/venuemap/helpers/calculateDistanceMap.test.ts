@@ -1,5 +1,6 @@
 import {
   calculateHorizontalDistance,
+  calculateRoundRadiusInKilometers,
   calculateVerticalDistance,
   distanceToLatitudeDelta,
   distanceToLongitudeDelta,
@@ -41,5 +42,18 @@ describe('distanceToLongitudeDelta', () => {
     const result = distanceToLongitudeDelta(distanceInMeters, latitudeInDegrees)
 
     expect(result).toEqual(0.012704096580888674)
+  })
+})
+
+describe('calculateRoundRadiusInKilometers', () => {
+  it('should return radius in km from a region', () => {
+    const radiusInKilometers = calculateRoundRadiusInKilometers({
+      latitude: 48.866667,
+      latitudeDelta: 0.08157178378529253,
+      longitude: 2.333333,
+      longitudeDelta: 0.04760990854064799,
+    })
+
+    expect(radiusInKilometers).toEqual(9.725782768761627)
   })
 })

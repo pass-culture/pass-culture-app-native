@@ -1,3 +1,6 @@
+import { Region } from 'libs/maps/maps'
+import { computeDistanceInMeters } from 'libs/parsers'
+
 const EARTH_RADIUS_M = 6378137
 
 // Calculates the horizontal distance in meters on the screen
@@ -29,4 +32,15 @@ export const distanceToLongitudeDelta = (
   const latitudeInRadians = (latitudeInDegrees * Math.PI) / 180
   const distanceInRadians = distanceInMeters / EARTH_RADIUS_M
   return (distanceInRadians / Math.cos(latitudeInRadians)) * (180 / Math.PI)
+}
+
+export const calculateRoundRadiusInKilometers = (region: Region): number => {
+  const distanceInMeters = computeDistanceInMeters(
+    region.latitude,
+    region.longitude,
+    region.latitude + region.latitudeDelta,
+    region.longitude + region.longitudeDelta
+  )
+
+  return distanceInMeters / 1000
 }

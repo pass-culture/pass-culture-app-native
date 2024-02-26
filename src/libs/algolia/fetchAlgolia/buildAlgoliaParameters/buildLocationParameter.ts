@@ -47,5 +47,6 @@ const computeAroundRadiusInMeters = (
   aroundRadius: number
 ): number | RADIUS_FILTERS.UNLIMITED_RADIUS => {
   if (aroundRadius === 0) return RADIUS_FILTERS.RADIUS_IN_METERS_FOR_NO_OFFERS
-  return aroundRadius * 1000
+  // Algolia API needs an integer: https://www.algolia.com/doc/api-reference/api-parameters/aroundRadius/#options
+  return Math.round(aroundRadius * 1000)
 }
