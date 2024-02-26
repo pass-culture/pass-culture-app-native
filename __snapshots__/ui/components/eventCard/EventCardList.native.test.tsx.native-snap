@@ -58,137 +58,123 @@ exports[`EventCardList should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
+            "backgroundColor": "#ffffff",
             "borderRadius": 8,
+            "borderWidth": 1,
+            "boxSizing": "border-box",
             "height": 68,
+            "justifyContent": "flex-start",
             "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+            "shadowColor": "#696A6F",
+            "shadowOffset": {
+              "height": 4,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 4,
             "userSelect": "auto",
             "width": 120,
           }
         }
       >
-        <View
+        <Text
+          accessibilityLabel="8h"
           isDisabled={false}
+          numberOfLines={1}
           style={
             [
               {
-                "backgroundColor": "#ffffff",
-                "borderColor": "#161617",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "width": 120,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "left",
+              },
+            ]
+          }
+        >
+          8h
+        </Text>
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "height": 4,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "textOverflow": "ellipsis",
+                "width": "100%",
               },
             ]
           }
         >
           <Text
-            accessibilityLabel="8h"
+            accessibilityLabel="VO, 3D"
+            hasSubtitleRight={true}
             isDisabled={false}
             numberOfLines={1}
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
+                  "color": "#696A6F",
+                  "flexBasis": "auto",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
                   "lineHeight": 20,
                   "textAlign": "left",
                 },
               ]
             }
           >
-            8h
+            VO, 3D
           </Text>
           <View
             numberOfSpaces={1}
             style={
               [
                 {
-                  "height": 4,
+                  "width": 4,
                 },
               ]
             }
           />
-          <View
+          <Text
+            accessibilityLabel="5,99€"
+            isDisabled={false}
+            numberOfLines={1}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "alignSelf": "stretch",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "textOverflow": "ellipsis",
-                  "width": "100%",
+                  "color": "#161617",
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "right",
                 },
               ]
             }
           >
-            <Text
-              accessibilityLabel="VO, 3D"
-              hasSubtitleRight={true}
-              isDisabled={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#696A6F",
-                    "flexBasis": "auto",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 20,
-                    "textAlign": "left",
-                  },
-                ]
-              }
-            >
-              VO, 3D
-            </Text>
-            <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              accessibilityLabel="5,99€"
-              isDisabled={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexGrow": 1,
-                    "flexShrink": 0,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "textAlign": "right",
-                  },
-                ]
-              }
-            >
-              5,99€
-            </Text>
-          </View>
+            5,99€
+          </Text>
         </View>
       </View>
       <View
@@ -232,137 +218,123 @@ exports[`EventCardList should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
+            "backgroundColor": "#ffffff",
             "borderRadius": 8,
+            "borderWidth": 1,
+            "boxSizing": "border-box",
             "height": 68,
+            "justifyContent": "flex-start",
             "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+            "shadowColor": "#696A6F",
+            "shadowOffset": {
+              "height": 4,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 4,
             "userSelect": "auto",
             "width": 120,
           }
         }
       >
-        <View
+        <Text
+          accessibilityLabel="9h30"
           isDisabled={false}
+          numberOfLines={1}
           style={
             [
               {
-                "backgroundColor": "#ffffff",
-                "borderColor": "#161617",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
-                },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "width": 120,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "left",
+              },
+            ]
+          }
+        >
+          9h30
+        </Text>
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "height": 4,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "textOverflow": "ellipsis",
+                "width": "100%",
               },
             ]
           }
         >
           <Text
-            accessibilityLabel="9h30"
+            accessibilityLabel="VF, ICE, 3D"
+            hasSubtitleRight={true}
             isDisabled={false}
             numberOfLines={1}
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
+                  "color": "#696A6F",
+                  "flexBasis": "auto",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
                   "lineHeight": 20,
                   "textAlign": "left",
                 },
               ]
             }
           >
-            9h30
+            VF, ICE, 3D
           </Text>
           <View
             numberOfSpaces={1}
             style={
               [
                 {
-                  "height": 4,
+                  "width": 4,
                 },
               ]
             }
           />
-          <View
+          <Text
+            accessibilityLabel="7,99€"
+            isDisabled={false}
+            numberOfLines={1}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "alignSelf": "stretch",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "textOverflow": "ellipsis",
-                  "width": "100%",
+                  "color": "#161617",
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "right",
                 },
               ]
             }
           >
-            <Text
-              accessibilityLabel="VF, ICE, 3D"
-              hasSubtitleRight={true}
-              isDisabled={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#696A6F",
-                    "flexBasis": "auto",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 20,
-                    "textAlign": "left",
-                  },
-                ]
-              }
-            >
-              VF, ICE, 3D
-            </Text>
-            <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              accessibilityLabel="7,99€"
-              isDisabled={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexGrow": 1,
-                    "flexShrink": 0,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "textAlign": "right",
-                  },
-                ]
-              }
-            >
-              7,99€
-            </Text>
-          </View>
+            7,99€
+          </Text>
         </View>
       </View>
     </View>
@@ -398,7 +370,7 @@ exports[`EventCardList should render correctly 1`] = `
         }
         accessible={false}
         collapsable={false}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -408,130 +380,116 @@ exports[`EventCardList should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
+            "backgroundColor": "#F1F1F4",
             "borderRadius": 8,
+            "borderWidth": 0,
+            "boxSizing": "border-box",
             "height": 68,
+            "justifyContent": "flex-start",
             "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
             "userSelect": "auto",
             "width": 120,
           }
         }
       >
-        <View
+        <Text
+          accessibilityLabel="10h55"
           isDisabled={true}
+          numberOfLines={1}
           style={
             [
               {
-                "backgroundColor": "#F1F1F4",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "width": 120,
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "left",
+              },
+            ]
+          }
+        >
+          10h55
+        </Text>
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "height": 4,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "textOverflow": "ellipsis",
+                "width": "100%",
               },
             ]
           }
         >
           <Text
-            accessibilityLabel="10h55"
+            accessibilityLabel="Complet"
+            hasSubtitleRight={true}
             isDisabled={true}
             numberOfLines={1}
             style={
               [
                 {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
+                  "color": "#90949D",
+                  "flexBasis": "auto",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
                   "lineHeight": 20,
                   "textAlign": "left",
                 },
               ]
             }
           >
-            10h55
+            Complet
           </Text>
           <View
             numberOfSpaces={1}
             style={
               [
                 {
-                  "height": 4,
+                  "width": 4,
                 },
               ]
             }
           />
-          <View
+          <Text
+            accessibilityLabel="12,99€"
+            isDisabled={true}
+            numberOfLines={1}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "alignSelf": "stretch",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "textOverflow": "ellipsis",
-                  "width": "100%",
+                  "color": "#90949D",
+                  "flexGrow": 1,
+                  "flexShrink": 0,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "right",
                 },
               ]
             }
           >
-            <Text
-              accessibilityLabel="Complet"
-              hasSubtitleRight={true}
-              isDisabled={true}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#90949D",
-                    "flexBasis": "auto",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 20,
-                    "textAlign": "left",
-                  },
-                ]
-              }
-            >
-              Complet
-            </Text>
-            <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "width": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              accessibilityLabel="12,99€"
-              isDisabled={true}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#90949D",
-                    "flexGrow": 1,
-                    "flexShrink": 0,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "textAlign": "right",
-                  },
-                ]
-              }
-            >
-              12,99€
-            </Text>
-          </View>
+            12,99€
+          </Text>
         </View>
       </View>
       <View
@@ -565,7 +523,7 @@ exports[`EventCardList should render correctly 1`] = `
         }
         accessible={false}
         collapsable={false}
-        focusable={false}
+        focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -575,100 +533,86 @@ exports[`EventCardList should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           {
+            "backgroundColor": "#F1F1F4",
             "borderRadius": 8,
+            "borderWidth": 0,
+            "boxSizing": "border-box",
             "height": 68,
+            "justifyContent": "flex-start",
             "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
             "userSelect": "auto",
             "width": 120,
           }
         }
       >
-        <View
+        <Text
+          accessibilityLabel="13h12"
           isDisabled={true}
+          numberOfLines={1}
           style={
             [
               {
-                "backgroundColor": "#F1F1F4",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "width": 120,
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "left",
+              },
+            ]
+          }
+        >
+          13h12
+        </Text>
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "height": 4,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "textOverflow": "ellipsis",
+                "width": "100%",
               },
             ]
           }
         >
           <Text
-            accessibilityLabel="13h12"
+            accessibilityLabel="Crédit insuffisant"
+            hasSubtitleRight={false}
             isDisabled={true}
             numberOfLines={1}
             style={
               [
                 {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
+                  "color": "#90949D",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
                   "lineHeight": 20,
                   "textAlign": "left",
                 },
               ]
             }
           >
-            13h12
+            Crédit insuffisant
           </Text>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "stretch",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "textOverflow": "ellipsis",
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <Text
-              accessibilityLabel="Crédit insuffisant"
-              hasSubtitleRight={false}
-              isDisabled={true}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#90949D",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 20,
-                    "textAlign": "left",
-                  },
-                ]
-              }
-            >
-              Crédit insuffisant
-            </Text>
-          </View>
         </View>
       </View>
     </View>

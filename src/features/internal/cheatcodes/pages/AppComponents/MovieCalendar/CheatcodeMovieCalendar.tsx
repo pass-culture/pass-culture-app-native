@@ -43,8 +43,8 @@ const dummySessions: EventCardProps[] = [
     onPress: () => ({}),
     isDisabled: false,
     title: '11h35',
-    subtitleLeft: 'VO, 3D',
-    subtitleRight: '11,99€',
+    subtitleLeft: 'VOSTFR, 3D MAX',
+    subtitleRight: '1€',
   },
   {
     onPress: () => ({}),
@@ -72,7 +72,7 @@ const dummySessions: EventCardProps[] = [
     isDisabled: false,
     title: '22h05',
     subtitleLeft: 'VO',
-    subtitleRight: '11,50€',
+    subtitleRight: '94592340€',
   },
   {
     onPress: () => ({}),

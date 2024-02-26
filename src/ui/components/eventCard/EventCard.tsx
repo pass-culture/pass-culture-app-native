@@ -26,70 +26,56 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const hasSubtitleRight = !!subtitleRight
   return (
-    <StyledTouchableOpacity onPress={isDisabled ? undefined : onPress} isDisabled={isDisabled}>
-      <Container isDisabled={isDisabled}>
-        <Title accessibilityLabel={title} numberOfLines={1} isDisabled={isDisabled}>
-          {title}
-        </Title>
-        <Spacer.Column numberOfSpaces={1} />
-        <SubtitleContainer>
-          <SubtitleLeft
-            accessibilityLabel={subtitleLeft}
-            numberOfLines={1}
-            isDisabled={isDisabled}
-            hasSubtitleRight={hasSubtitleRight}>
-            {subtitleLeft}
-          </SubtitleLeft>
-          {hasSubtitleRight ? (
-            <React.Fragment>
-              <Spacer.Row numberOfSpaces={1} />
-              <SubtitleRight
-                accessibilityLabel={subtitleRight}
-                numberOfLines={1}
-                isDisabled={isDisabled}>
-                {subtitleRight}
-              </SubtitleRight>
-            </React.Fragment>
-          ) : null}
-        </SubtitleContainer>
-      </Container>
+    <StyledTouchableOpacity isDisabled={isDisabled} onPress={onPress}>
+      <Title accessibilityLabel={title} numberOfLines={1} isDisabled={isDisabled}>
+        {title}
+      </Title>
+
+      <Spacer.Column numberOfSpaces={1} />
+      <SubtitleContainer>
+        <SubtitleLeft
+          accessibilityLabel={subtitleLeft}
+          numberOfLines={1}
+          isDisabled={isDisabled}
+          hasSubtitleRight={hasSubtitleRight}>
+          {subtitleLeft}
+        </SubtitleLeft>
+        {hasSubtitleRight ? (
+          <React.Fragment>
+            <Spacer.Row numberOfSpaces={1} />
+            <SubtitleRight
+              accessibilityLabel={subtitleRight}
+              numberOfLines={1}
+              isDisabled={isDisabled}>
+              {subtitleRight}
+            </SubtitleRight>
+          </React.Fragment>
+        ) : null}
+      </SubtitleContainer>
     </StyledTouchableOpacity>
   )
 }
+
 const StyledTouchableOpacity = styledButton(Touchable)<{ isDisabled: boolean }>(
   ({ theme, isDisabled }) => ({
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
+    boxSizing: 'border-box',
+    padding: getSpacing(3),
+    justifyContent: 'flex-start',
+    borderWidth: isDisabled ? 0 : BORDER_WIDTH,
     borderRadius: theme.borderRadius.radius,
-    ...(theme.isNative
-      ? {}
-      : {
-          '&:hover': { textDecoration: isDisabled ? 'none' : 'underline' },
-          '&:focus': { outline: 'none' },
-          '&:focus-visible': { outline: 'auto' },
-        }),
+    backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
+    ...(!isDisabled
+      ? getShadow({
+          shadowOffset: { width: 0, height: getSpacing(1) },
+          shadowRadius: getSpacing(1),
+          shadowColor: theme.colors.greyDark,
+          shadowOpacity: 0.2,
+        })
+      : {}),
   })
 )
-
-const Container = styled.View<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
-  width: CARD_WIDTH,
-  height: CARD_HEIGHT,
-  borderColor: isDisabled ? theme.colors.greyLight : theme.colors.black,
-  borderWidth: BORDER_WIDTH,
-  borderRadius: theme.borderRadius.radius,
-  boxSizing: 'border-box',
-  padding: getSpacing(3),
-  justifyContent: 'flex-start',
-  backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
-  ...(!isDisabled
-    ? getShadow({
-        shadowOffset: { width: 0, height: getSpacing(1) },
-        shadowRadius: getSpacing(1),
-        shadowColor: theme.colors.greyDark,
-        shadowOpacity: 0.2,
-      })
-    : {}),
-}))
 
 const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
   color: isDisabled ? theme.colors.greyDark : theme.colors.black,

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
@@ -10,9 +9,9 @@ import { FilterBehaviour } from 'features/search/enums'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
-import { Typo } from 'ui/theme'
-import { Spacer } from 'ui/theme'
-import { getSpacing } from 'ui/theme/spacing'
+import { Close } from 'ui/svg/icons/Close'
+import { Typo, Spacer, getSpacing } from 'ui/theme'
+
 const titleId = uuidv4()
 
 export type AccessibilityModalProps = {
@@ -29,6 +28,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   isVisible,
   hideModal,
   onClose,
+  accessibilityLabel,
   filterBehaviour,
 }) => {
   const { modal } = useTheme()
@@ -73,6 +73,9 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
       isUpToStatusBar
       noPadding
       modalSpacing={modal.spacing.MD}
+      rightIconAccessibilityLabel={accessibilityLabel}
+      rightIcon={Close}
+      onRightIconPress={handleCloseModal}
       fixedModalBottom={
         <SearchFixedModalBottom
           onResetPress={handleFilterReset}
