@@ -20,7 +20,7 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { getSpacing, Spacer } from 'ui/theme'
 
-export type FormValues = {
+type FormValues = {
   newEmail: string
   password: string
 }

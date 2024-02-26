@@ -44,7 +44,12 @@ export function ChangeEmailContent({
       <Spacer.Column numberOfSpaces={4} />
       <CenteredContainer>
         <Form.MaxWidth flex={1}>
-          <EmailInput label="Adresse e-mail actuelle" disabled email={user?.email ?? ''} />
+          <EmailInput
+            label="Adresse e-mail actuelle"
+            disabled
+            email={user?.email ?? ''}
+            onEmailChange={() => undefined}
+          />
           <Spacer.Column numberOfSpaces={4} />
           <InfoBanner
             icon={Info}
