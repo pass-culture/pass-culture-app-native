@@ -59,5 +59,7 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
         </React.Fragment>
       ) : null}
     </View>
-  ) : null
+  ) : (
+    <Spacer.Column numberOfSpaces={2} />
+  )
 }
