@@ -10,6 +10,7 @@ export type CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: string
   homeEntryId_18: string
   homeEntryId_15_17: string
+  sameAuthorPlaylist: string
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
