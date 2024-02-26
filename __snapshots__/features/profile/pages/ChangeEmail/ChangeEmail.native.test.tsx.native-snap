@@ -188,7 +188,6 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
     </View>
   </View>,
   <RCTScrollView
-    className="sc-aXZVg bgkkSf"
     contentContainerStyle={
       {
         "backgroundColor": "#ffffff",
@@ -199,6 +198,13 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
       }
     }
     keyboardShouldPersistTaps="handled"
+    style={
+      [
+        {
+          "paddingHorizontal": 20,
+        },
+      ]
+    }
   >
     <View>
       <View
@@ -972,7 +978,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
     </View>
   </View>,
   <RCTScrollView
-    className="sc-aXZVg bgkkSf"
     contentContainerStyle={
       {
         "backgroundColor": "#ffffff",
@@ -983,6 +988,13 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
       }
     }
     keyboardShouldPersistTaps="handled"
+    style={
+      [
+        {
+          "paddingHorizontal": 20,
+        },
+      ]
+    }
   >
     <View>
       <View
