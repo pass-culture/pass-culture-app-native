@@ -26,7 +26,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const hasSubtitleRight = !!subtitleRight
   return (
-    <StyledTouchableOpacity isDisabled={isDisabled} onPress={isDisabled ? undefined : onPress}>
+    <StyledTouchableOpacity isDisabled={isDisabled} onPress={onPress}>
       <Title accessibilityLabel={title} numberOfLines={1} isDisabled={isDisabled}>
         {title}
       </Title>
@@ -60,12 +60,11 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ isDisabled: boolean }>(
   ({ theme, isDisabled }) => ({
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
-    borderColor: isDisabled ? theme.colors.greyLight : theme.colors.black,
-    borderWidth: BORDER_WIDTH,
-    borderRadius: theme.borderRadius.radius,
     boxSizing: 'border-box',
     padding: getSpacing(3),
     justifyContent: 'flex-start',
+    borderWidth: isDisabled ? 0 : BORDER_WIDTH,
+    borderRadius: theme.borderRadius.radius,
     backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
     ...(!isDisabled
       ? getShadow({
@@ -75,8 +74,6 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ isDisabled: boolean }>(
           shadowOpacity: 0.2,
         })
       : {}),
-    '&:focus': { outline: 'none' },
-    '&:focus-visible': { outline: 'auto' },
   })
 )
 
