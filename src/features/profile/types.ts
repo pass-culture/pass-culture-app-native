@@ -4,9 +4,6 @@ export interface ChangeEmailRequestDeprecated {
   email: string
   password: string
 }
-export interface ChangeEmailRequest {
-  email: string
-}
 
 export type ResetRecreditAmountToShowMutationOptions = {
   onSuccess: () => void

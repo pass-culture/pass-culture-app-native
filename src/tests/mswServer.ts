@@ -44,9 +44,9 @@ class MswMockServer
 
     const baseHandlers = defaultRequests
       ? defaultRequests.map((handler) => {
-          const url = `${this.baseUrl}${handler.url}`
+          const url = `${this.baseUrl}/v1${handler.url}`
           const generatedHandler = this.generateMockHandler(
-            `${this.baseUrl}${handler.url}`,
+            `${this.baseUrl}/v1${handler.url}`,
             {
               ...handler.options,
               requestOptions: {
@@ -262,13 +262,19 @@ class MswMockServer
       this.mswServer.use(handler)
     }
   }
-  getApiV1<TResponse extends DefaultBodyType>(
+  getApi<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalGet(fullUrl, options)
+  }
+  getApiV1<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    this.universalGet(`/v1${url}`, options)
   }
 
   universalPost<TResponse extends DefaultBodyType>(
@@ -287,13 +293,19 @@ class MswMockServer
       this.mswServer.use(handler)
     }
   }
-  postApiV1<TResponse extends DefaultBodyType>(
+  postApi<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalPost(fullUrl, options)
+  }
+  postApiV1<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    this.postApi(`/v1${url}`, options)
   }
 
   universalDelete<TResponse extends DefaultBodyType>(
@@ -315,13 +327,19 @@ class MswMockServer
       this.mswServer.use(handler)
     }
   }
-  deleteApiV1<TResponse extends DefaultBodyType>(
+  deleteApi<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalDelete(fullUrl, options)
+  }
+  deleteApiV1<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    this.deleteApi(`/v1${url}`, options)
   }
 
   universalPut<TResponse extends DefaultBodyType>(
@@ -340,7 +358,7 @@ class MswMockServer
       this.mswServer.use(handler)
     }
   }
-  putApiV1<TResponse extends DefaultBodyType>(
+  putApi<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
@@ -348,6 +366,12 @@ class MswMockServer
 
     this.universalPut(fullUrl, options)
   }
+  putApiV1<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    this.putApi(`/v1${url}`, options)
+  }
 }
 
-export const mockServer = new MswMockServer(`${env.API_BASE_URL}/native/v1`)
+export const mockServer = new MswMockServer(`${env.API_BASE_URL}/native`)

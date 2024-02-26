@@ -25,7 +25,7 @@ export function ChangeEmailContent({
 
   const submitEmailChange = () => {
     if (user?.email) {
-      changeEmail({ email: user?.email })
+      changeEmail()
     }
   }
   const { bottom } = useSafeAreaInsets()
