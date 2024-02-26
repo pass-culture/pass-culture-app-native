@@ -1,0 +1,50 @@
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
+
+import { MApPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
+import { Marker } from 'libs/maps/maps'
+
+type Latitude = number
+type Longitude = number
+export type Coordinates = [Latitude, Longitude]
+
+export type Properties = {
+  cluster: boolean
+  cluster_id: number
+  point_count: number
+  point_count_abbreviated: number
+}
+
+export type VenueMapClusterProps = {
+  geometry: {
+    coordinates: Coordinates
+    type: string
+  }
+  properties: Properties
+  onPress: VoidFunction
+}
+
+export const VenueMapCluster = ({ geometry, properties, onPress }: VenueMapClusterProps) => {
+  const points = properties.point_count
+
+  return (
+    <StyledMarker
+      key={properties.cluster_id}
+      coordinate={{
+        longitude: geometry.coordinates[0],
+        latitude: geometry.coordinates[1],
+      }}
+      points={points}
+      onPress={onPress}
+      testID="venue-map-cluster">
+      <TouchableOpacity activeOpacity={0.5}>
+        <MApPinWithCounter count={points} />
+      </TouchableOpacity>
+    </StyledMarker>
+  )
+}
+
+const StyledMarker = styled(Marker)<{ points: number }>(({ points }) => ({
+  zIndex: points + 1,
+}))
