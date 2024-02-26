@@ -9,13 +9,16 @@ type Props = {
 }
 
 const NUMBER_LEFT_POSITION = 15
-const NUMBER_TOP_POSITION = -10
+const NUMBER_TOP_POSITION = -2
+const MAPPIN_SIZE = 32
+const COUNTER_HEIGHT = 16 + 2 // +2 is the top position
+const COUNTER_WIDTH = 27
 
-export const VenueMapPin: FunctionComponent<Props> = ({ count }) => {
+export const MApPinWithCounter: FunctionComponent<Props> = ({ count }) => {
   const shouldDisplayCounter = count && count > 1
 
   return (
-    <React.Fragment>
+    <Container>
       <MapPin />
 
       {shouldDisplayCounter ? (
@@ -23,9 +26,15 @@ export const VenueMapPin: FunctionComponent<Props> = ({ count }) => {
           <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
         </NumberContainer>
       ) : null}
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  height: MAPPIN_SIZE + COUNTER_HEIGHT / 2,
+  width: MAPPIN_SIZE / 2 + COUNTER_WIDTH,
+  justifyContent: 'flex-end',
+})
 
 const NumberContainer = styled.View(({ theme }) => ({
   position: 'absolute',
