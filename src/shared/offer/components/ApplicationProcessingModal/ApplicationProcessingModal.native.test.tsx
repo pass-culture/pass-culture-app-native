@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, waitForModalToHide } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
@@ -60,9 +60,9 @@ describe('<ApplicationProcessingModal />', () => {
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 
-    await waitFor(() => {
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+    await waitForModalToHide()
+
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when clicking on button "Mettre en favori', async () => {
