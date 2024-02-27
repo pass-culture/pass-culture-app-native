@@ -32,38 +32,16 @@ appId: ${MAESTRO_APP_ID}
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
 - runFlow:
     when:
-      visible: 'Rechercher des offres'
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml'
+      visible: 'Plus tard'
+    file: 'reusableFlows/features/auth/QpiPhysical.yml'
+# Plus tard QPI
 - runFlow:
     when:
       visible: 'Recherche'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
-- tapOn: 'Catégories'
-- tapOn: 'Cinéma, films et séries'
-- runFlow:
-    when:
-      visible: 'Catégories'
-    file: 'reusableFlows/features/search/SearchCategoryReinit.yml'
-- runFlow:
-    when:
-      visible: 'Rechercher'
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.yml'
-- tapOn: 'Offre, artiste, lieu culturel...'
-- runFlow:
-    when:
-      visible: 'Réinitialiser la recherche'
-    file: 'reusableFlows/features/search/SearchTextReinit.yml'
-- inputText: ${MAESTRO_PHYSICAL_OFFER}
-- pressKey: Enter
-- runFlow:
-    when:
-      visible: ${MAESTRO_PHYSICAL_OFFER}
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
-- runFlow: reusableFlows/features/bookOffer/PreBookingPage.yml # PreBookingReservation
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConfirmReservation.yml
 - runFlow: reusableFlows/features/bookOffer/BookingConfirmationPage.yml # BookingConfirmationPage
 - tapOn: 'Voir ma réservation'

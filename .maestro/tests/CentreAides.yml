@@ -7,9 +7,10 @@ appId: ${MAESTRO_APP_ID}
     file: "reusableFlows/FirstLaunch.yml" # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
 - tapOn: "Nouvelle fenêtre\_: Centre d’aide"
-- assertVisible: "aide.passculture.app/hc/fr"
 - assertVisible:
-    id: "main-content"
+    id: "com.sec.android.app.sbrowser:id/location_bar_edit_text"
+- assertVisible:
+    id: "com.sec.android.app.sbrowser:id/sbrowser_tab_holder"
 - tapOn: "Applications récentes"
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"

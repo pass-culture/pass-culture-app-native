@@ -1,4 +1,4 @@
 appId: ${MAESTRO_APP_ID}
 ---
 
-- tapOn: "Revenir en arrière"
+- tapOn: "Retour"

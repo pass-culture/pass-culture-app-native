@@ -23,16 +23,19 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Réinitialiser la recherche'
     file: 'reusableFlows/features/search/SearchTextReinit.yml'
-- inputText: ${MAESTRO_PHYSICAL_OFFER}
+- inputText: ${MAESTRO_EVENT_OFFER}
 - pressKey: Enter
 - runFlow:
     when:
-      visible: ${MAESTRO_PHYSICAL_OFFER}
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
+      visible: ${MAESTRO_EVENT_OFFER}
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferEvent.yml'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    file: 'reusableFlows/features/auth/QpiEvent.yml'
 - runFlow:
     when:
       visible: 'Rechercher des offres'
@@ -41,6 +44,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Recherche'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
+- runFlow:
+    when:
+      visible: 'Réserver l`offre'
+    file: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - tapOn: 'Duo' # Filtre offre Duo
 - assertVisible: 'Uniquement les offres duo'
 - assertVisible: 'Seules les sorties seront affichées'
@@ -58,7 +65,7 @@ appId: ${MAESTRO_APP_ID}
     point: '49%,84%'
 - assertVisible: 'Voir les disponibilités'
 - tapOn: 'Voir les disponibilités'
-- tapOn: '23'
+- tapOn: '15'
 - assertVisible: 'Valider la date'
 - tapOn: 'Valider la date'
 - assertVisible: 'Choix des options'

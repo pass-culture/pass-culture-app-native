@@ -5,9 +5,6 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: "Respect de ta vie privée"
     file: "reusableFlows/FirstLaunch.yml" # First Launch
-- tapOn:
-    text: "Accueil"
-    index: 0
 - assertVisible: "Bienvenue\_!"
 - assertVisible: "Débloque ton crédit"
 - runFlow: reusableFlows/StopApp.yml # Stop App
