@@ -4,7 +4,7 @@ import React from 'react'
 import { MapPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
 
 const meta: ComponentMeta<typeof MapPinWithCounter> = {
-  title: 'features/search/MApPinWithCounter',
+  title: 'features/search/MapPinWithCounter',
   component: MapPinWithCounter,
 }
 export default meta

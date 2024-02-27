@@ -5,6 +5,12 @@ import styled from 'styled-components/native'
 import { MapPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
 import { Marker } from 'libs/maps/maps'
 
+/**
+ * These properties are not originally defined by us, but are inferred from the usage
+ * of react-native-map-clustering that tends to type "cluster" as 'any'.
+ * To address this, we have created this specific typing to ensure clarity and accuracy.
+ */
+
 export type Coordinates = [latitude: number, longitude: number]
 
 export type Properties = {

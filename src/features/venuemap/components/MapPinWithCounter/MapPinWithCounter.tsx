@@ -10,9 +10,9 @@ type Props = {
 
 const NUMBER_LEFT_POSITION = 15
 const NUMBER_TOP_POSITION = -2
-const MAPPIN_SIZE = 32
-const COUNTER_HEIGHT = 16 + 2 // +2 is the top position
-const COUNTER_WIDTH = 27
+const MAP_PIN_SIZE = 32
+const COUNTER_BLOCK_HEIGHT = 16 - NUMBER_TOP_POSITION
+const COUNTER_BLOCK_WIDTH = 27
 
 export const MapPinWithCounter: FunctionComponent<Props> = ({ count }) => {
   return (
@@ -27,8 +27,8 @@ export const MapPinWithCounter: FunctionComponent<Props> = ({ count }) => {
 }
 
 const Container = styled.View({
-  height: MAPPIN_SIZE + COUNTER_HEIGHT / 2,
-  width: MAPPIN_SIZE / 2 + COUNTER_WIDTH,
+  height: MAP_PIN_SIZE + COUNTER_BLOCK_HEIGHT / 2,
+  width: MAP_PIN_SIZE + COUNTER_BLOCK_WIDTH / 2,
   justifyContent: 'flex-end',
 })
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { MapPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
 import { render, screen } from 'tests/utils'
 
-describe('<MApPinWithCounter />', () => {
+describe('<MapPinWithCounter />', () => {
   it('should display the number of venues in the cluster', () => {
     render(<MapPinWithCounter count={50} />)
 
