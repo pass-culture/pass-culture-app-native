@@ -14,7 +14,7 @@ const MAPPIN_SIZE = 32
 const COUNTER_HEIGHT = 16 + 2 // +2 is the top position
 const COUNTER_WIDTH = 27
 
-export const MApPinWithCounter: FunctionComponent<Props> = ({ count }) => {
+export const MapPinWithCounter: FunctionComponent<Props> = ({ count }) => {
   return (
     <Container>
       <MapPin />

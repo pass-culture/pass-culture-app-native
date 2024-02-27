@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { MApPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
+import { MapPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
 import { Marker } from 'libs/maps/maps'
 
 export type Coordinates = [latitude: number, longitude: number]
@@ -37,7 +37,7 @@ export const VenueMapCluster = ({ geometry, properties, onPress }: VenueMapClust
       onPress={onPress}
       testID="venue-map-cluster">
       <TouchableOpacity activeOpacity={0.5}>
-        <MApPinWithCounter count={points} />
+        <MapPinWithCounter count={points} />
       </TouchableOpacity>
     </StyledMarker>
   )
