@@ -90,6 +90,10 @@ jest.mock('react-native-intersection-observer', () => {
   }
 })
 
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ sameAuthorPlaylist: 'withPlaylistAsFirst' }),
+}))
+
 const scrollEvent = {
   nativeEvent: {
     contentOffset: { y: 200 },
