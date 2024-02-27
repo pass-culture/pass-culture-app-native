@@ -2,8 +2,6 @@ import React from 'react'
 import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContentDeprecated } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContentDeprecated'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -13,7 +11,6 @@ const HEADER_HEIGHT = getSpacing(8)
 
 export function TrackEmailChange() {
   const { top } = useCustomSafeInsets()
-  const { goBack } = useGoBack(...homeNavConfig)
 
   return (
     <StyledScrollViewContainer>
@@ -21,7 +18,7 @@ export function TrackEmailChange() {
       <HeaderContainer>
         <Spacer.TopScreen />
         <GoBackContainer>
-          <BackButton onGoBack={goBack} />
+          <BackButton />
         </GoBackContainer>
       </HeaderContainer>
       <Spacer.Column numberOfSpaces={6} />
