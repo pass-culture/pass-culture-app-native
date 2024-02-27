@@ -23,17 +23,20 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Séances de cinéma"
 - tapOn: "Rechercher"
 - tapOn:
-    label: "Tap on first offer visible in results"
+    label: "Sélection de la 1ère offre disponible"
     below:
       text: .*résultats
 - tapOn: "Voir les disponibilités"
 - tapOn:
+    label: "Sélection de la 1ère date disponible"
     enabled: true
     above:
       text: .*€
 - tapOn: "Valider la date"
 - tapOn:
-    point: "50%,73%"
+    label: "Sélection du 1er horaire disponible"
+    below:
+      text: "Horaire"
 - tapOn: "Valider lʼhoraire"
 - tapOn: "Solo"
 - tapOn: "Finaliser ma réservation"
