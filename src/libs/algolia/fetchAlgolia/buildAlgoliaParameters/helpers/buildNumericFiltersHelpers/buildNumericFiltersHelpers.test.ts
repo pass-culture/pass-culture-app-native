@@ -1,12 +1,9 @@
-import mockdate from 'mockdate'
-
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import {
   buildDateAndTimePredicate,
   buildDateOnlyPredicate,
   buildDatePredicate,
   buildHomepageDatePredicate,
-  buildNewestOffersPredicate,
   buildOfferLast30DaysBookings,
   buildOfferPriceRangePredicate,
   buildTimeOnlyPredicate,
@@ -294,24 +291,6 @@ describe('buildDateOnlyPredicate', () => {
     })
 
     expect(dateOnlyPredicate).toEqual(['offer.dates: 1682294400 TO 1682380799'])
-  })
-})
-
-describe('buildNewestOffersPredicate', () => {
-  beforeAll(() => {
-    mockdate.set(new Date('2023-04-24'))
-  })
-
-  it('should return undefined where offerIsNew is false', () => {
-    const newestOffersPredicate = buildNewestOffersPredicate(false)
-
-    expect(newestOffersPredicate).toEqual(undefined)
-  })
-
-  it('should return a newest offers predicate when offerIsNew is true', () => {
-    const newestOffersPredicate = buildNewestOffersPredicate(true)
-
-    expect(newestOffersPredicate).toEqual(['offer.stocksDateCreated: 1680998400 TO 1682294400'])
   })
 })
 

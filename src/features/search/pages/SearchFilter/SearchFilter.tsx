@@ -99,7 +99,6 @@ export const SearchFilter: React.FC = () => {
         offerSubcategories: [],
         offerIsDuo: false,
         offerIsFree: false,
-        offerIsNew: false,
         priceRange: null,
         tags: [],
         timeRange: null,

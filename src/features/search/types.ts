@@ -53,7 +53,6 @@ export interface SearchState {
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
   offerIsFree?: boolean
-  offerIsNew: boolean
   isDigital: boolean
   priceRange: Range<number> | null
   timeRange: Range<number> | null

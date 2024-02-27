@@ -193,7 +193,6 @@ describe('<Venue /> with new venue body', () => {
     offerSubcategories: [],
     offerIsDuo: false,
     offerIsFree: false,
-    offerIsNew: false,
     isDigital: false,
     priceRange: [0, 300],
     query: '',

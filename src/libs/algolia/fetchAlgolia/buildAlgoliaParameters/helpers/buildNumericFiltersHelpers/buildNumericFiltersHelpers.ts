@@ -132,18 +132,5 @@ export const buildDateOnlyPredicate = (
   return [getDatePredicate(beginningDate, endingDate)]
 }
 
-export const buildNewestOffersPredicate = (
-  offerIsNew: SearchQueryParameters['offerIsNew']
-): FiltersArray[0] | undefined => {
-  if (!offerIsNew) return undefined
-
-  const now = new Date()
-  const fifteenDaysBeforeNow = new Date().setDate(now.getDate() - 15)
-  const beginningDate = TIMESTAMP.getFromDate(new Date(fifteenDaysBeforeNow))
-  const endingDate = TIMESTAMP.getFromDate(now)
-
-  return [`${NUMERIC_FILTERS_ENUM.OFFER_STOCKS_DATE_CREATED}: ${beginningDate} TO ${endingDate}`]
-}
-
 export const getDatePredicate = (lowerDate: number, higherDate: number): string =>
   `${NUMERIC_FILTERS_ENUM.OFFER_DATES}: ${lowerDate} TO ${higherDate}`

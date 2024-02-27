@@ -1,7 +1,6 @@
 import {
   buildDatePredicate,
   buildHomepageDatePredicate,
-  buildNewestOffersPredicate,
   buildOfferLast30DaysBookings,
   buildOfferPriceRangePredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildNumericFiltersHelpers/buildNumericFiltersHelpers'
@@ -14,7 +13,6 @@ export const buildNumericFilters = ({
   beginningDatetime,
   endingDatetime,
   offerIsFree,
-  offerIsNew,
   priceRange,
   timeRange,
   minPrice,
@@ -27,7 +25,6 @@ export const buildNumericFilters = ({
   | 'endingDatetime'
   | 'date'
   | 'offerIsFree'
-  | 'offerIsNew'
   | 'priceRange'
   | 'timeRange'
   | 'minPrice'
@@ -45,14 +42,12 @@ export const buildNumericFilters = ({
     maxPossiblePrice,
   })
   const datePredicate = buildDatePredicate({ date, timeRange })
-  const newestOffersPredicate = buildNewestOffersPredicate(offerIsNew)
   const homepageDatePredicate = buildHomepageDatePredicate({ beginningDatetime, endingDatetime })
   const last30DaysBookingsPredicate = buildOfferLast30DaysBookings(minBookingsThreshold)
   const numericFilters: FiltersArray = []
 
   if (priceRangePredicate) numericFilters.push(priceRangePredicate)
   if (datePredicate) numericFilters.push(datePredicate)
-  if (newestOffersPredicate) numericFilters.push(newestOffersPredicate)
   if (homepageDatePredicate) numericFilters.push(homepageDatePredicate)
   if (last30DaysBookingsPredicate) numericFilters.push(last30DaysBookingsPredicate)
 
