@@ -312,7 +312,11 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     [
                       {
+                        "flexBasis": 0,
                         "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingRight": 16,
                       },
                     ]
                   }
@@ -829,7 +833,11 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     [
                       {
+                        "flexBasis": 0,
                         "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingRight": 16,
                       },
                     ]
                   }
@@ -1068,7 +1076,11 @@ exports[`Stepper navigation should render correctly 1`] = `
                   style={
                     [
                       {
+                        "flexBasis": 0,
                         "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingRight": 16,
                       },
                     ]
                   }
