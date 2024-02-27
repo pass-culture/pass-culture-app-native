@@ -9,6 +9,7 @@
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
 #import "ReactNativeConfig.h"
+#import "ExpoModulesCore-Swift.h"
 
 #import <PassCulture-Swift.h>
 

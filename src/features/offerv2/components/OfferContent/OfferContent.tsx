@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
+// eslint-disable-next-line unused-imports/no-unused-imports
+import { getColors } from 'react-native-image-colors'
+import type { ImageColorsResult } from 'react-native-image-colors'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -43,6 +46,20 @@ const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
 const isWeb = Platform.OS === 'web'
 
+const useImageColors = (url: string) => {
+  const [colors, setColors] = React.useState<ImageColorsResult | null>(null)
+
+  React.useEffect(() => {
+    getColors(url, {
+      fallback: '#FFFFFF',
+      cache: true,
+      key: url,
+    }).then(setColors)
+  }, [url])
+
+  return colors
+}
+
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const { userLocation } = useLocation()
 
@@ -81,6 +98,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     return () => clearTimeout(timeoutId)
   }, [shouldTriggerBatchSurveyEvent, trackBatchEvent])
 
+  const imageColor = useImageColors(offer.image?.url ?? '')
+  console.log('imageColor', imageColor)
+
   const scrollEventListener = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (isCloseToBottom(nativeEvent)) {
@@ -110,6 +130,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         bounces={false}
         onScroll={onScroll}>
         <Hero imageUrl={offer.image?.url} type="offerv2" categoryId={subcategory.categoryId} />
+        {imageColor ? (
+          <View
+            style={{
+              backgroundColor: imageColor
+                ? imageColor.platform === 'ios'
+                  ? imageColor.primary
+                  : imageColor.dominant
+                : 'red',
+              height: 300,
+              width: '100%',
+            }}
+          />
+        ) : null}
         <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>
           <GroupWithoutGap>
