@@ -33,13 +33,25 @@ describe('<CollapsibleText />', () => {
     expect(screen.getByText(TEXT).props.numberOfLines).toEqual(5)
   })
 
-  it('should display Voir plus button when the text ends with an ellipsis', async () => {
+  it('should display Voir plus button when the text ends with an ellipsis (onLayout, then onTextLayout)', async () => {
     render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
 
     const text = screen.getByText(TEXT)
     await act(async () => {
       text.props.onLayout(mockOnLayoutWithButton)
       text.props.onTextLayout(mockOnTextLayoutWhenEllipsis)
+    })
+
+    expect(screen.getByText('Voir plus')).toBeOnTheScreen()
+  })
+
+  it('should display Voir plus button when the text ends with an ellipsis (onTextLayout, then onLayout)', async () => {
+    render(<CollapsibleText numberOfLines={NUMBER_OF_LINES}>{TEXT}</CollapsibleText>)
+
+    const text = screen.getByText(TEXT)
+    await act(async () => {
+      text.props.onTextLayout(mockOnTextLayoutWhenEllipsis)
+      text.props.onLayout(mockOnLayoutWithButton)
     })
 
     expect(screen.getByText('Voir plus')).toBeOnTheScreen()
