@@ -7,4 +7,5 @@ export const useRemoteConfigContext = jest.fn().mockReturnValue({
   homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
+  sameAuthorPlaylist: 'sameAuthorPlaylist',
 })
