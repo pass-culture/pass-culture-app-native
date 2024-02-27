@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -20,6 +20,7 @@ import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const TrackEmailChangeContentDeprecated = () => {
+  const timeoutRef = useRef<NodeJS.Timeout>()
   const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
   const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
   const { user } = useAuthContext()
@@ -45,11 +46,15 @@ export const TrackEmailChangeContentDeprecated = () => {
   useEffect(() => {
     if (!isLoading) {
       if (!emailUpdateStatus) {
-        navigateToHome()
+        timeoutRef.current = setTimeout(() => navigateToHome(), 500)
       }
       if (emailUpdateStatus?.expired) {
-        navigate('ChangeEmailExpiredLink')
+        timeoutRef.current = setTimeout(() => navigate('ChangeEmailExpiredLink'), 500)
       }
+    }
+
+    return () => {
+      clearTimeout(timeoutRef.current)
     }
   }, [emailUpdateStatus, isLoading, navigate])
 

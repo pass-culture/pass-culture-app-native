@@ -31,6 +31,8 @@ jest.mock('features/navigation/navigationRef')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('TrackEmailChangeContentDeprecated', () => {
   it('should display "Envoi de ta demande"', () => {
     render(<TrackEmailChangeContentDeprecated />)
@@ -261,6 +263,8 @@ describe('TrackEmailChangeContentDeprecated', () => {
       } as UseEmailUpdateStatusMock)
       render(<TrackEmailChangeContentDeprecated />)
 
+      jest.advanceTimersByTime(500)
+
       expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
         navigateToHomeConfig.params
@@ -277,6 +281,8 @@ describe('TrackEmailChangeContentDeprecated', () => {
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<TrackEmailChangeContentDeprecated />)
+
+      jest.advanceTimersByTime(500)
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
     })
