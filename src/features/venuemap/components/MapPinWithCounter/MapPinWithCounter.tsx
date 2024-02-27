@@ -5,27 +5,32 @@ import { MapPin } from 'ui/svg/icons/MapPin'
 import { getShadow, getSpacing, Typo } from 'ui/theme'
 
 type Props = {
-  count?: number
+  count: number
 }
 
 const NUMBER_LEFT_POSITION = 15
-const NUMBER_TOP_POSITION = -10
+const NUMBER_TOP_POSITION = -2
+const MAP_PIN_SIZE = 32
+const COUNTER_BLOCK_HEIGHT = 16 - NUMBER_TOP_POSITION
+const COUNTER_BLOCK_WIDTH = 27
 
-export const VenueMapPin: FunctionComponent<Props> = ({ count }) => {
-  const shouldDisplayCounter = count && count > 1
-
+export const MapPinWithCounter: FunctionComponent<Props> = ({ count }) => {
   return (
-    <React.Fragment>
+    <Container>
       <MapPin />
 
-      {shouldDisplayCounter ? (
-        <NumberContainer testID="numberContainer">
-          <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
-        </NumberContainer>
-      ) : null}
-    </React.Fragment>
+      <NumberContainer testID="numberContainer">
+        <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
+      </NumberContainer>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  height: MAP_PIN_SIZE + COUNTER_BLOCK_HEIGHT / 2,
+  width: MAP_PIN_SIZE + COUNTER_BLOCK_WIDTH / 2,
+  justifyContent: 'flex-end',
+})
 
 const NumberContainer = styled.View(({ theme }) => ({
   position: 'absolute',
