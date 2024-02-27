@@ -5,9 +5,7 @@ import styled from 'styled-components/native'
 import { MApPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
 import { Marker } from 'libs/maps/maps'
 
-type Latitude = number
-type Longitude = number
-export type Coordinates = [Latitude, Longitude]
+export type Coordinates = [latitude: number, longitude: number]
 
 export type Properties = {
   cluster: boolean
@@ -16,7 +14,7 @@ export type Properties = {
   point_count_abbreviated: number
 }
 
-export type VenueMapClusterProps = {
+type VenueMapClusterProps = {
   geometry: {
     coordinates: Coordinates
     type: string
