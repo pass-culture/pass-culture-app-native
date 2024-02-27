@@ -14,8 +14,6 @@ const Template: ComponentStory<typeof MApPinWithCounter> = (props) => (
 )
 
 export const Default = Template.bind({})
-
-export const Clustered = Template.bind({})
-Clustered.args = {
+Default.args = {
   count: 100,
 }

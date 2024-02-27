@@ -5,7 +5,7 @@ import { MapPin } from 'ui/svg/icons/MapPin'
 import { getShadow, getSpacing, Typo } from 'ui/theme'
 
 type Props = {
-  count?: number
+  count: number
 }
 
 const NUMBER_LEFT_POSITION = 15
@@ -15,17 +15,13 @@ const COUNTER_HEIGHT = 16 + 2 // +2 is the top position
 const COUNTER_WIDTH = 27
 
 export const MApPinWithCounter: FunctionComponent<Props> = ({ count }) => {
-  const shouldDisplayCounter = count && count > 1
-
   return (
     <Container>
       <MapPin />
 
-      {shouldDisplayCounter ? (
-        <NumberContainer testID="numberContainer">
-          <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
-        </NumberContainer>
-      ) : null}
+      <NumberContainer testID="numberContainer">
+        <Typo.Caption>{count < 100 ? String(count) : '99+'}</Typo.Caption>
+      </NumberContainer>
     </Container>
   )
 }
