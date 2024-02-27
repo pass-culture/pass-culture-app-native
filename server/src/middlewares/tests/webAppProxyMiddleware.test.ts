@@ -239,6 +239,7 @@ describe('metasResponseInterceptor', () => {
       const document = domParser.parseFromString(html.toString(), 'text/html')
       const metadataScript = document.querySelector('[type=application/ld+json]')
       const metadata = JSON.parse(metadataScript?.innerHTML || '{}')
+      const metaKeywordsContent = document.querySelector('[name=keywords]')?.getAttribute('content')
 
       expect(metadata['@context']).toEqual('https://schema.org')
       expect(metadata['@type']).toEqual('Event')
@@ -262,6 +263,7 @@ describe('metasResponseInterceptor', () => {
       expect(metadata.location.geo['@type']).toEqual('GeoCoordinates')
       expect(metadata.location.geo.latitude).toEqual('48.89005')
       expect(metadata.location.geo.longitude).toEqual('2.37068')
+      expect(metaKeywordsContent).toEqual('ATELIER PRATIQUE ART')
     })
 
     it('should request the real testing backend and get the venue data', async () => {

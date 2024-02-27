@@ -2,7 +2,13 @@ import { encode } from 'html-entities'
 
 import { env } from '../libs/environment/env'
 import { apiClient } from '../services/apiClient'
-import { ENTITY_METAS_CONFIG_MAP, EntityKeys, MetaConfig } from '../services/entities/types'
+import {
+  ENTITY_METAS_CONFIG_MAP,
+  EntityKeys,
+  MetaConfig,
+  NestedMetadata,
+  Metadata,
+} from '../services/entities/types'
 
 import { logger } from './logging'
 
@@ -13,6 +19,7 @@ const { href } = new URL(APP_PUBLIC_URL)
 const REGEX = {
   metaTitle: /<meta\s+(name)="(title)"\s+content="([^"]*)"\s*\/?>/g,
   metaDescription: /<meta\s+(name)="(description)"\s+content="([^"]*)"\s*\/?>/g,
+  metaKeywords: /<meta\s+(name)="(keywords)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:url']: /<meta\s+(property)="(og:url)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:title']: /<meta\s+(property)="(og:title)"\s+content="([^"]*)"\s*\/?>/g,
   ['og:description']: /<meta\s+(property)="(og:description)"\s+content="([^"]*)"\s*\/?>/g,
@@ -55,6 +62,10 @@ export async function replaceHtmlMetas(
       metaDescription: {
         data: METAS_CONFIG.metaDescription(entity),
         regEx: REGEX.metaDescription,
+      },
+      metaKeywords: {
+        data: METAS_CONFIG.metaKeywords(entity),
+        regEx: REGEX.metaKeywords,
       },
       ['og:url']: {
         data: METAS_CONFIG['og:url'](href, subPath),
@@ -148,9 +159,6 @@ export async function replaceHtmlMetas(
     return html
   }
 }
-
-type NestedMetadata = string | number | boolean | string[] | { [key: string]: NestedMetadata }
-type Metadata = Record<string, NestedMetadata>
 
 const encodeWhateverType = (value: NestedMetadata): NestedMetadata => {
   switch (typeof value) {

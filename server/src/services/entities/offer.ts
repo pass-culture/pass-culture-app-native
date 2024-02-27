@@ -1,67 +1,79 @@
 import { env } from '../../libs/environment/env'
 
-import { EntityType, TwitterCard } from './types'
+import { EntityType, OfferData, TwitterCard } from './types'
 
 const { DEEPLINK_PROTOCOL } = env
 
-export const OFFER: EntityType = {
+export const OFFER: EntityType<OfferData> = {
   API_MODEL_NAME: 'offer',
   METAS_CONFIG: {
-    title(entity: Record<string, unknown>) {
-      return entity.name as string
+    title(entity) {
+      return entity.name
     },
-    metaTitle(entity: Record<string, unknown>) {
-      return entity.name as string
+    metaTitle(entity) {
+      return entity.name
     },
-    metaDescription(entity: Record<string, unknown>) {
+    metaDescription(entity) {
       return entity.description as string
     },
-    ['og:url'](href: string, subPath: string) {
+    metaKeywords(entity) {
+      const extraData = entity.extraData || {}
+      const keywords = [
+        entity.subcategoryId.replaceAll('_', ' '),
+        extraData.musicType,
+        extraData.musicSubType,
+        extraData.showType,
+        extraData.showSubType,
+      ].filter((keyword) => !!keyword)
+
+      return keywords.join(', ')
+    },
+    ['og:url'](href, subPath) {
       return `${href}${subPath}`
     },
-    ['og:title'](entity: Record<string, unknown>) {
-      return entity.name as string
+    ['og:title'](entity) {
+      return entity.name
     },
-    ['og:description'](entity: Record<string, unknown>) {
+    ['og:description'](entity) {
       return entity.description as string
     },
-    ['og:image'](entity: Record<string, unknown>) {
-      return (entity.image as Record<string, string>)?.url as string
+    ['og:image'](entity) {
+      return entity.image?.url as string
     },
-    ['og:image:alt'](entity: Record<string, unknown>) {
-      return entity.name as string
+    ['og:image:alt'](entity) {
+      return entity.name
     },
     ['twitter:card']() {
       return TwitterCard.summary
     },
-    ['twitter:url'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['twitter:url'](entity, href, subPath) {
       return `${href}${subPath}`
     },
-    ['twitter:title'](entity: Record<string, unknown>) {
-      return entity.name as string
+    ['twitter:title'](entity) {
+      return entity.name
     },
-    ['twitter:description'](entity: Record<string, unknown>) {
+    ['twitter:description'](entity) {
       return entity.description as string
     },
-    ['twitter:image'](entity: Record<string, unknown>) {
-      return (entity.image as Record<string, string>)?.url as string
+    ['twitter:image'](entity) {
+      return entity.image?.url as string
     },
-    ['twitter:image:alt'](entity: Record<string, unknown>) {
-      return entity.name as string
+    ['twitter:image:alt'](entity) {
+      return entity.name
     },
-    ['twitter:app:url:iphone'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['twitter:app:url:iphone'](entity, href, subPath) {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
-    ['twitter:app:url:ipad'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['twitter:app:url:ipad'](entity, href, subPath) {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
-    ['twitter:app:url:googleplay'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['twitter:app:url:googleplay'](entity, href, subPath) {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
-    ['al:ios:url'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['al:ios:url'](entity, href, subPath) {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
-    ['al:android:url'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['al:android:url'](entity, href, subPath) {
       return `${DEEPLINK_PROTOCOL}${href}${subPath}`
     },
   },

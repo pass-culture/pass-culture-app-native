@@ -7,6 +7,7 @@ export const TEST_HTML = `<!doctype html>
     <meta name="description"
           content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture."/>
     <meta name="author" content="pass Culture"/>
+    <meta name="keywords" content="pass Culture" />
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://app.testing.passculture.team"/>
     <meta property="og:title" content="pass Culture"/>
