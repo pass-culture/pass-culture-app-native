@@ -83,6 +83,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         initialRegion={defaultCoordinates}
         mapPadding={padding}
         rotateEnabled={false}
+        pitchEnabled={false}
         onRegionChangeComplete={handleRegionChangeComplete}
         renderCluster={(props) => <VenueMapCluster {...props} />}
         testID="venue-map-view">
