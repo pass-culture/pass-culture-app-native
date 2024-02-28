@@ -158,6 +158,20 @@ describe('OffersModule', () => {
       })
     })
   })
+
+  it('should trigger logEvent "ConsultOffer" when clicking on offer', () => {
+    renderOffersModule({ ...props })
+
+    fireEvent.press(screen.getAllByText('I want something more')[0])
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId: 102272,
+      from: 'home',
+      moduleName: 'Module title',
+      homeEntryId: 'fakeEntryId',
+      moduleId: 'fakeModuleId',
+    })
+  })
 })
 
 const renderOffersModule = (additionalProps: Partial<OffersModuleProps> = {}) =>

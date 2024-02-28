@@ -31,7 +31,7 @@ import { Subcategory } from 'libs/subcategories/types'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, fireEvent, waitForModalToShow } from 'tests/utils'
+import { act, render, screen, fireEvent, waitForModalToShow, within } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
 
@@ -470,6 +470,21 @@ describe('<OfferContent />', () => {
 
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
       })
+
+      it('should trigger ConsultOffer from same artist playlist when clicking on offer', async () => {
+        renderOfferContent({})
+
+        await act(async () => {
+          fireEvent.press(screen.getAllByText('Manga Série "One piece" - Tome 1')[0])
+        })
+
+        expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+          from: 'same_artist_playlist',
+          fromOfferId: 116656,
+          offerId: 12794,
+          playlistType: 'sameArtistPlaylist',
+        })
+      })
     })
 
     describe('Same category similar offers', () => {
@@ -533,6 +548,32 @@ describe('<OfferContent />', () => {
         await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+      })
+
+      it('should trigger ConsultOffer from same category similar offer playlist when clicking on offer', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        renderOfferContent({})
+
+        await act(async () => {
+          fireEvent.press(screen.getAllByText('I want something more')[0])
+        })
+
+        expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+          from: 'similar_offer',
+          call_id: '1',
+          filtered: true,
+          fromOfferId: 116656,
+          geo_located: false,
+          model_endpoint: 'default',
+          model_name: 'similar_offers_default_prod',
+          model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+          offerId: 102272,
+          playlistType: 'sameCategorySimilarOffers',
+          reco_origin: 'default',
+        })
       })
     })
 
@@ -613,6 +654,40 @@ describe('<OfferContent />', () => {
         await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
+      })
+
+      it('should trigger ConsultOffer from other categories playlist when clicking on offer', async () => {
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+
+        renderOfferContent({})
+
+        await act(async () => {
+          const offerPlaylists = screen.getAllByTestId('offersModuleList')
+          fireEvent.press(
+            within(offerPlaylists[offerPlaylists.length - 1]).getByText('La nuit des temps')
+          )
+        })
+
+        expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+          from: 'similar_offer',
+          call_id: '1',
+          filtered: true,
+          fromOfferId: 116656,
+          geo_located: false,
+          model_endpoint: 'default',
+          model_name: 'similar_offers_default_prod',
+          model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+          offerId: 102280,
+          playlistType: 'otherCategoriesSimilarOffers',
+          reco_origin: 'default',
+        })
       })
     })
   })

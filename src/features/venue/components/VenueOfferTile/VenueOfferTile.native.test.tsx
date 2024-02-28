@@ -4,8 +4,7 @@ import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnumv2 } from 'api/gen'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { analytics } from 'libs/analytics'
-import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
@@ -26,6 +25,7 @@ const props = {
   venueId,
   width: 100,
   height: 100,
+  handlePressOffer: jest.fn(),
 }
 
 describe('VenueOfferTile component', () => {
@@ -47,47 +47,6 @@ describe('VenueOfferTile component', () => {
         id: offerId,
         from: 'venue',
       })
-    })
-  })
-
-  it('Analytics - should log ConsultOffer that user opened the offer', async () => {
-    render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    fireEvent.press(screen.getByTestId('tileImage'))
-
-    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      offerId,
-      from: 'venue',
-      venueId,
-    })
-  })
-
-  it('should prepopulate react-query cache when clicking on offer', async () => {
-    render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-    fireEvent.press(screen.getByTestId('tileImage'))
-
-    const queryHash = JSON.stringify(['offer', offerId])
-    const query = queryCache.get(queryHash)
-
-    expect(query).not.toBeUndefined()
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(query!.state.data).toStrictEqual({
-      accessibility: {},
-      description: '',
-      expenseDomains: [],
-      id: offerId,
-      image: { url: props.thumbUrl },
-      isDigital: false,
-      isDuo: false,
-      isReleased: true,
-      isExpired: false,
-      isForbiddenToUnderage: false,
-      isSoldOut: false,
-      name: offer.name,
-      stocks: [],
-      subcategoryId: offer.subcategoryId,
-      venue: { coordinates: {} },
-      isEducational: false,
-      metadata: undefined,
     })
   })
 })
