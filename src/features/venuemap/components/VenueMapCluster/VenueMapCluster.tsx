@@ -1,6 +1,5 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
 
 import { MapPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
 import { Marker } from 'libs/maps/maps'
@@ -33,22 +32,18 @@ export const VenueMapCluster = ({ geometry, properties, onPress }: VenueMapClust
   const points = properties.point_count
 
   return (
-    <StyledMarker
+    <Marker
       key={properties.cluster_id}
       coordinate={{
         longitude: geometry.coordinates[0],
         latitude: geometry.coordinates[1],
       }}
-      points={points}
+      style={{ zIndex: points + 1 }}
       onPress={onPress}
       testID="venue-map-cluster">
       <TouchableOpacity activeOpacity={0.5}>
         <MapPinWithCounter count={points} />
       </TouchableOpacity>
-    </StyledMarker>
+    </Marker>
   )
 }
-
-const StyledMarker = styled(Marker)<{ points: number }>(({ points }) => ({
-  zIndex: points + 1,
-}))
