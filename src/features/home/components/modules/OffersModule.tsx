@@ -4,6 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useHandleOfferTile } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { SearchView } from 'features/search/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics'
@@ -36,6 +37,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
+  const { handlePressOffer } = useHandleOfferTile()
 
   const { playlistItems, nbPlaylistResults } = data ?? {
     playlistItems: [],
@@ -93,6 +95,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           homeEntryId={homeEntryId}
           width={width}
           height={height}
+          handlePressOffer={handlePressOffer}
         />
       )
     },

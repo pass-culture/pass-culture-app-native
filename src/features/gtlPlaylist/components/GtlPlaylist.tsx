@@ -5,6 +5,7 @@ import React, { useCallback } from 'react'
 import { VenueResponse } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useHandleOfferTile } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { useLogScrollHandler } from 'features/offerv2/helpers/useLogScrolHandler/useLogScrollHandler'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -25,6 +26,7 @@ interface GtlPlaylistProps {
 
 export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
   const transformOfferHits = useTransformOfferHits()
+  const { handlePressOffer } = useHandleOfferTile()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const route = useRoute<UseRouteType<'Venue'>>()
@@ -66,10 +68,19 @@ export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
           searchId={route.params?.searchId}
           moduleId={entryId}
           index={index}
+          handlePressOffer={handlePressOffer}
         />
       )
     },
-    [entryId, labelMapping, mapping, route.params?.searchId, transformOfferHits, venue?.id]
+    [
+      entryId,
+      labelMapping,
+      mapping,
+      route.params?.searchId,
+      transformOfferHits,
+      venue?.id,
+      handlePressOffer,
+    ]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)

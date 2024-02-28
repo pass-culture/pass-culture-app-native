@@ -5,6 +5,10 @@ import { OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import {
+  HandlePressOfferParams,
+  useHandleOfferTile,
+} from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { OfferPlaylist } from 'features/offerv2/components/OfferPlaylist/OfferPlaylist'
@@ -43,6 +47,7 @@ type PlaylistItemProps = {
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   apiRecoParams?: RecommendationApiParams
+  handlePressOffer: ({ offer, analyticsParams }: HandlePressOfferParams) => void
 }
 
 type RenderPlaylistItemProps = {
@@ -58,6 +63,7 @@ const renderPlaylistItem = ({
   categoryMapping,
   labelMapping,
   apiRecoParams,
+  handlePressOffer,
 }: PlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -80,6 +86,7 @@ const renderPlaylistItem = ({
         fromOfferId={offer.id}
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
+        handlePressOffer={handlePressOffer}
       />
     )
   }
@@ -94,6 +101,7 @@ export function OfferPlaylistList({
   apiRecoParamsOtherCategories,
   sameArtistPlaylist,
 }: Readonly<OfferPlaylistListProps>) {
+  const { handlePressOffer } = useHandleOfferTile()
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
@@ -200,6 +208,7 @@ export function OfferPlaylistList({
                   categoryMapping,
                   labelMapping,
                   apiRecoParams: playlist.apiRecoParams,
+                  handlePressOffer,
                 })}
                 title={playlist.title}
                 onEndReached={trackingOnHorizontalScroll}

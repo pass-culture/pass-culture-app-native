@@ -1,5 +1,6 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { HandlePressOfferParams } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { RecommendationApiParams } from 'shared/offer/types'
 
@@ -28,6 +29,7 @@ export interface OfferTileProps {
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
+  handlePressOffer: ({ offer, analyticsParams }: HandlePressOfferParams) => void
 }
 
 export interface SimilarOffersResponse {

@@ -3,7 +3,7 @@ import { PartialOffer, usePrePopulateOffer } from 'shared/offer/usePrePopulateOf
 
 type AnalyticsParams = Parameters<typeof analytics.logConsultOffer>[0]
 
-type HandlePressOfferParams = {
+export type HandlePressOfferParams = {
   offer: PartialOffer
   analyticsParams: AnalyticsParams
 }

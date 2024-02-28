@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import { PixelRatio, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useHandleOfferTile } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
 import { OfferTileProps } from 'features/offer/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -31,10 +30,9 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     venueId,
     homeEntryId,
     index,
+    handlePressOffer,
     ...offer
   } = props
-
-  const { handlePressOffer } = useHandleOfferTile()
 
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { offerId, name, distance, date, price, isDuo } = offer
