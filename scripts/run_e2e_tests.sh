@@ -79,9 +79,9 @@ ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppReca
 # shellcheck disable=SC2086
 maestro test \
   --env MAESTRO_APP_ID="$app_id" \
-  --env MAESTRO_USERNAME="dev-tests-e2e@passculture.team" \
-  --env MAESTRO_USERNAME_UNKNOWN="dev-tests-e2e-unknown@passculture.team" \
-  --env MAESTRO_NEW_USERNAME="dev-tests-e2e-new@passculture.team" \
+  --env MAESTRO_VALID_EMAIL="dev-tests-e2e@passculture.team" \
+  --env MAESTRO_INVALID_EMAIL="dev-tests-e2e-invalid@passculture.team" \
+  --env MAESTRO_UNREGISTERED_EMAIL="dev-tests-e2e-unregistered@passculture.team" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
   --env MAESTRO_PHYSICAL_OFFER="Les Petites reines" \

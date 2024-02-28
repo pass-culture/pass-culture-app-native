@@ -26,7 +26,7 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     when:
       visible:
-        id: "Ouvrir la modale de localisation depuis la recherche"
+        id: 'Ouvrir la modale de localisation depuis la recherche'
     file: 'reusableFlows/features/location/resetLoc.yml'
 - inputText: ${MAESTRO_EVENT_OFFER}
 - pressKey: Enter
@@ -85,13 +85,13 @@ appId: ${MAESTRO_APP_ID}
     direction: DOWN
 - tapOn: 'Annuler ma réservation'
 - tapOn: 'Annuler ma réservation'
-- assertVisible: "La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées"
+- assertVisible: 'La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées'
 - runFlow:
     when:
-      visible: "Réservation terminées"
+      visible: 'Réservation terminées'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferEvent.yml'
 - tapOn:
-    text: "Réservations terminées"
+    text: 'Réservations terminées'
     index: 1
 - tapOn:
     text: ${MAESTRO_EVENT_OFFER}
