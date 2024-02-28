@@ -13,6 +13,7 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { Position } from 'libs/location'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -97,6 +98,7 @@ export function OfferPlaylistList({
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+  const { sameAuthorPlaylist: sameAuthorPlaylistConfig } = useRemoteConfigContext()
 
   const {
     logSameCategoryPlaylistVerticalScroll,
@@ -134,33 +136,39 @@ export function OfferPlaylistList({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
-  let similarOffersPlaylist: SimilarOfferPlaylist[] = [
-    {
-      type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-      title: 'Dans la même catégorie',
-      offers: sameCategorySimilarOffers,
-      apiRecoParams: apiRecoParamsSameCategory,
-      handleChangePlaylistDisplay: handleChangeSameCategoryPlaylistDisplay,
-    },
-    {
-      type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-      title: 'Ça peut aussi te plaire',
-      offers: otherCategoriesSimilarOffers,
-      apiRecoParams: apiRecoParamsOtherCategories,
-      handleChangePlaylistDisplay: handleChangeOtherCategoriesPlaylistDisplay,
-    },
-  ]
+  const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
+    type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+    title: 'Dans la même catégorie',
+    offers: sameCategorySimilarOffers,
+    apiRecoParams: apiRecoParamsSameCategory,
+    handleChangePlaylistDisplay: handleChangeSameCategoryPlaylistDisplay,
+  }
 
-  if (shouldDisplaySameArtistPlaylist) {
-    similarOffersPlaylist = [
-      {
-        type: PlaylistType.SAME_ARTIST_PLAYLIST,
-        title: 'Du même auteur',
-        offers: sameArtistPlaylist,
-        handleChangePlaylistDisplay: handleChangeSameArtistPlaylistDisplay,
-      },
-      ...similarOffersPlaylist,
-    ]
+  const otherCategoriesSimilarOffersPlaylist: SimilarOfferPlaylist = {
+    type: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+    title: 'Ça peut aussi te plaire',
+    offers: otherCategoriesSimilarOffers,
+    apiRecoParams: apiRecoParamsOtherCategories,
+    handleChangePlaylistDisplay: handleChangeOtherCategoriesPlaylistDisplay,
+  }
+
+  const sameArtistOffersPlaylist: SimilarOfferPlaylist = {
+    type: PlaylistType.SAME_ARTIST_PLAYLIST,
+    title: 'Du même auteur',
+    offers: sameArtistPlaylist,
+    handleChangePlaylistDisplay: handleChangeSameArtistPlaylistDisplay,
+  }
+
+  const similarOffersPlaylist: SimilarOfferPlaylist[] = []
+  if (sameAuthorPlaylistConfig === 'withPlaylistAsFirst' && shouldDisplaySameArtistPlaylist) {
+    similarOffersPlaylist.push(sameArtistOffersPlaylist)
+  }
+  similarOffersPlaylist.push(
+    sameCategorySimilarOffersPlaylist,
+    otherCategoriesSimilarOffersPlaylist
+  )
+  if (sameAuthorPlaylistConfig === 'withPlaylistAsLast' && shouldDisplaySameArtistPlaylist) {
+    similarOffersPlaylist.push(sameArtistOffersPlaylist)
   }
 
   const shouldDisplayPlaylist =
