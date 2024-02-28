@@ -6,6 +6,5 @@ export default {
   title: 'ui/placeholders',
 }
 
-// TODO(PC-20094): Fix this story
-const BookingHit = () => <BookingHitPlaceholder />
+export const BookingHit = () => <BookingHitPlaceholder />
 BookingHit.storyName = 'BookingHitPlaceholder'
