@@ -98,7 +98,7 @@ export function OfferPlaylistList({
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const { sameAuthorPlaylist } = useRemoteConfigContext()
+  const { sameAuthorPlaylist: sameAuthorPlaylistConfig } = useRemoteConfigContext()
 
   const {
     logSameCategoryPlaylistVerticalScroll,
@@ -160,14 +160,14 @@ export function OfferPlaylistList({
   }
 
   const similarOffersPlaylist: SimilarOfferPlaylist[] = []
-  if (sameAuthorPlaylist === 'withPlaylistAsFirst' && shouldDisplaySameArtistPlaylist) {
+  if (sameAuthorPlaylistConfig === 'withPlaylistAsFirst' && shouldDisplaySameArtistPlaylist) {
     similarOffersPlaylist.push(sameArtistOffersPlaylist)
   }
   similarOffersPlaylist.push(
     sameCategorySimilarOffersPlaylist,
     otherCategoriesSimilarOffersPlaylist
   )
-  if (sameAuthorPlaylist === 'withPlaylistAsLast' && shouldDisplaySameArtistPlaylist) {
+  if (sameAuthorPlaylistConfig === 'withPlaylistAsLast' && shouldDisplaySameArtistPlaylist) {
     similarOffersPlaylist.push(sameArtistOffersPlaylist)
   }
 
