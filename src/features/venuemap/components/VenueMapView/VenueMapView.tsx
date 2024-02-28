@@ -3,7 +3,6 @@ import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Venue } from 'features/venue/types'
-import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
 import {
   calculateHorizontalDistance,
   calculateRoundRadiusInKilometers,
@@ -16,7 +15,6 @@ import { useLocation } from 'libs/location'
 import MapView, { EdgePadding, Marker, Region } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { MapPin } from 'ui/svg/icons/MapPin'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -84,7 +82,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         mapPadding={padding}
         rotateEnabled={false}
         onRegionChangeComplete={handleRegionChangeComplete}
-        renderCluster={(props) => <VenueMapCluster {...props} />}
         testID="venue-map-view">
         {geolocatedVenues.map((venue) => (
           <Marker
@@ -93,9 +90,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
               latitude: venue._geoloc.lat,
               longitude: venue._geoloc.lng,
             }}
-            onPress={handleMarkerPress}>
-            <MapPin />
-          </Marker>
+            onPress={handleMarkerPress}
+          />
         ))}
       </StyledMapView>
       {showSearchButton ? (
