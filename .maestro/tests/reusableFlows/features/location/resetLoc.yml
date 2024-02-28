@@ -1,0 +1,5 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn: "Ma position"
+- tapOn: "Partout"
+- tapOn: "Valider la localisation"

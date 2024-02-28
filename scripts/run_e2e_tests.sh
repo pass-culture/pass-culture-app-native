@@ -84,7 +84,7 @@ maestro test \
   --env MAESTRO_NEW_USERNAME="dev-tests-e2e-new@passculture.team" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
-  --env MAESTRO_PHYSICAL_OFFER="OPSIS - 1 MOIS" \
+  --env MAESTRO_PHYSICAL_OFFER="Les Petites reines" \
   --env MAESTRO_EVENT_OFFER="Jeu de piste : le cambrioleur de la butte Montmartre" \
   --env MAESTRO_MESSAGE_CODE_VALIDATION_TELEPHONE="Code de validation du telephone" \
   --env MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \

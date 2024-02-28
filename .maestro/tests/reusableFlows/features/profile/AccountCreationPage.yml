@@ -1,12 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- tapOn: "tonadresse@email.com"
 - inputText: ${MAESTRO_NEW_USERNAME}
-- tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
-    es du pass Culture."
-- tapOn:
-    id: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
-      es du pass Culture."
 - tapOn: "Continuer vers l’étape Mot de passe"
+- tapOn: "Continuer vers l’étape Mot de passe"
+- tapOn: "Ton mot de passe"
 - inputText: ${MAESTRO_PASSWORD}
 #Appui en dehors pour sortir du champ
 # TODO(PC-25008) : trouver une solution pour cliquer sans passer par la position
@@ -31,5 +29,6 @@ appId: ${MAESTRO_APP_ID}
                 start: 67%, 52%
                 end: 67%, 52%
 - tapOn: 'Continuer vers l’étape CGU & Données'
-
+- tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation*"
 - assertVisible: "CGU & Données"
+- tapOn: "J’ai lu la charte des données personnelles*"

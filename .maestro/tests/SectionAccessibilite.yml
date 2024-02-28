@@ -6,9 +6,7 @@ appId: ${MAESTRO_APP_ID}
       visible: "Respect de ta vie privée"
     file: "reusableFlows/FirstLaunch.yml" # First Launch
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonMyProfile.yml
-- scrollUntilVisible:
-    element: "Accessibilité"
-    direction: DOWN
+- scroll
 - tapOn: "Accessibilité"
 - tapOn: "Les engagements du pass Culture"
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBack.yml

@@ -13,9 +13,13 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Recherche'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
-- tapOn: 'Cinéma, films et séries'
-# TODO(PC-25008) : trouver une solution pour cliquer sans passer par le nom de l'aoffre
-- tapOn: ${MAESTRO_PHYSICAL_OFFER}
+- tapOn: "Offre, artiste, lieu culturel..."
+- inputText: ${MAESTRO_PHYSICAL_OFFER}
+- pressKey: Enter
+- tapOn:
+    label: "Sélection de la 1ère offre disponible"
+    below:
+      text: .*résultats
 - tapOn:
     id: 'Réserver l’offre'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonConnect.yml

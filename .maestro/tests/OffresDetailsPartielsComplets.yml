@@ -27,12 +27,20 @@ appId: ${MAESTRO_APP_ID}
 - pressKey: Enter
 - runFlow:
     when:
+      visible: "Ma position"
+    file: "reusableFlows/features/location/resetLoc.yml"
+- tapOn: "Rechercher des offres"
+- runFlow:
+    when:
       visible: ${MAESTRO_PHYSICAL_OFFER}
     file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    file: 'reusableFlows/features/auth/QpiEvent.yml'
 - runFlow:
     when:
       visible: 'Rechercher des offres'
@@ -41,15 +49,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Recherche'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
-
-- tapOn: 'Offre, artiste, lieu culturel...'
 - runFlow:
     when:
-      visible: 'Réinitialiser la recherche'
-    file: 'reusableFlows/features/search/SearchTextReinit.yml'
-- inputText: ${MAESTRO_EVENT_OFFER}
-- pressKey: Enter
-
+      visible: 'Réserver l`offre'
+    file: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow:
     when:
       visible: "Voir tous les filtres\_: 2 filtres actifs"

@@ -34,7 +34,10 @@ appId: ${MAESTRO_APP_ID}
     id: 'animated-icon-favorite'
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    file: 'reusableFlows/features/auth/QpiPhysical.yml'
 - runFlow:
     when:
       visible: 'Rechercher des offres'
@@ -43,8 +46,6 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Recherche'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
-- tapOn: 'Catégories'
-- tapOn: 'Cinéma, films et séries'
 - runFlow:
     when:
       visible: 'Catégories'
@@ -53,17 +54,10 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Rechercher'
     file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.yml'
-- tapOn: 'Offre, artiste, lieu culturel...'
 - runFlow:
     when:
       visible: 'Réinitialiser la recherche'
     file: 'reusableFlows/features/search/SearchTextReinit.yml'
-- inputText: ${MAESTRO_PHYSICAL_OFFER}
-- pressKey: Enter
-- runFlow:
-    when:
-      visible: ${MAESTRO_PHYSICAL_OFFER}
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferPhysic.yml'
 - tapOn:
     id: 'animated-icon-favorite'
 - tapOn:

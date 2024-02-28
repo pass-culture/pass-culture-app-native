@@ -12,7 +12,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Applications récentes"
 - tapOn: "Tout fermer"
 - launchApp:
-      appId: ${APP_ID}
+      appId: ${MAESTRO_APP_ID}
       clearState: false
 - assertVisible: "Bienvenue\_!"
 - assertVisible: "Débloque ton crédit"

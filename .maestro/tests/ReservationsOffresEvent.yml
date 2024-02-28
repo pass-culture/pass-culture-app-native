@@ -23,6 +23,11 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible: 'Réinitialiser la recherche'
     file: 'reusableFlows/features/search/SearchTextReinit.yml'
+- runFlow:
+    when:
+      visible:
+        id: "Ouvrir la modale de localisation depuis la recherche"
+    file: 'reusableFlows/features/location/resetLoc.yml'
 - inputText: ${MAESTRO_EVENT_OFFER}
 - pressKey: Enter
 - runFlow:
@@ -32,56 +37,18 @@ appId: ${MAESTRO_APP_ID}
 - runFlow: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - runFlow: reusableFlows/features/auth/ToLogin.yml # Se connecter
 - runFlow: reusableFlows/components/buttons/DoubleActionButtonConnect.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonLater.yml
 - runFlow:
     when:
-      visible: 'Rechercher des offres'
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSearchOffers.yml'
+      visible: 'Plus tard'
+    file: 'reusableFlows/features/auth/QpiEvent.yml'
 - runFlow:
     when:
-      visible: 'Recherche'
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.web.yml'
-
-- tapOn: 'Offre, artiste, lieu culturel...'
-- runFlow:
-    when:
-      visible: 'Réinitialiser la recherche'
-    file: 'reusableFlows/features/search/SearchTextReinit.yml'
-- inputText: ${MAESTRO_EVENT_OFFER}
-- pressKey: Enter
-
-- runFlow:
-    when:
-      visible: "Voir tous les filtres\_: 2 filtres actifs"
-    file: 'reusableFlows/components/buttons/SimpleActionButtonTwoFilter.yml'
-- runFlow:
-    when:
-      visible: "Voir tous les filtres\_: 1 filtre actif"
-    file: 'reusableFlows/components/buttons/SimpleActionButtonOneFilter.yml'
-
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonDateAndHour.yml
-- runFlow: reusableFlows/components/buttons/SimpleIdButtonSwitchDate.yml
-- runFlow: reusableFlows/components/buttons/SimpleActionButtonThisWeek.yml
-
+      visible: 'Réserver l`offre'
+    file: reusableFlows/components/buttons/SimpleActionButtonBookerOffer.yml
 - tapOn:
-    id: 'Interrupteur date'
-
-- runFlow:
-    when:
-      visible: 'Appliquer le filtre'
-    file: 'reusableFlows/components/buttons/SimpleActionButtonFilterApply.yml'
-
-- runFlow:
-    when:
-      visible: 'Rechercher'
-    file: 'reusableFlows/components/buttons/SimpleActionButtonSearch.yml'
-
-- tapOn:
-    text: ${MAESTRO_EVENT_OFFER}
-    index: 1
-- assertVisible: 'Voir les disponibilités'
-- tapOn: 'Voir les disponibilités'
-- tapOn: '23'
+    enabled: true
+    above:
+      text: .*€
 - assertVisible: 'Valider la date'
 - tapOn: 'Valider la date'
 - assertVisible: 'Choix des options'
@@ -117,15 +84,24 @@ appId: ${MAESTRO_APP_ID}
     element: 'Annuler ma réservation'
     direction: DOWN
 - tapOn: 'Annuler ma réservation'
-- assertVisible: 'Réservation annulée'
-# TODO trouver une solution de ne pas passer par la position - tapOn: "Voir le détail de l’offre"
+- tapOn: 'Annuler ma réservation'
+- assertVisible: "La réservation a bien été annulée. Tu pourras la retrouver dans tes réservations terminées"
+- runFlow:
+    when:
+      visible: "Réservation terminées"
+    file: 'reusableFlows/components/buttons/SimpleActionButtonSelectionOfferEvent.yml'
 - tapOn:
-    point: '49%,32%'
+    text: "Réservations terminées"
+    index: 1
 - tapOn:
-    point: '50%,34%'
+    text: ${MAESTRO_EVENT_OFFER}
+    index: 0
 - assertVisible: 'Voir les disponibilités'
 - tapOn: 'Voir les disponibilités'
-- tapOn: '23'
+- tapOn:
+    enabled: true
+    above:
+      text: .*€
 - assertVisible: 'Valider la date'
 - tapOn: 'Valider la date'
 - assertVisible: 'Choix des options'
