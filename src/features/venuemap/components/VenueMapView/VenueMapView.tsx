@@ -25,8 +25,9 @@ type Props = {
 
 const RADIUS_IN_METERS = 10000
 
-type GeolocatedVenue = Venue & {
+type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
+  venueId: number
 }
 
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
@@ -59,7 +60,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 
   const { data: venues = [] } = useGetAllVenues({ region: lastRegionSearched, radius })
   const geolocatedVenues = venues.filter(
-    (venue): venue is GeolocatedVenue => !!(venue._geoloc?.lat && venue._geoloc.lng)
+    (venue): venue is GeolocatedVenue =>
+      !!(venue.venueId && venue._geoloc?.lat && venue._geoloc.lng)
   )
 
   const handleRegionChangeComplete = (region: Region) => {
