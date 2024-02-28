@@ -18,8 +18,7 @@ const meta: ComponentMeta<typeof LoggedOutHeader> = {
 }
 export default meta
 
-// TODO(PC-17931): Fix this stories
-const Default: ComponentStory<typeof LoggedOutHeader> = () => <LoggedOutHeader />
+export const Default: ComponentStory<typeof LoggedOutHeader> = () => <LoggedOutHeader />
 Default.storyName = 'LoggedOutHeader'
 Default.parameters = {
   chromatic: {
