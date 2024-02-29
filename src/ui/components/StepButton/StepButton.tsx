@@ -42,7 +42,9 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
   const accessibilityLabel = `${label} ${iconLabel}`
 
   const isDisabled =
-    stepState === StepButtonState.DISABLED || stepState === StepButtonState.COMPLETED
+    stepState === StepButtonState.DISABLED ||
+    stepState === StepButtonState.COMPLETED ||
+    (!navigateTo && !onPress)
 
   return navigateTo ? (
     <StyledInternalTouchableLink
@@ -57,7 +59,13 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
       onPress={onPress}
       disabled={isDisabled}
       accessibilityLabel={accessibilityLabel}>
-      <ButtonContent stepState={stepState} label={label} subtitle={subtitle} Icon={Icon} />
+      <ButtonContent
+        stepState={stepState}
+        label={label}
+        subtitle={subtitle}
+        Icon={Icon}
+        withRightIcon={!!onPress}
+      />
     </StyledTouchableOpacity>
   )
 }
@@ -67,6 +75,7 @@ type ButtonContentProps = {
   label: string
   subtitle?: string
   Icon: FunctionComponent<IconInterface>
+  withRightIcon?: boolean
 }
 
 const ButtonContent: FunctionComponent<ButtonContentProps> = ({
@@ -74,11 +83,12 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
   label,
   subtitle,
   Icon,
+  withRightIcon = true,
 }) => {
   const StyleContainer = styleContainer[stepState]
 
   return (
-    <StyleContainer LeftIcon={<Icon />}>
+    <StyleContainer LeftIcon={<Icon />} RightIcon={withRightIcon ? undefined : () => null}>
       <StyledButtonText stepState={stepState}>{label}</StyledButtonText>
       {!!subtitle && <StepSubtitle stepState={stepState}>{subtitle}</StepSubtitle>}
     </StyleContainer>
@@ -138,6 +148,8 @@ const IconContainer = styled.View({ padding: getSpacing(4) })
 
 const ChildrenContainer = styled.View({
   flexDirection: 'column',
+  flex: 1,
+  paddingRight: getSpacing(4),
 })
 
 const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink)({
