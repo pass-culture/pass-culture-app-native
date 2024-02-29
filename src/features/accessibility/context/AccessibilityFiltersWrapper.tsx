@@ -1,17 +1,18 @@
 import React, { useState, useContext, useMemo, memo } from 'react'
 
+import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { DisabilitiesProperties, IAccessibilityFiltersContext } from 'features/accessibility/types'
 
 export const defaultProperties: DisabilitiesProperties = {
-  isAudioDisabilityCompliant: false,
-  isMentalDisabilityCompliant: false,
-  isMotorDisabilityCompliant: false,
-  isVisualDisabilityCompliant: false,
+  [DisplayedDisabilitiesEnum.AUDIO]: undefined,
+  [DisplayedDisabilitiesEnum.MENTAL]: undefined,
+  [DisplayedDisabilitiesEnum.MOTOR]: undefined,
+  [DisplayedDisabilitiesEnum.VISUAL]: undefined,
 }
 
 const AccessibilityFiltersContext = React.createContext<IAccessibilityFiltersContext>({
-  disabilities: { ...defaultProperties },
-  setDisabilities: () => ({}),
+  disabilities: defaultProperties,
+  setDisabilities: () => undefined,
 })
 
 export const AccessibilityFiltersWrapper = memo(function AccessibilityFiltersWrapper({
@@ -26,8 +27,9 @@ export const AccessibilityFiltersWrapper = memo(function AccessibilityFiltersWra
       disabilities,
       setDisabilities,
     }),
-    [disabilities]
+    [disabilities, setDisabilities]
   )
+
   return (
     <AccessibilityFiltersContext.Provider value={value}>
       {children}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { HandicapEnum } from 'features/accessibility/enums'
+import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { FilterBehaviour } from 'features/search/enums'
 import { useModal } from 'ui/components/modals/useModal'
@@ -17,18 +17,11 @@ export const Accessibility = ({ onClose }: Props) => {
 
   const { disabilities } = useAccessibilityFiltersContext()
 
-  const {
-    isAudioDisabilityCompliant,
-    isVisualDisabilityCompliant,
-    isMentalDisabilityCompliant,
-    isMotorDisabilityCompliant,
-  } = disabilities
-
   const disabilitiesList = [
-    { compliant: isAudioDisabilityCompliant, label: HandicapEnum.AUDIO },
-    { compliant: isVisualDisabilityCompliant, label: HandicapEnum.VISUAL },
-    { compliant: isMentalDisabilityCompliant, label: HandicapEnum.MENTAL },
-    { compliant: isMotorDisabilityCompliant, label: HandicapEnum.MOTOR },
+    { compliant: disabilities[DisplayedDisabilitiesEnum.AUDIO], label: HandicapEnum.AUDIO },
+    { compliant: disabilities[DisplayedDisabilitiesEnum.VISUAL], label: HandicapEnum.VISUAL },
+    { compliant: disabilities[DisplayedDisabilitiesEnum.MENTAL], label: HandicapEnum.MENTAL },
+    { compliant: disabilities[DisplayedDisabilitiesEnum.MOTOR], label: HandicapEnum.MOTOR },
   ]
 
   const description = disabilitiesList

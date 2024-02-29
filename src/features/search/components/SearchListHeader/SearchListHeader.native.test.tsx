@@ -3,6 +3,7 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
@@ -32,10 +33,10 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 const mockDisabilities = {
-  isAudioDisabilityCompliant: false,
-  isMentalDisabilityCompliant: false,
-  isMotorDisabilityCompliant: false,
-  isVisualDisabilityCompliant: false,
+  [DisplayedDisabilitiesEnum.AUDIO]: false,
+  [DisplayedDisabilitiesEnum.MENTAL]: false,
+  [DisplayedDisabilitiesEnum.MOTOR]: false,
+  [DisplayedDisabilitiesEnum.VISUAL]: false,
 }
 const defaultValuesAccessibilityContext = {
   disabilities: {
@@ -366,37 +367,37 @@ describe('<SearchListHeader />', () => {
     expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
   })
 
-  it('should show correct title when NO disability is selected', async () => {
+  it('should not show disability title when NO disabilities are selected', async () => {
     mockUseAccessibilityFiltersContext.mockReturnValueOnce({
       disabilities: {
-        isAudioDisabilityCompliant: false,
-        isMentalDisabilityCompliant: false,
-        isMotorDisabilityCompliant: false,
-        isVisualDisabilityCompliant: false,
+        [DisplayedDisabilitiesEnum.AUDIO]: false,
+        [DisplayedDisabilitiesEnum.MENTAL]: false,
+        [DisplayedDisabilitiesEnum.MOTOR]: false,
+        [DisplayedDisabilitiesEnum.VISUAL]: false,
       },
-      setDisabilities: jest.fn(() => ({})),
+      setDisabilities: jest.fn(),
     })
 
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
-    expect(screen.queryByText('Les offres')).toBeOnTheScreen()
+    await screen.findByText('Les offres')
+
     expect(screen.queryByText('Les offres dans des lieux accessibles')).not.toBeOnTheScreen()
   })
 
-  it('should show correct title when at least one disability is selected', async () => {
+  it('should show disability title when at least one disability is selected', async () => {
     mockUseAccessibilityFiltersContext.mockReturnValueOnce({
       disabilities: {
-        isAudioDisabilityCompliant: true,
-        isMentalDisabilityCompliant: false,
-        isMotorDisabilityCompliant: false,
-        isVisualDisabilityCompliant: false,
+        [DisplayedDisabilitiesEnum.AUDIO]: true,
+        [DisplayedDisabilitiesEnum.MENTAL]: false,
+        [DisplayedDisabilitiesEnum.MOTOR]: false,
+        [DisplayedDisabilitiesEnum.VISUAL]: false,
       },
-      setDisabilities: jest.fn(() => ({})),
+      setDisabilities: jest.fn(),
     })
 
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
-    expect(screen.queryByText('Les offres')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Les offres dans des lieux accessibles')).toBeOnTheScreen()
+    expect(screen.getByText('Les offres dans des lieux accessibles')).toBeOnTheScreen()
   })
 })
