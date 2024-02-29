@@ -1,7 +1,9 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Venue } from 'features/venue/types'
 import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
 import {
@@ -25,12 +27,14 @@ type Props = {
 
 const RADIUS_IN_METERS = 10000
 
-type GeolocatedVenue = Venue & {
+type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
+  venueId: number
 }
 
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { userLocation } = useLocation()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { height, width } = useWindowDimensions()
   const screenRatio = height / width
@@ -59,7 +63,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 
   const { data: venues = [] } = useGetAllVenues({ region: lastRegionSearched, radius })
   const geolocatedVenues = venues.filter(
-    (venue): venue is GeolocatedVenue => !!(venue._geoloc?.lat && venue._geoloc.lng)
+    (venue): venue is GeolocatedVenue =>
+      !!(venue.venueId && venue._geoloc?.lat && venue._geoloc.lng)
   )
 
   const handleRegionChangeComplete = (region: Region) => {
@@ -72,8 +77,10 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     setShowSearchButton(false)
   }
 
-  const handleMarkerPress = () => {
+  const handleMarkerPress = (venueId: number) => {
     setShowSearchButton(false)
+
+    navigate('Venue', { id: venueId })
   }
 
   return (
@@ -83,6 +90,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         initialRegion={defaultCoordinates}
         mapPadding={padding}
         rotateEnabled={false}
+        pitchEnabled={false}
         onRegionChangeComplete={handleRegionChangeComplete}
         renderCluster={(props) => <VenueMapCluster {...props} />}
         testID="venue-map-view">
@@ -93,7 +101,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
               latitude: venue._geoloc.lat,
               longitude: venue._geoloc.lng,
             }}
-            onPress={handleMarkerPress}>
+            onPress={() => handleMarkerPress(venue.venueId)}>
             <MapPin />
           </Marker>
         ))}
