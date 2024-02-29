@@ -78,8 +78,9 @@ module.exports = {
           { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
           {
             name: 'react-native',
-            importNames: ['TouchableOpacity'],
-            message: 'use ui/components/TouchableOpacity instead',
+            importNames: ['TouchableOpacity', 'Image', 'ImageBackground'],
+            message:
+              'use instead : ui/components/TouchableOpacity for TouchableOpacity. Image (|| ImageBackground) comes from our backend ? libs/resizing-image-on-demand/Image(||ImageBackground) : Image(||ImageBackground) from react-native',
           },
           {
             name: 'react-native-animatable',
@@ -165,18 +166,6 @@ module.exports = {
             message: 'use modal.spacing from theme/index.ts',
           },
           {
-            name: 'react-native',
-            importNames: ['Image'],
-            message:
-              'If images come from our backend, use libs/resizing-image-on-demand/Image instead. Otherwise you can use Image from react-native',
-          },
-          {
-            name: 'react-native',
-            importNames: ['ImageBackground'],
-            message:
-              'If images come from our backend, use libs/resizing-image-on-demand/ImageBackground instead. Otherwise you can use ImageBackground from react-native',
-          },
-          {
             name: 'react-native-fast-image',
             importNames: ['default'],
             message:
@@ -184,8 +173,7 @@ module.exports = {
           },
           {
             name: 'react-native-maps',
-            message:
-              'react-native-maps is not supported on the web. Use libs/maps/maps instead',
+            message: 'react-native-maps is not supported on the web. Use libs/maps/maps instead',
           },
         ],
         patterns: [
