@@ -11764,6 +11764,11 @@ core-js@^3.0.4, core-js@^3.8.2:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.21.0.tgz#f479dbfc3dffb035a0827602dd056839a774aa71"
   integrity sha512-YUdI3fFu4TF/2WykQ2xzSiTQdldLB4KVuL9WeAy5XONZYt5Cun/fpQvctoKbCgvPhmzADeesTk/j2Rdx77AcKQ==
 
+core-js@^3.36.0:
+  version "3.36.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.36.0.tgz#e752fa0b0b462a0787d56e9d73f80b0f7c0dde68"
+  integrity sha512-mt7+TUBbTFg5+GngsAxeKBTl5/VS0guFeJacYge9OmHb+m058UwwIm41SE9T4Den7ClatV57B6TYTuJ0CX1MAw==
+
 core-js@^3.6.5:
   version "3.19.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.3.tgz#6df8142a996337503019ff3235a7022d7cdf4559"

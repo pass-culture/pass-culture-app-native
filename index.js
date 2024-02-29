@@ -1,3 +1,4 @@
+import 'core-js/es/array/to-sorted'
 import { AppRegistry } from 'react-native'
 
 import { name as appName } from './app.json'

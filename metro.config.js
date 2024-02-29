@@ -80,6 +80,9 @@ module.exports = {
       transform: {
         experimentalImportSupport: false,
         inlineRequires: true,
+        // Fix for core-js cyclic dependency that lead to require stack exceeded error
+        // https://github.com/facebook/hermes/issues/135#issuecomment-808817771
+        nonInlinedRequires: ['../internals/inspect-source'],
       },
     }),
   },
