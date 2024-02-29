@@ -3,13 +3,14 @@ import { Button } from 'react-native'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { screen, render, fireEvent } from 'tests/utils'
+import { screen, render, fireEvent, waitForModalToShow } from 'tests/utils'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
 
 describe('<AccessibilityFiltersModal />', () => {
   it('should render modal correctly', async () => {
     renderAccessibilityFiltersModal()
+    await waitForModalToShow()
     await screen.findByText(
       'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
     )
@@ -29,6 +30,8 @@ describe('<AccessibilityFiltersModal />', () => {
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
 
+    await waitForModalToShow()
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -43,6 +46,8 @@ describe('<AccessibilityFiltersModal />', () => {
 
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
+
+    await waitForModalToShow()
 
     expect(screen).toMatchSnapshot()
   })
@@ -59,6 +64,8 @@ describe('<AccessibilityFiltersModal />', () => {
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
 
+    await waitForModalToShow()
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -73,6 +80,8 @@ describe('<AccessibilityFiltersModal />', () => {
 
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
+
+    await waitForModalToShow()
 
     expect(screen).toMatchSnapshot()
   })

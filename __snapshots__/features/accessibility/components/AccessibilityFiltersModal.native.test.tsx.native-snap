@@ -118,7 +118,7 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
           "bottom": 0,
           "height": 1334,
           "left": 0,
-          "opacity": 0.008431865647686828,
+          "opacity": 0.7,
           "position": "absolute",
           "right": 0,
           "top": 0,
@@ -159,7 +159,7 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
           "top": "auto",
           "transform": [
             {
-              "translateY": 1317.9312731799796,
+              "translateY": 0,
             },
           ],
         }
@@ -1120,7 +1120,7 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
           "bottom": 0,
           "height": 1334,
           "left": 0,
-          "opacity": 0.02092765996237698,
+          "opacity": 0.7,
           "position": "absolute",
           "right": 0,
           "top": 0,
@@ -1161,7 +1161,7 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
           "top": "auto",
           "transform": [
             {
-              "translateY": 1294.1178594431274,
+              "translateY": 0,
             },
           ],
         }
@@ -2122,7 +2122,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
           "bottom": 0,
           "height": 1334,
           "left": 0,
-          "opacity": 0,
+          "opacity": 0.7,
           "position": "absolute",
           "right": 0,
           "top": 0,
@@ -2163,7 +2163,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
           "top": "auto",
           "transform": [
             {
-              "translateY": 1334,
+              "translateY": 0,
             },
           ],
         }
@@ -3124,7 +3124,7 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
           "bottom": 0,
           "height": 1334,
           "left": 0,
-          "opacity": 0.011570533372575761,
+          "opacity": 0.7,
           "position": "absolute",
           "right": 0,
           "top": 0,
@@ -3165,7 +3165,7 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
           "top": "auto",
           "transform": [
             {
-              "translateY": 1311.9498692585485,
+              "translateY": 0,
             },
           ],
         }
@@ -4126,7 +4126,7 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
           "bottom": 0,
           "height": 1334,
           "left": 0,
-          "opacity": 0.03253824661759369,
+          "opacity": 0.7,
           "position": "absolute",
           "right": 0,
           "top": 0,
@@ -4167,7 +4167,7 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
           "top": "auto",
           "transform": [
             {
-              "translateY": 1271.9913985887572,
+              "translateY": 0,
             },
           ],
         }
