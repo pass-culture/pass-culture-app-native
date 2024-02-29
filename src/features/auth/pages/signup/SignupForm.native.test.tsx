@@ -246,7 +246,8 @@ describe('Signup Form', () => {
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         1,
         StepperOrigin.HOME,
-        PreValidationSignupStep.Email
+        PreValidationSignupStep.Email,
+        undefined
       )
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -258,7 +259,8 @@ describe('Signup Form', () => {
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         2,
         StepperOrigin.HOME,
-        PreValidationSignupStep.Password
+        PreValidationSignupStep.Password,
+        undefined
       )
 
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
@@ -270,7 +272,8 @@ describe('Signup Form', () => {
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         3,
         StepperOrigin.HOME,
-        PreValidationSignupStep.Birthday
+        PreValidationSignupStep.Birthday,
+        undefined
       )
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
@@ -285,7 +288,8 @@ describe('Signup Form', () => {
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         4,
         StepperOrigin.HOME,
-        PreValidationSignupStep.CGU
+        PreValidationSignupStep.CGU,
+        undefined
       )
 
       fireEvent.press(
@@ -299,7 +303,8 @@ describe('Signup Form', () => {
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         5,
         StepperOrigin.HOME,
-        PreValidationSignupStep.ConfirmationEmailSent
+        PreValidationSignupStep.ConfirmationEmailSent,
+        undefined
       )
     })
 
@@ -716,6 +721,98 @@ describe('Signup Form', () => {
         },
         { credentials: 'omit' }
       )
+    })
+
+    describe('analytics', () => {
+      beforeEach(() => {
+        useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
+      })
+
+      it('should trigger StepperDisplayed tracker with SSO_signup type when displaying step for sso subscription', async () => {
+        mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+          responseOptions: {
+            statusCode: 401,
+            data: signInFailureData,
+          },
+        })
+
+        renderSignupForm()
+
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          1,
+          StepperOrigin.HOME,
+          PreValidationSignupStep.Email,
+          undefined
+        )
+
+        await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          2,
+          StepperOrigin.HOME,
+          PreValidationSignupStep.Birthday,
+          'SSO_signup'
+        )
+
+        const datePicker = screen.getByTestId('date-picker-spinner-native')
+        await act(async () => {
+          fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+        })
+
+        await act(async () =>
+          fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+        )
+
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          3,
+          StepperOrigin.HOME,
+          PreValidationSignupStep.CGU,
+          'SSO_signup'
+        )
+      })
+
+      it('should trigger StepperDisplayed tracker with SSO_login type when displaying step for sso subscription and coming from login', async () => {
+        // eslint-disable-next-line local-rules/independent-mocks
+        useRoute.mockReturnValue({
+          params: {
+            accountCreationToken: 'accountCreationToken',
+            email: 'user@gmail.com',
+            from: StepperOrigin.LOGIN,
+          },
+        })
+
+        renderSignupForm()
+
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          1,
+          StepperOrigin.LOGIN,
+          PreValidationSignupStep.Email,
+          'SSO_login'
+        )
+
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          2,
+          StepperOrigin.LOGIN,
+          PreValidationSignupStep.Birthday,
+          'SSO_login'
+        )
+
+        const datePicker = screen.getByTestId('date-picker-spinner-native')
+        await act(async () => {
+          fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+        })
+
+        await act(async () =>
+          fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+        )
+
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          3,
+          StepperOrigin.LOGIN,
+          PreValidationSignupStep.CGU,
+          'SSO_login'
+        )
+      })
     })
   })
 })

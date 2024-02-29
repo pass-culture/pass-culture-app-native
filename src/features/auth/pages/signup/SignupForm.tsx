@@ -65,6 +65,9 @@ export const SignupForm: FunctionComponent = () => {
     [numberOfSteps]
   )
 
+  const ssoType = accountCreationToken ? 'SSO_login' : 'SSO_signup'
+  const stepperAnalyticsType = isSSOSubscription ? ssoType : undefined
+
   useEffect(() => {
     if (accountCreationToken) {
       goToNextStep({ accountCreationToken })
@@ -73,8 +76,9 @@ export const SignupForm: FunctionComponent = () => {
 
   useEffect(() => {
     if (params?.from && stepConfig.name) {
-      analytics.logStepperDisplayed(params.from, stepConfig.name)
+      analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.from, stepConfig.name])
 
   const headerHeight = useGetHeaderHeight()
