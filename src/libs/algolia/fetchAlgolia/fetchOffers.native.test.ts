@@ -715,52 +715,6 @@ describe('fetchOffer', () => {
     })
   })
 
-  describe('offer is new', () => {
-    it('should fetch with no numericFilters when offerIsNew is false', () => {
-      const query = 'searched query'
-      const offerIsNew = false
-
-      fetchOffers({
-        parameters: { query, offerIsNew } as SearchQueryParameters,
-        buildLocationParameterParams,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        page: 0,
-        attributesToHighlight: [],
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [['offer.prices: 0 TO 300']],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-
-    it('should fetch with numericFilters when offerIsNew is true', () => {
-      mockGetFromDate.mockReturnValueOnce(1588762412).mockReturnValueOnce(1589453612)
-      const query = 'searched query'
-      const offerIsNew = true
-
-      fetchOffers({
-        parameters: { query, offerIsNew } as SearchQueryParameters,
-        buildLocationParameterParams,
-        isUserUnderage: false,
-      })
-
-      expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEducational:false']],
-        numericFilters: [
-          ['offer.prices: 0 TO 300'],
-          ['offer.stocksDateCreated: 1588762412 TO 1589453612'],
-        ],
-        page: 0,
-        attributesToHighlight: [],
-        attributesToRetrieve: offerAttributesToRetrieve,
-        clickAnalytics: true,
-      })
-    })
-  })
-
   describe('offer price', () => {
     it('should fetch with no numericFilters when no price range is specified and offer is not free', () => {
       const query = 'searched query'

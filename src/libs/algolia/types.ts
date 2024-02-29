@@ -56,7 +56,6 @@ export type SearchQueryParameters = {
   offerGtlLevel?: GTLLevel
   offerIsDuo: boolean
   offerIsFree?: boolean
-  offerIsNew: boolean
   offerNativeCategories?: NativeCategoryIdEnumv2[]
   offerSubcategories: SubcategoryIdEnumv2[]
   isDigital: boolean

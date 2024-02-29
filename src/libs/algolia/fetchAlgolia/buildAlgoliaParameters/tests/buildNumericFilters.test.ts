@@ -8,7 +8,7 @@ const defaultBuildNumericFilters = {
   beginningDatetime: undefined,
   endingDatetime: undefined,
   offerIsFree: false,
-  offerIsNew: false,
+
   priceRange: null,
   timeRange: null,
   minPrice: '',
@@ -49,20 +49,6 @@ describe('buildNumericFilters', () => {
 
     expect(numericFilters).toEqual({
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.dates: 1682294400 TO 1682380799']],
-    })
-  })
-
-  it('should return the offers of the last 15 days and default offer prices as filter when offerIsNew is true', () => {
-    const numericFilters = buildNumericFilters({
-      ...defaultBuildNumericFilters,
-      offerIsNew: true,
-    })
-
-    expect(numericFilters).toEqual({
-      numericFilters: [
-        ['offer.prices: 0 TO 300'],
-        ['offer.stocksDateCreated: 1680998400 TO 1682294400'],
-      ],
     })
   })
 

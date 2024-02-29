@@ -13,7 +13,6 @@ export const initialSearchState: SearchState = {
   offerSubcategories: [],
   offerIsDuo: false,
   offerIsFree: false,
-  offerIsNew: false,
   isDigital: false,
   priceRange: null,
   query: '',

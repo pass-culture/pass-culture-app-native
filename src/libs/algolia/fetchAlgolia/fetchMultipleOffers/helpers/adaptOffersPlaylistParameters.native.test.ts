@@ -110,7 +110,6 @@ describe('adaptOffersPlaylistParameters', () => {
       tags: ['offre du 14 juillet spéciale pass culture', 'offre de la pentecôte'],
       hitsPerPage: 5,
       offerIsDuo: true,
-      offerIsNew: true,
       isDigital: true,
       beginningDatetime: '2020-10-01T00:00+00:00',
       endingDatetime: '2020-10-02T00:00+00:00',

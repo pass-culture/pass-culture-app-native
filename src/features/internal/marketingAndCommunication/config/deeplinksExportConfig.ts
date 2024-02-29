@@ -109,11 +109,6 @@ export const SCREENS_CONFIG: {
       required: false,
       description: 'Uniquement les offres gratuites',
     },
-    offerIsNew: {
-      type: 'boolean',
-      required: false,
-      description: 'Uniquement les nouveautés',
-    },
     offerIsDuo: {
       type: 'boolean',
       required: false,
