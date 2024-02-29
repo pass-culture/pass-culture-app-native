@@ -12,7 +12,6 @@ import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'featu
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
@@ -49,7 +48,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   })
 
   const onLogAnalytics = useCallback(() => {
-    firebaseAnalytics.logLogin({ method: 'fromSetEmail' })
+    analytics.logLoginClicked({ from: 'SetEmail' })
   }, [])
 
   const goToNextStepCallback = useCallback(

@@ -4,8 +4,6 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OauthStateResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { analytics } from 'libs/analytics'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -140,7 +138,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(loginButton)
     })
 
-    expect(firebaseAnalytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
+    expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'SetEmail' })
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
