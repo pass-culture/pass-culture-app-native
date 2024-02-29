@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent, useCallback, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
@@ -13,7 +13,6 @@ import { OfferPlaceOld } from 'features/offer/components/OfferPlaceOld/OfferPlac
 import { OfferPlaylistListOld } from 'features/offer/components/OfferPlaylistListOld/OfferPlaylistListOld'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
-import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
@@ -21,6 +20,7 @@ import { getFormattedDates, capitalizeFirstLetter } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Offer, RecommendationApiParams } from 'shared/offer/types'
+import { useTrackSeenDuration } from 'shared/useTrackSeenDuration'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Hero } from 'ui/components/hero/Hero'
@@ -74,7 +74,11 @@ export const OfferBody: FunctionComponent<Props> = ({
     ScrollTo: withdrawalDetailsScrollsTo,
   } = useScrollWhenAccordionItemOpens(scrollViewRef)
 
-  useTrackOfferSeenDuration(offer.id)
+  const trackDurationAnalytics = useCallback(
+    (duration: number) => analytics.logOfferSeenDuration(offer.id, duration),
+    [offer.id]
+  )
+  useTrackSeenDuration(trackDurationAnalytics)
 
   return (
     <Container
