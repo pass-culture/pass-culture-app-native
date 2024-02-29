@@ -8,7 +8,11 @@ import {
 } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { DeeplinksHistory } from 'features/internal/marketingAndCommunication/components/DeeplinksHistory'
 import { DeeplinksResult } from 'features/internal/marketingAndCommunication/components/DeeplinksResult'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import {
+  PageHeaderWithoutPlaceholder,
+  useGetHeaderHeight,
+} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -19,6 +23,7 @@ export const DeeplinksGenerator = () => {
   const [links, setLinks] = useState<Array<GeneratedDeeplink>>(linksInitialState)
   const [keepHistory, setKeepHistory] = useState(false)
   const { showErrorSnackBar } = useSnackBarContext()
+  const headerHeight = useGetHeaderHeight()
 
   const onGenerate = useCallback(
     (generatedDeeplink: GeneratedDeeplink) => {
@@ -53,24 +58,31 @@ export const DeeplinksGenerator = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="Envie de tout envie de lien&nbsp;?" />
-      <Spacer.Column numberOfSpaces={6} />
-      <Row>
-        <Left>
-          <DeeplinksGeneratorForm onCreate={onGenerate} />
-        </Left>
-        <Right>
-          <DeeplinksResult result={result} />
-          <Divider />
-          <DeeplinksHistory
-            history={links}
-            keepHistory={keepHistory}
-            setKeepHistory={setKeepHistory}
-            rehydrateHistory={rehydratedHistory}
-          />
-        </Right>
-      </Row>
-      <Spacer.Column numberOfSpaces={4} />
+      <PageHeaderWithoutPlaceholder
+        title="Envie de tout envie de lien&nbsp;?"
+        shouldDisplayBackButton
+      />
+      <Placeholder height={headerHeight} />
+      <Container>
+        <Spacer.Column numberOfSpaces={6} />
+        <Row>
+          <Left>
+            <DeeplinksGeneratorForm onCreate={onGenerate} />
+          </Left>
+          <Right>
+            <DeeplinksResult result={result} />
+            <Divider />
+            <DeeplinksHistory
+              history={links}
+              keepHistory={keepHistory}
+              setKeepHistory={setKeepHistory}
+              rehydrateHistory={rehydratedHistory}
+            />
+          </Right>
+        </Row>
+        <Spacer.Column numberOfSpaces={4} />
+      </Container>
+      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
@@ -92,3 +104,11 @@ const Left = styled.View({
 const Right = styled.View({
   flex: 1,
 })
+
+const Container = styled.View({
+  flex: 1,
+})
+
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))
