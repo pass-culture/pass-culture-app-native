@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { Image as RNImage, ImageProps } from 'react-native'
 
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'

@@ -1,4 +1,5 @@
 import React from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { TouchableOpacity } from 'react-native'
 
 import { MapPinWithCounter } from 'features/venuemap/components/MapPinWithCounter/MapPinWithCounter'
