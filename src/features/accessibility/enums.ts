@@ -4,3 +4,10 @@ export enum HandicapEnum {
   'MOTOR' = 'handicap moteur',
   'AUDIO' = 'handicap auditif',
 }
+
+export enum DisplayedDisabilitiesEnum {
+  'VISUAL' = 'isVisualDisabilityCompliant',
+  'MENTAL' = 'isMentalDisabilityCompliant',
+  'MOTOR' = 'isMotorDisabilityCompliant',
+  'AUDIO' = 'isAudioDisabilityCompliant',
+}

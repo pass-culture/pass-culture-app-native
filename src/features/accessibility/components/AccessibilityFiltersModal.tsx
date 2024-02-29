@@ -1,3 +1,4 @@
+import isEqual from 'lodash/isEqual'
 import React, { useState, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -6,7 +7,7 @@ import {
   useAccessibilityFiltersContext,
   defaultProperties,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { HandicapEnum } from 'features/accessibility/enums'
+import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
@@ -39,11 +40,11 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   const { modal } = useTheme()
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
 
-  const [disabilitiesProperties, setDisabilitiesProperties] =
-    useState<DisabilitiesProperties>(defaultProperties)
+  const [displayedDisabilities, setDisplayedDisabilities] =
+    useState<DisabilitiesProperties>(disabilities)
 
   useEffect(() => {
-    setDisabilitiesProperties(disabilities)
+    setDisplayedDisabilities(disabilities)
   }, [disabilities])
 
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
@@ -51,27 +52,26 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   const handleCloseModal = () => {
     hideModal()
     onClose?.()
-    if (JSON.stringify(disabilities) !== JSON.stringify(disabilitiesProperties))
-      setDisabilitiesProperties(disabilities)
+    if (!isEqual(disabilities, displayedDisabilities)) setDisplayedDisabilities(disabilities)
   }
 
   const handleFilterReset = () => {
-    setDisabilitiesProperties(defaultProperties)
+    setDisplayedDisabilities(defaultProperties)
   }
 
   const capitalizeFirstLetter = (word: string) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  const handleOnPress = (disability: string, checked: boolean) => {
-    setDisabilitiesProperties({
-      ...disabilitiesProperties,
-      [disability]: !checked,
+  const handleOnPress = (disability: string) => {
+    setDisplayedDisabilities({
+      ...displayedDisabilities,
+      [disability]: !displayedDisabilities[disability],
     })
   }
 
   const handleSubmit = () => {
-    setDisabilities(disabilitiesProperties)
+    setDisabilities(displayedDisabilities)
     hideModal()
   }
 
@@ -110,47 +110,27 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
         <Spacer.Column numberOfSpaces={8} />
         <StyledCheckBox>
           <Checkbox
-            isChecked={!!disabilitiesProperties?.isVisualDisabilityCompliant}
+            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}
             label={capitalizeFirstLetter(HandicapEnum.VISUAL)}
-            onPress={() =>
-              handleOnPress(
-                'isVisualDisabilityCompliant',
-                !!disabilitiesProperties?.isVisualDisabilityCompliant
-              )
-            }
+            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.VISUAL)}
           />
           <Spacer.Column numberOfSpaces={6} />
           <Checkbox
-            isChecked={!!disabilitiesProperties?.isMentalDisabilityCompliant}
+            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MENTAL]}
             label={capitalizeFirstLetter(HandicapEnum.MENTAL)}
-            onPress={() =>
-              handleOnPress(
-                'isMentalDisabilityCompliant',
-                !!disabilitiesProperties?.isMentalDisabilityCompliant
-              )
-            }
+            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MENTAL)}
           />
           <Spacer.Column numberOfSpaces={6} />
           <Checkbox
-            isChecked={!!disabilitiesProperties?.isMotorDisabilityCompliant}
+            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.MOTOR]}
             label={capitalizeFirstLetter(HandicapEnum.MOTOR)}
-            onPress={() =>
-              handleOnPress(
-                'isMotorDisabilityCompliant',
-                !!disabilitiesProperties?.isMotorDisabilityCompliant
-              )
-            }
+            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.MOTOR)}
           />
           <Spacer.Column numberOfSpaces={6} />
           <Checkbox
-            isChecked={!!disabilitiesProperties?.isAudioDisabilityCompliant}
+            isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.AUDIO]}
             label={capitalizeFirstLetter(HandicapEnum.AUDIO)}
-            onPress={() =>
-              handleOnPress(
-                'isAudioDisabilityCompliant',
-                !!disabilitiesProperties?.isAudioDisabilityCompliant
-              )
-            }
+            onPress={() => handleOnPress(DisplayedDisabilitiesEnum.AUDIO)}
           />
         </StyledCheckBox>
       </AccessibilityFiltersContainer>
