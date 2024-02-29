@@ -7,7 +7,7 @@ export function ChangeEmailDisclaimer() {
   return (
     <React.Fragment>
       <Typo.CaptionNeutralInfo>
-        Pour modifier ton adress e-mail, tu dois d’abord faire une demande de modification.
+        Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
       </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.CaptionNeutralInfo>
