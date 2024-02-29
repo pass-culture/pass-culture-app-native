@@ -1,4 +1,5 @@
 import React from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { Animated, TouchableOpacity } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
