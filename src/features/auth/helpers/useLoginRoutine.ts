@@ -6,7 +6,7 @@ import {
 } from 'features/auth/context/AuthContext'
 import { useResetContexts } from 'features/auth/context/useResetContexts'
 import { analytics } from 'libs/analytics'
-import { LoginRoutineMethod } from 'libs/analytics/logEventAnalytics'
+import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 
@@ -21,12 +21,12 @@ export function useLoginRoutine() {
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
 
-  return async (response: SigninResponse, method: LoginRoutineMethod) => {
+  return async (response: SigninResponse, method: LoginRoutineMethod, analyticsType?: SSOType) => {
     connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     scheduleAccessTokenRemoval(response.accessToken)
-    analytics.logLogin({ method })
+    analytics.logLogin({ method, type: analyticsType })
     setIsLoggedIn(true)
     resetContexts()
   }

@@ -6,6 +6,7 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
 import { analytics } from 'libs/analytics'
+import { SSOType } from 'libs/analytics/logEventAnalytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
@@ -59,6 +60,12 @@ describe('useLoginRoutine', () => {
     await renderUseLoginRoutine()
 
     expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
+  })
+
+  it('should log login analytics with sso type when defined', async () => {
+    await renderUseLoginRoutine('SSO_login')
+
+    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method, type: 'SSO_login' })
   })
 
   it('should save access token to storage', async () => {
@@ -115,7 +122,7 @@ describe('useLoginRoutine', () => {
   })
 })
 
-const renderUseLoginRoutine = async () => {
+const renderUseLoginRoutine = async (analyticsType?: SSOType) => {
   const { result } = renderHook(useLoginRoutine, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
@@ -127,7 +134,8 @@ const renderUseLoginRoutine = async () => {
         accountState: AccountState.ACTIVE,
         refreshToken: 'refresh_token',
       },
-      method
+      method,
+      analyticsType
     )
   })
 }
