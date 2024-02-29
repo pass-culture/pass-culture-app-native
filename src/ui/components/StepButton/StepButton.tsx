@@ -42,7 +42,9 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
   const accessibilityLabel = `${label} ${iconLabel}`
 
   const isDisabled =
-    stepState === StepButtonState.DISABLED || stepState === StepButtonState.COMPLETED
+    stepState === StepButtonState.DISABLED ||
+    stepState === StepButtonState.COMPLETED ||
+    (!navigateTo && !onPress)
 
   return navigateTo ? (
     <StyledInternalTouchableLink

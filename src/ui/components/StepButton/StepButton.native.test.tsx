@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
@@ -24,6 +25,12 @@ describe('StepButton', () => {
 
   it('should disable StepButton for DISABLED state', () => {
     renderStepButton(StepButtonState.DISABLED)
+
+    expect(screen.getByTestId('Identification non complété')).toBeDisabled()
+  })
+
+  it('should disable the StepButton for CURRENT state when it has no behavior on press', () => {
+    renderStepButton(StepButtonState.CURRENT, {})
 
     expect(screen.getByTestId('Identification non complété')).toBeDisabled()
   })
@@ -68,7 +75,12 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
   />
 )
 
-function renderStepButton(stepState: StepButtonState) {
+function renderStepButton(
+  stepState: StepButtonState,
+  additionalProps: { navigateTo?: InternalNavigationProps['navigateTo']; onPress?: () => void } = {
+    navigateTo: { screen: 'IdentificationFork' },
+  }
+) {
   const identificationStep: StepDetails = {
     stepState,
     title: 'Identification',
@@ -79,5 +91,5 @@ function renderStepButton(stepState: StepButtonState) {
       retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
     },
   }
-  render(<StepButton step={identificationStep} />)
+  render(<StepButton step={identificationStep} {...additionalProps} />)
 }
