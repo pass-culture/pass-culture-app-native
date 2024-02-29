@@ -1,4 +1,6 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import {
@@ -13,9 +15,28 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     searchState: mockSearchState,
   }),
 }))
+
 const TODAY = new Date().toISOString()
 
+const mockDisabilities = {
+  [DisplayedDisabilitiesEnum.AUDIO]: false,
+  [DisplayedDisabilitiesEnum.MENTAL]: false,
+  [DisplayedDisabilitiesEnum.MOTOR]: false,
+  [DisplayedDisabilitiesEnum.VISUAL]: false,
+}
+const defaultValuesAccessibilityContext = {
+  disabilities: mockDisabilities,
+  setDisabilities: jest.fn(),
+}
+
+jest.mock('features/accessibility/context/AccessibilityFiltersWrapper')
+const mockUseAccessibilityFiltersContext = useAccessibilityFiltersContext as jest.Mock
+
 describe('useAppliedFilters', () => {
+  beforeEach(() => {
+    mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
+  })
+
   it('should return an array with Localisation by default', () => {
     const filterTypes = useAppliedFilters(mockSearchState)
 
@@ -112,6 +133,42 @@ describe('useAppliedFilters', () => {
         FILTER_TYPES.OFFER_DUO,
         FILTER_TYPES.DATES_HOURS,
       ])
+    })
+
+    it('with Localisation and Accessibility when at least one accessibility property is selected', () => {
+      mockUseAccessibilityFiltersContext.mockReturnValueOnce({
+        disabilities: {
+          [DisplayedDisabilitiesEnum.AUDIO]: true,
+          [DisplayedDisabilitiesEnum.MENTAL]: false,
+          [DisplayedDisabilitiesEnum.MOTOR]: false,
+          [DisplayedDisabilitiesEnum.VISUAL]: false,
+        },
+        setDisabilities: jest.fn(),
+      })
+
+      mockSearchState = initialSearchState
+
+      const filterTypes = useAppliedFilters(mockSearchState)
+
+      expect(filterTypes).toEqual([FILTER_TYPES.LOCATION, FILTER_TYPES.ACCESSIBILITY])
+    })
+
+    it('with Localisation but without Accessibility when no accessibility property is selected', () => {
+      mockUseAccessibilityFiltersContext.mockReturnValueOnce({
+        disabilities: {
+          [DisplayedDisabilitiesEnum.AUDIO]: false,
+          [DisplayedDisabilitiesEnum.MENTAL]: false,
+          [DisplayedDisabilitiesEnum.MOTOR]: false,
+          [DisplayedDisabilitiesEnum.VISUAL]: false,
+        },
+        setDisabilities: jest.fn(),
+      })
+
+      mockSearchState = initialSearchState
+
+      const filterTypes = useAppliedFilters(mockSearchState)
+
+      expect(filterTypes).toEqual([FILTER_TYPES.LOCATION])
     })
   })
 })

@@ -4,6 +4,7 @@ import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
@@ -57,6 +58,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venuesUserData,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
+  const { disabilities } = useAccessibilityFiltersContext()
   const {
     searchState: { searchId, venue, offerCategories },
   } = useSearch()
@@ -78,10 +80,13 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
+  const shouldDisplayAccessibilityTitle =
+    Object.values(disabilities).filter((disability) => disability).length > 0
   const venueTitle = venuesUserData?.[0]?.venue_playlist_title || 'Les lieux culturels'
-  const offerTitle = 'Les offres'
+  const offerTitle = shouldDisplayAccessibilityTitle
+    ? 'Les offres dans des lieux accessibles'
+    : 'Les offres'
   const shouldDisplayVenuesPlaylist = !venue && !!venues?.length
-
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()

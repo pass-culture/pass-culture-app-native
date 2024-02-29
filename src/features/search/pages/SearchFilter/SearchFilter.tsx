@@ -4,6 +4,10 @@ import { ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import {
+  useAccessibilityFiltersContext,
+  defaultProperties,
+} from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import Section from 'features/search/components/sections'
@@ -29,6 +33,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
+  const { setDisabilities } = useAccessibilityFiltersContext()
   const enabledAccessibilityFilter = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER
   )
@@ -100,6 +105,7 @@ export const SearchFilter: React.FC = () => {
         timeRange: null,
       },
     })
+    setDisabilities(defaultProperties)
     logReinitializeFilters()
   }, [
     dispatch,
@@ -109,6 +115,7 @@ export const SearchFilter: React.FC = () => {
     place,
     aroundPlaceRadius,
     aroundMeRadius,
+    setDisabilities,
   ])
 
   const hasDuoOfferToggle = useMemo(() => {

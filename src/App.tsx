@@ -10,6 +10,7 @@ import CodePush from 'react-native-code-push'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
+import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
@@ -90,31 +91,33 @@ const App: FunctionComponent = function () {
                 <SettingsWrapper>
                   <AuthWrapper>
                     <LocationWrapper>
-                      <FavoritesWrapper>
-                        <SearchAnalyticsWrapper>
-                          <SearchWrapper>
-                            <SnackBarProvider>
-                              <CulturalSurveyContextProvider>
-                                <SubscriptionContextProvider>
-                                  <SplashScreenProvider>
-                                    <PushNotificationsWrapper>
-                                      <ShareAppWrapper>
-                                        <OnboardingWrapper>
-                                          <OfflineModeContainer>
-                                            <ScreenErrorProvider>
-                                              <AppNavigationContainer />
-                                            </ScreenErrorProvider>
-                                          </OfflineModeContainer>
-                                        </OnboardingWrapper>
-                                      </ShareAppWrapper>
-                                    </PushNotificationsWrapper>
-                                  </SplashScreenProvider>
-                                </SubscriptionContextProvider>
-                              </CulturalSurveyContextProvider>
-                            </SnackBarProvider>
-                          </SearchWrapper>
-                        </SearchAnalyticsWrapper>
-                      </FavoritesWrapper>
+                      <AccessibilityFiltersWrapper>
+                        <FavoritesWrapper>
+                          <SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <PushNotificationsWrapper>
+                                        <ShareAppWrapper>
+                                          <OnboardingWrapper>
+                                            <OfflineModeContainer>
+                                              <ScreenErrorProvider>
+                                                <AppNavigationContainer />
+                                              </ScreenErrorProvider>
+                                            </OfflineModeContainer>
+                                          </OnboardingWrapper>
+                                        </ShareAppWrapper>
+                                      </PushNotificationsWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
+                          </SearchAnalyticsWrapper>
+                        </FavoritesWrapper>
+                      </AccessibilityFiltersWrapper>
                     </LocationWrapper>
                   </AuthWrapper>
                 </SettingsWrapper>

@@ -307,7 +307,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               >
                 <button
                   aria-label="Lieu culturel"
-                  class="c3 c4 sc-cwHptR c4"
+                  class="c3 c4 sc-jlZhew c4"
                   data-testid="Lieu culturel"
                   tabindex="0"
                   title="Lieu culturel"
@@ -328,7 +328,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               >
                 <button
                   aria-label="Catégories"
-                  class="c3 c4 sc-cwHptR c4"
+                  class="c3 c4 sc-jlZhew c4"
                   data-testid="Catégories"
                   tabindex="0"
                   title="Catégories"
@@ -349,7 +349,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               >
                 <button
                   aria-label="Prix"
-                  class="c3 c4 sc-cwHptR c4"
+                  class="c3 c4 sc-jlZhew c4"
                   data-testid="Prix"
                   tabindex="0"
                   title="Prix"
@@ -370,7 +370,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               >
                 <button
                   aria-label="Dates & heures"
-                  class="c3 c4 sc-cwHptR c4"
+                  class="c3 c4 sc-jlZhew c4"
                   data-testid="Dates & heures"
                   tabindex="0"
                   title="Dates & heures"
@@ -779,7 +779,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             >
               <button
                 aria-label="Lieu culturel"
-                class="c3 c4 sc-cwHptR c4"
+                class="c3 c4 sc-jlZhew c4"
                 data-testid="Lieu culturel"
                 tabindex="0"
                 title="Lieu culturel"
@@ -800,7 +800,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             >
               <button
                 aria-label="Catégories"
-                class="c3 c4 sc-cwHptR c4"
+                class="c3 c4 sc-jlZhew c4"
                 data-testid="Catégories"
                 tabindex="0"
                 title="Catégories"
@@ -821,7 +821,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             >
               <button
                 aria-label="Prix"
-                class="c3 c4 sc-cwHptR c4"
+                class="c3 c4 sc-jlZhew c4"
                 data-testid="Prix"
                 tabindex="0"
                 title="Prix"
@@ -842,7 +842,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             >
               <button
                 aria-label="Dates & heures"
-                class="c3 c4 sc-cwHptR c4"
+                class="c3 c4 sc-jlZhew c4"
                 data-testid="Dates & heures"
                 tabindex="0"
                 title="Dates & heures"
