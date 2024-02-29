@@ -37,6 +37,7 @@ import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
+import { Camera } from 'ui/svg/icons/Camera'
 import { Check } from 'ui/svg/icons/Check'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
@@ -185,6 +186,7 @@ export const SecondaryAndBiggerIcons = {
   Booking,
   Calendar,
   CalendarS,
+  Camera,
   Check,
   Close,
   Code,
