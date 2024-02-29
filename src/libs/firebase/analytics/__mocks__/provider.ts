@@ -7,6 +7,5 @@ export const analyticsProvider: AnalyticsProvider = {
   setDefaultEventParameters: jest.fn(),
   setUserId: jest.fn(),
   logScreenView: jest.fn(),
-  logLogin: jest.fn(),
   logEvent: jest.fn(),
 }

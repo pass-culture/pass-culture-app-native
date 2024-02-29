@@ -5,6 +5,7 @@ import * as RefreshAccessTokenAPI from 'api/refreshAccessToken'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
+import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
@@ -57,7 +58,7 @@ describe('useLoginRoutine', () => {
   it('should log login analytics', async () => {
     await renderUseLoginRoutine()
 
-    expect(firebaseAnalytics.logLogin).toHaveBeenNthCalledWith(1, { method })
+    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
   })
 
   it('should save access token to storage', async () => {

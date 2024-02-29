@@ -5,7 +5,6 @@ export const firebaseAnalytics: typeof actualAnalytics = {
   enableCollection: jest.fn(),
   getAppInstanceId: jest.fn().mockReturnValue('firebase_pseudo_id'),
   logEvent: jest.fn(),
-  logLogin: jest.fn(),
   logScreenView: jest.fn(),
   setDefaultEventParameters: jest.fn(),
   setUserId: jest.fn(),

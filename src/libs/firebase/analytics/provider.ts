@@ -42,9 +42,6 @@ export const firebaseAnalyticsProvider: AnalyticsProvider = {
       locationType,
     })
   },
-  async logLogin({ method }) {
-    firebaseAnalytics.logEvent('login', { method })
-  },
   async logEvent(name, params) {
     const newParams = params ? prepareLogEventParams(params) : {}
     newParams['agentType'] = AGENT_TYPE
