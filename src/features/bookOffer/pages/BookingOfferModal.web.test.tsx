@@ -1,3 +1,4 @@
+import { ComponentProps } from 'react'
 import React from 'react'
 
 import { Step } from 'features/bookOffer/context/reducer'
@@ -5,11 +6,11 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
-
-jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 
@@ -67,9 +68,18 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
+    beforeEach(() => {
+      mockServer.getApiV1(`/offer/${mockOffer.id}`, mockOffer)
+    })
+
     it('should not have basic accessibility issues for step "date"', async () => {
       mockStep = Step.DATE
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = renderBookingOfferModalComponent({
+        offerId: mockOffer.id,
+        visible: true,
+      })
+
+      await screen.findByText('Choix des options')
 
       const results = await checkAccessibilityFor(container)
 
@@ -78,7 +88,12 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "hour"', async () => {
       mockStep = Step.HOUR
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = renderBookingOfferModalComponent({
+        offerId: mockOffer.id,
+        visible: true,
+      })
+
+      await screen.findByText('Choix des options')
 
       const results = await checkAccessibilityFor(container)
 
@@ -87,7 +102,12 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "duo"', async () => {
       mockStep = Step.DUO
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = renderBookingOfferModalComponent({
+        offerId: mockOffer.id,
+        visible: true,
+      })
+
+      await screen.findByText('Choix des options')
 
       const results = await checkAccessibilityFor(container)
 
@@ -96,7 +116,12 @@ describe('<BookingOfferModal/>', () => {
 
     it('should not have basic accessibility issues for step "confirmation"', async () => {
       mockStep = Step.CONFIRMATION
-      const { container } = render(<BookingOfferModalComponent offerId={mockOffer.id} visible />)
+      const { container } = renderBookingOfferModalComponent({
+        offerId: mockOffer.id,
+        visible: true,
+      })
+
+      await screen.findByText('Détails de la réservation')
 
       const results = await checkAccessibilityFor(container)
 
@@ -104,9 +129,13 @@ describe('<BookingOfferModal/>', () => {
     })
 
     it('should not have basic accessibility issues for ended used booking', async () => {
-      const { container } = render(
-        <BookingOfferModalComponent offerId={mockOffer.id} isEndedUsedBooking visible />
-      )
+      const { container } = renderBookingOfferModalComponent({
+        offerId: mockOffer.id,
+        visible: true,
+        isEndedUsedBooking: true,
+      })
+
+      await screen.findByText('Mes réservations terminées')
 
       const results = await checkAccessibilityFor(container)
 
@@ -114,3 +143,9 @@ describe('<BookingOfferModal/>', () => {
     })
   })
 })
+
+const renderBookingOfferModalComponent = (
+  props: ComponentProps<typeof BookingOfferModalComponent>
+) => {
+  return render(reactQueryProviderHOC(<BookingOfferModalComponent {...props} />))
+}
