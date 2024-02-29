@@ -7,8 +7,6 @@ export type DisabilitiesProperties = {
   isVisualDisabilityCompliant: boolean | undefined
 }
 
-export type DisabilitiesPropertiesSetter = Dispatch<SetStateAction<boolean>>
-
 export type IAccessibilityFiltersContext = {
   disabilities: DisabilitiesProperties
   setDisabilities: Dispatch<SetStateAction<DisabilitiesProperties>>
