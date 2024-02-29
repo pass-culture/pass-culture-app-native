@@ -3017,6 +3017,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   firstName?: string | null
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  hasPassword: boolean
     /**
    * @type {number}
    * @memberof UserProfileResponse

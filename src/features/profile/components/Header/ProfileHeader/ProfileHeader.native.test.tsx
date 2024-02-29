@@ -11,6 +11,7 @@ import { render, screen } from 'tests/utils'
 const user: UserProfileResponse = {
   bookedOffers: {},
   email: 'email2@domain.ext',
+  hasPassword: true,
   firstName: 'Jean',
   isBeneficiary: true,
   birthDate: '2003-01-01',

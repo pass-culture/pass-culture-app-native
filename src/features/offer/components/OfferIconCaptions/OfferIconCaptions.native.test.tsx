@@ -99,6 +99,7 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 const userProfileAPIResponse: UserProfileResponse = {
   bookedOffers: {},
   email: 'email@domain.ext',
+  hasPassword: true,
   firstName: 'Jean',
   isBeneficiary: true,
   domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
