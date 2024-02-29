@@ -6,7 +6,7 @@ import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { FilterBehaviour } from 'features/search/enums'
 import { useModal } from 'ui/components/modals/useModal'
-import { HandicapMental } from 'ui/svg/icons/HandicapMental'
+import { VenueAccessibility } from 'ui/svg/icons/VenueAccessibility'
 
 type Props = {
   onClose?: VoidFunction
@@ -35,7 +35,7 @@ export const Accessibility = ({ onClose }: Props) => {
   return (
     <React.Fragment>
       <FilterRow
-        icon={HandicapMental}
+        icon={VenueAccessibility}
         title="Accessibilité"
         description={descriptionWithFirstLetterCapitalized}
         onPress={showModal}
