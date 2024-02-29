@@ -25,9 +25,7 @@ const mockDisabilities = {
   [DisplayedDisabilitiesEnum.VISUAL]: false,
 }
 const defaultValuesAccessibilityContext = {
-  disabilities: {
-    ...mockDisabilities,
-  },
+  disabilities: mockDisabilities,
   setDisabilities: jest.fn(),
 }
 
@@ -148,9 +146,7 @@ describe('useAppliedFilters', () => {
         setDisabilities: jest.fn(),
       })
 
-      mockSearchState = {
-        ...initialSearchState,
-      }
+      mockSearchState = initialSearchState
 
       const filterTypes = useAppliedFilters(mockSearchState)
 
@@ -168,9 +164,7 @@ describe('useAppliedFilters', () => {
         setDisabilities: jest.fn(),
       })
 
-      mockSearchState = {
-        ...initialSearchState,
-      }
+      mockSearchState = initialSearchState
 
       const filterTypes = useAppliedFilters(mockSearchState)
 

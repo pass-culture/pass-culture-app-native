@@ -39,10 +39,8 @@ const mockDisabilities = {
   [DisplayedDisabilitiesEnum.VISUAL]: false,
 }
 const defaultValuesAccessibilityContext = {
-  disabilities: {
-    ...mockDisabilities,
-  },
-  setDisabilities: jest.fn(() => ({})),
+  disabilities: mockDisabilities,
+  setDisabilities: jest.fn(),
 }
 
 jest.mock('features/accessibility/context/AccessibilityFiltersWrapper')
