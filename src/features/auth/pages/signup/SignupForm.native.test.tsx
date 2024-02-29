@@ -49,8 +49,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 mockdate.set(CURRENT_DATE)
 
-useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
-
 describe('Signup Form', () => {
   beforeEach(() => {
     mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
@@ -59,6 +57,7 @@ describe('Signup Form', () => {
         remainingResends: 3,
       }
     )
+    useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
   })
 
   it.each`
@@ -650,10 +649,57 @@ describe('Signup Form', () => {
       })
       await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
-      expect(loginAndRedirectMock).toHaveBeenCalledWith({
-        accessToken: 'accessToken',
-        refreshToken: 'refreshToken',
+      expect(loginAndRedirectMock).toHaveBeenCalledWith(
+        {
+          accessToken: 'accessToken',
+          refreshToken: 'refreshToken',
+        },
+        'SSO_signup'
+      )
+    })
+
+    it('should login and redirect user on SSO signup success when coming from signup', async () => {
+      // eslint-disable-next-line local-rules/independent-mocks
+      useRoute.mockReturnValue({
+        params: {
+          accountCreationToken: 'accountCreationToken',
+          email: 'user@gmail.com',
+          from: StepperOrigin.LOGIN,
+        },
       })
+      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'accessToken',
+            refreshToken: 'refreshToken',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      })
+
+      renderSignupForm()
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      await act(() => {
+        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+      })
+      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      expect(loginAndRedirectMock).toHaveBeenCalledWith(
+        {
+          accessToken: 'accessToken',
+          refreshToken: 'refreshToken',
+        },
+        'SSO_login'
+      )
     })
 
     it('should directly go to birthday step when account creation token is in route params', async () => {
@@ -724,10 +770,6 @@ describe('Signup Form', () => {
     })
 
     describe('analytics', () => {
-      beforeEach(() => {
-        useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
-      })
-
       it('should trigger StepperDisplayed tracker with SSO_signup type when displaying step for sso subscription', async () => {
         mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
           responseOptions: {

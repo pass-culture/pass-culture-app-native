@@ -113,12 +113,15 @@ export const SignupForm: FunctionComponent = () => {
 
   async function signUp(token: string, marketingEmailSubscription: boolean) {
     try {
-      const signupResponse = await signUpApiCall({
-        ...signupData,
-        marketingEmailSubscription,
-        token,
-        trustedDevice,
-      })
+      const signupResponse = await signUpApiCall(
+        {
+          ...signupData,
+          marketingEmailSubscription,
+          token,
+          trustedDevice,
+        },
+        stepperAnalyticsType
+      )
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       } else if (!isSSOSubscription) {
