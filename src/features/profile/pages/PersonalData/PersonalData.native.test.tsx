@@ -127,6 +127,15 @@ describe('PersonalData', () => {
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
   })
+
+  it('should not show password field when user has no password', () => {
+    renderPersonalData({
+      ...mockedUser,
+      hasPassword: false,
+    })
+
+    expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
+  })
 })
 
 function renderPersonalData(response: UserProfileResponse) {

@@ -67,18 +67,21 @@ export function PersonalData() {
         </React.Fragment>
       ) : null}
 
-      <Typo.CaptionNeutralInfo>Mot de passe</Typo.CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={2} />
-      <EditContainer>
-        <EditText>{'*'.repeat(12)}</EditText>
-        <EditButton
-          navigateTo={{ screen: 'ChangePassword' }}
-          wording="Modifier"
-          accessibilityLabel="Modifier mot de passe"
-        />
-      </EditContainer>
-
-      <StyledSeparator />
+      {user?.hasPassword ? (
+        <React.Fragment>
+          <Typo.CaptionNeutralInfo>Mot de passe</Typo.CaptionNeutralInfo>
+          <Spacer.Column numberOfSpaces={2} />
+          <EditContainer>
+            <EditText>{'*'.repeat(12)}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangePassword' }}
+              wording="Modifier"
+              accessibilityLabel="Modifier mot de passe"
+            />
+          </EditContainer>
+          <StyledSeparator />
+        </React.Fragment>
+      ) : null}
 
       <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
         <Spacer.Column numberOfSpaces={3} />
