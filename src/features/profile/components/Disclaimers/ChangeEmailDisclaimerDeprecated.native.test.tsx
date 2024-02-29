@@ -1,10 +1,9 @@
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { ChangeEmailDisclaimerDeprecated } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimerDeprecated'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { render, screen } from 'tests/utils'
-
-import { ChangeEmailDisclaimer } from './ChangeEmailDisclaimer'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -17,7 +16,7 @@ describe('<ChangeEmailDisclaimer />', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-    render(<ChangeEmailDisclaimer />)
+    render(<ChangeEmailDisclaimerDeprecated />)
 
     expect(
       screen.getByText(
@@ -34,7 +33,7 @@ describe('<ChangeEmailDisclaimer />', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-    render(<ChangeEmailDisclaimer />)
+    render(<ChangeEmailDisclaimerDeprecated />)
 
     expect(
       screen.getByText(

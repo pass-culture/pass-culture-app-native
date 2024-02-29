@@ -266,6 +266,14 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const fullUrl = `${this.baseUrl}/v1${url}`
+
+    this.universalGet(fullUrl, options)
+  }
+  getApi<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalGet(fullUrl, options)
@@ -288,6 +296,14 @@ class MswMockServer
     }
   }
   postApiV1<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    const fullUrl = `${this.baseUrl}/v1${url}`
+
+    this.universalPost(fullUrl, options)
+  }
+  postApi<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
@@ -319,6 +335,14 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const fullUrl = `${this.baseUrl}/v1${url}`
+
+    this.universalDelete(fullUrl, options)
+  }
+  deleteApi<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalDelete(fullUrl, options)
@@ -344,10 +368,18 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
+    const fullUrl = `${this.baseUrl}/v1${url}`
+
+    this.universalPut(fullUrl, options)
+  }
+  putApi<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalPut(fullUrl, options)
   }
 }
 
-export const mockServer = new MswMockServer(`${env.API_BASE_URL}/native/v1`)
+export const mockServer = new MswMockServer(`${env.API_BASE_URL}/native`)

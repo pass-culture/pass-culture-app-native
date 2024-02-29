@@ -44,7 +44,7 @@ describe('<ChangeEmail/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should not display the update app banner when FF is disabled', async () => {
+  it('should not display the update app banner when FF (disableOldChangeEmail) is disabled', async () => {
     renderChangeEmail()
 
     await act(() => {})
@@ -238,10 +238,12 @@ describe('<ChangeEmail/>', () => {
     })
   })
 
-  describe('when FF disableOldChangeEmail is active', () => {
+  describe('when FF disableOldChangeEmail is active and FF enableNewChangeEmail is inactive', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true) // first render
-      useFeatureFlagSpy.mockReturnValueOnce(true) // second render because of useCheckHasCurrentEmailChange
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting disableOldChangeEmail for first render
+      useFeatureFlagSpy.mockReturnValueOnce(false) // setting enableNewChangeEmail for first render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting disableOldChangeEmail for second render because of useCheckHasCurrentEmailChange
+      useFeatureFlagSpy.mockReturnValueOnce(false) // setting enableNewChangeEmail for second render because of useCheckHasCurrentEmailChange
     })
 
     it('should display the update app banner', async () => {
@@ -278,6 +280,33 @@ describe('<ChangeEmail/>', () => {
       const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
 
       expect(submitButton).toBeDisabled()
+    })
+  })
+
+  describe('when FF enableNewChangeEmail is active and FF disableOldChangeEmail is disabled', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting disableOldChangeEmail for first render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting enableNewChangeEmail for first render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting disableOldChangeEmail for second render because of useCheckHasCurrentEmailChange
+      useFeatureFlagSpy.mockReturnValueOnce(true) // setting enableNewChangeEmail for second render because of useCheckHasCurrentEmailChange
+    })
+
+    it('should display the change email label', async () => {
+      renderChangeEmail()
+
+      const fieldLabel = await screen.findByText('Adresse e-mail actuelle')
+
+      expect(fieldLabel).toBeOnTheScreen()
+    })
+
+    it('should display the email input', async () => {
+      renderChangeEmail()
+
+      const validationButton = await screen.findByTestId(
+        'Valider la demande de modification de mon e-mail'
+      )
+
+      expect(validationButton).toBeOnTheScreen()
     })
   })
 })

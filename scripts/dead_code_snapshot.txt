@@ -71,7 +71,7 @@ src/api/gen/index.ts:3179 - ValidatePhoneNumberRequest
 src/api/gen/index.ts:3190 - ValidationError
 src/api/gen/index.ts:3196 - ValidationErrorElement
 src/api/gen/index.ts:3431 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4652 - DefaultApiFp
+src/api/gen/index.ts:4670 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/features/search/types.ts:78 - CategoriesModalFormProps
 src/features/search/types.ts:90 - CategoriesViewData
