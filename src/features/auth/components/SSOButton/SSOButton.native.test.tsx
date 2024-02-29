@@ -7,6 +7,7 @@ import * as API from 'api/api'
 import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse } from 'api/gen'
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { beneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
@@ -94,8 +95,40 @@ describe('<SSOButton />', () => {
       content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
     })
   })
+
+  it('should log analytics when logging in with sso from signup', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+      accessToken: 'accessToken',
+      refreshToken: 'refreshToken',
+      accountState: AccountState.ACTIVE,
+    })
+    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+
+    renderSSOButton()
+
+    await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromSignup', type: 'SSO_signup' })
+  })
+
+  it('should log analytics when logging in with sso from login', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+      accessToken: 'accessToken',
+      refreshToken: 'refreshToken',
+      accountState: AccountState.ACTIVE,
+    })
+    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+
+    renderSSOButton('login')
+
+    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+
+    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+  })
 })
 
-const renderSSOButton = () => {
-  render(reactQueryProviderHOC(<SSOButton type="signup" onSignInFailure={onSignInFailureSpy} />))
+const renderSSOButton = (type: 'signup' | 'login' = 'signup') => {
+  render(reactQueryProviderHOC(<SSOButton type={type} onSignInFailure={onSignInFailureSpy} />))
 }

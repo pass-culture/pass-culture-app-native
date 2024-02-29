@@ -12,6 +12,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
+import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 import { From } from 'shared/offer/enums'
@@ -19,11 +20,15 @@ import { From } from 'shared/offer/enums'
 export const useSignIn = ({
   params,
   doNotNavigateOnSigninSuccess,
+  analyticsMethod = 'fromLogin',
+  analyticsType,
   setErrorMessage,
   onFailure,
 }: {
   params: RootStackParamList['Login' | 'SignupForm']
   doNotNavigateOnSigninSuccess?: boolean
+  analyticsMethod?: LoginRoutineMethod
+  analyticsType?: SSOType
   onFailure: (error: SignInResponseFailure) => void
   setErrorMessage?: (message: string) => void
 }) => {
@@ -41,7 +46,7 @@ export const useSignIn = ({
     },
     {
       onSuccess: async (response) => {
-        await loginRoutine(response, 'fromLogin')
+        await loginRoutine(response, analyticsMethod, analyticsType)
         onSuccess(response.accountState)
       },
       onError: (error) => {
