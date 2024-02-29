@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing, getSpacingString, Typo } from 'ui/theme'
+import { IconInterface } from 'ui/svg/icons/types'
+import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
 
 type TagProps = ViewProps & {
   label: string
+  Icon?: FunctionComponent<IconInterface>
 }
 
 const PADDING_VERTICAL = getSpacing(1)
@@ -14,15 +16,22 @@ const LINE_HEIGHT = getSpacing(NUMBER_OF_SPACES_LINE_HEIGHT)
 
 export const TAG_HEIGHT = PADDING_VERTICAL + LINE_HEIGHT + PADDING_VERTICAL
 
-export function Tag({ label, ...props }: TagProps) {
+export function Tag({ label, Icon, ...props }: TagProps) {
   return (
     <Wrapper {...props}>
+      {Icon ? (
+        <React.Fragment>
+          <Icon testID="tagIcon" />
+          <Spacer.Row numberOfSpaces={1} />
+        </React.Fragment>
+      ) : null}
       <LabelText>{label}</LabelText>
     </Wrapper>
   )
 }
 
 const Wrapper = styled(View)(({ theme }) => ({
+  flexDirection: 'row',
   borderRadius: 6,
   backgroundColor: theme.colors.greyLight,
   paddingVertical: PADDING_VERTICAL,
