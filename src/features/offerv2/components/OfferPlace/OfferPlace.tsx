@@ -69,7 +69,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers } = getIsMultiVenueCompatibleOffer(offer)
+  const { shouldFetchSearchVenueOffers, multiVenueQuery } = getIsMultiVenueCompatibleOffer(offer)
 
   const {
     hasNextPage,
@@ -89,7 +89,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
-    query: offer.extraData?.ean ?? '',
+    query: multiVenueQuery,
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
 
