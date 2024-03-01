@@ -8,7 +8,6 @@ import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
-import { From } from 'shared/offer/enums'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
@@ -107,6 +106,13 @@ export enum StepperOrigin {
   TUTORIAL = 'Tutorial',
   VERIFY_ELIGIBILITY = 'verifyEligibility',
   LOGIN = 'login',
+  BOOKING = 'booking',
+  DELETE_PROFILE_SUCCESS = 'deleteProfileSuccess',
+  FORGOTTEN_PASSWORD = 'forgottenPassword',
+  ONBOARDING = 'onboarding',
+  RESET_PASSWORD_EMAIL_SENT = 'resetPasswordEmailSent',
+  SIGNUP = 'signup',
+  VALIDATE_EMAIL_CHANGE = 'validateEmailChange',
 }
 
 export type SubscriptionRootStackParamList = {
@@ -202,7 +208,7 @@ export type RootStackParamList = {
   Login?: {
     displayForcedLoginHelpMessage?: boolean
     offerId?: number
-    from?: From
+    from?: StepperOrigin
   }
   Navigation: undefined
   NavigationAccountSuspension: undefined

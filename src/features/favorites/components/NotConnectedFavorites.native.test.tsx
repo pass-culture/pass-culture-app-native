@@ -32,7 +32,7 @@ describe('NotConnectedFavorites component', () => {
     fireEvent.press(screen.getByText(`Se connecter`))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', {})
+      expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.FAVORITE })
       expect(analytics.logSignInFromFavorite).toHaveBeenCalledTimes(1)
     })
   })

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -31,7 +32,7 @@ describe('OnboardingWelcome', () => {
     fireEvent.press(loginButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', {})
+      expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.ONBOARDING })
     })
   })
 

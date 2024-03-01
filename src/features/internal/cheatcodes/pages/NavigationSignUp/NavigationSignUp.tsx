@@ -11,7 +11,6 @@ import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationP
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
-import { From } from 'shared/offer/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
@@ -105,7 +104,7 @@ export function NavigationSignUp(): React.JSX.Element {
             visible={authenticationModalVisible}
             hideModal={hideAuthenticationModal}
             offerId={offerId}
-            from={From.FAVORITE}
+            from={StepperOrigin.FAVORITE}
           />
         </Row>
         <Row half>

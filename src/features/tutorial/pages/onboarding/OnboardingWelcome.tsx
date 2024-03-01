@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -46,7 +47,11 @@ export const OnboardingWelcome: FunctionComponent = () => (
         onBeforeNavigate={onStartPress}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" onAdditionalPress={onLoginPress} />
+      <StyledAuthenticationButton
+        type="login"
+        onAdditionalPress={onLoginPress}
+        params={{ from: StepperOrigin.ONBOARDING }}
+      />
       <Spacer.BottomScreen />
     </Content>
   </Container>

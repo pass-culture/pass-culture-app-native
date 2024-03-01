@@ -6,7 +6,7 @@ import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChangeSubtitleComponent } from 'features/profile/pages/ValidateEmailChange/SubtitleComponent'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,7 +48,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
           'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      navigation.replace('Login')
+      navigation.replace('Login', { from: StepperOrigin.VALIDATE_EMAIL_CHANGE })
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
         navigation.navigate('ChangeEmailExpiredLink')

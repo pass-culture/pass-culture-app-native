@@ -8,7 +8,7 @@ import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { SettingsResponse } from 'api/gen'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
@@ -200,7 +200,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
         }
       },
       onBackNavigation() {
-        navigate('Login')
+        navigate('Login', { from: StepperOrigin.FORGOTTEN_PASSWORD })
       },
     }),
     [

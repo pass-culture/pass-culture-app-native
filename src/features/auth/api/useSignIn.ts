@@ -9,13 +9,16 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
 import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
-import { From } from 'shared/offer/enums'
 
 export const useSignIn = ({
   params,
@@ -103,11 +106,11 @@ const useHandleSigninSuccess = (
           navigate('CulturalSurveyIntro')
         } else if (offerId) {
           switch (params.from) {
-            case From.BOOKING:
+            case StepperOrigin.BOOKING:
               navigate('Offer', { id: offerId, openModalOnNavigation: true })
               return
 
-            case From.FAVORITE:
+            case StepperOrigin.FAVORITE:
               addFavorite({ offerId })
               navigate('Offer', { id: offerId })
               return

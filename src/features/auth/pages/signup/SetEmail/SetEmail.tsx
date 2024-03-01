@@ -9,7 +9,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -115,7 +115,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         type="login"
         onAdditionalPress={onLogAnalytics}
         linkColor={theme.colors.secondary}
-        params={{ offerId: params?.offerId }}
+        params={{ from: StepperOrigin.SIGNUP, offerId: params?.offerId }}
       />
       <Spacer.Column numberOfSpaces={5} />
     </Form.MaxWidth>

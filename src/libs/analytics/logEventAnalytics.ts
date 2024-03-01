@@ -594,7 +594,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
   logStepperDisplayed: (
     from: StepperOrigin,
-    step: IdentityCheckStep | PreValidationSignupStep,
+    step: IdentityCheckStep | PreValidationSignupStep | 'Login',
     type?: SSOType
   ) => analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step, type }),
   logTrySelectDeposit: (age: number) =>

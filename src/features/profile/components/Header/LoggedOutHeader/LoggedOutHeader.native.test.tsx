@@ -19,6 +19,17 @@ describe('LoggedOutHeader', () => {
     })
   })
 
+  it('should navigate to the Login page', () => {
+    render(<LoggedOutHeader />)
+
+    const signinButton = screen.getByText('Se connecter')
+    fireEvent.press(signinButton)
+
+    expect(navigate).toHaveBeenCalledWith('Login', {
+      from: StepperOrigin.PROFILE,
+    })
+  })
+
   it('should log analytics when clicking on "Créer un compte"', async () => {
     render(<LoggedOutHeader />)
 

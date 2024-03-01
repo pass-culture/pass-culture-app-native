@@ -8,7 +8,7 @@ import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -103,7 +103,9 @@ describe('ValidateEmailChange', () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
     })
 
-    expect(navigation.replace).toHaveBeenNthCalledWith(1, 'Login')
+    expect(navigation.replace).toHaveBeenNthCalledWith(1, 'Login', {
+      from: StepperOrigin.VALIDATE_EMAIL_CHANGE,
+    })
   })
 
   it('should display a snackbar if submit is success', async () => {

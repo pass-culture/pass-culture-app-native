@@ -60,7 +60,11 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" params={{ offerId }} onAdditionalPress={signIn} />
+      <StyledAuthenticationButton
+        type="login"
+        params={{ from: StepperOrigin.OFFER, offerId }}
+        onAdditionalPress={signIn}
+      />
     </AppModalWithIllustration>
   )
 }

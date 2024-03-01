@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OauthStateResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
@@ -185,6 +186,7 @@ describe('<SetEmail />', () => {
     })
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
+      from: StepperOrigin.SIGNUP,
       offerId: OFFER_ID,
     })
   })
