@@ -1700,11 +1700,6 @@ export interface OfferAccessibilityResponse {
  */
 export interface OfferExtraData {
   /**
-   * @type {number}
-   * @memberof OfferExtraData
-   */
-  allocineId?: number | null
-  /**
    * @type {string}
    * @memberof OfferExtraData
    */

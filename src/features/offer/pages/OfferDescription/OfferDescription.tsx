@@ -39,7 +39,6 @@ const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   genres: 'genres',
   gtlLabels: 'labels',
   releaseDate: 'date de sortie',
-  allocineId: 'id allocine',
 }
 
 const KEY_ORDER: { [k in ExtendedKeys]: number } = {
@@ -61,7 +60,6 @@ const KEY_ORDER: { [k in ExtendedKeys]: number } = {
   genres: 15,
   gtlLabels: 16,
   releaseDate: 17,
-  allocineId: 18,
 }
 
 const sortExtraData = (itemA: Item, itemB: Item): number =>
