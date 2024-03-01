@@ -35,6 +35,14 @@ Offer.args = {
   categoryId: CategoryIdEnum.CINEMA,
 }
 
+export const OfferWithGradient = Template.bind({})
+OfferWithGradient.args = {
+  imageUrl: 'https://images.pexels.com/photos/2421953/pexels-photo-2421953.jpeg',
+  type: 'offerv2',
+  categoryId: CategoryIdEnum.CINEMA,
+  enableOfferPreview: true,
+}
+
 export const OfferWithoutImage = Template.bind({})
 OfferWithoutImage.args = {
   imageUrl: undefined,
