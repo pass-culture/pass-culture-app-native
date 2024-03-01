@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { From } from 'shared/offer/enums'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { AuthenticationModal } from './AuthenticationModal'
@@ -13,7 +13,12 @@ const hideModal = jest.fn()
 describe('<AuthenticationModal />', () => {
   it('should match previous snapshot', () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.BOOKING}
+      />
     )
 
     expect(screen).toMatchSnapshot()
@@ -21,7 +26,12 @@ describe('<AuthenticationModal />', () => {
 
   it('should navigate to signup page when clicking on "Créer un compte" button', async () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.BOOKING}
+      />
     )
 
     const signupButton = screen.getByLabelText('Créer un compte')
@@ -31,14 +41,19 @@ describe('<AuthenticationModal />', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('SignupForm', {
         offerId: OFFER_ID,
-        from: From.BOOKING,
+        from: StepperOrigin.BOOKING,
       })
     })
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.BOOKING}
+      />
     )
 
     const signupButton = screen.getByLabelText('Créer un compte')
@@ -55,7 +70,12 @@ describe('<AuthenticationModal />', () => {
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.BOOKING}
+      />
     )
 
     const signinButton = screen.getByText('Se connecter')
@@ -69,7 +89,12 @@ describe('<AuthenticationModal />', () => {
 
   it('should go to Login from booking with offerId', async () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.BOOKING}
+      />
     )
 
     const signinButton = screen.getByText('Se connecter')
@@ -79,14 +104,19 @@ describe('<AuthenticationModal />', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
         offerId: OFFER_ID,
-        from: From.BOOKING,
+        from: StepperOrigin.BOOKING,
       })
     })
   })
 
   it('should go to Login from favorite with offerId', async () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.FAVORITE} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.FAVORITE}
+      />
     )
 
     const signinButton = screen.getByText('Se connecter')
@@ -96,14 +126,19 @@ describe('<AuthenticationModal />', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
         offerId: OFFER_ID,
-        from: From.FAVORITE,
+        from: StepperOrigin.FAVORITE,
       })
     })
   })
 
   it('should log analytics when clicking on close button with label "Fermer la modale', async () => {
     render(
-      <AuthenticationModal visible offerId={OFFER_ID} hideModal={hideModal} from={From.BOOKING} />
+      <AuthenticationModal
+        visible
+        offerId={OFFER_ID}
+        hideModal={hideModal}
+        from={StepperOrigin.BOOKING}
+      />
     )
 
     const closeButton = screen.getByLabelText('Fermer la modale')

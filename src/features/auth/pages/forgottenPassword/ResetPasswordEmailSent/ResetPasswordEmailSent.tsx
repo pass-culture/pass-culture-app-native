@@ -3,7 +3,11 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 
 import { EmailSentGeneric } from 'features/auth/components/EmailSentGeneric'
-import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  RootStackParamList,
+  StepperOrigin,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -14,7 +18,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const onClose = () => {
-    navigate('Login', undefined)
+    navigate('Login', { from: StepperOrigin.RESET_PASSWORD_EMAIL_SENT })
   }
 
   return (

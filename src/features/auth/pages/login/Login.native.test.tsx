@@ -28,7 +28,6 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { captureMonitoringError } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
-import { From } from 'shared/offer/enums'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
@@ -395,6 +394,16 @@ describe('<Login/>', () => {
     expect(connectedButton).toBeEnabled()
   })
 
+  it('should log analytics on render', async () => {
+    useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.PROFILE } })
+    renderLogin()
+
+    await act(() => {})
+
+    expect(analytics.logStepperDisplayed).toHaveBeenCalledTimes(1)
+    expect(analytics.logStepperDisplayed).toHaveBeenCalledWith(StepperOrigin.PROFILE, 'Login')
+  })
+
   it('should log analytics when clicking on "Créer un compte" button', async () => {
     renderLogin()
 
@@ -439,7 +448,7 @@ describe('<Login/>', () => {
     const OFFER_ID = favoriteResponseSnap.offer.id
 
     beforeEach(() => {
-      useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // first render
+      useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: StepperOrigin.FAVORITE } }) // first render
     })
 
     it('should redirect to Offer page when signin is successful', async () => {
@@ -501,7 +510,7 @@ describe('<Login/>', () => {
     const OFFER_ID = favoriteOfferResponseSnap.id
 
     beforeEach(() => {
-      useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: From.BOOKING } }) // first render
+      useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: StepperOrigin.BOOKING } }) // first render
     })
 
     it('should redirect to the previous offer page and ask to open the booking modal', async () => {

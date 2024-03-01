@@ -72,6 +72,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
 
   useEffect(() => {
+    if (params?.from) {
+      analytics.logStepperDisplayed(params.from, 'Login')
+    }
+  }, [params?.from])
+
+  useEffect(() => {
     if (params?.displayForcedLoginHelpMessage) {
       showInfoSnackBar({
         message:

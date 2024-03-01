@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
@@ -65,7 +66,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(leftIcon)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login')
+      expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.FORGOTTEN_PASSWORD })
     })
   })
 

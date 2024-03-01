@@ -1,5 +1,4 @@
 import { firebaseAnalyticsProvider } from 'libs/firebase/analytics/provider'
-import { LoginRoutineMethod } from 'libs/firebase/analytics/types'
 import { useInit } from 'libs/firebase/analytics/useInit'
 
 export const firebaseAnalytics = {
@@ -7,9 +6,6 @@ export const firebaseAnalytics = {
   disableCollection: firebaseAnalyticsProvider.disableCollection,
   getAppInstanceId: firebaseAnalyticsProvider.getAppInstanceId,
   logEvent: firebaseAnalyticsProvider.logEvent,
-  logLogin({ method }: { method: LoginRoutineMethod }) {
-    firebaseAnalyticsProvider.logLogin({ method })
-  },
   logScreenView: firebaseAnalyticsProvider.logScreenView,
   setDefaultEventParameters: firebaseAnalyticsProvider.setDefaultEventParameters,
   setUserId: firebaseAnalyticsProvider.setUserId,

@@ -34,7 +34,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'ProfileTutorialAgeInformation'>
 
-const onLoginPress = () => analytics.logLogin({ from: 'Tutorial' })
+const onLoginPress = () => analytics.logLoginClicked({ from: 'Tutorial' })
 const onSignupPress = () =>
   analytics.logStepperDisplayed(StepperOrigin.TUTORIAL, PreValidationSignupStep.Email)
 

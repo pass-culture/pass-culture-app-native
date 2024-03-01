@@ -35,7 +35,11 @@ export function LoggedOutHeader() {
 
         {isDesktopViewport ? <VerticalSeparator /> : <Spacer.Column numberOfSpaces={5} />}
 
-        <AuthenticationButton type="login" linkColor={colors.secondary} />
+        <AuthenticationButton
+          type="login"
+          linkColor={colors.secondary}
+          params={{ from: StepperOrigin.PROFILE }}
+        />
       </Container>
     </HeaderWithGreyContainer>
   )

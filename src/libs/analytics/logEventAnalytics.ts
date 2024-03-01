@@ -63,6 +63,10 @@ export type OfferAnalyticsData = {
 
 type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number; offerId?: never }
 
+export type LoginRoutineMethod = 'fromLogin' | 'fromSignup' | 'fromReinitializePassword'
+
+export type SSOType = 'SSO_login' | 'SSO_signup'
+
 /* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
@@ -353,8 +357,10 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLocationToggle: (enabled: boolean) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOCATION_TOGGLE }, { enabled }),
-  logLogin: (params: { from: string }) =>
+  logLogin: (params: { method: string; type?: SSOType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.LOGIN }, params),
+  logLoginClicked: (params: { from: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.LOGIN_CLICKED }, params),
   logLogout: () => analytics.logEvent({ firebase: AnalyticsEvent.LOGOUT }),
   logMailTo: (
     reason:
@@ -586,8 +592,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
-  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep | PreValidationSignupStep) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
+  logStepperDisplayed: (
+    from: StepperOrigin,
+    step: IdentityCheckStep | PreValidationSignupStep | 'Login',
+    type?: SSOType
+  ) => analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step, type }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logUserSetLocation: (from: 'home' | 'search') =>

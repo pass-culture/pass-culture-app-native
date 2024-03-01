@@ -14,9 +14,12 @@ type Props = {
 
 export const SSOButton = ({ type, onSignInFailure }: Props) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const isSignupButton = type === 'signup'
   const { mutate: signIn } = useSignIn({
     params,
     onFailure: (error) => onSignInFailure?.(error),
+    analyticsType: isSignupButton ? 'SSO_signup' : 'SSO_login',
+    analyticsMethod: isSignupButton ? 'fromSignup' : 'fromLogin',
   })
 
   return <SSOButtonBase type={type} onSuccess={signIn} />

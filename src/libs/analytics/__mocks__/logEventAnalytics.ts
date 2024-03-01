@@ -96,6 +96,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logIdentityCheckSuccess: jest.fn(),
   logLocationToggle: jest.fn(),
   logLogin: jest.fn(),
+  logLoginClicked: jest.fn(),
   logLogout: jest.fn(),
   logMailTo: jest.fn(),
   logModifyMail: jest.fn(),

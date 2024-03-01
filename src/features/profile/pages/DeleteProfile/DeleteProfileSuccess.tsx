@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -33,7 +34,7 @@ export function DeleteProfileSuccess() {
           wording="Réactiver mon compte"
           onBeforeNavigate={() => analytics.logAccountReactivation('deleteprofilesuccess')}
           icon={Again}
-          navigateTo={{ screen: 'Login' }}
+          navigateTo={{ screen: 'Login', params: { from: StepperOrigin.DELETE_PROFILE_SUCCESS } }}
         />,
       ]}>
       <StyledBody>

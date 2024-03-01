@@ -5,6 +5,7 @@ import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
@@ -23,8 +24,12 @@ export const useLoginAndRedirect = () => {
   const loginRoutine = useLoginRoutine()
 
   return useCallback(
-    async (props: { accessToken: string; refreshToken: string }) => {
-      await loginRoutine({ ...props, accountState: AccountState.ACTIVE }, 'fromSignup')
+    async (props: { accessToken: string; refreshToken: string }, analyticsType?: SSOType) => {
+      await loginRoutine(
+        { ...props, accountState: AccountState.ACTIVE },
+        'fromSignup',
+        analyticsType
+      )
 
       try {
         const user = await api.getNativeV1Me()

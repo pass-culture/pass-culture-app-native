@@ -161,7 +161,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     const link = screen.getByText('Se connecter')
     fireEvent.press(link)
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ from: 'Tutorial' })
+    expect(analytics.logLoginClicked).toHaveBeenCalledWith({ from: 'Tutorial' })
   })
 
   it("should log to analytics when pressing 'Créer un compte'", () => {

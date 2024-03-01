@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 import { api } from 'api/api'
 import { AccountRequest, GoogleAccountRequest, SigninResponse } from 'api/gen'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
+import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { campaignTracker } from 'libs/campaign'
 import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
@@ -31,9 +32,12 @@ function isSigninResponse(object: SigninResponse | EmptyResponse): object is Sig
   return 'accessToken' in object
 }
 
-export function useSignUp(): (data: AppAccountRequest) => Promise<SignUpResponse> {
+export function useSignUp(): (
+  data: AppAccountRequest,
+  analyticsType?: SSOType
+) => Promise<SignUpResponse> {
   const loginAndRedirect = useLoginAndRedirect()
-  return async (body: AppAccountRequest) => {
+  return async (body, analyticsType) => {
     try {
       const commonBody = {
         birthdate: body.birthdate,
@@ -65,7 +69,10 @@ export function useSignUp(): (data: AppAccountRequest) => Promise<SignUpResponse
           )
 
       if (isSigninResponse(response)) {
-        loginAndRedirect({ accessToken: response.accessToken, refreshToken: response.refreshToken })
+        loginAndRedirect(
+          { accessToken: response.accessToken, refreshToken: response.refreshToken },
+          analyticsType
+        )
       }
 
       return { isSuccess: !!response }

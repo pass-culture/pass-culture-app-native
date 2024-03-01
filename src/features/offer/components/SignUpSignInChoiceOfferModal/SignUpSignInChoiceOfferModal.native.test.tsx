@@ -24,6 +24,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     await fireEvent.press(button)
 
     expect(navigate).toHaveBeenCalledWith('Login', {
+      from: StepperOrigin.OFFER,
       offerId: OFFER_ID,
     })
     expect(analytics.logSignInFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
