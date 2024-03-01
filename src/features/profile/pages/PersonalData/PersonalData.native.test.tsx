@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -14,7 +15,8 @@ import { PersonalData } from './PersonalData'
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
-const mockedIdentity: Partial<UserProfileResponse> = {
+const mockedUser: UserProfileResponse = {
+  ...beneficiaryUser,
   firstName: 'Rosa',
   lastName: 'Bonheur',
   email: 'rosa.bonheur@gmail.com',
@@ -24,18 +26,18 @@ const mockedIdentity: Partial<UserProfileResponse> = {
 describe('PersonalData', () => {
   it('should render personal data success', () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: true,
-    } as UserProfileResponse)
+    })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should render for beneficiary profile', () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: true,
-    } as UserProfileResponse)
+    })
 
     expect(screen.queryByText('Prénom et nom')).toBeOnTheScreen()
     expect(screen.queryByText('Rosa Bonheur')).toBeOnTheScreen()
@@ -50,10 +52,10 @@ describe('PersonalData', () => {
 
   it('should render for beneficiary profile without phone number', () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: true,
       phoneNumber: null,
-    } as UserProfileResponse)
+    })
 
     expect(screen.queryByText('Prénom et nom')).toBeOnTheScreen()
     expect(screen.queryByText('Rosa Bonheur')).toBeOnTheScreen()
@@ -67,9 +69,9 @@ describe('PersonalData', () => {
 
   it('should render for non beneficiary profile', () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: false,
-    } as UserProfileResponse)
+    })
 
     expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
     expect(screen.queryByText('Adresse e-mail')).toBeOnTheScreen()
@@ -80,9 +82,9 @@ describe('PersonalData', () => {
 
   it('should redirect to ChangePassword when clicking on modify password button', async () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: false,
-    } as UserProfileResponse)
+    })
 
     await act(async () => fireEvent.press(screen.getByTestId('Modifier mot de passe')))
 
@@ -91,9 +93,9 @@ describe('PersonalData', () => {
 
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: false,
-    } as UserProfileResponse)
+    })
 
     await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
 
@@ -103,9 +105,9 @@ describe('PersonalData', () => {
 
   it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: false,
-    } as UserProfileResponse)
+    })
 
     await act(async () =>
       fireEvent.press(screen.getByText('Comment gérer tes données personnelles ?'))
@@ -116,14 +118,23 @@ describe('PersonalData', () => {
 
   it('should log modify email when pressing "Modifier"', async () => {
     renderPersonalData({
-      ...mockedIdentity,
+      ...mockedUser,
       isBeneficiary: false,
-    } as UserProfileResponse)
+    })
 
     await act(async () => fireEvent.press(screen.getByTestId('Modifier e-mail')))
 
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not show password field when user has no password', () => {
+    renderPersonalData({
+      ...mockedUser,
+      hasPassword: false,
+    })
+
+    expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
   })
 })
 

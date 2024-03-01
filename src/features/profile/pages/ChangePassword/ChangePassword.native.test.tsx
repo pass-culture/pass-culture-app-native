@@ -1,16 +1,29 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, act, screen } from 'tests/utils'
+import { render, fireEvent, act, screen, waitFor } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { ChangePassword } from './ChangePassword'
 
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
+
+const baseAuthContext = {
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: beneficiaryUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+}
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+mockUseAuthContext.mockReturnValue(baseAuthContext)
 
 const mockshowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -42,6 +55,21 @@ describe('ChangePassword', () => {
     const continueButton = screen.getByTestId('Enregistrer les modifications')
 
     expect(continueButton).toBeEnabled()
+  })
+
+  it('should redirect to Home if user has no password', async () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      user: {
+        ...beneficiaryUser,
+        hasPassword: false,
+      },
+    })
+    render(reactQueryProviderHOC(<ChangePassword />))
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home' })
+    })
   })
 
   it('should display the matching error when the passwords dont match', async () => {

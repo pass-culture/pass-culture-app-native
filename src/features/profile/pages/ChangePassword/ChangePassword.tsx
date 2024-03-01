@@ -8,6 +8,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
 import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMutation'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
@@ -41,6 +43,7 @@ export function ChangePassword() {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+  const { user, isUserLoading } = useAuthContext()
 
   useForHeightKeyboardEvents(setKeyboardHeight)
 
@@ -126,6 +129,11 @@ export function ChangePassword() {
   const contentContainerStyle = useMemo(() => {
     return getScrollViewContentContainerStyle(theme, keyboardHeight)
   }, [theme, keyboardHeight])
+
+  if (!isUserLoading && !user?.hasPassword) {
+    navigateToHome()
+    return null
+  }
 
   return (
     <Container>

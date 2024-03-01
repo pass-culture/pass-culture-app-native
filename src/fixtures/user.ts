@@ -18,6 +18,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   },
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   email: 'email@domain.ext',
+  hasPassword: true,
   firstName: 'Jean',
   isBeneficiary: false,
   needsToFillCulturalSurvey: true,
