@@ -2,6 +2,7 @@ import React, { ComponentProps } from 'react'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import FastImage from 'react-native-fast-image'
+import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -19,8 +20,10 @@ type HeroProps =
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
-export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
-  const { imageUrl, ...placeholderProps } = props
+export const Hero: React.FC<HeroProps & { imageUrl?: string; enableOfferPreview?: boolean }> = (
+  props
+) => {
+  const { imageUrl, enableOfferPreview, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
     type: placeholderProps.type,
     hasImage: !!imageUrl,
@@ -41,18 +44,27 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
             iconColor: theme.colors.white,
             size: PLACEHOLDER_ICON_SIZE,
           }
-  )``
+  )({
+    position: 'absolute',
+    zIndex: 1,
+  })
+
+  const shouldDisplayLinearGradient = enableOfferPreview && placeholderProps.type === 'offerv2'
 
   return (
     <HeroHeader type={placeholderProps.type} imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
       <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
-          <StyledFastImage
-            style={imageStyle}
-            url={imageUrl}
-            resizeMode={FastImage.resizeMode?.cover}
-          />
+          <React.Fragment>
+            {shouldDisplayLinearGradient ? <StyledLinearGradient testID="image-gradient" /> : null}
+            <StyledFastImage
+              style={imageStyle}
+              url={imageUrl}
+              resizeMode={FastImage.resizeMode?.cover}
+              enableOfferPreview={enableOfferPreview}
+            />
+          </React.Fragment>
         ) : (
           <ImagePlaceholder />
         )}
@@ -61,9 +73,12 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   )
 }
 
-const StyledFastImage = styled(ResizedFastImage)(({ theme }) => ({
-  backgroundColor: theme.colors.greyLight,
-}))
+const StyledFastImage = styled(ResizedFastImage)<{ enableOfferPreview?: boolean }>(
+  ({ theme, enableOfferPreview }) => ({
+    backgroundColor: theme.colors.greyLight,
+    ...(enableOfferPreview ? { position: 'absolute', zIndex: 1 } : {}),
+  })
+)
 
 const ImageContainer = styled.View(({ theme }) => ({
   bottom: 0,
@@ -76,4 +91,16 @@ const ImageContainer = styled.View(({ theme }) => ({
     shadowColor: theme.colors.black,
     shadowOpacity: 0.2,
   }),
+}))
+
+const StyledLinearGradient = styled(LinearGradient).attrs({
+  useAngle: true,
+  angle: 180,
+  locations: [0.362, 0.6356, 1],
+  colors: ['rgba(0, 0, 0, 0.00)', 'rgba(0, 0, 0, 0.12)', 'rgba(0, 0, 0, 0.32)'],
+})(({ theme }) => ({
+  height: '100%',
+  width: '100%',
+  borderRadius: theme.borderRadius.radius,
+  zIndex: 2,
 }))
