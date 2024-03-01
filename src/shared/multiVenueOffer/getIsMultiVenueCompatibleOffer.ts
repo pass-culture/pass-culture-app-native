@@ -5,13 +5,22 @@ const MULTI_VENUE_COMPATIBLE_OFFER = [
   SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
 ]
 
-const isMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
-  MULTI_VENUE_COMPATIBLE_OFFER.includes(offer.subcategoryId)
+const isBookMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
+  Boolean(MULTI_VENUE_COMPATIBLE_OFFER.includes(offer.subcategoryId) && offer.extraData?.ean)
+
+const isMovieMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
+  Boolean(SubcategoryIdEnum.SEANCE_CINE === offer.subcategoryId && offer.extraData?.allocineId)
 
 export const getIsMultiVenueCompatibleOffer = (offer: OfferResponse) => {
-  const shouldFetchSearchVenueOffers = Boolean(
-    isMultiVenueCompatibleOffer(offer) && offer.extraData?.ean
-  )
-
-  return { shouldFetchSearchVenueOffers }
+  switch (true) {
+    case isBookMultiVenueCompatibleOffer(offer):
+      return { shouldFetchSearchVenueOffers: true, multiVenueQuery: offer.extraData?.ean as string }
+    case isMovieMultiVenueCompatibleOffer(offer):
+      return {
+        shouldFetchSearchVenueOffers: true,
+        multiVenueQuery: offer.extraData?.allocineId?.toString() as string,
+      }
+    default:
+      return { shouldFetchSearchVenueOffers: false, multiVenueQuery: '' }
+  }
 }
