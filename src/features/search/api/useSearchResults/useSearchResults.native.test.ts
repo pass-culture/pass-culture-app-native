@@ -44,5 +44,22 @@ describe('useSearchResults', () => {
 
       expect(fetchAlgoliaOffersAndVenuesSpy).toHaveBeenCalledTimes(1)
     })
+
+    it('should show hit numbers even if nbHits is at 0 but its are not null', async () => {
+      fetchAlgoliaOffersAndVenuesSpy.mockResolvedValueOnce({
+        offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
+        venuesResponse: mockedAlgoliaVenueResponse,
+        facetsResponse: mockedFacets,
+      })
+      const { result } = renderHook(
+        (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+      await flushAllPromisesWithAct()
+
+      expect(result.current.nbHits).toEqual(mockedAlgoliaResponse.hits.length)
+    })
   })
 })

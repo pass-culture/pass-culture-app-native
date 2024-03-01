@@ -18,7 +18,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
-import { getIsMultivenueCompatibleOffer } from 'shared/multivenueOffer/getIsMultivenueCompatibleOffer'
+import { getIsMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/getIsMultiVenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -69,7 +69,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers } = getIsMultivenueCompatibleOffer(offer)
+  const { shouldFetchSearchVenueOffers, multiVenueQuery } = getIsMultiVenueCompatibleOffer(offer)
 
   const {
     hasNextPage,
@@ -89,7 +89,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
-    query: offer.extraData?.ean ?? '',
+    query: multiVenueQuery,
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
 
