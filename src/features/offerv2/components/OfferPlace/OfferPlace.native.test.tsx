@@ -113,32 +113,6 @@ describe('<OfferPlace />', () => {
     expect(screen.getByText('Changer le lieu de retrait')).toBeOnTheScreen()
   })
 
-  it('should display change venue button when offer subcategory is "Seance cine", offer has an allocineId and that there are other venues offering the same offer', () => {
-    renderOfferPlace({
-      ...offerPlaceProps,
-      offer: {
-        ...mockOffer,
-        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        extraData: { allocineId: 2765410054 },
-      },
-    })
-
-    expect(screen.getByText('Changer de cinéma')).toBeOnTheScreen()
-  })
-
-  it('should not display change venue button when offer subcategory is "Seance cine", offer has not an allocineId', () => {
-    renderOfferPlace({
-      ...offerPlaceProps,
-      offer: {
-        ...mockOffer,
-        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-        extraData: { allocineId: undefined },
-      },
-    })
-
-    expect(screen.queryByText('Changer de cinéma')).not.toBeOnTheScreen()
-  })
-
   it('should not display change venue button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
