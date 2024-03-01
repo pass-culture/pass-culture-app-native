@@ -80,7 +80,15 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const venuesUserData = data?.pages?.[0]?.venues?.userData
   const facets = data?.pages?.[0]?.facets.facets as FacetData
 
-  return { data, hits, nbHits, userData, venuesUserData, facets, ...infiniteQuery }
+  return {
+    data,
+    hits,
+    nbHits: nbHits === 0 ? hits.offers.length : nbHits, // (PC-28287) there is an algolia bugs that return 0 nbHits but there are hits
+    userData,
+    venuesUserData,
+    facets,
+    ...infiniteQuery,
+  }
 }
 
 export const useSearchResults = () => {
