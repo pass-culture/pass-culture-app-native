@@ -84,12 +84,10 @@ const dummySessions: EventCardProps[] = [
 ]
 
 export const CheatCodeMovieCalendar: React.FC = () => {
-  const [selectedDate, setSelectedDate] = React.useState<Date>(dummyDates[0])
-
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <MovieCalendar dates={dummyDates} selectedDate={selectedDate} onTabChange={setSelectedDate} />
+      <MovieCalendar dates={dummyDates} />
       <Spacer.Column numberOfSpaces={6} />
       <EventCardList data={dummySessions} />
     </React.Fragment>
