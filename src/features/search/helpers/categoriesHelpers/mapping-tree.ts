@@ -9,6 +9,7 @@ import {
 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { OfferGenreType } from 'features/search/types'
 import { FacetData, NativeCategoryFacetData } from 'libs/algolia'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 
@@ -50,6 +51,31 @@ function getNativeCategoryGenreTypes(
       return res
     }, {} as MappedGenreTypes),
   }
+}
+
+export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
+  const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
+
+  return bookTree.map((bookCategory) => {
+    const categoryName = getKeyFromStringLabel(bookCategory.label)
+    return { name: categoryName, value: bookCategory.label, genreType: GenreType.BOOK }
+  })
+}
+
+export function getBooksGenreTypes(data: SubcategoriesResponseModelv2): OfferGenreType[] {
+  const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
+
+  return bookTree
+    .map((bookCategory) =>
+      bookCategory.children.map((bookGenre) => {
+        return {
+          name: getKeyFromStringLabel(bookGenre.label),
+          value: bookGenre.label,
+          key: GenreType.BOOK,
+        } as OfferGenreType
+      })
+    )
+    .flat()
 }
 
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
