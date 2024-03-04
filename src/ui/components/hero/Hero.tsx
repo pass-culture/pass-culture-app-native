@@ -1,5 +1,4 @@
 import React, { ComponentProps, FunctionComponent } from 'react'
-import { Platform } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import FastImage from 'react-native-fast-image'
@@ -18,13 +17,13 @@ type HeroProps = (
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
   | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
-) & { imageUrl?: string; enableOfferPreview?: boolean }
+) & { imageUrl?: string; shouldDisplayLinearGradient?: boolean }
 
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
 export const Hero: FunctionComponent<HeroProps> = (props) => {
-  const { imageUrl, enableOfferPreview, ...placeholderProps } = props
+  const { imageUrl, shouldDisplayLinearGradient, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
     type: placeholderProps.type,
     hasImage: !!imageUrl,
@@ -49,9 +48,6 @@ export const Hero: FunctionComponent<HeroProps> = (props) => {
     position: 'absolute',
     zIndex: 1,
   })
-
-  const shouldDisplayLinearGradient =
-    enableOfferPreview && placeholderProps.type === 'offerv2' && Platform.OS !== 'web'
 
   return (
     <HeroHeader type={placeholderProps.type} imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
