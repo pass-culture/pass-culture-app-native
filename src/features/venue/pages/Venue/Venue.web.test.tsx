@@ -6,7 +6,6 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, act } from 'tests/utils/web'
@@ -15,10 +14,6 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
-
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
-const mockUseFeatureFlag = useFeatureFlag as jest.MockedFunction<typeof useFeatureFlag>
-mockUseFeatureFlag.mockReturnValue(false)
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
@@ -57,24 +52,7 @@ describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   describe('Accessibility', () => {
-    // TODO(PC-26577): fix test flackyness
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
-      mockV4
-        .mockReturnValueOnce('withdrawalTermsAccordionID')
-        .mockReturnValueOnce('accessibilityAccordionID')
-        .mockReturnValueOnce('contactAccordionID')
-      const { container } = render(reactQueryProviderHOC(<Venue />))
-
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
-
-        expect(results).toHaveNoViolations()
-      })
-    })
-
     it('should not have basic accessibility issues with new version', async () => {
-      mockUseFeatureFlag.mockReturnValueOnce(true)
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await act(async () => {
@@ -86,13 +64,11 @@ describe('<Venue />', () => {
 
     // TODO(PC-26577): fix test flackyness
     // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should render correctly in web for new version', async () => {
-      mockUseFeatureFlag.mockReturnValueOnce(true)
-      mockUseFeatureFlag.mockReturnValueOnce(true)
-      const { container } = render(<Venue />, { theme: { isDesktopViewport: true } })
+    it.skip('should render correctly in web', async () => {
+      render(reactQueryProviderHOC(<Venue />))
       await act(async () => {})
 
-      expect(container).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
     })
   })
 })

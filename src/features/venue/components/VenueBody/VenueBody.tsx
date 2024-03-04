@@ -1,209 +1,161 @@
-import React, { useRef } from 'react'
-import { ScrollView } from 'react-native'
-import styled from 'styled-components/native'
+import React, { FunctionComponent } from 'react'
+import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
+import styled, { useTheme } from 'styled-components/native'
 
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
-import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
-import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
-import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
-import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
-import { VenuePartialAccordionDescription } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
+import { PracticalInformation } from 'features/venue/components/PracticalInformation'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
+import { VenueMessagingApps } from 'features/venue/components/VenueMessagingAppsNew/VenueMessagingAppsNew'
+import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
-import { WhereSection } from 'libs/location/components/WhereSection'
-import { parseType, VenueTypeCode } from 'libs/parsers'
-import { highlightLinks } from 'libs/parsers/highlightLinks'
-import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
-import { AccordionItem } from 'ui/components/AccordionItem'
-import { ContactBlock } from 'ui/components/contact/ContactBlock'
-import { Hero } from 'ui/components/hero/Hero'
+import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
+import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
+import { useDistance } from 'libs/location/hooks/useDistance'
+import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
+import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
+import { Offer } from 'shared/offer/types'
+import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordionOpens'
-import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
+import { Separator } from 'ui/components/Separator'
+import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  venueId: number
+  venue: VenueResponse
   onScroll: () => void
+  venueOffers?: { hits: Offer[]; nbHits: number }
   playlists?: GTLPlaylistResponse
 }
 
-export function VenueBody({ venueId, onScroll, playlists }: Props) {
-  const { data: venue } = useVenue(venueId)
-  const { data: offers } = useVenueOffers(venue)
-  const scrollViewRef = useRef<ScrollView | null>(null)
+export const VenueBody: FunctionComponent<Props> = ({
+  venue,
+  onScroll,
+  venueOffers,
+  playlists,
+}) => {
+  const { bannerUrl, publicName, name, address, postalCode, city } = venue
+  const { isDesktopViewport, isTabletViewport } = useTheme()
+  const headerHeight = useGetHeaderHeight()
+  const isLargeScreen = isDesktopViewport || isTabletViewport
 
-  const {
-    getPositionOnLayout: setAccessibilityAccordionPosition,
-    ScrollTo: accessibilityScrollsTo,
-  } = useScrollWhenAccordionItemOpens(scrollViewRef)
-  const {
-    getPositionOnLayout: setWithdrawalDetailsAccordionPosition,
-    ScrollTo: withdrawalDetailsScrollsTo,
-  } = useScrollWhenAccordionItemOpens(scrollViewRef)
-  const { getPositionOnLayout: setContactAccordionPosition, ScrollTo: contactScrollsTo } =
-    useScrollWhenAccordionItemOpens(scrollViewRef)
+  const venueFullAddress = formatFullAddress(address, postalCode, city)
+  const venueName = publicName || name
 
-  if (!venue) return null
+  const distanceToVenue = useDistance({ lat: venue.latitude, lng: venue.longitude })
+  const venueTypeLabel =
+    venue.venueTypeCode && venue.venueTypeCode !== VenueTypeCodeKey.ADMINISTRATIVE
+      ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
+      : undefined
 
-  const {
-    address,
-    postalCode,
-    bannerMeta,
-    bannerUrl,
-    city,
-    publicName,
-    withdrawalDetails,
-    latitude,
-    longitude,
-    venueTypeCode,
-    description,
-    accessibility,
-    contact,
-    name,
-  } = venue
-  const venueType = venueTypeCode as VenueTypeCode
+  const venueTags = []
+  venueTypeLabel && venueTags.push(venueTypeLabel)
+  distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 
-  const venueAddress = formatFullAddress(address || publicName, postalCode, city)
-  const typeLabel = parseType(venueType)
-
-  const shouldShowVenueOffers = !!offers && offers?.hits.length > 0
-  const shouldShowAccessibility = Object.values(accessibility).some(
-    (value) => value !== undefined && value !== null
-  )
-  const shouldShowContact = !!contact?.email || !!contact?.phoneNumber || !!contact?.website
+  const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
 
   return (
-    <Container
-      testID="venue-container"
-      scrollEventThrottle={16}
-      scrollIndicatorInsets={scrollIndicatorInsets}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={scrollViewRef as any}
-      bounces={false}
-      onScroll={onScroll}>
-      <Hero imageUrl={bannerUrl ?? undefined} type="venue" venueType={venueType ?? null} />
-      <Spacer.Column numberOfSpaces={4} />
-      <MarginContainer>
-        <VenueAddressContainer>
-          <IconContainer>
-            <LocationPointer accessibilityLabel="Adresse" />
-          </IconContainer>
-          <StyledText numberOfLines={1}>{venueAddress}</StyledText>
-        </VenueAddressContainer>
-        <Spacer.Column numberOfSpaces={2} />
-        <VenueTitle
-          accessibilityLabel={`Nom du lieu\u00a0: ${publicName || name}`}
-          testID="venueTitle"
-          numberOfLines={2}
-          adjustsFontSizeToFit
-          allowFontScaling={false}>
-          {publicName || name}
-        </VenueTitle>
-        <Spacer.Column numberOfSpaces={4} />
-      </MarginContainer>
+    <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
+      {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
+      <TopContainer>
+        <VenueBanner bannerUrl={bannerUrl} />
+        <Spacer.Column numberOfSpaces={6} />
+        <MarginContainer>
+          <InformationTags tags={venueTags} />
+          <VenueTitle
+            accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
+            adjustsFontSizeToFit
+            allowFontScaling={false}>
+            {venueName}
+          </VenueTitle>
+          <Spacer.Column numberOfSpaces={2} />
+          <Typo.Caption>Adresse</Typo.Caption>
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.Body>{venueFullAddress}</Typo.Body>
+          <Spacer.Column numberOfSpaces={3} />
+          <Separator.Horizontal />
+          <Spacer.Column numberOfSpaces={3} />
+          <CopyToClipboardButton
+            wording="Copier l’adresse"
+            textToCopy={`${venueName}, ${venueFullAddress}`}
+            onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
+            snackBarMessage="L’adresse a bien été copiée."
+          />
+          <Spacer.Column numberOfSpaces={3} />
+          <SeeItineraryButton
+            externalNav={{
+              url: getGoogleMapsItineraryUrl(venueFullAddress),
+              address: venueFullAddress,
+            }}
+            onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
+          />
+        </MarginContainer>
+      </TopContainer>
 
-      <VenueIconCaptions
-        type={venueType ?? null}
-        label={typeLabel}
-        locationCoordinates={{ latitude, longitude }}
-      />
+      <Spacer.Column numberOfSpaces={6} />
 
-      {/* Description */}
-      <VenuePartialAccordionDescription
-        description={description ?? undefined}
-        credit={bannerMeta?.image_credit}
-      />
-
-      {/* Offres */}
-      <SectionWithDivider visible={shouldShowVenueOffers}>
-        <VenueOffers venueId={venueId} playlists={playlists} />
-      </SectionWithDivider>
-
-      {/* Où */}
-      <SectionWithDivider visible margin>
-        <WhereSection
-          beforeNavigateToItinerary={() =>
-            analytics.logConsultItinerary({ venueId, from: 'venue' })
-          }
-          venue={venue}
-          address={venueAddress}
-          locationCoordinates={{ latitude, longitude }}
+      <FirstSectionContainer visible>
+        <TabLayout
+          tabPanels={{
+            'Offres disponibles': (
+              <VenueOffersNew venue={venue} venueOffers={venueOffers} playlists={playlists} />
+            ),
+            'Infos pratiques': <PracticalInformation venue={venue} />,
+          }}
+          onTabChange={{
+            'Offres disponibles': () =>
+              analytics.logConsultVenueOffers({
+                venueId: venue.id,
+              }),
+            'Infos pratiques': () =>
+              analytics.logConsultPracticalInformations({
+                venueId: venue.id,
+              }),
+          }}
         />
-      </SectionWithDivider>
+      </FirstSectionContainer>
 
-      <SectionWithDivider visible margin>
-        <VenueMessagingApps venue={venue} />
-      </SectionWithDivider>
+      <Spacer.Column numberOfSpaces={6} />
 
-      {/* Modalités de retrait */}
-      <SectionWithDivider
-        visible={!!withdrawalDetails}
-        onLayout={setWithdrawalDetailsAccordionPosition}>
-        <AccordionItem
-          title="Modalités de retrait"
-          onOpen={withdrawalDetailsScrollsTo}
-          onOpenOnce={() => analytics.logConsultWithdrawal({ venueId })}>
-          <Typo.Body>{withdrawalDetails && highlightLinks(withdrawalDetails)}</Typo.Body>
-        </AccordionItem>
-      </SectionWithDivider>
-
-      {/* Accessibilité */}
-      <SectionWithDivider
-        visible={shouldShowAccessibility}
-        onLayout={setAccessibilityAccordionPosition}>
-        <AccordionItem
-          title="Accessibilité"
-          onOpen={accessibilityScrollsTo}
-          onOpenOnce={() => analytics.logConsultAccessibility({ venueId })}>
-          <AccessibilityBlock {...accessibility} />
-        </AccordionItem>
-      </SectionWithDivider>
-
-      {/* Contact */}
-      <SectionWithDivider visible={shouldShowContact} onLayout={setContactAccordionPosition}>
-        <AccordionItem title="Contact" onOpen={contactScrollsTo}>
-          <ContactBlock venueId={venueId} />
-        </AccordionItem>
+      <SectionWithDivider visible>
+        <MarginContainer>
+          <VenueMessagingApps venueId={venue.id} />
+        </MarginContainer>
       </SectionWithDivider>
 
       <SectionWithDivider visible>
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={VENUE_CTA_HEIGHT_IN_SPACES} />
       </SectionWithDivider>
     </Container>
   )
 }
 
-const LocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.extraSmall,
-}))``
-
-const scrollIndicatorInsets = { right: 1 }
-
-const Container = styled.ScrollView({ overflow: 'visible' })
-const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
-  textAlign: 'center',
+const Container = styled(IntersectionObserverScrollView).attrs({
+  scrollIndicatorInsets: { right: 1 },
+})({
+  overflow: 'visible',
 })
+
+const TopContainer = styled.View(({ theme }) => {
+  const isLargeScreen = theme.isDesktopViewport || theme.isTabletViewport
+  return {
+    flexDirection: isLargeScreen ? 'row' : 'column',
+    marginTop: isLargeScreen ? getSpacing(8) : 0,
+    marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
+  }
+})
+
+const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
-})
-
-const VenueAddressContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginTop: getSpacing(2),
-})
-
-const IconContainer = styled.View({
-  marginRight: getSpacing(1),
-})
-
-const StyledText = styled(Typo.Caption)({
   flexShrink: 1,
-  textTransform: 'capitalize',
 })
+
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))

@@ -12,30 +12,18 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode, Position } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import {
-  act,
-  bottomScrollEvent,
-  fireEvent,
-  middleScrollEvent,
-  render,
-  screen,
-  waitFor,
-} from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = jest.mocked(useVenueOffers)
-
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
-const mockUseFeatureFlag = useFeatureFlag as jest.MockedFunction<typeof useFeatureFlag>
 
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels
@@ -90,125 +78,29 @@ const gtlPLaylistSpy = jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').m
   },
 ])
 
+const defaultParams = {
+  beginningDatetime: undefined,
+  date: null,
+  endingDatetime: undefined,
+  hitsPerPage: 30,
+  offerCategories: [],
+  offerSubcategories: [],
+  offerIsDuo: false,
+  offerIsFree: false,
+  isDigital: false,
+  priceRange: [0, 300],
+  query: '',
+  view: SearchView.Landing,
+  tags: [],
+  timeRange: null,
+  locationFilter: { locationType: LocationMode.EVERYWHERE },
+}
+
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Venue />', () => {
-  beforeAll(() => {
-    mockUseFeatureFlag.mockReturnValue(false)
-  })
-
   it('should match snapshot', async () => {
     renderVenue(venueId)
-    await act(async () => {})
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should log consult venue when URL has from param with deeplink', async () => {
-    renderVenue(venueId, 'deeplink')
-    await act(async () => {})
-
-    expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-      venueId,
-      from: 'deeplink',
-    })
-  })
-
-  it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
-    renderVenue(venueId, 'search')
-    await act(async () => {})
-
-    expect(analytics.logConsultVenue).not.toHaveBeenCalled()
-  })
-
-  it('should not log consult venue when URL has not "from" param', async () => {
-    renderVenue(venueId)
-    await act(async () => {})
-
-    expect(analytics.logConsultVenue).not.toHaveBeenCalled()
-  })
-
-  describe('Batch trigger', () => {
-    it('should trigger event after 5 seconds', async () => {
-      renderVenue(venueId)
-
-      await act(async () => {
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
-      })
-
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
-    })
-
-    it('should not trigger event before 5 seconds have elapsed', async () => {
-      renderVenue(venueId)
-
-      await act(async () => {
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
-      })
-
-      expect(BatchUser.trackEvent).not.toHaveBeenCalled()
-    })
-
-    it('should trigger event on scroll to bottom', async () => {
-      renderVenue(venueId)
-
-      await act(async () => {
-        fireEvent.scroll(screen.getByTestId('venue-container'), bottomScrollEvent)
-      })
-
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
-    })
-
-    it('should not trigger event on scroll to middle', async () => {
-      renderVenue(venueId)
-
-      await act(async () => {
-        fireEvent.scroll(screen.getByTestId('venue-container'), middleScrollEvent)
-      })
-
-      expect(BatchUser.trackEvent).not.toHaveBeenCalled()
-    })
-
-    it('should trigger event once on scroll to bottom and after 5 seconds', async () => {
-      renderVenue(venueId)
-
-      fireEvent.scroll(screen.getByTestId('venue-container'), bottomScrollEvent)
-      await act(async () => {
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
-      })
-
-      expect(BatchUser.trackEvent).toHaveBeenCalledTimes(1)
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
-    })
-  })
-})
-
-describe('<Venue /> with new venue body', () => {
-  const defaultParams = {
-    beginningDatetime: undefined,
-    date: null,
-    endingDatetime: undefined,
-    hitsPerPage: 30,
-    offerCategories: [],
-    offerSubcategories: [],
-    offerIsDuo: false,
-    offerIsFree: false,
-    isDigital: false,
-    priceRange: [0, 300],
-    query: '',
-    view: SearchView.Landing,
-    tags: [],
-    timeRange: null,
-    locationFilter: { locationType: LocationMode.EVERYWHERE },
-  }
-
-  beforeAll(() => {
-    mockUseFeatureFlag.mockReturnValue(true)
-  })
-
-  it('should match snapshot', async () => {
-    renderVenue(venueId)
-
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
@@ -253,6 +145,54 @@ describe('<Venue /> with new venue body', () => {
     await act(async () => {})
 
     expect(screen.queryByText('Rechercher une offre')).not.toBeOnTheScreen()
+  })
+
+  describe('analytics', () => {
+    it('should log consult venue when URL has from param with deeplink', async () => {
+      renderVenue(venueId, 'deeplink')
+      await act(async () => {})
+
+      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+        venueId,
+        from: 'deeplink',
+      })
+    })
+
+    it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
+      renderVenue(venueId, 'search')
+      await act(async () => {})
+
+      expect(analytics.logConsultVenue).not.toHaveBeenCalled()
+    })
+
+    it('should not log consult venue when URL has not "from" param', async () => {
+      renderVenue(venueId)
+      await act(async () => {})
+
+      expect(analytics.logConsultVenue).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('Batch trigger', () => {
+    it('should trigger event after 5 seconds', async () => {
+      renderVenue(venueId)
+
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
+
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
+    })
+
+    it('should not trigger event before 5 seconds have elapsed', async () => {
+      renderVenue(venueId)
+
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      })
+
+      expect(BatchUser.trackEvent).not.toHaveBeenCalled()
+    })
   })
 })
 
