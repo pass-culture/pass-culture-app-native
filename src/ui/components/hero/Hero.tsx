@@ -19,13 +19,17 @@ type HeroProps = (
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
   | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
-) & { imageUrl?: string; shouldDisplayOfferPreview?: boolean }
+) & { imageUrl?: string; shouldDisplayOfferPreview?: boolean; onPress?: VoidFunction }
 
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
-export const Hero: FunctionComponent<HeroProps> = (props) => {
-  const { imageUrl, shouldDisplayOfferPreview, ...placeholderProps } = props
+export const Hero: FunctionComponent<HeroProps> = ({
+  imageUrl,
+  shouldDisplayOfferPreview,
+  onPress,
+  ...placeholderProps
+}) => {
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
     type: placeholderProps.type,
     hasImage: !!imageUrl,
@@ -52,7 +56,11 @@ export const Hero: FunctionComponent<HeroProps> = (props) => {
   })
 
   return (
-    <HeroHeader type={placeholderProps.type} imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
+    <HeroHeader
+      type={placeholderProps.type}
+      imageHeight={heroBackgroundHeight}
+      imageUrl={imageUrl}
+      onPress={onPress}>
       <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (

@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2, SubcategoryIdEnum } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
@@ -49,6 +51,7 @@ const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const { userLocation } = useLocation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
 
   const extraData = offer.extraData ?? undefined
@@ -106,6 +109,12 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
   const shouldDisplayOfferPreview = enableOfferPreview && !isWeb
 
+  const onPress = () => {
+    if (shouldDisplayOfferPreview) {
+      navigate('OfferPreview', { id: offer.id })
+    }
+  }
+
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
@@ -123,6 +132,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           type="offerv2"
           categoryId={subcategory.categoryId}
           shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+          onPress={onPress}
         />
         <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>

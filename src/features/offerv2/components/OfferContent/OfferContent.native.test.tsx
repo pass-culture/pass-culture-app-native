@@ -1,6 +1,7 @@
 import React, { ComponentProps } from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import {
   CategoryIdEnum,
   HomepageLabelNameEnumv2,
@@ -138,6 +139,22 @@ describe('<OfferContent />', () => {
     renderOfferContent({})
 
     expect(await screen.findByTestId('offerHeaderName')).toBeOnTheScreen()
+  })
+
+  describe('When WIP_OFFER_PREVIEW feature flag activated', () => {
+    beforeEach(() => {
+      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+    })
+
+    it('should navigate to offer preview screen when clicking on image offer', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      fireEvent.press(screen.getByTestId('image-container'))
+
+      expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656 })
+    })
   })
 
   describe('When WIP_OFFER_PREVIEW feature flag deactivated', () => {
