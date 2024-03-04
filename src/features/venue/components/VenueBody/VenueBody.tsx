@@ -8,7 +8,7 @@ import { PracticalInformation } from 'features/venue/components/PracticalInforma
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
-import { VenueMessagingApps } from 'features/venue/components/VenueMessagingAppsNew/VenueMessagingAppsNew'
+import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffersNew'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
