@@ -104,7 +104,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     listener: scrollEventListener,
   })
 
-  const shouldDisplayGradientAndTag = enableOfferPreview && !isWeb
+  const shouldDisplayOfferPreview = enableOfferPreview && !isWeb
 
   return (
     <Container>
@@ -122,7 +122,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           imageUrl={offer.image?.url}
           type="offerv2"
           categoryId={subcategory.categoryId}
-          shouldDisplayGradientAndTag={shouldDisplayGradientAndTag}
+          shouldDisplayOfferPreview={shouldDisplayOfferPreview}
         />
         <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>

@@ -19,13 +19,13 @@ type HeroProps = (
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
   | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
-) & { imageUrl?: string; shouldDisplayGradientAndTag?: boolean }
+) & { imageUrl?: string; shouldDisplayOfferPreview?: boolean }
 
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
 export const Hero: FunctionComponent<HeroProps> = (props) => {
-  const { imageUrl, shouldDisplayGradientAndTag, ...placeholderProps } = props
+  const { imageUrl, shouldDisplayOfferPreview, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
     type: placeholderProps.type,
     hasImage: !!imageUrl,
@@ -57,13 +57,13 @@ export const Hero: FunctionComponent<HeroProps> = (props) => {
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
           <React.Fragment>
-            {shouldDisplayGradientAndTag ? <StyledLinearGradient testID="image-gradient" /> : null}
+            {shouldDisplayOfferPreview ? <StyledLinearGradient testID="image-gradient" /> : null}
             <StyledFastImage
               style={imageStyle}
               url={imageUrl}
               resizeMode={FastImage.resizeMode?.cover}
             />
-            {shouldDisplayGradientAndTag ? (
+            {shouldDisplayOfferPreview ? (
               <StyledTag label="1" Icon={StyledCamera} testID="image-tag" />
             ) : null}
           </React.Fragment>
