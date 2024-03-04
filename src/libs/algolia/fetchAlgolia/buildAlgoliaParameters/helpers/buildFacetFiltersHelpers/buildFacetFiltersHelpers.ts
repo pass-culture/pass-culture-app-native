@@ -1,11 +1,12 @@
 import {
   GenreType,
+  GTL,
   NativeCategoryIdEnumv2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
-import { OfferGenreType } from 'features/search/types'
+import { BooksNativeCategoriesEnum, OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { eventMonitoring } from 'libs/monitoring'
@@ -29,6 +30,9 @@ export const buildOfferGtlsPredicate = (gtls: GTL[]) =>
     return `${filterName}:${gtl.label}`
   })
 
+export const buildOfferNativeCategoriesPredicate = (
+  nativeCategories: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
+) =>
   nativeCategories.map(
     (nativeCategory) => `${FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`
   )
