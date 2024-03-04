@@ -21,7 +21,7 @@ import {
   MappedNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesSection } from 'features/search/pages/modals/CategoriesModal/CategoriesSection'
-import { SearchState } from 'features/search/types'
+import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -45,7 +45,7 @@ export interface CategoriesModalProps {
 
 export type CategoriesModalFormProps = {
   category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryIdEnumv2 | null
+  nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
   currentView: CategoriesModalView
   genreType: string | null
 }
@@ -165,7 +165,7 @@ export const CategoriesModal = ({
         return
       }
 
-      const payload = buildSearchPayloadValues(data, form)
+      const payload = buildSearchPayloadValues(data, form, enableNewMapping)
       if (!payload) return
 
       let additionalSearchState: SearchState = { ...searchState, ...payload }
@@ -187,7 +187,7 @@ export const CategoriesModal = ({
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       hideModal()
     },
-    [data, dispatch, hideModal, searchState]
+    [data, dispatch, hideModal, searchState, enableNewMapping]
   )
 
   const handleReset = useCallback(() => {
