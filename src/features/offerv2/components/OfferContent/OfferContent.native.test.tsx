@@ -764,6 +764,93 @@ describe('<OfferContent />', () => {
       }
     )
   })
+
+  describe('Movie calendar', () => {
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      stocks: [
+        {
+          beginningDatetime: '2024-02-27T11:10:00Z',
+          features: ['VO'],
+          id: 6091,
+          isBookable: false,
+          isExpired: false,
+          isForbiddenToUnderage: false,
+          isSoldOut: true,
+          price: 570,
+        },
+      ],
+    }
+
+    it('should render <MovieCalendar /> when offer is a movie screening', async () => {
+      renderOfferContent({
+        offer,
+      })
+
+      expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
+    })
+
+    it('should render <MovieCalendar /> without duplicated screening dates', async () => {
+      renderOfferContent({
+        offer: {
+          ...offer,
+          stocks: [
+            ...offer.stocks,
+            {
+              beginningDatetime: '2024-02-27T13:10:00Z',
+              features: ['VO'],
+              id: 6091,
+              isBookable: false,
+              isExpired: false,
+              isForbiddenToUnderage: false,
+              isSoldOut: true,
+              price: 570,
+            },
+          ],
+        },
+      })
+
+      expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
+    })
+
+    it('should render <MovieCalendar /> without expired or forbidden to underage screenings', async () => {
+      renderOfferContent({
+        offer: {
+          ...offer,
+          stocks: [
+            ...offer.stocks,
+            {
+              beginningDatetime: '2024-02-29T13:30:00Z',
+              features: ['VO'],
+              id: 6091,
+              isBookable: false,
+              isExpired: false,
+              isForbiddenToUnderage: true,
+              isSoldOut: true,
+              price: 570,
+            },
+            {
+              beginningDatetime: '2024-02-19T11:10:00Z',
+              features: ['VO'],
+              id: 6091,
+              isBookable: false,
+              isExpired: true,
+              isForbiddenToUnderage: false,
+              isSoldOut: true,
+              price: 570,
+            },
+          ],
+        },
+      })
+
+      await screen.findByLabelText('Mardi 27 février')
+
+      expect(
+        screen.queryByLabelText('Lundi 19 février' || 'Jeudi 29 février')
+      ).not.toBeOnTheScreen()
+    })
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>
