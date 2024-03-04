@@ -140,7 +140,7 @@ src/libs/monitoring/sentry.ts:12 - SDK_NAME
 src/libs/monitoring/sentry.ts:12 - SDK_VERSION
 src/libs/parsers/culturalSurveyType.ts:6 - MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON (used in module)
 src/libs/parsers/index.ts:6 - getHumanizeRelativeDistance
-src/libs/parsers/index.ts:33 - humanizeDistance
+src/libs/parsers/index.ts:35 - humanizeDistance
 src/libs/parsers/index.ts:64 - parseTypeHomeLabel
 src/libs/parsers/index.ts:70 - MAP_TYPE_TO_ICON
 src/libs/place/fetchAddresses.ts:4 - buildSuggestedAddresses (used in module)
