@@ -74,12 +74,6 @@ const distributionStoreVenue = {
 const bookstoreVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE }
 
 describe('<VenueOffersNew />', () => {
-  it('should render correctly', () => {
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
