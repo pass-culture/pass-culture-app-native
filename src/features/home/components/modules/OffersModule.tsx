@@ -46,8 +46,11 @@ export const OffersModule = (props: OffersModuleProps) => {
   // When we navigate to the search page, we want to show 20 results per page,
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  const { offerParams, locationParams } = adaptedPlaylistParameters(parameters)
   const searchParams = {
-    ...adaptedPlaylistParameters(parameters),
+    ...offerParams,
+    locationParams,
     hitsPerPage: 20,
     view: SearchView.Results,
   }
