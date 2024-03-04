@@ -18,6 +18,7 @@ export const getHumanizeRelativeDistance = (
 
 const convertAngleToRadians = (angleInDegrees: number) => (angleInDegrees * Math.PI) / 180
 
+// Explanation of the formula: ./formatDistance.md
 export const computeDistanceInMeters = (latA: number, lngA: number, latB: number, lngB: number) => {
   const latAInRad = convertAngleToRadians(latA)
   const latBInRad = convertAngleToRadians(latB)
