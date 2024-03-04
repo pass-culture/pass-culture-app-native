@@ -71,6 +71,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Mardi 1 février"
           style={
             [
               {
@@ -81,7 +82,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Mardi"
             numberOfLines={1}
             style={
               [
@@ -116,7 +116,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="février"
             numberOfLines={1}
             style={
               [
@@ -189,6 +188,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Jeudi 1 mars"
           style={
             [
               {
@@ -199,7 +199,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Jeudi"
             numberOfLines={1}
             style={
               [
@@ -234,7 +233,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="mars"
             numberOfLines={1}
             style={
               [
@@ -292,6 +290,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Vendredi 4 octobre"
           style={
             [
               {
@@ -302,7 +301,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Vendredi"
             numberOfLines={1}
             style={
               [
@@ -337,7 +335,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             4
           </Text>
           <Text
-            accessibilityLabel="octobre"
             numberOfLines={1}
             style={
               [
@@ -395,6 +392,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Samedi 29 novembre"
           style={
             [
               {
@@ -405,7 +403,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Samedi"
             numberOfLines={1}
             style={
               [
@@ -440,7 +437,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             29
           </Text>
           <Text
-            accessibilityLabel="novembre"
             numberOfLines={1}
             style={
               [
@@ -498,6 +494,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Mercredi 1 juin"
           style={
             [
               {
@@ -508,7 +505,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Mercredi"
             numberOfLines={1}
             style={
               [
@@ -543,7 +539,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="juin"
             numberOfLines={1}
             style={
               [
@@ -601,6 +596,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Mercredi 1 novembre"
           style={
             [
               {
@@ -611,7 +607,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Mercredi"
             numberOfLines={1}
             style={
               [
@@ -646,7 +641,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="novembre"
             numberOfLines={1}
             style={
               [
@@ -704,6 +698,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Samedi 1 juin"
           style={
             [
               {
@@ -714,7 +709,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Samedi"
             numberOfLines={1}
             style={
               [
@@ -749,7 +743,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="juin"
             numberOfLines={1}
             style={
               [
@@ -807,6 +800,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Mardi 1 décembre"
           style={
             [
               {
@@ -817,7 +811,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Mardi"
             numberOfLines={1}
             style={
               [
@@ -852,7 +845,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="décembre"
             numberOfLines={1}
             style={
               [
@@ -910,6 +902,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
         }
       >
         <View
+          accessibilityLabel="Mercredi 1 juin"
           style={
             [
               {
@@ -920,7 +913,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <Text
-            accessibilityLabel="Mercredi"
             numberOfLines={1}
             style={
               [
@@ -955,7 +947,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             1
           </Text>
           <Text
-            accessibilityLabel="juin"
             numberOfLines={1}
             style={
               [
