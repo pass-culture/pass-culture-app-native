@@ -10,7 +10,6 @@ import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitl
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { OfferVenueBlock } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlock'
 import { OfferVenueBlockDeprecated } from 'features/offerv2/components/OfferVenueBlock/OfferVenueBlockDeprecated'
-import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -46,6 +45,8 @@ const mergeVenueData =
     contact: {},
     ...(prevData ?? {}),
   })
+
+const ANIMATION_DURATION = 500 //ms
 
 export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
