@@ -34,10 +34,11 @@ const extractDate = (date: Date): DayMapping => {
 
 type Props = {
   dates: Date[]
+  selectedDate: Date | undefined
+  onTabChange: (date: Date) => void
 }
 
-export const MovieCalendar: React.FC<Props> = ({ dates }) => {
-  const [selectedDate, setSelectedDate] = React.useState<Date>(dates?.[0])
+export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChange }) => {
   return (
     <Container>
       <BottomBar />
@@ -47,13 +48,12 @@ export const MovieCalendar: React.FC<Props> = ({ dates }) => {
         contentContainerStyle={scrollViewContainer}>
         {dates.map((date) => {
           const { weekday, fullWeekDay, dayDate, month, fullMonth, timestamp } = extractDate(date)
-          const isSelected = selectedDate.getTime() === timestamp
+          const isSelected =
+            selectedDate === undefined ? false : selectedDate.getTime() === timestamp
 
           const { CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
           return (
-            <CalendarCell
-              onPress={() => setSelectedDate(date)}
-              key={`${timestamp} - ${isSelected}`}>
+            <CalendarCell onPress={() => onTabChange(date)} key={`${timestamp} - ${isSelected}`}>
               <CalendarTextView accessibilityLabel={`${fullWeekDay} ${dayDate} ${fullMonth}`}>
                 <CalendarText numberOfLines={1}>{weekday}</CalendarText>
                 <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
