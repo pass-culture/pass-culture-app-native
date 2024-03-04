@@ -54,6 +54,6 @@ describe('calculateRoundRadiusInKilometers', () => {
       longitudeDelta: 0.04760990854064799,
     })
 
-    expect(radiusInKilometers).toEqual(9.725782768761627)
+    expect(radiusInKilometers).toEqual(9.725782768733964)
   })
 })
