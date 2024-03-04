@@ -69,7 +69,10 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers, multiVenueQuery } = getIsMultiVenueCompatibleOffer(offer)
+  const { shouldFetchSearchVenueOffers, multiVenueQuery } = getIsMultiVenueCompatibleOffer(
+    offer,
+    hasNewOfferVenueBlock
+  )
 
   const {
     hasNextPage,

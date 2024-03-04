@@ -11,11 +11,14 @@ const isBookMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
 const isMovieMultiVenueCompatibleOffer = (offer: OfferResponse): boolean =>
   Boolean(SubcategoryIdEnum.SEANCE_CINE === offer.subcategoryId && offer.extraData?.allocineId)
 
-export const getIsMultiVenueCompatibleOffer = (offer: OfferResponse) => {
+export const getIsMultiVenueCompatibleOffer = (
+  offer: OfferResponse,
+  hasNewOfferVenueBlock = false
+) => {
   switch (true) {
     case isBookMultiVenueCompatibleOffer(offer):
       return { shouldFetchSearchVenueOffers: true, multiVenueQuery: offer.extraData?.ean as string }
-    case isMovieMultiVenueCompatibleOffer(offer):
+    case isMovieMultiVenueCompatibleOffer(offer) && hasNewOfferVenueBlock:
       return {
         shouldFetchSearchVenueOffers: true,
         multiVenueQuery: offer.extraData?.allocineId?.toString() as string,
