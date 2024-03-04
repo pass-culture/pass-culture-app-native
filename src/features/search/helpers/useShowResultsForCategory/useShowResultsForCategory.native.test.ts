@@ -61,6 +61,7 @@ describe('useShowResultsForCategory', () => {
         tags: [],
         timeRange: null,
         searchId,
+        gtls: [],
       },
     })
   })
@@ -90,6 +91,7 @@ describe('useShowResultsForCategory', () => {
         tags: [],
         timeRange: null,
         searchId,
+        gtls: [],
       },
     })
   })
@@ -119,6 +121,7 @@ describe('useShowResultsForCategory', () => {
         tags: [],
         timeRange: null,
         searchId,
+        gtls: [],
       },
     })
   })
@@ -151,6 +154,7 @@ describe('useShowResultsForCategory', () => {
         tags: [],
         timeRange: null,
         searchId,
+        gtls: [],
       },
     })
   })

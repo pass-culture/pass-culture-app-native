@@ -3,6 +3,7 @@ import { SearchOptions } from '@algolia/client-search'
 import {
   GenreType,
   GenreTypeContentModel,
+  GTL,
   NativeCategoryIdEnumv2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
@@ -66,6 +67,7 @@ export type SearchQueryParameters = {
   tags: string[]
   timeRange: Range<number> | null
   venue?: Venue
+  gtls?: GTL[]
 }
 
 export const transformHit = transformOfferHit

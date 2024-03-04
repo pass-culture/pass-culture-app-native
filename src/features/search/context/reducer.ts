@@ -20,6 +20,7 @@ export const initialSearchState: SearchState = {
   timeRange: null,
   view: SearchView.Landing,
   venue: undefined,
+  gtls: [],
 }
 
 export type Action =

@@ -69,6 +69,7 @@ export interface SearchState {
   minBookingsThreshold?: number
   isFromHistory?: boolean
   venue?: Venue
+  gtls?: GTL[]
 }
 
 export type UserData = {
