@@ -178,7 +178,7 @@ describe('<CategoriesModal/>', () => {
     beforeAll(() => {
       mockSearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
@@ -187,7 +187,7 @@ describe('<CategoriesModal/>', () => {
     it('should render native categories', () => {
       renderCategories()
 
-      expect(screen.getByText('Livres papier')).toBeOnTheScreen()
+      expect(screen.getByText('Séances de cinéma')).toBeOnTheScreen()
     })
 
     it('should go back to categories view', () => {
@@ -203,7 +203,7 @@ describe('<CategoriesModal/>', () => {
     it('should set search state when search button is pressed', async () => {
       renderCategories()
 
-      const someCategoryFilterCheckbox = screen.getByText('Livres papier')
+      const someCategoryFilterCheckbox = screen.getByText('Séances de cinéma')
       fireEvent.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
@@ -212,8 +212,8 @@ describe('<CategoriesModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
-        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
+        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
         offerGenreTypes: [],
       }
       await waitFor(() => {
@@ -235,7 +235,7 @@ describe('<CategoriesModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
