@@ -3,7 +3,7 @@ import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-n
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
-import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
+import { OfferResponse, SearchGroupResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
@@ -11,6 +11,10 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+<<<<<<< HEAD
+=======
+import { MovieScreeningCalendar } from 'features/offerv2/components/MovieScreeningCalendar/MovieScreeningCalendar'
+>>>>>>> 45467409c (Update OfferContent)
 import { OfferAbout } from 'features/offerv2/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
@@ -48,14 +52,17 @@ const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const { userLocation } = useLocation()
+<<<<<<< HEAD
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
+=======
+>>>>>>> 45467409c (Update OfferContent)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
 
-  const isOfferAMovieScreening = offer.subcategoryId === 'SEANCE_CINE'
+  const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
 
@@ -162,10 +169,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         {isOfferAMovieScreening ? (
           <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
-            <MovieCalendar dates={movieScreeningDates} />
+            <MovieScreeningCalendar stocks={offer.stocks} />
           </FeatureFlag>
         ) : null}
-        <Spacer.Column numberOfSpaces={6} />
 
         <SectionWithDivider visible margin>
           <Spacer.Column numberOfSpaces={2} />

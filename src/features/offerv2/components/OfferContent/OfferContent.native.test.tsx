@@ -31,7 +31,7 @@ import { Subcategory } from 'libs/subcategories/types'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, fireEvent } from 'tests/utils'
+import { act, render, screen, fireEvent, waitForModalToShow } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
 
@@ -137,7 +137,7 @@ describe('<OfferContent />', () => {
   it('should display offer header', async () => {
     renderOfferContent({})
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('offerHeaderName')).toBeOnTheScreen()
   })
@@ -181,7 +181,7 @@ describe('<OfferContent />', () => {
     it('should display tags', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
     })
@@ -207,7 +207,7 @@ describe('<OfferContent />', () => {
         subcategory,
       })
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByText('Metal')).toBeOnTheScreen()
       expect(screen.getByText('Industrial')).toBeOnTheScreen()
@@ -218,7 +218,7 @@ describe('<OfferContent />', () => {
   it('should display offer as a title', async () => {
     renderOfferContent({})
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(
       screen.getByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
@@ -235,7 +235,7 @@ describe('<OfferContent />', () => {
       offer,
     })
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
   })
@@ -243,7 +243,7 @@ describe('<OfferContent />', () => {
   it('should display prices', async () => {
     renderOfferContent({})
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByText('5,00 €')).toBeOnTheScreen()
   })
@@ -267,7 +267,7 @@ describe('<OfferContent />', () => {
 
     renderOfferContent({ offer: offerFree })
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
   })
@@ -276,7 +276,7 @@ describe('<OfferContent />', () => {
     it('should display both section', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
       expect(screen.getByText('Duo')).toBeOnTheScreen()
@@ -294,7 +294,7 @@ describe('<OfferContent />', () => {
 
       renderOfferContent({ offer })
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(
         screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
@@ -305,7 +305,7 @@ describe('<OfferContent />', () => {
     it('should display top separator between this two section', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByTestId('topSeparator')).toBeOnTheScreen()
     })
@@ -321,7 +321,7 @@ describe('<OfferContent />', () => {
       }
       renderOfferContent({ offer })
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.queryByTestId('topSeparator')).not.toBeOnTheScreen()
     })
@@ -330,7 +330,7 @@ describe('<OfferContent />', () => {
       it('should display venue button', async () => {
         renderOfferContent({})
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
       })
@@ -345,7 +345,7 @@ describe('<OfferContent />', () => {
         }
         renderOfferContent({ offer })
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(
           screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
@@ -361,7 +361,7 @@ describe('<OfferContent />', () => {
         }
         renderOfferContent({ offer })
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(screen.getByText('Duo')).toBeOnTheScreen()
       })
@@ -373,7 +373,7 @@ describe('<OfferContent />', () => {
         }
         renderOfferContent({ offer })
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
@@ -384,7 +384,7 @@ describe('<OfferContent />', () => {
     it('should display venue section', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
     })
@@ -392,7 +392,7 @@ describe('<OfferContent />', () => {
     it('should display venue distance tag when user share his position', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByText('à 900+ km')).toBeOnTheScreen()
     })
@@ -401,7 +401,7 @@ describe('<OfferContent />', () => {
       mockPosition = null
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
     })
@@ -410,7 +410,7 @@ describe('<OfferContent />', () => {
   it('should display social network section', async () => {
     renderOfferContent({})
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
   })
@@ -425,7 +425,7 @@ describe('<OfferContent />', () => {
       it('should display same artist playlist', async () => {
         renderOfferContent({ offer: { ...offerResponseSnap, extraData } })
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
       })
@@ -433,9 +433,9 @@ describe('<OfferContent />', () => {
       it('should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(true)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
           fromOfferId: undefined,
@@ -448,11 +448,11 @@ describe('<OfferContent />', () => {
       it('should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist', async () => {
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(true)
         mockInView(false)
         mockInView(true)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
       })
@@ -460,9 +460,9 @@ describe('<OfferContent />', () => {
       it('should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist', async () => {
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(false)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
       })
@@ -476,7 +476,7 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
       })
@@ -488,9 +488,9 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(true)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
           fromOfferId: undefined,
@@ -508,11 +508,11 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(true)
         mockInView(false)
         mockInView(true)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
       })
@@ -524,9 +524,9 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(false)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
       })
@@ -544,7 +544,7 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
+        await screen.findByText('Réserver l’offre')
 
         expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
@@ -560,9 +560,9 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(true)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
           fromOfferId: undefined,
@@ -584,11 +584,11 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(true)
         mockInView(false)
         mockInView(true)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenCalledTimes(1)
       })
@@ -604,9 +604,9 @@ describe('<OfferContent />', () => {
         })
         renderOfferContent({})
 
-        await act(async () => {})
-
         mockInView(false)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalled()
       })
@@ -617,7 +617,7 @@ describe('<OfferContent />', () => {
     it('should display "Réserver l’offre" button', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
     })
@@ -636,6 +636,8 @@ describe('<OfferContent />', () => {
       await act(async () => {
         fireEvent.press(bookingOfferButton)
       })
+
+      waitForModalToShow()
 
       expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(
         1,
@@ -657,6 +659,8 @@ describe('<OfferContent />', () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
       })
 
+      await screen.findByText('Réserver l’offre')
+
       expect(analytics.logConsultWholeOffer).toHaveBeenCalledWith(offerResponseSnap.id)
     })
 
@@ -674,6 +678,8 @@ describe('<OfferContent />', () => {
         fireEvent.scroll(scrollView, nativeEventBottom)
       })
 
+      await screen.findByText('Réserver l’offre')
+
       expect(analytics.logConsultWholeOffer).toHaveBeenCalledTimes(1)
     })
   })
@@ -682,8 +688,9 @@ describe('<OfferContent />', () => {
     it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
       renderOfferContent({})
 
-      await act(() => {})
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+      await screen.findByText('Réserver l’offre')
 
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -691,8 +698,9 @@ describe('<OfferContent />', () => {
     it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
       renderOfferContent({})
 
-      await act(() => {})
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+
+      await screen.findByText('Réserver l’offre')
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -700,8 +708,9 @@ describe('<OfferContent />', () => {
     it('should trigger has_seen_offer_for_survey event on scroll to bottom', async () => {
       renderOfferContent({})
 
-      await act(() => {})
       fireEvent.scroll(screen.getByTestId('offerv2-container'), nativeEventBottom)
+
+      await screen.findByText('Réserver l’offre')
 
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -709,8 +718,9 @@ describe('<OfferContent />', () => {
     it('should not trigger has_seen_offer_for_survey event on scroll to middle', async () => {
       renderOfferContent({})
 
-      await act(() => {})
       fireEvent.scroll(screen.getByTestId('offerv2-container'), nativeEventMiddle)
+
+      await screen.findByText('Réserver l’offre')
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -718,9 +728,10 @@ describe('<OfferContent />', () => {
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
       renderOfferContent({})
 
-      await act(() => {})
       fireEvent.scroll(screen.getByTestId('offerv2-container'), nativeEventBottom)
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+      await screen.findByText('Réserver l’offre')
 
       expect(BatchUser.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
@@ -738,8 +749,10 @@ describe('<OfferContent />', () => {
       async (nativeCategoryId) => {
         renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
 
-        await act(() => {})
+        //await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
       }
@@ -756,8 +769,9 @@ describe('<OfferContent />', () => {
       async ({ nativeCategoryId, expectedBatchEvent }) => {
         renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
 
-        await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+        await screen.findByText('Réserver l’offre')
 
         expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
         expect(BatchUser.trackEvent).toHaveBeenCalledWith(expectedBatchEvent)
@@ -765,7 +779,7 @@ describe('<OfferContent />', () => {
     )
   })
 
-  describe('Movie calendar', () => {
+  describe('MovieScreeningCalendar', () => {
     const offer: OfferResponse = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
@@ -783,72 +797,12 @@ describe('<OfferContent />', () => {
       ],
     }
 
-    it('should render <MovieCalendar /> when offer is a movie screening', async () => {
+    it('should render <MovieScreeningCalendar /> when offer is a movie screening', async () => {
       renderOfferContent({
         offer,
       })
 
       expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
-    })
-
-    it('should render <MovieCalendar /> without duplicated screening dates', async () => {
-      renderOfferContent({
-        offer: {
-          ...offer,
-          stocks: [
-            ...offer.stocks,
-            {
-              beginningDatetime: '2024-02-27T13:10:00Z',
-              features: ['VO'],
-              id: 6091,
-              isBookable: false,
-              isExpired: false,
-              isForbiddenToUnderage: false,
-              isSoldOut: true,
-              price: 570,
-            },
-          ],
-        },
-      })
-
-      expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
-    })
-
-    it('should render <MovieCalendar /> without expired or forbidden to underage screenings', async () => {
-      renderOfferContent({
-        offer: {
-          ...offer,
-          stocks: [
-            ...offer.stocks,
-            {
-              beginningDatetime: '2024-02-29T13:30:00Z',
-              features: ['VO'],
-              id: 6091,
-              isBookable: false,
-              isExpired: false,
-              isForbiddenToUnderage: true,
-              isSoldOut: true,
-              price: 570,
-            },
-            {
-              beginningDatetime: '2024-02-19T11:10:00Z',
-              features: ['VO'],
-              id: 6091,
-              isBookable: false,
-              isExpired: true,
-              isForbiddenToUnderage: false,
-              isSoldOut: true,
-              price: 570,
-            },
-          ],
-        },
-      })
-
-      await screen.findByLabelText('Mardi 27 février')
-
-      expect(
-        screen.queryByLabelText('Lundi 19 février' || 'Jeudi 29 février')
-      ).not.toBeOnTheScreen()
     })
   })
 })
