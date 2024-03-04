@@ -427,6 +427,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                   {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
+                    "borderColor": "#ffffff",
                     "borderRadius": 22,
                     "borderStyle": "solid",
                     "borderWidth": 1,
@@ -568,6 +569,7 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                   {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
+                    "borderColor": "#ffffff",
                     "borderRadius": 22,
                     "borderStyle": "solid",
                     "borderWidth": 1,

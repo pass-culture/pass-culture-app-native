@@ -45,7 +45,7 @@ const getBorderColor = (
   isError?: boolean
 ) => {
   if (isDisabled) {
-    return undefined
+    return theme.colors.white
   }
   if (isFocus) {
     return theme.colors.black
