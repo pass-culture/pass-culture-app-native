@@ -1,7 +1,7 @@
 import { SearchState, SearchView } from 'features/search/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
+import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 

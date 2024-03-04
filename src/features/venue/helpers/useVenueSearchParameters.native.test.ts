@@ -2,7 +2,7 @@ import { VenueResponse } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
 import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
-import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
+import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
