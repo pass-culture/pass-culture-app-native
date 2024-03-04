@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react'
+import React, { ComponentProps, FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
@@ -14,16 +14,16 @@ import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDime
 import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getSpacing, Spacer, getShadow } from 'ui/theme'
 
-type HeroProps =
+type HeroProps = (
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
   | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
+) & { imageUrl?: string; enableOfferPreview?: boolean }
+
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
-export const Hero: React.FC<HeroProps & { imageUrl?: string; enableOfferPreview?: boolean }> = (
-  props
-) => {
+export const Hero: FunctionComponent<HeroProps> = (props) => {
   const { imageUrl, enableOfferPreview, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
     type: placeholderProps.type,
@@ -64,7 +64,6 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string; enableOfferPreview?
               style={imageStyle}
               url={imageUrl}
               resizeMode={FastImage.resizeMode?.cover}
-              enableOfferPreview={enableOfferPreview}
             />
           </React.Fragment>
         ) : (
@@ -75,12 +74,11 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string; enableOfferPreview?
   )
 }
 
-const StyledFastImage = styled(ResizedFastImage)<{ enableOfferPreview?: boolean }>(
-  ({ theme, enableOfferPreview }) => ({
-    backgroundColor: theme.colors.greyLight,
-    ...(enableOfferPreview ? { position: 'absolute', zIndex: 1 } : {}),
-  })
-)
+const StyledFastImage = styled(ResizedFastImage)(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
+  position: 'absolute',
+  zIndex: 1,
+}))
 
 const ImageContainer = styled.View(({ theme }) => ({
   bottom: 0,
