@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MessagingApps } from 'features/share/components/MessagingAppsNew/MessagingAppsNew'
+import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { ShareContent } from 'libs/share/types'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
@@ -10,7 +10,7 @@ const defaultShareContent: ShareContent = {
   url: 'url',
 }
 
-describe('<MessagingAppsNew />', () => {
+describe('<MessagingApps />', () => {
   it('should open share modal on other press', async () => {
     const mockShare = jest.fn()
     render(

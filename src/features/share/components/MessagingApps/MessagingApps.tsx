@@ -35,7 +35,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
 
   return (
     <React.Fragment>
-      <StyledTitle4>{'Passe le bon plan\u00a0!'}</StyledTitle4>
+      <StyledTitle3>{'Passe le bon plan\u00a0!'}</StyledTitle3>
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps
@@ -72,7 +72,7 @@ const StyledUl = styled(Ul)({
   flexWrap: 'wrap',
 })
 
-const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
   paddingTop: getSpacing(6),
   paddingBottom: getSpacing(4),
 })

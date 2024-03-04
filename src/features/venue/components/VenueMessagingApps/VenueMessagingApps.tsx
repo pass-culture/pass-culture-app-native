@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Social } from 'react-native-share'
 
-import { MessagingApps } from 'features/share/components/MessagingAppsNew/MessagingAppsNew'
+import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { useVenue } from 'features/venue/api/useVenue'
 import { analytics } from 'libs/analytics'

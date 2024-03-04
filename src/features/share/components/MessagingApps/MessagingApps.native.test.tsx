@@ -2,7 +2,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
 
-import { MessagingApps } from 'features/share/components/MessagingAppsNew/MessagingAppsNew'
+import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { ShareContent } from 'libs/share/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -15,7 +15,7 @@ const defaultShareContent: ShareContent = {
   url: 'url',
 }
 
-describe('<MessagingAppsNew />', () => {
+describe('<MessagingApps />', () => {
   it('should use share on other press', async () => {
     const mockShare = jest.fn()
     render(
