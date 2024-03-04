@@ -4,10 +4,7 @@ export type Headers = {
   Authorization?: string
 }
 
-export type EmptyResponse = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [K in any]: never
-}
+export type EmptyResponse = EmptyObject
 
 export async function getExternal<ResponseBody>(
   url: string,
