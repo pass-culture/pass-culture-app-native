@@ -28,6 +28,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
+import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -53,6 +54,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
+
+  const isOfferAMovieScreening = offer.subcategoryId === 'SEANCE_CINE'
 
   const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
 
@@ -156,6 +159,13 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         <OfferPlace offer={offer} isEvent={subcategory.isEvent} />
         <Spacer.Column numberOfSpaces={8} />
+
+        {isOfferAMovieScreening ? (
+          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
+            <MovieCalendar dates={movieScreeningDates} />
+          </FeatureFlag>
+        ) : null}
+        <Spacer.Column numberOfSpaces={6} />
 
         <SectionWithDivider visible margin>
           <Spacer.Column numberOfSpaces={2} />
