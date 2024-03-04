@@ -61,20 +61,28 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
     nativeCategory.children.sort(
       ({ position: positionA }, { position: positionB }) => positionA - positionB
     )
-    nativeCategoriesResult[categorieKey] = {
-      label: nativeCategory.label,
-      nbResultsFacet: 0,
-      genreTypeKey: GenreType.BOOK,
-      gtls: nativeCategory.gtls,
-      children: nativeCategory.children.reduce<MappedGenreTypes>((genreTypeChildren, genreType) => {
-        const genreKey = getKeyFromStringLabel(genreType.label)
-        genreTypeChildren[genreKey] = {
-          label: genreType.label,
-          gtls: genreType.gtls,
-          position: genreType.position,
-        }
-        return genreTypeChildren
-      }, {} as MappedGenreTypes),
+    if (categorieKey) {
+      nativeCategoriesResult[categorieKey] = {
+        label: nativeCategory.label,
+        nbResultsFacet: 0,
+        genreTypeKey: GenreType.BOOK,
+        gtls: nativeCategory.gtls,
+        children: nativeCategory.children.reduce<MappedGenreTypes>(
+          (genreTypeChildren, genreType) => {
+            const genreKey = getKeyFromStringLabel(genreType.label)
+            if (genreKey) {
+              genreTypeChildren[genreKey] = {
+                label: genreType.label,
+                gtls: genreType.gtls,
+                position: genreType.position,
+              }
+              return genreTypeChildren
+            }
+            return {}
+          },
+          {} as MappedGenreTypes
+        ),
+      }
     }
     return nativeCategoriesResult
   }, {} as MappedNativeCategories)
@@ -166,11 +174,13 @@ export function createMappingTree(
     }, {} as MappingTree)
 }
 
-function getKeyFromStringLabel(input: string): string {
+export function getKeyFromStringLabel(input?: string | null): string | null {
+  if (!input) return null
   return input
     .toUpperCase()
     .replace('&', 'ET')
     .replace('-', '_')
+    .replace(',', '')
     .replace(/ /g, '_')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
