@@ -17,16 +17,30 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
-import { DescriptionContext, BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
+import {
+  DescriptionContext,
+  BooksNativeCategoriesEnum,
+  SearchState,
+  NativeCategoryEnum,
+} from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
 
-export function buildSearchPayloadValues(
+function isBookNativeCategory(
+  category: NativeCategoryEnum | null
+): category is BooksNativeCategoriesEnum {
+  return (category as BooksNativeCategoriesEnum) !== undefined
+}
+
+function isNativeCategory(category: NativeCategoryEnum | null): category is NativeCategoryIdEnumv2 {
+  return (category as NativeCategoryIdEnumv2) !== undefined
+}
+
+export const buildBookSearchPayloadValues = (
   data: SubcategoriesResponseModelv2,
-  form: CategoriesModalFormProps,
-  enableNewMapping?: boolean
-) {
+  form: CategoriesModalFormProps
+) => {
   const bookTrees = data.genreTypes.find((genreType) => genreType.name === GenreType.BOOK)
     ?.trees as BookType[]
 
@@ -62,6 +76,44 @@ export function buildSearchPayloadValues(
     return undefined
   }
 
+  let gtls
+  const natCatGtls = buildNativeCategoryGtls(form.nativeCategory)
+  const genreTypeGtls = buildGenreTypeGtls(form.nativeCategory, form.genreType)
+
+  if (form.genreType) {
+    gtls = genreTypeGtls?.map((gtl) => gtl)
+  } else if (form.nativeCategory) {
+    gtls = natCatGtls?.map((gtl) => gtl)
+  }
+
+  const nativeCat = bookTrees.find(
+    (category: BookType) => getKeyFromStringLabel(category.label) === form.nativeCategory
+  )
+
+  const genreType = nativeCat?.children.find(
+    (genre) => getKeyFromStringLabel(genre.label) === form.genreType
+  )
+
+  const offerNativeCategories =
+    form.nativeCategory && isNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
+  const offerBookNativeCategories =
+    form.nativeCategory && isBookNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
+
+  const offerGenericNativeCategories = offerBookNativeCategories ? offerNativeCategories : []
+
+  return {
+    offerCategories: [form.category],
+    offerNativeCategories: offerGenericNativeCategories,
+    offerGenreTypes: buildBookGenreType(genreType),
+    gtls,
+  }
+}
+
+export function buildSearchPayloadValues(
+  data: SubcategoriesResponseModelv2,
+  form: CategoriesModalFormProps,
+  enableNewMapping?: boolean
+) {
   const buildGenreType = (genreTypeId: typeof form.genreType) => {
     if (genreTypeId === null) return []
     const genreType = getGenreTypeFromEnum(data, genreTypeId)
@@ -76,48 +128,24 @@ export function buildSearchPayloadValues(
   }
 
   if (form.category === SearchGroupNameEnumv2.LIVRES && enableNewMapping) {
-    let gtls
-    const natCatGtls = buildNativeCategoryGtls(form.nativeCategory)
-    const genreTypeGtls = buildGenreTypeGtls(form.nativeCategory, form.genreType)
-
-    if (form.genreType) {
-      gtls = genreTypeGtls?.map((gtl) => gtl)
-    } else if (form.nativeCategory) {
-      gtls = natCatGtls?.map((gtl) => gtl)
-    }
-
-    if (form.category === SearchGroupNameEnumv2.LIVRES) {
-      const nativeCat = bookTrees.find(
-        (category: BookType) => getKeyFromStringLabel(category.label) === form.nativeCategory
-      )
-
-      const genreType = nativeCat?.children.find(
-        (genre) => getKeyFromStringLabel(genre.label) === form.genreType
-      )
-
-      const offerNativeCategories = isBookNativeCategory(form.nativeCategory)
-        ? [form.nativeCategory]
-        : isNativeCategory(form.nativeCategory)
-        ? [form.nativeCategory]
-        : []
-
-      return {
-        offerCategories: [form.category],
-        offerNativeCategories,
-        offerGenreTypes: buildBookGenreType(genreType),
-        gtls,
-      }
-    }
+    return buildBookSearchPayloadValues(data, form)
   }
 
   const genreType = buildGenreType(form.genreType)
-
   if (!genreType) return undefined
+
+  const offerNativeCategories =
+    form.nativeCategory && isNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
+  const offerBookNativeCategories =
+    form.nativeCategory && isBookNativeCategory(form.nativeCategory) ? [form.nativeCategory] : []
+
+  const offerGenericNativeCategories = offerBookNativeCategories ? offerNativeCategories : []
 
   return {
     offerCategories: form.category === SearchGroupNameEnumv2.NONE ? [] : [form.category],
-    offerNativeCategories: form.nativeCategory ? [form.nativeCategory] : [],
+    offerNativeCategories: offerGenericNativeCategories,
     offerGenreTypes: buildGenreType(form.genreType),
+    gtls: [],
   }
 }
 
@@ -160,7 +188,7 @@ export function getCategoriesModalTitle(
   data: SubcategoriesResponseModelv2 | undefined,
   currentView: CategoriesModalView,
   categoryId: SearchGroupNameEnumv2,
-  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
+  nativeCategoryId: NativeCategoryEnum | null
 ) {
   if (!data) return 'Catégories'
   switch (currentView) {
