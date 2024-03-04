@@ -154,6 +154,14 @@ describe('<OfferContent />', () => {
 
       expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
     })
+
+    it('should not display tag on offer image when enableOfferPreview feature flag deactivated', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+    })
   })
 
   it('should display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
@@ -162,6 +170,14 @@ describe('<OfferContent />', () => {
     await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('image-gradient')).toBeOnTheScreen()
+  })
+
+  it('should display tag on offer image when enableOfferPreview feature flag activated', async () => {
+    renderOfferContent({})
+
+    await act(async () => {})
+
+    expect(screen.getByTestId('image-tag')).toBeOnTheScreen()
   })
 
   it('should animate on scroll', async () => {

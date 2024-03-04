@@ -32,7 +32,7 @@ describe('HeroImage', () => {
     expect(screen.queryByTestId('imagePlaceholder')).not.toBeOnTheScreen()
   })
 
-  it('should not display linear gradient when shouldDisplayLinearGradient is not defined and url is defined', () => {
+  it('should not display linear gradient when shouldDisplayGradientAndTag is not defined and url is defined', () => {
     render(
       <Hero
         imageUrl="some_url_to_some_resource"
@@ -44,55 +44,119 @@ describe('HeroImage', () => {
     expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
   })
 
-  it('should not display linear gradient when shouldDisplayLinearGradient is false and url is defined', () => {
+  it('should not display tag when shouldDisplayGradientAndTag is not defined and url is defined', () => {
     render(
       <Hero
         imageUrl="some_url_to_some_resource"
         type="offerv2"
         categoryId={CategoryIdEnum.CINEMA}
-        shouldDisplayLinearGradient={false}
+      />
+    )
+
+    expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+  })
+
+  it('should not display linear gradient when shouldDisplayGradientAndTag is false and url is defined', () => {
+    render(
+      <Hero
+        imageUrl="some_url_to_some_resource"
+        type="offerv2"
+        categoryId={CategoryIdEnum.CINEMA}
+        shouldDisplayGradientAndTag={false}
       />
     )
 
     expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
   })
 
-  it('should display linear gradient when shouldDisplayLinearGradient is true and url is defined', () => {
+  it('should not display tag when shouldDisplayGradientAndTag is false and url is defined', () => {
     render(
       <Hero
         imageUrl="some_url_to_some_resource"
         type="offerv2"
         categoryId={CategoryIdEnum.CINEMA}
-        shouldDisplayLinearGradient
+        shouldDisplayGradientAndTag={false}
+      />
+    )
+
+    expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+  })
+
+  it('should display linear gradient when shouldDisplayGradientAndTag is true and url is defined', () => {
+    render(
+      <Hero
+        imageUrl="some_url_to_some_resource"
+        type="offerv2"
+        categoryId={CategoryIdEnum.CINEMA}
+        shouldDisplayGradientAndTag
       />
     )
 
     expect(screen.getByTestId('image-gradient')).toBeOnTheScreen()
   })
 
-  it('should not display linear gradient when shouldDisplayLinearGradient is true and url is not defined', () => {
+  it('should display tag when shouldDisplayGradientAndTag is true and url is defined', () => {
+    render(
+      <Hero
+        imageUrl="some_url_to_some_resource"
+        type="offerv2"
+        categoryId={CategoryIdEnum.CINEMA}
+        shouldDisplayGradientAndTag
+      />
+    )
+
+    expect(screen.getByTestId('image-tag')).toBeOnTheScreen()
+  })
+
+  it('should not display linear gradient when shouldDisplayGradientAndTag is true and url is not defined', () => {
     render(
       <Hero
         imageUrl={undefined}
         type="offerv2"
         categoryId={CategoryIdEnum.CINEMA}
-        shouldDisplayLinearGradient
+        shouldDisplayGradientAndTag
       />
     )
 
     expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
   })
 
-  it('should not display linear gradient when shouldDisplayLinearGradient is true and url is empty', () => {
+  it('should not display tag when shouldDisplayGradientAndTag is true and url is not defined', () => {
+    render(
+      <Hero
+        imageUrl={undefined}
+        type="offerv2"
+        categoryId={CategoryIdEnum.CINEMA}
+        shouldDisplayGradientAndTag
+      />
+    )
+
+    expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+  })
+
+  it('should not display linear gradient when shouldDisplayGradientAndTag is true and url is empty', () => {
     render(
       <Hero
         imageUrl=""
         type="offerv2"
         categoryId={CategoryIdEnum.CINEMA}
-        shouldDisplayLinearGradient
+        shouldDisplayGradientAndTag
       />
     )
 
     expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
+  })
+
+  it('should not display tag when shouldDisplayGradientAndTag is true and url is empty', () => {
+    render(
+      <Hero
+        imageUrl=""
+        type="offerv2"
+        categoryId={CategoryIdEnum.CINEMA}
+        shouldDisplayGradientAndTag
+      />
+    )
+
+    expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
   })
 })
