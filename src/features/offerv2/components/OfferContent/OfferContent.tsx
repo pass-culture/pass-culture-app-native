@@ -11,10 +11,7 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
-<<<<<<< HEAD
-=======
 import { MovieScreeningCalendar } from 'features/offerv2/components/MovieScreeningCalendar/MovieScreeningCalendar'
->>>>>>> 45467409c (Update OfferContent)
 import { OfferAbout } from 'features/offerv2/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
@@ -52,10 +49,7 @@ const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const { userLocation } = useLocation()
-<<<<<<< HEAD
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
-=======
->>>>>>> 45467409c (Update OfferContent)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
