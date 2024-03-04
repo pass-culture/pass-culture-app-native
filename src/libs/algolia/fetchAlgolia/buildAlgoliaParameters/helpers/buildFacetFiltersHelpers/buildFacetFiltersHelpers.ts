@@ -23,7 +23,12 @@ export const buildOfferGtl = (gtlLevel: GTLLevel, gtlLabel: string) => {
   return [`${filterName}:${gtlLabel}`]
 }
 
-export const buildOfferNativeCategoriesPredicate = (nativeCategories: NativeCategoryIdEnumv2[]) =>
+export const buildOfferGtlsPredicate = (gtls: GTL[]) =>
+  gtls.map((gtl) => {
+    const filterName = FACETS_FILTERS_ENUM.OFFER_GTL_LEVEL.replace('XX', String(gtl.level))
+    return `${filterName}:${gtl.label}`
+  })
+
   nativeCategories.map(
     (nativeCategory) => `${FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY}:${nativeCategory}`
   )

@@ -41,6 +41,7 @@ export const buildOfferSearchParameters = (
     tags = [],
     timeRange = null,
     venue,
+    gtls = [],
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean
@@ -65,6 +66,7 @@ export const buildOfferSearchParameters = (
       offerSubcategories,
       isDigital,
       tags,
+      gtls,
     }),
     ...buildNumericFilters({
       beginningDatetime,
