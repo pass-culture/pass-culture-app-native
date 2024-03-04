@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
-import { PracticalInformation } from 'features/venue/components/PracticalInformation'
+import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
