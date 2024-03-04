@@ -15,7 +15,7 @@ const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<VenueResponse>(`/venue/${venueResponseSnap.id}`, venueResponseSnap)
+    mockServer.getApi<VenueResponse>(`/v1/venue/${venueResponseSnap.id}`, venueResponseSnap)
   })
 
   it('should share on instagram', async () => {

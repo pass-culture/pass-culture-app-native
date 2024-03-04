@@ -2,10 +2,11 @@ import { SearchResponse } from '@algolia/client-search'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { VenueResponse } from 'api/gen'
+import { SubcategoriesResponseModelv2, VenueResponse } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -31,7 +32,8 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 
 describe('<Venue />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<VenueResponse>(`/venue/${venueResponseSnap.id}`, {
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    mockServer.getApi<VenueResponse>(`/v1/venue/${venueResponseSnap.id}`, {
       responseOptions: { data: venueResponseSnap },
       requestOptions: { persist: true },
     })
