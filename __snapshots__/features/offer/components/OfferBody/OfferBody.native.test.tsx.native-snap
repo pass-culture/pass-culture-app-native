@@ -101,6 +101,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
               [
                 {
                   "backgroundColor": "#F1F1F4",
+                  "position": "absolute",
+                  "zIndex": 1,
                 },
                 {
                   "aspectRatio": 0.6666666666666666,
@@ -1361,6 +1363,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
               [
                 {
                   "backgroundColor": "#F1F1F4",
+                  "position": "absolute",
+                  "zIndex": 1,
                 },
                 {
                   "aspectRatio": 0.6666666666666666,
