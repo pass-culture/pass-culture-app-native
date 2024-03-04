@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
+import { push } from '__mocks__/@react-navigation/native'
 import { OffersModuleParameters } from 'features/home/types'
 import { transformHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -52,7 +53,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-describe('OffersModule component', () => {
+describe('OffersModule', () => {
   it('should render correctly', () => {
     renderOffersModule()
 
@@ -64,61 +65,97 @@ describe('OffersModule component', () => {
 
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
-})
 
-describe('OffersModule component - Analytics', () => {
-  it('should trigger logEvent "AllTilesSeen" only once', async () => {
-    renderOffersModule()
-    const scrollView = screen.getByTestId('offersModuleList')
-
-    await act(async () => {
-      // 1st scroll to last item => trigger
-      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-    })
-
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith({
-      moduleName: props.displayParameters.title,
-      numberOfTiles: mockNbHits,
-    })
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
-
-    scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
-  })
-
-  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
-    renderOffersModule()
-
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      props.moduleId,
-      ContentTypes.ALGOLIA,
-      props.index,
-      props.homeEntryId
-    )
-  })
-
-  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    renderOffersModule({
-      offersModuleParameters: [{ title: 'Search title' } as OffersModuleParameters],
-      displayParameters: { ...props.displayParameters, minOffers: mockNbHits + 1 },
-    })
-
-    expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
-  })
-
-  it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
+  it('should trigger navigate with correct params when we click on See More', async () => {
     const mockData = { playlistItems: mockHits, nbPlaylistResults: 10, moduleId: 'fakeModuleId' }
     renderOffersModule({ data: mockData })
 
-    act(() => {
+    await act(() => {
       fireEvent.press(screen.getByText('En voir plus'))
     })
 
-    expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
-      moduleId: 'fakeModuleId',
-      moduleName: 'Module title',
+    expect(push).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        beginningDatetime: undefined,
+        date: null,
+        endingDatetime: undefined,
+        hitsPerPage: 20,
+        isDigital: false,
+        locationParams: {
+          aroundMeRadius: 'all',
+          aroundPlaceRadius: 'all',
+          selectedLocationMode: 'EVERYWHERE',
+          userLocation: undefined,
+        },
+        minBookingsThreshold: 0,
+        offerCategories: [],
+        offerGenreTypes: [],
+        offerIsDuo: false,
+        offerSubcategories: [],
+        priceRange: [0, 300],
+        query: '',
+        tags: [],
+        timeRange: null,
+        view: 'Results',
+      },
+      screen: 'Search',
+    })
+  })
+
+  describe('Analytics', () => {
+    it('should trigger logEvent "AllTilesSeen" only once', async () => {
+      renderOffersModule()
+      const scrollView = screen.getByTestId('offersModuleList')
+
+      await act(async () => {
+        // 1st scroll to last item => trigger
+        await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+      })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledWith({
+        moduleName: props.displayParameters.title,
+        numberOfTiles: mockNbHits,
+      })
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
+
+      scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
+    })
+
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
+      renderOffersModule()
+
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
+        1,
+        props.moduleId,
+        ContentTypes.ALGOLIA,
+        props.index,
+        props.homeEntryId
+      )
+    })
+
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+      renderOffersModule({
+        offersModuleParameters: [{ title: 'Search title' } as OffersModuleParameters],
+        displayParameters: { ...props.displayParameters, minOffers: mockNbHits + 1 },
+      })
+
+      expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+    })
+
+    it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
+      const mockData = { playlistItems: mockHits, nbPlaylistResults: 10, moduleId: 'fakeModuleId' }
+      renderOffersModule({ data: mockData })
+
+      act(() => {
+        fireEvent.press(screen.getByText('En voir plus'))
+      })
+
+      expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
+        moduleId: 'fakeModuleId',
+        moduleName: 'Module title',
+      })
     })
   })
 })
