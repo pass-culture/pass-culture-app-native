@@ -11,6 +11,7 @@ import {
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
@@ -57,7 +58,7 @@ export type SearchQueryParameters = {
   offerGtlLevel?: GTLLevel
   offerIsDuo: boolean
   offerIsFree?: boolean
-  offerNativeCategories?: NativeCategoryIdEnumv2[]
+  offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   isDigital: boolean
   page?: number

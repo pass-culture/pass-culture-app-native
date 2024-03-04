@@ -4,6 +4,7 @@ import React from 'react'
 import {
   GenreType,
   GenreTypeContentModel,
+  GTL,
   NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
   SearchGroupNameEnumv2,
@@ -49,7 +50,7 @@ export interface SearchState {
   locationFilter: LocationFilter
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
-  offerNativeCategories?: NativeCategoryIdEnumv2[]
+  offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
   offerSubcategories: SubcategoryIdEnumv2[]
   offerIsDuo: boolean
   offerIsFree?: boolean
@@ -85,7 +86,7 @@ export type CategoriesModalFormProps = {
 
 export type DescriptionContext = {
   category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryIdEnumv2 | null
+  nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
   genreType: string | null
 }
 export type CategoriesViewData =
@@ -143,4 +144,16 @@ export type HistoryItem = CreateHistoryItem & {
   label: string
   nativeCategoryLabel?: string
   categoryLabel?: string
+}
+
+export enum BooksNativeCategoriesEnum {
+  'ROMANS_ET_LITTERATURE' = 'ROMANS_ET_LITTERATURE',
+  'MANGAS' = 'MANGAS',
+  'BD_ET_COMICS' = 'BD_ET_COMICS',
+  'COMPETENCES_GENERALES' = 'COMPETENCES_GENERALES',
+  'LOISIRS_ET_BIEN_ETRE' = 'LOISIRS_ET_BIEN_ETRE',
+  'MODE_ET_ART' = 'MODE_ET_ART',
+  'SOCIETE_ET_POLITIQUE' = 'SOCIETE_ET_POLITIQUE',
+  'THEATRE_POESIE_ET_ESSAIS' = 'THEATRE_POESIE_ET_ESSAIS',
+  'TOURISME_ET_VOYAGES' = 'TOURISME_ET_VOYAGES',
 }
