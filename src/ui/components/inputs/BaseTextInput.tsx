@@ -76,7 +76,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.typography.placeholder.color,
-}))<{ isEmpty: boolean; textStyle?: Typography }>(({ theme, isEmpty, textStyle }) => {
+}))<{ isEmpty: boolean; textStyle?: Typography }>(({ theme, isEmpty, textStyle, editable }) => {
   let inputStyle: Typography = theme.typography.body
   if (isEmpty) {
     inputStyle = theme.typography.placeholder
@@ -89,6 +89,7 @@ const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
     padding: 0,
     height: '100%',
     ...inputStyle,
+    color: editable ? inputStyle.color : theme.colors.greyDark,
     lineHeight: undefined,
     ...(Platform.OS === 'web' && { width: 'inherit' }),
   }
