@@ -415,6 +415,30 @@ describe('<Login/>', () => {
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'login' })
   })
 
+  it('should log analytics when signing in', async () => {
+    renderLogin()
+    await screen.findByText('Connecte-toi')
+
+    await fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: undefined })
+  })
+
+  it('should log analytics when signing in with SSO', async () => {
+    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+      accessToken: 'accessToken',
+      refreshToken: 'refreshToken',
+      accountState: AccountState.ACTIVE,
+    })
+
+    renderLogin()
+
+    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+
+    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+  })
+
   it('should display forced login help message when the query param is given', async () => {
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
     renderLogin()

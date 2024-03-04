@@ -48,8 +48,9 @@ export const useSignIn = ({
       return api.postNativeV1Signin(requestBody, { credentials: 'omit' })
     },
     {
-      onSuccess: async (response) => {
-        await loginRoutine(response, analyticsMethod, analyticsType)
+      onSuccess: async (response, body) => {
+        const loginAnalyticsType = 'authorizationCode' in body ? 'SSO_login' : undefined
+        await loginRoutine(response, analyticsMethod, analyticsType || loginAnalyticsType)
         onSuccess(response.accountState)
       },
       onError: (error) => {
