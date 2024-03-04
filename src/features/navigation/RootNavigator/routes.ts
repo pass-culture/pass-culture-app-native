@@ -48,6 +48,7 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
+import { OfferPreview } from 'features/offerv2/components/OfferPreview/OfferPreview'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -92,6 +93,13 @@ export const routes: Route[] = [
     path: 'offre/:id/description',
     deeplinkPaths: ['offer/:id/description', 'offre/description', 'offer/description'],
     options: { title: 'Détails de l’offre' },
+  },
+  {
+    name: 'OfferPreview',
+    component: OfferPreview,
+    path: 'offre/:id/apercu',
+    deeplinkPaths: ['offer/:id/apercu', 'offre/apercu', 'offer/apercu'],
+    options: { title: 'Aperçu de l’offre' },
   },
   {
     name: 'BookingDetails',

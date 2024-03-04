@@ -229,6 +229,7 @@ export type RootStackParamList = {
     playlistType?: PlaylistType
   }
   OfferDescription: { id: number }
+  OfferPreview: { id: number }
   SuspendAccountConfirmation: { token: string }
   SuspensionScreen: undefined
   ReinitializePassword: {
