@@ -23,6 +23,8 @@ import { OfferVenueButton } from 'features/offerv2/components/OfferVenueButton/O
 import { getOfferArtists } from 'features/offerv2/helpers/getOfferArtists/getOfferArtists'
 import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
@@ -45,6 +47,7 @@ const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const { userLocation } = useLocation()
+  const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -97,6 +100,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     listener: scrollEventListener,
   })
 
+  const shouldDisplayLinearGradient = enableOfferPreview && !isWeb
+
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
@@ -109,7 +114,12 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         scrollIndicatorInsets={scrollIndicatorInsets}
         bounces={false}
         onScroll={onScroll}>
-        <Hero imageUrl={offer.image?.url} type="offerv2" categoryId={subcategory.categoryId} />
+        <Hero
+          imageUrl={offer.image?.url}
+          type="offerv2"
+          categoryId={subcategory.categoryId}
+          shouldDisplayLinearGradient={shouldDisplayLinearGradient}
+        />
         <Spacer.Column numberOfSpaces={8} />
         <InfoContainer>
           <GroupWithoutGap>

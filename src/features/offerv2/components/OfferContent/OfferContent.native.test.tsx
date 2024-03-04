@@ -131,6 +131,7 @@ describe('<OfferContent />', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
+    jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
   })
 
   it('should display offer header', async () => {
@@ -139,6 +140,28 @@ describe('<OfferContent />', () => {
     await act(async () => {})
 
     expect(screen.getByTestId('offerHeaderName')).toBeOnTheScreen()
+  })
+
+  describe('When WIP_OFFER_PREVIEW feature flag deactivated', () => {
+    beforeEach(() => {
+      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+    })
+
+    it('should not display linear gradient on offer image when enableOfferPreview feature flag deactivated', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
+    renderOfferContent({})
+
+    await act(async () => {})
+
+    expect(screen.getByTestId('image-gradient')).toBeOnTheScreen()
   })
 
   it('should animate on scroll', async () => {
