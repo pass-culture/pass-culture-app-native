@@ -22,7 +22,7 @@ const extractDate = (date: Date): DayMapping => {
   const monthIndex = date.getMonth()
   const dayDate = date.getDate()
   const timestamp = date.getTime()
-  const extractedDate = {
+  return {
     weekday: SHORT_DAYS[dayIndex],
     fullWeekDay: DAYS[dayIndex],
     dayDate,
@@ -30,16 +30,14 @@ const extractDate = (date: Date): DayMapping => {
     fullMonth: MONTHS[monthIndex],
     timestamp,
   }
-  return extractedDate
 }
 
 type Props = {
   dates: Date[]
-  selectedDate: Date
-  onTabChange: (date: Date) => void
 }
 
-export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChange }) => {
+export const MovieCalendar: React.FC<Props> = ({ dates }) => {
+  const [selectedDate, setSelectedDate] = React.useState<Date>(dates?.[0])
   return (
     <Container>
       <BottomBar />
@@ -53,15 +51,13 @@ export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChang
 
           const { CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
           return (
-            <CalendarCell onPress={() => onTabChange(date)} key={`${timestamp} - ${isSelected}`}>
-              <CalendarTextView>
-                <CalendarText numberOfLines={1} accessibilityLabel={fullWeekDay}>
-                  {weekday}
-                </CalendarText>
+            <CalendarCell
+              onPress={() => setSelectedDate(date)}
+              key={`${timestamp} - ${isSelected}`}>
+              <CalendarTextView accessibilityLabel={`${fullWeekDay} ${dayDate} ${fullMonth}`}>
+                <CalendarText numberOfLines={1}>{weekday}</CalendarText>
                 <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
-                <CalendarText numberOfLines={1} accessibilityLabel={fullMonth}>
-                  {month}
-                </CalendarText>
+                <CalendarText numberOfLines={1}>{month}</CalendarText>
               </CalendarTextView>
               {isSelected ? <SelectedBottomBar /> : null}
             </CalendarCell>
