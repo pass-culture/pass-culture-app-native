@@ -21,9 +21,11 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 }))
 
 let mockedOffer: Partial<OfferResponse> | undefined | null = undefined
+let mockedIsLoading = false
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
     data: mockedOffer,
+    isLoading: mockedIsLoading,
   }),
 }))
 
@@ -40,6 +42,7 @@ type RenderOfferPage = {
   extraOffer?: Partial<Omit<OfferResponse, 'id'>>
   openModalOnNavigation?: boolean
   mockOffer?: MockOffer
+  mockIsLoading?: boolean
 }
 
 export function renderOfferPage({
@@ -47,8 +50,10 @@ export function renderOfferPage({
   extraOffer,
   openModalOnNavigation,
   mockOffer = { ...offerResponseSnap, ...extraOffer },
+  mockIsLoading = false,
 }: RenderOfferPage) {
   mockedOffer = mockOffer
+  mockedIsLoading = mockIsLoading
 
   render(
     reactQueryProviderHOC(

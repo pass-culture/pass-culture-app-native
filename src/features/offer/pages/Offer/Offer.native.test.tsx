@@ -123,6 +123,12 @@ describe('<Offer />', () => {
 
       expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
     })
+
+    it('should display offer placeholder on init', async () => {
+      renderOfferPage({ mockOffer: offerResponseSnap, mockIsLoading: true })
+
+      expect(await screen.findByTestId('OfferContentPlaceholder')).toBeOnTheScreen()
+    })
   })
 
   it('should display offer v1 page when feature flag is disabled', async () => {
@@ -131,5 +137,13 @@ describe('<Offer />', () => {
     await act(async () => {})
 
     expect(screen.queryByTestId('offerv2-container')).toBe(null)
+  })
+
+  it('should not display offer placeholder on init when feature flag is disabled', async () => {
+    renderOfferPage({ mockOffer: offerResponseSnap, mockIsLoading: true })
+
+    await act(async () => {})
+
+    expect(screen.queryByTestId('OfferContentPlaceholder')).not.toBeOnTheScreen()
   })
 })
