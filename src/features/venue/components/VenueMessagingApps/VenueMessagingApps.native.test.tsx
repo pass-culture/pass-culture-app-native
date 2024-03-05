@@ -20,7 +20,7 @@ describe('<VenueMessagingApps />', () => {
 
   it('should share on instagram', async () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
-    render(reactQueryProviderHOC(<VenueMessagingApps venueId={venueResponseSnap.id} />))
+    render(reactQueryProviderHOC(<VenueMessagingApps venue={venueResponseSnap} />))
 
     const instagramButton = await screen.findByText(`Envoyer sur Instagram`)
 
@@ -38,7 +38,7 @@ describe('<VenueMessagingApps />', () => {
 
   it('should log analytics on share', async () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
-    render(reactQueryProviderHOC(<VenueMessagingApps venueId={venueResponseSnap.id} />))
+    render(reactQueryProviderHOC(<VenueMessagingApps venue={venueResponseSnap} />))
 
     const instagramButton = await screen.findByText(`Envoyer sur Instagram`)
 

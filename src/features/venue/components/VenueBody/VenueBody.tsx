@@ -123,7 +123,7 @@ export const VenueBody: FunctionComponent<Props> = ({
 
       <SectionWithDivider visible>
         <MarginContainer>
-          <VenueMessagingApps venueId={venue.id} />
+          <VenueMessagingApps venue={venue} />
         </MarginContainer>
       </SectionWithDivider>
 
