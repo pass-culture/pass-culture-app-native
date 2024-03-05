@@ -4,7 +4,8 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
+import { getEmailUpdateStepV2 } from 'features/profile/helpers/getEmailUpdateStepV2'
+import { useEmailUpdateStatusV2 } from 'features/profile/helpers/useEmailUpdateStatusV2'
 import { Step } from 'ui/components/Step/Step'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
@@ -18,8 +19,9 @@ const isWeb = Platform.OS === 'web'
 
 export const TrackEmailChangeContent = () => {
   const { user } = useAuthContext()
+  const { data: requestStatus } = useEmailUpdateStatusV2()
 
-  const currentStep = getEmailUpdateStep()
+  const currentStep = getEmailUpdateStepV2(requestStatus?.status)
   const currentEmail = user?.email ?? ''
   const newEmail = ''
 
