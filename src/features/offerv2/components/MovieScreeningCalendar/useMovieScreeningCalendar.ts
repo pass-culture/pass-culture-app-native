@@ -31,10 +31,11 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
     () =>
       Object.keys(movieScreenings)
         .map((dateString) => new Date(dateString))
-        .sort(),
+        .sort((a, b) => {
+          return a.getTime() - b.getTime()
+        }),
     [movieScreenings]
   )
-
   useEffect(() => {
     setSelectedDate(movieScreeningDates[0])
   }, [movieScreeningDates])

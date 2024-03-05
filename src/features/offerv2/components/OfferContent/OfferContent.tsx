@@ -109,9 +109,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
-      {!isWeb ? null : (
+      {isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      )}
+      ) : null}
       <ScrollViewContainer
         testID="offerv2-container"
         scrollEventThrottle={16}
@@ -131,19 +131,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <Spacer.Column numberOfSpaces={4} />
             <OfferTitle offerName={offer.name} />
 
-            {!artists ? null : (
+            {artists ? (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={2} />
                 <OfferArtists artists={artists} />
               </React.Fragment>
-            )}
+            ) : null}
           </GroupWithoutGap>
 
-          {!prices ? null : <OfferPrice prices={prices} />}
+          {prices ? <OfferPrice prices={prices} /> : null}
 
           {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
             <GroupWithoutGap>
-              {!offer.venue.isPermanent ? null : <OfferVenueButton venue={offer.venue} />}
+              {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
 
               {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
                 <Separator.Horizontal testID="topSeparator" />

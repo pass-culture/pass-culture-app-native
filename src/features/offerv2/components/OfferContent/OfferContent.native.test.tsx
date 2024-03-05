@@ -150,7 +150,7 @@ describe('<OfferContent />', () => {
     it('should not display linear gradient on offer image when enableOfferPreview feature flag deactivated', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
     })
@@ -159,7 +159,7 @@ describe('<OfferContent />', () => {
   it('should display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
     renderOfferContent({})
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('image-gradient')).toBeOnTheScreen()
   })
@@ -167,12 +167,16 @@ describe('<OfferContent />', () => {
   it('should animate on scroll', async () => {
     renderOfferContent({})
 
+    await act(async () => {})
+
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
     await act(async () => {
       const scrollContainer = screen.getByTestId('offerv2-container')
       fireEvent.scroll(scrollContainer, scrollEvent)
     })
+
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
