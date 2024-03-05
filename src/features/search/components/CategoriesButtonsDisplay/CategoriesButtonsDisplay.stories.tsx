@@ -19,7 +19,8 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+// TODO(PC-20094): Fix this story
+const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
   <BodyWrapper>
     <CategoriesButtonsDisplay {...props} />
   </BodyWrapper>
