@@ -19,7 +19,7 @@ const isWeb = Platform.OS === 'web'
 
 export const TrackEmailChangeContent = () => {
   const { user } = useAuthContext()
-  const { data: requestStatus } = useEmailUpdateStatusV2()
+  const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatusV2()
 
   const currentStep = getEmailUpdateStepV2(requestStatus?.status)
   const currentEmail = user?.email ?? ''
@@ -81,6 +81,11 @@ export const TrackEmailChangeContent = () => {
       },
       onPress: isWeb ? undefined : openInbox,
     },
+  }
+
+  if (!isRequestStatusLoading && !requestStatus?.status) {
+    navigateToHome()
+    return null
   }
 
   return (

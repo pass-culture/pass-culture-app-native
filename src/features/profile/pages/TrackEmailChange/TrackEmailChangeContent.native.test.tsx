@@ -3,12 +3,15 @@ import { openInbox } from 'react-native-email-link'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
+import { navigateToHome } from 'features/navigation/helpers'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
+
+jest.mock('features/navigation/helpers')
 
 const trackEmailChangeContentFixture: EmailUpdateStatusResponse = {
   status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
@@ -55,5 +58,18 @@ describe('TrackEmailChangeContent', () => {
     fireEvent.press(await screen.findByText('Valide ta nouvelle adresse'))
 
     expect(openInbox).toHaveBeenCalledTimes(1)
+  })
+
+  it('should navigate to home when status is empty', async () => {
+    mockServer.getApi('/v2/profile/email_update/status', {
+      ...trackEmailChangeContentFixture,
+      status: undefined,
+      newEmail: 'new_email@test.com',
+    })
+    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+
+    await waitFor(() => {
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
+    })
   })
 })
