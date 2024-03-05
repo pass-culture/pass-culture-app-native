@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Rechercher'
+- tapOn: 'Cinéma, films et séries'
+
+# Attendre que "Catégories soit check"
+- tapOn: 'Catégories'
+
+- assertVisible: 'Cinéma, films et séries'
+- tapOn: 'Séances de cinéma'
+
+- assertVisible: 'Séances de cinéma'
+- tapOn: 'Rechercher'
+- tapOn:
+    id: '.*Voir tous les filtres.*'
+- tapOn: 'Duo'
+- tapOn:
+    id: "Interrupteur limitDuoOfferSearch"
+- tapOn: "Appliquer le filtre"
+- tapOn: "Rechercher"
+- tapOn: 'Ma position'
+- tapOn: 'Partout'

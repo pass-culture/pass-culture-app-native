@@ -1,0 +1,29 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn:
+    label: "Sélection de la 1ère offre disponible"
+    below:
+      text: .*résultats
+
+- tapOn: "Voir les disponibilités"
+- tapOn:
+    label: "Sélection de la 1ère date disponible"
+    enabled: true
+    above:
+      text: .*€
+- tapOn: "Valider la date"
+- tapOn:
+    label: "Sélection du 1er horaire disponible"
+    below:
+      text: "Horaire"
+- tapOn: "Valider lʼhoraire"
+- tapOn: "Duo"
+- tapOn: "Finaliser ma réservation"
+- tapOn: "Confirmer la réservation"
+
+- tapOn: "Voir ma réservation"
+
+- scrollUntilVisible:
+    element: "Annuler ma réservation"
+- tapOn: "Annuler ma réservation"
+- tapOn: "Annuler ma réservation"
