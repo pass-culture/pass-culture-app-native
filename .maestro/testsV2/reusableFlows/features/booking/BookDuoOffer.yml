@@ -1,11 +1,13 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- assertVisible: "Rechercher"
 - tapOn:
     label: "Sélection de la 1ère offre disponible"
     below:
       text: .*résultats
 
 - tapOn: "Voir les disponibilités"
+- assertVisible: "Choix des options"
 - tapOn:
     label: "Sélection de la 1ère date disponible"
     enabled: true
@@ -19,6 +21,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Valider lʼhoraire"
 - tapOn: "Duo"
 - tapOn: "Finaliser ma réservation"
+
+- assertVisible: "Détails de la réservation"
 - tapOn: "Confirmer la réservation"
 
 - tapOn: "Voir ma réservation"

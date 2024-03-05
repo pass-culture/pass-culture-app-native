@@ -9,6 +9,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - tapOn: 'Se connecter'
-- tapOn: 'Se connecter'
+- tapOn: 'Se connecter' # Second tapOn takes the focus off the input field
 
+- assertVisible: 'Prends 1 minute'
 - tapOn: 'Plus tard'
