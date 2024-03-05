@@ -52,7 +52,7 @@ describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues with new version', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await act(async () => {
@@ -65,7 +65,7 @@ describe('<Venue />', () => {
     // TODO(PC-26577): fix test flackyness
     // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should render correctly in web', async () => {
-      render(reactQueryProviderHOC(<Venue />))
+      render(<Venue />, { theme: { isDesktopViewport: true } })
       await act(async () => {})
 
       expect(screen).toMatchSnapshot()

@@ -9,7 +9,7 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { SearchView } from 'features/search/types'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
-import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffers'
+import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
@@ -73,25 +73,25 @@ const distributionStoreVenue = {
 
 const bookstoreVenue = { ...mockVenue, venueTypeCode: VenueTypeCodeKey.BOOKSTORE }
 
-describe('<VenueOffersNew />', () => {
+describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
   it('should display skeleton if playlists are fetching', () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({ isLoading: true, gtlPlaylists: [] })
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
   it('should display placeholder when no offers', () => {
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: { hits: [], nbHits: 0 } })
+    renderVenueOffers({ venue: venueResponseSnap, venueOffers: { hits: [], nbHits: 0 } })
 
     expect(
       screen.getByText('Il n’y a pas encore d’offre disponible dans ce lieu')
@@ -99,13 +99,13 @@ describe('<VenueOffersNew />', () => {
   })
 
   it('should display "En voir plus" button if they are more hits to see than the one displayed', () => {
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
   })
 
   it(`should not display "En voir plus" button if they are no more hits to see than the one displayed`, () => {
-    renderVenueOffersNew({
+    renderVenueOffers({
       venue: venueResponseSnap,
       venueOffers: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     })
@@ -114,7 +114,7 @@ describe('<VenueOffersNew />', () => {
   })
 
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     fireEvent.press(screen.getByText('En voir plus'))
 
@@ -136,7 +136,7 @@ describe('<VenueOffersNew />', () => {
   })
 
   it(`should log analytics event when clicking "En voir plus" button`, () => {
-    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
     fireEvent.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
@@ -144,13 +144,13 @@ describe('<VenueOffersNew />', () => {
 
   describe('should display all gtl playlists', () => {
     it('When there are gtl playlists associated to the venue and venue type is distribution store', () => {
-      renderVenueOffersNew({ venue: bookstoreVenue, venueOffers: venueOffersMock, playlists })
+      renderVenueOffers({ venue: bookstoreVenue, venueOffers: venueOffersMock, playlists })
 
       expect(screen.getByText('GTL playlist')).toBeOnTheScreen()
     })
 
     it('When there are gtl playlists associated to the venue and venue type is book store', () => {
-      renderVenueOffersNew({
+      renderVenueOffers({
         venue: distributionStoreVenue,
         venueOffers: venueOffersMock,
         playlists,
@@ -162,26 +162,26 @@ describe('<VenueOffersNew />', () => {
 
   describe('should not display all gtl playlists', () => {
     it('When there are not gtl playlists associated to the venue and venue type is distribution store', () => {
-      renderVenueOffersNew({ venue: bookstoreVenue, venueOffers: venueOffersMock })
+      renderVenueOffers({ venue: bookstoreVenue, venueOffers: venueOffersMock })
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
 
     it('When there are not gtl playlists associated to the venue and venue type is book store', () => {
-      renderVenueOffersNew({ venue: distributionStoreVenue, venueOffers: venueOffersMock })
+      renderVenueOffers({ venue: distributionStoreVenue, venueOffers: venueOffersMock })
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
 
     it('When there are gtl playlists associated to the venue and venue type is not distribution or book store', () => {
-      renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock, playlists })
+      renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock, playlists })
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
   })
 })
 
-const renderVenueOffersNew = ({
+const renderVenueOffers = ({
   venue,
   venueOffers,
   playlists,
@@ -192,7 +192,7 @@ const renderVenueOffersNew = ({
 }) => {
   return render(
     reactQueryProviderHOC(
-      <VenueOffersNew venue={venue} venueOffers={venueOffers} playlists={playlists} />
+      <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
     )
   )
 }

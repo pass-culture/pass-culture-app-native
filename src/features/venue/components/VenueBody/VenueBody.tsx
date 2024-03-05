@@ -9,7 +9,7 @@ import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
-import { VenueOffersNew } from 'features/venue/components/VenueOffers/VenueOffers'
+import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -102,7 +102,7 @@ export const VenueBody: FunctionComponent<Props> = ({
         <TabLayout
           tabPanels={{
             'Offres disponibles': (
-              <VenueOffersNew venue={venue} venueOffers={venueOffers} playlists={playlists} />
+              <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
             ),
             'Infos pratiques': <PracticalInformation venue={venue} />,
           }}

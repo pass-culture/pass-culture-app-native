@@ -30,7 +30,7 @@ interface Props {
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props>) {
+export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) {
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
   const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
