@@ -65,4 +65,19 @@ describe('<OfferContent />', () => {
 
     expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
   })
+
+  it('should not display tag on offer image when enableOfferPreview feature flag activated', async () => {
+    render(
+      reactQueryProviderHOC(
+        <OfferContent
+          offer={offerResponseSnap}
+          searchGroupList={placeholderData.searchGroups}
+          subcategory={mockSubcategory}
+        />
+      )
+    )
+    await act(async () => {})
+
+    expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+  })
 })

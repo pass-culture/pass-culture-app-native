@@ -137,9 +137,7 @@ describe('<OfferContent />', () => {
   it('should display offer header', async () => {
     renderOfferContent({})
 
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.getByTestId('offerHeaderName')).toBeOnTheScreen()
+    expect(await screen.findByTestId('offerHeaderName')).toBeOnTheScreen()
   })
 
   describe('When WIP_OFFER_PREVIEW feature flag deactivated', () => {
@@ -154,14 +152,26 @@ describe('<OfferContent />', () => {
 
       expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
     })
+
+    it('should not display tag on offer image when enableOfferPreview feature flag deactivated', async () => {
+      renderOfferContent({})
+
+      await act(async () => {})
+
+      expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+    })
   })
 
   it('should display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
     renderOfferContent({})
 
-    await screen.findByText('Réserver l’offre')
+    expect(await screen.findByTestId('image-gradient')).toBeOnTheScreen()
+  })
 
-    expect(screen.getByTestId('image-gradient')).toBeOnTheScreen()
+  it('should display tag on offer image when enableOfferPreview feature flag activated', async () => {
+    renderOfferContent({})
+
+    expect(await screen.findByTestId('image-tag')).toBeOnTheScreen()
   })
 
   it('should animate on scroll', async () => {
@@ -171,10 +181,7 @@ describe('<OfferContent />', () => {
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
-    await act(async () => {
-      const scrollContainer = screen.getByTestId('offerv2-container')
-      fireEvent.scroll(scrollContainer, scrollEvent)
-    })
+    fireEvent.scroll(await screen.findByTestId('offerv2-container'), scrollEvent)
 
     await screen.findByText('Réserver l’offre')
 
@@ -185,9 +192,7 @@ describe('<OfferContent />', () => {
     it('should display tags', async () => {
       renderOfferContent({})
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
+      expect(await screen.findByText('Cinéma plein air')).toBeOnTheScreen()
     })
 
     it('should display vinyl tag', async () => {
@@ -211,9 +216,7 @@ describe('<OfferContent />', () => {
         subcategory,
       })
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('Metal')).toBeOnTheScreen()
+      expect(await screen.findByText('Metal')).toBeOnTheScreen()
       expect(screen.getByText('Industrial')).toBeOnTheScreen()
       expect(screen.getByText('Vinyles et autres supports')).toBeOnTheScreen()
     })
@@ -222,10 +225,8 @@ describe('<OfferContent />', () => {
   it('should display offer as a title', async () => {
     renderOfferContent({})
 
-    await screen.findByText('Réserver l’offre')
-
     expect(
-      screen.getByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
+      await screen.findByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
     ).toBeOnTheScreen()
   })
 
@@ -239,17 +240,13 @@ describe('<OfferContent />', () => {
       offer,
     })
 
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.getByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
+    expect(await screen.findByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
   })
 
   it('should display prices', async () => {
     renderOfferContent({})
 
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.getByText('5,00 €')).toBeOnTheScreen()
+    expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
   })
 
   it('should not display prices when the offer is free', async () => {
@@ -280,9 +277,9 @@ describe('<OfferContent />', () => {
     it('should display both section', async () => {
       renderOfferContent({})
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
+      expect(
+        await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+      ).toBeOnTheScreen()
       expect(screen.getByText('Duo')).toBeOnTheScreen()
     })
 
@@ -309,9 +306,7 @@ describe('<OfferContent />', () => {
     it('should display top separator between this two section', async () => {
       renderOfferContent({})
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByTestId('topSeparator')).toBeOnTheScreen()
+      expect(await screen.findByTestId('topSeparator')).toBeOnTheScreen()
     })
 
     it('should not display top separator between this two section', async () => {
@@ -334,9 +329,9 @@ describe('<OfferContent />', () => {
       it('should display venue button', async () => {
         renderOfferContent({})
 
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')).toBeOnTheScreen()
+        expect(
+          await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+        ).toBeOnTheScreen()
       })
 
       it('should not display venue button', async () => {
@@ -365,9 +360,7 @@ describe('<OfferContent />', () => {
         }
         renderOfferContent({ offer })
 
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.getByText('Duo')).toBeOnTheScreen()
+        expect(await screen.findByText('Duo')).toBeOnTheScreen()
       })
 
       it('should not display duo info', async () => {
@@ -388,17 +381,13 @@ describe('<OfferContent />', () => {
     it('should display venue section', async () => {
       renderOfferContent({})
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('Copier l’adresse')).toBeOnTheScreen()
+      expect(await screen.findByText('Copier l’adresse')).toBeOnTheScreen()
     })
 
     it('should display venue distance tag when user share his position', async () => {
       renderOfferContent({})
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('à 900+ km')).toBeOnTheScreen()
+      expect(await screen.findByText('à 900+ km')).toBeOnTheScreen()
     })
 
     it('should not display venue distance tag when user not share his position', async () => {
@@ -414,9 +403,7 @@ describe('<OfferContent />', () => {
   it('should display social network section', async () => {
     renderOfferContent({})
 
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.getByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
+    expect(await screen.findByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
   })
 
   describe('Playlist list section', () => {
@@ -621,9 +608,7 @@ describe('<OfferContent />', () => {
     it('should display "Réserver l’offre" button', async () => {
       renderOfferContent({})
 
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
+      expect(await screen.findByText('Réserver l’offre')).toBeOnTheScreen()
     })
 
     it('should log analytics when display authentication modal', async () => {
@@ -636,10 +621,7 @@ describe('<OfferContent />', () => {
 
       renderOfferContent({})
 
-      const bookingOfferButton = await screen.findByText('Réserver l’offre')
-      await act(async () => {
-        fireEvent.press(bookingOfferButton)
-      })
+      fireEvent.press(await screen.findByText('Réserver l’offre'))
 
       waitForModalToShow()
 
@@ -651,17 +633,13 @@ describe('<OfferContent />', () => {
 
     it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
       renderOfferContent({})
-      const scrollView = screen.getByTestId('offerv2-container')
+      const scrollView = await screen.findByTestId('offerv2-container')
 
-      await act(async () => {
-        fireEvent.scroll(scrollView, nativeEventMiddle)
-      })
+      fireEvent.scroll(scrollView, nativeEventMiddle)
 
       expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
 
-      await act(async () => {
-        fireEvent.scroll(scrollView, nativeEventBottom)
-      })
+      fireEvent.scroll(scrollView, nativeEventBottom)
 
       await screen.findByText('Réserver l’offre')
 
@@ -670,17 +648,14 @@ describe('<OfferContent />', () => {
 
     it('should trigger logEvent "ConsultAllOffer" only once', async () => {
       renderOfferContent({})
-      const scrollView = screen.getByTestId('offerv2-container')
-      await act(async () => {
-        fireEvent.scroll(scrollView, nativeEventBottom)
-      })
+      const scrollView = await screen.findByTestId('offerv2-container')
+
+      fireEvent.scroll(scrollView, nativeEventBottom)
 
       expect(analytics.logConsultWholeOffer).toHaveBeenCalledTimes(1)
 
-      await act(async () => {
-        fireEvent.scroll(scrollView, nativeEventMiddle)
-        fireEvent.scroll(scrollView, nativeEventBottom)
-      })
+      fireEvent.scroll(scrollView, nativeEventMiddle)
+      fireEvent.scroll(scrollView, nativeEventBottom)
 
       await screen.findByText('Réserver l’offre')
 
@@ -712,9 +687,7 @@ describe('<OfferContent />', () => {
     it('should trigger has_seen_offer_for_survey event on scroll to bottom', async () => {
       renderOfferContent({})
 
-      fireEvent.scroll(screen.getByTestId('offerv2-container'), nativeEventBottom)
-
-      await screen.findByText('Réserver l’offre')
+      fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventBottom)
 
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -722,9 +695,7 @@ describe('<OfferContent />', () => {
     it('should not trigger has_seen_offer_for_survey event on scroll to middle', async () => {
       renderOfferContent({})
 
-      fireEvent.scroll(screen.getByTestId('offerv2-container'), nativeEventMiddle)
-
-      await screen.findByText('Réserver l’offre')
+      fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventMiddle)
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -732,10 +703,8 @@ describe('<OfferContent />', () => {
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
       renderOfferContent({})
 
-      fireEvent.scroll(screen.getByTestId('offerv2-container'), nativeEventBottom)
+      fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventBottom)
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
-
-      await screen.findByText('Réserver l’offre')
 
       expect(BatchUser.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
@@ -753,7 +722,6 @@ describe('<OfferContent />', () => {
       async (nativeCategoryId) => {
         renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
 
-        //await act(() => {})
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
 
         await screen.findByText('Réserver l’offre')

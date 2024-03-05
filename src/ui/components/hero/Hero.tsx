@@ -11,19 +11,21 @@ import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/Fas
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
+import { Tag } from 'ui/components/Tag/Tag'
+import { Camera } from 'ui/svg/icons/Camera'
 import { getSpacing, Spacer, getShadow } from 'ui/theme'
 
 type HeroProps = (
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
   | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCode | null }
-) & { imageUrl?: string; shouldDisplayLinearGradient?: boolean }
+) & { imageUrl?: string; shouldDisplayOfferPreview?: boolean }
 
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
 export const Hero: FunctionComponent<HeroProps> = (props) => {
-  const { imageUrl, shouldDisplayLinearGradient, ...placeholderProps } = props
+  const { imageUrl, shouldDisplayOfferPreview, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
     type: placeholderProps.type,
     hasImage: !!imageUrl,
@@ -55,12 +57,15 @@ export const Hero: FunctionComponent<HeroProps> = (props) => {
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
           <React.Fragment>
-            {shouldDisplayLinearGradient ? <StyledLinearGradient testID="image-gradient" /> : null}
+            {shouldDisplayOfferPreview ? <StyledLinearGradient testID="image-gradient" /> : null}
             <StyledFastImage
               style={imageStyle}
               url={imageUrl}
               resizeMode={FastImage.resizeMode?.cover}
             />
+            {shouldDisplayOfferPreview ? (
+              <StyledTag label="1" Icon={StyledCamera} testID="image-tag" />
+            ) : null}
           </React.Fragment>
         ) : (
           <ImagePlaceholder />
@@ -75,6 +80,17 @@ const StyledFastImage = styled(ResizedFastImage)(({ theme }) => ({
   position: 'absolute',
   zIndex: 1,
 }))
+
+const StyledTag = styled(Tag)({
+  position: 'absolute',
+  right: getSpacing(2),
+  bottom: getSpacing(2),
+  zIndex: 3,
+})
+
+const StyledCamera = styled(Camera).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
 
 const ImageContainer = styled.View(({ theme }) => ({
   bottom: 0,
