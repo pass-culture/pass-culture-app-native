@@ -3,7 +3,7 @@ import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-n
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
-import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
+import { OfferResponse, SearchGroupResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
@@ -11,6 +11,7 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { MovieScreeningCalendar } from 'features/offerv2/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { OfferAbout } from 'features/offerv2/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offerv2/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offerv2/components/OfferCTAButton/OfferCTAButton'
@@ -28,6 +29,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
+import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -53,6 +55,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const tags = getOfferTags(subcategory.appLabel, extraData)
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
+
+  const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
 
@@ -105,9 +109,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
-      {!isWeb ? null : (
+      {isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      )}
+      ) : null}
       <ScrollViewContainer
         testID="offerv2-container"
         scrollEventThrottle={16}
@@ -127,19 +131,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <Spacer.Column numberOfSpaces={4} />
             <OfferTitle offerName={offer.name} />
 
-            {!artists ? null : (
+            {artists ? (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={2} />
                 <OfferArtists artists={artists} />
               </React.Fragment>
-            )}
+            ) : null}
           </GroupWithoutGap>
 
-          {!prices ? null : <OfferPrice prices={prices} />}
+          {prices ? <OfferPrice prices={prices} /> : null}
 
           {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
             <GroupWithoutGap>
-              {!offer.venue.isPermanent ? null : <OfferVenueButton venue={offer.venue} />}
+              {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
 
               {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
                 <Separator.Horizontal testID="topSeparator" />
@@ -156,6 +160,12 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         <OfferPlace offer={offer} isEvent={subcategory.isEvent} />
         <Spacer.Column numberOfSpaces={8} />
+
+        {isOfferAMovieScreening ? (
+          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
+            <MovieScreeningCalendar stocks={offer.stocks} />
+          </FeatureFlag>
+        ) : null}
 
         <SectionWithDivider visible margin>
           <Spacer.Column numberOfSpaces={2} />

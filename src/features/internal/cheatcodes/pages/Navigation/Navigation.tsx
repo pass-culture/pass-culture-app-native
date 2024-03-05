@@ -195,9 +195,6 @@ export function Navigation(): React.JSX.Element {
             <ButtonPrimary wording="Filtre lieu culturel" onPress={showVenueModal} />
             <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
           </Row>
-          <Row half>
-            <ButtonPrimary wording="Calendrier cinéma" onPress={() => navigate('MovieCalendar')} />
-          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>
