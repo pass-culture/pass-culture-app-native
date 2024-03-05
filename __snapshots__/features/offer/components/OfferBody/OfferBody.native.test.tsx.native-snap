@@ -59,80 +59,116 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         />
       </View>
       <View
-        numberOfSpaces={32}
-        style={
-          [
-            {
-              "height": 128,
-            },
-          ]
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
         }
-      />
-      <View
-        style={
-          [
-            {
-              "bottom": 0,
-              "shadowColor": "#161617",
-              "shadowOffset": {
-                "height": 8,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 12,
-            },
-            {
-              "aspectRatio": 0.6666666666666666,
-              "borderRadius": 8,
-              "height": 296,
-              "maxWidth": 912,
-              "width": 197,
-            },
-          ]
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
         }
-        testID="image-container"
+        accessible={false}
+        collapsable={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
       >
+        <View
+          numberOfSpaces={32}
+          style={
+            [
+              {
+                "height": 128,
+              },
+            ]
+          }
+        />
         <View
           style={
             [
               {
-                "overflow": "hidden",
+                "bottom": 0,
+                "shadowColor": "#161617",
+                "shadowOffset": {
+                  "height": 8,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 12,
               },
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "position": "absolute",
-                  "zIndex": 1,
-                },
-                {
-                  "aspectRatio": 0.6666666666666666,
-                  "borderRadius": 8,
-                  "height": 296,
-                  "maxWidth": 912,
-                  "width": 197,
-                },
-              ],
+              {
+                "aspectRatio": 0.6666666666666666,
+                "borderRadius": 8,
+                "height": 296,
+                "maxWidth": 912,
+                "width": 197,
+              },
             ]
           }
+          testID="image-container"
         >
-          <FastImageView
-            defaultSource={null}
-            resizeMode="cover"
-            source={
-              {
-                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
-              }
-            }
+          <View
             style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
+              [
+                {
+                  "overflow": "hidden",
+                },
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "position": "absolute",
+                    "zIndex": 1,
+                  },
+                  {
+                    "aspectRatio": 0.6666666666666666,
+                    "borderRadius": 8,
+                    "height": 296,
+                    "maxWidth": 912,
+                    "width": 197,
+                  },
+                ],
+              ]
             }
-          />
+          >
+            <FastImageView
+              defaultSource={null}
+              resizeMode="cover"
+              source={
+                {
+                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
+                }
+              }
+              style={
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -1321,80 +1357,116 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         />
       </View>
       <View
-        numberOfSpaces={32}
-        style={
-          [
-            {
-              "height": 128,
-            },
-          ]
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
         }
-      />
-      <View
-        style={
-          [
-            {
-              "bottom": 0,
-              "shadowColor": "#161617",
-              "shadowOffset": {
-                "height": 8,
-                "width": 0,
-              },
-              "shadowOpacity": 0.2,
-              "shadowRadius": 12,
-            },
-            {
-              "aspectRatio": 0.6666666666666666,
-              "borderRadius": 8,
-              "height": 296,
-              "maxWidth": 912,
-              "width": 197,
-            },
-          ]
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
         }
-        testID="image-container"
+        accessible={false}
+        collapsable={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
       >
+        <View
+          numberOfSpaces={32}
+          style={
+            [
+              {
+                "height": 128,
+              },
+            ]
+          }
+        />
         <View
           style={
             [
               {
-                "overflow": "hidden",
+                "bottom": 0,
+                "shadowColor": "#161617",
+                "shadowOffset": {
+                  "height": 8,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.2,
+                "shadowRadius": 12,
               },
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "position": "absolute",
-                  "zIndex": 1,
-                },
-                {
-                  "aspectRatio": 0.6666666666666666,
-                  "borderRadius": 8,
-                  "height": 296,
-                  "maxWidth": 912,
-                  "width": 197,
-                },
-              ],
+              {
+                "aspectRatio": 0.6666666666666666,
+                "borderRadius": 8,
+                "height": 296,
+                "maxWidth": 912,
+                "width": 197,
+              },
             ]
           }
+          testID="image-container"
         >
-          <FastImageView
-            defaultSource={null}
-            resizeMode="cover"
-            source={
-              {
-                "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
-              }
-            }
+          <View
             style={
-              {
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              }
+              [
+                {
+                  "overflow": "hidden",
+                },
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "position": "absolute",
+                    "zIndex": 1,
+                  },
+                  {
+                    "aspectRatio": 0.6666666666666666,
+                    "borderRadius": 8,
+                    "height": 296,
+                    "maxWidth": 912,
+                    "width": 197,
+                  },
+                ],
+              ]
             }
-          />
+          >
+            <FastImageView
+              defaultSource={null}
+              resizeMode="cover"
+              source={
+                {
+                  "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
+                }
+              }
+              style={
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+          </View>
         </View>
       </View>
     </View>

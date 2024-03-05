@@ -16,6 +16,8 @@ interface Props {
   onPress?: VoidFunction
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const HeroHeader: FunctionComponent<Props> = ({
   imageUrl,
   imageHeight,
@@ -53,8 +55,9 @@ export const HeroHeader: FunctionComponent<Props> = ({
   const blurImageRadius = Platform.OS === 'android' ? 5 : 20
   const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
   const blurImageStyle = { height: imageHeight, width: appContentWidth }
+
   return (
-    <Container minHeight={minHeight} onPress={onPress}>
+    <Container minHeight={minHeight}>
       <HeroContainer>
         {imageUrl ? (
           <Image
@@ -69,12 +72,12 @@ export const HeroHeader: FunctionComponent<Props> = ({
           backgroundImage
         )}
       </HeroContainer>
-      {children}
+      {!isWeb ? <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity> : children}
     </Container>
   )
 }
 
-const Container = styled(TouchableOpacity)<{ minHeight?: number }>(({ minHeight = 0 }) => ({
+const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
   alignItems: 'center',
   minHeight,
 }))
