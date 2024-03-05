@@ -1023,6 +1023,7 @@ export enum EmailHistoryEventTypeEnum {
   'UPDATE_REQUEST' = 'UPDATE_REQUEST',
   'CONFIRMATION' = 'CONFIRMATION',
   'CANCELLATION' = 'CANCELLATION',
+  'NEW_EMAIL_SELECTION' = 'NEW_EMAIL_SELECTION',
   'VALIDATION' = 'VALIDATION',
   'ADMIN_VALIDATION' = 'ADMIN_VALIDATION',
   'ADMIN_UPDATE_REQUEST' = 'ADMIN_UPDATE_REQUEST',
@@ -1048,6 +1049,32 @@ export interface EmailUpdateStatus {
    * @memberof EmailUpdateStatus
    */
   status: EmailHistoryEventTypeEnum
+}
+/**
+ * @export
+ * @interface EmailUpdateStatusResponse
+ */
+export interface EmailUpdateStatusResponse {
+  /**
+   * @type {boolean}
+   * @memberof EmailUpdateStatusResponse
+   */
+  expired: boolean
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatusResponse
+   */
+  newEmail?: string | null
+  /**
+   * @type {EmailHistoryEventTypeEnum}
+   * @memberof EmailUpdateStatusResponse
+   */
+  status: EmailHistoryEventTypeEnum
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatusResponse
+   */
+  token?: string | null
 }
 /**
  * @export
@@ -3767,6 +3794,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_email_update_status <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3924,6 +3952,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(venue_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_email_update_status <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v2/profile/email_update/status`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -4863,6 +4909,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_email_update_status <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4957,6 +5004,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueId(venue_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_email_update_status <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ProfileEmailUpdateStatus(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -5167,6 +5225,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary update_user_email <POST>
+     * @deprecated
      * @param {UserProfileEmailUpdate} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5558,6 +5617,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_email_update_status <GET>
+    * @deprecated
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
@@ -5654,6 +5714,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_email_update_status <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2ProfileEmailUpdateStatus(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2ProfileEmailUpdateStatus(options)
   }
   /**
     * 
@@ -5862,6 +5933,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary update_user_email <POST>
+    * @deprecated
     * @param {UserProfileEmailUpdate} [body] 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
