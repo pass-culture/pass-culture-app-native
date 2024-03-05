@@ -141,8 +141,10 @@ jest.mock('react-native-intersection-observer', () => {
 
 describe('GtlPlaylist', () => {
   it('should log ConsultOffer when pressing an item', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.queryAllByText('Mon abonnement bibliothèque')[0])
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
@@ -155,6 +157,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
     const scrollView = screen.getByTestId('offersModuleList')
 
@@ -176,6 +179,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should log ModuleDisplayed when scrolling to the playlist', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
 
     mockInView(true)
@@ -188,6 +192,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
 
     mockInView(false)

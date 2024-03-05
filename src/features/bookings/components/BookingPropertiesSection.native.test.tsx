@@ -25,6 +25,7 @@ describe('<BookingPropertiesSection />', () => {
   const booking = bookingsSnap.ongoing_bookings[0]
 
   it('should display user firstname and lastname', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties(booking)
 
     await waitFor(() => {
@@ -33,7 +34,9 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it('should display duo icon when offer is duo', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.quantity = 2
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties(booking)
 
     await waitFor(() => {
@@ -42,6 +45,7 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it('should display date label', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties(booking)
 
     await waitFor(() => {
@@ -50,8 +54,11 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it('should display location label if offer is not permanent and not a digital event', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isPermanent = false
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties(booking)
     await waitFor(() => {
       expect(screen.getByText('Maison de la Brique, Drancy')).toBeOnTheScreen()
@@ -59,6 +66,7 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it('should display price line with price details', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties(booking)
 
     expect(screen.getByText('8\u00a0€')).toBeOnTheScreen()
@@ -66,6 +74,7 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it("should display cinema's attributes when booked offer has attributes", () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties(booking)
 
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
@@ -74,6 +83,7 @@ describe('<BookingPropertiesSection />', () => {
   })
 
   it("should not show cinema's attributes when booked offer has not attributes", () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingProperties({ ...booking, stock: { ...booking.stock, features: [] } })
 
     expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()

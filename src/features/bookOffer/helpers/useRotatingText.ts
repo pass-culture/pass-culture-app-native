@@ -41,15 +41,19 @@ export function useRotatingText<T extends RotatingTextOptions[]>(
           }
 
           // the condition handles loop repetition from start
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           return currentMessage.keepDuration ? 0 : prev
         })
+        // @ts-expect-error: because of noUncheckedIndexedAccess
       }, currentMessage.keepDuration)
     }
 
     return () => {
       clearInterval(intervalRef.current)
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
   }, [currentMessage.keepDuration, shouldRun])
 
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   return currentMessage.message
 }

@@ -117,6 +117,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
         const { content } = error as { content: { code: string } }
 
         if (content?.code in errorCodeToMessage) {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           message = errorCodeToMessage[content.code]
 
           if (typeof offerId === 'number') {

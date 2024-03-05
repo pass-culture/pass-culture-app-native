@@ -102,6 +102,7 @@ const mockRoutesWithVenue = [
   },
 ]
 
+// @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
 
 const searchId = uuidv4()

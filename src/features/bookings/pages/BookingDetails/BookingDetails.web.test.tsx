@@ -38,6 +38,7 @@ describe('BookingDetails', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const { container } = renderBookingDetails(bookingsSnap.ongoing_bookings[0])
 
       await act(async () => {

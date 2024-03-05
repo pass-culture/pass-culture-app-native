@@ -135,6 +135,7 @@ describe('CulturalSurveysQuestions page', () => {
   it('should not updateQuestionsToDisplay on checkbox press if answer pressed has no sub_question', () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const thirdAnswerTitle = questionsFromMockedHook?.questions[0].answers[2].title as string
     const CulturalSurveyAnswerCheckbox = screen.getByText(thirdAnswerTitle)
     fireEvent.press(CulturalSurveyAnswerCheckbox)

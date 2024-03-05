@@ -52,15 +52,19 @@ export function getVenueList(hits: Offer[], geolocation: Position) {
     if (
       venueAlreadyListedIndex >= 0 &&
       hit.offer.prices?.length &&
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       venueAlreadyListedPrice > hit.offer.prices[0]
     ) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerVenues[venueAlreadyListedIndex].offerId = Number(hit.objectID)
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerVenues[venueAlreadyListedIndex].price = hit.offer.prices[0]
       return
     }
 
     offerVenues.push({
       offerId: Number(hit.objectID),
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       price: hit.offer.prices?.length ? hit.offer.prices[0] : 0,
       venueId: hit.venue.id,
       title: hit.venue.publicName ? hit.venue.publicName : hit.venue.name ?? '',

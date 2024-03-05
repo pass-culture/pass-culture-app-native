@@ -15,6 +15,7 @@ describe('SelectPhoneStatus', () => {
     render(<SelectPhoneStatus />)
 
     const HeroButtonList = screen.getAllByTestId('HeroButtonList')[0]
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(HeroButtonList)
 
     expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
@@ -24,6 +25,7 @@ describe('SelectPhoneStatus', () => {
     render(<SelectPhoneStatus />)
 
     const HeroButtonList = screen.getAllByTestId('HeroButtonList')[1]
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(HeroButtonList)
 
     expect(navigate).toHaveBeenCalledWith('DMSIntroduction', { isForeignDMSInformation: false })

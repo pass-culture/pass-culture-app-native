@@ -33,23 +33,29 @@ describe('useOngoingOrEndedBooking', () => {
 
   it('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current?.data?.id).toEqual(booking.id)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 
   it('should return ended_bookings when there is one', async () => {
     const booking = bookingsSnap.ended_bookings[0]
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current?.data?.id).toEqual(booking.id)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 

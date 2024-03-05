@@ -31,6 +31,7 @@ describe('useTimer', () => {
   it('should decrease by elapsed time when app is in background', async () => {
     const { result } = renderHook(() => useTimer(40))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const mockCurrentAppState = appStateSpy.mock.calls[0][1]
     mockCurrentAppState('active')
 
@@ -49,6 +50,7 @@ describe('useTimer', () => {
   it('should set timer to 0 when app is in background for longer than remaining time', async () => {
     const { result } = renderHook(() => useTimer(40))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const mockCurrentAppState = appStateSpy.mock.calls[0][1]
     mockCurrentAppState('active')
 

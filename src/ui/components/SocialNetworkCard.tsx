@@ -14,6 +14,7 @@ interface SocialNetworkCardProps {
 function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const { network } = props
   const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const name = network[0].toUpperCase() + network.slice(1)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({

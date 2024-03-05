@@ -43,7 +43,9 @@ describe('<SignupConfirmationEmailSent />', () => {
 
     expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toHaveBeenCalledTimes(1)
     expect(mockedOpenUrl).toHaveBeenCalledWith(
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       contactSupport.forSignupConfirmationEmailNotReceived.url,
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       contactSupport.forSignupConfirmationEmailNotReceived.params,
       true
     )

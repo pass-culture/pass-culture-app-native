@@ -47,6 +47,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const { offerParams, locationParams } = adaptedPlaylistParameters(parameters)
   const searchParams = {
     ...offerParams,
@@ -55,6 +56,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     view: SearchView.Results,
   }
   const searchTabConfig = getTabNavConfig('Search', searchParams)
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const moduleName = displayParameters.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen({ moduleName, numberOfTiles: playlistItems.length })
@@ -63,6 +65,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const showSeeMore =
     nbPlaylistResults &&
     playlistItems.length < nbPlaylistResults &&
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

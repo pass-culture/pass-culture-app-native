@@ -37,6 +37,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       accessibilityLabel={`Catégorie ${label}`}
       hoverUnderlineColor={theme.colors.white}>
       <IllustrationContainer>
+        {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
         <StyledLinearGradient colors={[gradients[0], gradients[1]]}>
           {!!Illustration && (
             <IllustrationWrapper>

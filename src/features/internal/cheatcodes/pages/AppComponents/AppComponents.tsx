@@ -765,6 +765,7 @@ export const AppComponents: FunctionComponent = () => {
             height={LENGTH_S}
             width={LENGTH_S * (3 / 2)}
             userLocation={null}
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
           />
           <VenueTile
@@ -776,6 +777,7 @@ export const AppComponents: FunctionComponent = () => {
               latitude: 50,
               longitude: 51,
             }}
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
           />
           <Spacer.Column numberOfSpaces={4} />

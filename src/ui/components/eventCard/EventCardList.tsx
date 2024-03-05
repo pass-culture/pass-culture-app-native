@@ -20,6 +20,7 @@ export const EventCardList: React.FC<Props> = ({ data }) => {
           <React.Fragment key={JSON.stringify([topEventCardData, bottomEventCardData])}>
             <Spacer.Row numberOfSpaces={4} />
             <View>
+              {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
               <EventCard {...topEventCardData} />
               {bottomEventCardData ? (
                 <React.Fragment>

@@ -21,10 +21,12 @@ const mockedisUserExBeneficiary = jest.mocked(isUserExBeneficiary)
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when booking has activation code', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = true
     booking.activationCode = {
       code: 'someCode',
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(screen.getByTestId('Terminer')).toBeOnTheScreen()
@@ -33,7 +35,9 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should display button if confirmationDate is null', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
@@ -44,7 +48,9 @@ describe('<BookingDetailsCancelButton />', () => {
     const date = new Date()
     date.setDate(date.getDate() + 1)
     booking.confirmationDate = date.toISOString()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
@@ -52,9 +58,12 @@ describe('<BookingDetailsCancelButton />', () => {
 
   it('should not display button if confirmation date is expired', async () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isPermanent = false
     booking.confirmationDate = '2020-03-15T23:01:37.925926'
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
@@ -65,8 +74,10 @@ describe('<BookingDetailsCancelButton />', () => {
     const date = new Date()
     date.setDate(date.getDate() + 1)
     booking.confirmationDate = date.toISOString()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
     const onCancel = jest.fn()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking, {
       onCancel,
     })
@@ -78,8 +89,10 @@ describe('<BookingDetailsCancelButton />', () => {
 
   it('should call onTerminate', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0], activationCode: { code: 'someCode' } }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
     const onTerminate = jest.fn()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking, {
       onTerminate,
     })
@@ -92,7 +105,9 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should block user if cancellation date is over', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(
@@ -105,8 +120,10 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should block user if cancellation date is over and user is ex beneficiary', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
     mockedisUserExBeneficiary.mockReturnValueOnce(true)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(
@@ -119,8 +136,10 @@ describe('<BookingDetailsCancelButton />', () => {
   it("should display cancel button and expiration date message when confirmation date is null and that's it a digital booking", () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = true
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
     const expirationDateMessage = 'Ta réservation sera archivée le 17/03/2021'
 
@@ -132,6 +151,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = '2020-11-01T00:00:00Z'
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
     const expirationDateMessage =
       'Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021'
@@ -143,6 +163,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.confirmationDate = null
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 
     expect(screen.queryByTestId('cancel-annulation-message')).not.toBeOnTheScreen()
@@ -152,9 +173,12 @@ describe('<BookingDetailsCancelButton />', () => {
     it('should not display expiration date message', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetailsCancelButton(booking)
 
       expect(screen.queryByText('Ta réservation sera archivée le 17/03/2021')).not.toBeOnTheScreen()
@@ -163,9 +187,12 @@ describe('<BookingDetailsCancelButton />', () => {
     it('should display cancel button', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetailsCancelButton(booking)
 
       expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
@@ -176,11 +203,15 @@ describe('<BookingDetailsCancelButton />', () => {
     it('should display expiration date message when current price and price at booking time is 0', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.price = 0
       booking.totalAmount = 0
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetailsCancelButton(booking)
 
       expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
@@ -189,11 +220,15 @@ describe('<BookingDetailsCancelButton />', () => {
     it('should not display cancel button when current price and price at booking time is 0', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.price = 0
       booking.totalAmount = 0
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetailsCancelButton(booking)
 
       expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
@@ -202,11 +237,15 @@ describe('<BookingDetailsCancelButton />', () => {
     it('should display expiration date message when current price > 0 and price at booking is 0', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.price = 1000
       booking.totalAmount = 0
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetailsCancelButton(booking)
 
       expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
@@ -215,11 +254,15 @@ describe('<BookingDetailsCancelButton />', () => {
     it('should not display cancel button when current price > 0 and price at booking is 0', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.price = 1000
       booking.totalAmount = 0
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetailsCancelButton(booking)
 
       expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()

@@ -31,6 +31,7 @@ export const amplitude: AmplitudeClient = {
       const value = properties[key]
       if (value === null) return
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       identifyProperties.set(key, value)
     })
 

@@ -21,6 +21,7 @@ export const useSomeOfferId = () => {
         aroundPlaceRadius: 'all',
       },
     })
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       .then((response) => setOfferId(Number.parseInt(response.hits[0].objectID)))
       .catch(() => {
         // The cheatcodes are only in testing

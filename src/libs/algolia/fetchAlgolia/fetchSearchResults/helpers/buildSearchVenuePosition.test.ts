@@ -15,6 +15,7 @@ const Kourou: SuggestedPlace = {
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
+// @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
 
 const geolocPosition: Position = { latitude: 66, longitude: 66 }

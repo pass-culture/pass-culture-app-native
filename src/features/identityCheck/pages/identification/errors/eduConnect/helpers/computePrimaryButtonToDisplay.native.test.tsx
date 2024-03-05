@@ -38,6 +38,7 @@ describe('computePrimaryButtonToDisplay', () => {
       as={ButtonPrimaryWhite}
       wording="Contacter le support"
       icon={Email}
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       externalNav={contactSupport.forGenericQuestion}
     />
   )

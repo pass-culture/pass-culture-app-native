@@ -91,6 +91,7 @@ describe('getCtaWordingAndAction', () => {
         offer: buildOffer({
           externalTicketOfficeUrl: 'https://url-externe',
           isDigital: true,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           stocks: [{ ...baseOffer.stocks[0], price: 0 }],
         }),
         subcategory: buildSubcategory({}),
@@ -338,6 +339,7 @@ describe('getCtaWordingAndAction', () => {
     })
 
     it('CTA="Accéder à l’offre en ligne" when offer is digital and free', () => {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const result = getCta({ isDigital: true, stocks: [{ ...baseOffer.stocks[0], price: 0 }] })
 
       expect(result).toEqual({
@@ -348,6 +350,7 @@ describe('getCtaWordingAndAction', () => {
     })
 
     it('CTA="Réserver l’offre" when offer is digital and not free', () => {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const result = getCta({ isDigital: true, stocks: [{ ...baseOffer.stocks[0], price: 100 }] })
 
       expect(result).toEqual({
@@ -643,6 +646,7 @@ const buildOffer = (partialOffer: Partial<OfferResponse>): OfferResponse => ({
 })
 
 const baseSubcategory = placeholderData.subcategories[0]
+// @ts-expect-error: because of noUncheckedIndexedAccess
 const buildSubcategory = (partialSubcategory: Partial<Subcategory>): Subcategory => ({
   ...baseSubcategory,
   ...partialSubcategory,

@@ -3,6 +3,7 @@ import { addHighlightedAttribute } from 'features/search/helpers/addHighlightedA
 
 describe('addHighlightedAttribute', () => {
   it('should return an item without highlighting when query is an empty string', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const attribute = addHighlightedAttribute({ item: mockedSearchHistory[0], query: '' })
 
     expect(attribute).toEqual({
@@ -14,6 +15,7 @@ describe('addHighlightedAttribute', () => {
   })
 
   it('should return an item with highlighting when query is not an empty string', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const attribute = addHighlightedAttribute({ item: mockedSearchHistory[0], query: 'man' })
 
     expect(attribute).toEqual({

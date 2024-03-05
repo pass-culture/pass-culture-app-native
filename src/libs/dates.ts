@@ -72,6 +72,7 @@ export const formatToReadableFrenchDate = (date: Date | string) => {
   if (isNaN(formattedDate)) return ''
   const monthOrder = formattedDate.getMonth()
   const day = ('0' + formattedDate.getDate()).slice(-2)
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const month = CAPITALIZED_MONTHS[monthOrder].toLowerCase()
   return `${day} ${month}`
 }

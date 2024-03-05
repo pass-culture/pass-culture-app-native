@@ -34,6 +34,7 @@ describe('<SuggestedVenues/>', () => {
 
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByTestId(`${mockVenues[1].label} ${mockVenues[1].info}`))
 
     expect(mockSetSelectedVenue).toHaveBeenCalledWith(mockVenues[1])

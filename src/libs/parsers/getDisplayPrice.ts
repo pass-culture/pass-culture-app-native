@@ -28,9 +28,11 @@ export const formatPriceInEuroToDisplayPrice = (priceInEuro: number) =>
 const getPricePerPlace = (prices: number[], options?: FormatPriceOptions): string => {
   const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
 
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   if (uniquePrices.length === 1) return `${formatToFrenchDecimal(uniquePrices[0], options)}`
 
   const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   return `Dès ${formatToFrenchDecimal(sortedPrices[0], options)}`
 }
 

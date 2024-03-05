@@ -58,7 +58,9 @@ export const getUniqueSortedTimestamps = (timestamps: number[] | undefined): num
 export const formatDates = (timestamps?: number[]): string | undefined => {
   const uniques = getUniqueSortedTimestamps(timestamps)
   if (uniques.length === 0) return
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   if (uniques.length === 1) return formatToFrenchDate(uniques[0])
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   return `Dès le ${formatToFrenchDate(uniques[0])}`
 }
 
@@ -85,11 +87,14 @@ export function groupByYearAndMonth(decomposedDates: ReturnType<typeof decompose
     }
 
     // If this is the first date we've seen for this month in this year, create an empty array for it
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     if (!acc[year][month]) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       acc[year][month] = []
     }
 
     // Add the day to the array for this month in this year
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     acc[year][month]?.push(day)
 
     // Return the updated accumulator object for the reduce function
@@ -134,6 +139,7 @@ export const getFormattedDates = (dates: string[] | undefined) => {
 
   const timestamps = getUniqueSortedTimestamps(dates?.map((date) => new Date(date).getTime()))
   if (timestamps.length === 0) return
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   if (timestamps.length === 1) return formatToFrenchDate(timestamps[0])
 
   const decomposedDates = timestamps.map(decomposeDate)
@@ -156,10 +162,14 @@ export const getFormattedDates = (dates: string[] | undefined) => {
 }
 
 export const formatDatePeriod = (timestamps: number[]) => {
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const first = decomposeDate(timestamps[0])
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const last = decomposeDate(timestamps.slice(-1)[0])
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const formattedEndDate = formatToFrenchDate(last)
 
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   if (first.year !== last.year) return `Du ${formatToFrenchDate(first)} au ${formattedEndDate}`
   if (first.month !== last.month) return `Du ${first.day} ${first.month} au ${formattedEndDate}`
   if (first.day !== last.day) return `Du ${first.day} au ${formattedEndDate}`

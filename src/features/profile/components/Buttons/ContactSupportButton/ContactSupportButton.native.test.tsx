@@ -15,7 +15,9 @@ describe('ContactSupportButton', () => {
     fireEvent.press(button)
 
     expect(openURLSpy).toHaveBeenCalledWith(
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       contactSupport.forGenericQuestion.url,
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       contactSupport.forGenericQuestion.params,
       true
     )

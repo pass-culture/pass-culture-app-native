@@ -328,6 +328,7 @@ describe('<OfferBody />', () => {
     const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
 
     await act(async () => {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     })
 
@@ -348,6 +349,7 @@ describe('<OfferBody />', () => {
     const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
 
     await act(async () => {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
     })
 

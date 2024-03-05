@@ -16,6 +16,7 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
         if (beginningDatetime != null && !isExpired && !isForbiddenToUnderage) {
           const movieScreeningDay = getDateString(beginningDatetime)
           if (movieScreening[movieScreeningDay]) {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             movieScreening[movieScreeningDay].push(movieStock)
           } else {
             movieScreening[movieScreeningDay] = [movieStock]

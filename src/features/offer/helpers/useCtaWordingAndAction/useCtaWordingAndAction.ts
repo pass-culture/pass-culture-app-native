@@ -176,6 +176,7 @@ export const getCtaWordingAndAction = ({
 
         bookOffer({
           quantity: 1,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           stockId: offer.stocks[0].id,
         })
       },

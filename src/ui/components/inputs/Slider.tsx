@@ -96,6 +96,7 @@ export function Slider(props: Props) {
     if (Platform.OS === 'web') {
       if (sliderContainerRef.current) {
         const htmlRef = sliderContainerRef.current as unknown as HTMLDivElement
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[data-testid="slider-control"]')
         leftCursor?.addEventListener('keydown', updateLeftCursor)
         rightCursor?.addEventListener('keydown', updateRightCursor)

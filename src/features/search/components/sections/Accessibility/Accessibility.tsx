@@ -30,6 +30,7 @@ export const Accessibility = ({ onClose }: Props) => {
     .join(', ')
 
   const descriptionWithFirstLetterCapitalized =
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     description === '' ? description : description[0].toUpperCase() + description.slice?.(1)
 
   return (

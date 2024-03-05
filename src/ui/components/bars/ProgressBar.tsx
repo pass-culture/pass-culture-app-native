@@ -16,6 +16,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, he
   const LinearColors = colors.length === 1 ? [colors[0], colors[0]] : colors
 
   const LinearGradientBar = styled(LinearGradient).attrs({
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     colors: LinearColors,
     useAngle: true,
     angle: 90,

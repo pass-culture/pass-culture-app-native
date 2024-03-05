@@ -20,6 +20,7 @@ export const useSomeVenueId = () => {
         aroundPlaceRadius,
       },
     })
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       .then(([venue]) => venue.venueId && setVenueId(venue.venueId))
       .catch(() => {
         // The cheatcodes are only in testing

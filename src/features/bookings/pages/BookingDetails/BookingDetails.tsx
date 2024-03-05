@@ -85,6 +85,7 @@ export function BookingDetails() {
   )
 
   if (cancellationConsultedBooking.length > 0) {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const nameCanceledBooking = cancellationConsultedBooking[0].stock.offer.name
     showInfoSnackBar({
       message: `Ta réservation "${nameCanceledBooking}" a été annulée`,

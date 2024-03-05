@@ -106,6 +106,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         ) : (
           <React.Fragment>
             <VideoMonoOfferTile
+              // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
               color={props.color}
               hideModal={props.hideModal}

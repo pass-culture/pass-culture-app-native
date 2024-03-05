@@ -5,6 +5,7 @@ import { Collection, SuggestedPlace } from './types'
 const REGEX_STARTING_WITH_NUMBERS = /^\d/
 
 export const buildSuggestedPlaces = (collection: Collection): SuggestedPlace[] =>
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   collection.features.map(({ geometry, properties }) => {
     const { city, context, name, type } = properties
     const detailedPlace = type === 'street' || type === 'housenumber' || type === 'locality'

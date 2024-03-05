@@ -36,13 +36,16 @@ export function AutocompleteOfferItem({
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     indexInfos.facets.analytics
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { data } = useSubcategories()
   const searchGroupLabel = useSearchGroupLabel(
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
   )
   const mostPopularNativeCategoryId =
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     nativeCategories[0]?.value in NativeCategoryIdEnumv2 ? nativeCategories[0]?.value : undefined
   const mostPopularNativeCategoryValue = getNativeCategoryFromEnum(
     data,
@@ -51,6 +54,7 @@ export function AutocompleteOfferItem({
   const hasMostPopularHitNativeCategory =
     nativeCategories.length > 0 && !!mostPopularNativeCategoryId
   const hasMostPopularHitCategory =
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
   const categoriesFromNativeCategory = useMemo(
     () => getSearchGroupsEnumArrayFromNativeCategoryEnum(data, mostPopularNativeCategoryId),
@@ -64,10 +68,13 @@ export function AutocompleteOfferItem({
 
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       return categories.length > 0 && categories[0].value in SearchGroupNameEnumv2
-        ? [categories[0].value]
+        ? // @ts-expect-error: because of noUncheckedIndexedAccess
+          [categories[0].value]
         : []
     } else {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       return categoriesFromNativeCategory[0] in SearchGroupNameEnumv2
         ? [categoriesFromNativeCategory[0]]
         : []
@@ -101,13 +108,16 @@ export function AutocompleteOfferItem({
       isAutocomplete: true,
       offerGenreTypes: undefined,
       offerNativeCategories: shouldFilteredOnNativeCategory
-        ? [nativeCategories[0].value]
+        ? // @ts-expect-error: because of noUncheckedIndexedAccess
+          [nativeCategories[0].value]
         : undefined,
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
     }
     addSearchHistory({
       query,
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0].value : undefined,
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })

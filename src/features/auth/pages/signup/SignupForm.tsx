@@ -40,11 +40,13 @@ export const SignupForm: FunctionComponent = () => {
   const numberOfSteps = signupStepConfig.length
   const isFirstStep = stepIndex === 0
   const isConfirmationEmailSentStep =
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     signupStepConfig[stepIndex].name === PreValidationSignupStep.ConfirmationEmailSent
   const helmetTitle = `Étape ${stepIndex + 1} sur ${numberOfSteps} - Inscription | pass Culture`
   const accessibilityLabelForNextStep =
     stepIndex < numberOfSteps - 1
-      ? `Continuer vers l’étape ${signupStepConfig[stepIndex + 1].accessibilityTitle}`
+      ? // @ts-expect-error: because of noUncheckedIndexedAccess
+        `Continuer vers l’étape ${signupStepConfig[stepIndex + 1].accessibilityTitle}`
       : undefined
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
@@ -75,9 +77,12 @@ export const SignupForm: FunctionComponent = () => {
   }, [accountCreationToken, goToNextStep])
 
   useEffect(() => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     if (params?.from && stepConfig.name) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       analytics.logStepperDisplayed(params.from, stepConfig.name, stepperAnalyticsType)
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params?.from, stepConfig.name])
 
@@ -90,6 +95,7 @@ export const SignupForm: FunctionComponent = () => {
   } = useModal(false)
 
   function showQuitSignupModal() {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     analytics.logQuitSignup(stepConfig.Component.name)
     Keyboard.dismiss()
     showFullPageModal()
@@ -152,6 +158,7 @@ export const SignupForm: FunctionComponent = () => {
       <StyledScrollView>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={8} />
+        {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
         <stepConfig.Component
           goToNextStep={goToNextStep}
           signUp={signUp}
@@ -165,6 +172,7 @@ export const SignupForm: FunctionComponent = () => {
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         signupStep={stepConfig.name}
       />
       <BlurHeader height={headerHeight} />

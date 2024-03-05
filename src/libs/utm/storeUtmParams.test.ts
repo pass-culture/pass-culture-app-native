@@ -52,11 +52,17 @@ const getUtmParamsFromStorage = async () => {
     CookieNameEnum.CAMPAIGN_DATE,
   ])
   return {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     campaign: campaign[1],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     content: content[1],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     gen: gen[1],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     medium: medium[1],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     source: source[1],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     campaignDate: campaignDate[1],
   }
 }

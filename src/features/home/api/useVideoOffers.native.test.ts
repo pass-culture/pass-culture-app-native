@@ -37,6 +37,7 @@ describe('useVideoOffers', () => {
   })
 
   it('should return offers when asking for specific ids', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
@@ -52,6 +53,7 @@ describe('useVideoOffers', () => {
   })
 
   it('should return offers when asking for specific EANs', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(

@@ -59,6 +59,7 @@ describe('useItinerary', () => {
     // @ts-expect-error: precedent expect garanties what follows
     const wazeAlertButton = alertMock.mock.calls[0][2][1]
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(wazeAlertButton.text).toBe('Waze')
 
     // @ts-expect-error: same reason
@@ -156,7 +157,6 @@ describe('useItinerary', () => {
 
     // @ts-expect-error: precedent assertion garanties next line
     const { onPress: onWazePress } = alertMock.mock.calls[0][2][1]
-    // @ts-expect-error: same reason
     onWazePress()
 
     await flushAllPromises()

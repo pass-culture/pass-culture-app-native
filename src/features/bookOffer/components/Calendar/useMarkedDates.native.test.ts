@@ -32,11 +32,13 @@ describe('useMarkedDates()', () => {
   it('should mark selected date correctly', () => {
     let hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(hook.result.current['2021-01-01'].selected).toBe(true)
 
     mockBookingState.date = new Date(2021, 4, 4)
     hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(hook.result.current['2021-01-01'].selected).toBe(false)
   })
 
@@ -54,7 +56,9 @@ describe('useMarkedDates()', () => {
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current['2021-01-01'].price).toEqual(2000)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current['2021-01-01'].status).toEqual('BOOKABLE')
   })
 
@@ -65,7 +69,9 @@ describe('useMarkedDates()', () => {
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 2000))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current['2021-01-01'].price).toEqual(200)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
   })
 
@@ -76,7 +82,9 @@ describe('useMarkedDates()', () => {
     ]
     const { result } = renderHook(() => useMarkedDates(stocks, 200))
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current['2021-01-01'].price).toEqual(2000)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current['2021-01-01'].status).toEqual('NOT_BOOKABLE')
   })
 })

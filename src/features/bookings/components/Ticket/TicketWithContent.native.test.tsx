@@ -8,6 +8,7 @@ const booking = bookingsSnap.ongoing_bookings[1]
 
 describe('<TicketWithContent/>', () => {
   it('should render properly', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<TicketWithContent booking={booking} />)
 
     expect(screen).toMatchSnapshot()

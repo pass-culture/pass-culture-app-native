@@ -34,6 +34,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
       <EmailSentGeneric
         title="Confirme ton adresse e-mail"
         email={email}
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         consultFaq={contactSupport.forSignupConfirmationEmailNotReceived}
         consultFaqAnalytics={analytics.logHelpCenterContactSignupConfirmationEmailSent}
         openInBoxAnalytics={analytics.logEmailConfirmationConsultEmailClicked}

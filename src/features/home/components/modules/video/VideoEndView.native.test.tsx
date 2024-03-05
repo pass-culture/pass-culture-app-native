@@ -46,6 +46,7 @@ describe('VideoEndView', () => {
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       from: 'video',
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerId: +mockOffer.objectID,
       moduleId: 'abcd',
       moduleName: 'salut à tous c’est lujipeka',

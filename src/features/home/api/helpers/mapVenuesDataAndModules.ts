@@ -10,7 +10,9 @@ export const mapVenuesDataAndModules = (
   if (venuesResultList.data) {
     for (let i = 0; i < venuesResultList.data.hits.length; i++) {
       venuesModulesData.push({
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         playlistItems: venuesResultList.data.hits[i],
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         moduleId: venuesResultList.data.moduleId[i],
       })
     }

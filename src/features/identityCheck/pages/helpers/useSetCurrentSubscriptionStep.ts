@@ -38,6 +38,7 @@ export const useSetSubscriptionStepAndMethod = () => {
   ) => {
     const identityCheckMethods = susbcriptionResponse?.allowedIdentityCheckMethods
     const method = identityCheckMethods?.length === 1 ? identityCheckMethods[0] : null
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     context.dispatch({ type: 'SET_METHOD', payload: method })
   }
 

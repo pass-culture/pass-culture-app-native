@@ -17,6 +17,7 @@ export const useArrowNavigationForRadioButton = (containerRef: MutableRefObject<
           if (prevButton) {
             return (prevButton as HTMLElement).focus()
           } else if (buttonList) {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             return (buttonList[buttonList.length - 1].firstChild as HTMLElement).focus()
           }
           break
@@ -28,6 +29,7 @@ export const useArrowNavigationForRadioButton = (containerRef: MutableRefObject<
           if (nextButton) {
             return (nextButton as HTMLElement).focus()
           } else if (buttonList) {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             return (buttonList[0].firstChild as HTMLElement).focus()
           }
         }

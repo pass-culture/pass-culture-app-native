@@ -25,13 +25,16 @@ describe('useEndedBookingFromOfferId', () => {
 
   it('should return an ended booking if existing', async () => {
     const booking = bookingsSnap.ended_bookings[0]
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const { result } = renderHook(() => useEndedBookingFromOfferId(booking.stock.offer.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
     await act(async () => {})
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current?.data?.id).toEqual(booking.id)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 

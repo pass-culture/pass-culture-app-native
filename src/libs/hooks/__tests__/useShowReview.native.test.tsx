@@ -111,6 +111,7 @@ describe('useShowReview', () => {
 
       renderHook(useShowReview)
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const mockCurrentAppState = appStateSpy.mock.calls[0][1]
       mockCurrentAppState('active')
       mockCurrentAppState('background')
