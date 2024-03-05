@@ -110,7 +110,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const shouldDisplayOfferPreview = enableOfferPreview && !isWeb
 
   const onPress = () => {
-    if (shouldDisplayOfferPreview) {
+    if (shouldDisplayOfferPreview && offer.image) {
       navigate('OfferPreview', { id: offer.id })
     }
   }
