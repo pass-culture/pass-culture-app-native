@@ -1,7 +1,7 @@
 import { Geoloc } from 'libs/algolia'
 import { Position } from 'libs/location'
 
-const EARTH_RADIUS_KM = 6378.137
+const EARTH_RADIUS = 6_378_137
 
 export const getHumanizeRelativeDistance = (
   userLocation: Geoloc,
@@ -16,18 +16,20 @@ export const getHumanizeRelativeDistance = (
   return humanizeDistance(distanceInMeters).replace('.', ',')
 }
 
-export const computeDistanceInMeters = (latA: number, lngA: number, latB: number, lngB: number) => {
-  const newLat = (latB * Math.PI) / 180 - (latA * Math.PI) / 180
-  const newLng = (lngB * Math.PI) / 180 - (lngA * Math.PI) / 180
-  const a =
-    Math.sin(newLat / 2) * Math.sin(newLat / 2) +
-    Math.cos((latA * Math.PI) / 180) *
-      Math.cos((latB * Math.PI) / 180) *
-      Math.sin(newLng / 2) *
-      Math.sin(newLng / 2)
+const convertAngleToRadians = (angleInDegrees: number) => (angleInDegrees * Math.PI) / 180
 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-  return EARTH_RADIUS_KM * c * 1000
+// Explanation of the formula: ./formatDistance.md
+export const computeDistanceInMeters = (latA: number, lngA: number, latB: number, lngB: number) => {
+  const latAInRad = convertAngleToRadians(latA)
+  const latBInRad = convertAngleToRadians(latB)
+  const deltaLng = convertAngleToRadians(lngB) - convertAngleToRadians(lngA)
+
+  const angleBetween = Math.acos(
+    Math.sin(latAInRad) * Math.sin(latBInRad) +
+      Math.cos(latAInRad) * Math.cos(latBInRad) * Math.cos(deltaLng)
+  )
+
+  return angleBetween * EARTH_RADIUS
 }
 
 export const humanizeDistance = (distance: number) => {
