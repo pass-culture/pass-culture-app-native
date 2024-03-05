@@ -33,8 +33,6 @@ jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-jest.mock('features/venue/api/useVenue')
-
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({
