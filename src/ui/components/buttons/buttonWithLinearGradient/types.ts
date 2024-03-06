@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
-import { AccessibilityRole } from 'react-native'
-import { GestureResponderEvent } from 'react-native'
+import { AccessibilityRole, GestureResponderEvent } from 'react-native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 

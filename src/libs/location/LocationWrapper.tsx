@@ -6,11 +6,10 @@ import { useSafeState } from 'libs/hooks'
 import { useGeolocation } from 'libs/location/geolocation/hook/useGeolocation'
 import { useAroundRadius } from 'libs/location/hooks/useAroundRadius'
 import { usePlace } from 'libs/location/hooks/usePlace'
-import { LocationMode } from 'libs/location/types'
+import { LocationMode, ILocationContext } from 'libs/location/types'
 import { storage } from 'libs/storage'
 
 import { GeolocationActivationModal } from './geolocation/components/GeolocationActivationModal'
-import { ILocationContext } from './types'
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 const LocationContext = React.createContext<ILocationContext>({
