@@ -37,13 +37,16 @@ describe('TrackEmailChangeContent', () => {
     mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
       ...trackEmailChangeContentFixture,
       status: EmailHistoryEventTypeEnum.CONFIRMATION,
+      token: 'new_email_selection_token',
     })
 
     render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
     fireEvent.press(await screen.findByText('Choisis ta nouvelle adresse e-mail'))
 
-    expect(navigate).toHaveBeenCalledWith('TrackEmailChange', undefined)
+    expect(navigate).toHaveBeenCalledWith('NewEmailSelection', {
+      token: 'new_email_selection_token',
+    })
   })
 
   it('should open mail app when pressing last step and last step is active', async () => {
