@@ -6,7 +6,7 @@ import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { useLocation } from 'libs/location/LocationWrapper'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { PassPlaylist } from 'ui/components/PassPlaylist/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { LENGTH_S } from 'ui/theme'
 

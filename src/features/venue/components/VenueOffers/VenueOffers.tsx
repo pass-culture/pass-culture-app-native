@@ -8,6 +8,7 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useHandleOfferTile } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { SearchView } from 'features/search/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -21,7 +22,7 @@ import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { PassPlaylist } from 'ui/components/PassPlaylist/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
@@ -43,6 +44,7 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
   const { geolocPosition } = useLocation()
   const params = useVenueSearchParameters(venue)
   const route = useRoute<UseRouteType<'Offer'>>()
+  const { handlePressOffer } = useHandleOfferTile()
 
   const searchTabNavConfig = useMemo(() => {
     return getTabNavConfig('Search', {
@@ -88,6 +90,7 @@ export function VenueOffers({ venueId, layout = 'two-items', playlists }: Readon
           width={width}
           height={height}
           searchId={route.params?.searchId}
+          handlePressOffer={handlePressOffer}
         />
       )
     },

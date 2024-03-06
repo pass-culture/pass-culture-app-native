@@ -4,7 +4,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, screen, fireEvent } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
 
@@ -38,6 +38,20 @@ describe('RecommendationModule', () => {
     renderRecommendationModule({ ...displayParameters, minOffers })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+  })
+
+  it('should trigger logEvent "ConsultOffer" when clicking on offer', async () => {
+    renderRecommendationModule({ ...displayParameters })
+
+    fireEvent.press(screen.getAllByText('I want something more')[0])
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'home',
+      homeEntryId: 'xyz',
+      moduleId: 'abcd',
+      moduleName: 'Tes offres recommandées',
+      offerId: 102272,
+    })
   })
 })
 

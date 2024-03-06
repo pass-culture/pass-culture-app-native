@@ -6,6 +6,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
 import { OfferPlaylistOld } from 'features/offer/components/OfferPlaylistOld/component/OfferPlaylistOld'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import {
+  HandlePressOfferParams,
+  useHandleOfferTile,
+} from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
@@ -39,6 +43,7 @@ type PlaylistItemProps = {
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   apiRecoParams?: RecommendationApiParams
+  handlePressOffer: ({ offer, analyticsParams }: HandlePressOfferParams) => void
 }
 
 type RenderPlaylistItemProps = {
@@ -54,6 +59,7 @@ const renderPlaylistItem = ({
   categoryMapping,
   labelMapping,
   apiRecoParams,
+  handlePressOffer,
 }: PlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -76,6 +82,7 @@ const renderPlaylistItem = ({
         fromOfferId={offer.id}
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
+        handlePressOffer={handlePressOffer}
       />
     )
   }
@@ -101,6 +108,7 @@ export function OfferPlaylistListOld({
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+  const { handlePressOffer } = useHandleOfferTile()
 
   const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
   const shouldDisplaySameArtistPlaylist =
@@ -163,6 +171,7 @@ export function OfferPlaylistListOld({
                 categoryMapping,
                 labelMapping,
                 apiRecoParams: playlist.apiRecoParams,
+                handlePressOffer,
               })}
               title={playlist.title}
               onEndReached={trackingOnHorizontalScroll}

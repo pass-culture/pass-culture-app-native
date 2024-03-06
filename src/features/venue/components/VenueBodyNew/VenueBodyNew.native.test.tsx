@@ -18,6 +18,7 @@ import { ILocationContext, useLocation } from 'libs/location'
 import { Network } from 'libs/share/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -59,7 +60,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should display full venue address', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     expect(screen.getByText('1 boulevard Poissonnière, 75000 Paris')).toBeOnTheScreen()
@@ -71,7 +72,7 @@ describe('<VenueBody />', () => {
       venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
     }
 
-    render(<VenueBodyNew venue={culturalCenterVenue} onScroll={jest.fn()} />)
+    renderVenueBodyNew(culturalCenterVenue)
     await waitUntilRendered()
 
     expect(screen.getByText('Centre culturel')).toBeOnTheScreen()
@@ -85,7 +86,7 @@ describe('<VenueBody />', () => {
     } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
 
-    render(<VenueBodyNew venue={locatedVenue} onScroll={jest.fn()} />)
+    renderVenueBodyNew(locatedVenue)
     await waitUntilRendered()
 
     expect(screen.getByText('À 10 km')).toBeOnTheScreen()
@@ -97,14 +98,15 @@ describe('<VenueBody />', () => {
     } as ILocationContext)
     const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
 
-    render(<VenueBodyNew venue={locatedVenue} onScroll={jest.fn()} />)
+    renderVenueBodyNew(locatedVenue)
+
     await waitUntilRendered()
 
     expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
   })
 
   it('should copy the whole address when pressing the copy button', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Copier l’adresse'))
@@ -118,7 +120,7 @@ describe('<VenueBody />', () => {
     Clipboard.getString = jest
       .fn()
       .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
 
     fireEvent.press(screen.getByText('Copier l’adresse'))
 
@@ -131,7 +133,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log analytics when pressing Voir l’itinéraire', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Voir l’itinéraire'))
@@ -143,14 +145,14 @@ describe('<VenueBody />', () => {
   })
 
   it('should display default background image when no banner for venue', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     expect(screen.getByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })
 
   it('should display withdrawal details', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -159,7 +161,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should share on Instagram', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
 
     const instagramButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
 
@@ -176,7 +178,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Infos pratiques tab', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -187,7 +189,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Offres disponibles tab', async () => {
-    render(<VenueBodyNew venue={venueResponseSnap} onScroll={jest.fn()} />)
+    renderVenueBodyNew(venueResponseSnap)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))
@@ -200,4 +202,8 @@ const waitUntilRendered = async () => {
   // We wait until the full render is done
   // This is due to asynchronous calls to check the media on the phone
   await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+}
+
+function renderVenueBodyNew(venue: VenueResponse) {
+  render(reactQueryProviderHOC(<VenueBodyNew venue={venue} onScroll={jest.fn()} />))
 }

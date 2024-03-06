@@ -7,7 +7,7 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { SeeMoreWithEye } from './SeeMoreWithEye'
+import { SeeMoreWithEye } from '../SeeMoreWithEye'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,

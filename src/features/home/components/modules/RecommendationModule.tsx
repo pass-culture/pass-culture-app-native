@@ -4,6 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { RecommendedOffersModule } from 'features/home/types'
+import { useHandleOfferTile } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
@@ -12,7 +13,7 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { PassPlaylist } from 'ui/components/PassPlaylist/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 type RecommendationModuleProps = {
@@ -26,6 +27,8 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
+  const { handlePressOffer } = useHandleOfferTile()
+
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { userLocation: position } = useLocation()
   const { user: profile } = useAuthContext()
@@ -80,6 +83,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           height={height}
           homeEntryId={homeEntryId}
           apiRecoParams={recommendationApiParams}
+          handlePressOffer={handlePressOffer}
         />
       )
     },

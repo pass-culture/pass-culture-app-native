@@ -148,6 +148,18 @@ describe('<VenueOffersNew />', () => {
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
+  it('should trigger logEvent "ConsultOffer" when clicking on offer', async () => {
+    renderVenueOffersNew({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+
+    fireEvent.press(screen.getAllByText('Bac Nord - VF')[0])
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'venue',
+      offerId: 223338,
+      venueId: 5543,
+    })
+  })
+
   describe('should display all gtl playlists', () => {
     it('When there are gtl playlists associated to the venue and venue type is distribution store', () => {
       renderVenueOffersNew({ venue: bookstoreVenue, venueOffers: venueOffersMock, playlists })

@@ -7,6 +7,7 @@ import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useHandleOfferTile } from 'features/offer/components/OfferTile/useHandleOfferTile'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/VenueOffers/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
@@ -15,7 +16,7 @@ import { analytics } from 'libs/analytics'
 import { formatDates, getDisplayPrice, VenueTypeCode } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
-import { PassPlaylist } from 'ui/components/PassPlaylist'
+import { PassPlaylist } from 'ui/components/PassPlaylist/PassPlaylist'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
@@ -31,6 +32,7 @@ interface Props {
 const keyExtractor = (item: Offer) => item.objectID
 
 export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props>) {
+  const { handlePressOffer } = useHandleOfferTile()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
   const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
@@ -58,6 +60,7 @@ export function VenueOffersNew({ venue, venueOffers, playlists }: Readonly<Props
         width={width}
         height={height}
         searchId={routeParams?.searchId}
+        handlePressOffer={handlePressOffer}
       />
     )
   }

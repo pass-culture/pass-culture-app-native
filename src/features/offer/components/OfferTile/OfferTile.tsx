@@ -4,10 +4,8 @@ import styled from 'styled-components/native'
 
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
 import { OfferTileProps } from 'features/offer/types'
-import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
-import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -25,40 +23,35 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     moduleId,
     isBeneficiary,
     categoryLabel,
-    venueId,
-    homeEntryId,
     fromOfferId,
     playlistType,
     searchId,
     apiRecoParams,
+    venueId,
+    homeEntryId,
     index,
+    handlePressOffer,
     ...offer
   } = props
 
   const { onFocus, onBlur, isFocus } = useHandleFocus()
-  const prePopulateOffer = usePrePopulateOffer()
   const { offerId, name, distance, date, price, isDuo } = offer
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
   })
-
-  function handlePressOffer() {
-    // We pre-populate the query-cache with the data from the search result for a smooth transition
-    prePopulateOffer(offer)
-    analytics.logConsultOffer({
-      ...apiRecoParams,
-      offerId,
-      from: fromOfferId ? determinePlaylistType(playlistType) : analyticsFrom,
-      moduleName,
-      moduleId,
-      venueId,
-      homeEntryId,
-      fromOfferId,
-      playlistType,
-      searchId,
-      index,
-    })
+  const analyticsParams = {
+    ...apiRecoParams,
+    offerId: offer.offerId,
+    from: fromOfferId ? determinePlaylistType(playlistType) : analyticsFrom,
+    moduleName,
+    moduleId,
+    venueId,
+    homeEntryId,
+    fromOfferId,
+    playlistType,
+    searchId,
+    index,
   }
 
   return (
@@ -80,7 +73,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           },
           withPush: true,
         }}
-        onBeforeNavigate={handlePressOffer}
+        onBeforeNavigate={() => handlePressOffer({ offer, analyticsParams })}
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}

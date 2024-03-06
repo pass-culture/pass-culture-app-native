@@ -15,7 +15,7 @@ import { analytics } from 'libs/analytics'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const venueId = venueResponseSnap.id
@@ -252,6 +252,53 @@ describe('<VenueOffers />', () => {
       render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} playlists={playlists} />))
 
       expect(screen.queryByTestId('allGtlPlaylistsTitle')).not.toBeOnTheScreen()
+    })
+
+    it('Analytics - should log ConsultOffer that user opened the offer', async () => {
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} playlists={playlists} />))
+
+      const tileImageButton = await screen.findAllByTestId('tileImage')
+      fireEvent.press(tileImageButton[0])
+
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+        offerId: Number(VenueOffersResponseSnap[1].objectID),
+        from: 'venue',
+        venueId,
+      })
+    })
+
+    it('should prepopulate react-query cache when clicking on offer', async () => {
+      render(reactQueryProviderHOC(<VenueOffers venueId={mockVenue.id} playlists={playlists} />))
+
+      const tileImageButton = await screen.findAllByTestId('tileImage')
+      fireEvent.press(tileImageButton[0])
+
+      const queryHash = JSON.stringify(['offer', Number(VenueOffersResponseSnap[1].objectID)])
+      const query = queryCache.get(queryHash)
+
+      expect(query).not.toBeUndefined()
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      expect(query!.state.data).toStrictEqual({
+        accessibility: {},
+        description: '',
+        expenseDomains: [],
+        id: 223338,
+        image: {
+          url: 'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG',
+        },
+        isDigital: false,
+        isDuo: true,
+        isReleased: true,
+        isExpired: false,
+        isForbiddenToUnderage: false,
+        isSoldOut: false,
+        name: 'Bac Nord - VF',
+        stocks: [],
+        subcategoryId: 'CINE_PLEIN_AIR',
+        venue: { coordinates: {} },
+        isEducational: false,
+        metadata: undefined,
+      })
     })
   })
 })
