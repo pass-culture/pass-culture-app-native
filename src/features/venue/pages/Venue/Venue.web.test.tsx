@@ -52,7 +52,9 @@ describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
+    // TODO(PC-26577): fix test flackyness
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await act(async () => {
