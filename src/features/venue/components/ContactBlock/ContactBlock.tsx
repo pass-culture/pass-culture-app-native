@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueContactModel, VenueResponse } from 'api/gen'
-import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlockNew/isValidFrenchPhoneNumber'
+import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'

@@ -8,7 +8,6 @@ import { VenueSection } from 'features/offer/components/VenueSection/VenueSectio
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
-import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
@@ -23,6 +22,8 @@ export type OfferPlaceOldProps = {
   offer: OfferResponse
   isEvent: boolean
 }
+
+const ANIMATION_DURATION = 500 //ms
 
 export function OfferPlaceOld({ offer, isEvent }: Readonly<OfferPlaceOldProps>) {
   const { navigate } = useNavigation<UseNavigationType>()

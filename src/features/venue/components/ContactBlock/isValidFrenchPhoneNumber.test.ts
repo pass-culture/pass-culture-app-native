@@ -1,4 +1,4 @@
-import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlockNew/isValidFrenchPhoneNumber'
+import { isValidFrenchPhoneNumber } from 'features/venue/components/ContactBlock/isValidFrenchPhoneNumber'
 
 describe('isValidFrenchPhoneNumber function', () => {
   it.each([

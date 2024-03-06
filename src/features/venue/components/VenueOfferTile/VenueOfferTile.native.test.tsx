@@ -31,12 +31,6 @@ const props = {
 describe('VenueOfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should render correctly', () => {
-    const { toJSON } = render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
-
-    expect(toJSON()).toMatchSnapshot()
-  })
-
   it('should navigate to the offer when clicking on the image', async () => {
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
 

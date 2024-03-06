@@ -20,7 +20,6 @@ import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitl
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
@@ -40,6 +39,8 @@ export interface BookingDetailsProps {
   onPressBookOffer: VoidFunction
   isLoading?: boolean
 }
+
+const ANIMATION_DURATION = 500 //ms
 
 const LOADING_MESSAGES: RotatingTextOptions[] = [
   {

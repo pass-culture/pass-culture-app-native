@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PracticalInformation } from 'features/venue/components/PracticalInformation'
+import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'

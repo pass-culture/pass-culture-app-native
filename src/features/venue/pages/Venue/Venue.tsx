@@ -8,13 +8,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
-import { VenueBodyNew } from 'features/venue/components/VenueBodyNew/VenueBodyNew'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -36,7 +33,6 @@ export const Venue: FunctionComponent = () => {
       }
     },
   })
-  const shouldUseNewVenuePage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_VENUE_PAGE)
 
   useEffect(() => {
     if (params.from === 'deeplink' && venue?.id) {
@@ -54,9 +50,7 @@ export const Venue: FunctionComponent = () => {
 
   if (!venue) return null
 
-  const hasSomeOffers = (venueOffers && venueOffers.hits.length > 0) || gtlPlaylists?.length > 0
-
-  const shouldDisplayCTA = shouldUseNewVenuePage && hasSomeOffers
+  const shouldDisplayCTA = (venueOffers && venueOffers.hits.length > 0) || gtlPlaylists?.length > 0
 
   return (
     <Container>
@@ -69,16 +63,12 @@ export const Venue: FunctionComponent = () => {
           venue={venue}
         />
       ) : null}
-      {shouldUseNewVenuePage ? (
-        <VenueBodyNew
-          venue={venue}
-          onScroll={onScroll}
-          playlists={gtlPlaylists}
-          venueOffers={venueOffers}
-        />
-      ) : (
-        <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
-      )}
+      <VenueBody
+        venue={venue}
+        onScroll={onScroll}
+        playlists={gtlPlaylists}
+        venueOffers={venueOffers}
+      />
       {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
       {!isWeb ? (
         <VenueHeader

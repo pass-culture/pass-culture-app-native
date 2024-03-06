@@ -5,7 +5,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { ContactBlock } from './ContactBlockNew'
+import { ContactBlock } from './ContactBlock'
 
 const venueId = venueResponseSnap.id
 
