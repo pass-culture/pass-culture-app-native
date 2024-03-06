@@ -36,7 +36,7 @@ elif [ "$diff_count" -gt 0 ]; then
 else
     echo "⬜ The number of @ts-expect-error is unchanged"
     display_snapshot_differences || {
-        echo '📝 Please remove the new @ts-expect-error you introduced'
+        echo '📝 Please remove the @ts-expect-error in the file you have changed'
         exit 1
     }
 fi
