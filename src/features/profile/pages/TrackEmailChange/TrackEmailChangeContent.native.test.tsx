@@ -72,4 +72,16 @@ describe('TrackEmailChangeContent', () => {
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
+
+  it('should navigate to ChangeEmailExpiredLink when request is expired', async () => {
+    mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
+      ...trackEmailChangeContentFixture,
+      expired: true,
+    })
+    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+    })
+  })
 })
