@@ -1,11 +1,26 @@
 import React from 'react'
 
+import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
+import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
+import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 jest.useFakeTimers({ legacyFakeTimers: true })
+
+useRoute.mockReturnValue({ params: { token: 'new_email_selection_token' } })
+
+const mockShowSuccessSnackBar = jest.fn()
+const mockShowErrorSnackBar = jest.fn()
+jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
+  showSuccessSnackBar: mockShowSuccessSnackBar,
+  showErrorSnackBar: mockShowErrorSnackBar,
+  showInfoSnackBar: jest.fn(),
+  hideSnackBar: jest.fn(),
+})
 
 describe('<NewEmailSelection />', () => {
   it('should match snapshot', () => {
@@ -30,6 +45,64 @@ describe('<NewEmailSelection />', () => {
     fireEvent.changeText(emailInput, 'john.doe')
 
     expect(await screen.findByLabelText('Modifier mon adresse e-mail')).toBeDisabled()
+  })
+
+  it('should navigate to email change stepper on new email selection success', async () => {
+    mockServer.postApi<EmptyResponse>('/v2/profile/email_update/new_email', {
+      responseOptions: {
+        statusCode: 204,
+      },
+    })
+    render(reactQueryProviderHOC(<NewEmailSelection />))
+
+    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    await act(async () => {
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
+    })
+
+    expect(replace).toHaveBeenCalledWith('TrackEmailChange')
+  })
+
+  it('should show success snackbar on new email selection success', async () => {
+    mockServer.postApi<EmptyResponse>('/v2/profile/email_update/new_email', {
+      responseOptions: {
+        statusCode: 204,
+      },
+    })
+    render(reactQueryProviderHOC(<NewEmailSelection />))
+
+    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    await act(async () => {
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
+    })
+
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message:
+        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
+      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT_LONG,
+    })
+  })
+
+  it('should show error snackbar on new email selection failure', async () => {
+    mockServer.postApi<EmptyResponse>('/v2/profile/email_update/new_email', {
+      responseOptions: {
+        statusCode: 400,
+      },
+    })
+    render(reactQueryProviderHOC(<NewEmailSelection />))
+
+    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    await act(async () => {
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
+    })
+
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: 'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.',
+      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
+    })
   })
 
   describe('email format', () => {
