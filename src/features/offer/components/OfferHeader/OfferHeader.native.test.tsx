@@ -1,6 +1,5 @@
 import React from 'react'
-import { Animated } from 'react-native'
-import { Share } from 'react-native'
+import { Animated, Share } from 'react-native'
 
 import { OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'

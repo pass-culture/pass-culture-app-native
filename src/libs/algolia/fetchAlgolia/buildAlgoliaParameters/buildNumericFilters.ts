@@ -4,9 +4,7 @@ import {
   buildOfferLast30DaysBookings,
   buildOfferPriceRangePredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildNumericFiltersHelpers/buildNumericFiltersHelpers'
-import { SearchQueryParameters } from 'libs/algolia/types'
-
-import { FiltersArray } from '../../types'
+import { SearchQueryParameters, FiltersArray } from 'libs/algolia/types'
 
 export const buildNumericFilters = ({
   date,

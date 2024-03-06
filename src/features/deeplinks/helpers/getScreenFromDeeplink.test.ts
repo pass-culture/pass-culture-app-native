@@ -1,7 +1,6 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { homeNavConfig, getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
 // To see the linking config used in the tests, check the file :

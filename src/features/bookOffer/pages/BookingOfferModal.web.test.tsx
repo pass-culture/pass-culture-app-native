@@ -1,5 +1,4 @@
-import { ComponentProps } from 'react'
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
