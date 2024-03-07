@@ -76,7 +76,7 @@ describe('TrackEmailChange', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
         expired: false,
-        newEmail: '',
+        newEmail: 'johndoe@gmail.com',
         status: EmailHistoryEventTypeEnum.NEW_EMAIL_SELECTION,
       })
       render(reactQueryProviderHOC(<TrackEmailChange />))

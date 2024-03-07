@@ -28,7 +28,7 @@ export const TrackEmailChangeContent = () => {
 
   const currentStep = getEmailUpdateStepV2(requestStatus?.status)
   const currentEmail = user?.email ?? ''
-  const newEmail = ''
+  const newEmail = requestStatus?.newEmail ?? ''
 
   const getStepButtonState = useCallback(
     (stepIndex: number) => {
