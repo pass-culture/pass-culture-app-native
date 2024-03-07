@@ -10,7 +10,7 @@ export const useEmailUpdateStatusV2 = () => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery(
-    [QueryKeys.EMAIL_UPDATE_STATUS],
+    [QueryKeys.EMAIL_UPDATE_STATUS_V2],
     () => api.getNativeV2ProfileEmailUpdateStatus(),
     {
       enabled: !!netInfo.isConnected && isLoggedIn,
