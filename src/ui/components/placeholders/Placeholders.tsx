@@ -30,7 +30,7 @@ function BasePlaceholder(props: {
   )
 }
 
-function TextPlaceholder({ width, height }: { width: number; height?: number }) {
+export function TextPlaceholder({ width, height }: { width: number; height?: number }) {
   return <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
 }
 
