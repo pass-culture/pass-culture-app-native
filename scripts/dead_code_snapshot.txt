@@ -51,26 +51,26 @@ src/api/gen/index.ts:1468 - IdentificationSessionRequest
 src/api/gen/index.ts:1508 - MovieType
 src/api/gen/index.ts:1524 - MusicSubType
 src/api/gen/index.ts:1545 - MusicType
-src/api/gen/index.ts:1819 - OfferImageResponse
-src/api/gen/index.ts:1835 - OfferOffererResponse
-src/api/gen/index.ts:1846 - OfferReportReasons
-src/api/gen/index.ts:1857 - OfferReportRequest
-src/api/gen/index.ts:1979 - OfferStockActivationCodeResponse
-src/api/gen/index.ts:2225 - Reason
-src/api/gen/index.ts:2235 - ReasonMeta
-src/api/gen/index.ts:2262 - ReportedOffer
-src/api/gen/index.ts:2283 - RequestPasswordResetRequest
-src/api/gen/index.ts:2401 - SendPhoneValidationRequest
-src/api/gen/index.ts:2478 - ShowSubType
-src/api/gen/index.ts:2499 - ShowType
-src/api/gen/index.ts:2864 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:2980 - UserProfileEmailUpdate
-src/api/gen/index.ts:3138 - UserReportedOffersResponse
-src/api/gen/index.ts:3216 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:3227 - ValidationError
-src/api/gen/index.ts:3233 - ValidationErrorElement
-src/api/gen/index.ts:3468 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4726 - DefaultApiFp
+src/api/gen/index.ts:1835 - OfferImageResponse
+src/api/gen/index.ts:1851 - OfferOffererResponse
+src/api/gen/index.ts:1862 - OfferReportReasons
+src/api/gen/index.ts:1873 - OfferReportRequest
+src/api/gen/index.ts:1995 - OfferStockActivationCodeResponse
+src/api/gen/index.ts:2241 - Reason
+src/api/gen/index.ts:2251 - ReasonMeta
+src/api/gen/index.ts:2278 - ReportedOffer
+src/api/gen/index.ts:2299 - RequestPasswordResetRequest
+src/api/gen/index.ts:2417 - SendPhoneValidationRequest
+src/api/gen/index.ts:2494 - ShowSubType
+src/api/gen/index.ts:2515 - ShowType
+src/api/gen/index.ts:2880 - SubscriptionStepDetailsResponse
+src/api/gen/index.ts:2996 - UserProfileEmailUpdate
+src/api/gen/index.ts:3154 - UserReportedOffersResponse
+src/api/gen/index.ts:3232 - ValidatePhoneNumberRequest
+src/api/gen/index.ts:3243 - ValidationError
+src/api/gen/index.ts:3249 - ValidationErrorElement
+src/api/gen/index.ts:3484 - DefaultApiFetchParamCreator
+src/api/gen/index.ts:4764 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
 src/features/search/types.ts:80 - CategoriesModalFormProps
 src/features/search/types.ts:92 - CategoriesViewData
@@ -344,9 +344,9 @@ src/ui/svg/Background.tsx:28 - BackgroundWithWhiteStatusBar
 src/ui/svg/RadioButtonSelected.tsx:28 - RadioButtonSelected
 src/features/bookings/api/index.ts:1 - useUserHasBookings
 src/features/navigation/helpers/index.ts:3 - navigateToBooking
-src/features/navigation/RootNavigator/types.ts:301 - ScreenNavigationProp
-src/features/navigation/RootNavigator/types.ts:326 - NavigateParams (used in module)
-src/features/navigation/RootNavigator/types.ts:331 - AllNavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:302 - ScreenNavigationProp
+src/features/navigation/RootNavigator/types.ts:327 - NavigateParams (used in module)
+src/features/navigation/RootNavigator/types.ts:332 - AllNavigateParams (used in module)
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
