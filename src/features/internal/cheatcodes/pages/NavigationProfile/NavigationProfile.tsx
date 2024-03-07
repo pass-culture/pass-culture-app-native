@@ -39,6 +39,7 @@ export function NavigationProfile(): React.JSX.Element {
         <LinkToComponent name="ChangeEmail" />
         <LinkToComponent name="ConsentSettings" />
         <LinkToComponent name="NotificationSettings" />
+        <LinkToComponent name="NotificationsSettingsWIP" />
         <Row half>
           <ButtonPrimary wording="Modal Limite 500&nbsp;€" onPress={showPhysicalCeilingModal} />
           <CreditCeilingsModal
