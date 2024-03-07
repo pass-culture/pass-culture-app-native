@@ -24,7 +24,6 @@ export enum NUMERIC_FILTERS_ENUM {
   OFFER_PRICES = 'offer.prices',
   OFFER_DATES = 'offer.dates',
   OFFER_TIMES = 'offer.times',
-  OFFER_STOCKS_DATE_CREATED = 'offer.stocksDateCreated',
   OFFER_LAST_30_DAYS_BOOKINGS = 'offer.last30DaysBookings',
 }
 
