@@ -1,29 +1,37 @@
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
-import * as getEmailUpdateStep from 'features/profile/helpers/getEmailUpdateStep'
+import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('features/auth/context/AuthContext')
 
-const getStepButtonStateSpy = jest.spyOn(getEmailUpdateStep, 'getEmailUpdateStep') as jest.Mock
-
 describe('TrackEmailChangeContent', () => {
-  it('should not open mail app when clicking first step and first step is active', () => {
-    getStepButtonStateSpy.mockReturnValueOnce(0)
-    render(<TrackEmailChangeContent />)
+  it('should not open mail app when clicking first step and first step is active', async () => {
+    mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
+      status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+      expired: false,
+      newEmail: 'new_email@test.com',
+    })
+    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
-    fireEvent.click(screen.getByText('Confirme ta demande'))
+    fireEvent.click(await screen.findByText('Confirme ta demande'))
 
     expect(openInbox).not.toHaveBeenCalledTimes(1)
   })
 
-  it('should not open mail app when clicking last step and last step is active', () => {
-    getStepButtonStateSpy.mockReturnValueOnce(2)
-    render(<TrackEmailChangeContent />)
+  it('should not open mail app when clicking last step and last step is active', async () => {
+    mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
+      status: EmailHistoryEventTypeEnum.NEW_EMAIL_SELECTION,
+      expired: false,
+      newEmail: 'new_email@test.com',
+    })
+    render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
-    fireEvent.click(screen.getByText('Valide ta nouvelle adresse'))
+    fireEvent.click(await screen.findByText('Valide ta nouvelle adresse'))
 
     expect(openInbox).not.toHaveBeenCalledTimes(1)
   })
