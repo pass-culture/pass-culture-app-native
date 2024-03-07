@@ -65,11 +65,13 @@ upload_sourcemaps() {
   VERSION=$(jq -r .version package.json)
   BUILD=$(jq -r .build package.json)
   BUNDLE_FILE_NAME="${BUNDLE_FILE_NAME:-}"
+  COMMIT_HASH=$(git rev-parse --short HEAD)
 
   echo "APP_OS: ${APP_OS}"
   echo "APP_ENV: ${APP_ENV}"
   echo "VERSION: $VERSION"
   echo "BUILD: $BUILD"
+  echo "COMMIT_HASH: $COMMIT_HASH"
 
   if [[ "${APP_OS}" = "android" ]]; then
     SOURCEMAPS_NAME="index.android.bundle"
@@ -93,7 +95,7 @@ upload_sourcemaps() {
     mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
   fi
 
-  DIST="${BUILD}-${APP_OS}"
+  DIST="${BUILD}-${APP_OS}-${COMMIT_HASH}"
   echo "RELEASE: ${RELEASE}"
   echo "DIST: ${DIST}"
 
