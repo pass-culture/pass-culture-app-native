@@ -95,6 +95,7 @@ export const CalendarPicker: React.FC<Props> = ({
       year: selectedMobileYear,
     } = mobileDateValues
     const selectedMobileMonthIndex =
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       CAPITALIZED_SHORT_MONTHS.indexOf(selectedMobileMonth).toString()
     const currentYear = new Date().getFullYear()
 
@@ -123,6 +124,7 @@ export const CalendarPicker: React.FC<Props> = ({
     if (!hideCalendar) return
     if (isTouch) {
       const { year, month, day } = mobileDateValues
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const monthIndex = CAPITALIZED_SHORT_MONTHS.indexOf(month)
       setSelectedDate(new Date(Number(year), monthIndex, Number(day)))
     } else {
@@ -142,6 +144,7 @@ export const CalendarPicker: React.FC<Props> = ({
         <CalendarPickerWrapper>
           <Picker
             optionGroups={optionGroups}
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             valueGroups={mobileDateValues}
             onChange={handleMobileDateChange}
           />

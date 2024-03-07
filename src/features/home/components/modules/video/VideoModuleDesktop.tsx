@@ -93,6 +93,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
             </StyledMultiOfferList>
           ) : (
             <StyledVideoMonoOfferTile
+              // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
               color={props.color}
               hideModal={props.hideVideoModal}

@@ -71,16 +71,19 @@ describe('Highlight component for a venue suggestion', () => {
   const hit = mockVenueHits[0]
 
   it('should render Highlight', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(render(<Highlight venueHit={hit} attribute="name" />)).toMatchSnapshot()
   })
 
   it('should use highlight part for display', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<Highlight venueHit={hit} attribute="name" />)
 
     expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
   })
 
   it('should not use highlight history item part for display', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<Highlight venueHit={hit} attribute="name" />)
 
     expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
@@ -91,16 +94,19 @@ describe('Highlight component for an history item', () => {
   const historyItem = { ...mockedSearchHistory[0], _highlightResult: { query: { value: 'manga' } } }
 
   it('should render Highlight', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(render(<Highlight historyItem={historyItem} />)).toMatchSnapshot()
   })
 
   it('should use highlight history item part for display', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<Highlight historyItem={historyItem} />)
 
     expect(screen.getByTestId('nonHighlightedHistoryItemText')).toBeOnTheScreen()
   })
 
   it('should not use highlight part for display', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<Highlight historyItem={historyItem} />)
 
     expect(screen.queryByTestId('nonHighlightedText')).not.toBeOnTheScreen()

@@ -18,6 +18,7 @@ export const useProfileInfo = (): {
   const { data } = useQuery([QueryKeys.SUBSCRIPTION_PROFILE_INFO], () => getProfileInfo())
 
   if (data) {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     return { profileInfo: data.profile }
   }
 

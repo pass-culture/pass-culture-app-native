@@ -118,6 +118,7 @@ export const Playlist: FunctionComponent<Props> = ({
         let stepIndex = 0
         if (direction === 'previous') stepIndex = Math.max(previousStepIndex - 1, 0)
         if (direction === 'next') stepIndex = Math.min(previousStepIndex + 1, nbOfSteps - 1)
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         listRef.current.scrollToIndex({ index: steps[stepIndex], viewPosition: 0 })
         return stepIndex
       })

@@ -159,6 +159,7 @@ describe('useGTLPlaylists', () => {
 
   it('should not return playlist when it is shorter than the minimum number of offers', async () => {
     mockFetchGTLPlaylists.mockResolvedValueOnce([
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       { ...gtlPlaylistsFixture[0], minNumberOfOffers: 2 },
     ])
 

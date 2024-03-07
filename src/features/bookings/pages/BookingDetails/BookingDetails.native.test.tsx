@@ -93,6 +93,7 @@ describe('BookingDetails', () => {
 
   it('should render correctly', async () => {
     const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.completedUrl = 'https://example.com'
     renderBookingDetails(booking)
 
@@ -112,7 +113,9 @@ describe('BookingDetails', () => {
 
     it('should display offer link button if offer is digital and open url on press', async () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = true
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.completedUrl = 'https://example.com'
 
       renderBookingDetails(booking)
@@ -123,9 +126,11 @@ describe('BookingDetails', () => {
       })
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         booking.completedUrl,
         {
           analyticsData: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             offerId: booking.stock.offer.id,
           },
         },
@@ -144,6 +149,7 @@ describe('BookingDetails', () => {
 
     it('should display booking qr code if offer is physical', async () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = false
       renderBookingDetails(booking)
 
@@ -154,6 +160,7 @@ describe('BookingDetails', () => {
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       renderBookingDetails(booking)
 
@@ -166,6 +173,7 @@ describe('BookingDetails', () => {
   describe('Offer rules', () => {
     it('should display rules for a digital offer', async () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = true
 
       renderBookingDetails(booking)
@@ -181,7 +189,9 @@ describe('BookingDetails', () => {
 
     it('should display rules for a digital offer with activation code', async () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.isDigital = true
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.activationCode = {
         code: 'fdfdfsds',
       }
@@ -204,8 +214,10 @@ describe('BookingDetails', () => {
       'should display rules for a %s & non-digital offer',
       async (type, isEvent, withdrawalType) => {
         let booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         booking = {
           ...booking,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           stock: { ...booking.stock, offer: { ...booking.stock.offer, withdrawalType } },
         }
         jest
@@ -228,6 +240,7 @@ describe('BookingDetails', () => {
   describe('withdrawalDetails', () => {
     it('should display withdrawal details', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
       renderBookingDetails(booking)
 
@@ -239,6 +252,7 @@ describe('BookingDetails', () => {
 
     it('should not display withdrawal details', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.withdrawalDetails = undefined
       renderBookingDetails(booking)
       await act(async () => {})
@@ -254,6 +268,7 @@ describe('BookingDetails', () => {
   describe('booking email contact', () => {
     it('should display booking email contact when there is a booking contact email', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
       await act(async () => {})
@@ -264,6 +279,7 @@ describe('BookingDetails', () => {
 
     it('should not display booking email contact when there is no booking contact email', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.bookingContact = undefined
       renderBookingDetails(booking)
       await act(async () => {})
@@ -274,6 +290,7 @@ describe('BookingDetails', () => {
 
     it('should open mail app when clicking on "Envoyer un e-mail"', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
       await act(async () => {})
@@ -296,6 +313,7 @@ describe('BookingDetails', () => {
       fireEvent.press(text)
     })
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const offerId = booking.stock.offer.id
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -315,6 +333,7 @@ describe('BookingDetails', () => {
       fireEvent.press(text)
     })
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const offerId = booking.stock.offer.id
 
     expect(navigate).not.toHaveBeenCalledWith('Offer', {
@@ -333,14 +352,17 @@ describe('BookingDetails', () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       const date = new Date()
       date.setDate(date.getDate() + 1)
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.confirmationDate = date.toISOString()
       renderBookingDetails(booking)
 
       const cancelButton = screen.getAllByTestId('Annuler ma réservation')[0]
       await act(async () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         fireEvent.press(cancelButton)
       })
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })
   })
@@ -363,10 +385,13 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         const nameCanceledBooking = booking.stock.offer.name
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         renderBookingDetails(booking)
 
         await act(async () => {})
@@ -385,17 +410,21 @@ describe('BookingDetails', () => {
           ...mockedBooking,
           expirationDate: '2021-03-17T23:01:37.925926',
           stock: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...mockedBooking.stock,
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             offer: { ...mockedBooking.stock.offer, isDigital: false },
           },
         }
 
         mockBookings = {
           ...mockBookings,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
         const nameCanceledBooking = booking.stock.offer.name
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         renderBookingDetails(booking)
 
         await act(async () => {})
@@ -414,7 +443,9 @@ describe('BookingDetails', () => {
           ...mockedBooking,
           expirationDate: null,
           stock: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...mockedBooking.stock.offer,
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             offer: { ...mockedBooking.stock.offer, isDigital: false },
             price: 400,
             priceCategoryLabel: 'Cat 4',
@@ -424,10 +455,12 @@ describe('BookingDetails', () => {
 
         mockBookings = {
           ...mockBookings,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ended_bookings: [booking],
         }
 
         const nameCanceledBooking = booking.stock.offer.name
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         renderBookingDetails(booking)
         await act(async () => {})
 
@@ -441,6 +474,7 @@ describe('BookingDetails', () => {
 
     it('should not display it and not navigate when booking is digital without expiration date', async () => {
       const booking = { ...mockBookings.ended_bookings[0] }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       renderBookingDetails(booking)
       await act(async () => {})
 

@@ -8,6 +8,7 @@ describe('getBookingLabels', () => {
   it('should return the correct dateLabel for permanent bookings', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isPermanent: true }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({ dateLabel: 'Permanent', locationLabel: '', withdrawLabel: '' })
@@ -16,6 +17,7 @@ describe('getBookingLabels', () => {
   it('should not return the location for digital bookings', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isDigital: true }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const labels = getBookingLabels(booking, properties)
 
     expect(labels.locationLabel).toEqual('')
@@ -24,6 +26,7 @@ describe('getBookingLabels', () => {
   it('should return the correct date and location for events', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isEvent: true }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
@@ -37,6 +40,7 @@ describe('getBookingLabels', () => {
     mockdate.set(new Date('2021-03-15T18:00:00')) // 2 hours before
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isEvent: true }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
@@ -50,6 +54,7 @@ describe('getBookingLabels', () => {
     mockdate.set(new Date('2021-03-14T19:00:00')) // 25 hours before
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isEvent: true }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({
@@ -94,6 +99,7 @@ describe('getBookingLabels', () => {
   it('should return the correct dateLabel for digital bookings with activation codes but no expiration date', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const properties = { isDigital: true, hasActivationCode: true }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const labels = getBookingLabels(booking, properties)
 
     expect(labels).toEqual({ dateLabel: 'À activer', locationLabel: '', withdrawLabel: '' })

@@ -10,6 +10,7 @@ export const useGetNextQuestion = (currentQuestion: CulturalSurveyQuestionEnum) 
   let nextQuestion = currentQuestion
 
   if (!isCurrentQuestionLastQuestion) {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     nextQuestion = questionsToDisplay[nextQuestionIndex]
   }
 

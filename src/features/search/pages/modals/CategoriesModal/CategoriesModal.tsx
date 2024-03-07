@@ -118,6 +118,7 @@ export const CategoriesModal = ({
         setValue('genreType', null)
       }
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       if (nativeCategoryKey && nativeCategories[nativeCategoryKey].children) {
         setValue('currentView', CategoriesModalView.GENRES)
       }

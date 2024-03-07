@@ -67,6 +67,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           <Spacer.Column numberOfSpaces={2} />
           {!props.isMultiOffer && (
             <StyledVideoMonoOfferTile
+              // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
               color={props.color}
               hideModal={props.hideVideoModal}

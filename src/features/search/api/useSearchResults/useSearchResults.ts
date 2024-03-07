@@ -76,6 +76,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     [data?.pages, transformHits]
   )
 
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   const { nbHits, userData } = data?.pages[0].offers ?? { nbHits: 0, userData: [] }
   const venuesUserData = data?.pages?.[0]?.venues?.userData
   const facets = data?.pages?.[0]?.facets.facets as FacetData

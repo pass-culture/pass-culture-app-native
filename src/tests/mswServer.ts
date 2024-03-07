@@ -248,12 +248,14 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const handler = rest.get(urlWithoutParams, this.generateMockHandler(url, options, 'GET'))
       this.mswServer.use(handler)
     } else {
       const handler = rest.get(
         url,
         this.generateMockHandler(
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           urlWithoutParams,
           { responseOptions: { data: options as TResponse } },
           'GET'
@@ -285,6 +287,7 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const handler = rest.post(urlWithoutParams, this.generateMockHandler(url, options, 'POST'))
       this.mswServer.use(handler)
     } else {
@@ -319,6 +322,7 @@ class MswMockServer
     const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
       const handler = rest.delete(
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         urlWithoutParams,
         this.generateMockHandler(url, options, 'DELETE')
       )
@@ -354,6 +358,7 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0]
     if (this.isMockOptions(options)) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const handler = rest.put(urlWithoutParams, this.generateMockHandler(url, options, 'PUT'))
       this.mswServer.use(handler)
     } else {

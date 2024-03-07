@@ -39,12 +39,14 @@ const props = {
 
 // TODO(PC-17931): Fix this stories
 const WithoutImage = Template.bind({})
+// @ts-expect-error: because of noUncheckedIndexedAccess
 WithoutImage.args = props
 
 // TODO(PC-17931): Fix this stories
 const WithImage = Template.bind({})
 WithImage.args = {
   ...props,
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   venue: {
     ...mockVenues.hits[0],
     bannerUrl:
@@ -54,6 +56,7 @@ WithImage.args = {
 
 // TODO(PC-17931): Fix this stories
 const WithPosition = Template.bind({})
+// @ts-expect-error: because of noUncheckedIndexedAccess
 WithPosition.args = {
   ...props,
   userLocation: {

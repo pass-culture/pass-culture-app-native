@@ -65,6 +65,7 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
 
         expect(push).toHaveBeenCalledWith('Offer', {
@@ -98,6 +99,7 @@ describe('<OfferPlaylistList />', () => {
           otherCategoriesSimilarOffers: mockSearchHits,
         })
 
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
 
         expect(push).toHaveBeenCalledWith('Offer', {

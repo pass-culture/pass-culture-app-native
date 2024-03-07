@@ -8,6 +8,7 @@ describe('getLocationLabel', () => {
     const properties = {
       isPermanent: true,
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const offerRules = getLocationLabel(initialBooking.stock, properties)
 
     expect(offerRules).toEqual('')
@@ -17,6 +18,7 @@ describe('getLocationLabel', () => {
     const properties = {
       isDigital: true,
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const offerRules = getLocationLabel(initialBooking.stock, properties)
 
     expect(offerRules).toEqual('')
@@ -27,6 +29,7 @@ describe('getLocationLabel', () => {
       isPermanent: false,
       isDigital: false,
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const offerRules = getLocationLabel(initialBooking.stock, properties)
 
     expect(offerRules).toEqual('Maison de la Brique, Drancy')
@@ -41,10 +44,13 @@ describe('getLocationLabel', () => {
     const booking = {
       ...initialBooking,
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...initialBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...initialBooking.stock.offer,
           venue: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...initialBooking.stock.offer.venue,
             publicName: '',
           },
@@ -65,10 +71,13 @@ describe('getLocationLabel', () => {
     const booking = {
       ...initialBooking,
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...initialBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...initialBooking.stock.offer,
           venue: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...initialBooking.stock.offer.venue,
             publicName: null,
           },
@@ -89,10 +98,13 @@ describe('getLocationLabel', () => {
     const booking = {
       ...initialBooking,
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...initialBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...initialBooking.stock.offer,
           venue: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...initialBooking.stock.offer.venue,
             publicName: 'Maison de la Brique public',
           },
@@ -114,10 +126,13 @@ describe('getLocationLabel', () => {
     const booking = {
       ...initialBooking,
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...initialBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...initialBooking.stock.offer,
           venue: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...initialBooking.stock.offer.venue,
             city: undefined,
           },
@@ -139,10 +154,13 @@ describe('getLocationLabel', () => {
     const booking = {
       ...initialBooking,
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...initialBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...initialBooking.stock.offer,
           venue: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...initialBooking.stock.offer.venue,
             city: '',
           },

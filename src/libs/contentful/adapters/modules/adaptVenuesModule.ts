@@ -21,6 +21,7 @@ export const adaptVenuesModule = (modules: VenuesContentModel): VenuesModule | n
   return {
     type: HomepageModuleType.VenuesModule,
     id: modules.sys.id,
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     venuesParameters: venuesParameters[0],
     displayParameters: modules.fields.displayParameters.fields,
   }

@@ -153,7 +153,9 @@ export const SearchResultsContent: React.FC = () => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       if (lastPage.offers.page > 0) {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         analytics.logSearchScrollToPage(lastPage.offers.page, searchState.searchId)
       }
       fetchNextPage()

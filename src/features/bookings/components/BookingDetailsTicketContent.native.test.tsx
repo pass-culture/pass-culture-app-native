@@ -12,20 +12,24 @@ describe('BookingDetailsTicketContent', () => {
     activationCode: { code: 'someCode' },
     completedUrl: 'https://example.com',
     stock: {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       ...originalBooking.stock,
       offer: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...originalBooking.stock.offer,
       },
     },
   }
 
   it('should display the booking activation code when booking has one', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<BookingDetailsTicketContent booking={booking} />)
 
     expect(screen.getByText(booking.activationCode.code)).toBeOnTheScreen()
   })
 
   it('should not display the booking token when booking has activation code', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<BookingDetailsTicketContent booking={booking} />)
 
     const token = booking.token as string
@@ -34,6 +38,7 @@ describe('BookingDetailsTicketContent', () => {
   })
 
   it('should display the booking token when booking has no activation code', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<BookingDetailsTicketContent booking={originalBooking} />)
 
     const token = booking.token as string
@@ -42,6 +47,7 @@ describe('BookingDetailsTicketContent', () => {
   })
 
   it('should display the access button offer when booking has activation code', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<BookingDetailsTicketContent booking={booking} />)
 
     expect(screen.getByText('Accéder à l’offre en ligne')).toBeOnTheScreen()
@@ -52,13 +58,16 @@ describe('BookingDetailsTicketContent', () => {
       ...originalBooking,
       completedUrl: 'https://example.com',
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...originalBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...originalBooking.stock.offer,
           isDigital: false,
         },
       },
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<BookingDetailsTicketContent booking={booking} />)
 
     expect(screen.queryByText('Accéder à l’offre en ligne')).not.toBeOnTheScreen()
@@ -69,13 +78,16 @@ describe('BookingDetailsTicketContent', () => {
       ...originalBooking,
       completedUrl: 'https://example.com',
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...originalBooking.stock,
         offer: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...originalBooking.stock.offer,
           isDigital: true,
         },
       },
     }
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<BookingDetailsTicketContent booking={booking} />)
 
     expect(screen.getByText('Accéder à l’offre en ligne')).toBeOnTheScreen()
@@ -93,6 +105,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       render(<BookingDetailsTicketContent booking={bookingForBookOffer} />)
 
       expect(screen.queryByTestId('ean')).toBeOnTheScreen()
@@ -110,6 +123,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
 
       expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
@@ -126,6 +140,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
 
       expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()

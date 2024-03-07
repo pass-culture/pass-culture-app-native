@@ -86,8 +86,10 @@ describe('SearchLocationModal', () => {
     fireEvent.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.changeText(searchInput, mockPlaces[0].label)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     fireEvent.press(suggestedPlace)
 
@@ -183,9 +185,11 @@ describe('SearchLocationModal', () => {
       })
       await act(async () => {
         const searchInput = screen.getByTestId('styled-input-container')
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         fireEvent.changeText(searchInput, mockPlaces[0].label)
       })
       await act(async () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         const suggestedPlace = await screen.findByText(mockPlaces[0].label)
         fireEvent.press(suggestedPlace)
       })
@@ -202,9 +206,11 @@ describe('SearchLocationModal', () => {
 
       const searchInput = screen.getByTestId('styled-input-container')
       await act(async () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         fireEvent.changeText(searchInput, mockPlaces[0].label)
       })
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
       fireEvent.press(suggestedPlace)
 
@@ -242,8 +248,10 @@ describe('SearchLocationModal', () => {
       fireEvent.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       fireEvent.changeText(searchInput, mockPlaces[0].label)
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
       fireEvent.press(suggestedPlace)
 
@@ -305,9 +313,11 @@ describe('SearchLocationModal', () => {
 
       const searchInput = screen.getByTestId('styled-input-container')
       await act(async () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         fireEvent.changeText(searchInput, mockPlaces[0].label)
       })
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
       fireEvent.press(suggestedPlace)
 

@@ -27,12 +27,14 @@ describe('useSortedSearchCategories', () => {
   it("should format category's label", () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current[11].label).toEqual('Cartes jeunes')
   })
 
   it('should set illustration for category', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(result.current[11].Illustration).toEqual(SearchCategoriesIllustrations.YouthCards)
   })
 

@@ -23,6 +23,7 @@ export const useUtmParams = (): ExtendedUtmParams => {
         'traffic_medium',
         'campaign_date',
       ])
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       .then(([[, gen], [, campaign], [, content], [, source], [, medium], [, time]]) => {
         const campaignDate = getCampaignDate(time)
         setUtmParams({ gen, campaign, content, source, medium, campaignDate })

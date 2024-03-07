@@ -15,12 +15,14 @@ const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: S
 
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])
 
     expect(screen.queryByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
 
   it('should display "Réservation utilisée" and dateUsed labels if booking was used', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       dateUsed: '2021-03-16T23:01:37.925926',
@@ -31,6 +33,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should display "Annulée" and cancellationDate labels if booking was cancelled by offerer', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.OFFERER,
@@ -41,6 +44,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should display "Réservation annulée" and cancellationDate labels if booking was cancelled by beneficiary and offer is not digital without expiration date', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.BENEFICIARY,
@@ -51,6 +55,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should display "Réservation annulée" and cancellationDate labels if booking was expired and offer is not digital without expiration date', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.EXPIRED,
@@ -61,6 +66,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should display "Réservation archivée" when offer is digital without expiration date and not cancelled', () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationDate: null,
@@ -71,10 +77,13 @@ describe('EndedBookingItem', () => {
   })
 
   it('should navigate to offer page when offer is not digital without expiration date', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       stock: {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         ...bookingsSnap.ended_bookings[0].stock,
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
       },
     })
@@ -95,6 +104,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should navigate to the booking details page when offer is digital without expiration date and not cancelled', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationDate: null,
@@ -112,6 +122,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should call share when press share icon', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationDate: null,
@@ -119,6 +130,7 @@ describe('EndedBookingItem', () => {
     })
 
     const shareButton = await screen.findByLabelText(
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
     )
     fireEvent.press(shareButton)
@@ -127,6 +139,7 @@ describe('EndedBookingItem', () => {
   })
 
   it('should log analytics when press share icon', async () => {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
       cancellationDate: null,
@@ -134,6 +147,7 @@ describe('EndedBookingItem', () => {
     })
 
     const shareButton = await screen.findByLabelText(
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
     )
     fireEvent.press(shareButton)
@@ -141,6 +155,7 @@ describe('EndedBookingItem', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'endedbookings',
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
     })
   })

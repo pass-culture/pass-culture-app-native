@@ -53,6 +53,7 @@ export const useItinerary = (): UseItineraryResult => {
       return
     }
     if (availableAppsRef.current.length === 1) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       navigateToWithApp(address, availableAppsRef.current[0], BackupSolution.GOOGLE_MAPS_WEB)
       return
     }
@@ -76,6 +77,7 @@ export const useItinerary = (): UseItineraryResult => {
       .then((appsAvailability) => {
         const appsKeys = Object.keys(appsAvailability)
         const apps = appsKeys.filter(
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
         )
         if (isMounted) availableAppsRef.current = apps

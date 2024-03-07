@@ -23,10 +23,14 @@ const extractDate = (date: Date): DayMapping => {
   const dayDate = date.getDate()
   const timestamp = date.getTime()
   return {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     weekday: SHORT_DAYS[dayIndex],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fullWeekDay: DAYS[dayIndex],
     dayDate,
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     month: SHORT_MONTHS[monthIndex],
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fullMonth: MONTHS[monthIndex],
     timestamp,
   }

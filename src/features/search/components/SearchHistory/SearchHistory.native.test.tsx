@@ -27,6 +27,7 @@ describe('SearchHistory', () => {
   it('should display delete button in history item when queryHistory is an empty string', () => {
     render(
       <SearchHistory
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         history={mockHistory}
         queryHistory=""
         removeItem={mockRemoveItem}
@@ -40,6 +41,7 @@ describe('SearchHistory', () => {
   it('should execute remove history item when pressing delete button', () => {
     render(
       <SearchHistory
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         history={mockHistory}
         queryHistory=""
         removeItem={mockRemoveItem}
@@ -55,6 +57,7 @@ describe('SearchHistory', () => {
   it('should not display delete button in history item when queryHistory is not an empty string', () => {
     render(
       <SearchHistory
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         history={mockHistory}
         queryHistory="man"
         removeItem={mockRemoveItem}
@@ -70,6 +73,7 @@ describe('SearchHistory', () => {
 
     render(
       <SearchHistory
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         history={mockHistory}
         queryHistory=""
         removeItem={jest.fn()}

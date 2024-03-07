@@ -108,7 +108,11 @@ export function CreditHeader({
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Typo.Body>
-                {incomingCreditLabelsMap[age].label}
+                {
+                  /* @ts-expect-error: because of noUncheckedIndexedAccess */
+                  incomingCreditLabelsMap[age].label
+                }
+                {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
                 <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
               </Typo.Body>
             </React.Fragment>

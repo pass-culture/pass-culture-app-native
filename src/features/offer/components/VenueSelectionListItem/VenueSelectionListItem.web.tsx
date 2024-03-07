@@ -71,13 +71,18 @@ export function VenueSelectionListItem({ index, style, data }: Readonly<RowProps
       <Wrapper>
         <ItemWrapper>
           <SelectableListItem
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             onSelect={() => data.onItemSelect(data.items[index].offerId)}
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             isSelected={data.selectedItem === data.items[index].offerId}
             testID="venue-selection-list-item"
             render={({ isHover }) => (
               <VenueDetails
+                // @ts-expect-error: because of noUncheckedIndexedAccess
                 title={data.items[index].title}
+                // @ts-expect-error: because of noUncheckedIndexedAccess
                 address={data.items[index].address}
+                // @ts-expect-error: because of noUncheckedIndexedAccess
                 distance={data.isSharingLocation ? data.items[index].distance : ''}
                 isHover={isHover}
               />

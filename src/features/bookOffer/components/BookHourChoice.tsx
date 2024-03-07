@@ -116,6 +116,7 @@ export const BookHourChoice = () => {
   const selectHour = (hour: string, stockFromHour: OfferStockResponse[]) => {
     dispatch({ type: 'SELECT_HOUR', payload: hour })
     if (stockFromHour.length === 1) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       dispatch({ type: 'SELECT_STOCK', payload: stockFromHour[0].id })
     }
     if (!isDuo) {

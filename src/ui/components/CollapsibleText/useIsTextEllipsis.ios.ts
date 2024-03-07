@@ -14,6 +14,7 @@ export const useIsTextEllipsis = (numberOfLines: number): IsTextEllipsisOutput =
 
   const onTextLayout: Required<IsTextEllipsisOutput>['onTextLayout'] = (event) => {
     if (event.nativeEvent.lines.length === numberOfLines) {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       setNthLineWidth(event.nativeEvent.lines[numberOfLines - 1].width)
     }
   }

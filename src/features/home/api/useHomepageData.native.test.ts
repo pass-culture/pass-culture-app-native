@@ -15,7 +15,9 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 const homepageEntryIds = [
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   homepageEntriesAPIResponse.items[0].sys.id,
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   homepageEntriesAPIResponse.items[1].sys.id,
 ]
 
@@ -30,6 +32,7 @@ describe('useHomepageModules', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const expectedResult: Homepage = homepageList[0]
 
     await waitFor(() => {

@@ -30,8 +30,10 @@ describe('expirationDateUtils', () => {
       const invalidbooking = {
         ...initialBookings[1],
         stock: {
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...initialBookings[1].stock,
           offer: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...initialBookings[1].stock.offer,
             isDigital: false,
           },
@@ -39,6 +41,7 @@ describe('expirationDateUtils', () => {
       }
       const arrayOfBooking = [invalidbooking]
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(getDigitalBookingsWithoutExpirationDate(arrayOfBooking)).toEqual([])
     })
   })
@@ -48,6 +51,7 @@ describe('expirationDateUtils', () => {
       const [firstBooking] = initialBookings
       const getDigitalBookingsWithoutExpirationDate = initialBookings
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(isBookingInList(firstBooking, getDigitalBookingsWithoutExpirationDate)).toBeTruthy()
     })
 
@@ -56,6 +60,7 @@ describe('expirationDateUtils', () => {
       const newFirstBooking = { ...firstBooking, id: 999 }
       const getDigitalBookingsWithoutExpirationDate = initialBookings
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(isBookingInList(newFirstBooking, getDigitalBookingsWithoutExpirationDate)).toBeFalsy()
     })
   })
@@ -121,6 +126,7 @@ describe('expirationDateUtils', () => {
 
   describe('isDigitalBookingWithoutExpirationDate', () => {
     it('should return true when booking is digital without expiration date', () => {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       const value = isDigitalBookingWithoutExpirationDate(bookingsSnap.ended_bookings[0])
 
       expect(value).toEqual(true)
@@ -128,6 +134,7 @@ describe('expirationDateUtils', () => {
 
     describe('should return false', () => {
       it('when booking is digital with expiration date', () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         const value = isDigitalBookingWithoutExpirationDate({
           ...bookingsSnap.ended_bookings[0],
           expirationDate: '2021-03-15T23:01:37.925926',
@@ -137,10 +144,13 @@ describe('expirationDateUtils', () => {
       })
 
       it('when booking is not digital without expiration date', () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         const value = isDigitalBookingWithoutExpirationDate({
           ...bookingsSnap.ended_bookings[0],
           stock: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...bookingsSnap.ended_bookings[0].stock,
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
           },
         })
@@ -149,11 +159,14 @@ describe('expirationDateUtils', () => {
       })
 
       it('when booking is not digital with expiration date', () => {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         const value = isDigitalBookingWithoutExpirationDate({
           ...bookingsSnap.ended_bookings[0],
           expirationDate: '2021-03-15T23:01:37.925926',
           stock: {
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             ...bookingsSnap.ended_bookings[0].stock,
+            // @ts-expect-error: because of noUncheckedIndexedAccess
             offer: { ...bookingsSnap.ended_bookings[0].stock.offer, isDigital: false },
           },
         })
@@ -166,25 +179,31 @@ describe('expirationDateUtils', () => {
   describe('isFreeBookingInSubcategories', () => {
     it('should return true when booking amount is 0 and the offer has a category that can be archived', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.totalAmount = 0
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(isFreeBookingInSubcategories(booking)).toBeTruthy()
     })
 
     it('should return false when booking amount is 0 and the offer has not a category that can be archived', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_CONCERT
       booking.totalAmount = 0
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(isFreeBookingInSubcategories(booking)).toBeFalsy()
     })
 
     it('should return false when booking amount > 0 and the offer has a category that can be archived', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
       booking.totalAmount = 1000
 
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(isFreeBookingInSubcategories(booking)).toBeFalsy()
     })
   })

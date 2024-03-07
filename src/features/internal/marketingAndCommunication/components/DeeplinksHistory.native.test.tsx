@@ -32,11 +32,15 @@ describe('<DeeplinksHistory />', () => {
     })
 
     expect(screen.queryByText('#0')).toBeOnTheScreen()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.queryByText(history[0].universalLink)).toBeOnTheScreen()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.queryByText(history[0].firebaseLink)).toBeOnTheScreen()
 
     expect(screen.queryByText('#1')).toBeOnTheScreen()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.queryByText(history[1].universalLink)).toBeOnTheScreen()
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.queryByText(history[1].firebaseLink)).toBeOnTheScreen()
   })
 

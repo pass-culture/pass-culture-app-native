@@ -43,6 +43,7 @@ describe('VideoMultiOfferTile', () => {
     await act(async () => {})
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerId: +mockOffer.objectID,
       ...mockAnalyticsParams,
     })
@@ -52,6 +53,7 @@ describe('VideoMultiOfferTile', () => {
 function renderMultiOfferTile() {
   render(
     <VideoMultiOfferTile
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       offer={mockOffer}
       hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}

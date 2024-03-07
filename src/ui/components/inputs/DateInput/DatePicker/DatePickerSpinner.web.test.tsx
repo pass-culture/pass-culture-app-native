@@ -27,13 +27,19 @@ describe('<DatePickerSpinner />', () => {
 
     const { container } = render(<DatePickerSpinner {...props} />)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const day = container.getElementsByClassName('picker-scroller')[0].childNodes[1] // 02
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(day)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const month = container.getElementsByClassName('picker-scroller')[1].childNodes[6] // 07
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(month)
 
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     const year = container.getElementsByClassName('picker-scroller')[2].childNodes[1] // 2005
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.click(year)
 
     expect(props.onChange).toHaveBeenNthCalledWith(1, DEFAULT_SELECTED_DATE) // first render trigger useEffect

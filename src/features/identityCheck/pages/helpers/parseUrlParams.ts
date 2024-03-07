@@ -5,6 +5,7 @@ export const parseUrlParams = (url: string): Record<string, string | null> => {
   if (search) {
     search.split('&').forEach((param) => {
       const [key, value] = param.split('=')
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       params[key] = value
     })
   }

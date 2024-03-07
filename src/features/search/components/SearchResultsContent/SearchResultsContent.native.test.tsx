@@ -110,6 +110,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+// @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
 
 jest.useFakeTimers({ legacyFakeTimers: true })

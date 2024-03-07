@@ -182,6 +182,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
   const onTempAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         setTempAroundPlaceRadius(newValues[0])
       }
     },
@@ -190,6 +191,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
   const onTempAroundMeRadiusValueChange = useCallback(
     (newValues: number[]) => {
       if (visible) {
+        // @ts-expect-error: because of noUncheckedIndexedAccess
         setTempAroundMeRadius(newValues[0])
       }
     },

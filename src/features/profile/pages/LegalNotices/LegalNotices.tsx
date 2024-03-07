@@ -48,6 +48,7 @@ export function LegalNotices() {
           as={ButtonInsideTextBlack}
           wording="support@passculture.fr"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+          // @ts-expect-error: because of noUncheckedIndexedAccess
           externalNav={contactSupport.forGenericQuestion}
           icon={EmailFilled}
         />

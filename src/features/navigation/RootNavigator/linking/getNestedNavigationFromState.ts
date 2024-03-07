@@ -11,8 +11,11 @@ export function getNestedNavigationFromState(
   const { routes, index } = state
   const currentRouteIndex = index ?? routes.length - 1
   const route = routes[currentRouteIndex]
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   if (route.state) {
+    // @ts-expect-error: because of noUncheckedIndexedAccess
     return getNestedNavigationFromState(route.state)
   }
+  // @ts-expect-error: because of noUncheckedIndexedAccess
   return [route.name, route.params] as RootNavigateParams
 }
