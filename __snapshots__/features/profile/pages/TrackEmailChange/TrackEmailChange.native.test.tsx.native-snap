@@ -1018,7 +1018,916 @@ exports[`TrackEmailChange should render correctly when FF is disabled 1`] = `
 </RCTScrollView>
 `;
 
-exports[`TrackEmailChange should render correctly when FF is enabled 1`] = `
+exports[`TrackEmailChange v2 should render correctly when choose new email step is active 1`] = `
+<RCTScrollView
+  style={
+    [
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "overflow": "hidden",
+        "paddingBottom": 24,
+        "paddingLeft": 24,
+        "paddingRight": 24,
+        "paddingTop": 24,
+      },
+    ]
+  }
+>
+  <View>
+    <View
+      height={48}
+      style={
+        [
+          {
+            "height": 48,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "height": 32,
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexGrow": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 40,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+          },
+        ]
+      }
+    >
+      Suivi de ton changement d’e-mail
+    </Text>
+    <View
+      style={
+        [
+          {
+            "marginHorizontal": "auto",
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityRole="list"
+        style={
+          [
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+                testID="vertical-stepper-complete"
+              >
+                <View
+                  isFirst={true}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="top-line"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "marginVertical": 2,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="none"
+                    height={20}
+                    testID="icon"
+                    width={20}
+                  >
+                    <Text>
+                      icon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  isFirst={true}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="bottom-line"
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Confirmation de ta demande complété"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "marginTop": 8,
+                      },
+                      {
+                        "borderColor": "#F1F1F4",
+                        "borderWidth": 2,
+                        "height": 88,
+                        "width": "98%",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      stepState="completed"
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Confirmation de ta demande
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+                testID="vertical-stepper-in_progress"
+              >
+                <View
+                  isFirst={false}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="top-line"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "marginVertical": 2,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#161617",
+                          "borderColor": "#ffffff",
+                          "borderRadius": 6,
+                          "borderWidth": 2,
+                          "height": 12,
+                          "marginHorizontal": 4,
+                          "width": 12,
+                        },
+                      ]
+                    }
+                    testID="icon"
+                  />
+                </View>
+                <View
+                  onLayout={[Function]}
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        },
+                      ]
+                    }
+                    testID="bottom-line"
+                  />
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Choisis ta nouvelle adresse e-mail non complété"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Choisis ta nouvelle adresse e-mail non complété"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#90949D",
+                        "borderRadius": 7,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "padding": 16,
+                        "width": "100%",
+                      },
+                      [
+                        {
+                          "borderColor": "#161617",
+                          "height": 92,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignContent": "center",
+                          "marginRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      stepState="current"
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Choisis ta nouvelle adresse e-mail
+                    </Text>
+                    <Text
+                      stepState="current"
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Renseigne ta nouvelle adresse e-mail
+                    </Text>
+                  </View>
+                  <View>
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+                testID="vertical-stepper-future"
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "height": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "justifyContent": "space-between",
+                        },
+                      ]
+                    }
+                    testID="top-line"
+                  />
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "marginVertical": 2,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#CBCDD2",
+                          "borderColor": "#ffffff",
+                          "borderRadius": 6,
+                          "borderWidth": 2,
+                          "height": 12,
+                          "marginHorizontal": 4,
+                          "width": 12,
+                        },
+                      ]
+                    }
+                    testID="icon"
+                  />
+                </View>
+                <View
+                  isLast={true}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 0,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Validation de ta nouvelle adresse e-mail non complété"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "marginTop": 8,
+                      },
+                      {
+                        "borderColor": "#CBCDD2",
+                        "height": 88,
+                        "width": "98%",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      stepState="disabled"
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Validation de ta nouvelle adresse e-mail
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`TrackEmailChange v2 should render correctly when confirmation step is active 1`] = `
 <RCTScrollView
   style={
     [
@@ -1933,6 +2842,897 @@ exports[`TrackEmailChange should render correctly when FF is enabled 1`] = `
                     >
                       Validation de ta nouvelle adresse e-mail
                     </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`TrackEmailChange v2 should render correctly when validate new email step is active 1`] = `
+<RCTScrollView
+  style={
+    [
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "overflow": "hidden",
+        "paddingBottom": 24,
+        "paddingLeft": 24,
+        "paddingRight": 24,
+        "paddingTop": 24,
+      },
+    ]
+  }
+>
+  <View>
+    <View
+      height={48}
+      style={
+        [
+          {
+            "height": 48,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={16}
+        enable={true}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "height": 32,
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "flexGrow": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "maxWidth": 40,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            style={
+              [
+                {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Retour
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+          },
+        ]
+      }
+    >
+      Suivi de ton changement d’e-mail
+    </Text>
+    <View
+      style={
+        [
+          {
+            "marginHorizontal": "auto",
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityRole="list"
+        style={
+          [
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+                testID="vertical-stepper-complete"
+              >
+                <View
+                  isFirst={true}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "borderTopLeftRadius": 2,
+                        "borderTopRightRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="top-line"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "marginVertical": 2,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="none"
+                    height={20}
+                    testID="icon"
+                    width={20}
+                  >
+                    <Text>
+                      icon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  isFirst={true}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="bottom-line"
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Confirmation de ta demande complété"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "marginTop": 8,
+                      },
+                      {
+                        "borderColor": "#F1F1F4",
+                        "borderWidth": 2,
+                        "height": 88,
+                        "width": "98%",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      stepState="completed"
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Confirmation de ta demande
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+                testID="vertical-stepper-complete"
+              >
+                <View
+                  isFirst={false}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="top-line"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "marginVertical": 2,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="none"
+                    height={20}
+                    testID="icon"
+                    width={20}
+                  >
+                    <Text>
+                      icon-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  isFirst={false}
+                  isLast={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="bottom-line"
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Choix de ta nouvelle adresse e-mail complété"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Choix de ta nouvelle adresse e-mail complété"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 8,
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "marginTop": 8,
+                      },
+                      {
+                        "borderColor": "#F1F1F4",
+                        "borderWidth": 2,
+                        "height": 88,
+                        "width": "98%",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexDirection": "column",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "paddingRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      stepState="completed"
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Choix de ta nouvelle adresse e-mail
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+                testID="vertical-stepper-in_progress"
+              >
+                <View
+                  isFirst={false}
+                  isLast={true}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                  testID="top-line"
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "marginVertical": 2,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#161617",
+                          "borderColor": "#ffffff",
+                          "borderRadius": 6,
+                          "borderWidth": 2,
+                          "height": 12,
+                          "marginHorizontal": 4,
+                          "width": 12,
+                        },
+                      ]
+                    }
+                    testID="icon"
+                  />
+                </View>
+                <View
+                  isLast={true}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#CBCDD2",
+                        "borderRadius": 2,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "opacity": 0,
+                        "width": 2,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginLeft": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Valide ta nouvelle adresse non complété"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Valide ta nouvelle adresse non complété"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#90949D",
+                        "borderRadius": 7,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "padding": 16,
+                        "width": "100%",
+                      },
+                      [
+                        {
+                          "borderColor": "#161617",
+                          "height": 92,
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignContent": "center",
+                          "marginRight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={32}
+                      width={32}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "marginRight": 16,
+                          "textAlign": "start",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      stepState="current"
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Valide ta nouvelle adresse
+                    </Text>
+                    <Text
+                      stepState="current"
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Depuis l’email envoyé à "johndoe@gmail.com"
+                    </Text>
+                  </View>
+                  <View>
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

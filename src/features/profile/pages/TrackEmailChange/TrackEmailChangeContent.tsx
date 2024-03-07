@@ -1,10 +1,14 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Platform } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
+import { navigateToHome } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getEmailUpdateStepV2 } from 'features/profile/helpers/getEmailUpdateStepV2'
+import { useEmailUpdateStatusV2 } from 'features/profile/helpers/useEmailUpdateStatusV2'
 import { Step } from 'ui/components/Step/Step'
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
@@ -17,11 +21,14 @@ import { Spacer } from 'ui/theme'
 const isWeb = Platform.OS === 'web'
 
 export const TrackEmailChangeContent = () => {
-  const { user } = useAuthContext()
+  const { navigate } = useNavigation<UseNavigationType>()
 
-  const currentStep = getEmailUpdateStep()
+  const { user } = useAuthContext()
+  const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatusV2()
+
+  const currentStep = getEmailUpdateStepV2(requestStatus?.status)
   const currentEmail = user?.email ?? ''
-  const newEmail = ''
+  const newEmail = requestStatus?.newEmail ?? ''
 
   const getStepButtonState = useCallback(
     (stepIndex: number) => {
@@ -79,6 +86,15 @@ export const TrackEmailChangeContent = () => {
       },
       onPress: isWeb ? undefined : openInbox,
     },
+  }
+
+  if (!isRequestStatusLoading && !requestStatus?.status) {
+    navigateToHome()
+    return null
+  }
+  if (!isRequestStatusLoading && requestStatus?.expired) {
+    navigate('ChangeEmailExpiredLink')
+    return null
   }
 
   return (

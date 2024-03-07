@@ -43,6 +43,7 @@ export enum QueryKeys {
   VENUE_OFFERS = 'venueOffers',
   VIDEO_OFFER = 'video_offer',
   SUBSCRIPTION_PROFILE_INFO = 'subscriptionProfileInfo',
+  EMAIL_UPDATE_STATUS_V2 = 'emailUpdateStatusV2',
 }
 
 export enum MutationKeys {
