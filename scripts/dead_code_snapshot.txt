@@ -30,7 +30,6 @@ src/api/gen/index.ts:153 - ActivityResponseModel
 src/api/gen/index.ts:185 - Banner
 src/api/gen/index.ts:206 - BannerMetaModel
 src/api/gen/index.ts:228 - BannerQueryParams
-src/api/gen/index.ts:277 - BookSubType
 src/api/gen/index.ts:324 - BookingActivationCodeResponse
 src/api/gen/index.ts:353 - BookingDisplayStatusRequest
 src/api/gen/index.ts:364 - BookingOfferExtraData
@@ -73,12 +72,12 @@ src/api/gen/index.ts:3233 - ValidationErrorElement
 src/api/gen/index.ts:3468 - DefaultApiFetchParamCreator
 src/api/gen/index.ts:4726 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
-src/features/search/types.ts:78 - CategoriesModalFormProps
-src/features/search/types.ts:90 - CategoriesViewData
-src/features/search/types.ts:95 - MappedData
-src/features/search/types.ts:97 - VenueUserTitleRule (used in module)
-src/features/search/types.ts:98 - VenueUserData (used in module)
-src/features/search/types.ts:116 - AnalyticsParams
+src/features/search/types.ts:80 - CategoriesModalFormProps
+src/features/search/types.ts:92 - CategoriesViewData
+src/features/search/types.ts:97 - MappedData
+src/features/search/types.ts:99 - VenueUserTitleRule (used in module)
+src/features/search/types.ts:100 - VenueUserData (used in module)
+src/features/search/types.ts:118 - AnalyticsParams
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)
@@ -356,5 +355,5 @@ src/ui/components/touchableLink/types.ts:39 - TouchableLinkGenericProps (used in
 src/features/identityCheck/pages/helpers/getCurrentStep.ts:4 - getCurrentStep
 src/features/identityCheck/pages/helpers/isSubscriptionRoute.ts:4 - isSubscriptionRoute
 src/features/search/components/SearchVenueItems/SearchVenueItem.tsx:23 - SearchVenueItemProps (used in module)
-src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:53 - getCategoryFromEnum (used in module)
+src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:159 - getCategoryFromEnum (used in module)
 src/libs/firebase/shims/app/index.ts:2 - default
