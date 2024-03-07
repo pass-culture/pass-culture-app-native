@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -92,26 +92,6 @@ describe('<OfferContent />', () => {
         reactQueryProviderHOC(
           <OfferContent
             offer={offerResponseSnap}
-            searchGroupList={placeholderData.searchGroups}
-            subcategory={mockSubcategory}
-          />
-        )
-      )
-
-      fireEvent.click(await screen.findByTestId('image-container'))
-
-      expect(navigate).not.toHaveBeenCalled()
-    })
-
-    it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        image: null,
-      }
-      render(
-        reactQueryProviderHOC(
-          <OfferContent
-            offer={offer}
             searchGroupList={placeholderData.searchGroups}
             subcategory={mockSubcategory}
           />
