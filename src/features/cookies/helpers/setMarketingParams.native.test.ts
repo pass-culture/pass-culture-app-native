@@ -80,11 +80,11 @@ describe('setMarketingParams', () => {
       jest.runOnlyPendingTimers()
 
       expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
-        traffic_campaign: undefined,
-        traffic_content: undefined,
-        traffic_gen: undefined,
-        traffic_medium: undefined,
-        traffic_source: undefined,
+        traffic_campaign: null,
+        traffic_content: null,
+        traffic_gen: null,
+        traffic_medium: null,
+        traffic_source: null,
       })
     })
   })
