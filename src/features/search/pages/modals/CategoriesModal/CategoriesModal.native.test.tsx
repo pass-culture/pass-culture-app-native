@@ -270,7 +270,7 @@ describe('<CategoriesModal/>', () => {
       it.skip('should display number of results on each category', () => {
         renderCategories()
 
-        // Festivals du livre + Livres audio physiques
+        // Évènements autour du livre + Livres audio
         expect(screen.getAllByText('0')).toHaveLength(2)
         // Livres numériques & audio
         expect(screen.getByText('23')).toBeOnTheScreen()
@@ -287,7 +287,7 @@ describe('<CategoriesModal/>', () => {
       it('should not display number of results on each category', () => {
         renderCategories()
 
-        // Festivals du livre + Livres audio physiques
+        // Évènements autour du livre + Livres audio
         expect(screen.queryAllByText('0 résultat')).toHaveLength(0)
 
         // Livres numériques & audio

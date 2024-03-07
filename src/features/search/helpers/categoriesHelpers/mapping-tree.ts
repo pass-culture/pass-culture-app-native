@@ -96,7 +96,7 @@ export function createMappingTree(
    *         label: 'Tout',
    *       },
    *       'NativeCategoryTwo': {
-   *         label: 'Événement',
+   *         label: 'Évènement',
    *         genreTypeKey: 'EventType',
    *         children: {
    *           'GenreType': {

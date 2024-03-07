@@ -95,7 +95,7 @@ describe('<OfferPlace />', () => {
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
 
-  it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', () => {
+  it('should display other venues available button when offer subcategory is "Livres audio", offer has an EAN and that there are other venues offering the same offer', () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -108,7 +108,7 @@ describe('<OfferPlace />', () => {
     expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
   })
 
-  it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
+  it('should not display other venues available button when offer subcategory is "Livres audio", offer has an EAN and that there are not other venues offering the same offer', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
@@ -122,7 +122,7 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
   })
 
-  it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
+  it('should not display other venues available button when offer subcategory is "Livres audio" and offer has not an EAN', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
@@ -168,7 +168,7 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
   })
 
-  it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
+  it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio"', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace(offerPlaceProps)
 

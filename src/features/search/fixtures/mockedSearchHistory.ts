@@ -32,7 +32,7 @@ export const mockedSearchHistory: HistoryItem[] = [
     query: 'tolkien',
     category: SearchGroupNameEnumv2.LIVRES,
     nativeCategory: NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
-    label: 'tolkien dans Livres audio physiques',
+    label: 'tolkien dans Livres audio',
   },
   {
     createdAt: new Date('2023-09-24T09:07:00.000Z').getTime(),

@@ -793,12 +793,12 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
-      value: 'Livres numérique & audio',
+      value: 'E-books',
       genreType: null,
     },
     {
       name: NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
-      value: 'Livres audio physiques',
+      value: 'Livres audio',
       genreType: null,
     },
     {
@@ -998,7 +998,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.FESTIVAL_DU_LIVRE,
-      value: 'Festivals du livre',
+      value: 'Évènements autour du livre',
       genreType: null,
     },
     {

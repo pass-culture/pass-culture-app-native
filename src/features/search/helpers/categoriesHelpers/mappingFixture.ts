@@ -482,15 +482,15 @@ export const treeResultFixture = {
     label: 'Livres',
     children: {
       [NativeCategoryIdEnumv2.FESTIVAL_DU_LIVRE]: {
-        label: 'Festivals du livre',
+        label: 'Évènements autour du livre',
         nbResultsFacet: 0,
       },
       [NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES]: {
-        label: 'Livres audio physiques',
+        label: 'Livres audio',
         nbResultsFacet: 0,
       },
       [NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO]: {
-        label: 'Livres numérique & audio',
+        label: 'E-books',
         nbResultsFacet: 23,
       },
       [NativeCategoryIdEnumv2.LIVRES_PAPIER]: {
@@ -576,15 +576,15 @@ export const bookTreeResultFixture = {
         label: 'Tout',
       },
       FESTIVAL_DU_LIVRE: {
-        label: 'Festivals du livre',
+        label: 'Évènements autour du livre',
         nbResultsFacet: 0,
       },
       LIVRES_AUDIO_PHYSIQUES: {
-        label: 'Livres audio physiques',
+        label: 'Livres audio',
         nbResultsFacet: 0,
       },
       LIVRES_NUMERIQUE_ET_AUDIO: {
-        label: 'Livres numérique & audio',
+        label: 'E-books',
         nbResultsFacet: 0,
       },
       ROMANS_ET_LITTERATURE: {

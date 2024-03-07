@@ -100,7 +100,7 @@ describe('<OfferPlace />', () => {
     mockUseSearchVenueOffers.mockReturnValue(searchVenueOfferWithVenues)
   })
 
-  it('should display change venue button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', () => {
+  it('should display change venue button when offer subcategory is "Livres audio", offer has an EAN and that there are other venues offering the same offer', () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -139,7 +139,7 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('Changer de cinéma')).not.toBeOnTheScreen()
   })
 
-  it('should not display change venue button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', () => {
+  it('should not display change venue button when offer subcategory is "Livres audio", offer has an EAN and that there are not other venues offering the same offer', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
@@ -153,7 +153,7 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
   })
 
-  it('should not display change venue button when offer subcategory is "Livres audio physiques" and offer has not an EAN', () => {
+  it('should not display change venue button when offer subcategory is "Livres audio" and offer has not an EAN', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
       ...offerPlaceProps,
@@ -200,7 +200,7 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
   })
 
-  it('should not display change venue button when offer subcategory is not "Livres papier" or "Livres audio physiques"', () => {
+  it('should not display change venue button when offer subcategory is not "Livres papier" or "Livres audio"', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace(offerPlaceProps)
 
