@@ -75,8 +75,6 @@ jobs:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
-      - name: Create Sentry Android sourcemaps
-        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
       - name: Deploy soft ios App for ${{ inputs.ENV }}
         run: |
           bundle exec fastlane ios deploy codepush: --env ${{ inputs.ENV }}
@@ -84,8 +82,6 @@ jobs:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
-      - name: Create Sentry iOS sourcemaps
-        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios" ${{ inputs.ENV }}'
 
   slack_notify:
     runs-on: ubuntu-latest
