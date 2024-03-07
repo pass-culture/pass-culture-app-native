@@ -12,7 +12,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
-import { NotificationSettings } from './NotificationSettings'
+import { NotificationSettingsDeprecated } from './NotificationSettingsDeprecated'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = Auth.useAuthContext as jest.Mock
@@ -245,7 +245,7 @@ function renderNotificationSettings(
     settings: {},
   })
 
-  return render(reactQueryProviderHOC(<NotificationSettings />))
+  return render(reactQueryProviderHOC(<NotificationSettingsDeprecated />))
 }
 
 const mockApiUpdateProfile = (user?: UserProfileResponse) => {
