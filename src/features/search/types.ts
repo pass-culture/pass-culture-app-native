@@ -157,3 +157,5 @@ export enum BooksNativeCategoriesEnum {
   'THEATRE_POESIE_ET_ESSAIS' = 'THEATRE_POESIE_ET_ESSAIS',
   'TOURISME_ET_VOYAGES' = 'TOURISME_ET_VOYAGES',
 }
+
+export type NativeCategoryEnum = NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
