@@ -154,7 +154,7 @@ describe('<OfferContent />', () => {
       expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656 })
     })
 
-    it('should not navigate to offer preview screen when clicking on image offer when we there is not an image', async () => {
+    it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
       const offer: OfferResponse = {
         ...offerResponseSnap,
         image: null,

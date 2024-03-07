@@ -1,5 +1,4 @@
 import { useRoute } from '@react-navigation/native'
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -18,7 +17,7 @@ export const OfferPreview: FunctionComponent = () => {
 
   return (
     <Container>
-      <StyledHeader title="1/1" onGoBack={goBack} />
+      <PageHeaderWithoutPlaceholder title="1/1" onGoBack={goBack} />
       <PinchableBox imageUrl={offer.image.url} />
     </Container>
   )
@@ -27,8 +26,4 @@ export const OfferPreview: FunctionComponent = () => {
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
-}))
-
-const StyledHeader = styled(PageHeaderWithoutPlaceholder)(({ theme }) => ({
-  backgroundColor: colorAlpha(theme.colors.white, 0.8),
 }))
