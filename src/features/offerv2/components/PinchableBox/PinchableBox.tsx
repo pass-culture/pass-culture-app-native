@@ -1,6 +1,6 @@
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view'
 import React from 'react'
-// we import FastImage to get the resizeMode, not to use it as a component
+// Importing FastImage for displaying offer images without resizing, prioritizing optimal quality for potential zooming.
 // eslint-disable-next-line no-restricted-imports
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
