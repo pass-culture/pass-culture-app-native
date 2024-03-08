@@ -298,6 +298,29 @@ describe('<CategoriesModal/>', () => {
     })
   })
 
+  describe('new book native categories section', () => {
+    beforeAll(() => {
+      mockUseFeatureFlag.mockReturnValue(true)
+      mockSearchState = {
+        ...searchState,
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [],
+      }
+    })
+
+    afterAll(() => {
+      mockUseFeatureFlag.mockReturnValue(false)
+      mockSearchState = searchState
+    })
+
+    it('should display the new book native categories section', () => {
+      renderCategories()
+      screen.getByText('Romans et littérature')
+
+      expect(screen).toMatchSnapshot()
+    })
+  })
+
   describe('With genre types view', () => {
     beforeAll(() => {
       mockSearchState = {
