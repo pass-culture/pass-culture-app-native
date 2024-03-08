@@ -1015,6 +1015,27 @@ export enum EligibilityType {
   'age-18' = 'age-18',
 }
 /**
+ * @export
+ * @interface EmailChangeConfirmationResponse
+ */
+export interface EmailChangeConfirmationResponse {
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  newEmailSelectionToken: string
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  refreshToken: string
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -4377,6 +4398,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary update_user_email <POST>
+     * @deprecated
      * @param {UserProfileEmailUpdate} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4689,6 +4711,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary confirm_email_update <POST>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2ProfileEmailUpdateConfirm(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v2/profile/email_update/confirm`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -5440,6 +5482,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary confirm_email_update <POST>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2ProfileEmailUpdateConfirm(body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmailChangeConfirmationResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileEmailUpdateConfirm(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary select_new_email <POST>
      * @param {NewEmailSelectionRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -6157,6 +6211,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ValidatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidatePhoneNumber(body, options)
+  }
+  /**
+    * 
+    * @summary confirm_email_update <POST>
+    * @param {ChangeBeneficiaryEmailBody} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2ProfileEmailUpdateConfirm(body?: ChangeBeneficiaryEmailBody, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2ProfileEmailUpdateConfirm(body, options)
   }
   /**
     * 
