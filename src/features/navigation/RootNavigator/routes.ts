@@ -46,7 +46,6 @@ import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDe
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
-import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
 import { Offer } from 'features/offerv2/pages/Offer/Offer'
 import { OfferPreview } from 'features/offerv2/pages/OfferPreview/OfferPreview'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
@@ -86,13 +85,6 @@ export const routes: Route[] = [
       parse: screenParamsParser['Offer'],
     },
     options: { title: 'Offre' },
-  },
-  {
-    name: 'OfferDescription',
-    component: OfferDescription,
-    path: 'offre/:id/description',
-    deeplinkPaths: ['offer/:id/description', 'offre/description', 'offer/description'],
-    options: { title: 'Détails de l’offre' },
   },
   {
     name: 'OfferPreview',
