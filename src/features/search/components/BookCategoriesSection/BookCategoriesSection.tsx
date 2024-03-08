@@ -1,0 +1,170 @@
+import React, { FC } from 'react'
+import styled from 'styled-components/native'
+
+import { GenreType, SearchGroupNameEnumv2 } from 'api/gen'
+import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
+import {
+  getDescription,
+  getNbResultsFacetLabel,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import {
+  MappedGenreTypes,
+  MappedNativeCategories,
+  MappingTree,
+} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { BooksNativeCategoriesEnum, DescriptionContext } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { Li } from 'ui/components/Li'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { Separator } from 'ui/components/Separator'
+import { VerticalUl } from 'ui/components/Ul'
+import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { Spacer, Typo } from 'ui/theme'
+
+type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
+
+interface CategoriesSectionProps<
+  T extends CategoriesMapping,
+  N = T extends MappingTree ? keyof MappingTree : keyof T | null
+> {
+  allLabel: string
+  allValue: N
+  data?: T
+  descriptionContext: DescriptionContext
+  getIcon?: T extends MappingTree
+    ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface> | undefined
+    : undefined
+  onSelect: (item: N) => void
+  onSubmit?: () => void
+  value: N | BooksNativeCategoriesEnum
+}
+
+export function BookCategoriesSection<
+  T extends CategoriesMapping,
+  N = T extends MappingTree ? keyof MappingTree : keyof T | null
+>({
+  allLabel,
+  allValue,
+  data,
+  descriptionContext,
+  getIcon,
+  onSelect,
+  onSubmit,
+  value,
+}: CategoriesSectionProps<T, N>) {
+  const { data: subcategoriesData } = useSubcategories()
+  const displaySearchNbFacetResults = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
+  )
+
+  const handleGetIcon = (category: SearchGroupNameEnumv2) => {
+    if (getIcon) {
+      return getIcon(category)
+    }
+
+    return undefined
+  }
+
+  const handleSelect = (key: N) => {
+    onSelect(key)
+    if (onSubmit) {
+      onSubmit()
+    }
+  }
+
+  return (
+    <VerticalUl>
+      <ListItem>
+        <RadioButton
+          label={allLabel}
+          isSelected={value === allValue}
+          onSelect={() => onSelect(allValue)}
+          icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
+        />
+      </ListItem>
+      <Spacer.Column numberOfSpaces={6} />
+      <Title>{'Livres papiers'}</Title>
+      <Spacer.Column numberOfSpaces={6} />
+      {data
+        ? Object.entries(data)
+            .filter(
+              ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
+            )
+            .map(([k, item]) => {
+              const shouldHideArrow = !item.children
+              const key = k as N
+              const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
+              return (
+                <ListItem key={k}>
+                  {shouldHideArrow ? (
+                    <RadioButton
+                      label={item.label}
+                      isSelected={key === value}
+                      onSelect={() => handleSelect(key)}
+                      icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                      complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+                    />
+                  ) : (
+                    <FilterRow
+                      icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                      shouldColorIcon
+                      title={item.label}
+                      description={getDescription(subcategoriesData, descriptionContext, k)}
+                      onPress={() => handleSelect(key)}
+                      captionId={k}
+                      complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+                    />
+                  )}
+                  <Spacer.Column numberOfSpaces={6} />
+                </ListItem>
+              )
+            })
+        : null}
+      <Separator.Horizontal />
+      <Spacer.Column numberOfSpaces={6} />
+      <Title>{'Autres'}</Title>
+      <Spacer.Column numberOfSpaces={6} />
+      {data
+        ? Object.entries(data)
+            .filter(([_k, item]) => item.genreTypeKey !== GenreType.BOOK)
+            .map(([k, item]) => {
+              const shouldHideArrow = !item.children
+              const key = k as N
+              const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
+              return (
+                <ListItem key={k}>
+                  {shouldHideArrow ? (
+                    <RadioButton
+                      label={item.label}
+                      isSelected={key === value}
+                      onSelect={() => handleSelect(key)}
+                      icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                      complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+                    />
+                  ) : (
+                    <FilterRow
+                      icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                      shouldColorIcon
+                      title={item.label}
+                      description={getDescription(subcategoriesData, descriptionContext, k)}
+                      onPress={() => handleSelect(key)}
+                      captionId={k}
+                      complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+                    />
+                  )}
+                  <Spacer.Column numberOfSpaces={6} />
+                </ListItem>
+              )
+            })
+        : null}
+    </VerticalUl>
+  )
+}
+
+const Title = styled(Typo.Title1)({})
+
+const ListItem = styled(Li)({
+  display: 'flex',
+})
