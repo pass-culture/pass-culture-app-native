@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { BookCategoriesSection } from 'features/search/components/BookCategoriesSection/BookCategoriesSection'
+import { CategoriesSection } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -21,7 +22,6 @@ import {
   MappedGenreTypes,
   MappedNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { CategoriesSection } from 'features/search/pages/modals/CategoriesModal/CategoriesSection'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
