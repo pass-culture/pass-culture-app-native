@@ -162,7 +162,7 @@ export function NotificationSettings() {
           toggle={toggleEmails}
           disabled={!isLoggedIn}
         />
-        {Platform.OS === 'ios' && (
+        {Platform.OS !== 'web' && (
           <React.Fragment>
             <Separator.Horizontal />
             <Spacer.Column numberOfSpaces={4} />

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Platform } from 'react-native'
 import * as RNP from 'react-native-permissions'
 import { NotificationsResponse, PermissionStatus } from 'react-native-permissions'
 import { ReactTestInstance } from 'react-test-renderer'
@@ -21,66 +20,51 @@ const mockUseAuthContext = Auth.useAuthContext as jest.Mock
 useRoute.mockReturnValue({ key: 'ksdqldkmqdmqdq' })
 
 describe('NotificationSettings', () => {
-  describe('Display correct switches', () => {
-    it('should display the both switches on ios', async () => {
-      Platform.OS = 'ios'
-      renderNotificationSettings('granted', {} as UserProfileResponse)
+  it('should display both switches', async () => {
+    renderNotificationSettings('granted', {} as UserProfileResponse)
 
-      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
-      expect(screen.queryByText('Autoriser les notifications marketing')).toBeOnTheScreen()
-    })
-
-    it('should only display the email switch on android', async () => {
-      Platform.OS = 'android'
-      renderNotificationSettings('granted', {} as UserProfileResponse)
-
-      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
-      expect(screen.queryByText('Autoriser les notifications marketing')).not.toBeOnTheScreen()
-    })
+    expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
+    expect(screen.queryByText('Autoriser les notifications marketing')).toBeOnTheScreen()
   })
 
-  describe('Display the push switch properly (only iOS)', () => {
-    it('should display an enabled switch', async () => {
-      Platform.OS = 'ios'
-      renderNotificationSettings('granted', {
+  it('Push switch should be enabled', async () => {
+    renderNotificationSettings('granted', {
+      subscriptions: {
+        marketingEmail: false,
+        marketingPush: true,
+      },
+    } as UserProfileResponse)
+
+    await screen.findByText('Autoriser l’envoi d’e-mails')
+
+    const pushSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
+
+    expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(true)
+  })
+
+  it.each<[PermissionStatus, boolean]>([
+    ['unavailable', true],
+    ['blocked', true],
+    ['denied', true],
+    ['limited', true],
+    ['granted', false],
+  ])(
+    'should display a disabled switch when permission="%s" and marketingPush="%s"',
+    async (permission, marketingPush) => {
+      renderNotificationSettings(permission, {
         subscriptions: {
           marketingEmail: false,
-          marketingPush: true,
+          marketingPush,
         },
       } as UserProfileResponse)
 
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      const pushSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
+      const pushSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
 
-      expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(true)
-    })
-
-    it.each<[PermissionStatus, boolean]>([
-      ['unavailable', true],
-      ['blocked', true],
-      ['denied', true],
-      ['limited', true],
-      ['granted', false],
-    ])(
-      'should display a disabled switch when permission="%s" and marketingPush="%s"',
-      async (permission, marketingPush) => {
-        Platform.OS = 'ios'
-        renderNotificationSettings(permission, {
-          subscriptions: {
-            marketingEmail: false,
-            marketingPush,
-          },
-        } as UserProfileResponse)
-
-        await screen.findByText('Autoriser l’envoi d’e-mails')
-
-        const pushSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-
-        expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(false)
-      }
-    )
-  })
+      expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(false)
+    }
+  )
 
   describe('The transitions of the push switch', () => {
     it('should enable the switch when permission=="granted" and push previously not allowed', async () => {
@@ -140,7 +124,7 @@ describe('NotificationSettings', () => {
   })
 
   describe('The behavior of the save button', () => {
-    it('should not be displayed when for unauthenticated users', async () => {
+    it('should not be displayed for unauthenticated users', async () => {
       renderNotificationSettings(
         'granted',
         {
@@ -214,7 +198,6 @@ describe('NotificationSettings', () => {
     })
 
     it('should call analytics when pressing the save button', async () => {
-      Platform.OS = 'ios'
       mockApiUpdateProfile({
         subscriptions: {
           marketingEmail: false,
