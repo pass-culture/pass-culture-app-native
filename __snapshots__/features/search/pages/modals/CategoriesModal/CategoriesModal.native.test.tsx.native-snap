@@ -3279,11 +3279,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                 Livres papier
               </Text>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -3298,6 +3298,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -3417,11 +3427,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -3437,6 +3447,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -3556,11 +3576,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -3576,6 +3596,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -3695,11 +3725,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -3715,6 +3745,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -3834,11 +3874,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -3854,6 +3894,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -3973,11 +4023,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -3993,6 +4043,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -4112,11 +4172,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -4132,6 +4192,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -4251,11 +4321,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -4271,6 +4341,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -4390,11 +4470,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -4410,6 +4490,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityRole="button"
                   accessibilityState={
@@ -4529,16 +4619,26 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
                 />
               </View>
+              <View
+                numberOfSpaces={3}
+                style={
+                  [
+                    {
+                      "height": 12,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -4575,11 +4675,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                 Autres
               </Text>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -4594,6 +4694,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityLabel="E-books"
                   accessibilityRole="radio"
@@ -4742,11 +4852,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -4762,6 +4872,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityLabel="Évènements autour du livre"
                   accessibilityRole="radio"
@@ -4910,11 +5030,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }
@@ -4930,6 +5050,16 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    [
+                      {
+                        "height": 12,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityLabel="Livres audio"
                   accessibilityRole="radio"
@@ -5078,11 +5208,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={6}
+                  numberOfSpaces={3}
                   style={
                     [
                       {
-                        "height": 24,
+                        "height": 12,
                       },
                     ]
                   }

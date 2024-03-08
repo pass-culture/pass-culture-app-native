@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { BookCategoriesSection } from 'features/search/components/BookCategoriesSection/BookCategoriesSection'
 import { CategoriesSection } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
@@ -22,7 +22,7 @@ import {
   MappedGenreTypes,
   MappedNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
+import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -46,7 +46,7 @@ export interface CategoriesModalProps {
 
 export type CategoriesModalFormProps = {
   category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
+  nativeCategory: NativeCategoryEnum | null
   currentView: CategoriesModalView
   genreType: string | null
 }
@@ -110,7 +110,7 @@ export const CategoriesModal = ({
   )
 
   const handleNativeCategorySelect = useCallback(
-    (nativeCategoryKey: NativeCategoryIdEnumv2 | null) => {
+    (nativeCategoryKey: NativeCategoryEnum | null) => {
       if (!nativeCategories) return
 
       setValue('nativeCategory', nativeCategoryKey)

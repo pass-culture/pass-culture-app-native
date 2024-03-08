@@ -2,25 +2,18 @@ import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import {
-  getDescription,
-  getNbResultsFacetLabel,
-} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import {
   MappedGenreTypes,
   MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { BooksNativeCategoriesEnum, DescriptionContext } from 'features/search/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
 
@@ -37,7 +30,7 @@ interface CategoriesSectionProps<
     : undefined
   onSelect: (item: N) => void
   onSubmit?: () => void
-  value: N | BooksNativeCategoriesEnum
+  value: N
 }
 
 export function CategoriesSection<
@@ -53,11 +46,6 @@ export function CategoriesSection<
   onSubmit,
   value,
 }: CategoriesSectionProps<T, N>) {
-  const { data: subcategoriesData } = useSubcategories()
-  const displaySearchNbFacetResults = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
-  )
-
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
       return getIcon(category)
@@ -84,39 +72,18 @@ export function CategoriesSection<
           icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>
-
       {data
-        ? Object.entries(data).map(([k, item]) => {
-            const shouldHideArrow = !item.children
-            const key = k as N
-            const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
-            return (
-              <ListItem key={k}>
-                <Spacer.Column numberOfSpaces={3} />
-
-                {shouldHideArrow ? (
-                  <RadioButton
-                    label={item.label}
-                    isSelected={key === value}
-                    onSelect={() => handleSelect(key)}
-                    icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-                    complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
-                  />
-                ) : (
-                  <FilterRow
-                    icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-                    shouldColorIcon
-                    title={item.label}
-                    description={getDescription(subcategoriesData, descriptionContext, k)}
-                    onPress={() => handleSelect(key)}
-                    captionId={k}
-                    complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
-                  />
-                )}
-                <Spacer.Column numberOfSpaces={3} />
-              </ListItem>
-            )
-          })
+        ? Object.entries(data).map(([k, item]) => (
+            <CategoriesSectionItem
+              key={k}
+              value={value}
+              k={k}
+              item={item}
+              descriptionContext={descriptionContext}
+              handleSelect={handleSelect}
+              handleGetIcon={handleGetIcon}
+            />
+          ))
         : null}
     </VerticalUl>
   )
