@@ -25,7 +25,7 @@ type Props = {
   padding: EdgePadding
 }
 
-const RADIUS_IN_METERS = 10000
+const RADIUS_IN_METERS = 10_000
 
 type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
