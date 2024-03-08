@@ -5,9 +5,11 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Separator } from 'ui/components/Separator'
+import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -32,6 +34,15 @@ export const NotificationsSettings = () => {
 
   return (
     <PageProfileSection title="Suivi et notifications" scrollable>
+      {isLoggedIn ? null : (
+        <React.Fragment>
+          <InfoBanner
+            message="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
+            icon={Info}
+          />
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      )}
       <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
