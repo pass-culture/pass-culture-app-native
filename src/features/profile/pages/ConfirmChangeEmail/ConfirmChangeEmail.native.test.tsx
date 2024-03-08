@@ -2,15 +2,15 @@ import { RouteProp } from '@react-navigation/native'
 import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
-import * as API from 'api/api'
-import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
+import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 
@@ -26,10 +26,6 @@ const useEmailUpdateStatusSpy = jest
     },
     isLoading: false,
   } as UseEmailUpdateStatusMock)
-
-const emailUpdateConfirmSpy = jest
-  .spyOn(API.api, 'postNativeV1ProfileEmailUpdateConfirm')
-  .mockImplementation()
 
 const mockShowErrorSnackbar = jest.fn()
 
@@ -74,54 +70,56 @@ describe('<ConfirmChangeEmail />', () => {
   })
 
   it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {
-    renderConfirmChangeEmail()
-    fireEvent.press(screen.getByText('Confirmer la demande'))
-
-    await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'TrackEmailChange')
+    mockServer.postApi<EmptyResponse>('/v1/profile/email_update/confirm', {
+      responseOptions: { statusCode: 204 },
     })
+    renderConfirmChangeEmail()
+
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
+
+    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'TrackEmailChange')
   })
 
   it('should redirect to home when pressing "Confirmer la demande" button and and API response is not 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
+    mockServer.postApi<EmptyResponse>('/v1/profile/email_update/confirm', {
+      responseOptions: { statusCode: 500, data: {} },
+    })
     renderConfirmChangeEmail()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to change email expired when pressing "Confirmer la demande" button and and API response is 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(401, 'API error'))
+    mockServer.postApi<EmptyResponse>('/v1/profile/email_update/confirm', {
+      responseOptions: { statusCode: 401, data: {} },
+    })
     renderConfirmChangeEmail()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
     expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
   })
 
   it('should display an error snackbar when pressing "Confirmer la demande" button and API response is not 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
+    mockServer.postApi<EmptyResponse>('/v1/profile/email_update/confirm', {
+      responseOptions: { statusCode: 500, data: {} },
+    })
     renderConfirmChangeEmail()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
   })
 
   it('should not display an error snackbar when pressing "Confirmer la demande" button and API response is a 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
+    mockServer.postApi<EmptyResponse>('/v1/profile/email_update/confirm', {
+      responseOptions: { statusCode: 401, data: {} },
+    })
     renderConfirmChangeEmail()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
     expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
   })

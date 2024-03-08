@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
-import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import { useConfirmChangeEmailMutationV1 } from 'features/profile/helpers/useConfirmChangeEmailMutationV1'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -20,8 +20,20 @@ type ConfirmChangeEmailProps = NativeStackScreenProps<RootStackParamList, 'Confi
 export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmChangeEmailProps) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
-
-  const [isLoading, setIsLoading] = useState(false)
+  const { mutate, isLoading } = useConfirmChangeEmailMutationV1({
+    onSuccess: () => navigation.navigate('TrackEmailChange'),
+    onError: (error) => {
+      if (error instanceof ApiError && error.statusCode === 401) {
+        navigation.navigate('ChangeEmailExpiredLink')
+        return
+      }
+      showErrorSnackBar({
+        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      navigateToHome()
+    },
+  })
 
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {
@@ -34,31 +46,10 @@ export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmCha
     }
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
-  const mutate = useCallback(async () => {
-    return api.postNativeV1ProfileEmailUpdateConfirm({
-      token: params?.token,
-    })
-  }, [params?.token])
-
-  const onConfirmEmail = useCallback(async () => {
-    setIsLoading(true)
-    try {
-      await mutate()
-      navigation.navigate('TrackEmailChange')
-    } catch (error) {
-      if (error instanceof ApiError && error.statusCode === 401) {
-        navigation.navigate('ChangeEmailExpiredLink')
-        return
-      }
-      showErrorSnackBar({
-        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      navigateToHome()
-    } finally {
-      setIsLoading(false)
-    }
-  }, [mutate, navigation, showErrorSnackBar])
+  const onConfirmEmail = useCallback(
+    () => mutate({ token: params?.token }),
+    [params?.token, mutate]
+  )
 
   return (
     <GenericInfoPageWhite
