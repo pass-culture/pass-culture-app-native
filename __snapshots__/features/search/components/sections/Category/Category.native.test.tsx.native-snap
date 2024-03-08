@@ -34,10 +34,7 @@ exports[`Category component should render correctly 1`] = `
     style={
       {
         "alignItems": "center",
-        "flexBasis": 0,
         "flexDirection": "row",
-        "flexGrow": 1,
-        "flexShrink": 1,
         "opacity": 1,
         "userSelect": "auto",
       }

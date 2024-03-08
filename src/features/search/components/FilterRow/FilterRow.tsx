@@ -61,7 +61,6 @@ export const FilterRow = ({
 const TouchableRow = styledButton(Touchable)({
   flexDirection: 'row',
   alignItems: 'center',
-  flex: 1,
 })
 
 const TitleAndComplement = styled.View({
