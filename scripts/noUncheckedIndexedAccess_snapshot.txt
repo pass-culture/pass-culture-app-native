@@ -452,8 +452,8 @@
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/helpers/addHighlightedAttribute/addHighlightedAttribute.test.ts:18
 ./src/features/search/helpers/addHighlightedAttribute/addHighlightedAttribute.test.ts:6
-./src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:325
-./src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:329
+./src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:444
+./src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:448
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:30
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:37
 ./src/features/search/pages/Search/Search.native.test.tsx:22
@@ -463,7 +463,7 @@
 ./src/features/search/pages/SearchLanding/SearchLanding.web.test.tsx:17
 ./src/features/search/pages/SearchResults/SearchResults.native.test.tsx:21
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:37
-./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:121
+./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:122
 ./src/features/search/pages/modals/VenueModal/VenueModal.native.test.tsx:100
 ./src/features/search/pages/modals/VenueModal/VenueModal.native.test.tsx:109
 ./src/features/search/pages/modals/VenueModal/VenueModal.native.test.tsx:125
