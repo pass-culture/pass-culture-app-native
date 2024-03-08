@@ -65,7 +65,7 @@ describe('Movie screening calendar', () => {
 const renderMovieScreeningCalendar = ({
   stocks = [defaultOfferStockResponse],
 }: {
-  stocks?: OfferStockResponse[]
+  stocks: OfferStockResponse[]
 }) => {
   render(<MovieScreeningCalendar stocks={stocks} />)
 }
