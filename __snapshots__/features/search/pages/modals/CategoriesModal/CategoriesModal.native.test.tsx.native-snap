@@ -3276,7 +3276,7 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
-                Livres papiers
+                Livres papier
               </Text>
               <View
                 numberOfSpaces={6}

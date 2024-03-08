@@ -85,7 +85,7 @@ export function BookCategoriesSection<
         />
       </ListItem>
       <Spacer.Column numberOfSpaces={6} />
-      <Title>{'Livres papiers'}</Title>
+      <Title>{'Livres papier'}</Title>
       <Spacer.Column numberOfSpaces={6} />
       {data
         ? Object.entries(data)
