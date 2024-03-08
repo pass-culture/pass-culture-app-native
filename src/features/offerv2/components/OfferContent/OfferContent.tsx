@@ -163,7 +163,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
 
         {isOfferAMovieScreening ? (
           <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
-            <MovieScreeningCalendar stocks={offer.stocks} />
+            <MovieScreeningCalendar offerId={offer.id} stocks={offer.stocks} />
           </FeatureFlag>
         ) : null}
 
