@@ -23,7 +23,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Spacer } from 'ui/theme'
 
-type OfferPlaceProps = {
+export type OfferPlaceProps = {
   offer: OfferResponse
   isEvent: boolean
 }
