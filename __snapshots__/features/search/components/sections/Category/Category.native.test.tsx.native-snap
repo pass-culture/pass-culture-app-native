@@ -67,8 +67,8 @@ exports[`Category component should render correctly 1`] = `
       style={
         [
           {
+            "alignItems": "flex-start",
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
           },
@@ -79,15 +79,13 @@ exports[`Category component should render correctly 1`] = `
         style={
           [
             {
-              "alignItems": "flex-start",
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "flexDirection": "row",
             },
           ]
         }
       >
         <Text
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             [
               {
