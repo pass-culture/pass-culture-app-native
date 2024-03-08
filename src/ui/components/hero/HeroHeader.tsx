@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
 
@@ -12,21 +13,31 @@ interface Props {
   type: 'offer' | 'offerv2' | 'venue'
   minHeight?: number
   children?: React.ReactNode
+  onPress?: VoidFunction
 }
 
-export const HeroHeader: React.FC<Props> = (props) => {
+const isWeb = Platform.OS === 'web'
+
+export const HeroHeader: FunctionComponent<Props> = ({
+  imageUrl,
+  imageHeight,
+  type,
+  minHeight,
+  children,
+  onPress,
+}) => {
   const { appContentWidth } = useTheme()
 
   const getBackgroundImage = () => {
-    if (props.type === 'offer') {
+    if (type === 'offer') {
       return (
         <BackgroundPlaceholder
           testID="BackgroundPlaceholder"
           width={appContentWidth}
-          height={props.imageHeight}
+          height={imageHeight}
         />
       )
-    } else if (props.type === 'venue') {
+    } else if (type === 'venue') {
       return (
         <BackgroundContainer>
           {Array.from({ length: 9 }).map((_, index) => (
@@ -35,7 +46,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
         </BackgroundContainer>
       )
     } else {
-      return <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={props.imageHeight} />
+      return <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
     }
   }
 
@@ -43,16 +54,17 @@ export const HeroHeader: React.FC<Props> = (props) => {
 
   const blurImageRadius = Platform.OS === 'android' ? 5 : 20
   const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
-  const blurImageStyle = { height: props.imageHeight, width: appContentWidth }
+  const blurImageStyle = { height: imageHeight, width: appContentWidth }
+
   return (
-    <Container minHeight={props.minHeight}>
+    <Container minHeight={minHeight}>
       <HeroContainer>
-        {props.imageUrl ? (
+        {imageUrl ? (
           <Image
             style={blurImageStyle}
             blurRadius={blurImageRadius}
             resizeMode="cover"
-            url={props.imageUrl}
+            url={imageUrl}
             // @ts-ignore FIXME(PC-26465): remove when https://github.com/necolas/react-native-web/issues/2139 is fixed
             {...blurImageTransform}
           />
@@ -60,7 +72,7 @@ export const HeroHeader: React.FC<Props> = (props) => {
           backgroundImage
         )}
       </HeroContainer>
-      {props.children}
+      {!isWeb ? <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity> : children}
     </Container>
   )
 }

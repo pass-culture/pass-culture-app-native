@@ -1,6 +1,7 @@
 import React, { ComponentProps } from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import {
   CategoryIdEnum,
   HomepageLabelNameEnumv2,
@@ -31,7 +32,7 @@ import { Subcategory } from 'libs/subcategories/types'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, fireEvent, waitForModalToShow } from 'tests/utils'
+import { render, screen, fireEvent, waitForModalToShow } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
 
@@ -140,6 +141,32 @@ describe('<OfferContent />', () => {
     expect(await screen.findByTestId('offerHeaderName')).toBeOnTheScreen()
   })
 
+  describe('When WIP_OFFER_PREVIEW feature flag activated', () => {
+    beforeEach(() => {
+      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+    })
+
+    it('should navigate to offer preview screen when clicking on image offer', async () => {
+      renderOfferContent({})
+
+      fireEvent.press(await screen.findByTestId('image-container'))
+
+      expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656 })
+    })
+
+    it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        image: null,
+      }
+      renderOfferContent({ offer })
+
+      fireEvent.press(await screen.findByTestId('image-container'))
+
+      expect(navigate).not.toHaveBeenCalled()
+    })
+  })
+
   describe('When WIP_OFFER_PREVIEW feature flag deactivated', () => {
     beforeEach(() => {
       jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -156,7 +183,7 @@ describe('<OfferContent />', () => {
     it('should not display tag on offer image when enableOfferPreview feature flag deactivated', async () => {
       renderOfferContent({})
 
-      await act(async () => {})
+      await screen.findByText('Réserver l’offre')
 
       expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
     })
@@ -177,13 +204,11 @@ describe('<OfferContent />', () => {
   it('should animate on scroll', async () => {
     renderOfferContent({})
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
     fireEvent.scroll(await screen.findByTestId('offerv2-container'), scrollEvent)
-
-    await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
