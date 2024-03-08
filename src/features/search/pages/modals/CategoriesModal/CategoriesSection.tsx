@@ -12,7 +12,7 @@ import {
   MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { DescriptionContext } from 'features/search/types'
+import { BooksNativeCategoriesEnum, DescriptionContext } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -37,7 +37,7 @@ interface CategoriesSectionProps<
     : undefined
   onSelect: (item: N) => void
   onSubmit?: () => void
-  value: N
+  value: N | BooksNativeCategoriesEnum
 }
 
 export function CategoriesSection<

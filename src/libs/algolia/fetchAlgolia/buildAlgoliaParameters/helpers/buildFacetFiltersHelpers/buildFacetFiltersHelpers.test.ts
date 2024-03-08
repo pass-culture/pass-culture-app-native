@@ -9,6 +9,7 @@ import {
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
+  buildOfferGtlsPredicate,
   buildOfferIsDuoPredicate,
   buildOfferNativeCategoriesPredicate,
   buildOfferSubcategoriesPredicate,
@@ -161,7 +162,7 @@ describe('buildTagsPredicate', () => {
     expect(tagsPredicate).toEqual(undefined)
   })
 
-  it('should return a tags predicate for formatted for Algolia API', () => {
+  it('should return a tags predicate formatted for Algolia API', () => {
     const tagsPredicate = buildTagsPredicate([
       'Semaine du 14 juillet',
       'Offre cinema spéciale pass culture',
@@ -171,5 +172,22 @@ describe('buildTagsPredicate', () => {
       'offer.tags:Semaine du 14 juillet',
       'offer.tags:Offre cinema spéciale pass culture',
     ])
+  })
+})
+
+describe('buildOfferGtlsPredicate', () => {
+  it('should return empty array when no gtls associated', () => {
+    const gtlsPredicate = buildOfferGtlsPredicate([])
+
+    expect(gtlsPredicate).toEqual([])
+  })
+
+  it('should return a gtls predicate formatted for Algolia API', () => {
+    const gtlsPredicate = buildOfferGtlsPredicate([
+      { code: '03040500', level: 4, label: 'Shonen' },
+      { code: '03040800', level: 4, label: 'Yaoi' },
+    ])
+
+    expect(gtlsPredicate).toEqual(['offer.gtl_level4:Shonen', 'offer.gtl_level4:Yaoi'])
   })
 })

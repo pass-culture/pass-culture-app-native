@@ -2,6 +2,7 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { CategoriesModalView } from 'features/search/enums'
 import {
+  buildBookSearchPayloadValues,
   getDefaultFormView,
   getFacetTypeFromGenreTypeKey,
   getNativeCategories,
@@ -13,7 +14,7 @@ import {
   searchGroupOrNativeCategorySortComparator,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { SearchState } from 'features/search/types'
+import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 
@@ -389,6 +390,87 @@ describe('categoriesHelpers', () => {
       const result = getNbResultsFacetLabel(undefined)
 
       expect(result).toEqual(undefined)
+    })
+  })
+
+  describe('buildBookSearchPayloadValues', () => {
+    it('should return search payload for a book native category level', () => {
+      const mockedForm = {
+        category: SearchGroupNameEnumv2.LIVRES,
+        nativeCategory: BooksNativeCategoriesEnum.MANGAS,
+        currentView: CategoriesModalView.CATEGORIES,
+        genreType: null,
+      }
+
+      const result = buildBookSearchPayloadValues(mockData, mockedForm)
+
+      expect(result).toEqual({
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [BooksNativeCategoriesEnum.MANGAS],
+        offerGenreTypes: undefined,
+        gtls: [
+          {
+            code: '03040300',
+            label: 'Kodomo',
+            level: 3,
+          },
+          {
+            code: '03040400',
+            label: 'Shôjo',
+            level: 3,
+          },
+          {
+            code: '03040500',
+            label: 'Shonen',
+            level: 3,
+          },
+          {
+            code: '03040700',
+            label: 'Josei',
+            level: 3,
+          },
+          {
+            code: '03040800',
+            label: 'Yaoi',
+            level: 3,
+          },
+          {
+            code: '03040900',
+            label: 'Yuri',
+            level: 3,
+          },
+        ],
+      })
+    })
+
+    it('should return search payload for a book genre type level', () => {
+      const mockedForm = {
+        category: SearchGroupNameEnumv2.LIVRES,
+        nativeCategory: BooksNativeCategoriesEnum.MANGAS,
+        currentView: CategoriesModalView.GENRES,
+        genreType: 'KODOMO',
+      }
+
+      const result = buildBookSearchPayloadValues(mockData, mockedForm)
+
+      expect(result).toEqual({
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerNativeCategories: [BooksNativeCategoriesEnum.MANGAS],
+        offerGenreTypes: [
+          {
+            key: GenreType.BOOK,
+            name: 'KODOMO',
+            value: 'Kodomo',
+          },
+        ],
+        gtls: [
+          {
+            code: '03040300',
+            label: 'Kodomo',
+            level: 3,
+          },
+        ],
+      })
     })
   })
 })

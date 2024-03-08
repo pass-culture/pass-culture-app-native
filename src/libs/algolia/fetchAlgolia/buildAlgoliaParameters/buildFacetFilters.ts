@@ -5,6 +5,7 @@ import {
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
   buildOfferGtl,
+  buildOfferGtlsPredicate,
   buildOfferIsDuoPredicate,
   buildOfferNativeCategoriesPredicate,
   buildOfferSubcategoriesPredicate,
@@ -29,6 +30,7 @@ export const buildFacetFilters = ({
   offerSubcategories,
   isDigital,
   tags,
+  gtls,
 }: Pick<
   SearchQueryParameters,
   | 'venue'
@@ -41,6 +43,7 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'isDigital'
   | 'tags'
+  | 'gtls'
 > & {
   isUserUnderage: boolean
   objectIds?: string[]
@@ -49,7 +52,7 @@ export const buildFacetFilters = ({
   facetFilters: FiltersArray
 } => {
   const facetFilters = [...defaultFilter]
-
+  const hasGtls = gtls && gtls.length > 0
   if (isUserUnderage) facetFilters.push(...underageFilter)
 
   if (offerCategories.length > 0) {
@@ -66,12 +69,12 @@ export const buildFacetFilters = ({
     facetFilters.push(subcategoriesPredicate)
   }
 
-  if (offerNativeCategories?.length) {
+  if (offerNativeCategories?.length && !hasGtls) {
     const nativeCategoriesPredicate = buildOfferNativeCategoriesPredicate(offerNativeCategories)
     facetFilters.push(nativeCategoriesPredicate)
   }
 
-  if (offerGenreTypes?.length) {
+  if (offerGenreTypes?.length && !hasGtls) {
     const offerGenreTypesPredicate = buildOfferGenreTypesPredicate(offerGenreTypes)
     facetFilters.push(offerGenreTypesPredicate)
   }
@@ -99,6 +102,11 @@ export const buildFacetFilters = ({
 
   if (venue && typeof venue.venueId === 'number')
     facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${venue.venueId}`])
+
+  if (hasGtls) {
+    const gtlsPredicate = buildOfferGtlsPredicate(gtls)
+    facetFilters.push(gtlsPredicate)
+  }
 
   return { facetFilters }
 }

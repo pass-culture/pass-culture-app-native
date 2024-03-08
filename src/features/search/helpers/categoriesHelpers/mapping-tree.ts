@@ -9,6 +9,7 @@ import {
 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { OfferGenreType } from 'features/search/types'
 import { FacetData, NativeCategoryFacetData } from 'libs/algolia'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 
@@ -52,6 +53,31 @@ function getNativeCategoryGenreTypes(
   }
 }
 
+export function getBooksNativeCategories(data: SubcategoriesResponseModelv2) {
+  const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
+
+  return bookTree.map((bookCategory) => {
+    const categoryName = getKeyFromStringLabel(bookCategory.label)
+    return { name: categoryName, value: bookCategory.label, genreType: GenreType.BOOK }
+  })
+}
+
+export function getBooksGenreTypes(data: SubcategoriesResponseModelv2): OfferGenreType[] {
+  const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
+
+  return bookTree
+    .map((bookCategory) =>
+      bookCategory.children.map((bookGenre) => {
+        return {
+          name: getKeyFromStringLabel(bookGenre.label),
+          value: bookGenre.label,
+          key: GenreType.BOOK,
+        } as OfferGenreType
+      })
+    )
+    .flat()
+}
+
 function mapBookCategories(data: SubcategoriesResponseModelv2) {
   const bookTree = data.genreTypes.find(({ name }) => name === GenreType.BOOK)?.trees as BookType[]
   bookTree.sort(({ position: positionA }, { position: positionB }) => positionA - positionB)
@@ -61,20 +87,28 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
     nativeCategory.children.sort(
       ({ position: positionA }, { position: positionB }) => positionA - positionB
     )
-    nativeCategoriesResult[categorieKey] = {
-      label: nativeCategory.label,
-      nbResultsFacet: 0,
-      genreTypeKey: GenreType.BOOK,
-      gtls: nativeCategory.gtls,
-      children: nativeCategory.children.reduce<MappedGenreTypes>((genreTypeChildren, genreType) => {
-        const genreKey = getKeyFromStringLabel(genreType.label)
-        genreTypeChildren[genreKey] = {
-          label: genreType.label,
-          gtls: genreType.gtls,
-          position: genreType.position,
-        }
-        return genreTypeChildren
-      }, {} as MappedGenreTypes),
+    if (categorieKey) {
+      nativeCategoriesResult[categorieKey] = {
+        label: nativeCategory.label,
+        nbResultsFacet: 0,
+        genreTypeKey: GenreType.BOOK,
+        gtls: nativeCategory.gtls,
+        children: nativeCategory.children.reduce<MappedGenreTypes>(
+          (genreTypeChildren, genreType) => {
+            const genreKey = getKeyFromStringLabel(genreType.label)
+            if (genreKey) {
+              genreTypeChildren[genreKey] = {
+                label: genreType.label,
+                gtls: genreType.gtls,
+                position: genreType.position,
+              }
+              return genreTypeChildren
+            }
+            return {}
+          },
+          {} as MappedGenreTypes
+        ),
+      }
     }
     return nativeCategoriesResult
   }, {} as MappedNativeCategories)
@@ -166,11 +200,13 @@ export function createMappingTree(
     }, {} as MappingTree)
 }
 
-function getKeyFromStringLabel(input: string): string {
+export function getKeyFromStringLabel(input?: string | null): string | null {
+  if (!input) return null
   return input
     .toUpperCase()
     .replace('&', 'ET')
     .replace('-', '_')
+    .replace(',', '')
     .replace(/ /g, '_')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
