@@ -40,13 +40,20 @@ type Props = {
   dates: Date[]
   selectedDate: Date | undefined
   onTabChange: (date: Date) => void
+  scrollViewRef?: React.MutableRefObject<ScrollView | null>
 }
 
-export const MovieCalendar: React.FC<Props> = ({ dates, selectedDate, onTabChange }) => {
+export const MovieCalendar: React.FC<Props> = ({
+  dates,
+  selectedDate,
+  onTabChange,
+  scrollViewRef,
+}) => {
   return (
     <Container>
       <BottomBar />
       <ScrollView
+        ref={scrollViewRef}
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={scrollViewContainer}>
