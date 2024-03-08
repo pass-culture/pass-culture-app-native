@@ -1,9 +1,6 @@
-import { RouteProp } from '@react-navigation/native'
 import React from 'react'
-import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { EmailHistoryEventTypeEnum } from 'api/gen'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -21,21 +18,9 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
 } as UseEmailUpdateStatusMock)
 
 describe('<ConfirmChangeEmail />', () => {
-  const navigation = {
-    navigate: jest.fn(),
-  } as unknown as NativeStackNavigationProp<RootStackParamList, 'ConfirmChangeEmail'>
-
-  const route = {
-    params: {
-      token: 'example',
-    },
-  } as unknown as RouteProp<RootStackParamList, 'ConfirmChangeEmail'>
-
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(
-        reactQueryProviderHOC(<ConfirmChangeEmail navigation={navigation} route={route} />)
-      )
+      const { container } = render(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
       const results = await checkAccessibilityFor(container)
 
