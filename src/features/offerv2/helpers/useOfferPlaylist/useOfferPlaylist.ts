@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { OfferResponse, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { HitOfferWithArtistAndEan } from 'features/offerv2/api/fetchOffersByArtist/fetchOffersByArtist'
-import { useSameArtistPlaylist } from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
+import { useSameArtistPlaylist } from 'features/offerv2/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { useLocation, Position } from 'libs/location'
 import { Offer, RecommendationApiParams } from 'shared/offer/types'
 
