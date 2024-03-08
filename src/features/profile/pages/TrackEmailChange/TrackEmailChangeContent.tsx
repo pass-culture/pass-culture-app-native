@@ -72,7 +72,7 @@ export const TrackEmailChangeContent = () => {
         disabled: DisabledPencilIcon,
         retry: DisabledPencilIcon,
       },
-      navigateTo: { screen: 'TrackEmailChange' },
+      navigateTo: { screen: 'NewEmailSelection', params: { token: requestStatus?.token } },
     },
     VALIDATION: {
       currentTitle: 'Valide ta nouvelle adresse',

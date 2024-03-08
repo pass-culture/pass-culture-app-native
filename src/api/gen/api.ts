@@ -1634,6 +1634,22 @@ export interface NativeCategoryResponseModelv2 {
 }
 /**
  * @export
+ * @interface NewEmailSelectionRequest
+ */
+export interface NewEmailSelectionRequest {
+  /**
+   * @type {string}
+   * @memberof NewEmailSelectionRequest
+   */
+  newEmail: string
+  /**
+   * @type {string}
+   * @memberof NewEmailSelectionRequest
+   */
+  token: string
+}
+/**
+ * @export
  * @interface NextSubscriptionStepResponse
  */
 export interface NextSubscriptionStepResponse {
@@ -3054,7 +3070,7 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   hasPassword: boolean
-    /**
+  /**
    * @type {number}
    * @memberof UserProfileResponse
    */
@@ -4680,6 +4696,28 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary select_new_email <POST>
+     * @param {NewEmailSelectionRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2ProfileEmailUpdateNewEmail(body?: NewEmailSelectionRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v2/profile/email_update/new_email`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"NewEmailSelectionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary update_user_email <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5402,6 +5440,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary select_new_email <POST>
+     * @param {NewEmailSelectionRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2ProfileEmailUpdateNewEmail(body?: NewEmailSelectionRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileEmailUpdateNewEmail(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary update_user_email <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6107,6 +6157,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ValidatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ValidatePhoneNumber(body, options)
+  }
+  /**
+    * 
+    * @summary select_new_email <POST>
+    * @param {NewEmailSelectionRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2ProfileEmailUpdateNewEmail(body?: NewEmailSelectionRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2ProfileEmailUpdateNewEmail(body, options)
   }
   /**
     * 

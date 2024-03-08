@@ -56,6 +56,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
+import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
@@ -305,6 +306,13 @@ export const routes: Route[] = [
     component: TrackEmailChange,
     path: 'profil/suivi-modification-email',
     options: { title: 'Suivi de ton changement d’e-mail' },
+    secure: true,
+  },
+  {
+    name: 'NewEmailSelection',
+    component: NewEmailSelection,
+    path: 'profil/nouvelle-adresse-email',
+    options: { title: 'Nouvelle adresse e-mail' },
     secure: true,
   },
   {
