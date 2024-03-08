@@ -42,6 +42,14 @@ export function BookCategoriesSection<
     }
   }
 
+  const categories = data ? Object.entries(data) : []
+  const bookCategoriesWithGenre = categories.filter(
+    ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
+  )
+  const otherBookCategories = categories.filter(
+    ([_k, item]) => item.genreTypeKey !== GenreType.BOOK
+  )
+
   return (
     <VerticalUl>
       <ListItem>
@@ -55,43 +63,33 @@ export function BookCategoriesSection<
       <Spacer.Column numberOfSpaces={6} />
       <Title>{'Livres papier'}</Title>
       <Spacer.Column numberOfSpaces={3} />
-      {data
-        ? Object.entries(data)
-            .filter(
-              ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
-            )
-            .map(([k, item]) => (
-              <CategoriesSectionItem
-                key={k}
-                value={value}
-                k={k}
-                item={item}
-                descriptionContext={descriptionContext}
-                handleSelect={handleSelect}
-                handleGetIcon={handleGetIcon}
-              />
-            ))
-        : null}
+      {bookCategoriesWithGenre.map(([k, item]) => (
+        <CategoriesSectionItem
+          key={k}
+          value={value}
+          k={k}
+          item={item}
+          descriptionContext={descriptionContext}
+          handleSelect={handleSelect}
+          handleGetIcon={handleGetIcon}
+        />
+      ))}
       <Spacer.Column numberOfSpaces={3} />
       <Separator.Horizontal />
       <Spacer.Column numberOfSpaces={6} />
       <Title>{'Autres'}</Title>
       <Spacer.Column numberOfSpaces={3} />
-      {data
-        ? Object.entries(data)
-            .filter(([_k, item]) => item.genreTypeKey !== GenreType.BOOK)
-            .map(([k, item]) => (
-              <CategoriesSectionItem
-                key={k}
-                value={value}
-                k={k}
-                item={item}
-                descriptionContext={descriptionContext}
-                handleSelect={handleSelect}
-                handleGetIcon={handleGetIcon}
-              />
-            ))
-        : null}
+      {otherBookCategories.map(([k, item]) => (
+        <CategoriesSectionItem
+          key={k}
+          value={value}
+          k={k}
+          item={item}
+          descriptionContext={descriptionContext}
+          handleSelect={handleSelect}
+          handleGetIcon={handleGetIcon}
+        />
+      ))}
     </VerticalUl>
   )
 }
