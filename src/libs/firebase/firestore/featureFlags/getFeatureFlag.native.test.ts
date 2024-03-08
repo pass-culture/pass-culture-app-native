@@ -17,7 +17,6 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO,
     RemoteStoreFeatureFlags.WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES,
     RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW,
-    RemoteStoreFeatureFlags.WIP_OFFER_V2,
     RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST,
     RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
     RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,

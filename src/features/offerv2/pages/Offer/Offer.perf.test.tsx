@@ -49,7 +49,7 @@ describe('<Offer />', () => {
   it('Performance test for Offer page', async () => {
     await measurePerformance(reactQueryProviderHOC(<Offer />), {
       scenario: async () => {
-        await screen.findByTestId('offer-container', {}, { timeout: TEST_TIMEOUT_IN_MS })
+        await screen.findByTestId('offerv2-container', {}, { timeout: TEST_TIMEOUT_IN_MS })
         await act(async () => {})
       },
     })

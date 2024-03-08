@@ -5,9 +5,8 @@ import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistO
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { act, screen } from 'tests/utils'
+import { screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -27,8 +26,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     data: mockData,
   }),
 }))
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Offer />', () => {
   beforeEach(() => {
@@ -54,9 +51,9 @@ describe('<Offer />', () => {
 
     renderOfferPage({ mockOffer: null })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('offer-container')).not.toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(screen.queryByTestId('offerv2-container')).not.toBeOnTheScreen()
+    })
   })
 
   it('should not display offer container when subcategories not loaded and offer loaded', async () => {
@@ -69,9 +66,9 @@ describe('<Offer />', () => {
     mockData = undefined
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('offer-container')).not.toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(screen.queryByTestId('offerv2-container')).not.toBeOnTheScreen()
+    })
   })
 
   it('should not display offer container when subcategories and offer not loaded', async () => {
@@ -84,9 +81,9 @@ describe('<Offer />', () => {
     mockData = undefined
     renderOfferPage({ mockOffer: null })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('offer-container')).not.toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(screen.queryByTestId('offerv2-container')).not.toBeOnTheScreen()
+    })
   })
 
   it('should display offer container when subcategories and offer loaded', async () => {
@@ -98,52 +95,18 @@ describe('<Offer />', () => {
     }))
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('offer-container')).toBeOnTheScreen()
+    expect(await screen.findByTestId('offerv2-container')).toBeOnTheScreen()
   })
 
-  describe('When offer V2 feature flag enabled', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
-    })
-
-    it('should display offer v2 page', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
-
-      await act(async () => {})
-
-      expect(screen.getByTestId('offerv2-container')).toBeOnTheScreen()
-    })
-
-    it('should display subcategory tag', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap })
-
-      await act(async () => {})
-
-      expect(screen.getByText('Cinéma plein air')).toBeOnTheScreen()
-    })
-
-    it('should display offer placeholder on init', async () => {
-      renderOfferPage({ mockOffer: offerResponseSnap, mockIsLoading: true })
-
-      expect(await screen.findByTestId('OfferContentPlaceholder')).toBeOnTheScreen()
-    })
-  })
-
-  it('should display offer v1 page when feature flag is disabled', async () => {
+  it('should display subcategory tag', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('offerv2-container')).toBe(null)
+    expect(await screen.findByText('Cinéma plein air')).toBeOnTheScreen()
   })
 
-  it('should not display offer placeholder on init when feature flag is disabled', async () => {
+  it('should display offer placeholder on init', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap, mockIsLoading: true })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('OfferContentPlaceholder')).not.toBeOnTheScreen()
+    expect(await screen.findByTestId('OfferContentPlaceholder')).toBeOnTheScreen()
   })
 })
