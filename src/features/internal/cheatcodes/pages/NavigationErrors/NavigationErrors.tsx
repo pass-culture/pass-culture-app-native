@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
+import { useQuery } from '@tanstack/react-query'
 import React, { FunctionComponent, useState, createElement } from 'react'
 import { ScrollView } from 'react-native'
-import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { NoContentError } from 'features/home/components/NoContentError'

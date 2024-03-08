@@ -1,6 +1,6 @@
+import { useMutation } from '@tanstack/react-query'
 import omit from 'lodash/omit'
 import { useEffect, useState, Dispatch, SetStateAction } from 'react'
-import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'

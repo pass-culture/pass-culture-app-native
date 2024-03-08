@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import shuffle from 'lodash/shuffle'
-import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'

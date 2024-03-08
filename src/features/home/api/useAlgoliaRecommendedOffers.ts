@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { IncompleteSearchHit } from 'libs/algolia'

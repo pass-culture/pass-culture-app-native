@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'

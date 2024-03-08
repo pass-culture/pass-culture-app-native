@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback } from 'react'
-import { useQueryClient } from 'react-query'
 
 import { OfferResponse, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'

@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
 
 import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'

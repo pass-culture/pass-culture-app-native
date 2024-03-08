@@ -1,6 +1,6 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'

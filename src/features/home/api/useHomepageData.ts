@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
 
 import { NoContentError } from 'features/home/components/NoContentError'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'

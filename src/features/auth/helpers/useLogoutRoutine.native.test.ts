@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import * as ReactQueryAPI from 'react-query'
+import * as ReactQueryAPI from '@tanstack/react-query'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { analytics } from 'libs/analytics'

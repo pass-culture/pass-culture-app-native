@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'

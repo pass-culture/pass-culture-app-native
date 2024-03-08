@@ -1,5 +1,5 @@
 import { ScopeContext } from '@sentry/types'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'

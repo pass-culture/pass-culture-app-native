@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
-import { useQueryClient } from 'react-query'
 
 import { OfferVenueResponse, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'

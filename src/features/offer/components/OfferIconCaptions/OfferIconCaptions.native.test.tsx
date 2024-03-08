@@ -1,5 +1,5 @@
+import { QueryClient } from '@tanstack/react-query'
 import React from 'react'
-import { QueryClient } from 'react-query'
 
 import { CategoryIdEnum, OfferResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'

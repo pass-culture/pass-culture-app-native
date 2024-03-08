@@ -1,7 +1,7 @@
 import { RouteProp } from '@react-navigation/native'
+import { QueryObserverResult } from '@tanstack/react-query'
 import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
-import { QueryObserverResult } from 'react-query'
 
 import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'

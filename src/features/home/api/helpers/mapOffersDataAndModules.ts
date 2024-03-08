@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
+import { UseQueryResult } from '@tanstack/react-query'
 import { flatten, uniqBy } from 'lodash'
-import { UseQueryResult } from 'react-query'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
 import { AlgoliaHit } from 'libs/algolia'

@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api'

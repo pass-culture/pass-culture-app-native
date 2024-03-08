@@ -1,9 +1,9 @@
 import Clipboard from '@react-native-clipboard/clipboard'
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
-import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
