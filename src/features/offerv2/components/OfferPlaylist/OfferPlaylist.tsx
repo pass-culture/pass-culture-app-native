@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 
 import { HitOfferWithArtistAndEan } from 'features/offerv2/api/fetchOffersByArtist/fetchOffersByArtist'
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { Spacer } from 'ui/theme'

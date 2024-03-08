@@ -2,7 +2,7 @@ import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import {
   OfferPlaylistList,
   OfferPlaylistListProps,

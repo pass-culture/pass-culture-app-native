@@ -13,7 +13,7 @@ import {
   formattedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
-import { SimilarOffersResponse } from 'features/offer/types'
+import { SimilarOffersResponse } from 'features/offerv2/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'

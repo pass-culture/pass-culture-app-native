@@ -2,7 +2,7 @@ import React from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueDetail } from 'features/offer/types'
+import { VenueDetail } from 'features/offerv2/types'
 import { Tag } from 'ui/components/Tag/Tag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'

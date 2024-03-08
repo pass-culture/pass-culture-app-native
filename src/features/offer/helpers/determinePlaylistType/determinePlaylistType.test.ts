@@ -1,4 +1,4 @@
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
 
 describe('determinePlaylistCategory', () => {

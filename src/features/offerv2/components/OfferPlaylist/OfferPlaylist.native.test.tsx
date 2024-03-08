@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import { OfferPlaylist } from 'features/offerv2/components/OfferPlaylist/OfferPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { render, screen } from 'tests/utils'

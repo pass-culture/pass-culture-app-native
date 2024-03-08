@@ -3,7 +3,7 @@ import { PixelRatio, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
-import { OfferTileProps } from 'features/offer/types'
+import { OfferTileProps } from 'features/offerv2/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'

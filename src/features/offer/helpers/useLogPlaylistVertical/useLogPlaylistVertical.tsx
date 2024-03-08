@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { RecommendationApiParams } from 'shared/offer/types'

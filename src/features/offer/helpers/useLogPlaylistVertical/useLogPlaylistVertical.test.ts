@@ -1,4 +1,4 @@
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { analytics } from 'libs/analytics'
 import { RecommendationApiParams } from 'shared/offer/types'

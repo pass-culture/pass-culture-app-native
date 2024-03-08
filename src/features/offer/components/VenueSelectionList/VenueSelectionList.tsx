@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
-import { VenueDetail } from 'features/offer/types'
+import { VenueDetail } from 'features/offerv2/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
 import { getSpacing } from 'ui/theme'
