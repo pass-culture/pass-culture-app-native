@@ -29,7 +29,7 @@ export const useOffer = ({ offerId }: { offerId: number }) => {
 
   return useQuery<OfferResponse | undefined>(
     [QueryKeys.OFFER, offerId],
-    () => (offerId ? getOfferById(offerId) : undefined),
-    { enabled: !!netInfo.isConnected }
+    () => getOfferById(offerId),
+    { enabled: !!netInfo.isConnected && !!offerId }
   )
 }
