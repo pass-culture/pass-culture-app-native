@@ -2,7 +2,7 @@ import React from 'react'
 
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { NotificationsSettings } from './NotificationsSettings'
 
@@ -34,5 +34,58 @@ describe('NotificationSettings', () => {
     render(<NotificationsSettings />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
+    fireEvent.press(toggleSwitch)
+
+    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId('Interrupteur Lecture')).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId('Interrupteur Musique')).toHaveAccessibilityState({ checked: true })
+    expect(screen.getByTestId('Interrupteur Spectacles')).toHaveAccessibilityState({
+      checked: true,
+    })
+    expect(screen.getByTestId('Interrupteur Visites et sorties')).toHaveAccessibilityState({
+      checked: true,
+    })
+    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toHaveAccessibilityState({
+      checked: true,
+    })
+  })
+
+  it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
+    fireEvent.press(toggleSwitch)
+    fireEvent.press(toggleSwitch)
+
+    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId('Interrupteur Lecture')).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId('Interrupteur Musique')).toHaveAccessibilityState({ checked: false })
+    expect(screen.getByTestId('Interrupteur Spectacles')).toHaveAccessibilityState({
+      checked: false,
+    })
+    expect(screen.getByTestId('Interrupteur Visites et sorties')).toHaveAccessibilityState({
+      checked: false,
+    })
+    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toHaveAccessibilityState({
+      checked: false,
+    })
+  })
+
+  it('should toggle on specific theme when its toggle is pressed', async () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+    fireEvent.press(toggleSwitch)
+
+    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
   })
 })
