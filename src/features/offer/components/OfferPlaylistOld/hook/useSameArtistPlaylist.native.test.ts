@@ -5,7 +5,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import * as fetchOffersByArtist from '../api/fetchOffersByArtist'
+import * as fetchOffersByArtist from '../../../../offerv2/api/fetchOffersByArtist/fetchOffersByArtist'
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock

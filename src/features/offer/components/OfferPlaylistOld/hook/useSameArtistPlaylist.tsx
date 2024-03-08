@@ -4,7 +4,7 @@ import {
   FetchOfferByArtist,
   fetchOffersByArtist,
   HitOfferWithArtistAndEan,
-} from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
+} from 'features/offerv2/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'

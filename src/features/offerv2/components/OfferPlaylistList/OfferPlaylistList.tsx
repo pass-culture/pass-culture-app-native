@@ -3,7 +3,7 @@ import React from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { HitOfferWithArtistAndEan } from 'features/offer/components/OfferPlaylistOld/api/fetchOffersByArtist'
+import { HitOfferWithArtistAndEan } from 'features/offerv2/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
