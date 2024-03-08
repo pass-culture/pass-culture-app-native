@@ -1,38 +1,18 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { GenreType, SearchGroupNameEnumv2 } from 'api/gen'
-import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
 import {
-  MappedGenreTypes,
-  MappedNativeCategories,
-  MappingTree,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { DescriptionContext } from 'features/search/types'
+  CategoriesMapping,
+  CategoriesSectionProps,
+} from 'features/search/components/CategoriesSection/CategoriesSection'
+import { CategoriesSectionItem } from 'features/search/components/CategoriesSectionItem/CategoriesSectionItem'
+import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
-
-type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
-
-interface CategoriesSectionProps<
-  T extends CategoriesMapping,
-  N = T extends MappingTree ? keyof MappingTree : keyof T | null
-> {
-  allLabel: string
-  allValue: N
-  data?: T
-  descriptionContext: DescriptionContext
-  getIcon?: T extends MappingTree
-    ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface> | undefined
-    : undefined
-  onSelect: (item: N) => void
-  onSubmit?: () => void
-  value: N
-}
 
 export function BookCategoriesSection<
   T extends CategoriesMapping,
