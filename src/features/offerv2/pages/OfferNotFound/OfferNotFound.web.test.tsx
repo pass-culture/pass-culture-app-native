@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
+import { OfferNotFound } from 'features/offerv2/pages/OfferNotFound/OfferNotFound'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 const resetErrorBoundary = () => null
