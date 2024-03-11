@@ -6,7 +6,7 @@ import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from
 import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { PlaylistType } from 'features/offerv2/enums'
+import { PlaylistType } from 'features/offer/enums'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'

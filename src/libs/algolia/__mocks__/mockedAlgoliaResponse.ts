@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { HitOfferWithArtistAndEan } from 'features/offerv2/api/fetchOffersByArtist/fetchOffersByArtist'
+import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 

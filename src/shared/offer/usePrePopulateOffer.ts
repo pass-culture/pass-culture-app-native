@@ -1,7 +1,7 @@
 import { useQueryClient } from 'react-query'
 
 import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'
-import { OfferTileProps } from 'features/offerv2/types'
+import { OfferTileProps } from 'features/offer/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 type PartialOffer = Pick<
