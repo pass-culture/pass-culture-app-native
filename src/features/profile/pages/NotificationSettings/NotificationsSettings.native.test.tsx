@@ -1,6 +1,8 @@
 import React from 'react'
+import { Linking } from 'react-native'
 
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
+import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { beneficiaryUser } from 'fixtures/user'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -16,6 +18,11 @@ const baseAuthContext: IAuthContext = {
   refetchUser: jest.fn(),
   setIsLoggedIn: jest.fn(),
 }
+
+const usePushPermissionSpy = jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
+  pushPermission: 'granted',
+  refreshPermission: jest.fn(),
+})
 
 describe('NotificationSettings', () => {
   it('should render correctly when user is logged in', () => {
@@ -36,7 +43,7 @@ describe('NotificationSettings', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', () => {
+  it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
 
@@ -57,7 +64,7 @@ describe('NotificationSettings', () => {
     })
   })
 
-  it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', () => {
+  it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
 
@@ -87,5 +94,38 @@ describe('NotificationSettings', () => {
     fireEvent.press(toggleSwitch)
 
     expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
+  })
+
+  describe('The behavior of the push switch', () => {
+    it('should open the push notification modal when the push toggle is pressed and the permission is not granted', () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      usePushPermissionSpy.mockReturnValueOnce({
+        pushPermission: 'blocked',
+        refreshPermission: jest.fn(),
+      })
+      render(<NotificationsSettings />)
+
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+      fireEvent.press(toggleSwitch)
+
+      expect(screen.queryByText('Paramètres de notifications')).toBeOnTheScreen()
+    })
+
+    it('should open the settings from the push notifications modal', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      usePushPermissionSpy.mockReturnValueOnce({
+        pushPermission: 'blocked',
+        refreshPermission: jest.fn(),
+      })
+      render(<NotificationsSettings />)
+
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+      fireEvent.press(toggleSwitch)
+
+      const openSettingsButton = await screen.findAllByText('Autoriser les notifications')
+      fireEvent.press(openSettingsButton[1])
+
+      expect(Linking.openSettings).toHaveBeenCalledTimes(1)
+    })
   })
 })

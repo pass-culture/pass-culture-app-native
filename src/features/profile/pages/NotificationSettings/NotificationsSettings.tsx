@@ -1,13 +1,17 @@
 import React, { useReducer } from 'react'
-import { Platform } from 'react-native'
+import { Linking, Platform } from 'react-native'
+import { PermissionStatus } from 'react-native-permissions'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
@@ -28,8 +32,35 @@ export const NotificationsSettings = () => {
     themePreferences: [],
   })
 
+  const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
+    if (permission === 'granted' && !state.allowPush) {
+      dispatch('push')
+    } else if (permission !== 'granted' && state.allowPush) dispatch('push')
+  }
+
+  const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
+
   const isThemeToggled = (theme: SubscriptionTheme) => {
     return state.themePreferences.includes(theme)
+  }
+
+  const {
+    visible: isPushModalVisible,
+    showModal: showPushModal,
+    hideModal: hidePushModal,
+  } = useModal(false)
+
+  const onRequestNotificationPermissionFromModal = () => {
+    hidePushModal()
+    Linking.openSettings()
+  }
+
+  const togglePush = () => {
+    if (pushPermission === 'granted') {
+      dispatch('push')
+    } else {
+      showPushModal()
+    }
   }
 
   return (
@@ -60,7 +91,7 @@ export const NotificationsSettings = () => {
           <SectionWithSwitch
             title="Autoriser les notifications"
             active={state.allowPush}
-            toggle={() => dispatch('push')}
+            toggle={togglePush}
             disabled={!isLoggedIn}
           />
         )}
@@ -89,6 +120,11 @@ export const NotificationsSettings = () => {
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary wording="Enregistrer" accessibilityLabel="Enregistrer les modifications" />
       </Form.Flex>
+      <PushNotificationsModal
+        visible={isPushModalVisible}
+        onRequestPermission={onRequestNotificationPermissionFromModal}
+        onDismiss={hidePushModal}
+      />
     </PageProfileSection>
   )
 }
