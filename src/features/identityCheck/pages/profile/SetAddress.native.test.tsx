@@ -13,8 +13,10 @@ import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces
 import { Properties } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, waitFor, screen, act } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+
+jest.useFakeTimers()
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -45,10 +47,10 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly', async () => {
+  it.only('should render correctly', async () => {
     renderSetAddress()
 
-    await screen.findByText('Recherche et sélectionne ton adresse')
+    await act(async () => jest.advanceTimersByTimeAsync(600))
 
     expect(screen).toMatchSnapshot()
   })

@@ -29,6 +29,8 @@ import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
+jest.useFakeTimers()
+
 const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
 
@@ -108,9 +110,7 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(highlightOfferModuleFixture)
 
-    await act(async () => {
-      expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeOnTheScreen()
-    })
+    expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeOnTheScreen()
   })
 
   it('should not display old ExclusivityOfferModule', async () => {

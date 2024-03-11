@@ -16,8 +16,6 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.unmock('react-query')
-
 describe('useFavorites hook', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 

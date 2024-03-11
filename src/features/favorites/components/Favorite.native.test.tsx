@@ -66,13 +66,13 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const offre = screen.getByText(favorite.offer.name)
-    await act(async () => {
-      fireEvent.press(offre)
-    })
+    fireEvent.press(offre)
 
-    expect(navigate).toHaveBeenCalledWith('Offer', {
-      from: 'favorites',
-      id: favorite.offer.id,
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        from: 'favorites',
+        id: favorite.offer.id,
+      })
     })
   })
 

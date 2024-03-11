@@ -14,6 +14,8 @@ import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
+jest.useFakeTimers()
+
 const method = 'fromLogin'
 const accessToken = 'access_token'
 const COOKIES_CONSENT_KEY = 'cookies'

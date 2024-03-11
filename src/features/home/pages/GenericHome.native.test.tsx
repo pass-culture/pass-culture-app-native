@@ -13,6 +13,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
+jest.useFakeTimers()
+
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
@@ -51,9 +53,9 @@ describe('GenericHome', () => {
 
   describe('With not displayed skeleton by default', () => {
     it('should display skeleton', async () => {
-      useShowSkeletonSpy.mockReturnValueOnce(true)
       renderGenericHome()
-      await act(async () => {})
+
+      jest.advanceTimersByTime(showSkeletonAPI.ANIMATION_DELAY)
 
       expect(screen).toMatchSnapshot()
     })

@@ -8,9 +8,11 @@ import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { Home } from './Home'
+
+jest.useFakeTimers()
 
 const mockShouldShowSkeleton = false
 
@@ -71,8 +73,6 @@ describe('Home page', () => {
       id: 'fakeEntryId',
     })
     renderHome()
-    await act(async () => {})
-    await act(async () => {})
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
@@ -85,8 +85,6 @@ describe('Home page', () => {
     })
 
     renderHome()
-    await act(async () => {})
-    await act(async () => {})
 
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')

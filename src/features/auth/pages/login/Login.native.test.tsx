@@ -30,11 +30,13 @@ import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixture
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
+import { fireEvent, render, act, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
+
+jest.useFakeTimers()
 
 jest.mock('libs/monitoring')
 jest.mock('features/navigation/helpers')
@@ -64,9 +66,7 @@ const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAuthorize')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-jest.useFakeTimers({ legacyFakeTimers: true })
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -130,9 +130,6 @@ describe('<Login/>', () => {
   })
 
   it('should sign in when SSO button is clicked with device info when feature flag is active', async () => {
-    // We use this hook twice but due to multiple rerender we have to mock the return value this way
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true)
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
@@ -143,16 +140,18 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    fireEvent.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
-      authorizationCode: 'mockServerAuthCode',
-      oauthStateToken: 'oauth_state_token',
-      deviceInfo: {
-        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-        os: 'iOS',
-        source: 'iPhone 13',
-      },
+    await waitFor(() => {
+      expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
+        authorizationCode: 'mockServerAuthCode',
+        oauthStateToken: 'oauth_state_token',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+        },
+      })
     })
   })
 
@@ -169,12 +168,14 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    fireEvent.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-      message:
-        'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
-      timeout: SNACK_BAR_TIME_OUT_LONG,
+    await waitFor(() => {
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message:
+          'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
+      })
     })
   })
 
@@ -193,12 +194,14 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    fireEvent.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(navigate).toHaveBeenCalledWith('SignupForm', {
-      accountCreationToken: 'accountCreationToken',
-      email: 'user@gmail.com',
-      from: StepperOrigin.LOGIN,
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('SignupForm', {
+        accountCreationToken: 'accountCreationToken',
+        email: 'user@gmail.com',
+        from: StepperOrigin.LOGIN,
+      })
     })
   })
 
@@ -434,9 +437,11 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    fireEvent.press(await screen.findByTestId('Se connecter avec Google'))
 
-    expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+    await waitFor(() => {
+      expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+    })
   })
 
   it('should display forced login help message when the query param is given', async () => {
@@ -676,7 +681,7 @@ describe('<Login/>', () => {
 
       expect(
         screen.queryByText(
-          'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.'
+          'Un problème est survenu, vérifie ta connexion internet avant de réessayer.'
         )
       ).toBeOnTheScreen()
     })
@@ -730,8 +735,8 @@ const fillInputs = async () => {
   })
 }
 
-function renderLogin() {
-  return render(
+const renderLogin = () =>
+  render(
     reactQueryProviderHOC(
       <AuthContext.Provider
         value={{
@@ -744,7 +749,6 @@ function renderLogin() {
       </AuthContext.Provider>
     )
   )
-}
 
 function mockMeApiCall(response: UserProfileResponse) {
   mockServer.getApiV1<UserProfileResponse>('/me', response)

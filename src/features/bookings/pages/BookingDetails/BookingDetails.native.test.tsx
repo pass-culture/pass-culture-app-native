@@ -25,6 +25,8 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
+jest.useFakeTimers()
+
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 
 jest.mock('libs/itinerary/useItinerary', () => ({
@@ -86,8 +88,6 @@ describe('BookingDetails', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
 
-    await act(async () => {})
-
     expect(useOngoingOrEndedBooking).toHaveBeenCalledWith(456)
   })
 
@@ -106,7 +106,6 @@ describe('BookingDetails', () => {
     it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       renderBookingDetails(booking)
-      await act(async () => {})
 
       expect(await screen.findByText('352UW4')).toBeOnTheScreen()
     })
@@ -121,9 +120,7 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
 
       const offerButton = screen.getByText('Accéder à l’offre en ligne')
-      await act(async () => {
-        fireEvent.press(offerButton)
-      })
+      fireEvent.press(offerButton)
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         // @ts-expect-error: because of noUncheckedIndexedAccess
@@ -142,8 +139,6 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       renderBookingDetails(booking)
 
-      await act(async () => {})
-
       expect(screen.queryByText('Accéder à l’offre')).not.toBeOnTheScreen()
     })
 
@@ -153,8 +148,6 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = false
       renderBookingDetails(booking)
 
-      await act(async () => {})
-
       expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
     })
 
@@ -163,8 +156,6 @@ describe('BookingDetails', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(await screen.findByText('123456789')).toBeOnTheScreen()
     })
@@ -177,8 +168,6 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = true
 
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(
         await screen.findByText(
@@ -197,8 +186,6 @@ describe('BookingDetails', () => {
       }
 
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(
         await screen.findByText(
@@ -226,8 +213,6 @@ describe('BookingDetails', () => {
 
         renderBookingDetails(booking)
 
-        await act(async () => {})
-
         expect(
           await screen.findByText(
             'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
@@ -244,8 +229,6 @@ describe('BookingDetails', () => {
       booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
       renderBookingDetails(booking)
 
-      await act(async () => {})
-
       expect(screen.queryByText('Modalités de retrait')).toBeOnTheScreen()
       expect(screen.queryByText('Voici comment récupérer ton bien')).toBeOnTheScreen()
     })
@@ -255,7 +238,6 @@ describe('BookingDetails', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.withdrawalDetails = undefined
       renderBookingDetails(booking)
-      await act(async () => {})
 
       const title = screen.queryByText('Modalités de retrait')
       const withdrawalText = screen.queryByTestId('withdrawalDetails')
@@ -271,7 +253,6 @@ describe('BookingDetails', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
-      await act(async () => {})
 
       expect(screen.getByText('Contact organisateur')).toBeOnTheScreen()
       expect(screen.getByText('Envoyer un e-mail')).toBeOnTheScreen()
@@ -282,7 +263,6 @@ describe('BookingDetails', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.bookingContact = undefined
       renderBookingDetails(booking)
-      await act(async () => {})
 
       expect(screen.queryByText('Contact Organisateur')).not.toBeOnTheScreen()
       expect(screen.queryByText('Envoyer un e-mail')).not.toBeOnTheScreen()
@@ -293,7 +273,6 @@ describe('BookingDetails', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
-      await act(async () => {})
       fireEvent.press(screen.getByText('Envoyer un e-mail'))
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(

@@ -14,6 +14,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
+jest.useFakeTimers()
+
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
@@ -124,7 +126,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     expect(screen.getByTestId('subscription-message-badge')).toBeOnTheScreen()
   })
 
-  it('should render the younger badge for user whose eligibilty hasn’t started yet (under 15 years old)', async () => {
+  it('should render the younger badge for user whose eligibility hasn’t started yet (under 15 years old)', async () => {
     mockServer.getApiV1<BannerResponse>('/banner', {})
     renderNonBeneficiaryHeader({
       startDatetime: '2021-03-31T00:00Z',

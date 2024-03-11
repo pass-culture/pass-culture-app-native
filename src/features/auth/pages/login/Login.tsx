@@ -48,6 +48,7 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
+
   const { data: settings } = useSettingsContext()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -149,7 +150,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       setIsDoingReCaptchaChallenge(false)
       if (errorCode === ReCaptchaInternalError.NetworkError) {
         setErrorMessage(
-          'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.'
+          'Un problème est survenu, vérifie ta connexion internet avant de réessayer.'
         )
       } else {
         setErrorMessage('Un problème est survenu, réessaie plus tard.')

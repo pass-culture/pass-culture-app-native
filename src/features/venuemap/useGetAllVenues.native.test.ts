@@ -2,9 +2,11 @@ import algoliasearch from 'algoliasearch'
 
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 
 import { useGetAllVenues } from './useGetAllVenues'
+
+jest.useFakeTimers()
 
 jest.mock('algoliasearch')
 
@@ -27,14 +29,12 @@ describe('useGetAllVenues', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await waitFor(() => {
-      expect(search).toHaveBeenCalledWith('', {
-        aroundLatLng: '48.866667, 2.333333',
-        aroundRadius: 10000,
-        attributesToHighlight: [],
-        facetFilters: [['has_at_least_one_bookable_offer:true']],
-        hitsPerPage: 1000,
-      })
+    expect(search).toHaveBeenCalledWith('', {
+      aroundLatLng: '48.866667, 2.333333',
+      aroundRadius: 10000,
+      attributesToHighlight: [],
+      facetFilters: [['has_at_least_one_bookable_offer:true']],
+      hitsPerPage: 1000,
     })
   })
 })

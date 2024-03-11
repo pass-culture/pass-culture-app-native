@@ -104,7 +104,7 @@ const nativeEventBottom = {
 
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<OfferContentOld />', () => {
   beforeEach(() => {
@@ -451,8 +451,9 @@ describe('<OfferContentOld />', () => {
     it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
       renderOfferContentOld({})
 
-      await act(() => {})
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      await act(() => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
 
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -460,8 +461,9 @@ describe('<OfferContentOld />', () => {
     it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
       renderOfferContentOld({})
 
-      await act(() => {})
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      await act(() => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      })
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
     })
@@ -487,9 +489,10 @@ describe('<OfferContentOld />', () => {
     it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
       renderOfferContentOld({})
 
-      await act(() => {})
       fireEvent.scroll(screen.getByTestId('offer-container'), nativeEventBottom)
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      await act(() => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
 
       expect(BatchUser.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
@@ -507,8 +510,9 @@ describe('<OfferContentOld />', () => {
       async (offerNativeCategory) => {
         renderOfferContentOld({ offerNativeCategory })
 
-        await act(() => {})
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        await act(() => {
+          jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        })
 
         expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
       }
@@ -525,8 +529,9 @@ describe('<OfferContentOld />', () => {
       async ({ offerNativeCategory, expectedBatchEvent }) => {
         renderOfferContentOld({ offerNativeCategory })
 
-        await act(() => {})
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        await act(() => {
+          jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        })
 
         expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
         expect(BatchUser.trackEvent).toHaveBeenCalledWith(expectedBatchEvent)

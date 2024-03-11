@@ -7,9 +7,11 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
+
+jest.useFakeTimers()
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -106,14 +108,13 @@ describe('<BookingImpossible />', () => {
     it('should send email/push notification when adding to favorites', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      await act(async () => {
-        const addToFavoriteButton = await screen.findByLabelText('Mettre en favoris')
+      const addToFavoriteButton = screen.getByLabelText('Mettre en favoris')
+      fireEvent.press(addToFavoriteButton)
 
-        fireEvent.press(addToFavoriteButton)
+      await waitFor(() => {
+        expect(mockPostNativeV1SendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
+        expect(mockPostNativeV1SendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
       })
-
-      expect(mockPostNativeV1SendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
-      expect(mockPostNativeV1SendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
     })
 
     it('should log analytics event when adding to favorites', async () => {
@@ -133,7 +134,6 @@ describe('<BookingImpossible />', () => {
 
     it('should change booking step from date to confirmation', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
-      await act(async () => {})
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'CHANGE_STEP',
@@ -143,9 +143,8 @@ describe('<BookingImpossible />', () => {
 
     it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
-      await act(async () => {})
 
-      fireEvent.press(await screen.findByText('Retourner à l’offre'))
+      fireEvent.press(screen.getByText('Retourner à l’offre'))
 
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })

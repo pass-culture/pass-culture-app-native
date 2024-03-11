@@ -14,7 +14,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('features/auth/context/AuthContext')
@@ -100,9 +100,9 @@ describe('<OfferCTAButton />', () => {
     useRoute.mockReturnValueOnce({ params: { fromOfferId, openModalOnNavigation } })
     renderOfferCTAButton(offerCTAButtonProps)
 
-    await act(async () => {})
-
-    expect(await screen.findByText('Valider la date')).toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(await screen.findByText('Valider la date')).toBeOnTheScreen()
+    })
   })
 
   it('should display authentication modal when clicking on "Réserver l’offre"', async () => {

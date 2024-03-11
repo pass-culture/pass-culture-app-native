@@ -1,6 +1,6 @@
 import firestore from 'libs/firebase/shims/firestore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { getUbbleETAMessage, useUbbleETAMessage } from './ubbleETAMessage'
 
@@ -19,9 +19,10 @@ describe('[method] ubbleETAMessage', () => {
     const { result } = renderHook(useUbbleETAMessage, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
 
-    // See __mocks__/@react-native-firebase/firestore
-    expect(result.current.data).toEqual('Environ 1 heure')
+    await waitFor(() => {
+      // See __mocks__/@react-native-firebase/firestore
+      expect(result.current.data).toEqual('Environ 1 heure')
+    })
   })
 })

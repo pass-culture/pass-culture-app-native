@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash/debounce'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -23,6 +22,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
+import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 
@@ -36,10 +36,9 @@ export const SetAddress = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const [query, setQuery] = useState<string>(profile.address ?? '')
-  const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
+  const debouncedQuery = useDebounceValue(query, 500)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address ?? null)
-  const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
-  const adressInputErrorId = uuidv4()
+  const addressInputErrorId = uuidv4()
 
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
@@ -55,6 +54,8 @@ export const SetAddress = () => {
     limit: 10,
   })
 
+  console.log(isLoading, idCheckAddressAutocompletion, debouncedQuery.length)
+
   useEffect(() => {
     analytics.logScreenViewSetAddress()
   }, [])
@@ -69,7 +70,6 @@ export const SetAddress = () => {
   const onChangeAddress = (value: string) => {
     setSelectedAddress(null)
     setQuery(value)
-    debouncedSetQuery(value)
   }
 
   const onAddressSelection = (address: string) => {
@@ -80,7 +80,6 @@ export const SetAddress = () => {
   const resetSearch = () => {
     setSelectedAddress(null)
     setQuery('')
-    debouncedSetQuery('')
   }
 
   const isValidAddress = isAddressValid(query)
@@ -124,7 +123,7 @@ export const SetAddress = () => {
               label={label}
               placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
               textContentType="addressState"
-              accessibilityDescribedBy={adressInputErrorId}
+              accessibilityDescribedBy={addressInputErrorId}
               onPressRightIcon={resetSearch}
               returnKeyType="next"
               testID="Entrée pour l’adresse"
@@ -133,7 +132,7 @@ export const SetAddress = () => {
               visible={hasError}
               messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
               numberOfSpacesTop={2}
-              relatedInputId={adressInputErrorId}
+              relatedInputId={addressInputErrorId}
             />
             <Spacer.Column numberOfSpaces={2} />
           </Form.MaxWidth>
