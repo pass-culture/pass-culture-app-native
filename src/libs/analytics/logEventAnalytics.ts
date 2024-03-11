@@ -63,7 +63,11 @@ export type OfferAnalyticsData = {
 
 type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number; offerId?: never }
 
-export type LoginRoutineMethod = 'fromLogin' | 'fromSignup' | 'fromReinitializePassword'
+export type LoginRoutineMethod =
+  | 'fromLogin'
+  | 'fromSignup'
+  | 'fromReinitializePassword'
+  | 'fromConfirmChangeEmail'
 
 export type SSOType = 'SSO_login' | 'SSO_signup'
 

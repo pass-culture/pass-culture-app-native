@@ -1,141 +1,34 @@
-import { RouteProp } from '@react-navigation/native'
 import React from 'react'
-import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
-import * as API from 'api/api'
-import { ApiError } from 'api/ApiError'
-import { EmailHistoryEventTypeEnum } from 'api/gen'
-import { navigateToHome } from 'features/navigation/helpers'
-import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
+import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
-type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-const useEmailUpdateStatusSpy = jest
-  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
-  .mockReturnValue({
-    data: {
+describe('<ConfirmChangeEmail />', () => {
+  it('should render correctly when FF is disabled', () => {
+    mockServer.getApi<EmailUpdateStatus>('/v1/profile/email_update/status', {
       expired: false,
       newEmail: '',
       status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
-    },
-    isLoading: false,
-  } as UseEmailUpdateStatusMock)
-
-const emailUpdateConfirmSpy = jest
-  .spyOn(API.api, 'postNativeV1ProfileEmailUpdateConfirm')
-  .mockImplementation()
-
-const mockShowErrorSnackbar = jest.fn()
-
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackbar,
-  }),
-  SNACK_BAR_TIME_OUT: 5000,
-}))
-
-describe('<ConfirmChangeEmail />', () => {
-  it('should navigate to home if no email change', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: undefined,
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    renderConfirmChangeEmail()
-
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
-  })
-
-  it('should navigate to change email expired if last email change expired', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
-      data: {
-        expired: true,
-        newEmail: '',
-        status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
-      },
-      isLoading: false,
-    } as UseEmailUpdateStatusMock)
-    renderConfirmChangeEmail()
-
-    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
-  })
-
-  it('should display confirmation message and buttons', () => {
-    renderConfirmChangeEmail()
-
-    expect(screen.getByText('Confirmes-tu la demande de changement d’e-mail ?')).toBeOnTheScreen()
-    expect(screen.getByText('Confirmer la demande')).toBeOnTheScreen()
-    expect(screen.getByText('Fermer')).toBeOnTheScreen()
-  })
-
-  it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {
-    renderConfirmChangeEmail()
-    fireEvent.press(screen.getByText('Confirmer la demande'))
-
-    await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'TrackEmailChange')
     })
+    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to home when pressing "Confirmer la demande" button and and API response is not 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
-    renderConfirmChangeEmail()
+  it('should render correctly when FF is active', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
+    await screen.findByText('Confirmer la demande')
 
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
-  })
-
-  it('should redirect to change email expired when pressing "Confirmer la demande" button and and API response is 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(401, 'API error'))
-    renderConfirmChangeEmail()
-
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
-
-    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
-  })
-
-  it('should display an error snackbar when pressing "Confirmer la demande" button and API response is not 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
-    renderConfirmChangeEmail()
-
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
-
-    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
-  })
-
-  it('should not display an error snackbar when pressing "Confirmer la demande" button and API response is a 401 error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
-    renderConfirmChangeEmail()
-
-    await act(async () => {
-      fireEvent.press(screen.getByText('Confirmer la demande'))
-    })
-
-    expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
+    expect(screen).toMatchSnapshot()
   })
 })
-
-const navigation = {
-  navigate: jest.fn(),
-} as unknown as NativeStackNavigationProp<RootStackParamList, 'ConfirmChangeEmail'>
-
-const route = {
-  params: {
-    token: 'example',
-  },
-} as unknown as RouteProp<RootStackParamList, 'ConfirmChangeEmail'>
-
-const renderConfirmChangeEmail = () =>
-  render(reactQueryProviderHOC(<ConfirmChangeEmail navigation={navigation} route={route} />))
