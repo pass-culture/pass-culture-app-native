@@ -44,9 +44,3 @@ export const getDisplayPrice = (
   if (prices.includes(0)) return 'Gratuit'
   return getPricePerPlace(prices, options)
 }
-
-export const getDisplayPriceWithDuoMention = (prices: number[] | undefined): string => {
-  if (!prices || prices.length === 0) return ''
-  if (prices.includes(0)) return 'Gratuit'
-  return `${getPricePerPlace(prices)} / place`
-}

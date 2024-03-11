@@ -1,6 +1,5 @@
 import {
   getDisplayPrice,
-  getDisplayPriceWithDuoMention,
   formatToFrenchDecimal,
   formatPriceInEuroToDisplayPrice,
 } from '../getDisplayPrice'
@@ -43,23 +42,6 @@ describe('getDisplayPrice', () => {
     ${[800, 800]}        | ${'8,00\u00a0€'}
   `('getDisplayPrice($prices) \t= $expected with format price options', ({ prices, expected }) => {
     expect(getDisplayPrice(prices, { fractionDigits: 2 })).toBe(expected)
-  })
-
-  it.each`
-    prices               | expected
-    ${undefined}         | ${''}
-    ${[]}                | ${''}
-    ${[0]}               | ${'Gratuit'}
-    ${[0, 700]}          | ${'Gratuit'}
-    ${[100]}             | ${'1\u00a0€ / place'}
-    ${[200]}             | ${'2\u00a0€ / place'}
-    ${[345]}             | ${'3,45\u00a0€ / place'}
-    ${[200, 1000, 3000]} | ${'Dès 2\u00a0€ / place'}
-    ${[560, 300]}        | ${'Dès 3\u00a0€ / place'}
-    ${[-300, 560]}       | ${'5,60\u00a0€ / place'}
-    ${[800, 800]}        | ${'8\u00a0€ / place'}
-  `('getDisplayPriceWithDuoMention($prices) \t= $expected', ({ prices, expected }) => {
-    expect(getDisplayPriceWithDuoMention(prices)).toBe(expected)
   })
 })
 

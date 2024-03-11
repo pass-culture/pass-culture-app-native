@@ -29,7 +29,7 @@ jest.mock('features/offer/api/useOffer', () => ({
   }),
 }))
 
-export const offerId = 116656
+const offerId = 116656
 
 type MockOffer =
   | (OfferResponse & {

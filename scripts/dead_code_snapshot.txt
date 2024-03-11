@@ -347,6 +347,7 @@ src/features/navigation/helpers/index.ts:3 - navigateToBooking
 src/features/navigation/RootNavigator/types.ts:303 - ScreenNavigationProp
 src/features/navigation/RootNavigator/types.ts:328 - NavigateParams (used in module)
 src/features/navigation/RootNavigator/types.ts:333 - AllNavigateParams (used in module)
+src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
