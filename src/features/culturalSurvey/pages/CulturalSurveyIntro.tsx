@@ -1,3 +1,4 @@
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -25,6 +26,7 @@ const FAQTouchableLinkProps = {
 
 export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
+  const { dispatch } = useNavigation()
 
   return (
     <GenericInfoPageWhite
@@ -73,7 +75,16 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           as={ButtonTertiaryBlack}
           wording="Plus tard"
           icon={ClockFilled}
-          onBeforeNavigate={analytics.logHasSkippedCulturalSurvey}
+          onBeforeNavigate={() => {
+            // The double navigation (reset + navigate) is unperceivable to the user and avoids complexifying the handleNavigation of InternalTouchableLink
+            dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{ name: navigateToHomeConfig.screen }],
+              })
+            )
+            analytics.logHasSkippedCulturalSurvey()
+          }}
           navigateTo={navigateToHomeConfig}
         />
       </View>

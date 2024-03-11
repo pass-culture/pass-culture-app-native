@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CommonActions, dispatch, useRoute } from '__mocks__/@react-navigation/native'
+import { dispatch, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
@@ -33,10 +33,9 @@ describe('<EduConnectValidation />', () => {
     fireEvent.press(validateButton)
 
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(CommonActions.reset).toHaveBeenCalledWith({
-        index: 1,
-        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+      expect(dispatch).toHaveBeenCalledWith({
+        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+        type: 'RESET',
       })
     })
   })

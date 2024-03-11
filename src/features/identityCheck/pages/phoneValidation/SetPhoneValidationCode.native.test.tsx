@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, dispatch, CommonActions } from '__mocks__/@react-navigation/native'
+import { navigate, dispatch } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import {
   hasCodeCorrectFormat,
@@ -149,10 +149,9 @@ describe('SetPhoneValidationCode', () => {
     fireEvent.press(continueButton)
 
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(CommonActions.reset).toHaveBeenCalledWith({
-        index: 1,
-        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+      expect(dispatch).toHaveBeenCalledWith({
+        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+        type: 'RESET',
       })
     })
   })

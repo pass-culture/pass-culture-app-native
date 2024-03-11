@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
@@ -42,17 +40,17 @@ describe('CulturalSurveyIntro page', () => {
     expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalledTimes(1)
   })
 
-  it('should navigate to home when pressing Plus tard', async () => {
+  it('should reset navigation and navigate to home when pressing Plus tard', async () => {
     render(<CulturalSurveyIntro />)
 
     const LaterButton = screen.getByText('Plus tard')
     fireEvent.press(LaterButton)
 
     await waitFor(() => {
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+      expect(dispatch).toHaveBeenCalledWith({
+        payload: { index: 0, routes: [{ name: 'TabNavigator' }] },
+        type: 'RESET',
+      })
     })
   })
 
