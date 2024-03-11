@@ -14,6 +14,8 @@ import {
   distanceToLongitudeDelta,
 } from 'features/venuemap/helpers/calculateDistanceMap'
 import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import MapView, { EdgePadding, Marker, Region } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -25,7 +27,7 @@ type Props = {
   padding: EdgePadding
 }
 
-const RADIUS_IN_METERS = 10000
+const RADIUS_IN_METERS = 10_000
 
 type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
@@ -35,6 +37,7 @@ type GeolocatedVenue = Omit<Venue, 'venueId'> & {
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { userLocation } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
+  const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
 
   const { height, width } = useWindowDimensions()
   const screenRatio = height / width
@@ -56,6 +59,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     longitudeDelta,
   }
 
+  const [selectedVenue, setSelectedVenue] = useState<GeolocatedVenue | null>(null)
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultCoordinates)
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultCoordinates)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
@@ -77,10 +81,13 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     setShowSearchButton(false)
   }
 
-  const handleMarkerPress = (venueId: number) => {
+  const handleMarkerPress = (venue: GeolocatedVenue) => {
     setShowSearchButton(false)
-
-    navigate('Venue', { id: venueId })
+    if (isPreviewEnabled) {
+      setSelectedVenue(venue)
+    } else {
+      navigate('Venue', { id: venue.venueId })
+    }
   }
 
   return (
@@ -101,8 +108,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
               latitude: venue._geoloc.lat,
               longitude: venue._geoloc.lng,
             }}
-            onPress={() => handleMarkerPress(venue.venueId)}>
-            <MapPin />
+            onPress={() => handleMarkerPress(venue)}>
+            <StyledMapPin isSelected={venue.venueId === selectedVenue?.venueId} />
           </Marker>
         ))}
       </StyledMapView>
@@ -116,6 +123,10 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 }
 
 const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
+
+const StyledMapPin = styled(MapPin).attrs<{ isSelected: boolean }>(({ theme, isSelected }) => ({
+  color: isSelected ? theme.colors.greyMedium : theme.colors.black,
+}))<{ isSelected: boolean }>``
 
 const ButtonContainer = styled.View<{ top: number }>(({ top }) => ({
   position: 'absolute',
