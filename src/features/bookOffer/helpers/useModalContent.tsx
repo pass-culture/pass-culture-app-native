@@ -6,13 +6,13 @@ import { AlreadyBooked } from 'features/bookOffer/components/AlreadyBooked'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { BookingImpossible } from 'features/bookOffer/components/BookingImpossible'
-import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getPreviousStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { Loader } from 'ui/components/Loader'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
@@ -23,7 +23,7 @@ type ModalContent = {
 
 const getDefaultModalContent = (): ModalContent => {
   return {
-    children: <BookingOfferLoader message="Chargement en cours..." />,
+    children: <Loader message="Chargement en cours..." />,
     title: '',
     leftIconAccessibilityLabel: undefined,
     leftIcon: undefined,

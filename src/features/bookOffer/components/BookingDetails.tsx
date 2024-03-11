@@ -7,7 +7,6 @@ import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOff
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
-import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
@@ -28,6 +27,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -177,7 +177,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     !!offer && FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(offer.subcategoryId)
 
   return isLoading ? (
-    <BookingOfferLoader message={loadingMessage} />
+    <Loader message={loadingMessage} />
   ) : (
     <Container>
       <InfoBanner
