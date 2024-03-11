@@ -90,6 +90,12 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     }
   }
 
+  const handlePressOutOfVenuePin = () => {
+    if (selectedVenue) {
+      setSelectedVenue(null)
+    }
+  }
+
   return (
     <React.Fragment>
       <StyledMapView
@@ -100,6 +106,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         pitchEnabled={false}
         onRegionChangeComplete={handleRegionChangeComplete}
         renderCluster={(props) => <VenueMapCluster {...props} />}
+        onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
+        onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         testID="venue-map-view">
         {geolocatedVenues.map((venue) => (
           <Marker
