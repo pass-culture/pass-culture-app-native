@@ -3,7 +3,7 @@ import React, { useState, useContext, useMemo, memo } from 'react'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { DisabilitiesProperties, IAccessibilityFiltersContext } from 'features/accessibility/types'
 
-export const defaultProperties: DisabilitiesProperties = {
+export const defaultDisabilitiesProperties: DisabilitiesProperties = {
   [DisplayedDisabilitiesEnum.AUDIO]: undefined,
   [DisplayedDisabilitiesEnum.MENTAL]: undefined,
   [DisplayedDisabilitiesEnum.MOTOR]: undefined,
@@ -11,7 +11,7 @@ export const defaultProperties: DisabilitiesProperties = {
 }
 
 const AccessibilityFiltersContext = React.createContext<IAccessibilityFiltersContext>({
-  disabilities: defaultProperties,
+  disabilities: defaultDisabilitiesProperties,
   setDisabilities: () => undefined,
 })
 
@@ -20,7 +20,9 @@ export const AccessibilityFiltersWrapper = memo(function AccessibilityFiltersWra
 }: {
   children: React.JSX.Element
 }) {
-  const [disabilities, setDisabilities] = useState<DisabilitiesProperties>(defaultProperties)
+  const [disabilities, setDisabilities] = useState<DisabilitiesProperties>(
+    defaultDisabilitiesProperties
+  )
 
   const value = useMemo(
     () => ({
