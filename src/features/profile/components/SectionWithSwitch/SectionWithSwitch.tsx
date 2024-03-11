@@ -37,7 +37,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
 
   return (
     <Container>
-      <TitleContainer toggleLabel={!!toggleLabel}>
+      <TitleContainer>
         {!!Icon && (
           <React.Fragment>
             <Icon size={iconSize} />
@@ -75,11 +75,11 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const TitleContainer = styled.View<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
-  flex: theme.isMobileViewport || toggleLabel ? 1 : undefined,
+const TitleContainer = styled.View({
+  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
-}))
+})
 
 const FilterSwitchLabelContainer = styled.View({
   flexDirection: 'row',

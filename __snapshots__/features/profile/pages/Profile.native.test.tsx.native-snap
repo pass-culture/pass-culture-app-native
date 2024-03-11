@@ -544,7 +544,6 @@ exports[`Profile component should render correctly 1`] = `
                       },
                     ]
                   }
-                  toggleLabel={true}
                 >
                   <View
                     height={24}

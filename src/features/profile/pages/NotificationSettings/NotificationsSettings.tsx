@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import { Linking, Platform } from 'react-native'
 import { PermissionStatus } from 'react-native-permissions'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
@@ -65,69 +66,77 @@ export const NotificationsSettings = () => {
 
   return (
     <PageProfileSection title="Suivi et notifications" scrollable>
-      {isLoggedIn ? null : (
-        <React.Fragment>
-          <InfoBanner
-            message="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
-            icon={Info}
-          />
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
-      )}
-      <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>
-        Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={2} />
-      <Form.Flex>
-        <SectionWithSwitch
-          title="Autoriser l’envoi d’e-mails"
-          active={state.allowEmails}
-          toggle={() => dispatch('email')}
-          disabled={!isLoggedIn}
-        />
-        {!(Platform.OS === 'web') && (
+      <Container>
+        {isLoggedIn ? null : (
+          <React.Fragment>
+            <InfoBanner
+              message="Tu dois être connecté pour activer les notifications et rester informé des bons plans sur le pass Culture."
+              icon={Info}
+            />
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        )}
+        <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
+        <Spacer.Column numberOfSpaces={4} />
+        <Typo.Body>
+          Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
+        </Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Form.Flex>
           <SectionWithSwitch
-            title="Autoriser les notifications"
-            active={state.allowPush}
-            toggle={togglePush}
+            title="Autoriser l’envoi d’e-mails"
+            active={state.allowEmails}
+            toggle={() => dispatch('email')}
             disabled={!isLoggedIn}
           />
-        )}
-        <Spacer.Column numberOfSpaces={4} />
-        <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={8} />
-        <Typo.Title4 {...getHeadingAttrs(2)}>Tes thème suivis</Typo.Title4>
-        <Spacer.Column numberOfSpaces={6} />
-        <SectionWithSwitch
-          title="Suivre tous les thèmes"
-          active={state.themePreferences.length === TOTAL_NUMBER_OF_THEME}
-          toggle={() => dispatch('allTheme')}
-          disabled={!isLoggedIn}
-        />
-        <Spacer.Column numberOfSpaces={2} />
-        {Object.values(SubscriptionTheme).map((theme) => (
-          <React.Fragment key={theme}>
+          {!(Platform.OS === 'web') && (
             <SectionWithSwitch
-              title={theme}
-              active={isThemeToggled(theme)}
+              title="Autoriser les notifications"
+              active={state.allowPush}
+              toggle={togglePush}
               disabled={!isLoggedIn}
-              toggle={() => dispatch(theme)}
             />
-          </React.Fragment>
-        ))}
-        <Spacer.Column numberOfSpaces={2} />
-        <ButtonPrimary wording="Enregistrer" accessibilityLabel="Enregistrer les modifications" />
-      </Form.Flex>
-      <PushNotificationsModal
-        visible={isPushModalVisible}
-        onRequestPermission={onRequestNotificationPermissionFromModal}
-        onDismiss={hidePushModal}
-      />
+          )}
+          <Spacer.Column numberOfSpaces={4} />
+          <Separator.Horizontal />
+          <Spacer.Column numberOfSpaces={8} />
+          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thème suivis</Typo.Title4>
+          <Spacer.Column numberOfSpaces={6} />
+          <SectionWithSwitch
+            title="Suivre tous les thèmes"
+            active={state.themePreferences.length === TOTAL_NUMBER_OF_THEME}
+            toggle={() => dispatch('allTheme')}
+            disabled={!isLoggedIn}
+          />
+          <Spacer.Column numberOfSpaces={2} />
+          {Object.values(SubscriptionTheme).map((theme) => (
+            <React.Fragment key={theme}>
+              <SectionWithSwitch
+                title={theme}
+                active={isThemeToggled(theme)}
+                disabled={!isLoggedIn}
+                toggle={() => dispatch(theme)}
+              />
+            </React.Fragment>
+          ))}
+          <Spacer.Column numberOfSpaces={2} />
+          <ButtonPrimary wording="Enregistrer" accessibilityLabel="Enregistrer les modifications" />
+        </Form.Flex>
+        <PushNotificationsModal
+          visible={isPushModalVisible}
+          onRequestPermission={onRequestNotificationPermissionFromModal}
+          onDismiss={hidePushModal}
+        />
+      </Container>
     </PageProfileSection>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  maxWidth: theme.contentPage.maxWidth,
+  width: '100%',
+  alignSelf: 'center',
+}))
 
 type ToggleActions = SubscriptionTheme | 'email' | 'push' | 'allTheme'
 
