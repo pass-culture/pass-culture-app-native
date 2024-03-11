@@ -70,6 +70,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     (venue): venue is GeolocatedVenue =>
       !!(venue.venueId && venue._geoloc?.lat && venue._geoloc.lng)
   )
+  if (selectedVenue && !geolocatedVenues.find((venue) => venue.venueId === selectedVenue.venueId)) {
+    geolocatedVenues.push(selectedVenue)
+  }
 
   const handleRegionChangeComplete = (region: Region) => {
     setCurrentRegion(region)
