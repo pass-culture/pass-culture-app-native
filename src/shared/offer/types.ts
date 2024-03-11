@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 
 export type OfferLocation = {
   lat?: number | null

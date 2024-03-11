@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 
-export type ParsedDescription = Array<string | React.ReactNode>
+type ParsedDescription = Array<string | React.ReactNode>
 
 const externalNavRegex = new RegExp(
   /((^|\s)|https?:\/\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(\s|$)/,

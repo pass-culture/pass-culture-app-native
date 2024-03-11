@@ -10,7 +10,7 @@ import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/Sele
 import { IDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { PlaylistType } from 'features/offer/enums'
+import { PlaylistType } from 'features/offerv2/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { TutorialTypes } from 'features/tutorial/enums'

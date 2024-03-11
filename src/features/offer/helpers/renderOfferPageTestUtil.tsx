@@ -4,7 +4,7 @@ import React from 'react'
 import { OfferResponse } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { Offer } from 'features/offer/pages/Offer/Offer'
+import { Offer } from 'features/offerv2/pages/Offer/Offer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
@@ -29,7 +29,7 @@ jest.mock('features/offer/api/useOffer', () => ({
   }),
 }))
 
-export const offerId = 116656
+const offerId = 116656
 
 type MockOffer =
   | (OfferResponse & {

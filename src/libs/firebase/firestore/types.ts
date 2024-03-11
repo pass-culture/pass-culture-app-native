@@ -25,7 +25,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
   WIP_ENABLE_NEW_CHANGE_EMAIL = 'wipEnableNewChangeEmail',
   WIP_OFFER_PREVIEW = 'wipOfferPreview',
-  WIP_OFFER_V2 = 'wipOfferV2',
   WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',

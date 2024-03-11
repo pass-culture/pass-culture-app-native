@@ -4,8 +4,7 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { OfferPlaceOldProps } from 'features/offer/components/OfferPlaceOld/OfferPlaceOld'
-import { OfferPlace } from 'features/offerv2/components/OfferPlace/OfferPlace'
+import { OfferPlace, OfferPlaceProps } from 'features/offerv2/components/OfferPlace/OfferPlace'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, LocationMode } from 'libs/location/types'
@@ -73,7 +72,7 @@ jest
   // this value corresponds to WIP_ENABLE_MULTIVENUE_OFFER feature flag
   .mockReturnValue(true)
 
-const offerPlaceProps: OfferPlaceOldProps = {
+const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
   isEvent: false,
 }

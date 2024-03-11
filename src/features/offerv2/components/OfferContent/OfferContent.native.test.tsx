@@ -14,10 +14,10 @@ import {
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
-import * as useSameArtistPlaylist from 'features/offer/components/OfferPlaylistOld/hook/useSameArtistPlaylist'
-import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { PlaylistType } from 'features/offerv2/enums'
+import * as useSameArtistPlaylist from 'features/offerv2/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
