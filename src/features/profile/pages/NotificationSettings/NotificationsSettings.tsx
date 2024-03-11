@@ -89,7 +89,7 @@ export const NotificationsSettings = () => {
             toggle={() => dispatch('email')}
             disabled={!isLoggedIn}
           />
-          {!(Platform.OS === 'web') && (
+          {Platform.OS !== 'web' && (
             <SectionWithSwitch
               title="Autoriser les notifications"
               active={state.allowPush}
