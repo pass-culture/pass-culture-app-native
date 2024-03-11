@@ -46,7 +46,7 @@ describe('useModalContent', () => {
     const { result } = renderHook(useModalContent)
 
     expect(result.current.children).toMatchInlineSnapshot(`
-      <BookingOfferLoader
+      <Loader
         message="Chargement en cours..."
       />
     `)

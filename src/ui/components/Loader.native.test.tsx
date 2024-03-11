@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 import { render, screen } from 'tests/utils'
 
-describe('BookingOfferLoader', () => {
+import { Loader } from './Loader'
+
+describe('Loader', () => {
   it('should display the message use in parameter', () => {
-    render(<BookingOfferLoader message="En cours de chargement..." />)
+    render(<Loader message="En cours de chargement..." />)
 
     expect(screen.getByText('En cours de chargement...')).toBeOnTheScreen()
   })

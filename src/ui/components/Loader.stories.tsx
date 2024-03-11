@@ -2,18 +2,18 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
+import { Loader } from './Loader'
 
-const meta: ComponentMeta<typeof BookingOfferLoader> = {
-  title: 'features/bookOffer/BookingOfferLoader',
-  component: BookingOfferLoader,
+const meta: ComponentMeta<typeof Loader> = {
+  title: 'ui/Loader',
+  component: Loader,
 }
 export default meta
 
-const DynamicTemplate: ComponentStory<typeof BookingOfferLoader> = (props) => {
+const DynamicTemplate: ComponentStory<typeof Loader> = (props) => {
   return (
     <NavigationContainer>
-      <BookingOfferLoader {...props} />
+      <Loader {...props} />
     </NavigationContainer>
   )
 }
