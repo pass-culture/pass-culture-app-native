@@ -35,10 +35,7 @@ export const FilterRow = ({
     : undefined
 
   return (
-    <LocationContentContainer
-      testID="FilterRow"
-      onPress={onPress}
-      accessibilityDescribedBy={captionId}>
+    <TouchableRow testID="FilterRow" onPress={onPress} accessibilityDescribedBy={captionId}>
       {!!StyledIcon && (
         <React.Fragment>
           <StyledIcon />
@@ -46,31 +43,28 @@ export const FilterRow = ({
         </React.Fragment>
       )}
       <TextContainer>
-        <TitleAndDescriptionContainer>
-          <Title numberOfLines={1}>{title}</Title>
-          {!!description && <Description numberOfLines={1}>{description}</Description>}
-        </TitleAndDescriptionContainer>
-        {!!complement && (
-          <ComplementContainer>
-            <ComplementLabel numberOfLines={1}>{complement}</ComplementLabel>
-          </ComplementContainer>
-        )}
+        <TitleAndComplement>
+          <Title numberOfLines={2}>{title}</Title>
+          {!!complement && (
+            <ComplementContainer>
+              <ComplementLabel numberOfLines={1}>{complement}</ComplementLabel>
+            </ComplementContainer>
+          )}
+        </TitleAndComplement>
+        {!!description && <Description numberOfLines={1}>{description}</Description>}
       </TextContainer>
-
       <ArrowNext accessibilityLabel="Affiner la recherche" />
-    </LocationContentContainer>
+    </TouchableRow>
   )
 }
 
-const LocationContentContainer = styledButton(Touchable)({
+const TouchableRow = styledButton(Touchable)({
   flexDirection: 'row',
   alignItems: 'center',
-  flex: 1,
 })
 
-const TextContainer = styled.View({
+const TitleAndComplement = styled.View({
   flexDirection: 'row',
-  flex: 1,
 })
 
 const Title = styled(Typo.ButtonText)({
@@ -85,19 +79,17 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const TitleAndDescriptionContainer = styled.View(({ theme }) => ({
-  flexGrow: theme.isMobileViewport ? 1 : undefined,
-  flexShrink: 1,
+const TextContainer = styled.View({
+  flex: 1,
   alignItems: 'flex-start',
-}))
+})
 
 const ComplementContainer = styled.View({
   flexShrink: 0,
   justifyContent: 'center',
-  marginRight: getSpacing(3.5),
+  marginLeft: getSpacing(1),
 })
 
 const ComplementLabel = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
-  marginLeft: getSpacing(2),
 }))

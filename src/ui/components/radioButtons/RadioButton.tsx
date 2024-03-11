@@ -86,7 +86,7 @@ export function RadioButton(props: RadioButtonProps) {
         <LabelWrapper>
           {props.complement ? (
             <ContainerWithComplement>
-              <Label isSelected={props.isSelected} numberOfLines={1}>
+              <Label isSelected={props.isSelected} numberOfLines={2}>
                 {props.label}
               </Label>
               <ComplementLabel isSelected={props.isSelected} numberOfLines={1}>

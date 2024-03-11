@@ -3,7 +3,9 @@ import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
+import { BookCategoriesSection } from 'features/search/components/BookCategoriesSection/BookCategoriesSection'
+import { CategoriesSection } from 'features/search/components/CategoriesSection/CategoriesSection'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -20,8 +22,7 @@ import {
   MappedGenreTypes,
   MappedNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
-import { CategoriesSection } from 'features/search/pages/modals/CategoriesModal/CategoriesSection'
-import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
+import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -45,7 +46,7 @@ export interface CategoriesModalProps {
 
 export type CategoriesModalFormProps = {
   category: SearchGroupNameEnumv2
-  nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
+  nativeCategory: NativeCategoryEnum | null
   currentView: CategoriesModalView
   genreType: string | null
 }
@@ -109,7 +110,7 @@ export const CategoriesModal = ({
   )
 
   const handleNativeCategorySelect = useCallback(
-    (nativeCategoryKey: NativeCategoryIdEnumv2 | null) => {
+    (nativeCategoryKey: NativeCategoryEnum | null) => {
       if (!nativeCategories) return
 
       setValue('nativeCategory', nativeCategoryKey)
@@ -220,6 +221,31 @@ export const CategoriesModal = ({
     [currentView, filterBehaviour]
   )
 
+  const getNativeCategoriesSection = () => {
+    if (category === SearchGroupNameEnumv2.LIVRES && enableNewMapping) {
+      return (
+        <BookCategoriesSection
+          data={nativeCategories}
+          onSelect={handleNativeCategorySelect}
+          allValue={null}
+          allLabel="Tout"
+          value={nativeCategory}
+          descriptionContext={descriptionContext}
+        />
+      )
+    }
+    return (
+      <CategoriesSection
+        data={nativeCategories}
+        onSelect={handleNativeCategorySelect}
+        allValue={null}
+        allLabel="Tout"
+        value={nativeCategory}
+        descriptionContext={descriptionContext}
+      />
+    )
+  }
+
   return (
     <AppModal
       customModalHeader={
@@ -264,16 +290,7 @@ export const CategoriesModal = ({
             getIcon={getIcon}
           />
         )}
-        {currentView === CategoriesModalView.NATIVE_CATEGORIES && (
-          <CategoriesSection
-            data={nativeCategories}
-            onSelect={handleNativeCategorySelect}
-            allValue={null}
-            allLabel="Tout"
-            value={nativeCategory}
-            descriptionContext={descriptionContext}
-          />
-        )}
+        {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
         {currentView === CategoriesModalView.GENRES && (
           <CategoriesSection
             data={genreTypes}

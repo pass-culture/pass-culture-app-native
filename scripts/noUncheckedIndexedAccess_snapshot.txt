@@ -463,7 +463,7 @@
 ./src/features/search/pages/SearchLanding/SearchLanding.web.test.tsx:17
 ./src/features/search/pages/SearchResults/SearchResults.native.test.tsx:21
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:37
-./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:121
+./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:122
 ./src/features/search/pages/modals/VenueModal/VenueModal.native.test.tsx:100
 ./src/features/search/pages/modals/VenueModal/VenueModal.native.test.tsx:109
 ./src/features/search/pages/modals/VenueModal/VenueModal.native.test.tsx:125
