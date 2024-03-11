@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { OfferResponse } from 'api/gen'
-import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { VenueListItem } from 'features/offerv2/components/VenueSelectionList/VenueSelectionList'
 import { Offer } from 'features/offerv2/pages/Offer/Offer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'

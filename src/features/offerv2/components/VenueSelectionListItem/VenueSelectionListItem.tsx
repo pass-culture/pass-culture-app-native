@@ -1,8 +1,10 @@
 import React from 'react'
 
-import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
-
-import { VenueDetails, VenueDetailsProps } from '../VenueDetails/VenueDetails'
+import { SelectableListItem } from 'features/offerv2/components/SelectableListItem/SelectableListItem'
+import {
+  VenueDetails,
+  VenueDetailsProps,
+} from 'features/offerv2/components/VenueDetails/VenueDetails'
 
 type VenueSelectionListItemProps = VenueDetailsProps & {
   isSelected?: boolean

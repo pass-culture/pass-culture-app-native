@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
+import { VenueSelectionListHeader } from 'features/offerv2/components/VenueSelectionListHeader/VenueSelectionListHeader'
 import { render, screen } from 'tests/utils'
 
 describe('<VenueSelectionListHeader />', () => {

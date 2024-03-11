@@ -2,13 +2,13 @@ import React, { CSSProperties } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
-import { VenueDetails } from 'features/offer/components/VenueDetails/VenueDetails'
+import { SelectableListItem } from 'features/offerv2/components/SelectableListItem/SelectableListItem'
+import { VenueDetails } from 'features/offerv2/components/VenueDetails/VenueDetails'
 import {
   VenueListItem,
   VenueSelectionListProps,
-} from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
+} from 'features/offerv2/components/VenueSelectionList/VenueSelectionList'
+import { VenueSelectionListHeader } from 'features/offerv2/components/VenueSelectionListHeader/VenueSelectionListHeader'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { getSpacing } from 'ui/theme'
 

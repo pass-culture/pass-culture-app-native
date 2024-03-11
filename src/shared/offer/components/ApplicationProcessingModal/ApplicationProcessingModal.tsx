@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
+import { AddToFavoritesButton } from 'features/offerv2/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'

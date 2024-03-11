@@ -3,11 +3,11 @@ import { LayoutChangeEvent, View } from 'react-native'
 import { VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
-import { VenueSelectionListProps } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { VenueSelectionListProps } from 'features/offerv2/components/VenueSelectionList/VenueSelectionList'
 import {
   RowData,
   VenueSelectionListItem,
-} from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web'
+} from 'features/offerv2/components/VenueSelectionListItem/VenueSelectionListItem.web'
 
 const BASE_HEADER_HEIGHT = 96
 const HEADER_HEIGHT_NOT_GEOLOCATED = 198

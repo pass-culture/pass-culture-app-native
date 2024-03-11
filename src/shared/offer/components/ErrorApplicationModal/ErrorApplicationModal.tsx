@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
+import { AddToFavoritesButton } from 'features/offerv2/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'

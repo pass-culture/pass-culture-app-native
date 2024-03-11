@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { VenueListItem } from 'features/offerv2/components/VenueSelectionList/VenueSelectionList'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { VenueSelectionModal } from './VenueSelectionModal'

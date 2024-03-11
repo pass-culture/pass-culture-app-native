@@ -6,7 +6,7 @@ import {
   VenueListItem,
   VenueSelectionList,
   VenueSelectionListProps,
-} from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+} from 'features/offerv2/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'

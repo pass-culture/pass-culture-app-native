@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
-import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import { BottomBanner } from 'features/offerv2/components/BottomBanner/BottomBanner'
+import { CTAButton } from 'features/offerv2/components/CTAButton/CTAButton'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Spacer, getSpacing } from 'ui/theme'

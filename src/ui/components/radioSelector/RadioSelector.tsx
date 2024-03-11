@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
+import { SelectableListItem } from 'features/offerv2/components/SelectableListItem/SelectableListItem'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'

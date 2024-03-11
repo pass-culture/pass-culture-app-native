@@ -14,7 +14,7 @@ import { SecondButtonList } from 'features/identityCheck/components/SecondButton
 import { Icons } from 'features/internal/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/Illustrations'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
+import { BottomBanner } from 'features/offerv2/components/BottomBanner/BottomBanner'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
