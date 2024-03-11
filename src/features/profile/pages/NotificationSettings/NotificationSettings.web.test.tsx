@@ -1,5 +1,4 @@
 import React from 'react'
-import * as RNP from 'react-native-permissions'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,13 +9,9 @@ import { NotificationSettings } from './NotificationSettings'
 jest.mock('features/auth/context/AuthContext')
 
 useRoute.mockReturnValue({ key: 'ksdqldkmqdmqdq' })
-jest.spyOn(RNP, 'checkNotifications').mockResolvedValue({
-  status: 'granted',
-  settings: {},
-})
 
 describe('<NotificationSettings/>', () => {
-  it('should display first switch', async () => {
+  it('should only display switch to authorize emails', async () => {
     render(reactQueryProviderHOC(<NotificationSettings />))
 
     expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
