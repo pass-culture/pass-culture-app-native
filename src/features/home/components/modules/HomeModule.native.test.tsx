@@ -16,7 +16,7 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
-import { SimilarOffersResponse } from 'features/offerv2/types'
+import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { env } from 'libs/environment'

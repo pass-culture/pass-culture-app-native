@@ -3,7 +3,7 @@ import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
 import { InfiniteQueryObserverOptions, useInfiniteQuery } from 'react-query'
 
-import { VenueListItem } from 'features/offerv2/components/VenueSelectionList/VenueSelectionList'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'

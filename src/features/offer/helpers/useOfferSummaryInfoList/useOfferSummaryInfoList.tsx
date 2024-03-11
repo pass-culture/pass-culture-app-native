@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
-import { formatDuration } from 'features/offerv2/helpers/formatDuration/formatDuration'
+import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { capitalizeFirstLetter, getFormattedDates } from 'libs/parsers'
 import { getOfferLocationName } from 'shared/offer/helpers/getOfferLocationName'
 import { SummaryInfoProps } from 'ui/components/SummaryInfo'

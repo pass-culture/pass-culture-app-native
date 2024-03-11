@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { OfferExtraData } from 'api/gen'
-import { getOfferTags } from 'features/offerv2/helpers/getOfferTags/getOfferTags'
+import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 
 const meta: ComponentMeta<typeof InformationTags> = {
