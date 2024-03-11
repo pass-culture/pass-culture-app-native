@@ -1,5 +1,5 @@
-import { PlaylistType } from 'features/offerv2/enums'
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
+import { PlaylistType } from 'features/offerv2/enums'
 
 describe('determinePlaylistCategory', () => {
   it('should return "same_artist_playlist" when playlistType is SAME_ARTIST_PLAYLIST', () => {

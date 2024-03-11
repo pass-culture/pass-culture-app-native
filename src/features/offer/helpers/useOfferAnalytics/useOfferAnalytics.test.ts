@@ -1,5 +1,5 @@
-import { PlaylistType } from 'features/offerv2/enums'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
+import { PlaylistType } from 'features/offerv2/enums'
 import { analytics } from 'libs/analytics'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { renderHook } from 'tests/utils'
