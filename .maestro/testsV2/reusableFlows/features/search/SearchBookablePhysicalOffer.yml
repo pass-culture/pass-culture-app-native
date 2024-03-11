@@ -1,0 +1,18 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Rechercher'
+- scrollUntilVisible:
+    element:
+      text: "Livres"
+- tapOn: "Livres" 
+
+# TODO(e2e): Attendre que "Catégories soit check"
+- tapOn: 'Catégories'
+
+- assertVisible: 'Livres'
+- tapOn: 'Livres papier'
+
+- assertVisible: 'Livres papier'
+- tapOn: 'Rechercher'
+- tapOn: 'Ma position'
+- tapOn: 'Partout'
