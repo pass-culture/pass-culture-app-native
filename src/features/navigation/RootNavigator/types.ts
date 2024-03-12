@@ -23,6 +23,7 @@ export type Referrals =
   | 'same_artist_playlist'
   | 'similar_offer'
   | 'venue'
+  | 'venueMap'
   | 'video'
   | 'videoModal'
 
