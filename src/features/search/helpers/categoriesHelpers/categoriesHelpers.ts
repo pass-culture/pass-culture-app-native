@@ -156,17 +156,14 @@ function getUniqueBy<T>(arr: T[], key: keyof T) {
   return [...new Map(arr.map((item) => [item[key], item])).values()]
 }
 
-export function getCategoryFromEnum(data: undefined, enumValue: undefined): undefined
-export function getCategoryFromEnum(data: undefined, enumValue: SearchGroupNameEnumv2): undefined
-export function getCategoryFromEnum(
-  data: SubcategoriesResponseModelv2,
-  enumValue: undefined
-): undefined
-export function getCategoryFromEnum(
+function getCategoryFromEnum(data: undefined, enumValue: undefined): undefined
+function getCategoryFromEnum(data: undefined, enumValue: SearchGroupNameEnumv2): undefined
+function getCategoryFromEnum(data: SubcategoriesResponseModelv2, enumValue: undefined): undefined
+function getCategoryFromEnum(
   data: SubcategoriesResponseModelv2,
   enumValue: SearchGroupNameEnumv2
 ): SearchGroupResponseModelv2
-export function getCategoryFromEnum(
+function getCategoryFromEnum(
   data: SubcategoriesResponseModelv2 | undefined,
   enumValue?: SearchGroupNameEnumv2
 ) {

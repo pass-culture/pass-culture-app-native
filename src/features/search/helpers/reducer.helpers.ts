@@ -1,7 +1,7 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
-export const MIN_PRICE = 0
+const MIN_PRICE = 0
 export const MAX_PRICE = 300
 export const MAX_RADIUS = 100
 export const DEFAULT_TIME_RANGE = [8, 24]

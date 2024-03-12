@@ -340,10 +340,4 @@ src/features/navigation/helpers/index.ts:3 - navigateToBooking
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
-src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
-src/ui/components/touchableLink/types.ts:39 - TouchableLinkGenericProps (used in module)
-src/features/identityCheck/pages/helpers/getCurrentStep.ts:4 - getCurrentStep
-src/features/identityCheck/pages/helpers/isSubscriptionRoute.ts:4 - isSubscriptionRoute
-src/features/search/components/SearchVenueItems/SearchVenueItem.tsx:23 - SearchVenueItemProps (used in module)
-src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:159 - getCategoryFromEnum (used in module)
 src/libs/firebase/shims/app/index.ts:2 - default
