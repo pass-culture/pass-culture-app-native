@@ -15,6 +15,7 @@ import {
 } from 'features/venuemap/helpers/calculateDistanceMap'
 import { isGeolocValid } from 'features/venuemap/helpers/isGeolocValid'
 import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
+import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
@@ -87,6 +88,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     setShowSearchButton(false)
   }
 
+  const navigateToVenue = (venueId: number) => {
+    analytics.logConsultVenue({ venueId, from: 'venueMap' })
+    navigate('Venue', { id: venueId })
+  }
+
   const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
     event.stopPropagation()
@@ -94,7 +100,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     if (isPreviewEnabled) {
       setSelectedVenue(venue)
     } else {
-      navigate('Venue', { id: venue.venueId })
+      navigateToVenue(venue.venueId)
     }
   }
 
