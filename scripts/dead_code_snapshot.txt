@@ -71,12 +71,6 @@ src/api/gen/index.ts:3270 - ValidationErrorElement
 src/api/gen/index.ts:3505 - DefaultApiFetchParamCreator
 src/api/gen/index.ts:4806 - DefaultApiFp
 src/api/gen/index.ts:14 - ConfigurationParameters
-src/features/search/types.ts:80 - CategoriesModalFormProps
-src/features/search/types.ts:92 - CategoriesViewData
-src/features/search/types.ts:97 - MappedData
-src/features/search/types.ts:99 - VenueUserTitleRule (used in module)
-src/features/search/types.ts:100 - VenueUserData (used in module)
-src/features/search/types.ts:118 - AnalyticsParams
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)

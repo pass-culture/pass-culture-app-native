@@ -6,19 +6,11 @@ import {
   GenreTypeContentModel,
   GTL,
   NativeCategoryIdEnumv2,
-  NativeCategoryResponseModelv2,
   SearchGroupNameEnumv2,
-  SearchGroupResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { Referrals } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
-import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
-import {
-  MappedGenreTypes,
-  MappedNativeCategories,
-  MappingTree,
-} from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
@@ -77,27 +69,14 @@ export type UserData = {
   message: string
 }
 
-export type CategoriesModalFormProps = {
-  category: SearchGroupResponseModelv2
-  nativeCategory: NativeCategoryResponseModelv2 | null
-  genreType: OfferGenreType | null
-  currentView: CategoriesModalView
-}
-
 export type DescriptionContext = {
   category: SearchGroupNameEnumv2
   nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
   genreType: string | null
 }
-export type CategoriesViewData =
-  | NativeCategoryResponseModelv2
-  | SearchGroupResponseModelv2
-  | OfferGenreType
 
-export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
-
-export type VenueUserTitleRule = { venue_playlist_title: string }
-export type VenueUserData = VenueUserTitleRule | undefined
+type VenueUserTitleRule = { venue_playlist_title: string }
+type VenueUserData = VenueUserTitleRule | undefined
 export type VenuesUserData = VenueUserData[] | undefined
 
 export interface SearchListProps {
@@ -113,16 +92,6 @@ export interface SearchListProps {
   userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
-}
-
-export type AnalyticsParams = {
-  from: Referrals
-  query?: string
-  index?: number
-  searchId?: string
-  moduleName?: string
-  moduleId?: string
-  homeEntryId?: string
 }
 
 export type CreateHistoryItem = {
