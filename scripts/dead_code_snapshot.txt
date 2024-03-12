@@ -333,10 +333,5 @@ src/ui/components/Cover.tsx:13 - Cover
 src/ui/components/Playlist.tsx:19 - RenderHeaderItem (used in module)
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
-src/ui/svg/Background.tsx:28 - BackgroundWithWhiteStatusBar
-src/ui/svg/RadioButtonSelected.tsx:28 - RadioButtonSelected
-src/features/bookings/api/index.ts:1 - useUserHasBookings
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
-src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
-src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/libs/firebase/shims/app/index.ts:2 - default

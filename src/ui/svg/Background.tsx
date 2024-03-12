@@ -2,7 +2,6 @@ import React, { FunctionComponent, memo } from 'react'
 import { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
@@ -19,13 +18,6 @@ const NotMemoizedBackground: FunctionComponent<Props> = ({ width = '100%', heigh
 )
 
 export const BackgroundWithDefaultStatusBar = memo(NotMemoizedBackground)
-
-const NotMemoizedBackgroundWithWhiteStatusBar: FunctionComponent<Props> = (props) => {
-  useWhiteStatusBar()
-  return <BackgroundWithDefaultStatusBar {...props} />
-}
-
-export const BackgroundWithWhiteStatusBar = memo(NotMemoizedBackgroundWithWhiteStatusBar)
 
 const BackgroundContainer = styled.View<Props>(({ width, height, theme }) => ({
   position: 'absolute',
