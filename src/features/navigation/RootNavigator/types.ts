@@ -312,8 +312,8 @@ export type UseNavigationType = StackNavigationProp<RootStackParamList>
  */
 export type RouteParams<
   StackParamList extends Record<string, unknown>,
-  Screename extends keyof StackParamList
-> = Pick<StackParamList, Screename>[Screename]
+  ScreenName extends keyof StackParamList
+> = Pick<StackParamList, ScreenName>[ScreenName]
 
 type NavigateParams<RouteName extends keyof ParamListBase> =
   undefined extends ParamListBase[RouteName]
