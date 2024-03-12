@@ -8,7 +8,6 @@ import { svgIdentifier } from 'ui/svg/utils'
 type Props = {
   width?: string | number
   height?: string | number
-  chidren?: never
 }
 
 const NotMemoizedBackground: FunctionComponent<Props> = ({ width = '100%', height = '100%' }) => (
