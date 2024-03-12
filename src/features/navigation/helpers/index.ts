@@ -1,5 +1,4 @@
 export * from './navigateToHome'
-export * from './navigateToBooking'
 export * from './openUrl'
 export * from './isAppUrl'
 export * from './useCurrentRoute'

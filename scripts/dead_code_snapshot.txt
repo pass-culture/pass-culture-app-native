@@ -336,7 +336,6 @@ src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/ui/svg/Background.tsx:28 - BackgroundWithWhiteStatusBar
 src/ui/svg/RadioButtonSelected.tsx:28 - RadioButtonSelected
 src/features/bookings/api/index.ts:1 - useUserHasBookings
-src/features/navigation/helpers/index.ts:3 - navigateToBooking
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
