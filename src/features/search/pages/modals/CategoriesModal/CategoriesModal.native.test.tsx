@@ -416,6 +416,18 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
+    it('should keep initial parameters when pressing close button', async () => {
+      renderCategories()
+
+      const button = screen.getByText('Réinitialiser')
+      fireEvent.press(button)
+
+      const closeButton = screen.getByTestId('Fermer')
+      fireEvent.press(closeButton)
+
+      expect(await screen.findByText('Livres papier')).toBeOnTheScreen()
+    })
+
     it('should filter on category, native category and genre/type then only on category with all native categories', async () => {
       mockSearchState = {
         ...mockSearchState,

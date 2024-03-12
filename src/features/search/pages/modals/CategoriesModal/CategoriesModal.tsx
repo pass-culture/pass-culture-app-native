@@ -135,8 +135,9 @@ export const CategoriesModal = ({
   )
 
   const handleModalClose = useCallback(() => {
+    reset(getDefaultFormValues(tree, searchState))
     hideModal()
-  }, [hideModal])
+  }, [hideModal, reset, searchState, tree])
 
   const handleClose = useCallback(() => {
     handleModalClose()
