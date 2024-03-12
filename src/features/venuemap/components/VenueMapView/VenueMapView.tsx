@@ -17,7 +17,7 @@ import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
-import MapView, { EdgePadding, Marker, Region } from 'libs/maps/maps'
+import MapView, { EdgePadding, Marker, Region, MarkerPressEvent } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { MapPin } from 'ui/svg/icons/MapPin'
@@ -87,7 +87,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     setShowSearchButton(false)
   }
 
-  const handleMarkerPress = (venue: GeolocatedVenue) => {
+  const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
+    // Prevents the onPress of the MapView from being triggered
+    event.stopPropagation()
     setShowSearchButton(false)
     if (isPreviewEnabled) {
       setSelectedVenue(venue)
@@ -122,7 +124,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
               latitude: venue._geoloc.lat,
               longitude: venue._geoloc.lng,
             }}
-            onPress={() => handleMarkerPress(venue)}>
+            onPress={(event) => handleMarkerPress(venue, event)}>
             <StyledMapPin isSelected={venue.venueId === selectedVenue?.venueId} />
           </Marker>
         ))}

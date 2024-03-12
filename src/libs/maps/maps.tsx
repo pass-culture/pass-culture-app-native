@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-imports */
 import MapView from 'react-native-map-clustering'
-import { EdgePadding, Marker, Region } from 'react-native-maps'
+import { EdgePadding, Marker, Region, MarkerPressEvent } from 'react-native-maps'
 
 export default MapView
 export { Marker }
-export type { EdgePadding, Region }
+export type { EdgePadding, Region, MarkerPressEvent }
