@@ -2,6 +2,7 @@ import { Platform } from 'react-native'
 import { Social } from 'react-native-share'
 
 import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
@@ -446,11 +447,15 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_LOCATION_SETTINGS }),
   logOpenNotificationSettings: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS }),
-  logPerformSearch: (searchState: SearchState, nbHits: number) =>
+  logPerformSearch: (
+    searchState: SearchState,
+    disabilities: DisabilitiesProperties,
+    nbHits: number
+  ) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.PERFORM_SEARCH },
       {
-        ...buildPerformSearchState(searchState),
+        ...buildPerformSearchState(searchState, disabilities),
         searchNbResults: nbHits,
       }
     ),

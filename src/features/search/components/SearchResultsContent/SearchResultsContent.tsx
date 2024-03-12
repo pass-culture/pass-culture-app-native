@@ -6,6 +6,7 @@ import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -66,6 +67,7 @@ export const SearchResultsContent: React.FC = () => {
     venuesUserData,
     facets,
   } = useSearchResults()
+  const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
@@ -80,13 +82,12 @@ export const SearchResultsContent: React.FC = () => {
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      analytics.logPerformSearch(searchState, nbHits)
-
+      analytics.logPerformSearch(searchState, disabilities, nbHits)
       if (nbHits === 0) {
         analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }
     }
-  }, [isLoading, nbHits, previousIsLoading, searchState])
+  }, [isLoading, nbHits, previousIsLoading, searchState, disabilities])
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
