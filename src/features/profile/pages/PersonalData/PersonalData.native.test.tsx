@@ -136,6 +136,15 @@ describe('PersonalData', () => {
 
     expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
   })
+
+  it('should not show email change button when user has no password', () => {
+    renderPersonalData({
+      ...mockedUser,
+      hasPassword: false,
+    })
+
+    expect(screen.queryByLabelText('Modifier e-mail')).not.toBeOnTheScreen()
+  })
 })
 
 function renderPersonalData(response: UserProfileResponse) {

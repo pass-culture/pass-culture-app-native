@@ -48,12 +48,14 @@ export function PersonalData() {
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
-        <EditButton
-          navigateTo={{ screen: updateEmailRoute }}
-          onPress={onEmailChangeClick}
-          wording="Modifier"
-          accessibilityLabel="Modifier e-mail"
-        />
+        {user?.hasPassword ? (
+          <EditButton
+            navigateTo={{ screen: updateEmailRoute }}
+            onPress={onEmailChangeClick}
+            wording="Modifier"
+            accessibilityLabel="Modifier e-mail"
+          />
+        ) : null}
       </EditContainer>
 
       <StyledSeparator />
