@@ -7,4 +7,4 @@ export enum SubscriptionTheme {
   COURS = 'Cours et Ateliers',
 }
 
-export const TOTAL_NUMBER_OF_THEME = 6
+export const TOTAL_NUMBER_OF_THEME = Object.values(SubscriptionTheme).length

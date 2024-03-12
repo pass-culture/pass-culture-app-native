@@ -19,8 +19,8 @@ import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type State = {
-  allowEmails: boolean | undefined
-  allowPush: boolean | undefined
+  allowEmails?: boolean
+  allowPush?: boolean
   themePreferences: SubscriptionTheme[]
 }
 
@@ -110,14 +110,13 @@ export const NotificationsSettings = () => {
           />
           <Spacer.Column numberOfSpaces={2} />
           {Object.values(SubscriptionTheme).map((theme) => (
-            <React.Fragment key={theme}>
-              <SectionWithSwitch
-                title={theme}
-                active={isThemeToggled(theme)}
-                disabled={!isLoggedIn}
-                toggle={() => dispatch(theme)}
-              />
-            </React.Fragment>
+            <SectionWithSwitch
+              key={theme}
+              title={theme}
+              active={isThemeToggled(theme)}
+              disabled={!isLoggedIn}
+              toggle={() => dispatch(theme)}
+            />
           ))}
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary wording="Enregistrer" accessibilityLabel="Enregistrer les modifications" />

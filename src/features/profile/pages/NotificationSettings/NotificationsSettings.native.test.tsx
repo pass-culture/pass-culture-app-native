@@ -122,9 +122,8 @@ describe('NotificationSettings', () => {
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)
 
-      const openSettingsButton = await screen.findAllByText('Autoriser les notifications')
-      // @ts-expect-error: we know that this is not undefined
-      fireEvent.press(openSettingsButton[1])
+      const openSettingsButton = await screen.findByLabelText('Autoriser les notifications')
+      fireEvent.press(openSettingsButton)
 
       expect(Linking.openSettings).toHaveBeenCalledTimes(1)
     })

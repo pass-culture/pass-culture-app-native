@@ -71,7 +71,6 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     // debug route: in navigation component
     name: 'NotificationsSettingsWIP',
     component: NotificationsSettings,
-    hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-new-notification-settings',
   },
   // Stepper
