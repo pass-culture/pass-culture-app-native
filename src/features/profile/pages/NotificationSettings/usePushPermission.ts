@@ -1,5 +1,4 @@
-import { useFocusEffect } from '@react-navigation/native'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 
 import { useAppStateChange } from 'libs/appState'
@@ -15,9 +14,9 @@ export const usePushPermission = (
     return permission.status
   }, [])
 
-  useFocusEffect(() => {
+  useEffect(() => {
     refreshPermission()
-  })
+  }, [refreshPermission])
 
   useAppStateChange(
     async () => {
