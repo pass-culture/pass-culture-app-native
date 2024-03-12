@@ -341,7 +341,6 @@ src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDur
 src/features/profile/fixtures/domainsCredit.ts:18 - domains_exhausted_credit_underage
 src/features/profile/fixtures/domainsCredit.ts:26 - domains_credit_no_numeric_ceiling
 src/features/search/helpers/reducer.helpers.ts:4 - MIN_PRICE (used in module)
-src/libs/styled/native/types.ts:11 - ComputedTheme
 src/ui/components/touchableLink/types.ts:39 - TouchableLinkGenericProps (used in module)
 src/features/identityCheck/pages/helpers/getCurrentStep.ts:4 - getCurrentStep
 src/features/identityCheck/pages/helpers/isSubscriptionRoute.ts:4 - isSubscriptionRoute
