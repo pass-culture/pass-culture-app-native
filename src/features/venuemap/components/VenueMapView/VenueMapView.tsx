@@ -13,6 +13,7 @@ import {
   distanceToLatitudeDelta,
   distanceToLongitudeDelta,
 } from 'features/venuemap/helpers/calculateDistanceMap'
+import { isGeolocValid } from 'features/venuemap/helpers/isGeolocValid'
 import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -67,8 +68,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 
   const { data: venues = [] } = useGetAllVenues({ region: lastRegionSearched, radius })
   const geolocatedVenues = venues.filter(
-    (venue): venue is GeolocatedVenue =>
-      !!(venue.venueId && venue._geoloc?.lat && venue._geoloc.lng)
+    (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
   )
   const hasSelectionOutsideSearchArea =
     selectedVenue && !geolocatedVenues.find((venue) => venue.venueId === selectedVenue.venueId)
