@@ -16,9 +16,7 @@ export type ItemDimensions = { width: number; height: number }
 
 type Direction = 'previous' | 'next'
 
-export type RenderHeaderItem =
-  | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
-  | undefined
+type RenderHeaderItem = ((itemDimensions: ItemDimensions) => React.ReactElement<any>) | undefined
 
 export type RenderFooterItem =
   | ((itemDimensions: ItemDimensions) => React.ReactElement<any> | null)

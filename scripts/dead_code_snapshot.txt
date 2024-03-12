@@ -1,7 +1,4 @@
 jest/fixJestEnvironmentJsdom.ts:5 - default
-src/tests/mockServer.ts:39 - Mocks (used in module)
-src/tests/mockServer.ts:53 - RequestOptions (used in module)
-src/tests/mockServer.ts:60 - ResponseOptions (used in module)
 src/tests/utils.tsx:2 - cleanup
 src/tests/utils.tsx:6 - waitForElementToBeRemoved
 src/tests/utils.tsx:7 - getQueriesForElement
@@ -80,9 +77,6 @@ src/libs/algolia/algolia.d.ts:53 - AlgoliaFacetsAnalytics (used in module)
 src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
-src/libs/analytics/index.ts:6 - isCloseToEndHorizontal
-src/libs/analytics/index.ts:10 - AnalyticsProvider
-src/libs/hooks/index.ts:5 - useIsMounted (used in module)
 src/libs/jwt/fixtures.ts:2 - defaultDecodedToken (used in module)
 src/libs/location/index.ts:15 - requestGeolocPermission (used in module)
 src/libs/monitoring/sentry.ts:1 - Breadcrumb
@@ -136,7 +130,6 @@ src/libs/parsers/index.ts:35 - humanizeDistance
 src/libs/parsers/index.ts:64 - parseTypeHomeLabel
 src/libs/parsers/index.ts:70 - MAP_TYPE_TO_ICON
 src/libs/place/fetchAddresses.ts:4 - buildSuggestedAddresses (used in module)
-src/libs/place/fetchCities.ts:3 - CITIES_API_URL (used in module)
 src/libs/place/index.ts:7 - buildSuggestedPlaces
 src/libs/place/index.ts:21 - useCities
 src/libs/place/index.ts:5 - Properties
@@ -192,7 +185,6 @@ src/libs/react-native-share/index.tsx:39 - ButtonProps
 src/libs/react-native-share/index.tsx:40 - ShareSheetProps
 src/libs/react-native-web-fast-image/index.d.ts:155 - default
 src/libs/react-native-web-fast-image/index.js:93 - default
-src/libs/react-query/usePersistQuery.ts:40 - UsePersistQueryResult (used in module)
 src/tests/utils/web.tsx:17 - flushAllPromises (used in module)
 src/tests/utils/web.tsx:29 - flushAllPromisesTimes (used in module)
 src/tests/utils/web.tsx:41 - superFlushWithAct
@@ -329,8 +321,6 @@ src/tests/utils/web.tsx:5 - QueryArgs
 src/tests/utils/web.tsx:7 - Suggestion
 src/tests/utils/web.tsx:16 - Variant
 src/tests/utils/web.tsx:24 - Method
-src/ui/components/Cover.tsx:13 - Cover
-src/ui/components/Playlist.tsx:19 - RenderHeaderItem (used in module)
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration

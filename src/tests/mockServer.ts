@@ -36,7 +36,7 @@ export interface MockServerInterface<BodyType, HeadersType, RequestBody> {
   ): MockReturnType
 }
 
-export type Mocks<HeadersType, TResponse, RequestBody> = {
+type Mocks<HeadersType, TResponse, RequestBody> = {
   method: SupportedMethod
   url: string
   options: MockOptions<HeadersType, TResponse, RequestBody>
@@ -50,14 +50,14 @@ export type MockServerConstructorOptions<HeadersType, TResponse, RequestBody> = 
 
 export type MockServerMode = 'SERVER' | 'TEST'
 
-export type RequestOptions<HeadersType, RequestBody> = {
+type RequestOptions<HeadersType, RequestBody> = {
   headers?: Record<string, HeadersType> | undefined
   matchHeader?: [string, string]
   matchData?: RequestBody | undefined
   persist?: boolean
 }
 
-export type ResponseOptions<TResponse> = {
+type ResponseOptions<TResponse> = {
   statusCode?: number | 'network-error'
   delay?: number
   data?: TResponse

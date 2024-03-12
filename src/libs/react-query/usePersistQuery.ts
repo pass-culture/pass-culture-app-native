@@ -37,7 +37,7 @@ function useSetPersistQuery<TData, TError, TQueryKey>(
   }, [query.data, query.isLoading, queryKey])
 }
 
-export type UsePersistQueryResult<TData, TError> = UseQueryResult<TData, TError> & {
+type UsePersistQueryResult<TData, TError> = UseQueryResult<TData, TError> & {
   isOfflineData?: boolean
 }
 
