@@ -262,7 +262,7 @@ exports[`NotificationSettings should render correctly 1`] = `
           class="c2"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -280,11 +280,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -357,7 +357,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             class="css-view-175oi2r r-height-1472mwg"
           />
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -375,11 +375,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -435,7 +435,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             class="css-view-175oi2r r-height-3da1kt"
           />
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -453,11 +453,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -510,7 +510,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -528,11 +528,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -585,7 +585,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -603,11 +603,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -660,7 +660,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -678,11 +678,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -735,7 +735,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -753,11 +753,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
@@ -810,7 +810,7 @@ exports[`NotificationSettings should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingVertical-1yzf0co"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1h0z5md r-paddingVertical-1yzf0co"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
@@ -828,11 +828,11 @@ exports[`NotificationSettings should render correctly 1`] = `
               </label>
             </div>
             <div
+              class="css-view-175oi2r r-width-1janqcz"
+            />
+            <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
-              <div
-                class="css-view-175oi2r r-width-19wmn03"
-              />
               <div
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
