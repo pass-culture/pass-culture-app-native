@@ -438,12 +438,11 @@ export function getDescription(
 export function getDefaultFormView(tree: MappingTree, searchState: SearchState) {
   const { offerGenreTypes, offerCategories, offerNativeCategories } = searchState
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
+  if (!offerCategories?.[0]) return CategoriesModalView.CATEGORIES
   const category = tree[offerCategories[0]]
-  const nativeCategories = category?.children
-  const nativeCategory = offerNativeCategories?.length
-    ? // @ts-expect-error: because of noUncheckedIndexedAccess
-      nativeCategories?.[offerNativeCategories[0]]
+  const nativeCategories = category.children
+  const nativeCategory = offerNativeCategories?.[0]
+    ? nativeCategories?.[offerNativeCategories[0]]
     : undefined
 
   if (offerGenreTypes?.length || nativeCategory?.children) return CategoriesModalView.GENRES
