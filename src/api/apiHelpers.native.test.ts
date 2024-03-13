@@ -21,6 +21,8 @@ import { removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
+jest.mock('libs/keychain')
+
 const configuration: Configuration = {
   basePath: env.API_BASE_URL,
 }

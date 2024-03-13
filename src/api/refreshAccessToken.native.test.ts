@@ -7,6 +7,8 @@ import { eventMonitoring } from 'libs/monitoring'
 
 import { removeRefreshedAccessToken, refreshAccessToken } from './refreshAccessToken'
 
+jest.mock('libs/keychain')
+
 const respondWith = async (
   body: unknown,
   status = 200,
