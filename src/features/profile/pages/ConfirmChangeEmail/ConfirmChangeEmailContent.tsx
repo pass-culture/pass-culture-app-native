@@ -7,6 +7,7 @@ import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useConfirmChangeEmailMutationV2'
+import { isTimestampExpired } from 'libs/dates'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -44,13 +45,18 @@ export const ConfirmChangeEmailContent = () => {
     [params?.token, mutate]
   )
 
+  if (isTimestampExpired(params.expiration_timestamp)) {
+    navigate('ChangeEmailExpiredLink')
+    return null
+  }
+
   return (
     <React.Fragment>
       <ButtonPrimary wording="Confirmer la demande" onPress={onConfirmEmail} disabled={isLoading} />
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         as={ButtonTertiaryBlack}
-        wording="Fermer"
+        wording="Annuler"
         navigateTo={navigateToHomeConfig}
         icon={Invalidate}
         disabled={isLoading}

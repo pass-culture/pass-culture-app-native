@@ -167,7 +167,7 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
     }
   />
   <View
-    accessibilityLabel="Fermer"
+    accessibilityLabel="Annuler"
     accessibilityState={
       {
         "busy": undefined,
@@ -213,7 +213,7 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
         "width": "100%",
       }
     }
-    testID="Fermer"
+    testID="Annuler"
   >
     <View
       style={
@@ -251,7 +251,7 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
         ]
       }
     >
-      Fermer
+      Annuler
     </Text>
   </View>
   <View
@@ -436,7 +436,7 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
     }
   />
   <View
-    accessibilityLabel="Fermer"
+    accessibilityLabel="Annuler"
     accessibilityState={
       {
         "busy": undefined,
@@ -482,7 +482,7 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
         "width": "100%",
       }
     }
-    testID="Fermer"
+    testID="Annuler"
   >
     <View
       style={
@@ -520,7 +520,7 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
         ]
       }
     >
-      Fermer
+      Annuler
     </Text>
   </View>
   <View

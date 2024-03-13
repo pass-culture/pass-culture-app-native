@@ -31,10 +31,10 @@ const confirmationSuccessResponse = {
 }
 
 describe('<ConfirmChangeEmail />', () => {
-  it('should navigate to home when pressing close button', async () => {
+  it('should navigate to home when pressing cancel button', async () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
 
-    await act(async () => fireEvent.press(screen.getByText('Fermer')))
+    await act(async () => fireEvent.press(screen.getByText('Annuler')))
 
     expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
   })
@@ -96,5 +96,15 @@ describe('<ConfirmChangeEmail />', () => {
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
     expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
+  })
+
+  it('should redirect ChangeEmailExpiredLink when timestamp has expired', async () => {
+    useRoute.mockReturnValueOnce({ params: { token: 'token', expiration_timestamp: '1710317714' } })
+
+    render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
+
+    await screen.findByText('Confirmer la demande')
+
+    expect(navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
   })
 })
