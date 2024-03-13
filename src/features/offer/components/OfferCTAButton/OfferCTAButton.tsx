@@ -4,7 +4,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { OfferBookingButton } from 'features/offer/components/OfferBookingButton/OfferBookingButton'
+import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { Subcategory } from 'libs/subcategories/types'
@@ -61,7 +61,7 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <OfferBookingButton
+      <StickyBookingButton
         ctaWordingAndAction={{
           wording,
           onPress,

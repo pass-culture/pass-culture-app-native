@@ -14,7 +14,7 @@ type Props = {
   isLoggedIn?: boolean
 }
 
-export const OfferBookingButton: FunctionComponent<Props> = ({
+export const StickyBookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,

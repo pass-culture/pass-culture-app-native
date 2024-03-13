@@ -2,11 +2,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 
-import { OfferBookingButton } from 'features/offer/components/OfferBookingButton/OfferBookingButton'
+import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
 
-const meta: ComponentMeta<typeof OfferBookingButton> = {
-  title: 'features/offer/OfferBookingButton',
-  component: OfferBookingButton,
+const meta: ComponentMeta<typeof StickyBookingButton> = {
+  title: 'features/offer/StickyBookingButton',
+  component: StickyBookingButton,
 }
 export default meta
 
@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
   },
 })
 
-const Template: ComponentStory<typeof OfferBookingButton> = (props) => (
+const Template: ComponentStory<typeof StickyBookingButton> = (props) => (
   <View style={styles.container}>
-    <OfferBookingButton {...props} />
+    <StickyBookingButton {...props} />
   </View>
 )
 
