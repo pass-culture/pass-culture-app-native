@@ -267,12 +267,11 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 style={
                   {
                     "alignItems": "center",
-                    "flexGrow": 1,
                     "height": 40,
                     "justifyContent": "center",
-                    "maxWidth": 40,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 40,
                   }
                 }
                 testID="Fermer"
@@ -3009,12 +3008,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                 style={
                   {
                     "alignItems": "center",
-                    "flexGrow": 1,
                     "height": 40,
                     "justifyContent": "center",
-                    "maxWidth": 40,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 40,
                   }
                 }
                 testID="Fermer"

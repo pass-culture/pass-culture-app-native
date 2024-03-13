@@ -24,7 +24,6 @@ export const CloseButton: React.FC<HeaderIconProps> = ({ color, onClose, ...prop
 }
 
 const StyledTouchable = styledButton(Touchable)({
-  flexGrow: 1,
   width: getSpacing(10),
   height: getSpacing(10),
   justifyContent: 'center',
