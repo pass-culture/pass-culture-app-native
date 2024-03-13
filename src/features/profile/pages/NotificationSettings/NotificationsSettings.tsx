@@ -93,6 +93,12 @@ export const NotificationsSettings = () => {
             toggle={() => dispatch('email')}
             disabled={!isLoggedIn}
           />
+          {!state.allowEmails && isLoggedIn ? (
+            <Typo.Caption>
+              Tu continueras à recevoir par e-mail des informations essentielles concernant ton
+              compte.
+            </Typo.Caption>
+          ) : null}
           {Platform.OS !== 'web' && (
             <SectionWithSwitch
               title="Autoriser les notifications"
@@ -110,7 +116,7 @@ export const NotificationsSettings = () => {
             title="Suivre tous les thèmes"
             active={state.themePreferences.length === TOTAL_NUMBER_OF_THEME}
             toggle={() => dispatch('allTheme')}
-            disabled={!isLoggedIn}
+            disabled={areThemeToggledDisabled}
           />
           <Spacer.Column numberOfSpaces={2} />
           {Object.values(SubscriptionTheme).map((theme) => (
@@ -118,7 +124,7 @@ export const NotificationsSettings = () => {
               key={theme}
               title={theme}
               active={isThemeToggled(theme)}
-              disabled={!isLoggedIn}
+              disabled={areThemeToggledDisabled}
               toggle={() => dispatch(theme)}
             />
           ))}

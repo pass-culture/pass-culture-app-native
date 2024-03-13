@@ -456,6 +456,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
               </View>
             </View>
           </View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Tu continueras à recevoir par e-mail des informations essentielles concernant ton compte.
+          </Text>
           <View
             style={
               [

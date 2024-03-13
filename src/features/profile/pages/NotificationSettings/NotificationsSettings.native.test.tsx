@@ -105,6 +105,29 @@ describe('NotificationSettings', () => {
     expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
   })
 
+  it('should disabled all thematic toggles when email toggle and push toggle are inactive', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    expect(screen.getByTestId('Interrupteur Cinéma')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Lecture')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Musique')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Spectacles')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Visites et sorties')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toBeDisabled()
+  })
+
+  it('should display help message when the email toggle is inactive and user is logged in', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    expect(
+      screen.queryByText(
+        'Tu continueras à recevoir par e-mail des informations essentielles concernant ton compte.'
+      )
+    ).toBeOnTheScreen()
+  })
+
   describe('The behavior of the push switch', () => {
     it('should open the push notification modal when the push toggle is pressed and the permission is not granted', () => {
       mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
