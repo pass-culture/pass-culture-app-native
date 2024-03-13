@@ -65,13 +65,13 @@ describe('<OfferVenueBlock />', () => {
     }
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerWithNoImageVenue} />)
 
-    expect(screen.getByTestId('OfferVenueBlockPlaceholder')).toBeOnTheScreen()
+    expect(screen.getByTestId('VenuePreviewPlaceholder')).toBeOnTheScreen()
   })
 
   it('should not render placeholder instead of thumbnail when venue has an image', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
-    expect(screen.queryByTestId('OfferVenueBlockPlaceholder')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('VenuePreviewPlaceholder')).not.toBeOnTheScreen()
   })
 
   it("should render 'Changer le lieu de retrait' button when onChangeVenuePress is defined", () => {
