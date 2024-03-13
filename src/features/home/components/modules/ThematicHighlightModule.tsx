@@ -8,7 +8,9 @@ import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const TILE_HEIGHT = 244
@@ -81,7 +83,12 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
                 <Spacer.Column numberOfSpaces={1} />
               </React.Fragment>
             )}
-            <Title numberOfLines={1}>{title}</Title>
+            <TitleContainer>
+              <Title numberOfLines={1}>{title}</Title>
+              <IconContainer>
+                <PlainArrowNext size={theme.icons.sizes.standard} color={theme.colors.white} />
+              </IconContainer>
+            </TitleContainer>
           </BlackBackground>
         </TextContainer>
       </ImageBackground>
@@ -128,8 +135,20 @@ const BlackBackground = styled.View(({ theme }) => ({
 
 const Title = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.white,
+  flexShrink: 1,
 }))
 
 const Subtitle = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const IconContainer = styled.View({
+  flexShrink: 0,
+  marginLeft: getSpacing(2),
+})
+
+const TitleContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+})
