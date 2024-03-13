@@ -47,6 +47,9 @@ describe('NotificationSettings', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
 
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
+
     const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
     fireEvent.press(toggleSwitch)
 
@@ -67,6 +70,9 @@ describe('NotificationSettings', () => {
   it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
+
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
     fireEvent.press(toggleSwitch)
@@ -89,6 +95,9 @@ describe('NotificationSettings', () => {
   it('should toggle on specific theme when its toggle is pressed', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
+
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
     fireEvent.press(toggleSwitch)

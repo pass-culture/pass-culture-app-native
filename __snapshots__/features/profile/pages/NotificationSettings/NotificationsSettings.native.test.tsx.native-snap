@@ -794,7 +794,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -841,7 +841,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -851,17 +851,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -982,7 +985,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1029,7 +1032,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1039,17 +1042,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1160,7 +1166,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1207,7 +1213,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1217,17 +1223,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1338,7 +1347,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1385,7 +1394,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1395,17 +1404,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1516,7 +1528,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1563,7 +1575,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1573,17 +1585,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1694,7 +1709,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1741,7 +1756,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1751,17 +1766,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1872,7 +1890,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     {
                       "busy": undefined,
                       "checked": false,
-                      "disabled": false,
+                      "disabled": true,
                       "expanded": undefined,
                       "selected": undefined,
                     }
@@ -1919,7 +1937,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   >
                     <View
                       collapsable={false}
-                      disabled={false}
+                      disabled={true}
                       style={
                         {
                           "alignItems": "center",
@@ -1929,17 +1947,20 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                           "height": 28,
                           "justifyContent": "center",
                           "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
                           "width": 28,
                         }
                       }
-                    />
+                    >
+                      <View
+                        accessibilityLabel="Désactivé"
+                        height={16}
+                        width={16}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>

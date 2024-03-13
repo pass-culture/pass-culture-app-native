@@ -64,6 +64,10 @@ export const NotificationsSettings = () => {
     }
   }
 
+  const areNotificationsEnabled = state.allowEmails || state.allowPush
+
+  const areThemeToggledDisabled = !areNotificationsEnabled || !isLoggedIn
+
   return (
     <PageProfileSection title="Suivi et notifications" scrollable>
       <Container>
