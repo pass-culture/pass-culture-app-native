@@ -4,7 +4,6 @@ import { renderHook, waitFor } from 'tests/utils/web'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/itinerary/openGoogleMapsItinerary')
-jest.mock('libs/itinerary/useItinerary', () => jest.requireActual('libs/itinerary/useItinerary'))
 
 const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

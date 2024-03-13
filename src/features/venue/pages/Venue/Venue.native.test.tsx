@@ -25,6 +25,8 @@ jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
+jest.mock('libs/itinerary/useItinerary')
+
 const mockSubcategories = placeholderData.subcategories
 const mockHomepageLabels = placeholderData.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({

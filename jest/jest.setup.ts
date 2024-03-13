@@ -52,9 +52,6 @@ jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 
-/* See the corresponding mocks in libs/itinerary/__mocks__ */
-jest.mock('libs/itinerary/useItinerary')
-
 /* See the corresponding mocks in libs/subcategories/__mocks__ */
 jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/subcategories/useSubcategory')
