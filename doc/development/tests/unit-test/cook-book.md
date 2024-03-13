@@ -1,6 +1,6 @@
 # Tests cook book
 
-### Date
+## Date
 
 > We use `TZ=UTC` environment variable so every serialized date are in UTC to prevent environment conflict.
 
@@ -16,7 +16,7 @@ describe('Favorites reducer', () => {
 })
 ```
 
-### Authentication with `authContext`
+## Authentication with `authContext`
 
 To test as an authenticated person, you can mock `useAuthContext` as follows:
 
@@ -36,7 +36,7 @@ mockUseAuthContext.mockReturnValueOnce({
 })
 ```
 
-### Mock route params
+## Mock route params
 
 When the tested component use route params through `useRoute` hook, `params` can be mocked as follows:
 
@@ -51,7 +51,7 @@ useRoute.mockReturnValue({
 })
 ```
 
-### Test that the user sees a snackbar
+## Test that the user sees a snackbar
 
 1. Mock the snackbar context at the beginning of the file
 

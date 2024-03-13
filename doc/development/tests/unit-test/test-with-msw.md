@@ -5,7 +5,7 @@ For that purpose we use msw, and `mockServer` utils, and 8 possible methods: `ge
 
 They are two types of call: the one to our backend `api/native` and the other ones. We also have two uses of our mocked request : those who responds with a status code 200 and a data (that we use the most) and the one with an error. Here are different example on how to use the mockServer in different use cases.
 
-### Call to our API with data in response,
+## Call to our API with data in response
 
 For those calls we want to type correctly the data.
 
@@ -15,7 +15,7 @@ mockServer.getApi<UpdateEmailTokenExpiration>('/profile/token_expiration', {
 })
 ```
 
-### Call to our API but we want the response to persist for more than one call (here the data is empty)
+## Call to our API but we want the response to persist for more than one call (here the data is empty)
 
 For this use case, we need to pass the data in responseOptions field, and we use the persist option in requestOptions as follows :
 
@@ -26,7 +26,7 @@ mockServer.postApi('/change_password', {
 })
 ```
 
-### Call to our API but the response is an error
+## Call to our API but the response is an error
 
 Same as before, we need to go through the responseOptions field.
 
@@ -38,7 +38,7 @@ mockServer.postApi('/profile/update_email', {
 })
 ```
 
-### Call to another API than our `native` (the url needs to be full)
+## Call to another API than our `native` (the url needs to be full)
 
 It works the same with post, put or delete functions.
 
