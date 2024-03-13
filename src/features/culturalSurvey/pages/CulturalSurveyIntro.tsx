@@ -1,4 +1,4 @@
-import { CommonActions, useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -26,7 +27,7 @@ const FAQTouchableLinkProps = {
 
 export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
-  const { dispatch } = useNavigation()
+  const { reset } = useNavigation<UseNavigationType>()
 
   return (
     <GenericInfoPageWhite
@@ -70,22 +71,18 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           }}
         />
         <Spacer.Column numberOfSpaces={3} />
-        <InternalTouchableLink
+        <ButtonTertiaryBlack
           key={3}
-          as={ButtonTertiaryBlack}
           wording="Plus tard"
           icon={ClockFilled}
-          onBeforeNavigate={() => {
-            // The double navigation (reset + navigate) is unperceivable to the user and avoids complexifying the handleNavigation of InternalTouchableLink
-            dispatch(
-              CommonActions.reset({
-                index: 0,
-                routes: [{ name: navigateToHomeConfig.screen }],
-              })
-            )
+          onPress={() => {
+            reset({
+              index: 0,
+              routes: [{ name: navigateToHomeConfig.screen }],
+            })
+
             analytics.logHasSkippedCulturalSurvey()
           }}
-          navigateTo={navigateToHomeConfig}
         />
       </View>
     </GenericInfoPageWhite>

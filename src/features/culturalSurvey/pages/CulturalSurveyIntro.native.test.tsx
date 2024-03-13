@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { dispatch, navigate } from '__mocks__/@react-navigation/native'
+import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { analytics } from 'libs/analytics'
@@ -47,9 +47,9 @@ describe('CulturalSurveyIntro page', () => {
     fireEvent.press(LaterButton)
 
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith({
-        payload: { index: 0, routes: [{ name: 'TabNavigator' }] },
-        type: 'RESET',
+      expect(reset).toHaveBeenCalledWith({
+        index: 0,
+        routes: [{ name: 'TabNavigator' }],
       })
     })
   })
