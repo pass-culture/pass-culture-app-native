@@ -1,6 +1,5 @@
 import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
-import { ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -23,14 +22,10 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer } from 'ui/theme'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
   const { setDisabilities } = useAccessibilityFiltersContext()
@@ -42,7 +37,6 @@ export const SearchFilter: React.FC = () => {
   const currentRoute = routes[routes?.length - 1].name
   useSync(currentRoute === 'SearchFilter')
 
-  const headerHeight = useGetHeaderHeight()
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch()
   const logReinitializeFilters = useFunctionOnce(() => {
@@ -136,12 +130,11 @@ export const SearchFilter: React.FC = () => {
 
   return (
     <Container>
-      <PageHeaderWithoutPlaceholder title="Filtres" onGoBack={onGoBack} />
-
-      <ScrollView scrollEnabled keyboardShouldPersistTaps="always">
-        <Placeholder height={headerHeight} />
+      <SecondaryPageWithBlurHeader
+        title="Filtres"
+        onGoBack={onGoBack}
+        scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
         <VerticalUl>
-          <Spacer.Column numberOfSpaces={2} />
           {sectionItems.map((SectionItem, index) => {
             return (
               <SectionWrapper key={index} isFirstSectionItem={index === 0}>
@@ -150,9 +143,8 @@ export const SearchFilter: React.FC = () => {
             )
           })}
         </VerticalUl>
-      </ScrollView>
-      <BlurHeader height={headerHeight} />
-      <Spacer.Column numberOfSpaces={10} />
+      </SecondaryPageWithBlurHeader>
+      <Spacer.Column numberOfSpaces={4} />
       <FilterPageButtons
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
@@ -189,10 +181,4 @@ const Separator = styled.View(({ theme }) => ({
 
 const StyledLi = styled(Li)({
   display: 'flex',
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(6),
 })
-
-const Placeholder = styled.View<{ height: number }>(({ height }) => ({
-  height,
-}))
