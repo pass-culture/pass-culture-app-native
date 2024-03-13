@@ -138,7 +138,11 @@ export const NotificationsSettings = () => {
             />
           ))}
           <Spacer.Column numberOfSpaces={2} />
-          <ButtonPrimary wording="Enregistrer" accessibilityLabel="Enregistrer les modifications" />
+          <ButtonPrimary
+            wording="Enregistrer"
+            accessibilityLabel="Enregistrer les modifications"
+            disabled={!isLoggedIn}
+          />
         </Form.Flex>
         <PushNotificationsModal
           visible={isPushModalVisible}

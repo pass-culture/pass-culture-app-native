@@ -19,7 +19,7 @@ exports[`NotificationSettings should render correctly 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #eb0055;
+  background-color: #F1F1F4;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -891,11 +891,11 @@ exports[`NotificationSettings should render correctly 1`] = `
             aria-label="Enregistrer les modifications"
             class="c4 c5"
             data-testid="Enregistrer les modifications"
-            tabindex="0"
+            disabled=""
             type="button"
           >
             <div
-              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
               dir="ltr"
             >
               Enregistrer
