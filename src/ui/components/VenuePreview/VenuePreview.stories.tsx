@@ -35,3 +35,13 @@ WithArrow.args = {
   bannerUrl:
     'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
 }
+
+export const WithoutImage = Template.bind({})
+WithoutImage.args = {
+  venueName: offerResponseSnap.venue.name,
+  withRightArrow: true,
+  address: offerResponseSnap.venue.address ?? '',
+  imageHeight: VENUE_THUMBNAIL_SIZE,
+  imageWidth: VENUE_THUMBNAIL_SIZE,
+  bannerUrl: undefined,
+}
