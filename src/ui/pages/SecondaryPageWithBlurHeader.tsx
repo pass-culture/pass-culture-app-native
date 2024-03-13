@@ -9,30 +9,32 @@ import {
 import { getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
-  headerTitle: string
+  title: string
   shouldDisplayBackButton?: boolean
   onGoBack?: () => void
   RightButton?: ReactNode
+  scrollable?: boolean
 }>
 
 export const SecondaryPageWithBlurHeader = ({
-  headerTitle,
+  title,
   shouldDisplayBackButton,
   onGoBack,
   RightButton,
   children,
+  scrollable = true,
 }: Props) => {
   const headerHeight = useGetHeaderHeight()
 
   return (
     <React.Fragment>
       <PageHeaderWithoutPlaceholder
-        title={headerTitle}
+        title={title}
         shouldDisplayBackButton={shouldDisplayBackButton}
         onGoBack={onGoBack}
         RightButton={RightButton}
       />
-      <StyledScrollView>
+      <StyledScrollView scrollEnabled={scrollable}>
         <Placeholder height={headerHeight} />
         {children}
       </StyledScrollView>

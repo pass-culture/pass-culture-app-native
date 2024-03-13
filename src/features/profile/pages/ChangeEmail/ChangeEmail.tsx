@@ -22,7 +22,7 @@ export function ChangeEmail() {
   return (
     <React.Fragment>
       {enableNewChangeEmail ? (
-        <SecondaryPageWithBlurHeader headerTitle="Modifier mon e-mail">
+        <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
           <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
         </SecondaryPageWithBlurHeader>
       ) : (

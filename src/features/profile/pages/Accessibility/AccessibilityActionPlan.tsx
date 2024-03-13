@@ -6,13 +6,13 @@ import {
   ActionPlanTag,
 } from 'features/profile/components/Buttons/ActionPlanTag/ActionPlanTag'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
@@ -20,7 +20,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityActionPlan() {
   return (
-    <PageProfileSection title="Schéma pluriannuel" scrollable>
+    <SecondaryPageWithBlurHeader title="Schéma pluriannuel" scrollable>
       <StyledBody>Schéma pluriannuel d’accessibilité 2022 - 2024</StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
@@ -425,7 +425,7 @@ export function AccessibilityActionPlan() {
       <Spacer.Column numberOfSpaces={6} />
       <StyledBody>En cours de constitution</StyledBody>
       <Spacer.BottomScreen />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

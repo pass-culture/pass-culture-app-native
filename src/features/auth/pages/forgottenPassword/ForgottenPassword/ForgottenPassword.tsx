@@ -49,7 +49,7 @@ export const ForgottenPassword = () => {
 
   return (
     <SecondaryPageWithBlurHeader
-      headerTitle="Oubli de mot de passe"
+      title="Oubli de mot de passe"
       shouldDisplayBackButton
       onGoBack={onBackNavigation}>
       {!!settings?.isRecaptchaEnabled && (

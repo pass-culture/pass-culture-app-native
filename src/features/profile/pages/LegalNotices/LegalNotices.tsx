@@ -2,12 +2,12 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -17,7 +17,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function LegalNotices() {
   return (
-    <PageProfileSection title="Informations légales" scrollable>
+    <SecondaryPageWithBlurHeader title="Informations légales" scrollable>
       <TitleText>Mentions légales</TitleText>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
@@ -73,7 +73,7 @@ export function LegalNotices() {
         icon={ExternalSite}
         iconSize={SECTION_ROW_ICON_SIZE}
       />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

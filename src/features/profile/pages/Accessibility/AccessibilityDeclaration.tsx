@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -11,6 +10,7 @@ import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -40,7 +40,7 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 
 export function AccessibilityDeclaration() {
   return (
-    <PageProfileSection title="Déclaration d’accessibilité" scrollable>
+    <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité">
       <Typo.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
@@ -408,7 +408,7 @@ export function AccessibilityDeclaration() {
         </BulletListItem>
       </VerticalUl>
       <Spacer.BottomScreen />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

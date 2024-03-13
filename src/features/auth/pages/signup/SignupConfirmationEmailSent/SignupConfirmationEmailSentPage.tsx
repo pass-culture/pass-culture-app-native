@@ -9,7 +9,7 @@ type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 export const SignupConfirmationEmailSentPage: FunctionComponent<Props> = ({ route }) => {
   return (
-    <SecondaryPageWithBlurHeader headerTitle="Inscription">
+    <SecondaryPageWithBlurHeader title="Inscription">
       <SignupConfirmationEmailSent email={route.params.email} />
     </SecondaryPageWithBlurHeader>
   )

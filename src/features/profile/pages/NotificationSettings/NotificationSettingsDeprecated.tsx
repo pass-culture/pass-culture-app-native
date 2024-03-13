@@ -9,7 +9,6 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
@@ -18,6 +17,7 @@ import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 
 type State = {
@@ -143,7 +143,7 @@ export function NotificationSettingsDeprecated() {
   const pushSwitchEnabled = Boolean(state.pushPermission === 'granted' && state.allowPush)
 
   return (
-    <PageProfileSection title="Notifications">
+    <SecondaryPageWithBlurHeader title="Notifications">
       <Typo.Body>
         {isLoggedIn
           ? 'Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.'
@@ -198,7 +198,7 @@ export function NotificationSettingsDeprecated() {
         onRequestPermission={onRequestNotificationPermissionFromModal}
         onDismiss={hideNotificationsModal}
       />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

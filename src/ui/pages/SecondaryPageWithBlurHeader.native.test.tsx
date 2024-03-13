@@ -8,7 +8,7 @@ import { SecondaryPageWithBlurHeader } from './SecondaryPageWithBlurHeader'
 describe('<SecondaryPageWithBlurHeader />', () => {
   it('should render correctly', () => {
     render(
-      <SecondaryPageWithBlurHeader headerTitle="GenericInfoPageWhite">
+      <SecondaryPageWithBlurHeader title="GenericInfoPageWhite">
         <Typo.Title3>Children</Typo.Title3>
       </SecondaryPageWithBlurHeader>
     )

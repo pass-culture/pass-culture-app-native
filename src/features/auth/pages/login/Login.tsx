@@ -204,7 +204,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
-      <SecondaryPageWithBlurHeader headerTitle="Connexion" shouldDisplayBackButton>
+      <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
