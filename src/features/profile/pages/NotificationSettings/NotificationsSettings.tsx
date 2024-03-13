@@ -111,6 +111,15 @@ export const NotificationsSettings = () => {
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={8} />
           <Typo.Title4 {...getHeadingAttrs(2)}>Tes thème suivis</Typo.Title4>
+          {!isLoggedIn || areNotificationsEnabled ? null : (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <InfoBanner
+                message="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications."
+                icon={Info}
+              />
+            </React.Fragment>
+          )}
           <Spacer.Column numberOfSpaces={6} />
           <SectionWithSwitch
             title="Suivre tous les thèmes"

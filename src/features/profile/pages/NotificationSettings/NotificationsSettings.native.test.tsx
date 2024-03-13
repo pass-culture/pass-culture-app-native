@@ -128,6 +128,46 @@ describe('NotificationSettings', () => {
     ).toBeOnTheScreen()
   })
 
+  it('should display info banner when email and push toggles are inactive', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    expect(
+      screen.queryByText(
+        'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should not display info banner when at least email or push toggles is active', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
+
+    expect(
+      screen.queryByText(
+        'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
+      )
+    ).not.toBeOnTheScreen()
+  })
+
+  it('should not display info banner when user is not logged in', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      isLoggedIn: false,
+      user: undefined,
+    })
+    render(<NotificationsSettings />)
+
+    expect(
+      screen.queryByText(
+        'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
+      )
+    ).not.toBeOnTheScreen()
+  })
+
   describe('The behavior of the push switch', () => {
     it('should open the push notification modal when the push toggle is pressed and the permission is not granted', () => {
       mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
