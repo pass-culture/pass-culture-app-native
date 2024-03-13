@@ -33,8 +33,7 @@ export const SearchFilter: React.FC = () => {
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER
   )
   const routes = useNavigationState((state) => state?.routes)
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const currentRoute = routes[routes?.length - 1].name
+  const currentRoute = routes?.[routes?.length - 1]?.name
   useSync(currentRoute === 'SearchFilter')
 
   const { searchState, dispatch } = useSearch()

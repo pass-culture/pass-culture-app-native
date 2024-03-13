@@ -452,7 +452,6 @@
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:37
 ./src/features/search/pages/Search/Search.native.test.tsx:22
 ./src/features/search/pages/Search/Search.web.test.tsx:15
-./src/features/search/pages/SearchFilter/SearchFilter.tsx:41
 ./src/features/search/pages/SearchLanding/SearchLanding.native.test.tsx:23
 ./src/features/search/pages/SearchLanding/SearchLanding.web.test.tsx:17
 ./src/features/search/pages/SearchResults/SearchResults.native.test.tsx:21
