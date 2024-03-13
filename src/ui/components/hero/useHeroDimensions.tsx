@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
@@ -17,16 +16,14 @@ export const useHeroDimensions = () => {
   const { appContentWidth, borderRadius } = useTheme()
   const fullWidth = appContentWidth - 2 * MARGIN_DP
 
-  return useMemo(() => {
-    return {
-      heroBackgroundHeight: top + HEADER_HEIGHT,
-      imageStyle: {
-        borderRadius: borderRadius.radius,
-        height: PORTRAIT_IMAGE_V2_HEIGHT,
-        width: Math.round(PORTRAIT_IMAGE_V2_HEIGHT * RATIO_PORTRAIT),
-        maxWidth: fullWidth,
-        aspectRatio: RATIO_PORTRAIT,
-      },
-    }
-  }, [top, borderRadius.radius, fullWidth])
+  return {
+    heroBackgroundHeight: top + HEADER_HEIGHT,
+    imageStyle: {
+      borderRadius: borderRadius.radius,
+      height: PORTRAIT_IMAGE_V2_HEIGHT,
+      width: Math.round(PORTRAIT_IMAGE_V2_HEIGHT * RATIO_PORTRAIT),
+      maxWidth: fullWidth,
+      aspectRatio: RATIO_PORTRAIT,
+    },
+  }
 }
