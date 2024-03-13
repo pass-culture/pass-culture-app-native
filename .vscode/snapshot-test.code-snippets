@@ -8,7 +8,7 @@
 		"import { ${1:PageName} } from './${1:PageName}'",
 		"",
 		"describe('<${1:PageName} />', () => {",
-		"\tit('should render correctly', async () => {",
+		"\tit('should render correctly', () => {",
 		"\t\trender(<${1:PageName} />)",
 		"",
 		"\t\texpect(screen).toMatchSnapshot()",

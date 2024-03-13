@@ -3,7 +3,7 @@
 	  "prefix": "msw-success",
 	  "scope": "javascriptreact, typescriptreact",
 	  "body": [
-		"mockServer.${1:method}Api('/v${2:route}', ${0:data}",
+		"mockServer.${1:method}Api('/v${2:route}', ${0:data})",
 		""
 	  ],
 	  "description": "Mock a successful request with msw"
