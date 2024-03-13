@@ -4,56 +4,28 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
-import { VenueHeaderBackground } from 'ui/svg/VenueHeaderBackground'
 
 interface Props {
   imageUrl?: string
   imageHeight: number
-  type: 'offer' | 'offerv2' | 'venue'
   minHeight?: number
   children?: React.ReactNode
   onPress?: VoidFunction
 }
 
 const isWeb = Platform.OS === 'web'
+const blurImageRadius = Platform.OS === 'android' ? 5 : 20
+const blurImageTransform = isWeb ? { transform: 'scale(1.1)' } : {}
 
 export const HeroHeader: FunctionComponent<Props> = ({
   imageUrl,
   imageHeight,
-  type,
   minHeight,
   children,
   onPress,
 }) => {
   const { appContentWidth } = useTheme()
 
-  const getBackgroundImage = () => {
-    if (type === 'offer') {
-      return (
-        <BackgroundPlaceholder
-          testID="BackgroundPlaceholder"
-          width={appContentWidth}
-          height={imageHeight}
-        />
-      )
-    } else if (type === 'venue') {
-      return (
-        <BackgroundContainer>
-          {Array.from({ length: 9 }).map((_, index) => (
-            <VenueHeaderBackground key={index} />
-          ))}
-        </BackgroundContainer>
-      )
-    } else {
-      return <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
-    }
-  }
-
-  const backgroundImage = getBackgroundImage()
-
-  const blurImageRadius = Platform.OS === 'android' ? 5 : 20
-  const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
   const blurImageStyle = { height: imageHeight, width: appContentWidth }
 
   return (
@@ -69,7 +41,7 @@ export const HeroHeader: FunctionComponent<Props> = ({
             {...blurImageTransform}
           />
         ) : (
-          backgroundImage
+          <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
         )}
       </HeroContainer>
       {!isWeb ? <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity> : children}
@@ -81,10 +53,6 @@ const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
   alignItems: 'center',
   minHeight,
 }))
-
-const BackgroundContainer = styled.View({
-  flexDirection: 'row',
-})
 
 const HeroContainer = styled.View({
   alignItems: 'center',

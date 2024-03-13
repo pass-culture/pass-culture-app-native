@@ -177,7 +177,7 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
+        <HeroHeader imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
         <Spacer.Column numberOfSpaces={heroMarginTop} />
         <TicketSwiper booking={booking} />
         <View>
