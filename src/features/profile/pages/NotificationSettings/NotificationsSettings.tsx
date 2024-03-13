@@ -64,6 +64,10 @@ export const NotificationsSettings = () => {
     }
   }
 
+  const areNotificationsEnabled = state.allowEmails || state.allowPush
+
+  const areThemeTogglesDisabled = !areNotificationsEnabled || !isLoggedIn
+
   return (
     <PageProfileSection title="Suivi et notifications" scrollable>
       <Container>
@@ -89,6 +93,12 @@ export const NotificationsSettings = () => {
             toggle={() => dispatch('email')}
             disabled={!isLoggedIn}
           />
+          {!state.allowEmails && isLoggedIn ? (
+            <Typo.Caption>
+              Tu continueras à recevoir par e-mail des informations essentielles concernant ton
+              compte.
+            </Typo.Caption>
+          ) : null}
           {Platform.OS !== 'web' && (
             <SectionWithSwitch
               title="Autoriser les notifications"
@@ -101,12 +111,21 @@ export const NotificationsSettings = () => {
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={8} />
           <Typo.Title4 {...getHeadingAttrs(2)}>Tes thème suivis</Typo.Title4>
+          {!isLoggedIn || areNotificationsEnabled ? null : (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <InfoBanner
+                message="Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications."
+                icon={Info}
+              />
+            </React.Fragment>
+          )}
           <Spacer.Column numberOfSpaces={6} />
           <SectionWithSwitch
             title="Suivre tous les thèmes"
             active={state.themePreferences.length === TOTAL_NUMBER_OF_THEME}
             toggle={() => dispatch('allTheme')}
-            disabled={!isLoggedIn}
+            disabled={areThemeTogglesDisabled}
           />
           <Spacer.Column numberOfSpaces={2} />
           {Object.values(SubscriptionTheme).map((theme) => (
@@ -114,7 +133,7 @@ export const NotificationsSettings = () => {
               key={theme}
               title={theme}
               active={isThemeToggled(theme)}
-              disabled={!isLoggedIn}
+              disabled={areThemeTogglesDisabled}
               toggle={() => dispatch(theme)}
             />
           ))}

@@ -47,6 +47,9 @@ describe('NotificationSettings', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
 
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
+
     const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
     fireEvent.press(toggleSwitch)
 
@@ -67,6 +70,9 @@ describe('NotificationSettings', () => {
   it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
+
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Suivre tous les thèmes')
     fireEvent.press(toggleSwitch)
@@ -90,10 +96,76 @@ describe('NotificationSettings', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
 
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
+
     const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
     fireEvent.press(toggleSwitch)
 
     expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: true })
+  })
+
+  it('should disabled all thematic toggles when email toggle and push toggle are inactive', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    expect(screen.getByTestId('Interrupteur Cinéma')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Lecture')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Musique')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Spectacles')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Visites et sorties')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toBeDisabled()
+  })
+
+  it('should display help message when the email toggle is inactive and user is logged in', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    expect(
+      screen.getByText(
+        'Tu continueras à recevoir par e-mail des informations essentielles concernant ton compte.'
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should display info banner when email and push toggles are inactive', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    expect(
+      screen.queryByText(
+        'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
+      )
+    ).toBeOnTheScreen()
+  })
+
+  it('should not display info banner when at least email or push toggles is active', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
+
+    expect(
+      screen.queryByText(
+        'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
+      )
+    ).not.toBeOnTheScreen()
+  })
+
+  it('should not display info banner when user is not logged in', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      isLoggedIn: false,
+      user: undefined,
+    })
+    render(<NotificationsSettings />)
+
+    expect(
+      screen.queryByText(
+        'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
+      )
+    ).not.toBeOnTheScreen()
   })
 
   describe('The behavior of the push switch', () => {
