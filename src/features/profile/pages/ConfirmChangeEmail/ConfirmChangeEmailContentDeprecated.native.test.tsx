@@ -52,10 +52,10 @@ describe('<ConfirmChangeEmailDeprecated />', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
   })
 
-  it('should navigate to home when pressing close button', () => {
+  it('should navigate to home when pressing cancel button', () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmailContentDeprecated />))
 
-    fireEvent.press(screen.getByText('Fermer'))
+    fireEvent.press(screen.getByText('Annuler'))
 
     expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
   })

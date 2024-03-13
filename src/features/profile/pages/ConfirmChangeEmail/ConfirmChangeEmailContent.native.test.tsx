@@ -31,10 +31,10 @@ const confirmationSuccessResponse = {
 }
 
 describe('<ConfirmChangeEmail />', () => {
-  it('should navigate to home when pressing close button', async () => {
+  it('should navigate to home when pressing cancel button', async () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
 
-    await act(async () => fireEvent.press(screen.getByText('Fermer')))
+    await act(async () => fireEvent.press(screen.getByText('Annuler')))
 
     expect(navigate).toHaveBeenCalledWith(...homeNavConfig)
   })

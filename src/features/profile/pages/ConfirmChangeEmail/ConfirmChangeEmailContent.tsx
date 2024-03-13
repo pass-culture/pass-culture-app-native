@@ -56,7 +56,7 @@ export const ConfirmChangeEmailContent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         as={ButtonTertiaryBlack}
-        wording="Fermer"
+        wording="Annuler"
         navigateTo={navigateToHomeConfig}
         icon={Invalidate}
         disabled={isLoading}
