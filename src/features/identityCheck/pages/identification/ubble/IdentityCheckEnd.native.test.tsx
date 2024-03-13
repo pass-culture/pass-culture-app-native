@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CommonActions, dispatch, navigate } from '__mocks__/@react-navigation/native'
+import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
@@ -52,10 +52,9 @@ describe('<IdentityCheckEnd/>', () => {
     jest.advanceTimersByTime(3000)
 
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(CommonActions.reset).toHaveBeenCalledWith({
-        index: 1,
-        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+      expect(dispatch).toHaveBeenCalledWith({
+        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+        type: 'RESET',
       })
     })
   })

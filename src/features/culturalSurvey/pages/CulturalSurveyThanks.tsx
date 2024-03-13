@@ -1,13 +1,17 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CulturalSurveyThanks: React.FC = () => {
+  const { reset } = useNavigation<UseNavigationType>()
+
   return (
     <GenericInfoPageWhite
       mobileBottomFlex={0.1}
@@ -17,7 +21,15 @@ export const CulturalSurveyThanks: React.FC = () => {
       <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>
       <Spacer.Flex flex={2} />
       <ButtonContainer>
-        <ButtonPrimary wording="Découvrir le catalogue" onPress={navigateToHome} />
+        <ButtonPrimary
+          wording="Découvrir le catalogue"
+          onPress={() => {
+            reset({
+              index: 0,
+              routes: [{ name: navigateToHomeConfig.screen }],
+            })
+          }}
+        />
       </ButtonContainer>
     </GenericInfoPageWhite>
   )

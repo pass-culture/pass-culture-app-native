@@ -352,7 +352,7 @@
 ./src/features/identityCheck/pages/profile/SetCity.native.test.tsx:99
 ./src/features/identityCheck/pages/profile/SetStatus.native.test.tsx:69
 ./src/features/identityCheck/pages/profile/SetStatus.native.test.tsx:73
-./src/features/identityCheck/pages/profile/SetStatus.native.test.tsx:95
+./src/features/identityCheck/pages/profile/SetStatus.native.test.tsx:94
 ./src/features/internal/cheatcodes/hooks/useSomeOfferId.ts:24
 ./src/features/internal/cheatcodes/hooks/useSomeVenueId.ts:23
 ./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:751

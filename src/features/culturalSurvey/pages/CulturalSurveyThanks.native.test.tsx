@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
-import { navigateToHome } from 'features/navigation/helpers'
 import { render, fireEvent, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
@@ -18,6 +18,9 @@ describe('CulturalSurveyThanksPage page', () => {
     const DiscoverButton = screen.getByTestId('Découvrir le catalogue')
     fireEvent.press(DiscoverButton)
 
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(reset).toHaveBeenCalledWith({
+      index: 0,
+      routes: [{ name: 'TabNavigator' }],
+    })
   })
 })

@@ -23,7 +23,7 @@ export const InternalTouchableLink: FunctionComponent<InternalTouchableLinkProps
         fromRef ? navigateFromRef(screen, params) : navigate(screen, params)
       }
     }
-  }, [enableNavigate, navigateTo, push, navigate])
+  }, [enableNavigate, navigateTo, navigate, push])
   return (
     <TouchableLink handleNavigation={handleNavigation} linkProps={internalLinkProps} {...rest} />
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CommonActions, dispatch } from '__mocks__/@react-navigation/native'
+import { dispatch } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
@@ -75,10 +75,9 @@ describe('<SetStatus/>', () => {
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
-      expect(CommonActions.reset).toHaveBeenCalledWith({
-        index: 1,
-        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+      expect(dispatch).toHaveBeenCalledWith({
+        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+        type: 'RESET',
       })
     })
   })
