@@ -48,13 +48,17 @@ exports[`BookingDetails should render correctly 1`] = `
         >
           <View
             height={296}
-            testID="BackgroundPlaceholder"
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 296,
+                  "width": 960,
+                },
+              ]
+            }
             width={960}
-          >
-            <Text>
-              BackgroundPlaceholder-SVG-Mock
-            </Text>
-          </View>
+          />
         </View>
         <View
           accessibilityState={

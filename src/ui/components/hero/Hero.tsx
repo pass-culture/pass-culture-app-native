@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { mapCategoryToIcon, mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
+import { mapCategoryToIcon } from 'libs/parsers'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
@@ -15,52 +15,38 @@ import { Tag } from 'ui/components/Tag/Tag'
 import { Camera } from 'ui/svg/icons/Camera'
 import { getSpacing, Spacer, getShadow } from 'ui/theme'
 
-type HeroProps = (
-  | { type: 'offer'; categoryId: CategoryIdEnum | null }
-  | { type: 'offerv2'; categoryId: CategoryIdEnum | null }
-  | { type: 'venue'; venueType: VenueTypeCode | null }
-) & { imageUrl?: string; shouldDisplayOfferPreview?: boolean; onPress?: VoidFunction }
+type HeroProps = {
+  categoryId: CategoryIdEnum | null
+  imageUrl?: string
+  shouldDisplayOfferPreview?: boolean
+  onPress?: VoidFunction
+}
 
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
 
 export const Hero: FunctionComponent<HeroProps> = ({
+  categoryId,
   imageUrl,
   shouldDisplayOfferPreview,
   onPress,
-  ...placeholderProps
 }) => {
-  const { heroBackgroundHeight, imageStyle } = useHeroDimensions({
-    type: placeholderProps.type,
-    hasImage: !!imageUrl,
-  })
+  const { heroBackgroundHeight, imageStyle } = useHeroDimensions()
 
   const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(
-    ({ theme }): ComponentProps<typeof DefaultImagePlaceholder> =>
-      placeholderProps.type === 'offer' || placeholderProps.type === 'offerv2'
-        ? {
-            Icon: mapCategoryToIcon(placeholderProps.categoryId),
-            backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
-            borderRadius: theme.borderRadius.radius,
-            size: PLACEHOLDER_ICON_SIZE,
-          }
-        : {
-            Icon: mapVenueTypeToIcon(placeholderProps.venueType),
-            borderRadius: theme.borderRadius.button,
-            iconColor: theme.colors.white,
-            size: PLACEHOLDER_ICON_SIZE,
-          }
+    ({ theme }): ComponentProps<typeof DefaultImagePlaceholder> => ({
+      Icon: mapCategoryToIcon(categoryId),
+      backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
+      borderRadius: theme.borderRadius.radius,
+      size: PLACEHOLDER_ICON_SIZE,
+    })
   )({
     position: 'absolute',
     zIndex: 1,
   })
 
   return (
-    <HeroHeader
-      type={placeholderProps.type}
-      imageHeight={heroBackgroundHeight}
-      imageUrl={imageUrl}
-      onPress={onPress}>
+    <HeroHeader imageHeight={heroBackgroundHeight} imageUrl={imageUrl} onPress={onPress}>
       <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (

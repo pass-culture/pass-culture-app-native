@@ -129,7 +129,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         onScroll={onScroll}>
         <Hero
           imageUrl={offer.image?.url}
-          type="offerv2"
           categoryId={subcategory.categoryId}
           shouldDisplayOfferPreview={shouldDisplayOfferPreview}
           onPress={onPress}
