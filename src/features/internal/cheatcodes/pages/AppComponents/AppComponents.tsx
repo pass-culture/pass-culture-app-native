@@ -3,7 +3,7 @@ import { Alert, Button, ScrollView, Text, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
+import { CallToActionIcon, CategoryIdEnum, PopOverIcon } from 'api/gen/api'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
@@ -41,7 +41,6 @@ import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
@@ -267,22 +266,6 @@ export const AppComponents: FunctionComponent = () => {
             />
             {endText}
           </Typo.Caption>
-        </AccordionItem>
-
-        <Divider />
-
-        {/* Heros */}
-        <AccordionItem title="Heros">
-          <Typo.Title4>Default Hero - Offer</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <Hero imageUrl={undefined} type="offer" categoryId={CategoryIdEnum.CINEMA} />
-          <Typo.Title4>Default Hero - Venue</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCodeKey.ARTISTIC_COURSE} />
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.Title4>Landscape Hero - Venue with image</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <Hero imageUrl={imageUrl} type="venue" venueType={VenueTypeCodeKey.ARTISTIC_COURSE} />
         </AccordionItem>
 
         <Divider />
