@@ -9,7 +9,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
-import { ProfileContainer } from 'features/profile/components/PageProfileSection/ProfileContainer'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
@@ -297,6 +296,13 @@ export function Profile() {
 }
 
 const Container = styled.View({ flex: 1 })
+
+const ProfileContainer = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+  flexDirection: 'column',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const paddingVertical = getSpacing(4)
 
