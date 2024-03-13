@@ -66,7 +66,7 @@ export const NotificationsSettings = () => {
 
   const areNotificationsEnabled = state.allowEmails || state.allowPush
 
-  const areThemeToggledDisabled = !areNotificationsEnabled || !isLoggedIn
+  const areThemeTogglesDisabled = !areNotificationsEnabled || !isLoggedIn
 
   return (
     <PageProfileSection title="Suivi et notifications" scrollable>
@@ -125,7 +125,7 @@ export const NotificationsSettings = () => {
             title="Suivre tous les thèmes"
             active={state.themePreferences.length === TOTAL_NUMBER_OF_THEME}
             toggle={() => dispatch('allTheme')}
-            disabled={areThemeToggledDisabled}
+            disabled={areThemeTogglesDisabled}
           />
           <Spacer.Column numberOfSpaces={2} />
           {Object.values(SubscriptionTheme).map((theme) => (
@@ -133,7 +133,7 @@ export const NotificationsSettings = () => {
               key={theme}
               title={theme}
               active={isThemeToggled(theme)}
-              disabled={areThemeToggledDisabled}
+              disabled={areThemeTogglesDisabled}
               toggle={() => dispatch(theme)}
             />
           ))}
