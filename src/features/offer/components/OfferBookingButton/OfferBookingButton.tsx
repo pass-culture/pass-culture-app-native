@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
@@ -8,17 +8,17 @@ import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Spacer, getSpacing } from 'ui/theme'
 
-type OfferBookingButtonProps = {
+type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
 }
 
-export function OfferBookingButton({
+export const OfferBookingButton: FunctionComponent<Props> = ({
   ctaWordingAndAction,
   isFreeDigitalOffer,
   isLoggedIn,
-}: OfferBookingButtonProps) {
+}) => {
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
 
