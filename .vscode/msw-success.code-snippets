@@ -1,5 +1,5 @@
 {
-	"Performance test": {
+	"MSW successful request": {
 	  "prefix": "msw-success",
 	  "scope": "javascriptreact, typescriptreact",
 	  "body": [

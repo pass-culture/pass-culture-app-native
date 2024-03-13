@@ -1,5 +1,5 @@
 {
-	"Performance test": {
+	"Snapshot test": {
 	  "prefix": "snapshot-test",
 	  "scope": "javascriptreact, typescriptreact",
 	  "body": [
