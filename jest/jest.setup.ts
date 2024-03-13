@@ -27,8 +27,6 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-jest.mock('features/auth/helpers/contactSupport')
-
 /* See the corresponding mocks in features/navigation/RootNavigator/__mocks__ */
 jest.mock('features/navigation/RootNavigator/routes')
 /* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
