@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -6,7 +6,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
 
-type CTAButtonProps = {
+type Props = {
   wording: string
   onPress?: () => void
   isDisabled?: boolean
@@ -16,7 +16,7 @@ type CTAButtonProps = {
   isLoggedIn?: boolean
 }
 
-export function CTAButton({
+export const CTAButton: FunctionComponent<Props> = ({
   wording,
   onPress,
   isDisabled,
@@ -24,7 +24,7 @@ export function CTAButton({
   navigateTo,
   isFreeDigitalOffer,
   isLoggedIn,
-}: CTAButtonProps) {
+}) => {
   const commonLinkProps = {
     as: ButtonWithLinearGradient,
     wording: wording,
@@ -50,6 +50,7 @@ export function CTAButton({
       />
     )
   }
+
   return (
     <ButtonWithLinearGradient
       wording={wording}
