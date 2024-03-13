@@ -2,6 +2,8 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import isEqual from 'lodash/isEqual'
 import { useEffect, useState } from 'react'
 
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -13,9 +15,12 @@ export const useSync = (shouldUpdate?: boolean) => {
   const [canSwitchToAroundMe, setCanSwitchToAroundMe] = useState(false) // we use this flag to authorize the switch to AROUND_ME mode when location type in params is AROUND_ME
 
   const { params } = useRoute<UseRouteType<'Search' | 'SearchFilter'>>()
+  const { accessibilityFilter, ...searchStateParams } = params || {}
+  const disabilitiesParams: Partial<DisabilitiesProperties> = accessibilityFilter || {}
   const { setParams } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
   const { setPlace, setSelectedLocationMode, hasGeolocPosition } = useLocation()
+  const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
 
   useEffect(() => {
     if (canSwitchToAroundMe && hasGeolocPosition) {
@@ -24,13 +29,24 @@ export const useSync = (shouldUpdate?: boolean) => {
     }
   }, [hasGeolocPosition, canSwitchToAroundMe, setSelectedLocationMode])
 
+  // update params -> accessibilityContext
+  useEffect(() => {
+    if (isLocked) return
+    if (!!accessibilityFilter && !isEqual(accessibilityFilter, disabilities)) {
+      setDisabilities({ ...disabilities, ...disabilitiesParams })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessibilityFilter, disabilitiesParams, isLocked, setDisabilities])
+
   // update params -> SearchState
   useEffect(() => {
-    if (!isLocked && !!params && !isEqual(params, searchState)) {
+    if (isLocked) return
+    if (!!params && !isEqual(searchStateParams, searchState)) {
       dispatch({
         type: 'SET_STATE',
-        payload: { ...initialSearchState, ...params },
+        payload: { ...initialSearchState, ...searchStateParams },
       })
+
       switch (params.locationFilter?.locationType) {
         case undefined: {
           break
@@ -53,19 +69,17 @@ export const useSync = (shouldUpdate?: boolean) => {
 
     // we don't want isLocked in the dependencies, because it should only be triggered by params updates.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, params, setPlace, setSelectedLocationMode])
+  }, [setDisabilities, dispatch, params, setPlace, setSelectedLocationMode])
 
-  //update searchState -> params
   useEffect(() => {
     setIsLocked(true)
-
-    if (!isEqual(params, searchState || shouldUpdate)) {
-      setParams(searchState)
+    const disabilityAndSearchContext = { ...searchState, accessibilityFilter: disabilities }
+    if (!isEqual(params, disabilityAndSearchContext || shouldUpdate)) {
+      setParams(disabilityAndSearchContext)
     }
-
     const timer = setTimeout(() => setIsLocked(false), 0)
     return () => clearTimeout(timer)
     // we don't want shouldUpdate in the dependencies, because it should only be triggered by SearchState updates.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchState, setParams])
+  }, [searchState, disabilities, setParams])
 }
