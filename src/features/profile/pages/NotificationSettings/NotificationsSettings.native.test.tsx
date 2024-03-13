@@ -122,7 +122,7 @@ describe('NotificationSettings', () => {
     render(<NotificationsSettings />)
 
     expect(
-      screen.queryByText(
+      screen.getByText(
         'Tu continueras à recevoir par e-mail des informations essentielles concernant ton compte.'
       )
     ).toBeOnTheScreen()
