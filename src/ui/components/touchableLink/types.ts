@@ -36,7 +36,7 @@ type AsProps = {
   as?: ElementType // Component that will be used to render the link
 } & Record<string, unknown>
 
-export type TouchableLinkGenericProps = {
+type TouchableLinkGenericProps = {
   onBeforeNavigate?: (event: GestureResponderEvent | MouseEvent) => void
   onAfterNavigate?: (event: GestureResponderEvent | MouseEvent) => void
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component

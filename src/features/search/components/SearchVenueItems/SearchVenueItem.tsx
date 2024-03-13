@@ -20,7 +20,7 @@ import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export interface SearchVenueItemProps {
+interface SearchVenueItemProps {
   venue: AlgoliaVenue
   width: number
   height: number

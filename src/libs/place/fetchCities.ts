@@ -1,6 +1,6 @@
 import { CitiesResponse } from 'libs/place'
 
-export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
+const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
 export const fetchCities = async (postalCode: string): Promise<CitiesResponse> => {
   const queryParams = new URLSearchParams()

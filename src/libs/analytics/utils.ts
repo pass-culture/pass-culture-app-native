@@ -30,13 +30,6 @@ export const isCloseToBottom = ({
   padding = 20,
 }: Props) => layoutMeasurement.height + contentOffset.y >= contentSize.height - padding
 
-export const isCloseToEndHorizontal = ({
-  layoutMeasurement,
-  contentOffset,
-  contentSize,
-  padding = 0,
-}: Props) => layoutMeasurement.width + contentOffset.x >= contentSize.width - padding
-
 // We don't send integers to firebase because they will be cast into int_value, float_value,
 // or double_value in BigQuery depending on its value. To facilitate the work of the team,
 // we just cast it to string.

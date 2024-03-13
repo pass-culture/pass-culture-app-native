@@ -448,8 +448,6 @@
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/helpers/addHighlightedAttribute/addHighlightedAttribute.test.ts:18
 ./src/features/search/helpers/addHighlightedAttribute/addHighlightedAttribute.test.ts:6
-./src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:444
-./src/features/search/helpers/categoriesHelpers/categoriesHelpers.ts:448
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:30
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:37
 ./src/features/search/pages/Search/Search.native.test.tsx:22
@@ -549,7 +547,6 @@
 ./src/tests/mswServer.ts:325
 ./src/tests/mswServer.ts:361
 ./src/ui/components/CollapsibleText/useIsTextEllipsis.ios.ts:17
-./src/ui/components/Playlist.tsx:121
 ./src/ui/components/SocialNetworkCard.tsx:17
 ./src/ui/components/StepDots.native.test.tsx:19
 ./src/ui/components/StepDots.native.test.tsx:21

@@ -2,13 +2,13 @@ import React, { ReactNode } from 'react'
 import { ThemeProvider as ThemeProviderWeb } from 'styled-components'
 
 import { useComputedTheme } from 'libs/styled/useComputedTheme'
+import { AppThemeType } from 'theme'
 
 import { ThemeProvider as ThemeProviderNative } from './native/ThemeProvider'
-import { ComputedTheme } from './web/types.web'
 
 type Props = {
   children: ReactNode
-  theme: ComputedTheme
+  theme: AppThemeType
 }
 
 export function ThemeProvider({ children, theme }: Props) {
