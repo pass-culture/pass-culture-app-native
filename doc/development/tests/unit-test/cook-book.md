@@ -1,6 +1,6 @@
 # Tests cook book
 
-#### Date
+## Date
 
 > We use `TZ=UTC` environment variable so every serialized date are in UTC to prevent environment conflict.
 
@@ -16,14 +16,14 @@ describe('Favorites reducer', () => {
 })
 ```
 
-#### Authentication with `authContext`
+## Authentication with `authContext`
 
 To test as an authenticated person, you can mock `useAuthContext` as follows:
 
 ```ts
 import { useAuthContext } from 'features/auth/context/AuthContext'
 
-jest.mock('features/auth/AuthContext')
+jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 // ... and then within each test
@@ -36,7 +36,7 @@ mockUseAuthContext.mockReturnValueOnce({
 })
 ```
 
-#### Mock route params
+## Mock route params
 
 When the tested component use route params through `useRoute` hook, `params` can be mocked as follows:
 
@@ -51,42 +51,27 @@ useRoute.mockReturnValue({
 })
 ```
 
-#### Use msw server
+## Test that the user sees a snackbar
 
-When we have to do a request to a server, for example our own API or the recommandation endpoint, we have to use a mocked server in our tests.
-For that purpose we use msw, and `mockServer` utils, and 8 possible methods: `getApiV1`, `postApiV1`, `putApiV1`, `deleteApiV1`, `universalGet`, `universalPost`, `universalPut`, `universalDelete`.
-
-They are two types of call: the one to our backend `api/native/v1` and the other ones. We also have two uses of our mocked request : those who responds with a status code 200 and a data (that we use the most) and the one with an error. Here are different example on how to use the mockServer in different use cases.
-
-1. Call to our API with data in response
+1. Mock the snackbar context at the beginning of the file
 
 ```ts
-mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
-  expiration: undefined,
-})
+const mockShowErrorSnackBar = jest.fn()
+const mockShowInfoSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+    showInfoSnackBar: mockShowInfoSnackBar,
+  }),
+}))
 ```
 
-2. Call to our API but we want the response to persist for more than one call (here the data is empty)
+2. In your test, assert that the mock has been called with the message that is supposed to be displayed in the snackBar, and with the correct timeout.
 
 ```ts
-mockServer.postApiV1('/change_password', {
-  responseOptions: { data: {} },
-  requestOptions: { persist: true },
-})
-```
-
-3. Call to our API but the response is an error
-
-```ts
-mockServer.postApiV1('/profile/update_email', {
-  responseOptions: { statusCode: 400, data: { code: 'INVALID_PASSWORD' } },
-})
-```
-
-4. Call to another API than our `native/v1` (the url needs to be full)
-
-```ts
-mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockOfferId}`, {
-  hits: [],
+expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+  message:
+    'Ton compte Google semble ne pas être valide. Pour pouvoir te connecter, confirme d’abord ton adresse e-mail Google.',
+  timeout: SNACK_BAR_TIME_OUT_LONG,
 })
 ```

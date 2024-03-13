@@ -1,0 +1,13 @@
+{
+	"MSW request with error": {
+	  "prefix": "msw-error",
+	  "scope": "javascriptreact, typescriptreact",
+	  "body": [
+		"mockServer.${1:method}Api('/v${2:route}', {",
+		"\tresponseOptions: { statusCode: ${3:statusCode}, data: {${0}} }",
+		"})",
+		""
+	  ],
+	  "description": "Mock a request with msw in case of an error"
+	}
+  }
