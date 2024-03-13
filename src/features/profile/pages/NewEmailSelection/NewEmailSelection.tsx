@@ -62,7 +62,6 @@ export const NewEmailSelection = () => {
 
   return (
     <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">
-      <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth flex={1}>
         <EmailInputController
           control={control}

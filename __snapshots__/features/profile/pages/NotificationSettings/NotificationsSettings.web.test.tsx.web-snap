@@ -94,23 +94,6 @@ exports[`NotificationSettings should render correctly 1`] = `
   text-decoration: none;
 }
 
-.c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
@@ -130,6 +113,23 @@ exports[`NotificationSettings should render correctly 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 <div>
@@ -152,7 +152,7 @@ exports[`NotificationSettings should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1 sc-iGgWBj c1"
+            class="c0 c1 sc-jXbUNg c1"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -193,16 +193,14 @@ exports[`NotificationSettings should render correctly 1`] = `
     </div>
   </header>
   <div
-    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-paddingHorizontal-1guathk"
+    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
   >
     <div
       class="css-view-175oi2r"
+      style="padding: 24px 24px 24px 24px; max-width: 500px; width: 100%; align-self: center;"
     >
       <div
         class="css-view-175oi2r r-height-17lwhjb"
-      />
-      <div
-        class="css-view-175oi2r r-height-1472mwg"
       />
       <div
         class="css-view-175oi2r r-alignSelf-1kihuf0 r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -903,9 +901,6 @@ exports[`NotificationSettings should render correctly 1`] = `
           </button>
         </form>
       </div>
-      <div
-        class="css-view-175oi2r r-height-1472mwg"
-      />
     </div>
   </div>
   <div

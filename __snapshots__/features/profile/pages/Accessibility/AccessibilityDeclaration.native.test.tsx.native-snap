@@ -174,16 +174,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
     </View>
   </View>,
   <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+        "width": "100%",
+      }
+    }
+    scrollEnabled={true}
     style={
       [
-        {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "paddingHorizontal": 24,
-        },
+        {},
       ]
     }
   >
@@ -194,16 +197,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
             },
           ]
         }
@@ -5704,16 +5697,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
           [
             {
               "height": 8,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
             },
           ]
         }

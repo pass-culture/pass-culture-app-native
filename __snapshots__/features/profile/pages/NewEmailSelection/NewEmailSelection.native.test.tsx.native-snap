@@ -179,9 +179,11 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
         "alignSelf": "center",
         "maxWidth": 500,
         "paddingHorizontal": 24,
+        "paddingVertical": 24,
         "width": "100%",
       }
     }
+    scrollEnabled={true}
     style={
       [
         {},
@@ -195,16 +197,6 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
             },
           ]
         }

@@ -6,7 +6,6 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   title: string
@@ -45,7 +44,8 @@ export const SecondaryPageWithBlurHeader = ({
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
-    paddingHorizontal: getSpacing(6),
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingVertical: theme.contentPage.marginVertical,
     maxWidth: theme.contentPage.maxWidth,
     width: '100%',
     alignSelf: 'center',

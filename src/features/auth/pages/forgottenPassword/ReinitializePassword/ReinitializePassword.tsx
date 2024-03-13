@@ -119,7 +119,6 @@ export const ReinitializePassword = () => {
     <SecondaryPageWithBlurHeader
       title="Nouveau mot de passe"
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
-      <Spacer.Column numberOfSpaces={8} />
       <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <Form.MaxWidth>
