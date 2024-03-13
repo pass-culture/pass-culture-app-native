@@ -97,4 +97,14 @@ describe('<ConfirmChangeEmail />', () => {
 
     expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
   })
+
+  it('should redirect ChangeEmailExpiredLink when timestamp has expired', async () => {
+    useRoute.mockReturnValueOnce({ params: { token: 'token', expiration_timestamp: '1710317714' } })
+
+    render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
+
+    await screen.findByText('Confirmer la demande')
+
+    expect(navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+  })
 })
