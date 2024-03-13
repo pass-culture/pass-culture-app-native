@@ -35,6 +35,7 @@ import {
   GenericRoute,
   SubscriptionRootStackParamList,
 } from 'features/navigation/RootNavigator/types'
+import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 
 // Try to keep those routes in the same order as the user flow
 export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] = [
@@ -65,6 +66,12 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     component: NewIdentificationFlow,
     hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-new-identification-flow',
+  },
+  {
+    // debug route: in navigation component
+    name: 'NotificationsSettingsWIP',
+    component: NotificationsSettings,
+    path: 'cheat-navigation-new-notification-settings',
   },
   // Stepper
   {

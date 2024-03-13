@@ -28,7 +28,7 @@ type State = {
   pushTouched: boolean
 }
 
-export function NotificationSettings() {
+export function NotificationSettingsDeprecated() {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { isLoggedIn, user } = useAuthContext()
 

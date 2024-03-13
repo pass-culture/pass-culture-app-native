@@ -36,7 +36,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   const Icon = icon
 
   return (
-    <Container>
+    <Container toggleLabel={!!toggleLabel}>
       <TitleContainer toggleLabel={!!toggleLabel}>
         {!!Icon && (
           <React.Fragment>
@@ -48,13 +48,16 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           <Typo.ButtonText>{title}</Typo.ButtonText>
         </InputLabel>
       </TitleContainer>
+      <Spacer.Row numberOfSpaces={4} />
       <FilterSwitchLabelContainer>
         {toggleLabel && !isMobileViewport ? (
-          <ToggleLabel id={labelID} htmlFor={checkboxID}>
-            {toggleLabel}
-          </ToggleLabel>
+          <React.Fragment>
+            <ToggleLabel id={labelID} htmlFor={checkboxID}>
+              {toggleLabel}
+            </ToggleLabel>
+            <Spacer.Row numberOfSpaces={4} />
+          </React.Fragment>
         ) : null}
-        <Spacer.Row numberOfSpaces={5} />
         <FilterSwitch
           checkboxID={checkboxID}
           active={active}
@@ -69,11 +72,12 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
   paddingVertical: getSpacing(4),
-  flexDirection: 'row',
+  flexDirection: theme.isMobileViewport || toggleLabel ? 'row' : 'row-reverse',
+  justifyContent: theme.isMobileViewport || toggleLabel ? 'flex-start' : 'flex-end',
   alignItems: 'center',
-})
+}))
 
 const TitleContainer = styled.View<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
   flex: theme.isMobileViewport || toggleLabel ? 1 : undefined,

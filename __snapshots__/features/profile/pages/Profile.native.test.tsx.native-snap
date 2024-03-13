@@ -527,10 +527,12 @@ exports[`Profile component should render correctly 1`] = `
                     {
                       "alignItems": "center",
                       "flexDirection": "row",
+                      "justifyContent": "flex-start",
                       "paddingVertical": 16,
                     },
                   ]
                 }
+                toggleLabel={true}
               >
                 <View
                   style={
@@ -594,6 +596,16 @@ exports[`Profile component should render correctly 1`] = `
                   </Text>
                 </View>
                 <View
+                  numberOfSpaces={4}
+                  style={
+                    [
+                      {
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
                   style={
                     [
                       {
@@ -603,16 +615,6 @@ exports[`Profile component should render correctly 1`] = `
                     ]
                   }
                 >
-                  <View
-                    numberOfSpaces={5}
-                    style={
-                      [
-                        {
-                          "width": 20,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     style={
                       [
