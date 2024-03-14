@@ -42,14 +42,16 @@ const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-export const OngoingCredit = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const OngoingCredit = Template.bind({})
 OngoingCredit.args = {
   age: 18,
   creditStatus: CreditStatus.ONGOING,
   children: <StyledTitle3>300&nbsp;€</StyledTitle3>,
 }
 
-export const withDescription = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const withDescription = Template.bind({})
 withDescription.args = {
   children: (
     <React.Fragment>
@@ -62,7 +64,8 @@ withDescription.args = {
   creditStatus: CreditStatus.COMING,
 }
 
-export const CreditBlockList = List.bind({})
+//TODO(PC-28526): Fix this stories
+const CreditBlockList = List.bind({})
 CreditBlockList.args = {
   children: <StyledTitle3>30&nbsp;€</StyledTitle3>,
   age: 17,
