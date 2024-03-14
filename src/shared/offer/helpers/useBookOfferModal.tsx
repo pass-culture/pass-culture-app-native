@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/type'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
@@ -14,6 +15,7 @@ export type OfferModalProps = {
   offerId: number
   isEndedUsedBooking?: boolean
   from: StepperOrigin
+  bookingDataMovieScreening?: MovieScreeningBookingData
 }
 
 type Output = {
@@ -26,6 +28,7 @@ export const useBookOfferModal = ({
   offerId,
   isEndedUsedBooking,
   from,
+  bookingDataMovieScreening,
 }: OfferModalProps): Output => {
   const { visible, showModal, hideModal } = useModal(false)
 
@@ -59,6 +62,7 @@ export const useBookOfferModal = ({
             dismissModal={hideModal}
             offerId={offerId}
             isEndedUsedBooking={isEndedUsedBooking}
+            bookingDataMovieScreening={bookingDataMovieScreening}
           />
         ),
         showModal,
