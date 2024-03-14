@@ -708,11 +708,11 @@ describe('SearchResultsContent component', () => {
       render(<SearchResultsContent />)
       let filterButton
       await act(async () => {
-        filterButton = screen.getByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
+        filterButton = screen.getByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')
       })
 
       expect(filterButton).toBeOnTheScreen()
-      expect(filterButton).toHaveTextContent('2')
+      expect(filterButton).toHaveTextContent('1')
     })
   })
 

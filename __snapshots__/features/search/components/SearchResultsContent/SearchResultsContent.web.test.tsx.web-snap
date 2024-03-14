@@ -264,9 +264,9 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                 role="listitem"
               >
                 <div
-                  aria-label="Voir tous les filtres : 1 filtre actif"
+                  aria-label="Voir tous les filtres"
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
-                  data-testid="Voir tous les filtres : 1 filtre actif"
+                  data-testid="Voir tous les filtres"
                   style="transition-duration: 0s;"
                   tabindex="0"
                 >
@@ -281,21 +281,6 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                         dir="ltr"
                       >
                         undefined-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-alignSelf-1kihuf0 r-borderColor-11mg6pl r-borderRadius-1q9bdsx r-borderStyle-1phboty r-borderWidth-rs99b7 r-backgroundColor-colhrt r-bottom-1p0dtai r-position-u8s1d r-right-zchlnj"
-                    data-testid="searchFilterBadge"
-                  >
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7 r-minWidth-285fr0 r-paddingHorizontal-1p4rafz"
-                    >
-                      <div
-                        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                        dir="ltr"
-                      >
-                        1
                       </div>
                     </div>
                   </div>
@@ -736,9 +721,9 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               role="listitem"
             >
               <div
-                aria-label="Voir tous les filtres : 1 filtre actif"
+                aria-label="Voir tous les filtres"
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
-                data-testid="Voir tous les filtres : 1 filtre actif"
+                data-testid="Voir tous les filtres"
                 style="transition-duration: 0s;"
                 tabindex="0"
               >
@@ -753,21 +738,6 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                       dir="ltr"
                     >
                       undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-borderColor-11mg6pl r-borderRadius-1q9bdsx r-borderStyle-1phboty r-borderWidth-rs99b7 r-backgroundColor-colhrt r-bottom-1p0dtai r-position-u8s1d r-right-zchlnj"
-                  data-testid="searchFilterBadge"
-                >
-                  <div
-                    class="css-view-175oi2r r-height-10ptun7 r-minWidth-285fr0 r-paddingHorizontal-1p4rafz"
-                  >
-                    <div
-                      class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                      dir="ltr"
-                    >
-                      1
                     </div>
                   </div>
                 </div>
