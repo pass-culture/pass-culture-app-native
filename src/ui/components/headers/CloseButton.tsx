@@ -14,9 +14,9 @@ interface HeaderIconProps {
   color?: ColorsEnum
 }
 
-export const CloseButton: React.FC<HeaderIconProps> = ({ color, onClose }) => {
+export const CloseButton: React.FC<HeaderIconProps> = ({ color, onClose, ...props }) => {
   return (
-    <StyledTouchable onPress={onClose} accessibilityLabel="Fermer">
+    <StyledTouchable onPress={onClose} accessibilityLabel="Fermer" {...props}>
       <Close testID="icon-close" color={color} />
       <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>
@@ -24,8 +24,7 @@ export const CloseButton: React.FC<HeaderIconProps> = ({ color, onClose }) => {
 }
 
 const StyledTouchable = styledButton(Touchable)({
-  flexGrow: 1,
-  maxWidth: getSpacing(10),
+  width: getSpacing(10),
   height: getSpacing(10),
   justifyContent: 'center',
   alignItems: 'center',

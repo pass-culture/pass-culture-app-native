@@ -267,12 +267,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 style={
                   {
                     "alignItems": "center",
-                    "flexGrow": 1,
                     "height": 40,
                     "justifyContent": "center",
-                    "maxWidth": 40,
                     "opacity": 1,
                     "userSelect": "auto",
+                    "width": 40,
                   }
                 }
                 testID="Fermer"

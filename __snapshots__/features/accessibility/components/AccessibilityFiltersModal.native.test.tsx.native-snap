@@ -326,12 +326,11 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                   style={
                     {
                       "alignItems": "center",
-                      "flexGrow": 1,
                       "height": 40,
                       "justifyContent": "center",
-                      "maxWidth": 40,
                       "opacity": 1,
                       "userSelect": "auto",
+                      "width": 40,
                     }
                   }
                   testID="Fermer"
@@ -1328,12 +1327,11 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                   style={
                     {
                       "alignItems": "center",
-                      "flexGrow": 1,
                       "height": 40,
                       "justifyContent": "center",
-                      "maxWidth": 40,
                       "opacity": 1,
                       "userSelect": "auto",
+                      "width": 40,
                     }
                   }
                   testID="Fermer"
@@ -2330,12 +2328,11 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "flexGrow": 1,
                       "height": 40,
                       "justifyContent": "center",
-                      "maxWidth": 40,
                       "opacity": 1,
                       "userSelect": "auto",
+                      "width": 40,
                     }
                   }
                   testID="Fermer"
@@ -3332,12 +3329,11 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                   style={
                     {
                       "alignItems": "center",
-                      "flexGrow": 1,
                       "height": 40,
                       "justifyContent": "center",
-                      "maxWidth": 40,
                       "opacity": 1,
                       "userSelect": "auto",
+                      "width": 40,
                     }
                   }
                   testID="Fermer"
@@ -4334,12 +4330,11 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                   style={
                     {
                       "alignItems": "center",
-                      "flexGrow": 1,
                       "height": 40,
                       "justifyContent": "center",
-                      "maxWidth": 40,
                       "opacity": 1,
                       "userSelect": "auto",
+                      "width": 40,
                     }
                   }
                   testID="Fermer"
