@@ -348,7 +348,7 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type Route = GenericRoute<RootStackParamList, TabParamList>
+export type RootRoute = GenericRoute<RootStackParamList, TabParamList>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

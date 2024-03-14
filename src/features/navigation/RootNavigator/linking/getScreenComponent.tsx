@@ -4,13 +4,13 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { withScreenWrapper } from 'features/navigation/RootNavigator/withScreenWrapper'
 import { TabRoute } from 'features/navigation/TabBar/types'
 
-import { Route } from '../types'
+import { RootRoute } from '../types'
 
 import { withAuthProtection } from './withAuthProtection'
 
 export function getScreenComponent(
   name: string,
-  route: Route | TabRoute,
+  route: RootRoute | TabRoute,
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ): React.JSX.Element {
   let component = route.component
