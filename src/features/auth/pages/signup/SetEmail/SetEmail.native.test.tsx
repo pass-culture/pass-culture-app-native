@@ -236,10 +236,10 @@ describe('<SetEmail />', () => {
     })
 
     it('should go to next step when clicking SSO button and account does not already exist', async () => {
-      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
         oauthStateToken: 'oauth_state_token',
       })
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: {
@@ -268,10 +268,10 @@ describe('<SetEmail />', () => {
     })
 
     it('should display snackbar when SSO account is invalid', async () => {
-      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
         oauthStateToken: 'oauth_state_token',
       })
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 400,
           data: {

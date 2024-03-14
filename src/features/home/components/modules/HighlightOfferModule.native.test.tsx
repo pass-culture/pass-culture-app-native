@@ -37,12 +37,12 @@ describe('HighlightOfferModule', () => {
       nbFavorites: 0,
       favorites: [],
     }
-    mockServer.getApiV1<SubcategoriesResponseModelv2>(`/subcategories/v2`, { ...placeholderData })
-    mockServer.getApiV1<PaginatedFavoritesResponse>(
-      '/me/favorites',
+    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
+    mockServer.getApi<PaginatedFavoritesResponse>(
+      '/v1/me/favorites',
       favoritesResponseWithoutOfferIn
     )
-    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
   })
 
   it('should navigate to offer page on press', async () => {

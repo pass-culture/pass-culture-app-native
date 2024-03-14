@@ -71,7 +71,7 @@ describe('<SearchFilter/>', () => {
   })
 
   beforeEach(() => {
-    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
   it('should render correctly', async () => {

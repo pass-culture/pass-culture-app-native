@@ -110,11 +110,11 @@ function renderSuspensionChoice() {
 }
 
 function simulateSuspendForSuspiciousLoginSuccess() {
-  mockServer.postApiV1('/account/suspend_for_suspicious_login', {})
+  mockServer.postApi('/v1/account/suspend_for_suspicious_login', {})
 }
 
 function simulateSuspendForSuspiciousLoginError() {
-  mockServer.postApiV1('/account/suspend_for_suspicious_login', {
+  mockServer.postApi('/v1/account/suspend_for_suspicious_login', {
     responseOptions: { statusCode: 400 },
   })
 }

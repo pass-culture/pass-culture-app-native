@@ -51,8 +51,8 @@ mockdate.set(CURRENT_DATE)
 
 describe('Signup Form', () => {
   beforeEach(() => {
-    mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
-      '/email_validation_remaining_resends/email%40gmail.com',
+    mockServer.getApi<EmailValidationRemainingResendsResponse>(
+      '/v1/email_validation_remaining_resends/email%40gmail.com',
       {
         remainingResends: 3,
       }
@@ -401,7 +401,7 @@ describe('Signup Form', () => {
     })
 
     it('should log to sentry on API error', async () => {
-      mockServer.postApiV1('/account', { responseOptions: { statusCode: 400, data: {} } })
+      mockServer.postApi('/v1/account', { responseOptions: { statusCode: 400, data: {} } })
 
       renderSignupForm()
 
@@ -446,7 +446,7 @@ describe('Signup Form', () => {
     }
 
     beforeEach(() => {
-      mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
         responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
         requestOptions: { persist: true },
       })
@@ -459,12 +459,12 @@ describe('Signup Form', () => {
     it('should sign in when sso button is clicked and sso account already exists', async () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')
       getSystemNameSpy.mockReturnValueOnce('iOS')
-      mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+      mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
         accessToken: 'accessToken',
         refreshToken: 'refreshToken',
         accountState: AccountState.ACTIVE,
       })
-      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
       renderSignupForm()
 
@@ -482,7 +482,7 @@ describe('Signup Form', () => {
     })
 
     it('should go to next step when sso button is clicked and sso account does not exist', async () => {
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: signInFailureData,
@@ -497,7 +497,7 @@ describe('Signup Form', () => {
     })
 
     it('should go back to email step instead of password step when signing up with sso button', async () => {
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: signInFailureData,
@@ -514,7 +514,7 @@ describe('Signup Form', () => {
     })
 
     it('should display go back for last step', async () => {
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: signInFailureData,
@@ -536,7 +536,7 @@ describe('Signup Form', () => {
     })
 
     it('should reset isSSOSubscription state when choosing sso first then choosing default signup', async () => {
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: signInFailureData,
@@ -561,13 +561,13 @@ describe('Signup Form', () => {
       getSystemNameSpy.mockReturnValueOnce('iOS') // first call in useSignIn
       getModelSpy.mockReturnValueOnce('iPhone 13') // second call in SignupForm
       getSystemNameSpy.mockReturnValueOnce('iOS') // second call in SignupForm
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: signInFailureData,
         },
       })
-      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
         responseOptions: {
           statusCode: 200,
           data: {
@@ -615,13 +615,13 @@ describe('Signup Form', () => {
     })
 
     it('should login and redirect user on SSO signup success', async () => {
-      mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+      mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
         responseOptions: {
           statusCode: 401,
           data: signInFailureData,
         },
       })
-      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
         responseOptions: {
           statusCode: 200,
           data: {
@@ -667,7 +667,7 @@ describe('Signup Form', () => {
           from: StepperOrigin.LOGIN,
         },
       })
-      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
         responseOptions: {
           statusCode: 200,
           data: {
@@ -724,7 +724,7 @@ describe('Signup Form', () => {
       getSystemNameSpy.mockReturnValueOnce('iOS') // first call in useSignIn
       getModelSpy.mockReturnValueOnce('iPhone 13') // second call in SignupForm
       getSystemNameSpy.mockReturnValueOnce('iOS') // second call in SignupForm
-      mockServer.postApiV1<SigninResponse>('/oauth/google/account', {
+      mockServer.postApi<SigninResponse>('/v1/oauth/google/account', {
         responseOptions: {
           statusCode: 200,
           data: {
@@ -771,7 +771,7 @@ describe('Signup Form', () => {
 
     describe('analytics', () => {
       it('should trigger StepperDisplayed tracker with SSO_signup type when displaying step for sso subscription', async () => {
-        mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+        mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
           responseOptions: {
             statusCode: 401,
             data: signInFailureData,
@@ -859,6 +859,6 @@ describe('Signup Form', () => {
   })
 })
 
-const simulateSignupSuccess = () => mockServer.postApiV1('/account', {})
+const simulateSignupSuccess = () => mockServer.postApi('/v1/account', {})
 
 const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))

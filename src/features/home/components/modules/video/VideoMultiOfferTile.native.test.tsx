@@ -24,7 +24,7 @@ const hideModalMock = jest.fn()
 
 describe('VideoMultiOfferTile', () => {
   beforeEach(() => {
-    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
   it('should redirect to an offer when pressing it', async () => {

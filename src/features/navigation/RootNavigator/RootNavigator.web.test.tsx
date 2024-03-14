@@ -33,7 +33,7 @@ jest.mock('libs/splashscreen')
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
-    mockServer.getApiV1<FavoritesCountResponse>('/me/favorites/count', { count: 2 })
+    mockServer.getApi<FavoritesCountResponse>('/v1/me/favorites/count', { count: 2 })
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {

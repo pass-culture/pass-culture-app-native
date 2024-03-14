@@ -90,7 +90,7 @@ describe('ChangePassword', () => {
   })
 
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
-    mockServer.postApiV1('/change_password', {
+    mockServer.postApi('/v1/change_password', {
       responseOptions: { data: {} },
       requestOptions: { persist: true },
     })
@@ -127,7 +127,7 @@ describe('ChangePassword', () => {
   })
 
   it('display error when the password failed to updated', async () => {
-    mockServer.postApiV1('/change_password', {
+    mockServer.postApi('/v1/change_password', {
       responseOptions: { statusCode: 400, data: {} },
       requestOptions: { persist: true },
     })

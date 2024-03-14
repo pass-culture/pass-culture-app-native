@@ -20,7 +20,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('useOngoingOrEndedBooking', () => {
   beforeEach(() => {
-    mockServer.getApiV1<BookingsResponse>('/bookings', {
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {
       requestOptions: {
         persist: true,
       },

@@ -22,7 +22,7 @@ describe('<ChangeEmail/> - old version', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
+      mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
         expiration: null,
       })
       const { container } = render(reactQueryProviderHOC(<ChangeEmail />))

@@ -24,7 +24,7 @@ const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 describe('VideoModule', () => {
   beforeEach(() => {
-    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
   it('should show modal when pressing video thumbnail', async () => {

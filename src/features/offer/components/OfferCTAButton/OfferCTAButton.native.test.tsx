@@ -79,8 +79,8 @@ describe('<OfferCTAButton />', () => {
   })
 
   it('should open booking modal when login after booking attempt', async () => {
-    mockServer.getApiV1<BookingsResponse>(`/bookings`, {})
-    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
+    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
@@ -169,8 +169,8 @@ describe('<OfferCTAButton />', () => {
       ongoing_bookings: [],
     }
 
-    mockServer.getApiV1<BookingsResponse>(`/bookings`, expectedResponse)
-    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
+    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
     const fromOfferId = 1
     useRoute.mockReturnValueOnce({ params: { fromOfferId } })
@@ -203,12 +203,12 @@ describe('<OfferCTAButton />', () => {
 
     describe('When booking API response is success', () => {
       beforeEach(() => {
-        mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
-        mockServer.getApiV1<BookingsResponse>('/bookings', {
+        mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<BookingsResponse>('/v1/bookings', {
           requestOptions: { persist: true },
           responseOptions: { data: expectedResponse },
         })
-        mockServer.postApiV1<BookOfferResponse>(`/bookings`, { bookingId: 123 })
+        mockServer.postApi<BookOfferResponse>(`/v1/bookings`, { bookingId: 123 })
       })
 
       it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
@@ -295,12 +295,12 @@ describe('<OfferCTAButton />', () => {
 
     describe('When booking API response is error', () => {
       beforeEach(() => {
-        mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
-        mockServer.getApiV1<BookingsResponse>('/bookings', {
+        mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<BookingsResponse>('/v1/bookings', {
           requestOptions: { persist: true },
           responseOptions: { data: expectedResponse },
         })
-        mockServer.postApiV1<BookOfferResponse>(`/bookings`, {
+        mockServer.postApi<BookOfferResponse>(`/v1/bookings`, {
           responseOptions: {
             statusCode: 400,
           },
@@ -361,12 +361,12 @@ describe('<OfferCTAButton />', () => {
     })
 
     it('should display an error message when pressing button to book the offer', async () => {
-      mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
-      mockServer.getApiV1<BookingsResponse>('/bookings', {
+      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<BookingsResponse>('/v1/bookings', {
         requestOptions: { persist: true },
         responseOptions: { data: expectedResponse },
       })
-      mockServer.postApiV1<BookOfferResponse>(`/bookings`, {
+      mockServer.postApi<BookOfferResponse>(`/v1/bookings`, {
         responseOptions: {
           statusCode: 400,
         },
@@ -419,8 +419,8 @@ describe('<OfferCTAButton />', () => {
     }
 
     it('should directly redirect to the offer when pressing offer access button', async () => {
-      mockServer.getApiV1<BookingsResponse>(`/bookings`, expectedResponse)
-      mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
+      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
       // Multiple renders force us to mock auth context as loggedIn user in this test
       // eslint-disable-next-line local-rules/independent-mocks

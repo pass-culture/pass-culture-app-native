@@ -12,7 +12,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 describe('<SetStatus/>', () => {
   beforeEach(() => {
-    mockServer.getApiV1<ActivityTypesResponse>('/subscription/activity_types', ActivityTypesSnap)
+    mockServer.getApi<ActivityTypesResponse>('/v1/subscription/activity_types', ActivityTypesSnap)
   })
 
   describe('Accessibility', () => {

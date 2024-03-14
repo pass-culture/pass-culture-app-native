@@ -18,7 +18,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 describe('TrackEmailChange', () => {
   it('should render correctly when FF is disabled', async () => {
-    mockServer.getApiV1<EmailUpdateStatus>('/profile/email_update/status', {
+    mockServer.getApi<EmailUpdateStatus>('/v1/profile/email_update/status', {
       expired: false,
       newEmail: '',
       status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
@@ -31,7 +31,7 @@ describe('TrackEmailChange', () => {
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
-    mockServer.getApiV1<EmailUpdateStatus>('/profile/email_update/status', {
+    mockServer.getApi<EmailUpdateStatus>('/v1/profile/email_update/status', {
       expired: false,
       newEmail: '',
       status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,

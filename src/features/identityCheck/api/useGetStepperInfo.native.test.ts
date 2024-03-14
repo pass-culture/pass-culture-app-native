@@ -10,8 +10,8 @@ import { act, renderHook, waitFor } from 'tests/utils'
 
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {
-    mockServer.getApiV1<SubscriptionStepperResponse>(
-      '/subscription/stepper',
+    mockServer.getApi<SubscriptionStepperResponse>(
+      '/v1/subscription/stepper',
       SubscriptionStepperResponseFixture
     )
     const result = renderGetStepperInfo()
@@ -26,8 +26,8 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should return an errorMessage', async () => {
-    mockServer.getApiV1<SubscriptionStepperResponse>(
-      '/subscription/stepper',
+    mockServer.getApi<SubscriptionStepperResponse>(
+      '/v1/subscription/stepper',
       SubscriptionStepperErrorResponseFixture
     )
 
@@ -44,7 +44,7 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should return empty stepsToDisplay list and titles if the data is undefined', async () => {
-    mockServer.getApiV1('/subscription/stepper', { responseOptions: { data: undefined } })
+    mockServer.getApi('/v1/subscription/stepper', { responseOptions: { data: undefined } })
 
     const result = renderGetStepperInfo()
     await act(async () => {})
@@ -56,7 +56,7 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should return empty stepsToDisplay list and titles if the response is a 403', async () => {
-    mockServer.getApiV1('/subscription/stepper', { responseOptions: { status: 403 } })
+    mockServer.getApi('/v1/subscription/stepper', { responseOptions: { status: 403 } })
 
     const result = renderGetStepperInfo()
 

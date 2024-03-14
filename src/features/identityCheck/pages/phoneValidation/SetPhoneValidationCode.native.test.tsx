@@ -36,7 +36,7 @@ describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
   beforeEach(() => {
-    mockServer.postApiV1('/validate_phone_number', {})
+    mockServer.postApi('/v1/validate_phone_number', {})
   })
 
   it('should match snapshot', () => {

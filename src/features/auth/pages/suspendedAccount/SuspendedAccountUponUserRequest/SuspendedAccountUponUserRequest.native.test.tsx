@@ -37,7 +37,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
   })
 
   it('should redirect to reactivation screen on success', async () => {
-    mockServer.postApiV1('/account/unsuspend', {})
+    mockServer.postApi('/v1/account/unsuspend', {})
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
     await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
@@ -46,7 +46,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
   })
 
   it('should log analytics on success', async () => {
-    mockServer.postApiV1('/account/unsuspend', {})
+    mockServer.postApi('/v1/account/unsuspend', {})
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
     await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
@@ -55,7 +55,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
   })
 
   it('should show error snackbar on error', async () => {
-    mockServer.postApiV1('/account/unsuspend', {
+    mockServer.postApi('/v1/account/unsuspend', {
       responseOptions: {
         statusCode: 400,
       },
@@ -73,7 +73,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
   })
 
   it('should log analytics on error', async () => {
-    mockServer.postApiV1<EmptyResponse>('/account/unsuspend', {
+    mockServer.postApi<EmptyResponse>('/v1/account/unsuspend', {
       responseOptions: {
         statusCode: 400,
       },

@@ -20,7 +20,7 @@ useQueryClientSpy.mockReturnValue({
 
 describe('[hook] useCancelBookingMutation', () => {
   it('invalidates me and bookings after successfully cancel a booking', async () => {
-    mockServer.postApiV1(`/bookings/${BOOKING_OFFER_ID}/cancel`, {})
+    mockServer.postApi(`/v1/bookings/${BOOKING_OFFER_ID}/cancel`, {})
 
     const mutate = renderUseCancelBookingMutation()
 
@@ -32,7 +32,7 @@ describe('[hook] useCancelBookingMutation', () => {
   })
 
   it('call onError input after cancel a booking on error', async () => {
-    mockServer.postApiV1(`/bookings/${BOOKING_OFFER_ID}/cancel`, {
+    mockServer.postApi(`/v1/bookings/${BOOKING_OFFER_ID}/cancel`, {
       responseOptions: { statusCode: 400 },
     })
 

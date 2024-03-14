@@ -29,7 +29,7 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<SSOButton />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
   })
@@ -46,12 +46,12 @@ describe('<SSOButton />', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
@@ -83,7 +83,7 @@ describe('<SSOButton />', () => {
 
   it('should call onSignInFailure when signin fails', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       responseOptions: { statusCode: 500 },
     })
 
@@ -98,12 +98,12 @@ describe('<SSOButton />', () => {
 
   it('should log analytics when logging in with sso from signup', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
     renderSSOButton()
 
@@ -114,12 +114,12 @@ describe('<SSOButton />', () => {
 
   it('should log analytics when logging in with sso from login', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
     })
-    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
     renderSSOButton('login')
 

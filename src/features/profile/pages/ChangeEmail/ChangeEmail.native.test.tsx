@@ -30,7 +30,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 describe('<ChangeEmail/>', () => {
   beforeEach(() => {
-    mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
+    mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
       expiration: undefined,
     })
     simulateUpdateEmailSuccess()
@@ -333,17 +333,17 @@ const submitForm = async () => {
 }
 
 function simulateUpdateEmailSuccess() {
-  mockServer.postApiV1('/profile/update_email', {})
+  mockServer.postApi('/v1/profile/update_email', {})
 }
 
 function simulateUpdateEmailError(code: CHANGE_EMAIL_ERROR_CODE) {
-  mockServer.postApiV1('/profile/update_email', {
+  mockServer.postApi('/v1/profile/update_email', {
     responseOptions: { statusCode: 400, data: { code } },
   })
 }
 
 function simulateCurrentEmailChange() {
-  mockServer.getApiV1<UpdateEmailTokenExpiration>('/profile/token_expiration', {
+  mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
     expiration: '2021-12-07T13:45:05.812190',
   })
 }

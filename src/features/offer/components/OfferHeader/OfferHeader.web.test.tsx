@@ -25,7 +25,10 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<OfferHeader />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
+    mockServer.getApi<PaginatedFavoritesResponse>(
+      '/v1/me/favorites',
+      paginatedFavoritesResponseSnap
+    )
   })
 
   it('should fully display the title at the end of the animation', async () => {

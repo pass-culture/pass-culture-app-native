@@ -33,7 +33,7 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 
 describe('Header', () => {
   beforeEach(() => {
-    mockServer.getApiV1<FavoritesCountResponse>(`/me/favorites/count`, { count: 2 })
+    mockServer.getApi<FavoritesCountResponse>(`/v1/me/favorites/count`, { count: 2 })
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {

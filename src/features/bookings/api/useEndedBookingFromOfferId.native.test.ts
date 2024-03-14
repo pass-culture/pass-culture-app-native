@@ -20,7 +20,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 describe('useEndedBookingFromOfferId', () => {
   beforeEach(() => {
-    mockServer.getApiV1<BookingsResponse>('/bookings', bookingsSnap)
+    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
   })
 
   it('should return an ended booking if existing', async () => {

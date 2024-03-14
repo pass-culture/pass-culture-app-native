@@ -207,7 +207,7 @@ function renderHomeHeader(isDesktopViewport?: boolean) {
 }
 
 const mockBannerFromBackend = (banner: BannerResponse) => {
-  mockServer.getApiV1<BannerResponse>('/banner', {
+  mockServer.getApi<BannerResponse>('/v1/banner', {
     responseOptions: {
       data: banner,
     },
@@ -216,13 +216,13 @@ const mockBannerFromBackend = (banner: BannerResponse) => {
 }
 
 function mockGeolocBannerFromBackend() {
-  mockServer.getApiV1<BannerResponse>('/banner?isGeolocated=true', {
+  mockServer.getApi<BannerResponse>('/v1/banner?isGeolocated=true', {
     responseOptions: {
       data: {},
     },
     requestOptions: { persist: true },
   })
-  mockServer.getApiV1<BannerResponse>('/banner?isGeolocated=false', {
+  mockServer.getApi<BannerResponse>('/v1/banner?isGeolocated=false', {
     responseOptions: {
       data: {
         banner: {

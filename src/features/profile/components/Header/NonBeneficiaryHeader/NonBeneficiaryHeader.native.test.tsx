@@ -49,7 +49,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
     mockNextSubscriptionStep = mockStep
-    mockServer.getApiV1<BannerResponse>('/banner', {
+    mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
         text: 'à dépenser sur l’application',
@@ -71,7 +71,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
     mockNextSubscriptionStep = mockStep
-    mockServer.getApiV1<BannerResponse>('/banner', {
+    mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.transition_17_18_banner,
         text: 'à dépenser sur l’application',
@@ -92,7 +92,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should display identity check message if user identity check is pending', async () => {
-    mockServer.getApiV1<BannerResponse>('/banner', {})
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
     mockNextSubscriptionStep = {
       ...mockStep,
       hasIdentityCheckPending: true,
@@ -109,7 +109,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should render the subscription message if there is one', async () => {
-    mockServer.getApiV1<BannerResponse>('/banner', {})
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
     mockNextSubscriptionStep = {
       ...mockStep,
       subscriptionMessage: mockedSubscriptionMessage,
@@ -125,7 +125,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should render the younger badge for user whose eligibilty hasn’t started yet (under 15 years old)', async () => {
-    mockServer.getApiV1<BannerResponse>('/banner', {})
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
       startDatetime: '2021-03-31T00:00Z',
       endDatetime: '2022-03-31T00:00Z',
@@ -137,7 +137,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should not display banner or badge when user is beneficiary', async () => {
-    mockServer.getApiV1<BannerResponse>('/banner', {})
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
     mockNextSubscriptionStep = {
       ...mockStep,
       hasIdentityCheckPending: false,

@@ -36,7 +36,7 @@ describe('ConfirmDeleteProfile component', () => {
   })
 
   it('should redirect to DeleteProfileSuccess when clicking on "Supprimer mon compte" button', async () => {
-    mockServer.postApiV1('/account/suspend', {})
+    mockServer.postApi('/v1/account/suspend', {})
     renderConfirmDeleteProfile()
 
     await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
@@ -46,7 +46,7 @@ describe('ConfirmDeleteProfile component', () => {
   })
 
   it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', async () => {
-    mockServer.postApiV1('/account/suspend', { responseOptions: { statusCode: 400 } })
+    mockServer.postApi('/v1/account/suspend', { responseOptions: { statusCode: 400 } })
     renderConfirmDeleteProfile()
 
     await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
