@@ -777,6 +777,10 @@ describe('<OfferContent />', () => {
   })
 
   describe('MovieScreeningCalendar', () => {
+    beforeEach(() => {
+      mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    })
+
     const offer: OfferResponse = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
