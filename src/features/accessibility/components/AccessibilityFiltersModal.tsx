@@ -66,6 +66,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   const handleOnPress = (disability: string) => {
     setDisplayedDisabilities({
       ...displayedDisabilities,
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       [disability]: !displayedDisabilities[disability],
     })
   }

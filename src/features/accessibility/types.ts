@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 
 export type DisabilitiesProperties = {
-  [isAudioDisabilityCompliant: string]: boolean | undefined
+  isAudioDisabilityCompliant: boolean | undefined
   isMentalDisabilityCompliant: boolean | undefined
   isMotorDisabilityCompliant: boolean | undefined
   isVisualDisabilityCompliant: boolean | undefined
