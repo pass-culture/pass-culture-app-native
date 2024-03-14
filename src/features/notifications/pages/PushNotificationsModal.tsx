@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -50,8 +50,8 @@ const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const BicolorLocationPointer = styled(DefaultBicolorLocationPointer).attrs(({ theme }) => ({
+const BicolorLocationPointer = styled(BicolorRingingBell).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
-  size: 85, // Special case where theme.icons.sizes is not used
+  size: theme.illustrations.sizes.fullPage,
 }))``

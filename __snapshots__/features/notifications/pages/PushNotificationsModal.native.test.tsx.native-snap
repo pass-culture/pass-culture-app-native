@@ -232,12 +232,11 @@ exports[`PushNotificationsModal should render properly 1`] = `
       }
     >
       <View
-        height={85}
-        testID="BicolorLocationPointer"
-        width={85}
+        height={156}
+        width={200}
       >
         <Text>
-          BicolorLocationPointer-SVG-Mock
+          undefined-SVG-Mock
         </Text>
       </View>
       <View
