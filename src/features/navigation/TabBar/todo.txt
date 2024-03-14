@@ -5,8 +5,12 @@
 [X] - créer  SearchScreens
 [X] - créer les routes
 [X] - Ajouter un type Route
-[] - déplacer la route search du tab navigator vers le stack navigator
-[] - le stack navigator dans le tabNavigator quand on appuie sur l'icone de la recherche
+[X] - déplacer la route search du tab navigator vers le stack navigator
+[X] - fixer les screenoptions
+[X] - le stack navigator dans le tabNavigator quand on appuie sur l'icone de la recherche
+
 [] - vérifier que l'url n'est pas changé dans la recherche
 [] - verifier le comportement des paramètre de recherche
 [] - vérifier la generique route du rootnavigator et de tabnavigator
+[] - ajouter des mocks
+[] - ajouter des tests

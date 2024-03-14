@@ -6,7 +6,8 @@ import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
-import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { searchNavigatorPathConfig } from 'features/navigation/SearchNavigator/routes'
 import { SearchStackNavigator } from 'features/navigation/SearchNavigator/SearchNavigator'
 import { Profile } from 'features/profile/pages/Profile'
 
@@ -25,14 +26,9 @@ const routes: TabRoute[] = [
     options: { title: 'Page d’accueil' },
   },
   {
-    name: 'Search',
+    name: 'SearchStackNavigator',
     component: SearchStackNavigator,
-    pathConfig: {
-      path: 'recherche',
-      parse: screenParamsParser['Search'],
-      stringify: screenParamsStringifier['Search'],
-    },
-    options: { title: 'Recherche des offres' },
+    pathConfig: searchNavigatorPathConfig,
   },
   {
     name: 'Bookings',
