@@ -179,9 +179,11 @@ exports[`<SecondaryPageWithBlurHeader /> should render correctly 1`] = `
         "alignSelf": "center",
         "maxWidth": 500,
         "paddingHorizontal": 24,
+        "paddingVertical": 24,
         "width": "100%",
       }
     }
+    scrollEnabled={true}
     style={
       [
         {},

@@ -65,9 +65,8 @@ export const FavoritesSorts: React.FC = () => {
   }
 
   return (
-    <SecondaryPageWithBlurHeader headerTitle="Trier" onGoBack={goBack}>
+    <SecondaryPageWithBlurHeader title="Trier" onGoBack={goBack}>
       <View>
-        <Spacer.Column numberOfSpaces={4} />
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
           <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>

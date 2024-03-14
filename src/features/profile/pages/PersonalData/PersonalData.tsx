@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -13,6 +12,7 @@ import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarterna
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -34,7 +34,7 @@ export function PersonalData() {
   }, [hasCurrentEmailChange])
 
   return (
-    <PageProfileSection title="Informations personnelles">
+    <SecondaryPageWithBlurHeader title="Informations personnelles">
       {!!user?.isBeneficiary && (
         <React.Fragment>
           <Typo.CaptionNeutralInfo>Prénom et nom</Typo.CaptionNeutralInfo>
@@ -105,7 +105,7 @@ export function PersonalData() {
         icon={Trash}
         iconSize={SECTION_ROW_ICON_SIZE}
       />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

@@ -23,7 +23,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <SecondaryPageWithBlurHeader
-      headerTitle="Oubli de mot de passe"
+      title="Oubli de mot de passe"
       shouldDisplayBackButton={false}
       RightButton={<RightButtonText onClose={onClose} wording="Quitter" />}>
       <EmailSentGeneric

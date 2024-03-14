@@ -1,17 +1,17 @@
 import React from 'react'
 
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
   return (
-    <PageProfileSection title="Parcours recommandés" scrollable>
+    <SecondaryPageWithBlurHeader title="Parcours recommandés" scrollable>
       <Typo.Body>
         En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui
         reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours
@@ -43,6 +43,6 @@ export function RecommendedPaths() {
         de l’Éducation Nationale de la Jeunesse et des Sports, leur niveau d’accessibilité est
         maintenu dans le temps.
       </Typo.Body>
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }

@@ -49,7 +49,7 @@ export const ForgottenPassword = () => {
 
   return (
     <SecondaryPageWithBlurHeader
-      headerTitle="Oubli de mot de passe"
+      title="Oubli de mot de passe"
       shouldDisplayBackButton
       onGoBack={onBackNavigation}>
       {!!settings?.isRecaptchaEnabled && (
@@ -61,7 +61,6 @@ export const ForgottenPassword = () => {
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
-      <Spacer.Column numberOfSpaces={6} />
       <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>

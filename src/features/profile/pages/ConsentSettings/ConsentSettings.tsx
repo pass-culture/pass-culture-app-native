@@ -9,13 +9,13 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -50,7 +50,7 @@ export const ConsentSettings = () => {
   }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
-    <PageProfileSection title="Paramètres de confidentialité" scrollable>
+    <SecondaryPageWithBlurHeader title="Paramètres de confidentialité" scrollable>
       <Typo.Body>
         L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton
         expérience de navigation.
@@ -87,6 +87,6 @@ export const ConsentSettings = () => {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary wording="Enregistrer mes choix" onPress={saveChoice} center />
       <Spacer.Column numberOfSpaces={4} />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }

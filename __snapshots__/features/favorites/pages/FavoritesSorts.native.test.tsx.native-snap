@@ -179,9 +179,11 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         "alignSelf": "center",
         "maxWidth": 500,
         "paddingHorizontal": 24,
+        "paddingVertical": 24,
         "width": "100%",
       }
     }
+    scrollEnabled={true}
     style={
       [
         {},
@@ -200,16 +202,6 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         }
       />
       <View>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
         <View
           style={
             [

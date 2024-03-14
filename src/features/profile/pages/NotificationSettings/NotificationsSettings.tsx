@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
@@ -14,6 +13,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -69,7 +69,7 @@ export const NotificationsSettings = () => {
   }
 
   return (
-    <PageProfileSection title="Suivi et notifications" scrollable>
+    <SecondaryPageWithBlurHeader title="Suivi et notifications" scrollable>
       <Container>
         {isLoggedIn ? null : (
           <React.Fragment>
@@ -152,7 +152,7 @@ export const NotificationsSettings = () => {
           onDismiss={hidePushModal}
         />
       </Container>
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

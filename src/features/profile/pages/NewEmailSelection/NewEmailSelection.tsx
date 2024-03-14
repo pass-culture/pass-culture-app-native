@@ -61,8 +61,7 @@ export const NewEmailSelection = () => {
   const onSubmit = handleSubmit(({ newEmail }) => selectNewEmail({ newEmail, token: params.token }))
 
   return (
-    <SecondaryPageWithBlurHeader headerTitle="Modifier mon adresse e-mail">
-      <Spacer.Column numberOfSpaces={6} />
+    <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">
       <Form.MaxWidth flex={1}>
         <EmailInputController
           control={control}

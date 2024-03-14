@@ -174,16 +174,19 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
     </View>
   </View>,
   <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+        "width": "100%",
+      }
+    }
+    scrollEnabled={true}
     style={
       [
-        {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "paddingHorizontal": 24,
-        },
+        {},
       ]
     }
   >
@@ -194,16 +197,6 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
             },
           ]
         }
@@ -2134,16 +2127,6 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
     </View>
   </RCTScrollView>,
   <View
@@ -2358,16 +2341,19 @@ exports[`NotificationSettings should render correctly when user is not logged in
     </View>
   </View>,
   <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+        "width": "100%",
+      }
+    }
+    scrollEnabled={true}
     style={
       [
-        {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "paddingHorizontal": 24,
-        },
+        {},
       ]
     }
   >
@@ -2378,16 +2364,6 @@ exports[`NotificationSettings should render correctly when user is not logged in
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
             },
           ]
         }
@@ -4310,16 +4286,6 @@ exports[`NotificationSettings should render correctly when user is not logged in
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
     </View>
   </RCTScrollView>,
   <View

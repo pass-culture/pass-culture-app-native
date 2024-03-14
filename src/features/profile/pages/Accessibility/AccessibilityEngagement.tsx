@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
-import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
@@ -13,7 +13,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function AccessibilityEngagement() {
   return (
-    <PageProfileSection title="Les engagements du pass Culture" scrollable>
+    <SecondaryPageWithBlurHeader title="Les engagements du pass Culture" scrollable>
       <StyledBody>Date de publication&nbsp;: 19 mai 2022</StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Body>
@@ -96,7 +96,7 @@ export function AccessibilityEngagement() {
         />
       </Typo.CaptionNeutralInfo>
       <Spacer.BottomScreen />
-    </PageProfileSection>
+    </SecondaryPageWithBlurHeader>
   )
 }
 

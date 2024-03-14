@@ -173,471 +173,114 @@ exports[`PersonalData should render personal data success 1`] = `
       </View>
     </View>
   </View>,
-  <View
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+        "width": "100%",
+      }
+    }
+    scrollEnabled={true}
     style={
       [
-        {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "paddingHorizontal": 24,
-        },
+        {},
       ]
     }
   >
-    <View
-      height={65}
-      style={
-        [
-          {
-            "height": 65,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      Prénom et nom
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      Rosa Bonheur
-    </Text>
-    <View
-      style={
-        [
-          {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      Adresse e-mail
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-        ]
-      }
-    >
+    <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        Prénom et nom
+      </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
       <Text
         style={
           [
             {
               "color": "#161617",
-              "flexShrink": 1,
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginRight": 8,
             },
           ]
         }
       >
-        rosa.bonheur@gmail.com
+        Rosa Bonheur
       </Text>
       <View
-        accessibilityLabel="Modifier e-mail"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 0,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginTop": 0,
-            "maxWidth": 500,
-            "minHeight": 20,
-            "opacity": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "userSelect": "auto",
-            "width": "auto",
-          }
+          [
+            {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 16,
+              "width": "100%",
+            },
+          ]
         }
-        testID="Modifier e-mail"
-      >
-        <View
-          style={
-            [
-              {
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            fill="#eb0055"
-            height={16}
-            testID="button-icon"
-            width={16}
-          >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "marginLeft": 4,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Modifier
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        [
-          {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      Numéro de téléphone
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      +33685974563
-    </Text>
-    <View
-      style={
-        [
-          {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      Mot de passe
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-        ]
-      }
-    >
+      />
       <Text
         style={
           [
             {
-              "color": "#161617",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginRight": 8,
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
             },
           ]
         }
       >
-        ************
+        Adresse e-mail
       </Text>
       <View
-        accessibilityLabel="Modifier mot de passe"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
+        numberOfSpaces={2}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 0,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "marginTop": 0,
-            "maxWidth": 500,
-            "minHeight": 20,
-            "opacity": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "userSelect": "auto",
-            "width": "auto",
-          }
+          [
+            {
+              "height": 8,
+            },
+          ]
         }
-        testID="Modifier mot de passe"
-      >
-        <View
-          style={
-            [
-              {
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            fill="#eb0055"
-            height={16}
-            testID="button-icon"
-            width={16}
-          >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "marginLeft": 4,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Modifier
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        [
-          {
-            "backgroundColor": "#F1F1F4",
-            "height": 1,
-            "marginVertical": 16,
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View
-      backgroundColor="#f3ecff"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "backgroundColor": "#f3ecff",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingBottom": 16,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 16,
-          },
-        ]
-      }
-    >
+      />
       <View
         style={
           [
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
             },
           ]
         }
@@ -647,28 +290,19 @@ exports[`PersonalData should render personal data success 1`] = `
             [
               {
                 "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginRight": 8,
               },
             ]
           }
-          textColor="#161617"
         >
-          Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.
+          rosa.bonheur@gmail.com
         </Text>
         <View
-          numberOfSpaces={3}
-          style={
-            [
-              {
-                "height": 12,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Comment gérer tes données personnelles ?"
+          accessibilityLabel="Modifier e-mail"
           accessibilityState={
             {
               "busy": undefined,
@@ -703,7 +337,7 @@ exports[`PersonalData should render personal data success 1`] = `
               "borderRadius": 0,
               "borderWidth": 0,
               "flexDirection": "row",
-              "justifyContent": "flex-start",
+              "justifyContent": "center",
               "marginTop": 0,
               "maxWidth": 500,
               "minHeight": 20,
@@ -716,7 +350,7 @@ exports[`PersonalData should render personal data success 1`] = `
               "width": "auto",
             }
           }
-          testID="Comment gérer tes données personnelles ?"
+          testID="Modifier e-mail"
         >
           <View
             style={
@@ -728,7 +362,7 @@ exports[`PersonalData should render personal data success 1`] = `
             }
           >
             <View
-              accessibilityLabel="Nouvelle fenêtre"
+              fill="#eb0055"
               height={16}
               testID="button-icon"
               width={16}
@@ -744,7 +378,7 @@ exports[`PersonalData should render personal data success 1`] = `
             style={
               [
                 {
-                  "color": "#320096",
+                  "color": "#eb0055",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
@@ -754,90 +388,243 @@ exports[`PersonalData should render personal data success 1`] = `
               ]
             }
           >
-            Comment gérer tes données personnelles ?
+            Modifier
           </Text>
         </View>
       </View>
-    </View>
-    <View
-      numberOfSpaces={8}
-      style={
-        [
-          {
-            "height": 32,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Supprimer mon compte"
-      accessibilityRole="link"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": false,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
-      }
-      testID="Supprimer mon compte"
-    >
       <View
         style={
           [
             {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 16,
+              "width": "100%",
             },
-            undefined,
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
           ]
         }
       >
-        <View
-          fill="#161617"
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={2}
+        Numéro de téléphone
+      </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        +33685974563
+      </Text>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 16,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        Mot de passe
+      </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            },
+          ]
+        }
+      >
+        <Text
           style={
             [
               {
-                "width": 8,
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginRight": 8,
               },
             ]
           }
-        />
+        >
+          ************
+        </Text>
+        <View
+          accessibilityLabel="Modifier mot de passe"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 0,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "marginTop": 0,
+              "maxWidth": 500,
+              "minHeight": 20,
+              "opacity": 1,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "userSelect": "auto",
+              "width": "auto",
+            }
+          }
+          testID="Modifier mot de passe"
+        >
+          <View
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              fill="#eb0055"
+              height={16}
+              testID="button-icon"
+              width={16}
+            >
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Modifier
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#F1F1F4",
+              "height": 1,
+              "marginVertical": 16,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+      <View
+        backgroundColor="#f3ecff"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3ecff",
+              "borderRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
         <View
           style={
             [
@@ -845,59 +632,257 @@ exports[`PersonalData should render personal data success 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "textAlign": "left",
               },
             ]
           }
         >
           <Text
-            numberOfLines={2}
             style={
               [
                 {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
+            textColor="#161617"
           >
-            Supprimer mon compte
+            Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.
           </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignItems": "flex-end",
-              },
-            ]
-          }
-        >
           <View
-            height={20}
-            testID="section-row-navigable-icon"
-            width={20}
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel="Comment gérer tes données personnelles ?"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 20,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Comment gérer tes données personnelles ?"
           >
-            <Text>
-              section-row-navigable-icon-SVG-Mock
+            <View
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={16}
+                testID="button-icon"
+                width={16}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#320096",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "marginLeft": 4,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Comment gérer tes données personnelles ?
             </Text>
           </View>
         </View>
       </View>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
+      <View
+        numberOfSpaces={8}
+        style={
+          [
+            {
+              "height": 32,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Supprimer mon compte"
+        accessibilityRole="link"
+        accessibilityState={
           {
-            "height": 24,
-          },
-        ]
-      }
-    />
-  </View>,
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Supprimer mon compte"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            fill="#161617"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "textAlign": "left",
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Supprimer mon compte
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-end",
+                },
+              ]
+            }
+          >
+            <View
+              height={20}
+              testID="section-row-navigable-icon"
+              width={20}
+            >
+              <Text>
+                section-row-navigable-icon-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>,
   <View
     height={65}
     style={
