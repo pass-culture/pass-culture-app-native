@@ -117,6 +117,19 @@ describe('NotificationSettings', () => {
     expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toBeDisabled()
   })
 
+  it('should switch off thematic toggle when disabling email and push toggle at the same time', () => {
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+    render(<NotificationsSettings />)
+
+    const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleEmail)
+    const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+    fireEvent.press(toggleSwitch)
+    fireEvent.press(toggleEmail)
+
+    expect(screen.getByTestId('Interrupteur Cinéma')).toHaveAccessibilityState({ checked: false })
+  })
+
   it('should display help message when the email toggle is inactive and user is logged in', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
