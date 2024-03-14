@@ -43,6 +43,17 @@ describe('NotificationSettings', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should disabled save button when user is not logged in', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      user: undefined,
+      isLoggedIn: false,
+    })
+    render(<NotificationsSettings />)
+
+    expect(screen.getByText('Enregistrer')).toBeDisabled()
+  })
+
   it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
