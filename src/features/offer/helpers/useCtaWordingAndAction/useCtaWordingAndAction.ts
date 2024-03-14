@@ -42,7 +42,7 @@ type UseGetCtaWordingAndActionProps = {
   searchId?: string
 }
 
-const getIsBookedOffer = (
+export const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
   bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
 ): boolean => bookedOffersIds[offerId] !== undefined
