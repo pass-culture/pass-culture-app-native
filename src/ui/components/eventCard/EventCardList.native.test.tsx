@@ -31,6 +31,12 @@ const dummyData = [
     title: '13h12',
     subtitleLeft: 'Crédit insuffisant',
   },
+  {
+    onPress: () => ({}),
+    isDisabled: true,
+    title: '13h12',
+    subtitleLeft: 'Déjà réservé',
+  },
 ]
 
 describe('EventCardList', () => {
