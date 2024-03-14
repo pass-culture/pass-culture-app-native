@@ -43,7 +43,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Voir tous les filtres : 1 filtre actif"
+              accessibilityLabel="Voir tous les filtres"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -81,7 +81,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                   "width": 32,
                 }
               }
-              testID="Voir tous les filtres : 1 filtre actif"
+              testID="Voir tous les filtres"
             >
               <View
                 style={
@@ -104,55 +104,6 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                 >
                   <Text>
                     undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "alignSelf": "center",
-                      "backgroundColor": "#eb0055",
-                      "borderColor": "#ffffff",
-                      "borderRadius": 12,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                    },
-                    {
-                      "backgroundColor": "#161617",
-                      "bottom": 0,
-                      "position": "absolute",
-                      "right": 0,
-                    },
-                  ]
-                }
-                testID="searchFilterBadge"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "height": 16,
-                        "minWidth": 16,
-                        "paddingHorizontal": 2,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    1
                   </Text>
                 </View>
               </View>
