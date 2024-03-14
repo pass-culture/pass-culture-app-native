@@ -7,8 +7,8 @@ import { Home as HomeComponent } from 'features/home/pages/Home'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { SearchStackNavigator } from 'features/navigation/SearchNavigator/SearchNavigator'
 import { Profile } from 'features/profile/pages/Profile'
-import { Search } from 'features/search/pages/Search/Search'
 
 import { TabStack } from './Stack'
 import { TabParamList, TabRoute, TabRouteName } from './types'
@@ -26,7 +26,7 @@ const routes: TabRoute[] = [
   },
   {
     name: 'Search',
-    component: Search,
+    component: SearchStackNavigator,
     pathConfig: {
       path: 'recherche',
       parse: screenParamsParser['Search'],
