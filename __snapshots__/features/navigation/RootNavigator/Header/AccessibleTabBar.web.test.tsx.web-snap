@@ -83,7 +83,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 <a
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                   data-testid="Rechercher des offres"
-                  href="/TabNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing"
+                  href="/TabNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing&accessibilityFilter=%5Bobject%20Object%5D"
                   style="transition-duration: 0s;"
                 >
                   <div
@@ -303,7 +303,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
               <a
                 class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
                 data-testid="Rechercher des offres"
-                href="/TabNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing"
+                href="/TabNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing&accessibilityFilter=%5Bobject%20Object%5D"
                 style="transition-duration: 0s;"
               >
                 <div

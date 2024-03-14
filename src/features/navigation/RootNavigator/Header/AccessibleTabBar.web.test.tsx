@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -18,7 +19,10 @@ jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
 }))
-const mockSearchState = initialSearchState
+const mockSearchState = {
+  ...initialSearchState,
+  accessibilityFilter: defaultDisabilitiesProperties,
+}
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
@@ -92,9 +96,7 @@ describe('AccessibleTabBar', () => {
       fireEvent.click(searchButton)
     })
 
-    expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getTabNavConfig('Search', initialSearchState)
-    )
+    expect(navigateFromRefSpy).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
   })
 })
 

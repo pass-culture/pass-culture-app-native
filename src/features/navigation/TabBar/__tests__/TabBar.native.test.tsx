@@ -2,6 +2,7 @@ import { BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs/lib/t
 import { NavigationHelpers, TabNavigationState, ParamListBase } from '@react-navigation/native'
 import React from 'react'
 
+import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import {
   DEFAULT_TAB_ROUTES,
@@ -76,6 +77,22 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     searchState: mockSearchState,
     dispatch: mockDispatch,
     hideSuggestions: jest.fn(),
+  }),
+}))
+
+const mockDisabilities = {
+  [DisplayedDisabilitiesEnum.AUDIO]: false,
+  [DisplayedDisabilitiesEnum.MENTAL]: false,
+  [DisplayedDisabilitiesEnum.MOTOR]: false,
+  [DisplayedDisabilitiesEnum.VISUAL]: false,
+}
+
+const mockAccessibilityState = mockDisabilities
+const mockSetDisabilities = jest.fn()
+jest.mock('features/accessibility/context/AccessibilityFiltersWrapper', () => ({
+  useAccessibilityFiltersContext: () => ({
+    disabilities: mockAccessibilityState,
+    setDisabilities: mockSetDisabilities,
   }),
 }))
 
@@ -189,6 +206,24 @@ describe('TabBar', () => {
     fireEvent.press(searchTab)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_STATE', payload: initialSearchState })
+  })
+
+  it('should reset Search accessibility navigation params when clicked on selected Search tab', () => {
+    mockedUseTabNavigationContext.mockReturnValueOnce({
+      setTabNavigationState: jest.fn(),
+      tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
+        ...route,
+        isSelected: route.name === 'Search',
+      })),
+    })
+    renderTabBar()
+
+    screen.getByTestId('Rechercher des offres sélectionné')
+
+    const searchTab = screen.getByTestId('Rechercher des offres')
+    fireEvent.press(searchTab)
+
+    expect(mockSetDisabilities).toHaveBeenCalledWith(undefined)
   })
 
   it('navigates to Profile on Profile tab click', async () => {

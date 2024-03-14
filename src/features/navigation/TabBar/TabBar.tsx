@@ -1,6 +1,10 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React from 'react'
 
+import {
+  defaultDisabilitiesProperties,
+  useAccessibilityFiltersContext,
+} from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -16,6 +20,8 @@ type Props = Pick<BottomTabBarProps, 'navigation' | 'state'>
 export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, dispatch, hideSuggestions } = useSearch()
+  const { setDisabilities } = useAccessibilityFiltersContext()
+
   const { locationFilter } = searchState
 
   useTabBar({ state })
@@ -44,11 +50,15 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
               if (route.isSelected) {
                 dispatch({
                   type: 'SET_STATE',
-                  payload: { ...initialSearchState, locationFilter },
+                  payload: {
+                    ...initialSearchState,
+                    locationFilter,
+                  },
                 })
+                setDisabilities(defaultDisabilitiesProperties)
                 hideSuggestions()
               } else {
-                navigateParams.params = searchState
+                navigateParams.params = { ...searchState }
               }
               break
             case 'Bookings':

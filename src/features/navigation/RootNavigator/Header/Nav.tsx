@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -27,7 +27,6 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
     searchState: { locationFilter },
   } = useSearch()
   const { hideSuggestions } = useSearch()
-  const { disabilities } = useAccessibilityFiltersContext()
 
   return (
     <NavItemsContainer
@@ -39,7 +38,11 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
         {tabRoutes.map((route, index) => {
           let params = undefined
           if (route.isSelected && route.name === 'Search') {
-            params = { ...initialSearchState, locationFilter, ...disabilities }
+            params = {
+              ...initialSearchState,
+              locationFilter,
+              accessibilityFilter: defaultDisabilitiesProperties,
+            }
           }
           const tabNavConfig = getTabNavConfig(route.name, params)
           return (
