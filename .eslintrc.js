@@ -128,7 +128,6 @@ module.exports = {
           },
           { name: 'msw/lib/types', message: 'use msw instead' },
           { name: '@testing-library/react-native', message: 'Use tests/utils instead' },
-          { name: 'firebase/compat/app', message: 'use libs/firebase/shims/app instead' },
           {
             name: 'firebase/compat/firestore',
             message: 'use libs/firebase/shims/firestore instead',
@@ -141,7 +140,6 @@ module.exports = {
             name: '@react-native-firebase/analytics',
             message: 'use libs/firebase/shims/analytics instead',
           },
-          { name: '@react-native-firebase/app', message: 'use libs/firebase/shims/app instead' },
           {
             name: '@react-native-firebase/dynamic-links',
             message: 'use libs/firebase-links instead',
