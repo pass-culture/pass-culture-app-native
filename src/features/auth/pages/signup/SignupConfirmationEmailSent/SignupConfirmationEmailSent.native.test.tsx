@@ -26,8 +26,8 @@ jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
     mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
-    mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
-      '/email_validation_remaining_resends/john.doe%40gmail.com',
+    mockServer.getApi<EmailValidationRemainingResendsResponse>(
+      '/v1/email_validation_remaining_resends/john.doe%40gmail.com',
       {
         remainingResends: 3,
       }

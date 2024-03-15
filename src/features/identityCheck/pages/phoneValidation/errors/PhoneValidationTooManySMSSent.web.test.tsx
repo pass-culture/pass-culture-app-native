@@ -10,8 +10,8 @@ import { PhoneValidationTooManySMSSent } from './PhoneValidationTooManySMSSent'
 
 describe('<PhoneValidationTooManySMSSent/>', () => {
   beforeEach(() => {
-    mockServer.getApiV1<PhoneValidationRemainingAttemptsRequest>(
-      '/phone_validation/remaining_attempts',
+    mockServer.getApi<PhoneValidationRemainingAttemptsRequest>(
+      '/v1/phone_validation/remaining_attempts',
       phoneValidationRemainingAttemptsFixture
     )
   })

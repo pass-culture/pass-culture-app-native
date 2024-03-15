@@ -56,7 +56,7 @@ const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams
 describe('<CookiesConsent/>', () => {
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
   })
 
   it('should render correctly', async () => {

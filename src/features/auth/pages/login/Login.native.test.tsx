@@ -70,8 +70,8 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
-    mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
+    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
     simulateSignin200()
@@ -135,7 +135,7 @@ describe('<Login/>', () => {
     useFeatureFlagSpy.mockReturnValue(true)
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
@@ -157,7 +157,7 @@ describe('<Login/>', () => {
   })
 
   it('should show snackbar when SSO login fails because account is invalid', async () => {
-    mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
       responseOptions: {
         statusCode: 400,
         data: {
@@ -179,7 +179,7 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to signup form when SSO login fails because user does not exist', async () => {
-    mockServer.postApiV1<SignInResponseFailure['content']>('/oauth/google/authorize', {
+    mockServer.postApi<SignInResponseFailure['content']>('/v1/oauth/google/authorize', {
       responseOptions: {
         statusCode: 401,
         data: {
@@ -426,7 +426,7 @@ describe('<Login/>', () => {
   })
 
   it('should log analytics when signing in with SSO', async () => {
-    mockServer.postApiV1<SigninResponse>('/oauth/google/authorize', {
+    mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
       accountState: AccountState.ACTIVE,
@@ -747,11 +747,11 @@ function renderLogin() {
 }
 
 function mockMeApiCall(response: UserProfileResponse) {
-  mockServer.getApiV1<UserProfileResponse>('/me', response)
+  mockServer.getApi<UserProfileResponse>('/v1/me', response)
 }
 
 function simulateSignin200(accountState = AccountState.ACTIVE) {
-  mockServer.postApiV1<SigninResponse>('/signin', {
+  mockServer.postApi<SigninResponse>('/v1/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     accountState,
@@ -759,7 +759,7 @@ function simulateSignin200(accountState = AccountState.ACTIVE) {
 }
 
 function simulateSigninWrongCredentials() {
-  mockServer.postApiV1('/signin', {
+  mockServer.postApi('/v1/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -770,7 +770,7 @@ function simulateSigninWrongCredentials() {
 }
 
 function simulateSigninRateLimitExceeded() {
-  mockServer.postApiV1('/signin', {
+  mockServer.postApi('/v1/signin', {
     responseOptions: {
       statusCode: 429,
       data: {
@@ -781,7 +781,7 @@ function simulateSigninRateLimitExceeded() {
 }
 
 function simulateSigninEmailNotValidated() {
-  mockServer.postApiV1('/signin', {
+  mockServer.postApi('/v1/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -793,7 +793,7 @@ function simulateSigninEmailNotValidated() {
 }
 
 function simulateSigninNetworkFailure() {
-  mockServer.postApiV1('/signin', {
+  mockServer.postApi('/v1/signin', {
     responseOptions: {
       statusCode: 'network-error',
       data: 'Network request failed',
@@ -802,5 +802,5 @@ function simulateSigninNetworkFailure() {
 }
 
 function simulateAddToFavorites() {
-  mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+  mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
 }

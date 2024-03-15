@@ -18,7 +18,7 @@ describe('useOAuthState', () => {
   })
 
   it('should fetch oauth state when FF is enabled', async () => {
-    mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
     useFeatureFlagSpy.mockReturnValueOnce(true)

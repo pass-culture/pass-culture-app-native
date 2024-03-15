@@ -55,7 +55,7 @@ const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 
 describe('<SetStatus/>', () => {
   beforeEach(() => {
-    mockServer.postApiV1('/subscription/profile', {})
+    mockServer.postApi('/v1/subscription/profile', {})
   })
 
   it('should render correctly', async () => {

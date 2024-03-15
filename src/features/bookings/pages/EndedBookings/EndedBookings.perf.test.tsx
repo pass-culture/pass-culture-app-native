@@ -19,8 +19,8 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<EndedBookings />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
-    mockServer.getApiV1<BookingsResponse>('/bookings', bookingsSnap)
+    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
+    mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
   })
 
   it('Performance test for EndedBookings page', async () => {

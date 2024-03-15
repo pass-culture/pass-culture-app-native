@@ -42,7 +42,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 describe('<OfferContent />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,

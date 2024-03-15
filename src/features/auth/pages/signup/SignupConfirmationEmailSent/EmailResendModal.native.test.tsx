@@ -114,7 +114,7 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should reset error message when another resend attempt is made', async () => {
-    mockServer.postApiV1('/resend_email_validation', {
+    mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: 500, data: 'error' },
     })
     renderEmailResendModal({})
@@ -134,7 +134,7 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should display alert banner when there is no attempt left', async () => {
-    mockServer.postApiV1('/email_validation_remaining_resends/john.doe%40example.com', {
+    mockServer.postApi('/v1/email_validation_remaining_resends/john.doe%40example.com', {
       remainingResends: 0,
       counterResetDatetime: '2023-09-30T12:58:04.065652Z',
     })
@@ -153,18 +153,18 @@ describe('<EmailResendModal />', () => {
 const onDismissMock = jest.fn()
 const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode?: number }) => {
   if (emailResendErrorCode) {
-    mockServer.postApiV1('/resend_email_validation', {
+    mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: emailResendErrorCode, data: 'error' },
       requestOptions: { persist: true },
     })
   } else {
-    mockServer.postApiV1('/resend_email_validation', {
+    mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: 200, data: '' },
       requestOptions: { persist: true },
     })
   }
-  mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
-    '/email_validation_remaining_resends/john.doe%40example.com',
+  mockServer.getApi<EmailValidationRemainingResendsResponse>(
+    '/v1/email_validation_remaining_resends/john.doe%40example.com',
     {
       requestOptions: { persist: true },
       responseOptions: {

@@ -542,9 +542,9 @@
 ./src/shared/offer/helpers/sanitizeTitle.tsx:4
 ./src/tests/mswServer.ts:251
 ./src/tests/mswServer.ts:258
-./src/tests/mswServer.ts:290
-./src/tests/mswServer.ts:325
-./src/tests/mswServer.ts:361
+./src/tests/mswServer.ts:282
+./src/tests/mswServer.ts:309
+./src/tests/mswServer.ts:337
 ./src/ui/components/CollapsibleText/useIsTextEllipsis.ios.ts:17
 ./src/ui/components/SocialNetworkCard.tsx:17
 ./src/ui/components/StepDots.native.test.tsx:19

@@ -32,7 +32,7 @@ describe('useLoginAndRedirect', () => {
 
   it('should login user', async () => {
     mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
-    mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
 
     loginAndRedirect()
 
@@ -40,7 +40,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-    mockServer.getApiV1<UserProfileResponse>('/me', {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -60,7 +60,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
-    mockServer.getApiV1<UserProfileResponse>('/me', {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -80,7 +80,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-    mockServer.getApiV1<UserProfileResponse>('/me', {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -98,7 +98,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should log event when account creation is completed', async () => {
-    mockServer.getApiV1<UserProfileResponse>('/me', {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -120,7 +120,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-    mockServer.getApiV1<UserProfileResponse>('/me', {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
       email: 'email@domain.ext',
       firstName: 'Jean',
@@ -140,7 +140,7 @@ describe('useLoginAndRedirect', () => {
   })
 
   it('should redirect to AccountCreated on error', async () => {
-    mockServer.getApiV1<UserProfileResponse>('/me', {
+    mockServer.getApi<UserProfileResponse>('/v1/me', {
       responseOptions: { statusCode: 404 },
     })
     loginAndRedirect()

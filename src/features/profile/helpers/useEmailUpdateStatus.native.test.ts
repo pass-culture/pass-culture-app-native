@@ -11,7 +11,7 @@ const emailUpdateStatus: EmailUpdateStatus = {
 }
 
 function simulateEmailUpdateStatusError(code: number) {
-  mockServer.getApiV1<EmailUpdateStatus>('/profile/email_update/status', {
+  mockServer.getApi<EmailUpdateStatus>('/v1/profile/email_update/status', {
     responseOptions: { statusCode: code, data: emailUpdateStatus },
   })
 }

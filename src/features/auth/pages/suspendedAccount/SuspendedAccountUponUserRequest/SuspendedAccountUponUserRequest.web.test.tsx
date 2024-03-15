@@ -10,7 +10,7 @@ import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserReque
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockServer.getApiV1<UserSuspensionDateResponse>('/account/suspension_date', {
+      mockServer.getApi<UserSuspensionDateResponse>('/v1/account/suspension_date', {
         date: '2022-05-02',
       })
       const { container } = render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))

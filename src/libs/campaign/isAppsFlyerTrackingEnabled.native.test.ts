@@ -28,7 +28,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when all cookies are accepted', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
@@ -46,7 +46,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return false when all cookies are refused', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
@@ -65,7 +65,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when marketing cookies are accepted', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current

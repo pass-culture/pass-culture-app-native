@@ -54,14 +54,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is NOT expired', () => {
     beforeEach(() => {
-      mockServer.postApiV1<ValidateEmailResponse>('/validate_email', {
+      mockServer.postApi<ValidateEmailResponse>('/v1/validate_email', {
         accessToken: 'access_token',
         refreshToken: 'refresh_token',
       })
     })
 
     it('should login and redirect use on email validation success', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
 
       renderPage()
 
@@ -74,7 +74,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should log analytics on email validation success', async () => {
-      mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
       renderPage()
 
       await act(async () => {})
@@ -85,7 +85,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     it('should redirect to Home with a snackbar message on error', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
-      mockServer.postApiV1('/validate_email', {
+      mockServer.postApi('/v1/validate_email', {
         responseOptions: { statusCode: 400, data: {} },
       })
 
@@ -108,14 +108,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is expired', () => {
     beforeEach(() => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
+      mockServer.getApi<UserProfileResponse>('/v1/me', {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',
         isEligibleForBeneficiaryUpgrade: false,
         eligibilityStartDatetime: '2019-12-01T00:00:00Z',
       })
-      mockServer.postApiV1('/validate_email', {})
+      mockServer.postApi('/v1/validate_email', {})
     })
 
     it('should redirect to SignupConfirmationExpiredLink', async () => {
@@ -136,14 +136,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('Email validation API call', () => {
     beforeEach(() => {
-      mockServer.getApiV1<UserProfileResponse>('/me', {
+      mockServer.getApi<UserProfileResponse>('/v1/me', {
         ...nonBeneficiaryUser,
         email: 'email@domain.ext',
         firstName: 'Jean',
         isEligibleForBeneficiaryUpgrade: false,
         eligibilityStartDatetime: '2019-12-01T00:00:00Z',
       })
-      mockServer.postApiV1('/validate_email', {})
+      mockServer.postApi('/v1/validate_email', {})
     })
 
     it('should validate email with device info', async () => {

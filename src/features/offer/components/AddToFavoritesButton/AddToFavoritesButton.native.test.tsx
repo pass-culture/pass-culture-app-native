@@ -23,7 +23,10 @@ const postFavoritesSpy = jest.spyOn(api, 'postNativeV1MeFavorites')
 
 describe('<AddToFavoriteButton />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
+    mockServer.getApi<PaginatedFavoritesResponse>(
+      '/v1/me/favorites',
+      paginatedFavoritesResponseSnap
+    )
   })
 
   it('should render nothing when offer already in favorite', async () => {
@@ -36,7 +39,7 @@ describe('<AddToFavoriteButton />', () => {
   })
 
   it('should add favorite', async () => {
-    mockServer.postApiV1<FavoriteResponse>('/me/favorites', favoriteResponseSnap)
+    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
 
     renderButton({
       offerId: favoriteResponseSnap.offer.id,

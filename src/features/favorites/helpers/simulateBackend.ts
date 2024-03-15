@@ -37,39 +37,41 @@ export function simulateBackend(options: Options = defaultOptions) {
     ...options,
   }
 
-  mockServer.getApiV1<OfferResponse>(`/offer/${id}`, offerResponseSnap)
-  mockServer.getApiV1<UserProfileResponse>(`/me`, beneficiaryUser)
-  mockServer.getApiV1<PaginatedFavoritesResponse>(`/me/favorites`, paginatedFavoritesResponseSnap)
-  mockServer.getApiV1<SubcategoriesResponseModelv2>(`/subcategories/v2`, { ...placeholderData })
+  mockServer.getApi<OfferResponse>(`/v1/offer/${id}`, offerResponseSnap)
+  mockServer.getApi<UserProfileResponse>(`/v1/me`, beneficiaryUser)
+  mockServer.getApi<PaginatedFavoritesResponse>(`/v1/me/favorites`, paginatedFavoritesResponseSnap)
+  mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
   if (hasAddFavoriteError) {
-    mockServer.postApiV1<EmptyResponse>(`/me/favorites`, {
+    mockServer.postApi<EmptyResponse>(`/v1/me/favorites`, {
       responseOptions: { statusCode: 422, data: {} },
     })
   } else if (hasTooManyFavorites) {
-    mockServer.postApiV1(`/me/favorites`, {
+    mockServer.postApi(`/v1/me/favorites`, {
       responseOptions: { statusCode: 400, data: { code: 'MAX_FAVORITES_REACHED' } },
     })
   } else {
-    mockServer.postApiV1<FavoriteResponse>(`/me/favorites`, {
+    mockServer.postApi<FavoriteResponse>(`/v1/me/favorites`, {
       responseOptions: { statusCode: 200, data: favoriteResponseSnap },
     })
   }
 
-  !hasRemoveFavoriteError
-    ? mockServer.deleteApiV1<EmptyResponse>(
-        `/me/favorites/${
-          paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-        }`,
-        {
-          responseOptions: { statusCode: 204 },
-        }
-      )
-    : mockServer.deleteApiV1<EmptyResponse>(
-        `/me/favorites/${
-          paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-        }`,
-        {
-          responseOptions: { statusCode: 422, data: {} },
-        }
-      )
+  if (!hasRemoveFavoriteError) {
+    mockServer.deleteApi<EmptyResponse>(
+      `/v1/me/favorites/${
+        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
+      }`,
+      {
+        responseOptions: { statusCode: 204 },
+      }
+    )
+  } else {
+    mockServer.deleteApi<EmptyResponse>(
+      `/v1/me/favorites/${
+        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
+      }`,
+      {
+        responseOptions: { statusCode: 422, data: {} },
+      }
+    )
+  }
 }

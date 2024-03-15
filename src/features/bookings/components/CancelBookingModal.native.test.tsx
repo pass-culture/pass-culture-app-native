@@ -72,7 +72,7 @@ describe('<CancelBookingModal />', () => {
   it('should log "ConfirmBookingCancellation" on press "Annuler ma réservation"', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    mockServer.postApiV1(`/bookings/${booking.id}/cancel`, {})
+    mockServer.postApi(`/v1/bookings/${booking.id}/cancel`, {})
 
     render(
       reactQueryProviderHOC(
@@ -92,7 +92,7 @@ describe('<CancelBookingModal />', () => {
   it('should close modal on success', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    mockServer.postApiV1(`/bookings/${booking.id}/cancel`, {})
+    mockServer.postApi(`/v1/bookings/${booking.id}/cancel`, {})
 
     render(
       reactQueryProviderHOC(
@@ -183,7 +183,7 @@ describe('<CancelBookingModal />', () => {
       message: 'La réservation a déjà été utilisée.',
     }
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    mockServer.postApiV1(`/bookings/${booking.id}/cancel`, {
+    mockServer.postApi(`/v1/bookings/${booking.id}/cancel`, {
       responseOptions: { statusCode: 401, data: response },
     })
 

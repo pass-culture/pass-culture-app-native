@@ -46,7 +46,10 @@ describe('<BookingImpossible />', () => {
         nbFavorites: 1,
         favorites: [favoriteResponseSnap],
       }
-      mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', favoritesResponseWithOfferIn)
+      mockServer.getApi<PaginatedFavoritesResponse>(
+        '/v1/me/favorites',
+        favoritesResponseWithOfferIn
+      )
     })
 
     it('should render without CTAs', async () => {
@@ -82,13 +85,13 @@ describe('<BookingImpossible />', () => {
         favorites: [],
       }
       const favoriteResponse: FavoriteResponse = favoriteResponseSnap
-      mockServer.getApiV1<PaginatedFavoritesResponse>(
-        '/me/favorites',
+      mockServer.getApi<PaginatedFavoritesResponse>(
+        '/v1/me/favorites',
         favoritesResponseWithoutOfferIn
       )
-      mockServer.postApiV1('/me/favorites', favoriteResponse)
-      mockServer.postApiV1(`/send_offer_link_by_push/${mockOfferId}`, {})
-      mockServer.postApiV1(`/send_offer_webapp_link_by_email/${mockOfferId}`, {
+      mockServer.postApi('/v1/me/favorites', favoriteResponse)
+      mockServer.postApi(`/v1/send_offer_link_by_push/${mockOfferId}`, {})
+      mockServer.postApi(`/v1/send_offer_webapp_link_by_email/${mockOfferId}`, {
         favoriteResponse,
       })
     })

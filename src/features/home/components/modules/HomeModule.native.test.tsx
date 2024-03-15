@@ -98,7 +98,7 @@ const defaultDataVenues: ModuleData = {
 
 describe('<HomeModule />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<SubcategoriesResponseModelv2>('/subcategories/v2', {
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', {
       ...placeholderData,
     })
   })

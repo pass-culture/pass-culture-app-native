@@ -51,7 +51,7 @@ describe('AuthContext', () => {
 
   describe('useAuthContext', () => {
     beforeEach(() => {
-      mockServer.getApiV1<UserProfileResponse>('/me', nonBeneficiaryUser)
+      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
     })
 
     it('should not return user when logged in but no internet connection', async () => {
@@ -68,7 +68,7 @@ describe('AuthContext', () => {
     it('should return the user when logged in with internet connection', async () => {
       await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
-      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
       const result = renderUseAuthContext()
 
@@ -114,7 +114,7 @@ describe('AuthContext', () => {
     it('should set user properties to Amplitude events when user is logged in', async () => {
       await storage.saveString('access_token', 'access_token')
       await saveRefreshToken('token')
-      mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+      mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
       renderUseAuthContext()
 

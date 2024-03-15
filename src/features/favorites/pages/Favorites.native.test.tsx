@@ -28,7 +28,10 @@ describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
-    mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
+    mockServer.getApi<PaginatedFavoritesResponse>(
+      '/v1/me/favorites',
+      paginatedFavoritesResponseSnap
+    )
     renderFavorites({ isLoggedIn: true })
 
     await screen.findByText('Mes favoris')

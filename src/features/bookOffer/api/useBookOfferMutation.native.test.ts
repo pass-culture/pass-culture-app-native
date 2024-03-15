@@ -16,8 +16,8 @@ const setup = (queryClient: QueryClient) => {
 
 describe('useBookOfferMutation', () => {
   it('invalidates userProfile after successfully booking an offer', async () => {
-    mockServer.postApiV1<BookOfferResponse>('/bookings', {})
-    mockServer.getApiV1<BookingsResponse>('/bookings', {})
+    mockServer.postApi<BookOfferResponse>('/v1/bookings', {})
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
 
     const { result } = renderUseBookOfferMutation()
 
@@ -34,7 +34,7 @@ describe('useBookOfferMutation', () => {
   })
 
   it('does not invalidates userProfile if error on booking an offer', async () => {
-    mockServer.postApiV1('/bookings', { responseOptions: { statusCode: 400, data: {} } })
+    mockServer.postApi('/v1/bookings', { responseOptions: { statusCode: 400, data: {} } })
 
     const { result } = renderUseBookOfferMutation()
 

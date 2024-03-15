@@ -32,7 +32,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Offer />', () => {
   beforeEach(() => {
     // We mock server instead of hooks to test the real behavior of the component.
-    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
@@ -43,7 +43,7 @@ describe('<Offer />', () => {
         responseOptions: { data: mockedAlgoliaResponse.hits },
       }
     )
-    mockServer.getApiV1<SubcategoriesResponseModelv2>(`/subcategories/v2`, { ...placeholderData })
+    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
   })
 
   it('Performance test for Offer page', async () => {

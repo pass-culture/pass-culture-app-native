@@ -48,7 +48,7 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should persist cookies consent information when user partially accepts cookies', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     renderConsentSettings()
 
@@ -76,7 +76,7 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     renderConsentSettings()
 
@@ -89,7 +89,7 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     renderConsentSettings()
 
@@ -109,7 +109,7 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should log analytics if performance cookies are accepted', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     renderConsentSettings()
 
@@ -132,7 +132,7 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should show snackbar and navigate to home on save', async () => {
-    mockServer.postApiV1<EmptyResponse>('/cookies_consent', {})
+    mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
 
     renderConsentSettings()
 

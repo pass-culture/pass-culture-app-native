@@ -37,8 +37,8 @@ describe('<Favorites/>', () => {
     })
 
     it('should not have basic accessibility issues when user is logged in', async () => {
-      mockServer.getApiV1<PaginatedFavoritesResponse>(
-        '/me/favorites',
+      mockServer.getApi<PaginatedFavoritesResponse>(
+        '/v1/me/favorites',
         paginatedFavoritesResponseSnap
       )
 

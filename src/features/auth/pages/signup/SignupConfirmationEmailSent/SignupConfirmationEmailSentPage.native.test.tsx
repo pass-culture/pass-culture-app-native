@@ -17,8 +17,8 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<SignupConfirmationEmailSentPage />', () => {
   it('should render correctly', async () => {
-    mockServer.getApiV1<EmailValidationRemainingResendsResponse>(
-      '/email_validation_remaining_resends/john.doe%40gmail.com',
+    mockServer.getApi<EmailValidationRemainingResendsResponse>(
+      '/v1/email_validation_remaining_resends/john.doe%40gmail.com',
       {
         remainingResends: 3,
       }

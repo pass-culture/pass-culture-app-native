@@ -31,7 +31,7 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   beforeEach(() => {
-    mockServer.postApiV1('/subscription/honor_statement', {})
+    mockServer.postApi('/v1/subscription/honor_statement', {})
   })
 
   it('should render correctly', () => {

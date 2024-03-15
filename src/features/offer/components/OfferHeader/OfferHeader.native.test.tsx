@@ -120,8 +120,8 @@ describe('<OfferHeader />', () => {
 const mockOffer = offerResponseSnap
 
 function renderOfferHeader() {
-  mockServer.getApiV1<PaginatedFavoritesResponse>('/me/favorites', paginatedFavoritesResponseSnap)
-  mockServer.getApiV1<OfferResponse>(`/offer/${mockOffer.id}`, offerResponseSnap)
+  mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', paginatedFavoritesResponseSnap)
+  mockServer.getApi<OfferResponse>(`/v1/offer/${mockOffer.id}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(

@@ -42,7 +42,7 @@ describe('<ArchiveBookingModal />', () => {
   })
 
   it('should call the mutation to toggle booking display', async () => {
-    mockServer.postApiV1('/bookings/2/toggle_display', {})
+    mockServer.postApi('/v1/bookings/2/toggle_display', {})
 
     const onDismiss = jest.fn()
 
@@ -73,7 +73,7 @@ describe('<ArchiveBookingModal />', () => {
       code: 'ALREADY_USED',
       message: 'La réservation a déjà été utilisée.',
     }
-    mockServer.postApiV1('/bookings/2/toggle_display', {
+    mockServer.postApi('/v1/bookings/2/toggle_display', {
       responseOptions: { statusCode: 400, data: response },
     })
 

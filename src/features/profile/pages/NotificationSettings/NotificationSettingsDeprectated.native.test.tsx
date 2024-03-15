@@ -250,5 +250,5 @@ function renderNotificationSettings(
 
 const mockApiUpdateProfile = (user?: UserProfileResponse) => {
   mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user } as Auth.IAuthContext)
-  mockServer.postApiV1('/profile', user)
+  mockServer.postApi('/v1/profile', user)
 }

@@ -8,7 +8,7 @@ import { useOffer } from './useOffer'
 
 describe('useOffer', () => {
   beforeEach(() =>
-    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
   )
 
   it('should call API otherwise', async () => {

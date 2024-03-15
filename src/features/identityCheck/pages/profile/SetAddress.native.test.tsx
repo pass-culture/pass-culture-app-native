@@ -40,7 +40,7 @@ describe('<SetAddress/>', () => {
       'https://api-adresse.data.gouv.fr/search',
       mockedSuggestedPlaces
     )
-    mockServer.getApiV1<SettingsResponse>('/settings', mockDefaultSettings)
+    mockServer.getApi<SettingsResponse>('/v1/settings', mockDefaultSettings)
   })
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })

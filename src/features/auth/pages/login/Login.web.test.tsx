@@ -32,7 +32,7 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    mockServer.getApiV1<OauthStateResponse>('/oauth/state', {
+    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
   })

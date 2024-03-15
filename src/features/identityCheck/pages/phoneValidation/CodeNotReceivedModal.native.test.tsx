@@ -143,7 +143,7 @@ describe('<CodeNotReceivedModal />', () => {
   })
 
   it('should log event when pressing "Demander un autre code" button', async () => {
-    mockServer.postApiV1('/send_phone_validation_code', { responseOptions: { statusCode: 200 } })
+    mockServer.postApi('/v1/send_phone_validation_code', { responseOptions: { statusCode: 200 } })
 
     renderCodeNotReceivedModal()
 

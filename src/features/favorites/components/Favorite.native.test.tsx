@@ -59,7 +59,7 @@ const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sh
 
 describe('<Favorite /> component', () => {
   beforeEach(() => {
-    mockServer.getApiV1<SubcategoriesResponseModelv2>(`/subcategories/v2`, { ...placeholderData })
+    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
   })
 
   it('should navigate to the offer when clicking on the favorite', async () => {
@@ -157,7 +157,7 @@ const DEFAULT_GET_FAVORITE_OPTIONS = {
 
 function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
   const { id, hasRemoveFavoriteError } = { ...DEFAULT_GET_FAVORITE_OPTIONS, ...options }
-  mockServer.deleteApiV1<EmptyResponse>(`/me/favorites/${id}`, {
+  mockServer.deleteApi<EmptyResponse>(`/v1/me/favorites/${id}`, {
     responseOptions: {
       statusCode: hasRemoveFavoriteError ? 422 : 204,
       data: {},

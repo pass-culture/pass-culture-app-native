@@ -33,7 +33,7 @@ jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
 describe('<Favorites />', () => {
   beforeEach(() => {
-    mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+    mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
   })
 
   it('Performance test for Favorites page', async () => {

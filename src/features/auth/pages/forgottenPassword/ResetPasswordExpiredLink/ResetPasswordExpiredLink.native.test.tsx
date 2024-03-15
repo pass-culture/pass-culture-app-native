@@ -21,7 +21,7 @@ jest.mock('features/navigation/navigationRef')
 
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
-    mockServer.postApiV1('/request_password_reset', {})
+    mockServer.postApi('/v1/request_password_reset', {})
     renderResetPasswordExpiredLink()
 
     fireEvent.press(screen.getByText(`Retourner à l’accueil`))
@@ -35,7 +35,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
-    mockServer.postApiV1('/request_password_reset', {
+    mockServer.postApi('/v1/request_password_reset', {
       responseOptions: { statusCode: 204, data: {} },
     })
     renderResetPasswordExpiredLink()
@@ -53,7 +53,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should NOT redirect to reset password link sent page WHEN clicking on resend email and response is failure', async () => {
-    mockServer.postApiV1('/request_password_reset', {
+    mockServer.postApi('/v1/request_password_reset', {
       responseOptions: { statusCode: 401, data: {} },
     })
 

@@ -7,8 +7,8 @@ import { act, renderHook } from 'tests/utils'
 
 describe('usePhoneValidationRemainingAttempts', () => {
   it('calls the API and returns the data and isLastAttempt', async () => {
-    mockServer.getApiV1<PhoneValidationRemainingAttemptsRequest>(
-      '/phone_validation/remaining_attempts',
+    mockServer.getApi<PhoneValidationRemainingAttemptsRequest>(
+      '/v1/phone_validation/remaining_attempts',
       phoneValidationRemainingAttemptsFixture
     )
 

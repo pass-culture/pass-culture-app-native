@@ -12,7 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 // We mock server instead of hooks to test the real behavior of the component.
-mockServer.getApiV1<UserProfileResponse>('/me', beneficiaryUser)
+mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
 jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)

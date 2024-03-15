@@ -145,7 +145,7 @@ describe('<BookingDetails />', () => {
   })
 
   beforeEach(() => {
-    mockServer.getApiV1<OfferResponse>(`/offer/${mockOfferId}`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v1/offer/${mockOfferId}`, offerResponseSnap)
   })
 
   afterEach(() => {
