@@ -1,6 +1,4 @@
-function filterByString(value: string | null | undefined): value is string {
-  return Boolean(value)
-}
+import { isString } from 'shared/string/isString'
 
 export function getVenueTags({
   distance,
@@ -9,5 +7,5 @@ export function getVenueTags({
   distance: string | undefined
   venue_type: string | undefined
 }) {
-  return [distance, venue_type].filter(filterByString)
+  return [distance, venue_type].filter(isString)
 }
