@@ -2,10 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import {
-  LocationSlider,
-  LocationSliderProps,
-} from 'features/search/components/LocationSlider/LocationSlider'
+import { LocationSlider } from 'features/search/components/LocationSlider/LocationSlider'
 import { ValuesType } from 'ui/components/inputs/Slider'
 
 export default {
@@ -13,11 +10,7 @@ export default {
   component: LocationSlider,
 }
 
-const WrappedTemplate: ComponentStory<typeof LocationSlider> = ({
-  field,
-}: {
-  field: LocationSliderProps
-}) => {
+const WrappedTemplate: ComponentStory<typeof LocationSlider> = ({ field }) => {
   const [value, setValue] = useState<ValuesType | undefined>(field.value)
 
   return (

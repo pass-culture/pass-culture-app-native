@@ -8,7 +8,7 @@ import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGe
 import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
-export type LocationSliderProps = {
+type LocationSliderProps = {
   value?: ValuesType
   onChange?: (nextAroundRadius: ValuesType) => void
 }

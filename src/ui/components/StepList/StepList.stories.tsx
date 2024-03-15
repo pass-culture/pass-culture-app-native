@@ -12,7 +12,7 @@ import { Typo } from 'ui/theme'
 
 import { Step } from '../Step/Step'
 
-import { StepList, StepListProps } from './StepList'
+import { StepList } from './StepList'
 
 const meta: ComponentMeta<typeof StepList> = {
   title: 'features/profile/StepList',
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export function UsageExample({ currentStepIndex = 0 }: StepListProps) {
+export function UsageExample({ currentStepIndex = 0 }) {
   return (
     <StepList currentStepIndex={currentStepIndex}>
       <Step>

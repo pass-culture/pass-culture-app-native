@@ -6,7 +6,7 @@ import { StepProps } from 'ui/components/Step/Step'
 import { VerticalUl } from 'ui/components/Ul'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 
-export interface StepListProps {
+interface StepListProps {
   currentStepIndex: number
   children: ReactElement<StepProps>[]
 }

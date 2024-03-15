@@ -5,7 +5,6 @@ import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
-import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
@@ -36,9 +35,6 @@ const Template: ComponentStory<typeof ButtonTertiaryPrimary> = (props) => (
     </StoryContainer>
     <StoryContainer title="ButtonTertiaryPrimary">
       <ButtonTertiaryPrimary {...props} />
-    </StoryContainer>
-    <StoryContainer title="ButtonTertiarySecondary">
-      <ButtonTertiarySecondary {...props} />
     </StoryContainer>
   </React.Fragment>
 )
