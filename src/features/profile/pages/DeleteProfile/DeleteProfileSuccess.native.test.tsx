@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
@@ -13,11 +14,20 @@ jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/context/SettingsContext')
 
+const signOutMock = jest.fn()
+jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
+
 describe('DeleteProfileSuccess component', () => {
   it('should render delete profile success', () => {
     render(<DeleteProfileSuccess />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should log out user', () => {
+    render(<DeleteProfileSuccess />)
+
+    expect(signOutMock).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to Home page when clicking on "Retourner à l’accueil" button', () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { reset } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
@@ -11,11 +11,6 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
-
-const mockSignOut = jest.fn()
-jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
-  useLogoutRoutine: () => mockSignOut,
-}))
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -41,8 +36,7 @@ describe('ConfirmDeleteProfile component', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'DeleteProfileSuccess')
-    expect(mockSignOut).toHaveBeenCalledTimes(1)
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: 'DeleteProfileSuccess' }] })
   })
 
   it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', async () => {

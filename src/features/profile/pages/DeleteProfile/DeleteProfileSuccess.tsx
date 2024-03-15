@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
@@ -15,8 +16,14 @@ import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustr
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
+  const signOut = useLogoutRoutine()
   const { data: settings } = useSettingsContext()
   const reactivationLimit = settings?.accountUnsuspensionLimit
+
+  useEffect(() => {
+    signOut()
+  }, [signOut])
+
   return (
     <GenericInfoPage
       title="Ton compte a été désactivé"
