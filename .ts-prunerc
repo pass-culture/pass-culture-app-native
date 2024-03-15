@@ -1,4 +1,4 @@
 {
   "ignore": "(.*\\.stories\\.tsx)|(.*\\.ios)|(.*\\.android)|(.*\\.web)|(src/api/gen/.*)",
-  "skip": "(jest/.*)|(src/tests/utils\\.tsx)|(src/tests/utils/web\\.tsx)|(.*__mocks__/.*)"
+  "skip": "(src/libs/monitoring/sentry\\.ts)|(src/libs/react-native-animatable/index\\.ts)|(src/libs/react-native-batch/index\\.ts)|(src/libs/react-native-share/index\\.tsx)|(src/libs/react-native-web-fast-image/index\\.((d\\.ts)|(js)))|(jest/.*)|(src/tests/utils\\.tsx)|(src/tests/utils/web\\.tsx)|(.*__mocks__/.*)"
 }
