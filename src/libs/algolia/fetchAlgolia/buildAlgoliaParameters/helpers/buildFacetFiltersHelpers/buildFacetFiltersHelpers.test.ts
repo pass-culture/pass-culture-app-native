@@ -22,12 +22,12 @@ describe('buildOfferCategoriesPredicate', () => {
   it('should return an offer categories predicate formatted for Algolia API', () => {
     const offerCategoriesPredicate = buildOfferCategoriesPredicate([
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-      SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+      SearchGroupNameEnumv2.LIVRES,
     ])
 
     expect(offerCategoriesPredicate).toEqual([
       'offer.searchGroupNamev2:ARTS_LOISIRS_CREATIFS',
-      'offer.searchGroupNamev2:BIBLIOTHEQUES_MEDIATHEQUE',
+      'offer.searchGroupNamev2:LIVRES',
     ])
   })
 })

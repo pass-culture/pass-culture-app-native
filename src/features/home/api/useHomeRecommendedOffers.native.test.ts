@@ -81,7 +81,7 @@ describe('getRecommendationParameters', () => {
 
   it('should return parameters with mapped categories when parameters are provided', () => {
     const parameters: RecommendedOffersModule['recommendationParameters'] = {
-      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
+      categories: ['Arts & loisirs créatifs', 'Cartes jeunes'],
       isEvent: true,
       isDuo: true,
       priceMax: 10,
@@ -99,7 +99,7 @@ describe('getRecommendationParameters', () => {
     )
 
     expect(recommendationParameters).toEqual({
-      categories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
+      categories: ['ARTS_LOISIRS_CREATIFS', 'CARTES_JEUNES'],
       end_date: '2022-05-08T00:00+00:00',
       start_date: '2022-09-08T00:00+00:00',
       price_max: 10,

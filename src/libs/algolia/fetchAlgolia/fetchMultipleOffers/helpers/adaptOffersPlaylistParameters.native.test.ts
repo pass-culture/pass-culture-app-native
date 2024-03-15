@@ -58,7 +58,7 @@ describe('adaptOffersPlaylistParameters', () => {
 
   it('should return parsed algolia parameters with mapped categories when provided', () => {
     const parameters = {
-      categories: ['Arts & loisirs créatifs', 'Bibliothèques, Médiathèques', 'Cartes jeunes'],
+      categories: ['Arts & loisirs créatifs', 'Cartes jeunes'],
     } as OffersModuleParameters
 
     const { result } = renderHook(() => useAdaptOffersPlaylistParameters())
@@ -66,7 +66,7 @@ describe('adaptOffersPlaylistParameters', () => {
 
     expect(parsedParameters).toStrictEqual({
       ...defaultSearchParameters,
-      offerCategories: ['ARTS_LOISIRS_CREATIFS', 'BIBLIOTHEQUES_MEDIATHEQUE', 'CARTES_JEUNES'],
+      offerCategories: ['ARTS_LOISIRS_CREATIFS', 'CARTES_JEUNES'],
     })
   })
 

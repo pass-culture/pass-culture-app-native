@@ -81,21 +81,13 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     gradients: gradientColorsMapping.Lilac,
     position: 5,
   },
-  [SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE]: {
-    icon: categoriesIcons.Bookstore,
-    illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
-    facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
-    baseColor: theme.colors.coral,
-    gradients: gradientColorsMapping.Coral,
-    position: 11,
-  },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
     illustration: SearchCategoriesIllustrations.YouthCards,
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     baseColor: theme.colors.lilac,
     gradients: gradientColorsMapping.Lilac,
-    position: 12,
+    position: 11,
   },
   [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
     icon: categoriesIcons.Disk,
@@ -119,7 +111,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     baseColor: theme.colors.gold,
     gradients: gradientColorsMapping.Gold,
-    position: 13,
+    position: 12,
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
@@ -127,7 +119,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     baseColor: theme.colors.aquamarine,
     gradients: gradientColorsMapping.Aquamarine,
-    position: 14,
+    position: 13,
   },
   [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
     icon: categoriesIcons.Cinema,

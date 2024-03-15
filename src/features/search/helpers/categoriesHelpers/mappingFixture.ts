@@ -316,19 +316,6 @@ export const treeResultFixture = {
       },
     },
   },
-  [SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE]: {
-    label: 'Bibliothèques, Médiathèques',
-    children: {
-      [NativeCategoryIdEnumv2.BIBLIOTHEQUE]: {
-        label: 'Bibliothèque',
-        nbResultsFacet: 0,
-      },
-      [NativeCategoryIdEnumv2.MEDIATHEQUE]: {
-        label: 'Médiathèque',
-        nbResultsFacet: 0,
-      },
-    },
-  },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     children: undefined,
     label: 'Cartes jeunes',
@@ -498,6 +485,10 @@ export const treeResultFixture = {
         genreTypeKey: GenreType.BOOK,
         children: BOOK,
         nbResultsFacet: 4494,
+      },
+      [NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE]: {
+        label: 'Bibliothèque, médiathèque',
+        nbResultsFacet: 0,
       },
     },
   },

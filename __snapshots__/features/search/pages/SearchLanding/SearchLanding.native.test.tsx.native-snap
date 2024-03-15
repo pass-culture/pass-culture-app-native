@@ -742,33 +742,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               "withComponent": [Function],
             },
             "Illustration": [Function],
-            "baseColor": "#CA3F13",
-            "gradients": [
-              "#F8733D",
-              "#CA3F13",
-            ],
-            "label": "Bibliothèques, Médiathèques",
-            "onPress": [Function],
-            "position": 11,
-          },
-          {
-            "Icon": {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
             "baseColor": "#8337E9",
             "gradients": [
               "#AD87FF",
@@ -776,7 +749,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             ],
             "label": "Cartes jeunes",
             "onPress": [Function],
-            "position": 12,
+            "position": 11,
           },
           {
             "Icon": {
@@ -818,7 +791,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
-            "position": 13,
+            "position": 12,
           },
           {
             "Icon": {
@@ -845,7 +818,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
-            "position": 14,
+            "position": 13,
           },
         ]
       }
@@ -2682,157 +2655,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
             >
               <View
-                accessibilityLabel="Catégorie Bibliothèques, Médiathèques"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Bibliothèques, Médiathèques"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      [
-                        4294472509,
-                        4291444499,
-                      ]
-                    }
-                    endPoint={
-                      {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      [
-                        {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        [
-                          {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#CA3F13"
-                  style={
-                    [
-                      {
-                        "backgroundColor": "#CA3F13",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Bibliothèques, Médiathèques
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 8,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
                 accessibilityLabel="Catégorie Cartes jeunes"
                 accessibilityRole="button"
                 accessibilityState={
@@ -2970,20 +2792,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 </View>
               </View>
             </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          >
             <View
               style={
                 [
@@ -3135,6 +2943,20 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          >
             <View
               style={
                 [
