@@ -1,5 +1,5 @@
 export const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-export const defaultDecodedToken = {
+const defaultDecodedToken = {
   iat: 1691670780,
   jti: '7f82c8b0-6222-42be-b913-cdf53958f17d',
   sub: 'bene_18@example.com',

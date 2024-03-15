@@ -28,7 +28,6 @@ src/libs/algolia/algolia.d.ts:53 - AlgoliaFacetsAnalytics (used in module)
 src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
-src/libs/jwt/fixtures.ts:2 - defaultDecodedToken (used in module)
 src/libs/location/index.ts:15 - requestGeolocPermission (used in module)
 src/libs/monitoring/sentry.ts:1 - Breadcrumb
 src/libs/monitoring/sentry.ts:1 - Request
