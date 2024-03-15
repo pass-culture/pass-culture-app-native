@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { ParentInformation } from 'features/identityCheck/components/ParentInformation'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { theme } from 'theme'
@@ -76,7 +75,6 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         />
       </InfoBanner>
       <Spacer.Column numberOfSpaces={10} />
-      <ParentInformation />
     </Container>
   )
 }
