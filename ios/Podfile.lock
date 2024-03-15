@@ -540,7 +540,7 @@ PODS:
     - React-Core
   - react-native-lottie-splash-screen (1.1.2):
     - React
-  - react-native-maps (1.10.2):
+  - react-native-maps (1.11.3):
     - React-Core
   - react-native-netinfo (9.0.0):
     - React-Core
@@ -1141,7 +1141,7 @@ SPEC CHECKSUMS:
   react-native-get-random-values: 2c4ff6b44cb71291dabe9a8ae87d3877dcf387da
   react-native-in-app-review: db8bb167a5f238e7ceca5c242d6b36ce8c4404a4
   react-native-lottie-splash-screen: 4e1b1fd9d6633f9cd2106d6877eb5ba0147f3e2b
-  react-native-maps: 31b0a1b766e15293d349ed7b0b133653432e2098
+  react-native-maps: 79610ffcd0ec2ca8e0cefb48aa8ae7c62a75d7cc
   react-native-netinfo: 5b664b2945a8f02102b296f0f812bddd6827ed9c
   react-native-safe-area-context: 9e40fb181dac02619414ba1294d6c2a807056ab9
   react-native-tracking-transparency: 25ff1ff866e338c137c818bdec20526bb05ffcc1
