@@ -1,6 +1,3 @@
-src/web/useServiceWorker.tsx:152 - useServiceWorker
-web/config/pnpTs.js:4 - resolveModuleName (used in module)
-web/config/pnpTs.js:8 - resolveTypeReferenceDirective (used in module)
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)
