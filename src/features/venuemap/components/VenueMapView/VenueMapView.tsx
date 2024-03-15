@@ -26,7 +26,6 @@ import MapView, { EdgePadding, Marker, Region, MarkerPressEvent } from 'libs/map
 import { parseType } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { MapPin } from 'ui/svg/icons/MapPin'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -154,9 +153,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
               latitude: venue._geoloc.lat,
               longitude: venue._geoloc.lng,
             }}
-            onPress={(event) => handleMarkerPress(venue, event)}>
-            <StyledMapPin isSelected={venue.venueId === selectedVenue?.venueId} />
-          </Marker>
+            onPress={(event) => handleMarkerPress(venue, event)}
+            image={{
+              uri: venue.venueId === selectedVenue?.venueId ? 'map_pin_selected' : 'map_pin',
+            }}
+          />
         ))}
       </StyledMapView>
       {showSearchButton ? (
@@ -180,10 +181,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 }
 
 const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
-
-const StyledMapPin = styled(MapPin).attrs<{ isSelected: boolean }>(({ theme, isSelected }) => ({
-  color: isSelected ? theme.colors.greyMedium : theme.colors.black,
-}))<{ isSelected: boolean }>``
 
 const ButtonContainer = styled.View<{ top: number }>(({ top }) => ({
   position: 'absolute',
