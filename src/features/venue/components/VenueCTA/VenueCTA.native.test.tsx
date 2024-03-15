@@ -40,10 +40,10 @@ jest
   .mockReturnValue({
     screen: 'TabNavigator',
     params: {
-      screen: 'Search',
+      screen: 'SearchStackNavigator',
       params: {
-        ...defaultParams,
-        view: SearchView.Results,
+        screen: 'Search',
+        params: { ...defaultParams, view: SearchView.Results },
       },
     },
     withPush: true,

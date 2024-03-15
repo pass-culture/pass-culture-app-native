@@ -20,7 +20,7 @@ type Props = Pick<BottomTabBarProps, 'navigation' | 'state'>
 export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, dispatch, hideSuggestions } = useSearch()
-  const { setDisabilities } = useAccessibilityFiltersContext()
+  const { setDisabilities, disabilities } = useAccessibilityFiltersContext()
 
   const { locationFilter } = searchState
 
@@ -46,7 +46,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
               }
               navigateParams.params = undefined
               break
-            case 'Search':
+            case 'SearchStackNavigator':
               if (route.isSelected) {
                 dispatch({
                   type: 'SET_STATE',
@@ -58,7 +58,10 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
                 setDisabilities(defaultDisabilitiesProperties)
                 hideSuggestions()
               } else {
-                navigateParams.params = { ...searchState }
+                navigateParams.params = {
+                  screen: 'Search',
+                  params: { ...searchState, accessibilityFilter: disabilities },
+                }
               }
               break
             case 'Bookings':
