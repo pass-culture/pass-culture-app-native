@@ -2,8 +2,11 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
+
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
@@ -60,5 +63,15 @@ describe('<IdentificationFork />', () => {
     await waitFor(() => {
       expect(analytics.logChooseEduConnectMethod).toHaveBeenCalledTimes(1)
     })
+  })
+
+  it('should open data privacy chart when pressing link', () => {
+    render(<IdentificationFork />)
+
+    const externalLink = screen.getByText('Voir la charte des données personnelles')
+
+    fireEvent.press(externalLink)
+
+    expect(openUrl).toHaveBeenCalledWith('https://passculture.data-privacy-chart', undefined, true)
   })
 })

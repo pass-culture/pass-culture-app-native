@@ -8,6 +8,8 @@ import { ParentInformation } from 'features/identityCheck/components/ParentInfor
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { theme } from 'theme'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -62,6 +64,17 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         onBeforeNavigate={analytics.logChooseUbbleMethod}
         key={1}
       />
+      <Spacer.Column numberOfSpaces={2} />
+      <InfoBanner message="pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois.">
+        <ExternalTouchableLink
+          as={ButtonQuaternarySecondary}
+          externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+          wording="Voir la charte des données personnelles"
+          icon={ExternalSiteFilled}
+          justifyContent="flex-start"
+          inline
+        />
+      </InfoBanner>
       <Spacer.Column numberOfSpaces={10} />
       <ParentInformation />
     </Container>
