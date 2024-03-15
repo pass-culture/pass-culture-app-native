@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAccountSuspend } from 'features/auth/api/useAccountSuspend'
-import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
@@ -22,14 +21,14 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export function ConfirmDeleteProfile() {
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  const signOut = useLogoutRoutine()
+  const { reset } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  async function onAccountSuspendSuccess() {
-    navigate('DeleteProfileSuccess')
-    await signOut()
+  function onAccountSuspendSuccess() {
+    reset({
+      index: 0,
+      routes: [{ name: 'DeleteProfileSuccess' }],
+    })
   }
 
   function onAccountSuspendFailure() {
