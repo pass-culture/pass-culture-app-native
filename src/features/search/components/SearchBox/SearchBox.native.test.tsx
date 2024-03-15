@@ -89,7 +89,10 @@ const mockRoutes = [
   {
     key: 'TabNavigator2',
     name: 'TabNavigator',
-    params: { screen: 'Search', params: { view: SearchView.Results } },
+    params: {
+      screen: 'SearchStackNavigator',
+      params: { screen: 'Search', params: { view: SearchView.Results } },
+    },
   },
 ]
 
@@ -98,7 +101,10 @@ const mockRoutesWithVenue = [
   {
     key: 'TabNavigator2',
     name: 'TabNavigator',
-    params: { screen: 'Search', params: { view: SearchView.Results } },
+    params: {
+      screen: 'SearchStackNavigator',
+      params: { screen: 'Search', params: { view: SearchView.Results } },
+    },
   },
 ]
 

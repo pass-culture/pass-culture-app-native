@@ -75,30 +75,33 @@ describe('OffersModule', () => {
     })
 
     expect(push).toHaveBeenCalledWith('TabNavigator', {
+      screen: 'SearchStackNavigator',
       params: {
-        beginningDatetime: undefined,
-        date: null,
-        endingDatetime: undefined,
-        hitsPerPage: 20,
-        isDigital: false,
-        locationParams: {
-          aroundMeRadius: 'all',
-          aroundPlaceRadius: 'all',
-          selectedLocationMode: 'EVERYWHERE',
-          userLocation: undefined,
+        screen: 'Search',
+        params: {
+          beginningDatetime: undefined,
+          date: null,
+          endingDatetime: undefined,
+          hitsPerPage: 20,
+          isDigital: false,
+          locationParams: {
+            aroundMeRadius: 'all',
+            aroundPlaceRadius: 'all',
+            selectedLocationMode: 'EVERYWHERE',
+            userLocation: undefined,
+          },
+          minBookingsThreshold: 0,
+          offerCategories: [],
+          offerGenreTypes: [],
+          offerIsDuo: false,
+          offerSubcategories: [],
+          priceRange: [0, 300],
+          query: '',
+          tags: [],
+          timeRange: null,
+          view: 'Results',
         },
-        minBookingsThreshold: 0,
-        offerCategories: [],
-        offerGenreTypes: [],
-        offerIsDuo: false,
-        offerSubcategories: [],
-        priceRange: [0, 300],
-        query: '',
-        tags: [],
-        timeRange: null,
-        view: 'Results',
       },
-      screen: 'Search',
     })
   })
 

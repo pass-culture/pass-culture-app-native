@@ -58,16 +58,19 @@ describe('<VenueCTA />', () => {
     await waitFor(() => {
       expect(push).toHaveBeenCalledWith('TabNavigator', {
         params: {
-          ...defaultParams,
-          venue: {
-            geolocation: { latitude: 48.87004, longitude: 2.3785 },
-            info: 'Paris',
-            label: 'Le Petit Rintintin 1',
-            venueId: 5543,
+          params: {
+            ...defaultParams,
+            venue: {
+              geolocation: { latitude: 48.87004, longitude: 2.3785 },
+              info: 'Paris',
+              label: 'Le Petit Rintintin 1',
+              venueId: 5543,
+            },
+            view: SearchView.Results,
           },
-          view: SearchView.Results,
+          screen: 'Search',
         },
-        screen: 'Search',
+        screen: 'SearchStackNavigator',
       })
     })
   })
