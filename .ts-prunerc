@@ -1,3 +1,4 @@
 {
-  "ignore": "(.*\\.stories\\.tsx)|(.*\\.ios)|(.*\\.android)|(.*__mocks__/.*)|(.*\\.web)|(src/api/gen/.*)"
+  "ignore": "(.*\\.stories\\.tsx)|(.*\\.ios)|(.*\\.android)|(.*\\.web)|(src/api/gen/.*)",
+  "skip": "(jest/.*)|(src/tests/utils\\.tsx)|(src/tests/utils/web\\.tsx)|(.*__mocks__/.*)"
 }
