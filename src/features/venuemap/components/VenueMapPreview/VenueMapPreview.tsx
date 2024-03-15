@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing } from 'ui/theme'
@@ -12,6 +14,8 @@ type Props = {
   address: string
   bannerUrl: string
   tags: string[]
+  navigateTo: InternalNavigationProps['navigateTo']
+  onClose?: VoidFunction
 }
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
@@ -22,12 +26,15 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   address,
   bannerUrl,
   tags,
+  navigateTo,
+  onClose,
+  ...props
 }) => {
   return (
-    <Container>
+    <Container navigateTo={navigateTo} {...props}>
       <Row>
         <InformationTags tags={tags} />
-        <StyledCloseButton />
+        <StyledCloseButton onClose={onClose} />
       </Row>
       <VenuePreview
         venueName={venueName}
@@ -40,7 +47,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   borderColor: theme.colors.greyDark,
   borderWidth: 1,
