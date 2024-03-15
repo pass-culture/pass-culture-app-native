@@ -36,15 +36,18 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
       noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => {
-          let params = undefined
-          if (route.isSelected && route.name === 'Search') {
-            params = {
-              ...initialSearchState,
-              locationFilter,
-              accessibilityFilter: defaultDisabilitiesProperties,
-            }
+          let tabNavConfig = getTabNavConfig(route.name, undefined)
+
+          if (route.isSelected && route.name === 'SearchStackNavigator') {
+            tabNavConfig = getTabNavConfig('SearchStackNavigator', {
+              screen: 'Search',
+              params: {
+                ...initialSearchState,
+                locationFilter,
+                accessibilityFilter: defaultDisabilitiesProperties,
+              },
+            })
           }
-          const tabNavConfig = getTabNavConfig(route.name, params)
           return (
             <StyledLi key={`key-tab-nav-${route.name}`}>
               {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
@@ -52,7 +55,9 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
                 tabName={route.name}
                 isSelected={route.isSelected}
                 BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-                onBeforeNavigate={route.name === 'Search' ? hideSuggestions : undefined}
+                onBeforeNavigate={
+                  route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
+                }
                 navigateTo={{
                   screen: tabNavConfig[0],
                   params: tabNavConfig[1],

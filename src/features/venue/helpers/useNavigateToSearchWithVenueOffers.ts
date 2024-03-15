@@ -6,9 +6,12 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 
 export const useNavigateToSearchWithVenueOffers = (venue: VenueResponse) => {
   const venueSearchParams: TabParamList['Search'] = useVenueSearchParameters(venue)
-  const searchTabNavConfig = getTabNavConfig('Search', {
-    ...venueSearchParams,
-    view: SearchView.Results,
+  const searchTabNavConfig = getTabNavConfig('SearchStackNavigator', {
+    screen: 'Search',
+    params: {
+      ...venueSearchParams,
+      view: SearchView.Results,
+    },
   })
   return {
     screen: searchTabNavConfig[0],

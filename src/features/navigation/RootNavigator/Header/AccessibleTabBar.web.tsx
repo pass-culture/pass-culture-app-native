@@ -30,21 +30,25 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
       <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {
-            let searchParams = { ...searchState, accessibilityFilter: disabilities }
-            if (route.isSelected && route.name === 'Search') {
-              searchParams = {
-                ...initialSearchState,
-                locationFilter: searchState.locationFilter,
-                accessibilityFilter: defaultDisabilitiesProperties,
-              }
+            let tabNavConfig = getTabNavConfig(route.name)
+            if (route.name === 'SearchStackNavigator') {
+              const searchParams = route.isSelected
+                ? {
+                    ...initialSearchState,
+                    locationFilter: searchState.locationFilter,
+                    accessibilityFilter: defaultDisabilitiesProperties,
+                  }
+                : { ...searchState, accessibilityFilter: disabilities }
+              tabNavConfig = getTabNavConfig(route.name, {
+                screen: 'Search',
+                params: searchParams,
+              })
             }
-            const params = route.name === 'Search' ? searchParams : undefined
-            const tabNavConfig = getTabNavConfig(route.name, params)
             return (
               <LinkContainer key={route.name}>
                 <TabBarComponent
                   navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1], fromRef: true }}
-                  onPress={route.name === 'Search' ? hideSuggestions : undefined}
+                  onPress={route.name === 'SearchStackNavigator' ? hideSuggestions : undefined}
                   tabName={route.name}
                   isSelected={route.isSelected}
                   BicolorIcon={mapTabRouteToBicolorIcon(route.name)}

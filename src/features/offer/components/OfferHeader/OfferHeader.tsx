@@ -33,7 +33,12 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const { goBack } = useGoBack(...getTabNavConfig('Search'))
+  const { goBack } = useGoBack(
+    ...getTabNavConfig('SearchStackNavigator', {
+      screen: 'Search',
+      params: undefined,
+    })
+  )
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
     utmMedium: 'header',

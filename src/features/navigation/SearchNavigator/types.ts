@@ -3,7 +3,7 @@ import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import { SearchState } from 'features/search/types'
 
 export type SearchStackParamList = {
-  Search: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  Search?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
 }
 
 export type SearchScreenNames = keyof SearchStackParamList
