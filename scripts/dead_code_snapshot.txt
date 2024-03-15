@@ -19,55 +19,6 @@ src/tests/utils.tsx:17 - UserEventConfig
 src/web/useServiceWorker.tsx:152 - useServiceWorker
 web/config/pnpTs.js:4 - resolveModuleName (used in module)
 web/config/pnpTs.js:8 - resolveTypeReferenceDirective (used in module)
-src/api/gen/index.ts:26 - FetchAPI
-src/api/gen/index.ts:34 - FetchArgs
-src/api/gen/index.ts:43 - BaseAPI
-src/api/gen/index.ts:62 - RequiredError
-src/api/gen/index.ts:153 - ActivityResponseModel
-src/api/gen/index.ts:185 - Banner
-src/api/gen/index.ts:206 - BannerMetaModel
-src/api/gen/index.ts:228 - BannerQueryParams
-src/api/gen/index.ts:324 - BookingActivationCodeResponse
-src/api/gen/index.ts:353 - BookingDisplayStatusRequest
-src/api/gen/index.ts:364 - BookingOfferExtraData
-src/api/gen/index.ts:563 - BookingVenueResponse
-src/api/gen/index.ts:640 - CallToActionMessage
-src/api/gen/index.ts:699 - ChangeBeneficiaryEmailResponse
-src/api/gen/index.ts:731 - Consent
-src/api/gen/index.ts:752 - CookieConsentRequest
-src/api/gen/index.ts:794 - Credit
-src/api/gen/index.ts:896 - CulturalSurveyQuestion
-src/api/gen/index.ts:956 - DepositAmountsByAge
-src/api/gen/index.ts:1130 - ExternalBookingResponse
-src/api/gen/index.ts:1146 - FavoriteMediationResponse
-src/api/gen/index.ts:1329 - GenreTypeModel
-src/api/gen/index.ts:1417 - GtlLabels
-src/api/gen/index.ts:1473 - HomepageLabelResponseModelv2
-src/api/gen/index.ts:1489 - IdentificationSessionRequest
-src/api/gen/index.ts:1529 - MovieType
-src/api/gen/index.ts:1545 - MusicSubType
-src/api/gen/index.ts:1566 - MusicType
-src/api/gen/index.ts:1856 - OfferImageResponse
-src/api/gen/index.ts:1872 - OfferOffererResponse
-src/api/gen/index.ts:1883 - OfferReportReasons
-src/api/gen/index.ts:1894 - OfferReportRequest
-src/api/gen/index.ts:2016 - OfferStockActivationCodeResponse
-src/api/gen/index.ts:2262 - Reason
-src/api/gen/index.ts:2272 - ReasonMeta
-src/api/gen/index.ts:2299 - ReportedOffer
-src/api/gen/index.ts:2320 - RequestPasswordResetRequest
-src/api/gen/index.ts:2438 - SendPhoneValidationRequest
-src/api/gen/index.ts:2515 - ShowSubType
-src/api/gen/index.ts:2536 - ShowType
-src/api/gen/index.ts:2901 - SubscriptionStepDetailsResponse
-src/api/gen/index.ts:3017 - UserProfileEmailUpdate
-src/api/gen/index.ts:3175 - UserReportedOffersResponse
-src/api/gen/index.ts:3253 - ValidatePhoneNumberRequest
-src/api/gen/index.ts:3264 - ValidationError
-src/api/gen/index.ts:3270 - ValidationErrorElement
-src/api/gen/index.ts:3505 - DefaultApiFetchParamCreator
-src/api/gen/index.ts:4806 - DefaultApiFp
-src/api/gen/index.ts:14 - ConfigurationParameters
 src/libs/algolia/algolia.d.ts:5 - AlgoliaOffer (used in module)
 src/libs/algolia/algolia.d.ts:17 - AlgoliaVenue (used in module)
 src/libs/algolia/algolia.d.ts:39 - AlgoliaFacetsAnalyticsKey (used in module)
