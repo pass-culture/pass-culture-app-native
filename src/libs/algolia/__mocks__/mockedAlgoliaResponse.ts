@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
@@ -176,7 +176,7 @@ export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
       postalCode: '53200',
       name: 'ESPACE CULTUREL LECLERC CHATEAU GONTIER',
       offerer_name: 'SAS AZE DIS',
-      venue_type: 'CULTURAL_CENTRE',
+      venue_type: VenueTypeCodeKey.CULTURAL_CENTRE,
       description: '',
       audio_disability: false,
       mental_disability: true,
@@ -210,7 +210,7 @@ export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
       postalCode: '29900',
       name: 'CAC - Concarneau Scènes',
       offerer_name: 'COMMUNE DE CONCARNEAU',
-      venue_type: 'CULTURAL_CENTRE',
+      venue_type: VenueTypeCodeKey.CULTURAL_CENTRE,
       description: '',
       audio_disability: false,
       mental_disability: true,

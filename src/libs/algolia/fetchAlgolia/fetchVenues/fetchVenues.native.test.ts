@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
@@ -36,7 +37,7 @@ describe('fetchVenues', () => {
     phone_number: '+33102030405',
     snapchat: null,
     twitter: null,
-    venue_type: 'PERFORMING_ARTS',
+    venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
     visual_disability: false,
     website: 'https://my.website.com',
   }
@@ -80,12 +81,18 @@ describe('fetchVenues', () => {
   info: 'Saint-Benoît',
   venueId: 4150,
   _geoloc: { lat: 48.87004, lng: 2.3785 },
+  banner_url: null,
+  postalCode: '86280',
+  venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
 }}
     ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{
   label: '[EAC] Le lieu de Moz’Art 50',
   info: '[EAC] La structure de Moz’Art 32',
   venueId: 4150,
   _geoloc: { lat: 48.87004, lng: 2.3785 },
+  banner_url: null,
+  postalCode: '86280',
+  venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
 }}
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)

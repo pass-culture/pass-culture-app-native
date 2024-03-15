@@ -2,6 +2,7 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -71,7 +72,7 @@ const mockVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: 'MOVIE',
+    venue_type: VenueTypeCodeKey.MOVIE,
     visual_disability: false,
     website: null,
     _geoloc: { lat: 44.82186, lng: -0.56366 },
@@ -95,7 +96,7 @@ const mockVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: 'VISUAL_ARTS',
+    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
     visual_disability: false,
     website: null,
     _geoloc: { lat: 48.85959, lng: 2.33561 },
@@ -119,7 +120,7 @@ const mockVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: 'SCIENTIFIC_CULTURE',
+    venue_type: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
     visual_disability: false,
     website: null,
     _geoloc: { lat: 44.85597, lng: -0.63444 },
@@ -143,7 +144,7 @@ const mockVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: 'SCIENTIFIC_CULTURE',
+    venue_type: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
     visual_disability: false,
     website: null,
     _geoloc: { lat: 43.3112, lng: 5.3832 },
@@ -167,7 +168,7 @@ const mockVenues: AlgoliaVenue[] = [
     phone_number: null,
     snapchat: null,
     twitter: null,
-    venue_type: 'MUSEUM',
+    venue_type: VenueTypeCodeKey.MUSEUM,
     visual_disability: true,
     website: null,
     _geoloc: { lat: 48.84303, lng: 2.30445 },
@@ -191,7 +192,7 @@ const mockVenues: AlgoliaVenue[] = [
     phone_number: '+33102030405',
     snapchat: null,
     twitter: null,
-    venue_type: 'PERFORMING_ARTS',
+    venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
     visual_disability: false,
     website: 'https://my.website.com',
     _geoloc: { lat: 50.63111, lng: 3.0716 },

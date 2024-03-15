@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -25,7 +26,7 @@ const venue = {
   city: 'Paris',
   postalCode: '75000',
   offerer_name: 'séance de cinéma chandra',
-  venue_type: 'MOVIE',
+  venue_type: VenueTypeCodeKey.MOVIE,
   description: 'film',
   audio_disability: null,
   mental_disability: null,

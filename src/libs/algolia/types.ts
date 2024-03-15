@@ -8,6 +8,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
   VenueResponse,
+  VenueTypeCodeKey,
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
@@ -131,7 +132,7 @@ export interface AlgoliaVenue {
   postalCode: string | null
   name: string
   offerer_name: string
-  venue_type: string
+  venue_type: VenueTypeCodeKey | null
   description: string
   audio_disability: boolean | null
   mental_disability: boolean | null
