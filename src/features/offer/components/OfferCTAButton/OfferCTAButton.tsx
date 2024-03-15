@@ -19,8 +19,13 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
   subcategory,
   trackEventHasSeenOfferOnce,
 }) => {
-  const { ctaWordingAndAction, showOfferModal, CTAOfferModal, openModalOnNavigation } =
-    useOfferCTAButton(offer, subcategory)
+  const {
+    ctaWordingAndAction,
+    showOfferModal,
+    CTAOfferModal,
+    openModalOnNavigation,
+    showOfferCTAButton,
+  } = useOfferCTAButton(offer, subcategory)
 
   const { isLoggedIn } = useAuthContext()
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
@@ -34,7 +39,7 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
     }, [trackEventHasSeenOfferOnce, openModalOnNavigation, showOfferModal])
   )
 
-  return (
+  return showOfferCTAButton ? null : (
     <React.Fragment>
       <StickyBookingButton
         ctaWordingAndAction={ctaWordingAndAction}

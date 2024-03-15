@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { UseRouteType, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
@@ -48,5 +48,15 @@ export const useOfferCTAButton = (
     bottomBannerText,
   }
 
-  return { ctaWordingAndAction, onPress, showOfferModal, CTAOfferModal, openModalOnNavigation }
+  const showOfferCTAButton =
+    offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE && wording !== 'Voir ma réservation'
+
+  return {
+    ctaWordingAndAction,
+    onPress,
+    showOfferModal,
+    CTAOfferModal,
+    openModalOnNavigation,
+    showOfferCTAButton,
+  }
 }
