@@ -800,6 +800,16 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                     pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois.
                   </Text>
                   <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
                     accessibilityLabel="Voir la charte des données personnelles"
                     accessibilityState={
                       {

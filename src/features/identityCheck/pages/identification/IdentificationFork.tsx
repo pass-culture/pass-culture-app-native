@@ -65,6 +65,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
       />
       <Spacer.Column numberOfSpaces={2} />
       <InfoBanner message="pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois.">
+        <Spacer.Column numberOfSpaces={2} />
         <ExternalTouchableLink
           as={ButtonQuaternarySecondary}
           externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
