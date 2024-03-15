@@ -23,8 +23,7 @@ const Template: ComponentStory<typeof CategoryListModule> = (props) => (
   <CategoryListModule {...props} />
 )
 
-// TODO(PC-20094): Fix this story
-const CategoryListWithThreeBlocks = Template.bind({})
+export const CategoryListWithThreeBlocks = Template.bind({})
 CategoryListWithThreeBlocks.args = {
   id: '123',
   title: 'En ce moment sur le pass',
@@ -33,12 +32,11 @@ CategoryListWithThreeBlocks.args = {
   index: 1,
 }
 
-// TODO(PC-20094): Fix this story
-const CategoryListWithFourBlocks = Template.bind({})
+export const CategoryListWithFourBlocks = Template.bind({})
 CategoryListWithFourBlocks.args = {
   id: '123',
   title: 'En ce moment sur le pass',
-  categoryBlockList: categoryBlockList,
+  categoryBlockList,
   homeEntryId: 'homeEntryId',
   index: 1,
 }

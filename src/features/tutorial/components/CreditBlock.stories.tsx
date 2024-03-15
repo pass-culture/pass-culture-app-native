@@ -31,7 +31,8 @@ Coming.args = {
   creditStatus: CreditStatus.COMING,
 }
 
-export const Animated = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const Animated = Template.bind({})
 Animated.args = {
   creditStatus: CreditStatus.ONGOING,
   animated: true,

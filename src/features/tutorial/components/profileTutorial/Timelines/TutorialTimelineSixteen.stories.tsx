@@ -13,12 +13,14 @@ const Template: ComponentStory<typeof TutorialTimelineSixteen> = (props) => (
   <TutorialTimelineSixteen {...props} />
 )
 
-export const WithoutActivation = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const WithoutActivation = Template.bind({})
 WithoutActivation.args = {
   activatedAt: undefined,
 }
 
-export const ActivatedAt15 = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const ActivatedAt15 = Template.bind({})
 ActivatedAt15.args = {
   activatedAt: 15,
 }

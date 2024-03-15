@@ -31,12 +31,14 @@ export default meta
 
 const Template: ComponentStory<typeof SSOButtonBase> = (props) => <SSOButtonBase {...props} />
 
-export const Login = Template.bind({})
+// TODO(PC-28525): the storie even exported in not present in Stroybook
+const Login = Template.bind({})
 Login.args = {
   type: 'login',
 }
 
-export const Signup = Template.bind({})
+// TODO(PC-28525): the storie even exported in not present in Stroybook
+const Signup = Template.bind({})
 Signup.args = {
   type: 'signup',
 }

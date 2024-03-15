@@ -57,32 +57,28 @@ const TextExample = ({ withSubtitle = false }) => (
   </React.Fragment>
 )
 
-// TODO(PC-17931): Fix this story
-const WithIcon = Template.bind({})
+export const WithIcon = Template.bind({})
 WithIcon.args = {
   children: TextExample({}),
   Icon: <BicolorAll />,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
-// TODO(PC-17931): Fix this story
-const WithoutIcon = Template.bind({})
+export const WithoutIcon = Template.bind({})
 WithoutIcon.args = {
   children: TextExample({}),
   Icon: undefined,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
-// TODO(PC-17931): Fix this story
-const WithSubtitle = Template.bind({})
+export const WithSubtitle = Template.bind({})
 WithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
   Icon: <BicolorAll />,
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
-// TODO(PC-17931): Fix this story
-const Dense = Template.bind({})
+export const Dense = Template.bind({})
 Dense.args = {
   children: TextExample({}),
   Icon: <BicolorAll />,
@@ -90,8 +86,7 @@ Dense.args = {
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
-// TODO(PC-17931): Fix this story
-const DenseWithSubtitle = Template.bind({})
+export const DenseWithSubtitle = Template.bind({})
 DenseWithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
   Icon: <BicolorAll />,
@@ -99,8 +94,7 @@ DenseWithSubtitle.args = {
   navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
-// TODO(PC-17931): Fix this story
-const DenseWithoutIcon = Template.bind({})
+export const DenseWithoutIcon = Template.bind({})
 DenseWithoutIcon.args = {
   children: TextExample({}),
   dense: true,

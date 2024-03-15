@@ -9,8 +9,7 @@ const meta: ComponentMeta<typeof AlreadyChangedEmailDisclaimer> = {
 }
 export default meta
 
-// TODO(PC-17931): Fix this story
-const Template: ComponentStory<typeof AlreadyChangedEmailDisclaimer> = () => (
+export const Template: ComponentStory<typeof AlreadyChangedEmailDisclaimer> = () => (
   <AlreadyChangedEmailDisclaimer />
 )
 Template.storyName = 'AlreadyChangedEmailDisclaimer'

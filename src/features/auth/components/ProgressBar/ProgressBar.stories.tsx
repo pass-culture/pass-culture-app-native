@@ -3,7 +3,7 @@ import React from 'react'
 
 import { ProgressBar } from './ProgressBar'
 
-const ANIMATION_DURATION_IN_S = 1
+const ANIMATION_DURATION_IN_S = 1000
 
 const meta: ComponentMeta<typeof ProgressBar> = {
   title: 'features/auth/ProgressBar',
@@ -16,19 +16,22 @@ const meta: ComponentMeta<typeof ProgressBar> = {
 export default meta
 
 const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
-export const FirstStep = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const FirstStep = Template.bind({})
 FirstStep.args = {
   totalStep: 5,
   currentStep: 0,
 }
 
-export const SecondStep = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const SecondStep = Template.bind({})
 SecondStep.args = {
   totalStep: 5,
   currentStep: 1,
 }
 
-export const LastStep = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const LastStep = Template.bind({})
 LastStep.args = {
   totalStep: 5,
   currentStep: 5,

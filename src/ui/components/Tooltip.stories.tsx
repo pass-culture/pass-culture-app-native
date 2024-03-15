@@ -23,7 +23,8 @@ export default meta
 
 const Template: ComponentStory<typeof Tooltip> = (props) => <Tooltip {...props} />
 
-export const Default = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const Default = Template.bind({})
 Default.args = {
   label: 'Configure ta position et découvre les offres dans la zone géographique de ton choix.',
   isVisible: true,
