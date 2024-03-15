@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DeviceInformationsBanner } from 'features/trustedDevice/components/DeviceInformationsBanner'
@@ -20,6 +21,9 @@ import { Spacer, Typo } from 'ui/theme'
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
   const { location, osAndSource, loginDate } = formatTokenInfo(getTokenInfo(params.token))
+  const { user, isLoggedIn } = useAuthContext()
+
+  const isLoggedOutOrHasPassword = !isLoggedIn || user?.hasPassword
 
   const onPressDismissAccountSecurity = () => {
     analytics.logDismissAccountSecurity()
@@ -45,27 +49,34 @@ export const AccountSecurity = () => {
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
         Pour des raisons de <Typo.ButtonText>sécurité,</Typo.ButtonText> nous te conseillons de
-        modifier ton mot de passe ou de suspendre ton compte temporairement.
+        {isLoggedOutOrHasPassword
+          ? ' modifier ton mot de passe ou '
+          : ' sécuriser ta boîte mail et '}
+        de suspendre ton compte temporairement.
       </Typo.Body>
-      <Spacer.Column numberOfSpaces={6} />
-      <InternalTouchableLink
-        wording="Modifier mon mot de passe"
-        navigateTo={{
-          screen: 'ReinitializePassword',
-          params: {
-            token: params.reset_password_token,
-            email: params.email,
-            expiration_timestamp: params.reset_token_expiration_timestamp,
-            from: 'suspiciouslogin',
-          },
-        }}
-        as={ButtonPrimary}
-      />
+      {isLoggedOutOrHasPassword ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={6} />
+          <InternalTouchableLink
+            wording="Modifier mon mot de passe"
+            navigateTo={{
+              screen: 'ReinitializePassword',
+              params: {
+                token: params.reset_password_token,
+                email: params.email,
+                expiration_timestamp: params.reset_token_expiration_timestamp,
+                from: 'suspiciouslogin',
+              },
+            }}
+            as={isLoggedOutOrHasPassword ? ButtonPrimary : ButtonSecondary}
+          />
+        </React.Fragment>
+      ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         wording="Suspendre mon compte"
         navigateTo={{ screen: 'SuspensionChoice', params: { token: params.token } }}
-        as={ButtonSecondary}
+        as={isLoggedOutOrHasPassword ? ButtonSecondary : ButtonPrimary}
       />
       <Spacer.Column numberOfSpaces={2} />
       <TouchableLink
