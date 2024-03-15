@@ -32,7 +32,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 describe('Movie screening calendar', () => {
   beforeEach(() => {
-    mockServer.getApiV1<OfferResponse>(`/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,

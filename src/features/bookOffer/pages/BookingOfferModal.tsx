@@ -145,7 +145,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   }
 
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
-    useModalContent(onPressBookOffer, isLoading, isEndedUsedBooking)
+    useModalContent(onPressBookOffer, isLoading, isEndedUsedBooking, bookingDataMovieScreening)
 
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
