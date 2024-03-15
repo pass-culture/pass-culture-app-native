@@ -22,3 +22,7 @@ src/libs/place/index.ts:5 - Properties
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
+src/ui/components/buttons/ButtonTertiarySecondary.ts:9 - ButtonTertiarySecondary
+src/ui/components/StepList/StepList.tsx:9 - StepListProps (used in module)
+src/features/search/components/HoursSlider/HoursSlider.tsx:12 - HoursSliderProps (used in module)
+src/features/search/components/LocationSlider/LocationSlider.tsx:11 - LocationSliderProps (used in module)
