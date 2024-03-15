@@ -23,4 +23,3 @@ src/libs/place/index.ts:5 - Properties
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
-src/libs/firebase/shims/app/index.ts:2 - default
