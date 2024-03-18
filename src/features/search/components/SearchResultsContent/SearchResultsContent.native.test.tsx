@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
-  defaultProperties,
+  defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -45,7 +45,7 @@ const mockAccessibilityFilter = useAccessibilityFiltersContext as jest.MockedFun
 >
 
 mockAccessibilityFilter.mockReturnValue({
-  disabilities: defaultProperties,
+  disabilities: defaultDisabilitiesProperties,
   setDisabilities: () => jest.fn(),
 })
 
@@ -632,6 +632,10 @@ describe('SearchResultsContent component', () => {
 
   it('should log PerformSearch with accessibilityFilter when there is search query execution', async () => {
     mockAccessibilityFilter
+      .mockReturnValueOnce({
+        disabilities: mockDisabilitesPropertiesTruthy,
+        setDisabilities: () => jest.fn(),
+      })
       .mockReturnValueOnce({
         disabilities: mockDisabilitesPropertiesTruthy,
         setDisabilities: () => jest.fn(),

@@ -17,6 +17,7 @@ import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformati
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
+import { buildAccessibilityFilterParam } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
@@ -455,7 +456,8 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.PERFORM_SEARCH },
       {
-        ...buildPerformSearchState(searchState, disabilities),
+        ...buildPerformSearchState(searchState),
+        accessibilityFilter: buildAccessibilityFilterParam(disabilities),
         searchNbResults: nbHits,
       }
     ),

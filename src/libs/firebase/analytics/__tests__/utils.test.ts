@@ -1,17 +1,13 @@
 import { NativeScrollEvent } from 'react-native'
 
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { defaultProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/algolia'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
-import { buildAccessibilityFilterParam } from 'libs/analytics/utils'
 
 const TODAY = new Date(2023, 0, 3)
-
-const accessibilityFilterStringified = buildAccessibilityFilterParam(defaultProperties)
 
 describe('[Analytics utils]', () => {
   const nativeEventMiddle = {
@@ -35,31 +31,24 @@ describe('[Analytics utils]', () => {
 
   describe('should build parameters for PerformSearch log', () => {
     it('when date filter is null', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          view: SearchView.Results,
-          date: null,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        view: SearchView.Results,
+        date: null,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with date filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          view: SearchView.Results,
-          date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        view: SearchView.Results,
+        date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -68,306 +57,237 @@ describe('[Analytics utils]', () => {
           selectedDate: TODAY.toISOString(),
         }),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with location filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('when user press an autocomplete suggestion', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          isAutocomplete: true,
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        isAutocomplete: true,
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchIsAutocomplete: true,
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with max price filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          maxPrice: '30',
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        maxPrice: '30',
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchMaxPrice: '30',
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with min price filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          minPrice: '10',
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        minPrice: '10',
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchMinPrice: '10',
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with an empty array of category filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerCategories: [],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerCategories: [],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with a category filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchCategories: JSON.stringify([SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with an empty array of genre/types filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerGenreTypes: [],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerGenreTypes: [],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with a genre/types filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerGenreTypes: [{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerGenreTypes: [{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchGenreTypes: JSON.stringify([{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }]),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with duo offer filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerIsDuo: true,
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerIsDuo: true,
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsDuo: true,
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with free offer filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerIsFree: true,
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerIsFree: true,
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsFree: true,
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with an empty array of native category filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerNativeCategories: [],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerNativeCategories: [],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with a native category filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          offerNativeCategories: [NativeCategoryIdEnumv2.CD],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        offerNativeCategories: [NativeCategoryIdEnumv2.CD],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchNativeCategories: JSON.stringify([NativeCategoryIdEnumv2.CD]),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with an empty query', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          query: '',
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        query: '',
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with a query', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          query: 'angele',
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        query: 'angele',
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchQuery: 'angele',
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('when time range is null', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          timeRange: null,
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        timeRange: null,
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('with time range filter', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          timeRange: [18, 22],
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        timeRange: [18, 22],
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchTimeRange: JSON.stringify([18, 22]),
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
 
     it('when user press an history item', () => {
-      const partialSearchState = buildPerformSearchState(
-        {
-          ...initialSearchState,
-          isFromHistory: true,
-          view: SearchView.Results,
-        },
-        defaultProperties
-      )
+      const partialSearchState = buildPerformSearchState({
+        ...initialSearchState,
+        isFromHistory: true,
+        view: SearchView.Results,
+      })
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchIsBasedOnHistory: true,
         searchView: SearchView.Results,
-        accessibilityFilter: accessibilityFilterStringified,
       })
     })
   })

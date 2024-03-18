@@ -22,7 +22,6 @@ type PerformSearchState = {
   searchQuery?: string
   searchTimeRange?: string
   searchIsBasedOnHistory?: boolean
-  accessibilityFilter?: string
 }
 
 export const isCloseToBottom = ({
@@ -78,15 +77,11 @@ export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperti
   return JSON.stringify(formattedDisability, null, 2)
 }
 
-export const buildPerformSearchState = (
-  searchState: SearchState,
-  disabilities: DisabilitiesProperties
-) => {
+export const buildPerformSearchState = (searchState: SearchState) => {
   const state: PerformSearchState = {
     searchLocationFilter: buildLocationFilterParam(searchState),
     searchId: searchState.searchId,
     searchView: searchState.view,
-    accessibilityFilter: buildAccessibilityFilterParam(disabilities),
   }
 
   if (searchState.date !== null) {
