@@ -443,9 +443,9 @@
 ./src/features/search/components/SearchHistory/SearchHistory.native.test.tsx:44
 ./src/features/search/components/SearchHistory/SearchHistory.native.test.tsx:60
 ./src/features/search/components/SearchHistory/SearchHistory.native.test.tsx:76
-./src/features/search/components/SearchResultsContent/SearchResultsContent.native.test.tsx:113
-./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:156
-./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:158
+./src/features/search/components/SearchResultsContent/SearchResultsContent.native.test.tsx:134
+./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:157
+./src/features/search/components/SearchResultsContent/SearchResultsContent.tsx:159
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/search/helpers/addHighlightedAttribute/addHighlightedAttribute.test.ts:18
 ./src/features/search/helpers/addHighlightedAttribute/addHighlightedAttribute.test.ts:6
