@@ -802,13 +802,46 @@ describe('<OfferContent />', () => {
       expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
     })
   })
+
+  it('should display container with divider when viewport is not desktop', async () => {
+    renderOfferContent({})
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.getByTestId('messagingApp-container-with-divider')).toBeOnTheScreen()
+  })
+
+  it('should not display container with divider when viewport is desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('messagingApp-container-with-divider')).not.toBeOnTheScreen()
+  })
+
+  it('should display container without divider when viewport is desktop', async () => {
+    renderOfferContent({
+      isDesktopViewport: true,
+    })
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.getByTestId('messagingApp-container-without-divider')).toBeOnTheScreen()
+  })
+
+  it('should not display container without divider when viewport is not desktop', async () => {
+    renderOfferContent({})
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
+  })
 })
 
-type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>>
+type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
+  isDesktopViewport?: boolean
+}
 
 function renderOfferContent({
   offer = offerResponseSnap,
   subcategory = mockSubcategory,
+  isDesktopViewport,
 }: RenderOfferContentType) {
   render(
     reactQueryProviderHOC(
@@ -817,6 +850,9 @@ function renderOfferContent({
         searchGroupList={placeholderData.searchGroups}
         subcategory={subcategory}
       />
-    )
+    ),
+    {
+      theme: { isDesktopViewport: isDesktopViewport ?? false },
+    }
   )
 }

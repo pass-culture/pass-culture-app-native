@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { useQueryClient } from 'react-query'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponse, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
@@ -21,7 +22,7 @@ import { getIsMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/getIsMult
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export type OfferPlaceProps = {
   offer: OfferResponse
@@ -52,6 +53,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { selectedLocationMode, place, userLocation } = useLocation()
+  const { isDesktopViewport } = useTheme()
 
   const hasNewOfferVenueBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK)
 
@@ -144,9 +146,9 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const venueName = offer.venue.publicName || offer.venue.name
   const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
-  return (
-    <React.Fragment>
-      <SectionWithDivider visible={!offer.isDigital} margin>
+  const renderOfferVenueBlock = () => {
+    return (
+      <React.Fragment>
         <Spacer.Column numberOfSpaces={8} />
         {hasNewOfferVenueBlock ? (
           <OfferVenueBlock
@@ -171,7 +173,21 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
             }
           />
         )}
-      </SectionWithDivider>
+      </React.Fragment>
+    )
+  }
+
+  return (
+    <React.Fragment>
+      {isDesktopViewport ? (
+        <ContainerWithoutDivider testID="place-container-without-divider">
+          {renderOfferVenueBlock()}
+        </ContainerWithoutDivider>
+      ) : (
+        <SectionWithDivider visible={!offer.isDigital} margin testID="place-container-with-divider">
+          {renderOfferVenueBlock()}
+        </SectionWithDivider>
+      )}
 
       {shouldDisplayChangeVenueButton ? (
         <VenueSelectionModal
@@ -197,3 +213,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     </React.Fragment>
   )
 }
+
+const ContainerWithoutDivider = styled.View({
+  marginHorizontal: getSpacing(6),
+})
