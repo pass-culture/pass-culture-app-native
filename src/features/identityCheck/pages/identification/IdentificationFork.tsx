@@ -11,7 +11,7 @@ import { theme } from 'theme'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InfoPlain } from 'ui/svg/icons/InfoPlain'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -46,7 +46,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
           as={ButtonQuaternaryBlack}
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
           onBeforeNavigate={analytics.logEduconnectExplanationClicked}
-          icon={InfoPlain}
+          icon={ExternalSiteFilled}
           wording="C’est quoi ÉduConnect&nbsp;?"
           inline
         />
