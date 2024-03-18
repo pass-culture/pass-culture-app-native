@@ -2,6 +2,10 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  defaultDisabilitiesProperties,
+  useAccessibilityFiltersContext,
+} from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -34,6 +38,23 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     dispatch: mockDispatch,
   }),
 }))
+
+jest.mock('features/accessibility/context/AccessibilityFiltersWrapper')
+const mockAccessibilityFilter = useAccessibilityFiltersContext as jest.MockedFunction<
+  typeof useAccessibilityFiltersContext
+>
+
+mockAccessibilityFilter.mockReturnValue({
+  disabilities: defaultDisabilitiesProperties,
+  setDisabilities: () => jest.fn(),
+})
+
+const mockDisabilitesPropertiesTruthy = {
+  isAudioDisabilityCompliant: true,
+  isMentalDisabilityCompliant: true,
+  isMotorDisabilityCompliant: true,
+  isVisualDisabilityCompliant: true,
+}
 
 jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
@@ -593,9 +614,58 @@ describe('SearchResultsContent component', () => {
 
     mockIsLoading = false
     mockSearchState = searchState
+    const mockAccessibilityFilter = {
+      isAudioDisabilityCompliant: undefined,
+      isMentalDisabilityCompliant: undefined,
+      isMotorDisabilityCompliant: undefined,
+      isVisualDisabilityCompliant: undefined,
+    }
     screen.rerender(<SearchResultsContent />)
 
-    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(1, mockSearchState, mockNbHits)
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+      1,
+      mockSearchState,
+      mockAccessibilityFilter,
+      mockNbHits
+    )
+  })
+
+  it('should log PerformSearch with accessibilityFilter when there is search query execution', async () => {
+    mockAccessibilityFilter
+      .mockReturnValueOnce({
+        disabilities: mockDisabilitesPropertiesTruthy,
+        setDisabilities: () => jest.fn(),
+      })
+      .mockReturnValueOnce({
+        disabilities: mockDisabilitesPropertiesTruthy,
+        setDisabilities: () => jest.fn(),
+      })
+      .mockReturnValueOnce({
+        disabilities: mockDisabilitesPropertiesTruthy,
+        setDisabilities: () => jest.fn(),
+      })
+      .mockReturnValueOnce({
+        disabilities: mockDisabilitesPropertiesTruthy,
+        setDisabilities: () => jest.fn(),
+      })
+
+    mockIsLoading = true
+    render(<SearchResultsContent />)
+    await act(async () => {})
+
+    expect(analytics.logPerformSearch).not.toHaveBeenCalled()
+
+    mockIsLoading = false
+    mockSearchState = searchState
+
+    screen.rerender(<SearchResultsContent />)
+
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+      1,
+      mockSearchState,
+      mockDisabilitesPropertiesTruthy,
+      mockNbHits
+    )
   })
 
   it('should not log NoSearchResult when there is not search query execution', async () => {

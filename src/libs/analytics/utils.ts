@@ -1,5 +1,6 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia'
 
@@ -65,6 +66,17 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
   return JSON.stringify(locationFilter)
 }
 
+export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperties): string => {
+  const formattedDisability = Object.fromEntries(
+    Object.entries(disabilities).map(([key, value]) => [
+      key,
+      value === undefined ? 'undefined' : value,
+    ])
+  )
+
+  return JSON.stringify(formattedDisability, null, 2)
+}
+
 export const buildPerformSearchState = (searchState: SearchState) => {
   const state: PerformSearchState = {
     searchLocationFilter: buildLocationFilterParam(searchState),
@@ -119,6 +131,5 @@ export const buildPerformSearchState = (searchState: SearchState) => {
   if (searchState.isFromHistory) {
     state.searchIsBasedOnHistory = searchState.isFromHistory
   }
-
   return state
 }
