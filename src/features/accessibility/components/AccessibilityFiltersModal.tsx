@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import {
   useAccessibilityFiltersContext,
-  defaultProperties,
+  defaultDisabilitiesProperties,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { HandicapEnum, DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { DisabilitiesProperties } from 'features/accessibility/types'
@@ -56,7 +56,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   }
 
   const handleFilterReset = () => {
-    setDisplayedDisabilities(defaultProperties)
+    setDisplayedDisabilities(defaultDisabilitiesProperties)
   }
 
   const capitalizeFirstLetter = (word: string) => {
@@ -66,6 +66,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   const handleOnPress = (disability: string) => {
     setDisplayedDisabilities({
       ...displayedDisabilities,
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       [disability]: !displayedDisabilities[disability],
     })
   }

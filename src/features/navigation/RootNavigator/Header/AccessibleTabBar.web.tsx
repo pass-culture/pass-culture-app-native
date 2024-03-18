@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import nativeStyled from 'styled-components/native'
 
+import {
+  defaultDisabilitiesProperties,
+  useAccessibilityFiltersContext,
+} from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
@@ -17,6 +21,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { tabRoutes } = useTabNavigationContext()
   const currentRoute = useCurrentRoute()
   const { searchState, hideSuggestions } = useSearch()
+  const { disabilities } = useAccessibilityFiltersContext()
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
@@ -25,12 +30,14 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
       <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {
-            const searchParams = route.isSelected
-              ? {
-                  ...initialSearchState,
-                  locationFilter: searchState.locationFilter,
-                }
-              : searchState
+            let searchParams = { ...searchState, accessibilityFilter: disabilities }
+            if (route.isSelected && route.name === 'Search') {
+              searchParams = {
+                ...initialSearchState,
+                locationFilter: searchState.locationFilter,
+                accessibilityFilter: defaultDisabilitiesProperties,
+              }
+            }
             const params = route.name === 'Search' ? searchParams : undefined
             const tabNavConfig = getTabNavConfig(route.name, params)
             return (

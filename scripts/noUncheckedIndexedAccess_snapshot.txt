@@ -7,6 +7,7 @@
 ./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:58
 ./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:60
 ./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:67
+./src/features/accessibility/components/AccessibilityFiltersModal.tsx:69
 ./src/features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.native.test.tsx:46
 ./src/features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.native.test.tsx:48
 ./src/features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx:37

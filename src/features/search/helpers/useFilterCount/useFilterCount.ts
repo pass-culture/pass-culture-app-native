@@ -1,11 +1,18 @@
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { SearchState } from 'features/search/types'
 
 export const useFilterCount = (searchState: SearchState): number => {
   const { offerCategories, minPrice, maxPrice, offerIsFree, offerIsDuo, date, timeRange, venue } =
     searchState
+  const { disabilities } = useAccessibilityFiltersContext()
   const hasCategories = offerCategories.length > 0
   const hasPrices = ((!!minPrice && Number(minPrice) > 0) || !!maxPrice) && !offerIsFree
   const hasActivatedFreeOffer = offerIsFree ?? false
+  const hasActivatedAccessibility =
+    !!disabilities.isMentalDisabilityCompliant ||
+    !!disabilities.isMotorDisabilityCompliant ||
+    !!disabilities.isVisualDisabilityCompliant ||
+    !!disabilities.isAudioDisabilityCompliant
 
   return (
     // Lieux culturels
@@ -21,6 +28,8 @@ export const useFilterCount = (searchState: SearchState): number => {
     // Date
     +!!date +
     // Heure
-    +!!timeRange
+    +!!timeRange +
+    //
+    +hasActivatedAccessibility
   )
 }

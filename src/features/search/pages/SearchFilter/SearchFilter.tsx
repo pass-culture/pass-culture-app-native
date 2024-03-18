@@ -4,8 +4,8 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import {
+  defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
-  defaultProperties,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
@@ -28,7 +28,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
-  const { setDisabilities } = useAccessibilityFiltersContext()
+  const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
   const enabledAccessibilityFilter = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER
   )
@@ -46,17 +46,23 @@ export const SearchFilter: React.FC = () => {
   const { isMobileViewport } = useTheme()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  const oldAccessibilityFilter = useMemo(() => disabilities, [])
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldSearchState = useMemo(() => searchState, [])
   const onGoBack = useCallback(() => {
-    navigateToSearch({ ...oldSearchState, view: SearchView.Results })
-  }, [navigateToSearch, oldSearchState])
+    navigateToSearch({ ...oldSearchState, view: SearchView.Results }, oldAccessibilityFilter)
+  }, [navigateToSearch, oldSearchState, oldAccessibilityFilter])
 
   const onSearchPress = useCallback(() => {
-    navigateToSearch({
-      ...searchState,
-      view: SearchView.Results,
-    })
-  }, [navigateToSearch, searchState])
+    navigateToSearch(
+      {
+        ...searchState,
+        view: SearchView.Results,
+      },
+      disabilities
+    )
+  }, [navigateToSearch, searchState, disabilities])
 
   const onResetPress = useCallback(() => {
     const getLocationFilter = (): LocationFilter => {
@@ -98,7 +104,7 @@ export const SearchFilter: React.FC = () => {
         timeRange: null,
       },
     })
-    setDisabilities(defaultProperties)
+    setDisabilities(defaultDisabilitiesProperties)
     logReinitializeFilters()
   }, [
     dispatch,

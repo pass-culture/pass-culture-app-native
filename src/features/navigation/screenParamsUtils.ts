@@ -29,7 +29,6 @@ type ParamsParsers = {
     ) => RouteParams<ParamsList, Screen>[Param]
   }
 }
-
 const searchParamsParser = {
   beginningDatetime: parseDataWithISODates,
   date: parseDataWithISODates,
@@ -59,6 +58,7 @@ const searchParamsParser = {
   minBookingsThreshold: JSON.parse,
   isFromHistory: JSON.parse,
   venue: JSON.parse,
+  accessibilityFilter: JSON.parse,
   gtls: JSON.parse,
 }
 
@@ -211,12 +211,15 @@ const searchParamsStringifier = {
   minBookingsThreshold: JSON.stringify,
   isFromHistory: JSON.stringify,
   venue: JSON.stringify,
+  accessibilityFilter: JSON.stringify,
   gtls: JSON.stringify,
 }
 
 export const screenParamsStringifier: ParamsStringifiers = {
-  Search: searchParamsStringifier,
-  SearchFilter: searchParamsStringifier,
+  Search: {
+    ...searchParamsStringifier,
+  },
+  SearchFilter: { ...searchParamsStringifier },
   LocationFilter: {
     selectedVenue: JSON.stringify,
     selectedPlace: JSON.stringify,
