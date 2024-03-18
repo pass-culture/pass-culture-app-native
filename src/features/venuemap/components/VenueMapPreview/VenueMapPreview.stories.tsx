@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -6,6 +7,13 @@ import { VenueMapPreview } from './VenueMapPreview'
 const meta: ComponentMeta<typeof VenueMapPreview> = {
   title: 'features/search/VenueMapPreview',
   component: VenueMapPreview,
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 }
 export default meta
 

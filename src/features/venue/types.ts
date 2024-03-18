@@ -1,10 +1,14 @@
 import { Geoloc } from 'libs/algolia'
+import { VenueTypeCode } from 'libs/parsers'
 
 export interface Venue {
   label: string
   info: string
   venueId: number | null
   _geoloc?: Geoloc
+  banner_url?: string | null
+  venue_type?: VenueTypeCode | null
+  postalCode?: string | null
 }
 
 export enum Tab {

@@ -7,4 +7,7 @@ export const adaptAlgoliaVenues = (venues: AlgoliaVenue[]): Venue[] =>
     info: venue.city || venue.offerer_name,
     venueId: parseInt(venue.objectID),
     _geoloc: venue._geoloc,
+    banner_url: venue.banner_url,
+    venue_type: venue.venue_type,
+    postalCode: venue.postalCode,
   }))

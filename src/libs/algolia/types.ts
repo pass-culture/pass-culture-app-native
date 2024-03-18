@@ -131,7 +131,7 @@ export interface AlgoliaVenue {
   postalCode: string | null
   name: string
   offerer_name: string
-  venue_type: string
+  venue_type: VenueTypeCode | null
   description: string
   audio_disability: boolean | null
   mental_disability: boolean | null

@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Venue } from 'features/venue/types'
 import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
+import { VenueMapPreview } from 'features/venuemap/components/VenueMapPreview/VenueMapPreview'
 import {
   calculateHorizontalDistance,
   calculateRoundRadiusInKilometers,
@@ -13,13 +14,16 @@ import {
   distanceToLatitudeDelta,
   distanceToLongitudeDelta,
 } from 'features/venuemap/helpers/calculateDistanceMap'
+import { getVenueTags } from 'features/venuemap/helpers/getVenueTags/getVenueTags'
 import { isGeolocValid } from 'features/venuemap/helpers/isGeolocValid'
 import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import MapView, { EdgePadding, Marker, Region, MarkerPressEvent } from 'libs/maps/maps'
+import { parseType } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { MapPin } from 'ui/svg/icons/MapPin'
@@ -71,6 +75,15 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const geolocatedVenues = venues.filter(
     (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
   )
+  const distanceToVenue = useDistance({
+    lat: selectedVenue?._geoloc.lat,
+    lng: selectedVenue?._geoloc.lng,
+  })
+
+  const venueTypeLabel = parseType(selectedVenue?.venue_type)
+
+  const tags = getVenueTags({ distance: distanceToVenue, venue_type: venueTypeLabel })
+
   const hasSelectionOutsideSearchArea =
     selectedVenue && !geolocatedVenues.find((venue) => venue.venueId === selectedVenue.venueId)
 
@@ -110,6 +123,13 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     }
   }
 
+  const handlePreviewClose = () => {
+    setSelectedVenue(null)
+  }
+
+  // use formatFullAddressStartsWithPostalCode when we have the param address from Algolia
+  const address = `${selectedVenue?.info}, ${selectedVenue?.postalCode} `
+
   return (
     <React.Fragment>
       <StyledMapView
@@ -140,6 +160,16 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
           <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
       ) : null}
+      {selectedVenue ? (
+        <StyledVenueMapPreview
+          venueName={selectedVenue?.label}
+          address={address}
+          bannerUrl={selectedVenue?.banner_url ?? ''}
+          tags={tags}
+          navigateTo={{ screen: 'Venue', params: { id: selectedVenue.venueId } }}
+          onClose={handlePreviewClose}
+        />
+      ) : null}
     </React.Fragment>
   )
 }
@@ -156,4 +186,12 @@ const ButtonContainer = styled.View<{ top: number }>(({ top }) => ({
   left: getSpacing(13.5),
   right: getSpacing(13.5),
   alignItems: 'center',
+}))
+
+const StyledVenueMapPreview = styled(VenueMapPreview)(({ theme }) => ({
+  position: 'absolute',
+  bottom: getSpacing(10),
+  left: getSpacing(4),
+  right: getSpacing(4),
+  backgroundColor: theme.colors.white,
 }))
