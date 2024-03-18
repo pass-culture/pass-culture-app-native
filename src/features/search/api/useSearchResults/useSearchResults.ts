@@ -3,6 +3,7 @@ import flatten from 'lodash/flatten'
 import { useMemo, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
@@ -27,6 +28,7 @@ export type SearchOfferHits = {
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius } = useLocation()
+  const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
@@ -40,6 +42,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       selectedLocationMode,
       aroundPlaceRadius,
       aroundMeRadius,
+      disabilities,
     ],
     async ({ pageParam: page = 0 }) => {
       const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
@@ -53,6 +56,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
+        disabilitiesProperties: disabilities,
       })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)

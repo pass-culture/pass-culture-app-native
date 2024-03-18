@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
+import { defaultProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/algolia'
@@ -36,6 +37,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: 'all',
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -101,6 +103,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -166,6 +169,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -241,6 +245,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: 'all',
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -316,6 +321,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -391,6 +397,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -469,6 +476,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -543,6 +551,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: 'all',
       },
       isUserUnderage: false,
+      disabilitiesProperties: defaultProperties,
     })
 
     const expectedResult = [
@@ -584,6 +593,85 @@ describe('fetchSearchResults', () => {
       {
         params: {
           facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: 'algoliaOffersIndexName',
+        query: 'searched query',
+      },
+    ]
+
+    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+  })
+
+  it('should execute multi query with accessibilities filters when user has disabilities', () => {
+    const query = 'searched query'
+
+    fetchSearchResults({
+      parameters: { query } as SearchQueryParameters,
+      buildLocationParameterParams: {
+        userLocation: null,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
+      isUserUnderage: false,
+      disabilitiesProperties: {
+        isMentalDisabilityCompliant: true,
+        isVisualDisabilityCompliant: false,
+        isAudioDisabilityCompliant: true,
+        isMotorDisabilityCompliant: false,
+      },
+    })
+
+    const expectedResult = [
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: [
+            'offer.dates',
+            'offer.isDigital',
+            'offer.isDuo',
+            'offer.isEducational',
+            'offer.name',
+            'offer.prices',
+            'offer.subcategoryId',
+            'offer.thumbUrl',
+            'objectID',
+            '_geoloc',
+            'venue',
+          ],
+          clickAnalytics: true,
+          facetFilters: [
+            ['offer.isEducational:false'],
+            ['venue.isAudioDisabilityCompliant:true'],
+            ['venue.isMentalDisabilityCompliant:true'],
+          ],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        query: 'searched query',
+      },
+      {
+        params: {
+          facetFilters: [
+            ['offer.isEducational:false'],
+            ['venue.isAudioDisabilityCompliant:true'],
+            ['venue.isMentalDisabilityCompliant:true'],
+          ],
           numericFilters: [['offer.prices: 0 TO 300']],
           page: 0,
         },
