@@ -611,7 +611,7 @@ describe('fetchSearchResults', () => {
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
   })
 
-  it('should execute multi query with accessibilities filters when user has disabilities', () => {
+  it('should execute multi query with accessibilities filters when user has selected accessibility filters', () => {
     const query = 'searched query'
 
     fetchSearchResults({
