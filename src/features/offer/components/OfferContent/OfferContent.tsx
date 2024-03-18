@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponse, SearchGroupResponseModelv2, SubcategoryIdEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -53,6 +53,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const { userLocation } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
+  const { isDesktopViewport } = useTheme()
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -176,10 +177,17 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           </FeatureFlag>
         ) : null}
 
-        <SectionWithDivider visible margin>
-          <Spacer.Column numberOfSpaces={2} />
-          <OfferMessagingApps offer={offer} />
-        </SectionWithDivider>
+        {isDesktopViewport ? (
+          <ContainerWithoutDivider testID="messagingApp-container-without-divider">
+            <Spacer.Column numberOfSpaces={2} />
+            <OfferMessagingApps offer={offer} />
+          </ContainerWithoutDivider>
+        ) : (
+          <SectionWithDivider visible margin testID="messagingApp-container-with-divider">
+            <Spacer.Column numberOfSpaces={2} />
+            <OfferMessagingApps offer={offer} />
+          </SectionWithDivider>
+        )}
 
         <OfferPlaylistList
           offer={offer}
@@ -217,5 +225,9 @@ const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
   gap: getSpacing(6),
 })
+
+const ContainerWithoutDivider = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const GroupWithoutGap = View

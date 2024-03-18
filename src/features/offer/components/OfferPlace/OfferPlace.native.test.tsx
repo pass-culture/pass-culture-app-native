@@ -499,9 +499,71 @@ describe('<OfferPlace />', () => {
       }
     )
   })
+
+  it('should display container with divider on mobile', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
+    })
+
+    expect(screen.getByTestId('place-container-with-divider')).toBeOnTheScreen()
+  })
+
+  it('should not display container with divider on desktop', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
+      isDesktopViewport: true,
+    })
+
+    expect(screen.queryByTestId('place-container-with-divider')).not.toBeOnTheScreen()
+  })
+
+  it('should display container without divider on desktop', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
+      isDesktopViewport: true,
+    })
+
+    expect(screen.getByTestId('place-container-without-divider')).toBeOnTheScreen()
+  })
+
+  it('should not display container without divider on mobile', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
+    })
+
+    expect(screen.queryByTestId('place-container-without-divider')).not.toBeOnTheScreen()
+  })
 })
 
-type RenderOfferPlaceType = Partial<ComponentProps<typeof OfferPlace>>
+type RenderOfferPlaceType = Partial<ComponentProps<typeof OfferPlace>> & {
+  isDesktopViewport?: boolean
+}
 
-const renderOfferPlace = ({ offer = mockOffer, isEvent = false }: RenderOfferPlaceType) =>
-  render(reactQueryProviderHOC(<OfferPlace offer={offer} isEvent={isEvent} />))
+const renderOfferPlace = ({
+  offer = mockOffer,
+  isEvent = false,
+  isDesktopViewport,
+}: RenderOfferPlaceType) =>
+  render(reactQueryProviderHOC(<OfferPlace offer={offer} isEvent={isEvent} />), {
+    theme: { isDesktopViewport: isDesktopViewport ?? false },
+  })
