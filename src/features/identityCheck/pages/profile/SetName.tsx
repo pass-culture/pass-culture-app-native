@@ -1,10 +1,13 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -12,32 +15,39 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
-import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer } from 'ui/theme'
 
+type FormValues = {
+  firstName: string
+  lastName: string
+}
 export const SetName = () => {
   const { dispatch, profile } = useSubscriptionContext()
-  const [firstName, setFirstName] = useState(profile.name?.firstName ?? '')
-  const [lastName, setLastName] = useState(profile.name?.lastName ?? '')
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const { control, formState, handleSubmit, watch } = useForm<FormValues>({
+    defaultValues: {
+      firstName: profile.name?.firstName ?? '',
+      lastName: profile.name?.lastName ?? '',
+    },
+    resolver: yupResolver(setNameSchema),
+    mode: 'all',
+  })
+
+  const { firstName, lastName } = watch()
 
   useEffect(() => {
     analytics.logScreenViewSetName()
   }, [])
 
-  const isValidFirstName = isNameValid(firstName)
-  const isValidLastName = isNameValid(lastName)
-  const disabled = !isValidFirstName || !isValidLastName
+  const disabled = !formState.isValid
   const firstNameInputErrorId = uuidv4()
   const lastNameInputErrorId = uuidv4()
 
-  const firstNameHasError = !isValidFirstName && firstName.length > 0
-  const lastNameHasError = !isValidLastName && lastName.length > 0
-
-  async function submitName() {
+  async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
     await storage.saveObject('activation_profile', { name: { firstName, lastName } })
@@ -45,7 +55,7 @@ export const SetName = () => {
     navigate('SetCity')
   }
 
-  useEnterKeyAction(!disabled ? submitName : undefined)
+  useEnterKeyAction(!disabled ? () => handleSubmit(submitName) : undefined)
 
   return (
     <PageWithHeader
@@ -60,39 +70,55 @@ export const SetName = () => {
 Nous les vérifions et ils ne pourront plus être modifiés par la suite."
           />
           <Spacer.Column numberOfSpaces={4} />
-          <TextInput
-            label="Prénom"
-            value={firstName}
-            autoFocus
-            onChangeText={setFirstName}
-            placeholder="Ton prénom"
-            textContentType="username"
-            isRequiredField
-            accessibilityDescribedBy={firstNameInputErrorId}
-            testID="Entrée pour le prénom"
-          />
-          <InputError
-            visible={firstNameHasError}
-            messageId="Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux."
-            numberOfSpacesTop={2}
-            relatedInputId={firstNameInputErrorId}
+          <Controller
+            control={control}
+            name="firstName"
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <React.Fragment>
+                <TextInput
+                  label="Prénom"
+                  value={value}
+                  autoFocus
+                  onChangeText={onChange}
+                  placeholder="Ton prénom"
+                  textContentType="username"
+                  isRequiredField
+                  accessibilityDescribedBy={firstNameInputErrorId}
+                  testID="Entrée pour le prénom"
+                />
+                <InputError
+                  visible={firstName.length > 0 && !!error}
+                  messageId={error?.message}
+                  numberOfSpacesTop={2}
+                  relatedInputId={firstNameInputErrorId}
+                />
+              </React.Fragment>
+            )}
           />
           <Spacer.Column numberOfSpaces={6} />
-          <TextInput
-            label="Nom"
-            value={lastName}
-            onChangeText={setLastName}
-            placeholder="Ton nom"
-            textContentType="username"
-            isRequiredField
-            accessibilityDescribedBy={lastNameInputErrorId}
-            testID="Entrée pour le nom"
-          />
-          <InputError
-            visible={lastNameHasError}
-            messageId="Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
-            numberOfSpacesTop={2}
-            relatedInputId={lastNameInputErrorId}
+          <Controller
+            control={control}
+            name="lastName"
+            render={({ field: { onChange, value }, fieldState: { error } }) => (
+              <React.Fragment>
+                <TextInput
+                  label="Nom"
+                  value={value}
+                  onChangeText={onChange}
+                  placeholder="Ton nom"
+                  textContentType="username"
+                  isRequiredField
+                  accessibilityDescribedBy={lastNameInputErrorId}
+                  testID="Entrée pour le nom"
+                />
+                <InputError
+                  visible={lastName.length > 0 && !!error}
+                  messageId={error?.message}
+                  numberOfSpacesTop={2}
+                  relatedInputId={lastNameInputErrorId}
+                />
+              </React.Fragment>
+            )}
           />
         </Form.MaxWidth>
       }
@@ -101,7 +127,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite."
           type="submit"
           wording="Continuer"
           accessibilityLabel="Continuer vers l’étape suivante"
-          onPress={submitName}
+          onPress={handleSubmit(submitName)}
           disabled={disabled}
         />
       }

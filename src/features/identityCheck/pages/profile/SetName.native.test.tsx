@@ -5,7 +5,7 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -48,13 +48,13 @@ describe('<SetName/>', () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    fireEvent.changeText(firstNameInput, firstName)
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    fireEvent.changeText(lastNameInput, lastName)
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     const continueButton = await screen.findByText('Continuer')
-    fireEvent.press(continueButton)
+    await act(async () => fireEvent.press(continueButton))
 
     expect(await storage.readObject('activation_profile')).toMatchObject({
       name: { firstName, lastName },
@@ -65,13 +65,13 @@ describe('<SetName/>', () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    fireEvent.changeText(firstNameInput, firstName)
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    fireEvent.changeText(lastNameInput, lastName)
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     const continueButton = await screen.findByText('Continuer')
-    fireEvent.press(continueButton)
+    await act(async () => fireEvent.press(continueButton))
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_NAME',
@@ -93,13 +93,13 @@ describe('<SetName/>', () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    fireEvent.changeText(firstNameInput, firstName)
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    fireEvent.changeText(lastNameInput, lastName)
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     const continueButton = await screen.findByText('Continuer')
-    fireEvent.press(continueButton)
+    await act(async () => fireEvent.press(continueButton))
 
     await waitFor(() => {
       expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
