@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferBookingButton } from 'features/offer/components/OfferBookingButton/OfferBookingButton'
+import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
 import { render, screen } from 'tests/utils'
 
 describe('<OfferBookingButton />', () => {
@@ -14,19 +14,19 @@ describe('<OfferBookingButton />', () => {
   }
 
   it('should display the correct wording "Réserver l’offre"', () => {
-    render(<OfferBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
+    render(<StickyBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
 
     expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
   })
 
   it('should display the blurry style', () => {
-    render(<OfferBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
+    render(<StickyBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
 
     expect(screen.getByTestId('blurry-wrapper')).toHaveStyle({ backgroundColor: 'transparent' })
   })
 
   it('should display the bottom banner text', () => {
-    render(<OfferBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
+    render(<StickyBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
 
     const bottomBanner = screen.getByText('Attention !')
 
@@ -35,21 +35,21 @@ describe('<OfferBookingButton />', () => {
 
   it('should display the button disabled', () => {
     const disabledCtaWordingAndAction = { ...mockCtaWordingAndAction, isDisabled: true }
-    render(<OfferBookingButton ctaWordingAndAction={disabledCtaWordingAndAction} />)
+    render(<StickyBookingButton ctaWordingAndAction={disabledCtaWordingAndAction} />)
 
     expect(screen.getByText('Réserver l’offre')).toHaveStyle({ color: '#696A6F' })
   })
 
   it("shouldn't return the button when it hasn't wording", () => {
     const withoutWording = { ...mockCtaWordingAndAction, wording: undefined }
-    render(<OfferBookingButton ctaWordingAndAction={withoutWording} />)
+    render(<StickyBookingButton ctaWordingAndAction={withoutWording} />)
 
     expect(screen.queryByText('Réserver l’offre')).toBeNull()
   })
 
   it("shouldn't return the bottom banner when it is undefined", () => {
     const withoutBottomBanner = { ...mockCtaWordingAndAction, bottomBannerText: undefined }
-    render(<OfferBookingButton ctaWordingAndAction={withoutBottomBanner} />)
+    render(<StickyBookingButton ctaWordingAndAction={withoutBottomBanner} />)
 
     expect(screen.queryByText('Attention !')).toBeNull()
   })

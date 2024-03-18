@@ -1,31 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
 
-import { OfferBookingButton } from 'features/offer/components/OfferBookingButton/OfferBookingButton'
+import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
 
-const meta: ComponentMeta<typeof OfferBookingButton> = {
-  title: 'features/offer/OfferBookingButton',
-  component: OfferBookingButton,
+const meta: ComponentMeta<typeof BookingButton> = {
+  title: 'features/offer/BookingButton',
+  component: BookingButton,
 }
 export default meta
 
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: 200,
-    backgroundImage:
-      'url("https://img.freepik.com/photos-gratuite/peinture-lac-montagne-montagne-arriere-plan_188544-9126.jpg?w=1380&t=st=1701705399~exp=1701705999~hmac=c2bf28443a351fb39a524c2fb4603030acdca56b8d6d165a5dccaf922265f073")',
-    backgroundSize: 'cover',
-    position: 'relative',
-  },
-})
-
-const Template: ComponentStory<typeof OfferBookingButton> = (props) => (
-  <View style={styles.container}>
-    <OfferBookingButton {...props} />
-  </View>
-)
+const Template: ComponentStory<typeof BookingButton> = (props) => <BookingButton {...props} />
 
 export const Default = Template.bind({})
 Default.args = {
