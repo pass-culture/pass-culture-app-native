@@ -1,5 +1,5 @@
 import { GenreType, SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
-import { defaultProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFacetFilters'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
@@ -13,7 +13,7 @@ const defaultBuildFacetFilterParam = {
   offerSubcategories: [],
   tags: [],
   isDigital: false,
-  disabilitiesProperties: defaultProperties,
+  disabilitiesProperties: defaultDisabilitiesProperties,
 }
 
 describe('buildFacetFilters', () => {

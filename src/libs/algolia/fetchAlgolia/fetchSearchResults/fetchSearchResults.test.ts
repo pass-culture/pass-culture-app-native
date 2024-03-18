@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
-import { defaultProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/algolia'
@@ -37,7 +37,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: 'all',
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -103,7 +103,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -169,7 +169,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -245,7 +245,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: 'all',
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -321,7 +321,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -397,7 +397,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -476,7 +476,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: MAX_RADIUS,
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
@@ -551,7 +551,7 @@ describe('fetchSearchResults', () => {
         aroundPlaceRadius: 'all',
       },
       isUserUnderage: false,
-      disabilitiesProperties: defaultProperties,
+      disabilitiesProperties: defaultDisabilitiesProperties,
     })
 
     const expectedResult = [
