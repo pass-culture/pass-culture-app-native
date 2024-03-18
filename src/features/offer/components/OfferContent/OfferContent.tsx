@@ -226,8 +226,8 @@ const InfoContainer = styled.View({
   gap: getSpacing(6),
 })
 
-const ContainerWithoutDivider = styled.View({
-  marginHorizontal: getSpacing(6),
-})
+const ContainerWithoutDivider = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const GroupWithoutGap = View

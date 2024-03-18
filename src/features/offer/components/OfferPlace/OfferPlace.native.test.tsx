@@ -500,7 +500,7 @@ describe('<OfferPlace />', () => {
     )
   })
 
-  it('should display container with divider when viewport is not desktop', () => {
+  it('should display container with divider on mobile', () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -513,7 +513,7 @@ describe('<OfferPlace />', () => {
     expect(screen.getByTestId('place-container-with-divider')).toBeOnTheScreen()
   })
 
-  it('should not display container with divider when viewport is desktop', () => {
+  it('should not display container with divider on desktop', () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -527,7 +527,7 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByTestId('place-container-with-divider')).not.toBeOnTheScreen()
   })
 
-  it('should display container without divider when viewport is desktop', () => {
+  it('should display container without divider on desktop', () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {
@@ -541,7 +541,7 @@ describe('<OfferPlace />', () => {
     expect(screen.getByTestId('place-container-without-divider')).toBeOnTheScreen()
   })
 
-  it('should not display container without divider when viewport is not desktop', () => {
+  it('should not display container without divider on mobile', () => {
     renderOfferPlace({
       ...offerPlaceProps,
       offer: {

@@ -803,21 +803,21 @@ describe('<OfferContent />', () => {
     })
   })
 
-  it('should display container with divider when viewport is not desktop', async () => {
+  it('should display container with divider on mobile', async () => {
     renderOfferContent({})
     await screen.findByText('Réserver l’offre')
 
     expect(screen.getByTestId('messagingApp-container-with-divider')).toBeOnTheScreen()
   })
 
-  it('should not display container with divider when viewport is desktop', async () => {
+  it('should not display container with divider on desktop', async () => {
     renderOfferContent({ isDesktopViewport: true })
     await screen.findByText('Réserver l’offre')
 
     expect(screen.queryByTestId('messagingApp-container-with-divider')).not.toBeOnTheScreen()
   })
 
-  it('should display container without divider when viewport is desktop', async () => {
+  it('should display container without divider on desktop', async () => {
     renderOfferContent({
       isDesktopViewport: true,
     })
@@ -826,7 +826,7 @@ describe('<OfferContent />', () => {
     expect(screen.getByTestId('messagingApp-container-without-divider')).toBeOnTheScreen()
   })
 
-  it('should not display container without divider when viewport is not desktop', async () => {
+  it('should not display container without divider on mobile', async () => {
     renderOfferContent({})
     await screen.findByText('Réserver l’offre')
 

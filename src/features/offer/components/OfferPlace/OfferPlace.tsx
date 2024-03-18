@@ -22,7 +22,7 @@ import { getIsMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/getIsMult
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export type OfferPlaceProps = {
   offer: OfferResponse
@@ -214,6 +214,6 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   )
 }
 
-const ContainerWithoutDivider = styled.View({
-  marginHorizontal: getSpacing(6),
-})
+const ContainerWithoutDivider = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
