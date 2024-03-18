@@ -7,6 +7,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -36,9 +37,10 @@ export const SetName = () => {
   const firstNameHasError = !isValidFirstName && firstName.length > 0
   const lastNameHasError = !isValidLastName && lastName.length > 0
 
-  function submitName() {
+  async function submitName() {
     if (disabled) return
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
+    await storage.saveObject('activation_profile', { name: { firstName, lastName } })
     analytics.logSetNameClicked()
     navigate('SetCity')
   }

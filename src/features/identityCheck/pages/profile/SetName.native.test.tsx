@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockDispatch = jest.fn()
@@ -15,6 +16,10 @@ const firstName = 'John'
 const lastName = 'Doe'
 
 describe('<SetName/>', () => {
+  afterEach(() => {
+    storage.clear('activation_profile')
+  })
+
   it('should render correctly', () => {
     render(<SetName />)
 
@@ -39,6 +44,23 @@ describe('<SetName/>', () => {
     })
   })
 
+  it('should store name in storage when submit name', async () => {
+    render(<SetName />)
+
+    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    fireEvent.changeText(firstNameInput, firstName)
+
+    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    fireEvent.changeText(lastNameInput, lastName)
+
+    const continueButton = await screen.findByText('Continuer')
+    fireEvent.press(continueButton)
+
+    expect(await storage.readObject('activation_profile')).toMatchObject({
+      name: { firstName, lastName },
+    })
+  })
+
   it('should navigate to SetCity when submit name', async () => {
     render(<SetName />)
 
@@ -55,7 +77,10 @@ describe('<SetName/>', () => {
       type: 'SET_NAME',
       payload: { firstName, lastName },
     })
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity')
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity')
+    })
   })
 
   it('should log screen view when the screen is mounted', () => {
@@ -76,6 +101,8 @@ describe('<SetName/>', () => {
     const continueButton = await screen.findByText('Continuer')
     fireEvent.press(continueButton)
 
-    expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
+    })
   })
 })
