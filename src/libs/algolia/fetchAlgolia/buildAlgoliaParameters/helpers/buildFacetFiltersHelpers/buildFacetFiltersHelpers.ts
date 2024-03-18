@@ -5,6 +5,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { GTLLevel } from 'features/gtlPlaylist/types'
 import { BooksNativeCategoriesEnum, OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
@@ -73,4 +74,26 @@ export const buildTagsPredicate = (
 ): FiltersArray[0] | undefined => {
   if (tags.length > 0) return tags.map((tag: string) => `${FACETS_FILTERS_ENUM.OFFER_TAGS}:${tag}`)
   return undefined
+}
+
+export const buildAccessibiltyFiltersPredicate = ({
+  isAudioDisabilityCompliant,
+  isMentalDisabilityCompliant,
+  isMotorDisabilityCompliant,
+  isVisualDisabilityCompliant,
+}: DisabilitiesProperties) => {
+  const filters = []
+  if (isAudioDisabilityCompliant) {
+    filters.push([`${FACETS_FILTERS_ENUM.VENUE_AUDIO_DISABILITY_COMPLIANT}:true`])
+  }
+  if (isMentalDisabilityCompliant) {
+    filters.push([`${FACETS_FILTERS_ENUM.VENUE_MENTAL_DISABILITY_COMPLIANT}:true`])
+  }
+  if (isMotorDisabilityCompliant) {
+    filters.push([`${FACETS_FILTERS_ENUM.VENUE_MOTOR_DISABILITY_COMPLIANT}:true`])
+  }
+  if (isVisualDisabilityCompliant) {
+    filters.push([`${FACETS_FILTERS_ENUM.VENUE_VISUAL_DISABILITY_COMPLIANT}:true`])
+  }
+  return filters
 }
