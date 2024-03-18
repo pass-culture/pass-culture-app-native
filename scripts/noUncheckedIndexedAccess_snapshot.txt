@@ -36,7 +36,7 @@
 ./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:274
 ./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:276
 ./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:297
-./src/features/bookOffer/pages/BookingOfferModal.tsx:120
+./src/features/bookOffer/pages/BookingOfferModal.tsx:123
 ./src/features/bookings/api/useEndedBookingFromOfferId.native.test.ts:28
 ./src/features/bookings/api/useEndedBookingFromOfferId.native.test.ts:35
 ./src/features/bookings/api/useEndedBookingFromOfferId.native.test.ts:37
@@ -391,7 +391,7 @@
 ./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:28
 ./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:31
 ./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:33
-./src/features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar.ts:19
+./src/features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar.ts:18
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:120
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:86
 ./src/features/offer/components/OfferTile/OfferTile.native.test.tsx:16
