@@ -1,5 +1,5 @@
-import { VenueTypeCodeKey } from 'api/gen'
 import { Geoloc } from 'libs/algolia'
+import { VenueTypeCode } from 'libs/parsers'
 
 export interface Venue {
   label: string
@@ -7,7 +7,7 @@ export interface Venue {
   venueId: number | null
   _geoloc?: Geoloc
   banner_url?: string | null
-  venue_type?: VenueTypeCodeKey | null
+  venue_type?: VenueTypeCode | null
   postalCode?: string | null
 }
 

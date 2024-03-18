@@ -3,7 +3,6 @@ import React, { FunctionComponent, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Venue } from 'features/venue/types'
 import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
@@ -24,7 +23,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import MapView, { EdgePadding, Marker, Region, MarkerPressEvent } from 'libs/maps/maps'
-import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
+import { parseType } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { MapPin } from 'ui/svg/icons/MapPin'
@@ -80,10 +79,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     lat: selectedVenue?._geoloc.lat,
     lng: selectedVenue?._geoloc.lng,
   })
-  const venueTypeLabel =
-    selectedVenue?.venue_type && selectedVenue?.venue_type !== VenueTypeCodeKey.ADMINISTRATIVE
-      ? MAP_VENUE_TYPE_TO_LABEL[selectedVenue?.venue_type]
-      : undefined
+
+  const venueTypeLabel = parseType(selectedVenue?.venue_type)
+
   const tags = getVenueTags({ distance: distanceToVenue, venue_type: venueTypeLabel })
 
   const hasSelectionOutsideSearchArea =

@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
+import { AlgoliaVenue } from 'libs/algolia'
 import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -20,7 +21,7 @@ const meta: ComponentMeta<typeof SearchVenueItem> = {
 }
 export default meta
 
-const venue = {
+const venue: AlgoliaVenue = {
   objectID: '5543',
   name: 'UGC cinéma',
   city: 'Paris',
@@ -54,7 +55,7 @@ const Template: ComponentStory<typeof SearchVenueItem> = (props) => <SearchVenue
 
 export const Default = Template.bind({})
 Default.args = {
-  venue: venue,
+  venue,
   width: ITEM_WIDTH,
   height: ITEM_HEIGHT,
 }

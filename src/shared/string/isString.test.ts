@@ -1,6 +1,6 @@
 import { isString } from 'shared/string/isString'
 
-describe('filterByString', () => {
+describe('isString', () => {
   it('should return true for a string', () => {
     expect(isString('hello')).toEqual(true)
   })
