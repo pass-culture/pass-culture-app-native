@@ -18,6 +18,10 @@ export enum FACETS_FILTERS_ENUM {
   OFFER_SUB_CATEGORY = 'offer.subcategoryId',
   OFFER_TAGS = 'offer.tags',
   VENUE_ID = 'venue.id',
+  VENUE_AUDIO_DISABILITY_COMPLIANT = 'venue.isAudioDisabilityCompliant',
+  VENUE_MENTAL_DISABILITY_COMPLIANT = 'venue.isMentalDisabilityCompliant',
+  VENUE_MOTOR_DISABILITY_COMPLIANT = 'venue.isMotorDisabilityCompliant',
+  VENUE_VISUAL_DISABILITY_COMPLIANT = 'venue.isVisualDisabilityCompliant',
 }
 
 export enum NUMERIC_FILTERS_ENUM {

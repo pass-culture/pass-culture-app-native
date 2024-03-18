@@ -1,4 +1,5 @@
 import { GenreType, SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFacetFilters'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
@@ -12,6 +13,7 @@ const defaultBuildFacetFilterParam = {
   offerSubcategories: [],
   tags: [],
   isDigital: false,
+  disabilitiesProperties: defaultDisabilitiesProperties,
 }
 
 describe('buildFacetFilters', () => {
@@ -128,6 +130,28 @@ describe('buildFacetFilters', () => {
 
     expect(facetFilters).toEqual({
       facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+    })
+  })
+
+  it('should return default and accessibility facets when disabilitiesProperties specified', () => {
+    const facetFilters = buildFacetFilters({
+      ...defaultBuildFacetFilterParam,
+      disabilitiesProperties: {
+        isAudioDisabilityCompliant: true,
+        isMentalDisabilityCompliant: true,
+        isMotorDisabilityCompliant: true,
+        isVisualDisabilityCompliant: true,
+      },
+    })
+
+    expect(facetFilters).toEqual({
+      facetFilters: [
+        ['offer.isEducational:false'],
+        ['venue.isAudioDisabilityCompliant:true'],
+        ['venue.isMentalDisabilityCompliant:true'],
+        ['venue.isMotorDisabilityCompliant:true'],
+        ['venue.isVisualDisabilityCompliant:true'],
+      ],
     })
   })
 })

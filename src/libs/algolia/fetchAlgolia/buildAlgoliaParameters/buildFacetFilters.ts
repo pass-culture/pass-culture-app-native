@@ -1,5 +1,7 @@
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
+  buildAccessibiltyFiltersPredicate,
   buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
@@ -31,6 +33,7 @@ export const buildFacetFilters = ({
   isDigital,
   tags,
   gtls,
+  disabilitiesProperties,
 }: Pick<
   SearchQueryParameters,
   | 'venue'
@@ -48,6 +51,7 @@ export const buildFacetFilters = ({
   isUserUnderage: boolean
   objectIds?: string[]
   eanList?: string[]
+  disabilitiesProperties: DisabilitiesProperties
 }): null | {
   facetFilters: FiltersArray
 } => {
@@ -108,5 +112,9 @@ export const buildFacetFilters = ({
     facetFilters.push(gtlsPredicate)
   }
 
+  if (disabilitiesProperties) {
+    const accessibilityFilters = buildAccessibiltyFiltersPredicate(disabilitiesProperties)
+    facetFilters.push(...accessibilityFilters)
+  }
   return { facetFilters }
 }

@@ -415,7 +415,7 @@
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:26
 ./src/features/profile/pages/Accessibility/AccessibilityDeclaration.tsx:360
 ./src/features/profile/pages/LegalNotices/LegalNotices.tsx:51
-./src/features/search/api/useSearchResults/useSearchResults.ts:79
+./src/features/search/api/useSearchResults/useSearchResults.ts:83
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.native.test.tsx:23
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:111
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:114
@@ -472,7 +472,7 @@
 ./src/features/venue/components/TabLayout/useTabArrowNavigation.web.ts:24
 ./src/features/venue/components/VenueOfferTile/VenueOfferTile.native.test.tsx:11
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:24
-./src/libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults.test.ts:23
+./src/libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults.test.ts:24
 ./src/libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition.test.ts:18
 ./src/libs/amplitude/amplitude.ts:34
 ./src/libs/contentful/adapters/modules/adaptVenuesModule.ts:24

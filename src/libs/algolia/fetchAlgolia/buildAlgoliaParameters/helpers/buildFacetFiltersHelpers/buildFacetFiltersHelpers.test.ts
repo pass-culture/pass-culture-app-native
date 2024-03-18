@@ -5,6 +5,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import {
+  buildAccessibiltyFiltersPredicate,
   buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
@@ -189,5 +190,48 @@ describe('buildOfferGtlsPredicate', () => {
     ])
 
     expect(gtlsPredicate).toEqual(['offer.gtl_level4:Shonen', 'offer.gtl_level4:Yaoi'])
+  })
+})
+
+describe('buildAccessibiltyFiltersPredicate', () => {
+  it('should return an accessibility filters predicate formatted for Algolia API', () => {
+    const accessibilityFiltersPredicate = buildAccessibiltyFiltersPredicate({
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: false,
+      isMotorDisabilityCompliant: true,
+      isVisualDisabilityCompliant: false,
+    })
+
+    expect(accessibilityFiltersPredicate).toEqual([
+      ['venue.isAudioDisabilityCompliant:true'],
+      ['venue.isMotorDisabilityCompliant:true'],
+    ])
+  })
+
+  it('should return an empty array when no accessibility filters associated', () => {
+    const accessibilityFiltersPredicate = buildAccessibiltyFiltersPredicate({
+      isAudioDisabilityCompliant: false,
+      isMentalDisabilityCompliant: false,
+      isMotorDisabilityCompliant: false,
+      isVisualDisabilityCompliant: false,
+    })
+
+    expect(accessibilityFiltersPredicate).toEqual([])
+  })
+
+  it('should return all accessibility filters predicate formatted for Algolia API', () => {
+    const accessibilityFiltersPredicate = buildAccessibiltyFiltersPredicate({
+      isAudioDisabilityCompliant: true,
+      isMentalDisabilityCompliant: true,
+      isMotorDisabilityCompliant: true,
+      isVisualDisabilityCompliant: true,
+    })
+
+    expect(accessibilityFiltersPredicate).toEqual([
+      ['venue.isAudioDisabilityCompliant:true'],
+      ['venue.isMentalDisabilityCompliant:true'],
+      ['venue.isMotorDisabilityCompliant:true'],
+      ['venue.isVisualDisabilityCompliant:true'],
+    ])
   })
 })

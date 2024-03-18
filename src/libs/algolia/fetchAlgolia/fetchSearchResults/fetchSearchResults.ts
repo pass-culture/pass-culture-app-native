@@ -1,5 +1,6 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
 
+import { DisabilitiesProperties } from 'features/accessibility/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
@@ -21,6 +22,7 @@ type FetchOfferAndVenuesArgs = {
   excludedObjectIds?: string[]
   offersIndex?: string
   venuesIndex?: string
+  disabilitiesProperties: DisabilitiesProperties
 }
 
 export const fetchSearchResults = async ({
@@ -29,11 +31,13 @@ export const fetchSearchResults = async ({
   isUserUnderage,
   storeQueryID,
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
+  disabilitiesProperties,
 }: FetchOfferAndVenuesArgs) => {
   const searchParameters = buildOfferSearchParameters(
     parameters,
     buildLocationParameterParams,
-    isUserUnderage
+    isUserUnderage,
+    disabilitiesProperties
   )
 
   const currentVenuesIndex = getCurrentVenuesIndex({
@@ -84,7 +88,8 @@ export const fetchSearchResults = async ({
             offerGenreTypes: undefined,
           },
           buildLocationParameterParams,
-          isUserUnderage
+          isUserUnderage,
+          disabilitiesProperties
         ),
       },
       facets: [
