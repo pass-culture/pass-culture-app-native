@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
@@ -34,7 +34,10 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
 
   const scrollViewRef = useRef<ScrollView | null>(null)
 
-  const eventCardData = selectedDateScreenings(offerVenueId, onPressOfferCTA)
+  const eventCardData = useMemo(
+    () => selectedDateScreenings(offerVenueId, onPressOfferCTA),
+    [offerVenueId, onPressOfferCTA, selectedDateScreenings]
+  )
 
   useEffect(() => {
     if (scrollViewRef?.current) {
