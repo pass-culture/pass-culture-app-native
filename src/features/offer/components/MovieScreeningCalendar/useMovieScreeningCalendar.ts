@@ -1,7 +1,8 @@
 import { useEffect, useState, useMemo } from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { getDateString } from 'features/offer/components/MovieScreeningCalendar/utils'
+
+const getDateString = (date: string) => new Date(date).toDateString()
 
 export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
   const [selectedDate, setSelectedDate] = useState<Date>()

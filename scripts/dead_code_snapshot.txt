@@ -324,5 +324,4 @@ src/tests/utils/web.tsx:24 - Method
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
-src/features/offer/components/MovieScreeningCalendar/utils.ts:5 - sortScreeningDates
 src/libs/firebase/shims/app/index.ts:2 - default
