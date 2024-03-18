@@ -8,7 +8,7 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
+import { IAuthContext } from 'features/auth/context/AuthContext'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -21,8 +21,17 @@ import { screen, render, act, fireEvent } from 'tests/utils'
 
 mockdate.set(new Date('2024-01-01T00:00:00.000Z'))
 
-jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+const defaultAuthContext: IAuthContext = {
+  isLoggedIn: false,
+  setIsLoggedIn: jest.fn(),
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+}
+let mockAuthContext = defaultAuthContext
+
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => mockAuthContext),
+}))
 
 const defaultOfferStockResponse: OfferStockResponse = {
   beginningDatetime: '2024-02-27T11:10:00Z',
@@ -43,12 +52,7 @@ const defaultOfferResponse: OfferResponse = {
 
 describe('Movie screening calendar', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContext = defaultAuthContext
   })
 
   it('should render <MovieScreeningCalendar /> without duplicated screening dates', async () => {
@@ -106,13 +110,13 @@ describe('Movie screening calendar', () => {
   })
 
   it('should open authentication modal when an event card is pressed and user is not logged in', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
+    mockAuthContext = {
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
       isUserLoading: false,
       refetchUser: jest.fn(),
       user: undefined,
-    })
+    }
 
     renderMovieScreeningCalendar({
       offer: {
@@ -135,14 +139,7 @@ describe('Movie screening calendar', () => {
   })
 
   it('should open isDuo modal when user is loggedIn and clicks on a bookable eventCard', async () => {
-    mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
-    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
-      requestOptions: { persist: true },
-      responseOptions: { data: offerResponseSnap },
-    })
-
-    const newLocal = {
+    mockAuthContext = {
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
       isUserLoading: false,
@@ -150,9 +147,12 @@ describe('Movie screening calendar', () => {
       user: { ...beneficiaryUser, depositExpirationDate: `${new Date()}` },
     }
 
-    // Multiple renders force us to mock auth context as loggedIn user in this test
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue(newLocal)
+    mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
+      requestOptions: { persist: true },
+      responseOptions: { data: offerResponseSnap },
+    })
 
     renderMovieScreeningCalendar({
       offer: {
@@ -170,7 +170,7 @@ describe('Movie screening calendar', () => {
       fireEvent.press(bookingOfferButton)
     })
 
-    expect(screen.queryByText('Nombre de places')).toBeOnTheScreen()
+    expect(await screen.findByText('Nombre de places')).toBeOnTheScreen()
   })
 })
 

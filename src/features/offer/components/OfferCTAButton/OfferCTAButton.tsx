@@ -24,7 +24,7 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
     showOfferModal,
     CTAOfferModal,
     openModalOnNavigation,
-    showOfferCTAButton,
+    isUnbookedMovieScreeningOffer,
   } = useOfferCTAButton(offer, subcategory)
 
   const { isLoggedIn } = useAuthContext()
@@ -39,7 +39,7 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
     }, [trackEventHasSeenOfferOnce, openModalOnNavigation, showOfferModal])
   )
 
-  return showOfferCTAButton ? null : (
+  return isUnbookedMovieScreeningOffer ? null : (
     <React.Fragment>
       <StickyBookingButton
         ctaWordingAndAction={ctaWordingAndAction}
