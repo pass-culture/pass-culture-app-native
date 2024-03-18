@@ -41,7 +41,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory }) => {
 
   const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
   return (
-    <React.Fragment>
+    <Container>
       <InfoContainer>
         <GroupWithoutGap>
           <InformationTags tags={tags} />
@@ -92,9 +92,11 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory }) => {
           <OfferMessagingApps offer={offer} />
         </SectionWithDivider>
       )}
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View({ flexShrink: 1 })
 
 const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
