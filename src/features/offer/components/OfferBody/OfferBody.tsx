@@ -1,0 +1,108 @@
+import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
+
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
+import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
+import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
+import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
+import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
+import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
+import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
+import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
+import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
+import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
+import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
+import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { Subcategory } from 'libs/subcategories/types'
+import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { Separator } from 'ui/components/Separator'
+import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { getSpacing, Spacer } from 'ui/theme'
+
+type Props = {
+  offer: OfferResponse
+  subcategory: Subcategory
+}
+
+export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory }) => {
+  const { isDesktopViewport } = useTheme()
+
+  const extraData = offer.extraData ?? undefined
+  const tags = getOfferTags(subcategory.appLabel, extraData)
+  const artists = getOfferArtists(subcategory.categoryId, offer)
+  const prices = getOfferPrices(offer.stocks)
+
+  const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+
+  const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
+  return (
+    <React.Fragment>
+      <InfoContainer>
+        <GroupWithoutGap>
+          <InformationTags tags={tags} />
+          <Spacer.Column numberOfSpaces={4} />
+          <OfferTitle offerName={offer.name} />
+
+          {artists ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={2} />
+              <OfferArtists artists={artists} />
+            </React.Fragment>
+          ) : null}
+        </GroupWithoutGap>
+
+        {prices ? <OfferPrice prices={prices} /> : null}
+
+        {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+          <GroupWithoutGap>
+            {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
+
+            {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+              <Separator.Horizontal testID="topSeparator" />
+            )}
+
+            {summaryInfoItems.length === 0 ? null : (
+              <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />
+            )}
+          </GroupWithoutGap>
+        )}
+
+        <OfferAbout offer={offer} />
+      </InfoContainer>
+      <OfferPlace offer={offer} isEvent={subcategory.isEvent} />
+      <Spacer.Column numberOfSpaces={8} />
+      {isOfferAMovieScreening ? (
+        <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
+          <MovieScreeningCalendar offerId={offer.id} stocks={offer.stocks} />
+        </FeatureFlag>
+      ) : null}
+      {isDesktopViewport ? (
+        <ContainerWithoutDivider testID="messagingApp-container-without-divider">
+          <Spacer.Column numberOfSpaces={2} />
+          <OfferMessagingApps offer={offer} />
+        </ContainerWithoutDivider>
+      ) : (
+        <SectionWithDivider visible margin testID="messagingApp-container-with-divider">
+          <Spacer.Column numberOfSpaces={2} />
+          <OfferMessagingApps offer={offer} />
+        </SectionWithDivider>
+      )}
+    </React.Fragment>
+  )
+}
+
+const InfoContainer = styled.View({
+  marginHorizontal: getSpacing(6),
+  gap: getSpacing(6),
+})
+
+const ContainerWithoutDivider = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const GroupWithoutGap = View
