@@ -19,9 +19,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 describe('<SetCity/>', () => {
+  beforeEach(async () => {
+    storage.saveObject('activation_profile', { name: { firstName: 'John', lastName: 'Doe' } })
+  })
+
   afterEach(async () => {
     storage.clear('activation_profile')
-    storage.saveObject('activation_profile', { name: { firstName: 'John', lastName: 'Doe' } })
   })
 
   it('should render correctly', () => {

@@ -11,6 +11,7 @@ import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { Properties } from 'libs/place/types'
+import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
@@ -41,6 +42,15 @@ describe('<SetAddress/>', () => {
       mockedSuggestedPlaces
     )
     mockServer.getApi<SettingsResponse>('/v1/settings', mockDefaultSettings)
+
+    storage.saveObject('activation_profile', {
+      name: { firstName: 'John', lastName: 'Doe' },
+      city: { code: '', name: 'Paris', postalCode: '75001' },
+    })
+  })
+
+  afterEach(async () => {
+    storage.clear('activation_profile')
   })
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
@@ -81,12 +91,36 @@ describe('<SetAddress/>', () => {
     fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
     fireEvent.press(screen.getByText('Continuer'))
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_ADDRESS',
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      payload: mockedSuggestedPlaces.features[1].properties.label,
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_ADDRESS',
+        // @ts-expect-error: because of noUncheckedIndexedAccess
+        payload: mockedSuggestedPlaces.features[1].properties.label,
+      })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
     })
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
+  })
+
+  it('should save address in local storage when clicking on "Continuer"', async () => {
+    renderSetAddress()
+
+    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    fireEvent.changeText(input, QUERY_ADDRESS)
+
+    // @ts-expect-error: because of noUncheckedIndexedAccess
+    await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
+    // @ts-expect-error: because of noUncheckedIndexedAccess
+    fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
+    fireEvent.press(screen.getByText('Continuer'))
+
+    await waitFor(async () => {
+      expect(await storage.readObject('activation_profile')).toMatchObject({
+        name: { firstName: 'John', lastName: 'Doe' },
+        city: { code: '', name: 'Paris', postalCode: '75001' },
+        // @ts-expect-error: because of noUncheckedIndexedAccess
+        address: mockedSuggestedPlaces.features[1].properties.label,
+      })
+    })
   })
 
   it('should log screen view when the screen is mounted', async () => {
