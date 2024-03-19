@@ -151,7 +151,12 @@ export const useModalContent = (
     return getBookingStepModalContent(bookingStepModalLeftIconProps, stocks, offer.isDuo)
   }
 
-  const previousBookingState = getPreviousStep(bookingState, offer?.stocks || [], offer?.isDuo)
+  const previousBookingState = getPreviousStep(
+    bookingState,
+    offer?.stocks || [],
+    offer?.isDuo,
+    bookingDataMovieScreening
+  )
   const bookingDetailsModalLeftIconProps: ModalLeftIconProps = {
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,

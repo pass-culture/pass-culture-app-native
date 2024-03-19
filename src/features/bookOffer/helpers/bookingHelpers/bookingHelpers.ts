@@ -1,6 +1,7 @@
 import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
+import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { formatToFrenchDecimal } from 'libs/parsers'
 
 export function getButtonState(bookingState: BookingState) {
@@ -69,7 +70,8 @@ const getStockWithCategoryFromHour = (selectedHour: string) => (stock: OfferStoc
 export function getPreviousStep(
   bookingState: BookingState,
   stocks: OfferStockResponse[],
-  offerIsDuo?: boolean
+  offerIsDuo?: boolean,
+  bookingDataMovieScreening?: MovieScreeningBookingData
 ) {
   const currentStep = bookingState.step
   let stocksWithCategory: OfferStockResponse[] = []
@@ -83,9 +85,12 @@ export function getPreviousStep(
 
   if (
     (currentStep === Step.DUO || (currentStep === Step.CONFIRMATION && !offerIsDuo)) &&
-    stocksWithCategory.length <= 1
+    stocksWithCategory.length <= 1 &&
+    !bookingDataMovieScreening
   ) {
     return Step.HOUR
+  } else if (currentStep === Step.CONFIRMATION && bookingDataMovieScreening) {
+    return Step.DUO
   } else if (currentStep === Step.CONFIRMATION && !offerIsDuo && stocksWithCategory.length > 1) {
     return Step.PRICE
   } else if (currentStep === Step.CONFIRMATION && offerIsDuo) {
