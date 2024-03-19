@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -25,6 +26,7 @@ export const CTAButton: FunctionComponent<Props> = ({
   isFreeDigitalOffer,
   isLoggedIn,
 }) => {
+  const { isDesktopViewport } = useTheme()
   const commonLinkProps = {
     as: ButtonWithLinearGradient,
     wording: wording,
@@ -57,6 +59,7 @@ export const CTAButton: FunctionComponent<Props> = ({
       onPress={onPress}
       isDisabled={isDisabled}
       icon={buttonIcon}
+      fitContentWidth={isDesktopViewport}
     />
   )
 }

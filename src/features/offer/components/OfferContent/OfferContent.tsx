@@ -25,7 +25,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Hero } from 'ui/components/hero/Hero'
 import { HeroBody } from 'ui/components/hero/HeroBody'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse
@@ -118,7 +118,11 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               shouldDisplayOfferPreview={shouldDisplayOfferPreview}
               isSticky
             />
-            <OfferBody offer={offer} subcategory={subcategory} />
+            <OfferBody
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
           </BodyContainer>
         ) : (
           <React.Fragment>
@@ -129,7 +133,11 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               onPress={onPress}
             />
             <Spacer.Column numberOfSpaces={8} />
-            <OfferBody offer={offer} subcategory={subcategory} />
+            <OfferBody
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
           </React.Fragment>
         )}
 
@@ -148,11 +156,13 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
       {!isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       ) : null}
-      <OfferCTAButton
-        offer={offer}
-        subcategory={subcategory}
-        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-      />
+      {!isDesktopViewport ? (
+        <OfferCTAButton
+          offer={offer}
+          subcategory={subcategory}
+          trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+        />
+      ) : null}
     </Container>
   )
 }
@@ -167,8 +177,8 @@ const ScrollViewContainer = styled(IntersectionObserverScrollView)({ overflow: '
 
 const BodyContainer = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
   flexDirection: 'row',
-  paddingHorizontal: 64,
-  paddingTop: 48 + headerHeight,
-  paddingBottom: 48,
-  gap: 40,
+  paddingHorizontal: getSpacing(16),
+  paddingTop: getSpacing(12) + headerHeight,
+  paddingBottom: getSpacing(12),
+  gap: getSpacing(10),
 }))

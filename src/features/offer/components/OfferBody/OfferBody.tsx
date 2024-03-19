@@ -6,6 +6,7 @@ import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
@@ -27,9 +28,14 @@ import { getSpacing, Spacer } from 'ui/theme'
 type Props = {
   offer: OfferResponse
   subcategory: Subcategory
+  trackEventHasSeenOfferOnce: VoidFunction
 }
 
-export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory }) => {
+export const OfferBody: FunctionComponent<Props> = ({
+  offer,
+  subcategory,
+  trackEventHasSeenOfferOnce,
+}) => {
   const { isDesktopViewport } = useTheme()
 
   const extraData = offer.extraData ?? undefined
@@ -71,6 +77,14 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory }) => {
             )}
           </GroupWithoutGap>
         )}
+
+        {isDesktopViewport ? (
+          <OfferCTAButton
+            offer={offer}
+            subcategory={subcategory}
+            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+          />
+        ) : null}
 
         <OfferAbout offer={offer} />
       </InfoContainer>
