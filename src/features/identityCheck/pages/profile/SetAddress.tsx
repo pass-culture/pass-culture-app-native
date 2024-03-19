@@ -10,12 +10,14 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { SubscriptionState } from 'features/identityCheck/context/types'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -100,9 +102,16 @@ export const SetAddress = () => {
 
   const hasError = !isValidAddress && query.length > 0
 
-  const submitAddress = () => {
+  const submitAddress = async () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress ?? query })
+    const activationProfile = (await storage.readObject(
+      'activation_profile'
+    )) as SubscriptionState['profile']
+    await storage.saveObject('activation_profile', {
+      ...activationProfile,
+      address: selectedAddress ?? query,
+    })
     analytics.logSetAddressClicked()
     navigate('SetStatus')
   }

@@ -9,6 +9,7 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { SubscriptionState } from 'features/identityCheck/context/types'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -16,6 +17,7 @@ import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -95,9 +97,13 @@ export const SetCity = () => {
     setDebouncedPostalCode('')
   }
 
-  const submitCity = () => {
+  const submitCity = async () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
+    const activationProfile = (await storage.readObject(
+      'activation_profile'
+    )) as SubscriptionState['profile']
+    await storage.saveObject('activation_profile', { ...activationProfile, city: selectedCity })
     analytics.logSetPostalCodeClicked()
     navigate('SetAddress')
   }

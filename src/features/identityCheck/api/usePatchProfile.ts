@@ -2,38 +2,26 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SubscriptionState } from 'features/identityCheck/context/types'
-import { eventMonitoring } from 'libs/monitoring'
+import { storage } from 'libs/storage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function usePatchProfile() {
-  const { profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
+
   return useMutation(
-    () => {
+    (profile: SubscriptionState['profile']) => {
       const body = getCompleteProfile(profile)
       if (body) {
         return api.postNativeV1SubscriptionProfile(body)
       } else {
-        eventMonitoring.captureException(
-          new Error('No body was provided for subscription profile'),
-          {
-            extra: {
-              profile: {
-                hasAddress: !!profile.address,
-                hasCity: !!profile.city?.name,
-                hasFirstName: !!profile.name?.firstName,
-                hasLastName: !!profile.name?.lastName,
-                status: profile.status,
-              },
-            },
-          }
-        )
         return Promise.reject(new Error('No body was provided for subscription profile'))
       }
     },
     {
+      onSuccess: async () => {
+        await storage.clear('activation_profile')
+      },
       onError: () =>
         showErrorSnackBar({
           message: 'Une erreur est survenue lors de la mise à jour de ton profil',

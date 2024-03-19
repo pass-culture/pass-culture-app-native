@@ -1,53 +1,42 @@
 import * as API from 'api/api'
 import { ActivityIdEnum } from 'api/gen'
-import * as useSubscriptionContext from 'features/identityCheck/context/SubscriptionContextProvider'
-import { eventMonitoring } from 'libs/monitoring'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { usePatchProfile } from './usePatchProfile'
 
-const baseContext = {
-  dispatch: jest.fn(),
-  profile: {
-    address: 'address',
-    city: {
-      name: 'city',
-      code: '75000',
-      postalCode: '75000',
-    },
-    name: {
-      firstName: 'first name',
-      lastName: 'last name',
-    },
-    status: ActivityIdEnum.APPRENTICE,
-    hasSchoolTypes: false,
-    schoolType: null,
+const profile = {
+  address: 'address',
+  city: {
+    name: 'city',
+    code: '75000',
+    postalCode: '75000',
   },
-  identification: {
-    done: false,
-    firstName: 'first',
-    lastName: 'last',
-    birthDate: null,
-    method: null,
+  name: {
+    firstName: 'first name',
+    lastName: 'last name',
   },
-  confirmation: {
-    accepted: false,
-  },
-  step: null,
-  phoneValidation: null,
+  status: ActivityIdEnum.APPRENTICE,
+  hasSchoolTypes: false,
+  schoolType: null,
 }
-
-const subscriptionContextSpy = jest
-  .spyOn(useSubscriptionContext, 'useSubscriptionContext')
-  .mockReturnValue(baseContext)
 
 const postSubscriptionProfileSpy = jest
   .spyOn(API.api, 'postNativeV1SubscriptionProfile')
   .mockImplementation()
 
 describe('usePatchProfile', () => {
+  afterEach(async () => {
+    storage.clear('activation_profile')
+  })
+
   it('should call api when profile is complete', async () => {
+    await storage.saveObject('activation_profile', {
+      name: { firstName: 'John', lastName: 'Doe' },
+      city: { code: '', name: 'Paris', postalCode: '75001' },
+      address: 'address',
+    })
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -55,7 +44,7 @@ describe('usePatchProfile', () => {
     const { mutateAsync: patchProfile } = result.current
 
     await act(async () => {
-      await patchProfile()
+      await patchProfile(profile)
     })
 
     expect(postSubscriptionProfileSpy).toHaveBeenCalledWith({
@@ -69,10 +58,11 @@ describe('usePatchProfile', () => {
     })
   })
 
-  it('should throw and capture exception when profile is not complete', async () => {
-    subscriptionContextSpy.mockReturnValueOnce({
-      ...baseContext,
-      profile: { ...baseContext.profile, address: null },
+  it('should clear activation profile from storage when query succeeds', async () => {
+    await storage.saveObject('activation_profile', {
+      name: { firstName: 'John', lastName: 'Doe' },
+      city: { code: '', name: 'Paris', postalCode: '75001' },
+      address: 'address',
     })
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -81,24 +71,11 @@ describe('usePatchProfile', () => {
     const { mutateAsync: patchProfile } = result.current
 
     await act(async () => {
-      await expect(patchProfile).rejects.toThrow(
-        new Error('No body was provided for subscription profile')
-      )
+      await patchProfile(profile)
     })
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      new Error('No body was provided for subscription profile'),
-      {
-        extra: {
-          profile: {
-            hasAddress: false,
-            hasCity: true,
-            hasFirstName: true,
-            hasLastName: true,
-            status: ActivityIdEnum.APPRENTICE,
-          },
-        },
-      }
-    )
+    await waitFor(async () => {
+      expect(await storage.readObject('activation_profile')).toBeNull()
+    })
   })
 })

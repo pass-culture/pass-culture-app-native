@@ -4,7 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { storage } from 'libs/storage'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -15,6 +16,10 @@ const firstName = 'John'
 const lastName = 'Doe'
 
 describe('<SetName/>', () => {
+  afterEach(() => {
+    storage.clear('activation_profile')
+  })
+
   it('should render correctly', () => {
     render(<SetName />)
 
@@ -39,23 +44,43 @@ describe('<SetName/>', () => {
     })
   })
 
+  it('should store name in storage when submit name', async () => {
+    render(<SetName />)
+
+    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
+
+    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
+
+    const continueButton = await screen.findByText('Continuer')
+    await act(async () => fireEvent.press(continueButton))
+
+    expect(await storage.readObject('activation_profile')).toMatchObject({
+      name: { firstName, lastName },
+    })
+  })
+
   it('should navigate to SetCity when submit name', async () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    fireEvent.changeText(firstNameInput, firstName)
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    fireEvent.changeText(lastNameInput, lastName)
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     const continueButton = await screen.findByText('Continuer')
-    fireEvent.press(continueButton)
+    await act(async () => fireEvent.press(continueButton))
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_NAME',
       payload: { firstName, lastName },
     })
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity')
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity')
+    })
   })
 
   it('should log screen view when the screen is mounted', () => {
@@ -68,14 +93,16 @@ describe('<SetName/>', () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    fireEvent.changeText(firstNameInput, firstName)
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
 
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    fireEvent.changeText(lastNameInput, lastName)
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
     const continueButton = await screen.findByText('Continuer')
-    fireEvent.press(continueButton)
+    await act(async () => fireEvent.press(continueButton))
 
-    expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
+    })
   })
 })
