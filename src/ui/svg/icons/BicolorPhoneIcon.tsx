@@ -45,13 +45,6 @@ const PhoneIconSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const PhoneIcon = styled(PhoneIconSvg).attrs(
-  ({ theme, color = theme.colors.black, size = theme.icons.sizes.standard }) => ({
-    color,
-    size,
-  })
-)``
-
 export const BicolorPhoneIcon = styled(PhoneIconSvg).attrs(
   ({
     theme,

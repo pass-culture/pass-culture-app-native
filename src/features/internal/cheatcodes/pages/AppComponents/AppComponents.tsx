@@ -59,7 +59,6 @@ import { StepDots } from 'ui/components/StepDots'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
@@ -673,11 +672,6 @@ export const AppComponents: FunctionComponent = () => {
           <AlignedText>
             <Rectangle />
             <Text> - Rectangle </Text>
-          </AlignedText>
-
-          <AlignedText>
-            <BackgroundPlaceholder />
-            <Text> - BackgroundPlaceholder </Text>
           </AlignedText>
 
           <AlignedText>
