@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { HoursSlider, HoursSliderProps } from 'features/search/components/HoursSlider/HoursSlider'
+import { HoursSlider } from 'features/search/components/HoursSlider/HoursSlider'
 import { Hour } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 
 export default {
@@ -10,11 +10,7 @@ export default {
   component: HoursSlider,
 }
 
-const WrappedTemplate: ComponentStory<typeof HoursSlider> = ({
-  field,
-}: {
-  field: HoursSliderProps
-}) => {
+const WrappedTemplate: ComponentStory<typeof HoursSlider> = ({ field }) => {
   const [value, setValue] = useState<[Hour, Hour] | undefined>(field.value)
 
   return (

@@ -9,7 +9,7 @@ import { DEFAULT_TIME_VALUE } from 'features/search/pages/modals/DatesHoursModal
 import { Slider, ValuesType } from 'ui/components/inputs/Slider'
 import { Spacer, Typo } from 'ui/theme'
 
-export type HoursSliderProps = {
+type HoursSliderProps = {
   value?: [Hour, Hour]
   onChange?: (nextHour: [Hour, Hour]) => void
 }

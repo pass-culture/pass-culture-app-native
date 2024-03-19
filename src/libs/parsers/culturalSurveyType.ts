@@ -3,7 +3,7 @@ import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurvey
 import { IconInterface } from 'ui/svg/icons/types'
 
 // Map the facetFilter (in search backend) to the category Icon
-export const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
+const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [k in CulturalSurveyAnswerEnum]: React.FC<IconInterface> | null
 } = {
   [CulturalSurveyAnswerEnum.BIBLIOTHEQUE]: culturalSurveyIcons.Museum,
