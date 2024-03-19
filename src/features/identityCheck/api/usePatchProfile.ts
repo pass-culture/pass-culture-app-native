@@ -2,16 +2,15 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SubscriptionState } from 'features/identityCheck/context/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function usePatchProfile() {
-  const { profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
+
   return useMutation(
-    () => {
+    (profile: SubscriptionState['profile']) => {
       const body = getCompleteProfile(profile)
       if (body) {
         return api.postNativeV1SubscriptionProfile(body)
@@ -21,15 +20,16 @@ export function usePatchProfile() {
           {
             extra: {
               profile: {
-                hasAddress: !!profile.address,
-                hasCity: !!profile.city?.name,
-                hasFirstName: !!profile.name?.firstName,
-                hasLastName: !!profile.name?.lastName,
-                status: profile.status,
+                hasAddress: !!profile?.address,
+                hasCity: !!profile?.city?.name,
+                hasFirstName: !!profile?.name?.firstName,
+                hasLastName: !!profile?.name?.lastName,
+                status: profile?.status,
               },
             },
           }
         )
+
         return Promise.reject(new Error('No body was provided for subscription profile'))
       }
     },

@@ -8,12 +8,13 @@ import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { SubscriptionState } from 'features/identityCheck/context/types'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -27,7 +28,6 @@ type StatusForm = {
 
 export const SetStatus = () => {
   const { activities } = useActivityTypes()
-  const { dispatch, profile } = useSubscriptionContext()
   const saveStep = useSaveStep()
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
@@ -35,7 +35,7 @@ export const SetStatus = () => {
   const { control, handleSubmit, watch } = useForm<StatusForm>({
     mode: 'onChange',
     defaultValues: {
-      selectedStatus: profile.status ?? null,
+      selectedStatus: null,
     },
   })
 
@@ -50,14 +50,16 @@ export const SetStatus = () => {
       if (!formValues.selectedStatus) return
       // do not remove await statement here as we need to wait for status to be dispatched
       // in subscription context before posting profile to the api
-      await dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
+      const profile = (await storage.readObject(
+        'activation_profile'
+      )) as SubscriptionState['profile']
       analytics.logSetStatusClicked()
 
-      await patchProfile()
+      await patchProfile({ ...profile, status: formValues.selectedStatus })
       await saveStep(IdentityCheckStep.PROFILE)
       navigateForwardToStepper()
     },
-    [dispatch, patchProfile, saveStep, navigateForwardToStepper]
+    [patchProfile, saveStep, navigateForwardToStepper]
   )
 
   return (

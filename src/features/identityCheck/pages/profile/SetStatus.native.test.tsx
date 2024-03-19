@@ -7,12 +7,27 @@ import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 let mockStatus: ActivityIdEnum | null = null
+
+const profile = {
+  name: {
+    firstName: 'Jean',
+    lastName: 'Dupont',
+  },
+  city: {
+    name: 'Paris',
+    postalCode: '75011',
+  },
+  address: '1 rue du désespoir',
+  status: mockStatus,
+}
+
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),
@@ -54,8 +69,13 @@ jest.mock('features/profile/helpers/useIsUserUnderage')
 const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 
 describe('<SetStatus/>', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     mockServer.postApi('/v1/subscription/profile', {})
+    await storage.saveObject('activation_profile', profile)
+  })
+
+  afterEach(() => {
+    storage.clear('activation_profile')
   })
 
   it('should render correctly', async () => {
