@@ -3,7 +3,7 @@ import { ActivityIdEnum } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { usePatchProfile } from './usePatchProfile'
 
@@ -86,5 +86,26 @@ describe('usePatchProfile', () => {
         },
       }
     )
+  })
+
+  it('should clear activation profile from storage when query succeeds', async () => {
+    await storage.saveObject('activation_profile', {
+      name: { firstName: 'John', lastName: 'Doe' },
+      city: { code: '', name: 'Paris', postalCode: '75001' },
+      address: 'address',
+    })
+    const { result } = renderHook(() => usePatchProfile(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    const { mutateAsync: patchProfile } = result.current
+
+    await act(async () => {
+      await patchProfile(profile)
+    })
+
+    await waitFor(async () => {
+      expect(await storage.readObject('activation_profile')).toBeNull()
+    })
   })
 })

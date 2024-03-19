@@ -4,6 +4,7 @@ import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
 import { SubscriptionState } from 'features/identityCheck/context/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { storage } from 'libs/storage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function usePatchProfile() {
@@ -34,6 +35,9 @@ export function usePatchProfile() {
       }
     },
     {
+      onSuccess: async () => {
+        await storage.clear('activation_profile')
+      },
       onError: () =>
         showErrorSnackBar({
           message: 'Une erreur est survenue lors de la mise à jour de ton profil',
