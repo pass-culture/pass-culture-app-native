@@ -33,6 +33,8 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
   const shouldDisplayAboutSection =
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
+  const viewportSpacing = isDesktopViewport ? 4 : 8
+
   return shouldDisplayAboutSection ? (
     <View>
       <Spacer.Column numberOfSpaces={2} />
@@ -52,13 +54,14 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
           <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
             {offer.description}
           </CollapsibleText>
-          <Spacer.Column numberOfSpaces={isDesktopViewport ? 4 : 8} />
+          <Spacer.Column numberOfSpaces={viewportSpacing} />
         </React.Fragment>
       ) : null}
+
       {shouldDisplayAccessibilitySection ? (
         <React.Fragment>
           <OfferAccessibility accessibility={offer.accessibility} />
-          <Spacer.Column numberOfSpaces={isDesktopViewport ? 4 : 8} />
+          <Spacer.Column numberOfSpaces={viewportSpacing} />
         </React.Fragment>
       ) : null}
     </View>

@@ -90,7 +90,6 @@ export const OfferBody: FunctionComponent<Props> = ({
       </InfoContainer>
 
       <OfferPlace offer={offer} isEvent={subcategory.isEvent} />
-      <Spacer.Column numberOfSpaces={isDesktopViewport ? 6 : 8} />
 
       {isOfferAMovieScreening ? (
         <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
