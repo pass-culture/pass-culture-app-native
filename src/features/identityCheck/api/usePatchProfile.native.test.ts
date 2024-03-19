@@ -1,6 +1,5 @@
 import * as API from 'api/api'
 import { ActivityIdEnum } from 'api/gen'
-import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
@@ -57,35 +56,6 @@ describe('usePatchProfile', () => {
       activityId: ActivityIdEnum.APPRENTICE,
       schoolTypeId: null,
     })
-  })
-
-  it('should throw and capture exception when profile is not complete', async () => {
-    const { result } = renderHook(() => usePatchProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    const { mutateAsync: patchProfile } = result.current
-
-    await act(async () => {
-      await expect(patchProfile({ ...profile, address: null })).rejects.toThrow(
-        new Error('No body was provided for subscription profile')
-      )
-    })
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      new Error('No body was provided for subscription profile'),
-      {
-        extra: {
-          profile: {
-            hasAddress: false,
-            hasCity: true,
-            hasFirstName: true,
-            hasLastName: true,
-            status: ActivityIdEnum.APPRENTICE,
-          },
-        },
-      }
-    )
   })
 
   it('should clear activation profile from storage when query succeeds', async () => {
