@@ -96,7 +96,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory }) => {
   )
 }
 
-const Container = styled.View({ flexShrink: 1 })
+const Container = styled.View({ flexShrink: 1, width: '100%' })
 
 const InfoContainer = styled.View({
   marginHorizontal: getSpacing(6),
