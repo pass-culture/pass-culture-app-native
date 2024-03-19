@@ -111,7 +111,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         bounces={false}
         onScroll={onScroll}>
         {isDesktopViewport ? (
-          <BodyContainer headerHeight={headerHeight}>
+          <BodyDesktopContainer headerHeight={headerHeight}>
             <HeroBody
               categoryId={subcategory.categoryId}
               imageUrl={imageUrl}
@@ -123,7 +123,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               subcategory={subcategory}
               trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
             />
-          </BodyContainer>
+          </BodyDesktopContainer>
         ) : (
           <React.Fragment>
             <Hero
@@ -150,7 +150,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           sameArtistPlaylist={sameArtistPlaylist}
         />
-        <Spacer.Column numberOfSpaces={22} />
+        {!isDesktopViewport ? <Spacer.Column numberOfSpaces={22} /> : null}
       </ScrollViewContainer>
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
       {!isWeb ? (
@@ -175,10 +175,10 @@ const Container = styled.View({
 
 const ScrollViewContainer = styled(IntersectionObserverScrollView)({ overflow: 'visible' })
 
-const BodyContainer = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
+const BodyDesktopContainer = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
   flexDirection: 'row',
   paddingHorizontal: getSpacing(16),
   paddingTop: getSpacing(12) + headerHeight,
   paddingBottom: getSpacing(12),
-  gap: getSpacing(10),
+  gap: getSpacing(16),
 }))

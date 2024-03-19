@@ -48,7 +48,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
   return (
     <Container>
-      <InfoContainer>
+      <InfoContainer isDesktopViewport={isDesktopViewport}>
         <GroupWithoutGap>
           <InformationTags tags={tags} />
           <Spacer.Column numberOfSpaces={4} />
@@ -88,18 +88,20 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <OfferAbout offer={offer} />
       </InfoContainer>
+
       <OfferPlace offer={offer} isEvent={subcategory.isEvent} />
-      <Spacer.Column numberOfSpaces={8} />
+      <Spacer.Column numberOfSpaces={isDesktopViewport ? 6 : 8} />
+
       {isOfferAMovieScreening ? (
         <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
           <MovieScreeningCalendar offerId={offer.id} stocks={offer.stocks} />
         </FeatureFlag>
       ) : null}
+
       {isDesktopViewport ? (
-        <ContainerWithoutDivider testID="messagingApp-container-without-divider">
-          <Spacer.Column numberOfSpaces={2} />
+        <View testID="messagingApp-container-without-divider">
           <OfferMessagingApps offer={offer} />
-        </ContainerWithoutDivider>
+        </View>
       ) : (
         <SectionWithDivider visible margin testID="messagingApp-container-with-divider">
           <Spacer.Column numberOfSpaces={2} />
@@ -112,13 +114,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 
 const Container = styled.View({ flexShrink: 1, width: '100%' })
 
-const InfoContainer = styled.View({
-  marginHorizontal: getSpacing(6),
+const InfoContainer = styled.View<{ isDesktopViewport?: boolean }>(({ isDesktopViewport }) => ({
   gap: getSpacing(6),
-})
-
-const ContainerWithoutDivider = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+  ...(!isDesktopViewport ? { marginHorizontal: getSpacing(6) } : {}),
 }))
 
 const GroupWithoutGap = View

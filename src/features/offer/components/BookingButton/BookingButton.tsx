@@ -44,5 +44,5 @@ export const BookingButton: FunctionComponent<Props> = ({
 }
 
 const CallToActionContainer = styled.View({
-  marginBottom: getSpacing(8),
+  marginBottom: getSpacing(6),
 })

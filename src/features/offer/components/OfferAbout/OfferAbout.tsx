@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
+import { useTheme } from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
@@ -17,6 +18,8 @@ type Props = {
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
 export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
+  const { isDesktopViewport } = useTheme()
+
   const extraData = offer.extraData ?? undefined
   const metadata = getOfferMetadata(extraData)
   const hasMetadata = metadata.length > 0
@@ -49,13 +52,13 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
           <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
             {offer.description}
           </CollapsibleText>
-          <Spacer.Column numberOfSpaces={8} />
+          <Spacer.Column numberOfSpaces={isDesktopViewport ? 4 : 8} />
         </React.Fragment>
       ) : null}
       {shouldDisplayAccessibilitySection ? (
         <React.Fragment>
           <OfferAccessibility accessibility={offer.accessibility} />
-          <Spacer.Column numberOfSpaces={8} />
+          <Spacer.Column numberOfSpaces={isDesktopViewport ? 4 : 8} />
         </React.Fragment>
       ) : null}
     </View>

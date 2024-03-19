@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { OfferResponse, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
@@ -180,9 +181,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   return (
     <React.Fragment>
       {isDesktopViewport ? (
-        <ContainerWithoutDivider testID="place-container-without-divider">
-          {renderOfferVenueBlock()}
-        </ContainerWithoutDivider>
+        <View testID="place-container-without-divider">{renderOfferVenueBlock()}</View>
       ) : (
         <SectionWithDivider visible={!offer.isDigital} margin testID="place-container-with-divider">
           {renderOfferVenueBlock()}
@@ -213,7 +212,3 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
     </React.Fragment>
   )
 }
-
-const ContainerWithoutDivider = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
