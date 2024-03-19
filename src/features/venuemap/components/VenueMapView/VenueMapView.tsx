@@ -127,8 +127,12 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     setSelectedVenue(null)
   }
 
+  const onNavigateToVenuePress = (venueId: number) => {
+    analytics.logConsultVenue({ venueId, from: 'venueMap' })
+  }
+
   // use formatFullAddressStartsWithPostalCode when we have the param address from Algolia
-  const address = `${selectedVenue?.info}, ${selectedVenue?.postalCode} `
+  const address = `${selectedVenue?.info}, ${selectedVenue?.postalCode}`
 
   return (
     <React.Fragment>
@@ -168,6 +172,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
           tags={tags}
           navigateTo={{ screen: 'Venue', params: { id: selectedVenue.venueId } }}
           onClose={handlePreviewClose}
+          onBeforeNavigate={() => onNavigateToVenuePress(selectedVenue.venueId)}
         />
       ) : null}
     </React.Fragment>

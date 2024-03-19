@@ -16,6 +16,7 @@ type Props = {
   tags: string[]
   navigateTo: InternalNavigationProps['navigateTo']
   onClose?: VoidFunction
+  onBeforeNavigate?: VoidFunction
 }
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
@@ -28,10 +29,11 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   tags,
   navigateTo,
   onClose,
+  onBeforeNavigate,
   ...props
 }) => {
   return (
-    <Container navigateTo={navigateTo} {...props}>
+    <Container navigateTo={navigateTo} onBeforeNavigate={onBeforeNavigate} {...props}>
       <Row>
         <InformationTags tags={tags} />
         <StyledCloseButton onClose={onClose} />
