@@ -4,8 +4,11 @@ import React from 'react'
 
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils'
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 let mockHits: Hit<BaseHit>[] = []
 jest.mock('react-instantsearch-core', () => ({
