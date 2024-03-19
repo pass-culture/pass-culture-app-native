@@ -22,7 +22,7 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
 
-  if (!wording) {
+  if (!wording && !bottomBannerText) {
     return null
   }
 
@@ -30,15 +30,17 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
     <StickyBottomWrapper>
       <BlurryWrapper>
         <CallToActionContainer testID="sticky-booking-button">
-          <CTAButton
-            wording={wording}
-            onPress={onPress}
-            navigateTo={navigateTo}
-            externalNav={externalNav}
-            isDisabled={isDisabled}
-            isFreeDigitalOffer={isFreeDigitalOffer}
-            isLoggedIn={isLoggedIn}
-          />
+          {wording ? (
+            <CTAButton
+              wording={wording}
+              onPress={onPress}
+              navigateTo={navigateTo}
+              externalNav={externalNav}
+              isDisabled={isDisabled}
+              isFreeDigitalOffer={isFreeDigitalOffer}
+              isLoggedIn={isLoggedIn}
+            />
+          ) : null}
         </CallToActionContainer>
 
         {bottomBannerText ? (
