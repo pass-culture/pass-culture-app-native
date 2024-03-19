@@ -42,7 +42,6 @@ import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -52,7 +51,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
@@ -94,12 +92,6 @@ const radioButtonItems = [
   { label: 'With icon and description', icon: Email, description: 'This is a description' },
 ]
 
-const radioButtonWithBorderItems = [
-  { label: 'Default 2' },
-  { label: 'With description 2', description: 'This is a description 2' },
-  { label: 'Default 3' },
-]
-
 const startText = 'Lorem ipsum '
 const endText = ' sit amet adipisicing elit.'
 
@@ -111,7 +103,6 @@ export const AppComponents: FunctionComponent = () => {
   } = useModal(false)
   const [buttonIsLoading, setButtonIsLoading] = useState(false)
   const [inputText, setInputText] = useState('')
-  const [largeInputText, setLargeInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
@@ -388,9 +379,6 @@ export const AppComponents: FunctionComponent = () => {
           <StyledTitle4>Password Input</StyledTitle4>
           <PasswordInput value="" onChangeText={doNothingFn} />
           <Spacer.Column numberOfSpaces={1} />
-          <StyledTitle4>Large input</StyledTitle4>
-          <Spacer.Column numberOfSpaces={1} />
-          <LargeTextInput value={largeInputText} onChangeText={setLargeInputText} maxLength={200} />
         </AccordionItem>
 
         <Divider />
@@ -483,23 +471,6 @@ export const AppComponents: FunctionComponent = () => {
           </React.Fragment>
 
           <Spacer.Column numberOfSpaces={3} />
-
-          <StyledTitle4>RadioButtonWithBorder</StyledTitle4>
-          <Spacer.Column numberOfSpaces={1} />
-          <React.Fragment>
-            {radioButtonWithBorderItems.map((item) => {
-              return (
-                <View key={item.label}>
-                  <RadioButtonWithBorder
-                    onPress={() => setRadioButtonChoice(item.label)}
-                    selected={radioButtonChoice === item.label}
-                    {...item}
-                  />
-                  <Spacer.Column numberOfSpaces={3} />
-                </View>
-              )
-            })}
-          </React.Fragment>
         </AccordionItem>
 
         <Divider />

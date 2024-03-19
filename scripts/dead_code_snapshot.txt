@@ -21,8 +21,6 @@ src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/ui/svg/BackgroundPlaceholder.tsx:35 - BackgroundPlaceholder
 src/features/offer/helpers/useTrackOfferSeenDuration.ts:6 - useTrackOfferSeenDuration
-src/ui/components/inputs/LargeTextInput.tsx:56 - LargeTextInput
-src/ui/components/radioButtons/RadioButtonWithBorder.tsx:19 - RadioButtonWithBorder
 src/ui/svg/icons/BicolorConfidentiality.tsx:42 - BicolorConfidentiality
 src/ui/svg/icons/BicolorEmailIcon.tsx:48 - EmailIcon
 src/ui/svg/icons/BicolorNewIcon.tsx:48 - NewIcon
