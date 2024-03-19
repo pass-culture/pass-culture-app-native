@@ -200,3 +200,20 @@ it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {
   expect(result.current.onLeftIconPress).toBeUndefined()
   expect(result.current.title).toBe('Réservation impossible')
 })
+
+it('should not show back arrow if receives bookingDataMovieScreening', () => {
+  const bookingDataMovieScreening = {
+    date: new Date('2024-03-02'),
+    hour: 4,
+    stockId: 44,
+  }
+  mockOffer = baseOffer
+  mockOffer.subcategoryId = SubcategoryIdEnum.SEANCE_CINE
+  mockStep = Step.DUO
+
+  const { result } = renderHook(() =>
+    useModalContent(onPressBookOffer, undefined, true, bookingDataMovieScreening)
+  )
+
+  expect(result.current.leftIcon).toBeUndefined()
+})

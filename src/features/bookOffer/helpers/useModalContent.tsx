@@ -10,6 +10,7 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getPreviousStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
+import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Loader } from 'ui/components/Loader'
@@ -97,7 +98,8 @@ const getBookingDetailsModalContent = (
 export const useModalContent = (
   onPressBookOffer: VoidFunction,
   isLoading?: boolean,
-  isEndedUsedBooking?: boolean
+  isEndedUsedBooking?: boolean,
+  bookingDataMovieScreening?: MovieScreeningBookingData
 ): ModalContent => {
   const { bookingState, dispatch } = useBookingContext()
   const offer = useBookingOffer()
@@ -133,7 +135,7 @@ export const useModalContent = (
   }
 
   if (bookingState.step !== Step.CONFIRMATION) {
-    const shouldDisplayBackButton = bookingStep !== Step.DATE
+    const shouldDisplayBackButton = bookingStep !== Step.DATE && !bookingDataMovieScreening
     const bookingStepModalLeftIconProps: ModalLeftIconProps = shouldDisplayBackButton
       ? {
           leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
@@ -149,7 +151,12 @@ export const useModalContent = (
     return getBookingStepModalContent(bookingStepModalLeftIconProps, stocks, offer.isDuo)
   }
 
-  const previousBookingState = getPreviousStep(bookingState, offer?.stocks || [], offer?.isDuo)
+  const previousBookingState = getPreviousStep(
+    bookingState,
+    offer?.stocks || [],
+    offer?.isDuo,
+    bookingDataMovieScreening
+  )
   const bookingDetailsModalLeftIconProps: ModalLeftIconProps = {
     leftIconAccessibilityLabel: 'Revenir à l’étape précédente',
     leftIcon: ArrowPrevious,

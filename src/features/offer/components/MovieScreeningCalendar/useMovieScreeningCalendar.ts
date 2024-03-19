@@ -1,11 +1,11 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 
+const getDateString = (date: string) => new Date(date).toDateString()
+
 export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
   const [selectedDate, setSelectedDate] = useState<Date>()
-
-  const getDateString = (date: string) => new Date(date).toDateString()
 
   const movieScreenings = useMemo(
     () =>
@@ -37,9 +37,21 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
         }),
     [movieScreenings]
   )
-  useEffect(() => {
-    setSelectedDate(movieScreeningDates[0])
-  }, [movieScreeningDates])
 
-  return { movieScreenings, movieScreeningDates, selectedDate, setSelectedDate }
+  const selectedScreeningStock = useMemo(
+    () => movieScreenings[getDateString(`${selectedDate}`)],
+    [movieScreenings, selectedDate]
+  )
+
+  useEffect(() => {
+    if (!selectedDate) setSelectedDate(movieScreeningDates[0])
+  }, [movieScreeningDates, selectedDate])
+
+  return {
+    movieScreenings,
+    movieScreeningDates,
+    selectedDate,
+    setSelectedDate,
+    selectedScreeningStock,
+  }
 }

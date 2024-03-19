@@ -617,6 +617,131 @@ exports[`EventCardList should render correctly 1`] = `
       </View>
     </View>
     <View
+      numberOfSpaces={4}
+      style={
+        [
+          {
+            "width": 16,
+          },
+        ]
+      }
+    />
+    <View>
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={false}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#F1F1F4",
+            "borderRadius": 8,
+            "borderWidth": 0,
+            "boxSizing": "border-box",
+            "height": 68,
+            "justifyContent": "flex-start",
+            "opacity": 1,
+            "paddingBottom": 12,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 12,
+            "userSelect": "auto",
+            "width": 120,
+          }
+        }
+      >
+        <Text
+          accessibilityLabel="13h12"
+          isDisabled={true}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "left",
+              },
+            ]
+          }
+        >
+          13h12
+        </Text>
+        <View
+          numberOfSpaces={1}
+          style={
+            [
+              {
+                "height": 4,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "textOverflow": "ellipsis",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityLabel="Déjà réservé"
+            hasSubtitleRight={false}
+            isDisabled={true}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#90949D",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 20,
+                  "textAlign": "left",
+                },
+              ]
+            }
+          >
+            Déjà réservé
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
       numberOfSpaces={6}
       style={
         [

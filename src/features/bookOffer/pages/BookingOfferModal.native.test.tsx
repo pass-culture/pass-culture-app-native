@@ -367,5 +367,30 @@ describe('<BookingOfferModalComponent />', () => {
         }
       )
     })
+
+    describe('when booking comes from a movie screening', () => {
+      const bookingDataMovieScreening = {
+        date: new Date('2024-03-14T14:00:00.000Z'),
+        hour: 15,
+        stockId: 6177,
+      }
+
+      it('should update bookingState when bookingDataMovieScreening props is received', async () => {
+        render(
+          reactQueryProviderHOC(
+            <BookingOfferModalComponent
+              visible
+              offerId={20}
+              bookingDataMovieScreening={bookingDataMovieScreening}
+            />
+          )
+        )
+
+        expect(mockDispatch).toHaveBeenNthCalledWith(2, {
+          type: 'SELECT_DATE',
+          payload: bookingDataMovieScreening.date,
+        })
+      })
+    })
   })
 })

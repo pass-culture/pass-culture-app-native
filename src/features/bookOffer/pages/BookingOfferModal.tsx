@@ -17,6 +17,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
+import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
@@ -31,6 +32,7 @@ interface BookingOfferModalComponentProps {
   visible: boolean
   offerId: number
   isEndedUsedBooking?: boolean
+  bookingDataMovieScreening?: MovieScreeningBookingData
 }
 
 const errorCodeToMessage: Record<string, string> = {
@@ -45,6 +47,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   visible,
   offerId,
   isEndedUsedBooking,
+  bookingDataMovieScreening,
 }) => {
   const { data: offer } = useOffer({ offerId })
   const { dismissModal, dispatch, bookingState } = useBookingContext()
@@ -142,7 +145,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   }
 
   const { title, leftIconAccessibilityLabel, leftIcon, onLeftIconPress, children } =
-    useModalContent(onPressBookOffer, isLoading, isEndedUsedBooking)
+    useModalContent(onPressBookOffer, isLoading, isEndedUsedBooking, bookingDataMovieScreening)
 
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
@@ -161,7 +164,16 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   useEffect(() => {
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })
-  }, [offerId, dispatch])
+    if (!bookingDataMovieScreening) {
+      return
+    }
+    dispatch({
+      type: 'SELECT_DATE',
+      payload: bookingDataMovieScreening.date,
+    })
+    dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+    dispatch({ type: 'SELECT_STOCK', payload: bookingDataMovieScreening.stockId })
+  }, [offerId, dispatch, bookingDataMovieScreening])
 
   useEffect(() => {
     if (visible) {
