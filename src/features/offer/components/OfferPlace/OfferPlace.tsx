@@ -181,11 +181,20 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   return (
     <React.Fragment>
       {isDesktopViewport ? (
-        <View testID="place-container-without-divider">{renderOfferVenueBlock()}</View>
+        <React.Fragment>
+          <View testID="place-container-without-divider">{renderOfferVenueBlock()}</View>
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
       ) : (
-        <SectionWithDivider visible={!offer.isDigital} margin testID="place-container-with-divider">
-          {renderOfferVenueBlock()}
-        </SectionWithDivider>
+        <React.Fragment>
+          <SectionWithDivider
+            visible={!offer.isDigital}
+            margin
+            testID="place-container-with-divider">
+            {renderOfferVenueBlock()}
+          </SectionWithDivider>
+          <Spacer.Column numberOfSpaces={8} />
+        </React.Fragment>
       )}
 
       {shouldDisplayChangeVenueButton ? (

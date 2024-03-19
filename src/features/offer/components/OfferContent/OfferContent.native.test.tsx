@@ -547,6 +547,62 @@ describe('<OfferContent />', () => {
       }
     )
   })
+
+  it('should display mobile body on mobile', async () => {
+    renderOfferContent({})
+
+    expect(await screen.findByTestId('offer-body-mobile')).toBeOnTheScreen()
+  })
+
+  it('should not display mobile body on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('offer-body-mobile')).not.toBeOnTheScreen()
+  })
+
+  it('should display desktop body on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    expect(await screen.findByTestId('offer-body-desktop')).toBeOnTheScreen()
+  })
+
+  it('should not display desktop body on mobile', async () => {
+    renderOfferContent({})
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('offer-body-desktop')).not.toBeOnTheScreen()
+  })
+
+  it('should display sticky booking button on mobile', async () => {
+    renderOfferContent({})
+
+    expect(await screen.findByTestId('sticky-booking-button')).toBeOnTheScreen()
+  })
+
+  it('should not display sticky booking button on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('sticky-booking-button')).not.toBeOnTheScreen()
+  })
+
+  it('should display nonadhesive booking button on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    expect(await screen.findByTestId('booking-button')).toBeOnTheScreen()
+  })
+
+  it('should not display nonadhesive booking button on mobile', async () => {
+    renderOfferContent({})
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('booking-button')).not.toBeOnTheScreen()
+  })
 })
 
 type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {

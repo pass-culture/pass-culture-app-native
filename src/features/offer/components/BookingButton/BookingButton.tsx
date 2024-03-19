@@ -26,7 +26,7 @@ export const BookingButton: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <CallToActionContainer>
+      <CallToActionContainer testID="booking-button">
         <CTAButton
           wording={wording}
           onPress={onPress}

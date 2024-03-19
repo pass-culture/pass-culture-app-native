@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -111,7 +111,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         bounces={false}
         onScroll={onScroll}>
         {isDesktopViewport ? (
-          <BodyDesktopContainer headerHeight={headerHeight}>
+          <BodyDesktopContainer headerHeight={headerHeight} testID="offer-body-desktop">
             <HeroBody
               categoryId={subcategory.categoryId}
               imageUrl={imageUrl}
@@ -125,7 +125,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             />
           </BodyDesktopContainer>
         ) : (
-          <React.Fragment>
+          <View testID="offer-body-mobile">
             <Hero
               imageUrl={imageUrl}
               categoryId={subcategory.categoryId}
@@ -138,7 +138,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
               subcategory={subcategory}
               trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
             />
-          </React.Fragment>
+          </View>
         )}
 
         <OfferPlaylistList
