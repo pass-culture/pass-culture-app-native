@@ -67,7 +67,7 @@ export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): str
 }
 
 // Map the facetFilter (in search backend) to the category Icon
-export const MAP_TYPE_TO_ICON: {
+const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<IconInterface>
 } = {
   [VenueTypeCodeKey.ARTISTIC_COURSE]: venueTypesIcons.Bag,
