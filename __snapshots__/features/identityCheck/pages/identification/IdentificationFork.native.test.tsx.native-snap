@@ -503,7 +503,7 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                     }
                   >
                     <View
-                      fill="#161617"
+                      accessibilityLabel="Nouvelle fenêtre"
                       height={16}
                       testID="button-icon"
                       width={16}
