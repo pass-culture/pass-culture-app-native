@@ -9,6 +9,8 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { IAuthContext } from 'features/auth/context/AuthContext'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -33,6 +35,11 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => mockAuthContext),
 }))
 
+const mockOffer = mockBaseOffer
+jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
+  useBookingOffer: jest.fn(() => mockOffer),
+}))
+
 const defaultOfferStockResponse: OfferStockResponse = {
   beginningDatetime: '2024-02-27T11:10:00Z',
   features: ['VO'],
@@ -51,10 +58,6 @@ const defaultOfferResponse: OfferResponse = {
 }
 
 describe('Movie screening calendar', () => {
-  beforeEach(() => {
-    mockAuthContext = defaultAuthContext
-  })
-
   it('should render <MovieScreeningCalendar /> without duplicated screening dates', async () => {
     renderMovieScreeningCalendar({
       offer: {
@@ -109,68 +112,144 @@ describe('Movie screening calendar', () => {
     expect(screen.queryByLabelText('Lundi 19 février')).not.toBeOnTheScreen()
   })
 
-  it('should open authentication modal when an event card is pressed and user is not logged in', async () => {
-    mockAuthContext = {
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      isUserLoading: false,
-      refetchUser: jest.fn(),
-      user: undefined,
-    }
-
+  it('should render "Complet" when screening is sold out', async () => {
     renderMovieScreeningCalendar({
-      offer: {
-        ...defaultOfferResponse,
-        stocks: [
-          {
-            ...defaultOfferStockResponse,
-            isSoldOut: false,
-          },
-        ],
-      },
+      offer: defaultOfferResponse,
     })
 
-    const bookingOfferButton = await screen.findByLabelText('VO')
-    await act(async () => {
-      fireEvent.press(bookingOfferButton)
-    })
+    await screen.findByLabelText('Mardi 27 février')
 
-    expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
+    expect(screen.queryByLabelText('Complet')).toBeOnTheScreen()
   })
 
-  it('should open isDuo modal when user is loggedIn and clicks on a bookable eventCard', async () => {
-    mockAuthContext = {
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      isUserLoading: false,
-      refetchUser: jest.fn(),
-      user: { ...beneficiaryUser, depositExpirationDate: `${new Date()}` },
-    }
-
-    mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
-    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
-      requestOptions: { persist: true },
-      responseOptions: { data: offerResponseSnap },
+  describe('Authentication dependant', () => {
+    beforeEach(() => {
+      mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
+      mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockAuthContext = defaultAuthContext
     })
 
-    renderMovieScreeningCalendar({
-      offer: {
-        ...defaultOfferResponse,
-        stocks: [
-          {
-            ...defaultOfferStockResponse,
-            isSoldOut: false,
+    it('should open authentication modal when an event card is pressed and user is not logged in', async () => {
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              isSoldOut: false,
+            },
+          ],
+        },
+      })
+
+      const bookingOfferButton = await screen.findByLabelText('VO')
+      await act(async () => {
+        fireEvent.press(bookingOfferButton)
+      })
+
+      expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
+    })
+
+    it('should open isDuo modal when user is loggedIn and clicks on a bookable eventCard', async () => {
+      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+
+      mockAuthContext = {
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+        user: {
+          ...beneficiaryUser,
+          depositExpirationDate: `${new Date()}`,
+        },
+      }
+
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              isSoldOut: false,
+            },
+          ],
+        },
+      })
+      const eventCard = await screen.findByLabelText('VO')
+      await act(async () => {
+        fireEvent.press(eventCard)
+      })
+
+      await screen.findByText('Choix des options')
+
+      expect(await screen.findByText('Nombre de places')).toBeOnTheScreen()
+    })
+
+    it('should display "Déjà réservé" if user has already booked offer in venue', async () => {
+      mockAuthContext = {
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+        user: {
+          ...beneficiaryUser,
+          depositExpirationDate: `${new Date()}`,
+          bookedOffers: { '213': 123 },
+        },
+      }
+
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          id: 213,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              beginningDatetime: bookingsSnap?.ongoing_bookings?.[0]?.stock.beginningDatetime,
+              isSoldOut: false,
+            },
+          ],
+        },
+      })
+
+      expect(await screen.findByText('Déjà réservé')).toBeOnTheScreen()
+    })
+
+    it('should show "Crédit insuffisant" when user is logged in and does not have enough credit', async () => {
+      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+
+      mockAuthContext = {
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+        user: {
+          ...beneficiaryUser,
+          domainsCredit: {
+            all: { initial: 0, remaining: 0 },
+            physical: { initial: 0, remaining: 0 },
+            digital: { initial: 0, remaining: 0 },
           },
-        ],
-      },
-    })
-    const bookingOfferButton = await screen.findByLabelText('VO')
-    await act(async () => {
-      fireEvent.press(bookingOfferButton)
-    })
+        },
+      }
 
-    expect(await screen.findByText('Nombre de places')).toBeOnTheScreen()
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              isSoldOut: false,
+            },
+          ],
+        },
+      })
+
+      await screen.findByLabelText('Mardi 27 février')
+
+      expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
+    })
   })
 })
 

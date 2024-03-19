@@ -48,7 +48,7 @@ export const useOfferCTAButton = (
     bottomBannerText,
   }
 
-  const isUnbookedMovieScreeningOffer =
+  const isAnUnbookedMovieScreening =
     offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE && wording !== 'Voir ma réservation'
 
   return {
@@ -57,6 +57,6 @@ export const useOfferCTAButton = (
     showOfferModal,
     CTAOfferModal,
     openModalOnNavigation,
-    isUnbookedMovieScreeningOffer,
+    isAnUnbookedMovieScreening,
   }
 }

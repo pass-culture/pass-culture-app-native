@@ -56,12 +56,12 @@ export const useSelectedDateScreening = (
             subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
             isDisabled = true
             break
-          case isUserCreditExpired || (isSameVenue && hasBookedOffer):
-            subtitleLeft = screening.features.join(', ')
-            isDisabled = true
-            break
           case !hasEnoughCredit:
             subtitleLeft = EventCardSubtitleEnum.NOT_ENOUGH_CREDIT
+            isDisabled = true
+            break
+          case isUserCreditExpired || (isSameVenue && hasBookedOffer):
+            subtitleLeft = screening.features.join(', ')
             isDisabled = true
             break
           default:
