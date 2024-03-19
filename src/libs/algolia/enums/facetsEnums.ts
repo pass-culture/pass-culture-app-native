@@ -4,6 +4,7 @@ export enum FACETS_FILTERS_ENUM {
   OFFER_BOOK_TYPE = 'offer.bookMacroSection',
   OFFER_EAN = 'offer.ean',
   OFFER_GTL_LEVEL = 'offer.gtl_levelXX',
+  OFFER_GTL_CODE = 'gtlCodeLevelXX',
   OFFER_ID_FORBIDDEN_TO_UNDERAGE = 'offer.isForbiddenToUnderage',
   OFFER_IS_DIGITAL = 'offer.isDigital',
   OFFER_IS_DUO = 'offer.isDuo',

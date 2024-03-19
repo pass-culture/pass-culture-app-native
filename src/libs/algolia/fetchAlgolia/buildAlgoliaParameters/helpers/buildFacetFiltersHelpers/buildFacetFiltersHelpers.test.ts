@@ -185,11 +185,11 @@ describe('buildOfferGtlsPredicate', () => {
 
   it('should return a gtls predicate formatted for Algolia API', () => {
     const gtlsPredicate = buildOfferGtlsPredicate([
-      { code: '03040500', level: 4, label: 'Shonen' },
-      { code: '03040800', level: 4, label: 'Yaoi' },
+      { code: '03040500', level: 3, label: 'Shonen' },
+      { code: '03040800', level: 3, label: 'Yaoi' },
     ])
 
-    expect(gtlsPredicate).toEqual(['offer.gtl_level4:Shonen', 'offer.gtl_level4:Yaoi'])
+    expect(gtlsPredicate).toEqual(['gtlCodeLevel3:03040500', 'gtlCodeLevel3:03040800'])
   })
 })
 
