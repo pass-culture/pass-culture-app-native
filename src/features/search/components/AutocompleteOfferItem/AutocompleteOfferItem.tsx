@@ -15,6 +15,8 @@ import {
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
@@ -40,6 +42,7 @@ export function AutocompleteOfferItem({
     indexInfos.facets.analytics
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { data } = useSubcategories()
+  const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
   const searchGroupLabel = useSearchGroupLabel(
     // @ts-expect-error: because of noUncheckedIndexedAccess
     categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
@@ -65,6 +68,9 @@ export function AutocompleteOfferItem({
     () => isNativeCategoryOfCategory(data, categories[0]?.value, mostPopularNativeCategoryId),
     [categories, data, mostPopularNativeCategoryId]
   )
+
+  const shouldUseSearchGroupInsteadOfNativeCategory =
+    enableNewMapping && nativeCategories[0]?.value == NativeCategoryIdEnumv2.LIVRES_PAPIER
 
   const mostPopularCategory = useMemo(() => {
     if (hasSeveralCategoriesFromNativeCategory || !hasMostPopularHitNativeCategory) {
@@ -97,6 +103,7 @@ export function AutocompleteOfferItem({
     const shouldFilteredOnNativeCategory =
       shouldShowCategory &&
       hasMostPopularHitNativeCategory &&
+      !shouldUseSearchGroupInsteadOfNativeCategory &&
       ((hasSeveralCategoriesFromNativeCategory &&
         isAssociatedMostPopularNativeCategoryToMostPopularCategory) ||
         !hasSeveralCategoriesFromNativeCategory)
@@ -146,7 +153,9 @@ export function AutocompleteOfferItem({
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
             <Typo.ButtonTextPrimary>
-              {shouldDisplayNativeCategory ? mostPopularNativeCategoryValue : searchGroupLabel}
+              {shouldDisplayNativeCategory && !shouldUseSearchGroupInsteadOfNativeCategory
+                ? mostPopularNativeCategoryValue
+                : searchGroupLabel}
             </Typo.ButtonTextPrimary>
           </React.Fragment>
         )}

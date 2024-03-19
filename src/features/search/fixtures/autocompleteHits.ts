@@ -66,6 +66,33 @@ export const mockHitSeveralCategoriesWithAssociationToNativeCategory = {
   },
 }
 
+export const mockHitSeveralCategoriesWithAssociationToBooksNativeCategory = {
+  ...mockHit,
+  [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+    exact_nb_hits: 2,
+    facets: {
+      analytics: {
+        ['offer.searchGroupNamev2']: [
+          {
+            attribute: '',
+            operator: '',
+            value: SearchGroupNameEnumv2.LIVRES,
+            count: 10,
+          },
+        ],
+        ['offer.nativeCategoryId']: [
+          {
+            attribute: '',
+            operator: '',
+            value: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+            count: 10,
+          },
+        ],
+      },
+    },
+  },
+}
+
 export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory = {
   ...mockHit,
   [env.ALGOLIA_OFFERS_INDEX_NAME]: {

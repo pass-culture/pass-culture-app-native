@@ -6,6 +6,7 @@ import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOf
 import { initialSearchState } from 'features/search/context/reducer'
 import {
   mockHit,
+  mockHitSeveralCategoriesWithAssociationToBooksNativeCategory,
   mockHitSeveralCategoriesWithAssociationToNativeCategory,
   mockHitSeveralCategoriesWithoutAssociationToNativeCategory,
   mockHitUnknownCategory,
@@ -16,12 +17,15 @@ import {
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, screen } from 'tests/utils'
 
 // @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
@@ -515,6 +519,21 @@ describe('AutocompleteOfferItem component', () => {
         )
 
         expect(screen.getByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
+      })
+
+      it('native category is Livres Papier and FF WIP_NEW_MAPPING_BOOKS is enabled', async () => {
+        useFeatureFlagSpy.mockReturnValueOnce(true)
+
+        render(
+          <AutocompleteOfferItem
+            hit={mockHitSeveralCategoriesWithAssociationToBooksNativeCategory}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
+
+        expect(screen.getByText('Livres')).toBeOnTheScreen()
       })
     })
   })
