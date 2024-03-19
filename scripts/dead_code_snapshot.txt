@@ -40,17 +40,3 @@ src/ui/svg/icons/ProfileDeletion.tsx:30 - ProfileDeletion
 src/ui/svg/icons/Sun.tsx:38 - Sun
 src/ui/svg/icons/ThumbUp.tsx:31 - ThumbUp
 src/features/offer/components/BookingButton/BookingButton.tsx:15 - BookingButton
-src/ui/svg/icons/categories/ArtsCrafts.tsx:9 - ArtsCrafts
-src/ui/svg/icons/categories/Books.tsx:9 - Books
-src/ui/svg/icons/categories/CDVinylsOnlineMusic.tsx:9 - CDVinylsOnlineMusic
-src/ui/svg/icons/categories/ConcertsFestivals.tsx:18 - ConcertsFestivals
-src/ui/svg/icons/categories/ConferencesMeetings.tsx:114 - ConferencesMeetings
-src/ui/svg/icons/categories/FilmsSeriesCinema.tsx:10 - FilmsSeriesCinema
-src/ui/svg/icons/categories/GamesVideoGames.tsx:18 - GamesVideoGames
-src/ui/svg/icons/categories/LibrariesMediaLibraries.tsx:9 - LibrariesMediaLibraries
-src/ui/svg/icons/categories/MediaPress.tsx:9 - MediaPress
-src/ui/svg/icons/categories/MuseumCulturalVisits.tsx:19 - MuseumCulturalVisits
-src/ui/svg/icons/categories/MusicalInstruments.tsx:18 - MusicalInstruments
-src/ui/svg/icons/categories/OnlineEvents.tsx:9 - OnlineEvents
-src/ui/svg/icons/categories/Shows.tsx:9 - Shows
-src/ui/svg/icons/categories/YouthCards.tsx:9 - YouthCards

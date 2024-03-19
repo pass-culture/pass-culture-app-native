@@ -1,9 +1,9 @@
 import { IconsContainer as Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   BicolorIllustrations,
-  SearchCategoriesIllustrations,
   UniqueColorIllustrations,
 } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+import { SearchCategoriesIllustrations } from 'features/search/enums'
 
 export default {
   title: 'Fondations/Illustrations',

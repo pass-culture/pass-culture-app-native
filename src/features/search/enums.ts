@@ -1,8 +1,21 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
-import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
+import { Books } from 'ui/svg/icons/categories/Books'
+import { CDVinylsOnlineMusic } from 'ui/svg/icons/categories/CDVinylsOnlineMusic'
+import { ConcertsFestivals } from 'ui/svg/icons/categories/ConcertsFestivals'
+import { ConferencesMeetings } from 'ui/svg/icons/categories/ConferencesMeetings'
+import { FilmsSeriesCinema } from 'ui/svg/icons/categories/FilmsSeriesCinema'
+import { GamesVideoGames } from 'ui/svg/icons/categories/GamesVideoGames'
+import { LibrariesMediaLibraries } from 'ui/svg/icons/categories/LibrariesMediaLibraries'
+import { MediaPress } from 'ui/svg/icons/categories/MediaPress'
+import { MuseumCulturalVisits } from 'ui/svg/icons/categories/MuseumCulturalVisits'
+import { MusicalInstruments } from 'ui/svg/icons/categories/MusicalInstruments'
+import { OnlineEvents } from 'ui/svg/icons/categories/OnlineEvents'
+import { Shows } from 'ui/svg/icons/categories/Shows'
+import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
 import { AccessibleIcon, BicolorIconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -19,6 +32,23 @@ export enum CategoriesModalView {
   CATEGORIES = 'CATEGORIES',
   NATIVE_CATEGORIES = 'NATIVE_CATEGORIES',
   GENRES = 'GENRES',
+}
+
+export const SearchCategoriesIllustrations = {
+  ArtsCrafts,
+  Books,
+  CDVinylsOnlineMusic,
+  ConcertsFestivals,
+  ConferencesMeetings,
+  FilmsSeriesCinema,
+  GamesVideoGames,
+  LibrariesMediaLibraries,
+  MediaPress,
+  MuseumCulturalVisits,
+  MusicalInstruments,
+  OnlineEvents,
+  Shows,
+  YouthCards,
 }
 
 export type Gradient = Array<ColorsEnum>
