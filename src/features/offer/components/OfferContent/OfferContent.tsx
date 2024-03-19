@@ -1,9 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { ComponentProps, FunctionComponent, useCallback, useEffect } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
-import FastImage from 'react-native-fast-image'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -21,15 +20,12 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
-import { mapCategoryToIcon } from 'libs/parsers'
-import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Hero } from 'ui/components/hero/Hero'
-import { useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
-import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { getSpacing, Spacer } from 'ui/theme'
+import { HeroBody } from 'ui/components/hero/HeroBody'
+import { Spacer } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse
@@ -39,10 +35,6 @@ type Props = {
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
-// Special case where theme.icons.sizes is not used
-// TODO: factoriser avec la constante de Hero
-const PLACEHOLDER_ICON_SIZE = getSpacing(24)
-
 const isWeb = Platform.OS === 'web'
 
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
@@ -50,7 +42,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const { navigate } = useNavigation<UseNavigationType>()
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
   const { isDesktopViewport } = useTheme()
-  const { imageStyle } = useHeroDimensions()
   const headerHeight = useGetHeaderHeight()
 
   const {
@@ -104,17 +95,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
       navigate('OfferPreview', { id: offer.id })
     }
   }
-  const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(
-    ({ theme }): ComponentProps<typeof DefaultImagePlaceholder> => ({
-      Icon: mapCategoryToIcon(subcategory.categoryId),
-      backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
-      borderRadius: theme.borderRadius.radius,
-      size: PLACEHOLDER_ICON_SIZE,
-    })
-  )({
-    position: 'absolute',
-    zIndex: 1,
-  })
   const imageUrl = offer.image?.url
 
   return (
@@ -132,15 +112,12 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         onScroll={onScroll}>
         {isDesktopViewport ? (
           <BodyContainer headerHeight={headerHeight}>
-            {imageUrl ? (
-              <ResizedFastImage
-                style={imageStyle}
-                url={imageUrl}
-                resizeMode={FastImage.resizeMode?.cover}
-              />
-            ) : (
-              <ImagePlaceholder />
-            )}
+            <HeroBody
+              categoryId={subcategory.categoryId}
+              imageUrl={imageUrl}
+              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+              isSticky
+            />
             <OfferBody offer={offer} subcategory={subcategory} />
           </BodyContainer>
         ) : (
