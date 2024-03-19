@@ -48,8 +48,6 @@ export const SetStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
-      // do not remove await statement here as we need to wait for status to be dispatched
-      // in subscription context before posting profile to the api
       const profile = (await storage.readObject(
         'activation_profile'
       )) as SubscriptionState['profile']
