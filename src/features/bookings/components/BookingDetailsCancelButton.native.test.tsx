@@ -16,7 +16,7 @@ mockdate.set(new Date('2020-12-01T00:00:00Z'))
 jest.mock('shared/user/useAvailableCredit')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/helpers/isUserExBeneficiary')
-const mockedisUserExBeneficiary = jest.mocked(isUserExBeneficiary)
+const mockedIsUserExBeneficiary = jest.mocked(isUserExBeneficiary)
 
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when booking has activation code', () => {
@@ -122,7 +122,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = '2020-11-01T00:00:00Z'
     // @ts-expect-error: because of noUncheckedIndexedAccess
     booking.stock.offer.isDigital = false
-    mockedisUserExBeneficiary.mockReturnValueOnce(true)
+    mockedIsUserExBeneficiary.mockReturnValueOnce(true)
     // @ts-expect-error: because of noUncheckedIndexedAccess
     renderBookingDetailsCancelButton(booking)
 

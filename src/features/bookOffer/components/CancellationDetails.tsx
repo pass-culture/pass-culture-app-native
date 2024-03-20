@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
-import { formatDateTimezone } from 'libs/parsers'
+import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

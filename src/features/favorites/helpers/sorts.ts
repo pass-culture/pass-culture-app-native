@@ -1,6 +1,6 @@
 import { FavoriteResponse } from 'api/gen'
 import { Position } from 'libs/location'
-import { computeDistanceInMeters } from 'libs/parsers'
+import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
 function getOfferPrice({ offer }: FavoriteResponse): number | null {
   return offer.startPrice ?? offer.price ?? null

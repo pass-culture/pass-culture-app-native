@@ -1,5 +1,5 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
-import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
+import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'

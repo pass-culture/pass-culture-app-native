@@ -1,6 +1,6 @@
 import { TokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { formatToHour } from 'libs/parsers'
+import { formatToHour } from 'libs/parsers/formatDates'
 
 const UNKNOWN_VALUE_TEXT = 'Indéterminé'
 

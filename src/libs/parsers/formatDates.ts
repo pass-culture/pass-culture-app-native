@@ -3,9 +3,6 @@ import { utcToZonedTime } from 'date-fns-tz'
 import { DAYS } from 'shared/date/days'
 import { MONTHS, Month } from 'shared/date/months'
 
-// export const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-// export const SHORT_DAYS = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.']
-
 export const pad = (num: number): string => {
   const res = num.toString()
   return res.length === 1 ? '0' + res : res

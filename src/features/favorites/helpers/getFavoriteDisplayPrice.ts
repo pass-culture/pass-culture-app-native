@@ -1,4 +1,4 @@
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 
 export const getFavoriteDisplayPrice = ({
   startPrice,

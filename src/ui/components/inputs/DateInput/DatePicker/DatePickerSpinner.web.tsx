@@ -3,7 +3,7 @@ import * as ReactMobilePicker from 'react-mobile-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { pad } from 'libs/parsers'
+import { pad } from 'libs/parsers/formatDates'
 import { getDateValuesString } from 'shared/date/getDateValuesString'
 import { CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'

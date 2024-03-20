@@ -8,7 +8,7 @@ import {
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
 import { NonEligible } from 'features/tutorial/enums'
-import { formatDateToISOStringWithoutTime } from 'libs/parsers'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen } from 'tests/utils'
 

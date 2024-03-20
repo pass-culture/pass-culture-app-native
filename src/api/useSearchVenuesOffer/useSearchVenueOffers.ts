@@ -13,7 +13,7 @@ import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetc
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { formatDistance } from 'libs/parsers'
+import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'

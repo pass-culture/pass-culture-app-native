@@ -1,5 +1,5 @@
 import { useLocation } from 'libs/location'
-import { formatDistance } from 'libs/parsers'
+import { formatDistance } from 'libs/parsers/formatDistance'
 
 export const useDistance = (offerPosition: {
   lat?: number | null

@@ -6,7 +6,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import { formatDateTimezone } from 'libs/parsers'
+import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils'
 

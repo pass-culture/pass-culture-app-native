@@ -1,5 +1,5 @@
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 
 export function useDepositAmountsByAge() {
   const { data: settings } = useSettingsContext()

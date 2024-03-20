@@ -6,7 +6,7 @@ import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { mapCategoryToIcon } from 'libs/parsers'
+import { mapCategoryToIcon } from 'libs/parsers/category'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { AppThemeType } from 'theme'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'

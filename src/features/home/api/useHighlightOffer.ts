@@ -8,7 +8,7 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { useLocation } from 'libs/location'
 import { Position } from 'libs/location/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { computeDistanceInMeters } from 'libs/parsers'
+import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer, OfferLocation } from 'shared/offer/types'
 

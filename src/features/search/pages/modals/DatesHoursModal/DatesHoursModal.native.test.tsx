@@ -12,7 +12,7 @@ import {
   RadioButtonDate,
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState, SearchView } from 'features/search/types'
-import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()

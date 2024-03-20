@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { mapCategoryToIcon } from 'libs/parsers'
+import { mapCategoryToIcon } from 'libs/parsers/category'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getSpacing } from 'ui/theme'
