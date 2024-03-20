@@ -66,7 +66,7 @@ describe('<SuspensionChoice/>', () => {
 
     await act(async () => {})
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, undefined)
+    expect(eventMonitoring.logError).toHaveBeenCalledWith(error, undefined)
   })
 
   it('should open mail app when clicking on "Contacter le support" button', async () => {

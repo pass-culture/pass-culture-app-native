@@ -22,11 +22,11 @@ export class MonitoringError extends Error {
     }
 
     if (shouldBeCapturedAsInfo) {
-      eventMonitoring.captureExceptionAsInfo(this.message)
+      eventMonitoring.logInfo(this.message)
     }
 
     if (!skipLogging && !shouldBeCapturedAsInfo) {
-      eventMonitoring.captureException(this, captureContext)
+      eventMonitoring.logError(this, captureContext)
     }
   }
 }
@@ -36,7 +36,7 @@ MonitoringError.prototype.name = 'MonitoringError'
 export const captureMonitoringError = (message: string, name?: string) => {
   class CaptureError extends Error {}
   CaptureError.prototype.name = name || 'MonitoringError'
-  eventMonitoring.captureException(new CaptureError(message))
+  eventMonitoring.logError(new CaptureError(message))
 }
 
 type AsyncErrorInfo = ErrorInfo & {

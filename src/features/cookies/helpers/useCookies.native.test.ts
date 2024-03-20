@@ -456,7 +456,7 @@ describe('useCookies', () => {
           })
         })
 
-        expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(
+        expect(eventMonitoring.logInfo).toHaveBeenCalledWith(
           `can‘t log cookies consent choice ; reason: "unknown network error"`
         )
       })

@@ -136,7 +136,7 @@ describe('openUrl', () => {
       const link = 'https://www.google.com'
       await openUrl(link)
 
-      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
         1,
         'OpenExternalUrlError: Did not open correctly'
       )
@@ -151,11 +151,11 @@ describe('openUrl', () => {
       await openUrl(link, { fallbackUrl: fallbackLink })
       await act(async () => {})
 
-      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
         1,
         'OpenExternalUrlError: Did not open correctly'
       )
-      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
         2,
         'OpenExternalUrlError_FallbackUrl: Did not open correctly'
       )

@@ -47,7 +47,7 @@ describe('getDeviceId', () => {
     jest.spyOn(storage, 'saveString').mockRejectedValueOnce(error)
     await getDeviceId()
 
-    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
+    expect(eventMonitoring.logError).toHaveBeenNthCalledWith(
       1,
       `Error when save device ID in storage: ${error}`
     )

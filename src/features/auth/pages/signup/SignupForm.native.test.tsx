@@ -431,9 +431,7 @@ describe('Signup Form', () => {
       })
       await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('NETWORK_REQUEST_FAILED')
-      )
+      expect(eventMonitoring.logError).toHaveBeenCalledWith(new Error('NETWORK_REQUEST_FAILED'))
     })
   })
 

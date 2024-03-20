@@ -35,7 +35,7 @@ export const useFeatureFlag = (
   if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) return false
 
   if (!!(minimalBuildNumber && maximalBuildNumber) && minimalBuildNumber > maximalBuildNumber) {
-    eventMonitoring.captureExceptionAsInfo(
+    eventMonitoring.logInfo(
       `Minimal build number is greater than maximal build number for feature flag ${remoteStorefeatureFlag}`,
       {
         extra: {

@@ -14,10 +14,10 @@ export async function getEmailUpdateStatus() {
   } catch (err) {
     const error = err as ApiError
     if (error?.statusCode !== 404 && !isAPIExceptionCapturedAsInfo(error?.statusCode)) {
-      eventMonitoring.captureException(error)
+      eventMonitoring.logError(error)
     }
     if (isAPIExceptionCapturedAsInfo(error?.statusCode)) {
-      eventMonitoring.captureExceptionAsInfo(error?.message)
+      eventMonitoring.logInfo(error?.message)
     }
     return
   }

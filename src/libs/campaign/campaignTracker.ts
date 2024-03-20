@@ -53,7 +53,7 @@ async function logEvent(event: CampaignEvents, params: Record<string, unknown>):
     try {
       await appsFlyer.logEvent(event, params)
     } catch (error) {
-      eventMonitoring.captureExceptionAsInfo(`Could not log to AppsFlyer: ${error}`)
+      eventMonitoring.logInfo(`Could not log to AppsFlyer: ${error}`)
     }
   }
 }

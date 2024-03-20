@@ -24,12 +24,9 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Error with recommendation endpoint',
-        {
-          extra: { url: 'http://passculture.reco', stack: 'some error' },
-        }
-      )
+      expect(eventMonitoring.logError).toHaveBeenCalledWith('Error with recommendation endpoint', {
+        extra: { url: 'http://passculture.reco', stack: 'some error' },
+      })
     })
   })
 
@@ -50,12 +47,9 @@ describe('useHomeRecommendedIdsMutation', () => {
 
     await act(async () => {})
 
-    expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(
-      'Recommendation response was not ok',
-      {
-        extra: { url: 'http://passculture.reco', status: 500 },
-      }
-    )
+    expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Recommendation response was not ok', {
+      extra: { url: 'http://passculture.reco', status: 500 },
+    })
   })
 
   it('should capture a message when recommendation playlist is empty', async () => {
@@ -74,12 +68,9 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(
-        'Recommended offers playlist is empty',
-        {
-          extra: { url: 'http://passculture.reco', status: 200 },
-        }
-      )
+      expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Recommended offers playlist is empty', {
+        extra: { url: 'http://passculture.reco', status: 200 },
+      })
     })
   })
 

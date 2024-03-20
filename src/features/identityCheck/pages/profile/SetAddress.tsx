@@ -64,7 +64,7 @@ export const SetAddress = () => {
   useEffect(() => {
     if (!isError) return
     showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
-    eventMonitoring.captureException(new IdentityCheckError(exception))
+    eventMonitoring.logError(new IdentityCheckError(exception))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError])
 

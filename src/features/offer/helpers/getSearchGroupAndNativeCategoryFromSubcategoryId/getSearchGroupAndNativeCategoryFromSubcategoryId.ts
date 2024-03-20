@@ -10,7 +10,7 @@ export const getSearchGroupAndNativeCategoryFromSubcategoryId = (
   )
 
   if (!subcategory) {
-    eventMonitoring.captureException('Subcategory not found', {
+    eventMonitoring.logError('Subcategory not found', {
       extra: {
         subcategoryId,
         subcategories: data.subcategories,

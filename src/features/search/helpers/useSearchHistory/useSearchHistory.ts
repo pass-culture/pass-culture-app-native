@@ -105,7 +105,7 @@ export function useSearchHistory() {
         await setHistoryItems(newItems)
         setHistory(newItems)
       } catch (error) {
-        eventMonitoring.captureExceptionAsInfo('Impossible d’ajouter l’entrée à l’historique')
+        eventMonitoring.logInfo('Impossible d’ajouter l’entrée à l’historique')
       }
     },
     [

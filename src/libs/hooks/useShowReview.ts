@@ -24,7 +24,7 @@ export const useShowReview = () => {
               if (hasFlowFinishedSuccessfully) updateInformationWhenReviewHasBeenRequested()
             })
             .catch((error) => {
-              eventMonitoring.captureException(error)
+              eventMonitoring.logError(error)
             }),
         3000
       )
