@@ -10,6 +10,7 @@ import { act, fireEvent, render, screen, waitFor, waitForModalToShow } from 'tes
 
 import { EmailResendModal } from './EmailResendModal'
 
+jest.mock('libs/monitoring')
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
 
 describe('<EmailResendModal />', () => {
@@ -107,10 +108,7 @@ describe('<EmailResendModal />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
-    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
-      'Could not resend validation email: error',
-      'info'
-    )
+    expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Could not resend validation email: error')
   })
 
   it('should reset error message when another resend attempt is made', async () => {

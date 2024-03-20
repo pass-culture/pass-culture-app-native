@@ -25,7 +25,7 @@ describe('getSearchGrouAndNativeCategoryFromSubcategoryId', () => {
 
     expect(value).toThrow('Subcategory not found')
 
-    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(1, 'Subcategory not found', {
+    expect(eventMonitoring.logError).toHaveBeenNthCalledWith(1, 'Subcategory not found', {
       extra: {
         subcategoryId: SubcategoryIdEnum.ABO_JEU_VIDEO,
         subcategories: [],

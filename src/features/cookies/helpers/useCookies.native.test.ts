@@ -18,6 +18,8 @@ import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } 
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
+jest.mock('libs/monitoring')
+
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 const mockGetDeviceId = getDeviceId as jest.Mock
@@ -454,9 +456,8 @@ describe('useCookies', () => {
           })
         })
 
-        expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
-          `can‘t log cookies consent choice ; reason: "unknown network error"`,
-          'info'
+        expect(eventMonitoring.logInfo).toHaveBeenCalledWith(
+          `can‘t log cookies consent choice ; reason: "unknown network error"`
         )
       })
     })

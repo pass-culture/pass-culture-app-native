@@ -4,6 +4,8 @@ import { mockServer } from 'tests/mswServer'
 
 import { getEmailUpdateStatus } from './useEmailUpdateStatus'
 
+jest.mock('libs/monitoring')
+
 const emailUpdateStatus: EmailUpdateStatus = {
   expired: false,
   newEmail: 'bene_18x@example.com',
@@ -21,7 +23,7 @@ describe('getEmailUpdateStatus', () => {
     simulateEmailUpdateStatusError(422)
     const emailUpdateStatus = await getEmailUpdateStatus()
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+    expect(eventMonitoring.logError).toHaveBeenCalledTimes(1)
     expect(emailUpdateStatus).toEqual(undefined)
   })
 
@@ -38,7 +40,7 @@ describe('getEmailUpdateStatus', () => {
       simulateEmailUpdateStatusError(statusCode)
       const emailUpdateStatus = await getEmailUpdateStatus()
 
-      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      expect(eventMonitoring.logError).not.toHaveBeenCalled()
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )
@@ -55,7 +57,7 @@ describe('getEmailUpdateStatus', () => {
       simulateEmailUpdateStatusError(statusCode)
       const emailUpdateStatus = await getEmailUpdateStatus()
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.logInfo).toHaveBeenCalledTimes(1)
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )

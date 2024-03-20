@@ -15,7 +15,7 @@ export const useMustUpdateApp = () => {
   useEffect(() => {
     const timer = globalThis.setTimeout(() => {
       if (!minimalBuildNumber) {
-        eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
+        eventMonitoring.logError(new Error('MustUpdateNoMinimalBuildNumberError'), {
           extra: {
             mustUpdateApp,
             minimalBuildNumber,

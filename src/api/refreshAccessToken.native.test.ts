@@ -134,6 +134,6 @@ describe('refreshAccessToken', () => {
 
     await refreshAccessToken(api, 0)
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
+    expect(eventMonitoring.logError).toHaveBeenCalledWith(error)
   })
 })

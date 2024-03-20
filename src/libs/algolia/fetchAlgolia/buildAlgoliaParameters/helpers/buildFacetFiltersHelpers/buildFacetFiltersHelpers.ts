@@ -56,7 +56,7 @@ export const buildObjectIdsPredicate = (objectIds: string[]) => {
   try {
     return objectIds.map((objectId) => `${FACETS_FILTERS_ENUM.OBJECT_ID}:${objectId}`)
   } catch (error) {
-    eventMonitoring.captureException(error, {
+    eventMonitoring.logError(error, {
       level: 'error',
       extra: { objectIds },
     })

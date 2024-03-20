@@ -78,7 +78,7 @@ export const refreshAccessTokenWithRetriesOnError = async (
       return { error: REFRESH_TOKEN_IS_EXPIRED_ERROR }
     }
 
-    eventMonitoring.captureException(error)
+    eventMonitoring.logError(error)
     return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }
   }
 }

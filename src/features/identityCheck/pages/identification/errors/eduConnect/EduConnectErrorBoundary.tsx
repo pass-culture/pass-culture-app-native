@@ -20,7 +20,7 @@ export const EduConnectErrorBoundary = memo(function EduConnectErrorBoundary({
       if (error instanceof EduConnectError) {
         return
       }
-      eventMonitoring.captureException(error)
+      eventMonitoring.logError(error)
     }
   }, [error])
 

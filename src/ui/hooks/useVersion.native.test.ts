@@ -34,7 +34,7 @@ describe('useVersion', () => {
     renderHook(() => useVersion())
 
     await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
+      expect(eventMonitoring.logError).toHaveBeenCalledWith(error)
     })
   })
 })

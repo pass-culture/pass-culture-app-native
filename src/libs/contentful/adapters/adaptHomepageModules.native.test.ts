@@ -58,7 +58,7 @@ describe('adaptHomepageModules', () => {
       'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
       expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
     )
-    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
+    expect(eventMonitoring.logError).toHaveBeenNthCalledWith(
       1,
       'Error while computing home modules',
       { extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' } }

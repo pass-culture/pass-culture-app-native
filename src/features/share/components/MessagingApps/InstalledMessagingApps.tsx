@@ -17,7 +17,7 @@ export const InstalledMessagingApps = ({ shareContent, messagingAppAnalytics }: 
   useEffect(() => {
     getInstalledApps()
       .then(setInstalledApps)
-      .catch((e) => eventMonitoring.captureException(`Installed apps: ${e}`))
+      .catch((e) => eventMonitoring.logError(`Installed apps: ${e}`))
   }, [])
 
   return (

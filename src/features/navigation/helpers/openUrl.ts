@@ -51,8 +51,7 @@ const openExternalUrl = async (
     if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
   } catch (error) {
-    if (error instanceof Error)
-      eventMonitoring.captureMessage(`OpenExternalUrlError: ${error.message}`, 'info')
+    if (error instanceof Error) eventMonitoring.logInfo(`OpenExternalUrlError: ${error.message}`)
   }
 
   if (fallbackUrl) {
@@ -62,7 +61,7 @@ const openExternalUrl = async (
       return
     } catch (error) {
       if (error instanceof Error)
-        eventMonitoring.captureMessage(`OpenExternalUrlError_FallbackUrl: ${error.message}`, 'info')
+        eventMonitoring.logInfo(`OpenExternalUrlError_FallbackUrl: ${error.message}`)
     }
   }
   showAlert(url)

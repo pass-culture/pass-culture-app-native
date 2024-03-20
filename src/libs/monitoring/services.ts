@@ -8,9 +8,8 @@ import * as SentryModule from './sentry'
 
 type EventMonitoring = {
   addBreadcrumb: (breadcrumb: Breadcrumb) => ReturnType<Hub['addBreadcrumb']>
-  captureException: typeof SentryModule.captureException
-  captureEvent: typeof SentryModule.captureEvent
-  captureMessage: typeof SentryModule.captureMessage
+  logError: typeof SentryModule.captureException
+  logInfo: typeof SentryModule.captureException
   configureScope: typeof SentryModule.configureScope
   init: ({ enabled }: { enabled: boolean }) => Promise<void>
   setUser: (user: User | Record<string, unknown> | null) => void
@@ -22,9 +21,9 @@ type EventMonitoring = {
 
 export const eventMonitoring: EventMonitoring = {
   addBreadcrumb: SentryModule.addBreadcrumb,
-  captureException: SentryModule.captureException,
-  captureEvent: SentryModule.captureEvent,
-  captureMessage: SentryModule.captureMessage,
+  logError: SentryModule.captureException,
+  logInfo: (message, captureContext) =>
+    SentryModule.captureException(message, { level: 'info', ...captureContext }),
   configureScope: SentryModule.configureScope,
   setUser: SentryModule.setUser,
   setExtras: SentryModule.setExtras,

@@ -110,7 +110,7 @@ export const Calendar: React.FC<Props> = ({
 
     // This case is normally not possible. We add a Sentry log to ensure this
     if (!date) {
-      eventMonitoring.captureException('Calendar displayed without selectable day', {
+      eventMonitoring.logError('Calendar displayed without selectable day', {
         extra: { offerId, stocks, markedDates, minDate, selectDay, date, marking },
       })
       return null

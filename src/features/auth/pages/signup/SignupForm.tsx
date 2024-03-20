@@ -135,7 +135,7 @@ export const SignupForm: FunctionComponent = () => {
       }
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
-      eventMonitoring.captureException(error)
+      eventMonitoring.logError(error)
     }
   }
 

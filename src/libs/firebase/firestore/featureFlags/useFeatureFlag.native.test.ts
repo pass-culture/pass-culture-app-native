@@ -7,6 +7,7 @@ import { act, renderHook } from 'tests/utils'
 
 const buildVersion = getAppBuildVersion()
 
+jest.mock('libs/monitoring')
 jest.mock('@react-native-firebase/firestore')
 
 const { collection } = firestore()
@@ -180,7 +181,7 @@ describe('useFeatureFlag', () => {
 
       await act(async () => {})
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+      expect(eventMonitoring.logInfo).toHaveBeenCalledWith(
         `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
         { extra: firestoreData }
       )

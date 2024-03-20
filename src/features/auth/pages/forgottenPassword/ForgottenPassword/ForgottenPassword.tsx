@@ -139,7 +139,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
           captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
         }
         if (error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)) {
-          eventMonitoring.captureMessage(error.message, 'info')
+          eventMonitoring.logInfo(error.message)
         }
       } finally {
         setValue('isFetching', false)

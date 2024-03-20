@@ -12,7 +12,7 @@ export const getTokenInfo = (token: string): TokenInfo | undefined => {
   try {
     return jwtDecode<TokenInfo>(token)
   } catch (e) {
-    eventMonitoring.captureException(`Failed to get token info from suspicious login email: ${e}`, {
+    eventMonitoring.logError(`Failed to get token info from suspicious login email: ${e}`, {
       extra: { token },
     })
 

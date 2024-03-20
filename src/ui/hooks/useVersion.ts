@@ -17,7 +17,7 @@ export function useVersion() {
         }
         setCodePushLabel(metadata.label)
       } catch (error) {
-        eventMonitoring.captureException(error)
+        eventMonitoring.logError(error)
       }
     }
     getcodePushLabel()
