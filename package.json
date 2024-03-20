@@ -51,6 +51,7 @@
     "ios:staging": "react-native run-ios --scheme PassCulture-Staging",
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",
     "postinstall": "patch-package && jetify",
+    "prepush": "git pull --rebase origin master",
     "start": "react-native start",
     "start:web": "node --openssl-legacy-provider web/scripts/start.js",
     "start:web:development": "ENV=development yarn start:web",
@@ -88,6 +89,11 @@
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn prepush"
+    }
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
