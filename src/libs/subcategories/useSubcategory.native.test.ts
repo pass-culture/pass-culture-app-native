@@ -5,11 +5,11 @@ import { renderHook } from 'tests/utils'
 describe('useSubcategory', () => {
   it.each`
     subcategory                                          | isEvent  | categoryId                            | searchGroupName
-    ${SubcategoryIdEnum.ABO_BIBLIOTHEQUE}                | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE}
+    ${SubcategoryIdEnum.ABO_BIBLIOTHEQUE}                | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.ABO_CONCERT}                     | ${false} | ${CategoryIdEnum.MUSIQUE_LIVE}        | ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}
     ${SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE}             | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.ABO_LUDOTHEQUE}                  | ${false} | ${CategoryIdEnum.JEU}                 | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS}
-    ${SubcategoryIdEnum.ABO_MEDIATHEQUE}                 | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE}
+    ${SubcategoryIdEnum.ABO_MEDIATHEQUE}                 | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE}          | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
     ${SubcategoryIdEnum.ABO_PLATEFORME_VIDEO}            | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}
     ${SubcategoryIdEnum.ABO_PRATIQUE_ART}                | ${false} | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}

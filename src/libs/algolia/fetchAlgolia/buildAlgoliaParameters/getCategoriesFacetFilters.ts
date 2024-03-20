@@ -4,7 +4,6 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 // Mapping from contentful label to corresponding search group
 const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
   ['Arts & loisirs créatifs']: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-  ['Bibliothèques, Médiathèques']: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
   ['Cartes jeunes']: SearchGroupNameEnumv2.CARTES_JEUNES,
   ['CD, vinyles, musique en ligne']: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
   ['Concerts & festivals']: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,

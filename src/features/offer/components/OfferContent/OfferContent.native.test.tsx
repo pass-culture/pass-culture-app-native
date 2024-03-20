@@ -738,7 +738,7 @@ describe('<OfferContent />', () => {
     })
 
     it.each([
-      NativeCategoryIdEnumv2.BIBLIOTHEQUE,
+      NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
       NativeCategoryIdEnumv2.CONCOURS,
       NativeCategoryIdEnumv2.MATERIELS_CREATIFS,
       NativeCategoryIdEnumv2.CARTES_JEUNES,

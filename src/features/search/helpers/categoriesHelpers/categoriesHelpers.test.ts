@@ -40,10 +40,6 @@ describe('categoriesHelpers', () => {
         value: 'Arts & loisirs créatifs',
       },
       {
-        name: 'BIBLIOTHEQUES_MEDIATHEQUE',
-        value: 'Bibliothèques, Médiathèques',
-      },
-      {
         name: 'CARTES_JEUNES',
         value: 'Cartes jeunes',
       },
@@ -139,7 +135,7 @@ describe('categoriesHelpers', () => {
       })
 
       it('should return false when all native categories of the category are offline', () => {
-        const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE)
+        const value = isOnlyOnline(mockData, SearchGroupNameEnumv2.LIVRES)
 
         expect(value).toEqual(false)
       })

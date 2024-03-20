@@ -82,9 +82,9 @@ export const subcategoriesMappingSnap = {
     categoryId: 'LIVRE',
     homepageLabelName: 'LIVRES',
     isEvent: false,
-    nativeCategoryId: 'BIBLIOTHEQUE',
+    nativeCategoryId: 'BIBLIOTHEQUE_MEDIATHEQUE',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'BIBLIOTHEQUES_MEDIATHEQUE',
+    searchGroupName: 'LIVRES',
   },
   ABO_CONCERT: {
     appLabel: 'Abonnement concert',
@@ -127,9 +127,9 @@ export const subcategoriesMappingSnap = {
     categoryId: 'FILM',
     homepageLabelName: 'FILMS',
     isEvent: false,
-    nativeCategoryId: 'MEDIATHEQUE',
+    nativeCategoryId: 'BIBLIOTHEQUE_MEDIATHEQUE',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'BIBLIOTHEQUES_MEDIATHEQUE',
+    searchGroupName: 'LIVRES',
   },
   ABO_PLATEFORME_MUSIQUE: {
     appLabel: 'Abonnement plateforme musicale',
@@ -738,7 +738,6 @@ export const subcategoriesMappingSnap = {
 
 export const useSearchGroupLabelMappingSnap = {
   ARTS_LOISIRS_CREATIFS: 'Arts & loisirs créatifs',
-  BIBLIOTHEQUES_MEDIATHEQUE: 'Bibliothèques, Médiathèques',
   CARTES_JEUNES: 'Cartes jeunes',
   CD_VINYLE_MUSIQUE_EN_LIGNE: 'CD, vinyles, musique en ligne',
   CONCERTS_FESTIVALS: 'Concerts & festivals',

@@ -16,7 +16,6 @@ describe('useCategoryId', () => {
   it.each`
     SearchGroupName                                     | SearchGroupLabel
     ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}      | ${'Arts & loisirs créatifs'}
-    ${SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE}  | ${'Bibliothèques, Médiathèques'}
     ${SearchGroupNameEnumv2.CARTES_JEUNES}              | ${'Cartes jeunes'}
     ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE} | ${'CD, vinyles, musique en ligne'}
     ${SearchGroupNameEnumv2.CONCERTS_FESTIVALS}         | ${'Concerts & festivals'}

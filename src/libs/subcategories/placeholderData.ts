@@ -15,11 +15,11 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       id: SubcategoryIdEnumv2.ABO_BIBLIOTHEQUE,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Abonnement (bibliothèques, médiathèques...)',
-      searchGroupName: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
       homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.BIBLIOTHEQUE,
+      nativeCategoryId: NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_CONCERT,
@@ -65,11 +65,11 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       id: SubcategoryIdEnumv2.ABO_MEDIATHEQUE,
       categoryId: CategoryIdEnum.FILM,
       appLabel: 'Abonnement médiathèque',
-      searchGroupName: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+      searchGroupName: SearchGroupNameEnumv2.LIVRES,
       homepageLabelName: HomepageLabelNameEnumv2.FILMS,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.MEDIATHEQUE,
+      nativeCategoryId: NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
     },
     {
       id: SubcategoryIdEnumv2.ABO_PLATEFORME_MUSIQUE,
@@ -744,7 +744,6 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
   ],
   searchGroups: [
     { name: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS, value: 'Arts & loisirs créatifs' },
-    { name: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE, value: 'Bibliothèques, Médiathèques' },
     { name: SearchGroupNameEnumv2.CARTES_JEUNES, value: 'Cartes jeunes' },
     {
       name: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
@@ -932,13 +931,8 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       genreType: GenreType.MUSIC,
     },
     {
-      name: NativeCategoryIdEnumv2.BIBLIOTHEQUE,
-      value: 'Bibliothèque',
-      genreType: null,
-    },
-    {
-      name: NativeCategoryIdEnumv2.MEDIATHEQUE,
-      value: 'Médiathèque',
+      name: NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
+      value: 'Bibliothèque, médiathèque',
       genreType: null,
     },
     {

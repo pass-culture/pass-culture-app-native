@@ -26,20 +26,12 @@ describe('useAvailableCategories', () => {
         position: 5,
       },
       {
-        icon: categoriesIcons.Bookstore,
-        illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
-        facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
-        baseColor: theme.colors.coral,
-        gradients: [theme.colors.coralLight, theme.colors.coral],
-        position: 11,
-      },
-      {
         icon: categoriesIcons.Card,
         illustration: SearchCategoriesIllustrations.YouthCards,
         facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
         baseColor: theme.colors.lilac,
         gradients: [theme.colors.lilacLight, theme.colors.lilac],
-        position: 12,
+        position: 11,
       },
       {
         icon: categoriesIcons.Disk,
@@ -63,7 +55,7 @@ describe('useAvailableCategories', () => {
         facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
         baseColor: theme.colors.gold,
         gradients: [theme.colors.goldLight, theme.colors.gold],
-        position: 13,
+        position: 12,
       },
       {
         icon: categoriesIcons.LiveEvent,
@@ -71,7 +63,7 @@ describe('useAvailableCategories', () => {
         facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
         baseColor: theme.colors.aquamarine,
         gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
-        position: 14,
+        position: 13,
       },
       {
         icon: categoriesIcons.Cinema,
@@ -137,10 +129,7 @@ describe('useAvailableCategories', () => {
       ...mockData,
       searchGroups: [
         { name: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS, value: 'Arts & loisirs créatifs' },
-        {
-          name: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
-          value: 'Bibliothèques, Médiathèques',
-        },
+        { name: SearchGroupNameEnumv2.CARTES_JEUNES, value: 'Cartes jeunes' },
       ],
     }
     const categories = useAvailableCategories()
@@ -155,11 +144,11 @@ describe('useAvailableCategories', () => {
         position: 5,
       },
       {
-        icon: categoriesIcons.Bookstore,
-        illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
-        facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
-        baseColor: theme.colors.coral,
-        gradients: [theme.colors.coralLight, theme.colors.coral],
+        icon: categoriesIcons.Card,
+        illustration: SearchCategoriesIllustrations.YouthCards,
+        facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
+        baseColor: theme.colors.lilac,
+        gradients: [theme.colors.lilacLight, theme.colors.lilac],
         position: 11,
       },
     ])
