@@ -32,6 +32,7 @@ const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('api/api')
+jest.mock('libs/keychain')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))

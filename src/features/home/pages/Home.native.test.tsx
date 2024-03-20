@@ -18,6 +18,8 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => mockShouldShowSkeleton),
 }))
 
+jest.mock('ui/components/ModuleBanner/backgroundImageSource')
+
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 

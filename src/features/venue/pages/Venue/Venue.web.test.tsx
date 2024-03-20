@@ -14,6 +14,7 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
+jest.mock('libs/itinerary/useItinerary')
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({

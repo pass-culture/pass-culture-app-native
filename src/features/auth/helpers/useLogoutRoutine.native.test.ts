@@ -11,6 +11,8 @@ import { renderHook } from 'tests/utils'
 
 import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
 
+jest.mock('libs/keychain')
+
 const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 
 describe('useLogoutRoutine', () => {

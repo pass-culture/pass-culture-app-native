@@ -27,8 +27,6 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-jest.mock('features/auth/helpers/contactSupport')
-
 /* See the corresponding mocks in features/navigation/RootNavigator/__mocks__ */
 jest.mock('features/navigation/RootNavigator/routes')
 /* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
@@ -52,9 +50,6 @@ jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
 
-/* See the corresponding mocks in libs/itinerary/__mocks__ */
-jest.mock('libs/itinerary/useItinerary')
-
 /* See the corresponding mocks in libs/subcategories/__mocks__ */
 jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/subcategories/useSubcategory')
@@ -76,8 +71,6 @@ jest.mock('libs/amplitude/amplitude')
 
 jest.mock('libs/react-native-device-info/getDeviceId')
 
-jest.mock('libs/keychain')
-
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 /* See the corresponding mock in libs/network/__mocks__ */
@@ -91,9 +84,6 @@ jest.mock('features/navigation/useGoBack', () =>
 )
 
 jest.mock('libs/jwt')
-
-// Mock files sourced from /public folder (see corresponding /__mock__ folders)
-jest.mock('ui/components/ModuleBanner/backgroundImageSource')
 
 // Global mock customFocusOutline because generate console warn "Node of type rule not supported as an inline style"
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')

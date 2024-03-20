@@ -17,6 +17,8 @@ jest.mock('libs/place', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: false }),
 }))
 
+jest.mock('libs/itinerary/useItinerary')
+
 const mockSearchState: SearchState = {
   ...initialSearchState,
   venue: mockVenues[0],
