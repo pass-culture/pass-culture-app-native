@@ -37,11 +37,14 @@ create_sourcemaps() {
       -output-source-map \
       -out="${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" \
       "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+    rm -f "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+    mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
 
     node node_modules/react-native/scripts/compose-source-maps.js \
       "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
       "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
       -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
+
   else
     npx react-native bundle \
       --platform "${APP_OS}" \
