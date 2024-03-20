@@ -18,13 +18,8 @@ create_sourcemaps() {
   else
     HERMES_OS_BIN="osx-bin"
   fi
-  if [[ -f "node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc" ]]; then
-    # react-native v0.68 (current)
-    HERMES_BIN="node_modules/hermes-engine/${HERMES_OS_BIN}/hermesc"
-  else
-    # react-native v0.69 or higher (keep only this condition when version is reached)
-    HERMES_BIN="node_modules/react-native/sdks/hermesc/${HERMES_OS_BIN}/hermesc"
-  fi
+
+  HERMES_BIN="node_modules/react-native/sdks/hermesc/${HERMES_OS_BIN}/hermesc"
 
   if [[ "${APP_OS}" = "android" ]]; then
     npx react-native bundle \
