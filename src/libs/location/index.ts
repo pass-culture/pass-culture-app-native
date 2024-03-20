@@ -5,14 +5,12 @@ import {
   GeolocPermissionState,
   GeolocPositionError,
 } from './geolocation/enums'
-import { requestGeolocPermission } from './geolocation/requestGeolocPermission/requestGeolocPermission'
 import { useLocation, LocationWrapper } from './LocationWrapper'
 import { GeoCoordinates, GeolocationError, ILocationContext, Position } from './types'
 
 export {
   useLocation,
   LocationWrapper,
-  requestGeolocPermission,
   checkGeolocPermission,
   GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocPermissionState,
