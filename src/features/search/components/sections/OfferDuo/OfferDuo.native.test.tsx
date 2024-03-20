@@ -23,7 +23,7 @@ describe('OfferDuo component', () => {
     })
     renderOfferDuo()
 
-    expect(screen.queryByText(`Activé`)).toBeOnTheScreen()
+    expect(screen.getByText(`Activé`)).toBeOnTheScreen()
   })
 
   it('should not render OfferDuo with Activé description', () => {

@@ -62,7 +62,7 @@ describe('<CreditCeilingsModal/>', () => {
       />
     )
 
-    expect(screen.queryByTestId('creditText')).toBeOnTheScreen()
+    expect(screen.getByTestId('creditText')).toBeOnTheScreen()
     expect(screen.queryByTestId('creditTextWithPhysicalCeiling')).not.toBeOnTheScreen()
   })
 
@@ -76,6 +76,6 @@ describe('<CreditCeilingsModal/>', () => {
     )
 
     expect(screen.queryByTestId('creditText')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('creditTextWithPhysicalCeiling')).toBeOnTheScreen()
+    expect(screen.getByTestId('creditTextWithPhysicalCeiling')).toBeOnTheScreen()
   })
 })

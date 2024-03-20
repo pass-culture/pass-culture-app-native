@@ -52,9 +52,9 @@ describe('<OfferHeader />', () => {
     renderOfferHeader()
     await act(async () => {})
 
-    expect(screen.queryByTestId('animated-icon-back')).toBeOnTheScreen()
-    expect(screen.queryByTestId('animated-icon-share')).toBeOnTheScreen()
-    expect(screen.queryByTestId('animated-icon-favorite')).toBeOnTheScreen()
+    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
+    expect(screen.getByTestId('animated-icon-favorite')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', async () => {

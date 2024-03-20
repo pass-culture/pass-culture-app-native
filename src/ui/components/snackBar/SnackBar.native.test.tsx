@@ -65,7 +65,7 @@ describe('SnackBar Component', () => {
     it('should render the content container when visible=true', () => {
       render(renderHelperSnackBar(true, { message: 'message' }))
 
-      expect(screen.queryByTestId('snackbar-message')).toBeOnTheScreen()
+      expect(screen.getByTestId('snackbar-message')).toBeOnTheScreen()
     })
 
     it('should render the content container when visible=false only if already rendered', async () => {
@@ -75,17 +75,17 @@ describe('SnackBar Component', () => {
 
       rerender(renderHelperSnackBar(true, { message: 'message' }, 1))
 
-      expect(screen.queryByTestId('snackbar-container')).toBeOnTheScreen()
+      expect(screen.getByTestId('snackbar-container')).toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(false, { message: 'message' }, 2))
 
-      expect(screen.queryByTestId('snackbar-container')).toBeOnTheScreen()
+      expect(screen.getByTestId('snackbar-container')).toBeOnTheScreen()
     })
 
     it('should render the illustration icon when provided when visible', () => {
       render(renderHelperSnackBar(true, { message: 'message' }))
 
-      expect(screen.queryByTestId('snackbar-icon')).toBeOnTheScreen()
+      expect(screen.getByTestId('snackbar-icon')).toBeOnTheScreen()
     })
 
     it('should not render the illustration icon when not provided', () => {

@@ -119,7 +119,7 @@ describe('Movie screening calendar', () => {
 
     await screen.findByLabelText('Mardi 27 février')
 
-    expect(screen.queryByLabelText('Complet')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Complet')).toBeOnTheScreen()
   })
 
   describe('Authentication dependant', () => {
@@ -148,7 +148,7 @@ describe('Movie screening calendar', () => {
         fireEvent.press(bookingOfferButton)
       })
 
-      expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
+      expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
     })
 
     it('should open isDuo modal when user is loggedIn and clicks on a bookable eventCard', async () => {

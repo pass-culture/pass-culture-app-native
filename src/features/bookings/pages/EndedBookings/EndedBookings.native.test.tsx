@@ -27,7 +27,7 @@ describe('EndedBookings', () => {
   it('should display the right number of ended bookings', () => {
     renderEndedBookings(bookingsSnap)
 
-    expect(screen.queryByText('1 réservation terminée')).toBeOnTheScreen()
+    expect(screen.getByText('1 réservation terminée')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {

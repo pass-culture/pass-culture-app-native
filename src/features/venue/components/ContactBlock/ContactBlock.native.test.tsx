@@ -52,9 +52,9 @@ describe('<ContactBlock/>', () => {
   it('should display the email, phoneNumber and website', () => {
     render(<ContactBlock venue={venueResponseSnap} />)
 
-    expect(screen.queryByText('contact@venue.com')).toBeOnTheScreen()
-    expect(screen.queryByText('+33102030405')).toBeOnTheScreen()
-    expect(screen.queryByText('https://my@website.com')).toBeOnTheScreen()
+    expect(screen.getByText('contact@venue.com')).toBeOnTheScreen()
+    expect(screen.getByText('+33102030405')).toBeOnTheScreen()
+    expect(screen.getByText('https://my@website.com')).toBeOnTheScreen()
   })
 
   it('should log event VenueContact when opening email', () => {

@@ -20,6 +20,6 @@ describe('OfferName component', () => {
   it('should display "Lorem" when db name is " lorem"', async () => {
     render(<OfferName title=" lorem" />)
 
-    expect(screen.queryByText('Lorem')).toBeOnTheScreen()
+    expect(screen.getByText('Lorem')).toBeOnTheScreen()
   })
 })

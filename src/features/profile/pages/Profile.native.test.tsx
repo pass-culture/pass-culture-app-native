@@ -108,7 +108,7 @@ describe('Profile component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderProfile()
 
-    expect(screen.queryByText('Pas de réseau internet')).toBeOnTheScreen()
+    expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
   })
 
   it('should display the version with the CodePush version label', async () => {
@@ -158,7 +158,7 @@ describe('Profile component', () => {
         }
         renderProfile()
 
-        expect(screen.queryByText(mockPositionError.message)).toBeOnTheScreen()
+        expect(screen.getByText(mockPositionError.message)).toBeOnTheScreen()
       })
 
       it('should display switch OFF if geoloc permission is denied', () => {

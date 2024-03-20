@@ -67,7 +67,7 @@ describe('<SuggestedPlaces/>', () => {
 
     renderSuggestedPlaces('aix')
 
-    expect(screen.queryByTestId('loader')).toBeOnTheScreen()
+    expect(screen.getByTestId('loader')).toBeOnTheScreen()
 
     await act(() => {})
   })

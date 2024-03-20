@@ -27,7 +27,7 @@ describe('ThematicHighlightModule', () => {
       />
     )
 
-    expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeOnTheScreen()
+    expect(screen.getByText(formattedThematicHighlightModule.title)).toBeOnTheScreen()
   })
 
   it('should not render if the ending date is passed', () => {

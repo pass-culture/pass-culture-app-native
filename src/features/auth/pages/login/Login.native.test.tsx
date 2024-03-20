@@ -214,7 +214,7 @@ describe('<Login/>', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
+    expect(screen.getByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should not open reCAPTCHA challenge modal when clicking on login button when feature flag is disabled', async () => {
@@ -365,7 +365,7 @@ describe('<Login/>', () => {
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
     expect(
-      screen.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
+      screen.getByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
     ).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
   })
@@ -378,7 +378,7 @@ describe('<Login/>', () => {
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
     expect(
-      screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
+      screen.getByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
     ).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
   })
@@ -623,7 +623,7 @@ describe('<Login/>', () => {
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
-      expect(screen.queryByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
+      expect(screen.getByText('Un problème est survenu, réessaie plus tard.')).toBeOnTheScreen()
     })
 
     it('should not login user on reCAPTCHA failure', async () => {
@@ -675,7 +675,7 @@ describe('<Login/>', () => {
       await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
       expect(
-        screen.queryByText(
+        screen.getByText(
           'Un problème est survenu, vérifie ta connexion internet avant de rééssayer.'
         )
       ).toBeOnTheScreen()
@@ -690,9 +690,7 @@ describe('<Login/>', () => {
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
-      expect(
-        screen.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')
-      ).toBeOnTheScreen()
+      expect(screen.getByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeOnTheScreen()
     })
 
     it('should not login user when reCAPTCHA token has expired', async () => {

@@ -246,8 +246,8 @@ describe('BookingDetails', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByText('Modalités de retrait')).toBeOnTheScreen()
-      expect(screen.queryByText('Voici comment récupérer ton bien')).toBeOnTheScreen()
+      expect(screen.getByText('Modalités de retrait')).toBeOnTheScreen()
+      expect(screen.getByText('Voici comment récupérer ton bien')).toBeOnTheScreen()
     })
 
     it('should not display withdrawal details', async () => {
@@ -491,9 +491,9 @@ describe('BookingDetails', () => {
       renderBookingDetails(undefined, { dataUpdatedAt: new Date().getTime() })
       await act(async () => {})
 
-      expect(screen.queryByText('Réservation introuvable !')).toBeOnTheScreen()
+      expect(screen.getByText('Réservation introuvable !')).toBeOnTheScreen()
       expect(
-        screen.queryByText(
+        screen.getByText(
           `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer.`
         )
       ).toBeOnTheScreen()

@@ -140,7 +140,7 @@ describe('<CancelBookingModal />', () => {
       )
     )
 
-    expect(screen.queryByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
+    expect(screen.getByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
 
   it('should display refund rule if user is beneficiary and offer is not free', () => {
@@ -153,9 +153,7 @@ describe('<CancelBookingModal />', () => {
       )
     )
 
-    expect(
-      screen.queryByText('19\u00a0€ seront recrédités sur ton pass Culture.')
-    ).toBeOnTheScreen()
+    expect(screen.getByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeOnTheScreen()
   })
 
   it('should display refund rule if user is ex beneficiary and offer is not free', () => {
@@ -170,7 +168,7 @@ describe('<CancelBookingModal />', () => {
     )
 
     expect(
-      screen.queryByText(
+      screen.getByText(
         'Les 19\u00a0€ ne seront pas recrédités sur ton pass Culture car il est expiré.'
       )
     ).toBeOnTheScreen()

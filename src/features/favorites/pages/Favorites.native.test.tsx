@@ -49,7 +49,7 @@ describe('<Favorites/>', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderFavorites({ isLoggedIn: true })
 
-    expect(screen.queryByText('Pas de réseau internet')).toBeOnTheScreen()
+    expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
   })
 })
 

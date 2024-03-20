@@ -54,7 +54,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const insideLocationWidget = within(screen.getByTestId('InsideLocationWidget'))
 
-      expect(insideLocationWidget.queryByText('Me localiser')).toBeOnTheScreen()
+      expect(insideLocationWidget.getByText('Me localiser')).toBeOnTheScreen()
     })
   })
 
@@ -94,7 +94,7 @@ describe('SearchHeader component', () => {
     await waitFor(() => {
       const searchHeaderTitleContainer = within(screen.getByTestId('SearchHeaderTitleContainer'))
 
-      expect(searchHeaderTitleContainer.queryByText('Me localiser')).toBeOnTheScreen()
+      expect(searchHeaderTitleContainer.getByText('Me localiser')).toBeOnTheScreen()
     })
   })
 })

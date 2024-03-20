@@ -19,7 +19,7 @@ describe('AppButton Component', () => {
     it('should display icon when provided', () => {
       render(<AppButton {...baseProps} />)
 
-      expect(screen.queryByTestId('button-icon')).toBeOnTheScreen()
+      expect(screen.getByTestId('button-icon')).toBeOnTheScreen()
     })
 
     it('should not display icon when not provided', () => {
@@ -33,14 +33,14 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals true', () => {
       render(<AppButton {...baseProps} isLoading />)
 
-      expect(screen.queryByTestId('Chargement en cours')).toBeOnTheScreen()
+      expect(screen.getByTestId('Chargement en cours')).toBeOnTheScreen()
       expect(screen.queryByTestId('button-icon')).not.toBeOnTheScreen()
     })
 
     it('should display right elements when isLoading equals false', () => {
       render(<AppButton {...baseProps} isLoading={false} />)
 
-      expect(screen.queryByTestId('button-icon')).toBeOnTheScreen()
+      expect(screen.getByTestId('button-icon')).toBeOnTheScreen()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })

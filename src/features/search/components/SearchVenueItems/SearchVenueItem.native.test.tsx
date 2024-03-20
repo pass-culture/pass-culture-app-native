@@ -136,7 +136,7 @@ describe('<SearchVenueItem />', () => {
       />
     )
 
-    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
+    expect(screen.getByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
   })
 
   it('should display only the city when postal code is an empty string', () => {
@@ -148,6 +148,6 @@ describe('<SearchVenueItem />', () => {
       />
     )
 
-    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
+    expect(screen.getByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
   })
 })

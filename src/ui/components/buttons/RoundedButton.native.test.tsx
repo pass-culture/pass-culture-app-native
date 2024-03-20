@@ -44,7 +44,7 @@ describe('RoundedButton', () => {
         />
       )
 
-      expect(screen.queryByTestId('icon-back')).toBeOnTheScreen()
+      expect(screen.getByTestId('icon-back')).toBeOnTheScreen()
       expect(screen.queryByTestId('animated-icon-back')).not.toBeOnTheScreen()
     })
   })
@@ -54,7 +54,7 @@ describe('RoundedButton', () => {
       render(<DummyComponent />)
 
       expect(screen.queryByTestId('icon-back')).not.toBeOnTheScreen()
-      expect(screen.queryByTestId('animated-icon-back')).toBeOnTheScreen()
+      expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
     })
 
     it('should display initial colors before animation', () => {

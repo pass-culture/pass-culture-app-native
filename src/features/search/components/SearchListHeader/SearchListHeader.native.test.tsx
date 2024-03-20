@@ -234,7 +234,7 @@ describe('<SearchListHeader />', () => {
   it('should show correct title when NO userData exists', () => {
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
 
-    expect(screen.queryByText('Les lieux culturels')).toBeOnTheScreen()
+    expect(screen.getByText('Les lieux culturels')).toBeOnTheScreen()
   })
 
   it('should show correct title when userData exists', () => {
@@ -248,7 +248,7 @@ describe('<SearchListHeader />', () => {
     )
 
     expect(screen.queryByText('Les lieux culturels')).not.toBeOnTheScreen()
-    expect(screen.queryByText('test')).toBeOnTheScreen()
+    expect(screen.getByText('test')).toBeOnTheScreen()
   })
 
   it('should not display the geolocation button if position is not null', () => {

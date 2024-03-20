@@ -12,7 +12,7 @@ describe('YoungerBadge', () => {
     render(<YoungerBadge eligibilityStartDatetime={eligibilityStartDatetime} />)
 
     expect(
-      screen.queryByText(
+      screen.getByText(
         'Patience ! Reviens à partir du 17/12/2021 pour continuer ton inscription et bénéficier du crédit pass Culture.'
       )
     ).toBeOnTheScreen()

@@ -84,7 +84,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.queryByText('Cinéma, films et séries')).toBeOnTheScreen()
+      expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })

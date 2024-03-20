@@ -18,7 +18,7 @@ describe('<EmailSent/>', () => {
   it('should display the button "Consulter mes e-mails"', () => {
     render(<EmailSent offerDate={offerDate} />)
 
-    expect(screen.queryByTestId('Consulter mes e-mails')).toBeOnTheScreen()
+    expect(screen.getByTestId('Consulter mes e-mails')).toBeOnTheScreen()
   })
 
   it('should not show the button to open mail if no mail app is available', async () => {

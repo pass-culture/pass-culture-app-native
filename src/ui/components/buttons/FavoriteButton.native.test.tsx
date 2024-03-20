@@ -70,7 +70,7 @@ describe('<FavoriteButton />', () => {
     renderFavoriteButton()
     await act(async () => {})
 
-    expect(screen.queryByTestId('icon-favorite')).toBeOnTheScreen()
+    expect(screen.getByTestId('icon-favorite')).toBeOnTheScreen()
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
@@ -86,7 +86,7 @@ describe('<FavoriteButton />', () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))
     })
 
-    expect(screen.queryByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+    expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
   })
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {

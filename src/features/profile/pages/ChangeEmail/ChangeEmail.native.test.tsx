@@ -64,7 +64,7 @@ describe('<ChangeEmail/>', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire user@gmail.com\u00a0?')).toBeOnTheScreen()
+    expect(screen.getByText('Veux-tu plutôt dire user@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   describe('email change already in progress', () => {
