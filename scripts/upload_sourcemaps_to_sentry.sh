@@ -82,15 +82,6 @@ upload_sourcemaps() {
   echo "Uploading ${APP_OS} source maps... "
 
   RELEASE="${VERSION}-${APP_OS}"
-
-  # Fix android using wrong source maps (See: https://github.com/getsentry/sentry-react-native/issues/2087)
-  if [[ "${APP_OS}" = "android" ]] && [[ -n "${BUNDLE_FILE_NAME}" ]]; then
-    echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME} -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
-    mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
-    echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME}.hbc -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
-    mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
-  fi
-
   DIST="${BUILD}-${APP_OS}"
   echo "RELEASE: ${RELEASE}"
   echo "DIST: ${DIST}"
