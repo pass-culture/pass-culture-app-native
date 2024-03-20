@@ -39,14 +39,14 @@ export const useSelectedDateScreening = (
   const mapScreeningsToEventCardProps = useCallback(
     (screening: OfferStockResponse, offerVenueId: number, onPressOfferCTA?: () => void) => {
       const { beginningDatetime, isSoldOut } = screening
-      if (beginningDatetime != null) {
+      if (beginningDatetime) {
         const hasEnoughCredit = isLoggedIn ? screening.price <= userCredit : true
         const price = formatToFrenchDecimal(screening.price).replace(' ', '')
         const hasBookedScreening = userBooking?.stock?.beginningDatetime === beginningDatetime
         const isSameVenue = offerVenueId === userBooking?.stock?.offer?.venue?.id
 
         let isDisabled: boolean
-        let subtitleLeft
+        let subtitleLeft: EventCardSubtitleEnum | string
         switch (true) {
           case hasBookedScreening:
             subtitleLeft = EventCardSubtitleEnum.ALREADY_BOOKED
@@ -72,12 +72,11 @@ export const useSelectedDateScreening = (
         const shouldNotHaveSubtitleRight =
           subtitleLeft === EventCardSubtitleEnum.NOT_ENOUGH_CREDIT ||
           subtitleLeft === EventCardSubtitleEnum.ALREADY_BOOKED
-        const subtitleRight = shouldNotHaveSubtitleRight ? '' : price
+        const subtitleRight = shouldNotHaveSubtitleRight ? undefined : price
 
         const onPress = () => {
-          if (hasBookedScreening || isDisabled) {
-            return
-          }
+          if (hasBookedScreening || isDisabled) return
+
           setBookingData({
             date: new Date(beginningDatetime),
             hour: new Date(beginningDatetime).getHours(),

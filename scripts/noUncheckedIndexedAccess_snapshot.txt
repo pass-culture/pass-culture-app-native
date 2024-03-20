@@ -397,7 +397,7 @@
 ./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:28
 ./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:31
 ./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:33
-./src/features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar.ts:19
+./src/features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar.ts:17
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:120
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:86
 ./src/features/offer/components/OfferTile/OfferTile.native.test.tsx:16
