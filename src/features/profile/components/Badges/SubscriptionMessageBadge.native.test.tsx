@@ -21,7 +21,7 @@ describe('<SubscriptionMessageBadge />', () => {
       callToAction: { callToActionTitle: 'hey2', callToActionLink: 'https://fake.net' },
     })
 
-    expect(screen.queryByText('hey2')).toBeOnTheScreen()
+    expect(screen.getByText('hey2')).toBeOnTheScreen()
   })
 
   it('should not display CTA when no message link specified', async () => {

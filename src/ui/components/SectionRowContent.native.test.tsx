@@ -21,7 +21,7 @@ describe('SectionRowContent', () => {
   it('should render the next arrow icon when type is "navigable"', () => {
     render(<SectionRowContent type="navigable" title="navigable" icon={Close} onPress={onPress} />)
 
-    expect(screen.queryByTestId('section-row-navigable-icon')).toBeOnTheScreen()
+    expect(screen.getByTestId('section-row-navigable-icon')).toBeOnTheScreen()
   })
 
   it('should not render the next arrow icon when type is "clickable"', () => {

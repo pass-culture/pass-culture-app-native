@@ -180,7 +180,7 @@ describe('<SearchFilter/>', () => {
     renderSearchFilter()
     await act(async () => {})
 
-    expect(screen.queryByTestId('Revenir en arrière')).toBeOnTheScreen()
+    expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
   })
 
   describe('Accessibility', () => {
@@ -192,7 +192,7 @@ describe('<SearchFilter/>', () => {
       renderSearchFilter()
       await act(async () => {})
 
-      expect(screen.queryByText('Accessibilité')).toBeOnTheScreen()
+      expect(screen.getByText('Accessibilité')).toBeOnTheScreen()
     })
   })
 })

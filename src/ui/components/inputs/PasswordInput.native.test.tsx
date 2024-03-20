@@ -9,14 +9,14 @@ describe('<PasswordInput />', () => {
   it('should change accessibilityLabel when password is hidden or it was displayed', () => {
     render(<PasswordInput />)
 
-    expect(screen.queryByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Cacher le mot de passe')).not.toBeOnTheScreen()
 
     const switchPasswordVisibilityButton = screen.getByTestId('Afficher le mot de passe')
 
     fireEvent.press(switchPasswordVisibilityButton)
 
-    expect(screen.queryByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Afficher le mot de passe')).not.toBeOnTheScreen()
   })
 

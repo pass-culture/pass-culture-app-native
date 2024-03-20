@@ -180,19 +180,19 @@ describe('CreditHeader', () => {
     it('should display coming credit for 17-year-old beneficiary', () => {
       renderCreditHeader({ age: 17 })
 
-      expect(screen.queryByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
+      expect(screen.getByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
     })
 
     it('should display coming credit for 16-year-old beneficiary', () => {
       renderCreditHeader({ age: 16 })
 
-      expect(screen.queryByText('À venir pour tes 17 ans : + 30 €')).toBeOnTheScreen()
+      expect(screen.getByText('À venir pour tes 17 ans : + 30 €')).toBeOnTheScreen()
     })
 
     it('should display coming credit for 15-year-old beneficiary', () => {
       renderCreditHeader({ age: 15 })
 
-      expect(screen.queryByText('À venir pour tes 16 ans : + 30 €')).toBeOnTheScreen()
+      expect(screen.getByText('À venir pour tes 16 ans : + 30 €')).toBeOnTheScreen()
     })
 
     it('should display time left when credit expires soon', () => {

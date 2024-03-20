@@ -31,7 +31,7 @@ describe('CheatCodes component', () => {
 
     await screen.findByText('CheatCodes')
 
-    expect(screen.queryByText('Check update')).toBeOnTheScreen()
+    expect(screen.getByText('Check update')).toBeOnTheScreen()
   })
 
   it.each`

@@ -409,7 +409,7 @@ describe('SearchResultsContent component', () => {
     render(<SearchResultsContent />)
     await act(async () => {})
 
-    expect(screen.queryByText(venue.label)).toBeOnTheScreen()
+    expect(screen.getByText(venue.label)).toBeOnTheScreen()
   })
 
   describe('Venue filter', () => {
@@ -492,7 +492,7 @@ describe('SearchResultsContent component', () => {
       render(<SearchResultsContent />)
       await act(async () => {})
 
-      expect(screen.queryByTestId('Dates & heures')).toBeOnTheScreen()
+      expect(screen.getByTestId('Dates & heures')).toBeOnTheScreen()
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
@@ -730,7 +730,7 @@ describe('SearchResultsContent component', () => {
       render(<SearchResultsContent />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeOnTheScreen()
+      expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
     })
 
     it('when position is null and query is not an offer not present', async () => {
@@ -752,7 +752,7 @@ describe('SearchResultsContent component', () => {
       render(<SearchResultsContent />)
       await act(async () => {})
 
-      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeOnTheScreen()
+      expect(screen.getByText('Offre non disponible sur le pass Culture.')).toBeOnTheScreen()
     })
 
     it('should not display when query is an available offer', async () => {

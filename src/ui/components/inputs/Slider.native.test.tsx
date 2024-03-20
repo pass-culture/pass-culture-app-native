@@ -27,13 +27,13 @@ describe('<Slider />', () => {
     it('should show two values if there are 2 values in the array values', () => {
       render(<Slider values={[0, 100]} showValues />)
 
-      expect(screen.queryByText('0 - 100')).toBeOnTheScreen()
+      expect(screen.getByText('0 - 100')).toBeOnTheScreen()
     })
 
     it('should show one value if there are 1 value in the array values', () => {
       render(<Slider values={[100]} showValues />)
 
-      expect(screen.queryByText('100')).toBeOnTheScreen()
+      expect(screen.getByText('100')).toBeOnTheScreen()
       expect(screen.queryByText('0 - 100')).not.toBeOnTheScreen()
     })
 
@@ -47,13 +47,13 @@ describe('<Slider />', () => {
     it('should show minimum value if shouldShowMinMaxValues is true', () => {
       render(<Slider values={[100]} shouldShowMinMaxValues min={0} showValues={false} />)
 
-      expect(screen.queryByText('0')).toBeOnTheScreen()
+      expect(screen.getByText('0')).toBeOnTheScreen()
     })
 
     it('should show maximim value if shouldShowMinMaxValues is true', () => {
       render(<Slider values={[100]} shouldShowMinMaxValues max={100} showValues={false} />)
 
-      expect(screen.queryByText('100')).toBeOnTheScreen()
+      expect(screen.getByText('100')).toBeOnTheScreen()
     })
 
     it('should show minimum and maximum complement when defined', () => {
@@ -67,7 +67,7 @@ describe('<Slider />', () => {
         />
       )
 
-      expect(screen.queryByText('100\u00a0km')).toBeOnTheScreen()
+      expect(screen.getByText('100\u00a0km')).toBeOnTheScreen()
     })
 
     it('should call onValuesChange when slider value changes', async () => {

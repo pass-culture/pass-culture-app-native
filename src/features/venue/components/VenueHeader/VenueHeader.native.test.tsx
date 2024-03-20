@@ -17,8 +17,8 @@ describe('<VenueHeader />', () => {
   it('should render all icons', () => {
     renderVenueHeader()
 
-    expect(screen.queryByTestId('animated-icon-back')).toBeOnTheScreen()
-    expect(screen.queryByTestId('animated-icon-share')).toBeOnTheScreen()
+    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {

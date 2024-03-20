@@ -13,7 +13,7 @@ describe('<VenueSelectionListHeader />', () => {
       />
     )
 
-    expect(screen.queryByText('Sélectionner un lieu')).toBeOnTheScreen()
+    expect(screen.getByText('Sélectionner un lieu')).toBeOnTheScreen()
   })
 
   it('should display header message', () => {
@@ -25,7 +25,7 @@ describe('<VenueSelectionListHeader />', () => {
       />
     )
 
-    expect(screen.queryByText('Lieux à proximité')).toBeOnTheScreen()
+    expect(screen.getByText('Lieux à proximité')).toBeOnTheScreen()
   })
 
   it('should display geolocation banner when user has not a location', () => {
@@ -37,7 +37,7 @@ describe('<VenueSelectionListHeader />', () => {
       />
     )
 
-    expect(screen.queryByText('Active ta géolocalisation')).toBeOnTheScreen()
+    expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
   })
 
   it('should not display geolocation banner when user has a location', () => {

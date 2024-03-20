@@ -98,7 +98,7 @@ describe('HorizontalOfferTile component', () => {
       )
     )
 
-    expect(screen.queryByText('10 km')).toBeOnTheScreen()
+    expect(screen.getByText('10 km')).toBeOnTheScreen()
   })
 
   describe('When pressing an offer without object id', () => {

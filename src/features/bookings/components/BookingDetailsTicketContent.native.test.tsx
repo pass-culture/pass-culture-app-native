@@ -108,7 +108,7 @@ describe('BookingDetailsTicketContent', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       render(<BookingDetailsTicketContent booking={bookingForBookOffer} />)
 
-      expect(screen.queryByTestId('ean')).toBeOnTheScreen()
+      expect(screen.getByTestId('ean')).toBeOnTheScreen()
     })
 
     it('should not display EAN when the offer is a book without an EAN', () => {

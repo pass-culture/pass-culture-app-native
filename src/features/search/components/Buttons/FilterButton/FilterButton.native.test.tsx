@@ -10,7 +10,7 @@ describe('FilterButton', () => {
     render(<FilterButton activeFilters={2} />)
 
     await waitFor(() => {
-      expect(screen.queryByText('2')).toBeOnTheScreen()
+      expect(screen.getByText('2')).toBeOnTheScreen()
     })
   })
 
@@ -39,7 +39,7 @@ describe('FilterButton', () => {
 
       await waitFor(() => {
         expect(
-          screen.queryByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
+          screen.getByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
         ).toBeOnTheScreen()
       })
     })
@@ -49,7 +49,7 @@ describe('FilterButton', () => {
 
       await waitFor(() => {
         expect(
-          screen.queryByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')
+          screen.getByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')
         ).toBeOnTheScreen()
       })
     })
@@ -58,7 +58,7 @@ describe('FilterButton', () => {
       render(<FilterButton activeFilters={0} />)
 
       await waitFor(() => {
-        expect(screen.queryByLabelText('Voir tous les filtres')).toBeOnTheScreen()
+        expect(screen.getByLabelText('Voir tous les filtres')).toBeOnTheScreen()
       })
     })
   })

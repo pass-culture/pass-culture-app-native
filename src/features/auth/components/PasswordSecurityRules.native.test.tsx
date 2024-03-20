@@ -10,11 +10,11 @@ describe('<PasswordSecurityRules />', () => {
   it('should display 5 rules', async () => {
     render(<PasswordSecurityRules password="" />)
 
-    expect(screen.queryByText('12 caractères')).toBeOnTheScreen()
-    expect(screen.queryByText('1 majuscule')).toBeOnTheScreen()
-    expect(screen.queryByText('1 minuscule')).toBeOnTheScreen()
-    expect(screen.queryByText('1 chiffre')).toBeOnTheScreen()
-    expect(screen.queryByText('1 caractère spécial (!@#$%^&*...)')).toBeOnTheScreen()
+    expect(screen.getByText('12 caractères')).toBeOnTheScreen()
+    expect(screen.getByText('1 majuscule')).toBeOnTheScreen()
+    expect(screen.getByText('1 minuscule')).toBeOnTheScreen()
+    expect(screen.getByText('1 chiffre')).toBeOnTheScreen()
+    expect(screen.getByText('1 caractère spécial (!@#$%^&*...)')).toBeOnTheScreen()
   })
 
   it('should not validate any rules if input is empty', () => {

@@ -15,8 +15,8 @@ describe('<OfflineModeContainer />', () => {
   it('should render children and show banner when offline at init when isConnected is false', () => {
     renderOfflineModeContainer()
 
-    expect(screen.queryByText('Hello World')).toBeOnTheScreen()
-    expect(screen.queryByText('aucune connexion internet.')).toBeOnTheScreen()
+    expect(screen.getByText('Hello World')).toBeOnTheScreen()
+    expect(screen.getByText('aucune connexion internet.')).toBeOnTheScreen()
   })
 
   it('should render children and not show banner when offline at init when isConnected is true', () => {
@@ -24,7 +24,7 @@ describe('<OfflineModeContainer />', () => {
     renderOfflineModeContainer()
 
     expect(screen.queryByText('aucune connexion internet.')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Hello World')).toBeOnTheScreen()
+    expect(screen.getByText('Hello World')).toBeOnTheScreen()
   })
 
   it('should not show "aucune connexion internet." at init, then show when isConnected is false, then hide when isConnected switch back to true', () => {
@@ -42,7 +42,7 @@ describe('<OfflineModeContainer />', () => {
     }))
     screen.rerender(getJsx())
 
-    expect(screen.queryByText('aucune connexion internet.')).toBeOnTheScreen()
+    expect(screen.getByText('aucune connexion internet.')).toBeOnTheScreen()
   })
 })
 

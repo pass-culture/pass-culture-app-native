@@ -121,7 +121,7 @@ describe('<OfferCTAButton />', () => {
       fireEvent.press(bookingOfferButton)
     })
 
-    expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
+    expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
   })
 
   it('should log analytics when display authentication modal', async () => {
@@ -181,7 +181,7 @@ describe('<OfferCTAButton />', () => {
 
     await act(async () => {})
 
-    expect(screen.queryByText('Réservation impossible')).toBeOnTheScreen()
+    expect(screen.getByText('Réservation impossible')).toBeOnTheScreen()
   })
 
   describe('When offer is digital and free and not already booked', () => {

@@ -14,10 +14,10 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByText('Handicap visuel')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap moteur')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap auditif')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap auditif')).toBeOnTheScreen()
   })
 
   it('renders only available handicap information', () => {
@@ -30,9 +30,9 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByText('Handicap visuel')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap moteur')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
     expect(screen.queryByText('Handicap auditif')).not.toBeOnTheScreen()
   })
 
@@ -46,10 +46,10 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByText('Handicap visuel')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap moteur')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(screen.queryByText('Handicap auditif')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap moteur')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(screen.getByText('Handicap auditif')).toBeOnTheScreen()
   })
 
   it('renders nothing when no available handicap information', () => {

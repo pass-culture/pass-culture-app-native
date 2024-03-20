@@ -30,7 +30,7 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = screen.getByTestId('Mon crédit est expiré, que\u00a0faire\u00a0?')
       fireEvent.press(explanationButton)
 
-      expect(screen.queryByTestId('modalHeader')).toBeOnTheScreen()
+      expect(screen.getByTestId('modalHeader')).toBeOnTheScreen()
     })
   })
 

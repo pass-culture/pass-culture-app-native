@@ -56,7 +56,7 @@ describe('<ForgottenPassword />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
+    expect(screen.getByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
@@ -82,7 +82,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(screen.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
+    expect(screen.getByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
@@ -170,7 +170,7 @@ describe('<ForgottenPassword />', () => {
     await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
     expect(
-      screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
+      screen.getByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
     ).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
@@ -190,9 +190,7 @@ describe('<ForgottenPassword />', () => {
 
     await waitFor(() => {
       expect(
-        screen.queryByText(
-          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-        )
+        screen.getByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
       ).toBeOnTheScreen()
       expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
@@ -279,7 +277,7 @@ describe('<ForgottenPassword />', () => {
       fireEvent.press(continueButton)
 
       expect(
-        screen.queryByText(
+        screen.getByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeOnTheScreen()

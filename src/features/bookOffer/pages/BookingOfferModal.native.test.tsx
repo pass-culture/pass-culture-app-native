@@ -171,9 +171,9 @@ describe('<BookingOfferModalComponent />', () => {
       )
     )
 
-    expect(screen.queryByText('Tu as déjà réservé :')).toBeOnTheScreen()
+    expect(screen.getByText('Tu as déjà réservé :')).toBeOnTheScreen()
     expect(
-      screen.queryByTestId(`Nouvelle fenêtre : Pourquoi limiter les réservations\u00a0?`)
+      screen.getByTestId(`Nouvelle fenêtre : Pourquoi limiter les réservations\u00a0?`)
     ).toBeOnTheScreen()
   })
 

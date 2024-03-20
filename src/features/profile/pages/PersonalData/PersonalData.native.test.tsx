@@ -39,15 +39,15 @@ describe('PersonalData', () => {
       isBeneficiary: true,
     })
 
-    expect(screen.queryByText('Prénom et nom')).toBeOnTheScreen()
-    expect(screen.queryByText('Rosa Bonheur')).toBeOnTheScreen()
-    expect(screen.queryByText('Adresse e-mail')).toBeOnTheScreen()
-    expect(screen.queryByText('rosa.bonheur@gmail.com')).toBeOnTheScreen()
-    expect(screen.queryByText('Numéro de téléphone')).toBeOnTheScreen()
-    expect(screen.queryByText('+33685974563')).toBeOnTheScreen()
-    expect(screen.queryByText('Mot de passe')).toBeOnTheScreen()
-    expect(screen.queryByText('*'.repeat(12))).toBeOnTheScreen()
-    expect(screen.queryByText('Supprimer mon compte')).toBeOnTheScreen()
+    expect(screen.getByText('Prénom et nom')).toBeOnTheScreen()
+    expect(screen.getByText('Rosa Bonheur')).toBeOnTheScreen()
+    expect(screen.getByText('Adresse e-mail')).toBeOnTheScreen()
+    expect(screen.getByText('rosa.bonheur@gmail.com')).toBeOnTheScreen()
+    expect(screen.getByText('Numéro de téléphone')).toBeOnTheScreen()
+    expect(screen.getByText('+33685974563')).toBeOnTheScreen()
+    expect(screen.getByText('Mot de passe')).toBeOnTheScreen()
+    expect(screen.getByText('*'.repeat(12))).toBeOnTheScreen()
+    expect(screen.getByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
   it('should render for beneficiary profile without phone number', () => {
@@ -57,14 +57,14 @@ describe('PersonalData', () => {
       phoneNumber: null,
     })
 
-    expect(screen.queryByText('Prénom et nom')).toBeOnTheScreen()
-    expect(screen.queryByText('Rosa Bonheur')).toBeOnTheScreen()
-    expect(screen.queryByText('Adresse e-mail')).toBeOnTheScreen()
-    expect(screen.queryByText('rosa.bonheur@gmail.com')).toBeOnTheScreen()
+    expect(screen.getByText('Prénom et nom')).toBeOnTheScreen()
+    expect(screen.getByText('Rosa Bonheur')).toBeOnTheScreen()
+    expect(screen.getByText('Adresse e-mail')).toBeOnTheScreen()
+    expect(screen.getByText('rosa.bonheur@gmail.com')).toBeOnTheScreen()
     expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Mot de passe')).toBeOnTheScreen()
-    expect(screen.queryByText('*'.repeat(12))).toBeOnTheScreen()
-    expect(screen.queryByText('Supprimer mon compte')).toBeOnTheScreen()
+    expect(screen.getByText('Mot de passe')).toBeOnTheScreen()
+    expect(screen.getByText('*'.repeat(12))).toBeOnTheScreen()
+    expect(screen.getByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
   it('should render for non beneficiary profile', () => {
@@ -74,10 +74,10 @@ describe('PersonalData', () => {
     })
 
     expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Adresse e-mail')).toBeOnTheScreen()
-    expect(screen.queryByText('Mot de passe')).toBeOnTheScreen()
+    expect(screen.getByText('Adresse e-mail')).toBeOnTheScreen()
+    expect(screen.getByText('Mot de passe')).toBeOnTheScreen()
     expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Supprimer mon compte')).toBeOnTheScreen()
+    expect(screen.getByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
   it('should redirect to ChangePassword when clicking on modify password button', async () => {

@@ -157,7 +157,7 @@ describe('NotificationSettings', () => {
     render(<NotificationsSettings />)
 
     expect(
-      screen.queryByText(
+      screen.getByText(
         'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
       )
     ).toBeOnTheScreen()
@@ -204,7 +204,7 @@ describe('NotificationSettings', () => {
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)
 
-      expect(screen.queryByText('Paramètres de notifications')).toBeOnTheScreen()
+      expect(screen.getByText('Paramètres de notifications')).toBeOnTheScreen()
     })
 
     it('should open the settings from the push notifications modal', async () => {

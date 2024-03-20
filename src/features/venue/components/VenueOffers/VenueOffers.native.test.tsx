@@ -99,7 +99,7 @@ describe('<VenueOffers />', () => {
   it('should display "En voir plus" button if they are more hits to see than the one displayed', () => {
     renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
-    expect(screen.queryByText('En voir plus')).toBeOnTheScreen()
+    expect(screen.getByText('En voir plus')).toBeOnTheScreen()
   })
 
   it(`should not display "En voir plus" button if they are no more hits to see than the one displayed`, () => {

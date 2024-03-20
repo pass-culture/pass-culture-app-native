@@ -67,8 +67,8 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    expect(screen.queryByText('1')).toBeOnTheScreen()
-    expect(screen.queryByText('Réservation terminée')).toBeOnTheScreen()
+    expect(screen.getByText('1')).toBeOnTheScreen()
+    expect(screen.getByText('Réservation terminée')).toBeOnTheScreen()
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {

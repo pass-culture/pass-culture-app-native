@@ -74,7 +74,7 @@ describe('<OfferPlaylistList />', () => {
           sameCategorySimilarOffers: mockSearchHits,
         })
 
-        expect(screen.queryByText('Dans la même catégorie')).toBeOnTheScreen()
+        expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {
@@ -108,7 +108,7 @@ describe('<OfferPlaylistList />', () => {
           otherCategoriesSimilarOffers: mockSearchHits,
         })
 
-        expect(screen.queryByText('Ça peut aussi te plaire')).toBeOnTheScreen()
+        expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
 
       it('should navigate to an offer when pressing on it', async () => {
@@ -147,7 +147,7 @@ describe('<OfferPlaylistList />', () => {
         sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
       })
 
-      expect(screen.queryByText('Du même auteur')).toBeOnTheScreen()
+      expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
     })
 
     it('should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsLast', () => {
@@ -160,7 +160,7 @@ describe('<OfferPlaylistList />', () => {
         sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
       })
 
-      expect(screen.queryByText('Du même auteur')).toBeOnTheScreen()
+      expect(screen.getByText('Du même auteur')).toBeOnTheScreen()
     })
 
     it('should not display same artist list when offer has not it', () => {

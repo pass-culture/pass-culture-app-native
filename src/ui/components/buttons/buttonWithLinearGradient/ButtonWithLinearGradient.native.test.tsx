@@ -12,7 +12,7 @@ describe('<ButtonWithLinearGradient />', () => {
       <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} />
     )
 
-    expect(screen.queryByText('Wording to display')).toBeOnTheScreen()
+    expect(screen.getByText('Wording to display')).toBeOnTheScreen()
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -21,7 +21,7 @@ describe('<ButtonWithLinearGradient />', () => {
       <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled />
     )
 
-    expect(screen.queryByText('Wording to display')).toBeOnTheScreen()
+    expect(screen.getByText('Wording to display')).toBeOnTheScreen()
     expect(toJSON()).toMatchSnapshot()
   })
 })

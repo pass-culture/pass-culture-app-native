@@ -27,7 +27,7 @@ describe('TicketBody', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
       render(<TicketBody {...initialProps} />)
 
-      expect(screen.queryByTestId('qr-code')).toBeOnTheScreen()
+      expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
     })
 
     it('should not display the QR code when event subcategory is in subcategories list without QR code display', () => {
@@ -55,7 +55,7 @@ describe('TicketBody', () => {
           />
         )
 
-        expect(screen.queryByTestId('withdrawal-info-no-ticket')).toBeOnTheScreen()
+        expect(screen.getByTestId('withdrawal-info-no-ticket')).toBeOnTheScreen()
       })
     })
 
@@ -71,7 +71,7 @@ describe('TicketBody', () => {
         />
       )
 
-      expect(screen.queryByTestId('withdrawal-info-email')).toBeOnTheScreen()
+      expect(screen.getByTestId('withdrawal-info-email')).toBeOnTheScreen()
     })
 
     describe('<TicketWithdrawal/> display', () => {
@@ -84,7 +84,7 @@ describe('TicketBody', () => {
           />
         )
 
-        expect(screen.queryByTestId('withdrawal-info')).toBeOnTheScreen()
+        expect(screen.getByTestId('withdrawal-info')).toBeOnTheScreen()
       })
     })
 

@@ -31,17 +31,17 @@ describe('<DeeplinksHistory />', () => {
       rehydrateHistory: (history) => history,
     })
 
-    expect(screen.queryByText('#0')).toBeOnTheScreen()
+    expect(screen.getByText('#0')).toBeOnTheScreen()
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(screen.queryByText(history[0].universalLink)).toBeOnTheScreen()
+    expect(screen.getByText(history[0].universalLink)).toBeOnTheScreen()
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(screen.queryByText(history[0].firebaseLink)).toBeOnTheScreen()
+    expect(screen.getByText(history[0].firebaseLink)).toBeOnTheScreen()
 
-    expect(screen.queryByText('#1')).toBeOnTheScreen()
+    expect(screen.getByText('#1')).toBeOnTheScreen()
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(screen.queryByText(history[1].universalLink)).toBeOnTheScreen()
+    expect(screen.getByText(history[1].universalLink)).toBeOnTheScreen()
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    expect(screen.queryByText(history[1].firebaseLink)).toBeOnTheScreen()
+    expect(screen.getByText(history[1].firebaseLink)).toBeOnTheScreen()
   })
 
   it('should purge history when mac_persist is not true', async () => {

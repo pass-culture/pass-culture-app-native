@@ -18,7 +18,7 @@ describe('ImageCaption component', () => {
     const { toJSON } = render(<ImageCaption {...props} />)
 
     expect(toJSON()).toMatchSnapshot()
-    expect(screen.queryByTestId('distanceImageCaption')).toBeOnTheScreen()
+    expect(screen.getByTestId('distanceImageCaption')).toBeOnTheScreen()
   })
 
   it('should not display the distance if not available', () => {

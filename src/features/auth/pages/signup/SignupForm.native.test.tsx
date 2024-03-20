@@ -104,7 +104,7 @@ describe('Signup Form', () => {
 
       fireEvent.press(screen.getByText('Quitter'))
 
-      expect(screen.queryByText('Veux-tu abandonner l’inscription ?')).toBeOnTheScreen()
+      expect(screen.getByText('Veux-tu abandonner l’inscription ?')).toBeOnTheScreen()
     })
 
     it('should go back to home when pressing close button on email confirmation sent', async () => {

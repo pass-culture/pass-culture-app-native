@@ -83,7 +83,7 @@ describe('SetPhoneValidationCode', () => {
 
     fireEvent.press(screen.getByText('Code non reçu\u00a0?'))
 
-    expect(screen.queryByText('Demander un autre code')).toBeOnTheScreen()
+    expect(screen.getByText('Demander un autre code')).toBeOnTheScreen()
   })
 
   it('should display input error message if code request fails', async () => {

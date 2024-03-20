@@ -490,7 +490,7 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.changeText(minPriceInput, '9999'))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
 
     await act(async () => fireEvent.press(onlyFreeOffersToggle))
 
@@ -507,7 +507,7 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.changeText(maxPriceInput, '9999'))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
 
     await act(async () => fireEvent.press(onlyFreeOffersToggle))
 
@@ -524,7 +524,7 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.changeText(maxPriceInput, '9999'))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
 
     await act(async () => fireEvent.press(limitCreditSearchToggle))
 

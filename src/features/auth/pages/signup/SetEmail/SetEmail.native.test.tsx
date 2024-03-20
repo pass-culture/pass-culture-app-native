@@ -128,7 +128,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(screen.queryByText(INCORRECT_EMAIL_MESSAGE)).toBeOnTheScreen()
+    expect(screen.getByText(INCORRECT_EMAIL_MESSAGE)).toBeOnTheScreen()
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
@@ -154,7 +154,7 @@ describe('<SetEmail />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
+    expect(screen.getByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should log analytics when user select the suggested email', async () => {

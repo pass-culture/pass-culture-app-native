@@ -25,7 +25,7 @@ describe('<TicketSwiper/>', () => {
     // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<TicketSwiper booking={booking} />)
 
-    expect(screen.queryByTestId('ticket-without-external-bookings-information')).toBeOnTheScreen()
+    expect(screen.getByTestId('ticket-without-external-bookings-information')).toBeOnTheScreen()
   })
 
   it('should display one ticket with external bookings information if there are one external booking', () => {
@@ -34,7 +34,7 @@ describe('<TicketSwiper/>', () => {
     // @ts-expect-error: because of noUncheckedIndexedAccess
     render(<TicketSwiper booking={booking} />)
 
-    expect(screen.queryByTestId('ticket-with-external-bookings-information')).toBeOnTheScreen()
+    expect(screen.getByTestId('ticket-with-external-bookings-information')).toBeOnTheScreen()
   })
 
   it('should display as many tickets as the number of tickets', () => {
@@ -68,7 +68,7 @@ describe('<TicketSwiper/>', () => {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       render(<TicketSwiper booking={booking} />)
 
-      expect(screen.queryByTestId('swiper-tickets-controls')).toBeOnTheScreen()
+      expect(screen.getByTestId('swiper-tickets-controls')).toBeOnTheScreen()
     })
   })
 })
