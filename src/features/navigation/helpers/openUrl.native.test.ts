@@ -10,6 +10,7 @@ import { act } from 'tests/utils'
 
 import { openUrl } from '../helpers'
 
+jest.mock('libs/monitoring')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/RootNavigator/linking')
 
@@ -135,10 +136,9 @@ describe('openUrl', () => {
       const link = 'https://www.google.com'
       await openUrl(link)
 
-      expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
         1,
-        'OpenExternalUrlError: Did not open correctly',
-        'info'
+        'OpenExternalUrlError: Did not open correctly'
       )
     })
 
@@ -151,15 +151,13 @@ describe('openUrl', () => {
       await openUrl(link, { fallbackUrl: fallbackLink })
       await act(async () => {})
 
-      expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
         1,
-        'OpenExternalUrlError: Did not open correctly',
-        'info'
+        'OpenExternalUrlError: Did not open correctly'
       )
-      expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
         2,
-        'OpenExternalUrlError_FallbackUrl: Did not open correctly',
-        'info'
+        'OpenExternalUrlError_FallbackUrl: Did not open correctly'
       )
     })
   })

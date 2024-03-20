@@ -22,7 +22,7 @@ export class MonitoringError extends Error {
     }
 
     if (shouldBeCapturedAsInfo) {
-      eventMonitoring.captureMessage(this.message, 'info')
+      eventMonitoring.captureExceptionAsInfo(this.message)
     }
 
     if (!skipLogging && !shouldBeCapturedAsInfo) {

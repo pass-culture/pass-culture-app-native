@@ -14,6 +14,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/monitoring')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
@@ -75,9 +76,8 @@ describe('<SSOButton />', () => {
     renderSSOButton()
     await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
-    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
-      'Can’t login via Google: GoogleSignIn Error',
-      'info'
+    expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(
+      'Can’t login via Google: GoogleSignIn Error'
     )
   })
 

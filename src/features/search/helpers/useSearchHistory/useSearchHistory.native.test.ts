@@ -14,6 +14,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
 
+jest.mock('libs/monitoring')
+
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
@@ -99,7 +101,7 @@ describe('useSearchHistory', () => {
       await result.current.addToHistory(item)
     })
 
-    expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+    expect(eventMonitoring.captureExceptionAsInfo).not.toHaveBeenCalled()
   })
 
   it('should capture a message in Sentry when adding to history fails', async () => {
@@ -115,10 +117,9 @@ describe('useSearchHistory', () => {
       await result.current.addToHistory(item)
     })
 
-    expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+    expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenNthCalledWith(
       1,
-      'Impossible d’ajouter l’entrée à l’historique',
-      'info'
+      'Impossible d’ajouter l’entrée à l’historique'
     )
   })
 

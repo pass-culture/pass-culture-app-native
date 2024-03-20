@@ -52,7 +52,7 @@ const openExternalUrl = async (
     return
   } catch (error) {
     if (error instanceof Error)
-      eventMonitoring.captureMessage(`OpenExternalUrlError: ${error.message}`, 'info')
+      eventMonitoring.captureExceptionAsInfo(`OpenExternalUrlError: ${error.message}`)
   }
 
   if (fallbackUrl) {
@@ -62,7 +62,7 @@ const openExternalUrl = async (
       return
     } catch (error) {
       if (error instanceof Error)
-        eventMonitoring.captureMessage(`OpenExternalUrlError_FallbackUrl: ${error.message}`, 'info')
+        eventMonitoring.captureExceptionAsInfo(`OpenExternalUrlError_FallbackUrl: ${error.message}`)
     }
   }
   showAlert(url)

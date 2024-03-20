@@ -37,7 +37,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)
     )
     if (shouldCapturedApiErrorAsInfo) {
-      eventMonitoring.captureMessage(error.message, 'info')
+      eventMonitoring.captureExceptionAsInfo(error.message)
     }
     // we already captures MonitoringError exceptions (in AsyncError constructor)
     // we don't need to capture those errors

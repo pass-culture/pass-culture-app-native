@@ -42,22 +42,28 @@ describe('MonitoringError', () => {
     expect(error.name).toBe('RenamedError')
   })
 
-  it('should call eventMonitoring.captureMessage() on new MonitoringError instance when shouldBeCapturedAsInfo is true', () => {
+  it('should captureMessage as info on new MonitoringError instance when shouldBeCapturedAsInfo is true', () => {
     const error = new MonitoringError('error', { shouldBeCapturedAsInfo: true })
 
-    expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(1, error.message, 'info')
+    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(1, error.message, {
+      level: 'info',
+    })
   })
 
-  it('should not call eventMonitoring.captureMessage() on new MonitoringError instance when shouldBeCapturedAsInfo is false', () => {
+  it('should not captureMessage as info on new MonitoringError instance when shouldBeCapturedAsInfo is false', () => {
     new MonitoringError('error', { shouldBeCapturedAsInfo: false })
 
-    expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+    expect(eventMonitoring.captureException).not.toHaveBeenCalledWith('error', {
+      level: 'info',
+    })
   })
 
-  it('should not call eventMonitoring.captureMessage() on new MonitoringError instance when shouldBeCapturedAsInfo is undefined', () => {
+  it('should not captureMessage as info on new MonitoringError instance when shouldBeCapturedAsInfo is undefined', () => {
     new MonitoringError('error')
 
-    expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+    expect(eventMonitoring.captureException).not.toHaveBeenCalledWith('error', {
+      level: 'info',
+    })
   })
 })
 

@@ -37,11 +37,10 @@ export const SuspensionChoice = () => {
             'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
           timeout: SNACK_BAR_TIME_OUT,
         })
-        eventMonitoring.captureMessage(
+        eventMonitoring.captureExceptionAsInfo(
           `Can’t suspend account for suspicious login ; reason: "${
             error instanceof Error ? error.message : undefined
-          }"`,
-          'info'
+          }"`
         )
       },
     })

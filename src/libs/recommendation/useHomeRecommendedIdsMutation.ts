@@ -20,15 +20,20 @@ export const useHomeRecommendedIdsMutation = () => {
           body: JSON.stringify(requestBodyParams),
         })
         const captureContext: Partial<ScopeContext> = {
-          level: 'info',
           extra: { url: endpointUrl, status: response.status },
         }
         if (!response.ok) {
-          eventMonitoring.captureMessage('Recommendation response was not ok', captureContext)
+          eventMonitoring.captureExceptionAsInfo(
+            'Recommendation response was not ok',
+            captureContext
+          )
         }
         const responseBody: RecommendedIdsResponse = await response.json()
         if (responseBody?.playlist_recommended_offers?.length === 0) {
-          eventMonitoring.captureMessage('Recommended offers playlist is empty', captureContext)
+          eventMonitoring.captureExceptionAsInfo(
+            'Recommended offers playlist is empty',
+            captureContext
+          )
         }
         return responseBody
       } catch (err) {

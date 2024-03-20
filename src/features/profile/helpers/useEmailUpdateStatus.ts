@@ -17,7 +17,7 @@ export async function getEmailUpdateStatus() {
       eventMonitoring.captureException(error)
     }
     if (isAPIExceptionCapturedAsInfo(error?.statusCode)) {
-      eventMonitoring.captureMessage(error?.message)
+      eventMonitoring.captureExceptionAsInfo(error?.message)
     }
     return
   }

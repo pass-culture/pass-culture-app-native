@@ -117,11 +117,10 @@ const usePersistCookieConsent = () => {
         await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
     } catch (error) {
-      eventMonitoring.captureMessage(
+      eventMonitoring.captureExceptionAsInfo(
         `can‘t log cookies consent choice ; reason: "${
           error instanceof Error ? error.message : undefined
-        }"`,
-        'info'
+        }"`
       )
     }
   })

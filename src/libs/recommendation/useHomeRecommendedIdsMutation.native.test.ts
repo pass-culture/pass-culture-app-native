@@ -5,6 +5,8 @@ import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
 
+jest.mock('libs/monitoring')
+
 describe('useHomeRecommendedIdsMutation', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
@@ -48,10 +50,9 @@ describe('useHomeRecommendedIdsMutation', () => {
 
     await act(async () => {})
 
-    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+    expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(
       'Recommendation response was not ok',
       {
-        level: 'info',
         extra: { url: 'http://passculture.reco', status: 500 },
       }
     )
@@ -73,10 +74,9 @@ describe('useHomeRecommendedIdsMutation', () => {
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(
         'Recommended offers playlist is empty',
         {
-          level: 'info',
           extra: { url: 'http://passculture.reco', status: 200 },
         }
       )

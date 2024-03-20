@@ -92,7 +92,7 @@ describe('AsyncErrorBoundary component', () => {
     })
     render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(error.message, 'info')
+    expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith(error.message)
   })
 
   describe('should not capture info', () => {
@@ -100,7 +100,7 @@ describe('AsyncErrorBoundary component', () => {
       const error = new MonitoringError('error')
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+      expect(eventMonitoring.captureExceptionAsInfo).not.toHaveBeenCalled()
     })
 
     it('when error is ApiError and error code is 400', () => {
@@ -110,7 +110,7 @@ describe('AsyncErrorBoundary component', () => {
       })
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+      expect(eventMonitoring.captureExceptionAsInfo).not.toHaveBeenCalled()
     })
   })
 
@@ -136,7 +136,7 @@ describe('AsyncErrorBoundary component', () => {
       const error = new ScreenError('error-1', { Screen: MaintenanceErrorPage })
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-      expect(eventMonitoring.captureMessage).toHaveBeenCalledWith('error-1', 'info')
+      expect(eventMonitoring.captureExceptionAsInfo).toHaveBeenCalledWith('error-1')
     })
   })
 })
