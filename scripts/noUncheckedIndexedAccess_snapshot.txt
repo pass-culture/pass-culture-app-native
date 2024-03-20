@@ -356,8 +356,8 @@
 ./src/features/identityCheck/pages/profile/SetStatus.native.test.tsx:94
 ./src/features/internal/cheatcodes/hooks/useSomeOfferId.ts:24
 ./src/features/internal/cheatcodes/hooks/useSomeVenueId.ts:23
-./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:751
-./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:763
+./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:716
+./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:728
 ./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:35
 ./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:37
 ./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:41
