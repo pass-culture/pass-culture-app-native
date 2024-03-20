@@ -1,5 +1,5 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { theme } from 'theme'

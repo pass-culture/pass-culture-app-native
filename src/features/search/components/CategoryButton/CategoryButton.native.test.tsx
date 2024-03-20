@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 

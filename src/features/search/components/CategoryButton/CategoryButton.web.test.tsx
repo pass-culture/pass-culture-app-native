@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { theme } from 'theme'
 

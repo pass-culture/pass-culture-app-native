@@ -45,13 +45,6 @@ const NewIconSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const NewIcon = styled(NewIconSvg).attrs(
-  ({ theme, color = theme.colors.black, size = theme.icons.sizes.standard }) => ({
-    color,
-    size,
-  })
-)``
-
 export const BicolorNewIcon = styled(NewIconSvg).attrs(
   ({
     theme,

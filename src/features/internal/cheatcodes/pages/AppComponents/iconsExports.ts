@@ -8,10 +8,9 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
-import { BicolorEmailIcon, EmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
+import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
@@ -21,11 +20,11 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
-import { BicolorNewIcon, NewIcon } from 'ui/svg/icons/BicolorNewIcon'
+import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { BicolorPhoneIcon, PhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
+import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorShare, Share } from 'ui/svg/icons/BicolorShare'
@@ -57,14 +56,10 @@ import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { Flag } from 'ui/svg/icons/Flag'
-import { Flash } from 'ui/svg/icons/Flash'
-import { GreenCheck } from 'ui/svg/icons/GreenCheck'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { Idea } from 'ui/svg/icons/Idea'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -86,15 +81,11 @@ import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Offers } from 'ui/svg/icons/Offers'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
-import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Play } from 'ui/svg/icons/Play'
-import { Plus } from 'ui/svg/icons/Plus'
-import { PlusLight } from 'ui/svg/icons/PlusLight'
 import { Profile } from 'ui/svg/icons/Profile'
-import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Question } from 'ui/svg/icons/Question'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
@@ -119,8 +110,6 @@ import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Stock } from 'ui/svg/icons/Stock'
-import { Sun } from 'ui/svg/icons/Sun'
-import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { Trash } from 'ui/svg/icons/Trash'
 import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { Valid } from 'ui/svg/icons/Valid'
@@ -149,7 +138,7 @@ export const SocialNetworkIcons = {
 
 export const SecondaryAndBiggerIcons = {
   TryAgain,
-  GreenCheck,
+
   ArrowAgain,
   ArrowNext,
   ArrowPrevious,
@@ -157,7 +146,6 @@ export const SecondaryAndBiggerIcons = {
   BicolorAroundMe,
   BicolorBookings,
   BicolorClock,
-  BicolorConfidentiality,
   BicolorConfirmation,
   BicolorEarth,
   BicolorEverywhere,
@@ -192,7 +180,6 @@ export const SecondaryAndBiggerIcons = {
   Code,
   Confidentiality,
   Duo,
-  EmailIcon,
   Email,
   Error,
   ExternalSite,
@@ -200,12 +187,10 @@ export const SecondaryAndBiggerIcons = {
   EyeSlash,
   Favorite,
   FavoriteFilled,
-  Flash,
   HandicapAudio,
   HandicapMental,
   HandicapMotor,
   HandicapVisual,
-  Idea,
   Info,
   LegalNotices,
   LifeBuoy,
@@ -217,19 +202,13 @@ export const SecondaryAndBiggerIcons = {
   MagnifyingGlassFilled,
   MapPin,
   More,
-  NewIcon,
   OfferEvent,
   OrderPrice,
-  OtherOffer,
   Offers,
-  ProfileDeletion,
-  PhoneIcon,
   Quote,
   ScrollToTop,
   Share,
   SignOut,
-  Sun,
-  ThumbUp,
   Trash,
   Valid,
   Venue,
@@ -245,7 +224,6 @@ export const TertiaryAndSmallerIcons = {
   EditPen,
   EmailFilled,
   ExternalSiteFilled,
-  Flag,
   InfoPlain,
   Invalidate,
   Key,
@@ -257,8 +235,6 @@ export const TertiaryAndSmallerIcons = {
   PlainArrowNext,
   PlainArrowPrevious,
   Play,
-  Plus,
-  PlusLight,
   Profile,
   Question,
   RightFilled,

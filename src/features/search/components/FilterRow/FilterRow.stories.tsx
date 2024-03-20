@@ -5,7 +5,6 @@ import { All } from 'ui/svg/icons/bicolor/All'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
-import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 
 import { FilterRow } from './FilterRow'
@@ -30,12 +29,6 @@ Category.args = {
   title: 'Catégorie',
   description: 'CD, Vinyle, musique en ligne',
   icon: All,
-}
-
-export const Duo = Template.bind({})
-Duo.args = {
-  title: `Duo`,
-  icon: OtherOffer,
 }
 
 export const Price = Template.bind({})

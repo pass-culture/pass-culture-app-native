@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { theme } from 'theme'
 
 import { CategoryButton } from './CategoryButton'

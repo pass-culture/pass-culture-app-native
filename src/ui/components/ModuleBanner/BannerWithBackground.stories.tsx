@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { Bell } from 'ui/svg/icons/Bell'
-import { Idea } from 'ui/svg/icons/Idea'
 import { Typo } from 'ui/theme'
 
 import { BannerWithBackground } from './BannerWithBackground'
@@ -16,12 +15,10 @@ const meta: ComponentMeta<typeof BannerWithBackground> = {
   argTypes: {
     leftIcon: selectArgTypeFromObject({
       Bell,
-      Idea,
       NoIcon: undefined,
     }),
     rightIcon: selectArgTypeFromObject({
       Bell,
-      Idea,
       NoIcon: undefined,
     }),
   },
@@ -54,7 +51,7 @@ WithCustomRightIcon.args = {
 export const WithLeftIcon = Template.bind({})
 WithLeftIcon.args = {
   children: <TextComponent />,
-  leftIcon: Idea,
+  leftIcon: Bell,
 }
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
