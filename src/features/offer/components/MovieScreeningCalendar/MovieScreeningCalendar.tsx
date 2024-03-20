@@ -39,7 +39,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
     [offerVenueId, onPressOfferCTA, selectedDateScreenings]
   )
 
-  // Reset scroll and first selected date when user selects a new offer venue
+  // Reset scroll and select first date when user selects a new offer's venue
   useEffect(() => {
     if (scrollViewRef?.current) {
       setSelectedDate(movieScreeningDates[0])
