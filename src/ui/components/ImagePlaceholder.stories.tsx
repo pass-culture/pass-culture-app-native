@@ -1,7 +1,8 @@
 import { ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
+import { CategoryIdEnum } from 'api/gen'
+import { mapCategoryToIcon } from 'libs/parsers/category'
 import { getSpacing } from 'ui/theme'
 
 import { ImagePlaceholder } from './ImagePlaceholder'
@@ -21,5 +22,5 @@ export const Default: ComponentStory<typeof ImagePlaceholder> = (props) => (
 Default.args = {
   size: getSpacing(24),
   borderRadius: 4,
-  Icon: MAP_CATEGORY_ID_TO_ICON.FILM,
+  Icon: mapCategoryToIcon(CategoryIdEnum.FILM),
 }
