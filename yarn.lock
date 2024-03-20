@@ -22317,10 +22317,10 @@ react-native-map-clustering@^3.4.2:
     "@mapbox/geo-viewport" "^0.4.1"
     supercluster "^7.1.0"
 
-react-native-maps@^1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.10.2.tgz#a01e92e44de5abc7937068bbb39dee776ca2dbfb"
-  integrity sha512-kWKr14kQXIF3h8x5D072gE2MSXEz0DGt5EdKV11dcyUbXj3cId1hviOTc4aYkstjsqefKN27ZNeGALG7/f5u9g==
+react-native-maps@^1.11.3:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-1.11.3.tgz#7186add5851b50d92501e3791fca2dd7437c80ba"
+  integrity sha512-alz5FnQicz21lL09oTnQvX5Tw9zHoRabE3hchBnYS56KaF/6l0/cHe5ImMtcqriD9fmn6SXjW3cahELkCoR5mw==
   dependencies:
     "@types/geojson" "^7946.0.13"
 
