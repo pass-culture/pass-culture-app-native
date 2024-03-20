@@ -1,5 +1,5 @@
-import { Collection } from 'libs/place'
 import { buildPlaceUrl, BuildSearchAddressProps } from 'libs/place/buildUrl'
+import { Collection } from 'libs/place/types'
 
 export const buildSuggestedAddresses = (collection: Collection): string[] =>
   collection.features.map(({ properties }) => properties.label)

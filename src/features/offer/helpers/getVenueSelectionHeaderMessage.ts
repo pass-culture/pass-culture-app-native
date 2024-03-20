@@ -1,5 +1,5 @@
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 
 export const getVenueSelectionHeaderMessage = (
   selectedLocationMode: LocationMode,

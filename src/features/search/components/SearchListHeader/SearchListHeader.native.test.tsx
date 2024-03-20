@@ -13,7 +13,7 @@ import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'

@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { fetchPlaces, SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place//types'
+import { fetchPlaces } from 'libs/place/fetchPlaces'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_PLACES = 5 * 60 * 1000

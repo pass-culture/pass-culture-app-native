@@ -8,7 +8,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 

@@ -1,7 +1,7 @@
 import { ActivityIdEnum, IdentityCheckMethod, SchoolTypesIdEnum } from 'api/gen'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
-import { SuggestedCity } from 'libs/place'
+import { SuggestedCity } from 'libs/place/types'
 
 interface Name {
   firstName: string

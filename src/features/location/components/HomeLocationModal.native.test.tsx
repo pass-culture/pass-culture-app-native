@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow, act } from 'tests/utils'
 
 const hideModalMock = jest.fn()
@@ -34,7 +34,7 @@ const mockPlaces: SuggestedPlace[] = [
     geolocation: { longitude: -52.669736, latitude: 5.16186 },
   },
 ]
-jest.mock('libs/place', () => ({
+jest.mock('libs/place/usePlaces', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),
 }))
 

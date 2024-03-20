@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 
 const Today = new Date(2020, 10, 1)
 
