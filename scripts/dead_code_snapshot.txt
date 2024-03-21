@@ -18,3 +18,4 @@ src/libs/place/index.ts:21 - useCities
 src/libs/place/index.ts:5 - Properties
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
+src/features/home/components/SubscribeButton.tsx:9 - SubscribeButton
