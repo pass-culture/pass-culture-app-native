@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
-import { useWindowDimensions } from 'react-native'
+import React, { FunctionComponent, useRef, useState } from 'react'
+import { LayoutChangeEvent, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -22,7 +22,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import MapView, { EdgePadding, Marker, Region, MarkerPressEvent } from 'libs/maps/maps'
+import MapView, { EdgePadding, Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -33,6 +33,7 @@ type Props = {
 }
 
 const RADIUS_IN_METERS = 10_000
+const PREVIEW_BOTTOM_MARGIN = getSpacing(10)
 
 type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
@@ -43,6 +44,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { userLocation } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const mapViewRef = useRef<Map>(null)
+  const previewHeight = useRef<number>()
 
   const { height, width } = useWindowDimensions()
   const screenRatio = height / width
@@ -105,12 +108,26 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     navigate('Venue', { id: venueId })
   }
 
+  const centerOnLocation = async (latitude: number, longitude: number) => {
+    if (!mapViewRef.current || !previewHeight.current) return
+
+    const region = { ...currentRegion, latitude, longitude }
+    const point = await mapViewRef.current.pointForCoordinate({ latitude, longitude })
+    if (point.y > height - (PREVIEW_BOTTOM_MARGIN + previewHeight.current + getSpacing(4))) {
+      mapViewRef.current.animateToRegion(region)
+    }
+  }
+
   const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
     event.stopPropagation()
     setShowSearchButton(false)
     if (isPreviewEnabled) {
       setSelectedVenue(venue)
+      centerOnLocation(
+        event.nativeEvent.coordinate.latitude,
+        event.nativeEvent.coordinate.longitude
+      )
     } else {
       navigateToVenue(venue.venueId)
     }
@@ -136,6 +153,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   return (
     <React.Fragment>
       <StyledMapView
+        ref={mapViewRef}
         showsUserLocation
         initialRegion={defaultCoordinates}
         mapPadding={padding}
@@ -174,6 +192,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
           navigateTo={{ screen: 'Venue', params: { id: selectedVenue.venueId } }}
           onClose={handlePreviewClose}
           onBeforeNavigate={() => onNavigateToVenuePress(selectedVenue.venueId)}
+          onLayout={({ nativeEvent }: LayoutChangeEvent) => {
+            previewHeight.current = nativeEvent.layout.height
+          }}
         />
       ) : null}
     </React.Fragment>
@@ -192,7 +213,7 @@ const ButtonContainer = styled.View<{ top: number }>(({ top }) => ({
 
 const StyledVenueMapPreview = styled(VenueMapPreview)(({ theme }) => ({
   position: 'absolute',
-  bottom: getSpacing(10),
+  bottom: PREVIEW_BOTTOM_MARGIN,
   left: getSpacing(4),
   right: getSpacing(4),
   backgroundColor: theme.colors.white,
