@@ -50,9 +50,8 @@ export const AccountSecurity = () => {
       <Typo.Body>
         Pour des raisons de <Typo.ButtonText>sécurité,</Typo.ButtonText> nous te conseillons de
         {isLoggedOutOrHasPassword
-          ? ' modifier ton mot de passe ou '
-          : ' sécuriser ta boîte mail et '}
-        de suspendre ton compte temporairement.
+          ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
+          : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}
       </Typo.Body>
       {isLoggedOutOrHasPassword ? (
         <React.Fragment>
