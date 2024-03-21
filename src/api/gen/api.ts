@@ -1719,6 +1719,11 @@ export interface NotificationSubscriptions {
    * @memberof NotificationSubscriptions
    */
   marketingPush: boolean
+  /**
+   * @type {Array<string>}
+   * @memberof NotificationSubscriptions
+   */
+  subscribedThemes?: Array<string>
 }
 /**
  * @export
