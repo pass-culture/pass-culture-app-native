@@ -618,6 +618,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_VENUE }, { venueLabel }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
+  logVenueMapSeenDuration: (duration: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),
   logVenuePlaylistDisplayedOnSearchResults: ({
     searchId,
     isLocated,
