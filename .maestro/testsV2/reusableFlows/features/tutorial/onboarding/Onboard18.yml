@@ -4,7 +4,12 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "C’est parti\_!"
 
 - assertVisible: 'Découvre les offres près de chez toi'
-- tapOn: 'Passer'
+- tapOn:
+    text: 'Passer' # Androïd
+    optional: true
+- tapOn:
+    text: 'Aller à l’écran suivant' # iOS
+    optional: true
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
 - tapOn: 'j’ai 18 ans'

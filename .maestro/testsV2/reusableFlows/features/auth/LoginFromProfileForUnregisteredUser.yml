@@ -5,11 +5,11 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Connecte-toi'
 - tapOn: 'tonadresse@email.com'
-- inputText: ${MAESTRO_VALID_EMAIL}
+- inputText: ${MAESTRO_UNREGISTERED_EMAIL}
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
-- tapOn: 'Se connecter'
-- tapOn: 'Se connecter' # Second tapOn takes the focus off the input field
+- hideKeyboard
+- tapOn: 'Se connecter' # Android
 
 - assertVisible: 'Prends 1 minute'
 - tapOn: 'Plus tard'

@@ -81,7 +81,7 @@ maestro test \
   --env MAESTRO_APP_ID="$app_id" \
   --env MAESTRO_VALID_EMAIL="dev-tests-e2e@passculture.team" \
   --env MAESTRO_INVALID_EMAIL="dev-tests-e2e-invalid@passculture.team" \
-  --env MAESTRO_UNREGISTERED_EMAIL="dev-tests-e2e-unregistered@passculture.team" \
+  --env MAESTRO_UNREGISTERED_EMAIL="dev-tests-unregistered+e2e@passculture.team" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
   --env MAESTRO_PHYSICAL_OFFER="Les Petites reines" \
