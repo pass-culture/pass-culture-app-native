@@ -15,9 +15,9 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
         const { beginningDatetime, isExpired, isForbiddenToUnderage } = movieStock
         if (beginningDatetime != null && !isExpired && !isForbiddenToUnderage) {
           const movieScreeningDay = getDateString(beginningDatetime)
-          if (movieScreening[movieScreeningDay]) {
-            // @ts-expect-error: because of noUncheckedIndexedAccess
-            movieScreening[movieScreeningDay].push(movieStock)
+          const movieStocks = movieScreening[movieScreeningDay]
+          if (movieStocks) {
+            movieStocks.push(movieStock)
           } else {
             movieScreening[movieScreeningDay] = [movieStock]
           }
@@ -44,9 +44,8 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
   )
 
   useEffect(() => {
-    if (!selectedDate) setSelectedDate(movieScreeningDates[0])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movieScreeningDates])
+    if (!selectedDate && movieScreeningDates.length > 0) setSelectedDate(movieScreeningDates[0])
+  }, [movieScreeningDates, selectedDate])
 
   return {
     movieScreenings,
