@@ -36,7 +36,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
       noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => {
-          let tabNavConfig = getTabNavConfig(route.name, undefined)
+          let tabNavConfig = getTabNavConfig(route.name)
 
           if (route.isSelected && route.name === 'SearchStackNavigator') {
             tabNavConfig = getTabNavConfig('SearchStackNavigator', {
