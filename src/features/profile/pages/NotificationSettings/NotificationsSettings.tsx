@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -18,20 +19,22 @@ import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type State = {
+export type NotificationsSettingsState = {
   allowEmails?: boolean
   allowPush?: boolean
   themePreferences: SubscriptionTheme[]
 }
 
 export const NotificationsSettings = () => {
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
 
   const [state, dispatch] = useReducer(settingsReducer, {
     allowEmails: undefined,
     allowPush: undefined,
     themePreferences: [],
   })
+
+  const hasUserChanged = !!user && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && !state.allowPush) {
@@ -143,7 +146,7 @@ export const NotificationsSettings = () => {
           <ButtonPrimary
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
-            disabled={!isLoggedIn}
+            disabled={!isLoggedIn || !hasUserChanged}
           />
         </Form.Flex>
         <PushNotificationsModal
@@ -164,7 +167,7 @@ const Container = styled.View(({ theme }) => ({
 
 type ToggleActions = SubscriptionTheme | 'email' | 'push' | 'allTheme'
 
-const settingsReducer = (state: State, toggle: ToggleActions) => {
+const settingsReducer = (state: NotificationsSettingsState, toggle: ToggleActions) => {
   switch (toggle) {
     case 'email':
       return {

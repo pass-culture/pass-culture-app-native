@@ -54,6 +54,33 @@ describe('NotificationSettings', () => {
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
 
+  it('should disabled save button when user hasn‘t change any parameters', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      user: beneficiaryUser,
+      isLoggedIn: false,
+    })
+
+    render(<NotificationsSettings />)
+
+    expect(screen.getByText('Enregistrer')).toBeDisabled()
+  })
+
+  it('should enable save button when user has change a parameter', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      user: beneficiaryUser,
+      isLoggedIn: false,
+    })
+
+    render(<NotificationsSettings />)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+    fireEvent.press(toggleSwitch)
+
+    expect(screen.getByText('Enregistrer')).toBeDisabled()
+  })
+
   it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(<NotificationsSettings />)
