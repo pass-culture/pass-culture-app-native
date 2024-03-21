@@ -1,9 +1,8 @@
 import { useRef, useEffect } from 'react'
 
-import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 
-export const useTrackOfferSeenDuration = (offerId: number) => {
+export const useTrackSessionDuration = (callback: (durationInSeconds: number) => void) => {
   const timeInBackground = useRef(0)
   const startTimeBackground = useRef<Date | null>(null)
   const onAppBecomeActive = () => {
@@ -22,11 +21,9 @@ export const useTrackOfferSeenDuration = (offerId: number) => {
     const startTime = new Date()
     return () => {
       const endTime = new Date()
-      const totalDurationOnPageInSeconds = (endTime.getTime() - startTime.getTime()) / 1000
-      const durationWithoutBackgroundTimeInSec =
-        totalDurationOnPageInSeconds - timeInBackground.current
-      analytics.logOfferSeenDuration(offerId, +durationWithoutBackgroundTimeInSec.toFixed(3))
+      const totalDurationOnPage = (endTime.getTime() - startTime.getTime()) / 1000
+      const durationWithoutBackgroundTime = totalDurationOnPage - timeInBackground.current
+      callback(Number(durationWithoutBackgroundTime.toFixed(3)))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [callback])
 }
