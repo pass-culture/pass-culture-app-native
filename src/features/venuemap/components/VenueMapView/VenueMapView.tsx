@@ -35,6 +35,7 @@ type Props = {
 const RADIUS_IN_METERS = 10_000
 const PREVIEW_HEIGHT_ESTIMATION = 114
 const PREVIEW_BOTTOM_MARGIN = getSpacing(10)
+const CENTER_PIN_THRESHOLD = getSpacing(4)
 
 type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
@@ -114,7 +115,14 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 
     const region = { ...currentRegion, latitude, longitude }
     const point = await mapViewRef.current.pointForCoordinate({ latitude, longitude })
-    if (point.y > height - (PREVIEW_BOTTOM_MARGIN + previewHeight.current + getSpacing(4))) {
+
+    const isBehindPreview =
+      point.y > height - (PREVIEW_BOTTOM_MARGIN + previewHeight.current + CENTER_PIN_THRESHOLD)
+    const isBehindHeader = point.y < headerHeight + CENTER_PIN_THRESHOLD
+    const isBehindRightBorder = point.x > width - CENTER_PIN_THRESHOLD
+    const isBehindLeftBorder = point.x < CENTER_PIN_THRESHOLD
+
+    if (isBehindHeader || isBehindRightBorder || isBehindPreview || isBehindLeftBorder) {
       mapViewRef.current.animateToRegion(region)
     }
   }
