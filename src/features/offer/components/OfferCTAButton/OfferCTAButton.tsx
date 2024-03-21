@@ -1,8 +1,10 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { StickyBookingButton } from 'features/offer/components/StickyBookingButton/StickyBookingButton'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
@@ -28,6 +30,7 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
   } = useOfferCTAButton(offer, subcategory)
 
   const { isLoggedIn } = useAuthContext()
+  const { isDesktopViewport } = useTheme()
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
 
   useFocusEffect(
@@ -41,11 +44,19 @@ export const OfferCTAButton: FunctionComponent<Props> = ({
 
   return isAnUnbookedMovieScreening ? null : (
     <React.Fragment>
-      <StickyBookingButton
-        ctaWordingAndAction={ctaWordingAndAction}
-        isFreeDigitalOffer={isFreeDigitalOffer}
-        isLoggedIn={isLoggedIn}
-      />
+      {isDesktopViewport ? (
+        <BookingButton
+          ctaWordingAndAction={ctaWordingAndAction}
+          isFreeDigitalOffer={isFreeDigitalOffer}
+          isLoggedIn={isLoggedIn}
+        />
+      ) : (
+        <StickyBookingButton
+          ctaWordingAndAction={ctaWordingAndAction}
+          isFreeDigitalOffer={isFreeDigitalOffer}
+          isLoggedIn={isLoggedIn}
+        />
+      )}
 
       {CTAOfferModal}
     </React.Fragment>

@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import { View } from 'react-native'
 
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { ICTAWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   ctaWordingAndAction: ICTAWordingAndAction
@@ -26,7 +25,7 @@ export const BookingButton: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <CallToActionContainer>
+      <View testID="booking-button">
         <CTAButton
           wording={wording}
           onPress={onPress}
@@ -36,13 +35,9 @@ export const BookingButton: FunctionComponent<Props> = ({
           isFreeDigitalOffer={isFreeDigitalOffer}
           isLoggedIn={isLoggedIn}
         />
-      </CallToActionContainer>
+      </View>
 
       {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : null}
     </React.Fragment>
   )
 }
-
-const CallToActionContainer = styled.View({
-  marginBottom: getSpacing(8),
-})

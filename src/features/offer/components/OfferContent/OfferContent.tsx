@@ -1,42 +1,30 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
+// we import FastImage to get the resizeMode, not to use it as a component
+// eslint-disable-next-line no-restricted-imports
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponse, SearchGroupResponseModelv2, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
-import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
-import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
-import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
-import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
-import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
-import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
-import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
-import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
-import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
-import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
-import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Hero } from 'ui/components/hero/Hero'
-import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { Separator } from 'ui/components/Separator'
-import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { HeroBody } from 'ui/components/hero/HeroBody'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
@@ -54,15 +42,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const { navigate } = useNavigation<UseNavigationType>()
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
   const { isDesktopViewport } = useTheme()
-
-  const extraData = offer.extraData ?? undefined
-  const tags = getOfferTags(subcategory.appLabel, extraData)
-  const artists = getOfferArtists(subcategory.categoryId, offer)
-  const prices = getOfferPrices(offer.stocks)
-
-  const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-
-  const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
+  const headerHeight = useGetHeaderHeight()
 
   const {
     sameArtistPlaylist,
@@ -115,6 +95,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
       navigate('OfferPreview', { id: offer.id })
     }
   }
+  const imageUrl = offer.image?.url
 
   return (
     <Container>
@@ -122,71 +103,42 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
       {isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       ) : null}
+
       <ScrollViewContainer
         testID="offerv2-container"
         scrollEventThrottle={16}
         scrollIndicatorInsets={scrollIndicatorInsets}
         bounces={false}
         onScroll={onScroll}>
-        <Hero
-          imageUrl={offer.image?.url}
-          categoryId={subcategory.categoryId}
-          shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-          onPress={onPress}
-        />
-        <Spacer.Column numberOfSpaces={8} />
-        <InfoContainer>
-          <GroupWithoutGap>
-            <InformationTags tags={tags} />
-            <Spacer.Column numberOfSpaces={4} />
-            <OfferTitle offerName={offer.name} />
-
-            {artists ? (
-              <React.Fragment>
-                <Spacer.Column numberOfSpaces={2} />
-                <OfferArtists artists={artists} />
-              </React.Fragment>
-            ) : null}
-          </GroupWithoutGap>
-
-          {prices ? <OfferPrice prices={prices} /> : null}
-
-          {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
-            <GroupWithoutGap>
-              {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
-
-              {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
-                <Separator.Horizontal testID="topSeparator" />
-              )}
-
-              {summaryInfoItems.length === 0 ? null : (
-                <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />
-              )}
-            </GroupWithoutGap>
-          )}
-
-          <OfferAbout offer={offer} />
-        </InfoContainer>
-
-        <OfferPlace offer={offer} isEvent={subcategory.isEvent} />
-        <Spacer.Column numberOfSpaces={8} />
-
-        {isOfferAMovieScreening ? (
-          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
-            <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
-          </FeatureFlag>
-        ) : null}
-
         {isDesktopViewport ? (
-          <ContainerWithoutDivider testID="messagingApp-container-without-divider">
-            <Spacer.Column numberOfSpaces={2} />
-            <OfferMessagingApps offer={offer} />
-          </ContainerWithoutDivider>
+          <BodyDesktopContainer headerHeight={headerHeight} testID="offer-body-desktop">
+            <HeroBody
+              categoryId={subcategory.categoryId}
+              imageUrl={imageUrl}
+              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+              isSticky
+            />
+            <OfferBody
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
+          </BodyDesktopContainer>
         ) : (
-          <SectionWithDivider visible margin testID="messagingApp-container-with-divider">
-            <Spacer.Column numberOfSpaces={2} />
-            <OfferMessagingApps offer={offer} />
-          </SectionWithDivider>
+          <View testID="offer-body-mobile">
+            <Hero
+              imageUrl={imageUrl}
+              categoryId={subcategory.categoryId}
+              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+              onPress={onPress}
+            />
+            <Spacer.Column numberOfSpaces={8} />
+            <OfferBody
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
+          </View>
         )}
 
         <OfferPlaylistList
@@ -198,17 +150,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           sameArtistPlaylist={sameArtistPlaylist}
         />
-        <Spacer.Column numberOfSpaces={22} />
+        {!isDesktopViewport ? <Spacer.Column numberOfSpaces={22} /> : null}
       </ScrollViewContainer>
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
       {!isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       ) : null}
-      <OfferCTAButton
-        offer={offer}
-        subcategory={subcategory}
-        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-      />
+      {!isDesktopViewport ? (
+        <OfferCTAButton
+          offer={offer}
+          subcategory={subcategory}
+          trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+        />
+      ) : null}
     </Container>
   )
 }
@@ -221,13 +175,10 @@ const Container = styled.View({
 
 const ScrollViewContainer = styled(IntersectionObserverScrollView)({ overflow: 'visible' })
 
-const InfoContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-  gap: getSpacing(6),
-})
-
-const ContainerWithoutDivider = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+const BodyDesktopContainer = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
+  flexDirection: 'row',
+  paddingHorizontal: getSpacing(16),
+  paddingTop: getSpacing(12) + headerHeight,
+  paddingBottom: getSpacing(12),
+  gap: getSpacing(16),
 }))
-
-const GroupWithoutGap = View

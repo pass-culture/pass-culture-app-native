@@ -52,6 +52,7 @@ export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
           <Spacer.Column numberOfSpaces={8} />
         </React.Fragment>
       ) : null}
+
       {shouldDisplayAccessibilitySection ? (
         <React.Fragment>
           <OfferAccessibility accessibility={offer.accessibility} />

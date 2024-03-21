@@ -2,16 +2,7 @@ import React, { ComponentProps } from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  CategoryIdEnum,
-  HomepageLabelNameEnumv2,
-  NativeCategoryIdEnumv2,
-  OfferResponse,
-  OnlineOfflinePlatformChoicesEnumv2,
-  SearchGroupNameEnumv2,
-  SubcategoriesResponseModelv2,
-  SubcategoryIdEnum,
-} from 'api/gen'
+import { NativeCategoryIdEnumv2, OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
@@ -28,7 +19,6 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { Subcategory } from 'libs/subcategories/types'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -211,224 +201,6 @@ describe('<OfferContent />', () => {
     fireEvent.scroll(await screen.findByTestId('offerv2-container'), scrollEvent)
 
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
-  })
-
-  describe('Tags section', () => {
-    it('should display tags', async () => {
-      renderOfferContent({})
-
-      expect(await screen.findByText('Cinéma plein air')).toBeOnTheScreen()
-    })
-
-    it('should display vinyl tag', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
-        extraData: { musicType: 'Metal', musicSubType: 'Industrial' },
-      }
-      const subcategory: Subcategory = {
-        categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
-        appLabel: 'Vinyles et autres supports',
-        searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-        homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
-        isEvent: false,
-        onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-        nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
-      }
-
-      renderOfferContent({
-        offer,
-        subcategory,
-      })
-
-      expect(await screen.findByText('Metal')).toBeOnTheScreen()
-      expect(screen.getByText('Industrial')).toBeOnTheScreen()
-      expect(screen.getByText('Vinyles et autres supports')).toBeOnTheScreen()
-    })
-  })
-
-  it('should display offer as a title', async () => {
-    renderOfferContent({})
-
-    expect(
-      await screen.findByLabelText('Nom de l’offre\u00a0: Sous les étoiles de Paris - VF')
-    ).toBeOnTheScreen()
-  })
-
-  it('should display artists', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      extraData: { stageDirector: 'Marion Cotillard, Leonardo DiCaprio' },
-    }
-    renderOfferContent({
-      offer,
-    })
-
-    expect(await screen.findByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
-  })
-
-  it('should display prices', async () => {
-    renderOfferContent({})
-
-    expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
-  })
-
-  it('should not display prices when the offer is free', async () => {
-    const offerFree: OfferResponse = {
-      ...offerResponseSnap,
-      stocks: [
-        {
-          id: 118929,
-          beginningDatetime: '2021-01-04T13:30:00',
-          price: 0,
-          isBookable: true,
-          isExpired: false,
-          isForbiddenToUnderage: false,
-          isSoldOut: false,
-          features: [],
-        },
-      ],
-    }
-
-    renderOfferContent({ offer: offerFree })
-
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
-  })
-
-  describe('Venue button section & Summary info section', () => {
-    it('should display both section', async () => {
-      renderOfferContent({})
-
-      expect(
-        await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-      ).toBeOnTheScreen()
-      expect(screen.getByText('Duo')).toBeOnTheScreen()
-    })
-
-    it('should not display both section', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        isDuo: false,
-        venue: {
-          ...offerResponseSnap.venue,
-          isPermanent: false,
-        },
-      }
-
-      renderOfferContent({ offer })
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(
-        screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-      ).not.toBeOnTheScreen()
-      expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
-    })
-
-    it('should display top separator between this two section', async () => {
-      renderOfferContent({})
-
-      expect(await screen.findByTestId('topSeparator')).toBeOnTheScreen()
-    })
-
-    it('should not display top separator between this two section', async () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        isDuo: false,
-        venue: {
-          ...offerResponseSnap.venue,
-          isPermanent: false,
-        },
-      }
-      renderOfferContent({ offer })
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.queryByTestId('topSeparator')).not.toBeOnTheScreen()
-    })
-
-    describe('Venue button section', () => {
-      it('should display venue button', async () => {
-        renderOfferContent({})
-
-        expect(
-          await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-        ).toBeOnTheScreen()
-      })
-
-      it('should not display venue button', async () => {
-        const offer: OfferResponse = {
-          ...offerResponseSnap,
-          venue: {
-            ...offerResponseSnap.venue,
-            isPermanent: false,
-          },
-        }
-        renderOfferContent({ offer })
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(
-          screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-        ).not.toBeOnTheScreen()
-      })
-    })
-
-    describe('Summary info section', () => {
-      it('should display duo info', async () => {
-        const offer: OfferResponse = {
-          ...offerResponseSnap,
-          isDuo: true,
-        }
-        renderOfferContent({ offer })
-
-        expect(await screen.findByText('Duo')).toBeOnTheScreen()
-      })
-
-      it('should not display duo info', async () => {
-        const offer: OfferResponse = {
-          ...offerResponseSnap,
-          isDuo: false,
-        }
-        renderOfferContent({ offer })
-
-        await screen.findByText('Réserver l’offre')
-
-        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
-      })
-    })
-  })
-
-  describe('Venue section', () => {
-    it('should display venue section', async () => {
-      renderOfferContent({})
-
-      expect(await screen.findByText('Copier l’adresse')).toBeOnTheScreen()
-    })
-
-    it('should display venue distance tag when user share his position', async () => {
-      renderOfferContent({})
-
-      expect(await screen.findByText('à 900+ km')).toBeOnTheScreen()
-    })
-
-    it('should not display venue distance tag when user not share his position', async () => {
-      mockPosition = null
-      renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
-    })
-  })
-
-  it('should display social network section', async () => {
-    renderOfferContent({})
-
-    expect(await screen.findByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
   })
 
   describe('Playlist list section', () => {
@@ -776,65 +548,60 @@ describe('<OfferContent />', () => {
     )
   })
 
-  describe('MovieScreeningCalendar', () => {
-    beforeEach(() => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
-    })
-
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-      stocks: [
-        {
-          beginningDatetime: '2024-02-27T11:10:00Z',
-          features: ['VO'],
-          id: 6091,
-          isBookable: false,
-          isExpired: false,
-          isForbiddenToUnderage: false,
-          isSoldOut: true,
-          price: 570,
-        },
-      ],
-    }
-
-    it('should render <MovieScreeningCalendar /> when offer is a movie screening', async () => {
-      renderOfferContent({
-        offer,
-      })
-
-      expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
-    })
-  })
-
-  it('should display container with divider on mobile', async () => {
+  it('should display mobile body on mobile', async () => {
     renderOfferContent({})
-    await screen.findByText('Réserver l’offre')
 
-    expect(screen.getByTestId('messagingApp-container-with-divider')).toBeOnTheScreen()
+    expect(await screen.findByTestId('offer-body-mobile')).toBeOnTheScreen()
   })
 
-  it('should not display container with divider on desktop', async () => {
+  it('should not display mobile body on desktop', async () => {
     renderOfferContent({ isDesktopViewport: true })
+
     await screen.findByText('Réserver l’offre')
 
-    expect(screen.queryByTestId('messagingApp-container-with-divider')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('offer-body-mobile')).not.toBeOnTheScreen()
   })
 
-  it('should display container without divider on desktop', async () => {
-    renderOfferContent({
-      isDesktopViewport: true,
-    })
-    await screen.findByText('Réserver l’offre')
+  it('should display desktop body on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
 
-    expect(screen.getByTestId('messagingApp-container-without-divider')).toBeOnTheScreen()
+    expect(await screen.findByTestId('offer-body-desktop')).toBeOnTheScreen()
   })
 
-  it('should not display container without divider on mobile', async () => {
+  it('should not display desktop body on mobile', async () => {
     renderOfferContent({})
+
     await screen.findByText('Réserver l’offre')
 
-    expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('offer-body-desktop')).not.toBeOnTheScreen()
+  })
+
+  it('should display sticky booking button on mobile', async () => {
+    renderOfferContent({})
+
+    expect(await screen.findByTestId('sticky-booking-button')).toBeOnTheScreen()
+  })
+
+  it('should not display sticky booking button on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('sticky-booking-button')).not.toBeOnTheScreen()
+  })
+
+  it('should display nonadhesive booking button on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    expect(await screen.findByTestId('booking-button')).toBeOnTheScreen()
+  })
+
+  it('should not display nonadhesive booking button on mobile', async () => {
+    renderOfferContent({})
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('booking-button')).not.toBeOnTheScreen()
   })
 })
 

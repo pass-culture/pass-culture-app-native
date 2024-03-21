@@ -29,7 +29,7 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   return (
     <StickyBottomWrapper>
       <BlurryWrapper>
-        <CallToActionContainer>
+        <CallToActionContainer testID="sticky-booking-button">
           <CTAButton
             wording={wording}
             onPress={onPress}
