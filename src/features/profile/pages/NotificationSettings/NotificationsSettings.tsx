@@ -30,9 +30,10 @@ export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
 
   const [state, dispatch] = useReducer(settingsReducer, {
-    allowEmails: undefined,
-    allowPush: undefined,
-    themePreferences: [],
+    allowEmails: user?.subscriptions.marketingEmail,
+    allowPush: user?.subscriptions.marketingPush,
+    themePreferences:
+      (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
   })
 
   const hasUserChanged = !!user && hasUserChangedParameters(user, state)

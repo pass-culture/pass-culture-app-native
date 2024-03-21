@@ -3,6 +3,7 @@ import { Linking } from 'react-native'
 
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -13,7 +14,13 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 const baseAuthContext: IAuthContext = {
   isLoggedIn: true,
-  user: beneficiaryUser,
+  user: {
+    ...beneficiaryUser,
+    subscriptions: {
+      marketingEmail: false,
+      marketingPush: false,
+    },
+  },
   isUserLoading: false,
   refetchUser: jest.fn(),
   setIsLoggedIn: jest.fn(),
@@ -79,6 +86,35 @@ describe('NotificationSettings', () => {
     fireEvent.press(toggleSwitch)
 
     expect(screen.getByText('Enregistrer')).toBeDisabled()
+  })
+
+  it('should get user default parameters', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      user: {
+        ...beneficiaryUser,
+        subscriptions: {
+          marketingEmail: true,
+          marketingPush: true,
+          subscribedThemes: [SubscriptionTheme.MUSIQUE],
+        },
+      },
+      isLoggedIn: true,
+    })
+    render(<NotificationsSettings />)
+
+    expect(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')).toHaveAccessibilityState(
+      {
+        checked: true,
+      }
+    )
+    expect(screen.getByTestId('Interrupteur Autoriser les notifications')).toHaveAccessibilityState(
+      {
+        checked: true,
+      }
+    )
+
+    expect(screen.getByTestId('Interrupteur Musique')).toHaveAccessibilityState({ checked: true })
   })
 
   it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
