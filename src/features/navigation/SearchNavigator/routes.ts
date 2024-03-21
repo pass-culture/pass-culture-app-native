@@ -1,11 +1,12 @@
 import { LinkingOptions } from '@react-navigation/native'
 
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
+import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchNavigator/Stack'
 import { Search } from 'features/search/pages/Search/Search'
 
-import { SearchRoute, SearchStackParamList } from './types'
+import { SearchRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
 const initialRouteName = 'Search'
 export const routes: SearchRoute[] = [
@@ -29,4 +30,12 @@ export const { screensConfig: searchScreensConfig, Screens: SearchScreens } = ge
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
   initialRouteName,
   screens: searchScreensConfig,
+}
+
+const searchStackRouteNames = routes.map((route) => route.name)
+
+// Typeguard for screen params
+export function isSearchStackScreen(screen: ScreenNames): screen is SearchStackRouteName {
+  // @ts-expect-error : ScreenNames is not necessarily a screen in tabRouteNames
+  return searchStackRouteNames.includes(screen)
 }
