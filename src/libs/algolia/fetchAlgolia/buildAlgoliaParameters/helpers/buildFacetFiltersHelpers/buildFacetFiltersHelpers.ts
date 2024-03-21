@@ -27,8 +27,8 @@ export const buildOfferGtl = (gtlLevel: GTLLevel, gtlLabel: string) => {
 
 export const buildOfferGtlsPredicate = (gtls: GTL[]) =>
   gtls.map((gtl) => {
-    const filterName = FACETS_FILTERS_ENUM.OFFER_GTL_LEVEL.replace('XX', String(gtl.level))
-    return `${filterName}:${gtl.label}`
+    const filterName = FACETS_FILTERS_ENUM.OFFER_GTL_CODE.replace('XX', String(gtl.level))
+    return `${filterName}:${gtl.code}`
   })
 
 export const buildOfferNativeCategoriesPredicate = (
