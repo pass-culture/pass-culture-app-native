@@ -33,6 +33,7 @@ type Props = {
 }
 
 const RADIUS_IN_METERS = 10_000
+const PREVIEW_HEIGHT_ESTIMATION = 114
 const PREVIEW_BOTTOM_MARGIN = getSpacing(10)
 
 type GeolocatedVenue = Omit<Venue, 'venueId'> & {
@@ -45,7 +46,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
-  const previewHeight = useRef<number>()
+  const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 
   const { height, width } = useWindowDimensions()
   const screenRatio = height / width
