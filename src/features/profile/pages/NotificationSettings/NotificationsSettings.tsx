@@ -8,6 +8,7 @@ import { PushNotificationsModal } from 'features/notifications/pages/PushNotific
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -136,7 +137,7 @@ export const NotificationsSettings = () => {
           {Object.values(SubscriptionTheme).map((theme) => (
             <SectionWithSwitch
               key={theme}
-              title={theme}
+              title={mapSubscriptionThemeToName[theme]}
               active={isThemeToggled(theme)}
               disabled={areThemeTogglesDisabled}
               toggle={() => dispatch(theme)}
