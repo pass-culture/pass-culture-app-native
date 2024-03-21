@@ -1,0 +1,34 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Mon profil'
+- tapOn: 'Créer un compte'
+
+- assertVisible: 'Crée-toi un compte'
+- tapOn: 'tonadresse@email.com'
+- inputText: ${MAESTRO_UNREGISTERED_EMAIL}
+- hideKeyboard
+- tapOn: 'Continuer vers l’étape Mot de passe'
+
+- assertVisible: 'Choisis un mot de passe'
+- tapOn: 'Ton mot de passe'
+- inputText: ${MAESTRO_PASSWORD}
+- hideKeyboard
+- tapOn: 'Continuer vers l’étape Date de naissance'
+
+- assertVisible: 'Renseigne ton âge'
+- swipe: # months
+    start: 47%, 52%
+    end: 47%, 56%
+- swipe: # years
+    start: 74%,57%
+    end: 74%,62%
+- tapOn: 'Continuer vers l’étape CGU & Données'
+
+- assertVisible: 'CGU & Données'
+- tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
+- tapOn: 'J’ai lu la charte des données personnelles'
+- tapOn: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
+- tapOn: 'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire'
+
+- assertVisible: 'Confirme ton adresse e-mail'
+- tapOn: 'Fermer'

@@ -1,0 +1,15 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: reusableFlows/LaunchApp.yml
+
+- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
+- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: reusableFlows/features/auth/SignupFromProfile.yml
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: reusableFlows/features/auth/LoginFromProfileForUnregisteredUser.yml
+- runFlow: reusableFlows/features/auth/GoToActivationFromProfile.yml
+- runFlow: reusableFlows/features/auth/ActivationPhoneNumberStep.yml
+- runFlow: reusableFlows/features/auth/ActivationProfileStep.yml
+
+- runFlow: reusableFlows/StopApp.yml
