@@ -101,7 +101,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   }
 
   const navigateToVenue = (venueId: number) => {
-    analytics.logConsultVenue({ venueId, from: 'venueMap' })
+    onNavigateToVenuePress(venueId)
     navigate('Venue', { id: venueId })
   }
 
