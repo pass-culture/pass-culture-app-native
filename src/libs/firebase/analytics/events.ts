@@ -132,6 +132,7 @@ export enum AnalyticsEvent {
   SEE_MY_BOOKING = 'SeeMyBooking',
   SELECT_AGE = 'SelectAge',
   SEND_ACTIVATION_MAIL_AGAIN = 'SendActivationMailAgain',
+  SESSION_DURATION_FROM_VENUE_MAP = 'SessionDurationFromVenueMap',
   SHARE = 'Share',
   SHARE_APP = 'ShareApp',
   SIGN_IN_FROM_AUTHENTICATION_MODAL = 'SignInFromAuthenticationModal',

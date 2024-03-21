@@ -560,6 +560,8 @@ export const logEventAnalytics = {
         times: numberOfTimes,
       }
     ),
+  logSessionDurationFromVenueMap: (duration: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SESSION_DURATION_FROM_VENUE_MAP }, { duration }),
   logSetAddressClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_ADDRESS_CLICKED }),
   logSetIdOriginClicked: (type: IDOrigin) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SET_ID_ORIGIN_CLICKED }, { type }),

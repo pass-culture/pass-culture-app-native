@@ -153,6 +153,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logSelectAge: jest.fn(),
   logSelectIdStatusClicked: jest.fn(),
   logSendActivationMailAgain: jest.fn(),
+  logSessionDurationFromVenueMap: jest.fn(),
   logSetAddressClicked: jest.fn(),
   logSetIdOriginClicked: jest.fn(),
   logSetNameClicked: jest.fn(),
