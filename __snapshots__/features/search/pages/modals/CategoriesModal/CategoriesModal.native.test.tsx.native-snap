@@ -4499,7 +4499,7 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   }
                 />
                 <View
-                  accessibilityLabel="Bibliothèque, médiathèque"
+                  accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -4539,7 +4539,7 @@ exports[`<CategoriesModal/> new book native categories section should display th
                       "userSelect": "auto",
                     }
                   }
-                  testID="Bibliothèque, médiathèque"
+                  testID="Abonnements aux médiathèques et bibliothèques"
                 >
                   <View
                     flex={0.9}
@@ -4596,7 +4596,7 @@ exports[`<CategoriesModal/> new book native categories section should display th
                             ]
                           }
                         >
-                          Bibliothèque, médiathèque
+                          Abonnements aux médiathèques et bibliothèques
                         </Text>
                         <Text
                           isSelected={false}

@@ -28,13 +28,6 @@ const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
 Default.args = {
   sortedCategories: [
     {
-      label: 'Bibliothèque, médiathèque',
-      Illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
-      onPress: action('Jeux'),
-      baseColor: theme.colors.coral,
-      gradients: [theme.colors.coralLight, theme.colors.coral],
-    },
-    {
       label: 'CD, vinyles, musique en ligne',
       Illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
       onPress: action('Musique'),
