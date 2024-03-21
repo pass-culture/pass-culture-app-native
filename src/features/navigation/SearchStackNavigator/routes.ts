@@ -9,7 +9,8 @@ import { Search } from 'features/search/pages/Search/Search'
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
 const initialRouteName = 'Search'
-export const routes: SearchStackRoute[] = [
+
+const routes: SearchStackRoute[] = [
   {
     name: 'Search',
     component: Search,

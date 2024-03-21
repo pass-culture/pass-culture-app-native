@@ -10,3 +10,4 @@ src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/features/home/components/SubscribeButton.tsx:9 - SubscribeButton
+src/features/navigation/SearchStackNavigator/routes.ts:26 - searchScreensConfig (used in module)
