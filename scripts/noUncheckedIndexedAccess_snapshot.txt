@@ -309,8 +309,8 @@
 ./src/features/home/components/modules/HighlightOfferModule.native.test.tsx:56
 ./src/features/home/components/modules/HighlightOfferModule.native.test.tsx:95
 ./src/features/home/components/modules/OffersModule.tsx:52
-./src/features/home/components/modules/OffersModule.tsx:61
-./src/features/home/components/modules/OffersModule.tsx:70
+./src/features/home/components/modules/OffersModule.tsx:64
+./src/features/home/components/modules/OffersModule.tsx:73
 ./src/features/home/components/modules/venues/VenueTile.native.test.tsx:16
 ./src/features/home/components/modules/venues/VenueTile.native.test.tsx:36
 ./src/features/home/components/modules/venues/VenueTile.native.test.tsx:47
@@ -443,7 +443,7 @@
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:79
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:86
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:97
-./src/features/search/components/SearchBox/SearchBox.native.test.tsx:105
+./src/features/search/components/SearchBox/SearchBox.native.test.tsx:111
 ./src/features/search/components/SearchHistory/SearchHistory.native.test.tsx:30
 ./src/features/search/components/SearchHistory/SearchHistory.native.test.tsx:44
 ./src/features/search/components/SearchHistory/SearchHistory.native.test.tsx:60
