@@ -79,11 +79,14 @@ export const OfferBody: FunctionComponent<Props> = ({
         )}
 
         {isDesktopViewport ? (
-          <OfferCTAButton
-            offer={offer}
-            subcategory={subcategory}
-            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-          />
+          <React.Fragment>
+            <OfferCTAButton
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
+            <Spacer.Column numberOfSpaces={4} />
+          </React.Fragment>
         ) : null}
 
         <OfferAbout offer={offer} />
@@ -99,6 +102,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       {isDesktopViewport ? (
         <View testID="messagingApp-container-without-divider">
+          <Spacer.Column numberOfSpaces={2} />
           <OfferMessagingApps offer={offer} />
         </View>
       ) : (
