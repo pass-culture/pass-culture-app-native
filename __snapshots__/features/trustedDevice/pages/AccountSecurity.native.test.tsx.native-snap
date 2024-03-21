@@ -282,8 +282,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       sécurité,
     </Text>
      nous te conseillons de
-     modifier ton mot de passe ou 
-    de suspendre ton compte temporairement.
+     modifier ton mot de passe ou de suspendre ton compte temporairement.
   </Text>
   <View
     numberOfSpaces={6}
@@ -839,8 +838,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       sécurité,
     </Text>
      nous te conseillons de
-     sécuriser ta boîte mail et 
-    de suspendre ton compte temporairement.
+     sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.
   </Text>
   <View
     numberOfSpaces={4}
@@ -1315,8 +1313,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       sécurité,
     </Text>
      nous te conseillons de
-     modifier ton mot de passe ou 
-    de suspendre ton compte temporairement.
+     modifier ton mot de passe ou de suspendre ton compte temporairement.
   </Text>
   <View
     numberOfSpaces={6}
