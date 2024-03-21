@@ -1,10 +1,12 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 
 const getDateString = (date: string) => new Date(date).toDateString()
 
 export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>()
+
   const movieScreenings = useMemo(
     () =>
       stocks.reduce<{
@@ -36,12 +38,15 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
     [movieScreenings]
   )
 
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(movieScreeningDates[0])
-
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(`${selectedDate}`)],
     [movieScreenings, selectedDate]
   )
+
+  useEffect(() => {
+    if (!selectedDate) setSelectedDate(movieScreeningDates[0])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movieScreeningDates])
 
   return {
     movieScreenings,
