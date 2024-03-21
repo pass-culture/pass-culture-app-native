@@ -4,7 +4,7 @@ import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { SearchStackParamList } from 'features/navigation/SearchNavigator/types'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'

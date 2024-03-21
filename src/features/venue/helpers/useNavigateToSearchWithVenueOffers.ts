@@ -1,5 +1,5 @@
 import { VenueResponse } from 'api/gen'
-import { SearchStackParamList } from 'features/navigation/SearchNavigator/types'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'

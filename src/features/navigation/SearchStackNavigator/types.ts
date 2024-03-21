@@ -8,6 +8,6 @@ export type SearchStackParamList = {
   Search?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
 }
 
-export type SearchScreenNames = keyof SearchStackParamList
+export type SearchStackScreenNames = keyof SearchStackParamList
 
-export type SearchRoute = GenericRoute<SearchStackParamList>
+export type SearchStackRoute = GenericRoute<SearchStackParamList>

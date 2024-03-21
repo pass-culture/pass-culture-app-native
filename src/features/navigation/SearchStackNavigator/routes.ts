@@ -3,13 +3,13 @@ import { LinkingOptions } from '@react-navigation/native'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
-import { SearchStack } from 'features/navigation/SearchNavigator/Stack'
+import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
 import { Search } from 'features/search/pages/Search/Search'
 
-import { SearchRoute, SearchStackParamList, SearchStackRouteName } from './types'
+import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
 const initialRouteName = 'Search'
-export const routes: SearchRoute[] = [
+export const routes: SearchStackRoute[] = [
   {
     name: 'Search',
     component: Search,

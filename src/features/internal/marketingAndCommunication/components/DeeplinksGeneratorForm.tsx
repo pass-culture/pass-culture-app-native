@@ -17,8 +17,8 @@ import {
   ScreensUsedByMarketing,
 } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getSearchStackConfig } from 'features/navigation/SearchNavigator/helpers'
-import { isSearchStackScreen } from 'features/navigation/SearchNavigator/routes'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/routes'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
