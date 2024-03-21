@@ -17,6 +17,8 @@ import {
   ScreensUsedByMarketing,
 } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
+import { getSearchStackConfig } from 'features/navigation/SearchNavigator/helpers'
+import { isSearchStackScreen } from 'features/navigation/SearchNavigator/routes'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
@@ -271,7 +273,13 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
     if (isTabScreen(selectedScreen)) {
       const tabNavConfig = getTabNavConfig(selectedScreen, appAndMarketingParams)
+
       screenPath = getScreenPath(...tabNavConfig)
+    }
+
+    if (isSearchStackScreen(selectedScreen)) {
+      const searchStackConfig = getSearchStackConfig(selectedScreen, appAndMarketingParams)
+      screenPath = getScreenPath(...searchStackConfig)
     }
 
     let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
