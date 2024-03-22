@@ -2063,7 +2063,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
               {
                 "busy": undefined,
                 "checked": undefined,
-                "disabled": false,
+                "disabled": true,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -2078,7 +2078,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             }
             accessible={true}
             collapsable={false}
-            focusable={true}
+            focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -2089,7 +2089,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "#eb0055",
+                "backgroundColor": "#F1F1F4",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -2112,7 +2112,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
               style={
                 [
                   {
-                    "color": "#ffffff",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
