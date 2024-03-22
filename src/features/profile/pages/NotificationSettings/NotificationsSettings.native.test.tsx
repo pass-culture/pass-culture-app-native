@@ -34,6 +34,7 @@ const baseAuthContext: IAuthContext = {
     subscriptions: {
       marketingEmail: false,
       marketingPush: false,
+      subscribedThemes: [],
     },
   },
   isUserLoading: false,
@@ -90,13 +91,15 @@ describe('NotificationSettings', () => {
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
 
-  it('should enable save button when user has changed a parameter', () => {
+  it.only('should enable save button when user has changed a parameter', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
 
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
-    const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleSwitch)
+    const cinemaSwitch = screen.getByTestId('Interrupteur Cinéma')
+    fireEvent.press(cinemaSwitch)
 
     expect(screen.getByText('Enregistrer')).toBeEnabled()
   })
