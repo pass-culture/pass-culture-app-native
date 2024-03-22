@@ -1,4 +1,4 @@
-import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/hasUserChangedParameters'
+import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { NotificationsSettingsState } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
