@@ -37,6 +37,6 @@ const searchStackRouteNames = routes.map((route) => route.name)
 
 // Typeguard for screen params
 export function isSearchStackScreen(screen: ScreenNames): screen is SearchStackRouteName {
-  // @ts-expect-error : ScreenNames is not necessarily a screen in tabRouteNames
+  // @ts-expect-error : ScreenNames is not necessarily a screen in SearchStackRouteNames
   return searchStackRouteNames.includes(screen)
 }
