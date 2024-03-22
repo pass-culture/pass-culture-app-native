@@ -22,7 +22,7 @@ describe('hasUserChangedParameters', () => {
     expect(hasUserChangedParameters(user, state)).toBe(false)
   })
 
-  it('should return true if user switch marketing email', () => {
+  it('should return true when user changes email opt-in', () => {
     const user = {
       ...beneficiaryUser,
       subscriptions: {
@@ -40,7 +40,7 @@ describe('hasUserChangedParameters', () => {
     expect(hasUserChangedParameters(user, state)).toBe(true)
   })
 
-  it('should return true if user subscribe to a theme and unsuscribe to another', () => {
+  it('should return true when user subscribes to a theme and unsusbcribes from another', () => {
     const user = {
       ...beneficiaryUser,
       subscriptions: {

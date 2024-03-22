@@ -58,7 +58,7 @@ export const NotificationsSettings = () => {
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     () => {
       showSuccessSnackBar({
-        message: 'Paramètre enregistré',
+        message: 'Tes modifications ont été enregistrées\u00a0!',
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
 

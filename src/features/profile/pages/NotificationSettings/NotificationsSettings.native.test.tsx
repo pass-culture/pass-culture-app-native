@@ -150,7 +150,7 @@ describe('NotificationSettings', () => {
     expect(screen.getByTestId('Interrupteur Visites et sorties')).toHaveAccessibilityState({
       checked: true,
     })
-    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toHaveAccessibilityState({
+    expect(screen.getByTestId('Interrupteur Activités créatives')).toHaveAccessibilityState({
       checked: true,
     })
   })
@@ -175,7 +175,7 @@ describe('NotificationSettings', () => {
     expect(screen.getByTestId('Interrupteur Visites et sorties')).toHaveAccessibilityState({
       checked: false,
     })
-    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toHaveAccessibilityState({
+    expect(screen.getByTestId('Interrupteur Activités créatives')).toHaveAccessibilityState({
       checked: false,
     })
   })
@@ -202,7 +202,7 @@ describe('NotificationSettings', () => {
     expect(screen.getByTestId('Interrupteur Musique')).toBeDisabled()
     expect(screen.getByTestId('Interrupteur Spectacles')).toBeDisabled()
     expect(screen.getByTestId('Interrupteur Visites et sorties')).toBeDisabled()
-    expect(screen.getByTestId('Interrupteur Cours et Ateliers')).toBeDisabled()
+    expect(screen.getByTestId('Interrupteur Activités créatives')).toBeDisabled()
   })
 
   it('should switch off thematic toggle when disabling email and push toggle at the same time', () => {
@@ -306,10 +306,12 @@ describe('NotificationSettings', () => {
       await act(async () => fireEvent.press(saveButton))
 
       expect(mockGoBack).toHaveBeenCalledTimes(1)
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({ message: 'Paramètre enregistré' })
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Tes modifications ont été enregistrées\u00a0!',
+      })
     })
 
-    it('should not go back and show snackbar on error', async () => {
+    it('should not go back and should show snackbar on error', async () => {
       mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
       mockServer.postApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
