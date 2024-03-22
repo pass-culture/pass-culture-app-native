@@ -487,7 +487,7 @@ export const treeResultFixture = {
         nbResultsFacet: 4494,
       },
       [NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE]: {
-        label: 'Bibliothèque, médiathèque',
+        label: 'Abonnements aux médiathèques et bibliothèques',
         nbResultsFacet: 0,
       },
     },

@@ -932,7 +932,7 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
     },
     {
       name: NativeCategoryIdEnumv2.BIBLIOTHEQUE_MEDIATHEQUE,
-      value: 'Bibliothèque, médiathèque',
+      value: 'Abonnements aux médiathèques et bibliothèques',
       genreType: null,
     },
     {
