@@ -4,6 +4,13 @@ exports[`EventCardList should render correctly 1`] = `
 <RCTScrollView
   horizontal={true}
   showsHorizontalScrollIndicator={false}
+  style={
+    [
+      {
+        "paddingBottom": 8,
+      },
+    ]
+  }
 >
   <View>
     <View
@@ -33,7 +40,7 @@ exports[`EventCardList should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -83,7 +90,7 @@ exports[`EventCardList should render correctly 1`] = `
       >
         <Text
           accessibilityLabel="8h"
-          isDisabled={false}
+          disabled={false}
           numberOfLines={1}
           style={
             [
@@ -125,8 +132,8 @@ exports[`EventCardList should render correctly 1`] = `
         >
           <Text
             accessibilityLabel="VO, 3D"
+            disabled={false}
             hasSubtitleRight={true}
-            isDisabled={false}
             numberOfLines={1}
             style={
               [
@@ -157,7 +164,7 @@ exports[`EventCardList should render correctly 1`] = `
           />
           <Text
             accessibilityLabel="5,99€"
-            isDisabled={false}
+            disabled={false}
             numberOfLines={1}
             style={
               [
@@ -193,7 +200,7 @@ exports[`EventCardList should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": false,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -243,7 +250,7 @@ exports[`EventCardList should render correctly 1`] = `
       >
         <Text
           accessibilityLabel="9h30"
-          isDisabled={false}
+          disabled={false}
           numberOfLines={1}
           style={
             [
@@ -285,8 +292,8 @@ exports[`EventCardList should render correctly 1`] = `
         >
           <Text
             accessibilityLabel="VF, ICE, 3D"
+            disabled={false}
             hasSubtitleRight={true}
-            isDisabled={false}
             numberOfLines={1}
             style={
               [
@@ -317,7 +324,7 @@ exports[`EventCardList should render correctly 1`] = `
           />
           <Text
             accessibilityLabel="7,99€"
-            isDisabled={false}
+            disabled={false}
             numberOfLines={1}
             style={
               [
@@ -355,7 +362,7 @@ exports[`EventCardList should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -398,7 +405,7 @@ exports[`EventCardList should render correctly 1`] = `
       >
         <Text
           accessibilityLabel="10h55"
-          isDisabled={true}
+          disabled={true}
           numberOfLines={1}
           style={
             [
@@ -440,8 +447,8 @@ exports[`EventCardList should render correctly 1`] = `
         >
           <Text
             accessibilityLabel="Complet"
+            disabled={true}
             hasSubtitleRight={true}
-            isDisabled={true}
             numberOfLines={1}
             style={
               [
@@ -472,7 +479,7 @@ exports[`EventCardList should render correctly 1`] = `
           />
           <Text
             accessibilityLabel="12,99€"
-            isDisabled={true}
+            disabled={true}
             numberOfLines={1}
             style={
               [
@@ -508,7 +515,7 @@ exports[`EventCardList should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -551,7 +558,7 @@ exports[`EventCardList should render correctly 1`] = `
       >
         <Text
           accessibilityLabel="13h12"
-          isDisabled={true}
+          disabled={true}
           numberOfLines={1}
           style={
             [
@@ -593,8 +600,8 @@ exports[`EventCardList should render correctly 1`] = `
         >
           <Text
             accessibilityLabel="Crédit insuffisant"
+            disabled={true}
             hasSubtitleRight={false}
-            isDisabled={true}
             numberOfLines={1}
             style={
               [
@@ -633,7 +640,7 @@ exports[`EventCardList should render correctly 1`] = `
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": undefined,
+            "disabled": true,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -676,7 +683,7 @@ exports[`EventCardList should render correctly 1`] = `
       >
         <Text
           accessibilityLabel="13h12"
-          isDisabled={true}
+          disabled={true}
           numberOfLines={1}
           style={
             [
@@ -718,8 +725,8 @@ exports[`EventCardList should render correctly 1`] = `
         >
           <Text
             accessibilityLabel="Déjà réservé"
+            disabled={true}
             hasSubtitleRight={false}
-            isDisabled={true}
             numberOfLines={1}
             style={
               [

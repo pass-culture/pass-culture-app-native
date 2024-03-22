@@ -1,8 +1,9 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { View } from 'react-native'
+import styled from 'styled-components/native'
 
 import { EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
-import { Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 type Props = {
   data: EventCardProps[]
@@ -10,7 +11,7 @@ type Props = {
 
 export const EventCardList: React.FC<Props> = ({ data }) => {
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    <Container horizontal showsHorizontalScrollIndicator={false}>
       <Spacer.Row numberOfSpaces={2} />
       {data.map((event, index) => {
         if (index % 2 === 1) return null
@@ -33,6 +34,10 @@ export const EventCardList: React.FC<Props> = ({ data }) => {
         )
       })}
       <Spacer.Row numberOfSpaces={6} />
-    </ScrollView>
+    </Container>
   )
 }
+
+const Container = styled.ScrollView({
+  paddingBottom: getSpacing(2),
+})
