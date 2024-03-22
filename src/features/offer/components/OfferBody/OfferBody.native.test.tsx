@@ -172,10 +172,25 @@ describe('<OfferBody />', () => {
       expect(screen.queryByTestId('topSeparator')).not.toBeOnTheScreen()
     })
 
-    it('should display top separator between this two section', async () => {
-      renderOfferBody({})
+    it('should display top separator above summary info list when venue button is not displayed', async () => {
+      const offerWithoutPermanentVenue: OfferResponse = {
+        ...offerResponseSnap,
+        venue: {
+          ...offerResponseSnap.venue,
+          isPermanent: false,
+        },
+      }
+      renderOfferBody({ offer: offerWithoutPermanentVenue })
 
       expect(await screen.findByTestId('topSeparator')).toBeOnTheScreen()
+    })
+
+    it('should not display top separator when venue button is displayed', async () => {
+      renderOfferBody({})
+
+      await screen.findByTestId('VenuePreviewImage')
+
+      expect(screen.queryByTestId('topSeparator')).not.toBeOnTheScreen()
     })
 
     describe('Venue button section', () => {

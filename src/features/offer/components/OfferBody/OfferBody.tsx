@@ -74,19 +74,19 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         {prices ? <OfferPrice prices={prices} /> : null}
 
-        {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+        {offer.venue.isPermanent || summaryInfoItems.length > 0 ? (
           <GroupWithoutGap>
             {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
 
-            {!offer.venue.isPermanent && summaryInfoItems.length === 0 ? null : (
+            {!offer.venue.isPermanent && summaryInfoItems.length > 0 ? (
               <Separator.Horizontal testID="topSeparator" />
-            )}
+            ) : null}
 
-            {summaryInfoItems.length === 0 ? null : (
+            {summaryInfoItems.length > 0 ? (
               <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />
-            )}
+            ) : null}
           </GroupWithoutGap>
-        )}
+        ) : null}
 
         {isDesktopViewport ? (
           <React.Fragment>
