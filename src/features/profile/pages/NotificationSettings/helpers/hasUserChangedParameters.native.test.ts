@@ -46,7 +46,7 @@ describe('hasUserChangedParameters', () => {
       subscriptions: {
         marketingEmail: true,
         marketingPush: true,
-        subscribedThemes: [SubscriptionTheme.CINEMA, SubscriptionTheme.COURS],
+        subscribedThemes: [SubscriptionTheme.CINEMA, SubscriptionTheme.ACTIVITES],
       },
     }
     const state: NotificationsSettingsState = {

@@ -6,5 +6,5 @@ export const mapSubscriptionThemeToName: Record<SubscriptionTheme, string> = {
   [SubscriptionTheme.MUSIQUE]: 'Musique',
   [SubscriptionTheme.SPECTACLES]: 'Spectacles',
   [SubscriptionTheme.VISITES]: 'Visites et sorties',
-  [SubscriptionTheme.COURS]: 'Activités créatives',
+  [SubscriptionTheme.ACTIVITES]: 'Activités créatives',
 }
