@@ -30,7 +30,11 @@ function createState(
 export const state1 = createState('stack', 0, [
   {
     name: 'TabNavigator',
-    state: createState('tab', 2, [{ name: 'Home' }, { name: 'Profile' }, { name: 'Search' }]),
+    state: createState('tab', 2, [
+      { name: 'Home' },
+      { name: 'Profile' },
+      { name: 'SearchStackNavigator' },
+    ]),
   },
 ])
 
@@ -38,7 +42,11 @@ export const state1 = createState('stack', 0, [
 export const state2 = createState('stack', 1, [
   {
     name: 'TabNavigator',
-    state: createState('tab', 0, [{ name: 'Home' }, { name: 'Search' }, { name: 'Profile' }]),
+    state: createState('tab', 0, [
+      { name: 'Home' },
+      { name: 'SearchStackNavigator' },
+      { name: 'Profile' },
+    ]),
   },
   { name: 'Login' },
   { name: 'Offer' },
@@ -48,6 +56,10 @@ export const state2 = createState('stack', 1, [
 export const state3 = createState('stack', 0, [
   {
     name: 'TabNavigator',
-    state: createState('tab', 1, [{ name: 'Search' }, { name: 'Home' }, { name: 'Profile' }]),
+    state: createState('tab', 1, [
+      { name: 'SearchStackNavigator' },
+      { name: 'Home' },
+      { name: 'Profile' },
+    ]),
   },
 ])

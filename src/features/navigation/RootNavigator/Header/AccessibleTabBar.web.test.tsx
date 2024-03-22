@@ -81,7 +81,12 @@ describe('AccessibleTabBar', () => {
       fireEvent.click(searchButton)
     })
 
-    expect(navigateFromRefSpy).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
+    expect(navigateFromRefSpy).toHaveBeenCalledWith(
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'Search',
+        params: mockSearchState,
+      })
+    )
   })
 
   it('should reset params on press "Recherche" when already on Search tab', async () => {
@@ -96,7 +101,9 @@ describe('AccessibleTabBar', () => {
       fireEvent.click(searchButton)
     })
 
-    expect(navigateFromRefSpy).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
+    expect(navigateFromRefSpy).toHaveBeenCalledWith(
+      ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: mockSearchState })
+    )
   })
 })
 

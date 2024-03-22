@@ -73,8 +73,8 @@ describe('Header', () => {
 
     await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
 
-    const tabs = ['Search tab', 'Bookings tab', 'Favorites tab', 'Profile tab'].map((tabId) =>
-      screen.getByTestId(tabId)
+    const tabs = ['SearchStackNavigator tab', 'Bookings tab', 'Favorites tab', 'Profile tab'].map(
+      (tabId) => screen.getByTestId(tabId)
     )
 
     expect(screen.getByTestId('Home tab').getAttribute('aria-current')).toEqual('page')

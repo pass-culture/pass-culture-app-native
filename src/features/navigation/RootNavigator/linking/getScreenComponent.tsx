@@ -2,15 +2,16 @@ import React, { ComponentType } from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { withScreenWrapper } from 'features/navigation/RootNavigator/withScreenWrapper'
+import { SearchStackRoute } from 'features/navigation/SearchStackNavigator/types'
 import { TabRoute } from 'features/navigation/TabBar/types'
 
-import { Route } from '../types'
+import { RootRoute } from '../types'
 
 import { withAuthProtection } from './withAuthProtection'
 
 export function getScreenComponent(
   name: string,
-  route: Route | TabRoute,
+  route: RootRoute | TabRoute | SearchStackRoute,
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ): React.JSX.Element {
   let component = route.component

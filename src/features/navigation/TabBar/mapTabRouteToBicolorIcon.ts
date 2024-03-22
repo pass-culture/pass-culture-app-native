@@ -13,7 +13,7 @@ export function mapTabRouteToBicolorIcon(route: TabRouteName): React.FC<BicolorI
   switch (route) {
     case 'Home':
       return BicolorLogo
-    case 'Search':
+    case 'SearchStackNavigator':
       return BicolorSearch
     case 'Bookings':
       return BicolorBookings

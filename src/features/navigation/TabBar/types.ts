@@ -1,15 +1,20 @@
 import { TabNavigationState } from '@react-navigation/native'
 
-import { DisabilitiesProperties } from 'features/accessibility/types'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
-import { SearchState } from 'features/search/types'
+import {
+  SearchStackScreenNames,
+  SearchStackParamList,
+} from 'features/navigation/SearchStackNavigator/types'
 import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
   Home: { latitude?: number; longitude?: number; videoModuleId?: string } | undefined
-  Search?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchStackNavigator?: {
+    screen: SearchStackScreenNames
+    params: SearchStackParamList[SearchStackScreenNames]
+  }
   Bookings: undefined
   Favorites: undefined
   Profile: undefined

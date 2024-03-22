@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
-import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
+import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
@@ -25,7 +25,7 @@ const RootStackNavigator = withWebWrapper(
     return (
       <RootStack.Navigator
         initialRouteName={initialRouteName}
-        screenOptions={NAVIGATOR_SCREEN_OPTIONS}>
+        screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
         {RootScreens}
       </RootStack.Navigator>
     )

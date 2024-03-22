@@ -8,7 +8,7 @@ import { TabNavigationStateType, TabStateRoute } from './types'
 
 export const DEFAULT_TAB_ROUTES: TabStateRoute[] = [
   { name: 'Home', key: 'home-initial', isSelected: true },
-  { name: 'Search', key: 'search-initial' },
+  { name: 'SearchStackNavigator', key: 'search-initial' },
   { name: 'Bookings', key: 'bookings-initial' },
   { name: 'Favorites', key: 'favorites-initial' },
   { name: 'Profile', key: 'profile-initial' },

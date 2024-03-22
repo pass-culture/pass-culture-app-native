@@ -1,5 +1,5 @@
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
-import { Route } from 'features/navigation/RootNavigator/types'
+import { RootRoute } from 'features/navigation/RootNavigator/types'
 
 import { getScreensAndConfig } from '../getScreensConfig'
 
@@ -23,7 +23,7 @@ const validRoutes = [
     },
     options: { title: 'Login title' },
   },
-] as Route[]
+] as RootRoute[]
 
 describe('getScreensAndConfig()', () => {
   it('should throw if a screen without path or pathConfig is encountered', () => {
@@ -34,7 +34,7 @@ describe('getScreensAndConfig()', () => {
         deeplinkPaths: ['offre1', 'offre2'],
         options: { title: 'Offer title' },
       },
-    ] as Route[]
+    ] as RootRoute[]
 
     expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrow(
       new Error('Screen Offer: you have to declare either path or pathConfig')
@@ -51,7 +51,7 @@ describe('getScreensAndConfig()', () => {
         deeplinkPaths: ['offre1', 'offre2'],
         options: { title: 'Offer title' },
       },
-    ] as Route[]
+    ] as RootRoute[]
 
     expect(() => getScreensAndConfig(invalidRoutes, RootStack.Screen)).toThrow(
       new Error('Screen Offer: you cannot declare both path and pathConfig')

@@ -4,6 +4,7 @@ import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'
@@ -282,7 +283,7 @@ export type RootStackParamList = {
   SubscriptionRootStackParamList &
   TrustedDeviceRootStackParamList
 
-export type AllNavParamList = RootStackParamList & TabParamList
+export type AllNavParamList = RootStackParamList & TabParamList & SearchStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
@@ -348,7 +349,7 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type Route = GenericRoute<RootStackParamList, TabParamList>
+export type RootRoute = GenericRoute<RootStackParamList, TabParamList>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

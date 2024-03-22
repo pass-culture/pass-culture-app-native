@@ -34,7 +34,10 @@ describe('NoFavoritesResult component', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('Search', { view: SearchView.Landing })
+        ...getTabNavConfig('SearchStackNavigator', {
+          screen: 'Search',
+          params: { view: SearchView.Landing },
+        })
       )
       expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
     })

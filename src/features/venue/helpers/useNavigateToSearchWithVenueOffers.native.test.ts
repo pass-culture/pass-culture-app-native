@@ -45,10 +45,13 @@ describe('useNavigateToSearchWithVenueOffers', () => {
     expect(result.current).toEqual({
       screen: 'TabNavigator',
       params: {
-        screen: 'Search',
+        screen: 'SearchStackNavigator',
         params: {
-          ...venueSearchParamsMock,
-          view: SearchView.Results,
+          screen: 'Search',
+          params: {
+            ...venueSearchParamsMock,
+            view: SearchView.Results,
+          },
         },
       },
       withPush: true,

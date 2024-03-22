@@ -16,6 +16,9 @@ describe('NoContentError', () => {
     const searchButton = screen.getByText('Rechercher une offre')
     fireEvent.press(searchButton)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Search' })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      screen: 'SearchStackNavigator',
+      params: { screen: 'Search' },
+    })
   })
 })

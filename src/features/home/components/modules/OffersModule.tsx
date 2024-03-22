@@ -57,7 +57,10 @@ export const OffersModule = (props: OffersModuleProps) => {
     hitsPerPage: 20,
     view: SearchView.Results,
   }
-  const searchTabConfig = getTabNavConfig('Search', searchParams)
+  const searchTabConfig = getTabNavConfig('SearchStackNavigator', {
+    screen: 'Search',
+    params: searchParams,
+  })
   // @ts-expect-error: because of noUncheckedIndexedAccess
   const moduleName = displayParameters.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>

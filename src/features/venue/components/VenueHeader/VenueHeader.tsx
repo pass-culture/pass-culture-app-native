@@ -24,7 +24,12 @@ interface Props {
  */
 export const VenueHeader: React.FC<Props> = ({ headerTransition, title, venue }) => {
   const theme = useTheme()
-  const { goBack } = useGoBack(...getTabNavConfig('Search'))
+  const { goBack } = useGoBack(
+    ...getTabNavConfig('SearchStackNavigator', {
+      screen: 'Search',
+      params: undefined,
+    })
+  )
 
   const { share: shareVenue, shareContent } = getShareVenue({ venue, utmMedium: 'header' })
   const {

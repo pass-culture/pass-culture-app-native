@@ -10,8 +10,26 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
 ) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
   if (isScreen('TabNavigator', screen, params)) {
-    const nestedRoutes = [{ name: params.screen, params: params.params }]
+    const { screen: tabNavigatorScreen, params: tabNavigatorParams } = params
+    const nestedRoutes = [{ name: tabNavigatorScreen, params: tabNavigatorParams }]
     state = { routes: [{ name: screen, state: { routes: nestedRoutes } }] }
+
+    if (
+      isScreen('SearchStackNavigator', tabNavigatorScreen, tabNavigatorParams) &&
+      tabNavigatorParams
+    ) {
+      const { screen: searchStackScreen, params: searchStackParams } = tabNavigatorParams
+      const nestedNestedRoutes = [{ name: searchStackScreen, params: searchStackParams }]
+      state = {
+        routes: [
+          {
+            name: screen,
+            state: { routes: [{ name: params.screen, state: { routes: nestedNestedRoutes } }] },
+          },
+        ],
+      }
+    }
   }
+
   return linking.getPathFromState(state, linking.config)
 }
