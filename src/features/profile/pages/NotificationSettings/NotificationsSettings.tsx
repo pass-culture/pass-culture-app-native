@@ -4,8 +4,6 @@ import { PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
@@ -34,7 +32,6 @@ export type NotificationsSettingsState = {
 export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   const initialState = {
     allowEmails: user?.subscriptions.marketingEmail,
@@ -61,8 +58,6 @@ export const NotificationsSettings = () => {
         message: 'Tes modifications ont été enregistrées\u00a0!',
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
-
-      goBack()
     },
     () => {
       showErrorSnackBar({

@@ -4,7 +4,6 @@ import { Linking } from 'react-native'
 import * as API from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -296,7 +295,7 @@ describe('NotificationSettings', () => {
       })
     })
 
-    it('should goBack and show snackbar on success', async () => {
+    it('should show snackbar on success', async () => {
       mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
       mockServer.postApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
@@ -308,13 +307,12 @@ describe('NotificationSettings', () => {
       const saveButton = screen.getByText('Enregistrer')
       await act(async () => fireEvent.press(saveButton))
 
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
       expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
         message: 'Tes modifications ont été enregistrées\u00a0!',
       })
     })
 
-    it('should not go back and should show snackbar on error', async () => {
+    it('should show snackbar on error', async () => {
       mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
       mockServer.postApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
@@ -328,7 +326,6 @@ describe('NotificationSettings', () => {
       const saveButton = screen.getByText('Enregistrer')
       await act(async () => fireEvent.press(saveButton))
 
-      expect(mockGoBack).not.toHaveBeenCalled()
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
     })
 
