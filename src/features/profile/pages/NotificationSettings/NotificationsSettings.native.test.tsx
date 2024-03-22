@@ -92,18 +92,14 @@ describe('NotificationSettings', () => {
   })
 
   it('should enable save button when user has changed a parameter', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      user: beneficiaryUser,
-      isLoggedIn: false,
-    })
+    mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
 
     render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
     fireEvent.press(toggleSwitch)
 
-    expect(screen.getByText('Enregistrer')).toBeDisabled()
+    expect(screen.getByText('Enregistrer')).toBeEnabled()
   })
 
   it('should get user default parameters', () => {
