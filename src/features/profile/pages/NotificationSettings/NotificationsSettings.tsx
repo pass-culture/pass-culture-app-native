@@ -12,7 +12,7 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
+import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
