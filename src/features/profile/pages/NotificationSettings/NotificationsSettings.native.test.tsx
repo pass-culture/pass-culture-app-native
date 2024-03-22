@@ -91,7 +91,7 @@ describe('NotificationSettings', () => {
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
 
-  it.only('should enable save button when user has changed a parameter', () => {
+  it('should enable save button when user has changed a parameter', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
 
     render(reactQueryProviderHOC(<NotificationsSettings />))
