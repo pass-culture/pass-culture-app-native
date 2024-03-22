@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { ComponentProps, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing } from 'ui/theme'
@@ -14,10 +13,8 @@ type Props = {
   address: string
   bannerUrl: string
   tags: string[]
-  navigateTo: InternalNavigationProps['navigateTo']
   onClose?: VoidFunction
-  onBeforeNavigate?: VoidFunction
-}
+} & ComponentProps<typeof InternalTouchableLink>
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
 const CLOSE_BUTTON_HIT_SLOP = getSpacing(2)
@@ -27,13 +24,11 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   address,
   bannerUrl,
   tags,
-  navigateTo,
   onClose,
-  onBeforeNavigate,
-  ...props
+  ...touchableProps
 }) => {
   return (
-    <Container navigateTo={navigateTo} onBeforeNavigate={onBeforeNavigate} {...props}>
+    <Container {...touchableProps}>
       <Row>
         <InformationTags tags={tags} />
         <StyledCloseButton onClose={onClose} />
