@@ -39,14 +39,14 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
     [offerVenueId, onPressOfferCTA, selectedDateScreenings]
   )
 
-  // Reset scroll and select first date when user selects a new offer's venue
+  // Reset scroll and first selected date when user selects a new offer venue
   useEffect(() => {
     if (scrollViewRef?.current) {
       setSelectedDate(movieScreeningDates[0])
       scrollViewRef.current.scrollTo({ x: 0 })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scrollViewRef, offerId])
+  }, [offerId, scrollViewRef])
 
   return (
     <React.Fragment>

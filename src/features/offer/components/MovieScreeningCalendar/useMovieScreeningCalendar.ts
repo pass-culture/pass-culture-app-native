@@ -1,10 +1,12 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 import { OfferStockResponse } from 'api/gen'
 
 const getDateString = (date: string) => new Date(date).toDateString()
 
 export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>()
+
   const movieScreenings = useMemo(
     () =>
       stocks.reduce<{
@@ -13,9 +15,9 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
         const { beginningDatetime, isExpired, isForbiddenToUnderage } = movieStock
         if (beginningDatetime != null && !isExpired && !isForbiddenToUnderage) {
           const movieScreeningDay = getDateString(beginningDatetime)
-          if (movieScreening[movieScreeningDay]) {
-            // @ts-expect-error: because of noUncheckedIndexedAccess
-            movieScreening[movieScreeningDay].push(movieStock)
+          const movieStocks = movieScreening[movieScreeningDay]
+          if (movieStocks) {
+            movieStocks.push(movieStock)
           } else {
             movieScreening[movieScreeningDay] = [movieStock]
           }
@@ -36,12 +38,14 @@ export const useMovieScreeningCalendar = (stocks: OfferStockResponse[]) => {
     [movieScreenings]
   )
 
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(movieScreeningDates[0])
-
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(`${selectedDate}`)],
     [movieScreenings, selectedDate]
   )
+
+  useEffect(() => {
+    if (!selectedDate && movieScreeningDates.length > 0) setSelectedDate(movieScreeningDates[0])
+  }, [movieScreeningDates, selectedDate])
 
   return {
     movieScreenings,
