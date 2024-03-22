@@ -3,7 +3,10 @@ import { LayoutChangeEvent, View } from 'react-native'
 import { VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
-import { VenueSelectionListProps } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import {
+  VenueListItem,
+  VenueSelectionListProps,
+} from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import {
   RowData,
   VenueSelectionListItem,
@@ -14,6 +17,8 @@ const HEADER_HEIGHT_NOT_GEOLOCATED = 198
 const LIST_ITEM_HEIGHT_NOT_GEOLOCATED = 100
 const LIST_ITEM_HEIGHT_GEOLOCATED = 138
 const LOAD_MORE_THRESHOLD = 300
+const headerPlaceholder = {} as VenueListItem
+const footerPlaceholder = {} as VenueListItem
 
 type GetItemSizeType = {
   index: number
@@ -104,7 +109,7 @@ export const VenueSelectionList = forwardRef<never, VenueSelectionListProps>(
        * This is necessary since the Row component (`SearchListItem.web`) is generic and we need to
        * guess what we want to draw.
        */
-      items,
+      items: [headerPlaceholder, ...items, footerPlaceholder],
       nbHits,
       isFetchingNextPage,
       autoScrollEnabled,
