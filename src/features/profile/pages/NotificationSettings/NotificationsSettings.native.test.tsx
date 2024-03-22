@@ -272,7 +272,10 @@ describe('NotificationSettings', () => {
   describe('When the user saves the changes', () => {
     it('should update profile', async () => {
       mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-      mockServer.postApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.postApi<UserProfileResponse>('/v1/profile', {
+        ...beneficiaryUser,
+        subscriptions: { marketingEmail: true, marketingPush: false },
+      })
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
@@ -377,6 +380,20 @@ describe('NotificationSettings', () => {
       fireEvent.press(openSettingsButton)
 
       expect(Linking.openSettings).toHaveBeenCalledTimes(1)
+    })
+
+    it('should toggle push switch when permission is granted and user press it', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      usePushPermissionSpy.mockReturnValueOnce({
+        pushPermission: 'granted',
+        refreshPermission: jest.fn(),
+      })
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+      fireEvent.press(toggleSwitch)
+
+      expect(toggleSwitch).toHaveAccessibilityState({ checked: true })
     })
   })
 })
