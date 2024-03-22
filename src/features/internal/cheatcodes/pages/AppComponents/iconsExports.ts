@@ -5,6 +5,7 @@ import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Bell } from 'ui/svg/icons/Bell'
+import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
@@ -138,11 +139,11 @@ export const SocialNetworkIcons = {
 
 export const SecondaryAndBiggerIcons = {
   TryAgain,
-
   ArrowAgain,
   ArrowNext,
   ArrowPrevious,
   Bell,
+  BellFilled,
   BicolorAroundMe,
   BicolorBookings,
   BicolorClock,
