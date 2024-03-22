@@ -28,6 +28,7 @@ export interface TouchableOpacityButtonProps {
 export interface AppButtonInnerProps {
   adjustsFontSizeToFit?: boolean
   icon?: FunctionComponent<IconInterface>
+  iconPosition: 'left' | 'right'
   loadingIndicator?: ComponentType<IconInterface>
   isLoading?: boolean
   wording: string
@@ -40,33 +41,34 @@ export type AppButtonEventNative = ((e: GestureResponderEvent) => void) | (() =>
 export type AppButtonEventWeb = MouseEventHandler<HTMLButtonElement> | (() => void) | undefined
 
 export interface BaseButtonProps {
-  accessibilityLabel?: string
   accessibilityDescribedBy?: string
+  accessibilityLabel?: string
+  accessibilityRole?: AccessibilityRole
   adjustsFontSizeToFit?: boolean
   buttonHeight?: 'extraSmall' | 'small' | 'tall'
+  center?: boolean
   disabled?: boolean
+  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
+  focusOutlineColor?: ColorsEnum
+  fullWidth?: boolean
+  hoverUnderlineColor?: ColorsEnum
+  href?: string
   icon?: FunctionComponent<IconInterface>
-  loadingIndicator?: ComponentType<IconInterface>
+  iconPosition?: 'left' | 'right'
   inline?: boolean
   isLoading?: boolean
+  justifyContent?: 'center' | 'flex-start'
+  loadingIndicator?: ComponentType<IconInterface>
+  mediumWidth?: boolean
+  name?: string
+  numberOfLines?: number
   onLongPress?: AppButtonEventWeb | AppButtonEventNative
   onPress?: AppButtonEventWeb | AppButtonEventNative
+  target?: string
   testID?: string
   textSize?: number
-  wording: string
-  mediumWidth?: boolean
-  fullWidth?: boolean
-  justifyContent?: 'center' | 'flex-start'
-  numberOfLines?: number
-  center?: boolean
   type?: 'button' | 'submit' | 'reset'
-  name?: string
-  focusOutlineColor?: ColorsEnum
-  hoverUnderlineColor?: ColorsEnum
-  accessibilityRole?: AccessibilityRole
-  href?: string
-  target?: string
-  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
+  wording: string
 }
 
 export interface AppButtonProps extends BaseButtonProps {

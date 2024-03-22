@@ -291,24 +291,35 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         }
         testID="Retourner à l’accueil"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Retourner à l’accueil
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Retourner à l’accueil
+          </Text>
+        </View>
       </View>
       <View
         numberOfSpaces={4}
@@ -373,39 +384,51 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            height={20}
-            testID="button-icon"
-            width={20}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Réactiver mon compte
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Réactiver mon compte
-        </Text>
       </View>
     </View>
     <View

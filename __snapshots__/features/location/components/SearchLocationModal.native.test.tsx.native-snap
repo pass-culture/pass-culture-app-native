@@ -793,24 +793,35 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
               }
               testID="Valider la localisation"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Valider la localisation
-              </Text>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Valider la localisation
+                </Text>
+              </View>
             </View>
           </View>
         </View>

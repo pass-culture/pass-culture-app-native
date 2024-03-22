@@ -463,24 +463,35 @@ pour réserver cette offre
                 }
                 testID="Aller vers la section profil"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Vérifier mon identité
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Vérifier mon identité
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -954,24 +965,35 @@ pour réserver cette offre
                 }
                 testID="Aller vers la section profil"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Confirmer mes informations
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Confirmer mes informations
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -1415,24 +1437,35 @@ pour réserver cette offre
                 }
                 testID="Aller vers la section profil"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Confirmer mes informations
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Confirmer mes informations
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

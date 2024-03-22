@@ -505,24 +505,35 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
         }
         testID="J’accède au pass Culture sans mettre à jour mon navigateur"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={2}
+        <View
           style={
             [
               {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          J’accède au pass Culture sans mettre à jour mon navigateur
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            J’accède au pass Culture sans mettre à jour mon navigateur
+          </Text>
+        </View>
       </View>
     </View>
   </View>

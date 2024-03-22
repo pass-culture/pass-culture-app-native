@@ -32,7 +32,6 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
         ? theme.buttons.tertiaryBlack.marginLeftWithIcon
         : theme.buttons.tertiaryBlack.marginLeft,
     })
-
     return {
       ...rest,
       loadingIndicator: LoadingIndicator,

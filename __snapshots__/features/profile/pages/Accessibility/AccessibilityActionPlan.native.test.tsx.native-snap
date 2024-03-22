@@ -1945,39 +1945,51 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            height={20}
-            testID="button-icon"
-            width={20}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            support@passculture.app
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          support@passculture.app
-        </Text>
       </View>
       <View
         numberOfSpaces={6}
@@ -2672,40 +2684,52 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon"
-            width={16}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon-left"
+              width={16}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            https://pass.culture.fr/
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "marginLeft": 4,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          https://pass.culture.fr/
-        </Text>
       </View>
       <Text
         style={
@@ -2774,40 +2798,52 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon"
-            width={16}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon-left"
+              width={16}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            https://passculture.app/accueil
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "marginLeft": 4,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          https://passculture.app/accueil
-        </Text>
       </View>
       <Text
         style={
@@ -2876,40 +2912,52 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={16}
-            testID="button-icon"
-            width={16}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={16}
+              testID="button-icon-left"
+              width={16}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "marginLeft": 4,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            https://passculture.pro/
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "marginLeft": 4,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          https://passculture.pro/
-        </Text>
       </View>
       <View
         style={

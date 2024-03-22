@@ -55,36 +55,48 @@ exports[`AppButton Component * inline property should use inline css style when 
     style={
       [
         {
-          "flexShrink": 0,
+          "alignItems": "center",
+          "flexDirection": "row",
         },
       ]
     }
   >
     <View
-      height={32}
-      testID="button-icon"
-      width={32}
+      style={
+        [
+          {
+            "flexDirection": "row",
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        button-icon-SVG-Mock
-      </Text>
+      <View
+        height={32}
+        testID="button-icon-left"
+        width={32}
+      >
+        <Text>
+          button-icon-left-SVG-Mock
+        </Text>
+      </View>
     </View>
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      Testing inline
+    </Text>
   </View>
-  <Text
-    adjustsFontSizeToFit={false}
-    numberOfLines={1}
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 15,
-          "lineHeight": 20,
-        },
-      ]
-    }
-  >
-    Testing inline
-  </Text>
 </View>
 `;

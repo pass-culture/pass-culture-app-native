@@ -755,24 +755,35 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
               }
               testID="Valider la demande de modification de mon e-mail"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Valider la demande
-              </Text>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Valider la demande
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -1487,24 +1498,35 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
               }
               testID="Valider la demande de modification de mon e-mail"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Valider la demande
-              </Text>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Valider la demande
+                </Text>
+              </View>
             </View>
           </View>
         </View>

@@ -270,26 +270,30 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                 type="button"
               >
                 <div
-                  class="css-view-175oi2r r-flexShrink-1q142lx"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
                   <div
-                    aria-label="Nouvelle fenêtre"
-                    class="css-view-175oi2r"
-                    data-testid="button-icon"
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
                   >
                     <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
+                      aria-label="Nouvelle fenêtre"
+                      class="css-view-175oi2r"
+                      data-testid="button-icon-left"
                     >
-                      button-icon-SVG-Mock
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        button-icon-left-SVG-Mock
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
-                  dir="ltr"
-                >
-                  Ouvrir un onglet ÉduConnect
+                  <div
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                    dir="ltr"
+                  >
+                    Ouvrir un onglet ÉduConnect
+                  </div>
                 </div>
               </button>
               <div
@@ -570,26 +574,30 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
               type="button"
             >
               <div
-                class="css-view-175oi2r r-flexShrink-1q142lx"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
                 <div
-                  aria-label="Nouvelle fenêtre"
-                  class="css-view-175oi2r"
-                  data-testid="button-icon"
+                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
                 >
                   <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
+                    aria-label="Nouvelle fenêtre"
+                    class="css-view-175oi2r"
+                    data-testid="button-icon-left"
                   >
-                    button-icon-SVG-Mock
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      button-icon-left-SVG-Mock
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
-                dir="ltr"
-              >
-                Ouvrir un onglet ÉduConnect
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Ouvrir un onglet ÉduConnect
+                </div>
               </div>
             </button>
             <div

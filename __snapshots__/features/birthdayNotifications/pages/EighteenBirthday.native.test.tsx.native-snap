@@ -184,24 +184,35 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
     }
     testID="Confirmer mes informations"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Confirmer mes informations
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Confirmer mes informations
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={2}
@@ -266,39 +277,51 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Plus tard
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Plus tard
-    </Text>
   </View>
   <View
     flex={1.5}

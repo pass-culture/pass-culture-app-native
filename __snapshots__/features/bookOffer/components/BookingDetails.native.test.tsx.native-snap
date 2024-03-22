@@ -669,24 +669,35 @@ exports[`<BookingDetails /> when user has selected options should render correct
       }
       testID="Confirmer la réservation"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Confirmer la réservation
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Confirmer la réservation
+        </Text>
+      </View>
     </View>
   </View>
   <Text
@@ -1378,24 +1389,35 @@ exports[`<BookingDetails /> when user has selected options should render disable
       }
       testID="Confirmer la réservation"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Confirmer la réservation
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Confirmer la réservation
+        </Text>
+      </View>
     </View>
   </View>
   <Text

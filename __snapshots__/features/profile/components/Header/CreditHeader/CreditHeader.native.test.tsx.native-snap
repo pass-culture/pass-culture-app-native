@@ -1012,40 +1012,52 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -1490,40 +1502,52 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -1968,40 +1992,52 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -2446,40 +2482,52 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -2845,40 +2893,52 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -3244,40 +3304,52 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]
@@ -3643,40 +3715,52 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={16}
-          testID="button-icon"
-          width={16}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={16}
+            testID="button-icon-left"
+            width={16}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={2}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginLeft": 4,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-              "marginLeft": 4,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Comment ça marche ?
-      </Text>
     </View>
   </View>,
 ]

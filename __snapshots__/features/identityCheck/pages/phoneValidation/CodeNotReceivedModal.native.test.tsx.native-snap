@@ -435,24 +435,35 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                 }
                 testID="Demander un autre code"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Demander un autre code
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Demander un autre code
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -898,24 +909,35 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
                 }
                 testID="Demander un autre code"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Demander un autre code
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Demander un autre code
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

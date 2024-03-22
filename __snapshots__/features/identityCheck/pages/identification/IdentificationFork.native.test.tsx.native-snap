@@ -497,40 +497,52 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                     style={
                       [
                         {
-                          "flexShrink": 0,
+                          "alignItems": "center",
+                          "flexDirection": "row",
                         },
                       ]
                     }
                   >
                     <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={16}
-                      testID="button-icon"
-                      width={16}
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        button-icon-SVG-Mock
-                      </Text>
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={16}
+                        testID="button-icon-left"
+                        width={16}
+                      >
+                        <Text>
+                          button-icon-left-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "marginLeft": 4,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      C’est quoi ÉduConnect ?
+                    </Text>
                   </View>
-                  <Text
-                    adjustsFontSizeToFit={false}
-                    numberOfLines={1}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "marginLeft": 4,
-                          "maxWidth": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    C’est quoi ÉduConnect ?
-                  </Text>
                 </View>
               </View>
               <View
@@ -864,40 +876,52 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "flexShrink": 0,
+                            "alignItems": "center",
+                            "flexDirection": "row",
                           },
                         ]
                       }
                     >
                       <View
-                        accessibilityLabel="Nouvelle fenêtre"
-                        height={16}
-                        testID="button-icon"
-                        width={16}
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={16}
+                          testID="button-icon-left"
+                          width={16}
+                        >
+                          <Text>
+                            button-icon-left-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
+                      <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#320096",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 4,
+                              "maxWidth": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        Voir la charte des données personnelles
+                      </Text>
                     </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#320096",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "marginLeft": 4,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      Voir la charte des données personnelles
-                    </Text>
                   </View>
                 </View>
               </View>

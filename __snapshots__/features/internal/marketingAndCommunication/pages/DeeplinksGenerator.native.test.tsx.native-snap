@@ -2911,24 +2911,35 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             }
             testID="Générer le lien"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
               style={
                 [
                   {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              Générer le lien
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Générer le lien
+              </Text>
+            </View>
           </View>
         </View>
       </View>

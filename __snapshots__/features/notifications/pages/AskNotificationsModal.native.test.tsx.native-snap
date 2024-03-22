@@ -337,24 +337,35 @@ exports[`AskNotificationsModal should render properly 1`] = `
         }
         testID="Activer les notifications"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Activer les notifications
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Activer les notifications
+          </Text>
+        </View>
       </View>
     </View>
   </View>

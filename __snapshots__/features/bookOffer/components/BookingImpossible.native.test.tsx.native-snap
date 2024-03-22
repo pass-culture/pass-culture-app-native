@@ -132,24 +132,35 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
     }
     testID="Voir le détail de l’offre"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Voir le détail de l’offre
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Voir le détail de l’offre
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}
@@ -296,24 +307,35 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
     }
     testID="Mettre en favoris"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Mettre en favoris
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Mettre en favoris
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}
@@ -378,39 +400,51 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Retourner à l’offre
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#eb0055",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Retourner à l’offre
-    </Text>
   </View>
   <View
     numberOfSpaces={4}

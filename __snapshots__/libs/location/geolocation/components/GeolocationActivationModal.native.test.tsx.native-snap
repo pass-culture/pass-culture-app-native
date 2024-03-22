@@ -349,24 +349,35 @@ exports[`GeolocationActivationModal should render properly 1`] = `
         }
         testID="Activer la géolocalisation"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Activer la géolocalisation
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Activer la géolocalisation
+          </Text>
+        </View>
       </View>
     </View>
   </View>

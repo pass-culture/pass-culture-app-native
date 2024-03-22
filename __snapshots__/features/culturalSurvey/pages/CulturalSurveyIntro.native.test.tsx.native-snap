@@ -175,40 +175,52 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          fill="#161617"
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            fill="#161617"
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          En savoir plus
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        En savoir plus
-      </Text>
     </View>
   </View>
   <View
@@ -273,24 +285,35 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       }
       testID="Débuter le questionnaire"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Débuter le questionnaire
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Débuter le questionnaire
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -355,39 +378,51 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Plus tard
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Plus tard
-      </Text>
     </View>
   </View>
   <View

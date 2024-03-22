@@ -422,24 +422,35 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 }
                 testID="Tout refuser"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Tout refuser
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Tout refuser
+                  </Text>
+                </View>
               </View>
             </View>
             <View
@@ -512,24 +523,35 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 }
                 testID="Tout accepter"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Tout accepter
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Tout accepter
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -595,24 +617,35 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             }
             testID="Choisir les cookies"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
               style={
                 [
                   {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              Choisir les cookies
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Choisir les cookies
+              </Text>
+            </View>
           </View>
         </View>
       </View>

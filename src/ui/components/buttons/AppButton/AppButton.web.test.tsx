@@ -15,32 +15,18 @@ const baseProps = {
 }
 
 describe('AppButton Component', () => {
-  describe('* Icon property', () => {
-    it('should display icon when provided', () => {
-      render(<AppButton {...baseProps} />)
-
-      expect(screen.getByTestId('button-icon')).toBeInTheDocument()
-    })
-
-    it('should not display icon when not provided', () => {
-      render(<AppButton {...baseProps} icon={undefined} />)
-
-      expect(screen.queryByTestId('button-icon')).not.toBeInTheDocument()
-    })
-  })
-
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
       render(<AppButton {...baseProps} isLoading />)
 
       expect(screen.getByTestId('Chargement en cours')).toBeInTheDocument()
-      expect(screen.queryByTestId('button-icon')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('button-icon-left')).not.toBeInTheDocument()
     })
 
     it('should display right elements when isLoading equals false', () => {
       render(<AppButton {...baseProps} isLoading={false} />)
 
-      expect(screen.getByTestId('button-icon')).toBeInTheDocument()
+      expect(screen.getByTestId('button-icon-left')).toBeInTheDocument()
       expect(screen.queryByTestId('Chargement en cours')).not.toBeInTheDocument()
     })
   })

@@ -259,24 +259,35 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         }
         testID="Faire une nouvelle demande"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Faire une nouvelle demande
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Faire une nouvelle demande
+          </Text>
+        </View>
       </View>
       <View
         numberOfSpaces={4}
@@ -341,39 +352,51 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            height={20}
-            testID="button-icon"
-            width={20}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Retourner à l’accueil
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Retourner à l’accueil
-        </Text>
       </View>
     </View>
     <View
@@ -650,24 +673,35 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         }
         testID="Se connecter"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Se connecter
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Se connecter
+          </Text>
+        </View>
       </View>
       <View
         numberOfSpaces={4}
@@ -732,39 +766,51 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            height={20}
-            testID="button-icon"
-            width={20}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Retourner à l’accueil
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Retourner à l’accueil
-        </Text>
       </View>
     </View>
     <View

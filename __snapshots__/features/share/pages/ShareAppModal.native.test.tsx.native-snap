@@ -415,40 +415,52 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
                 style={
                   [
                     {
-                      "flexShrink": 0,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
                 <View
-                  fill="#161617"
-                  height={16}
-                  testID="button-icon"
-                  width={16}
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
+                  <View
+                    fill="#161617"
+                    height={16}
+                    testID="button-icon-left"
+                    width={16}
+                  >
+                    <Text>
+                      button-icon-left-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 4,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Non merci
+                </Text>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "marginLeft": 4,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Non merci
-              </Text>
             </View>
           </View>
         </View>
@@ -885,40 +897,52 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
                 style={
                   [
                     {
-                      "flexShrink": 0,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
                 <View
-                  fill="#161617"
-                  height={16}
-                  testID="button-icon"
-                  width={16}
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
+                  <View
+                    fill="#161617"
+                    height={16}
+                    testID="button-icon-left"
+                    width={16}
+                  >
+                    <Text>
+                      button-icon-left-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 4,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Non merci
+                </Text>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "marginLeft": 4,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Non merci
-              </Text>
             </View>
           </View>
         </View>
@@ -1357,40 +1381,52 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
                 style={
                   [
                     {
-                      "flexShrink": 0,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
                 <View
-                  fill="#161617"
-                  height={16}
-                  testID="button-icon"
-                  width={16}
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
+                  <View
+                    fill="#161617"
+                    height={16}
+                    testID="button-icon-left"
+                    width={16}
+                  >
+                    <Text>
+                      button-icon-left-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 4,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Non merci
+                </Text>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "marginLeft": 4,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Non merci
-              </Text>
             </View>
           </View>
         </View>

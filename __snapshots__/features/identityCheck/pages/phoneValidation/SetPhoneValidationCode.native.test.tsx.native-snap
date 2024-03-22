@@ -540,39 +540,51 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       style={
                         [
                           {
-                            "flexShrink": 0,
+                            "alignItems": "center",
+                            "flexDirection": "row",
                           },
                         ]
                       }
                     >
                       <View
-                        height={20}
-                        testID="button-icon"
-                        width={20}
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
                       >
-                        <Text>
-                          button-icon-SVG-Mock
-                        </Text>
+                        <View
+                          height={20}
+                          testID="button-icon-left"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-left-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
+                      <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                              "marginLeft": 8,
+                              "maxWidth": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        Code non reçu ?
+                      </Text>
                     </View>
-                    <Text
-                      adjustsFontSizeToFit={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "marginLeft": 8,
-                            "maxWidth": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      Code non reçu ?
-                    </Text>
                   </View>
                 </View>
                 <Modal
@@ -676,24 +688,35 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
             }
             testID="Continuer"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
               style={
                 [
                   {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              Continuer
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Continuer
+              </Text>
+            </View>
           </View>
           <View
             customHeight={8}
