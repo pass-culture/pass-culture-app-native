@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 

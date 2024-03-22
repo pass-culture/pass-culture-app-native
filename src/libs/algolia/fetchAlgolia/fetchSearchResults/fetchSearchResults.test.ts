@@ -7,7 +7,7 @@ import { LocationMode } from 'libs/algolia'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 jest.mock('algoliasearch')

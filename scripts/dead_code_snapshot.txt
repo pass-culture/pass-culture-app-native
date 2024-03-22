@@ -7,15 +7,6 @@ src/libs/algolia/algolia.d.ts:53 - AlgoliaFacetsAnalytics (used in module)
 src/libs/algolia/algolia.d.ts:58 - AlgoliaFacets (used in module)
 src/libs/algolia/algolia.d.ts:62 - AlgoliaIndexInfos (used in module)
 src/libs/algolia/algolia.d.ts:72 - HighlightResultAttribute
-src/libs/location/index.ts:15 - requestGeolocPermission (used in module)
-src/libs/parsers/index.ts:5 - MAP_CATEGORY_ID_TO_ICON
-src/libs/parsers/index.ts:6 - getHumanizeRelativeDistance
-src/libs/parsers/index.ts:35 - humanizeDistance
-src/libs/parsers/index.ts:64 - parseTypeHomeLabel
-src/libs/place/fetchAddresses.ts:4 - buildSuggestedAddresses (used in module)
-src/libs/place/index.ts:7 - buildSuggestedPlaces
-src/libs/place/index.ts:21 - useCities
-src/libs/place/index.ts:5 - Properties
 src/ui/hooks/useDebounce.ts:20 - useDebounce
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
 src/features/home/components/SubscribeButton.tsx:9 - SubscribeButton

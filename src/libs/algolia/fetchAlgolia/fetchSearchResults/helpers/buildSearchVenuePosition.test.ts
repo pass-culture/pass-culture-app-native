@@ -7,7 +7,7 @@ import {
   convertKmToMeters,
 } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { Position } from 'libs/location'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 const Kourou: SuggestedPlace = {

@@ -5,7 +5,7 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
-import { VenueTypeCode } from 'libs/parsers'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 
 export const fetchVenuesModules = async (
   paramsList: VenuesModuleParameters[],

@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { SuggestedCity } from 'libs/place'
 import { fetchCities } from 'libs/place/fetchCities'
+import { SuggestedCity } from 'libs/place/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 export type CitiesResponse = Array<{

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import { theme } from 'theme'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'

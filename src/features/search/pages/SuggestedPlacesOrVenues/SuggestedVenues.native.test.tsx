@@ -22,7 +22,7 @@ const mockedSuggestedVenues: Venue[] = [
 let mockVenues: Venue[] = []
 
 let mockIsLoading = false
-jest.mock('libs/place', () => ({
+jest.mock('libs/place/useVenues', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: mockIsLoading }),
 }))
 

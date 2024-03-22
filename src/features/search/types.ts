@@ -13,7 +13,7 @@ import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchR
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
 

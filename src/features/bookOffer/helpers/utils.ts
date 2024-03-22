@@ -1,5 +1,5 @@
 import { OfferStockResponse } from 'api/gen'
-import { getTimeZonedDate } from 'libs/parsers'
+import { getTimeZonedDate } from 'libs/parsers/formatDates'
 
 export enum OfferStatus {
   BOOKABLE = 'BOOKABLE',

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { FavoriteOfferResponse } from 'api/gen'
-import { formatToFrenchDate } from 'libs/parsers'
+import { formatToFrenchDate } from 'libs/parsers/formatDates'
 
 export const useFavoriteFormattedDate = ({ offer }: { offer: FavoriteOfferResponse }) => {
   const formattedDate = useMemo(() => {

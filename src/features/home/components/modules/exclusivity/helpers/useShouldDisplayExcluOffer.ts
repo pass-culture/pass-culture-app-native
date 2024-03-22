@@ -3,7 +3,7 @@ import { ExclusivityModule } from 'features/home/types'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useLocation } from 'libs/location/LocationWrapper'
-import { computeDistanceInMeters } from 'libs/parsers'
+import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 export function useShouldDisplayExcluOffer(

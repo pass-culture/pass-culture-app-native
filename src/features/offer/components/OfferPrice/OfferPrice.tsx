@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getDisplayPrice } from 'libs/parsers'
+import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

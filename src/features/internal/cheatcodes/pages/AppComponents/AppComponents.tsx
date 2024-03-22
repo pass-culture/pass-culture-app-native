@@ -21,7 +21,7 @@ import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBene
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
-import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
+import { mapCategoryToIcon } from 'libs/parsers/category'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -797,7 +797,7 @@ const ValidProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
   borderRadius: 4,
-  Icon: MAP_CATEGORY_ID_TO_ICON.FILM,
+  Icon: mapCategoryToIcon(CategoryIdEnum.FILM),
 }))``
 
 const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({

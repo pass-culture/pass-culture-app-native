@@ -1,5 +1,5 @@
 import { Region } from 'libs/maps/maps'
-import { computeDistanceInMeters } from 'libs/parsers'
+import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
 const EARTH_RADIUS_M = 6378137
 

@@ -1,6 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react'
 
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 
 import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
 

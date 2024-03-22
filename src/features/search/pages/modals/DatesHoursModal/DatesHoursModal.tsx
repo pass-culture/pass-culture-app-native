@@ -18,7 +18,7 @@ import {
   hoursSchema,
 } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
 import { SearchState, SearchView } from 'features/search/types'
-import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'

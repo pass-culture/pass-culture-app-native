@@ -11,7 +11,7 @@ import {
   getTimeZonedDate,
   isToday,
   isTomorrow,
-} from 'libs/parsers'
+} from 'libs/parsers/formatDates'
 
 function getDateLabel(booking: Booking, properties: BookingProperties): string {
   if (properties.isPermanent) return 'Permanent'

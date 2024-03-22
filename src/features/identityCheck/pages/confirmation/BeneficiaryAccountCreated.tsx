@@ -7,7 +7,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
-import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
+import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'

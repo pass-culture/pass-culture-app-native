@@ -3,7 +3,7 @@ import React from 'react'
 
 import { OfferResponse, OfferStockResponse } from 'api/gen'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import { formatDateTimezone } from 'libs/parsers'
+import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { mapVenueTypeToIcon, parseType } from 'libs/parsers'
+import { mapVenueTypeToIcon, parseType } from 'libs/parsers/venueType'
 import { render, screen } from 'tests/utils'
 
 import { IconWithCaption } from './IconWithCaption'

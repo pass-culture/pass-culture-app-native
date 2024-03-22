@@ -13,7 +13,7 @@ const dismissModalMock = jest.fn()
 
 const mockVenues: Venue[] = [{ label: 'venueLabel', info: 'info', venueId: 1234 }]
 
-jest.mock('libs/place', () => ({
+jest.mock('libs/place/useVenues', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: false }),
 }))
 

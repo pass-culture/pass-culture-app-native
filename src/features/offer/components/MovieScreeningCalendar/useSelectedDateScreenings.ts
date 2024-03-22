@@ -8,7 +8,7 @@ import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningC
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsBookedOffer } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 

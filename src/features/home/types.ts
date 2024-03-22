@@ -4,7 +4,7 @@ import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { VenueTypeCode } from 'libs/parsers'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {

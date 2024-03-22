@@ -32,7 +32,7 @@ export const computeDistanceInMeters = (latA: number, lngA: number, latB: number
   return angleBetween * EARTH_RADIUS
 }
 
-export const humanizeDistance = (distance: number) => {
+const humanizeDistance = (distance: number) => {
   if (distance < 30) return `${Math.round(distance)} m`
   if (distance < 100) return `${Math.round(distance / 5) * 5} m`
   if (distance < 1000) return `${Math.round(distance / 10) * 10} m`

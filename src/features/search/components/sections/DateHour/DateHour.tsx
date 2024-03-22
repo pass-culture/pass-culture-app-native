@@ -5,7 +5,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState } from 'features/search/types'
-import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { useModal } from 'ui/components/modals/useModal'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 

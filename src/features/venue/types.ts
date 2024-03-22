@@ -1,5 +1,5 @@
 import { Geoloc } from 'libs/algolia'
-import { VenueTypeCode } from 'libs/parsers'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 
 export interface Venue {
   label: string

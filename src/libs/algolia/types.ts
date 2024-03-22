@@ -18,7 +18,7 @@ import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { VenueTypeCode } from 'libs/parsers'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
 
 interface SelectedDate {

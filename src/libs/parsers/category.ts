@@ -2,7 +2,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { IconInterface } from 'ui/svg/icons/types'
 
-export const MAP_CATEGORY_ID_TO_ICON: {
+const MAP_CATEGORY_ID_TO_ICON: {
   [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
   [CategoryIdEnum.CARTE_JEUNES]: categoriesIcons.Card,

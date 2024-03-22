@@ -12,7 +12,7 @@ import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'l
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place'
+import { SuggestedPlace } from 'libs/place/types'
 import {
   act,
   fireEvent,
@@ -51,7 +51,7 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 >
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
-jest.mock('libs/place', () => ({
+jest.mock('libs/place/usePlaces', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),
 }))
 

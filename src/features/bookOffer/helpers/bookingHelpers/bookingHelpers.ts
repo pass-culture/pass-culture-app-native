@@ -2,7 +2,7 @@ import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 
 export function getButtonState(bookingState: BookingState) {
   const { step, stockId, quantity, date, hour } = bookingState

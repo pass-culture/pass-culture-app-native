@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
-import { formatToFrenchDecimal } from 'libs/parsers'
+import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { Typo } from 'ui/theme'
 
 interface PriceLineProps {

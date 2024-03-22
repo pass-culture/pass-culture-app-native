@@ -246,16 +246,14 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
-    const urlWithoutParams = url.split('?')[0]
+    const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       const handler = rest.get(urlWithoutParams, this.generateMockHandler(url, options, 'GET'))
       this.mswServer.use(handler)
     } else {
       const handler = rest.get(
         url,
         this.generateMockHandler(
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           urlWithoutParams,
           { responseOptions: { data: options as TResponse } },
           'GET'
@@ -277,9 +275,8 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
-    const urlWithoutParams = url.split('?')[0]
+    const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       const handler = rest.post(urlWithoutParams, this.generateMockHandler(url, options, 'POST'))
       this.mswServer.use(handler)
     } else {
@@ -303,10 +300,9 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
-    const urlWithoutParams = url.split('?')[0]
+    const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
       const handler = rest.delete(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         urlWithoutParams,
         this.generateMockHandler(url, options, 'DELETE')
       )
@@ -332,9 +328,8 @@ class MswMockServer
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
-    const urlWithoutParams = url.split('?')[0]
+    const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       const handler = rest.put(urlWithoutParams, this.generateMockHandler(url, options, 'PUT'))
       this.mswServer.use(handler)
     } else {

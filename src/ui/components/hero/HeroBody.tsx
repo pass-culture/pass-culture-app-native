@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { mapCategoryToIcon } from 'libs/parsers'
+import { mapCategoryToIcon } from 'libs/parsers/category'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
