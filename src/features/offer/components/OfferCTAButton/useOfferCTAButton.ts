@@ -4,6 +4,8 @@ import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { UseRouteType, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 
@@ -14,6 +16,7 @@ export const useOfferCTAButton = (
 ) => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const { from, searchId, openModalOnNavigation } = route.params
+  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER)
 
   const {
     wording,
@@ -49,7 +52,9 @@ export const useOfferCTAButton = (
   }
 
   const isAnUnbookedMovieScreening =
-    offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE && wording !== 'Voir ma réservation'
+    enableNewXpCine &&
+    offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE &&
+    wording !== 'Voir ma réservation'
 
   return {
     ctaWordingAndAction,
