@@ -7,7 +7,7 @@ describe('getIsVenuePreviousRoute', () => {
         key: 'Venue',
         name: 'Venue',
       },
-      { key: 'TabNavigator', name: 'TabNavigator', params: { screen: 'Search' } },
+      { key: 'TabNavigator', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
     ]
     const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
 
@@ -16,8 +16,8 @@ describe('getIsVenuePreviousRoute', () => {
 
   it('should return false when previous route is not Venue', () => {
     const routes = [
-      { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'Search' } },
-      { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'Search' } },
+      { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
+      { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
     ]
     const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
 
@@ -30,7 +30,7 @@ describe('getIsVenuePreviousRoute', () => {
       {
         key: 'TabNavigator',
         name: 'TabNavigator',
-        params: { screen: 'NotSearch' },
+        params: { screen: 'NotSearchStackNavigator' },
       },
     ]
     const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
@@ -41,7 +41,7 @@ describe('getIsVenuePreviousRoute', () => {
   it('should return false when previous route is TabNavigator and screen is not Search', () => {
     const routes = [
       { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'Bookings' } },
-      { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'Search' } },
+      { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
     ]
     const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
 

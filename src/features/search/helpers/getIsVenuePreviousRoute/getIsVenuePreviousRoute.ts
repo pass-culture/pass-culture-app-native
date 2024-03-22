@@ -11,7 +11,7 @@ export function getIsVenuePreviousRoute(routes: RouteProp<ParamListBase>[]) {
   const currentRouteParams = currentRoute?.params as unknown as NavigatorScreenParams<TabParamList>
 
   const isSearchCurrentPage =
-    currentRoute?.name === 'TabNavigator' && currentRouteParams?.screen === 'Search'
+    currentRoute?.name === 'TabNavigator' && currentRouteParams?.screen === 'SearchStackNavigator'
   const isVenuePreviousPage = previousRoute?.name === 'Venue'
 
   if (isSearchCurrentPage && isVenuePreviousPage) {

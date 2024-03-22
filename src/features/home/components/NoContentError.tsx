@@ -15,7 +15,12 @@ export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToSearchTab = () => {
-    navigate(...getTabNavConfig('Search'))
+    navigate(
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'Search',
+        params: undefined,
+      })
+    )
   }
 
   const helmetTitle =

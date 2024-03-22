@@ -68,9 +68,9 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenueMap } from 'features/venuemap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
-import { Route } from './types'
+import { RootRoute } from './types'
 
-export const routes: Route[] = [
+export const routes: RootRoute[] = [
   ...accessibilityRoutes,
   ...culturalSurveyRoutes,
   ...tutorialRoutes,

@@ -195,7 +195,7 @@ describe('TabBar', () => {
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
         ...route,
-        isSelected: route.name === 'Search',
+        isSelected: route.name === 'SearchStackNavigator',
       })),
     })
     renderTabBar()
@@ -213,7 +213,7 @@ describe('TabBar', () => {
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
         ...route,
-        isSelected: route.name === 'Search',
+        isSelected: route.name === 'SearchStackNavigator',
       })),
     })
     renderTabBar()
@@ -243,7 +243,12 @@ describe('TabBar', () => {
     const searchButton = screen.getByText('Recherche')
     fireEvent.press(searchButton)
 
-    expect(navigation.navigate).toHaveBeenCalledWith(...getTabNavConfig('Search', mockSearchState))
+    expect(navigation.navigate).toHaveBeenCalledWith(
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'Search',
+        params: { ...mockSearchState, accessibilityFilter: mockAccessibilityState },
+      })
+    )
   })
 })
 

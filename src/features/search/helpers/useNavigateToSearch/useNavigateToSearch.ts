@@ -13,9 +13,12 @@ export const useNavigateToSearch = () => {
     newAccessibilityFilter: DisabilitiesProperties
   ): void => {
     navigate(
-      ...getTabNavConfig('Search', {
-        ...newSearchState,
-        accessibilityFilter: newAccessibilityFilter,
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'Search',
+        params: {
+          ...newSearchState,
+          accessibilityFilter: newAccessibilityFilter,
+        },
       })
     )
   }

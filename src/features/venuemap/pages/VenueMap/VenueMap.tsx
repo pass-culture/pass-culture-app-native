@@ -15,7 +15,9 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const VenueMap: FunctionComponent = () => {
-  const { goBack } = useGoBack(...getTabNavConfig('Search'))
+  const { goBack } = useGoBack(
+    ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: undefined })
+  )
   const headerHeight = useGetHeaderHeight()
 
   const trackDurationAnalytics = useCallback(

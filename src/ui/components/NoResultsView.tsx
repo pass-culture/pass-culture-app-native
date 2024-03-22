@@ -26,7 +26,10 @@ export const NoResultsView = ({
   trackingExplorerOffersFrom,
 }: Props) => {
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
-  const searchNavConfig = getTabNavConfig('Search', { view: SearchView.Landing })
+  const searchNavConfig = getTabNavConfig('SearchStackNavigator', {
+    screen: 'Search',
+    params: { view: SearchView.Landing },
+  })
 
   const Icon =
     !!icon &&
