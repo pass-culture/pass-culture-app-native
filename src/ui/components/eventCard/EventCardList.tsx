@@ -39,5 +39,5 @@ export const EventCardList: React.FC<Props> = ({ data }) => {
 }
 
 const Container = styled.ScrollView({
-  paddingBottom: getSpacing(2),
+  paddingVertical: getSpacing(2),
 })

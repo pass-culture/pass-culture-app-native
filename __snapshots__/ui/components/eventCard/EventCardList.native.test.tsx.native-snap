@@ -7,7 +7,7 @@ exports[`EventCardList should render correctly 1`] = `
   style={
     [
       {
-        "paddingBottom": 8,
+        "paddingVertical": 8,
       },
     ]
   }
