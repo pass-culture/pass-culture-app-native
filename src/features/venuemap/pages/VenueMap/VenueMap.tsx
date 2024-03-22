@@ -1,12 +1,12 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueMapView } from 'features/venuemap/components/VenueMapView/VenueMapView'
-import { analytics } from 'libs/analytics'
+import { useTrackMapSeenDuration } from 'features/venuemap/hook/useTrackMapSeenDuration'
 import { useTrackSessionDuration } from 'shared/useTrackSessionDuration'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -20,11 +20,7 @@ export const VenueMap: FunctionComponent = () => {
   )
   const headerHeight = useGetHeaderHeight()
 
-  const trackDurationAnalytics = useCallback(
-    (duration: number) => analytics.logSessionDurationFromVenueMap(duration),
-    []
-  )
-  useTrackSessionDuration(trackDurationAnalytics)
+  useTrackMapSessionDuration()
 
   return (
     <View>
