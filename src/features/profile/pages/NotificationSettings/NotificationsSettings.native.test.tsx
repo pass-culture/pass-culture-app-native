@@ -79,7 +79,7 @@ describe('NotificationSettings', () => {
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
 
-  it('should disabled save button when user hasn‘t change any parameters', () => {
+  it('should disabled save button when user hasn‘t changed any parameters', () => {
     mockUseAuthContext.mockReturnValueOnce({
       ...baseAuthContext,
       user: beneficiaryUser,
@@ -91,7 +91,7 @@ describe('NotificationSettings', () => {
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
 
-  it('should enable save button when user has change a parameter', () => {
+  it('should enable save button when user has changed a parameter', () => {
     mockUseAuthContext.mockReturnValueOnce({
       ...baseAuthContext,
       user: beneficiaryUser,

@@ -40,7 +40,7 @@ describe('hasUserChangedParameters', () => {
     expect(hasUserChangedParameters(user, state)).toBe(true)
   })
 
-  it('should return true if user subscribe at a theme and unsuscribe another', () => {
+  it('should return true if user subscribe to a theme and unsuscribe to another', () => {
     const user = {
       ...beneficiaryUser,
       subscriptions: {

@@ -208,12 +208,12 @@ const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-type ToggleActionsBis =
+type ToggleActions =
   | { type: 'email' | 'push' | 'allTheme' }
   | { type: 'toggleTheme'; theme: SubscriptionTheme }
   | { type: 'reset'; initialState: NotificationsSettingsState }
 
-const settingsReducer = (state: NotificationsSettingsState, action: ToggleActionsBis) => {
+const settingsReducer = (state: NotificationsSettingsState, action: ToggleActions) => {
   switch (action.type) {
     case 'email':
       return {
