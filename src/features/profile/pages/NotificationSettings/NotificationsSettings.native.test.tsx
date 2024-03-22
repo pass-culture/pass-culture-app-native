@@ -42,6 +42,8 @@ const baseAuthContext: IAuthContext = {
   setIsLoggedIn: jest.fn(),
 }
 
+mockUseAuthContext.mockReturnValue(baseAuthContext)
+
 const usePushPermissionSpy = jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
   pushPermission: 'granted',
   refreshPermission: jest.fn(),
@@ -327,6 +329,23 @@ describe('NotificationSettings', () => {
 
       expect(mockGoBack).not.toHaveBeenCalled()
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
+    })
+
+    it('should reset settings on error', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      mockServer.postApi('/v1/profile', {
+        responseOptions: { statusCode: 400, data: {} },
+      })
+
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      fireEvent.press(toggleEmail)
+
+      const saveButton = screen.getByText('Enregistrer')
+      await act(async () => fireEvent.press(saveButton))
+
+      expect(toggleEmail).toHaveAccessibilityState({ checked: false })
     })
   })
 

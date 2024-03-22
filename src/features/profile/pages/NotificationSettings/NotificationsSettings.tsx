@@ -36,19 +36,21 @@ export const NotificationsSettings = () => {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
-  const [state, dispatch] = useReducer(settingsReducer, {
+  const initialState = {
     allowEmails: user?.subscriptions.marketingEmail,
     allowPush: user?.subscriptions.marketingPush,
     themePreferences:
       (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
-  })
+  }
+
+  const [state, dispatch] = useReducer(settingsReducer, initialState)
 
   const hasUserChanged = !!user && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && !state.allowPush) {
-      dispatch('push')
-    } else if (permission !== 'granted' && state.allowPush) dispatch('push')
+      dispatch({ type: 'push' })
+    } else if (permission !== 'granted' && state.allowPush) dispatch({ type: 'push' })
   }
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
@@ -66,6 +68,7 @@ export const NotificationsSettings = () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue',
       })
+      dispatch({ type: 'reset', initialState })
     }
   )
 
@@ -90,7 +93,7 @@ export const NotificationsSettings = () => {
 
   const togglePush = () => {
     if (pushPermission === 'granted') {
-      dispatch('push')
+      dispatch({ type: 'push' })
     } else {
       showPushModal()
     }
@@ -132,7 +135,7 @@ export const NotificationsSettings = () => {
           <SectionWithSwitch
             title="Autoriser l’envoi d’e-mails"
             active={state.allowEmails}
-            toggle={() => dispatch('email')}
+            toggle={() => dispatch({ type: 'email' })}
             disabled={!isLoggedIn}
           />
           {!state.allowEmails && isLoggedIn ? (
@@ -168,7 +171,7 @@ export const NotificationsSettings = () => {
             active={
               areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
             }
-            toggle={() => dispatch('allTheme')}
+            toggle={() => dispatch({ type: 'allTheme' })}
             disabled={areThemeTogglesDisabled}
           />
           <Spacer.Column numberOfSpaces={2} />
@@ -178,7 +181,7 @@ export const NotificationsSettings = () => {
               title={mapSubscriptionThemeToName[theme]}
               active={isThemeToggled(theme)}
               disabled={areThemeTogglesDisabled}
-              toggle={() => dispatch(theme)}
+              toggle={() => dispatch({ type: 'toggleTheme', theme })}
             />
           ))}
           <Spacer.Column numberOfSpaces={2} />
@@ -205,10 +208,13 @@ const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-type ToggleActions = SubscriptionTheme | 'email' | 'push' | 'allTheme'
+type ToggleActionsBis =
+  | { type: 'email' | 'push' | 'allTheme' }
+  | { type: 'toggleTheme'; theme: SubscriptionTheme }
+  | { type: 'reset'; initialState: NotificationsSettingsState }
 
-const settingsReducer = (state: NotificationsSettingsState, toggle: ToggleActions) => {
-  switch (toggle) {
+const settingsReducer = (state: NotificationsSettingsState, action: ToggleActionsBis) => {
+  switch (action.type) {
     case 'email':
       return {
         ...state,
@@ -227,12 +233,16 @@ const settingsReducer = (state: NotificationsSettingsState, toggle: ToggleAction
             ? []
             : Object.values(SubscriptionTheme),
       }
-    default:
+    case 'toggleTheme':
       return {
         ...state,
-        themePreferences: state.themePreferences.includes(toggle)
-          ? state.themePreferences.filter((t) => t !== toggle)
-          : [...state.themePreferences, toggle],
+        themePreferences: state.themePreferences.includes(action.theme)
+          ? state.themePreferences.filter((t) => t !== action.theme)
+          : [...state.themePreferences, action.theme],
       }
+    case 'reset':
+      return action.initialState
+    default:
+      return state
   }
 }
