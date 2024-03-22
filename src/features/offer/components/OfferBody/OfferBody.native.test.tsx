@@ -93,7 +93,7 @@ describe('<OfferBody />', () => {
       offer,
     })
 
-    expect(await screen.findByText('de Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
+    expect(await screen.findByText('Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
   })
 
   it('should display prices', async () => {

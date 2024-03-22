@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponse, SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
@@ -17,6 +17,7 @@ import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOffer
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
@@ -31,12 +32,21 @@ type Props = {
   trackEventHasSeenOfferOnce: VoidFunction
 }
 
+const FAKE_DOOR_ARTIST_SEARCH_GROUPS = [
+  SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+  SearchGroupNameEnumv2.LIVRES,
+  SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+]
+
 export const OfferBody: FunctionComponent<Props> = ({
   offer,
   subcategory,
   trackEventHasSeenOfferOnce,
 }) => {
   const { isDesktopViewport } = useTheme()
+  const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
+  const shouldDisplayFakeDoorArtist =
+    hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -57,7 +67,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           {artists ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={2} />
-              <OfferArtists artists={artists} />
+              <OfferArtists artists={artists} shouldDisplayFakeDoor={shouldDisplayFakeDoorArtist} />
             </React.Fragment>
           ) : null}
         </GroupWithoutGap>
