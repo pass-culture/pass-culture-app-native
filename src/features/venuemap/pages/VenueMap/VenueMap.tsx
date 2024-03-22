@@ -7,7 +7,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueMapView } from 'features/venuemap/components/VenueMapView/VenueMapView'
 import { useTrackMapSeenDuration } from 'features/venuemap/hook/useTrackMapSeenDuration'
-import { useTrackSessionDuration } from 'shared/useTrackSessionDuration'
+import { useTrackMapSessionDuration } from 'features/venuemap/hook/useTrackSessionDuration'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -21,6 +21,7 @@ export const VenueMap: FunctionComponent = () => {
   const headerHeight = useGetHeaderHeight()
 
   useTrackMapSessionDuration()
+  useTrackMapSeenDuration()
 
   return (
     <View>
