@@ -74,19 +74,12 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         {prices ? <OfferPrice prices={prices} /> : null}
 
-        {offer.venue.isPermanent || summaryInfoItems.length > 0 ? (
-          <GroupWithoutGap>
-            {offer.venue.isPermanent ? <OfferVenueButton venue={offer.venue} /> : null}
-
-            {!offer.venue.isPermanent && summaryInfoItems.length > 0 ? (
-              <Separator.Horizontal testID="topSeparator" />
-            ) : null}
-
-            {summaryInfoItems.length > 0 ? (
-              <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />
-            ) : null}
-          </GroupWithoutGap>
-        ) : null}
+        <GroupWithSeparator
+          showTopComponent={offer.venue.isPermanent}
+          TopComponent={() => <OfferVenueButton venue={offer.venue} />}
+          showBottomComponent={summaryInfoItems.length > 0}
+          BottomComponent={() => <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
+        />
 
         {isDesktopViewport ? (
           <React.Fragment>
@@ -133,3 +126,27 @@ const InfoContainer = styled.View<{ isDesktopViewport?: boolean }>(({ isDesktopV
 }))
 
 const GroupWithoutGap = View
+
+type GroupWithSeparatorProps = {
+  showTopComponent: boolean
+  TopComponent: FunctionComponent
+  showBottomComponent: boolean
+  BottomComponent: FunctionComponent
+}
+const GroupWithSeparator = ({
+  showTopComponent,
+  TopComponent,
+  showBottomComponent,
+  BottomComponent,
+}: GroupWithSeparatorProps) =>
+  showTopComponent || showBottomComponent ? (
+    <GroupWithoutGap>
+      {showTopComponent ? <TopComponent /> : null}
+
+      {!showTopComponent && showBottomComponent ? (
+        <Separator.Horizontal testID="topSeparator" />
+      ) : null}
+
+      {showBottomComponent ? <BottomComponent /> : null}
+    </GroupWithoutGap>
+  ) : null
